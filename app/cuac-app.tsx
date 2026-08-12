@@ -523,6 +523,9 @@ export function CuacApp({
   const activeProgram =
     programs.find((item) => item.id === route.programId) ?? programs.find((item) => item.id === "zju-cs-msc")!;
   const action = nextAction(state);
+  const deadlineCount = programs.filter((program) =>
+    ["urgent", "closes_soon"].includes(program.deadlineStatus)
+  ).length;
 
   return (
     <div className="cuac-shell">
@@ -542,7 +545,7 @@ export function CuacApp({
 
       <button className="deadline-strip" onClick={() => navigate("/programs?deadlineStatus=closes_soon")}>
         <strong>Fall 2026 cycle</strong>
-        <span>18 programs close soon. Review documents before deadlines move.</span>
+        <span>{deadlineCount} deadlines need attention. Review documents before intake windows move.</span>
       </button>
 
       {route.view === "home" && (
@@ -660,50 +663,92 @@ function HomeView({
 }) {
   const [query, setQuery] = useState("English-taught computer science master");
   const featured = programs.slice(0, 3);
+  const closeSoonCount = programs.filter((program) => ["urgent", "closes_soon"].includes(program.deadlineStatus)).length;
+  const scholarshipCount = programs.filter((program) => program.scholarshipAvailable).length;
   return (
     <main>
       <section className="home-hero">
-        <div className="hero-copy">
-          <p className="eyebrow">Fresh Calm Workspace</p>
-          <h1>Find China university programs you can actually apply for</h1>
-          <p>
-            Search by degree, teaching language, deadline, scholarship, and document requirements.
-          </p>
-        </div>
-        <form
-          className="hero-search"
-          onSubmit={(event) => {
-            event.preventDefault();
-            if (!query.trim()) return;
-            onSearch(query);
-          }}
-        >
-          <label htmlFor="home-search">Program search</label>
-          <div>
-            <input
-              id="home-search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search programs, cities, degree level"
-            />
-            <button type="submit">Search programs</button>
+        <div className="hero-left">
+          <div className="hero-copy">
+            <p className="eyebrow">For students applying to China</p>
+            <h1>Plan your China university application without guessing.</h1>
+            <p>
+              Match programs, compare funding, check deadline risk, and prepare a
+              review-ready application packet in one focused workspace.
+            </p>
           </div>
-        </form>
-        <div className="quick-filters" aria-label="Quick filters">
-          <button onClick={() => onQuickFilter({ degreeLevel: "undergraduate" })}>Undergraduate</button>
-          <button onClick={() => onQuickFilter({ degreeLevel: "master" })}>Master</button>
-          <button onClick={() => onQuickFilter({ teachingLanguage: "english" })}>English-taught</button>
-          <button onClick={() => onQuickFilter({ scholarshipAvailable: true })}>Scholarship</button>
-          <button onClick={() => onQuickFilter({ lateIntakeAvailable: true })}>Late intake</button>
+          <form
+            className="hero-search"
+            onSubmit={(event) => {
+              event.preventDefault();
+              if (!query.trim()) return;
+              onSearch(query);
+            }}
+          >
+            <label htmlFor="home-search">What do you want to study?</label>
+            <div>
+              <input
+                id="home-search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Computer science, business, MBBS..."
+              />
+              <button type="submit">Search programs</button>
+            </div>
+          </form>
+          <div className="quick-filters" aria-label="Quick filters">
+            <button onClick={() => onQuickFilter({ degreeLevel: "undergraduate" })}>Undergraduate</button>
+            <button onClick={() => onQuickFilter({ degreeLevel: "master" })}>Master</button>
+            <button onClick={() => onQuickFilter({ teachingLanguage: "english" })}>English-taught</button>
+            <button onClick={() => onQuickFilter({ scholarshipAvailable: true })}>Scholarship</button>
+            <button onClick={() => onQuickFilter({ lateIntakeAvailable: true })}>Late intake</button>
+          </div>
+          <button className="next-action hero-action" onClick={() => onNavigate(action.href)}>
+            <span>Continue in Hub</span>
+            <strong>{action.label}</strong>
+            <small>{action.body}</small>
+          </button>
         </div>
-        <button className="next-action hero-action" onClick={() => onNavigate(action.href)}>
-          <span>Continue in Hub</span>
-          <strong>{action.label}</strong>
-          <small>{action.body}</small>
-        </button>
+        <aside className="hero-dashboard" aria-label="Application preview">
+          <div className="dashboard-top">
+            <span>Application radar</span>
+            <strong>Fall 2026 plan</strong>
+          </div>
+          <div className="radar-card primary-radar">
+            <div>
+              <span>Next deadline</span>
+              <strong>Oct 15</strong>
+            </div>
+            <p>Zhejiang University · Computer Science MSc</p>
+          </div>
+          <div className="dashboard-metrics">
+            <div>
+              <strong>{closeSoonCount}</strong>
+              <span>close soon</span>
+            </div>
+            <div>
+              <strong>{scholarshipCount}</strong>
+              <span>with funding</span>
+            </div>
+            <div>
+              <strong>68%</strong>
+              <span>profile ready</span>
+            </div>
+          </div>
+          <div className="radar-list">
+            <div><span className="dot ok" /> Passport accepted</div>
+            <div><span className="dot warn" /> IELTS certificate missing</div>
+            <div><span className="dot danger" /> Transcript translation needed</div>
+          </div>
+        </aside>
       </section>
 
-      <section className="home-grid">
+      <section className="home-section-head">
+        <p className="eyebrow">Start from what matters</p>
+        <h2>Programs, funding, cities, and documents in one scan.</h2>
+      </section>
+
+      <section className="home-grid featured-grid">
         <ContentBand title="Open programs" action="View all" onAction={() => onNavigate("/programs")}>
           {featured.map((program) => (
             <MiniProgram key={program.id} program={program} onNavigate={onNavigate} />
@@ -723,9 +768,12 @@ function HomeView({
         </ContentBand>
         <ContentBand title="China city fit" action="Explore cities" onAction={() => onNavigate("/programs")}>
           {cities.slice(0, 3).map((city) => (
-            <article className="mini-card" key={city.id}>
-              <strong>{city.name}</strong>
-              <span>{formatMoney(city.monthlyCostRmb)} monthly estimate</span>
+            <article className="mini-card city-mini" key={city.id}>
+              <div>
+                <strong>{city.name}</strong>
+                <span>{city.province}</span>
+              </div>
+              <b>{formatMoney(city.monthlyCostRmb)}</b>
               <p>{city.studentLifeSummary}</p>
             </article>
           ))}
