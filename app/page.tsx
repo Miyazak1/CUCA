@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { CuacApp } from "./cuac-app";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "CUAC | China university application workspace",
-  description:
-    "Find China university programs, compare requirements, prepare documents, and request adviser review.",
+  title: "CUAC | China admissions for international students",
+  description: "Search Chinese universities, compare routes, and plan applications with CUAC.",
 };
 
 export default function Home() {
-  return <CuacApp initialView="home" />;
+  redirect("/home-v3.html");
 }
-
