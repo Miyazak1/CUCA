@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC Account Setup</title>
+    <link rel="stylesheet" href="onboarding.css" />
+  </head>
+  <body>
+    <main class="onboarding-shell" aria-label="CUAC account setup">
+      <a class="brand" href="home-v3.html" aria-label="CUAC home"><span>CU</span><strong>CUAC</strong></a>
+      <a class="skip-link" href="hub.html">Skip for now</a>
+
+      <aside class="context-panel" aria-label="Setup preview">
+        <div class="context-card">
+          <span class="context-mark">China route</span>
+          <h1>Build a Hub that starts with your real study goal.</h1>
+          <p>CUAC uses a few early answers to shape program routes, documents, scholarships, cities, and Agent prompts.</p>
+        </div>
+        <div class="route-preview" aria-hidden="true">
+          <div class="route-node active"><span></span>Goal</div>
+          <div class="route-line"></div>
+          <div class="route-node"><span></span>Budget</div>
+          <div class="route-line"></div>
+          <div class="route-node"><span></span>Readiness</div>
+        </div>
+      </aside>
+
+      <section class="setup-card" aria-label="Profile setup">
+        <div class="progress-head">
+          <div>
+            <span class="step-eyebrow" data-step-count>Step 1 of 6</span>
+            <h2 data-step-title>Welcome to CUAC</h2>
+          </div>
+          <div class="progress-ring" aria-hidden="true"><span data-progress-label>17%</span></div>
+        </div>
+        <div class="progress-track"><span data-progress-bar></span></div>
+
+        <form class="step-form" data-onboarding-form>
+          <section class="step active" data-step="0">
+            <p class="lead">Let’s set up your China study workspace so your Hub can show relevant programs, documents, deadlines, and scholarship routes.</p>
+            <div class="welcome-grid">
+              <article><span data-icon="route"></span><strong>Better routes</strong><em>Start from subject, city, intake, and language fit.</em></article>
+              <article><span data-icon="shield"></span><strong>Clear blockers</strong><em>Spot document or language gaps before applying.</em></article>
+              <article><span data-icon="spark"></span><strong>Useful Agent</strong><em>Every answer becomes context for future questions.</em></article>
+            </div>
+          </section>
+
+          <section class="step" data-step="1">
+            <p class="lead">Where are you applying from?</p>
+            <div class="field-grid">
+              <label><span>Nationality / passport country</span><select data-field="nationality"><option>Thailand</option><option>Indonesia</option><option>Malaysia</option><option>Pakistan</option><option>Nigeria</option><option>United States</option><option>Other</option></select></label>
+              <label><span>Current country or region</span><select data-field="currentCountry"><option>Thailand</option><option>Indonesia</option><option>Malaysia</option><option>China</option><option>United States</option><option>Other</option></select></label>
+              <label><span>Current education stage</span><select data-field="stage"><option>High school / Grade 12</option><option>Undergraduate student</option><option>Undergraduate graduate</option><option>Master student / graduate</option><option>Other</option></select></label>
+            </div>
+            <p class="microcopy">We do not need your address or passport number in this preview.</p>
+          </section>
+
+          <section class="step" data-step="2">
+            <p class="lead">What do you want to study in China?</p>
+            <div class="question-group">
+              <span>Target level</span>
+              <div class="choice-row" data-chip-group="level">
+                <button type="button" class="selected">Undergraduate</button>
+                <button type="button">Master</button>
+                <button type="button">PhD</button>
+                <button type="button">Language / non-degree</button>
+              </div>
+            </div>
+            <div class="question-group">
+              <span>Subject interest</span>
+              <div class="choice-row" data-chip-group="subject">
+                <button type="button" class="selected">Computer Science</button>
+                <button type="button">Business</button>
+                <button type="button">Engineering</button>
+                <button type="button">Medicine</button>
+                <button type="button">Chinese Language</button>
+                <button type="button">Design</button>
+              </div>
+            </div>
+            <div class="field-grid compact">
+              <label><span>Intake</span><select data-field="intake"><option>Fall 2026</option><option>Spring 2027</option><option>Fall 2027</option><option>Not sure</option></select></label>
+              <label><span>Teaching language</span><select data-field="language"><option>English-taught</option><option>Chinese-taught</option><option>Not sure</option></select></label>
+            </div>
+          </section>
+
+          <section class="step" data-step="3">
+            <p class="lead">How should we balance budget and scholarship routes?</p>
+            <div class="question-group">
+              <span>Tuition comfort</span>
+              <div class="choice-row" data-chip-group="tuition">
+                <button type="button">Under RMB 25k/year</button>
+                <button type="button" class="selected">RMB 25k-45k/year</button>
+                <button type="button">RMB 45k-70k/year</button>
+                <button type="button">Flexible</button>
+              </div>
+            </div>
+            <div class="question-group">
+              <span>Scholarship route</span>
+              <div class="choice-row" data-chip-group="funding">
+                <button type="button">Need full funding</button>
+                <button type="button" class="selected">Prefer partial scholarship</button>
+                <button type="button">Self-funded possible</button>
+                <button type="button">Not sure</button>
+              </div>
+            </div>
+            <p class="microcopy">This helps prioritize funding and city cost. It does not decide admission or scholarship outcome.</p>
+          </section>
+
+          <section class="step" data-step="4">
+            <p class="lead">Which application items are ready?</p>
+            <div class="readiness-list">
+              <label><input type="checkbox" checked data-check="passport" /> Passport valid for application</label>
+              <label><input type="checkbox" checked data-check="transcript" /> Transcript or latest grades</label>
+              <label><input type="checkbox" data-check="graduation" /> Graduation certificate</label>
+              <label><input type="checkbox" checked data-check="language" /> IELTS / TOEFL / HSK or waiver route</label>
+              <label><input type="checkbox" data-check="translation" /> Certified translation or notarization</label>
+            </div>
+          </section>
+
+          <section class="step" data-step="5">
+            <p class="lead">Pick a few interests so your Hub does not start empty.</p>
+            <div class="question-group">
+              <span>Cities to compare</span>
+              <div class="choice-row multi" data-multi-group="cities">
+                <button type="button" class="selected">Hangzhou</button>
+                <button type="button">Shanghai</button>
+                <button type="button">Beijing</button>
+                <button type="button" class="selected">Nanjing</button>
+                <button type="button">Chengdu</button>
+                <button type="button">Not sure</button>
+              </div>
+            </div>
+            <div class="question-group">
+              <span>First Hub focus</span>
+              <div class="choice-row" data-chip-group="focus">
+                <button type="button" class="selected">Program shortlist</button>
+                <button type="button">Documents</button>
+                <button type="button">Scholarships</button>
+                <button type="button">City cost</button>
+                <button type="button">Ask Agent</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="step" data-step="6">
+            <p class="lead">Your Hub is ready to start with a clearer China study route.</p>
+            <div class="summary-card" data-summary></div>
+          </section>
+
+          <div class="form-actions">
+            <button class="ghost" type="button" data-back disabled>Back</button>
+            <button class="primary" type="submit" data-next>Let’s go</button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <script src="onboarding.js"></script>
+  </body>
+</html>

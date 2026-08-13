@@ -1,11 +1,8 @@
 import assert from "node:assert/strict";
-import { access, readFile, readdir } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
 const templateRoot = new URL("../", import.meta.url);
-const previewRoot = new URL("../app/_sites-preview/", import.meta.url);
 
 async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -28,64 +25,72 @@ async function render() {
   );
 }
 
-test("server-renders the starter loading skeleton", async () => {
+test("server redirects the root route to the CUAC static demo home", async () => {
   const response = await render();
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-
-  const html = await response.text();
-  assert.match(html, developmentPreviewMeta);
-  assert.match(html, /<title>Your site is taking shape<\/title>/i);
-  assert.match(html, /Building your site/);
-  assert.match(html, /Your site is taking shape/);
-  assert.match(
-    html,
-    /Your first version will appear here automatically when it’s ready\./,
-  );
-  assert.doesNotMatch(html, /Codex/);
-  assert.match(html, /react-loading-skeleton/);
-  assert.match(html, /role="status"/);
+  assert.equal(response.status, 307);
+  assert.equal(response.headers.get("location"), "/home-v3.html");
 });
 
-test("keeps the loading skeleton scoped and disposable", async () => {
-  const [preview, css, page, layout, packageJson, files] = await Promise.all([
-    readFile(new URL("SkeletonPreview.tsx", previewRoot), "utf8"),
-    readFile(new URL("preview.css", previewRoot), "utf8"),
+test("keeps the CUAC app shell and static demo assets wired", async () => {
+  const [page, layout, packageJson, home, programs, universities, sharedJs, sharedCss] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
-    readdir(previewRoot),
+    readFile(new URL("../public/home-v3.html", import.meta.url), "utf8"),
+    readFile(new URL("../public/programs.html", import.meta.url), "utf8"),
+    readFile(new URL("../public/universities.html", import.meta.url), "utf8"),
+    readFile(new URL("../public/shared-shell.js", import.meta.url), "utf8"),
+    readFile(new URL("../public/shared-shell.css", import.meta.url), "utf8"),
   ]);
 
-  assert.deepEqual(files.sort(), ["SkeletonPreview.tsx", "preview.css"]);
-  assert.match(preview, /from "react-loading-skeleton"/);
-  assert.match(preview, /baseColor="#eceae7"/);
-  assert.match(preview, /highlightColor="#f9f8f6"/);
-  assert.match(preview, /duration=\{2\.8\}/);
-  assert.match(preview, /sites-skeleton-search-placeholder/);
-  assert.match(packageJson, /"react-loading-skeleton": "3\.5\.0"/);
-
-  const shellIndex = preview.indexOf('className="sites-skeleton-shell"');
-  const statusIndex = preview.indexOf('className="sites-skeleton-status"');
-  assert.ok(shellIndex >= 0 && statusIndex > shellIndex);
-  assert.match(css, /position:\s*fixed/);
-  assert.match(css, /inset:\s*0/);
-  assert.match(css, /opacity:\s*0\.52/);
-  assert.match(css, /prefers-reduced-motion:\s*reduce/);
-  assert.doesNotMatch(css, /#020617|canvas|pets|progress/i);
-  assert.doesNotMatch(
-    preview,
-    /loading-spinner|status-mark|status-progress|canvas|cookie|random/i,
-  );
-
   assert.match(page, /export const metadata:\s*Metadata/);
-  assert.match(page, /"codex-preview": "development"/);
-  assert.match(page, /<SkeletonPreview \/>/);
-  assert.match(layout, /title:\s*"Starter Project"/);
-  assert.doesNotMatch(layout, /codex-preview|_sites-preview|themeColor|\bViewport\b/);
-  assert.doesNotMatch(css, /(^|\s)(html|body)\s*\{/m);
+  assert.match(page, /redirect\("\/home-v3\.html"\)/);
+  assert.match(page, /CUAC \| China admissions for international students/);
+  assert.match(layout, /CUAC \| China university application workspace/);
+  assert.match(layout, /favicon\.svg/);
+  assert.match(packageJson, /"vinext": "1\.0\.0-beta\.2"/);
+
+  assert.match(home, /data-active="home"/);
+  assert.match(programs, /data-active="programs"/);
+  assert.match(universities, /data-active="universities"/);
+  assert.match(sharedJs, /function renderHeader/);
+  assert.match(sharedJs, /function renderFooter/);
+  assert.match(sharedJs, /function renderAgentShell/);
+  assert.match(sharedCss, /\.cuac-agent-composer/);
 
   await assert.rejects(
     access(new URL("public/_sites-preview", templateRoot)),
   );
+});
+
+test("keeps the CUAC Agent scenario picker available and contained", async () => {
+  const [shellJs, shellCss, spec] = await Promise.all([
+    readFile(new URL("../public/shared-shell.js", import.meta.url), "utf8"),
+    readFile(new URL("../public/shared-shell.css", import.meta.url), "utf8"),
+    readFile(new URL("../public/AGENT_SIDEBAR_INTERACTION_SPEC.md", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(shellJs, /const agentScenarios = \[/);
+  assert.match(shellJs, /data-agent-scenario-trigger/);
+  assert.match(shellJs, /data-agent-scenario-menu/);
+  assert.match(shellJs, /data-cuac-agent-resize/);
+  assert.match(shellJs, /panel\.classList\.toggle\("wide", wide\)/);
+  assert.match(shellJs, /Find English-taught computer science master in Hangzhou/);
+  assert.match(shellJs, /Summarize my progress and blockers/);
+  assert.match(shellJs, /Will I definitely get scholarship\?/);
+  assert.match(shellJs, /composer\?\.classList\.toggle\("menu-open", open\)/);
+
+  assert.match(shellCss, /\.cuac-agent-composer\.in-panel \.cuac-scenario-menu/);
+  assert.match(shellCss, /\.cuac-agent-panel\.wide\s*\{[\s\S]*width:\s*min\(760px,\s*50vw\)/);
+  assert.match(shellCss, /\.cuac-agent-resize\s*\{/);
+  assert.match(shellCss, /\.cuac-agent-form\s*\{[\s\S]*position:\s*relative/);
+  assert.match(shellCss, /\.cuac-agent-composer\.in-panel \.cuac-scenario-picker\s*\{[\s\S]*position:\s*static/);
+  assert.match(shellCss, /\.cuac-scenario-menu\[hidden\]\s*\{[\s\S]*display:\s*none/);
+  assert.match(shellCss, /max-height:\s*min\(300px,\s*calc\(100vh - 360px\)\)/);
+  assert.match(shellCss, /\.cuac-agent-composer\.in-panel\.menu-open \.cuac-agent-form/);
+  assert.match(shellCss, /\.cuac-agent-composer\.in-panel \.cuac-scenario-trigger span\s*\{[\s\S]*display:\s*none/);
+
+  assert.match(spec, /Demo Scenario Coverage Standard/);
+  assert.match(spec, /Demo Scenario Router Requirements/);
+  assert.match(spec, /\| Risk \| "Will I definitely get scholarship\?" \| Caution \+ source\/adviser step \|/);
 });

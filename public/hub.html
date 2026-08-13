@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC Hub</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="hub.css" />
+  </head>
+  <body data-agent-mode="hub">
+    <div class="page hub-page">
+      <div data-cuac-header data-active="hub" data-note="CUAC Hub:" data-note-detail="your China study workspace"></div>
+
+      <main>
+        <section class="hub-hero reveal" aria-label="Student Hub summary">
+          <div class="hero-copy">
+            <span class="hub-rule"></span>
+            <div class="profile-line">
+              <span class="avatar">M</span>
+              <span>Master · CS · Fall 2026 · English route</span>
+            </div>
+            <h1>Welcome back, Maya</h1>
+            <p>Your saved route is ready to become an application draft.</p>
+            <div class="hero-actions">
+              <a class="primary-action" href="application.html">Start application</a>
+              <a class="secondary-action" href="programs.html">Review routes</a>
+              <button type="button" data-agent-prompt="Organize my China application choices by risk, deadline, and document effort">Ask Agent</button>
+            </div>
+          </div>
+          <div class="hero-board" aria-label="Route status board">
+            <div class="board-card deadline-card">
+              <span>Next deadline</span>
+              <strong>Oct 15</strong>
+              <em>ZJU CS MSc</em>
+            </div>
+            <div class="board-card readiness-card">
+              <span>Readiness</span>
+              <strong data-readiness-label>68%</strong>
+              <div class="mini-meter"><em data-readiness-bar></em></div>
+            </div>
+            <div class="board-card blocker-card">
+              <span>Main blocker</span>
+              <strong>IELTS proof</strong>
+              <em>+ transcript translation</em>
+            </div>
+          </div>
+        </section>
+
+        <nav class="hub-tabs reveal" aria-label="Hub sections">
+          <a class="active" href="#overview">Hub</a>
+          <a href="application.html">Apply</a>
+          <a href="#shortlist">Routes</a>
+          <a href="#documents">Docs</a>
+          <a href="#deadlines">Dates</a>
+          <a href="#for-you">For you</a>
+          <a href="#tools">Tools</a>
+        </nav>
+
+        <section class="cycle-alert reveal" aria-label="Personal admissions alert">
+          <span data-hub-icon="alert"></span>
+          <strong>Scholarship dates may close earlier than programs.</strong>
+          <button type="button" data-dismiss-alert aria-label="Dismiss alert">Dismiss</button>
+        </section>
+
+        <section class="hub-overview" id="overview" aria-label="Hub overview">
+          <article class="next-action reveal">
+            <div class="module-head">
+              <span class="module-kicker">Next best action</span>
+              <button type="button" data-agent-prompt="Organize my China application choices by risk, deadline, and document effort">Ask Agent</button>
+            </div>
+            <h2>Start your Zhejiang application draft</h2>
+            <p>Agent has the route, deadline, and first blockers ready. Confirm the choice, then finish only the missing parts.</p>
+            <div class="fact-row" aria-label="Route facts">
+              <span>ZJU CS MSc</span>
+              <span>Oct 15</span>
+              <span>RMB 42k</span>
+              <span>3 blockers</span>
+            </div>
+            <div class="action-row">
+              <a class="primary-action" href="application.html">Start application</a>
+              <a class="secondary-action" href="#documents">Review blockers</a>
+            </div>
+          </article>
+
+          <aside class="snapshot reveal" aria-label="Application snapshot">
+            <div class="snapshot-head">
+              <h2>Application snapshot</h2>
+              <span>Live preview</span>
+            </div>
+            <div class="snapshot-grid">
+              <article><strong data-count="saved">4</strong><span>saved programs</span></article>
+              <article><strong data-count="compared">2</strong><span>compared</span></article>
+              <article><strong data-count="choices">1</strong><span>choice ready</span></article>
+              <article><strong data-count="documents">3</strong><span>docs missing</span></article>
+            </div>
+            <button class="snapshot-agent" type="button" data-agent-prompt="Organize my China application choices by risk, deadline, and document effort">Ask Agent to organize</button>
+          </aside>
+        </section>
+
+        <section class="hub-grid" aria-label="Application workspace">
+          <article class="module shortlist reveal" id="shortlist">
+            <div class="section-title">
+              <div><span class="module-kicker">Shortlist</span><h2>Saved routes</h2></div>
+              <a href="programs.html">View all</a>
+            </div>
+            <div class="route-list" data-route-list></div>
+          </article>
+
+          <article class="module documents reveal" id="documents">
+            <div class="section-title">
+              <div><span class="module-kicker">Documents</span><h2>Blockers</h2></div>
+              <a href="guides.html#documents">Open guide</a>
+            </div>
+            <div class="document-list" data-document-list></div>
+          </article>
+
+          <article class="module deadlines reveal" id="deadlines">
+            <div class="section-title">
+              <div><span class="module-kicker">Timeline</span><h2>Dates</h2></div>
+              <a href="guides.html#timeline">Calendar</a>
+            </div>
+            <div class="timeline">
+              <article><time>Sep 12</time><div><strong>Shanghai scholarship</strong><span>Check first</span></div></article>
+              <article><time>Oct 15</time><div><strong>ZJU CS MSc</strong><span>Main deadline</span></div></article>
+              <article><time>Nov 10</time><div><strong>Trade MSc</strong><span>Backup route</span></div></article>
+            </div>
+          </article>
+        </section>
+
+        <section class="route-strip reveal" aria-label="Scholarship and city route context">
+          <article>
+            <span data-hub-icon="scholarship"></span>
+            <div><strong>Funding path</strong><p>CSC + university backup.</p></div>
+            <a href="scholarships.html">Compare funding</a>
+          </article>
+          <article>
+            <span data-hub-icon="city"></span>
+            <div><strong>City fit</strong><p>Hangzhou or Nanjing before Shanghai.</p></div>
+            <a href="cities.html">Compare cities</a>
+          </article>
+        </section>
+
+        <section class="feed-band" id="for-you" aria-label="For you feed">
+          <div class="feed-inner">
+            <div class="section-title reveal">
+              <div><span class="module-kicker">For you</span><h2>Picked for your route</h2></div>
+              <div class="carousel-controls">
+                <button type="button" data-scroll-feed="-1" aria-label="Scroll feed left">‹</button>
+                <button type="button" data-scroll-feed="1" aria-label="Scroll feed right">›</button>
+              </div>
+            </div>
+            <div class="feed-row" data-feed-row>
+              <a class="feed-card bright" href="guides.html#language">
+                <span>Guide</span>
+                <strong>No HSK first?</strong>
+                <p>English routes, waivers, and proof.</p>
+              </a>
+              <a class="feed-card image city" href="cities.html">
+                <span>City</span>
+                <strong>Hangzhou or Nanjing</strong>
+                <p>Cost, campus feel, internships.</p>
+              </a>
+              <a class="feed-card gold" href="scholarships.html">
+                <span>Scholarship</span>
+                <strong>Funding, realistically</strong>
+                <p>Full, partial, and waiver routes.</p>
+              </a>
+              <a class="feed-card calm" href="guides.html#documents">
+                <span>Checklist</span>
+                <strong>Before Oct 15</strong>
+                <p>Translation, IELTS, study plan.</p>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="tools" id="tools" aria-label="Hub tools">
+          <div class="section-title reveal">
+            <div><span class="module-kicker">Tools</span><h2>Useful next</h2></div>
+          </div>
+          <div class="tool-grid">
+            <article class="tool-card budget reveal">
+              <span data-hub-icon="budget"></span>
+              <strong>Budget</strong>
+              <p>Tuition + city cost.</p>
+              <a href="cities.html">Open estimator</a>
+            </article>
+            <article class="tool-card checklist reveal">
+              <span data-hub-icon="document"></span>
+              <strong>Checklist</strong>
+              <p>Docs by route.</p>
+              <a href="guides.html#documents">Open checklist</a>
+            </article>
+            <article class="tool-card notes reveal">
+              <div class="notes-lines" aria-hidden="true"></div>
+              <strong>Notes</strong>
+              <textarea aria-label="Hub notes" rows="5">Ask adviser whether Zhejiang University accepts IELTS waiver.</textarea>
+            </article>
+            <article class="tool-card agent-tool reveal">
+              <span data-hub-icon="agent"></span>
+              <strong>Ask Agent</strong>
+              <p>Compare, plan, recover.</p>
+              <button type="button" data-agent-prompt="Build a document plan for my Fall 2026 China applications">Ask Agent</button>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <div data-cuac-footer></div>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="hub.js"></script>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC Cities</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="cities.css" />
+  </head>
+  <body data-agent-mode="cities">
+    <div class="page">
+      <div data-cuac-header data-active="cities" data-note="China city fit:" data-note-detail="compare cost, pace, and study routes"></div>
+
+      <main>
+        <div class="shell">
+          <section class="hero reveal" aria-label="City fit introduction">
+            <div class="hero-copy">
+              <span class="eyebrow">Cities</span>
+              <h1>Find a China city that fits your study plan</h1>
+              <p>Compare living cost, university routes, English-taught programs, scholarships, climate, and student-life fit before choosing where to apply.</p>
+            </div>
+            <div class="hero-evidence" aria-label="City data summary">
+              <div><strong>8</strong><span>city guides</span></div>
+              <div><strong>RMB 3.2k-5.2k</strong><span>monthly range</span></div>
+              <div><strong>146</strong><span>program signals</span></div>
+            </div>
+          </section>
+
+          <section class="city-intent reveal" aria-label="City fit assistant">
+            <form class="intent-form" data-planner-form>
+              <textarea data-planner-input rows="2" aria-label="Describe your city preference">Affordable city for English-taught computer science</textarea>
+              <button class="send-button" type="submit" data-planner-submit aria-label="Send city preference">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4Z"/></svg>
+              </button>
+            </form>
+            <div class="chips" aria-label="City prompt starters">
+              <button class="chip" type="button" data-prompt-chip="Lower-cost city with English-taught programs">Lower cost</button>
+              <button class="chip" type="button" data-prompt-chip="Tech city for computer science">Tech city</button>
+              <button class="chip" type="button" data-prompt-chip="Calmer city than Shanghai">Calmer pace</button>
+              <button class="chip" type="button" data-prompt-chip="Scholarship-friendly city">Scholarship-friendly</button>
+              <button class="chip" type="button" data-prompt-chip="International city with internships">Internships</button>
+            </div>
+          </section>
+
+          <section class="city-rail reveal" aria-label="Quick city comparison" id="cityRail"></section>
+
+          <section class="section reveal" aria-label="Featured city story">
+            <div class="feature-story" id="featureStory"></div>
+          </section>
+
+          <section class="section reveal" aria-label="City fit matrix">
+            <div class="section-head">
+              <div>
+                <h2>Compare city fit in one scan</h2>
+                <p>Use city as a practical decision filter: cost, pace, English routes, scholarships, opportunity, and climate.</p>
+              </div>
+              <a class="text-link" href="#cityList">Browse all cities</a>
+            </div>
+            <div class="fit-matrix" id="fitMatrix"></div>
+          </section>
+
+          <section class="section reveal" aria-label="Choose by need">
+            <div class="section-head">
+              <div>
+                <h2>Choose by what worries you most</h2>
+                <p>Start from budget, lifestyle, language, or career signal if the city names are still unfamiliar.</p>
+              </div>
+            </div>
+            <div class="need-grid" id="needGrid"></div>
+          </section>
+
+          <section class="section reveal" id="cityList" aria-label="City list">
+            <div class="browser-tools">
+              <div>
+                <h2><span id="cityCount">8</span> cities</h2>
+                <p id="cityContext">City guides with cost, university, English-route, scholarship, and student-life signals.</p>
+              </div>
+              <div class="controls">
+                <button class="secondary" type="button" data-city-filter="all">All cities</button>
+                <select class="select" id="sortSelect" aria-label="Sort cities">
+                  <option value="fit">Sort: Fit</option>
+                  <option value="costLow">Lowest cost first</option>
+                  <option value="english">English routes first</option>
+                  <option value="scholarship">Scholarships first</option>
+                </select>
+              </div>
+            </div>
+            <div class="active-chips" id="activeChips" aria-label="Active city filters"></div>
+            <div class="city-grid" id="cityGrid"></div>
+          </section>
+
+          <section class="section reveal" aria-label="Monthly cost breakdown">
+            <div class="cost-lab">
+              <div>
+                <span class="eyebrow">Budget check</span>
+                <h2>Estimate a monthly student budget</h2>
+                <p id="budgetIntro">Start with Hangzhou, then switch lifestyle level to see how accommodation, food, transport, and personal spending change.</p>
+                <div class="budget-controls" aria-label="Lifestyle budget level">
+                  <button class="active" type="button" data-budget-mode="lean">Lean</button>
+                  <button type="button" data-budget-mode="balanced">Balanced</button>
+                  <button type="button" data-budget-mode="comfortable">Comfortable</button>
+                </div>
+              </div>
+              <div class="budget-panel">
+                <div class="budget-total"><span id="budgetCity">Hangzhou</span><strong id="budgetTotal">RMB 3,600</strong><em>monthly estimate</em></div>
+                <div class="budget-bars" id="budgetBars"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section reveal" aria-label="Linked city decisions">
+            <div class="decision-band">
+              <div>
+                <h2>Turn city fit into an application route</h2>
+                <p>A good city choice should immediately connect to programs, universities, scholarships, and arrival planning.</p>
+              </div>
+              <div class="decision-links">
+                <a href="programs.html?city=hangzhou"><strong>Programs by city</strong><span>Compare real degree routes.</span></a>
+                <a href="universities.html?city=hangzhou"><strong>Universities by city</strong><span>Start from verified admissions pages.</span></a>
+                <a href="scholarships.html?city=hangzhou"><strong>Scholarships by city</strong><span>Check funding and living cost together.</span></a>
+                <a href="guides.html#visa"><strong>Arrival notes</strong><span>Visa, JW form, housing, and first-week tasks.</span></a>
+              </div>
+            </div>
+          </section>
+
+          <section class="section reveal" aria-label="City fit questions">
+            <div class="section-head">
+              <div>
+                <h2>City questions students ask early</h2>
+                <p>Keep city decisions practical and connected to applications.</p>
+              </div>
+            </div>
+            <div class="faq-list">
+              <article><h3>Should I choose the city before the university?</h3><p>Use the city to narrow cost, lifestyle, and opportunity fit, then confirm the actual program and university requirements.</p></article>
+              <article><h3>Is Shanghai too expensive?</h3><p>It can be worth it for internships and international life, but students should compare living cost and scholarship coverage first.</p></article>
+              <article><h3>Can I study in a smaller city without Chinese?</h3><p>Some cities have English-taught routes, but daily life and support vary. Check university services and language requirements before applying.</p></article>
+            </div>
+          </section>
+        </div>
+
+        <div data-cuac-footer></div>
+      </main>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="cities.js"></script>
+  </body>
+</html>

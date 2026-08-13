@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC Agent Application Workspace</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="application.css" />
+  </head>
+  <body data-agent-mode="application">
+    <div class="page application-page">
+      <div data-cuac-header data-active="hub" data-note="CUAC Application:" data-note-detail="multi-choice China study workspace"></div>
+
+      <main>
+        <section class="app-hero reveal" aria-label="Application set start">
+          <div class="hero-copy">
+            <a class="back-link" href="hub.html">Back to Hub</a>
+            <span class="app-rule"></span>
+            <p class="eyebrow">Application basket</p>
+            <h1>Build your China application set</h1>
+            <p class="hero-lead">Add several schools and programs, then let CUAC Agent organize them into a main route, safer backup, and funding-sensitive choice.</p>
+            <div class="hero-actions">
+              <button class="primary-action" type="button" data-agent-prompt="Organize my China application choices by risk, deadline, and document effort">Organize with Agent</button>
+              <a class="secondary-action" href="programs.html">Add another program</a>
+            </div>
+          </div>
+
+          <aside class="draft-card set-card" aria-label="Application set summary">
+            <div class="draft-status">
+              <span>Application set</span>
+              <strong data-choice-status>3 choices</strong>
+            </div>
+            <h2>CS routes for Fall 2026</h2>
+            <p>Hangzhou · Nanjing · Beijing</p>
+            <div class="set-metrics">
+              <article><strong>1</strong><span>main route</span></article>
+              <article><strong>1</strong><span>backup</span></article>
+              <article><strong>Oct 15</strong><span>earliest date</span></article>
+              <article><strong>3</strong><span>doc blockers</span></article>
+            </div>
+            <div class="readiness">
+              <div><strong data-progress-label>42%</strong><span>set ready</span></div>
+              <em><i data-progress-bar></i></em>
+            </div>
+          </aside>
+        </section>
+
+        <section class="progress-strip reveal" aria-label="Application progress">
+          <article class="done"><span data-app-icon="route"></span><strong>Discover</strong><em>Saved</em></article>
+          <article class="active"><span data-app-icon="choice"></span><strong>Choices</strong><em data-choice-step>Organize</em></article>
+          <article><span data-app-icon="document"></span><strong>Docs</strong><em>3 blockers</em></article>
+          <article><span data-app-icon="funding"></span><strong>Funding</strong><em>Check route</em></article>
+          <article><span data-app-icon="review"></span><strong>Review</strong><em>Not ready</em></article>
+        </section>
+
+        <section class="workspace-grid" aria-label="Application workspace">
+          <article class="choice-panel reveal">
+            <div class="section-head">
+              <div>
+                <span class="module-kicker">Selected choices</span>
+                <h2>Application basket</h2>
+              </div>
+              <span class="source-pill">3 selected</span>
+            </div>
+
+            <div class="choice-list" data-choice-list>
+              <article class="choice-route main" data-choice="0">
+                <div class="choice-topline">
+                  <span class="role-pill">Main</span>
+                  <button type="button" data-agent-prompt="Explain why Zhejiang University should be my main choice">Why?</button>
+                </div>
+                <div>
+                  <h3>Zhejiang University</h3>
+                  <p>Computer Science MSc · Hangzhou · English-taught</p>
+                </div>
+                <div class="choice-route-meta">
+                  <span>Oct 15</span>
+                  <span>RMB 42k</span>
+                  <span>IELTS / waiver</span>
+                  <span>CSC possible</span>
+                </div>
+              </article>
+
+              <article class="choice-route backup" data-choice="1">
+                <div class="choice-topline">
+                  <span class="role-pill">Backup</span>
+                  <button type="button" data-agent-prompt="Compare Nanjing University as my backup route">Compare</button>
+                </div>
+                <div>
+                  <h3>Nanjing University</h3>
+                  <p>Software Engineering MSc · Nanjing · English-taught</p>
+                </div>
+                <div class="choice-route-meta">
+                  <span>Dec 20</span>
+                  <span>RMB 39k</span>
+                  <span>Lower cost</span>
+                  <span>Ready to compare</span>
+                </div>
+              </article>
+
+              <article class="choice-route funding" data-choice="2">
+                <div class="choice-topline">
+                  <span class="role-pill">Funding</span>
+                  <button type="button" data-agent-prompt="Check funding risk for UIBE International Trade MSc">Check</button>
+                </div>
+                <div>
+                  <h3>UIBE</h3>
+                  <p>International Trade MSc · Beijing · English-taught</p>
+                </div>
+                <div class="choice-route-meta">
+                  <span>Nov 10</span>
+                  <span>RMB 36k</span>
+                  <span>Business fit</span>
+                  <span>Funding-sensitive</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="action-row">
+              <button class="primary-action" type="button" data-confirm-choice>Confirm choice order</button>
+              <button class="secondary-action" type="button" data-open-choice-modal>Add choice</button>
+            </div>
+          </article>
+
+          <aside class="task-panel reveal" aria-label="Agent choice recommendation">
+            <div class="section-head">
+              <div><span class="module-kicker">Agent order</span><h2>Why this set</h2></div>
+              <button type="button" data-agent-prompt="Organize my China application choices by risk, deadline, and document effort">Refresh</button>
+            </div>
+            <ol class="agent-order">
+              <li><strong>Main route</strong><span>ZJU has the strongest program fit, but the Oct 15 deadline drives the next step.</span></li>
+              <li><strong>Safer backup</strong><span>Nanjing keeps cost and document burden lower while staying close to the study goal.</span></li>
+              <li><strong>Funding route</strong><span>UIBE is useful if scholarship timing works, but should not block the main route.</span></li>
+            </ol>
+          </aside>
+        </section>
+
+        <section class="document-matrix reveal" aria-label="Document matrix">
+          <div class="section-title">
+            <div><span class="module-kicker">Document matrix</span><h2>Shared first, differences second</h2></div>
+            <button type="button" data-agent-prompt="Build a shared and program-specific document plan for my three China application choices">Plan documents</button>
+          </div>
+          <div class="matrix-grid">
+            <div class="matrix-head">Document</div>
+            <div class="matrix-head">ZJU</div>
+            <div class="matrix-head">Nanjing</div>
+            <div class="matrix-head">UIBE</div>
+            <div class="matrix-row-title">Passport scan</div>
+            <div class="matrix-cell ready">Ready</div>
+            <div class="matrix-cell ready">Ready</div>
+            <div class="matrix-cell ready">Ready</div>
+            <div class="matrix-row-title">Transcript translation</div>
+            <div class="matrix-cell warning">Needed</div>
+            <div class="matrix-cell warning">Needed</div>
+            <div class="matrix-cell warning">Needed</div>
+            <div class="matrix-row-title">English proof</div>
+            <div class="matrix-cell warning">IELTS / waiver</div>
+            <div class="matrix-cell ready">Flexible</div>
+            <div class="matrix-cell warning">IELTS</div>
+            <div class="matrix-row-title">Study plan</div>
+            <div class="matrix-cell warning">Scholarship</div>
+            <div class="matrix-cell neutral">Optional</div>
+            <div class="matrix-cell warning">Required</div>
+          </div>
+        </section>
+
+        <section class="section-grid reveal" aria-label="Application sections">
+          <div class="section-title">
+            <div><span class="module-kicker">Application sections</span><h2>Finish in the order that matters</h2></div>
+          </div>
+          <div class="section-cards">
+            <article class="section-card ready"><span data-app-icon="choice"></span><strong>Choices</strong><p>Three routes organized by role.</p><button type="button" data-section-action>Mark checked</button></article>
+            <article class="section-card"><span data-app-icon="profile"></span><strong>Profile</strong><p>Name, nationality, contact.</p><button type="button" data-section-action>Start</button></article>
+            <article class="section-card"><span data-app-icon="education"></span><strong>Education</strong><p>School history and grades.</p><button type="button" data-section-action>Start</button></article>
+            <article class="section-card warning"><span data-app-icon="document"></span><strong>Documents</strong><p>Shared docs before differences.</p><button type="button" data-section-action>Open</button></article>
+            <article class="section-card"><span data-app-icon="funding"></span><strong>Scholarship</strong><p>Compare funding per choice.</p><button type="button" data-section-action>Start</button></article>
+            <article class="section-card"><span data-app-icon="review"></span><strong>Review</strong><p>Submit only after source check.</p><button type="button" data-section-action>Later</button></article>
+          </div>
+        </section>
+
+        <section class="review-band reveal" aria-label="Review summary">
+          <div>
+            <span class="module-kicker">Why this is simpler</span>
+            <h2>UCAS lets you add choices. CUAC helps you know which choices should survive.</h2>
+          </div>
+          <div class="review-points">
+            <span>Multiple choices</span>
+            <span>Missing items first</span>
+            <span>Main and backup routes</span>
+            <span>Source-aware risks</span>
+          </div>
+        </section>
+      </main>
+
+      <div data-cuac-footer></div>
+    </div>
+
+    <div class="choice-modal" data-choice-modal aria-hidden="true" inert>
+      <div class="choice-modal-backdrop" data-close-choice-modal></div>
+      <section class="choice-dialog" role="dialog" aria-modal="true" aria-labelledby="choice-dialog-title">
+        <div class="choice-dialog-head">
+          <div>
+            <span class="module-kicker">Add choice</span>
+            <h2 id="choice-dialog-title">Add a specific program</h2>
+            <p>A choice means one university plus one concrete program, intake, and language route.</p>
+          </div>
+          <button class="choice-dialog-close" type="button" data-close-choice-modal aria-label="Close add choice">×</button>
+        </div>
+
+        <form class="choice-form" data-choice-form>
+          <label>
+            <span>University</span>
+            <select name="university" data-university-select>
+              <option>Zhejiang University</option>
+              <option>Nanjing University</option>
+              <option>UIBE</option>
+              <option>Fudan University</option>
+              <option>Tongji University</option>
+            </select>
+          </label>
+          <label>
+            <span>Program</span>
+            <select name="program" data-program-select></select>
+          </label>
+          <div class="choice-form-grid">
+            <label>
+              <span>Intake</span>
+              <select name="intake">
+                <option>Fall 2026</option>
+                <option>Spring 2027</option>
+              </select>
+            </label>
+            <label>
+              <span>Teaching language</span>
+              <select name="language">
+                <option>English-taught</option>
+                <option>Chinese-taught</option>
+              </select>
+            </label>
+          </div>
+          <div class="program-preview" data-program-preview aria-live="polite"></div>
+
+          <div class="choice-suggestions" aria-label="Suggested programs">
+            <button type="button" data-fill-choice="Zhejiang University|Computer Science MSc">ZJU · Computer Science MSc</button>
+            <button type="button" data-fill-choice="Nanjing University|Software Engineering MSc">Nanjing · Software Engineering</button>
+            <button type="button" data-fill-choice="UIBE|International Trade MSc">UIBE · International Trade</button>
+          </div>
+
+          <div class="choice-dialog-actions">
+            <button class="primary-action" type="submit">Add to application set</button>
+            <button class="secondary-action" type="button" data-agent-prompt="Help me find a specific program to add to my China application choices">Ask Agent first</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="application.js"></script>
+  </body>
+</html>

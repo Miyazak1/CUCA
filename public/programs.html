@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC Programs</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="programs.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div data-cuac-header data-active="programs" data-note="China admissions 2026:" data-note-detail="compare programs before choosing"></div>
+
+      <main>
+        <div class="shell">
+          <section class="page-title reveal" aria-label="Program search header">
+            <div>
+              <div class="eyebrow">Program Search</div>
+              <h1>Find programs you can realistically apply to</h1>
+              <p>Compare language route, deadline, tuition, scholarship, city, and document effort before you add a choice.</p>
+            </div>
+            <div class="quick-summary" aria-label="Program page summary">
+              <div class="summary-item"><strong id="summaryOpen">128</strong><span>open programs</span></div>
+              <div class="summary-item"><strong id="summaryScholarship">46</strong><span>scholarship signals</span></div>
+              <div class="summary-item"><strong id="summaryUrgent">18</strong><span>close soon</span></div>
+            </div>
+          </section>
+
+          <section class="search-panel reveal" aria-label="Program search">
+            <div class="search-row">
+              <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+              <input id="searchInput" aria-label="Search programs" placeholder='Try "English-taught computer science in Hangzhou"' />
+              <button class="primary" id="searchButton" type="button">Search</button>
+            </div>
+            <div class="suggestions" aria-label="Suggested program filters">
+              <button class="chip" type="button" data-quick="degree:master">English-taught master</button>
+              <button class="chip" type="button" data-quick="langReq:no-hsk">No HSK first</button>
+              <button class="chip" type="button" data-quick="scholarship:true">Scholarship available</button>
+              <button class="chip" type="button" data-quick="deadline:late">Late intake</button>
+              <button class="chip" type="button" data-quick="tuition:under-40">Under RMB 40k</button>
+              <button class="chip" type="button" data-quick="documents:light">Light documents</button>
+            </div>
+          </section>
+
+          <section class="program-focus" id="programFocus" aria-label="Selected program overview"></section>
+
+          <section class="toolbar reveal" aria-label="Result controls">
+            <div class="result-copy">
+              <strong id="resultCount">128 programs</strong>
+              <span id="resultContext">Open programs with deadline, source, and document signals.</span>
+            </div>
+            <div class="controls">
+              <button class="secondary mobile-filter" id="openFilters" type="button">All filters</button>
+              <select class="select" id="sortSelect" aria-label="Sort programs">
+                <option value="relevance">Sort: Relevance</option>
+                <option value="deadline">Deadline soonest</option>
+                <option value="tuition">Tuition low to high</option>
+                <option value="scholarship">Scholarship signal</option>
+                <option value="verified">Recently verified</option>
+                <option value="documents">Document effort low to high</option>
+              </select>
+              <div class="view-toggle" aria-label="View mode">
+                <button class="active" type="button" data-view="list">Cards</button>
+                <button type="button" data-view="compact">Dense</button>
+              </div>
+            </div>
+          </section>
+
+          <div class="active-chips reveal" id="activeChips" aria-live="polite"></div>
+
+          <section class="workspace reveal" aria-label="Program search workspace">
+            <aside class="filter-rail" aria-label="Program filters" hidden>
+              <div class="filter-card" id="desktopFilters"></div>
+            </aside>
+
+            <section class="results-pane" aria-label="Program results">
+              <div class="program-list" id="programList"></div>
+              <section class="empty-state" id="emptyState">
+                <h2>No programs match these filters yet.</h2>
+                <p>Try relaxing deadline, city, scholarship, or document effort.</p>
+                <button class="primary" id="resetEmpty" type="button">Relax filters</button>
+              </section>
+              <nav class="pagination" id="pagination" aria-label="Program results pages"></nav>
+            </section>
+
+            <aside class="shortlist-rail" id="shortlist" aria-label="Shortlist and compare" hidden>
+              <div class="shortlist-card" id="shortlistCard"></div>
+            </aside>
+          </section>
+        </div>
+
+        <div class="results-divider" aria-hidden="true"></div>
+        <div data-cuac-footer></div>
+      </main>
+
+      <div class="mobile-drawer-backdrop" id="drawerBackdrop"></div>
+      <aside class="filter-drawer" id="filterDrawer" aria-label="Program filters" aria-hidden="true" inert>
+        <div class="drawer-head">
+          <div class="drawer-title">
+            <h2>All filters</h2>
+            <p>Refine the list by study goal, China fit, timing, and application effort.</p>
+          </div>
+          <button class="drawer-close" id="closeFilters" type="button">Close</button>
+        </div>
+        <div id="mobileFilters"></div>
+        <div class="drawer-actions">
+          <button class="ghost" id="drawerReset" type="button">Reset</button>
+          <button class="primary" id="drawerApply" type="button">Show programs</button>
+        </div>
+      </aside>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="programs.js"></script>
+</body>
+</html>
+
