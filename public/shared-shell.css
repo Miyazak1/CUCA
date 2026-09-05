@@ -47,6 +47,20 @@
   gap: 10px;
   color: var(--accent-dark);
   font-weight: 900;
+  text-decoration: none;
+}
+
+.nav a,
+.footer a,
+.account-popover a,
+.brand {
+  text-decoration: none;
+}
+
+.brand:visited,
+.brand:any-link {
+  color: var(--accent-dark);
+  text-decoration: none;
 }
 
 .logo {
@@ -77,10 +91,18 @@
   color: var(--text-muted);
   font-size: 14px;
   font-weight: 760;
+  text-decoration: none;
+}
+
+.nav-links a:visited,
+.nav-links a:any-link {
+  color: var(--text-muted);
+  text-decoration: none;
 }
 
 .nav-links a:hover,
-.nav-links a.active {
+.nav-links a.active,
+.nav-links a.active:visited {
   color: var(--accent-dark);
   background: var(--accent-soft);
 }
@@ -93,8 +115,19 @@
 }
 
 .nav-icon,
-.account-pill {
+.account-pill,
+.sign-in-pill,
+.account-avatar-button {
   color: var(--text);
+}
+
+.nav-icon:visited,
+.nav-icon:any-link,
+.account-pill:visited,
+.account-pill:any-link,
+.sign-in-pill:visited {
+  color: var(--text);
+  text-decoration: none;
 }
 
 .nav-icon {
@@ -103,6 +136,7 @@
   height: 34px;
   place-items: center;
   border-radius: var(--radius-pill);
+  text-decoration: none;
 }
 
 .nav-icon:hover {
@@ -111,7 +145,9 @@
 }
 
 .nav-icon svg,
-.account-pill svg {
+.account-pill svg,
+.sign-in-pill svg,
+.account-popover svg {
   width: 22px;
   height: 22px;
   fill: none;
@@ -131,11 +167,152 @@
   background: #f1f3f3;
   font-size: 14px;
   font-weight: 720;
+  text-decoration: none;
 }
 
 .account-pill:hover {
   background: var(--accent-soft);
   color: var(--accent-dark);
+}
+
+.sign-in-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 40px;
+  padding: 0 15px 0 13px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: #f1f3f3;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 760;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sign-in-pill:hover {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.account-menu {
+  position: relative;
+}
+
+.account-avatar-button {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  cursor: pointer;
+}
+
+.account-avatar-button:hover,
+.account-avatar-button[aria-expanded="true"] {
+  background: var(--accent-soft);
+}
+
+.account-avatar {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  background: #7c238c;
+  color: white;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.account-avatar.large {
+  width: 46px;
+  height: 46px;
+  font-size: 22px;
+}
+
+.account-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 60;
+  display: grid;
+  gap: 2px;
+  width: min(270px, calc(100vw - 34px));
+  padding: 18px;
+  border: 1px solid rgb(var(--text-rgb) / 0.1);
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 20px 52px rgb(36 44 42 / 0.2);
+  animation: accountPopoverIn 150ms ease;
+}
+
+.account-popover[hidden] {
+  display: none;
+}
+
+.account-popover-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 0 2px 14px;
+}
+
+.account-popover-head strong {
+  display: block;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.account-popover-head a {
+  display: inline-flex;
+  margin-top: 3px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 520;
+  text-decoration: none;
+}
+
+.account-popover-head a:visited {
+  color: var(--text);
+}
+
+.account-popover > a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 42px;
+  padding: 0 6px;
+  border-radius: var(--radius-xs);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 620;
+  text-decoration: none;
+}
+
+.account-popover > a:visited {
+  color: var(--text);
+}
+
+.account-popover > a:hover {
+  background: rgb(var(--accent-rgb) / 0.08);
+  color: var(--accent-dark);
+}
+
+.account-popover > a svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.9;
+}
+
+.account-signout {
+  margin-top: 4px;
 }
 
 .footer {
@@ -177,6 +354,11 @@
   color: var(--text);
   font-size: 13px;
   font-weight: 760;
+  text-decoration: none;
+}
+
+.footer-actions a:visited {
+  color: var(--text);
 }
 
 .socials {
@@ -233,6 +415,16 @@
 .footer-col a {
   font-size: 13px;
   color: var(--text-muted);
+  text-decoration: none;
+}
+
+.footer-col a:visited,
+.footer-col a:any-link,
+.footer-legal a,
+.footer-legal a:visited,
+.footer-legal a:any-link {
+  color: var(--text-muted);
+  text-decoration: none;
 }
 
 .footer-bottom {
@@ -693,6 +885,23 @@ body.motion-off .result-enter {
   padding: 20px 24px 24px;
 }
 
+.cuac-agent-context {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 14px;
+  padding: 11px 13px;
+  border: 1px solid rgb(var(--text-rgb) / 0.1);
+  border-radius: var(--radius-sm);
+  background: rgb(255 255 255 / 0.82);
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.cuac-agent-context strong {
+  color: var(--text);
+  font-size: 13px;
+}
+
 .cuac-agent-query {
   margin-bottom: 22px;
   padding: 15px 16px;
@@ -851,6 +1060,16 @@ body.motion-off .result-enter {
 .cuac-agent-log-item.undone span {
   background: rgb(var(--text-rgb) / 0.08);
   color: var(--text-muted);
+}
+
+.cuac-agent-log-item.blocked {
+  border-color: rgb(var(--danger-rgb) / 0.2);
+  background: rgb(var(--danger-rgb) / 0.06);
+}
+
+.cuac-agent-log-item.blocked span {
+  background: rgb(var(--danger-rgb) / 0.12);
+  color: var(--danger);
 }
 
 .cuac-agent-working {
@@ -1166,6 +1385,76 @@ body.motion-off .result-enter {
   cursor: pointer;
 }
 
+.cuac-agent-toast a {
+  grid-row: 1 / 3;
+  grid-column: 2;
+  align-self: center;
+  min-width: max-content;
+  color: var(--accent-dark);
+  font-size: 13px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.cuac-agent-toast.blocked {
+  border-color: rgb(var(--danger-rgb) / 0.18);
+  background: rgb(var(--danger-rgb) / 0.06);
+}
+
+.cuac-agent-confirmation {
+  display: grid;
+  gap: 9px;
+  padding: 13px;
+  border: 1px solid rgb(var(--danger-rgb) / 0.22);
+  border-radius: var(--radius-xs);
+  background: rgb(var(--danger-rgb) / 0.06);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.cuac-agent-confirmation.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cuac-agent-confirmation > span {
+  color: var(--danger);
+  font-size: 11px;
+  font-weight: 880;
+  text-transform: uppercase;
+}
+
+.cuac-agent-confirmation strong {
+  color: var(--text);
+  font-size: 15px;
+}
+
+.cuac-agent-confirmation small {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.cuac-agent-confirmation div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cuac-agent-confirm-cancel {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgb(var(--text-rgb) / 0.12);
+  border-radius: var(--radius-xs);
+  background: white;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
 @keyframes cuacAgentPulse {
   70% {
     box-shadow: 0 0 0 8px rgb(var(--accent-rgb) / 0);
@@ -1188,6 +1477,18 @@ body.motion-off .result-enter {
   from {
     opacity: 0;
     transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes accountPopoverIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
   }
 
   to {
@@ -1263,6 +1564,11 @@ body.motion-off .result-enter {
 }
 
 @media (max-width: 560px) {
+  :root {
+    --page-width: calc(100vw - 32px);
+    --section-x: 0px;
+  }
+
   .top-note {
     display: block;
     justify-content: flex-start;
@@ -1276,13 +1582,35 @@ body.motion-off .result-enter {
   }
 
   .nav {
-    grid-template-columns: auto 1fr;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100vw - 32px);
+    max-width: none;
     gap: 12px;
-    padding: 14px var(--section-x);
+    padding: 14px 0;
   }
 
   .nav-actions {
     justify-content: flex-end;
+  }
+
+  .sign-in-pill {
+    flex: 0 0 auto;
+    width: 44px;
+    padding: 0;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .sign-in-pill span {
+    display: none;
+  }
+
+  .account-popover {
+    right: -2px;
+    width: min(270px, calc(100vw - 22px));
+    border-radius: 18px;
   }
 
   .footer {

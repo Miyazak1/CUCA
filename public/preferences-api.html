@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | Preferences</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="preferences-workspace.css?v=20260904-api-v1" />
+  </head>
+  <body data-agent-mode="off">
+    <div class="page preferences-api-page">
+      <div data-cuac-header data-active="preferences" data-note="CUAC Preferences:" data-note-detail="student research and notification settings"></div>
+
+      <main class="preferences-api-main">
+        <nav class="preferences-breadcrumb" aria-label="Preferences breadcrumb">
+          <a href="hub-api.html">Hub</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Preferences</span>
+        </nav>
+
+        <header class="preferences-api-heading">
+          <div>
+            <p class="preferences-kicker">Student account</p>
+            <h1>Preferences</h1>
+            <p>Manage the study filters and notification channels stored for this account.</p>
+          </div>
+          <a class="preferences-secondary" href="application.html#profile/applicant">Applicant information</a>
+        </header>
+
+        <nav class="preferences-section-nav" aria-label="Preference sections">
+          <a href="#study-preferences">Study preferences</a>
+          <a href="#notification-preferences">Notifications</a>
+        </nav>
+
+        <section class="preferences-api-section" id="study-preferences" aria-labelledby="study-preferences-title">
+          <header class="preferences-section-heading">
+            <div>
+              <p class="preferences-kicker">Research defaults</p>
+              <h2 id="study-preferences-title">Study preferences</h2>
+            </div>
+            <p>Used only as account-level discovery context.</p>
+          </header>
+          <div data-study-preferences aria-live="polite">
+            <p class="preferences-loading" aria-busy="true">Loading study preferences.</p>
+          </div>
+        </section>
+
+        <section class="preferences-api-section" id="notification-preferences" aria-labelledby="notification-preferences-title">
+          <header class="preferences-section-heading">
+            <div>
+              <p class="preferences-kicker">Delivery channels</p>
+              <h2 id="notification-preferences-title">Notifications</h2>
+            </div>
+            <a href="notifications.html">Open inbox</a>
+          </header>
+          <div data-notification-preferences aria-live="polite">
+            <p class="preferences-loading" aria-busy="true">Loading notification preferences.</p>
+          </div>
+        </section>
+      </main>
+
+      <div data-cuac-footer></div>
+      <div class="preferences-toast" role="status" data-preferences-toast hidden></div>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="preferences-runtime.js?v=20260904-api-v1"></script>
+  </body>
+</html>

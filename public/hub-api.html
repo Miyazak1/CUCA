@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | Student Hub</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="hub-workspace.css?v=20260904-api-v1" />
+  </head>
+  <body data-agent-mode="off">
+    <div class="page hub-api-page">
+      <div data-cuac-header data-active="hub" data-note="CUAC Student Hub:" data-note-detail="your current application records"></div>
+
+      <main class="hub-api-main">
+        <header class="hub-api-heading">
+          <div>
+            <p class="hub-api-kicker">Student workspace</p>
+            <h1 data-hub-greeting>Your application hub</h1>
+            <p>Review the records CUAC currently holds for this student account.</p>
+          </div>
+          <div class="hub-api-heading-actions">
+            <a class="hub-api-secondary" href="favourites-api.html">Saved items</a>
+            <a class="hub-api-primary" href="application.html">Open application</a>
+          </div>
+        </header>
+
+        <section class="hub-api-summary" aria-label="Account summary" data-hub-summary>
+          <article><span>Application sets</span><strong data-hub-metric="sets">-</strong></article>
+          <article><span>Active choices</span><strong data-hub-metric="choices">-</strong></article>
+          <article><span>Saved items</span><strong data-hub-metric="saved">-</strong></article>
+          <article><span>Unread notices</span><strong data-hub-metric="unread">-</strong></article>
+        </section>
+
+        <div class="hub-api-layout">
+          <section class="hub-api-section hub-api-applications" aria-labelledby="hub-applications-title">
+            <header class="hub-api-section-heading">
+              <div>
+                <p class="hub-api-kicker">Applications</p>
+                <h2 id="hub-applications-title">Current application sets</h2>
+              </div>
+              <a href="application.html">Manage</a>
+            </header>
+            <div data-hub-applications aria-live="polite">
+              <p class="hub-api-loading" aria-busy="true">Loading application sets.</p>
+            </div>
+          </section>
+
+          <aside class="hub-api-side">
+            <section class="hub-api-section" aria-labelledby="hub-notices-title">
+              <header class="hub-api-section-heading">
+                <div>
+                  <p class="hub-api-kicker">Notifications</p>
+                  <h2 id="hub-notices-title">Latest account events</h2>
+                </div>
+                <a href="notifications.html">Open inbox</a>
+              </header>
+              <div data-hub-notifications aria-live="polite">
+                <p class="hub-api-loading" aria-busy="true">Loading notifications.</p>
+              </div>
+            </section>
+
+            <section class="hub-api-section" aria-labelledby="hub-profile-title">
+              <header class="hub-api-section-heading">
+                <div>
+                  <p class="hub-api-kicker">Account</p>
+                  <h2 id="hub-profile-title">Profile snapshot</h2>
+                </div>
+                <a href="application.html#profile/applicant">Review</a>
+              </header>
+              <div data-hub-profile aria-live="polite">
+                <p class="hub-api-loading" aria-busy="true">Loading profile.</p>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </main>
+
+      <div data-cuac-footer></div>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="hub-runtime.js?v=20260904-api-v1"></script>
+  </body>
+</html>

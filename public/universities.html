@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CUAC Universities</title>
+    <title>CUAC | Universities</title>
     <link rel="stylesheet" href="shared-shell.css" />
-    <link rel="stylesheet" href="universities.css" />
+    <link rel="stylesheet" href="catalog-list-api.css" />
+    <link rel="stylesheet" href="universities.css?v=20260825-university-card-entry" />
   </head>
-  <body>
+  <body data-agent-mode="universities" data-catalog-list-page="universities">
     <div class="page">
       <div data-cuac-header data-active="universities" data-note="China admissions 2026:" data-note-detail="compare universities before choosing programs"></div>
 
@@ -17,13 +18,13 @@
             <div>
               <div class="eyebrow">Universities & colleges</div>
               <h1>Find Chinese universities that fit</h1>
-              <p>Search by city, subject strength, language route, scholarship signal, and admissions clarity.</p>
+              <p>Search by published city, language route, scholarship count, deadline, and admissions links.</p>
               <div class="handoff-copy">Use this page when the campus, city, or university strength should shape your program shortlist.</div>
             </div>
             <div class="quick-facts" aria-label="University page summary">
-              <div class="fact"><strong>128</strong><span>universities</span></div>
-              <div class="fact"><strong>46</strong><span>English routes</span></div>
-              <div class="fact"><strong>31</strong><span>scholarship signals</span></div>
+              <div class="fact"><strong id="summaryUniversities">-</strong><span>universities</span></div>
+              <div class="fact"><strong id="summaryEnglishRoutes">-</strong><span>English routes</span></div>
+              <div class="fact"><strong id="summaryScholarships">-</strong><span>scholarship options</span></div>
             </div>
           </section>
 
@@ -35,26 +36,22 @@
             </div>
             <div class="chips" aria-label="Suggested filters">
               <button class="chip" type="button" data-chip="English routes">English-taught routes</button>
-              <button class="chip" type="button" data-chip="Scholarship">Scholarship signal</button>
-              <button class="chip" type="button" data-chip="Affordable">Affordable cities</button>
-              <button class="chip" type="button" data-chip="Engineering">Engineering</button>
-              <button class="chip" type="button" data-chip="Medicine">Medicine</button>
-              <button class="chip" type="button" data-chip="Business">Business</button>
+              <button class="chip" type="button" data-chip="Scholarship">Scholarship options</button>
             </div>
           </section>
 
           <section class="toolbar reveal" aria-label="Result controls">
             <div class="result-copy">
-              <strong id="resultCount">128 universities</strong>
-              <span id="resultContext">Showing Chinese universities with international admissions routes.</span>
+              <strong id="resultCount">Loading universities</strong>
+              <span id="resultContext">Reading the current published catalog.</span>
             </div>
             <div class="controls">
               <select class="select" id="sortSelect" aria-label="Sort universities">
                 <option value="relevance">Sort: Relevance</option>
-                <option value="cityCost">City cost</option>
-                <option value="scholarship">Scholarship signal</option>
+                <option value="name">Name A-Z</option>
+                <option value="scholarship">Scholarship options</option>
                 <option value="routes">International routes</option>
-                <option value="verified">Recently verified</option>
+                <option value="readiness">Application readiness</option>
               </select>
               <div class="toggle" aria-label="View mode">
                 <button class="active" type="button" data-view="grid">Grid</button>
@@ -64,15 +61,10 @@
           </section>
 
           <section class="filters reveal" aria-label="University filters">
-            <button class="filter-button" type="button" data-filter="Verified">Verified</button>
+            <button class="filter-button" type="button" data-filter="Application ready">Application ready</button>
             <button class="filter-button" type="button" data-filter="English routes">English routes</button>
             <button class="filter-button" type="button" data-filter="Scholarship">Scholarship</button>
-            <button class="filter-button" type="button" data-filter="Affordable">Affordable city</button>
-            <button class="filter-button" type="button" data-filter="Fall 2026">Fall 2026</button>
-            <button class="filter-button" type="button" data-filter="Engineering">Engineering</button>
-            <button class="filter-button" type="button" data-filter="Medicine">Medicine</button>
-            <button class="filter-button" type="button" data-filter="Business">Business</button>
-            <button class="filter-button" type="button" data-filter="Computer Science">Computer Science</button>
+            <button class="filter-button" type="button" data-filter="Upcoming deadlines">Upcoming deadlines</button>
           </section>
 
           <div class="active-filters reveal" id="activeFilters" aria-live="polite"></div>
@@ -94,8 +86,10 @@
       </main>
     </div>
 
+    <script src="cuac-actions.js"></script>
     <script src="shared-shell.js"></script>
-    <script src="universities.js"></script>
+    <script src="catalog-list-api.js"></script>
+    <script src="universities.js?v=20260825-university-card-entry"></script>
 </body>
 </html>
 

@@ -3,193 +3,475 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CUAC Agent Application Workspace</title>
+    <title>CUAC | Application basket</title>
     <link rel="stylesheet" href="shared-shell.css" />
     <link rel="stylesheet" href="application.css" />
   </head>
-  <body data-agent-mode="application">
+  <body data-agent-mode="off">
     <div class="page application-page">
       <div data-cuac-header data-active="hub" data-note="CUAC Application:" data-note-detail="multi-choice China study workspace"></div>
 
       <main>
-        <section class="app-hero reveal" aria-label="Application set start">
-          <div class="hero-copy">
-            <a class="back-link" href="hub.html">Back to Hub</a>
-            <span class="app-rule"></span>
-            <p class="eyebrow">Application basket</p>
-            <h1>Build your China application set</h1>
-            <p class="hero-lead">Add several schools and programs, then let CUAC Agent organize them into a main route, safer backup, and funding-sensitive choice.</p>
-            <div class="hero-actions">
-              <button class="primary-action" type="button" data-agent-prompt="Organize my China application choices by risk, deadline, and document effort">Organize with Agent</button>
-              <a class="secondary-action" href="programs.html">Add another program</a>
+        <section class="app-hero reveal" aria-label="Application status">
+          <article class="draft-card set-card application-status-card">
+            <div class="status-copy">
+              <a class="back-link" href="hub-api.html">Back to Hub</a>
+              <p class="eyebrow">Application status</p>
+              <h1>Application center</h1>
+              <p class="status-helper">Complete, pay, send.</p>
+              <div class="status-facts">
+                <span><strong data-application-label>Application draft</strong><em data-application-scope>server record</em></span>
+                <span><strong data-school-count>0</strong><em>schools</em></span>
+                <span><strong data-total-fee>Not quoted</strong><em>due now</em></span>
+                <span><strong data-earliest-deadline>Not set</strong><em>earliest date</em></span>
+              </div>
+              <div class="application-gate" data-application-gate hidden aria-live="polite"></div>
             </div>
+
+            <aside class="application-id-card" aria-label="CUAC student application ID">
+              <span>Your CUAC ID</span>
+              <strong data-cuac-id>Not assigned</strong>
+            </aside>
+
+            <div class="application-stepper" aria-label="Application sections">
+              <button class="status-ring" type="button" data-required-step="choices" data-flow-target="choices">
+                <span><b data-choice-status>0</b></span>
+                <strong>Choices</strong>
+                <em data-choice-step data-step-status="choices">Pick</em>
+              </button>
+              <button class="status-ring" type="button" data-required-step="info" data-flow-target="info">
+                <span><b>Info</b></span>
+                <strong>Student info</strong>
+                <em data-step-status="info">Ready</em>
+              </button>
+              <button class="status-ring" type="button" data-required-step="fee" data-flow-target="fee">
+                <span><b>Fee</b></span>
+                <strong>Fee review</strong>
+                <em data-step-status="fee">Locked</em>
+              </button>
+              <button class="status-ring" type="button" data-required-step="payment" data-flow-target="payment">
+                <span><b>Pay</b></span>
+                <strong>Payment</strong>
+                <em data-step-status="payment">Locked</em>
+              </button>
+              <button class="status-ring" type="button" data-required-step="send" data-flow-target="send">
+                <span><b>Send</b></span>
+                <strong>Send</strong>
+                <em data-submit-step data-step-status="send">Locked</em>
+              </button>
+              <div class="status-ring status-ring-total" aria-label="Overall application readiness">
+                <span><b data-progress-label>0%</b><i data-progress-bar></i></span>
+                <strong>Overall</strong>
+                <em>ready</em>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="profile-detail-hero reveal" data-profile-detail-hero aria-label="Profile detail page" hidden>
+          <div class="profile-detail-heading">
+            <div>
+              <a class="back-link" href="#profile" data-profile-return>Return to student info</a>
+              <p class="eyebrow">CUAC application</p>
+              <h1 data-profile-detail-title>Applicant record</h1>
+              <p data-profile-detail-subtitle>Current application</p>
+            </div>
+            <aside class="application-id-card compact" aria-label="CUAC student application ID">
+              <span>Your CUAC ID</span>
+              <strong data-cuac-id>Not assigned</strong>
+            </aside>
+          </div>
+        </section>
+
+        <section class="application-overview reveal" id="overview" data-application-step="overview" aria-label="Application overview">
+          <div class="overview-next">
+            <div>
+              <span class="module-kicker">Next</span>
+              <h2 data-overview-next-title>Next step</h2>
+              <p data-overview-next-detail>Finish one section at a time.</p>
+            </div>
+            <button class="primary-action" type="button" data-overview-next-action data-next-application-step="choices">Review choices</button>
           </div>
 
-          <aside class="draft-card set-card" aria-label="Application set summary">
-            <div class="draft-status">
-              <span>Application set</span>
-              <strong data-choice-status>3 choices</strong>
-            </div>
-            <h2>CS routes for Fall 2026</h2>
-            <p>Hangzhou · Nanjing · Beijing</p>
-            <div class="set-metrics">
-              <article><strong>1</strong><span>main route</span></article>
-              <article><strong>1</strong><span>backup</span></article>
-              <article><strong>Oct 15</strong><span>earliest date</span></article>
-              <article><strong>3</strong><span>doc blockers</span></article>
-            </div>
-            <div class="readiness">
-              <div><strong data-progress-label>42%</strong><span>set ready</span></div>
-              <em><i data-progress-bar></i></em>
-            </div>
-          </aside>
+          <div class="section-cards overview-section-cards" aria-label="Required application sections">
+            <button class="section-card ready" type="button" data-overview-step="choices" data-flow-target="choices">
+              <strong>School choices</strong>
+              <p>Pick and order programs.</p>
+              <em class="section-status" data-overview-step-status="choices">Confirm</em>
+            </button>
+            <button class="section-card ready" type="button" data-overview-step="info" data-flow-target="info">
+              <strong>Student info</strong>
+              <p>Confirm what schools receive.</p>
+              <em class="section-status" data-overview-step-status="info">Review</em>
+            </button>
+            <button class="section-card warning" type="button" data-overview-step="fee" data-flow-target="fee">
+              <strong>Fee review</strong>
+              <p>Check before payment.</p>
+              <em class="section-status" data-overview-step-status="fee">Locked</em>
+            </button>
+            <button class="section-card warning" type="button" data-overview-step="payment" data-flow-target="payment">
+              <strong>Payment</strong>
+              <p>Pay CUAC fee.</p>
+              <em class="section-status" data-overview-step-status="payment">Locked</em>
+            </button>
+            <button class="section-card locked" type="button" data-overview-step="send" data-flow-target="send">
+              <strong>Send to schools</strong>
+              <p>Final review and submit.</p>
+              <em class="section-status" data-overview-step-status="send">Locked</em>
+            </button>
+          </div>
         </section>
 
-        <section class="progress-strip reveal" aria-label="Application progress">
-          <article class="done"><span data-app-icon="route"></span><strong>Discover</strong><em>Saved</em></article>
-          <article class="active"><span data-app-icon="choice"></span><strong>Choices</strong><em data-choice-step>Organize</em></article>
-          <article><span data-app-icon="document"></span><strong>Docs</strong><em>3 blockers</em></article>
-          <article><span data-app-icon="funding"></span><strong>Funding</strong><em>Check route</em></article>
-          <article><span data-app-icon="review"></span><strong>Review</strong><em>Not ready</em></article>
-        </section>
-
-        <section class="workspace-grid" aria-label="Application workspace">
+        <section class="workspace-grid" id="choices" data-application-step="choices" aria-label="Application workspace">
           <article class="choice-panel reveal">
             <div class="section-head">
               <div>
-                <span class="module-kicker">Selected choices</span>
-                <h2>Application basket</h2>
+                <span class="module-kicker">Choices</span>
+                <h2>Your choices</h2>
               </div>
-              <span class="source-pill">3 selected</span>
+              <span class="source-pill" data-choice-total>0 selected</span>
             </div>
 
+            <button class="add-choice-tile" type="button" data-open-choice-modal aria-label="Add a specific university program">
+              <span class="add-choice-icon" aria-hidden="true"></span>
+              <span><strong>Add choice</strong><em>School + program</em></span>
+            </button>
+
             <div class="choice-list" data-choice-list>
-              <article class="choice-route main" data-choice="0">
-                <div class="choice-topline">
-                  <span class="role-pill">Main</span>
-                  <button type="button" data-agent-prompt="Explain why Zhejiang University should be my main choice">Why?</button>
-                </div>
-                <div>
-                  <h3>Zhejiang University</h3>
-                  <p>Computer Science MSc · Hangzhou · English-taught</p>
-                </div>
-                <div class="choice-route-meta">
-                  <span>Oct 15</span>
-                  <span>RMB 42k</span>
-                  <span>IELTS / waiver</span>
-                  <span>CSC possible</span>
-                </div>
-              </article>
-
-              <article class="choice-route backup" data-choice="1">
-                <div class="choice-topline">
-                  <span class="role-pill">Backup</span>
-                  <button type="button" data-agent-prompt="Compare Nanjing University as my backup route">Compare</button>
-                </div>
-                <div>
-                  <h3>Nanjing University</h3>
-                  <p>Software Engineering MSc · Nanjing · English-taught</p>
-                </div>
-                <div class="choice-route-meta">
-                  <span>Dec 20</span>
-                  <span>RMB 39k</span>
-                  <span>Lower cost</span>
-                  <span>Ready to compare</span>
-                </div>
-              </article>
-
-              <article class="choice-route funding" data-choice="2">
-                <div class="choice-topline">
-                  <span class="role-pill">Funding</span>
-                  <button type="button" data-agent-prompt="Check funding risk for UIBE International Trade MSc">Check</button>
-                </div>
-                <div>
-                  <h3>UIBE</h3>
-                  <p>International Trade MSc · Beijing · English-taught</p>
-                </div>
-                <div class="choice-route-meta">
-                  <span>Nov 10</span>
-                  <span>RMB 36k</span>
-                  <span>Business fit</span>
-                  <span>Funding-sensitive</span>
-                </div>
+              <article class="choice-route backup" data-application-runtime-message>
+                <div><h3>Loading your application set</h3><p>Reading the current server-authorized record.</p></div>
               </article>
             </div>
 
             <div class="action-row">
-              <button class="primary-action" type="button" data-confirm-choice>Confirm choice order</button>
-              <button class="secondary-action" type="button" data-open-choice-modal>Add choice</button>
+              <button class="primary-action" type="button" data-confirm-choice>Confirm choices</button>
+              <button class="secondary-action" type="button" data-next-application-step="info">Student info</button>
             </div>
           </article>
 
-          <aside class="task-panel reveal" aria-label="Agent choice recommendation">
+          <aside class="task-panel reveal" aria-label="Choice ordering guidance">
             <div class="section-head">
-              <div><span class="module-kicker">Agent order</span><h2>Why this set</h2></div>
-              <button type="button" data-agent-prompt="Organize my China application choices by risk, deadline, and document effort">Refresh</button>
+              <div><span class="module-kicker">Order</span><h2>Choice logic</h2></div>
+              <a href="favourites-api.html">Saved routes</a>
             </div>
-            <ol class="agent-order">
-              <li><strong>Main route</strong><span>ZJU has the strongest program fit, but the Oct 15 deadline drives the next step.</span></li>
-              <li><strong>Safer backup</strong><span>Nanjing keeps cost and document burden lower while staying close to the study goal.</span></li>
-              <li><strong>Funding route</strong><span>UIBE is useful if scholarship timing works, but should not block the main route.</span></li>
+            <ol class="choice-order">
+              <li><strong>First</strong><span>Your highest-priority program</span></li>
+              <li><strong>Next</strong><span>Additional program choices</span></li>
+              <li><strong>Funding</strong><span>Review separately per choice</span></li>
             </ol>
           </aside>
         </section>
 
-        <section class="document-matrix reveal" aria-label="Document matrix">
-          <div class="section-title">
-            <div><span class="module-kicker">Document matrix</span><h2>Shared first, differences second</h2></div>
-            <button type="button" data-agent-prompt="Build a shared and program-specific document plan for my three China application choices">Plan documents</button>
+        <section class="submission-grid reveal" id="info" data-application-step="info" aria-label="Student information">
+          <article class="applicant-card">
+            <div class="section-head">
+              <div><span class="module-kicker">Required</span><h2>Student info</h2></div>
+              <span class="source-pill" data-info-status>Loading records</span>
+            </div>
+            <div class="student-info-form" data-student-info-form>
+              <div class="profile-section-overview" data-profile-overview aria-label="Profile sections">
+                <button class="profile-section-card active" type="button" data-profile-section-target="applicant">
+                  <strong>Applicant record</strong>
+                  <p>Legal name, email and citizenship</p>
+                  <em data-profile-section-status="applicant">Loading</em>
+                </button>
+                <button class="profile-section-card" type="button" data-profile-section-target="education">
+                  <strong>Education history</strong>
+                  <p>Institutions and qualifications</p>
+                  <em data-profile-section-status="education">Loading</em>
+                </button>
+                <button class="profile-section-card" type="button" data-profile-section-target="assessments">
+                  <strong>Exams & tests</strong>
+                  <p>Planned tests and reported results</p>
+                  <em data-profile-section-status="assessments">Loading</em>
+                </button>
+                <button class="profile-section-card" type="button" data-profile-section-target="files">
+                  <strong>Private files</strong>
+                  <p>Uploaded evidence and scan status</p>
+                  <em data-profile-section-status="files">Not connected</em>
+                </button>
+                <button class="profile-section-card" type="button" data-profile-section-target="authorization">
+                  <strong>Submission sharing</strong>
+                  <p>Approval for each exact program choice</p>
+                  <em data-profile-section-status="authorization">Required later</em>
+                </button>
+              </div>
+
+              <div class="profile-editor-shell" data-profile-editor hidden>
+                <nav class="profile-section-nav" aria-label="Profile sections">
+                  <button class="active" type="button" data-profile-section-target="applicant"><span>Applicant record</span><em data-profile-section-status="applicant">Loading</em></button>
+                  <button type="button" data-profile-section-target="education"><span>Education history</span><em data-profile-section-status="education">Loading</em></button>
+                  <button type="button" data-profile-section-target="assessments"><span>Exams & tests</span><em data-profile-section-status="assessments">Loading</em></button>
+                  <button type="button" data-profile-section-target="files"><span>Private files</span><em data-profile-section-status="files">Not connected</em></button>
+                  <button type="button" data-profile-section-target="authorization"><span>Submission sharing</span><em data-profile-section-status="authorization">Required later</em></button>
+                </nav>
+                <div class="profile-section-panels">
+                  <section class="profile-form-panel active" data-profile-section="applicant">
+                    <div class="profile-panel-head">
+                      <span>Private applicant data</span>
+                      <strong>Applicant record</strong>
+                      <p>These fields are versioned and remain private until an exact application choice is authorized.</p>
+                    </div>
+                    <form class="record-entry-form" data-applicant-profile-form>
+                      <div class="student-info-grid">
+                        <label>
+                          <span>Full legal name</span>
+                          <input name="fullName" maxlength="200" autocomplete="name" placeholder="Enter the name used for applications" />
+                        </label>
+                        <label>
+                          <span>Contact email</span>
+                          <input name="contactEmail" type="email" maxlength="320" autocomplete="email" placeholder="student@example.com" />
+                        </label>
+                        <label>
+                          <span>Citizenship country</span>
+                          <select name="citizenshipCountry">
+                            <option value="">Not set</option>
+                            <option value="BR">Brazil (BR)</option>
+                            <option value="CN">China (CN)</option>
+                            <option value="GH">Ghana (GH)</option>
+                            <option value="ID">Indonesia (ID)</option>
+                            <option value="MY">Malaysia (MY)</option>
+                            <option value="PK">Pakistan (PK)</option>
+                            <option value="TH">Thailand (TH)</option>
+                            <option value="US">United States (US)</option>
+                          </select>
+                        </label>
+                      </div>
+                    </form>
+                    <p class="record-operation-status" data-profile-operation-status="applicant" aria-live="polite">Loading applicant record...</p>
+                  </section>
+
+                  <section class="profile-form-panel" data-profile-section="education">
+                    <div class="profile-panel-head">
+                      <span>Versioned history</span>
+                      <strong>Education history</strong>
+                      <p>Keep each institution as an independent record. Removing a record also uses the latest history revision.</p>
+                    </div>
+                    <div class="profile-record-list" data-education-record-list aria-live="polite"></div>
+                    <form class="record-entry-form" data-education-record-form>
+                      <div class="record-entry-head"><strong>Add an education record</strong><span>Required fields are marked</span></div>
+                      <div class="student-info-grid">
+                        <label><span>Institution name *</span><input name="institutionName" maxlength="200" required /></label>
+                        <label><span>Institution country</span><input name="institutionCountry" maxlength="2" pattern="[A-Z]{2}" placeholder="MY" /></label>
+                        <label><span>Education level *</span><select name="educationLevel" required><option value="secondary">Secondary</option><option value="vocational">Vocational</option><option value="associate">Associate</option><option value="bachelor">Bachelor</option><option value="master">Master</option><option value="doctorate">Doctorate</option><option value="other">Other</option></select></label>
+                        <label><span>Qualification</span><input name="qualificationName" maxlength="200" placeholder="Certificate or degree" /></label>
+                        <label><span>Field of study</span><input name="fieldOfStudy" maxlength="200" /></label>
+                        <label><span>Attendance status</span><select name="attendanceStatus"><option value="unknown">Not specified</option><option value="in_progress">In progress</option><option value="completed">Completed</option><option value="discontinued">Discontinued</option></select></label>
+                        <label><span>Start year</span><input name="startYear" type="number" min="1900" max="2199" /></label>
+                        <label><span>End year</span><input name="endYear" type="number" min="1900" max="2199" /></label>
+                        <label><span>Expected completion year</span><input name="expectedCompletionYear" type="number" min="1900" max="2199" /></label>
+                      </div>
+                      <div class="record-form-actions">
+                        <button class="primary-action" type="submit" data-save-education-record>Add education record</button>
+                        <button class="secondary-action" type="button" data-cancel-education-edit hidden>Cancel edit</button>
+                      </div>
+                    </form>
+                    <p class="record-operation-status" data-profile-operation-status="education" aria-live="polite"></p>
+                  </section>
+
+                  <section class="profile-form-panel" data-profile-section="assessments">
+                    <div class="profile-panel-head">
+                      <span>Self-reported record</span>
+                      <strong>Exams & tests</strong>
+                      <p>Reported scores remain unverified until matching evidence is selected for an application choice.</p>
+                    </div>
+                    <div class="profile-record-list" data-assessment-record-list aria-live="polite"></div>
+                    <form class="record-entry-form" data-assessment-record-form>
+                      <div class="record-entry-head"><strong>Add an exam or test</strong><span>Score fields are required only for reported results</span></div>
+                      <div class="student-info-grid">
+                        <label><span>Category *</span><select name="assessmentCategory" required><option value="language">Language</option><option value="admissions">Admissions</option><option value="other">Other</option></select></label>
+                        <label><span>Assessment name *</span><input name="assessmentName" maxlength="120" required placeholder="IELTS, HSK, CSCA..." /></label>
+                        <label><span>Variant</span><input name="assessmentVariant" maxlength="160" placeholder="Academic, Level 5..." /></label>
+                        <label><span>Result status *</span><select name="resultStatus" data-assessment-result-status required><option value="planned">Planned</option><option value="awaiting_result">Awaiting result</option><option value="reported">Reported</option></select></label>
+                        <label><span>Result form</span><select name="resultForm"><option value="unspecified">Not specified</option><option value="single_sitting">Single sitting</option><option value="combined">Combined</option><option value="partial_retake">Partial retake</option></select></label>
+                        <label><span>Test date</span><input name="testDate" type="date" /></label>
+                        <label data-reported-result-field hidden><span>Report date</span><input name="reportDate" type="date" /></label>
+                      </div>
+                      <div class="assessment-component-editor" data-assessment-components hidden>
+                        <div class="record-entry-head"><strong>Score components</strong><button class="secondary-action" type="button" data-add-assessment-component>Add component</button></div>
+                        <div class="assessment-component-list" data-assessment-component-list></div>
+                      </div>
+                      <div class="record-form-actions">
+                        <button class="primary-action" type="submit" data-save-assessment-record>Add exam or test</button>
+                        <button class="secondary-action" type="button" data-cancel-assessment-edit hidden>Cancel edit</button>
+                      </div>
+                    </form>
+                    <p class="record-operation-status" data-profile-operation-status="assessments" aria-live="polite"></p>
+                  </section>
+
+                  <section class="profile-form-panel" data-profile-section="files">
+                    <div class="profile-panel-head">
+                      <span>Private evidence</span>
+                      <strong>Private files</strong>
+                      <p>Files remain private inventory until you select records for one exact application choice. Only server scan results can mark a file clean.</p>
+                    </div>
+                    <div class="private-file-status-strip" data-private-file-summary>
+                      <strong>Loading private file inventory</strong>
+                      <span>Reading the owner-scoped file service.</span>
+                    </div>
+                    <div class="profile-record-list" data-private-file-list aria-live="polite"></div>
+                    <form class="record-entry-form private-file-upload-form" data-private-file-upload-form>
+                      <div class="record-entry-head"><strong>Upload private evidence</strong><span>PDF, JPG, PNG or DOCX · up to 25 MB</span></div>
+                      <div class="student-info-grid">
+                        <label><span>File category *</span><select name="category" required><option value="identity_document">Identity document</option><option value="transcript">Transcript</option><option value="test_score">Test score</option><option value="recommendation">Recommendation</option><option value="supporting_document">Supporting document</option></select></label>
+                        <label class="wide-field"><span>Choose file *</span><input name="file" type="file" accept=".pdf,.jpg,.jpeg,.png,.docx,application/pdf,image/jpeg,image/png,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required /></label>
+                      </div>
+                      <div class="record-form-actions">
+                        <button class="primary-action" type="submit" data-upload-private-file>Upload file</button>
+                        <span class="file-privacy-note">Upload links expire quickly and file contents never enter application logs.</span>
+                      </div>
+                    </form>
+                    <p class="record-operation-status" data-profile-operation-status="files" aria-live="polite"></p>
+                  </section>
+
+                  <section class="profile-form-panel" data-profile-section="authorization">
+                    <div class="profile-panel-head">
+                      <span>Choice-specific approval</span>
+                      <strong>Review each material envelope</strong>
+                      <p>Every approval belongs to one exact school, program, intake, material selection, disclosure notice and delivery policy. Nothing here creates permanent account-level consent.</p>
+                    </div>
+                    <div class="material-choice-tabs" data-material-choice-tabs role="tablist" aria-label="Application choices"></div>
+                    <div class="material-envelope-workspace" data-material-envelope-workspace aria-live="polite">
+                      <div class="profile-record-empty"><strong>No application choice selected</strong><span>Add a published program and intake before preparing materials.</span></div>
+                    </div>
+                    <p class="record-operation-status" data-profile-operation-status="authorization" aria-live="polite"></p>
+                  </section>
+                </div>
+              </div>
+
+              <div class="profile-step-actions" aria-label="Profile section actions">
+                <div class="profile-save-group" hidden>
+                  <button class="primary-action" type="button" data-save-profile-section>Save section</button>
+                  <span class="profile-save-status saved" data-profile-save-status aria-live="polite">Saved</span>
+                </div>
+                <div class="profile-nav-actions">
+                  <button class="secondary-action" type="button" data-profile-overview-back data-profile-return>All sections</button>
+                  <button class="secondary-action" type="button" data-profile-prev>Previous section</button>
+                  <button class="secondary-action" type="button" data-profile-next>Next section</button>
+                </div>
+              </div>
+            </div>
+            <div class="action-row step-action-row">
+              <button class="primary-action" type="button" data-next-application-step="fee">Confirm info</button>
+              <button class="secondary-action" type="button" data-next-application-step="choices">Back</button>
+            </div>
+          </article>
+
+          <aside class="fee-card" id="fee" data-fee-card>
+            <div class="section-head">
+              <div><span class="module-kicker">Fee review</span><h2>Check fee before payment</h2></div>
+              <span class="source-pill" data-fee-quote-source>Server quote</span>
+            </div>
+            <div class="fee-review-layout">
+              <div class="fee-main-panel">
+                <div class="fee-total-panel">
+                  <span>Total due</span>
+                  <strong data-total-fee>Loading quote</strong>
+                  <em data-fee-quote-status>Not quoted</em>
+                </div>
+                <div class="fee-breakdown-panel">
+                  <div class="mini-section-head">
+                    <span>Application pricing</span>
+                    <strong><b data-choice-count>0</b> choices</strong>
+                  </div>
+                  <div class="fee-breakdown" data-fee-breakdown aria-live="polite"></div>
+                </div>
+              </div>
+              <div class="fee-side-panel">
+                <div class="fee-reason-panel">
+                  <h3>Why this fee?</h3>
+                  <div class="fee-reason-grid">
+                    <article><strong>Exact choices</strong><span>Each selected program and intake is quoted</span></article>
+                    <article><strong>Current schedule</strong><span>Amounts and currency come from the server</span></article>
+                    <article><strong>University charges</strong><span>Paid separately when required</span></article>
+                  </div>
+                </div>
+                <div class="submit-check-panel" data-submit-checklist>
+                  <h3>Before payment</h3>
+                  <span data-submit-check="choices"><b>Choices</b><em>Confirm order</em></span>
+                  <span data-submit-check="info"><b>Student info</b><em>Ready for school</em></span>
+                  <span data-submit-check="consent"><b>Per-choice authorization</b><em>Not authorized</em></span>
+                </div>
+                <div class="fee-actions">
+                  <button class="primary-action full-action" type="button" data-open-payment data-submit-action>Continue to payment</button>
+                  <button class="secondary-action full-action" type="button" data-next-application-step="info">Back</button>
+                </div>
+              </div>
+            </div>
+            <p class="fee-note">This quote covers CUAC application processing only. Schools may charge separate application or tuition fees.</p>
+          </aside>
+        </section>
+
+        <section class="payment-page reveal" id="payment" data-application-step="payment" aria-label="Payment review">
+          <div class="payment-page-head">
+            <div>
+              <span class="module-kicker">Payment</span>
+              <h2>Secure checkout</h2>
+              <p>CUAC creates a hosted checkout session. Card and bank credentials never enter this application.</p>
+            </div>
+            <span class="source-pill"><span data-school-count>0</span> schools</span>
           </div>
-          <div class="matrix-grid">
-            <div class="matrix-head">Document</div>
-            <div class="matrix-head">ZJU</div>
-            <div class="matrix-head">Nanjing</div>
-            <div class="matrix-head">UIBE</div>
-            <div class="matrix-row-title">Passport scan</div>
-            <div class="matrix-cell ready">Ready</div>
-            <div class="matrix-cell ready">Ready</div>
-            <div class="matrix-cell ready">Ready</div>
-            <div class="matrix-row-title">Transcript translation</div>
-            <div class="matrix-cell warning">Needed</div>
-            <div class="matrix-cell warning">Needed</div>
-            <div class="matrix-cell warning">Needed</div>
-            <div class="matrix-row-title">English proof</div>
-            <div class="matrix-cell warning">IELTS / waiver</div>
-            <div class="matrix-cell ready">Flexible</div>
-            <div class="matrix-cell warning">IELTS</div>
-            <div class="matrix-row-title">Study plan</div>
-            <div class="matrix-cell warning">Scholarship</div>
-            <div class="matrix-cell neutral">Optional</div>
-            <div class="matrix-cell warning">Required</div>
+          <div class="payment-page-layout">
+            <div>
+              <div class="payment-summary" data-payment-summary></div>
+              <p class="payment-error" data-payment-error hidden aria-live="polite">Payment status could not be confirmed. Your choices remain saved and the application set has not been submitted.</p>
+            </div>
+            <aside class="payment-side-panel">
+              <div class="payment-status-panel" data-payment-status aria-live="polite"></div>
+              <div class="consent-row" data-submit-authorization-status>
+                <span>Payment stays locked until every exact application choice has a current material snapshot and submission authorization.</span>
+              </div>
+              <div class="fee-actions">
+                <button class="primary-action full-action" type="button" data-start-checkout>Open secure checkout</button>
+                <button class="secondary-action full-action" type="button" data-refresh-payment>Refresh payment status</button>
+                <button class="secondary-action full-action" type="button" data-next-application-step="fee">Back to fee review</button>
+              </div>
+            </aside>
+          </div>
+          <p class="fee-note">Payment does not guarantee admission. Schools may request official documents or university fees later.</p>
+        </section>
+
+        <section class="submission-status reveal" id="send" data-application-step="send" data-submission-status aria-live="polite" tabindex="-1">
+          <div data-send-review>
+            <div>
+              <span class="module-kicker">Send review</span>
+              <h2>Submit the exact application set</h2>
+              <p>Review every program and intake. CUAC will lock this set atomically, then queue policy-bound delivery groups for the selected schools.</p>
+            </div>
+            <div class="send-review-grid">
+              <article><span>Schools</span><strong data-school-count>0</strong></article>
+              <article><span>Payment</span><strong data-fee-step>Not quoted</strong></article>
+              <article><span>Student info</span><strong>Ready</strong></article>
+            </div>
+            <div class="school-status-grid" data-send-school-list></div>
+            <form class="submission-confirmation-form" data-submission-confirmation-form>
+              <label><span>Confirm your account password</span><input name="password" type="password" autocomplete="current-password" required maxlength="1024" /></label>
+              <div><button class="primary-action" type="submit" data-submit-application>Authorize and submit application set</button><button class="secondary-action" type="button" data-next-application-step="payment">Back to payment</button></div>
+              <p>Password confirmation creates a short-lived step-up session. Submission then locks the complete application set and creates one school application per exact program and intake.</p>
+            </form>
+            <p class="payment-error" data-submission-error hidden aria-live="polite"></p>
+          </div>
+          <div data-sent-tracker hidden>
+            <div>
+              <span class="module-kicker">CUAC accepted</span>
+              <h2>Submission locked and queued</h2>
+              <p>The receipt below confirms CUAC internal acceptance. School delivery status advances separately through the official delivery queue.</p>
+            </div>
+            <div class="next-steps">
+              <article><strong>Application set locked</strong><span>The submitted choices and source revision cannot drift.</span></article>
+              <article><strong>Delivery grouped by policy</strong><span>Each recipient receives only its authorized program records.</span></article>
+              <article><strong>Watch status</strong><span>School contact follows external delivery and review.</span></article>
+            </div>
+            <div class="submission-receipt-strip" data-submission-receipt></div>
+            <div class="school-status-grid" data-submitted-school-list></div>
+            <div class="action-row">
+              <a class="primary-action" href="application.html#send">View submission status</a>
+              <a class="secondary-action" href="billing-api.html">View billing</a>
+              <a class="secondary-action" href="hub-api.html">Back to Hub</a>
+            </div>
           </div>
         </section>
 
-        <section class="section-grid reveal" aria-label="Application sections">
-          <div class="section-title">
-            <div><span class="module-kicker">Application sections</span><h2>Finish in the order that matters</h2></div>
-          </div>
-          <div class="section-cards">
-            <article class="section-card ready"><span data-app-icon="choice"></span><strong>Choices</strong><p>Three routes organized by role.</p><button type="button" data-section-action>Mark checked</button></article>
-            <article class="section-card"><span data-app-icon="profile"></span><strong>Profile</strong><p>Name, nationality, contact.</p><button type="button" data-section-action>Start</button></article>
-            <article class="section-card"><span data-app-icon="education"></span><strong>Education</strong><p>School history and grades.</p><button type="button" data-section-action>Start</button></article>
-            <article class="section-card warning"><span data-app-icon="document"></span><strong>Documents</strong><p>Shared docs before differences.</p><button type="button" data-section-action>Open</button></article>
-            <article class="section-card"><span data-app-icon="funding"></span><strong>Scholarship</strong><p>Compare funding per choice.</p><button type="button" data-section-action>Start</button></article>
-            <article class="section-card"><span data-app-icon="review"></span><strong>Review</strong><p>Submit only after source check.</p><button type="button" data-section-action>Later</button></article>
-          </div>
-        </section>
-
-        <section class="review-band reveal" aria-label="Review summary">
-          <div>
-            <span class="module-kicker">Why this is simpler</span>
-            <h2>UCAS lets you add choices. CUAC helps you know which choices should survive.</h2>
-          </div>
-          <div class="review-points">
-            <span>Multiple choices</span>
-            <span>Missing items first</span>
-            <span>Main and backup routes</span>
-            <span>Source-aware risks</span>
-          </div>
-        </section>
       </main>
 
       <div data-cuac-footer></div>
@@ -201,54 +483,51 @@
         <div class="choice-dialog-head">
           <div>
             <span class="module-kicker">Add choice</span>
-            <h2 id="choice-dialog-title">Add a specific program</h2>
-            <p>A choice means one university plus one concrete program, intake, and language route.</p>
+            <h2 id="choice-dialog-title">Add choice</h2>
+            <p>Select one university and one concrete program from CUAC data, then add it to this application set.</p>
+            <p class="choice-fee-note">The current server fee quote appears after you save the exact program and intake choices.</p>
           </div>
           <button class="choice-dialog-close" type="button" data-close-choice-modal aria-label="Close add choice">×</button>
         </div>
 
         <form class="choice-form" data-choice-form>
-          <label>
-            <span>University</span>
-            <select name="university" data-university-select>
-              <option>Zhejiang University</option>
-              <option>Nanjing University</option>
-              <option>UIBE</option>
-              <option>Fudan University</option>
-              <option>Tongji University</option>
+          <label class="choice-stage-field">
+            <span>1. Study level</span>
+            <select name="degree" data-degree-select disabled>
+              <option value="">Loading published study levels</option>
             </select>
           </label>
           <label>
-            <span>Program</span>
-            <select name="program" data-program-select></select>
+            <span>2. University</span>
+            <select name="university" data-university-select disabled>
+              <option value="">Loading published universities</option>
+            </select>
+          </label>
+          <label>
+            <span>3. Program</span>
+            <select name="program" data-program-select disabled></select>
           </label>
           <div class="choice-form-grid">
             <label>
               <span>Intake</span>
-              <select name="intake">
-                <option>Fall 2026</option>
-                <option>Spring 2027</option>
-              </select>
+              <select name="intake" data-intake-select required></select>
             </label>
             <label>
               <span>Teaching language</span>
-              <select name="language">
-                <option>English-taught</option>
-                <option>Chinese-taught</option>
-              </select>
+              <select name="language" disabled></select>
+            </label>
+            <label class="choice-note-field">
+              <span>Student note to this school</span>
+              <textarea name="choiceNote" data-choice-note placeholder="Optional: why this program, background fit, or questions for this school"></textarea>
             </label>
           </div>
           <div class="program-preview" data-program-preview aria-live="polite"></div>
+          <div class="choice-source-map" data-choice-source-map aria-label="What the selected school will receive"></div>
 
-          <div class="choice-suggestions" aria-label="Suggested programs">
-            <button type="button" data-fill-choice="Zhejiang University|Computer Science MSc">ZJU · Computer Science MSc</button>
-            <button type="button" data-fill-choice="Nanjing University|Software Engineering MSc">Nanjing · Software Engineering</button>
-            <button type="button" data-fill-choice="UIBE|International Trade MSc">UIBE · International Trade</button>
-          </div>
+          <div class="choice-suggestions" data-choice-suggestions aria-label="Published program suggestions" hidden></div>
 
           <div class="choice-dialog-actions">
             <button class="primary-action" type="submit">Add to application set</button>
-            <button class="secondary-action" type="button" data-agent-prompt="Help me find a specific program to add to my China application choices">Ask Agent first</button>
           </div>
         </form>
       </section>

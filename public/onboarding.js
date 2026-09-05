@@ -16,12 +16,24 @@ const titles = [
 
 const state = {
   step: 0,
+  nationality: "Thailand",
+  currentCountry: "Thailand",
+  stage: "High school / Grade 12",
   level: "Undergraduate",
   subject: "Computer Science",
   tuition: "RMB 25k-45k/year",
   funding: "Prefer partial scholarship",
   focus: "Program shortlist",
   cities: ["Hangzhou", "Nanjing"],
+  intake: "Fall 2026",
+  language: "English-taught",
+  readiness: {
+    passport: true,
+    transcript: true,
+    graduation: false,
+    language: true,
+    translation: false,
+  },
 };
 
 document.querySelectorAll("[data-icon]").forEach((node) => {
@@ -54,19 +66,33 @@ function readinessCount() {
   return document.querySelectorAll(".readiness-list input:checked").length;
 }
 
+function readinessState() {
+  return Array.from(document.querySelectorAll(".readiness-list input[data-check]")).reduce((result, input) => {
+    result[input.dataset.check] = input.checked;
+    return result;
+  }, {});
+}
+
 function updateStateFromDom() {
+  state.nationality = fieldValue("nationality") || state.nationality;
+  state.currentCountry = fieldValue("currentCountry") || state.currentCountry;
+  state.stage = fieldValue("stage") || state.stage;
   state.level = selectedText('[data-chip-group="level"]') || state.level;
   state.subject = selectedText('[data-chip-group="subject"]') || state.subject;
   state.tuition = selectedText('[data-chip-group="tuition"]') || state.tuition;
   state.funding = selectedText('[data-chip-group="funding"]') || state.funding;
   state.focus = selectedText('[data-chip-group="focus"]') || state.focus;
   state.cities = selectedMany('[data-multi-group="cities"]');
+  state.intake = fieldValue("intake") || state.intake;
+  state.language = fieldValue("language") || state.language;
+  state.readiness = readinessState();
 }
 
 function renderSummary() {
   updateStateFromDom();
   const items = [
-    ["Study route", `${state.level} · ${state.subject} · ${fieldValue("language") || "English-taught"} · ${fieldValue("intake") || "Fall 2026"}`],
+    ["Student context", `${state.nationality} · ${state.currentCountry} · ${state.stage}`],
+    ["Study route", `${state.level} · ${state.subject} · ${state.language} · ${state.intake}`],
     ["Budget signal", `${state.tuition} · ${state.funding}`],
     ["City shortlist", state.cities.length ? state.cities.join(", ") : "Not sure"],
     ["Readiness", `${readinessCount()} of 5 core items marked ready`],
@@ -110,7 +136,13 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   if (state.step >= steps.length - 1) {
     updateStateFromDom();
-    window.localStorage?.setItem("cuacOnboardingPreview", JSON.stringify(state));
+    window.localStorage?.setItem("cuacOnboardingPreview", JSON.stringify({
+      ...state,
+      readinessReadyCount: readinessCount(),
+      readinessTotal: document.querySelectorAll(".readiness-list input[data-check]").length,
+      savedAt: new Date().toISOString(),
+      source: "CUAC onboarding preview",
+    }));
     window.location.href = "hub.html";
     return;
   }

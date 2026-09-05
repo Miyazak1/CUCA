@@ -1,6 +1,5 @@
-import { CuacApp } from "../cuac-app";
+import { redirect } from "next/navigation";
 
 export default function HubPage() {
-  return <CuacApp initialView="hub" />;
+  redirect("/hub-api.html");
 }
-

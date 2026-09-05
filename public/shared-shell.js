@@ -9,6 +9,9 @@
     youtube: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6.5" width="17" height="11" rx="3"/><path d="m10.5 9.5 5 2.5-5 2.5Z" class="brand-fill"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10v8"/><path d="M6 6.5v.01"/><path d="M11 18v-8"/><path d="M11 13.5c0-2.2 1.4-3.8 3.5-3.8S18 11.3 18 13.8V18"/></svg>',
     x: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14"/><path d="M19 5 5 19"/></svg>',
+    bell: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>',
+    settings: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2 3.4-.2-.1a1.7 1.7 0 0 0-2.1-.5 1.7 1.7 0 0 0-1 1.6V22H9.5v-.3a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-2.1.5l-.2.1-2-3.4.1-.1A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.4-1H3v-4h.2a1.7 1.7 0 0 0 1.4-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1 2-3.4.2.1a1.7 1.7 0 0 0 2.1.5 1.7 1.7 0 0 0 1-1.6V2h5v.3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 2.1-.5l.2-.1 2 3.4-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.4 1h.2v4h-.2a1.7 1.7 0 0 0-1.4 1Z"/></svg>',
+    logout: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17 5 12l5-5"/><path d="M5 12h12"/><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"/></svg>',
     send: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4Z"/></svg>',
     close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 6-12 12"/><path d="m6 6 12 12"/></svg>',
     agent: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5A4.5 4.5 0 0 1 9.5 4h5A4.5 4.5 0 0 1 19 8.5v2A4.5 4.5 0 0 1 14.5 15H11l-4 4v-4.5A4.5 4.5 0 0 1 5 10.5Z"/><path d="m17 3 .7 1.5L19 5l-1.3.5L17 7l-.7-1.5L15 5l1.3-.5Z"/></svg>',
@@ -28,6 +31,16 @@
     { id: "cities", label: "Cities", href: "cities.html" },
     { id: "guides", label: "Guides", href: "guides.html" },
     { id: "hub", label: "Hub", href: "hub.html" },
+  ];
+
+  const roleNavItems = [
+    { id: "home", label: "首页", href: "home-v3.html" },
+    { id: "programs", label: "项目", href: "programs.html" },
+    { id: "universities", label: "大学", href: "universities.html" },
+    { id: "scholarships", label: "奖学金", href: "scholarships.html" },
+    { id: "cities", label: "城市", href: "cities.html" },
+    { id: "guides", label: "指南", href: "guides.html" },
+    { id: "hub", label: "工作台", href: "hub.html" },
   ];
 
   const footerGroups = [
@@ -69,6 +82,45 @@
     },
   ];
 
+  const footerGroupsZh = [
+    {
+      title: "学生",
+      links: [
+        ["搜索项目", "programs.html"],
+        ["大学", "universities.html"],
+        ["奖学金", "scholarships.html"],
+        ["城市指南", "cities.html"],
+      ],
+    },
+    {
+      title: "申请中国",
+      links: [
+        ["申请材料", "guides.html#documents"],
+        ["HSK / IELTS", "guides.html#language"],
+        ["签证和 JW 表", "guides.html#visa"],
+        ["入学日历", "guides.html#timeline"],
+      ],
+    },
+    {
+      title: "合作方",
+      links: [
+        ["中国高校", "universities.html"],
+        ["顾问", "home-v3.html#cuac-hub"],
+        ["奖学金团队", "scholarships.html"],
+        ["学生服务", "home-v3.html#cuac-hub"],
+      ],
+    },
+    {
+      title: "CUAC",
+      links: [
+        ["关于我们", "home-v3.html#cuac-hub"],
+        ["无障碍", "home-v3.html#application-guides"],
+        ["隐私", "home-v3.html#application-guides"],
+        ["条款", "home-v3.html#application-guides"],
+      ],
+    },
+  ];
+
   function escapeHTML(value) {
     return String(value ?? "").replace(/[&<>"']/g, (character) => ({
       "&": "&amp;",
@@ -89,6 +141,9 @@
     { group: "Search", label: "University route", prompt: "Tell me about Zhejiang University and its English computer science route" },
     { group: "Summary", label: "Progress summary", prompt: "Summarize my progress and blockers" },
     { group: "Summary", label: "Saved shortlist", prompt: "Summarize my saved programs" },
+    { group: "Favourites", label: "Review saved routes", prompt: "Summarize my saved routes and tell me which can become application choices" },
+    { group: "Favourites", label: "Build shortlist", prompt: "Build my application shortlist from favourites" },
+    { group: "Favourites", label: "Safest route", prompt: "Which saved route is safest for Fall 2026?" },
     { group: "Documents", label: "Document checklist", prompt: "What documents do I need before Oct 15?" },
     { group: "Documents", label: "Translation", prompt: "Do I need certified transcript translation?" },
     { group: "Cost", label: "Annual cost", prompt: "How much will one year in Hangzhou cost?" },
@@ -98,6 +153,14 @@
     { group: "Language", label: "HSK / IELTS", prompt: "Do I need HSK for English-taught computer science?" },
     { group: "Application", label: "Organize choices", prompt: "Organize my application choices by risk and deadline" },
     { group: "Application", label: "Add choice", prompt: "Help me add a specific program choice" },
+    { group: "Application", label: "Fee summary", prompt: "Explain my CUAC fee and submission next step" },
+    { group: "Application", label: "Send to schools", prompt: "Submit my application to selected schools" },
+    { group: "School", label: "Queue summary", prompt: "Summarize this school's CUAC application queue" },
+    { group: "School", label: "Need contact", prompt: "Which Zhejiang University applicants need first contact?" },
+    { group: "School", label: "Document request", prompt: "Prepare a document request template for the selected applicant" },
+    { group: "School", label: "Tenant export", prompt: "Export this school's visible CUAC records" },
+    { group: "Ops", label: "Agent audit", prompt: "Review denied Agent export requests" },
+    { group: "Ops", label: "Routing health", prompt: "Summarize routing failures and payment mismatches" },
     { group: "Navigation", label: "Open documents", prompt: "Open my documents page" },
     { group: "Risk", label: "No guarantees", prompt: "Will I definitely get scholarship?" },
   ];
@@ -129,6 +192,7 @@
     const prompt = String(rawPrompt || "").trim();
     const text = prompt.toLowerCase();
     const isApplication = mode === "application" || containsAny(text, ["application", "choice", "choices", "apply", "add choice", "order", "submission", "submit"]);
+    const isPayment = containsAny(text, ["fee", "payment", "pay", "paid", "usd", "dollar", "first school", "extra school", "send to schools"]);
     const isSummary = containsAny(text, ["summarize", "summary", "progress", "status", "saved", "shortlist", "overview", "what do i have"]);
     const isTimeline = containsAny(text, ["deadline", "timeline", "date", "oct 15", "sep 12", "nov 10", "before", "days"]);
     const isRisk = containsAny(text, ["guarantee", "definitely", "sure", "official", "safe", "risk", "late", "after deadline", "promise"]);
@@ -140,6 +204,76 @@
     const isLanguage = containsAny(text, ["hsk", "ielts", "english", "language", "chinese-taught", "english-taught"]);
     const isProgram = mode === "programs" || containsAny(text, ["program", "msc", "ba", "computer science", "business", "trade", "engineering"]);
     const isUniversity = mode === "universities" || containsAny(text, ["university", "zhejiang", "zju", "fudan", "uibe", "tsinghua", "tongji", "nanjing"]);
+    const isSchool = mode === "school" || containsAny(text, ["school queue", "admissions", "tenant", "applicant", "applicants", "first contact", "export", "teacher", "document request"]);
+    const isOps = mode === "ops" || containsAny(text, ["ops", "internal", "agent audit", "audit", "routing failure", "payment mismatch", "support lookup", "denied export", "data quality"]);
+
+    if (isOps) {
+      return {
+        type: "ops_audit",
+        kicker: "Internal Ops",
+        title: containsAny(text, ["routing", "payment"]) ? "Ops Agent can summarize operational risk, but changes are confirmed." : "Review denied Agent actions with audit context.",
+        summary: "CUAC Ops Agent context is internal and audited. It can summarize routing health, payment mismatches, support lookups, and Agent policy denials, but high-risk actions require confirmation before page state changes.",
+        cards: [
+          { title: "Agent denials", meta: "Policy review", body: "Denied export or cross-tenant requests should be reviewed with reason and audit trail.", tags: ["High risk", "Audited"] },
+          { title: "Routing failures", meta: "Idempotency", body: "Retry actions should preserve idempotency and avoid duplicate school notifications.", tags: ["Ops"] },
+          { title: "Support access", meta: "Reason required", body: "Raw support lookup must stay purpose-limited and visible in the audit log.", tags: ["Internal only"] },
+        ],
+        actions: [
+          { label: "Review Agent audit", action: "ops-review-agent-audit", tone: "primary" },
+          { label: "Open Ops control room", href: "ops-admin.html" },
+        ],
+        source: "Ops Agent mode is internal-only and requires confirmation for high-risk audit actions.",
+      };
+    }
+
+    if (isSchool) {
+      const isSchoolSettingsPage = currentRouteName() === "school-settings.html";
+      return {
+        type: "school_queue",
+        kicker: "School tenant",
+        title: isSchoolSettingsPage ? "School settings Agent can prepare tenant templates." : containsAny(text, ["export", "csv"]) ? "Export is tenant-scoped and needs confirmation." : "This summary only uses this school's visible records.",
+        summary: "School staff Agent context is limited to the current tenant queue, visible filters, analytics, and document-request templates. It cannot see the student's other school choices or private long-term Agent memory.",
+        cards: [
+          { title: "Need first contact", meta: "Queue priority", body: "New and needs-review records should be contacted before waiting-document records.", tags: ["Tenant only", "Actionable"] },
+          { title: "Documents", meta: "School asks directly", body: "Request transcript, passport scan, language proof, and program-specific forms through the school process.", tags: ["No CUAC files"] },
+          { title: "Analytics", meta: "Programs and countries", body: "Use the visible charts to summarize route demand and regional mix.", tags: ["School scope"] },
+        ],
+        actions: isSchoolSettingsPage
+          ? [
+              { label: "Copy request template", action: "school-copy-request-template", tone: "primary" },
+              { label: "Open applicant queue", href: "school-portal.html" },
+            ]
+          : [
+              { label: "Copy request template", action: "school-copy-request-template", tone: "primary" },
+              { label: "Mark selected contacted", action: "school-bulk-contact" },
+              { label: "Export tenant CSV", action: "school-export-csv" },
+            ],
+        source: "School Agent mode uses tenant-scoped CUAC records only. Cross-school data and student private memory are blocked.",
+      };
+    }
+
+    if (isPayment || (isApplication && containsAny(text, ["send", "submit", "submission"]))) {
+      const isSubmitIntent = isApplication && containsAny(text, ["send", "submit", "submission"]);
+      return {
+        type: "payment",
+        kicker: "Submission fee",
+        title: isSubmitIntent ? "Submit only after you confirm the high-risk action." : "First school is included. Extra schools use a small CUAC routing fee.",
+        summary: "CUAC charges USD 20 for each additional school after the first. The fee is based on distinct schools, not programs. After sending, schools contact the student directly for documents and official next steps.",
+        checklist: [
+          ["Pricing unit", "School", "Two programs at the same university still count as one school"],
+          ["First school", "Included", "No CUAC fee is due when only one school is selected"],
+          ["Extra school", "USD 20", "Current routing fee for each additional school"],
+          ["After send", "School follows up", "CUAC does not collect documents in this flow"],
+        ],
+        actions: [
+          isSubmitIntent
+            ? { label: "Submit application set", action: "submit-application", tone: "primary" }
+            : { label: "Review fee and send", action: "review-fee", tone: "primary" },
+          { label: "Open application", href: "application.html" },
+        ],
+        source: "Fee logic uses selected distinct schools and the configurable extra-school fee.",
+      };
+    }
 
     if (containsAny(text, ["best", "which should i choose", "what should i study", "study in china"]) && !isProgram && !isCity) {
       return {
@@ -152,7 +286,7 @@
           { label: "Find programs", href: "programs.html", tone: "primary" },
           { label: "Compare cities", href: "cities.html" },
         ],
-        source: "Demo uses CUAC page fixtures only. A real agent would ask follow-up questions before ranking.",
+        source: "CUAC is using the current page context. The Agent may ask follow-up questions before ranking routes.",
       };
     }
 
@@ -163,14 +297,14 @@
         title: "I should not treat this as guaranteed.",
         summary: "For admission, scholarship, deadline exceptions, visa/JW timing, or official policy certainty, the Agent should separate what CUAC knows from what still needs university or adviser confirmation.",
         cards: [
-          { title: "What I can say now", meta: "From CUAC fixtures", body: "The route may be realistic if the program is open, documents are ready, and source dates are current.", tags: ["Known"] },
-          { title: "What needs checking", meta: "Official source or adviser", body: "Final eligibility, exception approval, award result, visa/JW sequence, and submission validity.", tags: ["Do not promise"] },
+          { title: "What I can say now", meta: "Current page context", body: "The route may be realistic if the program is open, documents are ready, and key dates are current.", tags: ["Known"] },
+          { title: "What needs checking", meta: "Official notice or adviser", body: "Final eligibility, exception approval, award result, visa/JW sequence, and submission validity.", tags: ["Do not promise"] },
         ],
         actions: [
           { label: "Open relevant guide", href: "guides.html", tone: "primary" },
-          { label: "Save source check", action: "save-checklist" },
+          { label: "Save detail check", action: "save-checklist" },
         ],
-        source: "Demo boundary: the front-end can show caution and next steps, but cannot make official guarantees.",
+        source: "Planning boundary: CUAC can show caution and next steps, but cannot make official guarantees.",
       };
     }
 
@@ -183,7 +317,7 @@
         checklist: [
           ["Saved programs", "4 routes", "ZJU main route, Nanjing backup, UIBE funding-sensitive, Fudan stretch"],
           ["Documents", "3 missing", "Transcript translation, IELTS or waiver, study plan"],
-          ["Earliest deadline", "Oct 15", "ZJU Computer Science MSc in demo data"],
+          ["Earliest deadline", "Oct 15", "ZJU Computer Science MSc in current CUAC data"],
           ["Budget fit", "Good", "Hangzhou and Nanjing stay below Shanghai cost"],
         ],
         actions: [
@@ -191,7 +325,7 @@
           { label: "Build checklist", action: "save-checklist" },
           { label: "Compare routes", action: "compare-routes" },
         ],
-        source: "Demo summary uses saved-program, document, city-cost, and deadline fixtures.",
+        source: "Summary uses saved programs, document, city cost, and deadline context.",
       };
     }
 
@@ -211,7 +345,7 @@
         type: "navigation",
         kicker: "Page route",
         title: "I can take you to the right workspace.",
-        summary: "The Agent should preview where it will send the student and why, so navigation feels intentional instead of like a blind link.",
+        summary: "The Agent can explain where it will send the student and why, so navigation feels intentional instead of like a blind link.",
         cards: [
           { title: destination.label, meta: "Recommended destination", body: "This page has the most relevant data and controls for your question.", tags: ["Page action"] },
         ],
@@ -219,7 +353,7 @@
           { label: destination.label, href: destination.href, tone: "primary" },
           { label: "Apply useful filters", action: "apply-smart-filters" },
         ],
-        source: "Demo routing uses current page mode and prompt keywords.",
+        source: "Routing uses current page mode and prompt keywords.",
       };
     }
 
@@ -235,9 +369,9 @@
         ],
         actions: [
           { label: "Open add choice modal", action: "open-choice-modal", tone: "primary" },
-          { label: "Ask Agent to prefill", action: "prefill-choice" },
+          { label: "Prefill choice", action: "prefill-choice" },
         ],
-        source: "Demo action only. It previews how later database-backed selectors will work.",
+        source: "Choice actions use the current page selector and CUAC program data.",
       };
     }
 
@@ -247,20 +381,20 @@
         kicker: isTimeline ? "Timeline plan" : "Document plan",
         title: isTimeline ? "Work backwards from Oct 15." : "Start with shared documents, then handle program-specific proof.",
         summary: isTimeline
-          ? "For a Fall 2026 route, the demo plan prioritizes translation and language proof first, then scholarship-sensitive forms."
+          ? "For a Fall 2026 route, the plan prioritizes translation and language proof first, then scholarship-sensitive forms."
           : "For this route, the shared blockers are transcript translation and language proof. Scholarship-sensitive programs add extra timing risk.",
         checklist: [
           ["Passport scan", "Ready", "Core profile"],
           ["Transcript", "Needs translation", "Use certified translation before submission"],
           ["IELTS or waiver evidence", "Needs review", "English-taught programs usually need proof"],
           ["Study plan", "Missing", "Required by scholarship-sensitive routes"],
-          ["Program deadline", "Check date", "ZJU route closes Oct 15 in demo data"],
+          ["Program deadline", "Check date", "ZJU route closes Oct 15 in current CUAC data"],
         ],
         actions: [
           { label: "Open guide", href: "guides.html#documents", tone: "primary" },
           { label: "Save checklist to Hub", action: "save-checklist" },
         ],
-        source: "Based on CUAC guide fixtures and selected-route demo data.",
+        source: "Based on CUAC guide context and selected route information.",
       };
     }
 
@@ -269,7 +403,7 @@
         type: "calculation",
         kicker: "Cost estimate",
         title: "Hangzhou is the safer first budget fit than Shanghai.",
-        summary: "Using demo tuition and city estimates, Hangzhou keeps the annual total lower while still supporting strong English-taught computer science routes.",
+        summary: "Using CUAC tuition and city estimates, Hangzhou keeps the annual total lower while still supporting strong English-taught computer science routes.",
         calculation: {
           total: "RMB 85k - 95k / year",
           formula: "ZJU tuition RMB 42k + living estimate RMB 3.6k x 12 + setup buffer",
@@ -284,7 +418,7 @@
           { label: "Compare city routes", href: "cities.html", tone: "primary" },
           { label: "Save estimate", action: "save-cost-estimate" },
         ],
-        source: "Demo estimate. Final costs need university fee pages and current city assumptions.",
+        source: "Planning estimate. Final costs need university fee pages and current city assumptions.",
       };
     }
 
@@ -303,7 +437,7 @@
           { label: "Open cities", href: "cities.html", tone: "primary" },
           { label: "Compare selected choices", action: "compare-routes" },
         ],
-        source: "Demo city fit combines cost, university routes, and student-life signals.",
+        source: "City fit combines cost, university routes, and student-life signals.",
       };
     }
 
@@ -314,7 +448,7 @@
         title: "Use scholarships as a parallel route, not a guarantee.",
         summary: "A strong application should keep one realistic tuition route while checking CSC, university, and city awards in parallel.",
         cards: [
-          { title: "CSC route", meta: "High value, competitive", body: "Good for strong academic profiles, but deadlines and channels vary.", tags: ["Full funding", "Needs source check"] },
+          { title: "CSC route", meta: "High value, competitive", body: "Good for strong academic profiles, but deadlines and channels vary.", tags: ["Full funding", "Check notice"] },
           { title: "University award", meta: "ZJU-style route", body: "Often more program-specific. Good backup to CSC.", tags: ["Partial funding", "Merit review"] },
           { title: "City award", meta: "Shanghai / Beijing routes", body: "May reduce tuition but can be offset by higher living cost.", tags: ["Local rules", "Date check"] },
         ],
@@ -322,7 +456,7 @@
           { label: "Open scholarships", href: "scholarships.html", tone: "primary" },
           { label: "Compare funding risk", action: "compare-funding" },
         ],
-        source: "Demo source status separates verified routes from date-check routes.",
+        source: "Scholarship details should be checked against the official notice before the student relies on them.",
       };
     }
 
@@ -340,7 +474,7 @@
           { label: "Open language guide", href: "guides.html#language", tone: "primary" },
           { label: "Find English routes", href: "programs.html" },
         ],
-        source: "Demo answer from CUAC guide fixtures. Real checks must use official program pages.",
+        source: "Answer based on CUAC guide context. Final checks should use official program pages.",
       };
     }
 
@@ -359,7 +493,7 @@
           { label: "Confirm choice order", action: "confirm-choice-order", tone: "primary" },
           { label: "Add another choice", action: "open-choice-modal" },
         ],
-        source: "Demo ranking uses saved choices, deadline, document effort, and funding-risk signals.",
+        source: "Route ranking uses saved choices, deadline, document effort, and funding-risk signals.",
       };
     }
 
@@ -370,7 +504,7 @@
         title: "Start from specific programs, not just famous names.",
         summary: "For an international student, the useful unit is university + program + intake + language route + cost + document effort.",
         cards: [
-          { title: "Computer Science MSc", meta: "Zhejiang University · Hangzhou", body: "English-taught · RMB 42k · Oct 15 · strong route with IELTS review.", tags: ["Main route", "Verified"] },
+          { title: "Computer Science MSc", meta: "Zhejiang University · Hangzhou", body: "English-taught · RMB 42k · Oct 15 · strong route with IELTS review.", tags: ["Main route", "Application ready"] },
           { title: "Software Engineering MSc", meta: "Nanjing University · Nanjing", body: "English-taught · RMB 39k · Dec 20 · useful lower-burden backup.", tags: ["Backup", "Good cost"] },
           { title: "Data Science MSc", meta: "Fudan University · Shanghai", body: "Selective city route, stronger internship signal but higher living cost.", tags: ["Stretch", "Cost risk"] },
         ],
@@ -379,7 +513,7 @@
           { label: "Compare these routes", action: "compare-routes" },
           { label: "Save to shortlist", action: "save-program-shortlist" },
         ],
-        source: "Demo fixtures combine program, university, city, intake, and document signals.",
+        source: "CUAC combines program, university, city, intake, and document signals.",
       };
     }
 
@@ -387,14 +521,14 @@
       type: "answer",
       kicker: "Quick answer",
       title: "I can turn that into routes, checks, or page actions.",
-      summary: "For this demo, try asking for English-taught programs, city costs, scholarships, documents, or application choice order.",
+      summary: "Try asking for English-taught programs, city costs, scholarships, documents, or application choice order.",
       chips: ["Find programs", "Compare city cost", "Check documents", "Add a choice"],
       actions: [
         { label: "Open programs", href: "programs.html", tone: "primary" },
         { label: "Open Hub", href: "hub.html" },
         { label: "Apply useful filters", action: "apply-smart-filters" },
       ],
-      source: "Demo response from local CUAC prototype fixtures.",
+      source: "CUAC response from the current page context.",
     };
   }
 
@@ -464,38 +598,143 @@
     return '<a class="brand" href="home-v3.html"><span class="logo">CU</span><span>CUAC</span></a>';
   }
 
+  let authNavigationPending = false;
+  let runtimeAuthState = {
+    resolved: false,
+    authState: "signed-out",
+    role: "visitor",
+    surface: "public",
+    tenantSchoolId: null,
+  };
+
+  function runtimeSurface(role, selectedSurface) {
+    if (role === "school_staff" || selectedSurface === "school") return "school-staff";
+    if (["cuac_ops", "cuac_admin"].includes(role) || selectedSurface === "ops") return "cuac-internal";
+    if (role === "student" || selectedSurface === "student") return "authenticated-student";
+    return "public";
+  }
+
+  function getShellContext(target = {}) {
+    const routeContract = window.CuacDataClient?.getRouteContract?.(currentRouteName()) || {};
+    const portalRole = document.body.dataset.portalRole || target.dataset?.portalRole || "";
+    const routeSurface = portalRole === "school" ? "school-staff" : routeContract.surface || "public";
+    if (runtimeAuthState.authState === "signed-in") {
+      return { authState: "signed-in", role: runtimeAuthState.role, surface: runtimeAuthState.surface };
+    }
+    return { authState: "signed-out", role: "visitor", surface: routeSurface };
+  }
+
+  function renderAccountMenu(target) {
+    const shellContext = getShellContext(target);
+    const authState = shellContext.authState;
+    const userName = shellContext.role === "school_staff"
+      ? "School staff account"
+      : ["cuac_ops", "cuac_admin"].includes(shellContext.role)
+        ? "CUAC internal account"
+        : "Student account";
+    const initial = userName.charAt(0).toUpperCase();
+
+    if (authState === "signed-out") {
+      const localized = ["school", "ops"].includes(document.body.dataset.agentMode || "");
+      return `
+        <button class="sign-in-pill" type="button" data-cuac-sign-in-trigger>
+          ${icons.account}
+          <span>${localized ? "登录" : "Sign in"}</span>
+        </button>
+      `;
+    }
+
+    const profileHref = shellContext.role === "school_staff" || shellContext.surface === "school-staff" ? "school-settings.html" : ["cuac_ops", "cuac_admin"].includes(shellContext.role) || shellContext.surface === "cuac-internal" ? "ops-admin.html" : "application.html#info";
+    const accountLinks =
+      shellContext.role === "school_staff" || shellContext.surface === "school-staff"
+        ? [
+            ["school-portal.html", icons.account, "学校工作台"],
+            ["school-settings.html", icons.settings, "租户设置"],
+            ["school-settings.html", icons.intent, "请求模板"],
+          ]
+        : ["cuac_ops", "cuac_admin"].includes(shellContext.role) || shellContext.surface === "cuac-internal"
+          ? [
+              ["ops-admin.html", icons.account, "运营后台"],
+              ["ops-admin.html", icons.shield, "Agent 审计"],
+              ["ops-admin.html", icons.search, "数据质量"],
+            ]
+          : [
+              ["hub.html", icons.account, "Hub"],
+              ["application.html#info", icons.shield, "Student info"],
+              ["notifications.html", icons.bell, "Notifications"],
+              ["favourites.html", icons.saved, "Favourites"],
+              ["billing.html", icons.intent, "Billing"],
+              ["preferences.html", icons.settings, "Preferences"],
+            ];
+
+    return `
+      <div class="account-menu" data-account-menu>
+        <button class="account-avatar-button" type="button" data-account-menu-trigger aria-expanded="false" aria-label="${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "打开账号菜单" : "Open account menu"}">
+          <span class="account-avatar">${escapeHTML(initial)}</span>
+        </button>
+        <div class="account-popover" data-account-menu-popover hidden>
+          <div class="account-popover-head">
+            <span class="account-avatar large">${escapeHTML(initial)}</span>
+            <div>
+              <strong>${escapeHTML(userName)}</strong>
+              <a href="${profileHref}">${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "编辑账号" : "Student info"}</a>
+            </div>
+          </div>
+          ${accountLinks.map(([href, icon, label]) => `<a href="${href}">${icon}<span>${label}</span></a>`).join("")}
+          <a href="auth.html" class="account-signout">${icons.logout}<span>${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "退出登录" : "Sign out"}</span></a>
+        </div>
+      </div>
+    `;
+  }
+
+  function normalizeActiveNav(active) {
+    if (["favourites", "notifications", "preferences", "auth"].includes(active)) return "hub";
+    return active;
+  }
+
+  function shouldShowSavedShortcut(shellContext) {
+    return shellContext.authState === "signed-in" && shellContext.role === "student" && !["school-staff", "cuac-internal"].includes(shellContext.surface);
+  }
+
+  function renderSavedShortcut() {
+    return `<a class="nav-icon" data-nav-saved-shortcut href="favourites.html" aria-label="Saved list">${icons.saved}</a>`;
+  }
+
   function renderHeader(target) {
-    const active = target.dataset.active || "home";
+    const active = normalizeActiveNav(target.dataset.active || "home");
     const note = target.dataset.note || "China admissions 2026:";
     const noteDetail = target.dataset.noteDetail || "";
+    const shellContext = getShellContext(target);
+    const showSavedShortcut = shouldShowSavedShortcut(shellContext);
+    const localizedNav = ["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) || ["school", "ops"].includes(document.body.dataset.agentMode || "");
+    const headerNavItems = localizedNav ? roleNavItems : navItems;
     target.outerHTML = `
       <div class="top-note">${note}${noteDetail ? `<span>&nbsp;${noteDetail}</span>` : ""}</div>
       <header class="nav">
         ${brand()}
-        <nav class="nav-links" aria-label="Primary">
-          ${navItems.map((item) => `<a class="${item.id === active ? "active" : ""}" href="${item.href}">${item.label}</a>`).join("")}
+        <nav class="nav-links" aria-label="${localizedNav ? "主导航" : "Primary"}">
+          ${headerNavItems.map((item) => `<a class="${item.id === active ? "active" : ""}" href="${item.href}">${item.label}</a>`).join("")}
         </nav>
         <div class="nav-actions" aria-label="Account actions">
-          <a class="nav-icon" href="programs.html" aria-label="Saved list">${icons.saved}</a>
-          <a class="account-pill" href="hub.html" aria-label="Open your CUAC Hub">
-            ${icons.account}
-            <span>Hub</span>
-          </a>
+          ${showSavedShortcut ? renderSavedShortcut() : ""}
+          ${renderAccountMenu(target)}
         </div>
       </header>
     `;
   }
 
   function renderFooter(target) {
+    const localized = ["school", "ops"].includes(document.body.dataset.agentMode || "");
+    const groups = localized ? footerGroupsZh : footerGroups;
     target.outerHTML = `
       <footer class="footer">
         <div class="footer-grid">
           <div>
             ${brand()}
-            <p>China admissions search for international students applying to Chinese universities.</p>
+            <p>${localized ? "面向国际学生申请中国高校的招生搜索与管理平台。" : "China admissions search for international students applying to Chinese universities."}</p>
             <div class="footer-actions">
-              <a href="home-v3.html#cuac-hub">Contact us</a>
-              <a href="home-v3.html#cuac-hub">Need help?</a>
+              <a href="home-v3.html#cuac-hub">${localized ? "联系我们" : "Contact us"}</a>
+              <a href="home-v3.html#cuac-hub">${localized ? "需要帮助？" : "Need help?"}</a>
             </div>
             <div class="socials" aria-label="Social links">
               <button type="button" aria-label="TikTok">${icons.tiktok}</button>
@@ -506,7 +745,7 @@
               <button type="button" aria-label="X">${icons.x}</button>
             </div>
           </div>
-          ${footerGroups
+          ${groups
             .map((group) => `
               <div class="footer-col">
                 <strong>${group.title}</strong>
@@ -518,48 +757,422 @@
         <div class="footer-bottom">
           <span>© CUAC 2026</span>
           <div class="footer-legal">
-            <a href="home-v3.html#application-guides">Cookie preferences</a>
-            <a href="home-v3.html#application-guides">Data and source policy</a>
-            <a href="home-v3.html#application-guides">Admissions clarity policy</a>
+            <a href="home-v3.html#application-guides">${localized ? "Cookie 偏好" : "Cookie preferences"}</a>
+            <a href="home-v3.html#application-guides">${localized ? "数据与来源政策" : "Data and source policy"}</a>
+            <a href="home-v3.html#application-guides">${localized ? "招生透明政策" : "Admissions clarity policy"}</a>
           </div>
         </div>
       </footer>
     `;
   }
 
+  function currentRouteName() {
+    return window.location.pathname.split("/").pop() || "home-v3.html";
+  }
+
+  const protectedStudentRoutes = new Set(["onboarding.html", "hub.html", "favourites.html", "application.html", "billing.html", "notifications.html", "preferences.html"]);
+  const protectedRoleRoutes = {
+    "school-portal.html": { role: "school_staff", title: "Sign in to CUAC" },
+    "school-settings.html": { role: "school_staff", title: "Sign in to CUAC" },
+    "ops-admin.html": { role: "cuac_ops", title: "Sign in to CUAC" },
+  };
+
+  function routeNameFromHref(href) {
+    try {
+      const url = new URL(href, window.location.href);
+      return url.pathname.split("/").pop() || "home-v3.html";
+    } catch {
+      return String(href || "").split(/[?#]/)[0].split("/").pop();
+    }
+  }
+
+  function authRoleParam(role) {
+    if (role === "school_staff") return "school";
+    if (role === "cuac_ops") return "ops";
+    return "student";
+  }
+
+  function currentRelativeUrl() {
+    return `${currentRouteName()}${window.location.search || ""}${window.location.hash || ""}`;
+  }
+
+  function normalizeContinuationTarget(value) {
+    try {
+      const url = new URL(value || currentRelativeUrl(), window.location.href);
+      if (url.origin !== window.location.origin || url.search) return null;
+      return `${url.pathname}${url.hash}`;
+    } catch {
+      return null;
+    }
+  }
+
+  function continuationRequestFor(options = {}) {
+    const requiredRole = options.requiredRole || options.role || "student";
+    let targetRoute = normalizeContinuationTarget(options.returnUrl);
+    let actionKey = options.actionKey || "";
+
+    if (actionKey === "application.open_add_choice") actionKey = "application.add_choice";
+    if (actionKey === "application.add_choice") targetRoute = "/application.html#add-choice";
+    if (!actionKey && targetRoute === "/application.html#add-choice") actionKey = "application.add_choice";
+
+    const route = routeNameFromHref(targetRoute || "");
+    if (!actionKey && requiredRole === "student" && protectedStudentRoutes.has(route)) actionKey = "navigation.open_student_workspace";
+    if (!actionKey && requiredRole === "school_staff" && ["school-portal.html", "school-settings.html"].includes(route)) actionKey = "navigation.open_school_workspace";
+    if (!actionKey && requiredRole === "cuac_ops" && route === "ops-admin.html") actionKey = "navigation.open_ops_workspace";
+    if (!targetRoute || !actionKey) return null;
+
+    return {
+      targetRoute,
+      actionKey,
+      requiredRole,
+      payloadPreview: options.payloadPreview || {},
+    };
+  }
+
+  async function createServerContinuation(input) {
+    const guestResponse = await fetch("/api/v1/auth/guest-session", {
+      method: "POST",
+      credentials: "same-origin",
+      cache: "no-store",
+      headers: { Accept: "application/json", "Content-Type": "application/json" },
+      body: "{}",
+    });
+    if (!guestResponse.ok) throw new Error("Guest browser session could not be initialized.");
+
+    const response = await fetch("/api/v1/auth/sign-in-continuations", {
+      method: "POST",
+      credentials: "same-origin",
+      cache: "no-store",
+      headers: { Accept: "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify(input),
+    });
+    const payload = await response.json().catch(() => null);
+    if (!response.ok) throw new Error(payload?.error?.message || "The saved navigation could not be created.");
+    const continuation = payload?.data;
+    if (!/^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(continuation?.continuationId || "")
+      || !/^[A-Za-z0-9_-]{43}$/.test(continuation?.continuationToken || "")) {
+      throw new Error("The saved navigation response was invalid.");
+    }
+    return continuation;
+  }
+
+  function dataAttributeSelector(attribute, value) {
+    const safeValue = String(value || "").replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+    return `[${attribute}="${safeValue}"]`;
+  }
+
+  function navigateToAuthPage(options = {}) {
+    const params = new URLSearchParams();
+    if (options.selectedRole) params.set("role", authRoleParam(options.selectedRole));
+    if (options.capability) params.set("continue", "1");
+    if (options.mode === "register") params.set("mode", "register");
+    const query = params.toString();
+    const capability = options.capability
+      ? `#continuation=${encodeURIComponent(`${options.capability.continuationId}.${options.capability.continuationToken}`)}`
+      : "";
+    window.location.href = `${query ? `auth.html?${query}` : "auth.html"}${capability}`;
+  }
+
+  function refreshRenderedHeader() {
+    const header = document.querySelector("header.nav");
+    const navActions = header?.querySelector(".nav-actions");
+    if (!header || !navActions) return;
+    const shellContext = getShellContext();
+    navActions.innerHTML = `${shouldShowSavedShortcut(shellContext) ? renderSavedShortcut() : ""}${renderAccountMenu({ dataset: {} })}`;
+    initAccountMenus();
+  }
+
+  async function loadRuntimeAuthState() {
+    try {
+      const response = await fetch("/api/v1/me", {
+        method: "GET",
+        credentials: "same-origin",
+        cache: "no-store",
+        headers: { Accept: "application/json" },
+      });
+      const payload = await response.json().catch(() => null);
+      const actor = response.ok ? payload?.data : null;
+      const role = actor?.activeRole;
+      const allowedRole = ["student", "school_staff", "cuac_ops", "cuac_admin"].includes(role);
+      runtimeAuthState = actor?.actorUserId && allowedRole
+        ? {
+            resolved: true,
+            authState: "signed-in",
+            role,
+            surface: runtimeSurface(role, actor.selectedSurface),
+            tenantSchoolId: actor.tenantSchoolId || null,
+          }
+        : { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null };
+    } catch {
+      runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null };
+    }
+
+    refreshRenderedHeader();
+    initProtectedStudentPage();
+    initProtectedRolePage();
+    return runtimeAuthState;
+  }
+
+  function showSignInRequired(labelOrOptions = "Use this feature", maybeOptions = {}) {
+    const options = labelOrOptions && typeof labelOrOptions === "object" ? labelOrOptions : maybeOptions;
+    if (authNavigationPending) return;
+    authNavigationPending = true;
+    void (async () => {
+      let capability = null;
+      const continuationRequest = continuationRequestFor(options);
+      if (continuationRequest) {
+        try {
+          capability = await createServerContinuation(continuationRequest);
+        } catch {
+          capability = null;
+        }
+      }
+      navigateToAuthPage({
+        capability,
+        mode: options.mode,
+        selectedRole: options.requiredRole || options.role,
+      });
+    })();
+  }
+
+  function requireSignedIn(label = "Use this feature", afterSignIn) {
+    if (getShellContext().authState === "signed-in") return true;
+    const options = typeof afterSignIn === "object" && afterSignIn ? afterSignIn : {};
+    showSignInRequired(label, options);
+    return false;
+  }
+
+  function isStudentSignedIn() {
+    const shellContext = getShellContext();
+    return shellContext.authState === "signed-in" && shellContext.role === "student";
+  }
+
+  function requireStudentSignedIn(label = "Use this feature", afterSignIn) {
+    if (isStudentSignedIn()) return true;
+    const options = typeof afterSignIn === "object" && afterSignIn ? afterSignIn : {};
+    showSignInRequired(label, { ...options, role: "student" });
+    return false;
+  }
+
+  function initProtectedStudentLinks() {
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest("a[href]");
+      if (!link) return;
+      if (currentRouteName() === "auth.html") return;
+      const route = routeNameFromHref(link.getAttribute("href") || "");
+      if (!protectedStudentRoutes.has(route)) return;
+      if (isStudentSignedIn()) return;
+      const href = link.href;
+      event.preventDefault();
+      if (!runtimeAuthState.resolved) {
+        void runtimeAuthReadyPromise.then(() => {
+          if (isStudentSignedIn()) window.location.assign(href);
+          else showSignInRequired(link.textContent.trim() || "Open student workspace", { requiredRole: "student", returnUrl: href });
+        });
+        return;
+      }
+      showSignInRequired(link.textContent.trim() || "Open student workspace", { requiredRole: "student", returnUrl: href });
+    });
+  }
+
+  function initProtectedStudentPage() {
+    const route = currentRouteName();
+    if (!protectedStudentRoutes.has(route)) return;
+    if (!runtimeAuthState.resolved) return;
+    const shellContext = getShellContext();
+    if (shellContext.surface !== "authenticated-student") return;
+    if (isStudentSignedIn()) return;
+    window.setTimeout(() => {
+      if (isStudentSignedIn() || currentRouteName() === "auth.html") return;
+      showSignInRequired("Sign in to open your student workspace", { requiredRole: "student" });
+    }, 160);
+  }
+
+  function isRequiredRoleSignedIn(requiredRole) {
+    const shellContext = getShellContext();
+    if (shellContext.authState !== "signed-in") return false;
+    if (requiredRole === "cuac_ops") return ["cuac_ops", "cuac_admin"].includes(shellContext.role);
+    return shellContext.role === requiredRole;
+  }
+
+  function initProtectedRolePage() {
+    const route = currentRouteName();
+    const requirement = protectedRoleRoutes[route];
+    if (!requirement) return;
+    if (!runtimeAuthState.resolved) return;
+    if (isRequiredRoleSignedIn(requirement.role)) return;
+    window.setTimeout(() => {
+      if (isRequiredRoleSignedIn(requirement.role) || currentRouteName() === "auth.html") return;
+      showSignInRequired(requirement.title, { requiredRole: requirement.role });
+    }, 160);
+  }
+
+  function initAuthNavigationControls() {
+    document.addEventListener("click", (event) => {
+      const signInTrigger = event.target.closest("[data-cuac-sign-in-trigger]");
+      if (!signInTrigger) return;
+      event.preventDefault();
+      navigateToAuthPage();
+    });
+  }
+
+  function getAgentContextPolicy() {
+    const header = document.querySelector("[data-cuac-header]");
+    const routeContract = window.CuacDataClient?.getRouteContract?.(currentRouteName()) || {};
+    const shellContext = getShellContext(header || {});
+    return window.CuacDataClient?.getAgentContextPolicy?.({ authState: shellContext.authState, role: shellContext.role, surface: routeContract.surface }) || {
+      label: shellContext.authState === "signed-in" ? "Signed-in context" : "Guest page context",
+      retentionCopy: shellContext.authState === "signed-in" ? "Uses signed-in workspace context." : "Uses only this page while it is open.",
+      storage: shellContext.authState === "signed-in" ? "account" : "memory",
+      retention: shellContext.authState === "signed-in" ? "application-lifecycle" : "current-page-session",
+    };
+  }
+
+  function collectAgentEntityContext(sourceElement = null) {
+    const detailRoot = document.querySelector("[data-detail-root]");
+    const sourceHost = sourceElement?.closest?.("[data-entity-type], [data-detail-root], [data-choice], [data-saved-item], [data-school-status]");
+    const entityHost = sourceHost || (detailRoot?.dataset.detailEntityType ? detailRoot : null);
+    const dataset = entityHost?.dataset || {};
+    const entityType =
+      dataset.entityType ||
+      dataset.detailEntityType ||
+      (dataset.programId ? "SchoolProgram" : dataset.schoolId ? "School" : dataset.noticeId ? "Notification" : "");
+    const entityId = dataset.entityId || dataset.detailEntityId || dataset.programId || dataset.schoolId || dataset.noticeId || dataset.choice || "";
+    const sourceModel = dataset.sourceModel || dataset.detailSourceModel || "";
+    return {
+      entityType,
+      entityId,
+      sourceModel,
+      noticeId: dataset.noticeId || "",
+      schoolId: dataset.schoolId || "",
+      programId: dataset.programId || "",
+      school: dataset.school || dataset.schoolStatus || "",
+      program: dataset.program || dataset.programName || "",
+    };
+  }
+
+  function collectAgentInvocationContext(sourceElement = null, prompt = "") {
+    const header = document.querySelector("[data-cuac-header]");
+    const route = currentRouteName();
+    const routeContract = window.CuacDataClient?.getRouteContract?.(route) || {};
+    const shellContext = getShellContext(header || {});
+    const contextPolicy = getAgentContextPolicy();
+    return {
+      prompt,
+      route,
+      agentMode: document.body.dataset.agentMode || "",
+      surface: shellContext.surface || routeContract.surface || "",
+      authState: shellContext.authState || "",
+      role: shellContext.role || "",
+      contextPolicy,
+      entity: collectAgentEntityContext(sourceElement),
+    };
+  }
+
+  function readAgentContextStore(storage, key) {
+    if (!storage || !key) return null;
+    try {
+      return JSON.parse(storage.getItem(key) || "null");
+    } catch {
+      return null;
+    }
+  }
+
+  function writeAgentContextStore(storage, key, value) {
+    if (!storage || !key) return;
+    try {
+      storage.setItem(key, JSON.stringify(value));
+    } catch {
+      // Storage may be unavailable in private or restricted browser contexts.
+    }
+  }
+
+  function persistAgentInvocationContext(context = {}) {
+    const policy = context.contextPolicy || {};
+    const key = policy.storageKey || (policy.storage === "account" ? "cuacStudentAgentMemory" : "cuacGuestAgentPageContext");
+    const storage = policy.storage === "account" || policy.storage === "internal-audit" ? window.localStorage : window.sessionStorage;
+    const previous = readAgentContextStore(storage, key) || {};
+    const entry = {
+      prompt: context.prompt || "",
+      route: context.route || "",
+      surface: context.surface || "",
+      role: context.role || "",
+      authState: context.authState || "",
+      retention: policy.retention || "",
+      storage: policy.storage || "",
+      entity: context.entity || {},
+      createdAt: new Date().toISOString(),
+    };
+    writeAgentContextStore(storage, key, {
+      status: policy.storage === "account" ? "active" : "session-active",
+      retention: policy.retention || "",
+      storage: policy.storage || "",
+      storageKey: key,
+      updatedAt: entry.createdAt,
+      entries: [entry, ...(Array.isArray(previous.entries) ? previous.entries : [])].slice(0, 12),
+    });
+  }
+
   function renderAgentShell() {
     if (document.body.dataset.agentMode === "off") return;
     if (document.querySelector("[data-cuac-agent-shell]")) return;
     const agentMode = document.body.dataset.agentMode || "";
+    const contextPolicy = getAgentContextPolicy();
     const isScholarshipMode = agentMode === "scholarships";
     const isCitiesMode = agentMode === "cities";
     const isGuidesMode = agentMode === "guides";
     const isHubMode = agentMode === "hub";
+    const isFavouritesMode = agentMode === "favourites";
     const isApplicationMode = agentMode === "application";
+    const isSchoolMode = agentMode === "school";
     const panelCopy = isApplicationMode
       ? {
           body: "How your selected schools and programs are being organized into a clearer China application set.",
           goal: "Organize my China application choices by risk, deadline, and document effort",
-          steps: [
-            [icons.intent, "Read selected choices", "Use saved programs, universities, cities, intake timing, tuition, language route, and source status."],
-            [icons.search, "Rank application roles", "Separate main route, safer backup, funding-sensitive option, and choices that need more checking."],
-            [icons.shield, "Find shared blockers", "Group common documents first, then program-specific proof, scholarship forms, and deadline risks."],
-            [icons.city, "Check China context", "Compare city cost, campus route, funding path, and arrival timing before submission."],
-            [icons.arrow, "Suggest next action", "Return the smallest useful action: confirm order, add choice, prepare document, or ask an adviser."],
-          ],
-        }
+        steps: [
+          [icons.intent, "Read selected choices", "Use saved programs, universities, cities, intake timing, tuition, language route, and official detail checks."],
+          [icons.search, "Rank application roles", "Separate main route, safer backup, funding-sensitive option, and choices that need more checking."],
+          [icons.shield, "Check shareable info", "Confirm contact, study profile, academic summary, and consent before schools receive the record."],
+          [icons.city, "Calculate fee", "First school included; each additional school uses the configured extra-school fee."],
+          [icons.arrow, "Send to school portals", "After payment or free confirmation, schools receive the record and contact the student directly."],
+        ],
+      }
       : isHubMode
       ? {
           body: "How your Hub context is being turned into one clearer next action.",
           goal: "Check which saved route is most realistic",
           steps: [
             [icons.intent, "Read Hub context", "Use saved programs, onboarding profile, deadline, and document readiness signals."],
-            [icons.search, "Compare shortlist", "Look across program, city, tuition, language route, source status, and deadline."],
+            [icons.search, "Compare shortlist", "Look across program, city, tuition, language route, official details, and deadline."],
             [icons.shield, "Find blockers", "Identify missing proof, translation, scholarship timing, and program-specific risks."],
             [icons.city, "Balance alternatives", "Check safer cities, lower document burden, and still-open routes."],
             [icons.arrow, "Prepare next action", "Return a concise route, checklist, or page action the student can inspect."],
           ],
         }
+      : isFavouritesMode
+      ? {
+          body: "How your saved programs, universities, scholarships, cities, and guides are becoming application-ready routes.",
+          goal: "Review my saved routes",
+          steps: [
+            [icons.intent, "Read saved items", "Separate concrete program routes from university, scholarship, city, and guide interests."],
+            [icons.search, "Rank route fit", "Compare deadline, tuition, language route, official details, and document effort."],
+            [icons.shield, "Find blockers", "Flag items that need scholarship, language, deadline, or document checks."],
+            [icons.city, "Connect context", "Use saved cities and scholarships to explain budget and funding-sensitive routes."],
+            [icons.arrow, "Prepare next action", "Suggest shortlist, compare, checklist, or application-set actions."],
+          ],
+        }
+      : isSchoolMode
+        ? {
+            body: "How this school tenant queue is being summarized and prepared for staff follow-up.",
+            goal: "Summarize this school's CUAC application queue",
+            steps: [
+              [icons.intent, "Read tenant queue", "Use only this school's visible CUAC records, filters, status, owner, and priority fields."],
+              [icons.search, "Summarize analytics", "Look at program demand, source mix, funding signals, country mix, and pipeline status."],
+              [icons.shield, "Protect scope", "Do not reveal other school choices, student private memory, or cross-tenant data."],
+              [icons.account, "Prepare staff action", "Draft contact steps, copy request templates, or mark selected records after confirmation."],
+              [icons.arrow, "Audit sensitive actions", "Exports and bulk updates stay tenant-scoped and high-risk actions require confirmation."],
+            ],
+          }
       : isScholarshipMode
       ? {
           body: "How your funding goal is being turned into scholarship routes.",
@@ -621,6 +1234,10 @@
             <button class="cuac-agent-close" type="button" data-cuac-agent-close aria-label="Collapse agent panel">${icons.close}</button>
           </div>
           <div class="cuac-agent-panel-body">
+            <div class="cuac-agent-context" data-agent-context-policy data-agent-context-retention="${escapeHTML(contextPolicy.retention || "")}" data-agent-context-storage="${escapeHTML(contextPolicy.storage || "")}">
+              <strong>${escapeHTML(contextPolicy.label || "Agent context")}</strong>
+              <span>${escapeHTML(contextPolicy.retentionCopy || "")}</span>
+            </div>
             <div class="cuac-agent-query">
               <strong>Current goal</strong>
               <span data-cuac-agent-query>${panelCopy.goal}</span>
@@ -647,7 +1264,7 @@
           <div class="cuac-agent-composer" data-cuac-agent-composer>
             <form class="cuac-agent-form" data-cuac-agent-form>
               <div class="cuac-scenario-picker" data-agent-scenario-picker>
-                <button class="cuac-scenario-trigger" type="button" data-agent-scenario-trigger aria-expanded="false" aria-label="Choose a demo Agent scenario">
+                <button class="cuac-scenario-trigger" type="button" data-agent-scenario-trigger aria-expanded="false" aria-label="Choose an Agent scenario">
                   ${icons.spark}
                   <span>Scenarios</span>
                 </button>
@@ -680,6 +1297,7 @@
     const results = document.querySelector("[data-cuac-agent-results]");
     const actionLog = document.querySelector("[data-cuac-agent-log]");
     const primaryPlanner = document.querySelector("main [data-planner-form]");
+    const composerAvoidZones = Array.from(document.querySelectorAll("[data-agent-composer-avoid]"));
     const scenarioPicker = document.querySelector("[data-agent-scenario-picker]");
     const scenarioTrigger = document.querySelector("[data-agent-scenario-trigger]");
     const scenarioMenu = document.querySelector("[data-agent-scenario-menu]");
@@ -689,7 +1307,9 @@
     let nearPageEnd = false;
     let primaryPlannerVisible = false;
     let beforePrimaryPlanner = false;
+    let composerAvoidVisible = false;
     let actionSequence = 0;
+    let activeAgentContext = null;
 
     function autoSize(input) {
       input.style.height = "auto";
@@ -732,14 +1352,21 @@
       }
       composer.classList.toggle(
         "footer-hidden",
-        !composer.classList.contains("in-panel") && (footerVisible || nearPageEnd || primaryPlannerVisible || beforePrimaryPlanner),
+        !composer.classList.contains("in-panel") && (footerVisible || nearPageEnd || primaryPlannerVisible || beforePrimaryPlanner || composerAvoidVisible),
       );
     }
 
-    function runAgent(value) {
+    function runAgent(value, sourceElement = null) {
       hasRun = true;
+      activeAgentContext = collectAgentInvocationContext(sourceElement, value);
+      persistAgentInvocationContext(activeAgentContext);
       if (query) query.textContent = value;
       if (results) {
+        results.dataset.agentEntityType = activeAgentContext.entity.entityType || "";
+        results.dataset.agentEntityId = activeAgentContext.entity.entityId || "";
+        results.dataset.agentSourceModel = activeAgentContext.entity.sourceModel || "";
+        results.dataset.agentContextRetention = activeAgentContext.contextPolicy.retention || "";
+        results.dataset.agentContextStorage = activeAgentContext.contextPolicy.storage || "";
         results.innerHTML = `
           <div class="cuac-agent-working">
             <span></span>
@@ -766,14 +1393,26 @@
       }, Math.max(820, steps.length * 180 + 160));
     }
 
+    function launchAgentPrompt(prompt, sourceElement = null) {
+      const value = String(prompt || "").trim();
+      if (!value) return;
+      sync(value);
+      runAgent(value, sourceElement);
+      if (document.activeElement instanceof HTMLElement && composer?.contains(document.activeElement)) {
+        document.activeElement.blur();
+      }
+    }
+
     function fallbackAgentAction(actionId) {
       const targets = {
         "save-program-shortlist": "programs.html",
         "compare-routes": "programs.html",
         "apply-smart-filters": "programs.html",
-        "open-choice-modal": "application.html",
+        "open-choice-modal": "application.html#add-choice",
         "prefill-choice": "application.html",
         "confirm-choice-order": "application.html",
+        "review-fee": "application.html",
+        "submit-application": "application.html",
         "save-checklist": "guides.html#documents",
         "compare-funding": "scholarships.html",
         "save-cost-estimate": "cities.html",
@@ -794,7 +1433,7 @@
       }
       const currentRequest = ++requestId;
       sync(value);
-      runAgent(value);
+      runAgent(value, event.submitter || event.target);
       if (document.activeElement instanceof HTMLElement && composer?.contains(document.activeElement)) {
         document.activeElement.blur();
       }
@@ -851,6 +1490,25 @@
       if (event.key === "Escape") setScenarioMenu(false);
     });
 
+    document.addEventListener("click", (event) => {
+      const promptTrigger = event.target.closest("[data-agent-prompt]");
+      if (!promptTrigger || document.body.dataset.agentMode === "off") return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (promptTrigger.closest("[data-choice-modal]")) {
+        promptTrigger.closest("[data-choice-modal]")?.classList.remove("open");
+        promptTrigger.closest("[data-choice-modal]")?.setAttribute("aria-hidden", "true");
+        promptTrigger.closest("[data-choice-modal]")?.setAttribute("inert", "");
+      }
+      launchAgentPrompt(promptTrigger.dataset.agentPrompt, promptTrigger);
+    });
+
+    window.CUAC = {
+      ...(window.CUAC || {}),
+      openAgentPrompt: launchAgentPrompt,
+      collectAgentContext: collectAgentInvocationContext,
+    };
+
     forms.forEach((form) => form.addEventListener("submit", submit));
     document.querySelectorAll("[data-cuac-agent-close]").forEach((button) => {
       button.addEventListener("click", () => setPanel(false));
@@ -868,14 +1526,75 @@
       if (!action || !results) return;
       event.preventDefault();
       const actionId = action.dataset.agentAction || "";
-      const label = action.textContent.trim();
+      const label = action.dataset.agentLabel || action.textContent.trim();
       const actionRunId = `agent-action-${++actionSequence}`;
       let undoToken = null;
+      const shellContext = getShellContext();
+      const actionGuard = window.CuacActionRegistry?.canRunAction?.({
+        uiAction: actionId,
+        authState: shellContext.authState,
+        surface: shellContext.surface,
+        role: shellContext.role,
+        route: currentRouteName(),
+      });
+      if (actionGuard && !actionGuard.allowed) {
+        const blockedCopy =
+          actionGuard.reason === "sign-in-required"
+            ? "Sign in to save, apply, or keep this Agent result after the page closes."
+            : `Action policy: ${actionGuard.reason}.`;
+        if (actionLog) {
+          const item = document.createElement("div");
+          item.className = "cuac-agent-log-item blocked";
+          item.dataset.agentRunId = actionRunId;
+          item.innerHTML = `
+            <span>Blocked</span>
+            <strong>${escapeHTML(label)}</strong>
+            <small>${escapeHTML(blockedCopy)}</small>
+          `;
+          actionLog.prepend(item);
+        }
+        if (actionGuard.reason === "sign-in-required") {
+          showSignInRequired(label, {
+            requiredRole: "student",
+            actionKey: actionGuard?.action?.actionKey || "",
+          });
+        }
+        return;
+      }
+      if (actionGuard?.action?.confirmationRequired && action.dataset.agentConfirmed !== "true") {
+        const card = document.createElement("div");
+        card.className = "cuac-agent-confirmation";
+        card.dataset.agentConfirmation = actionRunId;
+        card.innerHTML = `
+          <span>${escapeHTML((actionGuard.action.riskLevel || "high").toUpperCase())} risk action</span>
+          <strong>${escapeHTML(label)}</strong>
+          <small>Confirm before CUAC changes school, application, payment, export, or internal audit state. Audit event: ${escapeHTML(actionGuard.action.auditEvent || actionGuard.action.actionKey)}.</small>
+          <div>
+            <button class="cuac-agent-action primary" type="button" data-agent-action="${escapeHTML(actionId)}" data-agent-confirmed="true" data-agent-label="${escapeHTML(label)}">Confirm action</button>
+            <button class="cuac-agent-confirm-cancel" type="button" data-agent-confirm-cancel>Cancel</button>
+          </div>
+        `;
+        results.prepend(card);
+        window.setTimeout(() => card.classList.add("visible"), 20);
+        return;
+      }
+      if (action.dataset.agentConfirmed === "true") {
+        document.querySelectorAll(`[data-agent-confirmation]`).forEach((card) => card.remove());
+      }
       const agentActionEvent = new CustomEvent("cuac:agent-action", {
         bubbles: true,
         cancelable: true,
         detail: {
           action: actionId,
+          actionKey: actionGuard?.action?.actionKey || "",
+          riskLevel: actionGuard?.action?.riskLevel || "unknown",
+          confirmationRequired: Boolean(actionGuard?.action?.confirmationRequired),
+          context: activeAgentContext,
+          sourceContext: activeAgentContext?.entity || null,
+          shellContext: activeAgentContext
+            ? { authState: activeAgentContext.authState, role: activeAgentContext.role, surface: activeAgentContext.surface, route: activeAgentContext.route }
+            : null,
+          contextPolicy: activeAgentContext?.contextPolicy || null,
           label,
           runId: actionRunId,
           setUndo(token) {
@@ -893,7 +1612,7 @@
         item.innerHTML = `
           <span>${statusText}</span>
           <strong>${escapeHTML(label)}</strong>
-          <small>${agentActionEvent.defaultPrevented ? "Current page updated locally." : "Waiting for a page that can handle this action."}</small>
+          <small>${agentActionEvent.defaultPrevented ? "Current page updated." : "Waiting for a page that can handle this action."}</small>
         `;
         actionLog.prepend(item);
       }
@@ -904,11 +1623,16 @@
       if (undoToken) toast.dataset.agentUndo = JSON.stringify(undoToken);
       toast.innerHTML = `
         <strong>${escapeHTML(label)}</strong>
-        <span>${agentActionEvent.defaultPrevented ? "Demo action applied to the current page." : "Demo action prepared locally."} Real submission and persistence are intentionally not connected.</span>
+        <span>${agentActionEvent.defaultPrevented ? "Action applied to the current page." : "Action prepared for the current page."}</span>
         <button type="button" data-agent-toast-undo>Undo</button>
       `;
       results.prepend(toast);
       window.setTimeout(() => toast.classList.add("visible"), 20);
+    });
+    document.addEventListener("click", (event) => {
+      const cancel = event.target.closest("[data-agent-confirm-cancel]");
+      if (!cancel) return;
+      cancel.closest("[data-agent-confirmation]")?.remove();
     });
     document.addEventListener("click", (event) => {
       const undoButton = event.target.closest("[data-agent-toast-undo]");
@@ -961,6 +1685,17 @@
       );
       plannerObserver.observe(primaryPlanner);
     }
+
+    if ("IntersectionObserver" in window && composerAvoidZones.length) {
+      const avoidObserver = new IntersectionObserver(
+        (entries) => {
+          composerAvoidVisible = entries.some((entry) => entry.isIntersecting);
+          updateComposerVisibility();
+        },
+        { rootMargin: "-44% 0px -22% 0px", threshold: 0.01 },
+      );
+      composerAvoidZones.forEach((zone) => avoidObserver.observe(zone));
+    }
     window.addEventListener("scroll", updateComposerVisibility, { passive: true });
     window.addEventListener("resize", updateComposerVisibility);
     updateComposerVisibility();
@@ -999,8 +1734,68 @@
     });
   }
 
+  function initAccountMenus() {
+    const menus = Array.from(document.querySelectorAll("[data-account-menu]"));
+    if (!menus.length) return;
+
+    function setMenu(menu, open) {
+      const trigger = menu.querySelector("[data-account-menu-trigger]");
+      const popover = menu.querySelector("[data-account-menu-popover]");
+      if (!trigger || !popover) return;
+      trigger.setAttribute("aria-expanded", open ? "true" : "false");
+      popover.hidden = !open;
+      menu.classList.toggle("open", open);
+    }
+
+    menus.forEach((menu) => {
+      const trigger = menu.querySelector("[data-account-menu-trigger]");
+      trigger?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const open = trigger.getAttribute("aria-expanded") !== "true";
+        menus.forEach((item) => setMenu(item, false));
+        setMenu(menu, open);
+      });
+      menu.querySelector(".account-signout")?.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const link = event.currentTarget;
+        link.setAttribute("aria-disabled", "true");
+        try {
+          const response = await fetch("/api/v1/auth/logout", {
+            method: "POST",
+            credentials: "same-origin",
+            headers: { Accept: "application/json", "Content-Type": "application/json" },
+            body: "{}",
+          });
+          if (!response.ok) throw new Error("Sign out failed.");
+          runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null };
+          window.location.assign("auth.html");
+        } catch {
+          link.removeAttribute("aria-disabled");
+          const label = link.querySelector("span");
+          if (label) label.textContent = "Try sign out again";
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      menus.forEach((menu) => {
+        if (!menu.contains(event.target)) setMenu(menu, false);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      menus.forEach((menu) => setMenu(menu, false));
+    });
+  }
+
   document.querySelectorAll("[data-cuac-header]").forEach(renderHeader);
   document.querySelectorAll("[data-cuac-footer]").forEach(renderFooter);
+  window.CUAC = { ...(window.CUAC || {}), requireSignedIn, requireStudentSignedIn, showSignInRequired, dataAttributeSelector, isSignedIn: () => getShellContext().authState === "signed-in", isStudentSignedIn, authReady: () => runtimeAuthReadyPromise };
+  initProtectedStudentLinks();
+  initAuthNavigationControls();
+  initAccountMenus();
+  const runtimeAuthReadyPromise = loadRuntimeAuthState();
   initAgentShell();
   window.CUAC = { ...(window.CUAC || {}), reveal: initPageReveal };
   initPageReveal();

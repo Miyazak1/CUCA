@@ -1,0 +1,3 @@
+ALTER TABLE "application_choices" ADD COLUMN "admission_route_key" text;--> statement-breakpoint
+CREATE INDEX "application_choices_intake_route_idx" ON "application_choices" USING btree ("program_intake_id","admission_route_key") WHERE "application_choices"."removed_at" is null and "application_choices"."admission_route_key" is not null;--> statement-breakpoint
+ALTER TABLE "application_choices" ADD CONSTRAINT "application_choices_admission_route_check" CHECK ("application_choices"."admission_route_key" is null or "application_choices"."admission_route_key" ~ '^[a-z][a-z0-9_-]{0,63}$');

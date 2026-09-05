@@ -1,0 +1,2 @@
+ALTER TABLE "agent_student_memory_settings" ADD COLUMN "revision" integer DEFAULT 1 NOT NULL;--> statement-breakpoint
+ALTER TABLE "agent_student_memory_settings" ADD CONSTRAINT "agent_student_memory_settings_revision_check" CHECK ("agent_student_memory_settings"."revision" > 0);

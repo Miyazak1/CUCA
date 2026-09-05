@@ -3,15 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CUAC Account Setup</title>
+    <title>CUAC | Account setup</title>
+    <link rel="stylesheet" href="shared-shell.css" />
     <link rel="stylesheet" href="onboarding.css" />
   </head>
-  <body>
+  <body data-agent-mode="onboarding" data-auth-state="signed-in">
+    <div data-cuac-header data-active="auth" data-auth-state="signed-in" data-note="CUAC Setup:" data-note-detail="personalize your China study workspace"></div>
     <main class="onboarding-shell" aria-label="CUAC account setup">
-      <a class="brand" href="home-v3.html" aria-label="CUAC home"><span>CU</span><strong>CUAC</strong></a>
       <a class="skip-link" href="hub.html">Skip for now</a>
 
-      <aside class="context-panel" aria-label="Setup preview">
+      <aside class="context-panel" aria-label="Setup summary">
         <div class="context-card">
           <span class="context-mark">China route</span>
           <h1>Build a Hub that starts with your real study goal.</h1>
@@ -53,7 +54,7 @@
               <label><span>Current country or region</span><select data-field="currentCountry"><option>Thailand</option><option>Indonesia</option><option>Malaysia</option><option>China</option><option>United States</option><option>Other</option></select></label>
               <label><span>Current education stage</span><select data-field="stage"><option>High school / Grade 12</option><option>Undergraduate student</option><option>Undergraduate graduate</option><option>Master student / graduate</option><option>Other</option></select></label>
             </div>
-            <p class="microcopy">We do not need your address or passport number in this preview.</p>
+            <p class="microcopy">We do not need your address or passport number for this setup.</p>
           </section>
 
           <section class="step" data-step="2">
@@ -138,7 +139,7 @@
                 <button type="button">Documents</button>
                 <button type="button">Scholarships</button>
                 <button type="button">City cost</button>
-                <button type="button">Ask Agent</button>
+                <button type="button">Next actions</button>
               </div>
             </div>
           </section>
@@ -155,6 +156,10 @@
         </form>
       </section>
     </main>
+    <div data-cuac-footer></div>
+    <script src="cuac-data.js"></script>
+    <script src="cuac-actions.js"></script>
+    <script src="shared-shell.js"></script>
     <script src="onboarding.js"></script>
   </body>
 </html>

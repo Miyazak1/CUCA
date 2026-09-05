@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | Favourites</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="favourites.css" />
+  </head>
+  <body data-agent-mode="favourites" data-auth-state="signed-in" data-agent-role="student">
+    <div class="page favourites-page">
+      <div data-cuac-header data-active="favourites" data-note="CUAC Favourites:" data-note-detail="organize saved routes and context"></div>
+
+      <main>
+        <section class="fav-hero reveal" aria-label="Favourites overview">
+          <div class="fav-hero-copy">
+            <a class="back-link" href="hub.html">Back to Hub</a>
+            <span class="fav-rule"></span>
+            <p class="eyebrow">Saved</p>
+            <h1>Favourites</h1>
+            <p class="hero-lead">Shortlist saved programs. Use context when needed.</p>
+          </div>
+        </section>
+
+        <section class="favourite-add reveal" aria-label="Add favourite">
+          <div class="favourite-add-copy">
+            <span class="module-kicker">Save more</span>
+            <h2>Add to favourites</h2>
+            <p>Choose what you want to save.</p>
+          </div>
+          <button class="add-favourite-trigger" type="button" data-add-favourite-toggle aria-expanded="false" aria-controls="favourite-add-options">
+            <span data-fav-icon="heart"></span>
+            Add favourite
+          </button>
+          <div class="favourite-add-options" id="favourite-add-options" data-add-favourite-options hidden>
+            <a class="add-type-program" href="programs.html">
+              <span data-fav-icon="program"></span>
+              <strong>Program</strong>
+              <small>School + program</small>
+            </a>
+            <a class="add-type-school" href="universities.html">
+              <span data-fav-icon="university"></span>
+              <strong>School</strong>
+              <small>University profile</small>
+            </a>
+            <a class="add-type-city" href="cities.html">
+              <span data-fav-icon="city"></span>
+              <strong>City</strong>
+              <small>Location context</small>
+            </a>
+            <a class="add-type-scholarship" href="scholarships.html">
+              <span data-fav-icon="scholarship"></span>
+              <strong>Scholarship</strong>
+              <small>Funding route</small>
+            </a>
+          </div>
+        </section>
+
+        <section class="shortlist-stage reveal" id="shortlist" aria-label="Course shortlist" data-agent-composer-avoid>
+          <div class="shortlist-stage-inner">
+            <article class="shortlist-panel">
+              <div class="section-head shortlist-heading">
+                <div>
+                  <h3>Shortlist</h3>
+                  <p class="section-copy">You can add up to 6 programs.</p>
+                </div>
+                <span class="source-pill" data-program-count>0 saved programs</span>
+              </div>
+              <div class="application-set" data-application-set>
+                <div class="application-set-head">
+                  <div>
+                    <h4>Your choices</h4>
+                  </div>
+                  <span class="set-count"><strong data-summary="shortlist">0</strong>/6</span>
+                </div>
+                <div class="application-set-slots">
+                  <div class="application-set-list" data-application-set-list></div>
+                </div>
+              </div>
+              <div class="candidate-head" id="saved-programs">
+                <h4>Saved programs</h4>
+              </div>
+              <div class="shortlist-list" data-shortlist-list></div>
+              <div class="shortlist-footer">
+                <a class="primary-action" href="application.html">Open application center</a>
+              </div>
+              <div class="agent-note" data-agent-page-note>
+                References stay saved until you choose a program.
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="collections reveal" id="collections" aria-label="Favourite collections">
+          <div class="section-head">
+            <div>
+              <span class="module-kicker">Collections</span>
+              <h2>Other favourites</h2>
+            </div>
+          </div>
+          <div class="collection-grid" data-collection-grid></div>
+        </section>
+
+        <section class="saved-browser reveal" id="saved-items" aria-label="Saved context browser" data-agent-composer-avoid>
+          <div class="section-head browser-head">
+            <div>
+              <span class="module-kicker">All</span>
+              <h2>Saved references</h2>
+            </div>
+            <div class="type-tabs" role="tablist" aria-label="Saved item filters">
+              <button class="active" type="button" role="tab" aria-selected="true" data-filter="all">All</button>
+              <button type="button" role="tab" aria-selected="false" data-filter="university">Universities</button>
+              <button type="button" role="tab" aria-selected="false" data-filter="scholarship">Scholarships</button>
+              <button type="button" role="tab" aria-selected="false" data-filter="city">Cities</button>
+              <button type="button" role="tab" aria-selected="false" data-filter="guide">Guides</button>
+            </div>
+          </div>
+          <div class="compare-tray" data-compare-tray></div>
+          <div class="saved-grid saved-grid-main" data-saved-grid></div>
+          <div class="saved-context" data-saved-context></div>
+          <div class="empty-state" data-empty-state>
+            <span data-fav-icon="heart"></span>
+            <h2>No saved references.</h2>
+            <p>Save a school, scholarship, city, or guide.</p>
+            <a class="primary-action" href="programs.html">Browse programs</a>
+          </div>
+        </section>
+      </main>
+
+      <div class="results-divider" aria-hidden="true"></div>
+      <div data-cuac-footer></div>
+    </div>
+
+    <script src="cuac-data.js"></script>
+    <script src="cuac-actions.js"></script>
+    <script src="shared-shell.js"></script>
+    <script src="favourites.js"></script>
+  </body>
+</html>

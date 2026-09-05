@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | Saved items</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="saved-workspace.css?v=20260904-api-v1" />
+  </head>
+  <body data-agent-mode="off">
+    <div class="page saved-page">
+      <div data-cuac-header data-active="favourites" data-note="CUAC Saved items:" data-note-detail="your current research list"></div>
+
+      <main class="saved-main">
+        <nav class="saved-breadcrumb" aria-label="Saved items breadcrumb">
+          <a href="hub.html">Hub</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Saved items</span>
+        </nav>
+
+        <header class="saved-heading">
+          <div>
+            <p class="saved-kicker">Student workspace</p>
+            <h1>Saved items</h1>
+            <p>Keep research notes beside the exact catalog records you saved.</p>
+          </div>
+          <nav class="saved-add-links" aria-label="Browse catalog">
+            <a href="programs.html">Programs</a>
+            <a href="universities.html">Universities</a>
+            <a href="scholarships.html">Scholarships</a>
+            <a href="cities.html">Cities</a>
+          </nav>
+        </header>
+
+        <section class="saved-toolbar" aria-label="Saved item filters">
+          <div class="saved-tabs" role="tablist" aria-label="Filter saved items">
+            <button class="is-active" type="button" role="tab" aria-selected="true" data-saved-filter="all">All</button>
+            <button type="button" role="tab" aria-selected="false" data-saved-filter="program">Programs</button>
+            <button type="button" role="tab" aria-selected="false" data-saved-filter="school">Universities</button>
+            <button type="button" role="tab" aria-selected="false" data-saved-filter="scholarship">Scholarships</button>
+            <button type="button" role="tab" aria-selected="false" data-saved-filter="city">Cities</button>
+          </div>
+          <p data-saved-summary>Loading saved items.</p>
+        </section>
+
+        <section class="saved-workspace" aria-live="polite" data-saved-view>
+          <p class="saved-loading" aria-busy="true">Loading your saved catalog records.</p>
+        </section>
+      </main>
+
+      <div data-cuac-footer></div>
+      <div class="saved-toast" role="status" data-saved-toast hidden></div>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="favourites-runtime.js?v=20260904-api-v1"></script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "generatedAt": "2026-09-01T00:00:00.000Z",
+  "cities": [
+    {
+      "slug": "local-north-city",
+      "nameEn": "North City (Local Fixture)",
+      "region": "Synthetic Region A",
+      "province": "Synthetic Province A",
+      "sourceUrl": "https://catalog.local.cuac.invalid/cities/north-city",
+      "sourceLabel": "Synthetic local-only fixture; never publish",
+      "sourceFieldLineage": { "nameEn": "fixture.city.name" },
+      "status": "active"
+    },
+    {
+      "slug": "local-harbor-city",
+      "nameEn": "Harbor City (Local Fixture)",
+      "region": "Synthetic Region B",
+      "province": "Synthetic Province B",
+      "sourceUrl": "https://catalog.local.cuac.invalid/cities/harbor-city",
+      "sourceLabel": "Synthetic local-only fixture; never publish",
+      "sourceFieldLineage": { "nameEn": "fixture.city.name" },
+      "status": "active"
+    }
+  ],
+  "schools": [
+    {
+      "slug": "local-north-university",
+      "nameEn": "North University (Local Fixture)",
+      "citySlug": "local-north-city",
+      "schoolType": "public",
+      "region": "Synthetic Region A",
+      "sourceUrl": "https://catalog.local.cuac.invalid/schools/north-university",
+      "sourceLabel": "Synthetic local-only fixture; never publish",
+      "sourceFieldLineage": { "nameEn": "fixture.school.name" },
+      "status": "active"
+    },
+    {
+      "slug": "local-harbor-institute",
+      "nameEn": "Harbor Institute of Technology (Local Fixture)",
+      "citySlug": "local-harbor-city",
+      "schoolType": "public",
+      "region": "Synthetic Region B",
+      "sourceUrl": "https://catalog.local.cuac.invalid/schools/harbor-institute",
+      "sourceLabel": "Synthetic local-only fixture; never publish",
+      "sourceFieldLineage": { "nameEn": "fixture.school.name" },
+      "status": "active"
+    }
+  ],
+  "programs": [
+    {
+      "slug": "local-north-computer-science",
+      "schoolSlug": "local-north-university",
+      "nameEn": "Computer Science (Local Fixture)",
+      "degreeLevel": "bachelor",
+      "teachingLanguage": "english",
+      "tuitionText": "Synthetic fee; not a published price",
+      "sourceUrl": "https://catalog.local.cuac.invalid/programs/computer-science",
+      "sourceLabel": "Synthetic local-only fixture; never publish",
+      "sourceFieldLineage": { "nameEn": "fixture.program.name" },
+      "status": "active"
+    },
+    {
+      "slug": "local-north-international-business",
+      "schoolSlug": "local-north-university",
+      "nameEn": "International Business (Local Fixture)",
+      "degreeLevel": "bachelor",
+      "teachingLanguage": "english",
+      "tuitionText": "Synthetic fee; not a published price",
+      "sourceUrl": "https://catalog.local.cuac.invalid/programs/international-business",
+      "sourceLabel": "Synthetic local-only fixture; never publish",
+      "sourceFieldLineage": { "nameEn": "fixture.program.name" },
+      "status": "active"
+    },
+    {
+      "slug": "local-harbor-data-engineering",
+      "schoolSlug": "local-harbor-institute",
+      "nameEn": "Data Engineering (Local Fixture)",
+      "degreeLevel": "bachelor",
+      "teachingLanguage": "english",
+      "tuitionText": "Synthetic fee; not a published price",
+      "sourceUrl": "https://catalog.local.cuac.invalid/programs/data-engineering",
+      "sourceLabel": "Synthetic local-only fixture; never publish",
+      "sourceFieldLineage": { "nameEn": "fixture.program.name" },
+      "status": "active"
+    }
+  ],
+  "scholarships": [
+    {
+      "slug": "local-north-program-scholarship",
+      "title": "North Program Scholarship (Local Fixture)",
+      "schoolSlug": "local-north-university",
+      "programSlug": "local-north-computer-science",
+      "providerName": "Synthetic Local Provider",
+      "fundingLevel": "partial",
+      "amountText": "Synthetic award; not a published offer",
+      "sourceUrl": "https://catalog.local.cuac.invalid/scholarships/north-program",
+      "sourceLabel": "Synthetic local-only fixture; never publish",
+      "sourceFieldLineage": { "title": "fixture.scholarship.title" },
+      "status": "active"
+    }
+  ]
+}

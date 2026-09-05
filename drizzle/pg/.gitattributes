@@ -1,0 +1,4 @@
+# Migration hashes depend on exact bytes, including historical line endings.
+*.sql -text
+meta/*.json -text
+_schema-baseline.json -text

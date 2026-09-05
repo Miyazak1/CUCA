@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CUAC Home v3</title>
+    <title>CUAC | Study in China</title>
     <link rel="stylesheet" href="shared-shell.css" />
     <link rel="stylesheet" href="home-v3.css" />
   </head>
-  <body>
+  <body data-agent-mode="home">
     <div class="page">
       <div data-cuac-header data-active="home" data-note="China admissions 2026:" data-note-detail="fall routes still open"></div>
 
@@ -35,7 +35,7 @@
 
         </section>
 
-        <section class="categories reveal" aria-label="Browse categories">
+        <section class="categories reveal" aria-label="Browse categories" data-home-categories>
           <a class="cat" href="programs.html">
             <span class="category-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
             <strong>Programs</strong><span>128 open</span>
@@ -121,7 +121,7 @@
                 <span>Start from the question that matters most, then narrow down programs and universities.</span>
               </div>
             </div>
-            <div class="route-list">
+            <div class="route-list" data-home-question-routes>
               <article class="path-card">
                 <span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22V8"/><path d="m5 12 7-7 7 7"/><path d="M5 22h14"/></svg></span>
                 <div><strong>Study in English</strong><p>Programs that do not require HSK first.</p></div>
@@ -165,7 +165,7 @@
               <h2>Open intakes</h2>
               <a href="programs.html?intake=late">View all</a>
             </div>
-            <div class="mini-programs">
+            <div class="mini-programs" data-home-open-intakes>
               <div class="program">
                 <div><strong>Computer Science MSc</strong><span>Zhejiang University · Hangzhou · English route</span></div>
                 <span class="pill">Oct 15</span>
@@ -186,7 +186,7 @@
               <h2>City snapshot</h2>
               <a href="cities.html">Explore</a>
             </div>
-            <div class="city-strip">
+            <div class="city-strip" data-home-city-snapshot>
               <div class="city"><div><strong>Hangzhou</strong><span>RMB 3.6k/mo</span></div></div>
               <div class="city"><div><strong>Beijing</strong><span>RMB 4.8k/mo</span></div></div>
               <div class="city"><div><strong>Shanghai</strong><span>RMB 5.2k/mo</span></div></div>
@@ -202,7 +202,7 @@
             </div>
             <a href="universities.html">Compare universities</a>
           </div>
-          <div class="provider-grid">
+          <div class="provider-grid" data-home-schools>
             <a class="provider-card" href="universities.html?q=Zhejiang%20University">
               <div class="provider-image"><img alt="Zhejiang University campus area" src="https://www.ehangzhou.gov.cn/img/attachement/jpg/site48/20250527/17483419485411.jpg" /></div>
               <span class="heart">♡</span>
@@ -257,7 +257,7 @@
               <h2>Keep your China options together</h2>
               <p>Save programs, compare cities, track intake dates, and prepare documents in one place.</p>
             </div>
-            <button class="primary" type="button">Create list</button>
+              <button class="primary" type="button" data-create-list>Create list</button>
           </div>
         </section>
 
@@ -299,11 +299,11 @@
           </div>
         </section>
 
-        <section class="dark-zone reveal" aria-label="Trust and source quality">
+        <section class="dark-zone reveal" aria-label="Admissions clarity">
           <div class="dark-zone-inner">
             <h2>Clear information beats admissions guesswork</h2>
             <div class="dark-grid">
-              <article class="dark-card"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3Z"/><path d="m9 12 2 2 4-5"/></svg></span><strong>Source status</strong><span>Separate verified details, estimates, and items still waiting for confirmation.</span></article>
+              <article class="dark-card"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3Z"/><path d="m9 12 2 2 4-5"/></svg></span><strong>Application-ready routes</strong><span>Separate useful application facts from items to confirm with the university.</span></article>
               <article class="dark-card"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg></span><strong>Exact dates</strong><span>Different universities and intakes need visible deadline and arrival timing.</span></article>
               <article class="dark-card"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></span><strong>Realistic funding</strong><span>Scholarship routes should never feel like guaranteed admission.</span></article>
               <article class="dark-card"><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg></span><strong>Adviser review</strong><span>Help students make better choices without promising acceptance.</span></article>
@@ -315,6 +315,8 @@
       </main>
 
     </div>
+    <script src="cuac-data.js"></script>
+    <script src="cuac-actions.js"></script>
     <script src="shared-shell.js"></script>
     <script src="home-v3.js"></script>
 </body>

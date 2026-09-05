@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | Billing</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="billing-workspace.css?v=20260904-api-v1" />
+  </head>
+  <body data-agent-mode="off">
+    <div class="page billing-page">
+      <div data-cuac-header data-active="hub" data-note="CUAC Billing:" data-note-detail="server-confirmed payment status"></div>
+
+      <main class="billing-main">
+        <nav class="billing-breadcrumb" aria-label="Billing breadcrumb">
+          <a href="application.html#payment">Application</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Billing</span>
+        </nav>
+
+        <header class="billing-heading">
+          <div>
+            <p class="billing-kicker">Billing record</p>
+            <h1>Payment status</h1>
+            <p>CUAC shows the status recorded by the payment service. Payment details are handled only by the hosted provider.</p>
+          </div>
+          <div class="billing-heading-actions">
+            <button class="billing-icon-button" type="button" data-refresh-billing aria-label="Refresh payment status" title="Refresh payment status">
+              <span aria-hidden="true">&#8635;</span>
+            </button>
+            <a class="billing-secondary-action" href="application.html#payment">Back to application</a>
+          </div>
+        </header>
+
+        <section class="billing-workspace" aria-live="polite" data-billing-view>
+          <p class="billing-loading" aria-busy="true">Checking the current invoice.</p>
+        </section>
+      </main>
+
+      <div data-cuac-footer></div>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="billing-runtime.js?v=20260904-api-v1"></script>
+  </body>
+</html>

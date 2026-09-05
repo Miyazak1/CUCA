@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | Notifications</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="notifications-workspace.css?v=20260904-api-v1" />
+  </head>
+  <body data-agent-mode="off">
+    <div class="page notifications-page">
+      <div data-cuac-header data-active="notifications" data-note="CUAC Notifications:" data-note-detail="act before deadlines become pressure"></div>
+
+      <main class="notifications-main">
+        <nav class="notifications-breadcrumb" aria-label="Notifications breadcrumb">
+          <a href="hub.html">Hub</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Notifications</span>
+        </nav>
+
+        <header class="notification-heading">
+          <div>
+            <span class="notification-kicker">Student account</span>
+            <h1>Notifications</h1>
+            <p>Review application, billing, document, funding, and account events recorded for this account.</p>
+          </div>
+          <a href="application.html">Open application</a>
+        </header>
+
+        <section class="notification-summary" aria-label="Notification summary">
+          <div class="notification-summary-intro">
+            <span class="module-kicker">Current status</span>
+            <h2 data-notification-summary-copy>Loading your account notifications.</h2>
+          </div>
+          <article><span>Unread</span><strong data-summary="action">0</strong></article>
+          <article><span>Deadlines</span><strong data-summary="deadlines">0</strong></article>
+          <article><span>Documents</span><strong data-summary="documents">0</strong></article>
+          <article><span>Billing</span><strong data-summary="billing">0</strong></article>
+        </section>
+
+        <div class="notification-layout">
+          <div class="notification-inbox">
+            <article class="priority-card" data-priority-card aria-label="Priority notification"></article>
+
+            <section class="notification-center" id="notification-list" aria-label="Notification list">
+              <div class="section-head">
+                <div>
+                  <span class="module-kicker">Inbox</span>
+                  <h2>Account events</h2>
+                </div>
+                <button class="text-action" type="button" data-mark-all-read>Mark all read</button>
+              </div>
+
+              <div class="notice-tabs" role="tablist" aria-label="Notification filters">
+                <button class="active" type="button" role="tab" aria-selected="true" data-filter="all">All</button>
+                <button type="button" role="tab" aria-selected="false" data-filter="action">Action needed</button>
+                <button type="button" role="tab" aria-selected="false" data-filter="deadline">Deadlines</button>
+                <button type="button" role="tab" aria-selected="false" data-filter="document">Documents</button>
+                <button type="button" role="tab" aria-selected="false" data-filter="funding">Funding</button>
+                <button type="button" role="tab" aria-selected="false" data-filter="billing">Billing</button>
+                <button type="button" role="tab" aria-selected="false" data-filter="security">Security</button>
+                <button type="button" role="tab" aria-selected="false" data-filter="update">Updates</button>
+              </div>
+
+              <div class="notification-list" data-notification-list aria-live="polite"></div>
+              <div class="empty-state" data-empty-state hidden>
+                <span class="notice-icon" data-notice-icon="done"></span>
+                <h2>No notifications in this view.</h2>
+                <p>New server-recorded account events will appear here.</p>
+              </div>
+            </section>
+          </div>
+
+          <aside class="quiet-card" aria-label="Notification preferences">
+            <div>
+              <span class="module-kicker">Delivery settings</span>
+              <h2>In-app topics</h2>
+            </div>
+            <label><input type="checkbox" data-notification-topic="application_updates" /> Application updates</label>
+            <label><input type="checkbox" data-notification-topic="billing_updates" /> Billing updates</label>
+            <label><input type="checkbox" data-notification-topic="deadline_reminders" /> Deadlines</label>
+            <label><input type="checkbox" data-notification-topic="document_reminders" /> Document reminders</label>
+            <label><input type="checkbox" data-notification-topic="funding_updates" /> Funding updates</label>
+            <label><input type="checkbox" checked disabled data-notification-topic="account_security" /> Account security</label>
+            <p data-quiet-summary>Loading account-level delivery preferences.</p>
+            <a class="text-action" href="preferences.html#notifications">Open notification preferences</a>
+          </aside>
+        </div>
+      </main>
+
+      <div data-cuac-footer></div>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="notifications-runtime.js?v=20260904-api-v1"></script>
+  </body>
+</html>

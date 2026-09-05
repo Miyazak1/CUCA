@@ -1,0 +1,1788 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | Archived design lab</title>
+    <style>
+      :root {
+        --bg: #f4f7fa;
+        --paper: #ffffff;
+        --paper-2: #f9fbfc;
+        --ink: #10242d;
+        --muted: #526a75;
+        --soft: #718690;
+        --line: #d8e4ea;
+        --line-strong: #b8cbd4;
+        --brand: #00756f;
+        --brand-dark: #005e5a;
+        --brand-soft: #dff4f1;
+        --blue: #246bfe;
+        --blue-dark: #164ec7;
+        --blue-soft: #e7efff;
+        --yellow: #b7791f;
+        --yellow-soft: #fff3d6;
+        --red: #c2412d;
+        --red-soft: #ffe7e1;
+        --green: #168a4a;
+        --green-soft: #e4f7ec;
+        --gold: #b98a24;
+        --gold-soft: #fff4d8;
+        --sky-soft: #eaf7ff;
+        --shadow-sm: 0 10px 24px rgba(16, 36, 45, 0.06);
+        --shadow-md: 0 18px 44px rgba(16, 36, 45, 0.09);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      button {
+        border: 0;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      button:disabled,
+      .is-disabled {
+        cursor: not-allowed;
+        opacity: 0.58;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      .lab-tabs {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(16px);
+      }
+
+      .lab-tabs a {
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper);
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      body.capture .lab-tabs {
+        display: none;
+      }
+
+      body.capture .screen {
+        display: none;
+        padding: 0;
+      }
+
+      body.capture .screen.is-capture-target {
+        display: block;
+      }
+
+      body.capture .frame {
+        margin-bottom: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .screen {
+        padding: 28px 24px 70px;
+      }
+
+      .frame {
+        overflow: hidden;
+        margin: 0 auto 52px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--paper);
+        box-shadow: 0 24px 70px rgba(16, 36, 45, 0.14);
+      }
+
+      .desktop {
+        max-width: 1440px;
+      }
+
+      .mobile {
+        max-width: 390px;
+      }
+
+      .audience-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 7px 48px;
+        background: #0f2d35;
+        color: #d8eef0;
+        font-size: 12px;
+        font-weight: 780;
+      }
+
+      .audience-row div {
+        display: flex;
+        gap: 16px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 22px;
+        padding: 14px 48px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.96);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--brand-dark);
+        font-weight: 930;
+      }
+
+      .mark {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--brand);
+        color: white;
+        font-size: 13px;
+        letter-spacing: 0;
+      }
+
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .main-nav a {
+        padding: 8px 10px;
+        border-radius: 6px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 820;
+      }
+
+      .main-nav a.active,
+      .main-nav a:hover {
+        background: var(--brand-soft);
+        color: var(--brand-dark);
+      }
+
+      .primary,
+      .blue-button {
+        padding: 10px 14px;
+        background: var(--blue);
+        color: white;
+        font-weight: 880;
+        box-shadow: 0 10px 24px rgba(36, 107, 254, 0.18);
+      }
+
+      .secondary {
+        padding: 9px 12px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--muted);
+        font-weight: 820;
+      }
+
+      .ghost {
+        padding: 8px 10px;
+        background: transparent;
+        color: var(--blue-dark);
+        font-weight: 850;
+      }
+
+      .cycle-strip {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+        align-items: center;
+        padding: 11px 48px;
+        background: linear-gradient(90deg, #fff8e2, #edf7ff);
+        color: #2e4c59;
+        font-size: 14px;
+      }
+
+      .cycle-strip strong {
+        color: #143a47;
+      }
+
+      .home-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 30px;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 38px 48px 28px;
+      }
+
+      .eyebrow {
+        margin-bottom: 8px;
+        color: var(--brand);
+        font-size: 12px;
+        font-weight: 930;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .home-hero h1 {
+        max-width: 830px;
+        margin-bottom: 14px;
+        font-size: 52px;
+        line-height: 1.04;
+      }
+
+      .hero-copy {
+        max-width: 670px;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .global-search {
+        display: grid;
+        gap: 9px;
+        margin-top: 22px;
+      }
+
+      .field-label {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .search-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+        padding: 8px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        background: var(--paper);
+        box-shadow: var(--shadow-md);
+      }
+
+      .search-shell input {
+        min-height: 48px;
+        padding: 0 14px;
+        border: 0;
+        outline: 0;
+        color: var(--ink);
+        font-size: 16px;
+      }
+
+      .search-shell button {
+        min-width: 146px;
+      }
+
+      .quick-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .quick-row button,
+      .chip {
+        padding: 6px 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper);
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 830;
+      }
+
+      .browse-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .browse-card {
+        min-height: 98px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        text-align: left;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .browse-card strong {
+        display: block;
+        font-size: 15px;
+      }
+
+      .browse-card span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 760;
+      }
+
+      .browse-card.featured {
+        border-color: #efd9a4;
+        background: #fffaf0;
+      }
+
+      .student-panel {
+        display: grid;
+        gap: 16px;
+        align-self: start;
+        padding: 18px;
+        border: 1px solid rgba(0, 117, 111, 0.22);
+        border-radius: 8px;
+        background: linear-gradient(180deg, var(--brand-soft), #ffffff 76%);
+        box-shadow: var(--shadow-md);
+      }
+
+      .student-panel h2 {
+        margin-bottom: 4px;
+        color: var(--brand-dark);
+        font-size: 20px;
+      }
+
+      .student-panel p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .meter {
+        height: 9px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: #dfeaf0;
+      }
+
+      .meter span {
+        display: block;
+        height: 100%;
+        width: 68%;
+        background: linear-gradient(90deg, var(--brand), #47c2a4);
+      }
+
+      .mini-timeline {
+        display: grid;
+        gap: 9px;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 54px 1fr;
+        gap: 9px;
+        align-items: start;
+        padding: 9px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .timeline-item b {
+        color: var(--brand-dark);
+        font-size: 13px;
+      }
+
+      .timeline-item span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .home-sections {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 8px 48px 52px;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 15px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .panel-head h2 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .dense-list {
+        display: grid;
+      }
+
+      .mini-row {
+        display: grid;
+        gap: 6px;
+        padding: 13px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mini-row:last-child {
+        border-bottom: 0;
+      }
+
+      .mini-row strong {
+        font-size: 15px;
+      }
+
+      .mini-row p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-self: start;
+        width: fit-content;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: var(--blue-soft);
+        color: var(--blue-dark);
+        font-size: 12px;
+        font-weight: 860;
+        line-height: 1.15;
+      }
+
+      .badge.warn {
+        background: var(--yellow-soft);
+        color: #6b4408;
+      }
+
+      .badge.danger {
+        background: var(--red-soft);
+        color: var(--red);
+      }
+
+      .badge.gold {
+        background: var(--gold-soft);
+        color: #77550d;
+      }
+
+      .badge.good {
+        background: var(--green-soft);
+        color: var(--green);
+      }
+
+      .visual-row {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+      }
+
+      .photo-card {
+        min-height: 188px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .photo {
+        min-height: 112px;
+        background:
+          linear-gradient(135deg, rgba(0, 117, 111, 0.15), rgba(36, 107, 254, 0.12)),
+          url("https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?auto=format&fit=crop&w=900&q=80");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .photo-card:nth-child(2) .photo {
+        background-image:
+          linear-gradient(135deg, rgba(0, 117, 111, 0.12), rgba(36, 107, 254, 0.14)),
+          url("https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=80");
+      }
+
+      .photo-card:nth-child(3) .photo {
+        background-image:
+          linear-gradient(135deg, rgba(0, 117, 111, 0.12), rgba(36, 107, 254, 0.14)),
+          url("https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80");
+      }
+
+      .photo-copy {
+        padding: 12px 14px;
+      }
+
+      .photo-copy strong {
+        display: block;
+      }
+
+      .photo-copy span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .course-shell {
+        background: var(--bg);
+      }
+
+      .course-tabs {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 12px 48px 0;
+        background: var(--paper);
+      }
+
+      .course-tabs button {
+        padding: 9px 12px;
+        border-radius: 6px 6px 0 0;
+        background: transparent;
+        color: var(--muted);
+        font-weight: 850;
+      }
+
+      .course-tabs button.active {
+        background: var(--brand-soft);
+        color: var(--brand-dark);
+      }
+
+      .search-header {
+        padding: 20px 48px 16px;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .search-header-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: end;
+        max-width: 1340px;
+        margin: 0 auto;
+      }
+
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      select {
+        min-height: 40px;
+        padding: 0 34px 0 12px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--paper);
+        color: var(--ink);
+        font-weight: 760;
+      }
+
+      .toggle {
+        display: flex;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+      }
+
+      .toggle button {
+        padding: 9px 11px;
+        border-radius: 0;
+        background: var(--paper);
+        color: var(--muted);
+        font-weight: 850;
+      }
+
+      .toggle button.active {
+        background: var(--brand-soft);
+        color: var(--brand-dark);
+      }
+
+      .summary-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        max-width: 1340px;
+        margin: 13px auto 0;
+      }
+
+      .summary-row strong {
+        font-size: 18px;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .workbench {
+        display: grid;
+        grid-template-columns: 258px minmax(0, 1fr) 252px;
+        gap: 18px;
+        max-width: 1340px;
+        margin: 0 auto;
+        padding: 18px 48px 44px;
+        align-items: start;
+      }
+
+      .filters,
+      .choice-rail,
+      .course-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .filters,
+      .choice-rail {
+        position: sticky;
+        top: 76px;
+        overflow: hidden;
+      }
+
+      .block-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 13px 14px;
+        border-bottom: 1px solid var(--line);
+        font-weight: 900;
+      }
+
+      .filter-group {
+        display: grid;
+        gap: 7px;
+        padding: 13px 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .filter-group:last-child {
+        border-bottom: 0;
+      }
+
+      .filter-group strong {
+        font-size: 14px;
+      }
+
+      .filter-group label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 760;
+      }
+
+      .filter-group input {
+        accent-color: var(--brand);
+      }
+
+      .result-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .course-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 144px;
+        gap: 16px;
+        padding: 15px;
+      }
+
+      .course-main {
+        display: grid;
+        gap: 10px;
+      }
+
+      .course-title {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: start;
+      }
+
+      .course-title h2 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.22;
+      }
+
+      .course-title p {
+        margin: 3px 0 0;
+        color: var(--muted);
+      }
+
+      .fact-table {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .fact {
+        min-height: 58px;
+        padding: 8px 9px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--paper-2);
+      }
+
+      .fact span {
+        display: block;
+        color: var(--soft);
+        font-size: 11px;
+        font-weight: 880;
+        text-transform: uppercase;
+      }
+
+      .fact strong {
+        display: block;
+        margin-top: 2px;
+        font-size: 13px;
+        line-height: 1.25;
+      }
+
+      .source-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .actions {
+        display: grid;
+        gap: 8px;
+        align-content: start;
+      }
+
+      .actions button {
+        min-height: 38px;
+      }
+
+      .rail-body {
+        display: grid;
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .choice-mini {
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--paper-2);
+      }
+
+      .choice-mini strong {
+        display: block;
+        font-size: 13px;
+      }
+
+      .choice-mini span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .deadline-box {
+        border-color: #efd9a4;
+        background: #fffaf0;
+      }
+
+      .mobile-art {
+        width: 390px;
+        min-height: 844px;
+        background: var(--bg);
+      }
+
+      .mobile-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .mobile-head {
+        display: grid;
+        gap: 10px;
+        padding: 13px 14px;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .mobile-head .search-shell {
+        grid-template-columns: 1fr;
+        padding: 6px;
+        box-shadow: none;
+      }
+
+      .mobile-tools {
+        display: flex;
+        gap: 8px;
+      }
+
+      .mobile-tools button {
+        flex: 1;
+      }
+
+      .mobile-chips {
+        display: flex;
+        gap: 6px;
+        overflow: hidden;
+      }
+
+      .mobile-list {
+        display: grid;
+        gap: 10px;
+        padding: 12px 12px 84px;
+      }
+
+      .mobile-card {
+        display: grid;
+        gap: 10px;
+        padding: 13px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .mobile-card h2 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.22;
+      }
+
+      .mobile-card p {
+        margin: 3px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .mobile-facts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 7px;
+      }
+
+      .mobile-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .mobile-actions .primary {
+        grid-column: 1 / -1;
+      }
+
+      .sticky-mobile {
+        position: sticky;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 12px;
+        border-top: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(14px);
+      }
+
+      .sticky-mobile strong {
+        font-size: 13px;
+      }
+
+      .sticky-mobile span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .state-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 32px 48px 48px;
+      }
+
+      .state-card {
+        display: grid;
+        gap: 16px;
+        min-height: 300px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .state-card h2 {
+        margin-bottom: 4px;
+        font-size: 22px;
+      }
+
+      .state-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .empty-result {
+        display: grid;
+        gap: 12px;
+        place-items: start;
+        padding: 24px;
+        border: 1px dashed var(--line-strong);
+        border-radius: 8px;
+        background: linear-gradient(180deg, #ffffff, #f8fbfc);
+      }
+
+      .empty-icon {
+        display: grid;
+        width: 48px;
+        height: 48px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--brand-soft);
+        color: var(--brand-dark);
+        font-weight: 950;
+      }
+
+      .button-state-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .button-state-row button {
+        min-height: 42px;
+      }
+
+      .long-name-card {
+        grid-template-columns: 1fr;
+        border-left: 4px solid var(--blue);
+      }
+
+      .long-name-card .fact-table {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .long-name-card .actions {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .drawer-demo {
+        justify-self: center;
+        width: 390px;
+        min-height: 640px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--bg);
+      }
+
+      .drawer-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(16, 36, 45, 0.28);
+      }
+
+      .filter-drawer {
+        position: absolute;
+        inset: auto 0 0 0;
+        display: grid;
+        max-height: 560px;
+        gap: 12px;
+        padding: 14px;
+        border-radius: 18px 18px 0 0;
+        background: var(--paper);
+        box-shadow: 0 -18px 44px rgba(16, 36, 45, 0.2);
+      }
+
+      .drawer-handle {
+        justify-self: center;
+        width: 42px;
+        height: 4px;
+        border-radius: 999px;
+        background: var(--line-strong);
+      }
+
+      .drawer-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding-top: 8px;
+        border-top: 1px solid var(--line);
+      }
+
+      .motion-board {
+        display: grid;
+        gap: 12px;
+      }
+
+      .motion-row {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 12px;
+        align-items: center;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper-2);
+      }
+
+      .motion-preview {
+        position: relative;
+        height: 42px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: var(--blue-soft);
+      }
+
+      .motion-preview span {
+        position: absolute;
+        top: 9px;
+        left: 12px;
+        width: 24px;
+        height: 24px;
+        border-radius: 999px;
+        background: var(--blue);
+        animation: nudge 2.4s ease-in-out infinite;
+      }
+
+      .motion-preview.slower span {
+        animation-duration: 3.2s;
+      }
+
+      @keyframes nudge {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(96px);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .motion-preview span {
+          animation: none;
+        }
+      }
+
+      @media (max-width: 920px) {
+        .screen {
+          padding: 16px 10px 50px;
+        }
+
+        .audience-row,
+        .main-nav,
+        .topbar .primary {
+          display: none;
+        }
+
+        .topbar,
+        .cycle-strip,
+        .search-header {
+          padding-left: 14px;
+          padding-right: 14px;
+        }
+
+        .home-hero,
+        .home-sections,
+        .search-header-grid,
+        .workbench,
+        .visual-row {
+          grid-template-columns: 1fr;
+        }
+
+        .home-hero {
+          padding: 28px 18px;
+        }
+
+        .home-hero h1 {
+          font-size: 38px;
+        }
+
+        .browse-grid,
+        .fact-table {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .home-sections,
+        .workbench {
+          padding-left: 14px;
+          padding-right: 14px;
+        }
+
+        .state-grid {
+          grid-template-columns: 1fr;
+          padding: 18px 14px 36px;
+        }
+
+        .button-state-row {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .filters,
+        .choice-rail {
+          position: static;
+        }
+
+        .course-card {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="lab-tabs" aria-label="Design lab sections">
+      <a href="#home-v2">Home v2</a>
+      <a href="#program-search-v2">Program Search v2</a>
+      <a href="#mobile-search-v2">Mobile Search v2</a>
+      <a href="#states-v2">States v2</a>
+    </nav>
+
+    <section class="screen" id="home-v2">
+      <div class="frame desktop">
+        <div class="audience-row">
+          <div><span>Students</span><span>Parents</span><span>Advisers preview</span></div>
+          <div><span>Fall 2026 entry</span><span>English</span></div>
+        </div>
+        <header class="topbar">
+          <div class="brand"><span class="mark">CU</span><span>CUAC</span></div>
+          <nav class="main-nav" aria-label="Primary navigation">
+            <a class="active" href="#">Search</a>
+            <a href="#">Universities</a>
+            <a href="#">Scholarships</a>
+            <a href="#">Deadlines</a>
+            <a href="#">China Guides</a>
+            <a href="#">Hub</a>
+          </nav>
+          <button class="primary">Open Hub</button>
+        </header>
+        <div class="cycle-strip">
+          <div><strong>Fall 2026 cycle:</strong> Oct 15 is the next major deadline. International applicants should prepare documents earlier.</div>
+          <button class="ghost">View timeline</button>
+        </div>
+
+        <main class="home-hero">
+          <section>
+            <p class="eyebrow">China admissions search</p>
+            <h1>Choose China programs you can actually apply for.</h1>
+            <p class="hero-copy">
+              Search by subject, university, city, teaching language, cost, scholarship,
+              deadline, and document requirements before building your application choices.
+            </p>
+            <form class="global-search">
+              <label class="field-label" for="home-search">What do you want to study?</label>
+              <div class="search-shell">
+                <input id="home-search" value="English-taught computer science master" />
+                <button class="primary" type="button">Search programs</button>
+              </div>
+            </form>
+            <div class="quick-row" aria-label="Popular searches">
+              <button>Undergraduate</button>
+              <button>Master</button>
+              <button>English-taught</button>
+              <button>Scholarship</button>
+              <button>Late intake</button>
+              <button>Document-light</button>
+            </div>
+            <div class="browse-grid" aria-label="Browse categories">
+              <button class="browse-card"><strong>Courses</strong><span>128 open programs</span></button>
+              <button class="browse-card"><strong>Universities</strong><span>6 verified institutions</span></button>
+              <button class="browse-card featured"><strong>Scholarships</strong><span>36 funding routes</span></button>
+              <button class="browse-card featured"><strong>Deadlines</strong><span>3 need attention</span></button>
+              <button class="browse-card"><strong>City guides</strong><span>Cost, climate, student life</span></button>
+              <button class="browse-card"><strong>English-taught</strong><span>Apply without HSK first</span></button>
+              <button class="browse-card"><strong>Late intake</strong><span>Still possible this cycle</span></button>
+              <button class="browse-card"><strong>Documents</strong><span>Check what is missing</span></button>
+            </div>
+          </section>
+
+          <aside class="student-panel">
+            <div>
+              <p class="eyebrow">Your application preview</p>
+              <h2>Prepare required documents</h2>
+              <p>IELTS certificate and transcript translation are blocking 2 choices.</p>
+            </div>
+            <div class="meter"><span></span></div>
+            <p>Profile 68% ready · 1 choice added · 2 compared</p>
+            <div class="mini-timeline">
+              <div class="timeline-item"><b>Oct 15</b><span>ZJU Computer Science MSc deadline</span></div>
+              <div class="timeline-item"><b>Nov 20</b><span>Tongji Civil Engineering documents due</span></div>
+              <div class="timeline-item"><b>Dec 01</b><span>Scholarship review window begins</span></div>
+            </div>
+            <button class="primary">Continue in Hub</button>
+          </aside>
+        </main>
+
+        <section class="home-sections">
+          <article class="panel">
+            <div class="panel-head"><h2>Closing soon programs</h2><button class="secondary">View all</button></div>
+            <div class="dense-list">
+              <div class="mini-row">
+                <div class="badge-row"><span class="badge warn">Closes Oct 15</span><span class="badge gold">Scholarship</span><span class="badge good">Verified</span></div>
+                <strong>Computer Science MSc</strong>
+                <p>Zhejiang University · Hangzhou · English · RMB 42,000/year · 6 docs</p>
+              </div>
+              <div class="mini-row">
+                <div class="badge-row"><span class="badge danger">Urgent Sep 12</span><span class="badge">HSK 5</span><span class="badge">7 docs</span></div>
+                <strong>Economics BA</strong>
+                <p>Fudan University · Shanghai · Chinese-taught · RMB 26,000/year</p>
+              </div>
+              <div class="mini-row">
+                <div class="badge-row"><span class="badge">Open Nov 20</span><span class="badge gold">Partial funding</span><span class="badge good">Strong match</span></div>
+                <strong>Civil Engineering MSc</strong>
+                <p>Tongji University · Shanghai · English · RMB 39,000/year · IELTS 6.0</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head"><h2>Scholarships still open</h2><button class="secondary">Filter</button></div>
+            <div class="dense-list">
+              <div class="mini-row">
+                <div class="badge-row"><span class="badge gold">Tuition waiver</span><span class="badge warn">Oct 15</span></div>
+                <strong>ZJU International Graduate Scholarship</strong>
+                <p>Best fit: English-taught masters with strong transcript and study plan.</p>
+              </div>
+              <div class="mini-row">
+                <div class="badge-row"><span class="badge gold">City funding</span><span class="badge">Partial</span></div>
+                <strong>Shanghai international student support</strong>
+                <p>Relevant for selected public universities and deadline-safe applications.</p>
+              </div>
+              <div class="mini-row">
+                <div class="badge-row"><span class="badge gold">Merit award</span><span class="badge good">Application-ready</span></div>
+                <strong>University merit awards</strong>
+                <p>Requires clean document packet and stronger recommendation letter.</p>
+              </div>
+            </div>
+          </article>
+
+          <div class="visual-row" aria-label="China city guide previews">
+            <article class="photo-card">
+              <div class="photo"></div>
+              <div class="photo-copy"><strong>Hangzhou</strong><span>RMB 3,600/mo estimate · calm tech city</span></div>
+            </article>
+            <article class="photo-card">
+              <div class="photo"></div>
+              <div class="photo-copy"><strong>Beijing</strong><span>RMB 4,800/mo estimate · academic and cultural</span></div>
+            </article>
+            <article class="photo-card">
+              <div class="photo"></div>
+              <div class="photo-copy"><strong>Shanghai</strong><span>RMB 5,200/mo estimate · international and internship-rich</span></div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="screen" id="program-search-v2">
+      <div class="frame desktop course-shell">
+        <header class="topbar">
+          <div class="brand"><span class="mark">CU</span><span>CUAC</span></div>
+          <nav class="main-nav" aria-label="Primary navigation">
+            <a class="active" href="#">Search</a>
+            <a href="#">Universities</a>
+            <a href="#">Scholarships</a>
+            <a href="#">Deadlines</a>
+            <a href="#">China Guides</a>
+          </nav>
+          <button class="primary">Hub · 1 choice</button>
+        </header>
+        <div class="course-tabs">
+          <button class="active">All programs</button>
+          <button>For you</button>
+          <button>Saved</button>
+          <button>Choices</button>
+          <button>Deadlines</button>
+        </div>
+        <section class="search-header">
+          <div class="search-header-grid">
+            <form class="global-search" style="margin-top: 0;">
+              <label class="field-label" for="program-search">Search programs</label>
+              <div class="search-shell" style="box-shadow: none;">
+                <input id="program-search" value="Computer science" />
+                <button class="primary" type="button">Update search</button>
+              </div>
+            </form>
+            <div class="toolbar">
+              <select aria-label="Sort">
+                <option>Sort: deadline</option>
+                <option>Sort: tuition</option>
+                <option>Sort: readiness</option>
+                <option>Sort: application readiness</option>
+              </select>
+              <div class="toggle" aria-label="View mode"><button class="active">List</button><button>Grid</button></div>
+            </div>
+          </div>
+          <div class="summary-row">
+            <strong>128 programs found · Page 1 of 43</strong>
+            <div class="chips">
+              <span class="chip">Master x</span>
+              <span class="chip">English-taught x</span>
+              <span class="chip">Scholarship x</span>
+              <span class="chip">Open deadline x</span>
+              <span class="chip">RMB 50k max x</span>
+            </div>
+          </div>
+        </section>
+
+        <main class="workbench">
+          <aside class="filters">
+            <div class="block-head"><span>All filters</span><button class="ghost">Reset</button></div>
+            <div class="filter-group">
+              <strong>Subject</strong>
+              <label>Computer science <input type="checkbox" checked /></label>
+              <label>Artificial intelligence <input type="checkbox" /></label>
+              <label>Data science <input type="checkbox" /></label>
+              <button class="ghost" type="button" style="justify-self: start; padding-left: 0;">Show 18 more</button>
+            </div>
+            <div class="filter-group">
+              <strong>Course type and year</strong>
+              <label>Fall 2026 <input type="checkbox" checked /></label>
+              <label>Spring 2027 <input type="checkbox" /></label>
+              <label>Late intake <input type="checkbox" /></label>
+            </div>
+            <div class="filter-group">
+              <strong>Degree level</strong>
+              <label>Undergraduate <input type="checkbox" /></label>
+              <label>Master <input type="checkbox" checked /></label>
+              <label>PhD <input type="checkbox" /></label>
+            </div>
+            <div class="filter-group">
+              <strong>Study language</strong>
+              <label>English-taught <input type="checkbox" checked /></label>
+              <label>Chinese-taught <input type="checkbox" /></label>
+              <label>Bilingual <input type="checkbox" /></label>
+            </div>
+            <div class="filter-group">
+              <strong>China application fit</strong>
+              <label>Scholarship available <input type="checkbox" checked /></label>
+              <label>No HSK first <input type="checkbox" checked /></label>
+              <label>Application-ready <input type="checkbox" /></label>
+              <label>Document-light <input type="checkbox" /></label>
+            </div>
+            <div class="filter-group">
+              <strong>City and budget</strong>
+              <label>Hangzhou <input type="checkbox" /></label>
+              <label>Shanghai <input type="checkbox" /></label>
+              <label>Tuition below RMB 50k <input type="checkbox" checked /></label>
+            </div>
+          </aside>
+
+          <section class="result-list">
+            <article class="course-card">
+              <div class="course-main">
+                <div class="course-title">
+                  <div>
+                    <h2>Computer Science MSc</h2>
+                    <p>Zhejiang University · Hangzhou, Zhejiang</p>
+                  </div>
+                  <span class="badge good">Application-ready</span>
+                </div>
+                <div class="fact-table">
+                  <div class="fact"><span>Qualification</span><strong>MSc</strong></div>
+                  <div class="fact"><span>Duration</span><strong>2 years</strong></div>
+                  <div class="fact"><span>Start date</span><strong>Fall 2026</strong></div>
+                  <div class="fact"><span>Study mode</span><strong>Full-time</strong></div>
+                  <div class="fact"><span>Language</span><strong>English</strong></div>
+                  <div class="fact"><span>Tuition</span><strong>RMB 42,000/year</strong></div>
+                  <div class="fact"><span>Deadline</span><strong>Oct 15</strong></div>
+                  <div class="fact"><span>Documents</span><strong>6 required</strong></div>
+                </div>
+                <div class="badge-row">
+                  <span class="badge warn">Closes soon</span>
+                  <span class="badge gold">Scholarship</span>
+                  <span class="badge">IELTS 6.5</span>
+                  <span class="badge good">Likely eligible</span>
+                </div>
+                <div class="source-row">
+                  <span>Missing: IELTS certificate, transcript translation</span>
+                  <span>Application page: review before sending</span>
+                </div>
+              </div>
+              <div class="actions">
+                <button class="secondary">Save</button>
+                <button class="secondary">Compare</button>
+                <button class="primary">Add to choices</button>
+              </div>
+            </article>
+
+            <article class="course-card">
+              <div class="course-main">
+                <div class="course-title">
+                  <div>
+                    <h2>Artificial Intelligence MSc</h2>
+                    <p>Harbin Institute of Technology Shenzhen · Shenzhen, Guangdong</p>
+                  </div>
+                  <span class="badge warn">Review before applying</span>
+                </div>
+                <div class="fact-table">
+                  <div class="fact"><span>Qualification</span><strong>MSc</strong></div>
+                  <div class="fact"><span>Duration</span><strong>2 years</strong></div>
+                  <div class="fact"><span>Start date</span><strong>Fall 2026</strong></div>
+                  <div class="fact"><span>Study mode</span><strong>Full-time</strong></div>
+                  <div class="fact"><span>Language</span><strong>English</strong></div>
+                  <div class="fact"><span>Tuition</span><strong>RMB 48,000/year</strong></div>
+                  <div class="fact"><span>Deadline</span><strong>Nov 10</strong></div>
+                  <div class="fact"><span>Documents</span><strong>8 required</strong></div>
+                </div>
+                <div class="badge-row">
+                  <span class="badge">Open</span>
+                  <span class="badge gold">Merit award</span>
+                  <span class="badge">IELTS 6.0</span>
+                  <span class="badge warn">Needs review</span>
+                </div>
+                <div class="source-row">
+                  <span>Missing: study plan, recommendation letter</span>
+                  <span>Source: Graduate school notice</span>
+                </div>
+              </div>
+              <div class="actions">
+                <button class="secondary">Saved</button>
+                <button class="secondary">Compare</button>
+                <button class="primary">Add to choices</button>
+              </div>
+            </article>
+
+            <article class="course-card">
+              <div class="course-main">
+                <div class="course-title">
+                  <div>
+                    <h2>Civil Engineering MSc</h2>
+                    <p>Tongji University · Shanghai</p>
+                  </div>
+                  <span class="badge good">Verified Jul 28</span>
+                </div>
+                <div class="fact-table">
+                  <div class="fact"><span>Qualification</span><strong>MSc</strong></div>
+                  <div class="fact"><span>Duration</span><strong>2.5 years</strong></div>
+                  <div class="fact"><span>Start date</span><strong>Fall 2026</strong></div>
+                  <div class="fact"><span>Study mode</span><strong>Full-time</strong></div>
+                  <div class="fact"><span>Language</span><strong>English</strong></div>
+                  <div class="fact"><span>Tuition</span><strong>RMB 39,000/year</strong></div>
+                  <div class="fact"><span>Deadline</span><strong>Nov 20</strong></div>
+                  <div class="fact"><span>Documents</span><strong>7 required</strong></div>
+                </div>
+                <div class="badge-row">
+                  <span class="badge">Open</span>
+                  <span class="badge gold">Partial funding</span>
+                  <span class="badge">IELTS 6.0</span>
+                  <span class="badge good">Strong match</span>
+                </div>
+                <div class="source-row">
+                  <span>Document blocker: transcript translation</span>
+                  <span>Source: International student admissions guide</span>
+                </div>
+              </div>
+              <div class="actions">
+                <button class="secondary">Save</button>
+                <button class="secondary">Compared</button>
+                <button class="primary">In choices</button>
+              </div>
+            </article>
+          </section>
+
+          <aside class="choice-rail">
+            <div class="block-head"><span>Choices & compare</span></div>
+            <div class="rail-body">
+              <div class="badge-row"><span class="badge">2 compared</span><span class="badge good">1 choice</span></div>
+              <div class="choice-mini deadline-box"><strong>Next deadline</strong><span>Oct 15 · ZJU Computer Science MSc</span></div>
+              <div class="choice-mini"><strong>Computer Science MSc</strong><span>ZJU · RMB 42,000 · 6 docs</span></div>
+              <div class="choice-mini"><strong>Civil Engineering MSc</strong><span>Tongji · RMB 39,000 · 7 docs</span></div>
+              <button class="primary">Compare programs</button>
+              <button class="secondary">Open Hub</button>
+              <p style="margin: 0; color: var(--muted); font-size: 13px;">Compare deadline, tuition, language, documents, tests, and application readiness before adding choices.</p>
+            </div>
+          </aside>
+        </main>
+      </div>
+    </section>
+
+    <section class="screen" id="mobile-search-v2">
+      <div class="frame mobile">
+        <div class="mobile-art">
+          <header class="mobile-top">
+            <div class="brand"><span class="mark">CU</span><span>CUAC</span></div>
+            <button class="secondary">Menu</button>
+          </header>
+          <section class="mobile-head">
+            <label class="field-label" for="mobile-q">Search programs</label>
+            <div class="search-shell">
+              <input id="mobile-q" value="Computer science" />
+              <button class="primary" type="button">Search</button>
+            </div>
+            <div class="mobile-tools">
+              <button class="secondary">Filters · 5</button>
+              <button class="secondary">Sort: deadline</button>
+            </div>
+            <div class="mobile-chips">
+              <span class="chip">Master x</span>
+              <span class="chip">English x</span>
+              <span class="chip">Scholarship x</span>
+            </div>
+            <strong>128 programs found · Page 1</strong>
+          </section>
+
+          <main class="mobile-list">
+            <article class="mobile-card">
+              <div><h2>Computer Science MSc</h2><p>Zhejiang University · Hangzhou</p></div>
+              <div class="badge-row"><span class="badge warn">Oct 15</span><span class="badge gold">Scholarship</span><span class="badge good">Verified</span></div>
+              <div class="mobile-facts">
+                <div class="fact"><span>Qualification</span><strong>MSc</strong></div>
+                <div class="fact"><span>Language</span><strong>English</strong></div>
+                <div class="fact"><span>Tuition</span><strong>RMB 42k/year</strong></div>
+                <div class="fact"><span>Documents</span><strong>6 required</strong></div>
+              </div>
+              <p>Missing: IELTS certificate and transcript translation.</p>
+              <div class="mobile-actions"><button class="secondary">Save</button><button class="secondary">Compare</button><button class="primary">Add to choices</button></div>
+            </article>
+
+            <article class="mobile-card">
+              <div><h2>Artificial Intelligence MSc</h2><p>HIT Shenzhen · Shenzhen</p></div>
+              <div class="badge-row"><span class="badge">Nov 10</span><span class="badge gold">Merit award</span><span class="badge warn">8 docs</span></div>
+              <div class="mobile-facts">
+                <div class="fact"><span>Qualification</span><strong>MSc</strong></div>
+                <div class="fact"><span>Language</span><strong>English</strong></div>
+                <div class="fact"><span>Tuition</span><strong>RMB 48k/year</strong></div>
+                <div class="fact"><span>Source</span><strong>Pending</strong></div>
+              </div>
+              <p>Missing: study plan and recommendation letter.</p>
+              <div class="mobile-actions"><button class="secondary">Saved</button><button class="secondary">Compare</button><button class="primary">Add to choices</button></div>
+            </article>
+          </main>
+
+          <footer class="sticky-mobile">
+            <div><strong>2 compared · 1 choice</strong><span>Compare or open Hub</span></div>
+            <button class="primary">Open</button>
+          </footer>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="states-v2">
+      <div class="frame desktop course-shell">
+        <header class="topbar">
+          <div class="brand"><span class="mark">CU</span><span>CUAC</span></div>
+          <nav class="main-nav" aria-label="Primary navigation">
+            <a class="active" href="#">Search</a>
+            <a href="#">Universities</a>
+            <a href="#">Scholarships</a>
+            <a href="#">Deadlines</a>
+            <a href="#">Hub</a>
+          </nav>
+          <button class="primary">Hub · 1 choice</button>
+        </header>
+
+        <main class="state-grid">
+          <article class="state-card">
+            <div>
+              <p class="eyebrow">Empty result</p>
+              <h2>No exact matches for this filter set</h2>
+              <p>Keep the student moving by showing the cause, suggested relaxations, and useful alternatives.</p>
+            </div>
+            <div class="empty-result">
+              <span class="empty-icon">0</span>
+              <strong>No English-taught Computer Science MSc below RMB 30,000 with scholarship still open.</strong>
+              <p>Try raising tuition to RMB 50,000, removing scholarship, or viewing nearby AI/Data Science programs.</p>
+              <div class="button-state-row">
+                <button class="primary">Relax budget</button>
+                <button class="secondary">Remove scholarship</button>
+                <button class="secondary">Show related</button>
+                <button class="secondary">Save alert</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="state-card">
+            <div>
+              <p class="eyebrow">Button and choice states</p>
+              <h2>Actions show progress and blockers</h2>
+              <p>Students should always know whether they saved, compared, added, or cannot apply yet.</p>
+            </div>
+            <div class="button-state-row">
+              <button class="secondary">Save</button>
+              <button class="secondary">Saved</button>
+              <button class="secondary">Compared</button>
+              <button class="primary">In choices</button>
+            </div>
+            <article class="course-card long-name-card">
+              <div class="course-main">
+                <div class="course-title">
+                  <div>
+                    <h2>Software Engineering and Artificial Intelligence for Global Digital Systems MSc</h2>
+                    <p>University of Science and Technology Beijing International School · Beijing</p>
+                  </div>
+                  <span class="badge danger">Blocked</span>
+                </div>
+                <div class="fact-table">
+                  <div class="fact"><span>Language</span><strong>English</strong></div>
+                  <div class="fact"><span>Tuition</span><strong>RMB 46,000/year</strong></div>
+                  <div class="fact"><span>Deadline</span><strong>Oct 15</strong></div>
+                  <div class="fact"><span>Reason</span><strong>IELTS missing</strong></div>
+                </div>
+              </div>
+              <div class="actions">
+                <button class="secondary">Save</button>
+                <button class="secondary">Compare</button>
+                <button class="primary" disabled>Fix documents</button>
+              </div>
+            </article>
+          </article>
+
+          <article class="state-card">
+            <div>
+              <p class="eyebrow">Mobile filter drawer</p>
+              <h2>Filters open as a bottom sheet</h2>
+              <p>The mobile search list keeps context behind the drawer and gives clear apply/reset actions.</p>
+            </div>
+            <div class="drawer-demo" aria-label="Mobile filter drawer example">
+              <div class="mobile-art">
+                <header class="mobile-top">
+                  <div class="brand"><span class="mark">CU</span><span>CUAC</span></div>
+                  <button class="secondary">Menu</button>
+                </header>
+                <section class="mobile-head">
+                  <strong>128 programs found</strong>
+                  <div class="mobile-tools">
+                    <button class="secondary">Filters · 5</button>
+                    <button class="secondary">Sort: deadline</button>
+                  </div>
+                </section>
+              </div>
+              <div class="drawer-backdrop"></div>
+              <div class="filter-drawer">
+                <span class="drawer-handle"></span>
+                <div class="block-head"><span>Filters</span><button class="ghost">Reset</button></div>
+                <div class="filter-group">
+                  <strong>Study language</strong>
+                  <label>English-taught <input type="checkbox" checked /></label>
+                  <label>Chinese-taught <input type="checkbox" /></label>
+                </div>
+                <div class="filter-group">
+                  <strong>Application fit</strong>
+                  <label>No HSK first <input type="checkbox" checked /></label>
+                  <label>Scholarship available <input type="checkbox" checked /></label>
+                  <label>Document-light <input type="checkbox" /></label>
+                </div>
+                <div class="drawer-actions">
+                  <button class="secondary">Clear</button>
+                  <button class="primary">Show 128</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="state-card">
+            <div>
+              <p class="eyebrow">Motion rules</p>
+              <h2>Animation stays useful and calm</h2>
+              <p>Motion should confirm state changes and guide attention, not decorate every card.</p>
+            </div>
+            <div class="motion-board">
+              <div class="motion-row">
+                <strong>Search update</strong>
+                <div class="motion-preview"><span></span></div>
+              </div>
+              <div class="motion-row">
+                <strong>Add to choices</strong>
+                <div class="motion-preview slower"><span></span></div>
+              </div>
+              <div class="mini-row">
+                <div class="badge-row"><span class="badge good">Use</span><span class="badge">160-240ms</span><span class="badge">ease-out</span></div>
+                <strong>Recommended pattern</strong>
+                <p>Subtle hover lift, chip removal fade, drawer slide, progress meter fill, and saved/choice confirmation.</p>
+              </div>
+              <div class="mini-row">
+                <div class="badge-row"><span class="badge danger">Avoid</span><span class="badge">Looping decoration</span></div>
+                <strong>Production boundary</strong>
+                <p>No bouncing cards, no animated backgrounds, no motion that blocks comparison or reading.</p>
+              </div>
+            </div>
+          </article>
+        </main>
+      </div>
+    </section>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const view = params.get("view");
+      if (view) {
+        const target = document.getElementById(view);
+        if (target) {
+          document.body.classList.add("capture");
+          target.classList.add("is-capture-target");
+        }
+      }
+    </script>
+  </body>
+</html>

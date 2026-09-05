@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | Set up your account</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="onboarding-workspace.css?v=20260904-api-v1" />
+  </head>
+  <body data-agent-mode="off">
+    <div class="page onboarding-api-page">
+      <div data-cuac-header data-active="auth" data-note="CUAC Account setup:" data-note-detail="student research preferences"></div>
+
+      <main class="onboarding-api-main">
+        <aside class="onboarding-context" aria-label="Account setup scope">
+          <p class="onboarding-kicker">Student account</p>
+          <h1>Set your study direction.</h1>
+          <p>These answers become account-level research preferences. Applicant records and files are completed later in the application workspace.</p>
+          <dl>
+            <div><dt>Stored here</dt><dd>Study discovery preferences</dd></div>
+            <div><dt>Completed later</dt><dd>Applicant identity and education</dd></div>
+            <div><dt>Verified later</dt><dd>Files and submission requirements</dd></div>
+          </dl>
+          <a href="hub-api.html">Skip for now</a>
+        </aside>
+
+        <section class="onboarding-form-section" aria-labelledby="onboarding-form-title">
+          <header>
+            <p class="onboarding-kicker">Account setup</p>
+            <h2 id="onboarding-form-title">Your current goal</h2>
+            <p>You can change these fields later in Preferences.</p>
+          </header>
+          <div data-onboarding-view aria-live="polite">
+            <p class="onboarding-loading" aria-busy="true">Loading your student profile.</p>
+          </div>
+        </section>
+      </main>
+
+      <div data-cuac-footer></div>
+      <div class="onboarding-toast" role="status" data-onboarding-toast hidden></div>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="onboarding-runtime.js?v=20260904-api-v1"></script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-import { CuacApp } from "../../cuac-app";
+import { redirect } from "next/navigation";
 
 export default async function ProgramDetailPage({
   params,
@@ -6,6 +6,5 @@ export default async function ProgramDetailPage({
   params: Promise<{ programId: string }>;
 }) {
   const { programId } = await params;
-  return <CuacApp initialView="program-detail" initialProgramId={programId} />;
+  redirect(`/program-detail.html?program=${encodeURIComponent(programId)}`);
 }
-

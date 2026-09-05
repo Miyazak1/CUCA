@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | 学校工作区信息</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="school-settings-workspace.css?v=20260904-corrections-v1" />
+  </head>
+  <body data-agent-mode="off">
+    <div class="page school-settings-page">
+      <div data-cuac-header data-active="hub" data-note="CUAC 学校工作区：" data-note-detail="当前租户与目录信息"></div>
+
+      <main class="school-settings-main">
+        <nav class="school-settings-breadcrumb" aria-label="学校工作区路径">
+          <a href="school-portal.html">申请工作台</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">工作区信息</span>
+        </nav>
+
+        <header class="school-settings-heading">
+          <div>
+            <p class="school-settings-kicker">学校账户</p>
+            <h1>工作区信息</h1>
+            <p>核对当前员工会话绑定的学校租户及公开目录记录。</p>
+          </div>
+          <a class="school-settings-primary" href="school-portal.html">返回申请工作台</a>
+        </header>
+
+        <section class="school-settings-view" aria-live="polite" data-school-settings-view>
+          <p class="school-settings-loading" aria-busy="true">正在读取当前学校工作区。</p>
+        </section>
+      </main>
+
+      <div data-cuac-footer></div>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="school-settings-runtime.js?v=20260904-corrections-v1"></script>
+  </body>
+</html>

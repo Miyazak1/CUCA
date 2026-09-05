@@ -1,100 +1,57 @@
-# vinext-starter
+# CUAC Local Platform
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+This workspace contains the CUAC application backend and its current frontend shell. The supported local runtime uses a persistent loopback PostgreSQL container, synthetic catalog/application data, three primary generated password accounts (student, school staff, and CUAC Ops), and a separate CUAC Admin reviewer for dual-control acceptance checks.
+
+For a new-machine setup, current verification evidence, safety boundaries, and unfinished work, begin with [the device handoff](docs/DEVICE_HANDOFF_2026-09-05.md). The complete design and architecture package is indexed in [docs/README.md](docs/README.md).
 
 ## Prerequisites
 
 - Node.js `>=22.13.0`
+- Docker Desktop with the local Docker engine running
+- Dependencies installed with `npm install`
 
-## Quick Start
+## Start Locally
 
-```bash
-npm install
-npm run dev
-npm run build
+On Windows, double-click `start-cuac-local.bat` (or the forwarding launcher one directory above). It validates the local prerequisites and starts the owned CUAC runtime on `http://127.0.0.1:52118` with PostgreSQL bound to `127.0.0.1:62251`.
+
+From this directory:
+
+```powershell
+npm run dev:local
 ```
 
-This starter does not use `wrangler.jsonc`.
+For the pinned Windows setup, double-click `../start-cuac-local.bat`. It provisions or resumes the owned PostgreSQL container, applies all migrations, idempotently seeds local-only fixtures, and starts Vinext on application port `52118` with PostgreSQL on `62251`. The launcher fails visibly if either pinned port belongs to another service; it never selects a remote database or silently changes ports.
 
-## Included Shape
+The npm command uses the saved local ports when a runtime already exists. Without the Windows launcher or explicit `CUAC_LOCAL_APP_PORT` and `CUAC_LOCAL_PG_PORT` values, a first-time runtime may select free loopback ports.
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+In another terminal:
 
-## Workspace Auth Headers
-
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
-
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```powershell
+npm run local:credentials
+npm run local:status
+npm run local:smoke
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+`local:credentials` prints the generated local-only student, school-staff, Ops, and independent Admin reviewer accounts. `local:smoke` verifies public catalog access, student application and notification reads, notification security preferences, the school queue, the fixed five-queue Ops operations summary, an Ops catalog-requirements governance read, an Ops support-session open/lookup/close cycle, and the school-submit/Ops-claim/Admin-step-up/reject catalog-correction lifecycle through the real API. The rejection check also proves that the proposed value does not change the public school record.
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+On Windows, `../show-cuac-local-accounts.bat` displays the same generated accounts after a successful migration and seed receipt exists for this installation. It only reads the protected local runtime state and receipt; it does not start the server or sign in. A state file created by an interrupted first run is not treated as proof that the accounts exist.
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+To prepare the database without keeping the application server attached, run `npm run local:up`. To stop PostgreSQL while retaining its generated state and Docker volume, run `npm run local:stop`.
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+## Verification
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+```powershell
+npm run test:backend
+npm test
+npm exec tsc -b --pretty false
+npm run db:pg:rehearse
+npm run db:http:rehearse
+```
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+`npm test` builds the production frontend and runs the API-specific frontend contract suites. The archived frontend-only demo assertions remain available as `npm run test:legacy-demo`; they are not a production gate because they require the retired `design-lab` mirror, browser-local business state, and demo Agent behavior.
 
-## Useful Commands
+The PostgreSQL rehearsals use disposable loopback-only databases. The HTTP rehearsal also builds and starts the production API adapter on a disposable loopback port.
 
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
+## Local Boundary
 
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+The local runtime is suitable for development and synthetic end-to-end verification. Email delivery, object storage, malware scanning, official school delivery, hosted payment, and production schedulers remain disabled unless their separately reviewed configuration is supplied. Local credentials and fixtures are not production identities, and local success is not Alibaba Cloud staging approval.

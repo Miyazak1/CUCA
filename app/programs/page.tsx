@@ -1,6 +1,5 @@
-import { CuacApp } from "../cuac-app";
+import { redirect } from "next/navigation";
 
 export default function ProgramsPage() {
-  return <CuacApp initialView="programs" />;
+  redirect("/programs.html");
 }
-

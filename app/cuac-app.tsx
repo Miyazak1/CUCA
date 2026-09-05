@@ -538,7 +538,6 @@ export function CuacApp({
           <button onClick={() => navigate("/programs")}>Find Programs</button>
           <button onClick={() => navigate("/programs?scholarshipAvailable=true")}>Scholarships</button>
           <button onClick={() => navigate("/programs?lateIntakeAvailable=true")}>Late Intake</button>
-          <button onClick={() => navigate("/hub")}>Hub</button>
         </nav>
         <button className="mobile-menu" onClick={() => setMobilePanel("filters")}>Menu</button>
       </header>
@@ -587,7 +586,6 @@ export function CuacApp({
       {route.view === "hub" && (
         <HubView
           state={state}
-          action={action}
           onNavigate={navigate}
           onRead={markMessageRead}
           onOpenAdviser={() => setMobilePanel("adviser")}
@@ -1255,13 +1253,11 @@ function ProgramDetailView({
 
 function HubView({
   state,
-  action,
   onNavigate,
   onRead,
   onOpenAdviser,
 }: {
   state: AppState;
-  action: ReturnType<typeof nextAction>;
   onNavigate: (href: string) => void;
   onRead: (id: string) => void;
   onOpenAdviser: () => void;
@@ -1276,10 +1272,10 @@ function HubView({
           <h1>{profile.displayName}&apos;s application workspace</h1>
           <p>Preview profile active. Your real account and documents will connect later through the data client.</p>
         </div>
-        <button className="next-action" onClick={() => onNavigate(action.href)}>
-          <span>Next best action</span>
-          <strong>{action.label}</strong>
-          <small>{action.body}</small>
+        <button className="next-action" onClick={() => onNavigate("/hub/applications/packet-2026")}>
+          <span>Application center</span>
+          <strong>Enter application center</strong>
+          <small>Manage choices, documents, review, and submission in one place.</small>
         </button>
       </section>
 
@@ -1303,7 +1299,7 @@ function HubView({
           )) : <EmptyMini label="No choices yet" action="Add a program" onAction={() => onNavigate("/programs")} />}
         </ContentBand>
 
-        <ContentBand title="Missing documents" action="Open documents" onAction={() => onNavigate("/hub/applications/packet-2026?section=documents")}>
+        <ContentBand title="Missing documents" action="Search programs" onAction={() => onNavigate("/programs")}>
           {missing.length ? missing.map((doc) => {
             const requirement = requirementFor(doc.requirementId);
             return (
@@ -1313,7 +1309,7 @@ function HubView({
                 <p>{requirement.description}</p>
               </article>
             );
-          }) : <EmptyMini label="No hard document blockers" action="Review packet" onAction={() => onNavigate("/hub/applications/packet-2026?section=review")} />}
+          }) : <EmptyMini label="No hard document blockers" action="Search programs" onAction={() => onNavigate("/programs")} />}
         </ContentBand>
 
         <ContentBand title="Upcoming deadlines" action="Late intake" onAction={() => onNavigate("/programs?lateIntakeAvailable=true")}>

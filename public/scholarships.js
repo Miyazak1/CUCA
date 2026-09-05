@@ -1,4 +1,4 @@
-const scholarshipIcons = {
+﻿const scholarshipIcons = {
   money: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H15a3.5 3.5 0 0 1 0 7H6"/></svg>',
   award: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1-10 0Z"/><path d="M5 6H3a4 4 0 0 0 4 4"/><path d="M19 6h2a4 4 0 0 1-4 4"/></svg>',
   landmark: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9"/><path d="M19 21V9"/><path d="M3 9h18"/><path d="M12 3 3 9h18Z"/><path d="M9 21v-7h6v7"/></svg>',
@@ -11,26 +11,14 @@ const scholarshipIcons = {
   link: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11 3 15l6 6 4-4"/><path d="M17 13l4-4-6-6-4 4"/><path d="m8 16 8-8"/></svg>',
   document: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>',
   heart: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 8.6c0 5.7-8.5 10.4-8.5 10.4S3.5 14.3 3.5 8.6A4.6 4.6 0 0 1 12 6a4.6 4.6 0 0 1 8.5 2.6Z"/></svg>',
+  arrowRight: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>',
 };
 
 document.querySelectorAll("[data-icon]").forEach((target) => {
   target.innerHTML = scholarshipIcons[target.dataset.icon] || "";
 });
 
-const scholarships = [
-  { id: 1, title: "Chinese Government Scholarship / CSC", type: "government", typeLabel: "CSC", funding: "full", school: "Multiple universities", summary: "Full-funding route for strong applicants through CSC or university channels.", coverage: ["Tuition", "Stipend", "Accommodation", "Insurance"], degree: "Master / PhD", deadline: "Mar 31", source: "verified", verified: "Jul 14", tags: ["Full funding", "CSC", "Verified source"] },
-  { id: 2, title: "Zhejiang University International Student Scholarship", type: "university", typeLabel: "University", funding: "partial", school: "Zhejiang University", summary: "School-level award for selected international degree applicants in Hangzhou.", coverage: ["Tuition waiver", "Merit review"], degree: "Bachelor / Master", deadline: "Oct 15", source: "verified", verified: "Jul 14", tags: ["University award", "Hangzhou", "Verified source"] },
-  { id: 3, title: "Shanghai Government Scholarship", type: "province", typeLabel: "City", funding: "full", school: "Shanghai universities", summary: "Municipal scholarship route with university-specific application rules.", coverage: ["Tuition", "Stipend", "Insurance"], degree: "Bachelor / Master", deadline: "Sep 12", source: "pending", verified: "Needs date check", tags: ["Full funding", "Shanghai", "Deadline soon"] },
-  { id: 4, title: "Beijing Government Scholarship", type: "province", typeLabel: "City", funding: "partial", school: "Beijing universities", summary: "Local government award that may reduce tuition for international students.", coverage: ["Tuition waiver"], degree: "All levels", deadline: "May 30", source: "verified", verified: "Jul 10", tags: ["City award", "Beijing", "Partial"] },
-  { id: 5, title: "Jiangsu Jasmine Scholarship", type: "province", typeLabel: "Province", funding: "full", school: "Jiangsu universities", summary: "Province-level route for students considering Nanjing, Suzhou, and nearby cities.", coverage: ["Tuition", "Stipend", "Insurance"], degree: "Bachelor / Master", deadline: "Apr 20", source: "verified", verified: "Jul 14", tags: ["Full funding", "Province", "Affordable city"] },
-  { id: 6, title: "Tianjin Government Scholarship", type: "province", typeLabel: "City", funding: "full", school: "Tianjin universities", summary: "Local funding route with different coverage by university and degree level.", coverage: ["Tuition", "Accommodation"], degree: "Master / PhD", deadline: "Jun 15", source: "pending", verified: "Needs source check", tags: ["City award", "Full funding"] },
-  { id: 7, title: "International Chinese Language Teachers Scholarship", type: "partner", typeLabel: "Language", funding: "full", school: "Language partner universities", summary: "Best for students pursuing Chinese language or teaching-related routes.", coverage: ["Tuition", "Stipend", "Accommodation", "Insurance"], degree: "Non-degree / BA / MA", deadline: "May 10", source: "verified", verified: "Jul 14", tags: ["Language route", "Full funding"] },
-  { id: 8, title: "ASEAN-China Young Leaders Scholarship", type: "partner", typeLabel: "Partner", funding: "full", school: "Multiple universities", summary: "Partner route for eligible ASEAN-region applicants and leadership programs.", coverage: ["Tuition", "Stipend", "Travel", "Insurance"], degree: "Master / PhD", deadline: "Mar 20", source: "check", verified: "Confirm notice", tags: ["ASEAN", "Partner route"] },
-  { id: 9, title: "Fudan University Freshman Scholarship", type: "university", typeLabel: "University", funding: "partial", school: "Fudan University", summary: "Merit award for new international undergraduate applicants in Shanghai.", coverage: ["Tuition waiver"], degree: "Undergraduate", deadline: "Sep 12", source: "verified", verified: "Jul 14", tags: ["Undergraduate", "Shanghai", "Deadline soon"] },
-  { id: 10, title: "Engineering Excellence Scholarship", type: "university", typeLabel: "Subject", funding: "partial", school: "Harbin Institute of Technology", summary: "Subject-focused route for engineering applicants with strong transcripts.", coverage: ["Tuition waiver", "Merit review"], degree: "Master", deadline: "Nov 20", source: "verified", verified: "Jul 12", tags: ["Engineering", "University award"] },
-  { id: 11, title: "Coastal Sustainability Scholarship", type: "partner", typeLabel: "Subject", funding: "full", school: "Xiamen University", summary: "Subject route for sustainability or coastal research applicants.", coverage: ["Tuition", "Stipend", "Insurance"], degree: "Master / PhD", deadline: "Dec 10", source: "pending", verified: "Deadline pending", tags: ["Subject route", "Full funding"] },
-  { id: 12, title: "Provincial International Student Tuition Award", type: "province", typeLabel: "Province", funding: "partial", school: "Multiple provincial universities", summary: "Partial tuition support that can pair with lower living-cost cities.", coverage: ["Tuition waiver"], degree: "All levels", deadline: "Rolling", source: "check", verified: "Confirm locally", tags: ["Partial", "Lower cost"] },
-];
+const scholarships = [];
 
 const scholarshipImages = {
   government: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=80",
@@ -38,13 +26,15 @@ const scholarshipImages = {
   province: "https://www.ehangzhou.gov.cn/img/attachement/jpg/site48/20250527/17483419485411.jpg",
   partner: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
 };
+const escapeCatalogHtml = window.CuacCatalogList.escapeHtml;
 
 const filters = {
+  keyword: "",
   funding: "all",
   type: "all",
   degree: "all",
+  country: "all",
   deadline: "all",
-  source: "all",
   coverage: false,
 };
 let sort = "relevance";
@@ -52,48 +42,347 @@ let page = 1;
 const pageSize = 8;
 const saved = new Set();
 let focusedScholarshipId = null;
+let routeCityFocus = "";
 
 const filterConfig = [
   ["Funding level", [["funding", "Funding", [["all", "Any funding"], ["full", "Full funding"], ["partial", "Partial funding"]]]]],
   ["Route type", [["type", "Type", [["all", "Any route"], ["government", "CSC / government"], ["university", "University award"], ["province", "Province / city"], ["partner", "Partner or subject"]]]]],
-  ["Student fit", [["degree", "Degree", [["all", "Any degree"], ["Undergraduate", "Undergraduate"], ["Master", "Master"], ["PhD", "PhD"]]]]],
+  ["Country scope", [["country", "Country / region", scholarshipCountryOptions]]],
   ["Application timing", [["deadline", "Deadline", [["all", "Any status"], ["soon", "Deadline soon"], ["open", "Open or later"], ["rolling", "Rolling"]]]]],
-  ["Source confidence", [["source", "Source", [["all", "Any source"], ["verified", "Verified"], ["pending", "Needs date check"], ["check", "Needs source check"]]]]],
 ];
 
+function scholarshipKey(item = {}) {
+  return String(item.slug || item.id || slugifyRouteParam(item.title || "scholarship"));
+}
+
+function scholarshipDetailKey(item = {}) {
+  return String(item.id || scholarshipKey(item));
+}
+
+function scholarshipTitle(item = {}) {
+  return item.title || item.name || "Scholarship route";
+}
+
+function scholarshipType(item = {}) {
+  return normalizeScholarshipTypeParam(item.type || "other");
+}
+
+function scholarshipTypeLabel(item = {}) {
+  return item.typeLabel || scholarshipType(item).replace(/^\w/, (char) => char.toUpperCase());
+}
+
+function scholarshipFundingLevel(item = {}) {
+  return item.fundingLevel || item.funding || "unknown";
+}
+
+function scholarshipFundingLabel(item = {}) {
+  const level = scholarshipFundingLevel(item);
+  if (level === "full") return "Full";
+  if (level === "partial") return "Partial";
+  return "Check";
+}
+
+function scholarshipProvider(item = {}) {
+  return item.providerNameEn || item.providerName || item.schoolName || item.school || "Provider not published";
+}
+
+function scholarshipSummary(item = {}) {
+  return item.summary || item.bodySections?.[0]?.body || "No summary published.";
+}
+
+function scholarshipDegree(item = {}) {
+  return item.applicableDegree || item.degree || "Not published";
+}
+
+function scholarshipDeadlineValue(item = {}) {
+  return item.deadlineDate || item.deadline || item.deadlineLabel || "";
+}
+
+function scholarshipDeadlineLabel(item = {}) {
+  return item.deadlineLabel || item.deadline || item.applicationRound || "Deadline pending";
+}
+
+function scholarshipSearchTags(item = {}) {
+  return [
+    ...(item.tags || []),
+    ...(item.targetCountries || []),
+    ...(item.targetRegions || []),
+    ...(item.benefitItems || []).map((benefit) => benefit.label || benefit),
+    ...(item.eligibilityItems || []).map((entry) => entry.label || entry),
+  ].filter(Boolean);
+}
+
+function scholarshipValueList(value) {
+  const items = Array.isArray(value) ? value : String(value || "").split(/[\n,;、]+/);
+  return items
+    .map((item) => (typeof item === "string" ? item : item?.label || item?.title || item?.name || item?.body || ""))
+    .map((item) => String(item || "").trim())
+    .filter(Boolean);
+}
+
+function scholarshipCountryScope(item = {}) {
+  return [...scholarshipValueList(item.targetCountries), ...scholarshipValueList(item.targetRegions)];
+}
+
+function scholarshipCountryOptions() {
+  const counts = new Map();
+  scholarships.forEach((item) => {
+    scholarshipCountryScope(item).forEach((value) => {
+      counts.set(value, (counts.get(value) || 0) + 1);
+    });
+  });
+  const options = Array.from(counts)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, 10)
+    .map(([value, count]) => [value, `${value} (${count})`]);
+  return [["all", "Any country / region"], ...options];
+}
+
+function scholarshipLinkedCount(item = {}, key, fallbackKey) {
+  const direct = Number(item[key]);
+  if (Number.isFinite(direct) && direct > 0) return direct;
+  const fallback = item[fallbackKey];
+  if (Array.isArray(fallback)) return fallback.length;
+  return 0;
+}
+
+function scholarshipScopeItems(item = {}, priorityValue = "") {
+  const countries = scholarshipCountryScope(item);
+  const priority = String(priorityValue || "").toLowerCase();
+  const priorityCountry = priority && priority !== "all"
+    ? countries.find((value) => value.toLowerCase() === priority || value.toLowerCase().includes(priority) || priority.includes(value.toLowerCase()))
+    : "";
+  const visibleCountries = priorityCountry
+    ? [priorityCountry, ...countries.filter((value) => value !== priorityCountry).slice(0, 1)]
+    : countries.slice(0, 2);
+  const hiddenCountries = countries.length - visibleCountries.length;
+  const schoolCount = scholarshipLinkedCount(item, "schoolCount", "schools");
+  const programCount = scholarshipLinkedCount(item, "programCount", "programs");
+  const items = [...visibleCountries];
+  if (hiddenCountries > 0) items.push(`+${hiddenCountries} more`);
+  if (schoolCount > 0) items.push(`${schoolCount} ${schoolCount === 1 ? "school" : "schools"}`);
+  if (programCount > 0) items.push(`${programCount} ${programCount === 1 ? "program route" : "program routes"}`);
+  return items.length ? items : ["Scope not published"];
+}
+
+function scholarshipScopeSummary(item = {}) {
+  return scholarshipScopeItems(item).join(" · ");
+}
+
+function normalizeScholarshipSearchText(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/csc/g, "chinese government scholarship csc")
+    .replace(/government[\s-]*scholarship/g, "government scholarship")
+    .replace(/full[\s-]*funding/g, "full")
+    .replace(/partial[\s-]*funding/g, "partial")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function scholarshipMatchesKeyword(item = {}) {
+  const tokens = normalizeScholarshipSearchText(filters.keyword).split(/\s+/).filter(Boolean);
+  if (!tokens.length) return true;
+  const haystack = normalizeScholarshipSearchText([
+    scholarshipTitle(item),
+    scholarshipType(item),
+    scholarshipTypeLabel(item),
+    scholarshipFundingLevel(item),
+    scholarshipFundingLabel(item),
+    scholarshipProvider(item),
+    scholarshipSummary(item),
+    scholarshipDegree(item),
+    scholarshipDeadlineLabel(item),
+    scholarshipScopeSummary(item),
+    scholarshipCountryScope(item),
+    coverageValues(item),
+    scholarshipSearchTags(item),
+    scholarshipEligibilitySummary(item),
+    scholarshipMaterialsSummary(item),
+    scholarshipNextStepSummary(item),
+  ].flat().join(" "));
+  return tokens.every((token) => haystack.includes(token));
+}
+
 function matches(item) {
-  if (filters.funding !== "all" && item.funding !== filters.funding) return false;
-  if (filters.type !== "all" && item.type !== filters.type) return false;
-  if (filters.degree !== "all" && !item.degree.includes(filters.degree)) return false;
-  if (filters.source !== "all" && item.source !== filters.source) return false;
-  if (filters.coverage && !item.coverage.includes("Stipend")) return false;
-  if (filters.deadline === "soon" && !["Mar 20", "Mar 31", "Sep 12"].includes(item.deadline)) return false;
-  if (filters.deadline === "open" && item.deadline === "Rolling") return false;
-  if (filters.deadline === "rolling" && item.deadline !== "Rolling") return false;
+  if (!scholarshipMatchesKeyword(item)) return false;
+  if (routeCityFocus) {
+    const aliases = cityScholarshipAliases(routeCityFocus);
+    const haystack = [scholarshipTitle(item), scholarshipProvider(item), item.providerLocation, scholarshipSummary(item), ...scholarshipSearchTags(item)].join(" ").toLowerCase();
+    if (!aliases.some((alias) => haystack.includes(alias))) return false;
+  }
+  if (filters.funding !== "all" && scholarshipFundingLevel(item) !== filters.funding) return false;
+  if (filters.type !== "all" && scholarshipType(item) !== filters.type) return false;
+  if (filters.degree !== "all" && !scholarshipDegree(item).includes(filters.degree)) return false;
+  if (filters.country !== "all") {
+    const selected = String(filters.country || "").toLowerCase();
+    const countries = scholarshipCountryScope(item).map((value) => value.toLowerCase());
+    if (!countries.some((value) => value === selected || value.includes(selected) || selected.includes(value))) return false;
+  }
+  if (filters.coverage && !coverageValues(item).includes("Stipend")) return false;
+  const deadline = new Date(scholarshipDeadlineValue(item));
+  const hasDate = !Number.isNaN(deadline.getTime());
+  const days = hasDate ? Math.ceil((deadline.getTime() - Date.now()) / 86400000) : null;
+  if (filters.deadline === "soon" && !(days != null && days >= 0 && days <= 60)) return false;
+  if (filters.deadline === "open" && !(days != null && days >= 0)) return false;
+  if (filters.deadline === "rolling" && hasDate) return false;
   return true;
 }
 
 function sorted(items) {
   const next = [...items];
-  if (sort === "deadline") next.sort((a, b) => a.deadline.localeCompare(b.deadline));
-  if (sort === "full") next.sort((a, b) => Number(b.funding === "full") - Number(a.funding === "full"));
-  if (sort === "verified") next.sort((a, b) => Number(b.source === "verified") - Number(a.source === "verified"));
+  if (sort === "deadline") next.sort((a, b) => {
+    const left = new Date(scholarshipDeadlineValue(a)).getTime();
+    const right = new Date(scholarshipDeadlineValue(b)).getTime();
+    return (Number.isFinite(left) ? left : Number.MAX_SAFE_INTEGER) - (Number.isFinite(right) ? right : Number.MAX_SAFE_INTEGER);
+  });
+  if (sort === "full") next.sort((a, b) => Number(scholarshipFundingLevel(b) === "full") - Number(scholarshipFundingLevel(a) === "full"));
   return next;
 }
 
-function statusLabel(item) {
-  if (item.source === "verified") return ["verified", "Verified source"];
-  if (item.source === "pending") return ["pending", "Needs date check"];
-  return ["check", "Needs source check"];
+function coverageValues(item) {
+  if (Array.isArray(item.benefitItems) && item.benefitItems.length) return item.benefitItems.map((benefit) => benefit.label || benefit);
+  if (Array.isArray(item.benefits) && item.benefits.length) return item.benefits;
+  if (Array.isArray(item.coverage)) return item.coverage;
+  return String(item.coverage || "")
+    .split(/,\s*/)
+    .map((value) => value.trim())
+    .filter(Boolean);
 }
 
-function scholarshipImage(item) {
-  if (item.school.includes("Zhejiang")) return "https://www.ehangzhou.gov.cn/img/attachement/jpg/site48/20250527/17483419485411.jpg";
-  if (item.school.includes("Shanghai") || item.school.includes("Fudan")) return "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80";
-  if (item.school.includes("Beijing")) return "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=80";
-  if (item.school.includes("Harbin")) return "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=80";
-  if (item.school.includes("Xiamen")) return "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80";
-  return scholarshipImages[item.type] || scholarshipImages.university;
+function scholarshipListText(value, fallback = "Check details") {
+  const items = Array.isArray(value) ? value : String(value || "").split(/[\n;]+/);
+  const first = items
+    .map((item) => (typeof item === "string" ? item : item?.label || item?.title || item?.body || ""))
+    .map((item) => String(item || "").trim())
+    .filter(Boolean)[0];
+  return first || fallback;
+}
+
+function scholarshipEligibilitySummary(item = {}) {
+  return scholarshipListText(item.eligibilityItems, item.requirementText || "Not published");
+}
+
+function scholarshipMaterialsSummary(item = {}) {
+  return scholarshipListText(item.applicationMaterials, "Not published");
+}
+
+function scholarshipNextStepSummary(item = {}) {
+  return scholarshipListText(item.applicationSteps, "Not published");
+}
+
+function renderScholarshipReadiness(item = {}) {
+  const rows = [
+    ["Eligibility", scholarshipEligibilitySummary(item)],
+    ["Materials", scholarshipMaterialsSummary(item)],
+    ["Next step", scholarshipNextStepSummary(item)],
+  ];
+  return `
+    <div class="scholarship-readiness" aria-label="Scholarship readiness summary">
+      ${rows.map(([label, value]) => `
+        <span>
+          <b>${label}</b>
+          <em>${escapeCatalogHtml(value)}</em>
+        </span>
+      `).join("")}
+    </div>
+  `;
+}
+
+function slugifyRouteParam(value) {
+  return String(value || "").trim().toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function normalizeScholarshipTypeParam(value) {
+  const slug = slugifyRouteParam(value);
+  return {
+    csc: "government",
+    government: "government",
+    "government-scholarship": "government",
+    university: "university",
+    "university-award": "university",
+    province: "province",
+    provincial: "province",
+    city: "province",
+    partner: "partner",
+    subject: "partner",
+    language: "partner",
+  }[slug] || value || "other";
+}
+
+function normalizeScholarshipFundingParam(value) {
+  const slug = slugifyRouteParam(value);
+  return {
+    full: "full",
+    "full-funding": "full",
+    partial: "partial",
+    "partial-funding": "partial",
+    unknown: "all",
+  }[slug] || value || "all";
+}
+
+function normalizeScholarshipDegreeParam(value) {
+  const slug = slugifyRouteParam(value);
+  return {
+    undergraduate: "Undergraduate",
+    bachelor: "Undergraduate",
+    bachelors: "Undergraduate",
+    master: "Master",
+    masters: "Master",
+    phd: "PhD",
+    doctoral: "PhD",
+    doctor: "PhD",
+  }[slug] || value || "all";
+}
+
+function normalizeCityParam(value) {
+  if (!value) return "";
+  const cityNames = {
+    hangzhou: "Hangzhou",
+    shanghai: "Shanghai",
+    beijing: "Beijing",
+    shenzhen: "Shenzhen",
+    nanjing: "Nanjing",
+    chengdu: "Chengdu",
+    wuhan: "Wuhan",
+    "xi-an": "Xi'an",
+    xian: "Xi'an",
+    guangzhou: "Guangzhou",
+  };
+  const routeSlug = slugifyRouteParam(value);
+  return cityNames[routeSlug] || value;
+}
+
+function cityScholarshipAliases(value) {
+  const aliases = {
+    hangzhou: ["hangzhou", "zhejiang"],
+    shanghai: ["shanghai"],
+    beijing: ["beijing"],
+    shenzhen: ["shenzhen", "guangdong"],
+    nanjing: ["nanjing", "jiangsu"],
+    chengdu: ["chengdu", "sichuan"],
+    wuhan: ["wuhan", "hubei"],
+    "xi-an": ["xi'an", "xian", "shaanxi"],
+    guangzhou: ["guangzhou", "guangdong"],
+  };
+  const routeSlug = slugifyRouteParam(value);
+  return aliases[routeSlug] || [String(value).toLowerCase()];
+}
+
+function scholarshipImage() {
+  return "file.svg";
+}
+
+function matchingProgramsHref(item = {}) {
+  const params = new URLSearchParams({ scholarship: "true" });
+  const type = scholarshipType(item);
+  const funding = scholarshipFundingLevel(item);
+  const degree = scholarshipDegree(item);
+  if (type) params.set("route", type);
+  if (funding && funding !== "unknown") params.set("funding", funding);
+  if (degree && degree !== "All levels") params.set("degree", degree.includes("Master") ? "master" : degree.includes("Undergraduate") ? "undergraduate" : "");
+  if (!params.get("degree")) params.delete("degree");
+  return `programs.html?${params.toString()}`;
 }
 
 function renderCards() {
@@ -103,29 +392,38 @@ function renderCards() {
   const items = filtered.slice((page - 1) * pageSize, page * pageSize);
   document.querySelector("#resultCount").textContent = filtered.length;
   document.querySelector("#resultContext").textContent = filtered.length === scholarships.length
-    ? "Funding routes with type, coverage, deadline, and source status."
+    ? "Funding routes with type, country scope, coverage, deadline, and student fit."
     : "Filtered by your scholarship route preferences.";
-  document.querySelector("#scholarshipGrid").innerHTML = items.map((item) => {
-    const [statusClass, statusText] = statusLabel(item);
-    const shownCoverage = item.coverage.slice(0, 3);
-    const hiddenCoverage = item.coverage.length - shownCoverage.length;
+  const grid = document.querySelector("#scholarshipGrid");
+  grid.innerHTML = items.map((item) => {
+    const key = scholarshipKey(item);
+    const title = scholarshipTitle(item);
+    const type = scholarshipType(item);
+    const coverageItems = coverageValues(item);
+    const shownCoverage = coverageItems.slice(0, 3);
+    const hiddenCoverage = coverageItems.length - shownCoverage.length;
+    const detailHref = `scholarship-detail.html?scholarship=${encodeURIComponent(scholarshipDetailKey(item))}`;
     return `
-      <article class="scholarship-card">
+      <article class="scholarship-card" role="link" tabindex="0" data-scholarship-card data-detail-href="${detailHref}" aria-label="View ${escapeCatalogHtml(title)} funding details">
         <div class="scholarship-media">
-          <img alt="${item.title} route context" src="${scholarshipImage(item)}" loading="lazy" />
-          <span class="badge type-badge ${item.type}">${item.typeLabel}</span>
-          <button class="save-button ${saved.has(item.id) ? "saved" : ""}" type="button" data-save="${item.id}" aria-label="Save ${item.title}">${scholarshipIcons.heart}</button>
+          <img alt="Scholarship catalog marker" src="${scholarshipImage(item)}" loading="lazy" />
+          <span class="badge type-badge ${type}">${escapeCatalogHtml(scholarshipTypeLabel(item))}</span>
+          <button class="save-button ${saved.has(key) ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(key)}" aria-label="Save ${escapeCatalogHtml(title)}">${scholarshipIcons.heart}</button>
+          <span class="scholarship-card-open" aria-hidden="true">${scholarshipIcons.arrowRight}</span>
         </div>
-        <h3>${item.title}</h3>
-        <p class="school-line">${item.school}</p>
-        <p class="summary">${item.summary}</p>
-        <div class="coverage-chips">${shownCoverage.map((value) => `<span>${value}</span>`).join("")}${hiddenCoverage ? `<span>+${hiddenCoverage}</span>` : ""}</div>
-        <div class="facts"><span><b>${item.funding === "full" ? "Full" : "Partial"}</b>funding</span><span><b>${item.degree}</b>degree fit</span><span><b>${item.deadline}</b>deadline</span></div>
-        <div class="card-meta"><span class="status ${statusClass}">${statusText}</span><span class="status">${item.verified}</span></div>
-        <div class="card-actions"><a class="primary" href="programs.html?scholarship=true">Matching programs</a><button class="ghost" type="button" data-detail="${item.id}">Details</button></div>
+        <h3>${escapeCatalogHtml(title)}</h3>
+        <p class="school-line">${escapeCatalogHtml(scholarshipProvider(item))}</p>
+        <p class="summary">${escapeCatalogHtml(scholarshipSummary(item))}</p>
+        <div class="coverage-chips">${shownCoverage.map((value) => `<span>${escapeCatalogHtml(value)}</span>`).join("")}${hiddenCoverage ? `<span>+${hiddenCoverage}</span>` : ""}</div>
+        <div class="facts"><span><b>${escapeCatalogHtml(scholarshipFundingLabel(item))}</b>funding</span><span><b>${escapeCatalogHtml(scholarshipDegree(item))}</b>degree fit</span><span><b>${escapeCatalogHtml(scholarshipDeadlineLabel(item))}</b>deadline</span></div>
+        <div class="scope-row" aria-label="Scholarship scope">${scholarshipScopeItems(item, filters.country).map((value) => `<span>${escapeCatalogHtml(value)}</span>`).join("")}</div>
+        ${renderScholarshipReadiness(item)}
       </article>
     `;
   }).join("");
+  if (!items.length) {
+    grid.innerHTML = '<div class="catalog-list-state"><strong>No scholarships match</strong><span>Remove a filter or search for another published route.</span></div>';
+  }
   document.querySelector("#pagination").innerHTML = Array.from({ length: totalPages }, (_, index) => `
     <button class="${index + 1 === page ? "active" : ""}" type="button" data-page="${index + 1}">${index + 1}</button>
   `).join("");
@@ -135,46 +433,52 @@ function renderCards() {
 
 function renderFocus() {
   const panel = document.querySelector("#scholarshipFocus");
-  const item = scholarships.find((entry) => entry.id === focusedScholarshipId);
+  const item = scholarships.find((entry) => scholarshipKey(entry) === focusedScholarshipId);
   if (!item) {
     panel.hidden = true;
     return;
   }
-  const [statusClass, statusText] = statusLabel(item);
   panel.hidden = false;
-  document.querySelector("#focusType").textContent = item.typeLabel;
-  document.querySelector("#focusType").className = `badge type-badge ${item.type}`;
-  document.querySelector("#focusTitle").textContent = item.title;
-  document.querySelector("#focusSummary").textContent = item.summary;
-  document.querySelector("#focusPrograms").href = `programs.html?scholarship=true&route=${encodeURIComponent(item.type)}&funding=${encodeURIComponent(item.funding)}`;
+  document.querySelector("#focusType").textContent = scholarshipTypeLabel(item);
+  document.querySelector("#focusType").className = `badge type-badge ${scholarshipType(item)}`;
+  document.querySelector("#focusTitle").textContent = scholarshipTitle(item);
+  document.querySelector("#focusSummary").textContent = scholarshipSummary(item);
+  document.querySelector("#focusPrograms").href = matchingProgramsHref(item);
+  const detailLink = document.querySelector("[data-scholarship-detail-link]");
+  if (detailLink) detailLink.href = `scholarship-detail.html?scholarship=${encodeURIComponent(scholarshipDetailKey(item))}`;
   document.querySelector("#focusFacts").innerHTML = [
-    ["Coverage", item.coverage.join(", ")],
-    ["Degree fit", item.degree],
-    ["Deadline", item.deadline],
-    ["Source", `${statusText} · ${item.verified}`],
-  ].map(([label, value]) => `<span><b>${label}</b>${value}</span>`).join("");
-  panel.dataset.status = statusClass;
+    ["Coverage", coverageValues(item).join(", ")],
+    ["Degree fit", scholarshipDegree(item)],
+    ["Country scope", scholarshipCountryScope(item).slice(0, 3).join(", ") || "Check notice"],
+    ["Linked routes", scholarshipScopeSummary(item)],
+    ["Deadline", scholarshipDeadlineLabel(item)],
+  ].map(([label, value]) => `<span><b>${label}</b>${escapeCatalogHtml(value)}</span>`).join("");
 }
 
 function renderActiveChips() {
   const chips = [];
+  if (filters.keyword) chips.push(["keyword", `Search: ${filters.keyword}`]);
+  if (routeCityFocus) chips.push(["city", `${routeCityFocus} related`]);
   if (filters.funding !== "all") chips.push(["funding", filters.funding === "full" ? "Full funding" : "Partial funding"]);
   if (filters.type !== "all") chips.push(["type", `${filters.type} route`]);
   if (filters.degree !== "all") chips.push(["degree", filters.degree]);
+  if (filters.country !== "all") chips.push(["country", filters.country]);
   if (filters.deadline !== "all") chips.push(["deadline", filters.deadline === "soon" ? "Deadline soon" : filters.deadline]);
-  if (filters.source !== "all") chips.push(["source", filters.source === "verified" ? "Verified source" : "Needs check"]);
   if (filters.coverage) chips.push(["coverage", "Includes stipend"]);
   document.querySelector("#activeChips").innerHTML = chips.length
-    ? chips.map(([key, label]) => `<button class="filter-chip active" type="button" data-clear="${key}">${label} x</button>`).join("")
+    ? chips.map(([key, label]) => `<button class="filter-chip active" type="button" data-clear="${key}">${escapeCatalogHtml(label)} x</button>`).join("")
     : '<span class="filter-chip">No filters applied</span>';
 }
 
 function renderFilters() {
   document.querySelector("#filterGroups").innerHTML = `
     ${filterConfig.map(([group, controls]) => `
-      <div class="filter-group"><span>${group}</span>${controls.map(([key, label, options]) => `
-        <label><span>${label}</span><select class="filter-select" data-filter-key="${key}">${options.map(([value, text]) => `<option value="${value}">${text}</option>`).join("")}</select></label>
-      `).join("")}</div>
+      <div class="filter-group"><span>${group}</span>${controls.map(([key, label, options]) => {
+        const resolvedOptions = typeof options === "function" ? options() : options;
+        return `
+        <label><span>${label}</span><select class="filter-select" data-filter-key="${key}">${resolvedOptions.map(([value, text]) => `<option value="${escapeCatalogHtml(value)}">${escapeCatalogHtml(text)}</option>`).join("")}</select></label>
+      `;
+      }).join("")}</div>
     `).join("")}
     <div class="filter-group"><span>Coverage</span><div class="check-list"><label><input type="checkbox" data-filter-key="coverage" /> Includes living stipend</label></div></div>
   `;
@@ -200,7 +504,7 @@ function openDrawer(open) {
 }
 
 function applyRouteFilter(value) {
-  Object.assign(filters, { funding: "all", type: "all", degree: "all", deadline: "all", source: "all", coverage: false });
+  Object.assign(filters, { keyword: "", funding: "all", type: "all", degree: "all", country: "all", deadline: "all", coverage: false });
   if (value === "all") {
     focusedScholarshipId = null;
   } else if (value === "full") filters.funding = "full";
@@ -211,7 +515,32 @@ function applyRouteFilter(value) {
   renderCards();
 }
 
-function showScholarshipAgentNotice(message) {
+function findScholarshipFromHash(value = window.location.hash) {
+  const hash = slugifyRouteParam(String(value || "").replace(/^#/, ""));
+  if (!hash) return null;
+  const aliases = {
+    csc: ["csc", "government"],
+    zju: ["zju", "zhejiang"],
+    zhejiang: ["zju", "zhejiang"],
+    shanghai: ["shanghai"],
+    jiangsu: ["jiangsu", "jasmine", "nanjing"],
+  }[hash] || [hash];
+  return scholarships.find((item) => {
+    const haystack = slugifyRouteParam([scholarshipTitle(item), scholarshipProvider(item), scholarshipTypeLabel(item), scholarshipSummary(item), ...scholarshipSearchTags(item)].join(" "));
+    return aliases.some((alias) => haystack.includes(slugifyRouteParam(alias)));
+  }) || null;
+}
+
+function applyHashFocus() {
+  const item = findScholarshipFromHash();
+  if (!item) return;
+  focusedScholarshipId = scholarshipKey(item);
+  filters.type = scholarshipType(item) || filters.type;
+  if (scholarshipFundingLevel(item) !== "unknown") filters.funding = scholarshipFundingLevel(item);
+  page = 1;
+}
+
+function showScholarshipAgentNotice(message, options = {}) {
   let notice = document.querySelector("[data-scholarship-agent-notice]");
   if (!notice) {
     notice = document.createElement("div");
@@ -219,7 +548,8 @@ function showScholarshipAgentNotice(message) {
     notice.dataset.scholarshipAgentNotice = "";
     document.querySelector("#scholarship-browser .section-head")?.appendChild(notice);
   }
-  notice.textContent = message;
+  if (options.html) notice.innerHTML = message;
+  else notice.textContent = message;
   notice.classList.add("visible");
 }
 
@@ -255,31 +585,34 @@ function restoreScholarshipState(snapshot) {
 function applyScholarshipAgentAction(action, detail = {}) {
   const before = captureScholarshipState();
   if (action === "apply-smart-filters" || action === "compare-funding") {
-    Object.assign(filters, { funding: "full", type: "all", degree: "Master", deadline: "all", source: "verified", coverage: true });
+    Object.assign(filters, { funding: "full", type: "all", degree: "Master", country: "all", deadline: "all", coverage: true });
     sort = "full";
     page = 1;
     syncFilters();
     renderCards();
-    showScholarshipAgentNotice("Agent filtered for full funding, Master fit, stipend coverage, and verified sources.");
+    showScholarshipAgentNotice("Agent filtered for full funding, Master fit, and stipend coverage.");
     document.querySelector("#scholarship-browser")?.scrollIntoView({ behavior: "smooth", block: "start" });
     detail.setUndo?.(before);
     return true;
   }
   if (action === "save-program-shortlist") {
-    [1, 2, 5].forEach((id) => saved.add(id));
+    ["csc", "zhejiang-university-international-student-scholarship", "jiangsu-jasmine-scholarship"].forEach((key) => {
+      const item = scholarships.find((entry) => scholarshipKey(entry) === key || scholarshipTitle(entry).toLowerCase().includes(key.split("-")[0]));
+      saved.add(item ? scholarshipKey(item) : key);
+    });
     renderCards();
     showScholarshipAgentNotice("Agent saved CSC, ZJU, and Jiangsu scholarship routes.");
     detail.setUndo?.(before);
     return true;
   }
   if (action === "open-choice-modal") {
-    window.location.href = "programs.html?scholarship=true";
+    window.location.href = matchingProgramsHref({ type: filters.type === "all" ? "" : filters.type, funding: filters.funding === "all" ? "" : filters.funding, degree: filters.degree });
     return true;
   }
   if (action === "save-checklist") {
-    focusedScholarshipId = 1;
+    focusedScholarshipId = scholarshipKey(scholarships[0] || {});
     renderFocus();
-    showScholarshipAgentNotice("Agent opened the CSC route because its funding checklist is the most complete demo path.");
+    showScholarshipAgentNotice("Agent opened the CSC route because its funding checklist is the most complete path.");
     document.querySelector("#scholarshipFocus")?.scrollIntoView({ behavior: "smooth", block: "center" });
     detail.setUndo?.(before);
     return true;
@@ -290,10 +623,25 @@ function applyScholarshipAgentAction(action, detail = {}) {
 document.addEventListener("click", (event) => {
   const save = event.target.closest("[data-save]");
   if (save) {
-    const id = Number(save.dataset.save);
-    if (saved.has(id)) saved.delete(id);
-    else saved.add(id);
+    const resumeSelector = window.CUAC?.dataAttributeSelector?.("data-save", save.dataset.save) || "[data-save]";
+    if (window.CUAC?.requireStudentSignedIn && !window.CUAC.requireStudentSignedIn("Save this scholarship", { resumeAction: { type: "click-selector", selector: resumeSelector } })) return;
+    const key = save.dataset.save;
+    const item = scholarships.find((entry) => scholarshipKey(entry) === key);
+    const savedNow = !saved.has(key);
+    if (savedNow) saved.add(key);
+    else saved.delete(key);
     renderCards();
+    showScholarshipAgentNotice(
+      savedNow
+        ? `Saved ${item ? scholarshipTitle(item) : "scholarship"} to Favourites. <a href="favourites.html">Review funding context</a>`
+        : `Removed ${item ? scholarshipTitle(item) : "scholarship"} from Favourites.`,
+      { html: savedNow },
+    );
+    return;
+  }
+  const scholarshipCard = event.target.closest("[data-scholarship-card]");
+  if (scholarshipCard && !event.target.closest("button, a, [data-save]")) {
+    window.location.href = scholarshipCard.dataset.detailHref;
     return;
   }
   const pageButton = event.target.closest("[data-page]");
@@ -306,7 +654,8 @@ document.addEventListener("click", (event) => {
   const clear = event.target.closest("[data-clear]");
   if (clear) {
     const key = clear.dataset.clear;
-    filters[key] = key === "coverage" ? false : "all";
+    if (key === "city") routeCityFocus = "";
+    else filters[key] = key === "coverage" ? false : key === "keyword" ? "" : "all";
     page = 1;
     syncFilters();
     renderCards();
@@ -314,7 +663,7 @@ document.addEventListener("click", (event) => {
   }
   const detail = event.target.closest("[data-detail]");
   if (detail) {
-    focusedScholarshipId = Number(detail.dataset.detail);
+    focusedScholarshipId = detail.dataset.detail;
     renderFocus();
     document.querySelector("#scholarshipFocus").scrollIntoView({ behavior: "smooth", block: "center" });
     return;
@@ -333,6 +682,14 @@ document.addEventListener("click", (event) => {
   }
 });
 
+document.addEventListener("keydown", (event) => {
+  const scholarshipCard = event.target.closest("[data-scholarship-card]");
+  if (!scholarshipCard) return;
+  if (event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  window.location.href = scholarshipCard.dataset.detailHref;
+});
+
 document.querySelector("#focusClose").addEventListener("click", () => {
   focusedScholarshipId = null;
   renderFocus();
@@ -343,7 +700,7 @@ document.querySelector("#closeFilters").addEventListener("click", () => openDraw
 document.querySelector("#drawerBackdrop").addEventListener("click", () => openDrawer(false));
 document.querySelector("#applyFilters").addEventListener("click", () => openDrawer(false));
 document.querySelector("#resetFilters").addEventListener("click", () => {
-  Object.assign(filters, { funding: "all", type: "all", degree: "all", deadline: "all", source: "all", coverage: false });
+  Object.assign(filters, { keyword: "", funding: "all", type: "all", degree: "all", country: "all", deadline: "all", coverage: false });
   page = 1;
   syncFilters();
   renderCards();
@@ -372,6 +729,16 @@ document.addEventListener("cuac:agent-undo", (event) => {
   event.preventDefault();
 });
 
+const routeParams = new URLSearchParams(window.location.search);
+filters.keyword = routeParams.get("keyword") || routeParams.get("q") || "";
+routeCityFocus = normalizeCityParam(routeParams.get("city"));
+if (routeParams.get("fundingLevel") || routeParams.get("funding")) filters.funding = normalizeScholarshipFundingParam(routeParams.get("fundingLevel") || routeParams.get("funding"));
+if (routeParams.get("route") || routeParams.get("type")) filters.type = normalizeScholarshipTypeParam(routeParams.get("route") || routeParams.get("type"));
+if (routeParams.get("applicableDegree") || routeParams.get("degree")) filters.degree = normalizeScholarshipDegreeParam(routeParams.get("applicableDegree") || routeParams.get("degree"));
+if (routeParams.get("country") || routeParams.get("targetCountry")) filters.country = routeParams.get("country") || routeParams.get("targetCountry");
+if (routeParams.get("region") || routeParams.get("targetRegion")) filters.country = routeParams.get("region") || routeParams.get("targetRegion");
+applyHashFocus();
+
 const revealItems = Array.from(document.querySelectorAll(".reveal"));
 if (new URLSearchParams(window.location.search).get("motion") === "off") document.body.classList.add("motion-off");
 if ("IntersectionObserver" in window && !document.body.classList.contains("motion-off")) {
@@ -387,4 +754,43 @@ if ("IntersectionObserver" in window && !document.body.classList.contains("motio
 }
 
 renderFilters();
-renderCards();
+window.CuacCatalogList.listState(document.querySelector("#scholarshipGrid"), "loading", { noun: "scholarships" });
+
+async function loadScholarships() {
+  const grid = document.querySelector("#scholarshipGrid");
+  window.CuacCatalogList.listState(grid, "loading", { noun: "scholarships" });
+  document.querySelector("#resultCount").textContent = "-";
+  document.querySelector("#resultContext").textContent = "Reading the current published catalog.";
+  try {
+    const records = await window.CuacCatalogList.load("scholarships", { limit: 100 });
+    scholarships.splice(0, scholarships.length, ...records);
+    const futureDeadlines = scholarships
+      .map((item) => new Date(item.deadlineDate))
+      .filter((date) => !Number.isNaN(date.getTime()) && date.getTime() >= Date.now())
+      .sort((a, b) => a.getTime() - b.getTime());
+    document.querySelector("#summaryFundingRoutes").textContent = scholarships.length;
+    document.querySelector("#summaryFullFunding").textContent = scholarships.filter((item) => scholarshipFundingLevel(item) === "full").length;
+    document.querySelector("#summaryDeadlineWindow").textContent = futureDeadlines.length
+      ? new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(futureDeadlines[0])
+      : "Not published";
+    applyHashFocus();
+    renderFilters();
+    renderCards();
+  } catch (error) {
+    document.querySelector("#resultContext").textContent = "The published catalog could not be loaded.";
+    window.CuacCatalogList.listState(grid, "error", { noun: "scholarships", message: error.message });
+  }
+}
+
+document.addEventListener("click", (event) => {
+  if (event.target.closest("[data-catalog-retry]")) loadScholarships();
+});
+
+loadScholarships();
+
+window.addEventListener("hashchange", () => {
+  applyHashFocus();
+  syncFilters();
+  renderCards();
+  document.querySelector("#scholarshipFocus")?.scrollIntoView({ behavior: "smooth", block: "center" });
+});

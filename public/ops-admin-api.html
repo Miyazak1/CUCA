@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | 运营控制台</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="ops-workspace.css?v=20260904-corrections-v1" />
+  </head>
+  <body data-agent-mode="ops" data-completion-page="ops">
+    <div class="page ops-page">
+      <div data-cuac-header data-active="hub" data-note="内部运营：" data-note-detail="受控管理工作台"></div>
+      <main class="ops-main">
+        <header class="ops-heading">
+          <div>
+            <span class="ops-kicker">CUAC Operations</span>
+            <h1>运营控制台</h1>
+            <p>查看固定运营摘要，处理隔离队列，并通过限时审计会话核对申请状态。</p>
+          </div>
+          <div class="ops-heading-status">
+            <span>当前权限</span>
+            <strong data-ops-role>正在验证</strong>
+            <button type="button" data-ops-refresh>刷新当前视图</button>
+          </div>
+        </header>
+
+        <nav class="ops-tabs" aria-label="运营模块" role="tablist">
+          <button type="button" role="tab" aria-selected="true" data-ops-tab="overview">运行概览</button>
+          <button type="button" role="tab" aria-selected="false" data-ops-tab="routing">投递复核</button>
+          <button type="button" role="tab" aria-selected="false" data-ops-tab="billing">支付复核</button>
+          <button type="button" role="tab" aria-selected="false" data-ops-tab="quality">数据质量</button>
+          <button type="button" role="tab" aria-selected="false" data-ops-tab="corrections">学校更正</button>
+          <button type="button" role="tab" aria-selected="false" data-ops-tab="support">申请支持</button>
+        </nav>
+
+        <section class="ops-view" data-ops-view aria-live="polite">
+          <p class="ops-state" aria-busy="true">正在读取运营数据。</p>
+        </section>
+      </main>
+      <div data-cuac-footer></div>
+      <div class="ops-toast" data-ops-toast hidden role="status" aria-live="polite"></div>
+    </div>
+    <script src="shared-shell.js"></script>
+    <script src="ops-admin-runtime.js?v=20260904-corrections-v1"></script>
+  </body>
+</html>

@@ -1,338 +1,16 @@
 ﻿const iconHeart = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 8.6c0 5.7-8.5 10.4-8.5 10.4S3.5 14.3 3.5 8.6A4.6 4.6 0 0 1 12 6a4.6 4.6 0 0 1 8.5 2.6Z"/></svg>';
+const iconCompare = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 7h14"/><path d="m6 7-3 7"/><path d="m8 7 3 7"/><path d="m16 7-3 7"/><path d="m18 7 3 7"/><path d="M3 14h8"/><path d="M13 14h8"/><path d="M7 21h10"/></svg>';
+const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 
-      const programs = [
-        {
-          id: "zju-cs-msc",
-          name: "Computer Science MSc",
-          university: "Zhejiang University",
-          city: "Hangzhou",
-          province: "Zhejiang",
-          degree: "master",
-          subject: "Computer Science",
-          language: "english",
-          intake: "Fall 2026",
-          term: "fall",
-          duration: "2 years",
-          deadline: "2026-10-15",
-          deadlineStatus: "closes-soon",
-          tuition: 42000,
-          scholarship: true,
-          scholarshipType: "CSC + university",
-          langReq: "IELTS 6.5",
-          hsk: "No HSK first",
-          documents: "heavy",
-          documentCount: 7,
-          source: "verified",
-          verified: "Aug 1",
-          readiness: "Needs IELTS",
-          readinessType: "warn",
-          fit: "English route, Hangzhou, scholarship options, but documents are heavy.",
-        },
-        {
-          id: "fudan-econ-ba",
-          name: "Economics BA",
-          university: "Fudan University",
-          city: "Shanghai",
-          province: "Shanghai",
-          degree: "undergraduate",
-          subject: "Economics",
-          language: "chinese",
-          intake: "Fall 2026",
-          term: "fall",
-          duration: "4 years",
-          deadline: "2026-09-12",
-          deadlineStatus: "urgent",
-          tuition: 26000,
-          scholarship: true,
-          scholarshipType: "Shanghai Government",
-          langReq: "HSK 5",
-          hsk: "HSK required",
-          documents: "medium",
-          documentCount: 5,
-          source: "verified",
-          verified: "Jul 28",
-          readiness: "HSK blocker",
-          readinessType: "risk",
-          fit: "Strong Shanghai option, but Chinese-taught route requires HSK.",
-        },
-        {
-          id: "tongji-civil-msc",
-          name: "Civil Engineering MSc",
-          university: "Tongji University",
-          city: "Shanghai",
-          province: "Shanghai",
-          degree: "master",
-          subject: "Engineering",
-          language: "english",
-          intake: "Fall 2026",
-          term: "fall",
-          duration: "2 years",
-          deadline: "2026-11-20",
-          deadlineStatus: "open",
-          tuition: 39000,
-          scholarship: true,
-          scholarshipType: "CSC + city",
-          langReq: "IELTS 6.0",
-          hsk: "No HSK first",
-          documents: "medium",
-          documentCount: 6,
-          source: "stale",
-          verified: "Apr 18",
-          readiness: "Needs source recheck",
-          readinessType: "warn",
-          fit: "Engineering strength and scholarship signal, but source is older than target.",
-        },
-        {
-          id: "blcu-language",
-          name: "Chinese Language Non-degree",
-          university: "Beijing Language and Culture University",
-          city: "Beijing",
-          province: "Beijing",
-          degree: "non-degree",
-          subject: "Chinese Language",
-          language: "chinese",
-          intake: "Spring 2027",
-          term: "spring",
-          duration: "1 year",
-          deadline: "2026-12-20",
-          deadlineStatus: "open",
-          tuition: 22000,
-          scholarship: false,
-          scholarshipType: "No scholarship listed",
-          langReq: "Placement after arrival",
-          hsk: "No HSK first",
-          documents: "light",
-          documentCount: 3,
-          source: "verified",
-          verified: "Aug 3",
-          readiness: "Light documents",
-          readinessType: "good",
-          fit: "Good preparatory language path with low document effort.",
-        },
-        {
-          id: "hitsz-ai-msc",
-          name: "Artificial Intelligence MSc",
-          university: "Harbin Institute of Technology Shenzhen",
-          city: "Shenzhen",
-          province: "Guangdong",
-          degree: "master",
-          subject: "Computer Science",
-          language: "english",
-          intake: "Fall 2026",
-          term: "fall",
-          duration: "2 years",
-          deadline: "2026-10-05",
-          deadlineStatus: "closes-soon",
-          tuition: 45000,
-          scholarship: true,
-          scholarshipType: "STEM grant",
-          langReq: "IELTS 6.5",
-          hsk: "No HSK first",
-          documents: "heavy",
-          documentCount: 6,
-          source: "pending",
-          verified: "Pending",
-          readiness: "Source pending",
-          readinessType: "warn",
-          fit: "Strong tech-city fit, but admissions source needs confirmation.",
-        },
-        {
-          id: "uibe-trade-msc",
-          name: "International Trade MSc",
-          university: "University of International Business and Economics",
-          city: "Beijing",
-          province: "Beijing",
-          degree: "master",
-          subject: "Business",
-          language: "english",
-          intake: "Late Fall 2026",
-          term: "fall",
-          duration: "2 years",
-          deadline: "2026-11-10",
-          deadlineStatus: "late",
-          tuition: 36000,
-          scholarship: true,
-          scholarshipType: "Merit waiver",
-          langReq: "English proof flexible",
-          hsk: "No HSK first",
-          documents: "medium",
-          documentCount: 5,
-          source: "verified",
-          verified: "Aug 5",
-          readiness: "Late option",
-          readinessType: "good",
-          fit: "Useful late-intake business route with flexible English proof.",
-        },
-        {
-          id: "nju-data-msc",
-          name: "Data Science MSc",
-          university: "Nanjing University",
-          city: "Nanjing",
-          province: "Jiangsu",
-          degree: "master",
-          subject: "Computer Science",
-          language: "english",
-          intake: "Fall 2026",
-          term: "fall",
-          duration: "2 years",
-          deadline: "2026-10-30",
-          deadlineStatus: "open",
-          tuition: 38000,
-          scholarship: true,
-          scholarshipType: "University award",
-          langReq: "IELTS 6.0",
-          hsk: "No HSK first",
-          documents: "medium",
-          documentCount: 6,
-          source: "verified",
-          verified: "Jul 30",
-          readiness: "Likely fit",
-          readinessType: "good",
-          fit: "Lower-cost city than Shanghai with English-taught data route.",
-        },
-        {
-          id: "scu-medicine-mbbs",
-          name: "Clinical Medicine MBBS",
-          university: "Sichuan University",
-          city: "Chengdu",
-          province: "Sichuan",
-          degree: "undergraduate",
-          subject: "Medicine",
-          language: "english",
-          intake: "Fall 2026",
-          term: "fall",
-          duration: "6 years",
-          deadline: "2026-09-25",
-          deadlineStatus: "urgent",
-          tuition: 45000,
-          scholarship: false,
-          scholarshipType: "No scholarship listed",
-          langReq: "IELTS or interview",
-          hsk: "HSK after study",
-          documents: "heavy",
-          documentCount: 8,
-          source: "stale",
-          verified: "May 12",
-          readiness: "Deadline rescue",
-          readinessType: "risk",
-          fit: "Medicine route needs careful document and deadline review.",
-        },
-        {
-          id: "xjtu-mech-phd",
-          name: "Mechanical Engineering PhD",
-          university: "Xi'an Jiaotong University",
-          city: "Xi'an",
-          province: "Shaanxi",
-          degree: "phd",
-          subject: "Engineering",
-          language: "english",
-          intake: "Fall 2026",
-          term: "fall",
-          duration: "4 years",
-          deadline: "2026-12-01",
-          deadlineStatus: "open",
-          tuition: 34000,
-          scholarship: true,
-          scholarshipType: "CSC possible",
-          langReq: "IELTS 6.0",
-          hsk: "No HSK first",
-          documents: "heavy",
-          documentCount: 7,
-          source: "verified",
-          verified: "Aug 2",
-          readiness: "Funding route",
-          readinessType: "good",
-          fit: "Affordable engineering PhD route with scholarship signal.",
-        },
-        {
-          id: "whu-ir-ba",
-          name: "International Relations BA",
-          university: "Wuhan University",
-          city: "Wuhan",
-          province: "Hubei",
-          degree: "undergraduate",
-          subject: "International Relations",
-          language: "english",
-          intake: "Fall 2026",
-          term: "fall",
-          duration: "4 years",
-          deadline: "2026-11-05",
-          deadlineStatus: "open",
-          tuition: 28000,
-          scholarship: true,
-          scholarshipType: "Provincial award",
-          langReq: "English proof flexible",
-          hsk: "No HSK first",
-          documents: "medium",
-          documentCount: 5,
-          source: "pending",
-          verified: "Pending",
-          readiness: "Needs review",
-          readinessType: "warn",
-          fit: "Lower tuition and English route, but source needs confirmation.",
-        },
-        {
-          id: "sysu-business-msc",
-          name: "Business Analytics MSc",
-          university: "Sun Yat-sen University",
-          city: "Guangzhou",
-          province: "Guangdong",
-          degree: "master",
-          subject: "Business",
-          language: "bilingual",
-          intake: "Spring 2027",
-          term: "spring",
-          duration: "2 years",
-          deadline: "2026-12-15",
-          deadlineStatus: "open",
-          tuition: 41000,
-          scholarship: true,
-          scholarshipType: "Partial award",
-          langReq: "English + Chinese interview",
-          hsk: "HSK helpful",
-          documents: "medium",
-          documentCount: 6,
-          source: "verified",
-          verified: "Jul 25",
-          readiness: "Language review",
-          readinessType: "warn",
-          fit: "Good southern China option if bilingual study is acceptable.",
-        },
-        {
-          id: "hust-biomed-msc",
-          name: "Biomedical Engineering MSc",
-          university: "Huazhong University of Science and Technology",
-          city: "Wuhan",
-          province: "Hubei",
-          degree: "master",
-          subject: "Engineering",
-          language: "english",
-          intake: "Late Fall 2026",
-          term: "fall",
-          duration: "2 years",
-          deadline: "2026-11-18",
-          deadlineStatus: "late",
-          tuition: 33000,
-          scholarship: true,
-          scholarshipType: "University award",
-          langReq: "IELTS 6.0",
-          hsk: "No HSK first",
-          documents: "light",
-          documentCount: 4,
-          source: "verified",
-          verified: "Aug 6",
-          readiness: "Light documents",
-          readinessType: "good",
-          fit: "Late intake with lower tuition and lighter document burden.",
-        },
-      ];
+      let programs = [];
+      const escapeCatalogHtml = window.CuacCatalogList.escapeHtml;
 
       const state = {
         page: 1,
-        pageSize: 12,
+        pageSize: 8,
         view: "list",
-        saved: new Set(["zju-cs-msc"]),
-        compared: new Set(["zju-cs-msc", "uibe-trade-msc"]),
+        saved: new Set(),
+        compared: new Set(),
         filters: {
           q: "",
           degree: "",
@@ -343,22 +21,33 @@
           deadline: "",
           tuition: "",
           scholarship: false,
+          upcomingDeadline: false,
           langReq: "",
           documents: "",
-          source: "",
         },
       };
 
       const routeParams = new URLSearchParams(window.location.search);
       const focusedProgram = routeParams.get("program");
       const focusedUniversity = routeParams.get("university");
-      const initialProgram = focusedProgram ? programs.find((program) => program.id === focusedProgram) : null;
-      const initialQuery = routeParams.get("q") || focusedUniversity || initialProgram?.name || "";
+      const scholarshipRoute = routeParams.get("route") || routeParams.get("type") || "";
+      const scholarshipFunding = routeParams.get("funding") || "";
+      const scholarshipParam = String(routeParams.get("scholarship") || "").trim().toLowerCase();
+      let initialProgram = null;
+      const initialQuery = routeParams.get("keyword") || routeParams.get("q") || focusedUniversity || (initialProgram ? programName(initialProgram) : "") || scholarshipRouteQuery(scholarshipRoute, scholarshipFunding) || scholarshipParamQuery(scholarshipParam);
       if (initialQuery) state.filters.q = initialQuery;
-      ["degree", "subject", "language", "city", "intake", "deadline", "tuition", "langReq", "documents", "source"].forEach((key) => {
-        if (routeParams.get(key)) state.filters[key] = routeParams.get(key);
+      ["degree", "subject", "language", "city", "intake", "deadline", "tuition", "langReq", "documents"].forEach((key) => {
+        const value = routeParams.get(key);
+        if (value) state.filters[key] = key === "city" ? normalizeCityParam(value) : key === "degree" ? normalizeDegreeParam(value) : key === "language" ? normalizeLanguageParam(value) : value;
       });
-      if (routeParams.get("scholarship") === "true") state.filters.scholarship = true;
+      const degreeLevelParam = routeParams.get("degreeLevel") || routeParams.get("applicationLevel");
+      const teachingLanguageParam = routeParams.get("teachingLanguage");
+      const subjectParam = routeParams.get("programSubject") || routeParams.get("fieldCategory") || routeParams.get("subject");
+      if (degreeLevelParam) state.filters.degree = normalizeDegreeParam(degreeLevelParam);
+      if (teachingLanguageParam) state.filters.language = normalizeLanguageParam(teachingLanguageParam);
+      if (subjectParam) state.filters.subject = subjectParam;
+      if (truthyParam(routeParams.get("hasScholarship")) || (scholarshipParam && !["false", "0", "no"].includes(scholarshipParam))) state.filters.scholarship = true;
+      if (truthyParam(routeParams.get("hasUpcomingDeadline"))) state.filters.upcomingDeadline = true;
 
       const filterGroups = [
         {
@@ -370,25 +59,15 @@
           ],
         },
         {
-          label: "China fit",
+          label: "Cost",
           fields: [
-            ["city", "City", [["", "Any city"], ["Beijing", "Beijing"], ["Shanghai", "Shanghai"], ["Hangzhou", "Hangzhou"], ["Shenzhen", "Shenzhen"], ["Chengdu", "Chengdu"], ["Nanjing", "Nanjing"], ["Wuhan", "Wuhan"], ["Xi'an", "Xi'an"], ["Guangzhou", "Guangzhou"]]],
-            ["tuition", "Tuition", [["", "Any tuition"], ["under-25", "Under RMB 25k"], ["25-40", "RMB 25k-40k"], ["40-60", "RMB 40k-60k"], ["60-plus", "RMB 60k+"]]],
+            ["tuition", "Tuition", [["", "Any published tuition"], ["under-25", "Under RMB 25k"], ["25-40", "RMB 25k-40k"], ["40-60", "RMB 40k-60k"], ["60-plus", "RMB 60k+"]]],
           ],
         },
         {
           label: "Application timing",
           fields: [
-            ["intake", "Intake", [["", "Any intake"], ["fall", "Fall 2026"], ["spring", "Spring 2027"], ["late", "Late intake"]]],
             ["deadline", "Deadline", [["", "Any open status"], ["open", "Open"], ["closes-soon", "Closes soon"], ["urgent", "Urgent"], ["late", "Late intake"]]],
-          ],
-        },
-        {
-          label: "Requirements",
-          fields: [
-            ["langReq", "Language requirement", [["", "Any requirement"], ["no-hsk", "No HSK first"], ["hsk", "HSK required"], ["ielts", "IELTS / TOEFL required"], ["flexible", "English proof flexible"]]],
-            ["documents", "Document effort", [["", "Any effort"], ["light", "Light"], ["medium", "Medium"], ["heavy", "Heavy"]]],
-            ["source", "Source status", [["", "Any source"], ["verified", "Verified"], ["stale", "Needs recheck"], ["pending", "Pending source"]]],
           ],
         },
       ];
@@ -407,11 +86,14 @@
       const drawerBackdrop = document.querySelector("#drawerBackdrop");
 
       function formatMoney(value) {
+        if (!Number(value)) return "Tuition pending";
         return `RMB ${value.toLocaleString("en-US")}`;
       }
 
       function formatShortDate(value) {
-        return new Intl.DateTimeFormat("en", { month: "short", day: "numeric" }).format(new Date(value));
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return "date pending";
+        return new Intl.DateTimeFormat("en", { month: "short", day: "numeric" }).format(date);
       }
 
       function labelDegree(value) {
@@ -435,48 +117,297 @@
         return `${value[0].toUpperCase()}${value.slice(1)} documents`;
       }
 
+      function programId(program = {}) {
+        return program.id || program.slug || program.programId || "";
+      }
+
+      function programName(program = {}) {
+        return program.nameEn || program.name || "Program to confirm";
+      }
+
+      function programUniversity(program = {}) {
+        return program.schoolNameEn || program.university || program.school || "University to confirm";
+      }
+
+      function programCity(program = {}) {
+        return program.city || program.cityZh || "China";
+      }
+
+      function programProvince(program = {}) {
+        return program.province || program.region || "China";
+      }
+
+      function programDegreeValue(program = {}) {
+        const value = String(program.degree || program.degreeLevel || "").trim().toLowerCase();
+        if (value.includes("under") || value.includes("bachelor")) return "undergraduate";
+        if (value.includes("master")) return "master";
+        if (value.includes("phd") || value.includes("doctor")) return "phd";
+        if (value.includes("non") || value.includes("language")) return "non-degree";
+        return value;
+      }
+
+      function programSubject(program = {}) {
+        return program.subject || program.fieldCategory || "General";
+      }
+
+      function compactList(value, fallback = "Confirm") {
+        const items = Array.isArray(value) ? value : String(value || "").split(/[,;/\n]+/);
+        const cleaned = items.map((item) => String(item || "").trim()).filter(Boolean);
+        return cleaned.length ? cleaned.slice(0, 3).join(" / ") : fallback;
+      }
+
+      function programLanguageValue(program = {}) {
+        const value = String(program.language || program.teachingLanguage || "").trim().toLowerCase();
+        if (value.includes("english")) return "english";
+        if (value.includes("chinese")) return "chinese";
+        if (value.includes("bilingual")) return "bilingual";
+        return value;
+      }
+
+      function programLanguageLabel(program = {}) {
+        return program.teachingLanguage || labelLanguage(programLanguageValue(program));
+      }
+
+      function programIntake(program = {}) {
+        return program.applicationRound || program.intake || "Intake pending";
+      }
+
+      function programTerm(program = {}) {
+        const value = String(program.term || programIntake(program)).toLowerCase();
+        if (value.includes("spring")) return "spring";
+        if (value.includes("late")) return "late";
+        if (value.includes("fall")) return "fall";
+        return value;
+      }
+
+      function programDeadline(program = {}) {
+        return program.deadlineDate || program.deadline || "";
+      }
+
+      function programDeadlineStatus(program = {}) {
+        if (program.deadlineStatus) return program.deadlineStatus;
+        if (programTerm(program) === "late") return "late";
+        const date = new Date(programDeadline(program));
+        if (Number.isNaN(date.getTime())) return "open";
+        const days = Math.ceil((date.getTime() - Date.now()) / 86400000);
+        if (days < 0) return "closed";
+        if (days <= 45) return "urgent";
+        if (days <= 70) return "closes-soon";
+        return "open";
+      }
+
+      function programTuitionAmount(program = {}) {
+        const value = Number(program.tuitionAmount ?? program.tuition);
+        return Number.isFinite(value) ? value : 0;
+      }
+
+      function programScholarship(program = {}) {
+        return Boolean(program.hasScholarship ?? program.scholarship ?? (program.schoolScholarships || []).length);
+      }
+
+      function programScholarshipLabel(program = {}) {
+        if (program.scholarshipType) return program.scholarshipType;
+        if (program.scholarshipText) return program.scholarshipText;
+        const first = (program.schoolScholarships || [])[0];
+        return first?.name || "No listed award";
+      }
+
+      function programLanguageRequirement(program = {}) {
+        return program.langReq || program.englishRequirement || program.languageRequirement || "Not published";
+      }
+
+      function programHskRequirement(program = {}) {
+        return program.hsk || program.hskRequirement || "Not published";
+      }
+
+      function programCscaSummary(program = {}) {
+        return compactList(program.displaySubjects || program.cscaSubjects || program.cscaRequirement, "Check CSCA subjects");
+      }
+
+      function programLanguageProofSummary(program = {}) {
+        const language = programLanguageValue(program);
+        const english = programLanguageRequirement(program);
+        const hsk = programHskRequirement(program);
+        if (language === "chinese") return hsk || "Check HSK requirement";
+        if (language === "english" && /no hsk/i.test(hsk)) return english || "English proof";
+        return [english, hsk].filter(Boolean).slice(0, 2).join(" / ") || "Check language proof";
+      }
+
+      function programApplicationNoteSummary(program = {}) {
+        const note = program.applicationNote || program.fit || "";
+        if (!note) return "School confirms document steps";
+        return String(note).replace(/\s+/g, " ").trim();
+      }
+
+      function renderRequirementCards(program = {}) {
+        const items = [
+          ["CSCA", programCscaSummary(program)],
+          ["Language proof", programLanguageProofSummary(program)],
+          ["Application note", programApplicationNoteSummary(program)],
+        ];
+        return `
+          <div class="program-requirements" aria-label="Program requirements">
+            ${items.map(([label, value]) => `
+              <div class="program-requirement">
+                <span>${label}</span>
+                <strong>${value}</strong>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      function programDocumentEffort(program = {}) {
+        return program.documents || program.documentEffort || "medium";
+      }
+
+      function programDocumentCount(program = {}) {
+        return Number(program.documentCount || program.documentsCount || 0) || (programDocumentEffort(program) === "light" ? 3 : programDocumentEffort(program) === "heavy" ? 7 : 5);
+      }
+
+      function programSourceStatus(program = {}) {
+        if (program.sourceStatus) return program.sourceStatus;
+        if (program.source) return program.source;
+        if (program.isVerified || program.verificationStatus === "verified") return "verified";
+        if (program.lastVerifiedAt) return "stale";
+        return "pending";
+      }
+
+      function programVerifiedAt(program = {}) {
+        return program.verified || program.lastVerifiedAt || "Pending";
+      }
+
+      function programFit(program = {}) {
+        return program.applicationNote || program.sourceLabel || "No application note published.";
+      }
+
+      function programReadiness(program = {}) {
+        const readiness = program.readiness;
+        const normalizedReadiness = String(readiness || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+        if (readiness && !["source-pending", "confirm-details", "official-details"].includes(normalizedReadiness)) return readiness;
+        return programSourceStatus(program) === "verified" ? "Ready to compare" : "Review before applying";
+      }
+
+      function programReadinessType(program = {}) {
+        return program.readinessType || (programSourceStatus(program) === "verified" ? "good" : "warn");
+      }
+
+      function programApplicationReadinessScore(program = {}) {
+        const deadline = programDeadlineStatus(program);
+        const source = programSourceStatus(program);
+        return (
+          (source === "verified" ? 30 : source === "stale" ? 16 : 8) +
+          (programScholarship(program) ? 12 : 0) +
+          (programDocumentEffort(program) === "light" ? 10 : programDocumentEffort(program) === "medium" ? 6 : 2) +
+          (deadline === "urgent" ? 4 : deadline === "closes-soon" ? 8 : deadline === "late" ? 10 : 12)
+        );
+      }
+
       function deadlineBadge(program) {
-        if (program.deadlineStatus === "urgent") return ["danger", `Urgent: ${formatShortDate(program.deadline)}`];
-        if (program.deadlineStatus === "closes-soon") return ["warning", `Closes ${formatShortDate(program.deadline)}`];
-        if (program.deadlineStatus === "late") return ["success", `Late intake until ${formatShortDate(program.deadline)}`];
-        return ["", `Open until ${formatShortDate(program.deadline)}`];
+        const deadline = programDeadline(program);
+        const dateLabel = deadline ? formatShortDate(deadline) : "date pending";
+        const status = programDeadlineStatus(program);
+        if (status === "urgent") return ["danger", `Urgent: ${dateLabel}`];
+        if (status === "closes-soon") return ["warning", `Closes ${dateLabel}`];
+        if (status === "late") return ["success", `Late intake until ${dateLabel}`];
+        if (status === "closed") return ["danger", `Closed ${dateLabel}`];
+        return ["", `Open until ${dateLabel}`];
       }
 
-      function sourceText(program) {
-        if (program.source === "verified") return `Verified ${program.verified}`;
-        if (program.source === "stale") return `Needs recheck ${program.verified}`;
-        return "Source pending";
+      function programDecisionNote(program) {
+        const source = programSourceStatus(program);
+        if (source === "verified") return "Ready to compare with saved choices";
+        if (source === "stale") return "Review deadline and requirements before adding";
+        return "Check program fit before adding";
       }
 
-      function programImage(program) {
-        const images = {
-          "Zhejiang University": "https://www.ehangzhou.gov.cn/img/attachement/jpg/site48/20250527/17483419485411.jpg",
-          "Fudan University": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80",
-          "Tongji University": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80",
-          "Beijing Language and Culture University": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80",
-          "Harbin Institute of Technology Shenzhen": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80",
-          "University of International Business and Economics": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=80",
-          "Nanjing University": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80",
-          "Sichuan University": "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=900&q=80",
-          "Xi'an Jiaotong University": "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=80",
-          "Wuhan University": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80",
-          "Sun Yat-sen University": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
-          "Huazhong University of Science and Technology": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80",
-        };
-        return images[program.university] || "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=900&q=80";
+      function slugifyRouteParam(value) {
+        return String(value || "").trim().toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      }
+
+      function normalizeCityParam(value) {
+        if (!value) return "";
+        const routeSlug = slugifyRouteParam(value);
+        const knownCity = [...new Set(programs.map((program) => programCity(program)).filter(Boolean))]
+          .find((city) => slugifyRouteParam(city) === routeSlug || city.toLowerCase() === String(value).trim().toLowerCase());
+        return knownCity || value;
+      }
+
+      function normalizeDegreeParam(value) {
+        const routeSlug = slugifyRouteParam(value);
+        return {
+          undergraduate: "undergraduate",
+          bachelor: "undergraduate",
+          master: "master",
+          phd: "phd",
+          doctoral: "phd",
+          "non-degree": "non-degree",
+          nondegree: "non-degree",
+          language: "non-degree",
+        }[routeSlug] || value;
+      }
+
+      function normalizeLanguageParam(value) {
+        const routeSlug = slugifyRouteParam(value);
+        return {
+          english: "english",
+          "english-taught": "english",
+          chinese: "chinese",
+          "chinese-taught": "chinese",
+          bilingual: "bilingual",
+        }[routeSlug] || value;
+      }
+
+      function truthyParam(value) {
+        const normalized = String(value || "").trim().toLowerCase();
+        return ["1", "true", "yes", "y", "available"].includes(normalized);
+      }
+
+      function scholarshipRouteQuery(route, funding) {
+        const routeSlug = slugifyRouteParam(route);
+        const fundingSlug = slugifyRouteParam(funding);
+        const routeTerms = {
+          government: "CSC scholarship",
+          university: "university award scholarship",
+          province: "city scholarship",
+          partner: "scholarship",
+        }[routeSlug] || "";
+        const fundingTerms = {
+          full: "",
+          partial: "",
+        }[fundingSlug] || "";
+        return [routeTerms, fundingTerms].filter(Boolean).join(" ");
+      }
+
+      function scholarshipParamQuery(value) {
+        const scholarshipSlug = slugifyRouteParam(value);
+        if (!scholarshipSlug || ["true", "1", "yes", "available"].includes(scholarshipSlug)) return "";
+        return {
+          csc: "CSC scholarship",
+          government: "CSC scholarship",
+          university: "university award scholarship",
+          province: "city scholarship",
+          city: "city scholarship",
+        }[scholarshipSlug] || `${value} scholarship`;
+      }
+
+      function programImage() {
+        return "window.svg";
       }
 
       function tuitionMatch(program, value) {
         if (!value) return true;
-        if (value === "under-25") return program.tuition < 25000;
-        if (value === "25-40") return program.tuition >= 25000 && program.tuition <= 40000;
-        if (value === "40-60") return program.tuition > 40000 && program.tuition <= 60000;
-        return program.tuition > 60000;
+        const tuition = programTuitionAmount(program);
+        if (!tuition) return false;
+        if (value === "under-25") return tuition < 25000;
+        if (value === "25-40") return tuition >= 25000 && tuition <= 40000;
+        if (value === "40-60") return tuition > 40000 && tuition <= 60000;
+        return tuition > 60000;
       }
 
       function langReqMatch(program, value) {
         if (!value) return true;
-        const combined = `${program.langReq} ${program.hsk}`.toLowerCase();
+        const combined = `${programLanguageRequirement(program)} ${programHskRequirement(program)}`.toLowerCase();
         if (value === "no-hsk") return combined.includes("no hsk");
         if (value === "hsk") return combined.includes("hsk required");
         if (value === "ielts") return combined.includes("ielts") || combined.includes("toefl");
@@ -484,47 +415,74 @@
         return true;
       }
 
+      function normalizeSearchText(value) {
+        return String(value || "")
+          .toLowerCase()
+          .replace(/english[\s-]*taught/g, "english")
+          .replace(/chinese[\s-]*taught/g, "chinese")
+          .replace(/\bmsc\b/g, "master")
+          .replace(/\bma\b/g, "master")
+          .replace(/\bba\b/g, "undergraduate")
+          .replace(/\bbsc\b/g, "undergraduate")
+          .replace(/[^a-z0-9]+/g, " ")
+          .trim();
+      }
+
+      function queryMatchesProgram(query, program) {
+        const tokens = normalizeSearchText(query).split(/\s+/).filter(Boolean);
+        if (!tokens.length) return true;
+        const haystack = normalizeSearchText([
+          programName(program),
+          programUniversity(program),
+          programCity(program),
+          programProvince(program),
+          labelDegree(programDegreeValue(program)),
+          program.degreeLevel,
+          programSubject(program),
+          programLanguageLabel(program),
+          program.teachingLanguage,
+          programCscaSummary(program),
+          programIntake(program),
+          programTerm(program),
+          programScholarshipLabel(program),
+          programLanguageRequirement(program),
+          programHskRequirement(program),
+          programFit(program),
+        ].join(" "));
+        return tokens.every((token) => haystack.includes(token));
+      }
+
       function matches(program) {
         const f = state.filters;
-        const q = f.q.trim().toLowerCase();
-        const haystack = [
-          program.name,
-          program.university,
-          program.city,
-          program.province,
-          program.degree,
-          program.subject,
-          program.language,
-          program.intake,
-          program.scholarshipType,
-          program.langReq,
-          program.hsk,
-        ].join(" ").toLowerCase();
         return (
-          (!q || haystack.includes(q)) &&
-          (!f.degree || program.degree === f.degree) &&
-          (!f.subject || program.subject === f.subject) &&
-          (!f.language || program.language === f.language) &&
-          (!f.city || program.city === f.city) &&
-          (!f.intake || (f.intake === "late" ? program.deadlineStatus === "late" : program.term === f.intake)) &&
-          (!f.deadline || program.deadlineStatus === f.deadline) &&
+          queryMatchesProgram(f.q, program) &&
+          (!f.degree || programDegreeValue(program) === f.degree) &&
+          (!f.subject || programSubject(program) === f.subject) &&
+          (!f.language || programLanguageValue(program) === f.language) &&
+          (!f.city || programCity(program) === f.city) &&
+          (!f.intake || (f.intake === "late" ? programDeadlineStatus(program) === "late" : programTerm(program) === f.intake)) &&
+          (!f.deadline || programDeadlineStatus(program) === f.deadline) &&
+          (!f.upcomingDeadline || Boolean(programDeadline(program))) &&
           tuitionMatch(program, f.tuition) &&
-          (!f.scholarship || program.scholarship) &&
+          (!f.scholarship || programScholarship(program)) &&
           langReqMatch(program, f.langReq) &&
-          (!f.documents || program.documents === f.documents) &&
-          (!f.source || program.source === f.source)
+          (!f.documents || programDocumentEffort(program) === f.documents)
         );
       }
 
       function sortedPrograms(items) {
         const mode = sortSelect.value;
+        const sortDateValue = (program) => {
+          const date = new Date(programDeadline(program));
+          return Number.isNaN(date.getTime()) ? Number.MAX_SAFE_INTEGER : date.getTime();
+        };
         return [...items].sort((a, b) => {
-          if (mode === "deadline") return new Date(a.deadline) - new Date(b.deadline);
-          if (mode === "tuition") return a.tuition - b.tuition;
-          if (mode === "scholarship") return Number(b.scholarship) - Number(a.scholarship);
-          if (mode === "verified") return Number(b.source === "verified") - Number(a.source === "verified");
-          if (mode === "documents") return a.documentCount - b.documentCount;
-          return Number(b.source === "verified") - Number(a.source === "verified");
+          if (mode === "deadline") return sortDateValue(a) - sortDateValue(b);
+          if (mode === "tuition") return programTuitionAmount(a) - programTuitionAmount(b);
+          if (mode === "scholarship") return Number(programScholarship(b)) - Number(programScholarship(a));
+          if (mode === "readiness") return programApplicationReadinessScore(b) - programApplicationReadinessScore(a);
+          if (mode === "documents") return programDocumentCount(a) - programDocumentCount(b);
+          return programApplicationReadinessScore(b) - programApplicationReadinessScore(a);
         });
       }
 
@@ -592,9 +550,9 @@
           deadline: "",
           tuition: "",
           scholarship: false,
+          upcomingDeadline: false,
           langReq: "",
           documents: "",
-          source: "",
         };
         state.page = 1;
         render();
@@ -612,56 +570,84 @@
         if (f.deadline) entries.push(["deadline", f.deadline.replace("-", " ")]);
         if (f.tuition) entries.push(["tuition", document.querySelector(`[data-filter-key="tuition"] option[value="${f.tuition}"]`)?.textContent || f.tuition]);
         if (f.scholarship) entries.push(["scholarship", "Scholarship"]);
+        if (f.upcomingDeadline) entries.push(["upcomingDeadline", "Upcoming deadline"]);
         if (f.langReq) entries.push(["langReq", document.querySelector(`[data-filter-key="langReq"] option[value="${f.langReq}"]`)?.textContent || f.langReq]);
         if (f.documents) entries.push(["documents", labelDocuments(f.documents)]);
-        if (f.source) entries.push(["source", document.querySelector(`[data-filter-key="source"] option[value="${f.source}"]`)?.textContent || f.source]);
         return entries;
       }
 
       function renderActiveChips() {
         activeChips.innerHTML = activeFilterEntries().map(([key, label]) => `
-          <span class="active-chip">${label}<button type="button" aria-label="Remove ${label}" data-remove-filter="${key}">x</button></span>
+          <span class="active-chip">${escapeCatalogHtml(label)}<button type="button" aria-label="Remove ${escapeCatalogHtml(label)}" data-remove-filter="${key}">x</button></span>
         `).join("");
       }
 
       function renderRow(program, index = 0) {
         const [badgeClassName, badgeLabel] = deadlineBadge(program);
-        const isSaved = state.saved.has(program.id);
-        const isCompared = state.compared.has(program.id);
-        const programHref = `programs.html?program=${encodeURIComponent(program.id)}`;
-        const universityHref = `universities.html?q=${encodeURIComponent(program.university)}`;
+        const id = programId(program);
+        const name = programName(program);
+        const university = programUniversity(program);
+        const isSaved = state.saved.has(id);
+        const isCompared = state.compared.has(id);
+        const programHref = `program-detail.html?program=${encodeURIComponent(id)}`;
+        const universityHref = `university-detail.html?university=${encodeURIComponent(program.schoolId)}`;
+        const scholarship = programScholarship(program);
         return `
-          <article class="program-row result-enter" style="--enter-index: ${index}" data-program-id="${program.id}">
+          <article class="program-row result-enter" style="--enter-index: ${index}" role="link" tabindex="0" data-program-id="${escapeCatalogHtml(id)}" data-program-card data-detail-href="${programHref}" aria-label="View ${escapeCatalogHtml(name)} program route">
             <div class="program-art">
-              <a href="${programHref}" aria-label="Open ${program.name}">
-                <img alt="${program.university} campus context" src="${programImage(program)}" />
+              <a href="${programHref}" aria-label="Open ${escapeCatalogHtml(name)}">
+                <img alt="University catalog marker" src="${programImage(program)}" />
               </a>
               <div class="row-top">
-                <span class="badge ${badgeClassName}">${badgeLabel}</span>
-                <button class="save-button ${isSaved ? "saved" : ""}" type="button" data-save="${program.id}" aria-label="${isSaved ? "Saved" : "Save"} ${program.name}">${iconHeart}</button>
+                <span class="badge ${badgeClassName}">${escapeCatalogHtml(badgeLabel)}</span>
+                <button class="save-button ${isSaved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(id)}" aria-label="${isSaved ? "Saved" : "Save"} ${escapeCatalogHtml(name)}">${iconHeart}</button>
               </div>
+              <span class="program-card-open" aria-hidden="true">${iconArrowRight}</span>
             </div>
             <div class="program-main">
-              <h2><a href="${programHref}">${program.name}</a></h2>
-              <div class="meta"><a href="${universityHref}">${program.university}</a> · ${program.city}, ${program.province} · ${labelDegree(program.degree)} · ${labelLanguage(program.language)}</div>
+              <h2><a href="${programHref}">${escapeCatalogHtml(name)}</a></h2>
+              <div class="meta"><a href="${universityHref}">${escapeCatalogHtml(university)}</a> · ${escapeCatalogHtml(labelDegree(programDegreeValue(program)))} · ${escapeCatalogHtml(programLanguageLabel(program) || "Language not published")}</div>
               <div class="facts">
-                <div class="fact"><strong>${program.intake}</strong><span>intake</span></div>
-                <div class="fact"><strong>${formatMoney(program.tuition)}</strong><span>tuition / year</span></div>
+                <div class="fact"><strong>${escapeCatalogHtml(programIntake(program))}</strong><span>application round</span></div>
+                <div class="fact"><strong>${escapeCatalogHtml(formatMoney(programTuitionAmount(program)))}</strong><span>tuition</span></div>
               </div>
               <div class="signals">
-                <span class="signal ${program.scholarship ? "good" : ""}">${program.scholarship ? "Scholarship signal" : "No award listed"}</span>
-                <span class="signal ${program.hsk.includes("No HSK") ? "good" : "warn"}">${program.hsk}</span>
-                <span class="signal ${program.readinessType}">${program.readiness}</span>
+                <span class="signal ${scholarship ? "good" : ""}">${scholarship ? "Scholarship signal" : "No award listed"}</span>
+                <span class="signal ${programSourceStatus(program) === "verified" ? "good" : "warn"}">${escapeCatalogHtml(programSourceStatus(program))}</span>
+                <span class="signal ${programReadinessType(program)}">${escapeCatalogHtml(programReadiness(program))}</span>
               </div>
-              <p class="fit-line">${program.fit}</p>
+              <p class="fit-line">${escapeCatalogHtml(programFit(program))}</p>
             </div>
             <div class="row-actions">
-              <button class="secondary" type="button" data-compare="${program.id}">${isCompared ? "Compared" : "Compare"}</button>
-              <a class="details-link" href="${programHref}">View program</a>
+              <button class="program-card-action program-action-secondary compare-action ${isCompared ? "is-compared" : ""}" type="button" data-compare="${escapeCatalogHtml(id)}" aria-pressed="${isCompared ? "true" : "false"}" aria-label="${isCompared ? "Remove from compare" : "Add to compare"}: ${escapeCatalogHtml(name)}" title="${isCompared ? "Compared" : "Compare"}">${iconCompare}</button>
             </div>
           </article>
         `;
       }
+
+      function renderPagination(total) {
+        const totalPages = Math.max(1, Math.ceil(total / state.pageSize));
+        state.page = Math.min(Math.max(1, state.page), totalPages);
+        if (total <= state.pageSize) {
+          pagination.innerHTML = "";
+          return;
+        }
+
+        const start = (state.page - 1) * state.pageSize + 1;
+        const end = Math.min(total, state.page * state.pageSize);
+        const pageButtons = Array.from({ length: totalPages }, (_, index) => {
+          const page = index + 1;
+          return `<button class="${page === state.page ? "active" : ""}" type="button" data-page="${page}" aria-label="Page ${page}" ${page === state.page ? 'aria-current="page"' : ""}>${page}</button>`;
+        }).join("");
+
+        pagination.innerHTML = `
+          <span class="pagination-summary">Showing ${start}-${end} of ${total}</span>
+          <button type="button" data-page="${state.page - 1}" aria-label="Previous page" ${state.page === 1 ? "disabled" : ""}>‹</button>
+          ${pageButtons}
+          <button type="button" data-page="${state.page + 1}" aria-label="Next page" ${state.page === totalPages ? "disabled" : ""}>›</button>
+        `;
+      }
+
       function renderResults() {
         const results = currentResults();
         const totalPages = Math.max(1, Math.ceil(results.length / state.pageSize));
@@ -670,26 +656,24 @@
         const visible = results.slice(start, start + state.pageSize);
         resultCount.textContent = `${results.length} program${results.length === 1 ? "" : "s"}`;
         resultContext.textContent = activeFilterEntries().length
-          ? "Filtered by China-study fit, requirements, and source status."
-          : "Open programs with deadline, source, and document signals.";
+          ? "Filtered by China-study fit, requirements, and application details."
+          : "Published programs with deadline, tuition, language, and source status.";
         programList.className = `program-list ${state.view === "compact" ? "compact" : ""}`;
         programList.innerHTML = visible.map(renderRow).join("");
         window.CUAC?.reveal?.(programList);
         emptyState.classList.toggle("visible", results.length === 0);
-        pagination.innerHTML = results.length > state.pageSize
-          ? Array.from({ length: totalPages }, (_, index) => `<button class="${state.page === index + 1 ? "active" : ""}" type="button" data-page="${index + 1}">${index + 1}</button>`).join("")
-          : "";
+        renderPagination(results.length);
       }
 
       function renderShortlist() {
-        const saved = programs.filter((program) => state.saved.has(program.id));
-        const compared = programs.filter((program) => state.compared.has(program.id));
+        const saved = programs.filter((program) => state.saved.has(programId(program)));
+        const compared = programs.filter((program) => state.compared.has(programId(program)));
         shortlistCard.innerHTML = `
           <div class="shortlist-head">
             <h2>Shortlist</h2>
             <button class="ghost" type="button" data-clear-compare>Clear compare</button>
           </div>
-          <p class="rail-note">Save programs first, then compare deadline, tuition, documents, and source freshness.</p>
+          <p class="rail-note">Save programs first, then compare deadline, tuition, documents, and application readiness.</p>
           <div class="rail-stats">
             <div class="rail-stat"><strong>${saved.length}</strong><span>saved</span></div>
             <div class="rail-stat"><strong>${compared.length}</strong><span>compared</span></div>
@@ -697,9 +681,9 @@
           <div class="compare-items">
             ${compared.length ? compared.map((program) => `
               <div class="compare-item">
-                <strong>${program.name}</strong>
-                <span>${program.university}</span>
-                <span>${formatMoney(program.tuition)} · ${program.documentCount} docs · ${formatShortDate(program.deadline)}</span>
+                <strong>${programName(program)}</strong>
+                <span>${programUniversity(program)}</span>
+                <span>${formatMoney(programTuitionAmount(program))} · ${programDocumentCount(program)} docs · ${formatShortDate(programDeadline(program))}</span>
               </div>
             `).join("") : `<div class="compare-item"><strong>No compared programs yet</strong><span>Add up to 3 programs for a cleaner decision.</span></div>`}
           </div>
@@ -714,22 +698,22 @@
           return;
         }
         const [badgeClassName, badgeLabel] = deadlineBadge(initialProgram);
-        const universityHref = `universities.html?q=${encodeURIComponent(initialProgram.university)}`;
+        const university = programUniversity(initialProgram);
+        const universityHref = `university-detail.html?university=${encodeURIComponent(initialProgram.schoolId)}`;
         programFocus.classList.add("visible");
         programFocus.innerHTML = `
           <div class="focus-image">
-            <img alt="${initialProgram.university} campus context" src="${programImage(initialProgram)}" />
+            <img alt="${university} campus context" src="${programImage(initialProgram)}" />
           </div>
           <div class="focus-main">
             <span class="badge ${badgeClassName}">${badgeLabel}</span>
-            <h2>${initialProgram.name}</h2>
+            <h2>${programName(initialProgram)}</h2>
             <div class="focus-meta">
-              <span><a href="${universityHref}">${initialProgram.university}</a></span>
-              <span>${initialProgram.city}, ${initialProgram.province}</span>
-              <span>${labelDegree(initialProgram.degree)}</span>
-              <span>${labelLanguage(initialProgram.language)}</span>
+              <span><a href="${universityHref}">${university}</a></span>
+              <span>${labelDegree(programDegreeValue(initialProgram))}</span>
+              <span>${programLanguageLabel(initialProgram)}</span>
             </div>
-            <p>${initialProgram.fit}</p>
+            <p>${programFit(initialProgram)}</p>
             <div class="focus-actions">
               <a class="details-link" href="${universityHref}">View university</a>
               <a class="secondary" href="programs.html">Back to all programs</a>
@@ -738,21 +722,20 @@
           <div class="focus-panel">
             <strong>Application snapshot</strong>
             <div class="focus-facts">
-              <span>${initialProgram.intake}</span>
-              <span>${formatMoney(initialProgram.tuition)} / year</span>
-              <span>${initialProgram.scholarship ? initialProgram.scholarshipType : "No listed award"}</span>
-              <span>${initialProgram.documentCount} ${initialProgram.documents} docs</span>
-              <span>${initialProgram.langReq}</span>
-              <span>${sourceText(initialProgram)}</span>
+              <span>${programIntake(initialProgram)}</span>
+              <span>${formatMoney(programTuitionAmount(initialProgram))} / year</span>
+              <span>${programScholarship(initialProgram) ? programScholarshipLabel(initialProgram) : "No listed award"}</span>
+              <span>${programSourceStatus(initialProgram)} source</span>
+              <span>${programDecisionNote(initialProgram)}</span>
             </div>
           </div>
         `;
       }
 
       function renderSummary() {
-        const open = programs.filter((program) => program.deadlineStatus !== "closed").length;
-        const scholarship = programs.filter((program) => program.scholarship).length;
-        const urgent = programs.filter((program) => ["urgent", "closes-soon", "late"].includes(program.deadlineStatus)).length;
+        const open = programs.filter((program) => programDeadlineStatus(program) !== "closed").length;
+        const scholarship = programs.filter(programScholarship).length;
+        const urgent = programs.filter((program) => ["urgent", "closes-soon", "late"].includes(programDeadlineStatus(program))).length;
         document.querySelector("#summaryOpen").textContent = open;
         document.querySelector("#summaryScholarship").textContent = scholarship;
         document.querySelector("#summaryUrgent").textContent = urgent;
@@ -782,7 +765,7 @@
         render();
       }
 
-      function showAgentProgramNotice(message) {
+      function showAgentProgramNotice(message, options = {}) {
         let notice = document.querySelector("[data-program-agent-notice]");
         if (!notice) {
           notice = document.createElement("div");
@@ -790,7 +773,8 @@
           notice.dataset.programAgentNotice = "";
           document.querySelector(".result-bar")?.appendChild(notice);
         }
-        notice.textContent = message;
+        if (options.html) notice.innerHTML = message;
+        else notice.textContent = message;
         notice.classList.add("visible");
       }
 
@@ -837,7 +821,7 @@
         if (action === "save-program-shortlist") {
           ["zju-cs-msc", "nanjing-software-msc", "fudan-data-msc"].forEach((id) => state.saved.add(id));
           render();
-          showAgentProgramNotice("Agent saved three demo routes to the shortlist.");
+          showAgentProgramNotice("Agent saved three routes to the shortlist.");
           detail.setUndo?.(before);
           return true;
         }
@@ -850,7 +834,7 @@
           return true;
         }
         if (action === "open-choice-modal") {
-          window.location.href = "application.html";
+          window.location.href = "application.html#add-choice";
           return true;
         }
         return false;
@@ -858,7 +842,29 @@
 
       renderFilters(document.querySelector("#desktopFilters"));
       renderFilters(document.querySelector("#mobileFilters"), { showHeader: false });
-      render();
+      window.CuacCatalogList.listState(programList, "loading", { noun: "programs" });
+
+      async function loadPrograms() {
+        window.CuacCatalogList.listState(programList, "loading", { noun: "programs" });
+        resultCount.textContent = "Loading programs";
+        resultContext.textContent = "Reading the current published catalog.";
+        try {
+          programs = await window.CuacCatalogList.load("programs", { limit: 100 });
+          initialProgram = focusedProgram
+            ? programs.find((program) => programId(program) === focusedProgram)
+            : null;
+          if (initialProgram && !routeParams.get("q") && !routeParams.get("keyword")) {
+            state.filters.q = programName(initialProgram);
+          }
+          render();
+        } catch (error) {
+          resultCount.textContent = "Programs unavailable";
+          resultContext.textContent = "The published catalog could not be loaded.";
+          window.CuacCatalogList.listState(programList, "error", { noun: "programs", message: error.message });
+        }
+      }
+
+      loadPrograms();
 
       document.addEventListener("change", (event) => {
         const control = event.target.closest("[data-filter-key]");
@@ -868,6 +874,10 @@
       });
 
       document.addEventListener("click", (event) => {
+        if (event.target.closest("[data-catalog-retry]")) {
+          loadPrograms();
+          return;
+        }
         const remove = event.target.closest("[data-remove-filter]");
         if (remove) {
           const key = remove.dataset.removeFilter;
@@ -879,9 +889,20 @@
 
         const save = event.target.closest("[data-save]");
         if (save) {
+          const resumeSelector = window.CUAC?.dataAttributeSelector?.("data-save", save.dataset.save) || "[data-save]";
+          if (window.CUAC?.requireStudentSignedIn && !window.CUAC.requireStudentSignedIn("Save this program", { resumeAction: { type: "click-selector", selector: resumeSelector } })) return;
           const id = save.dataset.save;
-          state.saved.has(id) ? state.saved.delete(id) : state.saved.add(id);
+          const program = programs.find((item) => programId(item) === id);
+          const savedNow = !state.saved.has(id);
+          if (savedNow) state.saved.add(id);
+          else state.saved.delete(id);
           render();
+          showAgentProgramNotice(
+            savedNow
+              ? `Saved ${program ? programName(program) : "program"} to Favourites. <a href="favourites.html">Review saved items</a>`
+              : `Removed ${program ? programName(program) : "program"} from Favourites.`,
+            { html: savedNow },
+          );
           return;
         }
 
@@ -897,9 +918,18 @@
           return;
         }
 
+        const programCard = event.target.closest("[data-program-card]");
+        if (programCard && !event.target.closest("a, button, input, select, textarea")) {
+          window.location.href = programCard.dataset.detailHref;
+          return;
+        }
+
         const page = event.target.closest("[data-page]");
         if (page) {
-          state.page = Number(page.dataset.page);
+          if (page.disabled) return;
+          const nextPage = Number(page.dataset.page);
+          if (!nextPage) return;
+          state.page = Math.max(1, nextPage);
           render();
           return;
         }
@@ -972,6 +1002,12 @@
       document.querySelector("#drawerApply").addEventListener("click", () => setDrawer(false));
       drawerBackdrop.addEventListener("click", () => setDrawer(false));
       document.addEventListener("keydown", (event) => {
+        const programCard = event.target.closest("[data-program-card]");
+        if (programCard && !event.target.closest("a, button, input, select, textarea") && ["Enter", " "].includes(event.key)) {
+          event.preventDefault();
+          window.location.href = programCard.dataset.detailHref;
+          return;
+        }
         if (event.key === "Escape") setDrawer(false);
       });
 

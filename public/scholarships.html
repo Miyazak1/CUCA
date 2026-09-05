@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CUAC Scholarships</title>
+    <title>CUAC | Scholarships</title>
     <link rel="stylesheet" href="shared-shell.css" />
-    <link rel="stylesheet" href="scholarships.css" />
+    <link rel="stylesheet" href="catalog-list-api.css" />
+    <link rel="stylesheet" href="scholarships.css?v=20260825-card-action-polish" />
   </head>
-  <body data-agent-mode="scholarships">
+  <body data-agent-mode="scholarships" data-catalog-list-page="scholarships">
     <div class="page">
       <div data-cuac-header data-active="scholarships" data-note="China funding routes:" data-note-detail="compare coverage before applying"></div>
 
@@ -17,16 +18,16 @@
             <div>
               <span class="eyebrow">Scholarships</span>
               <h1>Find funding routes for studying in China</h1>
-              <p>Compare CSC, university, city, and partial-award routes by coverage, deadline, eligibility, and source status.</p>
+              <p>Compare published funding routes by provider, coverage, deadline, eligibility, and source status.</p>
             </div>
             <div class="trust-strip" aria-label="Scholarship data summary">
-              <div><strong>275</strong><span>source records</span></div>
-              <div><strong>42</strong><span>full-funding routes</span></div>
-              <div><strong>Jul 14</strong><span>latest source check</span></div>
+              <div><strong id="summaryFundingRoutes">-</strong><span>funding routes</span></div>
+              <div><strong id="summaryFullFunding">-</strong><span>full-funding routes</span></div>
+              <div><strong id="summaryDeadlineWindow">-</strong><span>next deadline</span></div>
             </div>
           </section>
 
-          <section class="funding-intent reveal" aria-label="Funding intent search">
+          <section class="funding-intent reveal" aria-label="Funding intent search" hidden>
             <form class="intent-form" data-planner-form>
               <textarea data-planner-input rows="2" aria-label="Describe your scholarship goal">Full scholarship for English-taught computer science master</textarea>
               <button class="send-button" type="submit" data-planner-submit aria-label="Send funding goal">
@@ -44,7 +45,7 @@
           </section>
 
           <section class="route-shortcuts reveal" aria-label="Scholarship route shortcuts">
-            <a class="route-link" href="#scholarship-browser" data-route-filter="all"><span class="route-icon" data-icon="money"></span><strong>All scholarships</strong><span>Browse verified routes</span></a>
+            <a class="route-link" href="#scholarship-browser" data-route-filter="all"><span class="route-icon" data-icon="money"></span><strong>All scholarships</strong><span>Browse funding routes</span></a>
             <a class="route-link" href="#scholarship-browser" data-route-filter="full"><span class="route-icon" data-icon="award"></span><strong>Full funding</strong><span>Tuition, stipend, more</span></a>
             <a class="route-link" href="#scholarship-browser" data-route-filter="government"><span class="route-icon" data-icon="landmark"></span><strong>CSC / Government</strong><span>Official routes</span></a>
             <a class="route-link" href="#scholarship-browser" data-route-filter="university"><span class="route-icon" data-icon="school"></span><strong>University awards</strong><span>School-level funding</span></a>
@@ -56,7 +57,7 @@
             <div class="coverage-band">
               <div>
                 <h2>What funding can cover</h2>
-                <p>Coverage depends on the official notice. CUAC separates verified details from items still needing confirmation.</p>
+                <p>Coverage depends on the current notice. CUAC helps students compare what is clear, what affects eligibility, and what still needs confirmation.</p>
               </div>
               <div class="coverage-grid">
                 <article class="coverage-item"><span class="feature-icon" data-icon="money"></span><strong>Tuition</strong><span>May be full or partial</span></article>
@@ -86,7 +87,7 @@
                   <span>Often tuition + accommodation + stipend + insurance</span>
                   <span>Eligibility and quota rules vary</span>
                   <span>Deadlines may differ from program deadlines</span>
-                  <span>Official source check is essential</span>
+                  <span>Current notice should be reviewed</span>
                 </div>
               </article>
               <div class="route-list">
@@ -100,8 +101,8 @@
           <section class="section reveal" id="scholarship-browser" aria-label="Scholarship browser">
             <div class="browser-tools">
               <div>
-                <h2><span id="resultCount">12</span> scholarships</h2>
-                <p id="resultContext">Funding routes with type, coverage, deadline, and source status.</p>
+                <h2><span id="resultCount">-</span> scholarships</h2>
+                <p id="resultContext">Reading the current published catalog.</p>
               </div>
               <div class="controls">
                 <button class="secondary" id="openFilters" type="button">All filters</button>
@@ -109,7 +110,6 @@
                   <option value="relevance">Sort: Relevance</option>
                   <option value="deadline">Deadline soonest</option>
                   <option value="full">Full funding first</option>
-                  <option value="verified">Recently verified</option>
                 </select>
               </div>
             </div>
@@ -122,7 +122,8 @@
               </div>
               <div class="focus-facts" id="focusFacts"></div>
               <div class="focus-actions">
-                <a class="primary" id="focusPrograms" href="programs.html?scholarship=true">See matching programs</a>
+                <a class="primary" id="focusPrograms" href="programs.html?scholarship=true">Find programs</a>
+                <a class="ghost" data-scholarship-detail-link href="scholarship-detail.html?scholarship=csc">View funding</a>
                 <button class="ghost" id="focusClose" type="button">Back to all routes</button>
               </div>
             </section>
@@ -130,12 +131,12 @@
             <div class="pagination" id="pagination" aria-label="Scholarship pagination"></div>
           </section>
 
-          <section class="section reveal" aria-label="Source confidence">
+          <section class="section reveal" aria-label="Scholarship application checks">
             <div class="source-strip">
-              <article><span class="feature-icon" data-icon="shield"></span><strong>Source status</strong><span>Verified, pending, and needs-check items are separated.</span></article>
-              <article><span class="feature-icon" data-icon="calendar"></span><strong>Exact dates</strong><span>Scholarship deadlines can be different from program deadlines.</span></article>
-              <article><span class="feature-icon" data-icon="money"></span><strong>Real coverage</strong><span>Full funding still needs coverage and renewal rules checked.</span></article>
-              <article><span class="feature-icon" data-icon="document"></span><strong>Readiness</strong><span>Degree, country, language, and document fit matter before applying.</span></article>
+              <article><span class="feature-icon" data-icon="calendar"></span><strong>Deadline</strong><span>Scholarship deadlines can be different from program deadlines.</span></article>
+              <article><span class="feature-icon" data-icon="money"></span><strong>Coverage</strong><span>Full funding still needs tuition, stipend, housing, and renewal rules checked.</span></article>
+              <article><span class="feature-icon" data-icon="shield"></span><strong>Eligibility</strong><span>Degree level, nationality, language route, and academic background can all matter.</span></article>
+              <article><span class="feature-icon" data-icon="document"></span><strong>Documents</strong><span>Study plan, recommendation letters, transcripts, and passport details may be requested.</span></article>
             </div>
           </section>
 
@@ -144,9 +145,9 @@
               <div><h2>Continue from funding to a real choice</h2><p>Scholarships should connect to programs, universities, and city cost instead of living as isolated notices.</p></div>
             </div>
             <div class="related-grid">
-              <a class="related-card" href="programs.html?scholarship=true"><div><h3>Programs with scholarship signal</h3><p>Compare actual degree routes with deadline, tuition, language, and document effort.</p></div><span>Open programs</span></a>
-              <a class="related-card" href="universities.html?filter=Scholarship"><div><h3>Universities with funding routes</h3><p>Start from verified university admissions pages and school-level scholarships.</p></div><span>Open universities</span></a>
-              <a class="related-card" href="cities.html"><div><h3>City cost fit</h3><p>Funding only works when living cost, city, and campus context fit together.</p></div><span>Compare cities</span></a>
+              <a class="related-card" href="scholarship-detail.html?scholarship=csc"><div><h3>CSC route detail</h3><p>Review coverage, eligibility, documents, dates, and school fit before applying.</p></div><span>Open detail</span></a>
+              <a class="related-card" href="programs.html?scholarship=true"><div><h3>Programs with scholarship routes</h3><p>Compare published degree routes with deadline, tuition, language, and source status.</p></div><span>Open programs</span></a>
+              <a class="related-card" href="universities.html?filter=Scholarship"><div><h3>Universities with funding routes</h3><p>Start from official university admissions pages and school-level scholarships.</p></div><span>Open universities</span></a>
             </div>
           </section>
 
@@ -168,7 +169,7 @@
       <div class="drawer-backdrop" id="drawerBackdrop"></div>
       <aside class="filter-drawer" id="filterDrawer" aria-label="Scholarship filters" aria-hidden="true" inert>
         <div class="drawer-head">
-          <div class="drawer-title"><h2>All filters</h2><p>Refine by funding level, route type, degree, timing, coverage, and source status.</p></div>
+          <div class="drawer-title"><h2>All filters</h2><p>Refine by funding level, route type, degree, country scope, timing, and coverage.</p></div>
           <button class="drawer-close" id="closeFilters" type="button">Close</button>
         </div>
         <div class="filter-groups" id="filterGroups"></div>
@@ -179,7 +180,9 @@
       </aside>
     </div>
 
+    <script src="cuac-actions.js"></script>
     <script src="shared-shell.js"></script>
-    <script src="scholarships.js"></script>
+    <script src="catalog-list-api.js"></script>
+    <script src="scholarships.js?v=20260825-card-action-polish"></script>
   </body>
 </html>

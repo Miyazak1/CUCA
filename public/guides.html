@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CUAC Guides</title>
+    <title>CUAC | Application guides</title>
     <link rel="stylesheet" href="shared-shell.css" />
     <link rel="stylesheet" href="guides.css" />
   </head>
@@ -17,10 +17,10 @@
             <div class="hero-copy">
               <span class="eyebrow">CUAC Guides</span>
               <h1>Apply to China with fewer surprises</h1>
-              <p>Short, source-aware guides for timelines, documents, language routes, scholarships, visas, and arrival steps.</p>
+              <p>Short guides for timelines, documents, language routes, scholarships, visas, and arrival steps.</p>
               <div class="hero-actions">
                 <a class="primary" href="#timeline">Start with timeline</a>
-                <a class="secondary" href="#documents">Check documents</a>
+                <a class="secondary" href="guide-detail.html?guide=documents">Check documents</a>
               </div>
             </div>
             <div class="hero-map" aria-label="Guide coverage summary">
@@ -32,11 +32,11 @@
 
           <section class="question-strip reveal" aria-label="Guide routes">
             <a class="question-route" href="#timeline"><span data-guide-icon="calendar"></span><strong>When should I apply?</strong><em>Fall, spring, late intake</em></a>
-            <a class="question-route" href="#documents"><span data-guide-icon="document"></span><strong>What documents do I need?</strong><em>Reusable, translated, checked</em></a>
+            <a class="question-route" href="guide-detail.html?guide=documents"><span data-guide-icon="document"></span><strong>What documents do I need?</strong><em>Reusable, translated, checked</em></a>
             <a class="question-route" href="#language"><span data-guide-icon="language"></span><strong>Do I need HSK or IELTS?</strong><em>English and Chinese routes</em></a>
             <a class="question-route" href="#scholarships"><span data-guide-icon="award"></span><strong>How do scholarships work?</strong><em>Coverage, source, deadline</em></a>
             <a class="question-route" href="#visa"><span data-guide-icon="passport"></span><strong>What happens after offer?</strong><em>JW form, visa, arrival</em></a>
-            <button class="question-route" type="button" data-guide-prompt="Make me a Fall 2026 China application checklist"><span data-guide-icon="agent"></span><strong>What should I do next?</strong><em>Ask CUAC Agent</em></button>
+            <a class="question-route" href="hub.html"><span data-guide-icon="route"></span><strong>What should I do next?</strong><em>Open Hub</em></a>
           </section>
 
           <section class="section timeline-section reveal" id="timeline" aria-label="China application timeline">
@@ -58,14 +58,14 @@
               <article class="timeline-step" tabindex="0">
                 <span>02</span>
                 <strong>Check requirements</strong>
-                <em>Confirm deadline, tuition, scholarship, HSK/IELTS, and source status.</em>
+                <em>Confirm deadline, tuition, scholarship, HSK/IELTS, and official notice details.</em>
                 <a href="programs.html">Compare details</a>
               </article>
               <article class="timeline-step" tabindex="0">
                 <span>03</span>
                 <strong>Prepare documents</strong>
                 <em>Build a reusable packet, then map program-specific blockers.</em>
-                <a href="#documents">Open checklist</a>
+                <a href="guide-detail.html?guide=documents">Open checklist</a>
               </article>
               <article class="timeline-step" tabindex="0">
                 <span>04</span>
@@ -76,7 +76,7 @@
               <article class="timeline-step" tabindex="0">
                 <span>05</span>
                 <strong>Submit applications</strong>
-                <em>Follow each university portal and keep source records visible.</em>
+                <em>Follow each university portal and keep important dates and document requests visible.</em>
                 <a href="programs.html">Open choices</a>
               </article>
               <article class="timeline-step" tabindex="0">
@@ -92,6 +92,19 @@
                 <a href="#visa">See next steps</a>
               </article>
             </div>
+            <div class="application-window-panel" data-application-timeline>
+              <div class="application-window-head">
+                <div>
+                  <span class="eyebrow">Application windows</span>
+                  <h3>Plan by month, then check each school deadline</h3>
+                  <p>These windows come from the same timeline model that Ops manages. Use them to connect CUAC choices, CSCA preparation, and real program deadlines.</p>
+                </div>
+                <div class="application-window-stats" data-application-timeline-stats></div>
+              </div>
+              <div class="application-window-list" data-application-window-list aria-label="Application month windows"></div>
+              <div class="timeline-filter-panel" data-timeline-filter-panel aria-label="Timeline filters"></div>
+              <div class="timeline-deadline-board" data-timeline-deadline-board aria-label="Upcoming program deadlines"></div>
+            </div>
           </section>
 
           <section class="section split-section reveal" id="documents" aria-label="Document readiness guide">
@@ -101,7 +114,7 @@
                 <h2>Prepare once, then check every program</h2>
                 <p>Documents are reusable, but requirements are program-specific. Translation, expiry, format, and source rules can block an otherwise good choice.</p>
               </div>
-              <button class="text-link button-link" type="button" data-guide-prompt="What documents do I need for English-taught computer science in China?">Ask Agent</button>
+              <a class="text-link button-link" href="guide-detail.html?guide=documents">Open document guide</a>
             </div>
             <div class="document-layout">
               <aside class="document-note">
@@ -116,13 +129,13 @@
                   <span role="columnheader">Common blocker</span>
                   <span role="columnheader">Next</span>
                 </div>
-                <div class="document-row" role="row"><strong>Passport photo page</strong><span>Most applications</span><span>Validity or unclear scan</span><a href="programs.html">Check route</a></div>
+                <div class="document-row" role="row"><strong>Passport photo page</strong><span>Most applications</span><span>Validity or unclear scan</span><a href="guide-detail.html?guide=documents">Check route</a></div>
                 <div class="document-row" role="row"><strong>Transcript</strong><span>Degree programs</span><span>Unofficial or incomplete record</span><a href="programs.html">Match programs</a></div>
-                <div class="document-row" role="row"><strong>Certified translation</strong><span>Non-English/non-Chinese files</span><span>Format varies by university</span><button type="button" data-guide-prompt="Do I need certified translation for my transcript?">Ask</button></div>
+                <div class="document-row" role="row"><strong>Certified translation</strong><span>Non-English/non-Chinese files</span><span>Format varies by university</span><a href="guide-detail.html?guide=documents">Check route</a></div>
                 <div class="document-row" role="row"><strong>Graduation proof</strong><span>Undergraduate or master entry</span><span>Expected graduation timing</span><a href="programs.html">View deadlines</a></div>
                 <div class="document-row" role="row"><strong>IELTS / TOEFL</strong><span>English-taught programs</span><span>Score, expiry, equivalent proof</span><a href="#language">Language guide</a></div>
                 <div class="document-row" role="row"><strong>HSK certificate</strong><span>Chinese-taught routes</span><span>Level mismatch or missing result</span><a href="#language">Language guide</a></div>
-                <div class="document-row" role="row"><strong>Study plan</strong><span>Many master/scholarship routes</span><span>Too generic for the program</span><button type="button" data-guide-prompt="Help me structure a China study plan checklist">Ask</button></div>
+                <div class="document-row" role="row"><strong>Study plan</strong><span>Many master/scholarship routes</span><span>Too generic for the program</span><a href="guide-detail.html?guide=documents">Plan checklist</a></div>
                 <div class="document-row" role="row"><strong>Recommendation letters</strong><span>Master, PhD, scholarships</span><span>Late referee timeline</span><a href="scholarships.html">Funding routes</a></div>
               </div>
             </div>
@@ -145,12 +158,12 @@
               <article>
                 <span data-guide-icon="language"></span>
                 <h3>Chinese-taught route</h3>
-                <dl><dt>Typical proof</dt><dd>HSK level, sometimes additional school checks.</dd><dt>Common blocker</dt><dd>Students underestimate preparation time for HSK results.</dd><dt>Best next action</dt><dd><button type="button" data-guide-prompt="Can I apply to Chinese-taught programs with my current HSK level?">Ask Agent</button></dd></dl>
+                <dl><dt>Typical proof</dt><dd>HSK level, sometimes additional school checks.</dd><dt>Common blocker</dt><dd>Students underestimate preparation time for HSK results.</dd><dt>Best next action</dt><dd><a href="programs.html?language=chinese">View Chinese-taught routes</a></dd></dl>
               </article>
               <article>
                 <span data-guide-icon="route"></span>
                 <h3>Bridge or non-degree route</h3>
-                <dl><dt>Typical proof</dt><dd>Varies by language program, foundation route, or exchange plan.</dd><dt>Common blocker</dt><dd>Students confuse language learning routes with degree admission.</dd><dt>Best next action</dt><dd><a href="programs.html?degree=non_degree">Explore routes</a></dd></dl>
+                <dl><dt>Typical proof</dt><dd>Varies by language program, foundation route, or exchange plan.</dd><dt>Common blocker</dt><dd>Students confuse language learning routes with degree admission.</dd><dt>Best next action</dt><dd><a href="programs.html?degree=non-degree">Explore routes</a></dd></dl>
               </article>
             </div>
           </section>
@@ -198,32 +211,32 @@
               </div>
             </div>
             <div class="guide-library">
-              <article><h3>Before choosing</h3><a href="programs.html">How to compare a famous university with a realistic program</a><a href="cities.html">How city cost changes your study plan</a><a href="universities.html">How to read verified university admissions pages</a></article>
-              <article><h3>Before applying</h3><a href="#timeline">How to read application deadlines</a><a href="#documents">How to build a reusable document packet</a><a href="#language">How HSK and IELTS affect routes</a></article>
+              <article><h3>Before choosing</h3><a href="programs.html">How to compare a famous university with a realistic program</a><a href="cities.html">How city cost changes your study plan</a><a href="universities.html">How to read university admissions pages</a></article>
+              <article><h3>Before applying</h3><a href="#timeline">How to read application deadlines</a><a href="guide-detail.html?guide=documents">How to build a reusable document packet</a><a href="#language">How HSK and IELTS affect routes</a></article>
               <article><h3>After offer</h3><a href="#visa">What JW form means</a><a href="#visa">What to prepare before arrival</a><a href="home-v3.html#cuac-hub">How to track next actions in Hub</a></article>
-              <article><h3>Trust and source</h3><a href="programs.html">What source status means</a><a href="scholarships.html">Why scholarships need separate source checks</a><button type="button" data-guide-prompt="Explain source status for China university applications">Ask Agent about source status</button></article>
+              <article><h3>Before sending</h3><a href="programs.html">How to check official program details</a><a href="scholarships.html">Why scholarship notices need separate deadline checks</a><a href="application.html">Review application set</a></article>
             </div>
           </section>
 
           <section class="section source-section reveal" aria-label="Admissions clarity rules">
             <div class="source-strip">
-              <article><span data-guide-icon="shield"></span><strong>Source status</strong><span>Separate verified details from estimates and items needing confirmation.</span></article>
+              <article><span data-guide-icon="shield"></span><strong>Official notices</strong><span>Separate confirmed application details from estimates and items to check with the university.</span></article>
               <article><span data-guide-icon="calendar"></span><strong>Exact dates</strong><span>Deadlines, scholarships, visa timing, and arrival dates can differ.</span></article>
               <article><span data-guide-icon="award"></span><strong>Realistic funding</strong><span>Scholarship routes should never feel like guaranteed admission.</span></article>
               <article><span data-guide-icon="agent"></span><strong>Agent support</strong><span>Ask questions, build checklists, and open the next relevant page.</span></article>
             </div>
           </section>
 
-          <section class="section prompt-section reveal" aria-label="Agent prompt starters">
+          <section class="section prompt-section reveal" aria-label="Next route shortcuts">
             <div>
-              <h2>Ask in your own words</h2>
-              <p>The bottom Agent input is available across CUAC. Try a question and the right workspace will open.</p>
+              <h2>Open the next workspace</h2>
+              <p>Use the bottom input when you want a natural-language explanation. These links take you straight to the common next steps.</p>
             </div>
             <div class="prompt-chips">
-              <button type="button" data-guide-prompt="I want English-taught business under RMB 40k">English-taught business under RMB 40k</button>
-              <button type="button" data-guide-prompt="Do I need HSK for computer science in China?">Do I need HSK?</button>
-              <button type="button" data-guide-prompt="Make me a Fall 2026 application checklist">Fall 2026 checklist</button>
-              <button type="button" data-guide-prompt="What should I prepare after receiving a China university offer?">After offer steps</button>
+              <a href="programs.html?q=English-taught%20business%20under%20RMB%2040k">English-taught business under RMB 40k</a>
+              <a href="#language">HSK and IELTS routes</a>
+              <a href="#timeline">Fall 2026 checklist</a>
+              <a href="#visa">After offer steps</a>
             </div>
           </section>
         </div>
@@ -232,6 +245,8 @@
       </main>
     </div>
 
+    <script src="cuac-data.js"></script>
+    <script src="cuac-actions.js"></script>
     <script src="shared-shell.js"></script>
     <script src="guides.js"></script>
   </body>

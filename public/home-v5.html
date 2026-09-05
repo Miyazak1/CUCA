@@ -1,0 +1,1846 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | Archived home exploration</title>
+    <style>
+      :root {
+        --bg: #f5f1e8;
+        --paper: #fffdf8;
+        --paper-2: #fbf7ee;
+        --ink: #142527;
+        --muted: #627176;
+        --soft: #edf4f0;
+        --line: rgba(20, 37, 39, 0.13);
+        --jade: #006f5f;
+        --jade-2: #064b43;
+        --jade-3: #dff2ea;
+        --gold: #c98921;
+        --gold-2: #fff0c6;
+        --lake: #3c6f8f;
+        --blue: #245c73;
+        --amber: #ba6b00;
+        --red: #a94731;
+        --green: #16835f;
+        --shadow: 0 18px 42px rgba(24, 43, 42, 0.11);
+        --container: min(1540px, calc(100vw - 128px));
+        --radius: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--bg);
+        color: var(--ink);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.45;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      button {
+        border: 0;
+        cursor: pointer;
+      }
+
+      svg {
+        display: block;
+      }
+
+      .page {
+        min-height: 100vh;
+        background:
+          linear-gradient(135deg, rgba(0, 111, 95, 0.08), transparent 32%),
+          linear-gradient(210deg, rgba(201, 137, 33, 0.16), transparent 34%),
+          linear-gradient(180deg, #fffaf0 0%, #f7f4ec 38%, #eff5f2 100%);
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(20, 37, 39, 0.08);
+        background: rgba(255, 253, 248, 0.9);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav-inner {
+        display: grid;
+        grid-template-columns: auto 1fr auto auto;
+        align-items: center;
+        gap: 20px;
+        width: var(--container);
+        margin: 0 auto;
+        padding: 14px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        color: var(--jade-2);
+        font-size: 17px;
+        font-weight: 880;
+      }
+
+      .mark {
+        display: grid;
+        width: 40px;
+        height: 40px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--jade);
+        color: white;
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        justify-content: center;
+        gap: 3px;
+        min-width: 0;
+      }
+
+      .nav-links a {
+        padding: 9px 12px;
+        border-radius: 6px;
+        color: #3d5055;
+        font-size: 14px;
+        font-weight: 720;
+      }
+
+      .nav-links a:hover,
+      .nav-links a[aria-current="page"] {
+        background: var(--jade-3);
+        color: var(--jade-2);
+      }
+
+      .nav-actions {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .intake-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        min-height: 34px;
+        padding: 0 10px;
+        border: 1px solid rgba(201, 137, 33, 0.24);
+        border-radius: 999px;
+        background: #fff7df;
+        color: #6d4700;
+        font-size: 12px;
+        font-weight: 820;
+        white-space: nowrap;
+      }
+
+      .intake-pill::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--gold);
+      }
+
+      .icon-btn {
+        display: grid;
+        width: 40px;
+        height: 40px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--ink);
+      }
+
+      .icon-btn svg {
+        width: 19px;
+        height: 19px;
+        stroke-width: 2;
+      }
+
+      .signin {
+        min-height: 40px;
+        padding: 0 14px;
+        border: 1px solid rgba(0, 111, 95, 0.2);
+        border-radius: 7px;
+        background: white;
+        color: var(--jade-2);
+        font-weight: 780;
+      }
+
+      .hero {
+        width: var(--container);
+        margin: 0 auto;
+        padding: 58px 0 28px;
+      }
+
+      .hero-grid {
+        display: grid;
+        justify-items: center;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: var(--jade-2);
+        font-size: 13px;
+        font-weight: 780;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: var(--gold);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 900px;
+        margin: 0 auto 16px;
+        font-size: 54px;
+        font-weight: 790;
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      h1 span {
+        display: inline;
+      }
+
+      h1 span + span::before {
+        content: " ";
+      }
+
+      .hero-lede {
+        max-width: 720px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 24px;
+        color: #4f6065;
+        font-size: 18px;
+      }
+
+      .mobile-only {
+        display: none;
+      }
+
+      .matcher {
+        overflow: hidden;
+        max-width: 920px;
+        width: min(920px, 100%);
+        border: 1px solid rgba(20, 37, 39, 0.13);
+        border-radius: var(--radius);
+        background: rgba(255, 253, 248, 0.92);
+        box-shadow: 0 14px 34px rgba(24, 43, 42, 0.09);
+      }
+
+      .matcher-main {
+        display: grid;
+        grid-template-columns: minmax(260px, 1.45fr) repeat(3, minmax(132px, 0.55fr)) auto;
+        gap: 1px;
+        background: rgba(20, 37, 39, 0.1);
+      }
+
+      .field {
+        display: grid;
+        gap: 5px;
+        min-width: 0;
+        padding: 13px 15px;
+        background: white;
+      }
+
+      .field label {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 820;
+        text-transform: uppercase;
+      }
+
+      .field input,
+      .field select {
+        min-width: 0;
+        width: 100%;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: var(--ink);
+        font-size: 15px;
+        font-weight: 760;
+        text-overflow: ellipsis;
+      }
+
+      .match-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-width: 150px;
+        padding: 0 20px;
+        background: var(--jade);
+        color: white;
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .match-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .matcher-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 15px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .matcher-meta strong {
+        color: var(--jade-2);
+      }
+
+      .quick-chip {
+        padding: 6px 9px;
+        border-radius: 999px;
+        background: var(--jade-3);
+        color: var(--jade-2);
+        font-weight: 760;
+      }
+
+      .score {
+        display: grid;
+        width: 50px;
+        height: 50px;
+        place-items: center;
+        border-radius: 8px;
+        background:
+          conic-gradient(var(--jade) 0 78%, #dce8e3 78% 100%);
+      }
+
+      .score span {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border-radius: 6px;
+        background: white;
+        color: var(--jade-2);
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .panel-list {
+        display: grid;
+        gap: 9px;
+        padding: 0 17px 17px;
+      }
+
+      .signal {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid rgba(20, 37, 39, 0.09);
+        border-radius: 7px;
+        background: #fbf9f2;
+      }
+
+      .signal svg {
+        width: 19px;
+        height: 19px;
+        color: var(--jade);
+      }
+
+      .signal strong {
+        display: block;
+        font-size: 14px;
+      }
+
+      .signal span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      .status {
+        padding: 5px 7px;
+        border-radius: 999px;
+        color: var(--jade-2);
+        background: var(--jade-3);
+        font-size: 12px;
+        font-weight: 820;
+      }
+
+      .routes {
+        width: var(--container);
+        margin: 0 auto;
+        padding: 0 0 50px;
+      }
+
+      .route-strip {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px;
+        border-top: 1px solid rgba(20, 37, 39, 0.1);
+        border-bottom: 1px solid rgba(20, 37, 39, 0.1);
+      }
+
+      .route {
+        display: inline-flex;
+        gap: 9px;
+        align-items: center;
+        min-height: 42px;
+        padding: 0 12px;
+        border: 1px solid rgba(20, 37, 39, 0.11);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.62);
+        color: var(--ink);
+        text-align: left;
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      }
+
+      .route:hover,
+      .route[aria-pressed="true"] {
+        transform: translateY(-2px);
+        border-color: rgba(0, 111, 95, 0.36);
+        background: white;
+      }
+
+      .route svg {
+        width: 18px;
+        height: 18px;
+        color: var(--jade);
+      }
+
+      .route strong {
+        display: inline;
+        font-size: 14px;
+        font-weight: 850;
+      }
+
+      .route span {
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 640;
+      }
+
+      .route span span {
+        color: var(--muted);
+      }
+
+      .section {
+        width: var(--container);
+        margin: 0 auto;
+        padding: 50px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 28px;
+        margin-bottom: 20px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: 34px;
+        font-weight: 830;
+        line-height: 1.05;
+      }
+
+      .section-head p {
+        max-width: 610px;
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 16px;
+      }
+
+      .link-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 40px;
+        padding: 0 13px;
+        border: 1px solid rgba(0, 111, 95, 0.2);
+        border-radius: 7px;
+        background: white;
+        color: var(--jade-2);
+        font-weight: 800;
+      }
+
+      .essentials {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0;
+        margin-bottom: 14px;
+        border-top: 1px solid rgba(20, 37, 39, 0.14);
+        border-bottom: 1px solid rgba(20, 37, 39, 0.14);
+      }
+
+      .essential-link {
+        display: grid;
+        min-height: 168px;
+        padding: 20px 22px;
+        border-right: 1px solid rgba(20, 37, 39, 0.12);
+        background: transparent;
+        color: var(--ink);
+        text-align: left;
+        transition: background 180ms ease, transform 180ms ease;
+      }
+
+      .essential-link:last-child {
+        border-right: 0;
+      }
+
+      .essential-link:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 253, 248, 0.54);
+      }
+
+      .essential-link svg {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 34px;
+        color: var(--jade);
+      }
+
+      .essential-link strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 18px;
+      }
+
+      .essential-link span {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      .program-preview,
+      .city-panel,
+      .timeline,
+      .trust-panel,
+      .hub-strip {
+        border: 1px solid rgba(20, 37, 39, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.84);
+        box-shadow: 0 12px 32px rgba(24, 43, 42, 0.06);
+      }
+
+      .program-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 370px;
+        gap: 18px;
+      }
+
+      .university-layout {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .university-card {
+        position: relative;
+        min-width: 0;
+      }
+
+      .university-image {
+        position: relative;
+        min-height: 132px;
+        overflow: hidden;
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(18, 50, 50, 0.02), rgba(18, 50, 50, 0.18)),
+          url("assets/cuac-campus-hero-v5.png");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .university-card:nth-child(2) .university-image {
+        background-position: 24% center;
+      }
+
+      .university-card:nth-child(3) .university-image {
+        background-position: 70% center;
+      }
+
+      .university-card:nth-child(4) .university-image {
+        background-position: 100% center;
+      }
+
+      .save-dot {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: grid;
+        width: 30px;
+        height: 30px;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 999px;
+        background: rgba(255, 253, 248, 0.9);
+        color: var(--jade-2);
+        box-shadow: 0 8px 20px rgba(24, 43, 42, 0.14);
+      }
+
+      .save-dot svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .university-card strong {
+        display: block;
+        margin-top: 12px;
+        color: var(--jade-2);
+        font-size: 18px;
+        line-height: 1.15;
+      }
+
+      .university-card span {
+        display: block;
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      .university-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 9px;
+      }
+
+      .program-preview {
+        overflow: hidden;
+      }
+
+      .program-row {
+        display: grid;
+        grid-template-columns: minmax(240px, 1fr) 130px 130px 150px 130px auto;
+        gap: 12px;
+        align-items: center;
+        min-height: 88px;
+        padding: 16px 18px;
+        border-bottom: 1px solid rgba(20, 37, 39, 0.1);
+        background: rgba(255, 253, 248, 0.88);
+      }
+
+      .program-row:last-child {
+        border-bottom: 0;
+      }
+
+      .program-row:hover {
+        background: white;
+      }
+
+      .program-title strong {
+        display: block;
+        font-size: 17px;
+      }
+
+      .program-title span,
+      .program-cell span {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .program-cell strong {
+        display: block;
+        font-size: 14px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        min-height: 25px;
+        padding: 0 8px;
+        border-radius: 999px;
+        background: var(--gold-2);
+        color: #6d4700;
+        font-size: 12px;
+        font-weight: 840;
+      }
+
+      .tag.ready {
+        background: var(--jade-3);
+        color: var(--jade-2);
+      }
+
+      .tag.warn {
+        background: #ffe1d5;
+        color: var(--red);
+      }
+
+      .row-actions {
+        display: flex;
+        gap: 8px;
+        justify-content: end;
+      }
+
+      .row-actions button {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: white;
+        color: var(--jade-2);
+      }
+
+      .side-brief {
+        display: grid;
+        align-content: start;
+        gap: 12px;
+        padding: 18px;
+        border-radius: 8px;
+        background: #123232;
+        color: white;
+      }
+
+      .side-brief h3 {
+        margin-bottom: 2px;
+        font-size: 23px;
+      }
+
+      .side-brief p {
+        margin-bottom: 12px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .deadline-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 13px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      .deadline-item strong {
+        display: block;
+        font-size: 14px;
+      }
+
+      .deadline-item span {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 13px;
+      }
+
+      .deadline-date {
+        color: #f6c85f;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .city-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .city-visual {
+        position: relative;
+        min-height: 430px;
+        overflow: hidden;
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, rgba(18, 50, 50, 0.08), rgba(18, 50, 50, 0.68)),
+          url("assets/cuac-campus-hero-v5.png");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .city-visual .map-card {
+        position: absolute;
+        left: 22px;
+        right: 22px;
+        bottom: 22px;
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.34);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.9);
+        color: var(--ink);
+        backdrop-filter: blur(10px);
+      }
+
+      .map-card strong {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 21px;
+      }
+
+      .map-card span {
+        color: var(--muted);
+      }
+
+      .city-panel {
+        display: grid;
+        gap: 1px;
+        overflow: hidden;
+        background: rgba(20, 37, 39, 0.1);
+      }
+
+      .city-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: center;
+        padding: 18px 20px;
+        background: rgba(255, 253, 248, 0.94);
+      }
+
+      .city-row strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 18px;
+      }
+
+      .city-row p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .cost {
+        color: var(--jade-2);
+        font-size: 20px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .switcher {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+
+      .switcher button {
+        min-height: 38px;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: rgba(255, 253, 248, 0.8);
+        color: var(--muted);
+        font-weight: 800;
+      }
+
+      .switcher button[aria-pressed="true"] {
+        border-color: rgba(0, 111, 95, 0.28);
+        background: var(--jade-3);
+        color: var(--jade-2);
+      }
+
+      .scholar-band {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .scholar-copy {
+        padding: 28px;
+        border-radius: 8px;
+        background: #f3dfaa;
+      }
+
+      .scholar-copy h2 {
+        margin-bottom: 8px;
+        font-size: 34px;
+        line-height: 1.05;
+      }
+
+      .scholar-copy p {
+        color: #5e4c26;
+      }
+
+      .scholar-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .scholar-row {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 13px;
+        align-items: center;
+        padding: 15px;
+        border: 1px solid rgba(20, 37, 39, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.82);
+      }
+
+      .scholar-row svg {
+        width: 23px;
+        height: 23px;
+        color: var(--gold);
+      }
+
+      .scholar-row strong {
+        display: block;
+      }
+
+      .scholar-row span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 0;
+        overflow: hidden;
+        border-top: 1px solid rgba(20, 37, 39, 0.14);
+        border-bottom: 1px solid rgba(20, 37, 39, 0.14);
+        background: transparent;
+      }
+
+      .step {
+        min-height: 190px;
+        padding: 20px;
+        border-right: 1px solid rgba(20, 37, 39, 0.12);
+        background: transparent;
+      }
+
+      .step:last-child {
+        border-right: 0;
+      }
+
+      .step-num {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        margin-bottom: 34px;
+        border-radius: 7px;
+        background: var(--jade-3);
+        color: var(--jade-2);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .step strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 17px;
+      }
+
+      .step p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .trust-panel {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0;
+        overflow: hidden;
+        border-top: 1px solid rgba(20, 37, 39, 0.14);
+        border-bottom: 1px solid rgba(20, 37, 39, 0.14);
+        background: transparent;
+      }
+
+      .trust-item {
+        padding: 22px 24px;
+        border-right: 1px solid rgba(20, 37, 39, 0.12);
+        background: transparent;
+      }
+
+      .trust-item:last-child {
+        border-right: 0;
+      }
+
+      .trust-item svg {
+        width: 25px;
+        height: 25px;
+        margin-bottom: 24px;
+        color: var(--jade);
+      }
+
+      .trust-item strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 18px;
+      }
+
+      .trust-item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .hub-strip {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: center;
+        padding: 24px;
+        background:
+          linear-gradient(90deg, rgba(0, 111, 95, 0.96), rgba(18, 50, 50, 0.96)),
+          var(--jade-2);
+        color: white;
+      }
+
+      .hub-strip h2 {
+        margin-bottom: 4px;
+        font-size: 28px;
+      }
+
+      .hub-strip p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.74);
+      }
+
+      .hub-strip .link-btn {
+        border-color: rgba(255, 255, 255, 0.2);
+        background: white;
+        color: var(--jade-2);
+      }
+
+      .footer {
+        margin-top: 30px;
+        background: #101f20;
+        color: white;
+      }
+
+      .footer-inner {
+        width: var(--container);
+        margin: 0 auto;
+        padding: 48px 0 34px;
+      }
+
+      .footer-top {
+        display: grid;
+        grid-template-columns: 1.2fr repeat(5, 1fr);
+        gap: 30px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .footer-brand strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 22px;
+      }
+
+      .footer-brand p {
+        max-width: 310px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 14px;
+      }
+
+      .footer-col strong {
+        display: block;
+        margin-bottom: 12px;
+        color: #f6c85f;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      .footer-col a {
+        display: block;
+        margin: 8px 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 14px;
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding-top: 22px;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 13px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 260ms ease, transform 260ms ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 1180px) {
+        :root {
+          --container: min(100vw - 48px, 1040px);
+        }
+
+        .hero-grid,
+        .program-layout,
+        .city-grid,
+        .scholar-band {
+          grid-template-columns: 1fr;
+        }
+
+        .essentials {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .essential-link:nth-child(2) {
+          border-right: 0;
+        }
+
+        .essential-link:nth-child(-n + 2) {
+          border-bottom: 1px solid rgba(20, 37, 39, 0.12);
+        }
+
+        .matcher-main {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .match-btn {
+          min-height: 58px;
+          grid-column: 1 / -1;
+        }
+
+        .program-row {
+          grid-template-columns: minmax(240px, 1fr) 1fr 1fr auto;
+        }
+
+        .program-row .tag {
+          justify-self: start;
+        }
+
+        .row-actions {
+          grid-column: 1 / -1;
+          justify-content: start;
+        }
+
+        .timeline,
+        .trust-panel,
+        .footer-top {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        :root {
+          --container: calc(100vw - 32px);
+        }
+
+        .nav-inner {
+          grid-template-columns: 1fr auto;
+          gap: 12px;
+          padding: 12px 0 10px;
+          overflow: hidden;
+        }
+
+        .brand {
+          gap: 10px;
+          font-size: 18px;
+        }
+
+        .mark {
+          width: 42px;
+          height: 42px;
+          font-size: 15px;
+        }
+
+        .nav-links {
+          grid-column: 1 / -1;
+          grid-row: 2;
+          justify-content: flex-start;
+          overflow-x: auto;
+          max-width: 100%;
+          width: 100%;
+          padding-bottom: 4px;
+          scrollbar-width: none;
+        }
+
+        .nav-links::-webkit-scrollbar {
+          display: none;
+        }
+
+        .nav-links a {
+          padding: 8px 11px;
+          font-size: 14px;
+          white-space: nowrap;
+        }
+
+        .nav-links a:nth-child(n + 4) {
+          display: none;
+        }
+
+        .signin {
+          display: none;
+        }
+
+        .nav-actions {
+          display: none;
+        }
+
+        .intake-pill {
+          display: none;
+        }
+
+        .hero {
+          padding: 38px 0 22px;
+        }
+
+        .hero-grid {
+          justify-items: start;
+          text-align: left;
+        }
+
+        h1 {
+          font-size: 31px;
+          line-height: 1.03;
+          max-width: 100%;
+          margin-right: 0;
+          margin-left: 0;
+        }
+
+        h1 span {
+          display: block;
+        }
+
+        h1 span + span::before {
+          content: "";
+        }
+
+        .hero-lede {
+          max-width: 330px;
+          margin-right: 0;
+          margin-left: 0;
+          font-size: 15px;
+          line-height: 1.48;
+          overflow-wrap: normal;
+          word-break: normal;
+        }
+
+        .desktop-only {
+          display: none;
+        }
+
+        .mobile-only {
+          display: block;
+        }
+
+        .matcher {
+          max-width: 100%;
+          width: 100%;
+        }
+
+        html,
+        body,
+        .page {
+          max-width: 100%;
+          overflow-x: hidden;
+        }
+
+        .matcher-meta {
+          align-items: flex-start;
+        }
+
+        .quick-chip {
+          white-space: nowrap;
+        }
+
+        .eyebrow {
+          max-width: 100%;
+          white-space: normal;
+          font-size: 12px;
+        }
+
+        .matcher-main,
+        .essentials,
+        .program-row,
+        .city-row,
+        .timeline,
+        .trust-panel,
+        .footer-top,
+        .footer-bottom,
+        .hub-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .essential-link,
+        .essential-link:nth-child(2) {
+          border-right: 0;
+        }
+
+        .essential-link:nth-child(-n + 3) {
+          border-bottom: 1px solid rgba(20, 37, 39, 0.12);
+        }
+
+        .essential-link {
+          min-height: 132px;
+          padding: 18px 0;
+        }
+
+        .route-strip {
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          overflow-x: auto;
+          padding: 10px 0;
+          scrollbar-width: none;
+        }
+
+        .route-strip::-webkit-scrollbar {
+          display: none;
+        }
+
+        .route {
+          flex: 0 0 auto;
+        }
+
+        .section {
+          padding: 42px 0;
+        }
+
+        .section-head {
+          display: block;
+        }
+
+        .section-head h2,
+        .scholar-copy h2 {
+          font-size: 28px;
+        }
+
+        .program-row {
+          gap: 8px;
+          min-height: auto;
+        }
+
+        .program-cell,
+        .program-row .tag {
+          justify-self: start;
+        }
+
+        .side-brief,
+        .scholar-copy {
+          padding: 22px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition: none !important;
+          animation: none !important;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <nav class="nav" aria-label="Primary navigation">
+        <div class="nav-inner">
+          <a class="brand" href="#">
+            <span class="mark">CU</span>
+            <span>CUAC</span>
+          </a>
+          <div class="nav-links">
+            <a href="#" aria-current="page">Programs</a>
+            <a href="#">Universities</a>
+            <a href="#">Scholarships</a>
+            <a href="#">Cities</a>
+            <a href="#">How to Apply</a>
+            <a href="#">Hub</a>
+          </div>
+          <span class="intake-pill">Fall 2026 intake</span>
+          <div class="nav-actions">
+            <button class="icon-btn" type="button" aria-label="Change language">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 0 20"/><path d="M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+            </button>
+            <button class="icon-btn" type="button" aria-label="Saved choices">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </button>
+            <button class="signin" type="button">Sign in</button>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <section class="hero" aria-label="China program matcher">
+          <div class="hero-grid">
+            <div>
+              <span class="eyebrow">China applications, made comparable</span>
+              <h1><span>Find your China</span><span>university path</span></h1>
+              <p class="hero-lede desktop-only">Search programs by subject, budget, language, city, scholarship, and intake. CUAC helps you see what is realistic before you commit.</p>
+              <p class="hero-lede mobile-only">Search by subject, budget, language, and intake.</p>
+
+              <form class="matcher" aria-label="Find matching programs">
+                <div class="matcher-main">
+                  <div class="field">
+                    <label for="subject">Subject</label>
+                    <input id="subject" name="subject" value="Computer science" />
+                  </div>
+                  <div class="field">
+                    <label for="degree">Level</label>
+                    <select id="degree" name="degree">
+                      <option>Master</option>
+                      <option>Bachelor</option>
+                      <option>PhD</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="language">Language</label>
+                    <select id="language" name="language">
+                      <option>English</option>
+                      <option>Chinese</option>
+                      <option>Either</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="budget">Budget</label>
+                    <select id="budget" name="budget">
+                      <option>RMB 45k</option>
+                      <option>RMB 30k</option>
+                      <option>Scholarship</option>
+                    </select>
+                  </div>
+                  <button class="match-btn" type="button">
+                    Find matches
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </button>
+                </div>
+                <div class="matcher-meta">
+                  <strong>Suggested:</strong>
+                  <span class="quick-chip">Fall 2026</span>
+                  <span class="quick-chip">Scholarship available</span>
+                  <span class="quick-chip">Document-light</span>
+                  <span>28 programs match this profile</span>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </section>
+
+        <section class="routes" aria-label="Student routes">
+          <div class="route-strip">
+            <button class="route" type="button" aria-pressed="true" data-route="english">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5V4a2 2 0 0 1 2-2h11v20H6a2 2 0 0 1-2-2.5Z"/><path d="M8 7h5"/><path d="M8 11h7"/></svg>
+              <span><strong>English-taught</strong><span>No HSK first</span></span>
+            </button>
+            <button class="route" type="button" aria-pressed="false" data-route="scholarship">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 8V2l3 3 3-3v6"/><path d="M6 9h12l-1 11H7Z"/><path d="M9 13h6"/></svg>
+              <span><strong>Scholarship-first</strong><span>Funding routes</span></span>
+            </button>
+            <button class="route" type="button" aria-pressed="false" data-route="affordable">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-8h6v8"/></svg>
+              <span><strong>Affordable cities</strong><span>Cost fit</span></span>
+            </button>
+            <button class="route" type="button" aria-pressed="false" data-route="late">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="M12 14v4"/><path d="m10 16 2 2 4-4"/></svg>
+              <span><strong>Late intake</strong><span>Still open</span></span>
+            </button>
+          </div>
+        </section>
+
+        <section class="section reveal" aria-label="China application decision tools">
+          <div class="section-head">
+            <div>
+              <h2>Before you apply</h2>
+              <p>Short routes into the China-specific questions students usually discover too late.</p>
+            </div>
+            <a class="link-btn" href="#">See application guide</a>
+          </div>
+
+          <div class="essentials">
+            <a class="essential-link" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5Z"/><path d="M8 7h8"/><path d="M8 11h5"/></svg>
+              <div><strong>Documents</strong><span>Passport, transcript, proof, translation, recommendation.</span></div>
+            </a>
+            <a class="essential-link" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg>
+              <div><strong>Intakes & deadlines</strong><span>Fall, spring, late intake, and university-specific dates.</span></div>
+            </a>
+            <a class="essential-link" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <div><strong>Scholarships</strong><span>Funding routes, tuition discounts, and realistic effort.</span></div>
+            </a>
+            <a class="essential-link" href="#">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div><strong>Visa & arrival</strong><span>Admission notice, JW form, visa path, and first weeks.</span></div>
+            </a>
+          </div>
+        </section>
+
+        <section class="section reveal" aria-label="Program discovery preview">
+          <div class="section-head">
+            <div>
+              <h2>Compare programs before opening details</h2>
+              <p>Program previews should expose the fields international students actually need: language, cost, scholarship, intake, deadline, and document burden.</p>
+            </div>
+            <a class="link-btn" href="#">View all matches</a>
+          </div>
+
+          <div class="program-layout">
+            <div class="program-preview">
+              <article class="program-row">
+                <div class="program-title"><strong>Computer Science MSc</strong><span>Zhejiang University · Hangzhou</span></div>
+                <div class="program-cell"><strong>English</strong><span>2 years</span></div>
+                <div class="program-cell"><strong>RMB 42,000</strong><span>Tuition / year</span></div>
+                <span class="tag ready">Scholarship</span>
+                <span class="tag">Closes Oct 15</span>
+                <div class="row-actions">
+                  <button type="button" aria-label="Save Computer Science MSc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                  <button type="button" aria-label="Compare Computer Science MSc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14h3v4H7z"/><path d="M12 9h3v9h-3z"/><path d="M17 5h3v13h-3z"/></svg></button>
+                </div>
+              </article>
+              <article class="program-row">
+                <div class="program-title"><strong>International Business BA</strong><span>Fudan University · Shanghai</span></div>
+                <div class="program-cell"><strong>English</strong><span>4 years</span></div>
+                <div class="program-cell"><strong>RMB 52,000</strong><span>Tuition / year</span></div>
+                <span class="tag">Partial award</span>
+                <span class="tag warn">IELTS needed</span>
+                <div class="row-actions">
+                  <button type="button" aria-label="Save International Business BA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                  <button type="button" aria-label="Compare International Business BA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14h3v4H7z"/><path d="M12 9h3v9h-3z"/><path d="M17 5h3v13h-3z"/></svg></button>
+                </div>
+              </article>
+              <article class="program-row">
+                <div class="program-title"><strong>Clinical Medicine MBBS</strong><span>Nanjing Medical University · Nanjing</span></div>
+                <div class="program-cell"><strong>English</strong><span>6 years</span></div>
+                <div class="program-cell"><strong>RMB 34,000</strong><span>Tuition / year</span></div>
+                <span class="tag ready">Affordable</span>
+                <span class="tag">Open until Nov 20</span>
+                <div class="row-actions">
+                  <button type="button" aria-label="Save Clinical Medicine MBBS"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+                  <button type="button" aria-label="Compare Clinical Medicine MBBS"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 3v18h18"/><path d="M7 14h3v4H7z"/><path d="M12 9h3v9h-3z"/><path d="M17 5h3v13h-3z"/></svg></button>
+                </div>
+              </article>
+            </div>
+
+            <aside class="side-brief">
+              <h3>Deadline snapshot</h3>
+              <p>Exact dates vary by university. CUAC should make that uncertainty visible instead of hiding it.</p>
+              <div class="deadline-item"><div><strong>ZJU Computer Science MSc</strong><span>Scholarship materials due earlier</span></div><span class="deadline-date">Oct 15</span></div>
+              <div class="deadline-item"><div><strong>Fudan International Business BA</strong><span>English proof required</span></div><span class="deadline-date">Sep 30</span></div>
+              <div class="deadline-item"><div><strong>Nanjing Medical MBBS</strong><span>Late intake still possible</span></div><span class="deadline-date">Nov 20</span></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section reveal" aria-label="Universities and colleges">
+          <div class="section-head">
+            <div>
+              <h2>Universities & colleges</h2>
+              <p>Start with Chinese universities that have clear international admissions routes, English-taught options, scholarships, or strong city fit.</p>
+            </div>
+            <a class="link-btn" href="#">Explore universities</a>
+          </div>
+
+          <div class="university-layout">
+            <article class="university-card">
+              <div class="university-image">
+                <button class="save-dot" type="button" aria-label="Save Zhejiang University"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+              </div>
+              <strong>Zhejiang University</strong>
+              <span>Hangzhou · English routes</span>
+              <div class="university-meta"><span class="tag ready">Engineering</span><span class="tag">Scholarships</span></div>
+            </article>
+            <article class="university-card">
+              <div class="university-image">
+                <button class="save-dot" type="button" aria-label="Save Tsinghua University"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+              </div>
+              <strong>Tsinghua University</strong>
+              <span>Beijing · Engineering</span>
+              <div class="university-meta"><span class="tag">Selective</span><span class="tag ready">Research</span></div>
+            </article>
+            <article class="university-card">
+              <div class="university-image">
+                <button class="save-dot" type="button" aria-label="Save Fudan University"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+              </div>
+              <strong>Fudan University</strong>
+              <span>Shanghai · Scholarships</span>
+              <div class="university-meta"><span class="tag">Business</span><span class="tag warn">Higher cost</span></div>
+            </article>
+            <article class="university-card">
+              <div class="university-image">
+                <button class="save-dot" type="button" aria-label="Save Tongji University"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+              </div>
+              <strong>Tongji University</strong>
+              <span>Shanghai · Architecture</span>
+              <div class="university-meta"><span class="tag ready">Design</span><span class="tag">German links</span></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section reveal" aria-label="China city fit">
+          <div class="section-head">
+            <div>
+              <h2>Pick a city with the program</h2>
+              <p>For foreign students, city choice affects budget, lifestyle, internships, language environment, and confidence after arrival.</p>
+            </div>
+            <div class="switcher" aria-label="City comparison controls">
+              <button type="button" aria-pressed="true" data-city-mode="cost">Cost</button>
+              <button type="button" aria-pressed="false" data-city-mode="career">Career</button>
+              <button type="button" aria-pressed="false" data-city-mode="life">Student life</button>
+            </div>
+          </div>
+
+          <div class="city-grid">
+            <div class="city-visual">
+              <div class="map-card"><strong>Hangzhou example path</strong><span>Tech-focused city, strong university cluster, calmer daily rhythm than megacity life.</span></div>
+            </div>
+            <div class="city-panel" id="cityPanel">
+              <article class="city-row">
+                <div><strong>Hangzhou</strong><p>Balanced tech city with scenic life and strong computer science options.</p></div>
+                <span class="cost">RMB 3,600/mo</span>
+              </article>
+              <article class="city-row">
+                <div><strong>Nanjing</strong><p>Academic city with a lower monthly cost and many medical programs.</p></div>
+                <span class="cost">RMB 3,300/mo</span>
+              </article>
+              <article class="city-row">
+                <div><strong>Shanghai</strong><p>International, fast-moving, internship-rich, but more expensive.</p></div>
+                <span class="cost">RMB 5,200/mo</span>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" aria-label="Scholarships and deadlines">
+          <div class="scholar-band">
+            <div class="scholar-copy">
+              <h2>Scholarship first, but realistic</h2>
+              <p>Students need to see which funding routes are still open and which documents make them competitive. CUAC should never imply that every scholarship is guaranteed.</p>
+              <a class="link-btn" href="#">Explore scholarship routes</a>
+            </div>
+            <div class="scholar-list">
+              <article class="scholar-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 8V2l3 3 3-3v6"/><path d="M6 9h12l-1 11H7Z"/></svg>
+                <div><strong>University scholarship</strong><span>Often tied to academic record, language proof, and early deadline.</span></div>
+                <span class="tag">Most common</span>
+              </article>
+              <article class="scholar-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <div><strong>Tuition discount</strong><span>Good fallback when full scholarship competition is too high.</span></div>
+                <span class="tag ready">Practical</span>
+              </article>
+              <article class="scholar-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5Z"/><path d="M8 7h8"/><path d="M8 11h5"/></svg>
+                <div><strong>Full scholarship</strong><span>Requires stronger documents, earlier planning, and careful program fit.</span></div>
+                <span class="tag warn">High effort</span>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" aria-label="Application path timeline">
+          <div class="section-head">
+            <div>
+              <h2>From search to review-ready</h2>
+              <p>The homepage should show the full China application path without making students read a long guide first.</p>
+            </div>
+          </div>
+          <div class="timeline">
+            <article class="step"><span class="step-num">01</span><strong>Find matches</strong><p>Search by subject, level, language, budget, city, and intake.</p></article>
+            <article class="step"><span class="step-num">02</span><strong>Check eligibility</strong><p>See deadline, language, academic, and document blockers early.</p></article>
+            <article class="step"><span class="step-num">03</span><strong>Compare choices</strong><p>Save up to three realistic options and compare effort.</p></article>
+            <article class="step"><span class="step-num">04</span><strong>Prepare documents</strong><p>Build a packet with transcript, proof, tests, and translations.</p></article>
+            <article class="step"><span class="step-num">05</span><strong>Adviser review</strong><p>Get a practical review before submitting to universities.</p></article>
+            <article class="step"><span class="step-num">06</span><strong>Visa steps</strong><p>Track admission notice, JW form, and arrival preparation.</p></article>
+          </div>
+        </section>
+
+        <section class="section reveal" aria-label="Trust and returning student">
+          <div class="trust-panel">
+            <article class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3Z"/><path d="m9 12 2 2 4-5"/></svg>
+              <strong>Application facts visible</strong>
+              <p>Program data should make deadlines, cost, language route, and follow-up items easy to review.</p>
+            </article>
+            <article class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>
+              <strong>Dates are explicit</strong>
+              <p>No vague urgency. Deadlines should be shown with exact dates and university-specific notes.</p>
+            </article>
+            <article class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z"/><path d="M8 9h8"/><path d="M8 13h5"/></svg>
+              <strong>No guaranteed admission</strong>
+              <p>Adviser review helps students improve readiness, but does not promise university acceptance.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section reveal" aria-label="Continue in CUAC Hub">
+          <div class="hub-strip">
+            <div>
+              <h2>Already shortlisting?</h2>
+              <p>Continue in Hub to track saved choices, missing documents, upcoming deadlines, and adviser review status.</p>
+            </div>
+            <a class="link-btn" href="#">Open Hub</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <strong>CUAC</strong>
+              <p>Helping international students compare realistic China university options before they apply.</p>
+            </div>
+            <div class="footer-col">
+              <strong>For students</strong>
+              <a href="#">Find programs</a>
+              <a href="#">Scholarships</a>
+              <a href="#">City guides</a>
+              <a href="#">Deadlines</a>
+            </div>
+            <div class="footer-col">
+              <strong>Applying to China</strong>
+              <a href="#">Documents</a>
+              <a href="#">Language tests</a>
+              <a href="#">Visa and JW form</a>
+              <a href="#">Tuition and cost</a>
+            </div>
+            <div class="footer-col">
+              <strong>Support</strong>
+              <a href="#">Help center</a>
+              <a href="#">Contact</a>
+              <a href="#">Adviser review</a>
+              <a href="#">Source policy</a>
+            </div>
+            <div class="footer-col">
+              <strong>Partners</strong>
+              <a href="#">Universities</a>
+              <a href="#">Advisers</a>
+              <a href="#">International admissions</a>
+            </div>
+            <div class="footer-col">
+              <strong>Company</strong>
+              <a href="#">About CUAC</a>
+              <a href="#">Terms</a>
+              <a href="#">Privacy</a>
+              <a href="#">Cookie preferences</a>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>© CUAC 2026</span>
+            <span>Admissions rules differ by university. Always check exact program requirements before submitting.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const routes = document.querySelectorAll(".route");
+      routes.forEach((route) => {
+        route.addEventListener("click", () => {
+          routes.forEach((item) => item.setAttribute("aria-pressed", "false"));
+          route.setAttribute("aria-pressed", "true");
+        });
+      });
+
+      const cityModes = {
+        cost: [
+          ["Hangzhou", "Balanced tech city with scenic life and strong computer science options.", "RMB 3,600/mo"],
+          ["Nanjing", "Academic city with a lower monthly cost and many medical programs.", "RMB 3,300/mo"],
+          ["Shanghai", "International, fast-moving, internship-rich, but more expensive.", "RMB 5,200/mo"]
+        ],
+        career: [
+          ["Shanghai", "Highest internship density for business, finance, media, and global companies.", "Career +++"],
+          ["Shenzhen", "Strong for engineering, hardware, software, and innovation companies.", "Career +++"],
+          ["Hangzhou", "Excellent for tech, e-commerce, and digital business programs.", "Career ++"]
+        ],
+        life: [
+          ["Chengdu", "Relaxed rhythm, lower cost, strong food and student lifestyle.", "Life +++"],
+          ["Hangzhou", "Scenic, safe, international enough, and easier pace than megacities.", "Life +++"],
+          ["Beijing", "Academic and cultural depth, but colder winters and higher pressure.", "Life ++"]
+        ]
+      };
+
+      const cityPanel = document.querySelector("#cityPanel");
+      const modeButtons = document.querySelectorAll("[data-city-mode]");
+      modeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          modeButtons.forEach((item) => item.setAttribute("aria-pressed", "false"));
+          button.setAttribute("aria-pressed", "true");
+          const rows = cityModes[button.dataset.cityMode]
+            .map(([city, copy, value]) => `
+              <article class="city-row">
+                <div><strong>${city}</strong><p>${copy}</p></div>
+                <span class="cost">${value}</span>
+              </article>
+            `)
+            .join("");
+          cityPanel.innerHTML = rows;
+        });
+      });
+
+      if (!new URLSearchParams(window.location.search).has("motion")) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        document.querySelectorAll(".reveal").forEach((item) => observer.observe(item));
+      } else {
+        document.querySelectorAll(".reveal").forEach((item) => item.classList.add("is-visible"));
+      }
+    </script>
+  </body>
+</html>

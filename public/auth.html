@@ -3,33 +3,38 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CUAC Sign in</title>
+    <title>CUAC | Sign in or create account</title>
     <link rel="stylesheet" href="shared-shell.css" />
     <link rel="stylesheet" href="auth.css" />
   </head>
   <body data-agent-mode="off">
     <div class="page">
-      <div data-cuac-header data-active="auth" data-note="CUAC Hub:" data-note-detail="save choices, documents, and deadlines"></div>
+      <div data-cuac-header data-active="auth" data-auth-state="signed-out" data-note="CUAC Hub:" data-note-detail="save choices, documents, and deadlines"></div>
 
       <main class="auth-shell">
         <section class="auth-intro reveal" aria-label="CUAC account benefits">
           <a class="back-link" href="home-v3.html">Back to CUAC</a>
-          <span class="eyebrow">Student account</span>
-          <h1>Keep every China application step in one place</h1>
-          <p>Sign in or create a CUAC account to save programs, compare universities, track deadlines, prepare documents, and continue Agent conversations.</p>
-          <div class="benefit-list" aria-label="What your account unlocks">
-            <article><span data-auth-icon="heart"></span><div><strong>Saved choices</strong><em>Keep programs, universities, scholarships, and cities together.</em></div></article>
-            <article><span data-auth-icon="calendar"></span><div><strong>Deadline view</strong><em>See intake dates, scholarship timing, and application reminders.</em></div></article>
-            <article><span data-auth-icon="document"></span><div><strong>Document readiness</strong><em>Know which transcript, language proof, or translation is missing.</em></div></article>
-            <article><span data-auth-icon="agent"></span><div><strong>Agent history</strong><em>Resume study goals and turn them into clearer next actions.</em></div></article>
-          </div>
-          <div class="trust-note">
-            <strong>No admission guarantees.</strong>
-            <span>CUAC helps organize source-aware application decisions. Universities and official authorities make final decisions.</span>
-          </div>
+          <span class="eyebrow" data-auth-eyebrow>CUAC account</span>
+          <h1 data-auth-title>Keep every China application step in one place</h1>
+          <p data-auth-lead>Sign in or create a CUAC account to save programs, compare universities, track deadlines, and prepare application documents.</p>
         </section>
 
         <section class="auth-card reveal" aria-label="Sign in or create account">
+          <div class="continuation-strip hidden" data-auth-continuation-strip>
+            <span data-auth-icon="route"></span>
+            <div>
+              <strong data-auth-continuation-title>Continue after sign in</strong>
+              <p data-auth-continuation-copy>CUAC will return to the page and action you started.</p>
+            </div>
+          </div>
+
+          <div class="role-switcher" role="tablist" aria-label="Choose workspace access">
+            <button class="active" type="button" role="tab" aria-selected="true" data-auth-role="student">Student</button>
+            <button type="button" role="tab" aria-selected="false" data-auth-role="school">School staff</button>
+            <button type="button" role="tab" aria-selected="false" data-auth-role="ops">CUAC staff</button>
+          </div>
+          <p class="role-system-note" data-unified-account-copy>One CUAC account. Choose the workspace access you need; permissions are checked after sign in or account creation.</p>
+
           <div class="auth-tabs" role="tablist" aria-label="Account mode">
             <button class="active" type="button" role="tab" aria-selected="true" data-auth-tab="signin">Sign in</button>
             <button type="button" role="tab" aria-selected="false" data-auth-tab="register">Create account</button>
@@ -37,76 +42,94 @@
 
           <form class="auth-form active" data-auth-panel="signin" aria-label="Sign in form">
             <div class="form-head">
-              <h2>Welcome back</h2>
-              <p>Continue your saved China study shortlist.</p>
+              <h2 data-signin-title>Welcome back</h2>
+              <p data-signin-copy>Continue your saved China study shortlist.</p>
             </div>
             <label>
               <span>Email address</span>
-              <input type="email" autocomplete="email" value="maya.student@example.com" />
+              <input type="email" autocomplete="email" placeholder="you@example.com" data-auth-email required />
             </label>
             <label>
               <span>Password</span>
-              <input type="password" autocomplete="current-password" value="previewpass" />
+              <input type="password" autocomplete="current-password" placeholder="Enter your password" data-auth-password required />
             </label>
-            <div class="form-row">
-              <label class="check"><input type="checkbox" checked /> Keep me signed in</label>
-              <a href="#reset">Forgot password?</a>
+            <label data-school-login-field hidden>
+              <span>University</span>
+              <select data-auth-school-id aria-label="University for school staff access">
+                <option value="">Loading published universities...</option>
+              </select>
+            </label>
+            <div class="form-row form-row-end">
+              <a href="#reset" data-auth-reset-trigger>Forgot password?</a>
             </div>
-            <button class="primary" type="submit">Sign in to Hub</button>
-            <p class="form-hint">Frontend preview only. No account is created or submitted.</p>
+            <button class="primary" type="submit" data-auth-submit>Sign in to Hub</button>
+            <p class="form-hint">Your account keeps saved choices and application actions together.</p>
+          </form>
+
+          <form class="auth-form recovery-form" data-auth-panel="reset" aria-label="Password reset form">
+            <div class="form-head">
+              <button class="text-link" type="button" data-auth-back-to-signin>Back to sign in</button>
+              <h2>Reset account access</h2>
+              <p data-reset-copy>Send a secure reset link to the account email. School and Ops workspace access still requires tenant or internal approval.</p>
+            </div>
+            <label>
+              <span>Account email</span>
+              <input type="email" autocomplete="email" data-reset-email placeholder="you@example.com" required />
+            </label>
+            <label>
+              <span>Access context</span>
+              <select data-reset-account-type>
+                <option value="student" selected>Student</option>
+                <option value="school">School staff</option>
+                <option value="ops">CUAC staff</option>
+              </select>
+            </label>
+            <button class="primary" type="submit" data-auth-reset-submit>Send reset link</button>
+            <p class="form-hint" data-reset-hint>Reset links keep the current page action ready after account access is restored.</p>
           </form>
 
           <form class="auth-form" data-auth-panel="register" aria-label="Create account form">
             <div class="form-head">
-              <h2>Create your CUAC account</h2>
-              <p>Start with email, then build your profile when you are ready.</p>
+              <h2 data-register-title>Create your CUAC account</h2>
+              <p data-register-copy>Start with email, then build your profile when you are ready.</p>
             </div>
-            <div class="split-fields">
+            <div class="auth-role-panel active" data-register-role-panel="student">
+              <div class="split-fields">
+                <label>
+                  <span>First name</span>
+                  <input type="text" autocomplete="given-name" placeholder="First name" data-register-first-name required />
+                </label>
+                <label>
+                  <span>Last name</span>
+                  <input type="text" autocomplete="family-name" placeholder="Last name" data-register-last-name required />
+                </label>
+              </div>
               <label>
-                <span>First name</span>
-                <input type="text" autocomplete="given-name" value="Maya" />
+                <span>Email address</span>
+                <input type="email" autocomplete="email" placeholder="you@example.com" data-register-email required />
               </label>
               <label>
-                <span>Last name</span>
-                <input type="text" autocomplete="family-name" value="Chen" />
+                <span>Password</span>
+                <input type="password" autocomplete="new-password" placeholder="At least 15 characters" data-register-password minlength="15" required />
               </label>
             </div>
-            <label>
-              <span>Email address</span>
-              <input type="email" autocomplete="email" value="maya.student@example.com" />
-            </label>
-            <label>
-              <span>Password</span>
-              <input type="password" autocomplete="new-password" value="previewpass" />
-            </label>
-            <label>
-              <span>Study goal</span>
-              <select>
-                <option>Undergraduate in China</option>
-                <option selected>Master degree in China</option>
-                <option>Scholarship route</option>
-                <option>Language / non-degree route</option>
-              </select>
-            </label>
-            <label class="check consent"><input type="checkbox" checked /> I agree to receive account and application updates from CUAC.</label>
-            <button class="primary" type="submit">Create account</button>
-            <p class="form-hint">Email verification and profile completion would happen after account creation.</p>
+            <button class="primary" type="submit" data-auth-register-submit>Create account</button>
+            <div class="verification-note" data-verification-note>
+              <strong>Email verification required</strong>
+              <span data-verification-copy>After account creation, CUAC sends a verification link before long-term workspace memory is kept.</span>
+            </div>
+            <p class="form-hint" data-register-hint>Email verification and profile completion happen after account creation.</p>
           </form>
 
-          <div class="separator"><span>or continue with</span></div>
-          <div class="social-auth" aria-label="Social sign in options">
-            <button type="button"><span data-auth-icon="mail"></span>Email link</button>
-            <button type="button"><span data-auth-icon="globe"></span>Google</button>
-            <button type="button"><span data-auth-icon="wechat"></span>WeChat</button>
-          </div>
+          <p class="auth-runtime-status" data-auth-runtime-status role="status" aria-live="polite"></p>
 
           <div class="next-panel">
             <span data-auth-icon="route"></span>
             <div>
-              <strong>After sign in</strong>
-              <p>New accounts complete a short China study setup before Hub.</p>
+              <strong data-next-title>After sign in</strong>
+              <p data-next-copy>New accounts complete a short China study setup before Hub.</p>
             </div>
-            <a href="hub.html">Preview Hub</a>
+            <a href="hub.html" data-next-link>Open Hub</a>
           </div>
         </section>
       </main>
@@ -114,6 +137,8 @@
       <div data-cuac-footer></div>
     </div>
 
+    <script src="cuac-data.js"></script>
+    <script src="cuac-actions.js"></script>
     <script src="shared-shell.js"></script>
     <script src="auth.js"></script>
   </body>

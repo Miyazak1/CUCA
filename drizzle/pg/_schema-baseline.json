@@ -1,0 +1,437 @@
+{
+  "version": 1,
+  "throughIndex": 47,
+  "journalEntries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1787896652416,
+      "tag": "0000_solid_oracle",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1787901733823,
+      "tag": "0001_fixed_tempest",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1787911680000,
+      "tag": "0002_agent_context_foundation",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1787930000000,
+      "tag": "0003_billing_business_foundation",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1787933600000,
+      "tag": "0004_email_verification_foundation",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1787937200000,
+      "tag": "0005_password_reset_foundation",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1787940800000,
+      "tag": "0006_auth_rate_limit_foundation",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1788134400000,
+      "tag": "0007_school_invite_pending_unique",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1788138000000,
+      "tag": "0008_application_scope_integrity",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1788220800000,
+      "tag": "0009_agent_memory_confirmation_unique",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1788224400000,
+      "tag": "0010_agent_memory_controls",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1788228000000,
+      "tag": "0011_student_application_commands",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1788228000001,
+      "tag": "0012_application_draft_revision",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1788228000002,
+      "tag": "0013_application_choice_intake",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1788228000003,
+      "tag": "0014_student_applicant_profiles",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "7",
+      "when": 1788228000004,
+      "tag": "0015_student_education_history",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1788228000005,
+      "tag": "0016_program_requirements",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "7",
+      "when": 1788228000006,
+      "tag": "0017_requirement_review_governance",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1788228000007,
+      "tag": "0018_student_assessment_history",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1788228000008,
+      "tag": "0019_privacy_notice_versions",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1788228000009,
+      "tag": "0020_school_application_target_identity",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "7",
+      "when": 1788228000010,
+      "tag": "0021_student_memory_control_revision",
+      "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "7",
+      "when": 1788228000011,
+      "tag": "0022_application_material_selection",
+      "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1788228000012,
+      "tag": "0023_auth_email_outbox",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1788228000013,
+      "tag": "0024_application_submission_authorization",
+      "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1788228000014,
+      "tag": "0025_application_material_snapshot",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "7",
+      "when": 1788228000015,
+      "tag": "0026_official_submission_policy",
+      "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "7",
+      "when": 1788228951738,
+      "tag": "0027_application_choice_admission_route",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "7",
+      "when": 1788232277344,
+      "tag": "0028_application_policy_bound_authorization",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "7",
+      "when": 1788236316646,
+      "tag": "0029_application_fee_entitlement",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "7",
+      "when": 1788241229204,
+      "tag": "0030_application_atomic_submission",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "7",
+      "when": 1788248210620,
+      "tag": "0031_agent_memory_retention",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "7",
+      "when": 1788251915379,
+      "tag": "0032_agent_candidate_capacity",
+      "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "7",
+      "when": 1788257552362,
+      "tag": "0033_agent_tool_gateway_rate_limit",
+      "breakpoints": true
+    },
+    {
+      "idx": 34,
+      "version": "7",
+      "when": 1788264068064,
+      "tag": "0034_student_private_files",
+      "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "7",
+      "when": 1788316196945,
+      "tag": "0035_school_application_workflow",
+      "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "7",
+      "when": 1788317933856,
+      "tag": "0036_official_submission_delivery",
+      "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "7",
+      "when": 1788322295557,
+      "tag": "0037_payment_provider_reconciliation",
+      "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "7",
+      "when": 1788324300162,
+      "tag": "0038_auth_session_step_up",
+      "breakpoints": true
+    },
+    {
+      "idx": 39,
+      "version": "7",
+      "when": 1788328503938,
+      "tag": "0039_cuac_application_reference",
+      "breakpoints": true
+    },
+    {
+      "idx": 40,
+      "version": "7",
+      "when": 1788331639522,
+      "tag": "0040_ops_access_and_application_support",
+      "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "7",
+      "when": 1788335369406,
+      "tag": "0041_ops_support_access_session",
+      "breakpoints": true
+    },
+    {
+      "idx": 42,
+      "version": "7",
+      "when": 1788344611610,
+      "tag": "0042_notification_delivery",
+      "breakpoints": true
+    },
+    {
+      "idx": 43,
+      "version": "7",
+      "when": 1788406217521,
+      "tag": "0043_ops_payment_event_reviews",
+      "breakpoints": true
+    },
+    {
+      "idx": 44,
+      "version": "7",
+      "when": 1788410139940,
+      "tag": "0044_ops_submission_delivery_reviews",
+      "breakpoints": true
+    },
+    {
+      "idx": 45,
+      "version": "7",
+      "when": 1788413732943,
+      "tag": "0045_ops_catalog_quality_reviews",
+      "breakpoints": true
+    },
+    {
+      "idx": 46,
+      "version": "7",
+      "when": 1788440549917,
+      "tag": "0046_school_catalog_corrections",
+      "breakpoints": true
+    },
+    {
+      "idx": 47,
+      "version": "7",
+      "when": 1788442207274,
+      "tag": "0047_school_catalog_correction_url_check",
+      "breakpoints": true
+    }
+  ],
+  "sql": {
+    "0000_solid_oracle.sql": "c89fee752650c8b439c02c56c41f788325b481a54cec61668a42ba8f3dcfdb6c",
+    "0001_fixed_tempest.sql": "7df8a3fbb7edee677e4c7ec99ab0efae04ea65755b6deccb9fe89db6aea6ffc0",
+    "0002_agent_context_foundation.sql": "6bc46bd3f9e7fe94b58c4186d5f9b992319b1aa7154bfe666869f042fef59ed1",
+    "0003_billing_business_foundation.sql": "26d000367d6aa910cbf369b0b556ff2aab977e340db21a3645e7f789804deffb",
+    "0004_email_verification_foundation.sql": "707ad172fc7da76b677677244256ef524e0091590f98cabbfdb3b4593e2c0127",
+    "0005_password_reset_foundation.sql": "1429a717e842ba0715785e130bf61168d293a5aa20ab26e7b64b78e6d4eecf84",
+    "0006_auth_rate_limit_foundation.sql": "76dfd971c07328693143648dadbb3444f0c38630a413e2c5aa28844100184988",
+    "0007_school_invite_pending_unique.sql": "a2f8e233db810137cbafdb002866d831a6d90f38b31f5b42fded3f364ad034b0",
+    "0008_application_scope_integrity.sql": "139e7ed3d9fa24a5c4a7ba4cc0283f523fb9d58309a1687357b8f46107f75b98",
+    "0009_agent_memory_confirmation_unique.sql": "2ad80ef34b8a14377bc9afcef11d0d0c306d9220ffb8f8fc21f2080d9420e26c",
+    "0010_agent_memory_controls.sql": "033ef34e05f68e5a0924bd3de81c8e940e1d9940f7d7177830f42de574c786a3",
+    "0011_student_application_commands.sql": "fbbf7fce0cf72f28974bfbef035ed4d48f53018d0d5ce83a91f7e24731d31720",
+    "0012_application_draft_revision.sql": "93cd257cfd84e3a908528b876021be038a8adb1b7272935976f63b0e61307fd5",
+    "0013_application_choice_intake.sql": "5da0218ae7ec7524d005f66d07eb358a3bae765bc0fa2b7fda46686471a5ae08",
+    "0014_student_applicant_profiles.sql": "71ab0fd3a34d3f0a760146f4cc798bce70e32e33b1bec030672c9a41bb0429f2",
+    "0015_student_education_history.sql": "e9b74bd9212663059aac86d25f028eae032daaf29ad2f217e8496a2c0ead04e5",
+    "0016_program_requirements.sql": "cc3b5388e555cd9039280ff0db14da625621b09e3c0fd97c3f953caa29fc6380",
+    "0017_requirement_review_governance.sql": "bec49aaec4cb0ca58a4515c8ee683adb8ee87fbf379958b85ab068b3bb907663",
+    "0018_student_assessment_history.sql": "30f1519d1174f318e12c2effd4e278ac0e75b51489fa9de919a54c52c62b861c",
+    "0019_privacy_notice_versions.sql": "79047196cb017a5118d53719a15fdf47d1d688f8481d9e00ca8fe167a0a499a8",
+    "0020_school_application_target_identity.sql": "d36da80f765a2a7386bc07bc84ebf85388f023992c0df17d22ef41f652ae8468",
+    "0021_student_memory_control_revision.sql": "22c3faacbab3a6f2c4dd6e6c068b51f597c1f9e0a278e723bbbe4b897e6100d1",
+    "0022_application_material_selection.sql": "3e6d2f5fec583a2e619f5a35332bb31543a52ffd78b1ce5cf284ade59d178819",
+    "0023_auth_email_outbox.sql": "f9c6662b80224c099a8675b4bf0d274f803a846591d9e2e0edb446e8fcb449ac",
+    "0024_application_submission_authorization.sql": "20235d324b88ce967c58f79032f9630254b125d19893f84f094be861bfc58389",
+    "0025_application_material_snapshot.sql": "108ad12eeeded938a499f52e1ba2e049fe738100eaca959d960b3545bb515916",
+    "0026_official_submission_policy.sql": "be825c5aead90b0459ffb3e68f5db41f8eccc186cd113ac78b738448df4e03dd",
+    "0027_application_choice_admission_route.sql": "cc1eb24698594e17f574b497c9063b95b03a6b74b613cb5d7f2d6e1443b9b3ee",
+    "0028_application_policy_bound_authorization.sql": "ec5a0dbc13bc828e73da6785aea3da299f342d5f1d3b15eef931f02ceaae4d30",
+    "0029_application_fee_entitlement.sql": "354a0cf62271c0c9b7151519e0b26ab926ba238fa8c5df07a4a202d1c4d090a7",
+    "0030_application_atomic_submission.sql": "c20ba118ee9e7f5fe6b75c8b1a95b3d667981b926c2528a4e13b60aa241489fe",
+    "0031_agent_memory_retention.sql": "5814d6c114019fe4b38d7c636419a9067ee075d70880459aa89a1a1e1f616661",
+    "0032_agent_candidate_capacity.sql": "3ec80be7f5fb440eccc457da94cc4c406f85c398f65cf84593b8ececc3121ad9",
+    "0033_agent_tool_gateway_rate_limit.sql": "8c9a0238cfadc81741d19c3a91cec922ce0c3609b44e845686f30d70585acaef",
+    "0034_student_private_files.sql": "4df2be4216c733aab04402508c1020c08f5851321baace63966f6b040b98b931",
+    "0035_school_application_workflow.sql": "535dd9d6ea6b65f689b8ff753624079819505be4804d3c66f2a49dc29e10cf71",
+    "0036_official_submission_delivery.sql": "257938ddcf11fae0e8de2f33462bb6ed1b1da8b7618b284120188c993f68bfd3",
+    "0037_payment_provider_reconciliation.sql": "ac3dffc78e9be2d313f87650389adaaa54bfa237b1c5a937c819521398918af8",
+    "0038_auth_session_step_up.sql": "eebf9055a1d480fce4d130ad82aa23b069afb5d9d141a4fa12e1c563fb67efd8",
+    "0039_cuac_application_reference.sql": "8b166104adf7674881e2374498938751402ffd55468c782704d2f1617a516eee",
+    "0040_ops_access_and_application_support.sql": "978471a696463363badd4c18e189d452e7e0076aeebc039c68c9d41e59751ac1",
+    "0041_ops_support_access_session.sql": "2acbf25209b18a594d005a6becd11dcd3d3ffa5f62eb79c59b7d04841ecb73f2",
+    "0042_notification_delivery.sql": "f165c15182a4facfd2d5a73b903ce11b35b5a79eb8a3d10e4541ae0a8c3a989f",
+    "0043_ops_payment_event_reviews.sql": "64417ae4ead9594d8f67bd79e7f744031c76236cad24eabe056e978c37347425",
+    "0044_ops_submission_delivery_reviews.sql": "dba52122f43f18e78aaec6028f923d57c7144e02cb2522a440ff7c2aa3e6db87",
+    "0045_ops_catalog_quality_reviews.sql": "80c5a4197ede1a388fe499eb35df7e5d8a1c0897af8663cc94b2dfe36297145b",
+    "0046_school_catalog_corrections.sql": "76636b5009e57a890ab6a6c6dc17a05928283201f88ee0d47b28a5a219ee6b98",
+    "0047_school_catalog_correction_url_check.sql": "6c2d9f30a2ab7bd500402e36f1abe613f1dda8b5ef70c5becab4c335e7fb59a9"
+  },
+  "snapshots": {
+    "0000_snapshot.json": "ce0ef960d387cd30e3db23c884fbabf47547757a24b0d421c1d955b53df8d247",
+    "0001_snapshot.json": "c0ec532b3cd517c6fa035fe725194308cfc4bb17dcf4725b073e91fb7fd6a4a5",
+    "0011_snapshot.json": "51da59d970d3d5639ea50b4ea823266219e5a9b19dcf7eaac59c4e9c9924fa69",
+    "0012_snapshot.json": "c8192175796d718c637395ba1f6e36b13424b174ad477224148882254af79a3a",
+    "0013_snapshot.json": "fcd0f875b90eb5e21b94f6b8324f97ec397e5267d54121d6feb9c7a78abe546f",
+    "0014_snapshot.json": "d360d2646367115cfd538a1d37b4fef505d03f71023b9595d278d6f8dee4757f",
+    "0015_snapshot.json": "70cefcd58747975c7093143fe328eada8e055c20489f3799961a182d3c5a4272",
+    "0016_snapshot.json": "49f5a87568cf40aee2c0ae72df354216ca81c5060d61bb5c574b69f4f5f61d02",
+    "0017_snapshot.json": "c1036a22611c59db1a879e140e69ed60cd3e26307fd5d00941394aa3420a2633",
+    "0018_snapshot.json": "bd08149f1a049b971299c427f342888fa88032c504e7abe5611b947195daaf89",
+    "0019_snapshot.json": "299d2c988bf65d668be267b03189ccdd3b9067288201a1fe0e74c15ae57af44a",
+    "0020_snapshot.json": "881f4e89974f615c8d0332e9f66813cea7b0bb0c3cb32f8302913284aeeaa183",
+    "0021_snapshot.json": "d96a103067eb462f860e34f372c74750f126236d09cd099442ace6de854ad757",
+    "0022_snapshot.json": "a668dadead240c000f0ff7115bb71639c3d64dc0642f7d6db5816114e37eadb4",
+    "0023_snapshot.json": "d992e12ef3b42625caaef3725dd4181388c1bb3d148ab7fb1cfffadc7eede322",
+    "0024_snapshot.json": "527740ab68b227b6413036d0246563e37d2644f025080f612427c2ee0019e053",
+    "0025_snapshot.json": "08c2d03c0dc883f574a6dc0f6b1803b8d01861cfd97fecae778ed9c01fedb109",
+    "0026_snapshot.json": "08e909f80b3c1589903d447bd002115362818ff7d2913b01ed1bf13e2b3379da",
+    "0027_snapshot.json": "f8866f5ff091da623933132c169fc899369f747ed4c14031633313a74bcde436",
+    "0028_snapshot.json": "635e6159e122cd9ad0ef6146ed6e9ad6ab54ace2fe0c6d74fc8f30b19e789a70",
+    "0029_snapshot.json": "b15e7bc991d8be412fbcc496784c8978e960da484f335e05f843b86269a4add6",
+    "0030_snapshot.json": "f401598ac2e07c7af685c68b688f9ec2cb4cac46aab18bff3fcf23508ef88da0",
+    "0031_snapshot.json": "6a72fdba08b71e7ff248eb1d3cc6d7e8c6d6877192a4d6691f98078383d34ef4",
+    "0032_snapshot.json": "cde55939b6190ecd0c449a4c992e1f3ba9cac39285364456335fcd004a80bf38",
+    "0033_snapshot.json": "e2ea6fcde572a39eff60a4063212839fbdd22161970f7a0f72f948d12aa974ae",
+    "0034_snapshot.json": "6da1b24df0e283bfe5ac342ba285a9c8bbdd6e2f277941343451073182ac42af",
+    "0035_snapshot.json": "cc73b7ebe6757de3dba24556b77e5918a2fbde6e9563ae850492afe683277c8e",
+    "0036_snapshot.json": "d0a9b97d064b5c3ad956e0b50c70c800748e0dcdf2c99f6ec7d45953bcf537ca",
+    "0037_snapshot.json": "d91184c58f038ee59a9f771a12297b62a9dc8cc5493adccf83c1f1d73b59e8d9",
+    "0038_snapshot.json": "585504fc2c2f592286c477c124b1835f793918a8d11f3a187790372e39128214",
+    "0039_snapshot.json": "ff6c0920b50851b23501de4764b58fca44b527aaac050aa3d32e6398f9b3edbf",
+    "0040_snapshot.json": "dce9ad52db50dce04926bd361bfa7b07dbdc4ced8ffaa29e657e43c197872c20",
+    "0041_snapshot.json": "8fe3f42ec2710b7b05a5fd28bcdc0eef7ded7b5963db53f8c7d26f12d1da87f4",
+    "0042_snapshot.json": "3b205c3dd133820d724c761ea2b85ad77fed297fb6416a172dcac75eb7a1660b",
+    "0043_snapshot.json": "a6e984918dbfc7fe21aa6e7083cd9dca2453b76e47b87fc14eea841708a354c2",
+    "0044_snapshot.json": "11df6dfe044e6f9e7ff42aaba88ed0496f085604fd5ed07d4d82fb9ca1004c0d",
+    "0045_snapshot.json": "e5b8b39e205e35e583162581467050d6d3be0ce87aaa5119b52999c5f93fd796",
+    "0046_snapshot.json": "a93868ed146e9114c974707cdad15520f70a2b49f0e3b138c095445fccdf1caa",
+    "0047_snapshot.json": "f977907a61300fa8ab3e600a1e0f70af46a4e4e65b9ca3ff6c133f141e5667bf"
+  },
+  "toolVersions": {
+    "drizzleKit": "0.31.10",
+    "drizzleOrm": "0.45.2"
+  }
+}

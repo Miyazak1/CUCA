@@ -1,0 +1,6 @@
+CREATE INDEX "agent_context_candidates_guest_pending_capacity_idx" ON "agent_context_candidates" USING btree ("anonymous_session_hash","expires_at") WHERE "agent_context_candidates"."payload_cleared_at" is null
+      and "agent_context_candidates"."status" = 'proposed' and "agent_context_candidates"."context_scope" = 'guest_page' and "agent_context_candidates"."active_role" = 'guest'
+      and "agent_context_candidates"."user_id" is null and "agent_context_candidates"."tenant_school_id" is null and "agent_context_candidates"."memory_namespace" is null;--> statement-breakpoint
+CREATE INDEX "agent_context_candidates_student_pending_capacity_idx" ON "agent_context_candidates" USING btree ("user_id","expires_at") WHERE "agent_context_candidates"."payload_cleared_at" is null
+      and "agent_context_candidates"."status" = 'proposed' and "agent_context_candidates"."context_scope" = 'student_account' and "agent_context_candidates"."active_role" = 'student'
+      and "agent_context_candidates"."anonymous_session_hash" is null and "agent_context_candidates"."tenant_school_id" is null;

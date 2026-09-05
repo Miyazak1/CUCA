@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | Preferences</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="preferences.css" />
+  </head>
+  <body data-agent-mode="preferences">
+    <div class="page preferences-page">
+      <div data-cuac-header data-active="preferences" data-note="CUAC Preferences:" data-note-detail="account settings and Hub defaults"></div>
+
+      <main>
+        <section class="preferences-hero reveal" aria-label="Preferences overview">
+          <div class="hero-copy">
+            <a class="back-link" href="hub.html">Back to Hub</a>
+            <span class="hero-rule"></span>
+            <p class="eyebrow">Your account</p>
+            <h1>Preferences</h1>
+            <p class="hero-lead">Control language, alerts, Hub personalisation, support, and Agent memory.</p>
+            <div class="profile-chips" aria-label="Preference scope">
+              <span>Account settings</span>
+              <span>Hub defaults</span>
+              <span>Agent memory</span>
+              <span>No school-submitted data here</span>
+            </div>
+          </div>
+          <aside class="preference-health" aria-label="Student info boundary">
+            <span class="module-kicker">Application profile</span>
+            <h2>School-facing details live in Student info.</h2>
+            <div class="health-list">
+              <article><strong>Personal</strong><span>Name, contact</span></article>
+              <article><strong>Passport</strong><span>Country, nationality</span></article>
+              <article><strong>Study</strong><span>Education, exams</span></article>
+              <article><strong>Consent</strong><span>What schools see</span></article>
+            </div>
+            <a class="preference-hero-action" href="application.html#info">Open Student info</a>
+          </aside>
+        </section>
+
+        <section class="preference-shell reveal" aria-label="Preference settings">
+          <aside class="account-side" aria-label="Account preference sections">
+            <span class="module-kicker">Account</span>
+            <nav class="account-nav" aria-label="Preference categories">
+              <button class="active" type="button" data-section="preferences">Preferences</button>
+              <button type="button" data-section="hub">Hub personalisation</button>
+              <button type="button" data-section="support">Study support</button>
+              <button type="button" data-section="language">Language & region</button>
+              <button type="button" data-section="notifications">Notifications</button>
+              <button type="button" data-section="security">Password & security</button>
+              <button type="button" data-section="agent">Agent memory</button>
+              <button type="button" data-section="privacy">Privacy</button>
+            </nav>
+            <div class="side-note">
+              <strong>Not application data</strong>
+              <p>School-facing fields are managed and saved inside Student info.</p>
+            </div>
+          </aside>
+
+          <div class="preference-workspace">
+            <div class="workspace-head">
+              <div>
+                <span class="module-kicker" data-active-kicker>Preferences</span>
+                <h2 data-active-title>Keep account settings separate from application details.</h2>
+              </div>
+              <a class="text-action" href="application.html#info">Student info</a>
+            </div>
+
+            <div class="preference-status saved" data-save-state>
+              <span data-pref-icon="shield"></span>
+              <p><strong>Preferences saved.</strong> These settings shape CUAC experience, not the school-facing application record.</p>
+            </div>
+
+            <div class="section-panel active" data-panel="preferences">
+              <div class="panel-grid">
+                <article class="control-card wide">
+                  <div class="card-head">
+                    <span data-pref-icon="settings"></span>
+                    <div><h3>What this page controls</h3><p>Experience settings only.</p></div>
+                  </div>
+                  <div class="mini-facts">
+                    <span>Language, region, reminders</span>
+                    <span>Hub recommendation defaults</span>
+                    <span>Agent memory and privacy</span>
+                    <span><a href="application.html#info">Open Student info for application details</a></span>
+                  </div>
+                </article>
+                <article class="control-card">
+                  <div class="card-head compact">
+                    <span data-pref-icon="shield"></span>
+                    <div><h3>Account</h3><p>Security stays separate from admissions data.</p></div>
+                  </div>
+                  <div class="mini-facts">
+                    <span>Password</span>
+                    <span>Recovery email</span>
+                    <span>Device alerts</span>
+                  </div>
+                </article>
+                <article class="control-card">
+                  <div class="card-head compact">
+                    <span data-pref-icon="route"></span>
+                    <div><h3>Application details</h3><p>Review or update once in Student info.</p></div>
+                  </div>
+                  <a class="secondary-action" href="application.html#info">Open Student info</a>
+                </article>
+              </div>
+            </div>
+
+            <div class="section-panel" data-panel="hub">
+              <div class="panel-grid">
+                <article class="control-card wide">
+                  <div class="card-head">
+                    <span data-pref-icon="route"></span>
+                    <div><h3>Hub personalisation</h3><p>Defaults for sorting, reminders, and route suggestions.</p></div>
+                  </div>
+                  <div class="control-grid">
+                    <label><span>Default Hub focus</span><select name="hubFocus" data-pref-control><option selected>Application progress</option><option>Program discovery</option><option>Scholarships</option><option>Documents</option></select></label>
+                    <label><span>Recommendation density</span><select name="recommendationDensity" data-pref-control><option>Quiet</option><option selected>Balanced</option><option>Show more options</option></select></label>
+                    <label><span>Saved route use</span><select name="savedRouteUse" data-pref-control><option selected>Use in recommendations</option><option>Ask before using</option><option>Do not use</option></select></label>
+                    <label><span>Deadline emphasis</span><select name="deadlineEmphasis" data-pref-control><option>Only urgent</option><option selected>Upcoming and urgent</option><option>All dates</option></select></label>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="section-panel" data-panel="support">
+              <div class="panel-grid">
+                <article class="control-card wide">
+                  <div class="card-head">
+                    <span data-pref-icon="guide"></span>
+                    <div><h3>Study support</h3><p>How CUAC explains next steps.</p></div>
+                  </div>
+                  <div class="control-grid">
+                    <label><span>Support style</span><select name="supportStyle" data-pref-control><option>Minimal</option><option selected>Step-by-step</option><option>Detailed guidance</option></select></label>
+                    <label><span>Help route</span><select name="helpRoute" data-pref-control><option selected>Self-serve first</option><option>Ask Agent first</option><option>Adviser first</option></select></label>
+                  </div>
+                </article>
+                <article class="control-card accent-card blue">
+                  <span class="status-pill agent">Boundary</span>
+                  <h3>Profile updates happen once.</h3>
+                  <p>Student info holds the fields used later for school contact, documents, and consent.</p>
+                  <a href="application.html#info">Go to Student info</a>
+                </article>
+              </div>
+            </div>
+
+            <div class="section-panel" data-panel="language">
+              <div class="panel-grid">
+                <article class="control-card wide">
+                  <div class="card-head">
+                    <span data-pref-icon="language"></span>
+                    <div><h3>Language and region</h3><p>Display choices for the CUAC workspace.</p></div>
+                  </div>
+                  <div class="control-grid">
+                    <label><span>Interface language</span><select name="interfaceLanguage" data-pref-control><option selected>English</option><option>Chinese</option><option>Arabic</option><option>French</option><option>Spanish</option><option>Russian</option></select></label>
+                    <label><span>Explanation style</span><select name="explanationStyle" data-pref-control><option>Concise</option><option selected>Beginner-friendly</option><option>Detailed</option></select></label>
+                    <label><span>Timezone</span><select name="timezone" data-pref-control><option selected>Asia/Shanghai</option><option>Europe/London</option><option>America/New_York</option><option>Asia/Dubai</option></select></label>
+                    <label><span>Date format</span><select name="dateFormat" data-pref-control><option selected>Oct 15, 2026</option><option>15 Oct 2026</option><option>2026-10-15</option></select></label>
+                    <label><span>Currency display</span><select name="currencyDisplay" data-pref-control><option selected>RMB first + USD estimate</option><option>RMB only</option><option>USD first</option><option>Local currency later</option></select></label>
+                    <label><span>Motion preference</span><select name="motionPreference" data-pref-control><option selected>Standard motion</option><option>Reduced motion</option></select></label>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="section-panel" data-panel="notifications">
+              <div class="panel-grid">
+                <article class="control-card wide">
+                  <div class="card-head">
+                    <span data-pref-icon="bell"></span>
+                    <div><h3>Notifications</h3><p>Choose what deserves attention.</p></div>
+                  </div>
+                  <div class="toggle-list">
+                    <label><span><strong>Deadline changes</strong><em>Program and scholarship dates</em></span><input type="checkbox" checked data-pref-control data-notification-pref="deadline" /></label>
+                    <label><span><strong>Document blockers</strong><em>Only when they affect saved choices</em></span><input type="checkbox" checked data-pref-control data-notification-pref="document" /></label>
+                    <label><span><strong>Funding updates</strong><em>Scholarship notice and eligibility reminders</em></span><input type="checkbox" checked data-pref-control data-notification-pref="funding" /></label>
+                    <label><span><strong>Agent results</strong><em>When a comparison or checklist is ready</em></span><input type="checkbox" checked data-pref-control data-notification-pref="agent" /></label>
+                    <label><span><strong>General updates</strong><em>Guides and low-risk content</em></span><input type="checkbox" data-pref-control data-notification-pref="update" /></label>
+                  </div>
+                </article>
+                <article class="control-card">
+                  <div class="card-head compact">
+                    <span data-pref-icon="calendar"></span>
+                    <div><h3>Reminder timing</h3><p>Balanced by default.</p></div>
+                  </div>
+                  <div class="choice-stack" data-pref-control data-notification-timing>
+                    <button type="button" data-notification-timing-value="urgent">Urgent only</button>
+                    <button class="selected" type="button" data-notification-timing-value="balanced">7 + 3 days</button>
+                    <button type="button" data-notification-timing-value="early">14 + 7 + 3 days</button>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="section-panel" data-panel="security">
+              <div class="panel-grid">
+                <article class="control-card wide">
+                  <div class="card-head">
+                    <span data-pref-icon="key"></span>
+                    <div><h3>Password and security</h3><p>Account-only controls.</p></div>
+                  </div>
+                  <div class="control-grid">
+                    <label><span>Current password</span><input type="password" name="currentPassword" autocomplete="current-password" placeholder="Enter current password" data-pref-control /></label>
+                    <label><span>New password</span><input type="password" name="newPassword" autocomplete="new-password" placeholder="Create a new password" data-pref-control /></label>
+                    <label><span>Confirm password</span><input type="password" name="confirmPassword" autocomplete="new-password" placeholder="Confirm new password" data-pref-control /></label>
+                    <label><span>Recovery email</span><input type="email" name="recoveryEmail" value="maya.family@example.com" data-pref-control /></label>
+                  </div>
+                </article>
+                <article class="control-card">
+                  <div class="card-head compact">
+                    <span data-pref-icon="shield"></span>
+                    <div><h3>Sign-in controls</h3><p>Keep account actions explicit.</p></div>
+                  </div>
+                  <div class="toggle-list">
+                    <label><span><strong>Two-step verification</strong><em>Email code now</em></span><input type="checkbox" name="twoStep" checked data-pref-control /></label>
+                    <label><span><strong>New device alerts</strong><em>Warn me on new sign-in</em></span><input type="checkbox" name="deviceAlerts" checked data-pref-control /></label>
+                    <label><span><strong>Keep me signed in</strong><em>Use only on personal devices</em></span><input type="checkbox" name="keepSignedIn" data-pref-control /></label>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="section-panel" data-panel="agent">
+              <div class="panel-grid">
+                <article class="control-card wide">
+                  <div class="card-head">
+                    <span data-pref-icon="agent"></span>
+                    <div><h3>Agent memory</h3><p>Control what Agent can reuse.</p></div>
+                  </div>
+                  <div class="toggle-list">
+                    <label><span><strong>Guest page context</strong><em>Cleared when the page closes</em></span><input type="checkbox" checked disabled data-pref-control /></label>
+                    <label><span><strong>Long-term student memory</strong><em>Keep until manual clear</em></span><input type="checkbox" name="longTermMemory" checked data-pref-control data-agent-long-memory /></label>
+                    <label><span><strong>Use saved routes</strong><em>Programs, scholarships, cities</em></span><input type="checkbox" name="useSavedRoutes" checked data-pref-control /></label>
+                    <label><span><strong>Use reminder context</strong><em>Deadlines and blockers</em></span><input type="checkbox" name="useReminderContext" checked data-pref-control /></label>
+                  </div>
+                </article>
+                <article class="control-card accent-card blue">
+                  <span class="status-pill agent">Agent rule</span>
+                  <h3>Ask before changing choices.</h3>
+                  <p>Adding, removing, sending, or clearing memory should require confirmation.</p>
+                  <div class="agent-memory-panel" data-agent-memory-panel data-agent-memory-status="active">
+                    <strong data-agent-memory-title>Student memory active</strong>
+                    <p data-agent-memory-copy>Signed-in Agent context can use saved routes and preferences until manual clear.</p>
+                    <div class="agent-memory-actions">
+                      <button type="button" data-clear-agent-memory>Clear long-term memory</button>
+                      <div class="memory-confirm" data-agent-memory-confirm hidden>
+                        <span>Confirm memory clear?</span>
+                        <button type="button" data-confirm-clear-agent-memory>Confirm clear</button>
+                        <button type="button" data-cancel-clear-agent-memory>Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="section-panel" data-panel="privacy">
+              <div class="panel-grid">
+                <article class="control-card wide">
+                  <div class="card-head">
+                    <span data-pref-icon="shield"></span>
+                    <div><h3>Privacy</h3><p>Keep personalisation scoped and reversible.</p></div>
+                  </div>
+                  <div class="toggle-list">
+                    <label><span><strong>Use saved items for recommendations</strong><em>Programs and scholarships become more relevant</em></span><input type="checkbox" name="savedRecommendations" checked data-pref-control /></label>
+                    <label><span><strong>Allow adviser shortlist review</strong><em>Adviser can view choices, not security settings</em></span><input type="checkbox" name="adviserReview" data-pref-control /></label>
+                    <label><span><strong>Marketing updates</strong><em>Optional content and partner updates</em></span><input type="checkbox" name="marketingUpdates" data-pref-control /></label>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="save-bar" data-preferences-savebar hidden>
+              <span>You have unsaved changes.</span>
+              <div>
+                <button class="secondary-action" type="button" data-reset-preferences>Reset</button>
+                <button class="primary-action" type="button" data-save-preferences>Save preferences</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div data-cuac-footer></div>
+      <div data-cuac-agent></div>
+    </div>
+
+    <script src="cuac-data.js"></script>
+    <script src="cuac-actions.js"></script>
+    <script src="shared-shell.js"></script>
+    <script src="preferences.js"></script>
+  </body>
+</html>

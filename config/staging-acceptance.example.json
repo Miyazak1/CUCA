@@ -1,0 +1,28 @@
+{
+  "schema": "cuac.staging-acceptance.v1",
+  "environment": "staging",
+  "generatedAt": "1970-01-01T00:00:00.000Z",
+  "release": {
+    "commitSha": "0000000000000000000000000000000000000000",
+    "imageDigest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "migrationManifestSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "controls": [
+    { "id": "edge.https_waf_rate_limit", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "app.health_and_lifecycle", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "postgres.tls_and_acl", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "postgres.migration", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "postgres.backup_restore", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "auth.staff_mfa", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "auth.email_round_trip", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "notification.delivery_round_trip", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "payment.signed_round_trip", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "files.oss_round_trip", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "submission.signed_round_trip", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "workers.supervision_and_recovery", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "observability.alert_delivery", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "security.secret_rotation", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "product.core_role_e2e", "status": "pending", "observedAt": null, "evidenceRef": null },
+    { "id": "release.rollback", "status": "pending", "observedAt": null, "evidenceRef": null }
+  ]
+}

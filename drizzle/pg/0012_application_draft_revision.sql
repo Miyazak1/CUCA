@@ -1,0 +1,2 @@
+ALTER TABLE "application_sets" ADD COLUMN "revision" integer DEFAULT 1 NOT NULL;--> statement-breakpoint
+ALTER TABLE "application_sets" ADD CONSTRAINT "application_sets_revision_check" CHECK ("application_sets"."revision" > 0);

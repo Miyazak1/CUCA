@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CUAC | 学校招生工作台</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="school-workspace.css?v=20260903-api-v1" />
+  </head>
+  <body data-agent-mode="school" data-portal-role="school">
+    <div class="page school-page">
+      <div data-cuac-header data-active="hub" data-note="学校工作台：" data-note-detail="当前学校租户"></div>
+
+      <main class="school-workspace-main">
+        <section class="school-workspace-heading">
+          <div>
+            <a class="school-back-link" href="school-settings.html">租户设置</a>
+            <span class="school-kicker">高校工作台</span>
+            <h1>申请审核</h1>
+            <p>处理当前学校已确认收到的 CUAC 项目申请。其他学校的申请不会出现在这里。</p>
+          </div>
+          <div class="school-tenant-scope">
+            <span>当前租户</span>
+            <strong data-school-name>正在读取学校信息</strong>
+            <button type="button" data-refresh-school>刷新队列</button>
+          </div>
+        </section>
+
+        <section class="school-summary" aria-label="队列概览">
+          <div><span>全部记录</span><strong data-summary="all">0</strong></div>
+          <div><span>待处理</span><strong data-summary="action">0</strong></div>
+          <div><span>等待材料</span><strong data-summary="documents">0</strong></div>
+          <div><span>已完成联系</span><strong data-summary="contacted">0</strong></div>
+        </section>
+
+        <section class="school-workspace" id="records">
+          <section class="school-queue" aria-label="学校申请队列">
+            <header class="school-panel-head">
+              <div><span class="school-kicker">申请队列</span><h2 data-queue-title>正在加载</h2></div>
+            </header>
+            <div class="school-filters">
+              <label><span>搜索</span><input type="search" data-school-search placeholder="CUAC 编号或项目名称" /></label>
+              <label><span>状态</span><select data-school-status-filter>
+                <option value="all">全部状态</option>
+                <option value="new">新记录</option>
+                <option value="needs_review">需要审核</option>
+                <option value="contact_queued">待联系</option>
+                <option value="contacted">已联系</option>
+                <option value="waiting_for_documents">等待材料</option>
+                <option value="documents_received_by_school">学校已收材料</option>
+                <option value="not_a_fit">不适合</option>
+                <option value="converted_to_official_application">已转正式申请</option>
+                <option value="archived">已归档</option>
+              </select></label>
+            </div>
+            <div class="school-queue-list" data-school-queue aria-live="polite">
+              <p class="school-state">正在读取当前租户的申请记录。</p>
+            </div>
+          </section>
+
+          <aside class="school-detail" data-school-detail aria-live="polite">
+            <div class="school-empty-detail">
+              <span class="school-kicker">申请详情</span>
+              <h2>选择一条记录</h2>
+              <p>查看项目、入学季、学校流程状态和已记录的联系活动。</p>
+            </div>
+          </aside>
+        </section>
+
+        <div class="school-toast" data-school-toast hidden role="status" aria-live="polite"></div>
+      </main>
+
+      <div data-cuac-footer></div>
+    </div>
+
+    <script src="shared-shell.js"></script>
+    <script src="school-portal-runtime.js?v=20260903-api-v1"></script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+.catalog-list-state {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  min-height: 180px;
+  place-content: center;
+  padding: 32px;
+  border: 1px solid #d9dee5;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #29313d;
+  text-align: center;
+}
+
+.catalog-list-state strong {
+  color: #101820;
+  font-size: 1rem;
+}
+
+.catalog-list-state span {
+  color: #647080;
+  font-size: 0.9rem;
+}
+
+.catalog-list-state button {
+  justify-self: center;
+  min-height: 36px;
+  padding: 0 16px;
+  border: 1px solid #101820;
+  border-radius: 4px;
+  background: #101820;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.catalog-list-state-error {
+  border-color: #e5b8b5;
+  background: #fffafa;
+}
+
+body[data-catalog-list-page] .cuac-agent-composer,
+body[data-catalog-list-page] .cuac-agent-panel,
+body[data-catalog-list-page] .cuac-agent-reopen {
+  display: none !important;
+}
+
+body[data-catalog-list-page] [hidden] {
+  display: none !important;
+}
+
+body[data-catalog-list-page="programs"] .program-art,
+body[data-catalog-list-page="universities"] .card-image,
+body[data-catalog-list-page="scholarships"] .scholarship-media,
+body[data-catalog-list-page="cities"] .city-media,
+body[data-catalog-list-page="cities"] .story-image {
+  background: #eef3f2;
+}
+
+body[data-catalog-list-page] .program-art img,
+body[data-catalog-list-page] .card-image img,
+body[data-catalog-list-page] .scholarship-media img,
+body[data-catalog-list-page] .city-media img,
+body[data-catalog-list-page] .story-image img {
+  object-fit: contain;
+  padding: 44px;
+  opacity: 0.72;
+}
+
+body[data-catalog-list-page="cities"] .feature-story {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+body[data-catalog-list-page="cities"] .feature-story .story-image {
+  display: none;
+}

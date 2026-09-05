@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "generatedAt": "2026-08-28T00:00:00.000Z",
+  "cities": [
+    {
+      "slug": "beijing",
+      "nameEn": "Beijing",
+      "region": "North China",
+      "province": "Beijing",
+      "sourceUrl": "https://example.edu/catalog/beijing",
+      "sourceLabel": "Sample city source",
+      "sourceFieldLineage": {
+        "nameEn": "source.name"
+      },
+      "status": "draft"
+    }
+  ],
+  "schools": [
+    {
+      "slug": "sample-university",
+      "nameEn": "Sample University",
+      "citySlug": "beijing",
+      "schoolType": "public",
+      "region": "North China",
+      "sourceUrl": "https://example.edu/admissions",
+      "sourceLabel": "Sample school source",
+      "sourceFieldLineage": {
+        "nameEn": "source.schoolName"
+      },
+      "status": "draft"
+    }
+  ],
+  "programs": [
+    {
+      "slug": "sample-university-computer-science-bachelor",
+      "schoolSlug": "sample-university",
+      "nameEn": "Computer Science",
+      "degreeLevel": "bachelor",
+      "teachingLanguage": "english",
+      "tuitionText": "See official source",
+      "sourceUrl": "https://example.edu/admissions/computer-science",
+      "sourceLabel": "Sample program source",
+      "sourceFieldLineage": {
+        "tuitionText": "source.tuition"
+      },
+      "status": "draft"
+    }
+  ],
+  "scholarships": [
+    {
+      "slug": "sample-scholarship",
+      "title": "Sample Scholarship",
+      "schoolSlug": "sample-university",
+      "programSlug": "sample-university-computer-science-bachelor",
+      "providerName": "Sample University",
+      "fundingLevel": "partial",
+      "amountText": "See official source",
+      "sourceUrl": "https://example.edu/scholarships/sample",
+      "sourceLabel": "Sample scholarship source",
+      "sourceFieldLineage": {
+        "amountText": "source.amount"
+      },
+      "status": "draft"
+    }
+  ]
+}
