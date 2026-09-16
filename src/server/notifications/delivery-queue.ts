@@ -164,8 +164,15 @@ async function terminal(tx: TransactionalSqlClient, job: Job,
 
 function hashProviderMessageId(value?: string): string | null {
   if (value === undefined) return null;
-  if (typeof value !== "string" || value.length < 1 || value.length > 512 || /[\u0000-\u001f\u007f]/.test(value)) {
+  if (typeof value !== "string" || value.length < 1 || value.length > 512 || hasAsciiControl(value)) {
     throw serviceUnavailable("Provider message identifier is invalid.");
   }
   return createHash("sha256").update(value).digest("hex");
+}
+
+function hasAsciiControl(value: string): boolean {
+  return Array.from(value).some((character) => {
+    const code = character.charCodeAt(0);
+    return code < 32 || code === 127;
+  });
 }

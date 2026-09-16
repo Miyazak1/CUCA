@@ -1404,7 +1404,6 @@
     const scenarioPicker = document.querySelector("[data-agent-scenario-picker]");
     const scenarioTrigger = document.querySelector("[data-agent-scenario-trigger]");
     const scenarioMenu = document.querySelector("[data-agent-scenario-menu]");
-    let hasRun = false;
     let requestId = 0;
     let footerVisible = false;
     let nearPageEnd = false;
@@ -1461,7 +1460,6 @@
     }
 
     function runAgent(value, sourceElement = null) {
-      hasRun = true;
       activeAgentContext = collectAgentInvocationContext(sourceElement, value);
       persistAgentInvocationContext(activeAgentContext);
       if (query) query.textContent = value;

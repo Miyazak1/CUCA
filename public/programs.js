@@ -134,23 +134,8 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         return program.schoolNameEn || program.university || program.school || "University to confirm";
       }
 
-      function programMatchesUniversity(program = {}) {
-        if (!focusedUniversity) return true;
-        const requested = String(focusedUniversity).trim().toLowerCase();
-        const schoolNameSlug = String(programUniversity(program))
-          .normalize("NFKD")
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-+|-+$/g, "");
-        return program.schoolId === focusedUniversity || program.schoolSlug === focusedUniversity || schoolNameSlug === requested;
-      }
-
       function programCity(program = {}) {
         return program.city || program.cityZh || "China";
-      }
-
-      function programProvince(program = {}) {
-        return program.province || program.region || "China";
       }
 
       function programDegreeValue(program = {}) {
@@ -160,10 +145,6 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         if (value.includes("phd") || value.includes("doctor")) return "phd";
         if (value.includes("non") || value.includes("language")) return "non-degree";
         return value;
-      }
-
-      function programSubject(program = {}) {
-        return program.subject || program.fieldCategory || "General";
       }
 
       function compactList(value, fallback = "Confirm") {
@@ -289,10 +270,6 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         return "pending";
       }
 
-      function programVerifiedAt(program = {}) {
-        return program.verified || program.lastVerifiedAt || "Pending";
-      }
-
       function programFit(program = {}) {
         return program.applicationNote || program.sourceLabel || "No application note published.";
       }
@@ -306,17 +283,6 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
 
       function programReadinessType(program = {}) {
         return program.readinessType || (programSourceStatus(program) === "verified" ? "good" : "warn");
-      }
-
-      function programApplicationReadinessScore(program = {}) {
-        const deadline = programDeadlineStatus(program);
-        const source = programSourceStatus(program);
-        return (
-          (source === "verified" ? 30 : source === "stale" ? 16 : 8) +
-          (programScholarship(program) ? 12 : 0) +
-          (programDocumentEffort(program) === "light" ? 10 : programDocumentEffort(program) === "medium" ? 6 : 2) +
-          (deadline === "urgent" ? 4 : deadline === "closes-soon" ? 8 : deadline === "late" ? 10 : 12)
-        );
       }
 
       function deadlineBadge(program) {
@@ -409,98 +375,6 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
 
       function programImage(program = {}) {
         return window.CuacCatalogList.cover("program", program);
-      }
-
-      function tuitionMatch(program, value) {
-        if (!value) return true;
-        const tuition = programTuitionAmount(program);
-        if (!tuition) return false;
-        if (value === "under-25") return tuition < 25000;
-        if (value === "25-40") return tuition >= 25000 && tuition <= 40000;
-        if (value === "40-60") return tuition > 40000 && tuition <= 60000;
-        return tuition > 60000;
-      }
-
-      function langReqMatch(program, value) {
-        if (!value) return true;
-        const combined = `${programLanguageRequirement(program)} ${programHskRequirement(program)}`.toLowerCase();
-        if (value === "no-hsk") return combined.includes("no hsk");
-        if (value === "hsk") return combined.includes("hsk required");
-        if (value === "ielts") return combined.includes("ielts") || combined.includes("toefl");
-        if (value === "flexible") return combined.includes("flexible");
-        return true;
-      }
-
-      function normalizeSearchText(value) {
-        return String(value || "")
-          .toLowerCase()
-          .replace(/english[\s-]*taught/g, "english")
-          .replace(/chinese[\s-]*taught/g, "chinese")
-          .replace(/\bmsc\b/g, "master")
-          .replace(/\bma\b/g, "master")
-          .replace(/\bba\b/g, "undergraduate")
-          .replace(/\bbsc\b/g, "undergraduate")
-          .replace(/[^a-z0-9]+/g, " ")
-          .trim();
-      }
-
-      function queryMatchesProgram(query, program) {
-        const tokens = normalizeSearchText(query).split(/\s+/).filter(Boolean);
-        if (!tokens.length) return true;
-        const haystack = normalizeSearchText([
-          programName(program),
-          programUniversity(program),
-          programCity(program),
-          programProvince(program),
-          labelDegree(programDegreeValue(program)),
-          program.degreeLevel,
-          programSubject(program),
-          programLanguageLabel(program),
-          program.teachingLanguage,
-          programCscaSummary(program),
-          programIntake(program),
-          programTerm(program),
-          programScholarshipLabel(program),
-          programLanguageRequirement(program),
-          programHskRequirement(program),
-          programFit(program),
-        ].join(" "));
-        return tokens.every((token) => haystack.includes(token));
-      }
-
-      function matches(program) {
-        const f = state.filters;
-        return (
-          queryMatchesProgram(f.q, program) &&
-          programMatchesUniversity(program) &&
-          (!f.degree || programDegreeValue(program) === f.degree) &&
-          (!f.subject || programSubject(program) === f.subject) &&
-          (!f.language || programLanguageValue(program) === f.language) &&
-          (!f.city || programCity(program) === f.city) &&
-          (!f.intake || (f.intake === "late" ? programDeadlineStatus(program) === "late" : programTerm(program) === f.intake)) &&
-          (!f.deadline || programDeadlineStatus(program) === f.deadline) &&
-          (!f.upcomingDeadline || Boolean(programDeadline(program))) &&
-          tuitionMatch(program, f.tuition) &&
-          (!f.scholarship || programScholarship(program)) &&
-          langReqMatch(program, f.langReq) &&
-          (!f.documents || programDocumentEffort(program) === f.documents)
-        );
-      }
-
-      function sortedPrograms(items) {
-        const mode = sortSelect.value;
-        const sortDateValue = (program) => {
-          const date = new Date(programDeadline(program));
-          return Number.isNaN(date.getTime()) ? Number.MAX_SAFE_INTEGER : date.getTime();
-        };
-        return [...items].sort((a, b) => {
-          if (mode === "deadline") return sortDateValue(a) - sortDateValue(b);
-          if (mode === "tuition") return programTuitionAmount(a) - programTuitionAmount(b);
-          if (mode === "scholarship") return Number(programScholarship(b)) - Number(programScholarship(a));
-          if (mode === "readiness") return programApplicationReadinessScore(b) - programApplicationReadinessScore(a);
-          if (mode === "documents") return programDocumentCount(a) - programDocumentCount(b);
-          return programApplicationReadinessScore(b) - programApplicationReadinessScore(a);
-        });
       }
 
       function currentResults() {

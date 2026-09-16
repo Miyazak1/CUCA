@@ -106,7 +106,10 @@ export class SiteSearchService {
 export function normalizeSiteSearchQuery(value: unknown): string {
   if (value == null) return "";
   if (typeof value !== "string") throw badRequest("Search query must be text.");
-  const normalized = value.normalize("NFKC").replace(/[\u0000-\u001f\u007f]/g, " ").replace(/\s+/g, " ").trim();
+  const normalized = Array.from(value.normalize("NFKC"), (character) => {
+    const code = character.charCodeAt(0);
+    return code < 32 || code === 127 ? " " : character;
+  }).join("").replace(/\s+/g, " ").trim();
   if (normalized.length > 120) throw badRequest("Search query must be at most 120 characters.");
   return normalized;
 }

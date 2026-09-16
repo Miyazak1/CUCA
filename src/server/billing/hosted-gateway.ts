@@ -123,7 +123,7 @@ function parseResponse(body: string, request: Parameters<HostedCheckoutProvider[
     || data.format !== HOSTED_CHECKOUT_RESPONSE_FORMAT || data.providerName !== CUAC_HOSTED_PAYMENT_PROVIDER
     || data.invoiceId !== request.invoiceId || data.amountMinor !== request.amountMinor || data.currency !== request.currency
     || typeof data.providerCheckoutSessionId !== "string" || data.providerCheckoutSessionId.length < 1
-    || data.providerCheckoutSessionId.length > 256 || /[\u0000-\u001f\u007f]/.test(data.providerCheckoutSessionId)
+    || data.providerCheckoutSessionId.length > 256 || hasAsciiControl(data.providerCheckoutSessionId)
     || typeof data.checkoutUrl !== "string") throw unavailable();
   let checkoutUrl: URL;
   try { checkoutUrl = new URL(data.checkoutUrl); } catch { throw unavailable(); }
@@ -185,10 +185,17 @@ function boundedInteger(value: string | undefined, minimum: number, maximum: num
 
 function required(value: string | undefined): string {
   if (typeof value !== "string" || value.length < 1 || value.length > 4_096
-    || /[\u0000-\u001f\u007f]/.test(value)) throw unavailable();
+    || hasAsciiControl(value)) throw unavailable();
   return value;
 }
 
 function unavailable() {
   return serviceUnavailable("Hosted payment gateway is unavailable.");
+}
+
+function hasAsciiControl(value: string): boolean {
+  return Array.from(value).some((character) => {
+    const code = character.charCodeAt(0);
+    return code < 32 || code === 127;
+  });
 }

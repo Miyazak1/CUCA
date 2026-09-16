@@ -334,7 +334,6 @@ const state = {
 
       function card(item, index = 0) {
         const name = schoolName(item);
-        const key = schoolKey(item);
         const entityId = schoolEntityId(item);
         const saved = state.saved.has(entityId);
         const imageBadge = schoolEnglishRouteCount(item) ? `${schoolEnglishRouteCount(item)} English routes` : `${schoolProgramCount(item)} programs`;

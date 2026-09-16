@@ -1,4 +1,5 @@
 ﻿const params = new URLSearchParams(window.location.search);
+      void params;
       const plannerInputs = Array.from(document.querySelectorAll(".hero [data-site-search-input]"));
       const plannerFeedback = document.querySelector("[data-planner-feedback]");
 

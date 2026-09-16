@@ -261,8 +261,18 @@ function buildFeeQuote(userId: string, applicationSetId: string, choices: readon
   }] : [];
   const persistedLines = [...applicationLines, ...serviceLines];
   const subtotalMinor = persistedLines.reduce((sum, line) => sum + line.amountMinor, 0);
-  const lines = persistedLines.map<InvoiceLineDto>(({ lineFormat: _lineFormat, userId: _userId,
-    applicationSetId: _applicationSetId, pricingBasisSha256: _pricingBasisSha256, ...line }) => line);
+  const lines = persistedLines.map<InvoiceLineDto>((line) => ({
+    lineType: line.lineType,
+    feeCode: line.feeCode,
+    description: line.description,
+    amountMinor: line.amountMinor,
+    currency: line.currency,
+    applicationChoiceId: line.applicationChoiceId,
+    schoolId: line.schoolId,
+    programId: line.programId,
+    programIntakeId: line.programIntakeId,
+    admissionRouteKey: line.admissionRouteKey,
+  }));
   return {
     persistedLines,
     preview: { applicationSetId, cuacId, currency: feeSchedule.currency, subtotalMinor, discountMinor: 0,
@@ -441,7 +451,7 @@ function validateProviderName(provider: string) {
 
 function validateProviderSession(session: { providerCheckoutSessionId: string; checkoutUrl: string }) {
   if (typeof session.providerCheckoutSessionId !== "string" || session.providerCheckoutSessionId.length < 1
-    || session.providerCheckoutSessionId.length > 256 || /[\u0000-\u001f\u007f]/.test(session.providerCheckoutSessionId)) {
+    || session.providerCheckoutSessionId.length > 256 || hasAsciiControl(session.providerCheckoutSessionId)) {
     throw serviceUnavailable("Hosted checkout provider returned an invalid session reference.");
   }
   try {
@@ -450,6 +460,13 @@ function validateProviderSession(session: { providerCheckoutSessionId: string; c
   } catch {
     throw serviceUnavailable("Hosted checkout provider returned an invalid checkout URL.");
   }
+}
+
+function hasAsciiControl(value: string): boolean {
+  return Array.from(value).some((character) => {
+    const code = character.charCodeAt(0);
+    return code < 32 || code === 127;
+  });
 }
 
 function requireRow<T>(rows: readonly T[], action: string): T {

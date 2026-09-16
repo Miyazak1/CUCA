@@ -270,7 +270,6 @@ function renderSavedGrid() {
   const active = getActiveItems();
   const referenceItems = active.filter((item) => item.type !== "program");
   const items = referenceItems.filter((item) => activeFilter === "all" || item.type === activeFilter);
-  const programItems = items.filter((item) => item.type === "program");
   const contextItems = items.filter((item) => item.type !== "program");
   const cardItems = [];
   const rowItems = activeFilter === "program" ? [] : contextItems;

@@ -5,7 +5,6 @@ import {
   assertTopicAllowed,
   defaultNotificationPreference,
   renderNotificationTemplate,
-  type NotificationAudienceRole,
   type NotificationChannel,
   type NotificationEventMaterialization,
   type NotificationTemplate,

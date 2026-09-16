@@ -457,10 +457,17 @@ function outputText(value: unknown, maxLength: number, required = false): string
     if (required) failProjection();
     return null;
   }
-  if (typeof value !== "string" || value.length > maxLength || /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/u.test(value)) failProjection();
+  if (typeof value !== "string" || value.length > maxLength || hasForbiddenOutputControl(value)) failProjection();
   const text = value.trim();
   if (!text && required) failProjection();
   return text.replace(/\b(?:\d[ -]*?){13,19}\b/g, "[REDACTED_PAN]");
+}
+
+function hasForbiddenOutputControl(value: string): boolean {
+  return Array.from(value).some((character) => {
+    const code = character.charCodeAt(0);
+    return (code < 32 && ![9, 10, 13].includes(code)) || code === 127;
+  });
 }
 
 function outputUuid(value: unknown): string {

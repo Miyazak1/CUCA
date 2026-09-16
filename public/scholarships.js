@@ -20,12 +20,6 @@ document.querySelectorAll("[data-icon]").forEach((target) => {
 
 const scholarships = [];
 
-const scholarshipImages = {
-  government: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=900&q=80",
-  university: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80",
-  province: "https://www.ehangzhou.gov.cn/img/attachement/jpg/site48/20250527/17483419485411.jpg",
-  partner: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
-};
 const escapeCatalogHtml = window.CuacCatalogList.escapeHtml;
 
 const filters = {
@@ -406,7 +400,6 @@ function renderCards() {
     : "Filtered by your scholarship route preferences.";
   const grid = document.querySelector("#scholarshipGrid");
   grid.innerHTML = items.map((item) => {
-    const key = scholarshipKey(item);
     const entityId = scholarshipEntityId(item);
     const title = scholarshipTitle(item);
     const type = scholarshipType(item);

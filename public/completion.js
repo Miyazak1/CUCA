@@ -8133,13 +8133,13 @@ function inferOpsAuditAction(label = "") {
 function normalizeOpsAuditEvent(event, index = 0) {
   const item = isPlainRecord(event) ? event : { summary: String(event || "") };
   const summary = item.summary || item.label || item.actionLabel || "审计事件";
-  const module = item.module || inferOpsAuditModule(summary);
+  const auditModule = item.module || inferOpsAuditModule(summary);
   const action = item.action || inferOpsAuditAction(summary);
   return {
     id: item.id || `audit-${index + 1}`,
     occurredAt: item.occurredAt || item.createdAt || item.updatedAt || "2026-08-17T10:00:00.000Z",
     actor: item.actor || "CUAC Ops",
-    module,
+    module: auditModule,
     resourceType: item.resourceType || ({
       agent: "agent_action",
       payment: "payment_event",
@@ -13092,10 +13092,14 @@ function recordOpsAction(action) {
     updatedAt: new Date().toISOString(),
   };
   writeOpsAdminState(next);
-  document.querySelector("[data-ops-state]") && (document.querySelector("[data-ops-state]").textContent = "审计记录已更新");
-  document.querySelector("[data-ops-last-action]") && (document.querySelector("[data-ops-last-action]").textContent = label);
-  document.querySelector("[data-ops-routing-count]") && (document.querySelector("[data-ops-routing-count]").textContent = next.routingRetries);
-  document.querySelector("[data-ops-audit-count]") && (document.querySelector("[data-ops-audit-count]").textContent = auditItems.length);
+  const stateNode = document.querySelector("[data-ops-state]");
+  const lastActionNode = document.querySelector("[data-ops-last-action]");
+  const routingCountNode = document.querySelector("[data-ops-routing-count]");
+  const auditCountNode = document.querySelector("[data-ops-audit-count]");
+  if (stateNode) stateNode.textContent = "审计记录已更新";
+  if (lastActionNode) lastActionNode.textContent = label;
+  if (routingCountNode) routingCountNode.textContent = next.routingRetries;
+  if (auditCountNode) auditCountNode.textContent = auditItems.length;
   const list = document.querySelector("[data-ops-audit-list]");
   if (list) {
     list.innerHTML = auditItems.map((item) => `<article><span>2026-08-17</span><strong>${escapeHtml(item)}</strong></article>`).join("");

@@ -5588,7 +5588,6 @@
     postgradRequirements: "Postgraduate requirements",
     languageOfInstruction: "Teaching language",
     hskRequirement: "HSK requirement",
-    englishRequirement: "English proof route",
     deadlineSummary: "Deadline summary",
     tuitionSummary: "Tuition summary",
     applicationFee: "Application fee",
@@ -6936,7 +6935,7 @@
     ];
   }
 
-  function schoolDecisionPanels(school = {}, sourceStatus = "Application review") {
+  function schoolDecisionPanels(school = {}) {
     const nextDeadline = school.round1Deadline || school.round2Deadline || school.deadlineSummary || "Confirm";
     return [
       {
@@ -6962,7 +6961,7 @@
     ];
   }
 
-  function scholarshipDecisionPanels(item = {}, sourceStatus = "Deadline planning") {
+  function scholarshipDecisionPanels(item = {}) {
     return [
       {
         title: "Funding level",
@@ -7061,7 +7060,6 @@
     const quickFacts = school.quickFacts || {};
     const detailDisplay = school.detailDisplay || {};
     const city = detailDisplay.city || quickFacts.location || school.city || school.cityZh || "";
-    const admissionsUrl = school.applicationSystemUrl || school.admissionsWebsiteUrl || "Confirm from school source";
     return {
       entityType: "School",
       entityId: school.id || school.sourceId,
@@ -7489,7 +7487,7 @@
       scholarshipSignals: record.scholarshipSignals || record.informationSources?.fromSchoolScholarshipRecords || [],
       schoolScholarshipSummary: record.schoolScholarshipSummary || (
         (record.scholarshipSignals || record.informationSources?.fromSchoolScholarshipRecords || []).length
-          ? (record.scholarshipSignals || record.informationSources?.fromSchoolScholarshipRecords).map((item) => item.name).join("; ")
+          ? (record.scholarshipSignals || record.informationSources?.fromSchoolScholarshipRecords || []).map((item) => item.name).join("; ")
           : "No school-specific scholarship record attached"
       ),
       programInterests,
@@ -7872,10 +7870,6 @@
       version: Number(merged.version || 1),
       updatedAt: merged.updatedAt || "",
     };
-  }
-
-  function monthToken(value = "") {
-    return String(value || "").trim().slice(0, 3).toLowerCase();
   }
 
   function monthFromDate(value = "") {

@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { toErrorEnvelope } from "../shared/errors.ts";
 import { createRequestContext } from "../shared/request-context.ts";
-import { SITE_SEARCH_TYPES, type SiteSearchService, type SiteSearchType } from "./service.ts";
+import { type SiteSearchService, type SiteSearchType } from "./service.ts";
 
 export function createSiteSearchHttpHandler(service: SiteSearchService) {
   return async function search(request: Request): Promise<Response> {

@@ -224,7 +224,8 @@ function expirySeconds(now: Date, expiresAt: Date, maximum: number): number {
   return seconds;
 }
 
-function required(value: string | undefined, _name: string): string {
+function required(value: string | undefined, name: string): string {
+  void name;
   const normalized = value?.trim();
   if (!normalized || normalized.length > 256 || hasControlCharacter(normalized)) throw invalidConfig();
   return normalized;

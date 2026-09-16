@@ -4,7 +4,6 @@ import {
   OFFICIAL_SUBMISSION_RECEIPT_FORMAT,
   validateOfficialSubmissionDeliveryResult,
   validateOfficialSubmissionProviderName,
-  type OfficialSubmissionDeliveryResult,
 } from "./contract.ts";
 import type { OfficialSubmissionProvider } from "./worker.ts";
 

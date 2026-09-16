@@ -128,7 +128,7 @@ export function parseStudentFileRevision(value: unknown): number {
 
 function parseFilename(value: unknown): string {
   if (typeof value !== "string" || value.length < 1 || value.length > 255 || Buffer.byteLength(value, "utf8") > 255
-    || value !== value.trim() || /[\/\\]/.test(value) || hasControlCharacter(value) || [".", ".."].includes(value)) {
+    || value !== value.trim() || /[/\\]/.test(value) || hasControlCharacter(value) || [".", ".."].includes(value)) {
     throw badRequest("Filename must be a plain bounded file name without a path.");
   }
   return value;

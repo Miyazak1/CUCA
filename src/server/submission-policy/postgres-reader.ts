@@ -66,7 +66,8 @@ export async function getPublishedOfficialSubmissionPolicy(
   const binding = await readPublishedOfficialSubmissionPolicy(client, programId, programIntakeId,
     admissionRouteKey, snapshotTime, false);
   if (!binding) return null;
-  const { approvalSha256: _approvalSha256, ...dto } = binding;
+  const { approvalSha256, ...dto } = binding;
+  void approvalSha256;
   return dto;
 }
 

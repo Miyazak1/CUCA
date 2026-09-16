@@ -121,7 +121,7 @@ test("scholarship pagination stays compact and exposes the current page", async 
   assert.match(css, /\.pagination button:disabled/);
 });
 
-test("program university routes filter by school slug and render safely", async () => {
+test("program university routes send the school slug to the published API and render safely", async () => {
   const [html, script, css] = await Promise.all([
     source("programs.html"),
     source("programs.js"),
@@ -129,9 +129,9 @@ test("program university routes filter by school slug and render safely", async 
   ]);
 
   assert.match(html, /programs\.js\?v=20260914-server-pagination-2/);
-  assert.match(script, /function programMatchesUniversity\(program = \{\}\)/);
-  assert.match(script, /program\.schoolId === focusedUniversity/);
-  assert.match(script, /schoolNameSlug === requested/);
+  assert.match(script, /const focusedUniversity = routeParams\.get\("university"\)/);
+  assert.match(script, /loadPage\("programs", \{[\s\S]*school: focusedUniversity,/);
+  assert.doesNotMatch(script, /function programMatchesUniversity/);
   assert.doesNotMatch(script, /escapeProgramHtml/);
   assert.match(script, /pagination-ellipsis/);
   assert.match(css, /\.pagination-ellipsis/);
