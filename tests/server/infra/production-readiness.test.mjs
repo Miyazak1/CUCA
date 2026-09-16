@@ -287,6 +287,8 @@ const configuredProduction = {
   PGSSLMODE: "verify-full", ALIBABA_CLOUD_REGION: "cn-shanghai", CUAC_APP_RUNTIME: "ecs-container",
   CUAC_SESSION_SECRET: "synthetic-session-0123456789abcdef0123456789abcdef",
   CUAC_AUTH_RATE_LIMIT_ENFORCED: "true", CUAC_AUTH_RATE_LIMIT_BACKEND: "gateway",
+  CUAC_AUTH_MFA_ACTIVE_KEY_ID: "test-v1",
+  CUAC_AUTH_MFA_KEYS_JSON: JSON.stringify({ "test-v1": Buffer.alloc(32, 4).toString("base64url") }),
   CUAC_PUBLIC_SEARCH_RATE_LIMIT_ENFORCED: "true", CUAC_PUBLIC_SEARCH_RATE_LIMIT_BACKEND: "waf",
   CUAC_AUTH_EMAIL_DELIVERY_PROVIDER: "arbitrary-provider-with-no-adapter",
   CUAC_AUTH_EMAIL_FROM: "no-reply@example.com", CUAC_PUBLIC_APP_URL: "https://www.example.com",
@@ -609,7 +611,7 @@ test("offline reports never echo secrets, private endpoints or arbitrary provide
     ALIBABA_CLOUD_KMS_KEY_ID: "kms-canary-7391",
   };
   const serialized = JSON.stringify(inspectProductionReadiness(env));
-  for (const key of ["DATABASE_URL", "CUAC_SESSION_SECRET", "CUAC_PAYMENT_PROVIDER", "CUAC_PAYMENT_GATEWAY_ENDPOINT",
+  for (const key of ["DATABASE_URL", "CUAC_SESSION_SECRET", "CUAC_AUTH_MFA_KEYS_JSON", "CUAC_PAYMENT_PROVIDER", "CUAC_PAYMENT_GATEWAY_ENDPOINT",
     "CUAC_PAYMENT_GATEWAY_HMAC_SECRET", "CUAC_PAYMENT_WEBHOOK_SECRET", "CUAC_AUTH_EMAIL_DELIVERY_PROVIDER",
     "CUAC_AUTH_EMAIL_FROM", "CUAC_PUBLIC_APP_URL", "ALIYUN_OSS_PRIVATE_BUCKET", "ALIBABA_CLOUD_ACCESS_KEY_SECRET",
     "ALIYUN_OSS_KMS_KEY_ID", "ALIBABA_CLOUD_KMS_KEY_ID"]) {

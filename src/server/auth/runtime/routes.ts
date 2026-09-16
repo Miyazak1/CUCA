@@ -7,6 +7,9 @@ import { createAuthCredentialsHttpHandlers } from "../credentials-http.ts";
 import { PostgresAuthSessionRepository } from "../postgres-repository.ts";
 import { createAuthRateLimiterFromEnv } from "./rate-limit.ts";
 import type { PasswordHasher } from "../password-hasher.ts";
+import { mfaKeyringFromEnv, type MfaKeyring } from "../mfa-crypto.ts";
+import { StaffMfaService } from "../staff-mfa.ts";
+import { createStaffMfaHttpHandlers } from "../staff-mfa-http.ts";
 
 const unavailableCredentialsRepository: AuthCredentialsRepository = {
   async findPasswordIdentityByEmailNormalized() {
@@ -32,6 +35,11 @@ const unavailableCredentialsRepository: AuthCredentialsRepository = {
   },
 };
 
+const unavailableStaffMfaService = {
+  async startEnrollment(): Promise<never> { throw serviceUnavailable("Staff MFA is not configured."); },
+  async completeLogin(): Promise<never> { throw serviceUnavailable("Staff MFA is not configured."); },
+};
+
 export function createAuthCredentialsRouteHandlers(
   repository: AuthCredentialsRepository = unavailableCredentialsRepository,
   options: { rateLimiter?: ReturnType<typeof createAuthRateLimiterFromEnv> } = {},
@@ -40,6 +48,10 @@ export function createAuthCredentialsRouteHandlers(
     secureCookies: process.env.NODE_ENV === "production",
     rateLimiter: options.rateLimiter,
   });
+}
+
+export function createStaffMfaRouteHandlers() {
+  return createStaffMfaHttpHandlers(unavailableStaffMfaService, { secureCookies: process.env.NODE_ENV === "production" });
 }
 
 export function getAuthCredentialsRouteHandlers() {
@@ -55,12 +67,49 @@ export function getAuthCredentialsRouteHandlers() {
   }
 }
 
-export function createPostgresAuthCredentialsService(client: TransactionalSqlClient, options: { passwordHasher?: PasswordHasher } = {}) {
-  const create = (tx: TransactionalSqlClient) => new AuthCredentialsService(new PostgresAuthSessionRepository(tx), { auditSink: new PostgresAuditWriter(tx), passwordHasher: options.passwordHasher });
+export function getStaffMfaRouteHandlers() {
+  try {
+    const pool = getSharedPostgresPool();
+    const client = createTransactionalSqlClient(pool);
+    return createStaffMfaHttpHandlers(createPostgresStaffMfaService(client, mfaKeyringFromEnv()), {
+      secureCookies: process.env.NODE_ENV === "production",
+      rateLimiter: createAuthRateLimiterFromEnv({ client }),
+    });
+  } catch {
+    return createStaffMfaRouteHandlers();
+  }
+}
+
+export function createPostgresAuthCredentialsService(client: TransactionalSqlClient, options: { passwordHasher?: PasswordHasher; mfaKeyring?: MfaKeyring } = {}) {
+  let keyring = options.mfaKeyring ?? null;
+  if (!keyring) {
+    try { keyring = mfaKeyringFromEnv(); } catch { keyring = null; }
+  }
+  const create = (tx: TransactionalSqlClient) => {
+    const repository = new PostgresAuthSessionRepository(tx);
+    const auditSink = new PostgresAuditWriter(tx);
+    return new AuthCredentialsService(repository, {
+      auditSink,
+      passwordHasher: options.passwordHasher,
+      ...(keyring ? { staffMfa: new StaffMfaService(repository, keyring, { auditSink }) } : {}),
+    });
+  };
   return {
     registerStudent: transactionalMethod(client, create, "registerStudent"),
     createStudentSession: transactionalMethod(client, create, "createStudentSession"),
     stepUpSession: transactionalMethod(client, create, "stepUpSession"),
     revokeSession: transactionalMethod(client, create, "revokeSession"),
+  };
+}
+
+
+export function createPostgresStaffMfaService(client: TransactionalSqlClient, keyring: MfaKeyring) {
+  const create = (tx: TransactionalSqlClient) => {
+    const repository = new PostgresAuthSessionRepository(tx);
+    return new StaffMfaService(repository, keyring, { auditSink: new PostgresAuditWriter(tx) });
+  };
+  return {
+    startEnrollment: transactionalMethod(client, create, "startEnrollment"),
+    completeLogin: transactionalMethod(client, create, "completeLogin"),
   };
 }

@@ -112,6 +112,12 @@ restrict its entry command and evidence mount through the reviewed release polic
 Staging and production must use this entry. `NODE_OPTIONS`, `NODE_PATH`, and
 `NODE_TLS_REJECT_UNAUTHORIZED=0` are rejected by both the gate and startup policy.
 
+Staff TOTP MFA requires a dedicated 32-byte key from the deployment secret manager. Set
+`CUAC_AUTH_MFA_ACTIVE_KEY_ID` to the active key name and
+`CUAC_AUTH_MFA_KEYS_JSON` to a JSON object whose values are canonical 32-byte
+base64url keys. Keep the previous key in the object during rotation so existing
+factors remain decryptable; never commit a real key or reuse another CUAC secret.
+
 The first deployment of an immutable staging candidate necessarily precedes its
 acceptance manifest. Use the separate candidate-only entry to collect the 16
 controls without weakening production startup:

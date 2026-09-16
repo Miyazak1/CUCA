@@ -49,7 +49,7 @@ Do not place any credential in Git or chat. Store secrets in Alibaba Cloud KMS/s
 3. Secrets and identity
    - KMS key and secret-manager access for the runtime identity.
    - A generated session secret of at least 32 random characters.
-   - Approved MFA/IdP design for school staff, Ops, and Admin. This remains a product/runtime blocker, not merely an environment variable.
+   - Staff TOTP MFA is implemented locally for school staff, Ops, and Admin. Staging enrollment, login, recovery-code, replay, revocation, Admin step-up, log-redaction, and key-rotation evidence remains required.
 4. Edge controls
    - HTTPS certificate and HTTP-to-HTTPS redirect.
    - WAF/API Gateway shared rate limits covering every Auth route and `/api/v1/search`.
@@ -64,7 +64,7 @@ Do not place any credential in Git or chat. Store secrets in Alibaba Cloud KMS/s
 
 ## Source gaps before staging deployment
 
-- Staff MFA/IdP is required by staging acceptance and is not complete.
+- Staff TOTP MFA source and local PostgreSQL rehearsal are complete; deployed staging acceptance is not complete. Enterprise IdP federation remains a future option and is not required for `school-handoff-v1`.
 - Cloud observability and backup/restore are acceptance work, not locally provable.
 - Real Auth/notification email delivery is intentionally disabled until provider configuration and staging acceptance exist.
 - A final application image must still be rebuilt from the reviewed commit, pushed to the selected immutable registry, and recorded by registry digest.

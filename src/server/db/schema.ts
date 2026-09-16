@@ -318,6 +318,82 @@ export const cities = pgTable(
   }),
 );
 
+export const authMfaFactors = pgTable(
+  "auth_mfa_factors",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    factorType: text("factor_type").notNull().default("totp"),
+    status: text("status").notNull().default("pending"),
+    secretCiphertext: text("secret_ciphertext").notNull(),
+    secretIv: text("secret_iv").notNull(),
+    secretTag: text("secret_tag").notNull(),
+    keyId: text("key_id").notNull(),
+    lastUsedCounter: integer("last_used_counter"),
+    enrolledAt: timestamp("enrolled_at", { withTimezone: true }),
+    ...timestamps,
+  },
+  (table) => ({
+    userUnique: uniqueIndex("auth_mfa_factors_user_unique").on(table.userId),
+    statusIdx: index("auth_mfa_factors_status_idx").on(table.status, table.updatedAt),
+    stateCheck: check("auth_mfa_factors_state_check", sql`${table.factorType} = 'totp'
+      and ${table.status} in ('pending', 'active', 'disabled')
+      and ((${table.status} = 'pending' and ${table.enrolledAt} is null and ${table.lastUsedCounter} is null)
+        or (${table.status} = 'active' and ${table.enrolledAt} is not null)
+        or ${table.status} = 'disabled')`),
+  }),
+);
+
+export const authMfaRecoveryCodes = pgTable(
+  "auth_mfa_recovery_codes",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    factorId: uuid("factor_id")
+      .notNull()
+      .references(() => authMfaFactors.id, { onDelete: "cascade" }),
+    codeHash: text("code_hash").notNull(),
+    consumedAt: timestamp("consumed_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    codeHashUnique: uniqueIndex("auth_mfa_recovery_codes_hash_unique").on(table.codeHash),
+    factorAvailableIdx: index("auth_mfa_recovery_codes_factor_available_idx").on(table.factorId, table.consumedAt),
+  }),
+);
+
+export const authMfaChallenges = pgTable(
+  "auth_mfa_challenges",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    challengeTokenHash: text("challenge_token_hash").notNull(),
+    purpose: text("purpose").notNull().default("login"),
+    selectedSurface: text("selected_surface").notNull(),
+    activeRole: text("active_role").notNull(),
+    tenantSchoolId: uuid("tenant_school_id").references(() => schools.id, { onDelete: "cascade" }),
+    passwordHashFingerprint: text("password_hash_fingerprint").notNull(),
+    ipHash: text("ip_hash"),
+    userAgentHash: text("user_agent_hash"),
+    failedAttempts: integer("failed_attempts").notNull().default(0),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+    consumedAt: timestamp("consumed_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    tokenHashUnique: uniqueIndex("auth_mfa_challenges_token_hash_unique").on(table.challengeTokenHash),
+    userExpiresIdx: index("auth_mfa_challenges_user_expires_idx").on(table.userId, table.expiresAt),
+    stateCheck: check("auth_mfa_challenges_state_check", sql`${table.purpose} = 'login'
+      and ${table.failedAttempts} between 0 and 8
+      and ${table.expiresAt} > ${table.createdAt}
+      and ((${table.selectedSurface} = 'school' and ${table.activeRole} = 'school_staff' and ${table.tenantSchoolId} is not null)
+        or (${table.selectedSurface} = 'ops' and ${table.activeRole} in ('cuac_ops', 'cuac_admin') and ${table.tenantSchoolId} is null))`),
+  }),
+);
+
 export const catalogPublicationRevisions = pgTable(
   "catalog_publication_revisions",
   {

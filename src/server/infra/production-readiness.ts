@@ -1,6 +1,7 @@
 import { resolveBillingFeeSchedule } from "../billing/runtime/routes.ts";
 import { createPaymentProviderFromEnv, paymentReconciliationWorkerConfigFromEnv } from "../billing/runtime/payment.ts";
 import { AUTH_EMAIL_PROVIDER_ALIYUN_SMTP, createAuthEmailWorkerConfigurationFromEnv } from "../auth/runtime/email-delivery.ts";
+import { mfaKeyringFromEnv } from "../auth/mfa-crypto.ts";
 import { assertSafePostgresConnectionString, getDatabaseUrl } from "../db/postgres-client.ts";
 import { createClamAvScannerFromEnv } from "../files/clamav-scanner.ts";
 import { parsePrivateOssConfiguration } from "../files/private-object-storage.ts";
@@ -56,6 +57,7 @@ export function inspectProductionReadiness(env: Record<string, string | undefine
     checkSessionSecret(env, strict),
     checkPublicOrigin(env, strict),
     checkAuthRateLimit(env, strict),
+    checkStaffMfaKeyring(env, strict),
     checkPublicSearchRateLimit(env, strict),
     checkAuthEmailDelivery(env, strict),
     checkNotificationDelivery(env, strict),
@@ -247,6 +249,16 @@ function checkAuthRateLimit(env: Record<string, string | undefined>, strict: boo
     "auth.rate_limit",
     "Staging/production Auth endpoints must enforce shared rate limiting with API Gateway or WAF until Redis support is implemented.",
   );
+}
+
+function checkStaffMfaKeyring(env: Record<string, string | undefined>, strict: boolean): ProductionReadinessItem {
+  try {
+    mfaKeyringFromEnv(env);
+    return item("pass", "auth.staff_mfa_keyring", "Staff TOTP MFA keyring is configured.");
+  } catch {
+    return item(strict ? "fail" : "warn", "auth.staff_mfa_keyring",
+      "Staff TOTP MFA requires CUAC_AUTH_MFA_ACTIVE_KEY_ID and a valid 32-byte key in CUAC_AUTH_MFA_KEYS_JSON.");
+  }
 }
 
 function checkPublicSearchRateLimit(env: Record<string, string | undefined>, strict: boolean): ProductionReadinessItem {

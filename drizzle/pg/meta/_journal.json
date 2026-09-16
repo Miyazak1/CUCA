@@ -365,6 +365,13 @@
       "when": 1789471599355,
       "tag": "0051_guide_governance",
       "breakpoints": true
+    },
+    {
+      "idx": 52,
+      "version": "7",
+      "when": 1789532699386,
+      "tag": "0052_staff_totp_mfa",
+      "breakpoints": true
     }
   ]
 }

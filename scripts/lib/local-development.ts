@@ -192,6 +192,8 @@ export function localRuntimeEnvironment(state: LocalDevelopmentState, base: Node
     CUAC_SESSION_SECRET: state.sessionSecret,
     CUAC_AUTH_RATE_LIMIT_ENFORCED: "true",
     CUAC_AUTH_RATE_LIMIT_BACKEND: "postgres",
+    CUAC_AUTH_MFA_ACTIVE_KEY_ID: "local-v1",
+    CUAC_AUTH_MFA_KEYS_JSON: JSON.stringify({ "local-v1": state.sessionSecret }),
     CUAC_AUTH_EMAIL_DELIVERY_PROVIDER: "disabled",
     CUAC_AGENT_ENABLED: "false",
     CUAC_AGENT_TOOL_GATEWAY_MODE: "disabled",

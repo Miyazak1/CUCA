@@ -264,9 +264,10 @@ function renderAuthCapability() {
     return;
   }
   root.innerHTML = `<span class="ops-capability-badge is-warning">最终操作已锁定</span>
-    <small>读取、认领和升级可继续；提交最终结论前需要验证管理员密码。</small>
+    <small>读取、认领和升级可继续；提交最终结论前需要验证管理员密码和身份验证器。</small>
     <form class="ops-step-up-form" data-ops-step-up>
       <label><span>管理员密码</span><input name="password" type="password" autocomplete="current-password" required /></label>
+      <label><span>6 位动态验证码</span><input name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required /></label>
       <button class="ops-button" type="submit">完成二次验证</button>
     </form>`;
 }
@@ -909,13 +910,14 @@ async function submitOpsAction(form) {
 async function stepUpAdminSession(form) {
   if (opsState.busy || opsState.role !== "cuac_admin") return;
   const password = String(new FormData(form).get("password") || "");
+  const code = String(new FormData(form).get("code") || "");
   const button = form.querySelector("button[type=submit]");
   opsState.busy = true;
   if (button) button.disabled = true;
   try {
     const result = await requestJson("/api/v1/auth/step-up", {
       method: "POST",
-      body: JSON.stringify({ password }),
+      body: JSON.stringify({ password, code }),
     });
     form.reset();
     if (!isRecord(result) || result.authStrength !== "step_up") {
@@ -927,7 +929,7 @@ async function stepUpAdminSession(form) {
     await loadCurrentView();
   } catch (error) {
     form.reset();
-    showOpsToast(error?.status === 401 || error?.status === 403 ? "密码验证失败，最终操作仍保持锁定。" : error.message || "二次验证未完成。");
+    showOpsToast(error?.status === 401 || error?.status === 403 ? "密码或动态验证码验证失败，最终操作仍保持锁定。" : error.message || "二次验证未完成。");
   } finally {
     opsState.busy = false;
     if (button && document.contains(button)) button.disabled = false;

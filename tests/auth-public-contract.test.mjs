@@ -15,7 +15,7 @@ test("public account page uses real Auth APIs without browser-owned authenticati
     source("public/shared-shell.js"),
   ]);
 
-  for (const endpoint of ["/api/v1/auth/sessions", "/api/v1/auth/register", "/api/v1/auth/password-reset", "/api/v1/auth/email-verification", "/api/v1/me"]) {
+  for (const endpoint of ["/api/v1/auth/sessions", "/api/v1/auth/register", "/api/v1/auth/password-reset", "/api/v1/auth/email-verification", "/api/v1/auth/mfa/enrollment", "/api/v1/auth/mfa/complete", "/api/v1/me"]) {
     assert.match(script, new RegExp(endpoint.replaceAll("/", "\\/")));
   }
   assert.match(script, /credentials:\s*"same-origin"/);
@@ -30,6 +30,12 @@ test("public account page uses real Auth APIs without browser-owned authenticati
   assert.match(script, /window\.history\.replaceState/);
   assert.doesNotMatch(script, /cuacAuthDemoState|cuacAuthContinuationDemoState|localStorage|sessionStorage/);
   assert.match(html, /data-workspace-picker/);
+  assert.match(html, /data-auth-panel="mfa"/);
+  assert.match(html, /autocomplete="one-time-code"/);
+  assert.match(html, /data-mfa-recovery-codes/);
+  assert.match(script, /mfaRequired/);
+  assert.match(script, /recoveryCodes/);
+  assert.doesNotMatch(script, /localStorage|sessionStorage/);
   assert.match(script, /data-workspace-index/);
   assert.doesNotMatch(html, /data-auth-school-id|data-auth-role|data-reset-account-type/);
   assert.match(html, /One CUAC account/);

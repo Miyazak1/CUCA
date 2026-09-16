@@ -65,6 +65,12 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
         if ("workspaceSelectionRequired" in result) {
           return Response.json({ data: result }, { status: 200, headers: { "x-request-id": requestId } });
         }
+        if ("mfaRequired" in result) {
+          return Response.json({ data: {
+            ...result,
+            expiresAt: result.expiresAt.toISOString(),
+          } }, { status: 202, headers: { "x-request-id": requestId } });
+        }
         return authResponse(result, requestId, 200, options);
       } catch (error) {
         return Response.json(toErrorEnvelope(error, requestId), { status: error instanceof CuacError ? error.status : 500 });
@@ -106,7 +112,7 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
     async stepUpSession(request: Request) {
       const requestId = request.headers.get("x-request-id") ?? randomUUID();
       try {
-        const body = await readAuthBody(request, ["password"]);
+        const body = await readAuthBody(request, ["password", "code", "recoveryCode"]);
         const cookies = parseCookieHeader(request.headers.get("cookie"));
         const sessionToken = cookies[SESSION_COOKIE_NAME];
         await options.rateLimiter?.assertAllowed({
@@ -117,7 +123,8 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
             route: "/api/v1/auth/step-up",
           },
         });
-        const result = await service.stepUpSession({ sessionToken, password: body.password }, requestId);
+        const result = await service.stepUpSession({ sessionToken, password: body.password,
+          code: body.code, recoveryCode: body.recoveryCode }, requestId);
         return Response.json({ data: {
           userId: result.userId,
           sessionId: result.sessionId,
@@ -131,7 +138,7 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
   };
 }
 
-function authResponse(
+export function authResponse(
   result: { userId: string; sessionId: string; sessionToken: string; expiresAt: Date;
     selectedSurface: string; activeRole: string; tenantSchoolId: string | null },
   requestId: string,

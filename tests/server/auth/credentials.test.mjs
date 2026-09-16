@@ -206,27 +206,40 @@ test("unified login returns only verified workspace choices and creates no sessi
   assert.equal(calls.some(call => call.method === "createSession"), false);
 });
 
-test("login requests an authorized school or CUAC internal context without accepting tenant authority implicitly", async () => {
+test("staff login requires a server-authorized workspace and begins MFA without creating a session", async () => {
   const schoolId = "11111111-1111-4111-8111-111111111111";
   const { calls, repository } = createRepository({
     userId: "staff-1", emailNormalized: "staff@example.com",
     passwordHash: await hashPassword("strong-password"), accountStatus: "active",
   });
-  const service = new AuthCredentialsService(repository, { now });
+  repository.listAvailableSessionAuthorities = async () => [
+    { selectedSurface: "school", activeRole: "school_staff", tenantSchoolId: schoolId, label: "Example University" },
+    { selectedSurface: "ops", activeRole: "cuac_ops", tenantSchoolId: null, label: "CUAC staff workspace" },
+  ];
+  const staffMfa = {
+    async beginLogin(input) {
+      calls.push({ method: "beginLogin", input });
+      return { mfaRequired: true, enrollmentRequired: false,
+        challengeToken: Buffer.alloc(32, 8).toString("base64url"),
+        expiresAt: new Date("2026-08-28T00:05:00.000Z"),
+        selectedSurface: input.selectedSurface, activeRole: input.activeRole, tenantSchoolId: input.tenantSchoolId };
+    },
+  };
+  const service = new AuthCredentialsService(repository, { now, staffMfa });
   const school = await service.createStudentSession({
     email: "staff@example.com", password: "strong-password", selectedSurface: "school_staff", schoolId,
   });
-  assert.deepEqual({ selectedSurface: school.selectedSurface, activeRole: school.activeRole, tenantSchoolId: school.tenantSchoolId },
-    { selectedSurface: "school", activeRole: "school_staff", tenantSchoolId: schoolId });
-  assert.equal(calls.at(-1).input.requestedSurface, "school_staff");
-  assert.equal(calls.at(-1).input.requestedSchoolId, schoolId);
+  assert.deepEqual({ selectedSurface: school.selectedSurface, activeRole: school.activeRole, tenantSchoolId: school.tenantSchoolId, mfaRequired: school.mfaRequired },
+    { selectedSurface: "school", activeRole: "school_staff", tenantSchoolId: schoolId, mfaRequired: true });
+  assert.equal(calls.at(-1).method, "beginLogin");
 
   const ops = await service.createStudentSession({
     email: "staff@example.com", password: "strong-password", selectedSurface: "cuac_internal",
   });
   assert.equal(ops.activeRole, "cuac_ops");
-  assert.equal(calls.at(-1).input.requestedSurface, "cuac_internal");
-  assert.equal(calls.at(-1).input.requestedSchoolId, null);
+  assert.equal(ops.mfaRequired, true);
+  assert.equal(calls.at(-1).input.selectedSurface, "ops");
+  assert.equal(calls.some(call => call.method === "createSession"), false);
 
   const callCount = calls.length;
   for (const input of [

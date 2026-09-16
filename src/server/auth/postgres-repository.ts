@@ -1,8 +1,10 @@
+import { createHash } from "node:crypto";
 import { forbidden } from "../shared/errors.ts";
 import type { TransactionalSqlClient } from "../db/postgres-client.ts";
 import { lockLiveCuacStaffAuthority } from "./cuac-staff-authority.ts";
 import { classifyPasswordHash } from "./password-hasher.ts";
 import { AUTH_STEP_UP_TTL_MS } from "./credentials.ts";
+import type { StaffMfaChallengeRecord, StaffMfaFactorRecord, StaffMfaRepository } from "./staff-mfa.ts";
 import type {
   AuthCredentialsRepository,
   ActivateSessionStepUpInput,
@@ -99,7 +101,7 @@ async function lockStepUpAuthority(client: TransactionalSqlClient, input: Activa
   return false;
 }
 
-export class PostgresAuthSessionRepository implements AuthSessionRepository, SchoolTenantMembershipRepository, AuthCredentialsRepository {
+export class PostgresAuthSessionRepository implements AuthSessionRepository, SchoolTenantMembershipRepository, AuthCredentialsRepository, StaffMfaRepository {
   private readonly client: SqlAuthClient;
 
   constructor(client: SqlAuthClient) {
@@ -372,6 +374,143 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
       if (rows.length !== 1) throw forbidden("Session or password is invalid.");
       return rows[0];
     });
+  }
+
+  async findMfaFactor(userId: string): Promise<StaffMfaFactorRecord | null> {
+    const rows = await this.client.query<StaffMfaFactorRecord>(
+      `select id as "factorId",user_id as "userId",status,
+         secret_ciphertext as ciphertext,secret_iv as iv,secret_tag as tag,key_id as "keyId",
+         last_used_counter as "lastUsedCounter"
+       from auth_mfa_factors where user_id = $1 limit 1`,
+      [userId],
+    );
+    return rows[0] ?? null;
+  }
+
+  async createMfaLoginChallenge(input: Parameters<StaffMfaRepository["createMfaLoginChallenge"]>[0]): Promise<{ challengeId: string }> {
+    const rows = await this.client.query<{ challengeId: string }>(
+      `insert into auth_mfa_challenges (
+         user_id,challenge_token_hash,purpose,selected_surface,active_role,tenant_school_id,
+         password_hash_fingerprint,ip_hash,user_agent_hash,failed_attempts,expires_at,created_at
+       ) values ($1,$2,'login',$3,$4,$5,$6,$7,$8,0,$9,$10)
+       returning id as "challengeId"`,
+      [input.userId, input.challengeTokenHash, input.selectedSurface, input.activeRole, input.tenantSchoolId,
+        input.passwordHashFingerprint, input.ipHash, input.userAgentHash, input.expiresAt, input.now],
+    );
+    if (!rows[0]) throw forbidden("MFA challenge could not be created.");
+    return rows[0];
+  }
+
+  async findUsableMfaChallengeForUpdate(challengeTokenHash: string, now: Date): Promise<StaffMfaChallengeRecord | null> {
+    const rows = await this.client.query<StaffMfaChallengeRecord & { passwordHashFingerprint: string }>(
+      `select c.id as "challengeId",c.user_id as "userId",u.email,
+         i.password_hash as "passwordHash",c.password_hash_fingerprint as "passwordHashFingerprint",
+         c.selected_surface as "selectedSurface",c.active_role as "activeRole",
+         c.tenant_school_id as "tenantSchoolId",c.ip_hash as "ipHash",c.user_agent_hash as "userAgentHash",
+         c.expires_at as "expiresAt",c.failed_attempts as "failedAttempts"
+       from auth_mfa_challenges c
+       join users u on u.id = c.user_id and u.account_status = 'active'
+       join auth_identities i on i.user_id = u.id and i.provider = 'password'
+         and i.email_normalized = u.email_normalized and i.password_hash is not null
+       where c.challenge_token_hash = $1 and c.purpose = 'login'
+         and c.expires_at > $2 and c.consumed_at is null and c.failed_attempts < 8
+       limit 1 for update of c`,
+      [challengeTokenHash, now],
+    );
+    const row = rows[0];
+    if (!row || `sha256:${createHash("sha256").update(row.passwordHash).digest("hex")}` !== row.passwordHashFingerprint) return null;
+    return {
+      challengeId: row.challengeId,
+      userId: row.userId,
+      email: row.email,
+      passwordHash: row.passwordHash,
+      selectedSurface: row.selectedSurface,
+      activeRole: row.activeRole,
+      tenantSchoolId: row.tenantSchoolId,
+      ipHash: row.ipHash,
+      userAgentHash: row.userAgentHash,
+      expiresAt: row.expiresAt,
+      failedAttempts: row.failedAttempts,
+    };
+  }
+
+  async upsertPendingMfaFactor(input: Parameters<StaffMfaRepository["upsertPendingMfaFactor"]>[0]): Promise<StaffMfaFactorRecord> {
+    const rows = await this.client.query<StaffMfaFactorRecord>(
+      `insert into auth_mfa_factors (
+         user_id,factor_type,status,secret_ciphertext,secret_iv,secret_tag,key_id,created_at,updated_at
+       ) values ($1,'totp','pending',$2,$3,$4,$5,$6,$6)
+       on conflict (user_id) do update set
+         secret_ciphertext = excluded.secret_ciphertext,secret_iv = excluded.secret_iv,
+         secret_tag = excluded.secret_tag,key_id = excluded.key_id,updated_at = excluded.updated_at
+       where auth_mfa_factors.status = 'pending'
+       returning id as "factorId",user_id as "userId",status,
+         secret_ciphertext as ciphertext,secret_iv as iv,secret_tag as tag,key_id as "keyId",
+         last_used_counter as "lastUsedCounter"`,
+      [input.userId, input.ciphertext, input.iv, input.tag, input.keyId, input.now],
+    );
+    if (!rows[0]) throw forbidden("MFA enrollment cannot replace an active factor.");
+    return rows[0];
+  }
+
+  async activatePendingMfaFactor(input: Parameters<StaffMfaRepository["activatePendingMfaFactor"]>[0]): Promise<boolean> {
+    const rows = await this.client.query<{ factorId: string }>(
+      `with activated as (
+         update auth_mfa_factors set status = 'active',last_used_counter = $3,enrolled_at = $5,updated_at = $5
+         where id = $1 and user_id = $2 and status = 'pending' and last_used_counter is null
+         returning id
+       ), cleared as (
+         delete from auth_mfa_recovery_codes where factor_id in (select id from activated)
+       ), inserted as (
+         insert into auth_mfa_recovery_codes (factor_id,code_hash,created_at)
+         select activated.id,code_hash,$5 from activated cross join unnest($4::text[]) as code_hash
+         returning factor_id
+       )
+       select id as "factorId" from activated
+       where (select count(*) from inserted) = cardinality($4::text[])`,
+      [input.factorId, input.userId, input.counter, input.recoveryCodeHashes, input.now],
+    );
+    return rows.length === 1;
+  }
+
+  async consumeActiveMfaTotp(input: Parameters<StaffMfaRepository["consumeActiveMfaTotp"]>[0]): Promise<boolean> {
+    const rows = await this.client.query<{ factorId: string }>(
+      `update auth_mfa_factors set last_used_counter = $4,updated_at = $5
+       where id = $1 and user_id = $2 and status = 'active'
+         and last_used_counter is not distinct from $3::integer and $4 > coalesce(last_used_counter,-1)
+       returning id as "factorId"`,
+      [input.factorId, input.userId, input.expectedLastUsedCounter, input.counter, input.now],
+    );
+    return rows.length === 1;
+  }
+
+  async consumeMfaRecoveryCode(input: Parameters<StaffMfaRepository["consumeMfaRecoveryCode"]>[0]): Promise<boolean> {
+    const rows = await this.client.query<{ codeId: string }>(
+      `update auth_mfa_recovery_codes c set consumed_at = $3
+       from auth_mfa_factors f
+       where c.factor_id = $1 and c.factor_id = f.id and f.status = 'active'
+         and c.consumed_at is null and c.code_hash = any($2::text[])
+       returning c.id as "codeId"`,
+      [input.factorId, input.codeHashes, input.now],
+    );
+    return rows.length === 1;
+  }
+
+  async consumeMfaChallenge(challengeId: string, now: Date): Promise<boolean> {
+    const rows = await this.client.query<{ challengeId: string }>(
+      `update auth_mfa_challenges set consumed_at = $2 where id = $1
+         and consumed_at is null and expires_at > $2 and failed_attempts < 8
+       returning id as "challengeId"`,
+      [challengeId, now],
+    );
+    return rows.length === 1;
+  }
+
+  async recordMfaChallengeFailure(challengeId: string): Promise<void> {
+    await this.client.query(
+      `update auth_mfa_challenges set failed_attempts = least(8,failed_attempts + 1)
+       where id = $1 and consumed_at is null`,
+      [challengeId],
+    );
   }
 
   async findActiveSchoolMembershipByUserAndSchoolId(

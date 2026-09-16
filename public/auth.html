@@ -62,6 +62,46 @@
             <p class="form-hint">School and CUAC staff access is assigned by an authorized administrator; public account creation starts with student access.</p>
           </form>
 
+          <form class="auth-form" data-auth-panel="mfa" aria-label="Staff multi-factor verification">
+            <div class="form-head">
+              <button class="text-link" type="button" data-mfa-cancel>Back to sign in</button>
+              <h2>Verify your staff sign-in</h2>
+              <p>School and CUAC staff must complete a second factor before a session is created.</p>
+            </div>
+            <section class="mfa-setup" data-mfa-setup hidden>
+              <strong>Set up your authenticator</strong>
+              <p>Add a new account in Google Authenticator, Microsoft Authenticator, 1Password, or another TOTP app.</p>
+              <label>
+                <span>Manual setup key</span>
+                <output class="mfa-secret" data-mfa-secret></output>
+              </label>
+              <a class="text-link" data-mfa-uri href="#">Open in an authenticator app</a>
+            </section>
+            <label data-mfa-code-field>
+              <span>6-digit authenticator code</span>
+              <input type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" data-mfa-code />
+            </label>
+            <label>
+              <span>Verification method</span>
+              <select data-mfa-method>
+                <option value="totp">Authenticator code</option>
+                <option value="recovery">One-time recovery code</option>
+              </select>
+            </label>
+            <label data-mfa-recovery-field hidden>
+              <span>Recovery code</span>
+              <input type="text" autocomplete="one-time-code" placeholder="XXXX-XXXX-XXXX-XXXX" data-mfa-recovery />
+            </label>
+            <button class="primary" type="submit" data-mfa-submit>Verify and sign in</button>
+            <p class="form-hint">A code can be used only once. CUAC never asks you to send the setup key or recovery codes to support.</p>
+            <section class="mfa-recovery-codes" data-mfa-recovery-codes hidden>
+              <strong>Save these recovery codes now</strong>
+              <p>Each code works once. They will not be shown again.</p>
+              <pre data-mfa-recovery-list></pre>
+              <button class="primary" type="button" data-mfa-continue>I saved the codes — continue</button>
+            </section>
+          </form>
+
           <form class="auth-form recovery-form" data-auth-panel="reset" aria-label="Password reset form">
             <div class="form-head">
               <button class="text-link" type="button" data-auth-back-to-signin>Back to sign in</button>

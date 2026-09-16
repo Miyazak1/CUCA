@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { createTransactionalSqlClient } from "../../../src/server/db/postgres-client.ts";
-import { AuthCredentialsService, hashPassword } from "../../../src/server/auth/credentials.ts";
+import { hashPassword } from "../../../src/server/auth/credentials.ts";
 import { createAuthCredentialsHttpHandlers } from "../../../src/server/auth/credentials-http.ts";
+import { createStaffMfaHttpHandlers } from "../../../src/server/auth/staff-mfa-http.ts";
+import { mfaKeyringFromEnv, totpCode } from "../../../src/server/auth/mfa-crypto.ts";
+import { createPostgresAuthCredentialsService, createPostgresStaffMfaService } from "../../../src/server/auth/runtime/routes.ts";
 import { createAuthHttpHandlers } from "../../../src/server/auth/http.ts";
 import { PostgresAuthSessionRepository } from "../../../src/server/auth/postgres-repository.ts";
 import { hashSessionToken, resolveRequestContextFromRequest } from "../../../src/server/auth/session.ts";
@@ -27,8 +30,11 @@ function request(path, token, body) {
 export async function runIdentityIsolationRehearsal(t, pool) {
   const client = createTransactionalSqlClient(pool);
   const auth = new PostgresAuthSessionRepository(client);
-  const credentials = new AuthCredentialsService(auth);
+  const mfaKeyring = mfaKeyringFromEnv({ CUAC_AUTH_MFA_ACTIVE_KEY_ID: "rehearsal-v1",
+    CUAC_AUTH_MFA_KEYS_JSON: JSON.stringify({ "rehearsal-v1": Buffer.alloc(32, 21).toString("base64url") }) });
+  const credentials = createPostgresAuthCredentialsService(client, { mfaKeyring });
   const authHttp = createAuthCredentialsHttpHandlers(credentials, { secureCookies: true });
+  const mfaHttp = createStaffMfaHttpHandlers(createPostgresStaffMfaService(client, mfaKeyring), { secureCookies: true });
   const students = new PostgresStudentCoreRepository(client);
   const schools = new PostgresSchoolPortalRepository(client);
   const audit = new PostgresAuditWriter(client);
@@ -38,6 +44,24 @@ export async function runIdentityIsolationRehearsal(t, pool) {
   async function createStudent() {
     const email = `student-${randomUUID()}@example.invalid`;
     return { ...await credentials.registerStudent({ email, password }), email };
+  }
+
+  async function completeStaffMfa(loginResponse) {
+    assert.equal(loginResponse.status, 202);
+    assert.equal(loginResponse.headers.has("set-cookie"), false);
+    const challenge = (await loginResponse.json()).data;
+    assert.equal(challenge.mfaRequired, true);
+    const enrollmentResponse = await mfaHttp.startEnrollment(request("/api/v1/auth/mfa/enrollment", null, {
+      challengeToken: challenge.challengeToken,
+    }));
+    assert.equal(enrollmentResponse.status, 201);
+    const enrollment = (await enrollmentResponse.json()).data;
+    const completed = await mfaHttp.completeLogin(request("/api/v1/auth/mfa/complete", null, {
+      challengeToken: challenge.challengeToken,
+      code: totpCode(enrollment.secret).code,
+    }));
+    assert.equal(completed.status, 200);
+    return completed;
   }
 
   async function fixture() {
@@ -109,10 +133,10 @@ export async function runIdentityIsolationRehearsal(t, pool) {
       "insert into school_staff_memberships (school_id, user_id, role, status) values ($1, $2, 'admissions', 'active')",
       [school.id, staff.userId],
     );
-    const schoolLogin = await authHttp.createSession(request("/api/v1/auth/sessions", null, {
+    const schoolChallenge = await authHttp.createSession(request("/api/v1/auth/sessions", null, {
       email: staff.email, password, selectedSurface: "school_staff", schoolId: school.id,
     }));
-    assert.equal(schoolLogin.status, 200);
+    const schoolLogin = await completeStaffMfa(schoolChallenge);
     const schoolBody = await schoolLogin.json();
     assert.deepEqual({ activeRole: schoolBody.data.activeRole, selectedSurface: schoolBody.data.selectedSurface,
       tenantSchoolId: schoolBody.data.tenantSchoolId },
@@ -128,10 +152,10 @@ export async function runIdentityIsolationRehearsal(t, pool) {
     const ops = await createStudent();
     await pool.query("insert into user_roles (user_id, role) values ($1, 'cuac_ops')", [ops.userId]);
     const { grantId } = await grantCuacStaffAccess(pool, ops.userId, "cuac_ops");
-    const opsLogin = await authHttp.createSession(request("/api/v1/auth/sessions", null, {
+    const opsChallenge = await authHttp.createSession(request("/api/v1/auth/sessions", null, {
       email: ops.email, password, selectedSurface: "cuac_internal",
     }));
-    assert.equal(opsLogin.status, 200);
+    const opsLogin = await completeStaffMfa(opsChallenge);
     const opsBody = await opsLogin.json();
     assert.deepEqual({ activeRole: opsBody.data.activeRole, selectedSurface: opsBody.data.selectedSurface,
       tenantSchoolId: opsBody.data.tenantSchoolId },

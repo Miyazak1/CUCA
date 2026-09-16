@@ -418,6 +418,29 @@ h1 {
   font-size: 13px;
 }
 
+.mfa-setup,
+.mfa-recovery-codes {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.mfa-secret,
+.mfa-recovery-codes pre {
+  display: block;
+  padding: 12px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  font: 700 0.88rem/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: #13233a;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
 .auth-runtime-status {
   min-height: 20px;
   margin: 16px 0 0;

@@ -8,6 +8,8 @@ const workspacePicker = document.querySelector("[data-workspace-picker]");
 const workspaceOptions = document.querySelector("[data-workspace-options]");
 let pendingContinuation = readContinuationCapability();
 let availableWorkspaces = [];
+let pendingMfa = null;
+let completedMfaSession = null;
 
 const roleProfiles = {
   student: {
@@ -85,7 +87,7 @@ function setStatus(message = "", state = "") {
 }
 
 function setMode(requestedMode) {
-  currentMode = ["signin", "register", "reset"].includes(requestedMode) ? requestedMode : "signin";
+  currentMode = ["signin", "register", "reset", "mfa"].includes(requestedMode) ? requestedMode : "signin";
   document.querySelectorAll("[data-auth-tab]").forEach((tab) => {
     const active = tab.dataset.authTab === currentMode;
     tab.classList.toggle("active", active);
@@ -265,6 +267,61 @@ async function finishSignIn(session) {
   window.setTimeout(() => window.location.assign(destination), 350);
 }
 
+async function beginMfaVerification(challenge) {
+  if (!challenge?.mfaRequired || !/^[A-Za-z0-9_-]{43}$/.test(challenge.challengeToken || "")) {
+    throw new Error("The server returned an invalid MFA challenge.");
+  }
+  pendingMfa = challenge;
+  completedMfaSession = null;
+  const setup = document.querySelector("[data-mfa-setup]");
+  const recoveryPanel = document.querySelector("[data-mfa-recovery-codes]");
+  if (setup) setup.hidden = true;
+  if (recoveryPanel) recoveryPanel.hidden = true;
+  setMode("mfa");
+  setStatus(challenge.enrollmentRequired
+    ? "Set up an authenticator before this staff session can be created."
+    : "Enter the current code from your authenticator app.");
+  if (!challenge.enrollmentRequired) return;
+  const enrollment = await requestJson("/api/v1/auth/mfa/enrollment", {
+    method: "POST",
+    body: { challengeToken: challenge.challengeToken },
+  });
+  if (!/^[A-Z2-7]{32}$/.test(enrollment?.secret || "") || !String(enrollment?.otpauthUri || "").startsWith("otpauth://totp/")) {
+    throw new Error("MFA enrollment details are invalid.");
+  }
+  document.querySelector("[data-mfa-secret]").textContent = enrollment.secret;
+  const uri = document.querySelector("[data-mfa-uri]");
+  if (uri) uri.href = enrollment.otpauthUri;
+  if (setup) setup.hidden = false;
+}
+
+async function handleMfaSubmit(form) {
+  if (!pendingMfa || !form.reportValidity()) return;
+  const method = form.querySelector("[data-mfa-method]")?.value;
+  const body = method === "recovery"
+    ? { challengeToken: pendingMfa.challengeToken, recoveryCode: form.querySelector("[data-mfa-recovery]")?.value.trim() }
+    : { challengeToken: pendingMfa.challengeToken, code: form.querySelector("[data-mfa-code]")?.value.trim() };
+  const button = form.querySelector("[data-mfa-submit]");
+  const restore = setButtonBusy(button, true, "Verifying...");
+  try {
+    const session = await requestJson("/api/v1/auth/mfa/complete", { method: "POST", body });
+    if (Array.isArray(session?.recoveryCodes) && session.recoveryCodes.length > 0) {
+      completedMfaSession = session;
+      document.querySelector("[data-mfa-recovery-list]").textContent = session.recoveryCodes.join("\n");
+      document.querySelector("[data-mfa-recovery-codes]").hidden = false;
+      button.hidden = true;
+      setStatus("MFA is active. Save the recovery codes before continuing.", "success");
+      return;
+    }
+    pendingMfa = null;
+    await finishSignIn(session);
+  } catch (error) {
+    setStatus(error.message, "error");
+  } finally {
+    restore();
+  }
+}
+
 async function signInToWorkspace(form, workspace, button) {
   const email = form.querySelector("[data-auth-email]")?.value.trim();
   const password = form.querySelector("[data-auth-password]")?.value;
@@ -282,6 +339,10 @@ async function signInToWorkspace(form, workspace, button) {
       },
     });
     if (session?.workspaceSelectionRequired) throw new Error("The selected workspace could not be confirmed.");
+    if (session?.mfaRequired) {
+      await beginMfaVerification(session);
+      return;
+    }
     await finishSignIn(session);
   } catch (error) {
     setStatus(error.message, "error");
@@ -305,6 +366,11 @@ async function handleSignIn(form) {
     if (session?.workspaceSelectionRequired) {
       renderWorkspaceChoices(session.workspaces);
       setStatus("Account verified. Choose the workspace you want to open.", "success");
+      restore();
+      return;
+    }
+    if (session?.mfaRequired) {
+      await beginMfaVerification(session);
       restore();
       return;
     }
@@ -415,8 +481,33 @@ document.addEventListener("click", (event) => {
     setMode("signin");
     history.replaceState(null, "", `${location.pathname}${location.search}`);
     setStatus("");
+    return;
+  }
+
+  if (event.target.closest("[data-mfa-cancel]")) {
+    pendingMfa = null;
+    completedMfaSession = null;
+    setMode("signin");
+    setStatus("Staff sign-in was cancelled.");
+    return;
+  }
+
+  if (event.target.closest("[data-mfa-continue]") && completedMfaSession) {
+    const session = completedMfaSession;
+    completedMfaSession = null;
+    pendingMfa = null;
+    void finishSignIn(session);
   }
 });
+
+document.querySelector("[data-mfa-method]")?.addEventListener("change", (event) => {
+  const recovery = event.target.value === "recovery";
+  document.querySelector("[data-mfa-code-field]").hidden = recovery;
+  document.querySelector("[data-mfa-recovery-field]").hidden = !recovery;
+  document.querySelector("[data-mfa-code]").required = !recovery;
+  document.querySelector("[data-mfa-recovery]").required = recovery;
+});
+document.querySelector("[data-mfa-code]").required = true;
 
 document.querySelectorAll("[data-auth-email], [data-auth-password]").forEach((input) => {
   input.addEventListener("input", clearWorkspaceChoices);
@@ -428,6 +519,7 @@ document.querySelectorAll(".auth-form").forEach((form) => {
     if (form.dataset.authPanel === "signin") void handleSignIn(form);
     else if (form.dataset.authPanel === "register") void handleRegister(form);
     else if (form.dataset.authPanel === "reset") void handleResetRequest(form);
+    else if (form.dataset.authPanel === "mfa") void handleMfaSubmit(form);
   });
 });
 

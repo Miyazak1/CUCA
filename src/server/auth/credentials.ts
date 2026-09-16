@@ -1,10 +1,11 @@
 import { randomBytes, randomUUID, createHash } from "node:crypto";
-import { badRequest, forbidden } from "../shared/errors.ts";
+import { badRequest, forbidden, serviceUnavailable } from "../shared/errors.ts";
 import { inputEnum, inputUuid } from "../shared/input.ts";
 import { authDisplayName, authEmail, authInput, authOptionalText, authPassword, authToken } from "./input.ts";
 import { buildAuditEvent, type AuditSink } from "../audit/audit.ts";
 import { createRequestContext } from "../shared/request-context.ts";
 import { passwordHasher, type PasswordHasher } from "./password-hasher.ts";
+import type { StaffMfaChallengeResult, StaffMfaService } from "./staff-mfa.ts";
 export { hashPassword, verifyPassword, verifyPasswordForLogin } from "./password-hasher.ts";
 
 export type PasswordIdentityRecord = {
@@ -112,6 +113,7 @@ export type AuthCredentialsServiceOptions = {
   sessionTtlMs?: number;
   auditSink?: AuditSink | null;
   passwordHasher?: PasswordHasher;
+  staffMfa?: Pick<StaffMfaService, "beginLogin" | "verifyStepUp">;
 };
 
 const defaultSessionTtlMs = 1000 * 60 * 60 * 24 * 30;
@@ -123,6 +125,7 @@ export class AuthCredentialsService {
   private readonly sessionTtlMs: number;
   private readonly auditSink: AuditSink | null;
   private readonly passwordHasher: PasswordHasher;
+  private readonly staffMfa: Pick<StaffMfaService, "beginLogin" | "verifyStepUp"> | null;
 
   constructor(repository: AuthCredentialsRepository, options: AuthCredentialsServiceOptions = {}) {
     this.repository = repository;
@@ -130,6 +133,7 @@ export class AuthCredentialsService {
     this.sessionTtlMs = options.sessionTtlMs ?? defaultSessionTtlMs;
     this.auditSink = options.auditSink ?? null;
     this.passwordHasher = options.passwordHasher ?? passwordHasher;
+    this.staffMfa = options.staffMfa ?? null;
   }
 
   async registerStudent(input: { email: unknown; password: unknown; displayName?: unknown; userAgent?: string | null; ip?: string | null }, requestId: string = randomUUID()): Promise<AuthCredentialsResult> {
@@ -159,7 +163,7 @@ export class AuthCredentialsService {
     return result;
   }
 
-  async createStudentSession(input: { email: unknown; password: unknown; selectedSurface?: unknown; schoolId?: unknown; userAgent?: string | null; ip?: string | null }, requestId: string = randomUUID()): Promise<AuthCredentialsResult | AuthWorkspaceSelectionResult> {
+  async createStudentSession(input: { email: unknown; password: unknown; selectedSurface?: unknown; schoolId?: unknown; userAgent?: string | null; ip?: string | null }, requestId: string = randomUUID()): Promise<AuthCredentialsResult | AuthWorkspaceSelectionResult | StaffMfaChallengeResult> {
     const value = authInput(input, ["email", "password", "selectedSurface", "schoolId", "userAgent", "ip"]);
     const email = authEmail(value.email);
     const password = authPassword(value.password, false);
@@ -182,12 +186,22 @@ export class AuthCredentialsService {
       if (workspaces.length === 0) throw forbidden("Invalid email or password.");
       if (workspaces.length > 1) return { workspaceSelectionRequired: true, workspaces };
       const workspace = workspaces[0];
+      if (workspace.selectedSurface !== "student") {
+        return this.beginStaffMfa(identity.userId, identity.passwordHash, workspace, metadata);
+      }
       const result = await this.issueSession(identity.userId, metadata, now, identity.passwordHash,
         authorityRequestForWorkspace(workspace), verification.upgradedHash);
       await this.recordLoginAudit(requestId, result, verification.upgradedHash);
       return result;
     }
 
+    if (requestedSurface !== "student") {
+      const workspaces = await this.repository.listAvailableSessionAuthorities(identity.userId, now);
+      const workspace = workspaces.find(item => item.selectedSurface === (requestedSurface === "school_staff" ? "school" : "ops")
+        && item.tenantSchoolId === requestedSchoolId);
+      if (!workspace || workspace.selectedSurface === "student") throw forbidden("Selected access context is not available.");
+      return this.beginStaffMfa(identity.userId, identity.passwordHash, workspace, metadata);
+    }
     const result = await this.issueSession(identity.userId, metadata, now, identity.passwordHash, {
       requestedSurface, requestedSchoolId,
     }, verification.upgradedHash);
@@ -217,8 +231,8 @@ export class AuthCredentialsService {
     return { revoked: result.revoked };
   }
 
-  async stepUpSession(input: { sessionToken: unknown; password: unknown }, requestId: string = randomUUID()) {
-    const value = authInput(input, ["sessionToken", "password"]);
+  async stepUpSession(input: { sessionToken: unknown; password: unknown; code?: unknown; recoveryCode?: unknown }, requestId: string = randomUUID()) {
+    const value = authInput(input, ["sessionToken", "password", "code", "recoveryCode"]);
     const sessionToken = authToken(value.sessionToken);
     const password = authPassword(value.password, false);
     const sessionTokenHash = sha256(sessionToken);
@@ -226,6 +240,10 @@ export class AuthCredentialsService {
     const verification = await this.passwordHasher.verifyForLogin(password, target?.passwordHash ?? null);
     if (!target || !verification.valid) {
       throw forbidden("Session or password is invalid.");
+    }
+    if (target.activeRole !== "student") {
+      if (!this.staffMfa) throw serviceUnavailable("Staff MFA is not configured.");
+      await this.staffMfa.verifyStepUp({ userId: target.userId, code: value.code, recoveryCode: value.recoveryCode });
     }
     const activated = await this.repository.activateSessionStepUp({
       ...target,
@@ -288,6 +306,23 @@ export class AuthCredentialsService {
       expiresAt,
     };
   }
+
+  private async beginStaffMfa(
+    userId: string,
+    passwordHash: string,
+    workspace: AvailableAuthWorkspace & { selectedSurface: "school" | "ops" },
+    metadata: { userAgent: string | null; ip: string | null },
+  ): Promise<StaffMfaChallengeResult> {
+    if (!this.staffMfa) throw serviceUnavailable("Staff MFA is not configured.");
+    return this.staffMfa.beginLogin({
+      userId,
+      passwordHash,
+      selectedSurface: workspace.selectedSurface,
+      activeRole: workspace.activeRole as Exclude<AuthSessionRole, "student">,
+      tenantSchoolId: workspace.tenantSchoolId,
+      ...metadata,
+    });
+  }
 }
 
 function authSignInSurface(value: unknown): AuthSignInSurface | null {
@@ -302,6 +337,7 @@ function authorityRequestForWorkspace(workspace: AvailableAuthWorkspace): {
   if (workspace.selectedSurface === "school") {
     return { requestedSurface: "school_staff", requestedSchoolId: workspace.tenantSchoolId };
   }
+
   if (workspace.selectedSurface === "ops") {
     return { requestedSurface: "cuac_internal", requestedSchoolId: null };
   }

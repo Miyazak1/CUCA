@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { createTransactionalSqlClient } from "../../../src/server/db/postgres-client.ts";
 import { PostgresAuthSessionRepository } from "../../../src/server/auth/postgres-repository.ts";
-import { createPostgresAuthCredentialsService } from "../../../src/server/auth/runtime/routes.ts";
+import { createPostgresAuthCredentialsService, createPostgresStaffMfaService } from "../../../src/server/auth/runtime/routes.ts";
+import { mfaKeyringFromEnv, totpCode } from "../../../src/server/auth/mfa-crypto.ts";
 import { createAuditFailureFixture } from "./audit-failure-fixture.mjs";
 import { grantCuacStaffAccess } from "./cuac-staff-access-fixture.mjs";
 
@@ -99,12 +100,21 @@ export async function runAuthSessionStepUpRehearsal(t, pool) {
         (user_id,session_token_hash,selected_surface,active_role,auth_strength,expires_at)
         values ($1,$2,'ops','cuac_admin','session',clock_timestamp() + interval '1 hour') returning id`,
       [user.id, tokenHash])).rows[0];
-      const service = createPostgresAuthCredentialsService(client, { passwordHasher: {
+      const mfaKeyring = mfaKeyringFromEnv({ CUAC_AUTH_MFA_ACTIVE_KEY_ID: "rehearsal-v1",
+        CUAC_AUTH_MFA_KEYS_JSON: JSON.stringify({ "rehearsal-v1": Buffer.alloc(32, 22).toString("base64url") }) });
+      const service = createPostgresAuthCredentialsService(client, { mfaKeyring, passwordHasher: {
         async verifyForLogin(password, storedHash) {
           return { valid: password === "correct-password" && storedHash === passwordHash };
         },
       } });
-      const result = await service.stepUpSession({ sessionToken: token, password: "correct-password" },
+      const challenge = await service.createStudentSession({ email, password: "correct-password", selectedSurface: "cuac_internal" });
+      assert.equal(challenge.mfaRequired, true);
+      const mfa = createPostgresStaffMfaService(client, mfaKeyring);
+      const enrollment = await mfa.startEnrollment({ challengeToken: challenge.challengeToken });
+      const enrolled = await mfa.completeLogin({ challengeToken: challenge.challengeToken, code: totpCode(enrollment.secret).code });
+      assert.equal("mfaVerificationFailed" in enrolled, false);
+      const result = await service.stepUpSession({ sessionToken: token, password: "correct-password",
+        recoveryCode: enrolled.recoveryCodes[0] },
         `ops-step-up-${randomUUID()}`);
       assert.equal(result.activeRole, "cuac_admin");
       assert.equal(result.selectedSurface, "ops");
@@ -115,7 +125,8 @@ export async function runAuthSessionStepUpRehearsal(t, pool) {
 
       await pool.query("update auth_sessions set step_up_expires_at = null where id = $1", [session.id]);
       await pool.query("update cuac_staff_access_grants set status = 'revoked', revoked_at = clock_timestamp() where id = $1", [grant.grantId]);
-      await assert.rejects(service.stepUpSession({ sessionToken: token, password: "correct-password" }),
+      await assert.rejects(service.stepUpSession({ sessionToken: token, password: "correct-password",
+        recoveryCode: enrolled.recoveryCodes[1] }),
         error => error.status === 403);
       assert.equal((await repository.findActiveSessionByTokenHash(tokenHash, new Date())).authStrength, "session");
     } finally {

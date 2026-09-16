@@ -98,6 +98,8 @@ test("local application environment keeps external effects closed", () => {
   assert.equal(env.CUAC_AGENT_DIRECT_DB_ACCESS, "false");
   assert.equal(env.CUAC_FILE_UPLOAD_ENABLED, "false");
   assert.equal(env.CUAC_AUTH_RATE_LIMIT_BACKEND, "postgres");
+  assert.equal(env.CUAC_AUTH_MFA_ACTIVE_KEY_ID, "local-v1");
+  assert.deepEqual(JSON.parse(env.CUAC_AUTH_MFA_KEYS_JSON), { "local-v1": state.sessionSecret });
   assert.equal(env.CUAC_AGENT_ENABLED, "false");
   assert.equal(env.CUAC_AGENT_TOOL_GATEWAY_MODE, "disabled");
   assert.equal(env.CUAC_AGENT_SANDBOX_MODE, "disabled");
