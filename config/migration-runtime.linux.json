@@ -1,6 +1,6 @@
 {
   "version": 1,
   "platform": "linux/amd64",
-  "nodeVersion": "v22.22.3",
-  "nodeImage": "node@sha256:e21fc383b50d5347dc7a9f1cae45b8f4e2f0d39f7ade28e4eef7d2934522b752"
+  "nodeVersion": "v22.23.2",
+  "nodeImage": "node@sha256:8a34c4ab3ea2c5cd194f07e317b2a8f09461d3c8b05c4e34c8ccd56d56024c4d"
 }

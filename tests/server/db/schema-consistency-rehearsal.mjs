@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { randomBytes } from "node:crypto";
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { generateDrizzleJson, generateMigration } from "drizzle-kit/api";
@@ -11,6 +11,16 @@ import { checkMigrationSnapshots, readMigrationArtifactState,
   validateMigrationArtifactState } from "../../../scripts/lib/pg-schema-snapshot.ts";
 
 const migrationsFolder = fileURLToPath(new URL("../../../drizzle/pg", import.meta.url));
+
+async function installNonDeclarativeSchemaObjects(client) {
+  for (const file of ["0049_catalog_publication_revision.sql", "0050_published_guides.sql"]) {
+    const sql = await readFile(join(migrationsFolder, file), "utf8");
+    const statements = sql.split("--> statement-breakpoint").map(value => value.trim()).filter(Boolean);
+    for (const statement of statements) {
+      if (/^CREATE (?:FUNCTION|TRIGGER)\b/i.test(statement)) await client.query(statement);
+    }
+  }
+}
 
 async function sealReviewedReconciliationBaseline() {
   const state = await readMigrationArtifactState(migrationsFolder);
@@ -50,6 +60,10 @@ export async function runSchemaConsistencyRehearsal(t, pool, databaseUrl) {
     databaseOid = (await pool.query("select oid from pg_database where datname = $1", [shadowName])).rows[0].oid;
     target.pathname = `/${shadowName}`;
     shadow = new pg.Pool({ connectionString: target.href, max: 2, connectionTimeoutMillis: 5000, statement_timeout: 10_000 });
+    // The declared search indexes use pg_trgm's GIN operator class. Drizzle
+    // generates the indexes but does not emit extension lifecycle statements,
+    // so the empty comparison database must mirror migration 0048 first.
+    await shadow.query("CREATE EXTENSION IF NOT EXISTS pg_trgm");
     const current = generateDrizzleJson(schema);
     const withoutForeignKeys = structuredClone(current);
     for (const table of Object.values(withoutForeignKeys.tables)) table.foreignKeys = {};
@@ -57,8 +71,12 @@ export async function runSchemaConsistencyRehearsal(t, pool, databaseUrl) {
     const base = await generateMigration(generateDrizzleJson({}), withoutForeignKeys);
     const references = await generateMigration(withoutForeignKeys, current);
     for (const statement of [...base, ...references]) await shadow.query(statement);
+    // Triggers and stored functions are intentionally migration-owned because
+    // Drizzle's schema model cannot declare them. Reuse the reviewed migration
+    // statements so parity covers those objects without maintaining duplicate SQL.
+    await installNonDeclarativeSchemaObjects(shadow);
     const actual = await readPublicSchemaCatalog(pool), expected = await readPublicSchemaCatalog(shadow);
-    await t.test("migrated PostgreSQL schema matches the declared Drizzle schema including constraints and indexes", async () => {
+    await t.test("migrated PostgreSQL schema matches declared and migration-owned schema objects", async () => {
       const differences = schemaCatalogDifferences(actual, expected);
       assert.equal(differences.length, 0, JSON.stringify(differences, null, 2));
       t.diagnostic(`Schema parity: ${Object.keys(actual.tables).length} public tables, ${Object.keys(actual.columns).length} columns, ${Object.keys(actual.constraints).length} constraints, ${Object.keys(actual.indexes).length} indexes.`);
@@ -78,6 +96,8 @@ export async function runSchemaConsistencyRehearsal(t, pool, databaseUrl) {
         ["constraints", ["alter table agent_student_memory_settings rename constraint agent_student_memory_settings_user_id_fkey to changed_fk_name"]],
         ["constraints", ["alter table agent_student_memory_settings drop constraint agent_student_memory_settings_user_id_fkey", "alter table agent_student_memory_settings add constraint agent_student_memory_settings_user_id_fkey foreign key (user_id) references users(id) on delete restrict"]],
         ["tables", ["alter table users enable row level security"]],
+        ["triggers", ["alter table cities disable trigger cities_public_catalog_revision_trigger"]],
+        ["functions", ["create or replace function bump_public_catalog_revision() returns trigger language plpgsql set search_path = pg_catalog, public as $$ begin return null; end; $$"]],
         ["tables", ["create table unexpected_schema_object (id integer)"]],
       ];
       const connection = await shadow.connect();
