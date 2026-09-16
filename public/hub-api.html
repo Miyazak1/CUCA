@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CUAC | Student Hub</title>
     <link rel="stylesheet" href="shared-shell.css" />
-    <link rel="stylesheet" href="hub-workspace.css?v=20260904-api-v1" />
+    <link rel="stylesheet" href="hub-workspace.css?v=20260914-workspace-v2" />
   </head>
   <body data-agent-mode="off">
     <div class="page hub-api-page">
@@ -23,6 +23,19 @@
             <a class="hub-api-primary" href="application.html">Open application</a>
           </div>
         </header>
+
+        <section class="hub-api-next" aria-labelledby="hub-next-title" data-hub-next>
+          <div class="hub-api-next-copy">
+            <p class="hub-api-kicker">Next step</p>
+            <h2 id="hub-next-title" data-hub-next-title>Continue your application plan</h2>
+            <p data-hub-next-copy>Review your active choices, deadlines, and missing information before you submit.</p>
+            <a class="hub-api-primary" href="application.html" data-hub-next-action>Open application</a>
+          </div>
+          <div class="hub-api-next-signals" aria-label="Application signals">
+            <article><span>Application stage</span><strong data-hub-next-stage>Loading</strong></article>
+            <article><span>What needs attention</span><strong data-hub-next-attention>Checking your records</strong></article>
+          </div>
+        </section>
 
         <section class="hub-api-summary" aria-label="Account summary" data-hub-summary>
           <article><span>Application sets</span><strong data-hub-metric="sets">-</strong></article>
@@ -79,6 +92,6 @@
     </div>
 
     <script src="shared-shell.js"></script>
-    <script src="hub-runtime.js?v=20260904-api-v1"></script>
+    <script src="hub-runtime.js?v=20260914-workspace-v2"></script>
   </body>
 </html>

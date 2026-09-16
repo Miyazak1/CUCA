@@ -75,9 +75,16 @@ test("program mapper returns only public program DTO fields", () => {
 
   assert.equal(dto.name, "Computer Science");
   assert.equal(dto.university, "Zhejiang University");
+  assert.equal(dto.slug, "cs-bsc");
+  assert.equal(dto.citySlug, "hangzhou");
+  assert.equal(dto.durationYears, 4);
+  assert.equal(dto.subjectArea, "Computing");
+  assert.deepEqual(dto.cscaSubjects, ["mathematics"]);
+  assert.equal(dto.cscaRequirement, "Required");
+  assert.equal(dto.englishRequirement, "IELTS 6.0");
+  assert.equal(dto.scholarshipText, "Available");
   assert.equal(dto.sourceStatus, "verified");
-  assert.deepEqual(dto.sourceFieldLineage, { nameEn: "official" });
-  assert.equal("qualityScore" in dto, false);
+  assert.deepEqual(dto.sourceFieldLineage, { nameEn: "official" });  assert.equal("qualityScore" in dto, false);
   assert.equal("missingFields" in dto, false);
   assert.equal("createdByUserId" in dto, false);
   assert.equal("sourceNote" in dto, false);
@@ -149,9 +156,15 @@ test("school mapper excludes staff, quality, and tenant data", () => {
 
   assert.equal(dto.slug, "zju");
   assert.equal(dto.programCount, 10);
+  assert.equal(dto.province, "Zhejiang");
+  assert.equal(dto.cscaRequired, true);
+  assert.deepEqual(dto.cscaSubjects, ["math"]);
+  assert.equal(dto.englishRequirement, "IELTS 6.0");
+  assert.deepEqual(dto.subjectTags, ["engineering"]);
+  assert.deepEqual(dto.languageTags, ["english"]);
+  assert.deepEqual(dto.campusHighlights, ["Hangzhou"]);
   assert.equal(dto.sourceStatus, "verified");
-  assert.equal("staffMemberships" in dto, false);
-  assert.equal("tenantSettings" in dto, false);
+  assert.equal("staffMemberships" in dto, false);  assert.equal("tenantSettings" in dto, false);
   assert.equal("qualityScore" in dto, false);
   assert.equal("contactNotes" in dto, false);
   assert.equal("sourceNote" in dto, false);
@@ -258,6 +271,8 @@ test("scholarship and city mappers return public DTO shapes", () => {
   const cityDetail = toPublicCityDetailDto(cityRow);
 
   assert.equal(scholarship.sourceStatus, "verified");
+  assert.equal(scholarship.applicableDegree, "bachelor");
+  assert.equal(scholarship.applicableProgram, null);
   assert.equal("sourceNote" in scholarship, false);
   assert.deepEqual(scholarship.benefitItems, [{ key: "tuition", label: "Tuition", included: true, note: null }]);
   assert.deepEqual(scholarshipDetail.bodySections[0].items, ["Apply early"]);

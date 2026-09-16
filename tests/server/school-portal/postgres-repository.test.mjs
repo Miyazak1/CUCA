@@ -48,7 +48,8 @@ test("Postgres school portal repository lists tenant queue through school projec
   assert.match(calls[0].statement, /sa\.status <> 'pending_submission'/);
   assert.doesNotMatch(calls[0].statement, /select \*/i);
   assert.doesNotMatch(calls[0].statement, /application_choices|application_sets|student_profiles|payments|agent_/i);
-  assert.deepEqual(calls[0].params, ["school-1"]);
+  assert.match(calls[0].statement, /limit \$2 offset \$3/);
+  assert.deepEqual(calls[0].params, ["school-1", 50, 0]);
 });
 
 test("Postgres school portal repository searches CUAC ID inside the current tenant projection", async () => {
@@ -56,7 +57,8 @@ test("Postgres school portal repository searches CUAC ID inside the current tena
   const repository = new PostgresSchoolPortalRepository(client);
 
   assert.deepEqual(await repository.listApplicationQueueBySchoolId("school-1", "CUAC-2026-004218"), []);
-  assert.deepEqual(calls[0].params, ["school-1", "CUAC-2026-004218"]);
+  assert.deepEqual(calls[0].params, ["school-1", "CUAC-2026-004218", 50, 0]);
+  assert.match(calls[0].statement, /limit \$3 offset \$4/);
   assert.match(calls[0].statement, /sa\.school_id = \$1/);
   assert.match(calls[0].statement, /sa\.cuac_id = \$2/);
   assert.match(calls[0].statement, /sa\.status <> 'pending_submission'/);
@@ -123,7 +125,7 @@ test("Postgres school workflow rechecks live write authority and atomically reco
     if (/from schools/.test(statement)) return [{ id: "school-1" }];
     if (/from school_staff_memberships/.test(statement)) return [{ role: "admissions" }];
     if (/from school_applications where/.test(statement)) return [{
-      id: "app-1", schoolId: "school-1", applicationRecordFormat: "cuac.program-application.v2",
+      id: "app-1", schoolId: "school-1", applicationRecordFormat: "cuac.program-application.v1",
       applicationSetId: "set-1", studentUserId: "student-1", status: "new", schoolRevision: 1, submittedAt: changedAt,
     }];
     if (/from school_application_status_events/.test(statement)) return [];

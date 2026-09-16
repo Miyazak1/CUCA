@@ -4,10 +4,10 @@ const authIcons = {
 
 const authParams = new URLSearchParams(window.location.search);
 const runtimeStatus = document.querySelector("[data-auth-runtime-status]");
-const registerTab = document.querySelector('[data-auth-tab="register"]');
-const schoolField = document.querySelector("[data-school-login-field]");
-const schoolSelect = document.querySelector("[data-auth-school-id]");
+const workspacePicker = document.querySelector("[data-workspace-picker]");
+const workspaceOptions = document.querySelector("[data-workspace-options]");
 let pendingContinuation = readContinuationCapability();
+let availableWorkspaces = [];
 
 const roleProfiles = {
   student: {
@@ -21,9 +21,9 @@ const roleProfiles = {
     signinButton: "Sign in to Hub",
     nextTitle: "After sign in",
     nextCopy: "New accounts complete a short setup before entering Hub.",
-    nextHref: "hub.html",
+    nextHref: "hub-api.html",
     nextLabel: "Open Hub",
-    registerHref: "onboarding.html",
+    registerHref: "onboarding-api.html",
     emailPlaceholder: "you@example.com",
   },
   school: {
@@ -52,7 +52,7 @@ const roleProfiles = {
     signinButton: "Sign in to staff tools",
     nextTitle: "Internal access boundary",
     nextCopy: "Internal actions remain permission checked and auditable.",
-    nextHref: "ops-admin.html",
+    nextHref: "ops-admin-api.html",
     nextLabel: "Open staff tools",
     emailPlaceholder: "name@cuac.com",
   },
@@ -60,7 +60,6 @@ const roleProfiles = {
 
 let currentRole = "student";
 let currentMode = "signin";
-let schoolsLoaded = false;
 
 document.querySelectorAll("[data-auth-icon]").forEach((target) => {
   target.innerHTML = authIcons[target.dataset.authIcon] || "";
@@ -86,8 +85,7 @@ function setStatus(message = "", state = "") {
 }
 
 function setMode(requestedMode) {
-  const mode = requestedMode === "register" && currentRole !== "student" ? "signin" : requestedMode;
-  currentMode = ["signin", "register", "reset"].includes(mode) ? mode : "signin";
+  currentMode = ["signin", "register", "reset"].includes(requestedMode) ? requestedMode : "signin";
   document.querySelectorAll("[data-auth-tab]").forEach((tab) => {
     const active = tab.dataset.authTab === currentMode;
     tab.classList.toggle("active", active);
@@ -127,19 +125,6 @@ function setRole(role) {
   currentRole = normalizeAuthRole(role);
   const profile = roleProfiles[currentRole];
   const hasContinuation = Boolean(pendingContinuation);
-
-  document.querySelectorAll("[data-auth-role]").forEach((button) => {
-    const active = button.dataset.authRole === currentRole;
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-selected", active ? "true" : "false");
-  });
-
-  setText("[data-auth-eyebrow]", profile.eyebrow);
-  setText("[data-auth-title]", profile.title);
-  setText("[data-auth-lead]", profile.lead);
-  setText("[data-signin-title]", profile.signinTitle);
-  setText("[data-signin-copy]", profile.signinCopy);
-  setText("[data-auth-submit]", profile.signinButton);
   setText("[data-next-title]", hasContinuation ? "Continue after sign in" : profile.nextTitle);
   setText("[data-next-copy]", hasContinuation ? "CUAC will consume the server-verified saved navigation after this account and role are authorized." : profile.nextCopy);
 
@@ -149,27 +134,6 @@ function setRole(role) {
     nextLink.textContent = hasContinuation ? "Continue task" : profile.nextLabel;
   }
 
-  document.querySelectorAll('input[type="email"]').forEach((input) => {
-    input.placeholder = profile.emailPlaceholder;
-  });
-
-  const isStudent = currentRole === "student";
-  if (registerTab) {
-    registerTab.disabled = !isStudent;
-    registerTab.setAttribute("aria-disabled", isStudent ? "false" : "true");
-    registerTab.title = isStudent ? "" : "School and CUAC staff roles must be granted by an authorized administrator.";
-  }
-  if (!isStudent && currentMode === "register") setMode("signin");
-
-  if (schoolField && schoolSelect) {
-    schoolField.hidden = currentRole !== "school";
-    schoolSelect.required = currentRole === "school";
-  }
-  if (currentRole === "school") void loadSchools();
-
-  const resetAccountType = document.querySelector("[data-reset-account-type]");
-  if (resetAccountType) resetAccountType.value = currentRole;
-
   const continuationStrip = document.querySelector("[data-auth-continuation-strip]");
   continuationStrip?.classList.toggle("hidden", !hasContinuation);
   if (hasContinuation) {
@@ -177,9 +141,6 @@ function setRole(role) {
     setText("[data-auth-continuation-copy]", "The one-time continuation is bound to this browser session and will be rechecked by the server before redirecting.");
   }
 
-  setStatus(
-    isStudent ? "" : "School and CUAC staff accounts use administrator-granted access. Self-registration creates student accounts only.",
-  );
 }
 
 async function requestJson(path, options = {}) {
@@ -220,9 +181,9 @@ function validateConsumedContinuation(value, role) {
           : false;
   const routeAllowed = (
     (actionKey === "application.add_choice" && ["/application.html", "/application.html#add-choice"].includes(targetRoute))
-    || (actionKey === "navigation.open_student_workspace" && ["/onboarding.html", "/hub.html", "/favourites.html", "/application.html", "/billing.html", "/notifications.html", "/preferences.html"].includes(targetRoute))
-    || (actionKey === "navigation.open_school_workspace" && ["/school-portal.html", "/school-settings.html"].includes(targetRoute))
-    || (actionKey === "navigation.open_ops_workspace" && targetRoute === "/ops-admin.html")
+    || (actionKey === "navigation.open_student_workspace" && ["/onboarding-api.html", "/hub-api.html", "/favourites-api.html", "/application.html", "/billing-api.html", "/notifications.html", "/preferences-api.html"].includes(targetRoute))
+    || (actionKey === "navigation.open_school_workspace" && ["/school-portal.html", "/school-settings-api.html"].includes(targetRoute))
+    || (actionKey === "navigation.open_ops_workspace" && targetRoute === "/ops-admin-api.html")
   );
   return roleAllowed && routeAllowed ? targetRoute : null;
 }
@@ -240,30 +201,6 @@ async function consumePendingContinuation(role) {
   return targetRoute;
 }
 
-async function loadSchools() {
-  if (schoolsLoaded || !schoolSelect) return;
-  schoolSelect.disabled = true;
-  schoolSelect.replaceChildren(new Option("Loading published universities...", ""));
-  try {
-    const schools = await requestJson("/api/v1/catalog/schools?limit=100");
-    schoolSelect.replaceChildren(new Option("Choose your university", ""));
-    (Array.isArray(schools) ? schools : []).forEach((school) => {
-      if (typeof school?.id !== "string" || typeof school?.nameEn !== "string") return;
-      const label = school.nameZh ? `${school.nameEn} · ${school.nameZh}` : school.nameEn;
-      schoolSelect.append(new Option(label, school.id));
-    });
-    schoolsLoaded = true;
-    if (schoolSelect.options.length === 1) {
-      schoolSelect.options[0].textContent = "No published universities are available";
-    }
-  } catch (error) {
-    schoolSelect.replaceChildren(new Option("Universities could not be loaded", ""));
-    setStatus(error.message, "error");
-  } finally {
-    schoolSelect.disabled = false;
-  }
-}
-
 function setButtonBusy(button, busy, busyLabel) {
   if (!button) return () => {};
   const originalLabel = button.textContent;
@@ -275,16 +212,87 @@ function setButtonBusy(button, busy, busyLabel) {
   };
 }
 
+function isWorkspace(value) {
+  if (!value || typeof value !== "object" || typeof value.label !== "string" || value.label.length > 200) return false;
+  if (value.selectedSurface === "student") {
+    return value.activeRole === "student" && value.tenantSchoolId === null;
+  }
+  if (value.selectedSurface === "school") {
+    return value.activeRole === "school_staff"
+      && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value.tenantSchoolId || "");
+  }
+  return value.selectedSurface === "ops"
+    && ["cuac_ops", "cuac_admin"].includes(value.activeRole)
+    && value.tenantSchoolId === null;
+}
+
+function clearWorkspaceChoices() {
+  availableWorkspaces = [];
+  workspaceOptions?.replaceChildren();
+  if (workspacePicker) workspacePicker.hidden = true;
+}
+
+function renderWorkspaceChoices(workspaces) {
+  const source = Array.isArray(workspaces) ? workspaces : [];
+  const verified = source.filter(isWorkspace);
+  if (!workspacePicker || !workspaceOptions || verified.length < 2 || verified.length !== source.length) {
+    throw new Error("The server returned an invalid workspace selection.");
+  }
+  availableWorkspaces = verified;
+  workspaceOptions.replaceChildren(...verified.map((workspace, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "workspace-option";
+    button.dataset.workspaceIndex = String(index);
+    const title = document.createElement("strong");
+    title.textContent = workspace.label;
+    const detail = document.createElement("span");
+    detail.textContent = workspace.selectedSurface === "student"
+      ? "Student"
+      : workspace.selectedSurface === "school" ? "School staff" : "CUAC staff";
+    button.append(title, detail);
+    return button;
+  }));
+  workspacePicker.hidden = false;
+}
+
+async function finishSignIn(session) {
+  const serverRole = normalizeAuthRole(session?.activeRole);
+  const destination = await consumePendingContinuation(session?.activeRole) || destinationFor(serverRole);
+  document.querySelector("[data-auth-password]").value = "";
+  clearWorkspaceChoices();
+  setStatus("Signed in. Opening the authorized workspace...", "success");
+  window.setTimeout(() => window.location.assign(destination), 350);
+}
+
+async function signInToWorkspace(form, workspace, button) {
+  const email = form.querySelector("[data-auth-email]")?.value.trim();
+  const password = form.querySelector("[data-auth-password]")?.value;
+  const restore = setButtonBusy(button, true, "Opening...");
+  setStatus("Rechecking this workspace and creating your session...");
+  try {
+    const session = await requestJson("/api/v1/auth/sessions", {
+      method: "POST",
+      body: {
+        email,
+        password,
+        selectedSurface: workspace.selectedSurface === "school"
+          ? "school_staff" : workspace.selectedSurface === "ops" ? "cuac_internal" : "student",
+        ...(workspace.tenantSchoolId ? { schoolId: workspace.tenantSchoolId } : {}),
+      },
+    });
+    if (session?.workspaceSelectionRequired) throw new Error("The selected workspace could not be confirmed.");
+    await finishSignIn(session);
+  } catch (error) {
+    setStatus(error.message, "error");
+    restore();
+  }
+}
+
 async function handleSignIn(form) {
   if (!form.reportValidity()) return;
   const email = form.querySelector("[data-auth-email]")?.value.trim();
   const password = form.querySelector("[data-auth-password]")?.value;
-  const schoolId = currentRole === "school" ? schoolSelect?.value : undefined;
-  if (currentRole === "school" && !schoolId) {
-    schoolSelect?.focus();
-    setStatus("Choose the university connected to your staff membership.", "error");
-    return;
-  }
 
   const button = form.querySelector("[data-auth-submit]");
   const restore = setButtonBusy(button, true, "Signing in...");
@@ -292,17 +300,15 @@ async function handleSignIn(form) {
   try {
     const session = await requestJson("/api/v1/auth/sessions", {
       method: "POST",
-      body: {
-        email,
-        password,
-        selectedSurface: roleProfiles[currentRole].requestSurface,
-        ...(schoolId ? { schoolId } : {}),
-      },
+      body: { email, password },
     });
-    const serverRole = normalizeAuthRole(session?.activeRole);
-    const destination = await consumePendingContinuation(session?.activeRole) || destinationFor(serverRole);
-    setStatus("Signed in. Opening the authorized workspace...", "success");
-    window.setTimeout(() => window.location.assign(destination), 350);
+    if (session?.workspaceSelectionRequired) {
+      renderWorkspaceChoices(session.workspaces);
+      setStatus("Account verified. Choose the workspace you want to open.", "success");
+      restore();
+      return;
+    }
+    await finishSignIn(session);
   } catch (error) {
     setStatus(error.message, "error");
     restore();
@@ -310,11 +316,6 @@ async function handleSignIn(form) {
 }
 
 async function handleRegister(form) {
-  if (currentRole !== "student") {
-    setMode("signin");
-    setStatus("School and CUAC staff roles must be granted by an authorized administrator.", "error");
-    return;
-  }
   if (!form.reportValidity()) return;
 
   const firstName = form.querySelector("[data-register-first-name]")?.value.trim() || "";
@@ -387,9 +388,11 @@ async function loadCurrentActor() {
 }
 
 document.addEventListener("click", (event) => {
-  const roleButton = event.target.closest("[data-auth-role]");
-  if (roleButton) {
-    setRole(roleButton.dataset.authRole);
+  const workspaceButton = event.target.closest("[data-workspace-index]");
+  if (workspaceButton) {
+    const workspace = availableWorkspaces[Number(workspaceButton.dataset.workspaceIndex)];
+    const form = document.querySelector('[data-auth-panel="signin"]');
+    if (workspace && form) void signInToWorkspace(form, workspace, workspaceButton);
     return;
   }
 
@@ -415,6 +418,10 @@ document.addEventListener("click", (event) => {
   }
 });
 
+document.querySelectorAll("[data-auth-email], [data-auth-password]").forEach((input) => {
+  input.addEventListener("input", clearWorkspaceChoices);
+});
+
 document.querySelectorAll(".auth-form").forEach((form) => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -437,7 +444,7 @@ if ("IntersectionObserver" in window) {
   document.querySelectorAll(".reveal").forEach((target) => target.classList.add("visible"));
 }
 
-setRole(normalizeAuthRole(authParams.get("role")));
+setRole("student");
 if (window.location.hash === "#reset") setMode("reset");
 else if (authParams.get("mode") === "register") setMode("register");
 if (authParams.get("continue") === "1" && !pendingContinuation) {

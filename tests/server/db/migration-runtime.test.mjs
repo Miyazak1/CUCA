@@ -132,7 +132,7 @@ test("PostgreSQL migration safety rejects connection-string option overrides bef
 });
 
 test("PostgreSQL migration runbook documents production approval gates", async () => {
-  const runbook = await readFile(new URL("../../../../CUAC_POSTGRES_MIGRATION_RUNBOOK.md", import.meta.url), "utf8");
+  const runbook = await readFile(new URL("../../../docs/architecture/CUAC_POSTGRES_MIGRATION_RUNBOOK.md", import.meta.url), "utf8");
 
   assert.match(runbook, /CUAC_ALLOW_PRODUCTION_MIGRATION=true/);
   assert.match(runbook, /CUAC_MIGRATION_RUNBOOK_ACK=true/);

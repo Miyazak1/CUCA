@@ -61,6 +61,16 @@ function formatDate(value) {
   return new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "short", day: "numeric" }).format(date);
 }
 
+function formatVerificationDate(value) {
+  const date = new Date(value);
+  if (!Number.isFinite(date.getTime()) || date.getUTCFullYear() < 2000) return "尚未核验";
+  return formatDate(value);
+}
+
+function sourceStatusLabel(status) {
+  return ({ verified: "已核验", unverified: "尚未核验", stale: "待复核" })[status] || status || "尚未核验";
+}
+
 function textOrFallback(value, fallback = "未记录") {
   return typeof value === "string" && value.trim() ? value.trim() : fallback;
 }
@@ -136,10 +146,9 @@ function renderSettings(actor, school, corrections) {
       <section class="school-settings-section" aria-labelledby="school-access-title">
         <h2 id="school-access-title">会话与租户</h2>
         <dl class="school-settings-facts">
-          <div><dt>当前角色</dt><dd>${escapeHtml(actor.activeRole)}</dd></div>
-          <div><dt>登录强度</dt><dd>${escapeHtml(actor.authStrength)}</dd></div>
-          <div><dt>学校租户 ID</dt><dd class="is-id">${escapeHtml(actor.tenantSchoolId)}</dd></div>
-          <div><dt>用户 ID</dt><dd class="is-id">${escapeHtml(actor.actorUserId)}</dd></div>
+          <div><dt>当前角色</dt><dd>学校工作人员</dd></div>
+          <div><dt>登录强度</dt><dd>${actor.authStrength === "step-up" ? "已加强验证" : "普通登录"}</dd></div>
+          <div><dt>工作区范围</dt><dd>仅当前学校</dd></div>
         </dl>
       </section>
       <section class="school-settings-section" aria-labelledby="school-catalog-title">
@@ -148,8 +157,8 @@ function renderSettings(actor, school, corrections) {
           <div><dt>学校类型</dt><dd>${escapeHtml(textOrFallback(school.schoolType))}</dd></div>
           <div><dt>地区</dt><dd>${escapeHtml(textOrFallback(school.regionLabel || school.region || school.province))}</dd></div>
           <div><dt>城市</dt><dd>${escapeHtml(textOrFallback(school.cityZh || school.city))}</dd></div>
-          <div><dt>来源状态</dt><dd>${escapeHtml(textOrFallback(school.sourceStatus))}</dd></div>
-          <div><dt>最近核验</dt><dd>${escapeHtml(formatDate(school.lastVerifiedAt))}</dd></div>
+          <div><dt>来源状态</dt><dd>${escapeHtml(sourceStatusLabel(school.sourceStatus))}</dd></div>
+          <div><dt>最近核验</dt><dd>${escapeHtml(formatVerificationDate(school.lastVerifiedAt))}</dd></div>
           ${website ? `<div><dt>学校网站</dt><dd><a class="school-settings-link" href="${escapeHtml(website)}" rel="noopener noreferrer">打开</a></dd></div>` : ""}
           ${admissions ? `<div><dt>招生网站</dt><dd><a class="school-settings-link" href="${escapeHtml(admissions)}" rel="noopener noreferrer">打开</a></dd></div>` : ""}
           ${source ? `<div><dt>目录来源</dt><dd><a class="school-settings-link" href="${escapeHtml(source)}" rel="noopener noreferrer">核对来源</a></dd></div>` : ""}

@@ -77,6 +77,10 @@ function createRepository(existingIdentity = null) {
       calls.push({ method: "findPasswordIdentityByEmailNormalized", emailNormalized });
       return existingIdentity;
     },
+    async listAvailableSessionAuthorities(userId, at) {
+      calls.push({ method: "listAvailableSessionAuthorities", userId, at });
+      return [{ selectedSurface: "student", activeRole: "student", tenantSchoolId: null, label: "Student workspace" }];
+    },
     async createStudentAccount(input) {
       calls.push({ method: "createStudentAccount", input });
       return { userId: "student-1" };
@@ -177,6 +181,29 @@ test("student login creates session only for active account with valid password"
   assert.equal(result.activeRole, "student");
   assert.equal(calls.at(-1).method, "createSession");
   assert.equal(Object.hasOwn(calls.at(-1).input, "upgradedPasswordHash"), false);
+});
+
+test("unified login returns only verified workspace choices and creates no session when several are available", async () => {
+  const schoolId = "11111111-1111-4111-8111-111111111111";
+  const { calls, repository } = createRepository({
+    userId: "multi-1", emailNormalized: "multi@example.com",
+    passwordHash: await hashPassword("strong-password"), accountStatus: "active",
+  });
+  repository.listAvailableSessionAuthorities = async (userId, at) => {
+    calls.push({ method: "listAvailableSessionAuthorities", userId, at });
+    return [
+      { selectedSurface: "student", activeRole: "student", tenantSchoolId: null, label: "Student workspace" },
+      { selectedSurface: "school", activeRole: "school_staff", tenantSchoolId: schoolId, label: "Example University" },
+    ];
+  };
+  const result = await new AuthCredentialsService(repository, { now }).createStudentSession({
+    email: "multi@example.com", password: "strong-password",
+  });
+  assert.deepEqual(result, { workspaceSelectionRequired: true, workspaces: [
+    { selectedSurface: "student", activeRole: "student", tenantSchoolId: null, label: "Student workspace" },
+    { selectedSurface: "school", activeRole: "school_staff", tenantSchoolId: schoolId, label: "Example University" },
+  ] });
+  assert.equal(calls.some(call => call.method === "createSession"), false);
 });
 
 test("login requests an authorized school or CUAC internal context without accepting tenant authority implicitly", async () => {

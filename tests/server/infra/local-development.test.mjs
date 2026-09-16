@@ -10,6 +10,7 @@ import {
   assertLoopbackPostgresBinding,
   createLocalDevelopmentState,
   isHealthyLocalApplicationStatus,
+  isDockerPortConflictDiagnostic,
   localDatabaseUrl,
   localRuntimeEnvironment,
   localSyntheticAccounts,
@@ -58,6 +59,12 @@ test("local runtime accepts only exact loopback database identity and port bound
   assert.equal(resolveLocalPort("3100", 3000, "port"), 3100);
   assert.throws(() => resolveLocalPort("80", 3000, "port"), /between/);
   assert.throws(() => resolveLocalPort("3.5", 3000, "port"), /integer/);
+});
+
+test("Docker Desktop port allocation diagnostics trigger safe local recovery", () => {
+  assert.equal(isDockerPortConflictDiagnostic("Bind for 127.0.0.1:55432 failed: port is already allocated"), true);
+  assert.equal(isDockerPortConflictDiagnostic("ports are not available: exposing port TCP 127.0.0.1:62251: listen tcp 127.0.0.1:62251: bind: An attempt was made to access a socket in a way forbidden by its access permissions."), true);
+  assert.equal(isDockerPortConflictDiagnostic("database image is missing"), false);
 });
 
 test("local PostgreSQL container binds loopback, pins the image, and keeps the password out of argv", () => {
@@ -119,7 +126,6 @@ test("local command grammar and repository wiring remain explicit", async () => 
   assert.throws(() => parseLocalDevelopmentCommand(["up", "--force"]), /one local development command/);
 
   const projectDir = fileURLToPath(new URL("../../../", import.meta.url));
-  const workspaceDir = fileURLToPath(new URL("../../../../", import.meta.url));
   const packageJson = JSON.parse(await readFile(`${projectDir}/package.json`, "utf8"));
   const gitignore = await readFile(`${projectDir}/.gitignore`, "utf8");
   const seed = await readFile(`${projectDir}/scripts/local-seed.ts`, "utf8");
@@ -128,9 +134,7 @@ test("local command grammar and repository wiring remain explicit", async () => 
   const viteConfig = await readFile(`${projectDir}/vite.config.ts`, "utf8");
   const windowsLauncher = await readFile(`${projectDir}/start-cuac-local.bat`, "utf8");
   const windowsAccountsLauncher = await readFile(`${projectDir}/show-cuac-local-accounts.bat`, "utf8");
-  const workspaceLauncher = await readFile(`${workspaceDir}/start-cuac-local.bat`, "utf8");
-  const workspaceAccountsLauncher = await readFile(`${workspaceDir}/show-cuac-local-accounts.bat`, "utf8");
-  const localRunbook = await readFile(`${workspaceDir}/CUAC_LOCAL_DEVELOPMENT_RUNBOOK.md`, "utf8");
+  const localRunbook = await readFile(`${projectDir}/docs/architecture/CUAC_LOCAL_DEVELOPMENT_RUNBOOK.md`, "utf8");
   assert.equal(packageJson.scripts["dev:local"], "node scripts/local-development.ts dev");
   assert.equal(packageJson.scripts["local:up"], "node scripts/local-development.ts up");
   assert.match(gitignore, /^\/\.cuac-local\/$/m);
@@ -157,7 +161,7 @@ test("local command grammar and repository wiring remain explicit", async () => 
   assert.match(localDevelopment, /await assertSuccessfulSeed\(state\)/);
   assert.match(localDevelopment, /installationId: state\.installationId/);
   assert.match(windowsLauncher, /CUAC_LOCAL_APP_PORT=52118/);
-  assert.match(windowsLauncher, /CUAC_LOCAL_PG_PORT=62251/);
+  assert.doesNotMatch(windowsLauncher, /CUAC_LOCAL_PG_PORT/);
   assert.match(windowsAccountsLauncher, /npm run local:credentials/);
   assert.doesNotMatch(windowsAccountsLauncher, /studentPassword|databasePassword|SESSION_SECRET/);
   assert.match(localSmoke, /\/api\/v1\/student\/saved-items/);
@@ -174,19 +178,13 @@ test("local command grammar and repository wiring remain explicit", async () => 
   assert.match(viteConfig, /process\.env\.CUAC_LOCAL_RUNTIME === "1"/);
   assert.match(viteConfig, /isCuacLocalRuntime\s*\? \[\]/);
   assert.match(windowsLauncher, /set "CUAC_LOCAL_APP_PORT=52118"/);
-  assert.match(windowsLauncher, /set "CUAC_LOCAL_PG_PORT=62251"/);
+  assert.match(windowsLauncher, /Postgres: automatic 127\.0\.0\.1 port/);
   assert.match(windowsLauncher, /call npm run dev:local/);
   assert.match(windowsLauncher, /docker version/);
   assert.match(windowsLauncher, /--check/);
   assert.doesNotMatch(windowsLauncher, /(?:call|start)\s+npm install|docker pull|local:stop|taskkill|Stop-Process/i);
-  assert.match(workspaceLauncher, /call "%~dp0frontend\\start-cuac-local\.bat" %\*/);
-  assert.match(workspaceAccountsLauncher, /call "%~dp0frontend\\show-cuac-local-accounts\.bat" %\*/);
-  for (const wrapper of [workspaceLauncher, workspaceAccountsLauncher]) {
-    assert.doesNotMatch(wrapper, /52118|53855|62251|password|secret|token|POSTGRES_URL|DATABASE_URL/i);
-    assert.doesNotMatch(wrapper, /npm install|docker pull|local:stop|taskkill|Stop-Process/i);
-  }
-  assert.match(localRunbook, /Windows launcher pins port `62251`/);
+  assert.match(localRunbook, /automatically rebinds an owned stopped container/);
   assert.match(localRunbook, /Windows launcher pins port `52118`/);
-  assert.match(localRunbook, /fails visibly instead of changing ports or connecting to a different database/);
+  assert.match(localRunbook, /re-creates only its owned container on a new loopback/);
   assert.match(localRunbook, /`\.cuac-local\/seeded\.json` proves that migrations and the idempotent seed completed/);
 });

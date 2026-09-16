@@ -14,6 +14,7 @@ export type ReleaseGateReport = {
   deploymentAuthorized: false;
   readyForHumanReview: boolean;
   environment: ProductionReadinessReport["environment"];
+  releaseScope: ProductionReadinessReport["releaseScope"];
   release: {
     expected: {
       commitSha: string | null;
@@ -68,6 +69,10 @@ export function inspectReleaseGate(
   }
   if (!readiness.ready) failures.push("Production-readiness preflight has blocking checks.");
   if (!staging.readyForReview) failures.push("Staging acceptance evidence is not ready for review.");
+  if (readiness.releaseScope === "unknown" || staging.releaseScope === "unknown"
+    || readiness.releaseScope !== staging.releaseScope) {
+    failures.push("Staging evidence release scope does not match the production-readiness release scope.");
+  }
 
   compareIdentity(expected.commitSha, evidence.commitSha, "commit SHA", failures);
   compareIdentity(expected.imageDigest, evidence.imageDigest, "container image digest", failures);
@@ -85,6 +90,7 @@ export function inspectReleaseGate(
     deploymentAuthorized: false,
     readyForHumanReview: failures.length === 0,
     environment: readiness.environment,
+    releaseScope: readiness.releaseScope,
     release: { expected, evidence },
     readiness: { gateMode: readiness.gateMode, ready: readiness.ready },
     stagingEvidence: { readyForReview: staging.readyForReview },

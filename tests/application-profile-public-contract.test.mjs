@@ -139,7 +139,21 @@ test("private file UI follows upload intent, integrity, scan and owner actions",
   assert.match(html, /Only server scan results can mark a file clean/);
 });
 
-test("application billing and final submission use server-authoritative contracts", async () => {
+test("current release keeps student application material submission out of the visible workflow", async () => {
+  const [html, script] = await Promise.all([
+    source("public/application.html"),
+    source("public/application.js"),
+  ]);
+
+  assert.match(script, /const STUDENT_MATERIAL_SUBMISSION_ENABLED = false/);
+  assert.match(script, /const profileSections = \["applicant", "education", "assessments"\]/);
+  assert.match(html, /Application materials are submitted directly to each school through its official channel/);
+  assert.match(html, /data-profile-section-target="files" hidden aria-hidden="true"/);
+  assert.match(html, /data-profile-section="authorization" hidden aria-hidden="true"/);
+  assert.match(script, /if \(!STUDENT_MATERIAL_SUBMISSION_ENABLED\) return true/);
+});
+
+test("current release uses school handoff while retaining inactive server billing interfaces", async () => {
   const [html, script] = await Promise.all([
     source("public/application.html"),
     source("public/application.js"),
@@ -151,7 +165,8 @@ test("application billing and final submission use server-authoritative contract
     "/api/v1/billing/checkout-intents",
     "/api/v1/billing/invoices/",
     "/api/v1/auth/step-up",
-    "/submit",
+    "/school-handoff",
+    "/school-progress",
   ]) assert.match(script, new RegExp(endpoint.replaceAll("/", "\\/")));
 
   assert.match(script, /function currentApplicationChoiceIds\(\)[\s\S]+\.sort\(\)/);
@@ -159,11 +174,15 @@ test("application billing and final submission use server-authoritative contract
   assert.match(script, /checkoutUrl\.protocol !== "https:"/);
   assert.match(script, /status\.status === "succeeded"[\s\S]+refreshAllChoicePreflights/);
   assert.match(script, /billingEntitlement\?\.current === true/);
-  assert.match(script, /body:\s*\{ expectedRevision: currentApplicationSet\.revision, choiceIds, confirmSubmission: true \}/);
-  assert.match(script, /acceptanceScope !== "cuac_internal"/);
+  assert.match(script, /const APPLICATION_PAYMENT_ENABLED = false/);
+  assert.match(script, /body:\s*\{ expectedRevision: currentApplicationSet\.revision, choiceIds, confirmHandoff: true \}/);
+  assert.match(script, /handoffScope !== "school_contact"/);
+  assert.match(script, /materialsShared !== false/);
+  assert.match(script, /paymentRequired !== false/);
   assert.match(html, /type="password"[^>]+autocomplete="current-password"/);
   assert.match(html, /Card and bank credentials never enter this application/);
-  assert.match(html, /CUAC internal acceptance/);
+  assert.match(html, /data-application-step="payment"[^>]*hidden/);
+  assert.match(html, /Basic information delivered/);
 
   for (const forbidden of [
     "paid-demo",

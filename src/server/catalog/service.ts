@@ -5,9 +5,11 @@ import type {
   CatalogListOptions,
   PublicCityDetailDto,
   PublicCityDto,
+  PublicGuideDto,
   PublicProgramDetailDto,
   PublicProgramDto,
   PublicProgramIntakeDto,
+  PublicProgramPageDto,
   PublicScholarshipDetailDto,
   PublicScholarshipDto,
   PublicSchoolDetailDto,
@@ -18,6 +20,7 @@ import type { PublicProgramRequirementsDto } from "./requirements.ts";
 
 export type PublicCatalogRepository = {
   listPrograms(options: CatalogListOptions): Promise<PublicProgramDto[]>;
+  countPrograms?(options: CatalogListOptions): Promise<number>;
   getProgram(programId: string): Promise<PublicProgramDetailDto | null>;
   listProgramIntakes(programId: string, options: CatalogListOptions): Promise<PublicProgramIntakeDto[]>;
   getProgramRequirements(programId: string, intakeId: string): Promise<PublicProgramRequirementsDto | null>;
@@ -27,6 +30,8 @@ export type PublicCatalogRepository = {
   getScholarship(scholarshipId: string): Promise<PublicScholarshipDetailDto | null>;
   listCities(options: CatalogListOptions): Promise<PublicCityDto[]>;
   getCity(citySlug: string): Promise<PublicCityDetailDto | null>;
+  listGuides(options: CatalogListOptions): Promise<PublicGuideDto[]>;
+  getGuide(guideSlug: string): Promise<PublicGuideDto | null>;
 };
 
 export class CatalogService {
@@ -39,6 +44,21 @@ export class CatalogService {
   async listPrograms(context: RequestContext, options: CatalogListOptions = {}) {
     authorizePublicCatalogRead(context);
     return this.repository.listPrograms(normalizeListOptions(options));
+  }
+
+  async listProgramsPage(context: RequestContext, options: CatalogListOptions = {}): Promise<PublicProgramPageDto> {
+    authorizePublicCatalogRead(context);
+    const normalized = normalizeProgramListOptions(options);
+    const [items, total] = await Promise.all([
+      this.repository.listPrograms(normalized),
+      this.repository.countPrograms?.(normalized),
+    ]);
+    return {
+      items,
+      total: total ?? items.length,
+      limit: normalized.limit,
+      offset: normalized.offset,
+    };
   }
 
   async getProgram(context: RequestContext, programId: string) {
@@ -89,6 +109,20 @@ export class CatalogService {
     }
     return this.repository.getCity(slug);
   }
+
+  async listGuides(context: RequestContext, options: CatalogListOptions = {}) {
+    authorizePublicCatalogRead(context);
+    return this.repository.listGuides(normalizeListOptions(options));
+  }
+
+  async getGuide(context: RequestContext, guideSlug: string) {
+    authorizePublicCatalogRead(context);
+    const slug = inputText(guideSlug, "guideSlug", 120).toLowerCase();
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+      throw badRequest("guideSlug must use lowercase URL-safe segments.");
+    }
+    return this.repository.getGuide(slug);
+  }
 }
 
 export function authorizePublicCatalogRead(context: RequestContext): void {
@@ -102,10 +136,30 @@ export function authorizePublicCatalogRead(context: RequestContext): void {
   }
 }
 
-export function normalizeListOptions(options: CatalogListOptions): Required<Omit<CatalogListOptions, "query">> & Pick<CatalogListOptions, "query"> {
+export function normalizeListOptions(options: CatalogListOptions): Pick<CatalogListOptions, "query"> & { limit: number; offset: number } {
   return {
     limit: Math.min(Math.max(options.limit ?? 20, 1), 100),
     offset: Math.max(options.offset ?? 0, 0),
     query: options.query?.trim() || undefined,
+  };
+}
+
+export function normalizeProgramListOptions(options: CatalogListOptions): CatalogListOptions & { limit: number; offset: number } {
+  const base = normalizeListOptions(options);
+  const text = (value: string | undefined, maxLength = 120) => value?.trim().slice(0, maxLength) || undefined;
+  return {
+    ...base,
+    degree: text(options.degree),
+    subject: text(options.subject),
+    language: text(options.language),
+    city: text(options.city),
+    school: text(options.school),
+    intake: text(options.intake),
+    deadline: text(options.deadline),
+    tuition: text(options.tuition),
+    scholarship: options.scholarship === true || undefined,
+    upcomingDeadline: options.upcomingDeadline === true || undefined,
+    languageRequirement: text(options.languageRequirement),
+    sort: text(options.sort, 40),
   };
 }

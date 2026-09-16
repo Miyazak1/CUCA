@@ -35,3 +35,32 @@ test("application route locator selects only an exact owned application set", as
   assert.match(script, /requested application set is not available to this student account/);
   assert.doesNotMatch(script, /applicationSetLocator[^\n]+\|\| sets\[0\]/);
 });
+
+test("shared navigation and Auth stay on server-backed workspaces", async () => {
+  const [shell, shellCss, auth, home] = await Promise.all([
+    source("public/shared-shell.js"),
+    source("public/shared-shell.css"),
+    source("public/auth.js"),
+    source("public/home-v3.js"),
+  ]);
+
+  assert.match(shell, /href: "hub-api\.html"/);
+  assert.match(shell, /"school-portal\.html"/);
+  assert.match(shell, /"ops-admin-api\.html"/);
+  assert.match(shell, /"favourites-api\.html"/);
+  assert.match(shell, /"billing-api\.html"/);
+  assert.match(shell, /"preferences-api\.html"/);
+  assert.match(shell, /if \(!runtimeAuthState\.resolved\)/);
+  assert.match(shell, /account-auth-pending/);
+  assert.match(shell, /function activeWorkspaceHref\(\)/);
+  assert.match(shell, /if \(shellContext\.authState === "signed-in"\)[\s\S]*window\.location\.replace\(target\)/);
+  assert.match(shellCss, /\.account-auth-pending/);
+  assert.match(auth, /nextHref: "hub-api\.html"/);
+  assert.match(auth, /registerHref: "onboarding-api\.html"/);
+  assert.match(auth, /nextHref: "ops-admin-api\.html"/);
+  assert.match(home, /window\.location\.href = "onboarding-api\.html"/);
+
+  for (const legacyTarget of ["hub.html", "favourites.html", "billing.html", "preferences.html", "onboarding.html", "school-settings.html", "ops-admin.html"]) {
+    assert.doesNotMatch(`${shell}\n${auth}\n${home}`, new RegExp(`(?<![-a-z])${legacyTarget.replace(".", "\\.")}`));
+  }
+});

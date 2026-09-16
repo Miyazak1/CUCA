@@ -1,11 +1,14 @@
 import { execFile, spawn } from "node:child_process";
 import assert from "node:assert/strict";
 import { randomBytes } from "node:crypto";
+import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import { promisify } from "node:util";
 import { setTimeout as delay } from "node:timers/promises";
 import { fileURLToPath } from "node:url";
 import { buildMigrationRelease } from "./lib/pg-release.ts";
 import { buildLinuxMigrationImage } from "./lib/pg-linux-rehearsal.ts";
+import { createCatalogMigrationValidationReport } from "../src/server/catalog/seed-contract.ts";
 
 const execFileAsync = promisify(execFile);
 const projectDir = fileURLToPath(new URL("../", import.meta.url));
@@ -24,6 +27,10 @@ const baselinePendingCount = baselineOption?.includes("=") ? baselineOption.slic
 const withLinux = process.argv.includes("--linux");
 const routingReviewOnly = process.argv.includes("--routing-review");
 const dataQualityOnly = process.argv.includes("--data-quality");
+const catalogSeedOptions = process.argv.slice(2).filter(arg => arg.startsWith("--catalog-seed="));
+const catalogSeedPath = catalogSeedOptions[0]
+  ? resolve(projectDir, catalogSeedOptions[0].slice("--catalog-seed=".length))
+  : null;
 const linuxNetwork = `cuac-linux-${suffix}`;
 const linuxControlNetwork = `${linuxNetwork}-control`;
 let linuxNetworkCreated = false;
@@ -43,10 +50,19 @@ async function docker(args: string[], env = process.env): Promise<string> {
 
 try {
   if (process.argv.slice(2).some(arg => !["--http", "--linux", "--routing-review", "--data-quality"].includes(arg)
-      && !/^--write-schema-baseline(?:=[1-9]\d*)?$/.test(arg))
+      && !/^--write-schema-baseline(?:=[1-9]\d*)?$/.test(arg) && !/^--catalog-seed=.+/.test(arg))
+    || catalogSeedOptions.length > 1
     || withLinux && (withHttp || writeSchemaBaseline || routingReviewOnly || dataQualityOnly)
     || routingReviewOnly && (withHttp || writeSchemaBaseline || dataQualityOnly)
-    || dataQualityOnly && (withHttp || writeSchemaBaseline)) throw new Error("Unknown or incompatible rehearsal options.");
+    || dataQualityOnly && (withHttp || writeSchemaBaseline)
+    || catalogSeedPath && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly)) throw new Error("Unknown or incompatible rehearsal options.");
+  if (catalogSeedPath) {
+    stage = "catalog-bundle-validation";
+    const bundle = JSON.parse(await readFile(catalogSeedPath, "utf8")) as unknown;
+    const report = createCatalogMigrationValidationReport(bundle);
+    if (!report.ok) throw new Error(`Catalog bundle failed validation: ${report.errors.join(" ")}`);
+    console.log(`Validated catalog bundle: ${report.bundleSha256} (${report.operations.length} operations)`);
+  }
   stage = "release-build";
   const release = await buildMigrationRelease(projectDir);
   console.log(`Prepared migration release: ${release.manifestSha256}`);
@@ -109,6 +125,7 @@ try {
     const testFile = withLinux ? "tests/server/db/linux-migration.test.mjs"
       : routingReviewOnly ? "tests/server/db/ops-routing-review-integration.test.mjs"
       : dataQualityOnly ? "tests/server/db/ops-data-quality-integration.test.mjs"
+      : catalogSeedPath ? "tests/server/db/catalog-seed-migration-rehearsal.mjs"
       : "tests/server/db/postgres-integration.test.mjs";
     const child = spawn(process.execPath, ["--test", testFile], {
       cwd: projectDir,
@@ -123,6 +140,7 @@ try {
         CUAC_PG_HTTP_REHEARSAL: withHttp ? "1" : "0",
         CUAC_PG_WRITE_SCHEMA_BASELINE: writeSchemaBaseline ? "1" : "0",
         CUAC_PG_SCHEMA_BASELINE_PENDING_COUNT: baselinePendingCount,
+        CUAC_PG_CATALOG_SEED_PATH: catalogSeedPath || "",
         CUAC_PG_RELEASE_PATH: release.output,
         CUAC_PG_RELEASE_SHA256: release.manifestSha256,
         ...(linuxImage ? {

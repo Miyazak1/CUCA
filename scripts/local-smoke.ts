@@ -31,7 +31,7 @@ if (!health.response.ok || health.body.status !== "ok" || health.body.database?.
 const programs = await json("/api/v1/catalog/programs?limit=100");
 if (!programs.response.ok || !Array.isArray(programs.body.data) || programs.body.data.length < 3) throw new Error("Synthetic catalog API check failed.");
 
-const schools = await json("/api/v1/catalog/schools?limit=10");
+const schools = await json("/api/v1/catalog/schools?limit=10&query=local%20north");
 const localSchool = Array.isArray(schools.body.data)
   ? schools.body.data.map(record).find(school => school.slug === "local-north-university")
   : undefined;
@@ -290,6 +290,15 @@ const opsLogin = await json("/api/v1/auth/sessions", {
 const opsCookie = opsLogin.response.headers.get("set-cookie")?.split(";", 1)[0];
 if (!opsLogin.response.ok || record(opsLogin.body.data).activeRole !== "cuac_ops" || !opsCookie
   || typeof fixtureSet.cuacId !== "string") throw new Error("Synthetic CUAC Ops login check failed.");
+const governedGuides = await json("/api/v1/ops/catalog/guides", { headers: { cookie: opsCookie } });
+const governedGuideItems = Array.isArray(governedGuides.body.data)
+  ? governedGuides.body.data.map(record)
+  : null;
+if (!governedGuides.response.ok || governedGuideItems === null || governedGuideItems.length < 5
+  || governedGuideItems.some(guide => typeof guide.id !== "string" || typeof guide.slug !== "string"
+    || typeof guide.version !== "number" || !["draft", "published", "archived"].includes(String(guide.status)))) {
+  throw new Error("Synthetic Ops governed guide registry check failed.");
+}
 if (catalogCorrection.status === "submitted") {
   const claimedCorrection = await json(`/api/v1/ops/catalog-corrections/${catalogCorrection.id}/claim`, {
     method: "POST",
@@ -457,6 +466,7 @@ console.log(JSON.stringify({
   opsOperationsSummary: "read",
   opsRequirementVersions: requirementVersionItems.length,
   opsCatalogGovernance: "read",
+  opsGovernedGuides: governedGuideItems.length,
   opsBillingReviewEvents: billingReviewItems.length,
   opsBillingReviewQueue: "read",
   opsRoutingReviewDeliveries: routingReviewItems.length,

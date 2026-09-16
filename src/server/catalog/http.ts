@@ -2,8 +2,8 @@ import { toErrorEnvelope } from "../shared/errors.ts";
 import { createRequestContext } from "../shared/request-context.ts";
 import type { CatalogService } from "./service.ts";
 
-type CatalogListName = "programs" | "programIntakes" | "schools" | "scholarships" | "cities";
-type CatalogDetailName = "program" | "school" | "scholarship" | "city";
+type CatalogListName = "programs" | "programIntakes" | "schools" | "scholarships" | "cities" | "guides";
+type CatalogDetailName = "program" | "school" | "scholarship" | "city" | "guide";
 
 export function createCatalogHttpHandlers(service: CatalogService) {
   return {
@@ -21,6 +21,8 @@ export function createCatalogHttpHandlers(service: CatalogService) {
     getScholarship: (request: Request, scholarshipId: string) => handleCatalogDetail(request, service, "scholarship", scholarshipId),
     listCities: (request: Request) => handleCatalogList(request, service, "cities"),
     getCity: (request: Request, citySlug: string) => handleCatalogDetail(request, service, "city", citySlug),
+    listGuides: (request: Request) => handleCatalogList(request, service, "guides"),
+    getGuide: (request: Request, guideSlug: string) => handleCatalogDetail(request, service, "guide", guideSlug),
   };
 }
 
@@ -29,6 +31,10 @@ async function handleCatalogList(request: Request, service: CatalogService, name
 
   try {
     const options = parseListOptions(request);
+    if (name === "programs") {
+      const page = await service.listProgramsPage(context, options);
+      return jsonResponse({ data: page.items, pagination: { total: page.total, limit: page.limit, offset: page.offset } });
+    }
     const data = name === "programIntakes"
       ? await service.listProgramIntakes(context, programId!, options)
       : await callList(service, context, name, options);
@@ -56,10 +62,23 @@ async function handleCatalogDetail(
 
 function parseListOptions(request: Request) {
   const url = new URL(request.url);
+  const boolean = (name: string) => ["1", "true", "yes"].includes(String(url.searchParams.get(name) || "").toLowerCase());
   return {
     limit: parseInteger(url.searchParams.get("limit")),
     offset: parseInteger(url.searchParams.get("offset")),
     query: url.searchParams.get("query") ?? undefined,
+    degree: url.searchParams.get("degree") ?? undefined,
+    subject: url.searchParams.get("subject") ?? undefined,
+    language: url.searchParams.get("language") ?? undefined,
+    city: url.searchParams.get("city") ?? undefined,
+    school: url.searchParams.get("school") ?? undefined,
+    intake: url.searchParams.get("intake") ?? undefined,
+    deadline: url.searchParams.get("deadline") ?? undefined,
+    tuition: url.searchParams.get("tuition") ?? undefined,
+    scholarship: boolean("scholarship"),
+    upcomingDeadline: boolean("upcomingDeadline"),
+    languageRequirement: url.searchParams.get("languageRequirement") ?? undefined,
+    sort: url.searchParams.get("sort") ?? undefined,
   };
 }
 
@@ -91,6 +110,8 @@ function callList(service: CatalogService, context: Parameters<CatalogService["l
       return service.listScholarships(context, options);
     case "cities":
       return service.listCities(context, options);
+    case "guides":
+      return service.listGuides(context, options);
     default:
       throw new Error("Unsupported catalog list route.");
   }
@@ -106,6 +127,8 @@ function callDetail(service: CatalogService, context: Parameters<CatalogService[
       return service.getScholarship(context, id);
     case "city":
       return service.getCity(context, id);
+    case "guide":
+      return service.getGuide(context, id);
     default:
       throw new Error("Unsupported catalog detail route.");
   }

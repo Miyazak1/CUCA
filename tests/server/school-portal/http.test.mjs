@@ -20,8 +20,8 @@ const schoolSession = {
 function createHandlers(authSession = schoolSession) {
   const calls = [];
   const repository = {
-    async listApplicationQueueBySchoolId(schoolId, cuacId) {
-      calls.push({ method: "listApplicationQueueBySchoolId", schoolId, cuacId });
+    async listApplicationQueueBySchoolId(schoolId, cuacId, pagination) {
+      calls.push({ method: "listApplicationQueueBySchoolId", schoolId, cuacId, pagination });
       return [{ id: APP_1, schoolId, studentUserId: "student-1", programId: "program-1", status: "submitted", submittedAt: null, firstViewedAt: null, schoolVisibleProfile: {}, routingMetadata: {} }];
     },
     async getApplicationById(applicationId) {
@@ -70,7 +70,7 @@ test("school portal HTTP queue uses tenant from session and ignores query school
   assert.equal(body.data[0].schoolId, "school-1");
   assert.equal(calls[0].sessionTokenHash, hashSessionToken("school-token"));
   assert.deepEqual(calls[1], { method: "findActiveSchoolMembershipByUserAndSchoolId", userId: "staff-1", schoolId: "school-1" });
-  assert.deepEqual(calls[2], { method: "listApplicationQueueBySchoolId", schoolId: "school-1", cuacId: undefined });
+  assert.deepEqual(calls[2], { method: "listApplicationQueueBySchoolId", schoolId: "school-1", cuacId: undefined, pagination: { limit: 50, offset: 0 } });
 });
 
 test("school portal HTTP forwards an exact CUAC ID inside the authenticated tenant", async () => {
@@ -86,7 +86,27 @@ test("school portal HTTP forwards an exact CUAC ID inside the authenticated tena
     method: "listApplicationQueueBySchoolId",
     schoolId: "school-1",
     cuacId: "CUAC-2026-004218",
+    pagination: { limit: 50, offset: 0 },
   });
+});
+
+test("school portal HTTP validates and forwards bounded pagination", async () => {
+  const { handlers, calls } = createHandlers();
+  const response = await handlers.listApplications(
+    new Request("https://cuac.test/api/v1/school/applications?limit=26&offset=50", {
+      headers: { cookie: `${SESSION_COOKIE_NAME}=school-token` },
+    }),
+  );
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(calls[2].pagination, { limit: 26, offset: 50 });
+
+  const invalid = await handlers.listApplications(
+    new Request("https://cuac.test/api/v1/school/applications?limit=101", {
+      headers: { cookie: `${SESSION_COOKIE_NAME}=school-token` },
+    }),
+  );
+  assert.equal(invalid.status, 400);
 });
 
 test("school portal HTTP rejects malformed CUAC ID before application repository access", async () => {

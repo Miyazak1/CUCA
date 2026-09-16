@@ -62,6 +62,9 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
           ip: resolveRequestIp(request),
         }, requestId);
 
+        if ("workspaceSelectionRequired" in result) {
+          return Response.json({ data: result }, { status: 200, headers: { "x-request-id": requestId } });
+        }
         return authResponse(result, requestId, 200, options);
       } catch (error) {
         return Response.json(toErrorEnvelope(error, requestId), { status: error instanceof CuacError ? error.status : 500 });

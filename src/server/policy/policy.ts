@@ -13,6 +13,11 @@ export type PolicyAction =
   | "catalog.approve_requirements"
   | "catalog.publish_requirements"
   | "catalog.withdraw_requirements"
+  | "catalog.read_guides_review"
+  | "catalog.prepare_guides"
+  | "catalog.approve_guides"
+  | "catalog.publish_guides"
+  | "catalog.withdraw_guides"
   | "catalog.read_submission_policy_review"
   | "catalog.prepare_submission_policy"
   | "catalog.approve_submission_policy"
@@ -120,6 +125,17 @@ export function evaluatePolicy(context: RequestContext, action: PolicyAction, re
       && context.tenantSchoolId === null && (context.authStrength === "session" || context.authStrength === "step_up")
       ? allow("Explicit catalog management context is allowed; live authority must be rechecked.")
       : deny("Catalog management authority is required.");
+  }
+
+  if (resource.type === "catalog" && ["catalog.read_guides_review", "catalog.prepare_guides",
+    "catalog.approve_guides", "catalog.publish_guides", "catalog.withdraw_guides"].includes(action)) {
+    const internal = context.activeRole === "cuac_ops" || context.activeRole === "cuac_admin";
+    const privileged = ["catalog.approve_guides", "catalog.publish_guides", "catalog.withdraw_guides"].includes(action);
+    return context.actorUserId && internal && context.selectedSurface === "ops" && context.purpose === "catalog_management"
+      && context.tenantSchoolId === null && (context.authStrength === "session" || context.authStrength === "step_up")
+      && (!privileged || (context.activeRole === "cuac_admin" && context.authStrength === "step_up"))
+      ? allow("Explicit guide management context is allowed; live authority must be rechecked.")
+      : deny("Guide management authority is required.");
   }
 
   if (resource.type === "catalog" && ["catalog.read_submission_policy_review", "catalog.prepare_submission_policy",

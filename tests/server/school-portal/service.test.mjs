@@ -11,8 +11,8 @@ function createRepository(overrides = {}) {
   return {
     calls,
     repository: {
-      async listApplicationQueueBySchoolId(schoolId) {
-        calls.push({ method: "listApplicationQueueBySchoolId", schoolId });
+      async listApplicationQueueBySchoolId(schoolId, cuacId, pagination) {
+        calls.push({ method: "listApplicationQueueBySchoolId", schoolId, cuacId, pagination });
         return [{ id: "app-1", schoolId, studentUserId: "student-1", programId: "program-1", status: "submitted", submittedAt: null, firstViewedAt: null, schoolVisibleProfile: {}, routingMetadata: {} }];
       },
       async getApplicationById(applicationId) {
@@ -32,7 +32,7 @@ test("school portal service lists queue only for tenant from request context", a
   const queue = await service.listTenantApplicationQueue(context);
 
   assert.equal(queue[0].schoolId, "school-1");
-  assert.deepEqual(calls, [{ method: "listApplicationQueueBySchoolId", schoolId: "school-1" }]);
+  assert.deepEqual(calls, [{ method: "listApplicationQueueBySchoolId", schoolId: "school-1", cuacId: undefined, pagination: { limit: 50, offset: 0 } }]);
 });
 
 test("school portal service audits queue reads without raw projection payloads", async () => {
@@ -78,6 +78,8 @@ test("school portal service audits queue reads without raw projection payloads",
   assert.deepEqual(auditEvents[0].metadata, {
     schoolId: "school-1",
     filteredByCuacId: false,
+    limit: 50,
+    offset: 0,
     resultCount: 1,
   });
 

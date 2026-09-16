@@ -358,8 +358,9 @@ The shared frontend auth page is a continuation shell, not a student-only form. 
 - students, school staff, and CUAC staff can create or sign in to a CUAC account through the same credential/session system;
 - school staff may receive invitations, but the invited person still creates or signs in to their own account before a `school_staff_memberships` grant is attached;
 - CUAC staff may create or sign in to an account, but Ops/Admin permissions are granted only by CUAC approval, team invitation, SSO claim, or admin assignment;
-- unauthenticated identity is `unknown`; the Auth page shows access context choices and the user selects the intended access context when submitting credentials, invitation acceptance, or approval request;
-- any default access context shown by the page is only a UI hint for the action, not an identity decision or authorization grant;
+- unauthenticated identity is `unknown`; the Auth page first accepts one email/password pair without asking the user to claim a role;
+- after password verification, the server resolves current student, school-membership, and CUAC-staff authorities. A single authority signs in directly; multiple authorities return a bounded workspace list for the user to choose from;
+- workspace selection is never authority evidence. The selected server-returned context is submitted with the credentials again, then locked and revalidated in the session-creation transaction;
 - every protected action started by a visitor must be revalidated after authentication before execution.
 
 ### GET /me
@@ -401,7 +402,25 @@ Response for staff paths must distinguish account creation from permission grant
 
 ### POST /auth/sessions
 
-Implemented password sign-in accepts `email`, `password`, and optional `selectedSurface` (`student`, `school_staff`, `cuac_internal`). `student` is the default. A school login also requires `schoolId`; the repository locks and verifies the current `school_staff` role, exact active membership, and active school. A CUAC internal login locks and verifies a current approved, unrevoked, unexpired grant matching `cuac_ops` or `cuac_admin`. The request cannot supply the resulting active role or tenant.
+Implemented password sign-in accepts `email` and `password`. When `selectedSurface` is omitted, the server discovers current authorized workspaces. One result creates the corresponding session immediately. More than one result returns `workspaceSelectionRequired: true` and a sanitized list without setting a session cookie. The client maps the chosen returned session surface (`student`, `school`, `ops`) to the request surface (`student`, `school_staff`, `cuac_internal`) and repeats the request; school staff also submit the returned `tenantSchoolId` as `schoolId`.
+
+The final request never grants authority: the repository locks and verifies the current role, exact active school membership and school, or current approved/unrevoked/unexpired CUAC grant before inserting the session. The request cannot supply the resulting active role or tenant. Explicit-context requests remain supported for trusted compatibility clients, but the public Auth page always begins with unified discovery.
+
+Multiple-workspace response:
+
+```json
+{
+  "data": {
+    "workspaceSelectionRequired": true,
+    "workspaces": [
+      { "selectedSurface": "student", "activeRole": "student", "tenantSchoolId": null, "label": "Student workspace" },
+      { "selectedSurface": "school", "activeRole": "school_staff", "tenantSchoolId": "uuid", "label": "Example University" }
+    ]
+  }
+}
+```
+
+This response contains no session token and sets no session cookie.
 
 The current response is:
 

@@ -28,12 +28,7 @@
             </div>
           </div>
 
-          <div class="role-switcher" role="tablist" aria-label="Choose workspace access">
-            <button class="active" type="button" role="tab" aria-selected="true" data-auth-role="student">Student</button>
-            <button type="button" role="tab" aria-selected="false" data-auth-role="school">School staff</button>
-            <button type="button" role="tab" aria-selected="false" data-auth-role="ops">CUAC staff</button>
-          </div>
-          <p class="role-system-note" data-unified-account-copy>One CUAC account. Choose the workspace access you need; permissions are checked after sign in or account creation.</p>
+          <p class="role-system-note" data-unified-account-copy>One CUAC account. Your verified account determines which student, university, or CUAC staff workspace you can open.</p>
 
           <div class="auth-tabs" role="tablist" aria-label="Account mode">
             <button class="active" type="button" role="tab" aria-selected="true" data-auth-tab="signin">Sign in</button>
@@ -43,7 +38,7 @@
           <form class="auth-form active" data-auth-panel="signin" aria-label="Sign in form">
             <div class="form-head">
               <h2 data-signin-title>Welcome back</h2>
-              <p data-signin-copy>Continue your saved China study shortlist.</p>
+              <p data-signin-copy>Enter your account details. CUAC will open your workspace or ask you to choose when more than one is available.</p>
             </div>
             <label>
               <span>Email address</span>
@@ -53,17 +48,18 @@
               <span>Password</span>
               <input type="password" autocomplete="current-password" placeholder="Enter your password" data-auth-password required />
             </label>
-            <label data-school-login-field hidden>
-              <span>University</span>
-              <select data-auth-school-id aria-label="University for school staff access">
-                <option value="">Loading published universities...</option>
-              </select>
-            </label>
+            <section class="workspace-picker" data-workspace-picker hidden aria-labelledby="workspace-picker-title">
+              <div class="form-head">
+                <h3 id="workspace-picker-title">Choose a workspace</h3>
+                <p>Your account has access to more than one workspace.</p>
+              </div>
+              <div class="workspace-options" data-workspace-options></div>
+            </section>
             <div class="form-row form-row-end">
               <a href="#reset" data-auth-reset-trigger>Forgot password?</a>
             </div>
-            <button class="primary" type="submit" data-auth-submit>Sign in to Hub</button>
-            <p class="form-hint">Your account keeps saved choices and application actions together.</p>
+            <button class="primary" type="submit" data-auth-submit>Sign in</button>
+            <p class="form-hint">School and CUAC staff access is assigned by an authorized administrator; public account creation starts with student access.</p>
           </form>
 
           <form class="auth-form recovery-form" data-auth-panel="reset" aria-label="Password reset form">
@@ -75,14 +71,6 @@
             <label>
               <span>Account email</span>
               <input type="email" autocomplete="email" data-reset-email placeholder="you@example.com" required />
-            </label>
-            <label>
-              <span>Access context</span>
-              <select data-reset-account-type>
-                <option value="student" selected>Student</option>
-                <option value="school">School staff</option>
-                <option value="ops">CUAC staff</option>
-              </select>
             </label>
             <button class="primary" type="submit" data-auth-reset-submit>Send reset link</button>
             <p class="form-hint" data-reset-hint>Reset links keep the current page action ready after account access is restored.</p>
@@ -129,7 +117,7 @@
               <strong data-next-title>After sign in</strong>
               <p data-next-copy>New accounts complete a short China study setup before Hub.</p>
             </div>
-            <a href="hub.html" data-next-link>Open Hub</a>
+            <a href="hub-api.html" data-next-link>Open Hub</a>
           </div>
         </section>
       </main>

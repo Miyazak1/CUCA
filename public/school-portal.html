@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CUAC | 学校招生工作台</title>
     <link rel="stylesheet" href="shared-shell.css" />
-    <link rel="stylesheet" href="school-workspace.css?v=20260903-api-v1" />
+    <link rel="stylesheet" href="school-workspace.css?v=20260914-workspace-v3" />
   </head>
-  <body data-agent-mode="school" data-portal-role="school">
+  <body data-agent-mode="off" data-portal-role="school">
     <div class="page school-page">
       <div data-cuac-header data-active="hub" data-note="学校工作台：" data-note-detail="当前学校租户"></div>
 
       <main class="school-workspace-main">
         <section class="school-workspace-heading">
           <div>
-            <a class="school-back-link" href="school-settings.html">租户设置</a>
+            <a class="school-back-link" href="school-settings-api.html">学校设置</a>
             <span class="school-kicker">高校工作台</span>
             <h1>申请审核</h1>
-            <p>处理当前学校已确认收到的 CUAC 项目申请。其他学校的申请不会出现在这里。</p>
+            <p>处理当前学校已确认收到的 CUAC 项目申请。CUAC 当前版本不接收学生申请材料，学校通过官方渠道直接向学生索取。</p>
           </div>
           <div class="school-tenant-scope">
             <span>当前租户</span>
@@ -27,10 +27,23 @@
         </section>
 
         <section class="school-summary" aria-label="队列概览">
-          <div><span>全部记录</span><strong data-summary="all">0</strong></div>
+          <div><span>本页记录</span><strong data-summary="all">0</strong></div>
           <div><span>待处理</span><strong data-summary="action">0</strong></div>
-          <div><span>等待材料</span><strong data-summary="documents">0</strong></div>
+          <div><span>等待学生直交材料</span><strong data-summary="documents">0</strong></div>
           <div><span>已完成联系</span><strong data-summary="contacted">0</strong></div>
+        </section>
+
+        <section class="school-priority" aria-label="今日优先任务">
+          <div>
+            <span class="school-kicker">今日优先</span>
+            <h2>先处理需要学校行动的申请</h2>
+            <p>从新记录开始，随后处理等待审核和等待材料的申请。筛选只作用于当前学校租户。</p>
+          </div>
+          <div class="school-priority-actions">
+            <button type="button" data-school-quick-filter="new">查看新记录</button>
+            <button type="button" data-school-quick-filter="needs_review">查看待审核</button>
+            <button type="button" data-school-quick-filter="waiting_for_documents">查看等材料</button>
+          </div>
         </section>
 
         <section class="school-workspace" id="records">
@@ -46,8 +59,8 @@
                 <option value="needs_review">需要审核</option>
                 <option value="contact_queued">待联系</option>
                 <option value="contacted">已联系</option>
-                <option value="waiting_for_documents">等待材料</option>
-                <option value="documents_received_by_school">学校已收材料</option>
+                <option value="waiting_for_documents">等待学生直交材料</option>
+                <option value="documents_received_by_school">学校已收到直交材料</option>
                 <option value="not_a_fit">不适合</option>
                 <option value="converted_to_official_application">已转正式申请</option>
                 <option value="archived">已归档</option>
@@ -56,13 +69,19 @@
             <div class="school-queue-list" data-school-queue aria-live="polite">
               <p class="school-state">正在读取当前租户的申请记录。</p>
             </div>
+            <nav class="school-pagination" data-school-pagination hidden aria-label="申请队列分页">
+              <button type="button" data-school-page="previous">上一页</button>
+              <span data-school-page-label>第 1 页</span>
+              <button type="button" data-school-page="next">下一页</button>
+            </nav>
+            <p class="school-page-note">搜索和状态筛选作用于当前页；可翻页继续查看。</p>
           </section>
 
           <aside class="school-detail" data-school-detail aria-live="polite">
             <div class="school-empty-detail">
               <span class="school-kicker">申请详情</span>
               <h2>选择一条记录</h2>
-              <p>查看项目、入学季、学校流程状态和已记录的联系活动。</p>
+              <p>查看项目、入学季、学校流程状态和已记录的联系活动；学生申请材料不在 CUAC 提交。</p>
             </div>
           </aside>
         </section>
@@ -74,6 +93,6 @@
     </div>
 
     <script src="shared-shell.js"></script>
-    <script src="school-portal-runtime.js?v=20260903-api-v1"></script>
+    <script src="school-portal-runtime.js?v=20260914-workspace-v3"></script>
   </body>
 </html>

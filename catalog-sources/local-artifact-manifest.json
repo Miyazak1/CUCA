@@ -1,0 +1,2978 @@
+{
+  "schema": "cuac.catalog-local-artifacts.v1",
+  "purpose": "Local custody manifest for catalog review artifacts excluded from the application source release.",
+  "artifactCount": 495,
+  "totalBytes": 121142535,
+  "artifacts": [
+    {
+      "path": "seeds/catalog.ahu-economics-cleanup.draft.json",
+      "bytes": 4259,
+      "sha256": "2f1ff06ede5faa24550decfdf75feac4e8b6eb80475fb8cb5d1c60dba2509f23",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ahu-economics-cleanup.review.json",
+      "bytes": 4612,
+      "sha256": "d6652dd3bda04a9ca26e8c3ba47c4fd3aa94a1aa10dc05c69c20f8f80afba3f4",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ahu-economics-cleanup.validation.json",
+      "bytes": 3630,
+      "sha256": "b04705b676fb49036e4df1de61f2043ce43f98e6fed66d1133dbafa372befe76",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ahu-program-encoding-cleanup.review.json",
+      "bytes": 9984,
+      "sha256": "5f585241d65e7f56f20b12cfe35043e8bcfdb32a1cd4c4f4d6e834c4e7e4157e",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ahu-programs-safe-new-batch-01.approval.json",
+      "bytes": 14588,
+      "sha256": "560d5301b1a91b9012cf597a863d2514e48a6d0f176883a3a1f32560bfa4a753",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.ahu-programs-safe-new-batch-01.approved.local.json",
+      "bytes": 244856,
+      "sha256": "d22e9cbe18510e870b711682b8386b878ecf07fbc7321b35249f183be8ca0c5b",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.ahu-programs-safe-new-batch-01.draft.json",
+      "bytes": 228419,
+      "sha256": "0a8d83a734edb7ab88fc0449f92c0133b39b12e72ac46df20489294d342c3f31",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ahu-programs-safe-new-batch-01.review.json",
+      "bytes": 6173,
+      "sha256": "ed111a2922b3d1280b8b24abffe3055a10d66b173f712cdc39b888c8c182aa41",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ahu-programs-safe-new-batch-01.validation.json",
+      "bytes": 196307,
+      "sha256": "649b543862cee99a2681850329c19c73a9235bbcb5ea34b7cf4e59f60128be68",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ahu-scholarship-safe-new-batch-01.approval.json",
+      "bytes": 941,
+      "sha256": "29a44dc8b98757af8e22408daafcc0830d101530b43293158d71fc00d48a72be",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.ahu-scholarship-safe-new-batch-01.approved.local.json",
+      "bytes": 9783,
+      "sha256": "538e48ee9f3d5f24ce64e722d5d6a775b903977b6f36c31cdbb77ecb32956e3d",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.ahu-scholarship-safe-new-batch-01.draft.json",
+      "bytes": 8876,
+      "sha256": "d8865e9bf2072e1645ef175aaf5d32e60ab23a4a8604241f55bae032f2511b7b",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ahu-scholarship-safe-new-batch-01.review.json",
+      "bytes": 3647,
+      "sha256": "3c10f5a30388eebe7e1934e5fd7ffdbeb5d8a72602acd16af25c91c3e21dbaea",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ahu-scholarship-safe-new-batch-01.validation.json",
+      "bytes": 3882,
+      "sha256": "705f3cd4949569dcb565ec6913b3368d0692e26f736da2cd812fc4dca139cd40",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.beihang-graduate-batch-01.approval.json",
+      "bytes": 20736,
+      "sha256": "417d0fe258dea68b22cc8f7c8cd4880c8bc375fb30076a171a20ab6d1d8dbd71",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.beihang-graduate-batch-01.approved.local.json",
+      "bytes": 613199,
+      "sha256": "91e6d8b51daea80a76c78ec65b5933146c4a68331d6e7b51f8af3f2ce2f7a1e2",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.beihang-graduate-batch-01.draft.json",
+      "bytes": 595086,
+      "sha256": "ff4f7f3cd0bb202cd1da25af7c7e737d4ea7c461a6fa4635a0656b55649c0be1",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.beihang-graduate-batch-01.publication-verification.json",
+      "bytes": 618,
+      "sha256": "bfd716a97a7b1a413df19bfd4c26b90ff55a60c1b0341fa10dc35b043e78ed1f",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.beihang-graduate-batch-01.review.json",
+      "bytes": 4623,
+      "sha256": "0cb54c7c0be2f7f8c9a359c8741eb16e9a01cbdb02bdacf3eca6f9415b6caa6f",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.beihang-graduate-batch-01.validation.json",
+      "bytes": 476599,
+      "sha256": "8f0372616b4a52c1c95a19679e415fe3f9cd4ebe75e6eb5bd767f60d6bb373a1",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.beihang-scholarships-complete-batch-01.approval.json",
+      "bytes": 1457,
+      "sha256": "4d1e4c18aafffcdd1593d486160b699c7ecc4e2593a81bd07360b1a966be5dee",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.beihang-scholarships-complete-batch-01.approved.local.json",
+      "bytes": 64479,
+      "sha256": "7b46373b2fc0b1ed5ced754ed75e4f4e95368456039119fd3aec2db51bf7e4fb",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.beihang-scholarships-complete-batch-01.draft.json",
+      "bytes": 62750,
+      "sha256": "7b16c41e192397a13da51d973ba448fedcd636680d056988d17b304d291c2deb",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.beihang-scholarships-complete-batch-01.new.review.json",
+      "bytes": 5311,
+      "sha256": "a366304d414073d6f00f420dbdb2129cee2dd9fe847ff697fbc25f5642b249be",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.beihang-scholarships-complete-batch-01.review.json",
+      "bytes": 7141,
+      "sha256": "d6ca75b7fefc99193a78fe56073ed8acaaf9afd9f8a05517122f0e6b2430b545",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.beihang-scholarships-complete-batch-01.validation.json",
+      "bytes": 19792,
+      "sha256": "fead4f5003b89c64da804837dea6db96d16508377c1b4c53c054d40fef357b6c",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.beihang-scholarships-legacy-archive.approval.json",
+      "bytes": 582,
+      "sha256": "e49cbf30bc3dd662d68be96c80e55aa4cf0be3d54d8a7b165e9ac286340a7af3",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.beihang-scholarships-legacy-archive.review.json",
+      "bytes": 2569,
+      "sha256": "9d2c3cf579ea6331d1ef9a5ce58b1c412de0ffada769a0f90529eb667be36e21",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.beihang-school-program-batch-01.approval.json",
+      "bytes": 6360,
+      "sha256": "49bdcf912502f547ad4ed45883a392cb1081e1de874712486c6189e6d5daf447",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.beihang-school-program-batch-01.approved.local.json",
+      "bytes": 244529,
+      "sha256": "cae367a96df489a9bd11978016824508b5ebcea175393162985429584d8ec6c0",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.beihang-school-program-batch-01.draft.json",
+      "bytes": 236527,
+      "sha256": "433a52fd174e8f86c222d277c6d7bd02e933bdac1075f4bd5adb754ea138be50",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.beihang-school-program-batch-01.review.json",
+      "bytes": 4826,
+      "sha256": "bd920f562b7668c650c406cbb4b37d404129de279ed0252e57150e054dd9d57d",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.beihang-school-program-batch-01.validation.json",
+      "bytes": 170860,
+      "sha256": "29c1ab957e4110b515c234e1dbe16fb63a85ccc4e7acb86a417e631cb18208e1",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.bit-scholarships-batch-01.approval.json",
+      "bytes": 1267,
+      "sha256": "d07a86406a84f95c8e6d4e6eb5b464e07bd55fbb718b379f1571187c1e0ca737",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.bit-scholarships-batch-01.approved.local.json",
+      "bytes": 52420,
+      "sha256": "5319478809efb330117418eab664a12dcadfcd9bfb87d73af12cd4b9160beb03",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.bit-scholarships-batch-01.draft.json",
+      "bytes": 51133,
+      "sha256": "96fd2197a7f98a2fbba3c7a76157e66e5e64d7033f09b9bf3d2a3d5f04c9ba41",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.bit-scholarships-batch-01.review.json",
+      "bytes": 4727,
+      "sha256": "dbdc359d80ef0c6685f0008c5b9240589b05647f00fdbad0b25c2f9578eb2eb8",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.bit-scholarships-batch-01.validation.json",
+      "bytes": 22872,
+      "sha256": "77c38172519cf495c492f75642f6435516583ca3210b1ca2d4566db3f005c685",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.bit-school-program-batch-01.approval.json",
+      "bytes": 3634,
+      "sha256": "9695cf159d7832c9f72febf274f5eb25d0ff14da5bb00d3980b9cbc6b8c36f88",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.bit-school-program-batch-01.approved.local.json",
+      "bytes": 78849,
+      "sha256": "f176fa43a8cdceb5138a487da54294156ba206019489d037078114e62678ad97",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.bit-school-program-batch-01.draft.json",
+      "bytes": 76077,
+      "sha256": "5b18198a108ceaaf59e9ddc344ba3d8b4035ec1422d23761263cf9433bb9bd72",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.bit-school-program-batch-01.review.json",
+      "bytes": 4461,
+      "sha256": "cea5c480d21de791d6eafb27ffbf9f1b5b5e5675e699887b8f5644dcf6c1737d",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.bit-school-program-batch-01.validation.json",
+      "bytes": 54660,
+      "sha256": "4ed6692fde05e8128c83082d9bf1ea4eb449f512e88a6f5e6176a871965430c8",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.bjfu-complete-batch-01.approval.json",
+      "bytes": 18231,
+      "sha256": "a6829eb609ee5310c73ce70ac197f6c25a3e9cdb7b73e92509ab921821b97fad",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.bjfu-complete-batch-01.approved.local.json",
+      "bytes": 411746,
+      "sha256": "2359c9fc199dcecf99307f84720c1ed4e2e7e1026a68c2d91eac886ce9380777",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.bjfu-complete-batch-01.draft.json",
+      "bytes": 396748,
+      "sha256": "cf8ff4c6dfab0e946037143f265a313468902de5c87f77b14795b97014accf39",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.bjfu-complete-batch-01.review.json",
+      "bytes": 7463,
+      "sha256": "2ae6b9b6d66df19b1a6b9b06fe839ebd0df4fdb4538a8170bba0266930650a39",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.bjfu-complete-batch-01.validation.json",
+      "bytes": 342699,
+      "sha256": "0556fedafd06de7390f94185a81f003b2e36b3bd97a293aa1772abea8e038324",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-01.approval.json",
+      "bytes": 2529,
+      "sha256": "22287d27b0dcd7059e670bcfaee8fcb878b8f4ccd88e9c928cea524cf809bfde",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-01.approved.local.json",
+      "bytes": 61961,
+      "sha256": "f8a60f56f8932541a26f308459b64745a690fed0bef73679fb3cce006aebf8fa",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-01.draft.json",
+      "bytes": 59326,
+      "sha256": "9ee77a0b9a7ee12f338827e0aaf305f11d6ce5161513abb5cc991529dcb3da01",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-01.review.json",
+      "bytes": 1839,
+      "sha256": "4267ff50f1b2ea90161d4af99e7554e53fcebd0fc3b28459d2e4503215a0be02",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-01.validation.json",
+      "bytes": 52327,
+      "sha256": "e1a8773511ca64e83d02440c0259b5a4c3f0dffc1cf11abd3ddc7fea56b10b37",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-02.approval.json",
+      "bytes": 2444,
+      "sha256": "a813f35ffccdce866e8dbf6b12d433bb8970f3c32d092d25c929123c0a5b851c",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-02.approved.local.json",
+      "bytes": 60007,
+      "sha256": "9ec43ed8fd8a1053c36c0524b9d52605dce435e6d672fbe1a18eed8c4be2a631",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-02.draft.json",
+      "bytes": 57381,
+      "sha256": "9fa3c6b5d7b2353fe219c1249b951b4764acd58f0c1495943b8e5dab3414365a",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-02.review.json",
+      "bytes": 1851,
+      "sha256": "3f5176a72d437caad27c95d945f5870862a488ffc3d20fe3f068fe5150c6acba",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-02.validation.json",
+      "bytes": 51339,
+      "sha256": "927fa6c4f8805c88a0004e0eef18fdca0759b89e045ec53959b902fdc2b9bce1",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-03.approval.json",
+      "bytes": 2406,
+      "sha256": "a371293f55912a8f89da75e8e26a458e01114a3b7638be3e1c88950cd4ec5fd4",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-03.approved.local.json",
+      "bytes": 59013,
+      "sha256": "1c9e1a26d7865224cc35a3bfd0202c758b8baead131455489b1c26619563b916",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-03.draft.json",
+      "bytes": 56387,
+      "sha256": "58f29e5dc7365e29ddb62cc16c41e01a43887118473256f911497e84f5fde5d3",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-03.review.json",
+      "bytes": 2081,
+      "sha256": "2cae5826585bde687669bcf89190a01e61b1fa3ff39ea6f91e5465dbf63f3cfd",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.blcu-graduate-safe-batch-03.validation.json",
+      "bytes": 51252,
+      "sha256": "592772c3d4b3c2311a8af9ee81f6c9445b02e228fd29c51a9e2bbf215093a021",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.blcu-scholarships-safe-new-batch-02.approval.json",
+      "bytes": 1110,
+      "sha256": "65dbfea0c28f36c15bb6ec620661c9f49416e2e614aa7cdcf88a52036d3044dd",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.blcu-scholarships-safe-new-batch-02.approved.local.json",
+      "bytes": 22945,
+      "sha256": "13f7f245fbc6a563752c04eaaac45049052920766bd12268c0ae6532dbc6a2cd",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.blcu-scholarships-safe-new-batch-02.draft.json",
+      "bytes": 21861,
+      "sha256": "56568f0af924e9ec446f731de3b92c81aae2ac56912de4be7088c5bd1817a825",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.blcu-scholarships-safe-new-batch-02.review.json",
+      "bytes": 6525,
+      "sha256": "bdb82d1f13f78281a8b8e5643024b07ab4e23aa401ddf13c4dfb1050b049d4dc",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.blcu-scholarships-safe-new-batch-02.validation.json",
+      "bytes": 6781,
+      "sha256": "4ad2a2a20339b7c8cad68d5aaa54cdcd7a323cc2c36c25fac5654cd566b31b39",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.blcu-school-undergraduate-cleanup.draft.json",
+      "bytes": 41034,
+      "sha256": "bfdb7907d4c5f5351358fad98c19b314c7390e50db42ec84be70da19ec4f7401",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.blcu-school-undergraduate-cleanup.review.json",
+      "bytes": 11704,
+      "sha256": "0cf0adc1a951f4f82bb5c57046c5eafe79d81b90e5b8d9595ae38999639a9d81",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.blcu-school-undergraduate-cleanup.validation.json",
+      "bytes": 40774,
+      "sha256": "95c3046bb6f9fa3c91d8beacca622dbd57d5e910faa1fd40bd183b3515cd5485",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.blcu-undergraduate-safe-batch-01.approval.json",
+      "bytes": 4026,
+      "sha256": "60302e4296990c2b2343c07e10ac16a7edd7957bd467bf153b4d284cb25be997",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.blcu-undergraduate-safe-batch-01.approved.local.json",
+      "bytes": 102924,
+      "sha256": "80a682f2a7b52fd163d46e467f82508daa0346c27a2f2541908708471bc57c3b",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.blcu-undergraduate-safe-batch-01.draft.json",
+      "bytes": 98769,
+      "sha256": "e5c13662e6f41052ef34cbaf76c6966a48286873eb2992e2c5fa6526dd3cf5b9",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.blcu-undergraduate-safe-batch-01.review.json",
+      "bytes": 7581,
+      "sha256": "0b6b9f38e73617a874f3541079d19f3251bd45eb9f2a094c1d8255590d19b9e6",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.blcu-undergraduate-safe-batch-01.validation.json",
+      "bytes": 94803,
+      "sha256": "272dcecfbea8175aad3b36088b3d8ce6cf187c9e5bdf7b02e9990d43c7878939",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.bnu-scholarships-batch-01.approval.json",
+      "bytes": 1281,
+      "sha256": "6a5ba353c777d79fa15127fcf86f06b2d9cc0281dc719d8b8e0dd9da1732d98f",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.bnu-scholarships-batch-01.approved.local.json",
+      "bytes": 74273,
+      "sha256": "9d2c5ce224bdc2a181e198c28f3324060a7cb33ea2d6ef46e3d45413b9c6666b",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.bnu-scholarships-batch-01.draft.json",
+      "bytes": 72989,
+      "sha256": "a3511d91c4d8c51869869d274fc491820c359e9de2eedc40b1c556b92ad7f02e",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.bnu-scholarships-batch-01.publication-verification.json",
+      "bytes": 433,
+      "sha256": "67e3956ab08c998918c090d1d3e9313ae9ca6ec8f251314988a71615f1dcb82c",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.bnu-scholarships-batch-01.review.json",
+      "bytes": 8195,
+      "sha256": "71c43d4e59a387cf0873dcae0628c4e8070e543a849eb8083f9d85af042da574",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.bnu-scholarships-batch-01.validation.json",
+      "bytes": 36100,
+      "sha256": "aaf393bcb85ac533817646054a63f0f8f415d2a46e6e1f71a4efb4a6df733614",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.bnu-school-program-batch-01.approval.json",
+      "bytes": 3003,
+      "sha256": "e128edf42dbd2cc7295657598be26d2a90bf92976c36149a16bd1fcec1985b70",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.bnu-school-program-batch-01.approved.local.json",
+      "bytes": 116312,
+      "sha256": "b4ee2947e3f6676be6944a849e0dd9e59228c2581aa8d45698534db33ac48cfa",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.bnu-school-program-batch-01.draft.json",
+      "bytes": 112457,
+      "sha256": "75ad224bc23361dce8cad7d5a8e364aaaebfd25f4e1e2b5ccbdbbb1656649de2",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.bnu-school-program-batch-01.review.json",
+      "bytes": 3144,
+      "sha256": "447b82d06566b57dee010b3d5af88dccfe7b834ee9522dd7737a15933db9dbf0",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.bnu-school-program-batch-01.validation.json",
+      "bytes": 84472,
+      "sha256": "ff60fe2558542c09893aed415be5895867e731fb21cd864c11b78b5838043cf5",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.bsu-safe-new-batch-01.approval.json",
+      "bytes": 11675,
+      "sha256": "173abc01e800d75d2bbb35613be65fd9e1474a5882935db5d0ac73d7ac4b364b",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.bsu-safe-new-batch-01.approved.local.json",
+      "bytes": 330429,
+      "sha256": "2fa56c4c63ee1af425934ecc9f31a52b449ed2d51456a7a0b84b3d6588554335",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.bsu-safe-new-batch-01.draft.json",
+      "bytes": 320599,
+      "sha256": "a864157f0246160659ab123d94c1a967ebcdea8b069e8dccc0b3539871b03051",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.bsu-safe-new-batch-01.review.json",
+      "bytes": 4476,
+      "sha256": "046d478bc9035e14d13780b6c02fdaebeeede1d6af10e01b54982cfaa54dbbc3",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.bsu-safe-new-batch-01.validation.json",
+      "bytes": 253314,
+      "sha256": "0733dcec867033ed11b2f7781f010c9fbcc0b1467dcdecf53ce2e9464e70fedb",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.bsu-school-undergraduate-cleanup.approval.json",
+      "bytes": 12310,
+      "sha256": "4d846f4efdbc13fe567e4834337de7d8f0444379b07e12047affd5d298bf84f1",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.bsu-school-undergraduate-cleanup.approved.local.json",
+      "bytes": 35141,
+      "sha256": "9269e74cb1524f62f3eed06cddb36f5a385e73d54faef88379d0de154dcaafa4",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.bsu-school-undergraduate-cleanup.draft.json",
+      "bytes": 33221,
+      "sha256": "77ae6f32230f760e2634b7c9dc1e7e2e42612073ea7141d3806037066c2f63a4",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.bsu-school-undergraduate-cleanup.review.json",
+      "bytes": 35522,
+      "sha256": "f07a873a6655dbdc4582386026b52738b43b5bd613013893f29a786d9a53cc83",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.bsu-school-undergraduate-cleanup.validation.json",
+      "bytes": 24518,
+      "sha256": "e7f89a5d2043ab47408c877d0c4c9ae2a3fc3b3b08ddab6c0bbb06bd99ea5544",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.buct-complete-batch-01.approval.json",
+      "bytes": 15907,
+      "sha256": "0751be681465951e0a7bb2a51b19d5c8b58d545bae7bcd9c99ab5296a192597b",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.buct-complete-batch-01.approved.local.json",
+      "bytes": 326790,
+      "sha256": "a2e763b21afb46aa8c5299f3fd8da8235b4f7d8e212a48cfc8b11a4dc7e200f9",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.buct-complete-batch-01.draft.json",
+      "bytes": 315591,
+      "sha256": "346931dcd78eec4d5d6ddce7395d71f61bbc5c59c518324d722813f2245afd5e",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.buct-complete-batch-01.review.json",
+      "bytes": 7281,
+      "sha256": "118e8988bc83e1230f2df54aa99c3e8153fe3db0cc7737b92d6e1ae54f09606a",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.buct-complete-batch-01.validation.json",
+      "bytes": 262575,
+      "sha256": "315693d917559b1680e8ac48629e340a760a3996238a38542769365c7c1a7f17",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.bupt-complete-batch-01.approval.json",
+      "bytes": 6784,
+      "sha256": "035055c100fa5d7745bc5c5d61781f83f035e2919d6be4d385937df84b6535df",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.bupt-complete-batch-01.approved.local.json",
+      "bytes": 185810,
+      "sha256": "86b885e3187963aa127f072e0af8b53055e05d5c85d1e630483e73a5972f33ac",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.bupt-complete-batch-01.draft.json",
+      "bytes": 179525,
+      "sha256": "338f149737e99c14747c8a0f236a41772b5b0e269568aff3061e14eb71d6118d",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.bupt-complete-batch-01.review.json",
+      "bytes": 4470,
+      "sha256": "2047a9d50d15e2192414e8137c137829b00ff6bbdb3a6308ffb509a8d9641ac9",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.bupt-complete-batch-01.validation.json",
+      "bytes": 146163,
+      "sha256": "c4dcf0237dcfa3dea01110948b01949fa141ba6b9a1f676ab80a500dd5b8bf2b",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.cau-complete-batch-01.approval.json",
+      "bytes": 14544,
+      "sha256": "1ce1c0e17ba02d12ae2f8ebb92c271b759fa27da66e4dfeba1f1aa25094437bf",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.cau-complete-batch-01.approved.local.json",
+      "bytes": 389413,
+      "sha256": "8e6a28c7c3ec70c7140fcefc7bb5e296d210eef9931d376a7e76a8984f669dc4",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.cau-complete-batch-01.draft.json",
+      "bytes": 376364,
+      "sha256": "de3d91ac27237264db218c5572156211496c1378128e9e1dd53944ff0905c375",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.cau-complete-batch-01.review.json",
+      "bytes": 9162,
+      "sha256": "7bc93a44562d678fde482493f04b8955d68449dac9d794e887f9811e35e8452a",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.cau-complete-batch-01.validation.json",
+      "bytes": 306888,
+      "sha256": "05f5a68d18be1a758b626dde36f9e2606675c35555a9710bb435255acc01fc59",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.changan-cleanup.draft.json",
+      "bytes": 57897,
+      "sha256": "b5e2def83dae95dca4b0512578be2b8fa9f4104d1ef2e4ad4b2ea3bbb4a0e0fd",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.changan-cleanup.review.json",
+      "bytes": 21635,
+      "sha256": "5bb187de03af3a61c917ba2e730005bbfa3ea9d8de74cd62b0acd42d38ef498f",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.changan-cleanup.validation.json",
+      "bytes": 37789,
+      "sha256": "5f8404ea67615f73b849a585c2b76d16ff363b3189b2bf0cc12d1d4b48a245a0",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.changan-complete-batch-01.draft.json",
+      "bytes": 748696,
+      "sha256": "5ff3defe958af965feb39bf727bb527fead16ef353248868d9709c9e6fa2ce3c",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.changan-complete-batch-01.review.json",
+      "bytes": 19398,
+      "sha256": "138841f6ff9f0d068853d512939976b0898a66c1f94b8f9807fa960b2e96bc12",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.changan-complete-batch-01.validation.json",
+      "bytes": 504143,
+      "sha256": "7cc8096fb50ff7d21b9f9d2cba7e6593273d01fe4c91240ef66455ec3ba4561d",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.changan-safe-new-batch-01.approval.json",
+      "bytes": 14498,
+      "sha256": "9277bdce6da37cef81078e257e2f83c500c2046b347f493213986ccfb22f77ec",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.changan-safe-new-batch-01.approved.local.json",
+      "bytes": 714320,
+      "sha256": "2425fd2de4680c81824bc115aa01420f36a396f7a9d460984c915597a1a0bd07",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.changan-safe-new-batch-01.draft.json",
+      "bytes": 694485,
+      "sha256": "39c851213729ec6e22f13fe1f8c6b8266980041fcfded0d8ee37fad86d0bd6f3",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.changan-safe-new-batch-01.review.json",
+      "bytes": 12001,
+      "sha256": "8d4af020ff4cccc16edba315404cd4e7f6ce281ff6c275704d3f0a2bb751ef4e",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.changan-safe-new-batch-01.validation.json",
+      "bytes": 467954,
+      "sha256": "9728eb7a0f04346006a037ab1878b314f2915a6c5defb321e64e3ea16ac595c3",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.cscalite-online-20260910.local-draft.json",
+      "bytes": 1787273,
+      "sha256": "f575a9dbb77bdf118abbdc1da741c97983c07d4107ab42ab26594354b9e28558",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.cscalite-online-20260910.published.json",
+      "bytes": 1788406,
+      "sha256": "36a7be12631dd7e957af999274d63b586d976a1ae0e91f31c97c8b0e017b6235",
+      "stage": "legacy-published-snapshot"
+    },
+    {
+      "path": "seeds/catalog.cscalite-online-20260910.review.json",
+      "bytes": 1786533,
+      "sha256": "6242499340d06fc10ccbb577b36a5cbc05003b3a899498bd255788d9ecf94808",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.cscalite-online-20260910.scholarships-rich-batch-01.draft.json",
+      "bytes": 1962315,
+      "sha256": "6cb4b603a89b7a66e413cea5d3b37c01f822890936d42105977664eb1022cece",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.cscalite-online-20260910.validation.json",
+      "bytes": 1539289,
+      "sha256": "ae3a44d5c8da084852d730594b8544a8051dd2b55fe5fb7cb0b6721179c52b05",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.cscalite-schools.safe-review.json",
+      "bytes": 1602115,
+      "sha256": "4ee7f7e070faed74a42d6ae06bf8069adea2f30b73feed996414bfa22c740ddb",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.csu-complete-batch-01.approval.json",
+      "bytes": 41527,
+      "sha256": "9b87e990c9e4bb7fc5dde1b57e9e377edfc90172a12f9d3b18bb44cc58ff43d2",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.csu-complete-batch-01.approved.local.json",
+      "bytes": 1295968,
+      "sha256": "b873f854c33e46b06a73d56118c9a138a53768c7b4b61e9792d9844e16478b9f",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.csu-complete-batch-01.draft.json",
+      "bytes": 1260137,
+      "sha256": "e46c08e295001eb520633f0f939cec0c77f7cafa50e036ecfb1d1e323c9b6a45",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.csu-complete-batch-01.publication-verification.json",
+      "bytes": 538,
+      "sha256": "b91a1406694323fac400dbd3d5aa22a9627d330963b568810273fea2fd2ae124",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.csu-complete-batch-01.review.json",
+      "bytes": 9153,
+      "sha256": "f19618b93f68eb672010c6f5ac8073f60809ff631d711dad23362e14e9cfb6c8",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.csu-complete-batch-01.validation.json",
+      "bytes": 990970,
+      "sha256": "059fbbb21765f19aac73c66797beb6c9f38907ab34137bbad07155018459f67e",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.dhu-cleanup-batch-01.approval.json",
+      "bytes": 2331,
+      "sha256": "7ad0d1038aa134ce4a489a5c4dc7028b9c9bef7968a2b6353cc75a2b06a7af3c",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.dhu-cleanup-batch-01.approved.local.json",
+      "bytes": 40333,
+      "sha256": "d0e7d4a8db8b75d178a97e12cfea2764fb77d5168520d1730c1c0d8a2a54eaab",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.dhu-cleanup-batch-01.draft.json",
+      "bytes": 38074,
+      "sha256": "8da044146e1a1d1675dbd04a662c3390d50eb53a4d3edf7f795a10920aefca1f",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.dhu-cleanup-batch-01.review.json",
+      "bytes": 18895,
+      "sha256": "2964c6d703e156be42e44e113c5e7ae5add1a740a0b13d2cb3c17c98695b1182",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.dhu-cleanup-batch-01.validation.json",
+      "bytes": 23826,
+      "sha256": "25d7ff48d400f7d4991f768fb1c5528143c97b8746f361d6108ddf5b1eda9c52",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.dhu-complete-batch-01.draft.json",
+      "bytes": 459271,
+      "sha256": "e178573b729e4c6ce3b13007f16aaa6bc1e7760b4089408381537954ef365002",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.dhu-complete-batch-01.validation.json",
+      "bytes": 312674,
+      "sha256": "42ba5f74701662a7ebccb3a4e6d1dca5b1a3b8415d0891be8d2c5e6fb05fbe8e",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.dhu-safe-new-batch-01.approval.json",
+      "bytes": 10485,
+      "sha256": "24e20fa09eae5fb8c71d03d72992ab87c0f98b9ac9ad78103806d35d24600dec",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.dhu-safe-new-batch-01.approved.local.json",
+      "bytes": 432007,
+      "sha256": "a2e1819f759f3baa7d61dfc68085e055fa155ad7b1ca81f3afd32958ef5853f3",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.dhu-safe-new-batch-01.draft.json",
+      "bytes": 419765,
+      "sha256": "c50b635aac474867954e1354122cc73692969bf51fd522829530b6f9b60b2584",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.dhu-safe-new-batch-01.review.json",
+      "bytes": 16992,
+      "sha256": "2afc73dfce0104d1dccdb2e35721bf374252bcdd23f5b7f793e51625f1f9d78e",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.dhu-safe-new-batch-01.validation.json",
+      "bytes": 283916,
+      "sha256": "c542746d112d130a648010431ff2b0e118dfd1fa902691d70afc8e1edc428233",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.dut-safe-new-batch-01.approval.json",
+      "bytes": 1321,
+      "sha256": "bd3025dd9a1b6d6f03f1ec5086f06f4dcb5fc4758a84b5378332f35a602670c7",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.dut-safe-new-batch-01.approved.local.json",
+      "bytes": 33202,
+      "sha256": "7e1d713bebe6a4550d561b2ce62b55c6a941f3837e2123be407c1730e5ad4205",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.dut-safe-new-batch-01.draft.json",
+      "bytes": 31804,
+      "sha256": "f4904d22e9e02d40ebea977b0a39fde7c88c0a87a0f5e77adab373b3d8fbcd5b",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.dut-safe-new-batch-01.review.json",
+      "bytes": 7268,
+      "sha256": "7c405b85f29bf8ae0c401122a849ba913a2bbbbe3beaa937a3513c308684a299",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.dut-safe-new-batch-01.validation.json",
+      "bytes": 12894,
+      "sha256": "c3af37676eb3a7ec79a12c64bd649a84be9fefa55b3865d08dff9fa3366715bd",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ecnu-cleanup.draft.json",
+      "bytes": 3660,
+      "sha256": "9f732097f5d09af2bf7f677d2484a54d3e1eb0e5f45fea77b99d02ee93c9103c",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ecnu-cleanup.review.json",
+      "bytes": 22904,
+      "sha256": "72e05bddf83c16adf685b773ffe177f637a45a3713d86b2498437154cdb0081a",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ecnu-cleanup.validation.json",
+      "bytes": 2427,
+      "sha256": "93b20107f9761cd1064ddce2801b5d8c58943641099d9da42200840cc14ec4de",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ecnu-safe-new-batch-01.approval.json",
+      "bytes": 29493,
+      "sha256": "4f51d3fcac83a29abac9454de775b0da98c4911ead74c00ecbb7f7db790fbfda",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.ecnu-safe-new-batch-01.approved.local.json",
+      "bytes": 996701,
+      "sha256": "a743af4b57c1aa4f338d83b6116f9056415061a84323893f4a760da53221108b",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.ecnu-safe-new-batch-01.draft.json",
+      "bytes": 969166,
+      "sha256": "6397ac26dfcce287c725543119343e62a42d395a5cfb43c768665ef114f0f433",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ecnu-safe-new-batch-01.review.json",
+      "bytes": 9738,
+      "sha256": "054f4c4ae95b57bd4a4e99e3ba2f7262ad2377d4c98d2cb271dca0ca9f3cc61b",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ecnu-safe-new-batch-01.validation.json",
+      "bytes": 750696,
+      "sha256": "b848869aced191be2aad88db34a10d5d32391a9d441370ea38f7b998161551f7",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.fudan-school-program-batch-01.approval.json",
+      "bytes": 4589,
+      "sha256": "e7223de7c54d38b8cb1b2b6507a8d953e0bac12a366ad1c1c3da14a19f3abdd8",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.fudan-school-program-batch-01.approved.local.json",
+      "bytes": 248840,
+      "sha256": "b3353456e47e990149ff8995e966797f4a67c8683b44ed74294d792af4518844",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.fudan-school-program-batch-01.draft.json",
+      "bytes": 241815,
+      "sha256": "3c67d24cedf6861957d8010713c740f1e82c013aef5919d6369dddb726bd0ed3",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.fudan-school-program-batch-01.review.json",
+      "bytes": 5718,
+      "sha256": "632f8adc99947dc083fd85a6b9d0c89349a0e1dc3afc12e3426b1a19f60aa846",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.fudan-school-program-batch-01.validation.json",
+      "bytes": 170730,
+      "sha256": "6cb35ce2d04b47bf12eddebf9e1f8043d7e7a497bc29374ac0e0e819e0f88089",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.heu-cleanup.approval.json",
+      "bytes": 8842,
+      "sha256": "c61ad6c4c0b3241d47ea7e9c5978be65ae216882d3eafda3e52ac0607f3edbe6",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.heu-cleanup.approved.local.json",
+      "bytes": 18211,
+      "sha256": "ec5ffe0f2a1630ec1a5909210b0d44e516321d1cd8128a20ffaab981d39d64f1",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.heu-cleanup.draft.json",
+      "bytes": 16710,
+      "sha256": "60ac8dea0f2cb01284b824e5f6680c175a0985512f7793a982881c09ebcacc00",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.heu-cleanup.review.json",
+      "bytes": 12658,
+      "sha256": "6a1b56fae370ecf9f881db97a389fcf3231d3df3d9b7a467753b99fcf60d213d",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.heu-cleanup.validation.json",
+      "bytes": 11427,
+      "sha256": "7a0a312540c00158a8e8f169c038d464ab252712494e762b9aae738d0aa2efc4",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.heu-complete-batch-01.draft.json",
+      "bytes": 343652,
+      "sha256": "f13b41959dac98a189aa30b41c0c8595fe201e1f83a08e1ad109e2c7914e5cb5",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.heu-complete-batch-01.review.json",
+      "bytes": 14966,
+      "sha256": "501563bbddd651508cdf3d9474e6e474581a64fc07537037fbaf07946e2d2f86",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.heu-complete-batch-01.validation.json",
+      "bytes": 227810,
+      "sha256": "d06ec4ac4d841429b8b3eebfb667202fccd26a0f5b1e37b66671ee403d9a767f",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.heu-safe-new-batch-01.approval.json",
+      "bytes": 8068,
+      "sha256": "a353a50703b448fde2a7a82410783798299ad82d189eb083d366b1a3bce65f5a",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.heu-safe-new-batch-01.approved.local.json",
+      "bytes": 339286,
+      "sha256": "d4ddc6365e2ff8bb3cb9379f7cbb6258ae8a4b5a28460bee935cf8fb9fb74228",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.heu-safe-new-batch-01.draft.json",
+      "bytes": 329497,
+      "sha256": "ec4e734f75049ecdf91e2619480407691ccc31848feedd22a9ff668f05d2ede7",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.heu-safe-new-batch-01.review.json",
+      "bytes": 10653,
+      "sha256": "48fd2fb68efbd3966b237900c8268da6d435976306e28539b648def097bcea2b",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.heu-safe-new-batch-01.validation.json",
+      "bytes": 218143,
+      "sha256": "d45bc5f67402368c515dcbef42e69ed3cc39dec9662b5e4281f70d7209f66b8d",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.hit-complete-batch-01.approval.json",
+      "bytes": 22924,
+      "sha256": "f585332101483cb550f5dde2a36f2f751960f581d898f3d8770f4014524e5ba2",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.hit-complete-batch-01.approved.local.json",
+      "bytes": 614281,
+      "sha256": "4c30d510b7012fead4c4d16a66f4c7ff527322021c5c26a7f0d99b4b514cdbeb",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.hit-complete-batch-01.draft.json",
+      "bytes": 596247,
+      "sha256": "daece2d0f93cd165d1fb71689e9806c1f8648a052487e47717b6c66712d44e84",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.hit-complete-batch-01.publication-verification.json",
+      "bytes": 505,
+      "sha256": "c1ce726f487c8ae204868fa21a3e5e3ab29a406ea97aea58b52c60bc89c9529e",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.hit-complete-batch-01.review.json",
+      "bytes": 6968,
+      "sha256": "b6af591bb47579016144513c1d8a49aa94fa09a449465a8175013a18a3c33a2e",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.hit-complete-batch-01.validation.json",
+      "bytes": 463289,
+      "sha256": "5523c740ff2a42ff79f9735cd458348322065faf12c883f3d9f2a9c6c6ae5c8e",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.hust-cleanup.draft.json",
+      "bytes": 46787,
+      "sha256": "8d9ca59a95f1405f8a7d0b25f7c4b4622e887d2133919b67ad7ee84c0e2dd3e4",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.hust-cleanup.review.json",
+      "bytes": 7818,
+      "sha256": "bc1cc812c0b600b6d08184a2a0c4c95881734643bb3eaf6108e1185746f5d256",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.hust-cleanup.validation.json",
+      "bytes": 34416,
+      "sha256": "90ca72f54f4f94fb43de5cc2733e65cf80c0751b6e909d29d9eadc286c3c1ac8",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.hust-complete-batch-01.draft.json",
+      "bytes": 1384418,
+      "sha256": "05d241be00e5a8b3e19b2b7d4a107588c1c2d32daf45b5e500af174e7f67158f",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.hust-complete-batch-01.review.json",
+      "bytes": 9555,
+      "sha256": "a073a4f8c6aeb44a4d8b2eb42562b56639a3b56d2e2bd6613032f4de98d10d2f",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.hust-complete-batch-01.validation.json",
+      "bytes": 1193858,
+      "sha256": "a7ea7541ef600f5e57b559ff568896a33cd4c239676bd12d3808e8f523aa2972",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.hust-safe-new-batch-01.approval.json",
+      "bytes": 62084,
+      "sha256": "ca4d49ea62490137a131e298060c4ed2c39acdbba2b21dff93cdf1506114655a",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.hust-safe-new-batch-01.approved.local.json",
+      "bytes": 1384110,
+      "sha256": "ab009662ae8c4d13d10488e7a62bb1729674ab09d680bb5df2692de6b9bdb890",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.hust-safe-new-batch-01.draft.json",
+      "bytes": 1340637,
+      "sha256": "7d9f45a10dd45885e47048ad8ba5a5b4f0bd80ecb713d29586dedaff388ad022",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.hust-safe-new-batch-01.review.json",
+      "bytes": 4424,
+      "sha256": "b7a31302b4acafd4e0ff8e2976f22100a0cf8ff066eab824330dcdfb6fad8bda",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.hust-safe-new-batch-01.validation.json",
+      "bytes": 1161861,
+      "sha256": "d29c5274d0a39ee95d7b29c259ac25e1b501cd7e722912ad6e74d5d7fbccf3b5",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.jilin-cleanup.draft.json",
+      "bytes": 3488,
+      "sha256": "d1354cdc9d5351aa58145cfafc629082631d5672515d19a42f6c67f90e312a0b",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.jilin-cleanup.review.json",
+      "bytes": 15662,
+      "sha256": "f74c7fd602c496b546d0be96017e37183a132ef037741325d7ef6cca2c70d5b4",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.jilin-cleanup.validation.json",
+      "bytes": 2291,
+      "sha256": "6866c01008603fcbd5cda77183eece1e0ed3dda343adfdab56e709375ae2e943",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.jilin-safe-new-batch-01.approval.json",
+      "bytes": 25153,
+      "sha256": "ee4fab0334964bce2db84bcef4547084680c52810bc4044ad45ab207539fa738",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.jilin-safe-new-batch-01.approved.local.json",
+      "bytes": 880950,
+      "sha256": "72e4835467d85177075a81fbd4803f648710a3e2c0d6de90c0dcea36dbe5978c",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.jilin-safe-new-batch-01.draft.json",
+      "bytes": 857022,
+      "sha256": "c036a3e503cc506aee3d4ff6c7aac506527e726c7d661eb5bad1898c514c78c1",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.jilin-safe-new-batch-01.review.json",
+      "bytes": 6226,
+      "sha256": "d44099487b5d298832e68db32ffa1e7d03f326a08b91764fe97fa4b08f13f7d5",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.jilin-safe-new-batch-01.validation.json",
+      "bytes": 606606,
+      "sha256": "ade6a51fbce74180833ac75d84bd18b51990de3adad9d6a3bf8f107cd6fd2bd0",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.nankai-cleanup.draft.json",
+      "bytes": 11548,
+      "sha256": "e825b6f66fa644ea80c456964e1fa61af48f4115e2692fd33b079141caa5a73b",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.nankai-cleanup.review.json",
+      "bytes": 40157,
+      "sha256": "1743ff3d6b098c8119542f8fd5119a351c504b49ed07573658859c8b2c970ddd",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.nankai-cleanup.validation.json",
+      "bytes": 3696,
+      "sha256": "20d54c26852e092741ebde7b62c77127ff754f0988045ea33d45b3447b88ba48",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.nankai-complete-batch-01.draft.json",
+      "bytes": 1109198,
+      "sha256": "a56525296d1ae0454e1093775247db518fdba84c753528a4204c6cb1dcc4bc1a",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.nankai-complete-batch-01.review.json",
+      "bytes": 7640,
+      "sha256": "1739f60da167d08bae78bd384663e6bbfa621a48270d0427c1a08d370819e752",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.nankai-complete-batch-01.validation.json",
+      "bytes": 830567,
+      "sha256": "1bbcf7dcf53b2e56ae811318ce97488073d90cc773771d56e7ca387d083de129",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.nankai-safe-new-batch-01.approval.json",
+      "bytes": 35293,
+      "sha256": "560b78efecb53fa71c0289d95b08be85658b96f8b67ad185dc2422756b7d862a",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.nankai-safe-new-batch-01.approved.local.json",
+      "bytes": 1135513,
+      "sha256": "9c9722ab2dad9addc15d1dd0257881ad5fff908557166d49d1d39d98e7321046",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.nankai-safe-new-batch-01.draft.json",
+      "bytes": 1103128,
+      "sha256": "fffc9c730902d47d64bdc24a34c6f7429b6243180babf9673e22d5a4861931a3",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.nankai-safe-new-batch-01.review.json",
+      "bytes": 7105,
+      "sha256": "60b28bc125f22b7aedaf6756f38bb2e01868a17c84126278872af39d52a52bb1",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.nankai-safe-new-batch-01.validation.json",
+      "bytes": 829231,
+      "sha256": "258738fbc9937641437fd35320ddb2fdae2e5a9d3b8da3ee43a64452fafcc6e5",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.nju-complete-batch-02.approval.json",
+      "bytes": 22021,
+      "sha256": "0eb8f23781f736c12fc9598d1bf8e66785c093e720969afa60035e6549cc2be5",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.nju-complete-batch-02.approved.local.json",
+      "bytes": 623699,
+      "sha256": "ebe4108d33d37735b88e5a507591eb60ad660f23f31e03b6b491d7c8aa94b318",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.nju-complete-batch-02.draft.json",
+      "bytes": 603996,
+      "sha256": "f26a29db6b990e69cd5f1d536920e3969514622f00c90a77f7ac148714b936b8",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.nju-complete-batch-02.publication-verification.json",
+      "bytes": 684,
+      "sha256": "bbf1713474a98a6e0f41090e6d33b21963cfd3232c8d5007cae1e71bccd72862",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.nju-complete-batch-02.review.json",
+      "bytes": 5143,
+      "sha256": "8ef74aa71a2490db3e71c495f54b06bfb84b58c7b398f50ead0f8a24dcf5fee7",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.nju-complete-batch-02.validation.json",
+      "bytes": 457813,
+      "sha256": "92349afeb0a30c0788de1931ffd30207564f72049823634aaeecde1dfc219791",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.nju-school-program-batch-01.approval.json",
+      "bytes": 3620,
+      "sha256": "dd548a5962ea15cb3aa892600dfa474b235ceb6d516a9e2d011a3d23aa7165b0",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.nju-school-program-batch-01.approved.local.json",
+      "bytes": 160934,
+      "sha256": "46386d92a5949a50d53bf9cb4a0fbd8b4a02637bad3711a3b5fc2c288edc9cc7",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.nju-school-program-batch-01.draft.json",
+      "bytes": 154663,
+      "sha256": "e66a03c8654091ede0da0ad09cbea38260381a583c8282e9fb5d26cbfcd76190",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.nju-school-program-batch-01.review.json",
+      "bytes": 1815,
+      "sha256": "dc904387caf6891002a02142afbc5f079a8375596303e727363732f39fbc23dc",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.nju-school-program-batch-01.validation.json",
+      "bytes": 123472,
+      "sha256": "18fc2a9057addcc72b6af40da6b0ebcd7c96960afcb194fa4d50c507dac1aa07",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.nuaa-complete-batch-01.approval.json",
+      "bytes": 12134,
+      "sha256": "df86d62497351eca51cb362cc7bddae27ac663c8f947145463d42a3319ebf1a4",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.nuaa-complete-batch-01.approved.local.json",
+      "bytes": 284691,
+      "sha256": "feb56a9c303bb7efe39c5b016673a8e73912bffa17703e92d4b89434929397da",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.nuaa-complete-batch-01.draft.json",
+      "bytes": 276087,
+      "sha256": "c922a18ea853cd34286fbce123d495f4428aef88c63518c16d2287d792be19fd",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.nuaa-complete-batch-01.review.json",
+      "bytes": 6352,
+      "sha256": "caf5a301fa9f8c4eeef87b030b81596a263b7691a2dcea4177ccec4cc270874a",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.nuaa-complete-batch-01.validation.json",
+      "bytes": 217004,
+      "sha256": "7a5b7850aff1661d348db4c5e41268b48910b2f1e6fe974949725db1c8ad63d3",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.nwpu-complete-batch-01.approval.json",
+      "bytes": 12925,
+      "sha256": "f9d7ee3176108fd2834c7185dd8dacc802eec41ee2fe001fa73296e590ffdbb7",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.nwpu-complete-batch-01.approved.local.json",
+      "bytes": 293003,
+      "sha256": "ca26a89e36034575f269532d2dbe8dad58852b761e23c5f2279fa50b0a7b2c51",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.nwpu-complete-batch-01.draft.json",
+      "bytes": 282849,
+      "sha256": "d078378089998a103eea6f2419f013b55e95157b93dae8974b0f5c2b4b9a5631",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.nwpu-complete-batch-01.publication-verification.json",
+      "bytes": 522,
+      "sha256": "800f61b5537f77fbf90df6265ce8697b4488dcdcbdc30ed7f3e9dda953fee252",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.nwpu-complete-batch-01.review.json",
+      "bytes": 6395,
+      "sha256": "00b3286106292c01dda28f28d02c351a97b78e568c0d1f01a107849a1bb5eca4",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.nwpu-complete-batch-01.validation.json",
+      "bytes": 230069,
+      "sha256": "f9d22fbec9112a63daf32927f3f3e20ab7e60123fb334c74458a806d9343607d",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.official-five.local.json",
+      "bytes": 6955,
+      "sha256": "cee4381535ebb199402286b713779d168db805a0d6be470c0051b4e44d5410ed",
+      "stage": "other"
+    },
+    {
+      "path": "seeds/catalog.ouc-cleanup.draft.json",
+      "bytes": 10608,
+      "sha256": "dd32beb7b7e18a0aa1a9f4b2465cb0e922c50fc0c85f42c93dfb4bf62d6c62ae",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ouc-cleanup.review.json",
+      "bytes": 5249,
+      "sha256": "a3b8829e34d0057bb26276486097afbea9bb7a6419d71674c72459a48c5aa1e5",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ouc-cleanup.validation.json",
+      "bytes": 6648,
+      "sha256": "828eea3138a12eebc96778ec259018d78bda1e24aec274df47b0a84a057ee704",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ouc-international-batch-01.draft.json",
+      "bytes": 51262,
+      "sha256": "68de9e6b220045d90c4306845b98eccaa6bc6fb0432a23653b22a720302600d2",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ouc-international-batch-01.review.json",
+      "bytes": 12252,
+      "sha256": "c899280ec9e3105da907865d3ae52d3ddc631dd748bdd695ec39af6379d816a2",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ouc-international-batch-01.validation.json",
+      "bytes": 27043,
+      "sha256": "fddbd760a1f21aa119cdea8b56cf1d4eee9912b4709b1de14abbf332087a9ad7",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ouc-safe-new-batch-01.approval.json",
+      "bytes": 1467,
+      "sha256": "c32cb3c42f67f7aa01c484385fe0c0504649d9453846db57cc4c13ca31f6dd3d",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.ouc-safe-new-batch-01.approved.local.json",
+      "bytes": 46357,
+      "sha256": "6f17420fafc8d5527b5cc797ff60ebf11591552d9a9415d1779b6df5c83c8c7a",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.ouc-safe-new-batch-01.draft.json",
+      "bytes": 44570,
+      "sha256": "4a5676f2f71f750c623153c58f2dea4154cd707436d55969e353c3fae496b547",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ouc-safe-new-batch-01.review.json",
+      "bytes": 10536,
+      "sha256": "8936d1d5df4b0ebaf833e68e31345a6ed5645c908c992f8fd9063405966c4709",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ouc-safe-new-batch-01.validation.json",
+      "bytes": 22376,
+      "sha256": "253afcf5dd6dcc296202cb63cf67c9e61ca52812b4faeb98af5fb462c1746679",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.pku-graduate-core-batch-01.approval.json",
+      "bytes": 6212,
+      "sha256": "3e7b5188203f9083a29c9667f02a43d108e4cd6ecf01e16f0a3884e3d620aebc",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.pku-graduate-core-batch-01.approved.local.json",
+      "bytes": 142321,
+      "sha256": "1edbfea8f3636ded06529128175ebf99344305078f7f35d6dfe7976aaa84c37a",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.pku-graduate-core-batch-01.draft.json",
+      "bytes": 137597,
+      "sha256": "cf2593d931252eac314eaeaa94e68268c57dcb327577d87c5173105362c132e5",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.pku-graduate-core-batch-01.review.json",
+      "bytes": 5866,
+      "sha256": "d76705389b42e4c1c9f2d3ee0ab3001fef4578bc185d95925e7e04c45aab388e",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.pku-graduate-core-batch-01.validation.json",
+      "bytes": 107210,
+      "sha256": "f0efdcb3dff23afb5d37696355f2d0a0b37af9957e3022aa539500c63a5650a5",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.pku-graduate-english-batch-02.approval.json",
+      "bytes": 8757,
+      "sha256": "7e64c444874d9ea498edda467c4ae8437af5a7f5bef316187f8fdb0517b4c0bc",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.pku-graduate-english-batch-02.approved.local.json",
+      "bytes": 283415,
+      "sha256": "c2dddc344e6e6a3843264a31830684b7e6c6ce25097381f17846c0a3535bab68",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.pku-graduate-english-batch-02.draft.json",
+      "bytes": 273212,
+      "sha256": "e266944a1465d912cdf81065dacabd2f14b4df3b24e361f966b2ecb39e1afd32",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.pku-graduate-english-batch-02.review.json",
+      "bytes": 21811,
+      "sha256": "ff3599dabd1acf369523ddcfcfde7c87e95b7d6d7ad49a0520fb022c8fa62db9",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.pku-graduate-english-batch-02.validation.json",
+      "bytes": 226044,
+      "sha256": "3fdcbc52fb0062e0074cdeece2af8959c52c3bd535324f2453ff77fe9a25bd5b",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.pku-scholarships-cleanup.review.json",
+      "bytes": 3998,
+      "sha256": "4fbb244cfea6ebc31421e296d3b6c93a757dcd2a6f1517ddb836a872bd594ed3",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.pku-scholarships-split-batch-01.approval.json",
+      "bytes": 1068,
+      "sha256": "fe2210297f9732b899b26592b1ab8a94a08a7de76dac0125ed09a78420028e55",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.pku-scholarships-split-batch-01.approved.local.json",
+      "bytes": 18577,
+      "sha256": "31f93d5b6c267dab978f72d54261be8429cbebb3c4747d0e76a41e3113750d37",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.pku-scholarships-split-batch-01.draft.json",
+      "bytes": 17501,
+      "sha256": "cd17a76b408ede72d015a4173d1cd9bd279b83b02fa76a497dbe83222fb48397",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.pku-scholarships-split-batch-01.review.json",
+      "bytes": 3020,
+      "sha256": "9d8845e10094120547a7cc71a7476a2690f83295e9050bfb476d46ad870edfe0",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.pku-scholarships-split-batch-01.validation.json",
+      "bytes": 6907,
+      "sha256": "93161288d9dda328dd09d161146dbd77457316cadd657558351b0303e1ba0a03",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.pku-school-graduate-refresh.draft.json",
+      "bytes": 5146,
+      "sha256": "32bf898d55a1853bae1df3dd8e34d9ee00cb45f2e804a102f88cba73564f78be",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.pku-school-graduate-refresh.review.json",
+      "bytes": 3615,
+      "sha256": "4226c73b7830ff432ce2f38c72bd5e7c058cd1930ebbecfa8c4809f242ac1c94",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.pku-school-graduate-refresh.validation.json",
+      "bytes": 2783,
+      "sha256": "72aa3bbfcf671ee7b7a596d9bdddd5503d5a4e76013a9547fca9311d87d4a0a7",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.pku-school-program-batch-01.approval.json",
+      "bytes": 2077,
+      "sha256": "d23a08f83650725c8102fc0cbd9ea15f108d840b36843a8a38011c217ce42e2e",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.pku-school-program-batch-01.approved.local.json",
+      "bytes": 78880,
+      "sha256": "7083bf4f6354c44db48fb12c7964e002e3b5338d2b27fc44d3459e5f28a88b36",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.pku-school-program-batch-01.draft.json",
+      "bytes": 75939,
+      "sha256": "036275af630e255cd22863a4821230ab0538544ba368b61a0399800431479767",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.pku-school-program-batch-01.review.json",
+      "bytes": 2867,
+      "sha256": "d1932d16d2fd31a0dd9d05826711524a1a0a5acb182abe2e80a9dc7050f4d1cc",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.pku-school-program-batch-01.validation.json",
+      "bytes": 51877,
+      "sha256": "f66f988795474dd7106e6d1252360db3b1482489657e930b19301688808c4d46",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.scholarships-rich-batch-01.approval-verified.json",
+      "bytes": 1731,
+      "sha256": "519236991a2b66222b92e2199d3c455cd9a6e79eeb695ce3bf6dbc82c7862de2",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.scholarships-rich-batch-01.approval.json",
+      "bytes": 1722,
+      "sha256": "cc684a667882fc1d87da24b2dff1b5f6a1aa8163cba599fd78b4f337e4013cf6",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.scholarships-rich-batch-01.approved-verified.local.json",
+      "bytes": 226172,
+      "sha256": "744b4fb73b22d39e42eb40264ff7bcea9348f95247fd983d72a067de81dd822e",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.scholarships-rich-batch-01.approved.local.json",
+      "bytes": 224332,
+      "sha256": "47e12222c774ea778b70723f6f160b69fd2060246b800d45b70fbf12aa8d047f",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.scholarships-rich-batch-01.publication-verification-final.json",
+      "bytes": 581,
+      "sha256": "5dbce63d0e673f53079de896f1a3360221cf17aa1f3a572e4f7dc9a3d3c4a2bd",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.scholarships-rich-batch-01.publication-verification.json",
+      "bytes": 581,
+      "sha256": "a7c902e765457af78c425847775378e224a35d7810921b2fceae542dc870c69c",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.scholarships-rich-batch-01.review.json",
+      "bytes": 27799,
+      "sha256": "9d21063ddf86cb9abfa520265defb9b4a8b6574d28cd46bb6c13da328012e110",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.scholarships-rich-batch-01.validation.json",
+      "bytes": 1616296,
+      "sha256": "1b786148635e93143546aabbc0771c07f07b84aae77a4dc5b72071e1ba8c13eb",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.scu-complete-batch-01.approval.json",
+      "bytes": 49103,
+      "sha256": "e2f98cdf05bfc7c97943192935d560b10bc232d7c2c1f94600397ea650c8969d",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.scu-complete-batch-01.approved.local.json",
+      "bytes": 2414560,
+      "sha256": "b3fd24439d3593ae20044cfd767ec0099fd02eb32b0cf26b7f53c8da71775956",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.scu-complete-batch-01.draft.json",
+      "bytes": 2354092,
+      "sha256": "648383e2db3e9d23ec75afdb01bd222bddfcb76d6af481fe74061a5b275e4d51",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.scu-complete-batch-01.review.json",
+      "bytes": 8891,
+      "sha256": "5899a7f9c6ed6c4e6949f805f10df77aecc4173339403b78811eb8ddf9b8f4f4",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.scu-complete-batch-01.validation.json",
+      "bytes": 1541606,
+      "sha256": "179970853ffda358e2260d0ceeae3f1f3658a4c6b44e35f59d335ab04c12b8d6",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.scut-school-scholarships-batch-01.approval.json",
+      "bytes": 1429,
+      "sha256": "b61937a6aa17475ee4b1fbc30489c6be7f62f0bb270bdabc7bd8c87f16d7ebfd",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.scut-school-scholarships-batch-01.approved.local.json",
+      "bytes": 45982,
+      "sha256": "46a845efa0c68acdf6655796926ad9cf657e0f06bdea9e5d792a97e4156a0e25",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.scut-school-scholarships-batch-01.draft.json",
+      "bytes": 44334,
+      "sha256": "21d592fc458ef6c7b9767ee91df1683c7a453521045de97039b51a78a84b54c0",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.scut-school-scholarships-batch-01.review.json",
+      "bytes": 7020,
+      "sha256": "0edee8ebbc5b87652917acbde883bf0100f619f6fb82d81a59cc6ec709a8d90c",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.scut-school-scholarships-batch-01.validation.json",
+      "bytes": 12558,
+      "sha256": "0b1708d4f9e57e22d747a29f29518bcc6c558f2f88e90f1853ec561eb2d8fd55",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.scut-undergraduate-batch-01.approval.json",
+      "bytes": 13448,
+      "sha256": "577db66d6134115a4b2af744f7e88985b16e9eac5ebfbe1e1a1ee00648597175",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.scut-undergraduate-batch-01.approved.local.json",
+      "bytes": 328383,
+      "sha256": "a2a95a1df0e46c1d5486d67de5e16aea47d430c3532a6626a6c2f4bafcc7eb98",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.scut-undergraduate-batch-01.draft.json",
+      "bytes": 318362,
+      "sha256": "e5117fe0f6a0c8f449509c0b2a2033338d92f1ffa7424541f830a39257f90413",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.scut-undergraduate-batch-01.review.json",
+      "bytes": 4581,
+      "sha256": "9b84d750208b145485c93d8be9f415828d34b7fd9e84176baa990c2b793829ea",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.scut-undergraduate-batch-01.validation.json",
+      "bytes": 273896,
+      "sha256": "f4a2f1fc0f3a067c8a7363dcbb002231c4612625ef5ec43b1c2e56dadb1afa0d",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.sdu-complete-batch-01.approval.json",
+      "bytes": 16172,
+      "sha256": "4c12e08d58135561d2849e98f131c4eaa2ff563e3b6bfdddedc084076ddbe400",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.sdu-complete-batch-01.approved.local.json",
+      "bytes": 492756,
+      "sha256": "803e0119f2ee59e93340c5b0435813c30eaf6bf63db55102e4db7cb028894740",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.sdu-complete-batch-01.draft.json",
+      "bytes": 478282,
+      "sha256": "c3086bcd6238d6142b3e49ff570a481dcbb5c237bbdb72a91df9bb4a5c969108",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.sdu-complete-batch-01.publication-verification.json",
+      "bytes": 540,
+      "sha256": "4c070b39e8e4c04519983bb2fd689c8cbace3b45d159d7ba362173289cefc33c",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.sdu-complete-batch-01.review.json",
+      "bytes": 14286,
+      "sha256": "d17f704c3cb43a298bd849b0a3fb9b8c24372a5fbdbe7130f2ea3de9f4dcba0c",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.sdu-complete-batch-01.validation.json",
+      "bytes": 348368,
+      "sha256": "8aaeb098928530fb1a991ed1ab991e468998fc470816b8258fec4b4a16f26f50",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.seu-complete-batch-01.approval.json",
+      "bytes": 24286,
+      "sha256": "a6e4bbaf99809d4e128e62646830e2a03cb475e1f660cdc91630ae2ffc57616d",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.seu-complete-batch-01.approved.local.json",
+      "bytes": 756543,
+      "sha256": "91958c0a8f7d136d00b690627b5d6d1f2e7b47cae9fa56c263cb9ddee7a228b8",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.seu-complete-batch-01.draft.json",
+      "bytes": 733955,
+      "sha256": "f7290ce27d6236a5314250b127ff61e99678da817e6a318cc30c27006755894d",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.seu-complete-batch-01.review.json",
+      "bytes": 15149,
+      "sha256": "c1a8983b7d0a2c86fd75248296e41cd7788be7a2903934081ceb5df93f78dcfa",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.seu-complete-batch-01.validation.json",
+      "bytes": 594241,
+      "sha256": "28166f477a56cc6faa729e9c036c64acef648f0d16f5c553bdcc7411e96853f9",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.seu-complete-batch-02.approval.json",
+      "bytes": 24286,
+      "sha256": "1c3d7205be2bd38c56a792743f4a8911e226de3c38dfcf6107d8edf68606ad87",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.seu-complete-batch-02.approved.local.json",
+      "bytes": 756596,
+      "sha256": "f622a2d5184daf1307aba400552ba0e6b010cd3130b1e51a5c65a3d3e32ed897",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.seu-complete-batch-02.draft.json",
+      "bytes": 734008,
+      "sha256": "802691b75f4a41a102b0a1881b840d322e558f70ca098013c23ee0cb7023008a",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.seu-complete-batch-02.publication-verification.json",
+      "bytes": 505,
+      "sha256": "0a8bb8db13f2f038854f2146ca63d27febd49b770572045fa7432f89c6d608b1",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.seu-complete-batch-02.review.json",
+      "bytes": 15159,
+      "sha256": "0f1c492d2e3a3439d36a104768432a6d211b828b3d1d2f26ed96daf62b63ff3e",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.seu-complete-batch-02.validation.json",
+      "bytes": 594259,
+      "sha256": "ec6e8a5bd5ccafa076d6a8801374ae9cedb3adb0125790bb6998260199bec96f",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.shu-complete-batch-01.approval.json",
+      "bytes": 28326,
+      "sha256": "b73fe87267763b4d8f1c4862a0cec5f588c1cb3ca17bbb29eb6f54469c1861fc",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.shu-complete-batch-01.approved.local.json",
+      "bytes": 852432,
+      "sha256": "c2c60ea4f03cc80de3f54d9dd75f6851e0b4331fe6d03b470fcb6e3bb4f25cbb",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.shu-complete-batch-01.draft.json",
+      "bytes": 828517,
+      "sha256": "629a03b946bac26e0c0654e484ff76667708c8f76cef30c54aa67abcf73fccc0",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.shu-complete-batch-01.review.json",
+      "bytes": 11084,
+      "sha256": "acebe188db2e2411a9fddfba7184d8b46d7d6549980718737ad3bf027a5d4f30",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.shu-complete-batch-01.validation.json",
+      "bytes": 652169,
+      "sha256": "3e2cc5b0ddd0666699f55be5dd923d01dfc28a37996bc8d30ed0a244ac787bec",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.sjtu-medicine-batch-01.approval.json",
+      "bytes": 1177,
+      "sha256": "884248e17d103fc87d589da51e417c338955028e6fcdc6bd2a624c34d32f31ba",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.sjtu-medicine-batch-01.approved.local.json",
+      "bytes": 13754,
+      "sha256": "2d4e186c55de86d672c6f57635f4b04cdbd4a188eda1bce9e0583734fbaf9744",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.sjtu-medicine-batch-01.draft.json",
+      "bytes": 12667,
+      "sha256": "b871ae0b47c5a16680c0fb7cfa1e9eca86c75af0539ffab3f0ea3ffb48547ce0",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.sjtu-medicine-batch-01.review.json",
+      "bytes": 2018,
+      "sha256": "a27057dab9f0a002d4133c78885deee239c89fd45b0fdeb73d826d48f9737873",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.sjtu-medicine-batch-01.validation.json",
+      "bytes": 8819,
+      "sha256": "563664c8e7ba8a1dcd6b8100884cb1ea1ba577f308fbe70a6f56fe30e0212059",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.sjtu-medicine-scholarships-batch-01.approval.json",
+      "bytes": 1125,
+      "sha256": "93c98ff4ca5252fd36b9d494e4ea17ad5f115d2217150ff11ef76350844ab929",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.sjtu-medicine-scholarships-batch-01.approved.local.json",
+      "bytes": 37806,
+      "sha256": "a4383b9ac3346486ed9b264b9e00153e52c8b2d62d2710c0ae50c10f41933669",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.sjtu-medicine-scholarships-batch-01.draft.json",
+      "bytes": 36679,
+      "sha256": "37886ecde9ac082033d6b427d9c9022ba0ee153021a1aba16b929a89f2448712",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.sjtu-medicine-scholarships-batch-01.review.json",
+      "bytes": 4308,
+      "sha256": "f7d1164cb7549f368b0bf82202831091aa3587107e83316bca181edba2a49f13",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.sjtu-medicine-scholarships-batch-01.validation.json",
+      "bytes": 19201,
+      "sha256": "98c8533f512d3bd5cf7c46fa36f48e59fa6a7b278f29cb168d94098d1a778f65",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.sjtu-scholarships-batch-01.approval.json",
+      "bytes": 1130,
+      "sha256": "74bcad3e16559f12a3bfc7a513d73fc766d40eb61d2081e86ddb0f0ccc158273",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.sjtu-scholarships-batch-01.approved.local.json",
+      "bytes": 74655,
+      "sha256": "987f6fc74a824b72f2406f89574cff3dd5ddfffb7a0a56fa2cc0512a85132b4b",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.sjtu-scholarships-batch-01.draft.json",
+      "bytes": 73565,
+      "sha256": "5f121df13270d8e338b7bd89c930b2a26763a3ebe1cd419d52d77754578cc03c",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.sjtu-scholarships-batch-01.publication-verification.json",
+      "bytes": 436,
+      "sha256": "4a70113d04f1377d0e1f47aba4da71722fee3d17411568a7851a5c007df430cd",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.sjtu-scholarships-batch-01.review.json",
+      "bytes": 6333,
+      "sha256": "c646c711b39c29277f8f1facc4a88bb0f88434edda9aadf1d0ef78ce67d14f72",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.sjtu-scholarships-batch-01.validation.json",
+      "bytes": 46390,
+      "sha256": "6d7a7405973fc05aa5b342bcd2b1ca6ac9dc56892f5efd7a6c9dfbecbbc6dd8c",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.sjtu-school-program-batch-01.approval.json",
+      "bytes": 4496,
+      "sha256": "cc14ebb31cff5a5e45d325ef8ccb41966a62ef65ff58ce7067724a08e8554b4e",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.sjtu-school-program-batch-01.approved.local.json",
+      "bytes": 160697,
+      "sha256": "6fa16aaad01db5da511bba613913c4134c1dfb56adc64ea86bf690952d71239f",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.sjtu-school-program-batch-01.draft.json",
+      "bytes": 155704,
+      "sha256": "b56bd05324ef01994eb276f926c203c05a3c0bbbb1d3fab2acee96cb33e3932c",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.sjtu-school-program-batch-01.review.json",
+      "bytes": 4518,
+      "sha256": "7de0c578fb77ce02c327d191b82af71ab0b9062afb3f41c63737c66e88ec6d05",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.sjtu-school-program-batch-01.validation.json",
+      "bytes": 106669,
+      "sha256": "e63b9729c617da213273a3058d6af280f5355bd48071ac7192cdc0bfb3e63511",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.sustech-complete-batch-01.approval.json",
+      "bytes": 5499,
+      "sha256": "2cdd272df43d7fcc1854a6b5d37af1455e72980369df8f02102bc91803aefb3d",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.sustech-complete-batch-01.approved.local.json",
+      "bytes": 215170,
+      "sha256": "27648e620f345229e1e7c352170d65a1255f5dc10cfbe59b53902d2de8df038d",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.sustech-complete-batch-01.draft.json",
+      "bytes": 208061,
+      "sha256": "a28de4d279c2287f56e16e2d7505029932cf748ab566c49670d55883b4c16b43",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.sustech-complete-batch-01.review.json",
+      "bytes": 18733,
+      "sha256": "32ad495502629defe205a0d284cf6b09bfd1ee9868a18f249c562b82918695df",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.sustech-complete-batch-01.validation.json",
+      "bytes": 111364,
+      "sha256": "9c950916efe204a40d6cb6d22a45c84f5cd9bc0865d0981995691cffedf02925",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.sysu-complete-batch-01.approval.json",
+      "bytes": 68926,
+      "sha256": "017621a12dcc5b3ee0aadd4da029c058f80b1b2872d725a75a0e7b246b49816c",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.sysu-complete-batch-01.approved.local.json",
+      "bytes": 2244481,
+      "sha256": "c97de4177c170c9d6eea73248b76902c022616eb075993047c8ab90822724058",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.sysu-complete-batch-01.draft.json",
+      "bytes": 2175007,
+      "sha256": "791dbd8303e655dfadc3ed30397498e23e98413e427f210bd1d239d872242044",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.sysu-complete-batch-01.publication-verification.json",
+      "bytes": 507,
+      "sha256": "c4ac7b2bfca25c393e145f770b5f0ad87096a162667a4113c06e65fdb8e92a1b",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.sysu-complete-batch-01.review.json",
+      "bytes": 9964,
+      "sha256": "5620a53d40c9f661544caabda9ee676360a789bbead1a566e65bf990e2ba0897",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.sysu-complete-batch-01.validation.json",
+      "bytes": 1691948,
+      "sha256": "968443ede7768b6de7708ad558cda3566af68754ca48829234528a55f8ae32e6",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.sysu-program-text-correction-01.draft.json",
+      "bytes": 282716,
+      "sha256": "7815f2e67be7e210aea11109d480639d233e086b04adc68621c98faf3a5e8d40",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.sysu-program-text-correction-01.review.json",
+      "bytes": 1810,
+      "sha256": "995dea170f36a954d6e83ee29ea9598f31dd193178f71ed1eaea07c3f5440c62",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.sysu-program-text-correction-01.validation.json",
+      "bytes": 173099,
+      "sha256": "c803bcfc9144c833b89b5a27e2720b580d2b25dd80311b3d5c100684617c6074",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.tju-cleanup.draft.json",
+      "bytes": 10767,
+      "sha256": "9acccc364630af3665a3c1a5d5d52665c3ce2f12ca48e1a0f558d7cf88f44ec5",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.tju-cleanup.review.json",
+      "bytes": 29003,
+      "sha256": "47fd97f00d11e25325c850f78e6b570e9fcb742a7d47ce0a9db39ceb671858ac",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.tju-cleanup.validation.json",
+      "bytes": 3641,
+      "sha256": "b035cb3697bd36f2ddc148f7df438f13ae1c805c34da80472289eba910047dc5",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.tju-complete-batch-01.draft.json",
+      "bytes": 1038031,
+      "sha256": "1114f820c259e0e3e1db85b26bd22b08e6509383bb8e31a43ee37c5f2d4d58c5",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.tju-complete-batch-01.review.json",
+      "bytes": 9820,
+      "sha256": "297e08cc0a126cb194d4bb9e4f2f63b2e11b1804ae476f888f361b5f03200d06",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.tju-complete-batch-01.validation.json",
+      "bytes": 698852,
+      "sha256": "c6ce700627ceb9e1778a7ac91db40045df393f4ee2f89d6794dddc3bd8bf3463",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.tju-safe-new-batch-01.approval.json",
+      "bytes": 23173,
+      "sha256": "f32c341fa7555bc98fa867b376257ab57a4874d10b0b1b44e8c547813f6536d2",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.tju-safe-new-batch-01.approved.local.json",
+      "bytes": 1061291,
+      "sha256": "f0897236bb8bfe945e320a51b25a173d0ccb38d45324dee483f02077deb81848",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.tju-safe-new-batch-01.draft.json",
+      "bytes": 1032541,
+      "sha256": "e2adcdb7ebe627db8d0b67fb258a559291e9b95048619253ba3c0de5a3fad041",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.tju-safe-new-batch-01.review.json",
+      "bytes": 9513,
+      "sha256": "93d5158d9fc20ac6c65a3e24ecaf24a171e6017611db8152d454a291c387867c",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.tju-safe-new-batch-01.validation.json",
+      "bytes": 697519,
+      "sha256": "dd5e0140024be5d606c9dbec0da6806216dfeff7865509f9217b04f4a68c6d3b",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.tongji-scholarships-batch-02.approval.json",
+      "bytes": 1109,
+      "sha256": "8871f25760d2d4e5c6bd47d54e56e6f9e56f92eb70abf65c74af9d0796cb8229",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.tongji-scholarships-batch-02.approved.local.json",
+      "bytes": 68847,
+      "sha256": "2052217b95a6829e3ad14a5ec2d45fb668b7bcd5d353f8aeec1f7d498d75efde",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.tongji-scholarships-batch-02.draft.json",
+      "bytes": 67774,
+      "sha256": "b5bb9f5d891f7d0ae1118043d3a7848ed2dd6e2a2ae93ca61f01e0c0072f0953",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.tongji-scholarships-batch-02.publication-verification.json",
+      "bytes": 404,
+      "sha256": "1ae1d5563d32e7ea1f21fee6471cb08e8f49b6f9f0a821f5802c384d908d02f7",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.tongji-scholarships-batch-02.review.json",
+      "bytes": 6108,
+      "sha256": "e2e1c82cec4788a2418b92ab7dcf2be2576aa83cecae3bd8c986f779379b29af",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.tongji-scholarships-batch-02.validation.json",
+      "bytes": 46414,
+      "sha256": "35d3d4f79ccd52901e96f75d91b0b0337dbdc564e9d03bf96543edba86ccfb2b",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.tongji-school-program-batch-01.approval.json",
+      "bytes": 4999,
+      "sha256": "9593ad96ac601e0beb50c3fb409b387949162228bd04a807e974c6a879ccb32c",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.tongji-school-program-batch-01.approved.local.json",
+      "bytes": 235315,
+      "sha256": "16b4e8d8132be70a175e5ac3f286a784adfc3f98979da275fea7d8cf4898bee8",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.tongji-school-program-batch-01.draft.json",
+      "bytes": 227915,
+      "sha256": "fc732c7d23569ef24113ac305c69c6148121cd605753e0e8065010d965ea4552",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.tongji-school-program-batch-01.review.json",
+      "bytes": 2596,
+      "sha256": "b4244f50ad58f0ad889ac8dd43a1db87f0b2f3cc3fb3c764a6b8123eab3513d9",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.tongji-school-program-batch-01.validation.json",
+      "bytes": 167157,
+      "sha256": "f68c56697cde89ac454aa8846ce036519c12abe0a8923fe1ee5253b7669cade4",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.tsinghua-complete-batch-01.approval.json",
+      "bytes": 15860,
+      "sha256": "6f7709a14fa37b7f179f3fac12776ecd919b5373abb07736019d8bd2856f29e3",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.tsinghua-complete-batch-01.approved.local.json",
+      "bytes": 405978,
+      "sha256": "4621315f08ce82fc9ca8ba49ce20a8dc978c8be061f7b64c769486f8ca71e4c9",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.tsinghua-complete-batch-01.draft.json",
+      "bytes": 392987,
+      "sha256": "3b5eaa7d49efc77cb99ede095ccb62692d5f45cefc0cd4a5fb423bfc2f22e0cb",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.tsinghua-complete-batch-01.publication-verification.json",
+      "bytes": 505,
+      "sha256": "f3e69b02de5df131a926d6a4d4c88afaf98ef68abace601177d59e613cfdbda4",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.tsinghua-complete-batch-01.review.json",
+      "bytes": 9642,
+      "sha256": "de5ad34204250a8c6c0acee4b249fc9c1c4e9821e6a99d53c55e793112803380",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.tsinghua-complete-batch-01.validation.json",
+      "bytes": 273560,
+      "sha256": "b94589dc8399dc38dca9c2e9543020c5782ad52295de2f6bc47f7dcd74cc9fc9",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ucas-complete-batch-01.approval.json",
+      "bytes": 17847,
+      "sha256": "a3ee7b94f5d265084c48523fb5f0413a22ee78e8b28b1d6727ce263a1f78fc99",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.ucas-complete-batch-01.approved.local.json",
+      "bytes": 555374,
+      "sha256": "3593ba2afb228baf5a0d1d3e6241c6f94bf9139fda52ad27b8b0c9ec5cb8a504",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.ucas-complete-batch-01.draft.json",
+      "bytes": 538037,
+      "sha256": "f5305285cd63e1e68b6ba309902fb4268f595d9456e28b6de466523479195160",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ucas-complete-batch-01.review.json",
+      "bytes": 7405,
+      "sha256": "b260e2aa2979d84ac9467b310cf7c8b4631a9a63fc3ce097eebec3b086ceed32",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ucas-complete-batch-01.validation.json",
+      "bytes": 416542,
+      "sha256": "04df4dad8bbf55697fc0d636511d666f93c6b76222ca837c8b306811f70c9b5e",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.uestc-cleanup.draft.json",
+      "bytes": 3525,
+      "sha256": "c68ff9f6a002e30c30ec0f641e1b11f80c3c04bc6b8dd2c2e64154ff38a3c726",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.uestc-cleanup.review.json",
+      "bytes": 9905,
+      "sha256": "6a938f5ed92da7933c3e8cde5a5b89ce94a6f47eb82a35b0b4de1661d0e00e9b",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.uestc-cleanup.validation.json",
+      "bytes": 2055,
+      "sha256": "12204068f05606f21974b1c4d27149b8737c1cabe65ea4e1afd9e0fc7cc6db8e",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.uestc-complete-batch-01.draft.json",
+      "bytes": 255453,
+      "sha256": "8a443a8eb9ab981dae34d73db56e8043240dba2622adeccc66333ac816da9cd5",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.uestc-complete-batch-01.review.json",
+      "bytes": 4006,
+      "sha256": "ec2fcdb02ea067295bd61aa157624f2ca91ad1cc4d83b5b46a8a834e2886614e",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.uestc-complete-batch-01.validation.json",
+      "bytes": 169081,
+      "sha256": "d7cefeb04d23f0c6fb4fd4dc930e6ceff4eaa880a05d501eb33d1862ab3ca15b",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.uestc-safe-programs-batch-01.approval.json",
+      "bytes": 6042,
+      "sha256": "7ec45251f96ad2485cf0ac727e147a669c884522897cd979305551ee0687be01",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.uestc-safe-programs-batch-01.approved.local.json",
+      "bytes": 227076,
+      "sha256": "14b877d025e026b4c858ab6d6756bcdd8db3ed4817463596317c208d7b2dec9a",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.uestc-safe-programs-batch-01.draft.json",
+      "bytes": 219609,
+      "sha256": "d443d6230c5d5d0fb69093eb1add13449a394012abf65f669fb42b5aeeadf8fd",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.uestc-safe-programs-batch-01.review.json",
+      "bytes": 4239,
+      "sha256": "98de178ef77bf9835d3ded91e12fba1e74bec9cbaca7147410c942339e8c91c4",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.uestc-safe-programs-batch-01.validation.json",
+      "bytes": 157372,
+      "sha256": "4d2dcb52ad7a6a55a1f89204e562a36b556ce01b77fb61a6b236501cb5f4a51a",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.uibe-rich.local.json",
+      "bytes": 53601,
+      "sha256": "48a26249be1be4d57d420d14a8815301b4f5f93984175c48d17f21faf7d9a22a",
+      "stage": "other"
+    },
+    {
+      "path": "seeds/catalog.uibe-rich.review.json",
+      "bytes": 33971,
+      "sha256": "b2e512563435676c18edd491236fce9c5b42bcf768b2c37c49a6bf4a3bd3d462",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.uibe-scholarships-programs-batch-02.approval.json",
+      "bytes": 1381,
+      "sha256": "85dde048dd6adbcac13c6d8e093986003e4491bf3dfeeca1187f8b3de3d91cb0",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.uibe-scholarships-programs-batch-02.approved.local.json",
+      "bytes": 33551,
+      "sha256": "c4dbbd4206b2a94b5c2b5540a92087f6c840a14eaaed6fe1c0ae93f0873f24c6",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.uibe-scholarships-programs-batch-02.draft.json",
+      "bytes": 32177,
+      "sha256": "bef97ada7744827bdc1aa992f05a6998540c4825b218cd3eedb6b8fbdf53950d",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.uibe-scholarships-programs-batch-02.review.json",
+      "bytes": 3637,
+      "sha256": "c2eaba704201da44da1f8109f487b6e69db78b43cd73aa70d251264fdc904f93",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.uibe-scholarships-programs-batch-02.validation.json",
+      "bytes": 19419,
+      "sha256": "6d771ec8ffbf92e671585000145c8669e7c1b0d1c79eb2ca158062f3143a3289",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.uibe-school-program-batch-01.approval.json",
+      "bytes": 1567,
+      "sha256": "6186b87d3fcecd6d3be9922f459dabad789085eb5cf2e266118df0397924aba5",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.uibe-school-program-batch-01.approved.local.json",
+      "bytes": 36812,
+      "sha256": "025f4e2b68add41949cf6d54de0c1394b2f77d2af01cb9971f8b0d6b5b84026b",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.uibe-school-program-batch-01.draft.json",
+      "bytes": 35215,
+      "sha256": "851c085f429fa59ebd48c10b14a4dd878e3c31ae18e72449bc0458d4794a2b10",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.uibe-school-program-batch-01.review.json",
+      "bytes": 1932,
+      "sha256": "0b26d4931e2efa5fa579dde1a29513e7d36ca47712074d6100859e4d9fe436ce",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.uibe-school-program-batch-01.validation.json",
+      "bytes": 24063,
+      "sha256": "38914f5475fedf5f8c0f07ed67c1f62ab59cce7614e36c1a49fbcf85fb785b7b",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ustb-cleanup.draft.json",
+      "bytes": 44147,
+      "sha256": "11bcf22631147dc643978f75e54f3f36e7edaa66775c4df47ddc7be393d9794a",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ustb-cleanup.review.json",
+      "bytes": 19540,
+      "sha256": "d71341581c068b40598955df646751947ee13235cbaf9ba5587196b8e576980b",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ustb-cleanup.validation.json",
+      "bytes": 30561,
+      "sha256": "c90139d98d18a2bc41be11a931c4ff2f3c7e84f494b3b51f4c902f7e0f29d8c7",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ustb-complete-batch-01.draft.json",
+      "bytes": 580209,
+      "sha256": "4e5d2a21462a94edcb7cb08e160085dd197440c85890c7211a8368041890b0e0",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ustb-complete-batch-01.review.json",
+      "bytes": 14703,
+      "sha256": "a8e7424b048c2b52e24aa4c38925a72fefa32944d5ee13aa40157651394b2473",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ustb-complete-batch-01.validation.json",
+      "bytes": 411768,
+      "sha256": "2b99f93d0cb7071ac3ec4530f420d0d9a74b8baa60934ae6a9c69ce67c31cd53",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ustb-safe-new-batch-01.approval.json",
+      "bytes": 13877,
+      "sha256": "e01e38ac48c40c0f77cdf338cb20576a80523b82dd941e1618b05ec4dbda6b7e",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.ustb-safe-new-batch-01.approved.local.json",
+      "bytes": 554831,
+      "sha256": "b74a08e22f6a515476f294b16aedc65dff80d17d4e1b35ebe2fbb74e6017ec67",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.ustb-safe-new-batch-01.draft.json",
+      "bytes": 540095,
+      "sha256": "8076bfe8becafd645bd35488758fcdb7614758da350523e20da3f6beb60ce91c",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ustb-safe-new-batch-01.review.json",
+      "bytes": 10106,
+      "sha256": "08225e4f1ee10f094fc6d65c58e2e4aa08ea80c85474325d63e344c65fb42e4d",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ustb-safe-new-batch-01.validation.json",
+      "bytes": 383069,
+      "sha256": "b6d7a63afe6dad99c21c720686e3ad1a154fd0572cecedae0514795115441bfa",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ustc-cleanup.approval.json",
+      "bytes": 854,
+      "sha256": "845079e05ec4627db600d4525de104d37d8a8a0cfe2cbbb4f4f8eed12d951c53",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.ustc-cleanup.approved.local.json",
+      "bytes": 6294,
+      "sha256": "2709c08eba9f3ce61ca84dbdb968ebe8130e1f7129dc9c3494c6fe49a0d1b83c",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.ustc-cleanup.draft.json",
+      "bytes": 5331,
+      "sha256": "607febc844a1064c8e93c30850917b48075d30c44e135a282426c24c2ce38d0f",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ustc-cleanup.review.json",
+      "bytes": 9123,
+      "sha256": "c1752af3ed01be2875acb43a83e720b75717a4c4f9a04c57328cfbf0e7eb7e37",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ustc-cleanup.validation.json",
+      "bytes": 2240,
+      "sha256": "f666aa030e2eeaab28e25587477c0f7c73105b0cdebb8812d7bbc7844f25dec5",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ustc-complete-batch-01.draft.json",
+      "bytes": 774164,
+      "sha256": "bdd54f2839283e06c93c91fa9d9236ccff2a4608f3524903190c6323f14fd592",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ustc-complete-batch-01.dry-run.json",
+      "bytes": 673203,
+      "sha256": "a327368cae33662fbe4f0fd9ebb2d4a8f94623bd9e50c611e79e615741cfc23f",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ustc-complete-batch-01.review.json",
+      "bytes": 8477,
+      "sha256": "e39bf9caf92d01e0100c94d248f2cfd51f054a38944e0a5519480999d74fa3ab",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ustc-complete-batch-01.validation.json",
+      "bytes": 682333,
+      "sha256": "38e7f0f9fbc5e080d9045735ed2a8b87624ea42a8a565108b66f4b5b4351d360",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.ustc-safe-new-batch-01.approval.json",
+      "bytes": 34279,
+      "sha256": "991534af9e2dcb3639b9ab0db59447f017b3fdacd4840b337cb775dc1e3ca3c6",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.ustc-safe-new-batch-01.approved.local.json",
+      "bytes": 789626,
+      "sha256": "402b8339dd4249108a50d62216e9aec8cb2c0fcddc562a70f2ff2a987e058a38",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.ustc-safe-new-batch-01.draft.json",
+      "bytes": 761664,
+      "sha256": "4f734f2f3c5acbe4f3244d924c5093dbf440257998e8dcd740c5ceedf9f78f38",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.ustc-safe-new-batch-01.review.json",
+      "bytes": 8238,
+      "sha256": "d6567606d9011dc072f83f86116285ce27d5e91fb0b427cc8e0dc1e79cceb6b1",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.ustc-safe-new-batch-01.validation.json",
+      "bytes": 673142,
+      "sha256": "3c3fca97c59e695f00c5ffa2961fb929b7b9461ea62104b86fcdedd3c07b1ae3",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.whu-programs-batch-01.approval.json",
+      "bytes": 67216,
+      "sha256": "9af13cf1565aef338e09e1710f8b1a39fadff503d5f06e4bfc82e95c9cb3273b",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.whu-programs-batch-01.approved.local.json",
+      "bytes": 2142533,
+      "sha256": "912bcc89453eb6a328802f3317ebe7a227e4e25d728d85d98c16376fda33c083",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.whu-programs-batch-01.draft.json",
+      "bytes": 2086035,
+      "sha256": "4661f688b0cb7899372f01c2e0b3089c308e63c38f91e1db8c6fa458d3d277d3",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.whu-programs-batch-01.review.json",
+      "bytes": 6529,
+      "sha256": "5a1f2beca5c951be07f2f2c4ef376d3b8f9b552f53b07f0830d5843eb36f3edb",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.whu-programs-batch-01.validation.json",
+      "bytes": 1650242,
+      "sha256": "3161dcf67b4f462430c87496021fd782960dd3fdc9b4b9b5fec4deb646b73fa0",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.whu-school-scholarships-batch-01.approval.json",
+      "bytes": 1143,
+      "sha256": "69a6fe88d3096e58d782410b31657ea63a1cd2df8f90c23c57c1cc6559043ff8",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.whu-school-scholarships-batch-01.approved.local.json",
+      "bytes": 34404,
+      "sha256": "52cd53effe69af942f9cf0e9910a342fc393919e1a19675ee6e02802429b1003",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.whu-school-scholarships-batch-01.draft.json",
+      "bytes": 33113,
+      "sha256": "bc154808f0bb20e563d6adb7f0fbe464e1ff2f39d9ef2a7048c9cd4e7faf2821",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.whu-school-scholarships-batch-01.publication-verification.json",
+      "bytes": 467,
+      "sha256": "a3deb11b642e3e3ba4fb344278ab420cc8e8988ced8a63dff14325d573062ec4",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.whu-school-scholarships-batch-01.review.json",
+      "bytes": 5717,
+      "sha256": "6f82110e247907b228fec142ae064f8fc102b54e56d84a9e9e8efefceeea193a",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.whu-school-scholarships-batch-01.validation.json",
+      "bytes": 11359,
+      "sha256": "9d94c1248f2cf9a7ced9b1e8d6f4fc4d29382af9b9a55f14fb4661a81eb83b8c",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.xmu-cleanup.draft.json",
+      "bytes": 11308,
+      "sha256": "cd5c05d055fad40a9e70f65b860136ae8595c1f32e3b201871eb9359488e3020",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.xmu-cleanup.review.json",
+      "bytes": 48638,
+      "sha256": "5b52c621956bfc785711721c4acd4f3506d4d78b62add3ab3687f3b35454e663",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.xmu-cleanup.validation.json",
+      "bytes": 3644,
+      "sha256": "7adc4c5743329bf8743db6a3cc5684e6a9a6985cb4bad933b7415dad67007f3f",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.xmu-complete-batch-01.draft.json",
+      "bytes": 1901271,
+      "sha256": "adfedd7cacc455242b6e67621ca9ae678f7130d9944567334b5646f0882206bf",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.xmu-complete-batch-01.review.json",
+      "bytes": 9385,
+      "sha256": "61184fb62a6ad283d9753dfc6e7f034820a96e3482dcaa143d1f103319b6f31f",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.xmu-complete-batch-01.validation.json",
+      "bytes": 1256782,
+      "sha256": "3d006990b012a71c25d61ac0fdc45ebfa80230c822d495696f8493cf22b6bad8",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.xmu-safe-new-batch-01.approval.json",
+      "bytes": 42101,
+      "sha256": "2b19c22e42983674f5b2e4f4390a330d3c804b8eaf3dab06be1a608dce8c4e38",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.xmu-safe-new-batch-01.approved.local.json",
+      "bytes": 1946799,
+      "sha256": "e67d72cf12ec9bbc13fcb088fade63e2f8ecb8f7486523337442db7955b093f0",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.xmu-safe-new-batch-01.draft.json",
+      "bytes": 1896009,
+      "sha256": "2c933d080c0975c75255157d421e63fc95f98128fc39348528a18f56f15be54f",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.xmu-safe-new-batch-01.review.json",
+      "bytes": 9146,
+      "sha256": "4a8378849e5fbb74c28e4de8479c14d9933609fb0b163eecb862db1e7586c31b",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.xmu-safe-new-batch-01.validation.json",
+      "bytes": 1255417,
+      "sha256": "8ad22a5b5c4c08d9931a2b3fb69b613f34a2ab7f3f2fbcf8f721eb1f47ae2101",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.xtu-safe-new-batch-01.approval.json",
+      "bytes": 10292,
+      "sha256": "6f8ffe19b4f3c3223e719e7865d50b3fc39bf1830c3fd09404937280d58cbf6a",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.xtu-safe-new-batch-01.approved.local.json",
+      "bytes": 328474,
+      "sha256": "85b774235a3f5bd4ccb971e4e985eeb825ac0e1f1a9894287be4c558517a2222",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.xtu-safe-new-batch-01.draft.json",
+      "bytes": 318647,
+      "sha256": "43373772d707ae69294a014feac8128ef01cc647cc5513793728e1eff78d51b2",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.xtu-safe-new-batch-01.review.json",
+      "bytes": 5096,
+      "sha256": "c5303045b7004b09cd158b2096e505ec18e973c973982660e8992bac080b9233",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.xtu-safe-new-batch-01.validation.json",
+      "bytes": 247537,
+      "sha256": "848f644eaf619039a41a885f48b4fd3017e27d2779b4b0e5581cfa9380ca5088",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.xtu-school-legacy-scholarship-cleanup.draft.json",
+      "bytes": 3528,
+      "sha256": "231bafb39d1b1ae2d55f1ea3a44185349fc0304ba3cc82919b800a90b7e5844b",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.xtu-school-legacy-scholarship-cleanup.review.json",
+      "bytes": 21287,
+      "sha256": "f90d16e2ba7f5ebd6072e6e8b9c1ebf6bce630ec6ca43689b63fb00d0cf30ccc",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.xtu-school-legacy-scholarship-cleanup.validation.json",
+      "bytes": 2489,
+      "sha256": "5b680ef9cd9b96796e6630b6b8b290dff77e5fd4bafa3ab18996a3b48cae7759",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.zjsu-cleanup-batch-01.draft.json",
+      "bytes": 50893,
+      "sha256": "6339938c33e977344999f5e76f8e8ca7aab50cdcc293455929e8bb08195df8ae",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.zjsu-cleanup-batch-01.review.json",
+      "bytes": 13849,
+      "sha256": "fa74adf1ed7441956950a2856d97b6044bdc56e2b2abaf8dbe2cb62b404c59d8",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.zjsu-cleanup-batch-01.validation.json",
+      "bytes": 34322,
+      "sha256": "7bcbe9321ef4a392b5912ac1a6debc99585c31598f1c9c381e8fd60d8761ac2b",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.zjsu-safe-new-batch-01.approval.json",
+      "bytes": 9592,
+      "sha256": "1256670f3a98d65df831615a924b8cf00231abdb9b166fffe55ccb8f0ade5fae",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.zjsu-safe-new-batch-01.approved.local.json",
+      "bytes": 245926,
+      "sha256": "a7698666b7c63054b89a9dcbb2d0bca50a0531fa593ef512607b47de37f482c7",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.zjsu-safe-new-batch-01.draft.json",
+      "bytes": 238875,
+      "sha256": "50bc3be26e20041ec826c6ddc3fc404e86e5e8d8331e536094909be64ca41c4c",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.zjsu-safe-new-batch-01.review.json",
+      "bytes": 19881,
+      "sha256": "4ba8ef263aa959ca874cf82b24d1792e529f34205dc18a5dd593379931b10443",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.zjsu-safe-new-batch-01.validation.json",
+      "bytes": 189329,
+      "sha256": "2d8135391d5c0943dbf37bd0b873efb57e50caf33feee8fce69ece1e0de5dd92",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.zju-complete-batch-01.approval.json",
+      "bytes": 64105,
+      "sha256": "6492d68c9b686fbde83a7a9438c7a7235c828af268a07d03dbb21747a3cc93a1",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.zju-complete-batch-01.approved.local.json",
+      "bytes": 1976356,
+      "sha256": "2900409fa12f7a9786edca588bce2a6580c7065aaa868f678c82892432b1e220",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.zju-complete-batch-01.draft.json",
+      "bytes": 1920869,
+      "sha256": "5d0939eb88aed27b0bed0807ca5662a6bc2f4249071884b9628311940621c5b1",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.zju-complete-batch-01.publication-verification.json",
+      "bytes": 685,
+      "sha256": "428c326e0e4529e641bf7107f97014fa4b2507afdd8b9f74c9ba10a5b0ab7a12",
+      "stage": "publication-verification"
+    },
+    {
+      "path": "seeds/catalog.zju-complete-batch-01.review.json",
+      "bytes": 6807,
+      "sha256": "8d0f39dc47a7d31ae936ecb879bc6eef035fdbcb190e0f78bd80379e3b0c6759",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.zju-complete-batch-01.validation.json",
+      "bytes": 1452385,
+      "sha256": "b3985d5d6da65f79634c6d10e1c55a1dfcd44d54ffa2c076c9082b2efec1b60e",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.zju-school-program-batch-01.approval.json",
+      "bytes": 5709,
+      "sha256": "ec0d1330e660e23325d777cd244f5e0fad657850da87c6b3a01963127a003b37",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.zju-school-program-batch-01.approved.local.json",
+      "bytes": 255363,
+      "sha256": "a8d62f914b2f9a788700724ff16b94bb2e02413812cdef177e7f3d8e8351131e",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.zju-school-program-batch-01.draft.json",
+      "bytes": 246022,
+      "sha256": "667ceafb5f3b5a5b98b20d2fb287e8bc77ad69bdaa7a557e334f71751e7e07d0",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.zju-school-program-batch-01.review.json",
+      "bytes": 2131,
+      "sha256": "d122592dd4372c3cb24e0821b835eeebb1f8882bbf2d7a89798b647de231c4d0",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.zju-school-program-batch-01.validation.json",
+      "bytes": 191682,
+      "sha256": "871571bd3d8b8100d6eb7f593ac234f0fcca81bf12d7073e41c213eb6f8031bc",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.zjut-programs-safe-new-batch-01.approval.json",
+      "bytes": 10733,
+      "sha256": "3ea92c6be22694b1e064d865238fbf20b729b36e725b77526b641350246a9928",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.zjut-programs-safe-new-batch-01.approved.local.json",
+      "bytes": 312816,
+      "sha256": "0f7fd391fe238293d7b2027dc423b8a642141ba6215c0a499979e745ce0cd440",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.zjut-programs-safe-new-batch-01.draft.json",
+      "bytes": 304557,
+      "sha256": "170bb16a431887a265c0b8faa6b615d34d817f6ecb3c877de8c46e7b0ac3f7fd",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.zjut-programs-safe-new-batch-01.review.json",
+      "bytes": 16561,
+      "sha256": "16454bbe8637deab2332691ff15630199ecb591f960afd9aeaca7f3b279730ab",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.zjut-programs-safe-new-batch-01.validation.json",
+      "bytes": 252940,
+      "sha256": "f51f6071ff3b14d207d9c3da6d922bfcbfb631b073d4a769835253bb71cf91c2",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.zjut-scholarships-safe-new-batch-01.approval.json",
+      "bytes": 1363,
+      "sha256": "905c8d7b97e86f5bbd58337eda13ef666561dfdc25c335242db42ae7ea17783e",
+      "stage": "approval"
+    },
+    {
+      "path": "seeds/catalog.zjut-scholarships-safe-new-batch-01.approved.local.json",
+      "bytes": 41352,
+      "sha256": "5eba7e1f41a316dda7e897bde3f1603a25b138d956cffaf69e879d18dc3566e5",
+      "stage": "approved-publication"
+    },
+    {
+      "path": "seeds/catalog.zjut-scholarships-safe-new-batch-01.draft.json",
+      "bytes": 39691,
+      "sha256": "6d520c5ac30be5ab28239c975d3e9a19e6cc08dbbc50a00b2bea6cb79eb2a8d4",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.zjut-scholarships-safe-new-batch-01.review.json",
+      "bytes": 5972,
+      "sha256": "58e6e1bcba3e412fbeab304d34e7784a061e9f91e9766de1c117e0437b8e8440",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.zjut-scholarships-safe-new-batch-01.validation.json",
+      "bytes": 12716,
+      "sha256": "32934e889a26d42b10aa45f8205e74825ba50275262126eae884fa8f90a9d0e5",
+      "stage": "validation"
+    },
+    {
+      "path": "seeds/catalog.zjut-school-program-cleanup-batch-01.draft.json",
+      "bytes": 87028,
+      "sha256": "eee98ce122029b355fa19604f4486c05c19ae10682185d87c37747e049f7345d",
+      "stage": "draft"
+    },
+    {
+      "path": "seeds/catalog.zjut-school-program-cleanup-batch-01.review.json",
+      "bytes": 14074,
+      "sha256": "d626272dd12001e03828f8ac61d332a5e87d347bf1d4e0f60d318f26fb105f45",
+      "stage": "review"
+    },
+    {
+      "path": "seeds/catalog.zjut-school-program-cleanup-batch-01.validation.json",
+      "bytes": 64277,
+      "sha256": "90fe3359fcfa8044ef5693bfc794e87e7c039bc4af7b75f29ee97a6f5abb8872",
+      "stage": "validation"
+    }
+  ]
+}

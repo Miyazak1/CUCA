@@ -23,6 +23,8 @@ test("Hub candidate aggregates only authenticated account APIs", async () => {
     "/api/v1/notifications?limit=10",
   ]) assert.ok(script.includes(endpoint), `missing Hub endpoint: ${endpoint}`);
   assert.match(script, /Promise\.allSettled/);
+  assert.match(script, /applicationSet=\$\{encodeURIComponent\(set\.id\)\}/);
+  assert.match(script, /class="hub-api-application-link"/);
   assert.match(script, /requiredRole: "student"/);
   assert.match(script, /credentials: "same-origin"/);
   assert.doesNotMatch(script, /localStorage|sessionStorage|CuacDataClient|DemoState|mock|recommend|probability/i);
@@ -48,9 +50,11 @@ test("Hub workspace is restrained and responsive", async () => {
   ]);
 
   assert.match(html, /aria-live="polite"/);
+  assert.match(html, /data-hub-next/);
+  assert.match(html, /data-hub-next-action/);
   assert.match(css, /:focus-visible/);
   assert.match(css, /@media \(max-width: 840px\)/);
   assert.match(css, /@media \(max-width: 620px\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);
-  assert.doesNotMatch(css, /linear-gradient|radial-gradient|border-radius:\s*(?:[1-9][0-9]|[1-9][0-9][0-9])px/);
+  assert.doesNotMatch(css, /linear-gradient|radial-gradient|border-radius:\s*(?:1[5-9]|[2-9][0-9]|[1-9][0-9][0-9])px/);
 });

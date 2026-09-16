@@ -141,6 +141,7 @@ function repository(identity = null) {
   const writes = [];
   return { writes,
     async findPasswordIdentityByEmailNormalized() { return identity; },
+    async listAvailableSessionAuthorities() { return [{ selectedSurface: "student", activeRole: "student", tenantSchoolId: null, label: "Student workspace" }]; },
     async createStudentAccount() { writes.push("account"); return { userId: "student-1" }; },
     async createSession() { writes.push("session"); return { sessionId: "session-1" }; },
     async revokeSessionByTokenHash() { writes.push("revoke"); return { revoked: false }; },

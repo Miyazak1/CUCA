@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="shared-shell.css" />
     <link rel="stylesheet" href="preferences.css" />
   </head>
-  <body data-agent-mode="preferences">
+  <body data-agent-mode="off">
     <div class="page preferences-page">
       <div data-cuac-header data-active="preferences" data-note="CUAC Preferences:" data-note-detail="account settings and Hub defaults"></div>
 
@@ -18,11 +18,10 @@
             <span class="hero-rule"></span>
             <p class="eyebrow">Your account</p>
             <h1>Preferences</h1>
-            <p class="hero-lead">Control language, alerts, Hub personalisation, support, and Agent memory.</p>
+            <p class="hero-lead">Control language, alerts, Hub personalisation, support, and privacy.</p>
             <div class="profile-chips" aria-label="Preference scope">
               <span>Account settings</span>
               <span>Hub defaults</span>
-              <span>Agent memory</span>
               <span>No school-submitted data here</span>
             </div>
           </div>
@@ -49,7 +48,6 @@
               <button type="button" data-section="language">Language & region</button>
               <button type="button" data-section="notifications">Notifications</button>
               <button type="button" data-section="security">Password & security</button>
-              <button type="button" data-section="agent">Agent memory</button>
               <button type="button" data-section="privacy">Privacy</button>
             </nav>
             <div class="side-note">
@@ -82,7 +80,7 @@
                   <div class="mini-facts">
                     <span>Language, region, reminders</span>
                     <span>Hub recommendation defaults</span>
-                    <span>Agent memory and privacy</span>
+                    <span>Privacy and recommendation controls</span>
                     <span><a href="application.html#info">Open Student info for application details</a></span>
                   </div>
                 </article>
@@ -221,7 +219,7 @@
               </div>
             </div>
 
-            <div class="section-panel" data-panel="agent">
+            <div class="section-panel" data-panel="agent" hidden aria-hidden="true">
               <div class="panel-grid">
                 <article class="control-card wide">
                   <div class="card-head">

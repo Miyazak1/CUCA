@@ -557,7 +557,7 @@ async function loadCities() {
   document.querySelector("#cityCount").textContent = "-";
   document.querySelector("#cityContext").textContent = "Reading the current published catalog.";
   try {
-    const records = await window.CuacCatalogList.load("cities", { limit: 100 });
+    const records = await window.CuacCatalogList.loadAll("cities", { limit: 100 });
     cities.splice(0, cities.length, ...records);
     activeCity = cities[0] ? citySlug(cities[0]) : "";
     applyRouteCityParams();

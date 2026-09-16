@@ -59,6 +59,10 @@ function scholarshipDetailKey(item = {}) {
   return String(item.id || scholarshipKey(item));
 }
 
+function scholarshipEntityId(item = {}) {
+  return String(item.id || "");
+}
+
 function scholarshipTitle(item = {}) {
   return item.title || item.name || "Scholarship route";
 }
@@ -72,10 +76,16 @@ function scholarshipTypeLabel(item = {}) {
 }
 
 function scholarshipFundingLevel(item = {}) {
-  return item.fundingLevel || item.funding || "unknown";
+  const value = String(item.fundingLevel || item.funding || "unknown").trim().toLowerCase();
+  if (value === "full" || value === "fully funded" || value === "full funding") return "full";
+  if (value === "partial" || value === "partially funded" || value === "partial funding") return "partial";
+  if (value.includes("full") && value.includes("partial")) return "partial";
+  return value || "unknown";
 }
 
 function scholarshipFundingLabel(item = {}) {
+  const published = String(item.fundingLevel || item.funding || "").trim().toLowerCase();
+  if (published.includes("full") && published.includes("partial")) return "Full or partial";
   const level = scholarshipFundingLevel(item);
   if (level === "full") return "Full";
   if (level === "partial") return "Partial";
@@ -397,6 +407,7 @@ function renderCards() {
   const grid = document.querySelector("#scholarshipGrid");
   grid.innerHTML = items.map((item) => {
     const key = scholarshipKey(item);
+    const entityId = scholarshipEntityId(item);
     const title = scholarshipTitle(item);
     const type = scholarshipType(item);
     const coverageItems = coverageValues(item);
@@ -408,7 +419,7 @@ function renderCards() {
         <div class="scholarship-media">
           <img alt="Scholarship catalog marker" src="${scholarshipImage(item)}" loading="lazy" />
           <span class="badge type-badge ${type}">${escapeCatalogHtml(scholarshipTypeLabel(item))}</span>
-          <button class="save-button ${saved.has(key) ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(key)}" aria-label="Save ${escapeCatalogHtml(title)}">${scholarshipIcons.heart}</button>
+          <button class="save-button ${saved.has(entityId) ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-label="Save ${escapeCatalogHtml(title)}">${scholarshipIcons.heart}</button>
           <span class="scholarship-card-open" aria-hidden="true">${scholarshipIcons.arrowRight}</span>
         </div>
         <h3>${escapeCatalogHtml(title)}</h3>
@@ -424,11 +435,47 @@ function renderCards() {
   if (!items.length) {
     grid.innerHTML = '<div class="catalog-list-state"><strong>No scholarships match</strong><span>Remove a filter or search for another published route.</span></div>';
   }
-  document.querySelector("#pagination").innerHTML = Array.from({ length: totalPages }, (_, index) => `
-    <button class="${index + 1 === page ? "active" : ""}" type="button" data-page="${index + 1}">${index + 1}</button>
-  `).join("");
+  renderPagination(totalPages, filtered.length);
   renderActiveChips();
   renderFocus();
+}
+
+function compactPaginationPages(currentPage, totalPages) {
+  if (totalPages <= 7) return Array.from({ length: totalPages }, (_, index) => index + 1);
+
+  const visiblePages = new Set([1, totalPages, currentPage - 1, currentPage, currentPage + 1]);
+  if (currentPage <= 4) [2, 3, 4, 5].forEach((value) => visiblePages.add(value));
+  if (currentPage >= totalPages - 3) {
+    [totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1].forEach((value) => visiblePages.add(value));
+  }
+
+  const sortedPages = [...visiblePages]
+    .filter((value) => value >= 1 && value <= totalPages)
+    .sort((left, right) => left - right);
+  return sortedPages.flatMap((value, index) => {
+    const previous = sortedPages[index - 1];
+    return index > 0 && value - previous > 1 ? ["ellipsis", value] : [value];
+  });
+}
+
+function renderPagination(totalPages, totalResults) {
+  const pagination = document.querySelector("#pagination");
+  if (totalResults <= pageSize) {
+    pagination.innerHTML = "";
+    return;
+  }
+
+  const pageItems = compactPaginationPages(page, totalPages).map((item) => {
+    if (item === "ellipsis") return '<span class="pagination-ellipsis" aria-hidden="true">…</span>';
+    return `<button class="${item === page ? "active" : ""}" type="button" data-page="${item}" aria-label="Page ${item}" ${item === page ? 'aria-current="page"' : ""}>${item}</button>`;
+  }).join("");
+
+  pagination.innerHTML = `
+    <span class="pagination-summary">Page ${page} of ${totalPages}</span>
+    <button class="pagination-step" type="button" data-page="${page - 1}" aria-label="Previous page" ${page === 1 ? "disabled" : ""}>‹</button>
+    ${pageItems}
+    <button class="pagination-step" type="button" data-page="${page + 1}" aria-label="Next page" ${page === totalPages ? "disabled" : ""}>›</button>
+  `;
 }
 
 function renderFocus() {
@@ -620,23 +667,30 @@ function applyScholarshipAgentAction(action, detail = {}) {
   return false;
 }
 
-document.addEventListener("click", (event) => {
+document.addEventListener("click", async (event) => {
   const save = event.target.closest("[data-save]");
   if (save) {
     const resumeSelector = window.CUAC?.dataAttributeSelector?.("data-save", save.dataset.save) || "[data-save]";
     if (window.CUAC?.requireStudentSignedIn && !window.CUAC.requireStudentSignedIn("Save this scholarship", { resumeAction: { type: "click-selector", selector: resumeSelector } })) return;
     const key = save.dataset.save;
-    const item = scholarships.find((entry) => scholarshipKey(entry) === key);
+    const item = scholarships.find((entry) => scholarshipEntityId(entry) === key);
     const savedNow = !saved.has(key);
-    if (savedNow) saved.add(key);
-    else saved.delete(key);
-    renderCards();
-    showScholarshipAgentNotice(
-      savedNow
-        ? `Saved ${item ? scholarshipTitle(item) : "scholarship"} to Favourites. <a href="favourites.html">Review funding context</a>`
-        : `Removed ${item ? scholarshipTitle(item) : "scholarship"} from Favourites.`,
-      { html: savedNow },
-    );
+    save.disabled = true;
+    try {
+      await window.CuacCatalogList.setSaved("scholarship", key, savedNow);
+      if (savedNow) saved.add(key);
+      else saved.delete(key);
+      renderCards();
+      showScholarshipAgentNotice(
+        savedNow
+          ? `Saved ${item ? scholarshipTitle(item) : "scholarship"} to Favourites. <a href="favourites-api.html">Review funding context</a>`
+          : `Removed ${item ? scholarshipTitle(item) : "scholarship"} from Favourites.`,
+        { html: savedNow },
+      );
+    } catch (error) {
+      save.disabled = false;
+      showScholarshipAgentNotice(error.message || "Could not update Favourites.");
+    }
     return;
   }
   const scholarshipCard = event.target.closest("[data-scholarship-card]");
@@ -762,7 +816,8 @@ async function loadScholarships() {
   document.querySelector("#resultCount").textContent = "-";
   document.querySelector("#resultContext").textContent = "Reading the current published catalog.";
   try {
-    const records = await window.CuacCatalogList.load("scholarships", { limit: 100 });
+    const savedIdsRequest = window.CuacCatalogList.loadSavedEntityIds("scholarship");
+    const records = await window.CuacCatalogList.loadAll("scholarships", { limit: 100, concurrency: 2 });
     scholarships.splice(0, scholarships.length, ...records);
     const futureDeadlines = scholarships
       .map((item) => new Date(item.deadlineDate))
@@ -776,6 +831,11 @@ async function loadScholarships() {
     applyHashFocus();
     renderFilters();
     renderCards();
+    savedIdsRequest.then((savedIds) => {
+      saved.clear();
+      savedIds.forEach((id) => saved.add(id));
+      renderCards();
+    }).catch((error) => console.warn("Could not load saved scholarships.", error));
   } catch (error) {
     document.querySelector("#resultContext").textContent = "The published catalog could not be loaded.";
     window.CuacCatalogList.listState(grid, "error", { noun: "scholarships", message: error.message });

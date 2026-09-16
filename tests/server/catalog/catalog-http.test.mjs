@@ -46,6 +46,11 @@ test("catalog HTTP handler returns public data without audit metadata", async ()
         },
       },
     ],
+    pagination: {
+      total: 1,
+      limit: 100,
+      offset: 0,
+    },
   });
   assert.equal("audit" in body, false);
 });
@@ -108,4 +113,16 @@ test("catalog HTTP detail handlers reject malformed public identifiers", async (
   assert.equal((await programResponse.json()).error.code, "BAD_REQUEST");
   assert.equal(cityResponse.status, 400);
   assert.equal((await cityResponse.json()).error.code, "BAD_REQUEST");
+});
+
+test("catalog HTTP exposes published guide list and slug detail routes", async () => {
+  const service = new CatalogService({
+    async listGuides(options) { return [{ slug: "timeline", options }]; },
+    async getGuide(slug) { return { slug }; },
+  });
+  const handlers = createCatalogHttpHandlers(service);
+  const list = await handlers.listGuides(new Request("https://cuac.test/api/v1/catalog/guides?limit=5&query=deadline"));
+  const detail = await handlers.getGuide(new Request("https://cuac.test/api/v1/catalog/guides/timeline"), "timeline");
+  assert.deepEqual(await list.json(), { data: [{ slug: "timeline", options: { limit: 5, offset: 0, query: "deadline" } }] });
+  assert.deepEqual(await detail.json(), { data: { slug: "timeline" } });
 });

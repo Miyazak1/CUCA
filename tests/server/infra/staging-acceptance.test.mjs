@@ -16,6 +16,7 @@ function manifest(status = "passed") {
   return {
     schema: STAGING_ACCEPTANCE_SCHEMA,
     environment: "staging",
+    releaseScope: "full-platform",
     generatedAt: now.toISOString(),
     release: {
       commitSha: "a".repeat(40),
@@ -40,6 +41,27 @@ test("complete staging evidence is ready only for protected human review", () =>
   assert.equal(report.controls.length, STAGING_ACCEPTANCE_CONTROL_IDS.length);
   assert.deepEqual(report.failures, []);
   assert.doesNotMatch(JSON.stringify(report), /evidenceRef|artifact:sha256/);
+});
+
+test("school handoff v1 records deferred application capabilities as evidence-backed not applicable controls", () => {
+  const scoped = manifest();
+  scoped.releaseScope = "school-handoff-v1";
+  for (const control of scoped.controls) {
+    if (["payment.signed_round_trip", "files.oss_round_trip", "submission.signed_round_trip"].includes(control.id)) {
+      control.status = "not_applicable";
+    }
+  }
+  const accepted = inspectStagingAcceptance(scoped, now);
+  assert.equal(accepted.readyForReview, true);
+  assert.equal(accepted.releaseScope, "school-handoff-v1");
+
+  const missingExclusion = structuredClone(scoped);
+  missingExclusion.controls.find(control => control.id === "payment.signed_round_trip").status = "passed";
+  assert.match(inspectStagingAcceptance(missingExclusion, now).failures.join("\n"), /must be not_applicable/);
+
+  const excessiveExclusion = structuredClone(scoped);
+  excessiveExclusion.controls.find(control => control.id === "auth.email_round_trip").status = "not_applicable";
+  assert.match(inspectStagingAcceptance(excessiveExclusion, now).failures.join("\n"), /cannot be not_applicable/);
 });
 
 test("the checked-in staging template is valid but intentionally blocked", async () => {
@@ -115,6 +137,7 @@ test("each completed staging control requires a distinct evidence artifact", () 
 test("environment templates cannot claim runtime acceptance through self-declared flags alone", async () => {
   const values = parseEnv(await readFile(new URL("../../../config/staging.env.example", import.meta.url), "utf8"));
   assert.equal(values.CUAC_REQUIRE_PRODUCTION_READY, "true");
+  assert.equal(values.CUAC_RELEASE_SCOPE, "school-handoff-v1");
   assert.equal(values.CUAC_AUTH_EMAIL_STAGING_ACCEPTED, "false");
   assert.equal(values.CUAC_NOTIFICATION_STAGING_ACCEPTED, "false");
   assert.equal(values.CUAC_PAYMENT_STAGING_ACCEPTED, "false");

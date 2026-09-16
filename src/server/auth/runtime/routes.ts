@@ -12,6 +12,9 @@ const unavailableCredentialsRepository: AuthCredentialsRepository = {
   async findPasswordIdentityByEmailNormalized() {
     throw serviceUnavailable("Auth credentials repository is not configured.");
   },
+  async listAvailableSessionAuthorities() {
+    throw serviceUnavailable("Auth credentials repository is not configured.");
+  },
   async createStudentAccount() {
     throw serviceUnavailable("Auth credentials repository is not configured.");
   },

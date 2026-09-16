@@ -3,6 +3,10 @@ const iconCompare = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v
 const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 
       let programs = [];
+      let programTotal = 0;
+      let loadVersion = 0;
+      let searchTimer = null;
+      const knownPrograms = new Map();
       const escapeCatalogHtml = window.CuacCatalogList.escapeHtml;
 
       const state = {
@@ -34,7 +38,8 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
       const scholarshipFunding = routeParams.get("funding") || "";
       const scholarshipParam = String(routeParams.get("scholarship") || "").trim().toLowerCase();
       let initialProgram = null;
-      const initialQuery = routeParams.get("keyword") || routeParams.get("q") || focusedUniversity || (initialProgram ? programName(initialProgram) : "") || scholarshipRouteQuery(scholarshipRoute, scholarshipFunding) || scholarshipParamQuery(scholarshipParam);
+      let catalogLoadingComplete = false;
+      const initialQuery = routeParams.get("keyword") || routeParams.get("q") || (initialProgram ? programName(initialProgram) : "") || scholarshipRouteQuery(scholarshipRoute, scholarshipFunding) || scholarshipParamQuery(scholarshipParam);
       if (initialQuery) state.filters.q = initialQuery;
       ["degree", "subject", "language", "city", "intake", "deadline", "tuition", "langReq", "documents"].forEach((key) => {
         const value = routeParams.get(key);
@@ -127,6 +132,17 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
 
       function programUniversity(program = {}) {
         return program.schoolNameEn || program.university || program.school || "University to confirm";
+      }
+
+      function programMatchesUniversity(program = {}) {
+        if (!focusedUniversity) return true;
+        const requested = String(focusedUniversity).trim().toLowerCase();
+        const schoolNameSlug = String(programUniversity(program))
+          .normalize("NFKD")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+        return program.schoolId === focusedUniversity || program.schoolSlug === focusedUniversity || schoolNameSlug === requested;
       }
 
       function programCity(program = {}) {
@@ -391,8 +407,8 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         }[scholarshipSlug] || `${value} scholarship`;
       }
 
-      function programImage() {
-        return "window.svg";
+      function programImage(program = {}) {
+        return window.CuacCatalogList.cover("program", program);
       }
 
       function tuitionMatch(program, value) {
@@ -456,6 +472,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         const f = state.filters;
         return (
           queryMatchesProgram(f.q, program) &&
+          programMatchesUniversity(program) &&
           (!f.degree || programDegreeValue(program) === f.degree) &&
           (!f.subject || programSubject(program) === f.subject) &&
           (!f.language || programLanguageValue(program) === f.language) &&
@@ -487,7 +504,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
       }
 
       function currentResults() {
-        return sortedPrograms(programs.filter(matches));
+        return programs;
       }
 
       function renderFilters(target, options = {}) {
@@ -536,7 +553,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
       function setFilter(key, value) {
         state.filters[key] = value;
         state.page = 1;
-        render();
+        loadPrograms();
       }
 
       function resetFilters() {
@@ -555,7 +572,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
           documents: "",
         };
         state.page = 1;
-        render();
+        loadPrograms();
       }
 
       function activeFilterEntries() {
@@ -596,7 +613,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
           <article class="program-row result-enter" style="--enter-index: ${index}" role="link" tabindex="0" data-program-id="${escapeCatalogHtml(id)}" data-program-card data-detail-href="${programHref}" aria-label="View ${escapeCatalogHtml(name)} program route">
             <div class="program-art">
               <a href="${programHref}" aria-label="Open ${escapeCatalogHtml(name)}">
-                <img alt="University catalog marker" src="${programImage(program)}" />
+                <img data-catalog-cover alt="${escapeCatalogHtml(name)} cover" src="${programImage(program)}" />
               </a>
               <div class="row-top">
                 <span class="badge ${badgeClassName}">${escapeCatalogHtml(badgeLabel)}</span>
@@ -616,6 +633,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
                 <span class="signal ${programSourceStatus(program) === "verified" ? "good" : "warn"}">${escapeCatalogHtml(programSourceStatus(program))}</span>
                 <span class="signal ${programReadinessType(program)}">${escapeCatalogHtml(programReadiness(program))}</span>
               </div>
+              ${renderRequirementCards(program)}
               <p class="fit-line">${escapeCatalogHtml(programFit(program))}</p>
             </div>
             <div class="row-actions">
@@ -635,9 +653,21 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
 
         const start = (state.page - 1) * state.pageSize + 1;
         const end = Math.min(total, state.page * state.pageSize);
-        const pageButtons = Array.from({ length: totalPages }, (_, index) => {
-          const page = index + 1;
-          return `<button class="${page === state.page ? "active" : ""}" type="button" data-page="${page}" aria-label="Page ${page}" ${page === state.page ? 'aria-current="page"' : ""}>${page}</button>`;
+        const visiblePages = new Set([1, totalPages, state.page - 1, state.page, state.page + 1]);
+        if (state.page <= 4) [2, 3, 4, 5].forEach((value) => visiblePages.add(value));
+        if (state.page >= totalPages - 3) {
+          [totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1].forEach((value) => visiblePages.add(value));
+        }
+        const sortedPages = [...visiblePages]
+          .filter((value) => value >= 1 && value <= totalPages)
+          .sort((left, right) => left - right);
+        const pageItems = sortedPages.flatMap((value, index) => {
+          const previous = sortedPages[index - 1];
+          return index > 0 && value - previous > 1 ? ["ellipsis", value] : [value];
+        });
+        const pageButtons = pageItems.map((item) => {
+          if (item === "ellipsis") return '<span class="pagination-ellipsis" aria-hidden="true">…</span>';
+          return `<button class="${item === state.page ? "active" : ""}" type="button" data-page="${item}" aria-label="Page ${item}" ${item === state.page ? 'aria-current="page"' : ""}>${item}</button>`;
         }).join("");
 
         pagination.innerHTML = `
@@ -650,24 +680,26 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
 
       function renderResults() {
         const results = currentResults();
-        const totalPages = Math.max(1, Math.ceil(results.length / state.pageSize));
+        const totalPages = Math.max(1, Math.ceil(programTotal / state.pageSize));
         if (state.page > totalPages) state.page = totalPages;
-        const start = (state.page - 1) * state.pageSize;
-        const visible = results.slice(start, start + state.pageSize);
-        resultCount.textContent = `${results.length} program${results.length === 1 ? "" : "s"}`;
-        resultContext.textContent = activeFilterEntries().length
+        const visible = results;
+        resultCount.textContent = `${programTotal} program${programTotal === 1 ? "" : "s"}`;
+        resultContext.textContent = !catalogLoadingComplete
+          ? "Loading the matching published programs."
+          : activeFilterEntries().length
           ? "Filtered by China-study fit, requirements, and application details."
           : "Published programs with deadline, tuition, language, and source status.";
         programList.className = `program-list ${state.view === "compact" ? "compact" : ""}`;
         programList.innerHTML = visible.map(renderRow).join("");
         window.CUAC?.reveal?.(programList);
-        emptyState.classList.toggle("visible", results.length === 0);
-        renderPagination(results.length);
+        emptyState.classList.toggle("visible", programTotal === 0);
+        renderPagination(programTotal);
       }
 
       function renderShortlist() {
-        const saved = programs.filter((program) => state.saved.has(programId(program)));
-        const compared = programs.filter((program) => state.compared.has(programId(program)));
+        const allKnownPrograms = [...knownPrograms.values()];
+        const saved = allKnownPrograms.filter((program) => state.saved.has(programId(program)));
+        const compared = allKnownPrograms.filter((program) => state.compared.has(programId(program)));
         shortlistCard.innerHTML = `
           <div class="shortlist-head">
             <h2>Shortlist</h2>
@@ -703,7 +735,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         programFocus.classList.add("visible");
         programFocus.innerHTML = `
           <div class="focus-image">
-            <img alt="${university} campus context" src="${programImage(initialProgram)}" />
+            <img data-catalog-cover alt="${escapeCatalogHtml(programName(initialProgram))} cover" src="${programImage(initialProgram)}" />
           </div>
           <div class="focus-main">
             <span class="badge ${badgeClassName}">${badgeLabel}</span>
@@ -733,7 +765,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
       }
 
       function renderSummary() {
-        const open = programs.filter((program) => programDeadlineStatus(program) !== "closed").length;
+        const open = programTotal;
         const scholarship = programs.filter(programScholarship).length;
         const urgent = programs.filter((program) => ["urgent", "closes-soon", "late"].includes(programDeadlineStatus(program))).length;
         document.querySelector("#summaryOpen").textContent = open;
@@ -762,7 +794,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         if (key === "tuition") state.filters.tuition = raw;
         if (key === "documents") state.filters.documents = raw;
         state.page = 1;
-        render();
+        loadPrograms();
       }
 
       function showAgentProgramNotice(message, options = {}) {
@@ -796,7 +828,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         state.compared = new Set(snapshot.compared || []);
         state.page = snapshot.page || 1;
         state.view = snapshot.view || "list";
-        render();
+        loadPrograms();
         const notice = document.querySelector("[data-program-agent-notice]");
         if (notice) {
           notice.textContent = snapshot.notice;
@@ -812,7 +844,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
           state.filters.language = "english";
           state.filters.city = "Hangzhou";
           state.page = 1;
-          render();
+          loadPrograms();
           showAgentProgramNotice("Agent applied English-taught Master + Hangzhou filters.");
           document.querySelector(".results-pane")?.scrollIntoView({ behavior: "smooth", block: "start" });
           detail.setUndo?.(before);
@@ -845,11 +877,33 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
       window.CuacCatalogList.listState(programList, "loading", { noun: "programs" });
 
       async function loadPrograms() {
-        window.CuacCatalogList.listState(programList, "loading", { noun: "programs" });
-        resultCount.textContent = "Loading programs";
-        resultContext.textContent = "Reading the current published catalog.";
+        const requestVersion = ++loadVersion;
+        catalogLoadingComplete = false;
+        if (!programs.length) window.CuacCatalogList.listState(programList, "loading", { noun: "programs" });
+        resultContext.textContent = "Loading the matching published programs.";
         try {
-          programs = await window.CuacCatalogList.load("programs", { limit: 100 });
+          const page = await window.CuacCatalogList.loadPage("programs", {
+            limit: state.pageSize,
+            offset: (state.page - 1) * state.pageSize,
+            query: state.filters.q,
+            degree: state.filters.degree,
+            subject: state.filters.subject,
+            language: state.filters.language,
+            city: state.filters.city,
+            school: focusedUniversity,
+            intake: state.filters.intake,
+            deadline: state.filters.deadline,
+            tuition: state.filters.tuition,
+            scholarship: state.filters.scholarship,
+            upcomingDeadline: state.filters.upcomingDeadline,
+            languageRequirement: state.filters.langReq,
+            sort: sortSelect.value,
+          });
+          if (requestVersion !== loadVersion) return;
+          programs = page.records;
+          programTotal = page.total;
+          programs.forEach((program) => knownPrograms.set(programId(program), program));
+          catalogLoadingComplete = true;
           initialProgram = focusedProgram
             ? programs.find((program) => programId(program) === focusedProgram)
             : null;
@@ -858,6 +912,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
           }
           render();
         } catch (error) {
+          if (requestVersion !== loadVersion) return;
           resultCount.textContent = "Programs unavailable";
           resultContext.textContent = "The published catalog could not be loaded.";
           window.CuacCatalogList.listState(programList, "error", { noun: "programs", message: error.message });
@@ -865,6 +920,10 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
       }
 
       loadPrograms();
+      window.CuacCatalogList.loadSavedEntityIds("program").then((savedIds) => {
+        state.saved = savedIds;
+        if (catalogLoadingComplete) render();
+      }).catch((error) => console.warn("Could not load saved programs.", error));
 
       document.addEventListener("change", (event) => {
         const control = event.target.closest("[data-filter-key]");
@@ -873,7 +932,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         setFilter(key, control.type === "checkbox" ? control.checked : control.value);
       });
 
-      document.addEventListener("click", (event) => {
+      document.addEventListener("click", async (event) => {
         if (event.target.closest("[data-catalog-retry]")) {
           loadPrograms();
           return;
@@ -883,7 +942,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
           const key = remove.dataset.removeFilter;
           state.filters[key] = key === "scholarship" ? false : "";
           state.page = 1;
-          render();
+          loadPrograms();
           return;
         }
 
@@ -894,15 +953,22 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
           const id = save.dataset.save;
           const program = programs.find((item) => programId(item) === id);
           const savedNow = !state.saved.has(id);
-          if (savedNow) state.saved.add(id);
-          else state.saved.delete(id);
-          render();
-          showAgentProgramNotice(
-            savedNow
-              ? `Saved ${program ? programName(program) : "program"} to Favourites. <a href="favourites.html">Review saved items</a>`
-              : `Removed ${program ? programName(program) : "program"} from Favourites.`,
-            { html: savedNow },
-          );
+          save.disabled = true;
+          try {
+            await window.CuacCatalogList.setSaved("program", id, savedNow);
+            if (savedNow) state.saved.add(id);
+            else state.saved.delete(id);
+            render();
+            showAgentProgramNotice(
+              savedNow
+                ? `Saved ${program ? programName(program) : "program"} to Favourites. <a href="favourites-api.html">Review saved items</a>`
+                : `Removed ${program ? programName(program) : "program"} from Favourites.`,
+              { html: savedNow },
+            );
+          } catch (error) {
+            save.disabled = false;
+            showAgentProgramNotice(error.message || "Could not update Favourites.");
+          }
           return;
         }
 
@@ -930,7 +996,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
           const nextPage = Number(page.dataset.page);
           if (!nextPage) return;
           state.page = Math.max(1, nextPage);
-          render();
+          loadPrograms();
           return;
         }
 
@@ -970,12 +1036,13 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
       searchInput.addEventListener("input", (event) => {
         state.filters.q = event.target.value;
         state.page = 1;
-        render();
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => loadPrograms(), 250);
       });
 
       sortSelect.addEventListener("change", () => {
         state.page = 1;
-        render();
+        loadPrograms();
       });
 
       document.querySelectorAll("[data-view]").forEach((button) => {

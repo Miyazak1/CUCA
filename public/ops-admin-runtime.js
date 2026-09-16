@@ -6,6 +6,16 @@ const opsQueueLabels = {
   payment_reconciliation: "支付对账",
 };
 
+const opsQueueAvailability = {
+  auth_email_delivery: { label: "运行中", tone: "active", copy: "账户邮件后台队列。" },
+  notification_delivery: { label: "运行中", tone: "active", copy: "站内通知后台队列。" },
+  student_file_processing: { label: "当前版本未启用", tone: "inactive", copy: "学生暂不在 CUAC 提交申请材料。" },
+  official_submission_delivery: { label: "受控运行", tone: "controlled", copy: "仅对已隔离的学校投递记录开放人工复核。" },
+  payment_reconciliation: { label: "接口保留", tone: "inactive", copy: "付款接口已保留，当前版本暂不启用。" },
+};
+
+const opsQualityEndpoint = "/api/v1/ops/data-quality/catalog?limit=50";
+
 const opsIssueLabels = {
   missing_source_evidence: "缺少来源证据",
   invalid_source_url: "来源链接无效",
@@ -28,6 +38,11 @@ const opsReviewLabels = {
   claimed: "等待独立复核",
   applied: "已发布，等待重新核验",
   rejected: "未采纳",
+  draft: "草稿",
+  approved: "已批准",
+  active: "已发布",
+  withdrawn: "已撤回",
+  legacy_published: "迁移前公开版本",
 };
 
 const correctionFieldLabels = {
@@ -95,10 +110,40 @@ const opsActionCodes = {
 
 const opsState = {
   role: null,
+  authStrength: "session",
   view: "overview",
   busy: false,
   supportSession: null,
   supportProjection: null,
+  qualityCursors: [null],
+  qualityPageIndex: 0,
+  qualityNextCursor: null,
+  selectedGuideId: null,
+};
+
+const opsApplicationSetLabels = {
+  draft: "准备中",
+  submitted: "已发送学校基础信息",
+  locked: "已锁定",
+};
+
+const opsSchoolProgressLabels = {
+  new: "学校已收到基础信息",
+  needs_review: "学校审核中",
+  contact_queued: "学校准备联系学生",
+  contacted: "学校已联系学生",
+  waiting_for_documents: "等待学生向学校直交材料",
+  documents_received_by_school: "学校已收到直交材料",
+  not_a_fit: "学校标记为不适合",
+  converted_to_official_application: "已转学校正式申请",
+  archived: "学校已关闭记录",
+};
+
+const opsSubmissionLabels = {
+  accepted: "正式提交已接受",
+  processing: "正式投递处理中",
+  completed: "正式投递已完成",
+  failed: "正式投递失败",
 };
 
 class OpsRequestError extends Error {
@@ -203,6 +248,29 @@ function renderLoading() {
   if (root) root.innerHTML = '<p class="ops-state" aria-busy="true">正在读取当前模块。</p>';
 }
 
+function hasStepUpAdminAuthority() {
+  return opsState.role === "cuac_admin" && opsState.authStrength === "step_up";
+}
+
+function renderAuthCapability() {
+  const root = document.querySelector("[data-ops-capability]");
+  if (!root) return;
+  if (hasStepUpAdminAuthority()) {
+    root.innerHTML = '<span class="ops-capability-badge is-ready">已完成二次验证</span><small>可在满足双人复核条件时提交最终结论。</small>';
+    return;
+  }
+  if (opsState.role !== "cuac_admin") {
+    root.innerHTML = '<span class="ops-capability-badge">运营复核权限</span><small>可以读取、认领和升级；最终结论需由完成二次验证的管理员提交。</small>';
+    return;
+  }
+  root.innerHTML = `<span class="ops-capability-badge is-warning">最终操作已锁定</span>
+    <small>读取、认领和升级可继续；提交最终结论前需要验证管理员密码。</small>
+    <form class="ops-step-up-form" data-ops-step-up>
+      <label><span>管理员密码</span><input name="password" type="password" autocomplete="current-password" required /></label>
+      <button class="ops-button" type="submit">完成二次验证</button>
+    </form>`;
+}
+
 function validatePagedQueue(data, key) {
   if (!isRecord(data) || !Array.isArray(data.items)
     || !(data.nextCursor === null || typeof data.nextCursor === "string" || isRecord(data.nextCursor))) {
@@ -220,25 +288,51 @@ function renderOverview(summary) {
     throw new OpsRequestError("运营摘要不符合固定注册表契约。", 503, "INVALID_RESPONSE");
   }
   const totals = summary.totals;
+  const pressure = [...summary.queues].sort((a, b) => (
+    (Number(b.exceptionsLast24Hours) * 10 + Number(b.expiredLeaseCount) * 5 + Number(b.dueCount))
+    - (Number(a.exceptionsLast24Hours) * 10 + Number(a.expiredLeaseCount) * 5 + Number(a.dueCount))
+  ));
+  const actionView = queueKey => queueKey === "official_submission_delivery" ? "routing"
+    : queueKey === "payment_reconciliation" ? "billing" : "";
   root.innerHTML = `
-    ${sectionHeading("运行概览", "五条固定异步管道的当前健康摘要，不包含业务记录或用户信息。", summary.generatedAt)}
+    ${sectionHeading("今日运营压力", "先处理影响学生申请和学校可见性的异常；技术管道明细保留在下方。", summary.generatedAt)}
     <div class="ops-metrics" aria-label="运营队列合计">
-      <div class="ops-metric"><span>当前到期</span><strong>${escapeHtml(totals.dueCount)}</strong></div>
-      <div class="ops-metric"><span>处理中</span><strong>${escapeHtml(totals.inFlightCount)}</strong></div>
-      <div class="ops-metric"><span>租约已过期</span><strong>${escapeHtml(totals.expiredLeaseCount)}</strong></div>
-      <div class="ops-metric"><span>近 24 小时异常</span><strong>${escapeHtml(totals.exceptionsLast24Hours)}</strong></div>
+      <div class="ops-metric"><span>需要处理</span><strong>${escapeHtml(totals.dueCount)}</strong><small>当前已到期任务</small></div>
+      <div class="ops-metric"><span>正在处理</span><strong>${escapeHtml(totals.inFlightCount)}</strong><small>已被工作人员或任务认领</small></div>
+      <div class="ops-metric ${Number(totals.exceptionsLast24Hours) ? "is-danger" : ""}"><span>24 小时异常</span><strong>${escapeHtml(totals.exceptionsLast24Hours)}</strong><small>优先核对业务影响</small></div>
+      <div class="ops-metric ${Number(totals.expiredLeaseCount) ? "is-warning" : ""}"><span>处理超时</span><strong>${escapeHtml(totals.expiredLeaseCount)}</strong><small>后台任务未按时完成</small></div>
     </div>
-    <div class="ops-table-wrap">
-      <table class="ops-table">
-        <thead><tr><th>管道</th><th>到期</th><th>处理中</th><th>过期租约</th><th>24 小时异常</th><th>最早到期</th></tr></thead>
-        <tbody>${summary.queues.map(row => `<tr>
-          <td><strong>${escapeHtml(opsQueueLabels[row.queueKey])}</strong><span>${escapeHtml(row.queueKey)}</span></td>
-          <td>${escapeHtml(row.dueCount)}</td><td>${escapeHtml(row.inFlightCount)}</td>
-          <td>${escapeHtml(row.expiredLeaseCount)}</td><td>${escapeHtml(row.exceptionsLast24Hours)}</td>
-          <td>${escapeHtml(row.oldestDueAt ? formatDateTime(row.oldestDueAt) : "无到期任务")}</td>
-        </tr>`).join("")}</tbody>
-      </table>
-    </div>`;
+    <section class="ops-priority-section" aria-labelledby="ops-priority-title">
+      <div class="ops-priority-heading"><div><span class="ops-kicker">优先队列</span><h3 id="ops-priority-title">按业务风险排序</h3></div><p>异常、处理超时和到期任务会排在前面。</p></div>
+      <div class="ops-priority-grid">${pressure.map(row => {
+        const view = actionView(row.queueKey);
+        const availability = opsQueueAvailability[row.queueKey];
+        const risk = Number(row.exceptionsLast24Hours) ? "异常需要核查"
+          : Number(row.expiredLeaseCount) ? "存在处理超时"
+            : Number(row.dueCount) ? "有到期任务" : "当前稳定";
+        return `<article class="ops-priority-card ${Number(row.exceptionsLast24Hours) ? "is-danger" : Number(row.expiredLeaseCount) ? "is-warning" : ""}">
+          <div><span class="ops-record-id">${escapeHtml(row.queueKey)}</span><h4>${escapeHtml(opsQueueLabels[row.queueKey])}</h4>
+          <span class="ops-availability is-${escapeHtml(availability.tone)}">${escapeHtml(availability.label)}</span>
+          <p>${escapeHtml(risk)} · ${escapeHtml(availability.copy)}</p></div>
+          <dl><div><dt>到期</dt><dd>${escapeHtml(row.dueCount)}</dd></div><div><dt>异常</dt><dd>${escapeHtml(row.exceptionsLast24Hours)}</dd></div></dl>
+          ${view ? `<button class="ops-button primary" type="button" data-ops-open-view="${view}">进入复核</button>` : '<button class="ops-button" type="button" data-ops-refresh>刷新状态</button>'}
+        </article>`;
+      }).join("")}</div>
+    </section>
+    <details class="ops-technical-summary">
+      <summary>查看技术管道明细</summary>
+      <div class="ops-table-wrap">
+        <table class="ops-table">
+          <thead><tr><th>管道</th><th>到期</th><th>处理中</th><th>处理超时</th><th>24 小时异常</th><th>最早到期</th></tr></thead>
+          <tbody>${summary.queues.map(row => `<tr>
+            <td><strong>${escapeHtml(opsQueueLabels[row.queueKey])}</strong><span>${escapeHtml(row.queueKey)} · ${escapeHtml(opsQueueAvailability[row.queueKey].label)}</span></td>
+            <td>${escapeHtml(row.dueCount)}</td><td>${escapeHtml(row.inFlightCount)}</td>
+            <td>${escapeHtml(row.expiredLeaseCount)}</td><td>${escapeHtml(row.exceptionsLast24Hours)}</td>
+            <td>${escapeHtml(row.oldestDueAt ? formatDateTime(row.oldestDueAt) : "无到期任务")}</td>
+          </tr>`).join("")}</tbody>
+        </table>
+      </div>
+    </details>`;
 }
 
 function codeOptions(items) {
@@ -249,13 +343,14 @@ function referenceField() {
   return '<label><span>证据引用</span><input name="reference" maxlength="128" pattern="[A-Za-z0-9._:-]{1,128}" autocomplete="off" required /></label>';
 }
 
-function actionForm({ kind, target, action, revision, label, codes, danger = false, dueDate = false }) {
+function actionForm({ kind, target, action, revision, label, codes, danger = false, dueDate = false, privileged = false }) {
+  const locked = privileged && !hasStepUpAdminAuthority();
   return `<form class="ops-action-form" data-ops-action-form data-kind="${escapeHtml(kind)}" data-target="${escapeHtml(target)}"
       data-action="${escapeHtml(action)}" data-revision="${escapeHtml(revision)}">
     <label><span>处理结论</span><select name="code" required>${codeOptions(codes)}</select></label>
     ${referenceField()}
     ${dueDate ? '<label data-review-due><span>下次复核时间</span><input name="reviewDueAt" type="datetime-local" /></label>' : ""}
-    <button class="ops-button ${danger ? "danger" : ""}" type="submit">${escapeHtml(label)}</button>
+    <button class="ops-button ${danger ? "danger" : ""}" type="submit"${locked ? ' disabled title="需要完成管理员二次验证"' : ""}>${escapeHtml(locked ? `${label}（需二次验证）` : label)}</button>
   </form>`;
 }
 
@@ -275,11 +370,11 @@ function renderReviewControls(kind, target, review, options = {}) {
   }
   if (open && options.resolve) {
     forms.push(actionForm({ kind, target, action: "resolve", revision: review.revision,
-      label: options.resolveLabel || "提交复核结论", codes: options.resolve, danger: true, dueDate: options.dueDate }));
+      label: options.resolveLabel || "提交复核结论", codes: options.resolve, danger: true, dueDate: options.dueDate, privileged: true }));
   }
   if (open && options.retry) {
     forms.push(actionForm({ kind, target, action: "retry", revision: review.revision,
-      label: "批准单次重试", codes: [["provider_not_accepted_retry_approved", "确认提供方未接收，批准单次重试"]], danger: true }));
+      label: "批准单次重试", codes: [["provider_not_accepted_retry_approved", "确认提供方未接收，批准单次重试"]], danger: true, privileged: true }));
   }
   return `<div class="ops-record-actions">
     <div class="ops-review-state">${statusBadge(review.status)}<span>修订 ${escapeHtml(review.revision)}</span><span>认领角色 ${escapeHtml(review.assignedRole)}</span></div>
@@ -324,7 +419,7 @@ function renderBilling(data) {
     || typeof item.providerEventId !== "string" || typeof item.quarantineReason !== "string")) {
     throw new OpsRequestError("支付复核队列不符合前端数据契约。", 503, "INVALID_RESPONSE");
   }
-  root.innerHTML = `${sectionHeading("支付事件复核", "这里只复核隔离的提供方事件，不提供退款、改价或直接修改支付状态。")}
+  root.innerHTML = `${sectionHeading("支付事件复核（接口保留）", "当前版本暂不启用付款；这里保留隔离事件复核能力，不提供退款、改价或直接修改支付状态。")}
     <div class="ops-record-list">${queue.items.length ? queue.items.map(item => `
       <article class="ops-record">
         <div class="ops-record-summary">
@@ -350,10 +445,24 @@ function safeSourceLink(evidence) {
   try {
     const url = new URL(evidence.sourceUrl);
     if (url.protocol !== "https:") return "来源链接不可用";
-    return `<a class="ops-source-link" href="${escapeHtml(url.href)}" target="_blank" rel="noreferrer">查看来源证据</a>`;
+    const thirdParty = /(^|\.)cscapilot\.com$/i.test(url.hostname);
+    return `<a class="ops-source-link" href="${escapeHtml(url.href)}" target="_blank" rel="noreferrer">查看来源证据</a>${thirdParty
+      ? '<span class="ops-source-warning">第三方来源，不能作为官方确认依据</span>' : ""}`;
   } catch {
     return "来源链接不可用";
   }
+}
+
+function renderQualityPagination(queue) {
+  opsState.qualityNextCursor = queue.nextCursor;
+  const page = opsState.qualityPageIndex + 1;
+  return `<nav class="ops-pagination" aria-label="数据质量分页">
+    <span>第 ${escapeHtml(page)} 页 · 本页 ${escapeHtml(queue.items.length)} 条</span>
+    <div>
+      <button class="ops-button" type="button" data-quality-page="previous"${page === 1 ? " disabled" : ""}>上一页</button>
+      <button class="ops-button" type="button" data-quality-page="next"${queue.nextCursor ? "" : " disabled"}>下一页</button>
+    </div>
+  </nav>`;
 }
 
 function renderQuality(data) {
@@ -383,7 +492,8 @@ function renderQuality(data) {
           resolve: opsActionCodes.qualityResolve,
           dueDate: true,
         })}
-      </article>`).join("") : '<p class="ops-state">当前没有待复核的目录来源记录。</p>'}</div>`;
+      </article>`).join("") : '<p class="ops-state">当前没有待复核的目录来源记录。</p>'}</div>
+    ${renderQualityPagination(queue)}`;
 }
 
 function correctionEvidenceLink(value) {
@@ -414,7 +524,7 @@ function renderCorrectionControls(item) {
     return `<div class="ops-record-actions">
       <div class="ops-review-state">${statusBadge(item.status)}<span>修订 ${escapeHtml(item.revision)}</span><span>需不同 CUAC 管理员二次验证</span></div>
       ${actionForm({ kind: "correction", target: item.id, action: "resolve", revision: item.revision,
-        label: "记录复核结论", codes: opsActionCodes.correctionResolve, danger: true })}
+        label: "记录复核结论", codes: opsActionCodes.correctionResolve, danger: true, privileged: true })}
     </div>`;
   }
   return `<div class="ops-record-actions"><div class="ops-review-state">${statusBadge(item.status)}<span>修订 ${escapeHtml(item.revision)}</span>${item.resolutionReference
@@ -467,14 +577,21 @@ function renderSupportProjection() {
   }
   const set = projection.applicationSet || {};
   const submission = projection.submission;
+  const programApplications = Array.isArray(projection.programApplications) ? projection.programApplications : [];
+  const schoolHandoff = programApplications.length
+    ? `${programApplications.length} 个项目已确认发送`
+    : "尚未发送学校基础信息";
   const rows = [
-    ["Application Set 状态", set.status],
+    ["Application Set 状态", opsApplicationSetLabels[set.status] || cleanText(set.status) || "状态未知"],
     ["目标入学季", set.targetIntake || "未设置"],
     ["当前修订", set.revision],
-    ["有效项目数", set.activeChoiceCount],
-    ["提交状态", submission?.status || "尚未提交"],
-    ["待投递 / 已投递 / 已隔离", submission
-      ? `${submission.pendingGroupCount} / ${submission.dispatchedGroupCount} / ${submission.quarantinedGroupCount}` : "无提交批次"],
+    ["当前志愿数", set.activeChoiceCount],
+    ["学校基础信息交接", schoolHandoff],
+    ["正式材料投递", submission
+      ? opsSubmissionLabels[submission.status] || cleanText(submission.status) || "状态未知"
+      : "未创建（当前版本不在 CUAC 提交材料）"],
+    ["正式投递：待处理 / 已投递 / 已隔离", submission
+      ? `${submission.pendingGroupCount} / ${submission.dispatchedGroupCount} / ${submission.quarantinedGroupCount}` : "不适用"],
   ];
   return `<div class="ops-support-result">
     <div class="ops-support-session"><div><h3>${escapeHtml(projection.cuacId)}</h3>
@@ -483,15 +600,36 @@ function renderSupportProjection() {
     </div>
     <dl class="ops-definition-list">${rows.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join("")}</dl>
     <div class="ops-programs"><h4>项目申请</h4>
-      ${Array.isArray(projection.programApplications) && projection.programApplications.length
-        ? `<div class="ops-table-wrap"><table class="ops-table"><thead><tr><th>学校 / 项目</th><th>入学季</th><th>状态</th><th>确认提交</th></tr></thead><tbody>
-          ${projection.programApplications.map(item => `<tr><td><strong>${escapeHtml(item.schoolName)}</strong><span>${escapeHtml(item.programName || "项目未绑定")}</span></td>
+      ${programApplications.length
+        ? `<div class="ops-table-wrap"><table class="ops-table"><thead><tr><th>学校 / 项目</th><th>入学季</th><th>学校流程状态</th><th>学校确认接收</th></tr></thead><tbody>
+          ${programApplications.map(item => `<tr><td><strong>${escapeHtml(item.schoolName)}</strong><span>${escapeHtml(item.programName || "项目未绑定")}</span></td>
           <td>${escapeHtml(item.intakeTerm && item.intakeYear ? `${item.intakeTerm} ${item.intakeYear}` : "未绑定")}</td>
-          <td>${escapeHtml(item.status)}</td><td>${escapeHtml(formatDateTime(item.submittedAt, "尚未确认"))}</td></tr>`).join("")}
+          <td>${escapeHtml(opsSchoolProgressLabels[item.status] || "学校状态未知")}</td><td>${escapeHtml(formatDateTime(item.submittedAt, "尚未确认"))}</td></tr>`).join("")}
         </tbody></table></div>`
-        : '<p class="ops-state">当前 Application Set 没有项目申请记录。</p>'}
+        : `<p class="ops-state">当前有 ${escapeHtml(set.activeChoiceCount || 0)} 个志愿；尚未找到已发送给学校的项目记录。</p>`}
     </div>
   </div>`;
+}
+
+function qualityRequestPath() {
+  const cursor = opsState.qualityCursors[opsState.qualityPageIndex];
+  if (!cursor) return opsQualityEndpoint;
+  return `${opsQualityEndpoint}&cursorType=${encodeURIComponent(cursor.entityType)}&cursor=${encodeURIComponent(cursor.entityId)}`;
+}
+
+async function changeQualityPage(direction) {
+  if (opsState.busy || opsState.view !== "quality") return;
+  if (direction === "next") {
+    if (!isRecord(opsState.qualityNextCursor)) return;
+    opsState.qualityCursors = opsState.qualityCursors.slice(0, opsState.qualityPageIndex + 1);
+    opsState.qualityCursors.push(opsState.qualityNextCursor);
+    opsState.qualityPageIndex += 1;
+  } else if (direction === "previous" && opsState.qualityPageIndex > 0) {
+    opsState.qualityPageIndex -= 1;
+  } else {
+    return;
+  }
+  await loadCurrentView();
 }
 
 function renderSupport() {
@@ -510,14 +648,132 @@ function renderSupport() {
     </div>`;
 }
 
+function renderGuideVersionActions(guide, versions) {
+  const publication = versions.publication;
+  return versions.items.map(item => {
+    const locked = !hasStepUpAdminAuthority();
+    if (item.status === "draft") return `<form class="ops-guide-command" data-guide-command="approve" data-guide-id="${escapeHtml(guide.id)}"
+      data-version-id="${escapeHtml(item.versionId)}" data-content-sha="${escapeHtml(item.contentSha256)}">
+      <label><span>复核引用</span><input name="reviewReference" required maxlength="200" pattern="[A-Za-z0-9][A-Za-z0-9_.:/-]{0,199}" /></label>
+      <label><span>下次复核日期</span><input name="reviewDueAt" type="date" required /></label>
+      <button class="ops-button primary" type="submit"${locked ? ' disabled title="需要管理员二次验证"' : ""}>独立审核并批准${locked ? "（需二次验证）" : ""}</button>
+    </form>`;
+    if (item.status === "approved" && item.approvalSha256 && publication?.versionId !== item.versionId) return `<form class="ops-guide-command"
+      data-guide-command="publish" data-guide-id="${escapeHtml(guide.id)}" data-version-id="${escapeHtml(item.versionId)}"
+      data-content-sha="${escapeHtml(item.contentSha256)}" data-approval-sha="${escapeHtml(item.approvalSha256)}"
+      data-revision="${escapeHtml(publication?.revision ?? 0)}"><button class="ops-button primary" type="submit"${locked ? ' disabled title="需要管理员二次验证"' : ""}>发布版本 ${escapeHtml(item.version)}${locked ? "（需二次验证）" : ""}</button></form>`;
+    return "";
+  }).join("");
+}
+
+function renderGuides(guides, versions) {
+  const root = document.querySelector("[data-ops-view]");
+  if (!root || !Array.isArray(guides) || !isRecord(versions) || !Array.isArray(versions.items)) {
+    throw new OpsRequestError("指南管理响应不符合前端数据契约。", 503, "INVALID_RESPONSE");
+  }
+  const guide = guides.find(item => item.id === opsState.selectedGuideId) || guides[0];
+  if (!guide) {
+    root.innerHTML = `${sectionHeading("指南管理", "目前没有可管理的指南范围。")}<p class="ops-state">没有已注册指南。</p>`;
+    return;
+  }
+  opsState.selectedGuideId = guide.id;
+  const section = Array.isArray(guide.content?.sections) ? guide.content.sections[0] : null;
+  const publication = versions.publication, locked = !hasStepUpAdminAuthority();
+  root.innerHTML = `${sectionHeading("指南管理", "创建人与审核人必须不同；批准、发布和撤回都需要管理员二次验证。")}
+    <div class="ops-guide-layout">
+      <aside class="ops-guide-list" aria-label="指南列表">${guides.map(item => `<button type="button" data-guide-select="${escapeHtml(item.id)}" class="${item.id === guide.id ? "active" : ""}">
+        <strong>${escapeHtml(item.titleZh || item.titleEn)}</strong><span>${escapeHtml(item.slug)}</span></button>`).join("")}</aside>
+      <div class="ops-guide-editor">
+        <div class="ops-guide-publication"><div><span class="ops-record-id">${escapeHtml(guide.slug)}</span><h3>${escapeHtml(guide.titleEn)}</h3><p>${escapeHtml(guide.summaryZh || guide.summaryEn || "暂无摘要")}</p></div>
+          ${statusBadge(publication?.status || "legacy_published")}<span>发布修订 ${escapeHtml(publication?.revision ?? 0)}</span></div>
+        <form class="ops-guide-draft" data-guide-draft data-guide-id="${escapeHtml(guide.id)}" data-guide-slug="${escapeHtml(guide.slug)}">
+          <h3>基于当前公开内容创建草稿</h3><div class="ops-guide-fields">
+            <label><span>英文标题</span><input name="titleEn" maxlength="200" value="${escapeHtml(guide.titleEn)}" required /></label>
+            <label><span>中文标题</span><input name="titleZh" maxlength="200" value="${escapeHtml(guide.titleZh || "")}" /></label>
+            <label><span>英文副标题</span><input name="subtitleEn" maxlength="240" value="${escapeHtml(guide.subtitleEn || "")}" /></label>
+            <label><span>中文副标题</span><input name="subtitleZh" maxlength="240" value="${escapeHtml(guide.subtitleZh || "")}" /></label>
+            <label class="wide"><span>英文摘要</span><textarea name="summaryEn" maxlength="1200">${escapeHtml(guide.summaryEn || "")}</textarea></label>
+            <label class="wide"><span>中文摘要</span><textarea name="summaryZh" maxlength="1200">${escapeHtml(guide.summaryZh || "")}</textarea></label>
+            <label><span>站内链接</span><input name="href" maxlength="240" value="${escapeHtml(guide.href)}" required /></label>
+            <label><span>搜索词（逗号分隔）</span><input name="searchTerms" maxlength="1200" /></label>
+            <label class="wide"><span>英文正文</span><textarea name="bodyEn" maxlength="6000" required>${escapeHtml(section?.bodyEn || guide.summaryEn || "Add reviewed guide content.")}</textarea></label>
+            <label class="wide"><span>中文正文</span><textarea name="bodyZh" maxlength="6000">${escapeHtml(section?.bodyZh || guide.summaryZh || "")}</textarea></label>
+            <label><span>官方来源 URL</span><input name="sourceUrl" type="url" maxlength="2048" required /></label>
+            <label><span>来源名称</span><input name="sourceLabel" maxlength="160" required /></label>
+          </div><button class="ops-button primary" type="submit">保存不可变草稿版本</button>
+        </form>
+        <section class="ops-guide-versions"><h3>版本记录</h3>${versions.items.length ? versions.items.map(item => `<article><div><strong>版本 ${escapeHtml(item.version)}</strong>
+          ${statusBadge(item.status)}<span>${escapeHtml(formatDateTime(item.createdAt))}</span><small>内容摘要 ${escapeHtml(shortId(item.contentSha256))}</small></div></article>`).join("") : '<p class="ops-state">尚无受治理版本；当前公开内容属于迁移前基线。</p>'}
+          ${renderGuideVersionActions(guide, versions)}
+          ${publication?.status === "active" ? `<form class="ops-guide-command" data-guide-command="withdraw" data-guide-id="${escapeHtml(guide.id)}" data-version-id="${escapeHtml(publication.versionId)}" data-revision="${escapeHtml(publication.revision)}">
+            <label><span>撤回原因</span><select name="reason"><option value="content_correction">内容需要更正</option><option value="source_expired">来源已过期</option><option value="policy_change">政策变化</option><option value="guide_superseded">指南已被替代</option></select></label>
+            <button class="ops-button danger" type="submit"${locked ? ' disabled title="需要管理员二次验证"' : ""}>撤回公开指南${locked ? "（需二次验证）" : ""}</button></form>` : ""}
+        </section>
+      </div>
+    </div>`;
+}
+
+async function loadGuideManagement() {
+  const guides = await requestJson("/api/v1/ops/catalog/guides");
+  if (!Array.isArray(guides)) throw new OpsRequestError("公开指南列表无效。", 503, "INVALID_RESPONSE");
+  if (!opsState.selectedGuideId) opsState.selectedGuideId = guides[0]?.id || null;
+  const selected = guides.find(item => item.id === opsState.selectedGuideId) || guides[0];
+  const versions = selected ? await requestJson(`/api/v1/ops/catalog/guides/${encodeURIComponent(selected.id)}/versions?limit=20`) : { items: [], publication: null };
+  renderGuides(guides, versions);
+}
+
+async function submitGuideDraft(form) {
+  if (opsState.busy) return;
+  const values = new FormData(form), guideId = form.dataset.guideId;
+  const value = name => cleanText(values.get(name));
+  const titleEn = value("titleEn"), titleZh = value("titleZh"), bodyEn = value("bodyEn"), bodyZh = value("bodyZh");
+  const document = { schemaVersion: 1, slug: form.dataset.guideSlug, titleEn, titleZh: titleZh || null,
+    subtitleEn: value("subtitleEn") || null, subtitleZh: value("subtitleZh") || null, summaryEn: value("summaryEn") || null,
+    summaryZh: value("summaryZh") || null, href: value("href"), searchTerms: value("searchTerms").split(",").map(item => item.trim()).filter(Boolean),
+    sections: [{ key: "main", headingEn: titleEn, headingZh: titleZh || null, bodyEn, bodyZh: bodyZh || null }],
+    sources: [{ url: value("sourceUrl"), label: value("sourceLabel"), capturedAt: new Date(Date.now() - 1000).toISOString() }] };
+  opsState.busy = true;
+  try {
+    await requestJson(`/api/v1/ops/catalog/guides/${encodeURIComponent(guideId)}/versions`, { method: "POST",
+      body: JSON.stringify({ versionId: crypto.randomUUID(), document }) });
+    showOpsToast("指南草稿已保存，需由另一位管理员独立审核。"); await loadCurrentView();
+  } catch (error) { showOpsToast(error.message || "指南草稿保存失败。"); }
+  finally { opsState.busy = false; }
+}
+
+async function submitGuideCommand(form) {
+  if (opsState.busy) return;
+  const action = form.dataset.guideCommand, guideId = form.dataset.guideId, versionId = form.dataset.versionId;
+  let body;
+  if (action === "approve") {
+    const values = new FormData(form), due = cleanText(values.get("reviewDueAt"));
+    body = { expectedContentSha256: form.dataset.contentSha, effectiveFrom: null, reviewDueAt: `${due}T23:59:59.000Z`,
+      reviewReference: cleanText(values.get("reviewReference")), contentReviewed: true, sourcesVerified: true, publicContentConfirmed: true };
+  } else if (action === "publish") body = { expectedContentSha256: form.dataset.contentSha, expectedApprovalSha256: form.dataset.approvalSha,
+    expectedPublicationRevision: Number(form.dataset.revision) };
+  else body = { expectedPublicationRevision: Number(form.dataset.revision), reason: cleanText(new FormData(form).get("reason")) };
+  const suffix = { approve: "approval", publish: "publication", withdraw: "withdrawal" }[action];
+  opsState.busy = true;
+  try {
+    await requestJson(`/api/v1/ops/catalog/guides/${encodeURIComponent(guideId)}/versions/${encodeURIComponent(versionId)}/${suffix}`,
+      { method: "POST", body: JSON.stringify(body) });
+    showOpsToast(action === "approve" ? "指南版本已批准。" : action === "publish" ? "指南版本已发布。" : "公开指南已撤回。");
+    await loadCurrentView();
+  } catch (error) {
+    if (error?.status === 409) await loadCurrentView();
+    showOpsToast(error?.status === 403 ? "需要独立管理员身份和有效二次验证。" : error.message || "指南操作失败。");
+  } finally { opsState.busy = false; }
+}
+
 async function loadCurrentView() {
   renderLoading();
   try {
     if (opsState.view === "overview") renderOverview(await requestJson("/api/v1/ops/operations/summary"));
     else if (opsState.view === "routing") renderRouting(await requestJson("/api/v1/ops/routing/submissions?limit=50"));
     else if (opsState.view === "billing") renderBilling(await requestJson("/api/v1/ops/billing/provider-events?limit=50"));
-    else if (opsState.view === "quality") renderQuality(await requestJson("/api/v1/ops/data-quality/catalog?limit=50"));
+    else if (opsState.view === "quality") renderQuality(await requestJson(qualityRequestPath()));
     else if (opsState.view === "corrections") renderCorrections(await requestJson("/api/v1/ops/catalog-corrections?limit=50"));
+    else if (opsState.view === "guides") await loadGuideManagement();
     else renderSupport();
   } catch (error) {
     if (error?.status === 401) {
@@ -637,6 +893,10 @@ async function submitOpsAction(form) {
     await loadCurrentView();
   } catch (error) {
     if (error?.status === 409) await loadCurrentView();
+    if (error?.status === 403 && opsState.role === "cuac_admin") {
+      opsState.authStrength = "session";
+      renderAuthCapability();
+    }
     showOpsToast(error?.status === 403
       ? "当前授权、认领关系或二次验证不允许这项操作。"
       : error.message || "复核操作失败。");
@@ -646,8 +906,36 @@ async function submitOpsAction(form) {
   }
 }
 
+async function stepUpAdminSession(form) {
+  if (opsState.busy || opsState.role !== "cuac_admin") return;
+  const password = String(new FormData(form).get("password") || "");
+  const button = form.querySelector("button[type=submit]");
+  opsState.busy = true;
+  if (button) button.disabled = true;
+  try {
+    const result = await requestJson("/api/v1/auth/step-up", {
+      method: "POST",
+      body: JSON.stringify({ password }),
+    });
+    form.reset();
+    if (!isRecord(result) || result.authStrength !== "step_up") {
+      throw new OpsRequestError("二次验证响应不符合前端数据契约。", 503, "INVALID_RESPONSE");
+    }
+    opsState.authStrength = "step_up";
+    renderAuthCapability();
+    showOpsToast("二次验证已完成，最终操作会继续受双人复核规则约束。");
+    await loadCurrentView();
+  } catch (error) {
+    form.reset();
+    showOpsToast(error?.status === 401 || error?.status === 403 ? "密码验证失败，最终操作仍保持锁定。" : error.message || "二次验证未完成。");
+  } finally {
+    opsState.busy = false;
+    if (button && document.contains(button)) button.disabled = false;
+  }
+}
+
 async function selectOpsView(view) {
-  if (!["overview", "routing", "billing", "quality", "corrections", "support"].includes(view) || view === opsState.view) return;
+  if (!["overview", "routing", "billing", "quality", "corrections", "guides", "support"].includes(view) || view === opsState.view) return;
   if (opsState.view === "support") await closeSupportSession({ quiet: true });
   opsState.view = view;
   document.querySelectorAll("[data-ops-tab]").forEach(button => {
@@ -660,8 +948,14 @@ function bindOpsEvents() {
   document.addEventListener("click", event => {
     const tab = event.target.closest("[data-ops-tab]");
     if (tab) void selectOpsView(tab.dataset.opsTab);
+    const priorityView = event.target.closest("[data-ops-open-view]");
+    if (priorityView) void selectOpsView(priorityView.dataset.opsOpenView);
     if (event.target.closest("[data-ops-refresh]")) void loadCurrentView();
     if (event.target.closest("[data-close-support]")) void closeSupportSession().then(renderSupport);
+    const qualityPage = event.target.closest("[data-quality-page]");
+    if (qualityPage) void changeQualityPage(qualityPage.dataset.qualityPage);
+    const guide = event.target.closest("[data-guide-select]");
+    if (guide) { opsState.selectedGuideId = guide.dataset.guideSelect; void loadCurrentView(); }
   });
   document.addEventListener("submit", event => {
     if (event.target.matches("[data-open-support]")) {
@@ -671,6 +965,18 @@ function bindOpsEvents() {
     if (event.target.matches("[data-ops-action-form]")) {
       event.preventDefault();
       void submitOpsAction(event.target);
+    }
+    if (event.target.matches("[data-ops-step-up]")) {
+      event.preventDefault();
+      void stepUpAdminSession(event.target);
+    }
+    if (event.target.matches("[data-guide-draft]")) {
+      event.preventDefault();
+      void submitGuideDraft(event.target);
+    }
+    if (event.target.matches("[data-guide-command]")) {
+      event.preventDefault();
+      void submitGuideCommand(event.target);
     }
   });
   document.addEventListener("change", event => {
@@ -697,8 +1003,10 @@ async function startOpsWorkspace() {
     return;
   }
   opsState.role = auth.role;
+  opsState.authStrength = auth.authStrength === "step_up" ? "step_up" : "session";
   const role = document.querySelector("[data-ops-role]");
   if (role) role.textContent = auth.role === "cuac_admin" ? "CUAC 管理员" : "CUAC 运营";
+  renderAuthCapability();
   await loadCurrentView();
 }
 

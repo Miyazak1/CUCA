@@ -55,6 +55,11 @@ test("catalog route composition can be injected with a real repository", async (
         },
       },
     ],
+    pagination: {
+      total: 1,
+      limit: 9,
+      offset: 0,
+    },
   });
 });
 

@@ -115,6 +115,7 @@ test("real PostgreSQL migration and repository rehearsal", { timeout: rehearsalT
     for (const table of ["cities", "schools", "programs", "scholarships"]) {
       await pool.query(`update ${table} set status = 'active'`);
     }
+    await pool.query("update scholarships set verification_status = 'verified'");
     for (const method of ["listCities", "listSchools", "listPrograms", "listScholarships"]) {
       assert.equal((await catalog[method]({})).length, 1);
     }

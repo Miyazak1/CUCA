@@ -19,6 +19,9 @@ test("notification center uses account-scoped server state and revisions", async
   assert.match(html, /<body data-agent-mode="off">/);
   assert.doesNotMatch(html, /<script src="notifications\.js"/);
   assert.doesNotMatch(html, /cuac-data\.js|cuac-actions\.js|data-cuac-agent/);
+  assert.match(html, /href="hub-api\.html"/);
+  assert.match(html, /href="preferences-api\.html#notification-preferences"/);
+  assert.doesNotMatch(html, /href="(?:hub|preferences)\.html/);
   for (const endpoint of [
     "/api/v1/notifications?",
     "/api/v1/notifications/preferences",

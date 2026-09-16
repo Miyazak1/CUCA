@@ -7,10 +7,12 @@ const chromeCandidates = [
   process.env.CHROME_PATH,
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+  "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
 ].filter(Boolean);
 
 const chromePath = chromeCandidates.find((candidate) => fs.existsSync(candidate));
-if (!chromePath) throw new Error("Chrome was not found. Set CHROME_PATH to run ops admin click QA.");
+if (!chromePath) throw new Error("A Chromium browser was not found. Set CHROME_PATH to run ops admin click QA.");
 
 const root = path.resolve(process.env.CUAC_QA_ROOT || path.resolve(__dirname, "..", "public"));
 const port = Number(process.env.CUAC_OPS_CLICK_QA_PORT || 9850 + (process.pid % 400));

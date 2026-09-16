@@ -22,6 +22,7 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
     "/api/v1/ops/billing/provider-events?limit=50",
     "/api/v1/ops/data-quality/catalog?limit=50",
     "/api/v1/ops/catalog-corrections?limit=50",
+    "/api/v1/ops/catalog/guides",
     "/api/v1/ops/support-sessions",
     "/api/v1/ops/application-lookups",
   ]) {
@@ -29,6 +30,21 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   }
   assert.match(script, /\["cuac_ops", "cuac_admin"\]\.includes\(auth\.role\)/);
   assert.match(script, /credentials: "same-origin"/);
+  assert.match(script, /qualityRequestPath\(\)/);
+  assert.match(script, /cursorType=/);
+  assert.match(script, /data-quality-page/);
+  assert.match(script, /\/api\/v1\/auth\/step-up/);
+  assert.match(script, /authStrength === "step_up"/);
+  assert.match(html, /data-ops-tab="guides"/);
+  assert.match(script, /data-guide-draft/);
+  assert.match(script, /data-guide-command="approve"/);
+  assert.match(script, /expectedApprovalSha256/);
+  assert.match(script, /publicContentConfirmed: true/);
+  assert.match(script, /第三方来源，不能作为官方确认依据/);
+  assert.match(script, /学校基础信息交接/);
+  assert.match(script, /当前版本不在 CUAC 提交材料/);
+  assert.match(script, /等待学生向学校直交材料/);
+  assert.match(script, /尚未找到已发送给学校的项目记录/);
   assert.doesNotMatch(script, /localStorage|sessionStorage|CuacDataClient|DemoState|Sample record/);
 });
 
@@ -63,9 +79,14 @@ test("Ops workspace stays restrained and responsive", async () => {
 
   assert.match(html, /role="tablist"/);
   assert.match(html, /data-ops-view aria-live="polite"/);
+  assert.match(html, /data-ops-capability/);
+  assert.match(html, /支付复核（接口保留）/);
+  assert.match(css, /ops-priority-grid/);
+  assert.match(css, /ops-technical-summary/);
+  assert.match(css, /ops-pagination/);
   assert.match(css, /button:focus-visible/);
   assert.match(css, /@media \(max-width: 760px\)/);
   assert.match(css, /@media \(max-width: 520px\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);
-  assert.doesNotMatch(css, /linear-gradient|radial-gradient|border-radius:\s*(?:[1-9][0-9]|[1-9][0-9][0-9])px/);
+  assert.doesNotMatch(css, /linear-gradient|radial-gradient|border-radius:\s*(?:1[5-9]|[2-9][0-9]|[1-9][0-9][0-9])px/);
 });

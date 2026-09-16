@@ -6,6 +6,7 @@ import { AUTH_STEP_UP_TTL_MS } from "./credentials.ts";
 import type {
   AuthCredentialsRepository,
   ActivateSessionStepUpInput,
+  AvailableAuthWorkspace,
   CreatedAuthSession,
   CreateAuthSessionInput,
   CreateStudentAccountInput,
@@ -177,6 +178,44 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
     );
 
     return rows[0] ?? null;
+  }
+
+  async listAvailableSessionAuthorities(userId: string, now: Date): Promise<AvailableAuthWorkspace[]> {
+    const students = await this.client.query<AvailableAuthWorkspace>(
+      `select 'student'::text as "selectedSurface", r.role as "activeRole",
+         null::uuid as "tenantSchoolId", 'Student workspace'::text as label
+       from user_roles r
+       where r.user_id = $1 and r.role = 'student' and r.revoked_at is null
+       limit 1`,
+      [userId],
+    );
+    const schools = await this.client.query<AvailableAuthWorkspace>(
+      `select 'school'::text as "selectedSurface", r.role as "activeRole",
+         m.school_id as "tenantSchoolId",
+         case when s.name_zh is null then s.name_en else s.name_en || ' · ' || s.name_zh end as label
+       from user_roles r
+       join school_staff_memberships m on m.user_id = r.user_id
+         and m.status = 'active' and m.removed_at is null
+         and m.role in ('admissions','counselor','viewer','school_admin')
+       join schools s on s.id = m.school_id and s.status = 'active'
+       where r.user_id = $1 and r.role = 'school_staff' and r.revoked_at is null
+       order by s.name_en, m.school_id`,
+      [userId],
+    );
+    const internal = await this.client.query<AvailableAuthWorkspace>(
+      `select 'ops'::text as "selectedSurface", r.role as "activeRole",
+         null::uuid as "tenantSchoolId", 'CUAC staff workspace'::text as label
+       from user_roles r
+       join cuac_staff_access_grants g on g.user_id = r.user_id and g.requested_role = r.role
+         and g.requested_surface = 'cuac_internal' and g.status = 'approved'
+         and g.approved_by_user_id is not null and g.approved_at is not null
+         and g.expires_at > $2 and g.revoked_at is null
+       where r.user_id = $1 and r.role in ('cuac_ops','cuac_admin') and r.revoked_at is null
+       order by case when r.role = 'cuac_ops' then 0 else 1 end
+       limit 1`,
+      [userId, now],
+    );
+    return [...students, ...schools, ...internal];
   }
 
   async createStudentAccount(input: CreateStudentAccountInput): Promise<{ userId: string }> {

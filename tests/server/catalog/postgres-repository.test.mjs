@@ -103,6 +103,7 @@ test("PostgresCatalogRepository keeps school list SQL tenant-safe", async () => 
   assert.doesNotMatch(calls[0].statement, /select\s+\*/i);
   assert.doesNotMatch(calls[0].statement, /school_staff_memberships|school_applications|tenant_settings|contact_notes|fit_notes|quality_score|missing_fields|completeness_label|source_note/i);
   assert.match(calls[0].statement, /where s\.status = 'active'/);
+  assert.match(calls[0].statement, /lower\(trim\(p\.teaching_language\)\).*'english'.*'english-taught'.*'英文授课'/);
   assert.doesNotMatch(calls[0].statement, /'\[\]'::jsonb as "upcomingDeadlines"/);
   assert.match(calls[0].statement, /join program_intakes pi/);
 });
@@ -119,6 +120,50 @@ test("PostgresCatalogRepository excludes scholarship contact data from public SQ
   await repository.listScholarships({ limit: 20, offset: 0 });
 
   assert.doesNotMatch(calls[0].statement, /contact_info|source_note|verified_by_user_id|next_review_due_at/i);
+  assert.match(calls[0].statement, /sch\.status = 'active'.*sch\.verification_status = 'verified'/s);
   assert.match(calls[0].statement, /left join schools s on s\.id = sch\.school_id and s\.status = 'active'/);
   assert.match(calls[0].statement, /left join programs p on p\.id = sch\.program_id and p\.status = 'active'/);
+  assert.match(calls[0].statement, /order by sch\.sort_order asc, sch\.title asc, sch\.slug asc/);
+
+  await repository.getScholarship("11111111-1111-4111-8111-111111111111");
+  assert.match(calls[1].statement, /sch\.status = 'active'.*sch\.verification_status = 'verified'/s);
+});
+
+test("PostgresCatalogRepository applies program page filters to list and count queries", async () => {
+  const calls = [];
+  const repository = new PostgresCatalogRepository({
+    async query(statement, params) {
+      calls.push({ statement, params });
+      return statement.startsWith("select count") ? [{ total: 42 }] : [];
+    },
+  });
+  const options = {
+    limit: 8, offset: 8, query: "computer science", degree: "master", language: "english",
+    tuition: "25-40", scholarship: true, school: "zhejiang-university", sort: "deadline",
+  };
+
+  await repository.listPrograms(options);
+  assert.equal(await repository.countPrograms(options), 42);
+  assert.match(calls[0].statement, /p\.has_scholarship = true/);
+  assert.match(calls[0].statement, /p\.tuition_amount between 25000 and 40000/);
+  assert.match(calls[0].statement, /lower\(trim\(p\.degree_level\)\) = any/);
+  assert.match(calls[0].statement, /order by next_intake\.deadline_date asc nulls last/);
+  assert.match(calls[1].statement, /select count\(\*\)::int as total/);
+  assert.deepEqual(calls[0].params.slice(0, -2), calls[1].params);
+  assert.deepEqual(calls[0].params.slice(-2), [8, 8]);
+});
+
+test("PostgresCatalogRepository publishes guide cards without editorial search terms", async () => {
+  const calls = [];
+  const repository = new PostgresCatalogRepository({
+    async query(statement, params) { calls.push({ statement, params }); return []; },
+  });
+  await repository.listGuides({ query: "JW form", limit: 8, offset: 0 });
+  await repository.getGuide("visa-arrival");
+  assert.deepEqual(calls[0].params, ["%jw%", "%form%", 8, 0]);
+  assert.match(calls[0].statement, /g\.status = 'published'/);
+  assert.match(calls[0].statement, /lower\(g\.search_terms::text\)/);
+  assert.doesNotMatch(calls[0].statement, /search_terms\s+as|created_at|select\s+\*/i);
+  assert.deepEqual(calls[1].params, ["visa-arrival"]);
+  assert.match(calls[1].statement, /g\.slug = \$1 and g\.status = 'published'/);
 });

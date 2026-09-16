@@ -21,7 +21,9 @@ database or provider modules. For production, every worker command must receive
 the completed protected manifest as its sole argument and pass the same combined
 release gate as the application.
 
-Bind the manifest to these exact release identities:
+Bind the manifest to the exact release scope and release identities:
+
+- `releaseScope`: use `school-handoff-v1` for the current release. This scope sends only student basic information to schools; payment, student file upload and official material submission remain disabled.
 
 - `release.commitSha`: the reviewed 40-character Git commit SHA.
 - `release.imageDigest`: the deployed immutable `sha256:<64 hex>` image digest.
@@ -51,13 +53,13 @@ Copy only the returned `artifact:sha256:<digest>` into `evidenceRef`. Do not use
 | `auth.staff_mfa` | Distinct school, Ops and Admin staff complete the approved MFA/IdP flow with live grants; Admin step-up succeeds; self-approval and stale/revoked grants are refused. |
 | `auth.email_round_trip` | Verification and password-reset messages arrive through the real staging provider; expired and replayed actions are refused. |
 | `notification.delivery_round_trip` | In-app and Aliyun Direct Mail delivery are observed; bounce handling and notification preferences are honored. |
-| `payment.signed_round_trip` | Staging provider checkout, signed webhook and reconciliation complete without a real charge; replay, cancel/refund and invalid-signature behavior are observed. |
-| `files.oss_round_trip` | Private OSS upload, exact version binding, malware scan, owner download and deletion complete; cross-owner access is denied. |
-| `submission.signed_round_trip` | Fixed-host signed handoff and receipt complete with idempotency; invalid signatures fail and ambiguous delivery is quarantined without duplicate submission. |
+| `payment.signed_round_trip` | For `school-handoff-v1`, record evidence that payment remains inaccessible and mark `not_applicable`. For `full-platform`, complete the staging provider checkout, signed webhook and reconciliation round trip without a real charge. |
+| `files.oss_round_trip` | For `school-handoff-v1`, record evidence that student file upload remains inaccessible and mark `not_applicable`. For `full-platform`, verify the private OSS upload, scan, download and deletion lifecycle. |
+| `submission.signed_round_trip` | For `school-handoff-v1`, record evidence that official material submission remains inaccessible and mark `not_applicable`. For `full-platform`, verify the signed handoff and receipt lifecycle. |
 | `workers.supervision_and_recovery` | All five production workers are supervised; kill/restart and lease recovery complete without duplicate business effects. |
 | `observability.alert_delivery` | Queue, database and HTTP 5xx alerts reach the reviewed destination; emitted logs and alerts contain no secrets or personal data. |
 | `security.secret_rotation` | KMS, HMAC and session-related secrets rotate; the reviewed grace window works and old material is rejected after it closes. |
-| `product.core_role_e2e` | Four distinct personas complete the exact workflow: student selects program plus intake and completes application/payment; school reviews and submits a catalog correction; Ops claims it; a different stepped-up Admin resolves it. |
+| `product.core_role_e2e` | For `school-handoff-v1`, student selects program plus intake and sends basic information; school follows up; Ops performs a support lookup; a stepped-up Admin retains protected controls. No payment or material submission occurs. |
 | `release.rollback` | Previous immutable image is available; drain and rollback are exercised; database forward compatibility or the reviewed restore decision is recorded. |
 
 ## 4. Closure Sequence
@@ -78,4 +80,4 @@ npm run infra:production-check
 npm run infra:release-gate -- <protected-manifest>
 ```
 
-The manifest must retain all 16 controls in the fixed order, use a distinct evidence artifact for every completed control, remain within 30 days of its `generatedAt` time, and match all three release identities exactly. A successful result still reports `runtimeVerified=false`, `reviewRequired=true` and `deploymentAuthorized=false`; the protected human release review remains mandatory.
+The manifest must retain all 16 controls in the fixed order, use a distinct evidence artifact for every completed or `not_applicable` control, remain within 30 days of its `generatedAt` time, and match the release scope plus all three release identities exactly. Only the payment, file and official-submission controls may be `not_applicable`, and only for `school-handoff-v1`. A successful result still reports `runtimeVerified=false`, `reviewRequired=true` and `deploymentAuthorized=false`; the protected human release review remains mandatory.

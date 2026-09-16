@@ -66,6 +66,12 @@ body[data-catalog-list-page] .story-image img {
   opacity: 0.72;
 }
 
+body[data-catalog-list-page] img[data-catalog-cover] {
+  object-fit: cover;
+  padding: 0;
+  opacity: 1;
+}
+
 body[data-catalog-list-page="cities"] .feature-story {
   grid-template-columns: minmax(0, 1fr);
 }

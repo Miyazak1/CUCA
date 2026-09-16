@@ -42,3 +42,14 @@ yarn-error.log*
 /releases/
 /.cuac-local/
 /.tmp/
+/tmp/
+
+# Python/OCR tooling caches are workstation-local build inputs.
+**/__pycache__/
+*.py[cod]
+
+# Reviewed catalog batches are immutable data-release artifacts, not application
+# source. Keep the small synthetic fixtures tracked; record local artifacts in
+# catalog-sources/local-artifact-manifest.json before uploading them to the
+# protected release artifact store.
+/seeds/catalog.*.json

@@ -337,6 +337,34 @@
       "when": 1788442207274,
       "tag": "0047_school_catalog_correction_url_check",
       "breakpoints": true
+    },
+    {
+      "idx": 48,
+      "version": "7",
+      "when": 1789464668294,
+      "tag": "0048_public_catalog_search_indexes",
+      "breakpoints": true
+    },
+    {
+      "idx": 49,
+      "version": "7",
+      "when": 1789466248648,
+      "tag": "0049_catalog_publication_revision",
+      "breakpoints": true
+    },
+    {
+      "idx": 50,
+      "version": "7",
+      "when": 1789466682958,
+      "tag": "0050_published_guides",
+      "breakpoints": true
+    },
+    {
+      "idx": 51,
+      "version": "7",
+      "when": 1789471599355,
+      "tag": "0051_guide_governance",
+      "breakpoints": true
     }
   ]
 }

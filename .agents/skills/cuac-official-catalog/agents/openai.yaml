@@ -1,0 +1,4 @@
+interface:
+  display_name: "CUAC Official Catalog"
+  short_description: "Collect and review evidence from official university sources"
+  default_prompt: "Use $cuac-official-catalog to refresh registered official catalog sources and report changes requiring review."

@@ -59,6 +59,8 @@ const requiredKeys = [
   "CUAC_AGENT_TOOL_GATEWAY_MODE",
   "CUAC_AGENT_SANDBOX_MODE",
   "CUAC_AGENT_DIRECT_DB_ACCESS",
+  "CUAC_PUBLIC_SEARCH_RATE_LIMIT_ENFORCED",
+  "CUAC_PUBLIC_SEARCH_RATE_LIMIT_BACKEND",
   "CUAC_APPLICATION_FEE_MINOR",
   "CUAC_SERVICE_FEE_MINOR",
   "CUAC_BILLING_CURRENCY",
@@ -113,6 +115,8 @@ test("Alibaba Cloud env templates include production readiness and migration gat
     assert.equal(values.PGSSLMODE, "verify-full");
     assert.equal(values.CUAC_AUTH_RATE_LIMIT_ENFORCED, "true");
     assert.match(values.CUAC_AUTH_RATE_LIMIT_BACKEND, /gateway|waf/);
+    assert.equal(values.CUAC_PUBLIC_SEARCH_RATE_LIMIT_ENFORCED, "true");
+    assert.match(values.CUAC_PUBLIC_SEARCH_RATE_LIMIT_BACKEND, /gateway|waf/);
     assert.equal(values.CUAC_AUTH_EMAIL_DELIVERY_PROVIDER, "disabled");
     assert.equal(values.CUAC_NOTIFICATION_EMAIL_PROVIDER, "disabled");
     assert.equal(values.CUAC_SUBMISSION_DELIVERY_PROVIDER, "disabled");

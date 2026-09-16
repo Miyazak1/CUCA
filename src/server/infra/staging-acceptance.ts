@@ -1,4 +1,10 @@
-export const STAGING_ACCEPTANCE_SCHEMA = "cuac.staging-acceptance.v1" as const;
+import {
+  RELEASE_SCOPE_SCHOOL_HANDOFF_V1,
+  resolveReleaseScope,
+  type ReleaseScope,
+} from "./release-scope.ts";
+
+export const STAGING_ACCEPTANCE_SCHEMA = "cuac.staging-acceptance.v2" as const;
 
 export const STAGING_ACCEPTANCE_CONTROL_IDS = [
   "edge.https_waf_rate_limit",
@@ -20,11 +26,12 @@ export const STAGING_ACCEPTANCE_CONTROL_IDS = [
 ] as const;
 
 export type StagingAcceptanceControlId = (typeof STAGING_ACCEPTANCE_CONTROL_IDS)[number];
-export type StagingAcceptanceStatus = "pending" | "passed" | "failed";
+export type StagingAcceptanceStatus = "pending" | "passed" | "failed" | "not_applicable";
 
 export type StagingAcceptanceManifest = {
   schema: typeof STAGING_ACCEPTANCE_SCHEMA;
   environment: "staging";
+  releaseScope: ReleaseScope;
   generatedAt: string;
   release: {
     commitSha: string;
@@ -44,6 +51,7 @@ export type StagingAcceptanceReport = {
   runtimeVerified: false;
   reviewRequired: true;
   readyForReview: boolean;
+  releaseScope: ReleaseScope | "unknown";
   release: {
     commitSha: string | null;
     imageDigest: string | null;
@@ -66,6 +74,7 @@ export function inspectStagingAcceptance(
   if (!validDate(now)) throw new Error("A valid verifier time is required.");
   const manifest = parseManifest(input);
   const failures: string[] = [];
+  const releaseScope = resolveReleaseScope(manifest.releaseScope);
   const generatedAt = parseCanonicalTimestamp(manifest.generatedAt, "generatedAt");
   if (generatedAt.getTime() > now.getTime() + 5 * 60 * 1000) {
     failures.push("Staging evidence manifest time is in the future.");
@@ -96,6 +105,14 @@ export function inspectStagingAcceptance(
       failures.push(`Staging control ${control.id} is pending.`);
       return;
     }
+    const mayBeNotApplicable = releaseScope === RELEASE_SCOPE_SCHOOL_HANDOFF_V1
+      && ["payment.signed_round_trip", "files.oss_round_trip", "submission.signed_round_trip"].includes(control.id);
+    if (control.status === "not_applicable" && !mayBeNotApplicable) {
+      failures.push(`Staging control ${control.id} cannot be not_applicable for release scope ${releaseScope}.`);
+    }
+    if (mayBeNotApplicable && control.status !== "not_applicable") {
+      failures.push(`Staging control ${control.id} must be not_applicable for release scope ${releaseScope}.`);
+    }
     if (typeof control.observedAt !== "string" || typeof control.evidenceRef !== "string") {
       throw new Error("Completed staging controls require evidence.");
     }
@@ -118,6 +135,7 @@ export function inspectStagingAcceptance(
     runtimeVerified: false,
     reviewRequired: true,
     readyForReview: failures.length === 0,
+    releaseScope,
     release,
     failures,
     controls: manifest.controls.map(control => ({ id: control.id, status: control.status })),
@@ -125,9 +143,10 @@ export function inspectStagingAcceptance(
 }
 
 function parseManifest(input: unknown): StagingAcceptanceManifest {
-  const root = exactRecord(input, ["schema", "environment", "generatedAt", "release", "controls"], "manifest");
+  const root = exactRecord(input, ["schema", "environment", "releaseScope", "generatedAt", "release", "controls"], "manifest");
   if (root.schema !== STAGING_ACCEPTANCE_SCHEMA || root.environment !== "staging"
-    || typeof root.generatedAt !== "string" || !Array.isArray(root.controls)
+    || resolveReleaseScope(typeof root.releaseScope === "string" ? root.releaseScope : undefined) === "unknown"
+    || typeof root.releaseScope !== "string" || typeof root.generatedAt !== "string" || !Array.isArray(root.controls)
     || root.controls.length !== STAGING_ACCEPTANCE_CONTROL_IDS.length) {
     throw new Error("Invalid staging acceptance manifest.");
   }
@@ -137,7 +156,7 @@ function parseManifest(input: unknown): StagingAcceptanceManifest {
   const controls = root.controls.map((value, index) => {
     const control = exactRecord(value, ["id", "status", "observedAt", "evidenceRef"], `control ${index}`);
     if (!STAGING_ACCEPTANCE_CONTROL_IDS.includes(control.id as StagingAcceptanceControlId)
-      || !["pending", "passed", "failed"].includes(String(control.status))
+      || !["pending", "passed", "failed", "not_applicable"].includes(String(control.status))
       || !(control.observedAt === null || typeof control.observedAt === "string")
       || !(control.evidenceRef === null || typeof control.evidenceRef === "string")) {
       throw new Error("Invalid staging acceptance control.");
@@ -147,6 +166,7 @@ function parseManifest(input: unknown): StagingAcceptanceManifest {
   return {
     schema: root.schema,
     environment: root.environment,
+    releaseScope: resolveReleaseScope(root.releaseScope as string) as ReleaseScope,
     generatedAt: root.generatedAt,
     release: release as StagingAcceptanceManifest["release"],
     controls,

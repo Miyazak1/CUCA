@@ -35,6 +35,12 @@ const unavailableRepository: PublicCatalogRepository = {
   async getCity() {
     throw serviceUnavailable("PostgreSQL catalog repository is not configured.");
   },
+  async listGuides() {
+    throw serviceUnavailable("PostgreSQL catalog repository is not configured.");
+  },
+  async getGuide() {
+    throw serviceUnavailable("PostgreSQL catalog repository is not configured.");
+  },
 };
 
 export function createCatalogRouteHandlers(repository: PublicCatalogRepository = unavailableRepository) {

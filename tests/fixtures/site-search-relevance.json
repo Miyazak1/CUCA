@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-09-15",
+  "cases": [
+    { "query": "CS", "type": "program", "interpretedQuery": "computer science", "tokens": ["computer", "science"] },
+    { "query": "AI 杭州", "type": "program", "interpretedQuery": "artificial intelligence 杭州", "tokens": ["artificial", "intelligence", "杭州"] },
+    { "query": "comp sci", "type": "program", "interpretedQuery": "computer science", "tokens": ["computer", "science"] },
+    { "query": "undergrad economics", "type": "program", "interpretedQuery": "undergraduate economics", "tokens": ["undergraduate", "economics"] },
+    { "query": "masters scholarship", "type": "scholarship", "interpretedQuery": "master scholarship", "tokens": ["master", "scholarship"] },
+    { "query": "计算机科学", "type": "program", "interpretedQuery": "计算机科学", "tokens": ["计算机科学"] },
+    { "query": "Tsinghua University", "type": "school", "interpretedQuery": "tsinghua university", "tokens": ["tsinghua", "university"] },
+    { "query": "杭州", "type": "city", "interpretedQuery": "杭州", "tokens": ["杭州"] },
+    { "query": "JW form", "type": "guide", "interpretedQuery": "jw form", "tokens": ["jw", "form"] }
+  ]
+}

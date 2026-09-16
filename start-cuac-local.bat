@@ -10,7 +10,7 @@ if errorlevel 1 goto project_missing
 echo.
 echo CUAC Local Platform
 echo App:      http://127.0.0.1:52118/home-v3.html
-echo Postgres: 127.0.0.1:62251
+echo Postgres: automatic 127.0.0.1 port ^(persistent data retained^)
 echo.
 
 where node >nul 2>&1
@@ -31,10 +31,9 @@ if errorlevel 1 goto docker_stopped
 if not exist "node_modules\vinext\dist\cli.js" goto dependencies_missing
 
 set "CUAC_LOCAL_APP_PORT=52118"
-set "CUAC_LOCAL_PG_PORT=62251"
 
 if exist ".cuac-local\runtime.json" (
-  node -e "const fs=require('node:fs'); const s=JSON.parse(fs.readFileSync('.cuac-local/runtime.json','utf8')); if(s.applicationPort!==52118||s.postgresPort!==62251){console.error('Existing CUAC local state uses app port '+s.applicationPort+' and PostgreSQL port '+s.postgresPort+'.'); process.exit(1)}"
+  node -e "const fs=require('node:fs'); const s=JSON.parse(fs.readFileSync('.cuac-local/runtime.json','utf8')); if(s.applicationPort!==52118){console.error('Existing CUAC local state uses app port '+s.applicationPort+'.'); process.exit(1)}"
   if errorlevel 1 goto port_mismatch
 )
 
@@ -89,12 +88,12 @@ echo Open a terminal in "%~dp0" and run: npm install
 goto failed
 
 :port_mismatch
-echo CUAC refused to start on a different port.
-echo Expected app port 52118 and PostgreSQL port 62251.
+echo CUAC refused to start on a different application port.
+echo Expected app port 52118. PostgreSQL uses its generated loopback port.
 goto failed
 
 :check_ok
-echo Local startup prerequisites and pinned ports are ready.
+echo Local startup prerequisites and application port are ready.
 exit /b 0
 
 :failed

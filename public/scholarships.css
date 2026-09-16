@@ -634,6 +634,7 @@ h1 {
 
 .coverage-chips {
   display: flex;
+  align-items: flex-start;
   gap: 8px;
 }
 
@@ -776,12 +777,21 @@ h1 {
 }
 
 .coverage-chips span {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  max-width: 100%;
+  min-height: 28px;
   padding: 5px 9px;
+  overflow: hidden;
   border-radius: var(--radius-pill);
   background: #f0f6f4;
   color: var(--accent-dark);
   font-size: 12px;
   font-weight: 780;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .facts {
@@ -809,10 +819,14 @@ h1 {
 }
 
 .facts b {
-  display: block;
+  display: -webkit-box;
+  overflow: hidden;
   overflow-wrap: anywhere;
   color: var(--text);
   font-size: 15px;
+  line-height: 1.2;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .scope-row {
@@ -876,15 +890,47 @@ h1 {
 
 .pagination {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 28px 0 12px;
+}
+
+.pagination:empty {
+  display: none;
+}
+
+.pagination button {
+  min-width: 40px;
+  padding-inline: 11px;
 }
 
 .pagination button.active {
   border-color: var(--accent);
   background: var(--accent);
   color: white;
+}
+
+.pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.pagination-summary {
+  margin-right: 4px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.pagination-ellipsis {
+  display: inline-grid;
+  min-width: 24px;
+  height: 40px;
+  place-items: center;
+  color: var(--text-muted);
+  font-weight: 800;
 }
 
 .source-strip {

@@ -1,5 +1,5 @@
 ﻿const params = new URLSearchParams(window.location.search);
-      const plannerInputs = Array.from(document.querySelectorAll(".hero [data-planner-input]"));
+      const plannerInputs = Array.from(document.querySelectorAll(".hero [data-site-search-input]"));
       const plannerFeedback = document.querySelector("[data-planner-feedback]");
 
       function syncPlannerValue(value) {
@@ -21,17 +21,27 @@
         input.addEventListener("input", (event) => syncPlannerValue(event.target.value));
       });
 
-      document.querySelectorAll("[data-prompt-chip]").forEach((chip) => {
+      document.querySelectorAll("[data-search-chip]").forEach((chip) => {
         chip.addEventListener("click", () => {
-          document.querySelectorAll("[data-prompt-chip]").forEach((item) => item.classList.remove("active"));
+          document.querySelectorAll("[data-search-chip]").forEach((item) => item.classList.remove("active"));
           chip.classList.add("active");
-          const value = plannerInputs[0]?.value.trim();
-          const addition = chip.dataset.promptChip;
-          syncPlannerValue(value ? `${value}, ${addition}` : addition);
+          const addition = chip.dataset.searchChip;
+          syncPlannerValue(addition);
           plannerInputs[0]?.dispatchEvent(new Event("input", { bubbles: true }));
-          if (plannerFeedback) plannerFeedback.textContent = "Press send to open the CUAC agent workspace.";
+          if (plannerFeedback) plannerFeedback.textContent = "Press Enter or Search to view matching published catalog results.";
           plannerInputs[0]?.focus();
         });
+      });
+
+      document.querySelector("[data-site-search-form]")?.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = plannerInputs[0]?.value.trim() || "";
+        if (!query) {
+          if (plannerFeedback) plannerFeedback.textContent = "Enter a program, university, scholarship, or city.";
+          plannerInputs[0]?.focus();
+          return;
+        }
+        window.location.href = `search.html?q=${encodeURIComponent(query)}`;
       });
 
       document.querySelector("[data-create-list]")?.addEventListener("click", () => {
@@ -45,7 +55,7 @@
         })) {
           return;
         }
-        window.location.href = "onboarding.html";
+        window.location.href = "onboarding-api.html";
       });
 
       const homeIcons = {

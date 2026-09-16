@@ -93,12 +93,18 @@ export class PostgresSchoolPortalRepository implements SchoolPortalRepository {
     this.client = client;
   }
 
-  async listApplicationQueueBySchoolId(schoolId: string, cuacId?: string): Promise<SchoolApplicationQueueItemDto[]> {
+  async listApplicationQueueBySchoolId(schoolId: string, cuacId?: string,
+    pagination: { limit: number; offset: number } = { limit: 50, offset: 0 }): Promise<SchoolApplicationQueueItemDto[]> {
+    const limitParameter = cuacId === undefined ? 2 : 3;
+    const offsetParameter = limitParameter + 1;
     const rows = await this.client.query<SchoolApplicationQueueRow>(
       `${schoolApplicationProjectionSelectSql}
        where sa.school_id = $1 and sa.status <> 'pending_submission'${cuacId === undefined ? "" : " and sa.cuac_id = $2"}
-       order by sa.submitted_at desc nulls last, sa.created_at desc`,
-      cuacId === undefined ? [schoolId] : [schoolId, cuacId],
+       order by sa.submitted_at desc nulls last, sa.created_at desc
+       limit $${limitParameter} offset $${offsetParameter}`,
+      cuacId === undefined
+        ? [schoolId, pagination.limit, pagination.offset]
+        : [schoolId, cuacId, pagination.limit, pagination.offset],
     );
 
     return rows.map(toQueueItemDto);
@@ -183,7 +189,7 @@ export class PostgresSchoolPortalRepository implements SchoolPortalRepository {
       };
     }
 
-    assertReceivedV2Application(application);
+    assertReceivedApplication(application);
     if (application.schoolRevision !== input.command.expectedRevision) throw workflowConflict();
     if (!canTransitionSchoolApplication(application.status, input.command.status)) {
       throw workflowConflict("The requested school application status transition is not allowed.");
@@ -266,7 +272,7 @@ export class PostgresSchoolPortalRepository implements SchoolPortalRepository {
       return { contact: toContactLogDto(receipts[0]), created: false };
     }
 
-    assertReceivedV2Application(application);
+    assertReceivedApplication(application);
     if (!isContactableSchoolApplicationStatus(application.status)) {
       throw workflowConflict("Contact cannot be recorded for a closed school application.");
     }
@@ -368,8 +374,8 @@ async function lockApplication(client: SqlSchoolPortalClient, applicationId: str
   return rows[0] ?? null;
 }
 
-function assertReceivedV2Application(application: LockedSchoolApplicationRow) {
-  if (application.applicationRecordFormat !== "cuac.program-application.v2" || !validDate(application.submittedAt)
+function assertReceivedApplication(application: LockedSchoolApplicationRow) {
+  if (!readableApplicationFormats.includes(application.applicationRecordFormat) || !validDate(application.submittedAt)
     || !SCHOOL_APPLICATION_WORKFLOW_STATUSES.includes(application.status as never)) {
     throw workflowConflict("Only a confirmed received Program Application can enter the school workflow.");
   }

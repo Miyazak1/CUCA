@@ -51,6 +51,7 @@ test("production readiness fails closed for production without PostgreSQL, secre
   assert.match(report.failures.join("\n"), /PostgreSQL URL is missing/);
   assert.match(report.failures.join("\n"), /Session secret is missing/);
   assert.match(report.failures.join("\n"), /Auth endpoints must enforce shared rate limiting/);
+  assert.match(report.failures.join("\n"), /public search must enforce shared rate limiting/);
   assert.match(report.failures.join("\n"), /Auth email delivery is disabled/);
   assert.match(report.failures.join("\n"), /explicitly set CUAC_AGENT_ENABLED/);
   assert.match(report.failures.join("\n"), /Billing fee schedule is missing/);
@@ -145,6 +146,23 @@ test("production readiness rejects Redis Auth rate limiting until the adapter ex
 
   assert.equal(report.ready, false);
   assert.match(report.failures.join("\n"), /API Gateway or WAF until Redis support is implemented/);
+});
+
+test("production readiness requires a shared gateway or WAF limiter for public search", () => {
+  for (const backend of [undefined, "disabled", "memory", "postgres", "redis"]) {
+    const report = inspectProductionReadiness({
+      NODE_ENV: "production",
+      CUAC_PUBLIC_SEARCH_RATE_LIMIT_ENFORCED: "true",
+      CUAC_PUBLIC_SEARCH_RATE_LIMIT_BACKEND: backend,
+    });
+    assert.equal(check(report, "search.rate_limit").status, "fail");
+  }
+  const accepted = inspectProductionReadiness({
+    NODE_ENV: "production",
+    CUAC_PUBLIC_SEARCH_RATE_LIMIT_ENFORCED: "true",
+    CUAC_PUBLIC_SEARCH_RATE_LIMIT_BACKEND: "waf",
+  });
+  assert.equal(check(accepted, "search.rate_limit").status, "pass");
 });
 
 test("production readiness rejects demo databases, localhost, direct Agent DB access, and weak payment webhooks", () => {
@@ -269,6 +287,7 @@ const configuredProduction = {
   PGSSLMODE: "verify-full", ALIBABA_CLOUD_REGION: "cn-shanghai", CUAC_APP_RUNTIME: "ecs-container",
   CUAC_SESSION_SECRET: "synthetic-session-0123456789abcdef0123456789abcdef",
   CUAC_AUTH_RATE_LIMIT_ENFORCED: "true", CUAC_AUTH_RATE_LIMIT_BACKEND: "gateway",
+  CUAC_PUBLIC_SEARCH_RATE_LIMIT_ENFORCED: "true", CUAC_PUBLIC_SEARCH_RATE_LIMIT_BACKEND: "waf",
   CUAC_AUTH_EMAIL_DELIVERY_PROVIDER: "arbitrary-provider-with-no-adapter",
   CUAC_AUTH_EMAIL_FROM: "no-reply@example.com", CUAC_PUBLIC_APP_URL: "https://www.example.com",
   CUAC_AGENT_ENABLED: "false", CUAC_AGENT_TOOL_GATEWAY_MODE: "disabled", CUAC_AGENT_SANDBOX_MODE: "disabled",
@@ -472,6 +491,33 @@ test("disabled payments block staging and production while remaining a local war
     const report = inspectProductionReadiness({ ...configuredProduction, CUAC_PAYMENT_MODE: mode });
     assert.equal(check(report, "billing.provider").status, "fail");
     assert.match(check(report, "billing.provider").message, /must be disabled, test, or live/);
+  }
+});
+
+test("school handoff v1 requires payment, file upload and official material submission to stay disabled", () => {
+  const accepted = inspectProductionReadiness({
+    ...configuredProduction,
+    CUAC_RELEASE_SCOPE: "school-handoff-v1",
+    CUAC_PAYMENT_MODE: "disabled",
+    CUAC_FILE_UPLOAD_ENABLED: "false",
+    CUAC_SUBMISSION_DELIVERY_PROVIDER: "disabled",
+  });
+  assert.equal(check(accepted, "billing.provider").status, "pass");
+  assert.equal(check(accepted, "storage.private_files").status, "pass");
+  assert.equal(check(accepted, "submission.delivery").status, "pass");
+
+  for (const override of [
+    { CUAC_PAYMENT_MODE: "live" },
+    { CUAC_FILE_UPLOAD_ENABLED: "true" },
+    { CUAC_SUBMISSION_DELIVERY_PROVIDER: "cuac_handoff_gateway_v1" },
+  ]) {
+    const rejected = inspectProductionReadiness({
+      ...configuredProduction,
+      CUAC_RELEASE_SCOPE: "school-handoff-v1",
+      ...override,
+    });
+    assert.equal(rejected.ready, false);
+    assert.match(rejected.failures.join("\n"), /must remain disabled/);
   }
 });
 

@@ -40,6 +40,13 @@ export type AuthSignInSurface = "student" | "school_staff" | "cuac_internal";
 export type AuthSessionSurface = "student" | "school" | "ops";
 export type AuthSessionRole = "student" | "school_staff" | "cuac_ops" | "cuac_admin";
 
+export type AvailableAuthWorkspace = {
+  selectedSurface: AuthSessionSurface;
+  activeRole: AuthSessionRole;
+  tenantSchoolId: string | null;
+  label: string;
+};
+
 export type CreatedAuthSession = {
   sessionId: string;
   selectedSurface: AuthSessionSurface;
@@ -77,6 +84,7 @@ export type ActivateSessionStepUpInput = SessionReauthenticationTarget & {
 
 export type AuthCredentialsRepository = {
   findPasswordIdentityByEmailNormalized(emailNormalized: string): Promise<PasswordIdentityRecord | null>;
+  listAvailableSessionAuthorities(userId: string, now: Date): Promise<AvailableAuthWorkspace[]>;
   createStudentAccount(input: CreateStudentAccountInput): Promise<{ userId: string }>;
   createSession(input: CreateAuthSessionInput): Promise<CreatedAuthSession>;
   revokeSessionByTokenHash(input: RevokeAuthSessionInput): Promise<RevokedAuthSessionResult>;
@@ -92,6 +100,11 @@ export type AuthCredentialsResult = {
   selectedSurface: AuthSessionSurface;
   activeRole: AuthSessionRole;
   tenantSchoolId: string | null;
+};
+
+export type AuthWorkspaceSelectionResult = {
+  workspaceSelectionRequired: true;
+  workspaces: AvailableAuthWorkspace[];
 };
 
 export type AuthCredentialsServiceOptions = {
@@ -146,12 +159,15 @@ export class AuthCredentialsService {
     return result;
   }
 
-  async createStudentSession(input: { email: unknown; password: unknown; selectedSurface?: unknown; schoolId?: unknown; userAgent?: string | null; ip?: string | null }, requestId: string = randomUUID()): Promise<AuthCredentialsResult> {
+  async createStudentSession(input: { email: unknown; password: unknown; selectedSurface?: unknown; schoolId?: unknown; userAgent?: string | null; ip?: string | null }, requestId: string = randomUUID()): Promise<AuthCredentialsResult | AuthWorkspaceSelectionResult> {
     const value = authInput(input, ["email", "password", "selectedSurface", "schoolId", "userAgent", "ip"]);
     const email = authEmail(value.email);
     const password = authPassword(value.password, false);
     const requestedSurface = authSignInSurface(value.selectedSurface);
-    const requestedSchoolId = authSignInSchoolId(value.schoolId, requestedSurface);
+    const requestedSchoolId = requestedSurface ? authSignInSchoolId(value.schoolId, requestedSurface) : null;
+    if (!requestedSurface && value.schoolId !== undefined && value.schoolId !== null && value.schoolId !== "") {
+      throw badRequest("School ID requires a selected access context.");
+    }
     const metadata = sessionMetadata(value);
     const identity = await this.repository.findPasswordIdentityByEmailNormalized(email.normalized);
 
@@ -160,16 +176,32 @@ export class AuthCredentialsService {
       throw forbidden("Invalid email or password.");
     }
 
-    const result = await this.issueSession(identity.userId, metadata, this.now(), identity.passwordHash, {
+    const now = this.now();
+    if (!requestedSurface) {
+      const workspaces = await this.repository.listAvailableSessionAuthorities(identity.userId, now);
+      if (workspaces.length === 0) throw forbidden("Invalid email or password.");
+      if (workspaces.length > 1) return { workspaceSelectionRequired: true, workspaces };
+      const workspace = workspaces[0];
+      const result = await this.issueSession(identity.userId, metadata, now, identity.passwordHash,
+        authorityRequestForWorkspace(workspace), verification.upgradedHash);
+      await this.recordLoginAudit(requestId, result, verification.upgradedHash);
+      return result;
+    }
+
+    const result = await this.issueSession(identity.userId, metadata, now, identity.passwordHash, {
       requestedSurface, requestedSchoolId,
     }, verification.upgradedHash);
+    await this.recordLoginAudit(requestId, result, verification.upgradedHash);
+    return result;
+  }
+
+  private async recordLoginAudit(requestId: string, result: AuthCredentialsResult, upgradedPasswordHash?: string | null) {
     await this.recordAudit(requestId, "auth.login", {
       userId: result.userId, activeRole: result.activeRole, tenantSchoolId: result.tenantSchoolId,
     }, "auth_session", result.sessionId, {
       selectedSurface: result.selectedSurface,
-      ...(verification.upgradedHash ? { credentialUpgrade: "scrypt_v2" } : {}),
+      ...(upgradedPasswordHash ? { credentialUpgrade: "scrypt_v2" } : {}),
     });
-    return result;
   }
 
   async revokeSession(sessionToken: string | null | undefined, requestId: string = randomUUID()): Promise<{ revoked: boolean }> {
@@ -258,9 +290,22 @@ export class AuthCredentialsService {
   }
 }
 
-function authSignInSurface(value: unknown): AuthSignInSurface {
-  if (value === undefined || value === null || value === "") return "student";
+function authSignInSurface(value: unknown): AuthSignInSurface | null {
+  if (value === undefined || value === null || value === "") return null;
   return inputEnum(value, "Selected surface", ["student", "school_staff", "cuac_internal"] as const);
+}
+
+function authorityRequestForWorkspace(workspace: AvailableAuthWorkspace): {
+  requestedSurface: AuthSignInSurface;
+  requestedSchoolId: string | null;
+} {
+  if (workspace.selectedSurface === "school") {
+    return { requestedSurface: "school_staff", requestedSchoolId: workspace.tenantSchoolId };
+  }
+  if (workspace.selectedSurface === "ops") {
+    return { requestedSurface: "cuac_internal", requestedSchoolId: null };
+  }
+  return { requestedSurface: "student", requestedSchoolId: null };
 }
 
 function authSignInSchoolId(value: unknown, surface: AuthSignInSurface): string | null {

@@ -3,8 +3,8 @@ const schoolStatusLabels = {
   needs_review: "需要审核",
   contact_queued: "待联系",
   contacted: "已联系",
-  waiting_for_documents: "等待材料",
-  documents_received_by_school: "学校已收材料",
+  waiting_for_documents: "等待学生直交材料",
+  documents_received_by_school: "学校已收到直交材料",
   not_a_fit: "不适合",
   converted_to_official_application: "已转正式申请",
   archived: "已归档",
@@ -26,6 +26,14 @@ const schoolFinalStatuses = new Set(["not_a_fit", "converted_to_official_applica
 const schoolContactableStatuses = new Set([
   "new", "needs_review", "contact_queued", "contacted", "waiting_for_documents", "documents_received_by_school",
 ]);
+const schoolWorkflowFormats = new Set(["cuac.program-application.v1", "cuac.program-application.v2"]);
+
+const schoolContactChannelLabels = {
+  email: "电子邮件", phone: "电话", whatsapp: "WhatsApp", in_person: "当面", other: "其他",
+};
+const schoolContactOutcomeLabels = {
+  attempted: "已尝试", reached: "已联系到", replied: "已回复", follow_up_required: "需要跟进",
+};
 
 const schoolState = {
   tenantSchoolId: null,
@@ -37,6 +45,9 @@ const schoolState = {
   detail: null,
   search: "",
   status: "all",
+  page: 0,
+  pageSize: 25,
+  hasNextPage: false,
   busy: false,
 };
 
@@ -71,6 +82,21 @@ function statusLabel(status) {
   return schoolStatusLabels[status] || cleanText(status) || "状态未知";
 }
 
+function normalizedVisibleProfile(item) {
+  const profile = item && typeof item.schoolVisibleProfile === "object" && item.schoolVisibleProfile
+    ? item.schoolVisibleProfile : {};
+  if (profile.format === "cuac.school-visible-profile.v1") {
+    return { applicant: profile, education: Array.isArray(profile.education) ? profile.education : [] };
+  }
+  if (profile.format === "cuac.school-visible-projection.v1") {
+    return {
+      applicant: profile.applicant && typeof profile.applicant === "object" ? profile.applicant : {},
+      education: Array.isArray(profile.education) ? profile.education : [],
+    };
+  }
+  return { applicant: cleanText(profile.displayName) ? { fullName: profile.displayName } : {}, education: [] };
+}
+
 function statusClass(status) {
   if (schoolFinalStatuses.has(status)) return "is-final";
   if (["needs_review", "contact_queued", "waiting_for_documents"].includes(status)) return "is-warning";
@@ -78,11 +104,7 @@ function statusClass(status) {
 }
 
 function applicantLabel(item) {
-  const profile = item && typeof item.schoolVisibleProfile === "object" && item.schoolVisibleProfile
-    ? item.schoolVisibleProfile : {};
-  const applicant = profile.format === "cuac.school-visible-projection.v1"
-    && profile.applicant && typeof profile.applicant === "object" ? profile.applicant : {};
-  return cleanText(applicant.fullName) || cleanText(profile.displayName) || "申请人资料未提供";
+  return cleanText(normalizedVisibleProfile(item).applicant.fullName) || "申请人姓名未提供";
 }
 
 function programLabel(programId) {
@@ -173,6 +195,7 @@ function renderQueue() {
   if (!root || !title) return;
   const items = visibleQueue();
   title.textContent = `${items.length} 条记录`;
+  renderPagination();
   if (!items.length) {
     root.innerHTML = `<p class="school-state">${schoolState.queue.length ? "没有符合当前筛选条件的记录。" : "当前学校尚无已确认接收的申请。"}</p>`;
     return;
@@ -188,20 +211,52 @@ function renderQueue() {
     </button>`).join("");
 }
 
+function renderPagination() {
+  const root = document.querySelector("[data-school-pagination]");
+  if (!root) return;
+  root.hidden = schoolState.page === 0 && !schoolState.hasNextPage;
+  const page = root.querySelector("[data-school-page-label]");
+  if (page) page.textContent = `第 ${schoolState.page + 1} 页`;
+  const previous = root.querySelector('[data-school-page="previous"]');
+  const next = root.querySelector('[data-school-page="next"]');
+  if (previous) previous.disabled = schoolState.page === 0;
+  if (next) next.disabled = !schoolState.hasNextPage;
+}
+
 function detailDefinitionRows(detail) {
-  const profile = detail && typeof detail.schoolVisibleProfile === "object" && detail.schoolVisibleProfile
-    ? detail.schoolVisibleProfile : {};
+  const { applicant } = normalizedVisibleProfile(detail);
   const rows = [];
-  if (profile.format === "cuac.school-visible-projection.v1" && profile.applicant
-    && typeof profile.applicant === "object" && !Array.isArray(profile.applicant)) {
-    const values = [
-      ["申请人", profile.applicant.fullName],
-      ["联系邮箱", profile.applicant.contactEmail],
-      ["国籍国家/地区", profile.applicant.citizenshipCountry],
-    ];
-    rows.push(...values.filter(([, value]) => cleanText(value)));
-  } else if (cleanText(profile.displayName)) rows.push(["申请人", profile.displayName]);
+  const values = [
+    ["申请人", applicant.fullName],
+    ["联系邮箱", applicant.contactEmail],
+    ["国籍国家/地区", applicant.citizenshipCountry],
+  ];
+  rows.push(...values.filter(([, value]) => cleanText(value)));
   return rows;
+}
+
+function educationLabel(record) {
+  const qualification = cleanText(record.qualificationName) || cleanText(record.educationLevel).replaceAll("_", " ");
+  const field = cleanText(record.fieldOfStudy);
+  return [qualification, field].filter(Boolean).join(" · ") || "学历信息";
+}
+
+function educationPeriod(record) {
+  const start = Number.isSafeInteger(record.startYear) ? String(record.startYear) : "";
+  const endValue = record.attendanceStatus === "current" ? "在读"
+    : Number.isSafeInteger(record.endYear) ? String(record.endYear)
+      : Number.isSafeInteger(record.expectedCompletionYear) ? `预计 ${record.expectedCompletionYear}` : "";
+  return [start, endValue].filter(Boolean).join("–");
+}
+
+function renderEducation(detail) {
+  const education = normalizedVisibleProfile(detail).education.filter(record => record && typeof record === "object");
+  if (!education.length) return '<p class="school-projection-note">学生尚未提供可共享的教育经历；请通过官方联系方式向学生确认。</p>';
+  return `<ol class="school-education-list">${education.map(record => `<li>
+    <strong>${escapeHtml(cleanText(record.institutionName) || "学校名称未提供")}</strong>
+    <span>${escapeHtml(educationLabel(record))}</span>
+    <small>${escapeHtml([cleanText(record.institutionCountry), educationPeriod(record)].filter(Boolean).join(" · ") || "就读时间未提供")}</small>
+  </li>`).join("")}</ol>`;
 }
 
 function renderDefinitions(rows) {
@@ -212,8 +267,8 @@ function renderDefinitions(rows) {
 
 function renderStatusForm(detail) {
   const targets = schoolStatusTransitions[detail.status] || [];
-  if (detail.applicationRecordFormat !== "cuac.program-application.v2") {
-    return '<p class="school-projection-note">这是一条历史格式记录，仅可查看，不能进入当前状态流程。</p>';
+  if (!schoolWorkflowFormats.has(detail.applicationRecordFormat)) {
+    return '<p class="school-projection-note">这条记录的格式不支持学校流程操作。</p>';
   }
   if (!targets.length) return '<p class="school-projection-note">当前状态已经结束，没有可用的后续流转。</p>';
   return `<form class="school-inline-form" data-school-status-form>
@@ -226,7 +281,7 @@ function renderStatusForm(detail) {
 }
 
 function renderContactForm(detail) {
-  if (detail.applicationRecordFormat !== "cuac.program-application.v2" || !schoolContactableStatuses.has(detail.status)) {
+  if (!schoolWorkflowFormats.has(detail.applicationRecordFormat) || !schoolContactableStatuses.has(detail.status)) {
     return '<p class="school-projection-note">当前记录不可新增联系日志。</p>';
   }
   return `<form class="school-contact-form" data-school-contact-form>
@@ -252,7 +307,7 @@ function activityItems(detail) {
   })) : [];
   const contactItems = Array.isArray(detail.contactLogs) ? detail.contactLogs.map(log => ({
     at: log.createdAt,
-    title: `联系记录 · ${cleanText(log.channel) || "渠道未知"} · ${cleanText(log.outcome) || "结果未知"}`,
+    title: `联系记录 · ${schoolContactChannelLabels[log.channel] || "渠道未知"} · ${schoolContactOutcomeLabels[log.outcome] || "结果未知"}`,
     detail: cleanText(log.note),
   })) : [];
   return [...statusItems, ...contactItems]
@@ -281,9 +336,10 @@ function renderDetail() {
     <div class="school-detail-grid">
       <div><span>入学季</span><strong>${escapeHtml(intakeLabel(detail.programIntakeId))}</strong></div>
       <div><span>确认接收</span><strong>${escapeHtml(formatDateTime(detail.submittedAt))}</strong></div>
-      <div><span>流程版本</span><strong>${escapeHtml(String(detail.schoolRevision))}</strong></div>
+      <div><span>状态版本</span><strong>${escapeHtml(String(detail.schoolRevision))}</strong></div>
     </div>
-    <section class="school-detail-section"><header><h3>学校可见资料</h3><p>仅显示当前 API 明确定义并返回的字段。</p></header>${renderDefinitions(detailDefinitionRows(detail))}</section>
+    <section class="school-detail-section"><header><h3>学生基础信息</h3><p>仅显示学生确认发送的基础联系信息；这不是申请材料。</p></header>${renderDefinitions(detailDefinitionRows(detail))}</section>
+    <section class="school-detail-section"><header><h3>教育经历</h3><p>用于首次联系和项目初步判断；证明材料由学生按学校官方渠道直接提交。</p></header>${renderEducation(detail)}</section>
     <section class="school-detail-section"><header><h3>状态流转</h3><p>更新使用当前记录版本，冲突时会重新读取。</p></header>${renderStatusForm(detail)}</section>
     <section class="school-detail-section"><header><h3>联系日志</h3><p>日志仅属于当前学校租户。</p></header>${renderContactForm(detail)}</section>
     <section class="school-detail-section"><header><h3>活动记录</h3><p>状态和联系活动按时间排序。</p></header>${renderActivity(detail)}</section>`;
@@ -322,14 +378,11 @@ async function loadDetail(id) {
 }
 
 async function loadCatalogContext() {
-  const jobs = [requestJson("/api/v1/catalog/programs?limit=100")];
-  if (schoolState.tenantSchoolId) jobs.push(requestJson(`/api/v1/catalog/schools/${encodeURIComponent(schoolState.tenantSchoolId)}`));
-  const [programs, school] = await Promise.allSettled(jobs);
-  if (programs.status === "fulfilled" && Array.isArray(programs.value)) {
-    programs.value.forEach(program => {
-      if (program && typeof program.id === "string") schoolState.programs.set(program.id, program);
-    });
-  }
+  const [school] = await Promise.allSettled([
+    schoolState.tenantSchoolId
+      ? requestJson(`/api/v1/catalog/schools/${encodeURIComponent(schoolState.tenantSchoolId)}`)
+      : Promise.resolve(null),
+  ]);
   if (school?.status === "fulfilled" && school.value && typeof school.value === "object") {
     schoolState.schoolName = cleanText(school.value.nameZh) || cleanText(school.value.nameEn) || schoolState.schoolName;
   }
@@ -339,22 +392,38 @@ async function loadCatalogContext() {
   if (schoolState.detail) renderDetail();
 }
 
+async function loadQueuePrograms(items) {
+  const missingProgramIds = [...new Set(items
+    .map(item => item.programId)
+    .filter(programId => programId && !schoolState.programs.has(programId)))];
+  await Promise.allSettled(missingProgramIds.map(async programId => {
+    const program = await requestJson(`/api/v1/catalog/programs/${encodeURIComponent(programId)}`);
+    if (program?.id === programId) schoolState.programs.set(programId, program);
+  }));
+}
+
 async function loadQueue({ preserveSelection = false } = {}) {
   const refresh = document.querySelector("[data-refresh-school]");
   refresh?.setAttribute("disabled", "");
   try {
-    const data = await requestJson("/api/v1/school/applications");
+    const query = new URLSearchParams({
+      limit: String(schoolState.pageSize + 1),
+      offset: String(schoolState.page * schoolState.pageSize),
+    });
+    const data = await requestJson(`/api/v1/school/applications?${query}`);
     if (!Array.isArray(data) || data.some(item => !isQueueItem(item))) {
       throw new SchoolRequestError("申请队列不符合学校工作台数据契约。", 503, "INVALID_RESPONSE");
     }
     if (data.some(item => item.schoolId !== schoolState.tenantSchoolId)) {
       throw new SchoolRequestError("申请队列包含当前租户范围之外的记录。", 503, "TENANT_MISMATCH");
     }
-    schoolState.queue = data;
+    schoolState.hasNextPage = data.length > schoolState.pageSize;
+    schoolState.queue = data.slice(0, schoolState.pageSize);
+    await loadQueuePrograms(schoolState.queue);
     renderSummary();
     renderQueue();
-    const selectedStillExists = preserveSelection && data.some(item => item.id === schoolState.selectedId);
-    const nextId = selectedStillExists ? schoolState.selectedId : data[0]?.id;
+    const selectedStillExists = preserveSelection && schoolState.queue.some(item => item.id === schoolState.selectedId);
+    const nextId = selectedStillExists ? schoolState.selectedId : schoolState.queue[0]?.id;
     if (nextId) await loadDetail(nextId);
     else {
       schoolState.selectedId = null;
@@ -438,6 +507,20 @@ function bindSchoolEvents() {
     const record = event.target.closest("[data-school-record]");
     if (record) void loadDetail(record.dataset.schoolRecord);
     if (event.target.closest("[data-refresh-school]")) void loadQueue({ preserveSelection: true });
+    const pageAction = event.target.closest("[data-school-page]");
+    if (pageAction) {
+      schoolState.page += pageAction.dataset.schoolPage === "next" ? 1 : -1;
+      schoolState.page = Math.max(0, schoolState.page);
+      void loadQueue();
+    }
+    const quickFilter = event.target.closest("[data-school-quick-filter]");
+    if (quickFilter) {
+      schoolState.status = quickFilter.dataset.schoolQuickFilter || "all";
+      const select = document.querySelector("[data-school-status-filter]");
+      if (select) select.value = schoolState.status;
+      renderQueue();
+      document.querySelector("[data-school-queue]")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   });
   document.addEventListener("input", event => {
     if (!event.target.matches("[data-school-search]")) return;

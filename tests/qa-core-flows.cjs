@@ -7,11 +7,13 @@ const chromeCandidates = [
   process.env.CHROME_PATH,
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+  "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
 ].filter(Boolean);
 
 const chromePath = chromeCandidates.find((candidate) => fs.existsSync(candidate));
 if (!chromePath) {
-  throw new Error("Chrome was not found. Set CHROME_PATH to run browser QA.");
+  throw new Error("A Chromium browser was not found. Set CHROME_PATH to run browser QA.");
 }
 
 const root = path.resolve(process.env.CUAC_QA_ROOT || path.resolve(__dirname, "..", "public"));
@@ -224,9 +226,12 @@ async function prepareApplicationForPayment(cdp) {
   );
 }
 
+let completedSteps = 0;
+
 async function runStep(label, fn) {
   process.stdout.write(`- ${label}... `);
   await fn();
+  completedSteps += 1;
   process.stdout.write("ok\n");
 }
 
@@ -237,6 +242,7 @@ async function withBrowser(fn) {
     [
       "--headless=new",
       "--disable-gpu",
+      "--remote-allow-origins=*",
       "--allow-file-access-from-files",
       "--force-device-scale-factor=1",
       `--remote-debugging-port=${port}`,
@@ -5941,7 +5947,8 @@ async function main() {
     });
   });
 
-    console.log("CUAC core browser QA passed.");
+    if (completedSteps === 0) throw new Error("Browser QA completed without executing any steps.");
+    console.log(`CUAC core browser QA passed (${completedSteps} steps).`);
 }
 
 main().catch((error) => {

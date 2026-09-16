@@ -11,6 +11,11 @@ import { createOfficialSubmissionWorkerConfigurationFromEnv } from "../submissio
 import { resolveApplicationMaterialSnapshotCipher } from "../student/application-material-snapshot-envelope.ts";
 import { NOTIFICATION_EMAIL_PROVIDER_ALIYUN_SMTP, createNotificationWorkerConfigurationFromEnv } from "../notifications/runtime/worker.ts";
 import { assertSafeApplicationProcessEnvironment } from "./startup-policy.ts";
+import {
+  includesDeferredApplicationCapabilities,
+  resolveReleaseScope,
+  type ReleaseScope,
+} from "./release-scope.ts";
 
 export type ProductionReadinessStatus = "pass" | "warn" | "fail";
 
@@ -24,6 +29,7 @@ export type ProductionReadinessReport = {
   scope: "offline_preflight";
   runtimeVerified: false;
   environment: "development" | "staging" | "production" | "unknown";
+  releaseScope: ReleaseScope | "unknown";
   gateMode: "advisory" | "required" | "invalid";
   // Passing these offline checks is necessary, not sufficient, for release approval.
   ready: boolean;
@@ -36,10 +42,12 @@ const unsafeSecretValues = new Set(["", "changeme", "change-me", "secret", "pass
 
 export function inspectProductionReadiness(env: Record<string, string | undefined> = process.env): ProductionReadinessReport {
   const environment = resolveEnvironment(env);
+  const releaseScope = resolveReleaseScope(env.CUAC_RELEASE_SCOPE);
   const strict = environment === "staging" || environment === "production";
   const gateMode = resolveGateMode(env, environment);
   const checks: ProductionReadinessItem[] = [
     checkEnvironment(environment),
+    checkReleaseScope(releaseScope),
     checkReadinessGate(gateMode, strict),
     checkRuntimeOverrides(env),
     checkDatabaseUrl(env, strict),
@@ -48,14 +56,15 @@ export function inspectProductionReadiness(env: Record<string, string | undefine
     checkSessionSecret(env, strict),
     checkPublicOrigin(env, strict),
     checkAuthRateLimit(env, strict),
+    checkPublicSearchRateLimit(env, strict),
     checkAuthEmailDelivery(env, strict),
     checkNotificationDelivery(env, strict),
     checkAgentSandbox(env, strict),
     checkBillingFeeSchedule(env, strict),
-    checkPaymentProvider(env, environment),
+    checkPaymentProvider(env, environment, releaseScope),
     checkSecretManagement(env, environment),
-    checkFileStorage(env, strict),
-    checkOfficialSubmissionDelivery(env, strict),
+    checkFileStorage(env, strict, releaseScope),
+    checkOfficialSubmissionDelivery(env, strict, releaseScope),
   ];
 
   const failures = checks.filter((check) => check.status === "fail").map((check) => check.message);
@@ -65,12 +74,19 @@ export function inspectProductionReadiness(env: Record<string, string | undefine
     scope: "offline_preflight",
     runtimeVerified: false,
     environment,
+    releaseScope,
     gateMode,
     ready: failures.length === 0,
     failures,
     warnings,
     checks,
   };
+}
+
+function checkReleaseScope(scope: ReleaseScope | "unknown"): ProductionReadinessItem {
+  return scope === "unknown"
+    ? item("fail", "deployment.release_scope", "CUAC_RELEASE_SCOPE must be full-platform or school-handoff-v1 when set.")
+    : item("pass", "deployment.release_scope", `Release scope is ${scope}.`);
 }
 
 function checkRuntimeOverrides(env: Record<string, string | undefined>): ProductionReadinessItem {
@@ -233,6 +249,26 @@ function checkAuthRateLimit(env: Record<string, string | undefined>, strict: boo
   );
 }
 
+function checkPublicSearchRateLimit(env: Record<string, string | undefined>, strict: boolean): ProductionReadinessItem {
+  const enforced = normalize(env.CUAC_PUBLIC_SEARCH_RATE_LIMIT_ENFORCED);
+  const backend = normalize(env.CUAC_PUBLIC_SEARCH_RATE_LIMIT_BACKEND);
+  const sharedBackend = backend === "gateway" || backend === "waf";
+
+  if (!strict) {
+    return item("pass", "search.rate_limit", "Shared public-search rate limiting is optional outside staging/production.");
+  }
+
+  if (enforced === "true" && sharedBackend) {
+    return item("pass", "search.rate_limit", "Shared public-search rate limiting is configured for staging/production.");
+  }
+
+  return item(
+    "fail",
+    "search.rate_limit",
+    "Staging/production public search must enforce shared rate limiting with API Gateway or WAF.",
+  );
+}
+
 function checkAuthEmailDelivery(env: Record<string, string | undefined>, strict: boolean): ProductionReadinessItem {
   const provider = normalize(env.CUAC_AUTH_EMAIL_DELIVERY_PROVIDER);
 
@@ -351,9 +387,16 @@ function checkBillingFeeSchedule(env: Record<string, string | undefined>, strict
 }
 
 function checkPaymentProvider(env: Record<string, string | undefined>,
-  environment: ProductionReadinessReport["environment"]): ProductionReadinessItem {
+  environment: ProductionReadinessReport["environment"],
+  releaseScope: ReleaseScope | "unknown",
+): ProductionReadinessItem {
   const mode = env.CUAC_PAYMENT_MODE === undefined ? "disabled" : normalize(env.CUAC_PAYMENT_MODE);
   const strict = environment === "staging" || environment === "production";
+  if (!includesDeferredApplicationCapabilities(releaseScope)) {
+    return mode === "disabled"
+      ? item("pass", "billing.provider", "Payment is intentionally disabled for the school-handoff-v1 release scope.")
+      : item("fail", "billing.provider", "Payment must remain disabled for the school-handoff-v1 release scope.");
+  }
 
   if (mode === "disabled") {
     return item(strict ? "fail" : "warn", "billing.provider",
@@ -405,8 +448,14 @@ function checkSecretManagement(
   return item(environment === "production" ? "fail" : "warn", "secrets.manager", "Alibaba Cloud KMS or secret manager should be configured.");
 }
 
-function checkFileStorage(env: Record<string, string | undefined>, strict: boolean): ProductionReadinessItem {
+function checkFileStorage(env: Record<string, string | undefined>, strict: boolean,
+  releaseScope: ReleaseScope | "unknown"): ProductionReadinessItem {
   const uploadsEnabled = env.CUAC_FILE_UPLOAD_ENABLED === undefined ? "false" : normalize(env.CUAC_FILE_UPLOAD_ENABLED);
+  if (!includesDeferredApplicationCapabilities(releaseScope)) {
+    return uploadsEnabled === "false"
+      ? item("pass", "storage.private_files", "Student file upload is intentionally disabled for the school-handoff-v1 release scope.")
+      : item("fail", "storage.private_files", "Student file upload must remain disabled for the school-handoff-v1 release scope.");
+  }
 
   if (uploadsEnabled === "false") {
     return item(strict ? "fail" : "warn", "storage.private_files",
@@ -445,8 +494,14 @@ function checkFileStorage(env: Record<string, string | undefined>, strict: boole
 function checkOfficialSubmissionDelivery(
   env: Record<string, string | undefined>,
   strict: boolean,
+  releaseScope: ReleaseScope | "unknown",
 ): ProductionReadinessItem {
   const provider = normalize(env.CUAC_SUBMISSION_DELIVERY_PROVIDER);
+  if (!includesDeferredApplicationCapabilities(releaseScope)) {
+    return !provider || provider === "disabled"
+      ? item("pass", "submission.delivery", "Official material submission is intentionally disabled for the school-handoff-v1 release scope.")
+      : item("fail", "submission.delivery", "Official material submission must remain disabled for the school-handoff-v1 release scope.");
+  }
   if (!provider || provider === "disabled") {
     return item(strict ? "fail" : "warn", "submission.delivery",
       "Official submission delivery is disabled. Staging/production requires the reviewed handoff gateway and supervised worker.");

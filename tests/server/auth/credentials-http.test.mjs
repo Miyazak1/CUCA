@@ -40,6 +40,10 @@ function createHandlers(overrides = {}, options = {}) {
       calls.push({ method: "findPasswordIdentityByEmailNormalized" });
       return null;
     },
+    async listAvailableSessionAuthorities() {
+      calls.push({ method: "listAvailableSessionAuthorities" });
+      return [{ selectedSurface: "student", activeRole: "student", tenantSchoolId: null, label: "Student workspace" }];
+    },
     async createStudentAccount() {
       calls.push({ method: "createStudentAccount" });
       return { userId: "student-1" };
@@ -151,6 +155,27 @@ test("auth login accepts a selected access context and returns only the reposito
   assert.equal(calls[0].input.schoolId, schoolId);
   assert.equal(Object.hasOwn(calls[0].input, "activeRole"), false);
   assert.match(response.headers.get("set-cookie") ?? "", new RegExp(`${SESSION_COOKIE_NAME}=`));
+});
+
+test("auth login workspace discovery sets no session cookie", async () => {
+  const schoolId = "11111111-1111-4111-8111-111111111111";
+  const handlers = createAuthCredentialsHttpHandlers({
+    async createStudentSession() {
+      return { workspaceSelectionRequired: true, workspaces: [
+        { selectedSurface: "student", activeRole: "student", tenantSchoolId: null, label: "Student workspace" },
+        { selectedSurface: "school", activeRole: "school_staff", tenantSchoolId: schoolId, label: "Example University" },
+      ] };
+    },
+  }, { secureCookies: true });
+  const response = await handlers.createSession(new Request("https://cuac.test/api/v1/auth/sessions", {
+    method: "POST", body: JSON.stringify({ email: "multi@example.com", password: "strong-password" }),
+  }));
+  const body = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("set-cookie"), null);
+  assert.equal(body.data.workspaceSelectionRequired, true);
+  assert.equal(body.data.workspaces.length, 2);
+  assert.doesNotMatch(JSON.stringify(body), /strong-password|sessionToken/);
 });
 
 test("auth credentials HTTP registration is rate limited before account creation", async () => {

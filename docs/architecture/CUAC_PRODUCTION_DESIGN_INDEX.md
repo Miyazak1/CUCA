@@ -1,6 +1,7 @@
 # CUAC Production Design Index
 
 - [Catalog detail page data contract](CUAC_CATALOG_DETAIL_PAGE_DATA_CONTRACT.md): authoritative public fields, route identities, prohibited inferences, and information architecture for city, school, program, and scholarship details.
+- [Site search and Agent deferment plan](CUAC_SITE_SEARCH_AND_AGENT_DEFERMENT_PLAN.md): approved boundary for hiding Agent product surfaces while delivering indexed, bilingual, source-aware unified catalog search.
 
 Date: 2026-08-14
 

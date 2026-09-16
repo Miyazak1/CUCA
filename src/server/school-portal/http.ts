@@ -58,9 +58,14 @@ async function callSchoolPortalRoute(
 ) {
   switch (routeName) {
     case "listApplications":
-      return service.listTenantApplicationQueue(context, {
-        cuacId: new URL(request.url).searchParams.get("cuacId") ?? undefined,
-      });
+      {
+        const searchParams = new URL(request.url).searchParams;
+        return service.listTenantApplicationQueue(context, {
+          cuacId: searchParams.get("cuacId") ?? undefined,
+          limit: optionalQueryInteger(searchParams, "limit"),
+          offset: optionalQueryInteger(searchParams, "offset"),
+        });
+      }
     case "getApplication":
       return service.getTenantApplication(context, requireRouteId(routeId));
     case "updateApplicationStatus":
@@ -74,6 +79,14 @@ async function callSchoolPortalRoute(
     default:
       throw new Error("Unsupported school portal route.");
   }
+}
+
+function optionalQueryInteger(searchParams: URLSearchParams, name: string): number | undefined {
+  const values = searchParams.getAll(name);
+  if (values.length > 1 || (values[0] !== undefined && !/^\d+$/.test(values[0]))) {
+    throw badRequest(`${name} must be provided once as a non-negative integer.`);
+  }
+  return values[0] === undefined ? undefined : Number(values[0]);
 }
 
 async function readJsonBody(request: Request): Promise<unknown> {

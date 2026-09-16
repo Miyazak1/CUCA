@@ -2,6 +2,7 @@ import type {
   CatalogListOptions,
   PublicCityDetailDto,
   PublicCityDto,
+  PublicGuideDto,
   PublicProgramDetailDto,
   PublicProgramDto,
   PublicProgramIntakeDto,
@@ -36,16 +37,27 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
   }
 
   async listPrograms(options: CatalogListOptions): Promise<PublicProgramDto[]> {
-    const { whereSql, params } = buildPublicSearchWhere("p", ["p.name_en", "p.name_zh", "p.field_category"], options.query);
+    const { whereSql, orderBySql, params } = buildProgramListQuery(options);
     const rows = await this.client.query<ProgramProjectionRow>(
       `${programSelectSql}
        ${whereSql}
-       order by p.sort_order asc, p.name_en asc
+       ${orderBySql}
        limit $${params.length + 1} offset $${params.length + 2}`,
       [...params, options.limit ?? 20, options.offset ?? 0],
     );
 
     return rows.map(toPublicProgramDto);
+  }
+
+  async countPrograms(options: CatalogListOptions): Promise<number> {
+    const { whereSql, params } = buildProgramListQuery(options);
+    const rows = await this.client.query<{ total: number | string }>(
+      `select count(*)::int as total
+       ${programListFromSql}
+       ${whereSql}`,
+      params,
+    );
+    return Number(rows[0]?.total ?? 0);
   }
 
   async getProgram(programId: string): Promise<PublicProgramDetailDto | null> {
@@ -79,12 +91,14 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
   }
 
   async listSchools(options: CatalogListOptions): Promise<PublicSchoolDto[]> {
-    const { whereSql, params } = buildPublicSearchWhere("s", ["s.name_en", "s.name_zh", "s.city"], options.query);
+    const { whereSql, params } = buildPublicSearchWhere("s", [
+      "s.name_en", "s.name_zh", "s.slug", "s.city", "s.city_zh", "s.province", "s.school_type",
+      "s.region", "s.subject_tags::text", "s.language_tags::text",
+    ], options.query);
     const rows = await this.client.query<SchoolProjectionRow>(
       `${schoolSelectSql}
        ${whereSql}
-       group by s.id
-       order by s.name_en asc
+       order by s.name_en asc, s.slug asc, s.id asc
        limit $${params.length + 1} offset $${params.length + 2}`,
       [...params, options.limit ?? 20, options.offset ?? 0],
     );
@@ -100,7 +114,6 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
     const rows = await this.client.query<SchoolProjectionRow>(
       `${schoolSelectSql}
        where s.id = $1 and s.status = 'active'
-       group by s.id
        limit 1`,
       [schoolId],
     );
@@ -109,11 +122,15 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
   }
 
   async listScholarships(options: CatalogListOptions): Promise<PublicScholarshipDto[]> {
-    const { whereSql, params } = buildPublicSearchWhere("sch", ["sch.title", "sch.provider_name"], options.query);
+    const { whereSql, params } = buildPublicSearchWhere("sch", [
+      "sch.title", "sch.name_zh", "sch.provider_name", "sch.provider_name_en", "sch.provider_location",
+      "sch.type", "sch.type_label", "sch.funding_level", "sch.coverage", "sch.applicable_degree",
+      "sch.applicable_program", "sch.summary", "sch.tags::text",
+    ], options.query);
     const rows = await this.client.query<ScholarshipProjectionRow>(
       `${scholarshipSelectSql}
-       ${whereSql}
-       order by sch.sort_order asc, sch.title asc
+       ${whereSql} and sch.verification_status = 'verified'
+       order by sch.sort_order asc, sch.title asc, sch.slug asc
        limit $${params.length + 1} offset $${params.length + 2}`,
       [...params, options.limit ?? 20, options.offset ?? 0],
     );
@@ -124,7 +141,7 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
   async getScholarship(scholarshipId: string): Promise<PublicScholarshipDetailDto | null> {
     const rows = await this.client.query<ScholarshipProjectionRow>(
       `${scholarshipSelectSql}
-       where sch.id = $1 and sch.status = 'active'
+       where sch.id = $1 and sch.status = 'active' and sch.verification_status = 'verified'
        limit 1`,
       [scholarshipId],
     );
@@ -133,11 +150,14 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
   }
 
   async listCities(options: CatalogListOptions): Promise<PublicCityDto[]> {
-    const { whereSql, params } = buildPublicSearchWhere("c", ["c.name_en", "c.name_zh", "c.province"], options.query);
+    const { whereSql, params } = buildPublicSearchWhere("c", [
+      "c.name_en", "c.name_zh", "c.slug", "c.province", "c.region", "c.tags::text",
+      "c.content_json->>'summary'", "c.content_json->>'overview'",
+    ], options.query);
     const rows = await this.client.query<CityRow>(
       `${citySelectSql}
        ${whereSql}
-       order by c.sort_order asc, c.name_en asc
+       order by c.sort_order asc, c.name_en asc, c.slug asc, c.id asc
        limit $${params.length + 1} offset $${params.length + 2}`,
       [...params, options.limit ?? 20, options.offset ?? 0],
     );
@@ -155,16 +175,57 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
 
     return rows[0] ? toPublicCityDetailDto(rows[0]) : null;
   }
+
+  async listGuides(options: CatalogListOptions): Promise<PublicGuideDto[]> {
+    const params: unknown[] = [];
+    const clauses = ["g.status = 'published'"];
+    for (const token of String(options.query || "").trim().split(/\s+/).filter(Boolean)) {
+      params.push(`%${token.toLowerCase()}%`);
+      clauses.push(`${publicGuideSearchSql} like $${params.length}`);
+    }
+    return this.client.query<PublicGuideDto>(
+      `${publicGuideSelectSql}
+       where ${clauses.join(" and ")}
+       order by g.sort_order asc, g.title_en asc, g.slug asc
+       limit $${params.length + 1} offset $${params.length + 2}`,
+      [...params, options.limit ?? 20, options.offset ?? 0],
+    );
+  }
+
+  async getGuide(guideSlug: string): Promise<PublicGuideDto | null> {
+    const rows = await this.client.query<PublicGuideDto>(
+      `${publicGuideSelectSql}
+       where g.slug = $1 and g.status = 'published'
+       limit 1`,
+      [guideSlug],
+    );
+    return rows[0] ?? null;
+  }
 }
+
+const publicGuideSearchSql = `(coalesce(lower(g.title_en), '') || ' ' || coalesce(lower(g.title_zh), '') || ' ' ||
+  coalesce(lower(g.subtitle_en), '') || ' ' || coalesce(lower(g.subtitle_zh), '') || ' ' ||
+  coalesce(lower(g.summary_en), '') || ' ' || coalesce(lower(g.summary_zh), '') || ' ' || lower(g.search_terms::text))`;
+
+const publicGuideSelectSql = `select g.id::text as id, g.slug, g.title_en as "titleEn", g.title_zh as "titleZh",
+  g.subtitle_en as "subtitleEn", g.subtitle_zh as "subtitleZh", g.summary_en as "summaryEn",
+  g.summary_zh as "summaryZh", g.content_json as content, g.href, g.verification_status as "verificationStatus",
+  g.sort_order as "sortOrder", g.version, g.published_at as "publishedAt", g.updated_at as "updatedAt"
+from public_guides g`;
 
 function buildPublicSearchWhere(alias: string, columns: readonly string[], query?: string) {
   const clauses = [`${alias}.status = 'active'`];
   const params: unknown[] = [];
 
   if (query) {
-    params.push(`%${query}%`);
-    const paramRef = `$${params.length}`;
-    clauses.push(`(${columns.map((column) => `${column} ilike ${paramRef}`).join(" or ")})`);
+    const searchExpression = `(${columns.map((column) => column.endsWith("::text")
+      ? `lower(${column})`
+      : `coalesce(lower(${column}), '')`).join(" || ' ' || ")})`;
+    for (const token of query.trim().split(/\s+/).filter(Boolean)) {
+      params.push(`%${token.toLowerCase()}%`);
+      const paramRef = `$${params.length}`;
+      clauses.push(`${searchExpression} like ${paramRef}`);
+    }
   }
 
   return {
@@ -172,6 +233,88 @@ function buildPublicSearchWhere(alias: string, columns: readonly string[], query
     params,
   };
 }
+
+function buildProgramListQuery(options: CatalogListOptions) {
+  const clauses = ["p.status = 'active'"];
+  const params: unknown[] = [];
+  const add = (value: unknown) => {
+    params.push(value);
+    return `$${params.length}`;
+  };
+
+  for (const token of String(options.query || "").trim().split(/\s+/).filter(Boolean)) {
+    const ref = add(`%${token.toLowerCase()}%`);
+    clauses.push(`((coalesce(lower(p.name_en), '') || ' ' || coalesce(lower(p.name_zh), '') || ' '
+      || coalesce(lower(p.field_category), '') || ' ' || coalesce(lower(p.subject_area), '') || ' '
+      || coalesce(lower(p.degree_level), '') || ' ' || coalesce(lower(p.teaching_language), '') || ' '
+      || coalesce(lower(p.scholarship_text), '') || ' ' || coalesce(lower(p.english_requirement), '') || ' '
+      || coalesce(lower(p.hsk_requirement), '')) like ${ref}
+      or s.name_en ilike ${ref} or s.name_zh ilike ${ref} or c.name_en ilike ${ref} or c.name_zh ilike ${ref})`);
+  }
+  if (options.degree) {
+    const degree = options.degree.toLowerCase();
+    const accepted = degree === "undergraduate" ? ["undergraduate", "bachelor"]
+      : degree === "phd" ? ["phd", "doctoral", "doctorate"]
+      : degree === "non-degree" ? ["non-degree", "non degree", "language"]
+      : [degree];
+    clauses.push(`lower(trim(p.degree_level)) = any(${add(accepted)}::text[])`);
+  }
+  if (options.subject) {
+    const ref = add(`%${options.subject}%`);
+    clauses.push(`(p.field_category ilike ${ref} or p.subject_area ilike ${ref} or p.name_en ilike ${ref})`);
+  }
+  if (options.language) clauses.push(`lower(coalesce(p.teaching_language, '')) like ${add(`%${options.language.toLowerCase()}%`)}`);
+  if (options.city) {
+    const ref = add(options.city.toLowerCase());
+    clauses.push(`(lower(coalesce(c.name_en, '')) = ${ref} or lower(coalesce(c.name_zh, '')) = ${ref}
+      or lower(coalesce(c.slug, '')) = ${ref} or lower(coalesce(s.city, '')) = ${ref} or lower(coalesce(s.city_zh, '')) = ${ref})`);
+  }
+  if (options.school) {
+    const ref = add(options.school.toLowerCase());
+    clauses.push(`(lower(s.id::text) = ${ref} or lower(s.slug) = ${ref} or lower(s.name_en) = ${ref} or lower(coalesce(s.name_zh, '')) = ${ref})`);
+  }
+  if (options.scholarship) clauses.push("p.has_scholarship = true");
+  if (options.upcomingDeadline) clauses.push("next_intake.deadline_date is not null");
+  if (options.intake) clauses.push(`lower(coalesce(next_intake.application_round, '')) like ${add(`%${options.intake.toLowerCase()}%`)}`);
+  if (options.languageRequirement) {
+    const value = options.languageRequirement.toLowerCase();
+    if (value === "no-hsk") clauses.push("lower(coalesce(p.hsk_requirement, '')) like '%no hsk%'");
+    if (value === "hsk") clauses.push("lower(coalesce(p.hsk_requirement, '')) like '%hsk%'");
+    if (value === "ielts") clauses.push("(lower(coalesce(p.english_requirement, '')) like '%ielts%' or lower(coalesce(p.english_requirement, '')) like '%toefl%')");
+    if (value === "flexible") clauses.push("lower(concat_ws(' ', p.english_requirement, p.hsk_requirement)) like '%flexible%'");
+  }
+  if (options.tuition === "under-25") clauses.push("p.tuition_amount > 0 and p.tuition_amount < 25000");
+  if (options.tuition === "25-40") clauses.push("p.tuition_amount between 25000 and 40000");
+  if (options.tuition === "40-60") clauses.push("p.tuition_amount > 40000 and p.tuition_amount <= 60000");
+  if (options.tuition === "60-plus") clauses.push("p.tuition_amount > 60000");
+
+  const now = "clock_timestamp()";
+  if (options.deadline === "urgent") clauses.push(`next_intake.deadline_date between ${now} and ${now} + interval '45 days'`);
+  if (options.deadline === "closes-soon") clauses.push(`next_intake.deadline_date > ${now} + interval '45 days' and next_intake.deadline_date <= ${now} + interval '70 days'`);
+  if (options.deadline === "open") clauses.push(`(next_intake.deadline_date is null or next_intake.deadline_date > ${now} + interval '70 days')`);
+  if (options.deadline === "late") clauses.push("lower(coalesce(next_intake.application_round, '')) like '%late%'");
+
+  const orderBySql = options.sort === "deadline"
+    ? "order by next_intake.deadline_date asc nulls last, p.name_en asc, p.id asc"
+    : options.sort === "tuition"
+      ? "order by p.tuition_amount asc nulls last, p.name_en asc, p.id asc"
+      : options.sort === "scholarship"
+        ? "order by p.has_scholarship desc, p.sort_order asc, p.name_en asc, p.id asc"
+        : "order by (p.verification_status = 'verified') desc, p.has_scholarship desc, p.sort_order asc, p.name_en asc, p.id asc";
+  return { whereSql: `where ${clauses.join(" and ")}`, orderBySql, params };
+}
+
+const programListFromSql = `
+from programs p
+join schools s on s.id = p.school_id and s.status = 'active'
+left join cities c on c.id = coalesce(p.city_id, s.city_id) and c.status = 'active'
+left join lateral (
+  select pi.deadline_date, pi.deadline_label, pi.application_round
+  from program_intakes pi
+  where pi.program_id = p.id and pi.status = 'open'
+  order by pi.deadline_date asc nulls last
+  limit 1
+) next_intake on true`;
 
 const programSelectSql = `
 select
@@ -223,16 +366,7 @@ select
   next_intake.deadline_date as "deadlineDate",
   next_intake.deadline_label as "deadlineLabel",
   next_intake.application_round as "applicationRound"
-from programs p
-join schools s on s.id = p.school_id and s.status = 'active'
-left join cities c on c.id = coalesce(p.city_id, s.city_id) and c.status = 'active'
-left join lateral (
-  select pi.deadline_date, pi.deadline_label, pi.application_round
-  from program_intakes pi
-  where pi.program_id = p.id and pi.status = 'open'
-  order by pi.deadline_date asc nulls last
-  limit 1
-) next_intake on true`;
+${programListFromSql}`;
 
 const schoolSelectSql = `
 select
@@ -274,9 +408,9 @@ select
   s.last_verified_at as "lastVerifiedAt",
   s.created_at as "createdAt",
   s.updated_at as "updatedAt",
-  count(distinct p.id)::int as "programCount",
-  count(distinct p.id) filter (where p.teaching_language = 'english')::int as "englishProgramCount",
-  count(distinct sch.id)::int as "scholarshipCount",
+  coalesce(program_stats.program_count, 0)::int as "programCount",
+  coalesce(program_stats.english_program_count, 0)::int as "englishProgramCount",
+  coalesce(scholarship_stats.scholarship_count, 0)::int as "scholarshipCount",
   coalesce((
     select jsonb_agg(jsonb_build_object(
       'programId', deadline.program_id,
@@ -300,8 +434,18 @@ select
     ) deadline
   ), '[]'::jsonb) as "upcomingDeadlines"
 from schools s
-left join programs p on p.school_id = s.id and p.status = 'active'
-left join scholarships sch on sch.school_id = s.id and sch.status = 'active'`;
+left join lateral (
+  select
+    count(*)::int as program_count,
+    count(*) filter (where lower(trim(p.teaching_language)) in ('english', 'english-taught', '英文授课'))::int as english_program_count
+  from programs p
+  where p.school_id = s.id and p.status = 'active'
+) program_stats on true
+left join lateral (
+  select count(*)::int as scholarship_count
+  from scholarships sch
+  where sch.school_id = s.id and sch.status = 'active' and sch.verification_status = 'verified'
+) scholarship_stats on true`;
 
 const scholarshipSelectSql = `
 select

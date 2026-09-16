@@ -13,6 +13,7 @@ function readiness(overrides = {}) {
     scope: "offline_preflight",
     runtimeVerified: false,
     environment: "staging",
+    releaseScope: "school-handoff-v1",
     gateMode: "required",
     ready: true,
     failures: [],
@@ -28,6 +29,7 @@ function staging(overrides = {}) {
     runtimeVerified: false,
     reviewRequired: true,
     readyForReview: true,
+    releaseScope: "school-handoff-v1",
     release: { ...identity },
     failures: [],
     controls: [],
@@ -70,6 +72,16 @@ test("release gate rejects advisory local checks and incomplete staging evidence
   assert.match(report.failures.join("\n"), /staging or production environment/);
   assert.match(report.failures.join("\n"), /hard production-readiness gate/);
   assert.match(report.failures.join("\n"), /Staging acceptance evidence is not ready/);
+});
+
+test("release gate binds staging evidence to the exact release scope", () => {
+  const report = inspectReleaseGate(
+    readiness({ releaseScope: "school-handoff-v1" }),
+    staging({ releaseScope: "full-platform" }),
+    identity,
+  );
+  assert.equal(report.readyForHumanReview, false);
+  assert.match(report.failures.join("\n"), /release scope does not match/);
 });
 
 test("release gate rejects missing malformed and placeholder expected identities", () => {

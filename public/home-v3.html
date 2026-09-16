@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="shared-shell.css" />
     <link rel="stylesheet" href="home-v3.css" />
   </head>
-  <body data-agent-mode="home">
+  <body data-agent-mode="off">
     <div class="page">
       <div data-cuac-header data-active="home" data-note="China admissions 2026:" data-note-detail="fall routes still open"></div>
 
@@ -16,19 +16,19 @@
           <div class="hero-copy">
             <div class="kicker"><span class="dot"></span> Study in China, clearly planned</div>
             <h1>Find your route to a Chinese university</h1>
-            <p class="sub">Tell us what you want to study, and we will turn it into clearer routes, cities, budgets, and application steps.</p>
+            <p class="sub">Search published programs, universities, scholarships, cities, and guides from one place.</p>
 
-            <form class="planner" data-planner-form>
-              <textarea data-planner-input aria-label="Describe your China study goal" rows="2">English-taught computer science in Hangzhou</textarea>
-              <button type="submit" data-planner-submit aria-label="Send study goal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4Z"/></svg></button>
+            <form class="planner" data-site-search-form>
+              <textarea data-site-search-input aria-label="Search CUAC" rows="2" placeholder="Try English-taught computer science in Hangzhou"></textarea>
+              <button type="submit" aria-label="Search CUAC"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></button>
             </form>
 
             <div class="chips" aria-label="Prompt starters">
-              <button type="button" data-prompt-chip="Undergraduate programs">Undergraduate</button>
-              <button type="button" data-prompt-chip="Master programs">Master</button>
-              <button type="button" data-prompt-chip="English-taught route">English-taught</button>
-              <button type="button" data-prompt-chip="Scholarship preferred">Scholarship</button>
-              <button type="button" data-prompt-chip="Fall 2026 intake">Fall 2026</button>
+              <button type="button" data-search-chip="undergraduate">Undergraduate</button>
+              <button type="button" data-search-chip="master">Master</button>
+              <button type="button" data-search-chip="English taught">English-taught</button>
+              <button type="button" data-search-chip="scholarship">Scholarship</button>
+              <button type="button" data-search-chip="Fall 2026">Fall 2026</button>
             </div>
             <div class="planner-feedback" data-planner-feedback aria-live="polite"></div>
           </div>

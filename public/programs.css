@@ -895,9 +895,13 @@
       }
 
       .fact strong {
+        display: -webkit-box;
+        overflow: hidden;
         overflow-wrap: anywhere;
         font-size: 14px;
-        line-height: 1.1;
+        line-height: 1.2;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
       }
 
       .fact span {
@@ -910,20 +914,27 @@
       .signals {
         display: flex;
         flex-wrap: wrap;
+        align-items: flex-start;
         gap: 7px;
         margin-bottom: 10px;
       }
 
       .signal {
         display: inline-flex;
+        flex: 0 0 auto;
         align-items: center;
+        max-width: 100%;
         min-height: 28px;
         padding: 0 9px;
+        overflow: hidden;
         border-radius: var(--radius-pill);
         background: var(--surface-soft);
         color: var(--text-muted);
         font-size: 12px;
         font-weight: 780;
+        line-height: 1;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .signal.good {
@@ -1240,6 +1251,15 @@
         color: var(--text-muted);
         font-size: 13px;
         font-weight: 760;
+      }
+
+      .pagination-ellipsis {
+        display: inline-grid;
+        min-width: 24px;
+        height: 38px;
+        place-items: center;
+        color: var(--text-muted);
+        font-weight: 800;
       }
 
       .results-divider {

@@ -1,4 +1,6 @@
 (function () {
+  const AGENT_PRODUCT_SURFACES_ENABLED = false;
+
   const icons = {
     search: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>',
     saved: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 8.6c0 5.7-8.5 10.4-8.5 10.4S3.5 14.3 3.5 8.6A4.6 4.6 0 0 1 12 6a4.6 4.6 0 0 1 8.5 2.6Z"/></svg>',
@@ -30,7 +32,7 @@
     { id: "scholarships", label: "Scholarships", href: "scholarships.html" },
     { id: "cities", label: "Cities", href: "cities.html" },
     { id: "guides", label: "Guides", href: "guides.html" },
-    { id: "hub", label: "Hub", href: "hub.html" },
+    { id: "hub", label: "Hub", href: "hub-api.html" },
   ];
 
   const roleNavItems = [
@@ -40,7 +42,24 @@
     { id: "scholarships", label: "奖学金", href: "scholarships.html" },
     { id: "cities", label: "城市", href: "cities.html" },
     { id: "guides", label: "指南", href: "guides.html" },
-    { id: "hub", label: "工作台", href: "hub.html" },
+    { id: "hub", label: "工作台", href: "hub-api.html" },
+  ];
+
+  const studentWorkspaceNavItems = [
+    { id: "hub", label: "Overview", href: "hub-api.html" },
+    { id: "application", label: "Applications", href: "application.html" },
+    { id: "favourites", label: "Saved", href: "favourites-api.html" },
+    { id: "notifications", label: "Notifications", href: "notifications.html" },
+    { id: "preferences", label: "Profile", href: "preferences-api.html" },
+  ];
+
+  const schoolWorkspaceNavItems = [
+    { id: "school-portal", label: "申请队列", href: "school-portal.html" },
+    { id: "school-settings", label: "学校设置", href: "school-settings-api.html" },
+  ];
+
+  const opsWorkspaceNavItems = [
+    { id: "ops-admin", label: "运营控制台", href: "ops-admin-api.html" },
   ];
 
   const footerGroups = [
@@ -165,8 +184,13 @@
     { group: "Risk", label: "No guarantees", prompt: "Will I definitely get scholarship?" },
   ];
 
-  function renderScenarioMenu() {
-    const grouped = agentScenarios.reduce((groups, scenario) => {
+  function renderScenarioMenu(mode = "") {
+    const visibleScenarios = mode === "ops"
+      ? agentScenarios.filter((scenario) => scenario.group === "Ops")
+      : mode === "school"
+        ? agentScenarios.filter((scenario) => scenario.group === "School")
+        : agentScenarios.filter((scenario) => !["Ops", "School"].includes(scenario.group));
+    const grouped = visibleScenarios.reduce((groups, scenario) => {
       if (!groups[scenario.group]) groups[scenario.group] = [];
       groups[scenario.group].push(scenario);
       return groups;
@@ -220,14 +244,14 @@
         ],
         actions: [
           { label: "Review Agent audit", action: "ops-review-agent-audit", tone: "primary" },
-          { label: "Open Ops control room", href: "ops-admin.html" },
+          { label: "Open Ops control room", href: "ops-admin-api.html" },
         ],
         source: "Ops Agent mode is internal-only and requires confirmation for high-risk audit actions.",
       };
     }
 
     if (isSchool) {
-      const isSchoolSettingsPage = currentRouteName() === "school-settings.html";
+      const isSchoolSettingsPage = currentRouteName() === "school-settings-api.html";
       return {
         type: "school_queue",
         kicker: "School tenant",
@@ -321,7 +345,7 @@
           ["Budget fit", "Good", "Hangzhou and Nanjing stay below Shanghai cost"],
         ],
         actions: [
-          { label: "Open Hub", href: "hub.html", tone: "primary" },
+          { label: "Open Hub", href: "hub-api.html", tone: "primary" },
           { label: "Build checklist", action: "save-checklist" },
           { label: "Compare routes", action: "compare-routes" },
         ],
@@ -525,7 +549,7 @@
       chips: ["Find programs", "Compare city cost", "Check documents", "Add a choice"],
       actions: [
         { label: "Open programs", href: "programs.html", tone: "primary" },
-        { label: "Open Hub", href: "hub.html" },
+        { label: "Open Hub", href: "hub-api.html" },
         { label: "Apply useful filters", action: "apply-smart-filters" },
       ],
       source: "CUAC response from the current page context.",
@@ -605,6 +629,7 @@
     role: "visitor",
     surface: "public",
     tenantSchoolId: null,
+    authStrength: "guest",
   };
 
   function runtimeSurface(role, selectedSurface) {
@@ -619,12 +644,15 @@
     const portalRole = document.body.dataset.portalRole || target.dataset?.portalRole || "";
     const routeSurface = portalRole === "school" ? "school-staff" : routeContract.surface || "public";
     if (runtimeAuthState.authState === "signed-in") {
-      return { authState: "signed-in", role: runtimeAuthState.role, surface: runtimeAuthState.surface };
+      return { authState: "signed-in", role: runtimeAuthState.role, surface: runtimeAuthState.surface, authStrength: runtimeAuthState.authStrength };
     }
     return { authState: "signed-out", role: "visitor", surface: routeSurface };
   }
 
   function renderAccountMenu(target) {
+    if (!runtimeAuthState.resolved) {
+      return '<span class="account-auth-pending" role="status" aria-label="Checking account status"><span aria-hidden="true"></span></span>';
+    }
     const shellContext = getShellContext(target);
     const authState = shellContext.authState;
     const userName = shellContext.role === "school_staff"
@@ -644,27 +672,27 @@
       `;
     }
 
-    const profileHref = shellContext.role === "school_staff" || shellContext.surface === "school-staff" ? "school-settings.html" : ["cuac_ops", "cuac_admin"].includes(shellContext.role) || shellContext.surface === "cuac-internal" ? "ops-admin.html" : "application.html#info";
+    const profileHref = shellContext.role === "school_staff" || shellContext.surface === "school-staff" ? "school-settings-api.html" : ["cuac_ops", "cuac_admin"].includes(shellContext.role) || shellContext.surface === "cuac-internal" ? "ops-admin-api.html" : "application.html#info";
     const accountLinks =
       shellContext.role === "school_staff" || shellContext.surface === "school-staff"
         ? [
             ["school-portal.html", icons.account, "学校工作台"],
-            ["school-settings.html", icons.settings, "租户设置"],
-            ["school-settings.html", icons.intent, "请求模板"],
+            ["school-settings-api.html", icons.settings, "租户设置"],
+            ["school-settings-api.html", icons.intent, "请求模板"],
           ]
         : ["cuac_ops", "cuac_admin"].includes(shellContext.role) || shellContext.surface === "cuac-internal"
           ? [
-              ["ops-admin.html", icons.account, "运营后台"],
-              ["ops-admin.html", icons.shield, "Agent 审计"],
-              ["ops-admin.html", icons.search, "数据质量"],
+              ["ops-admin-api.html", icons.account, "运营后台"],
+              ["ops-admin-api.html", icons.shield, "访问审计"],
+              ["ops-admin-api.html", icons.search, "数据质量"],
             ]
           : [
-              ["hub.html", icons.account, "Hub"],
+              ["hub-api.html", icons.account, "Hub"],
               ["application.html#info", icons.shield, "Student info"],
               ["notifications.html", icons.bell, "Notifications"],
-              ["favourites.html", icons.saved, "Favourites"],
-              ["billing.html", icons.intent, "Billing"],
-              ["preferences.html", icons.settings, "Preferences"],
+              ["favourites-api.html", icons.saved, "Favourites"],
+              ["billing-api.html", icons.intent, "Billing"],
+              ["preferences-api.html", icons.settings, "Preferences"],
             ];
 
     return `
@@ -692,30 +720,61 @@
     return active;
   }
 
+  function workspaceNavigation() {
+    const route = currentRouteName();
+    if (["hub-api.html", "application.html", "favourites-api.html", "notifications.html", "preferences-api.html", "billing-api.html"].includes(route)) {
+      const activeByRoute = {
+        "hub-api.html": "hub",
+        "application.html": "application",
+        "billing-api.html": "application",
+        "favourites-api.html": "favourites",
+        "notifications.html": "notifications",
+        "preferences-api.html": "preferences",
+      };
+      return { kind: "student", label: "Student workspace", active: activeByRoute[route], items: studentWorkspaceNavItems };
+    }
+    if (["school-portal.html", "school-settings-api.html"].includes(route)) {
+      return { kind: "school", label: "学校工作区", active: route === "school-portal.html" ? "school-portal" : "school-settings", items: schoolWorkspaceNavItems };
+    }
+    if (route === "ops-admin-api.html") {
+      return { kind: "ops", label: "运营工作区", active: "ops-admin", items: opsWorkspaceNavItems };
+    }
+    return null;
+  }
+
   function shouldShowSavedShortcut(shellContext) {
     return shellContext.authState === "signed-in" && shellContext.role === "student" && !["school-staff", "cuac-internal"].includes(shellContext.surface);
   }
 
   function renderSavedShortcut() {
-    return `<a class="nav-icon" data-nav-saved-shortcut href="favourites.html" aria-label="Saved list">${icons.saved}</a>`;
+    return `<a class="nav-icon" data-nav-saved-shortcut href="favourites-api.html" aria-label="Saved list">${icons.saved}</a>`;
   }
 
   function renderHeader(target) {
-    const active = normalizeActiveNav(target.dataset.active || "home");
+    const workspace = workspaceNavigation();
+    const active = workspace?.active || normalizeActiveNav(target.dataset.active || "home");
     const note = target.dataset.note || "China admissions 2026:";
     const noteDetail = target.dataset.noteDetail || "";
     const shellContext = getShellContext(target);
     const showSavedShortcut = shouldShowSavedShortcut(shellContext);
     const localizedNav = ["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) || ["school", "ops"].includes(document.body.dataset.agentMode || "");
-    const headerNavItems = localizedNav ? roleNavItems : navItems;
+    const workspaceHref = shellContext.role === "school_staff"
+      ? "school-portal.html"
+      : ["cuac_ops", "cuac_admin"].includes(shellContext.role)
+        ? "ops-admin-api.html"
+        : "hub-api.html";
+    const headerNavItems = workspace?.items || (localizedNav ? roleNavItems : navItems).map((item) => (
+      item.id === "hub" ? { ...item, href: workspaceHref } : item
+    ));
     target.outerHTML = `
       <div class="top-note">${note}${noteDetail ? `<span>&nbsp;${noteDetail}</span>` : ""}</div>
-      <header class="nav">
+      <header class="nav ${workspace ? `nav-workspace nav-workspace-${workspace.kind}` : ""}">
         ${brand()}
-        <nav class="nav-links" aria-label="${localizedNav ? "主导航" : "Primary"}">
+        <nav class="nav-links" aria-label="${workspace?.label || (localizedNav ? "主导航" : "Primary")}">
           ${headerNavItems.map((item) => `<a class="${item.id === active ? "active" : ""}" href="${item.href}">${item.label}</a>`).join("")}
         </nav>
         <div class="nav-actions" aria-label="Account actions">
+          <a class="nav-icon" href="search.html" aria-label="${localizedNav ? "全站搜索" : "Search CUAC"}">${icons.search}</a>
           ${showSavedShortcut ? renderSavedShortcut() : ""}
           ${renderAccountMenu(target)}
         </div>
@@ -724,7 +783,20 @@
   }
 
   function renderFooter(target) {
+    const workspace = workspaceNavigation();
     const localized = ["school", "ops"].includes(document.body.dataset.agentMode || "");
+    if (workspace) {
+      target.outerHTML = `
+        <footer class="footer footer-workspace">
+          <div>${brand()}<span>${workspace.kind === "student" ? "Your China application workspace" : workspace.kind === "school" ? "当前学校租户内的招生工作区" : "受控、可审计的 CUAC 运营工作区"}</span></div>
+          <div class="footer-legal">
+            <a href="home-v3.html#application-guides">${localized ? "隐私与数据边界" : "Privacy and data use"}</a>
+            <a href="home-v3.html#cuac-hub">${localized ? "获取支持" : "Get support"}</a>
+          </div>
+        </footer>
+      `;
+      return;
+    }
     const groups = localized ? footerGroupsZh : footerGroups;
     target.outerHTML = `
       <footer class="footer">
@@ -770,11 +842,11 @@
     return window.location.pathname.split("/").pop() || "home-v3.html";
   }
 
-  const protectedStudentRoutes = new Set(["onboarding.html", "hub.html", "favourites.html", "application.html", "billing.html", "notifications.html", "preferences.html"]);
+  const protectedStudentRoutes = new Set(["onboarding-api.html", "hub-api.html", "favourites-api.html", "application.html", "billing-api.html", "notifications.html", "preferences-api.html"]);
   const protectedRoleRoutes = {
     "school-portal.html": { role: "school_staff", title: "Sign in to CUAC" },
-    "school-settings.html": { role: "school_staff", title: "Sign in to CUAC" },
-    "ops-admin.html": { role: "cuac_ops", title: "Sign in to CUAC" },
+    "school-settings-api.html": { role: "school_staff", title: "Sign in to CUAC" },
+    "ops-admin-api.html": { role: "cuac_ops", title: "Sign in to CUAC" },
   };
 
   function routeNameFromHref(href) {
@@ -784,12 +856,6 @@
     } catch {
       return String(href || "").split(/[?#]/)[0].split("/").pop();
     }
-  }
-
-  function authRoleParam(role) {
-    if (role === "school_staff") return "school";
-    if (role === "cuac_ops") return "ops";
-    return "student";
   }
 
   function currentRelativeUrl() {
@@ -817,8 +883,8 @@
 
     const route = routeNameFromHref(targetRoute || "");
     if (!actionKey && requiredRole === "student" && protectedStudentRoutes.has(route)) actionKey = "navigation.open_student_workspace";
-    if (!actionKey && requiredRole === "school_staff" && ["school-portal.html", "school-settings.html"].includes(route)) actionKey = "navigation.open_school_workspace";
-    if (!actionKey && requiredRole === "cuac_ops" && route === "ops-admin.html") actionKey = "navigation.open_ops_workspace";
+    if (!actionKey && requiredRole === "school_staff" && ["school-portal.html", "school-settings-api.html"].includes(route)) actionKey = "navigation.open_school_workspace";
+    if (!actionKey && requiredRole === "cuac_ops" && route === "ops-admin-api.html") actionKey = "navigation.open_ops_workspace";
     if (!targetRoute || !actionKey) return null;
 
     return {
@@ -863,7 +929,6 @@
 
   function navigateToAuthPage(options = {}) {
     const params = new URLSearchParams();
-    if (options.selectedRole) params.set("role", authRoleParam(options.selectedRole));
     if (options.capability) params.set("continue", "1");
     if (options.mode === "register") params.set("mode", "register");
     const query = params.toString();
@@ -901,10 +966,11 @@
             role,
             surface: runtimeSurface(role, actor.selectedSurface),
             tenantSchoolId: actor.tenantSchoolId || null,
+            authStrength: actor.authStrength === "step_up" ? "step_up" : "session",
           }
-        : { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null };
+        : { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest" };
     } catch {
-      runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null };
+      runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest" };
     }
 
     refreshRenderedHeader();
@@ -947,6 +1013,14 @@
     return shellContext.authState === "signed-in" && shellContext.role === "student";
   }
 
+  function activeWorkspaceHref() {
+    const role = getShellContext().role;
+    if (role === "student") return "hub-api.html";
+    if (role === "school_staff") return "school-portal.html";
+    if (["cuac_ops", "cuac_admin"].includes(role)) return "ops-admin-api.html";
+    return "auth.html";
+  }
+
   function requireStudentSignedIn(label = "Use this feature", afterSignIn) {
     if (isStudentSignedIn()) return true;
     const options = typeof afterSignIn === "object" && afterSignIn ? afterSignIn : {};
@@ -967,8 +1041,13 @@
       if (!runtimeAuthState.resolved) {
         void runtimeAuthReadyPromise.then(() => {
           if (isStudentSignedIn()) window.location.assign(href);
+          else if (getShellContext().authState === "signed-in") window.location.assign(activeWorkspaceHref());
           else showSignInRequired(link.textContent.trim() || "Open student workspace", { requiredRole: "student", returnUrl: href });
         });
+        return;
+      }
+      if (getShellContext().authState === "signed-in") {
+        window.location.assign(activeWorkspaceHref());
         return;
       }
       showSignInRequired(link.textContent.trim() || "Open student workspace", { requiredRole: "student", returnUrl: href });
@@ -982,6 +1061,11 @@
     const shellContext = getShellContext();
     if (shellContext.surface !== "authenticated-student") return;
     if (isStudentSignedIn()) return;
+    if (shellContext.authState === "signed-in") {
+      const target = activeWorkspaceHref();
+      if (target !== route) window.location.replace(target);
+      return;
+    }
     window.setTimeout(() => {
       if (isStudentSignedIn() || currentRouteName() === "auth.html") return;
       showSignInRequired("Sign in to open your student workspace", { requiredRole: "student" });
@@ -1001,6 +1085,11 @@
     if (!requirement) return;
     if (!runtimeAuthState.resolved) return;
     if (isRequiredRoleSignedIn(requirement.role)) return;
+    if (getShellContext().authState === "signed-in") {
+      const target = activeWorkspaceHref();
+      if (target !== route) window.location.replace(target);
+      return;
+    }
     window.setTimeout(() => {
       if (isRequiredRoleSignedIn(requirement.role) || currentRouteName() === "auth.html") return;
       showSignInRequired(requirement.title, { requiredRole: requirement.role });
@@ -1114,7 +1203,7 @@
   }
 
   function renderAgentShell() {
-    if (document.body.dataset.agentMode === "off") return;
+    if (!AGENT_PRODUCT_SURFACES_ENABLED || document.body.dataset.agentMode === "off") return;
     if (document.querySelector("[data-cuac-agent-shell]")) return;
     const agentMode = document.body.dataset.agentMode || "";
     const contextPolicy = getAgentContextPolicy();
@@ -1125,7 +1214,20 @@
     const isFavouritesMode = agentMode === "favourites";
     const isApplicationMode = agentMode === "application";
     const isSchoolMode = agentMode === "school";
-    const panelCopy = isApplicationMode
+    const isOpsMode = agentMode === "ops";
+    const panelCopy = isOpsMode
+      ? {
+          body: "面向 CUAC 运营人员的内部、受审计工作流助手。",
+          goal: "汇总运营风险并定位需要人工复核的队列",
+          steps: [
+            [icons.intent, "读取运营上下文", "仅使用当前管理员可见的队列摘要、隔离记录和审计状态。"],
+            [icons.search, "定位业务影响", "区分投递、数据质量、支持查询和保留接口的风险。"],
+            [icons.shield, "核对权限边界", "最终结论和重试必须满足二次验证与双人复核。"],
+            [icons.account, "准备复核动作", "给出认领、升级、支持查询或证据核对建议。"],
+            [icons.arrow, "保留审计轨迹", "不绕过后端权限，也不直接改写学生、学校或支付状态。"],
+          ],
+        }
+      : isApplicationMode
       ? {
           body: "How your selected schools and programs are being organized into a clearer China application set.",
           goal: "Organize my China application choices by risk, deadline, and document effort",
@@ -1259,9 +1361,9 @@
           </div>
           <div class="cuac-agent-panel-composer-slot" data-cuac-agent-panel-composer></div>
         </aside>
-        <button class="cuac-agent-reopen" type="button" data-cuac-agent-reopen aria-label="Open agent panel">${icons.agent}<span>Agent</span></button>
+        <button class="cuac-agent-reopen visible" type="button" data-cuac-agent-reopen aria-label="Open agent panel">${icons.agent}<span>Agent</span></button>
         <div class="cuac-agent-composer-host" data-cuac-agent-composer-host>
-          <div class="cuac-agent-composer" data-cuac-agent-composer>
+          <div class="cuac-agent-composer launcher-collapsed" data-cuac-agent-composer>
             <form class="cuac-agent-form" data-cuac-agent-form>
               <div class="cuac-scenario-picker" data-agent-scenario-picker>
                 <button class="cuac-scenario-trigger" type="button" data-agent-scenario-trigger aria-expanded="false" aria-label="Choose an Agent scenario">
@@ -1269,11 +1371,11 @@
                   <span>Scenarios</span>
                 </button>
                 <div class="cuac-scenario-menu" data-agent-scenario-menu hidden>
-                  ${renderScenarioMenu()}
+                  ${renderScenarioMenu(agentMode)}
                 </div>
               </div>
-              <textarea class="cuac-agent-input" data-cuac-agent-input aria-label="Describe your China study goal" rows="2">${panelCopy.goal}</textarea>
-              <button class="cuac-agent-send" type="submit" data-cuac-agent-submit aria-label="Send study goal">${icons.send}</button>
+              <textarea class="cuac-agent-input" data-cuac-agent-input aria-label="${isOpsMode ? "描述需要检查的运营风险" : "Describe your China study goal"}" rows="2">${panelCopy.goal}</textarea>
+              <button class="cuac-agent-send" type="submit" data-cuac-agent-submit aria-label="${isOpsMode ? "提交运营检查目标" : "Send study goal"}">${icons.send}</button>
             </form>
           </div>
         </div>
@@ -1282,6 +1384,7 @@
   }
 
   function initAgentShell() {
+    if (!AGENT_PRODUCT_SURFACES_ENABLED || document.body.dataset.agentMode === "off") return;
     renderAgentShell();
     const inputs = Array.from(document.querySelectorAll("[data-cuac-agent-input], [data-planner-input]"));
     const forms = Array.from(document.querySelectorAll("[data-cuac-agent-form], [data-planner-form]"));
@@ -1327,8 +1430,9 @@
       if (!panel || !reopen) return;
       panel.classList.toggle("open", open);
       panel.setAttribute("aria-hidden", open ? "false" : "true");
-      reopen.classList.toggle("visible", hasRun && !open);
+      reopen.classList.toggle("visible", !open);
       composer?.classList.toggle("in-panel", open);
+      composer?.classList.toggle("launcher-collapsed", !open);
       if (open && panelComposerSlot && composer) {
         panelComposerSlot.appendChild(composer);
       } else if (!open && composerHost && composer) {
@@ -1767,7 +1871,7 @@
             body: "{}",
           });
           if (!response.ok) throw new Error("Sign out failed.");
-          runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null };
+          runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest" };
           window.location.assign("auth.html");
         } catch {
           link.removeAttribute("aria-disabled");
@@ -1796,7 +1900,7 @@
   initAuthNavigationControls();
   initAccountMenus();
   const runtimeAuthReadyPromise = loadRuntimeAuthState();
-  initAgentShell();
+  void runtimeAuthReadyPromise.finally(initAgentShell);
   window.CUAC = { ...(window.CUAC || {}), reveal: initPageReveal };
   initPageReveal();
 })();

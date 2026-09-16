@@ -180,30 +180,6 @@ h1 {
   font-size: 13px;
 }
 
-.role-switcher {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 7px;
-  margin-bottom: 8px;
-}
-
-.role-switcher button {
-  min-height: 42px;
-  padding: 0 10px;
-  border: 1px solid rgb(var(--text-rgb) / 0.12);
-  border-radius: var(--radius-xs);
-  background: white;
-  color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 850;
-}
-
-.role-switcher button.active {
-  border-color: rgb(var(--accent-rgb) / 0.28);
-  background: var(--accent-soft);
-  color: var(--accent-dark);
-}
-
 .role-system-note {
   margin: 0 0 14px;
   padding: 9px 11px;
@@ -248,6 +224,55 @@ h1 {
 
 .auth-form.active {
   display: grid;
+}
+
+.workspace-picker {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid rgb(var(--accent-rgb) / 0.22);
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+}
+
+.workspace-picker .form-head strong,
+.workspace-picker .form-head h2,
+.workspace-picker .form-head h3 {
+  margin: 0 0 4px;
+  font-size: 17px;
+}
+
+.workspace-options {
+  display: grid;
+  gap: 8px;
+}
+
+.workspace-option {
+  display: grid;
+  gap: 3px;
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid rgb(var(--accent-rgb) / 0.2);
+  border-radius: var(--radius-xs);
+  background: white;
+  color: var(--text);
+  text-align: left;
+}
+
+.workspace-option:hover,
+.workspace-option:focus-visible {
+  border-color: rgb(var(--accent-rgb) / 0.45);
+  box-shadow: 0 0 0 4px rgb(var(--accent-rgb) / 0.08);
+}
+
+.workspace-option strong {
+  font-size: 14px;
+}
+
+.workspace-option span {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 750;
 }
 
 .auth-role-panel {
@@ -573,8 +598,7 @@ h1 {
 
   .split-fields,
   .social-auth,
-  .next-panel,
-  .role-switcher {
+  .next-panel {
     grid-template-columns: 1fr;
   }
 

@@ -28,11 +28,21 @@ export type PublicSchoolUpcomingDeadlineDto = {
 export type PublicProgramDto = {
   id: string;
   schoolId: string;
+  cityId: string | null;
+  slug: string;
+  citySlug: string | null;
   nameZh: string | null;
   nameEn: string;
   degreeLevel: string;
+  durationYears: number | null;
+  durationMonths: number | null;
   fieldCategory: string | null;
+  subjectArea: string | null;
   teachingLanguage: string | null;
+  cscaSubjects: unknown[];
+  cscaRequirement: string | null;
+  hskRequirement: string | null;
+  englishRequirement: string | null;
   tuitionAmount: number | null;
   tuitionCurrency: string | null;
   tuitionPeriod: string | null;
@@ -42,11 +52,16 @@ export type PublicProgramDto = {
   applicationRound: string | null;
   applicationUrl: string | null;
   applicationNote: string | null;
+  scholarshipText: string | null;
+  badgeText: string | null;
+  displayGroup: string | null;
+  displayGroupLabel: string | null;
   sourceUrl: string | null;
   sourceLabel: string | null;
   lastVerifiedAt: Date | null;
   sourceStatus: SourceStatus;
   status: string;
+  verificationStatus: string;
   isVerified: boolean;
   hasScholarship: boolean;
   sourceFieldLineage: SourceFieldLineage;
@@ -56,24 +71,10 @@ export type PublicProgramDto = {
   tuition: string | null;
   displayTuition: string | null;
   displaySubjects: unknown[];
+  updatedAt: Date;
 };
 
 export type PublicProgramDetailDto = PublicProgramDto & {
-  slug: string;
-  cityId: string | null;
-  durationYears: number | null;
-  durationMonths: number | null;
-  subjectArea: string | null;
-  cscaSubjects: unknown[];
-  cscaRequirement: string | null;
-  hskRequirement: string | null;
-  englishRequirement: string | null;
-  scholarshipText: string | null;
-  badgeText: string | null;
-  displayGroup: string | null;
-  displayGroupLabel: string | null;
-  verificationStatus: string;
-  updatedAt: Date;
   school: {
     id: string;
     slug: string;
@@ -90,6 +91,7 @@ export type PublicProgramDetailDto = PublicProgramDto & {
 export type PublicSchoolDto = {
   id: string;
   slug: string;
+  cityId: string | null;
   nameZh: string | null;
   nameEn: string;
   schoolType: string | null;
@@ -97,13 +99,26 @@ export type PublicSchoolDto = {
   city: string | null;
   cityZh: string | null;
   citySlug: string | null;
+  province: string | null;
+  regionLabel: string | null;
+  ranking: string | null;
+  cscaRequired: boolean;
+  cscaRequirement: string | null;
+  cscaSubjects: unknown[];
   applicationLevel: string | null;
   languageOfInstruction: string | null;
+  languageRequirement: string | null;
+  hskRequirement: string | null;
+  englishRequirement: string | null;
   deadlineSummary: string | null;
   tuitionSummary: string | null;
   applicationFee: string | null;
   websiteUrl: string | null;
   admissionsUrl: string | null;
+  subjectTags: unknown[];
+  languageTags: unknown[];
+  tuitionBandLabel: string | null;
+  campusHighlights: unknown[];
   sourceUrl: string | null;
   sourceLabel: string | null;
   lastVerifiedAt: Date | null;
@@ -115,25 +130,10 @@ export type PublicSchoolDto = {
   englishProgramCount: number | null;
   scholarshipCount: number | null;
   upcomingDeadlines: PublicSchoolUpcomingDeadlineDto[];
-};
-
-export type PublicSchoolDetailDto = PublicSchoolDto & {
-  cityId: string | null;
-  province: string | null;
-  regionLabel: string | null;
-  ranking: string | null;
-  cscaRequired: boolean;
-  cscaRequirement: string | null;
-  cscaSubjects: unknown[];
-  languageRequirement: string | null;
-  hskRequirement: string | null;
-  englishRequirement: string | null;
-  subjectTags: unknown[];
-  languageTags: unknown[];
-  tuitionBandLabel: string | null;
-  campusHighlights: unknown[];
   updatedAt: Date;
 };
+
+export type PublicSchoolDetailDto = PublicSchoolDto;
 
 export type PublicScholarshipBodySectionDto = {
   title: string;
@@ -174,6 +174,8 @@ export type PublicScholarshipDto = {
   schoolId: string | null;
   programId: string | null;
   coverage: string | null;
+  applicableDegree: string | null;
+  applicableProgram: string | null;
   amountText: string | null;
   requirementText: string | null;
   benefitItems: PublicScholarshipBenefitItemDto[];
@@ -195,8 +197,6 @@ export type PublicScholarshipDto = {
 
 export type PublicScholarshipDetailDto = PublicScholarshipDto & {
   nameZh: string | null;
-  applicableDegree: string | null;
-  applicableProgram: string | null;
   bodySections: PublicScholarshipBodySectionDto[];
   benefits: string[];
   tags: string[];
@@ -305,4 +305,41 @@ export type CatalogListOptions = {
   limit?: number;
   offset?: number;
   query?: string;
+  degree?: string;
+  subject?: string;
+  language?: string;
+  city?: string;
+  school?: string;
+  intake?: string;
+  deadline?: string;
+  tuition?: string;
+  scholarship?: boolean;
+  upcomingDeadline?: boolean;
+  languageRequirement?: string;
+  sort?: string;
+};
+
+export type PublicGuideDto = {
+  id: string;
+  slug: string;
+  titleEn: string;
+  titleZh: string | null;
+  subtitleEn: string | null;
+  subtitleZh: string | null;
+  summaryEn: string | null;
+  summaryZh: string | null;
+  content: { sections: unknown[] };
+  href: string;
+  verificationStatus: string;
+  sortOrder: number;
+  version: number;
+  publishedAt: Date;
+  updatedAt: Date;
+};
+
+export type PublicProgramPageDto = {
+  items: PublicProgramDto[];
+  total: number;
+  limit: number;
+  offset: number;
 };

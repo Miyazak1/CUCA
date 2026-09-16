@@ -1,4 +1,4 @@
-﻿const universities = [];
+const universities = [];
 
 const universityArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 const escapeCatalogHtml = window.CuacCatalogList.escapeHtml;
@@ -24,6 +24,10 @@ const state = {
 
       function schoolKey(item = {}) {
         return String(item.sourceId || item.id || slugifyRouteParam(schoolName(item)));
+      }
+
+      function schoolEntityId(item = {}) {
+        return String(item.id || "");
       }
 
       function schoolCity(item = {}) {
@@ -177,11 +181,15 @@ const state = {
       }
 
       function schoolNote(item = {}) {
-        return item.sourceLabel || "No admissions summary published.";
+        const csca = compactList(item.cscaSubjects).join(" / ") || item.cscaRequirement;
+        const language = item.hskRequirement || item.englishRequirement || item.languageRequirement || item.languageOfInstruction;
+        return [csca ? `CSCA: ${csca}` : "", language ? `Language: ${language}` : ""]
+          .filter(Boolean)
+          .join(" · ") || item.sourceLabel || "No admissions summary published.";
       }
 
       function schoolImage(item = {}) {
-        return "globe.svg";
+        return window.CuacCatalogList.cover("school", item);
       }
 
       function schoolDetailHref(item = {}) {
@@ -327,7 +335,8 @@ const state = {
       function card(item, index = 0) {
         const name = schoolName(item);
         const key = schoolKey(item);
-        const saved = state.saved.has(key);
+        const entityId = schoolEntityId(item);
+        const saved = state.saved.has(entityId);
         const imageBadge = schoolEnglishRouteCount(item) ? `${schoolEnglishRouteCount(item)} English routes` : `${schoolProgramCount(item)} programs`;
         const signals = [schoolApplicationReadiness(item), ...schoolTags(item).filter((tag) => tag !== "Verified").slice(0, 3)];
         const detailHref = schoolDetailHref(item);
@@ -335,8 +344,8 @@ const state = {
           <article class="university-card result-enter" style="--enter-index: ${index}" data-name="${escapeCatalogHtml(name)}" role="link" tabindex="0" data-university-card data-detail-href="${detailHref}" aria-label="View ${escapeCatalogHtml(name)} university guide">
             <div class="card-image">
               <span class="badge">${escapeCatalogHtml(imageBadge)}</span>
-              <button class="save ${saved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(key)}" aria-label="Save ${escapeCatalogHtml(name)}">${saved ? "♥" : "♡"}</button>
-              <img alt="University catalog marker" src="${schoolImage(item)}" />
+              <button class="save ${saved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-label="Save ${escapeCatalogHtml(name)}">${saved ? "♥" : "♡"}</button>
+              <img data-catalog-cover alt="${escapeCatalogHtml(name)} cover" src="${schoolImage(item)}" />
               <span class="university-card-open" aria-hidden="true">${universityArrowRight}</span>
             </div>
             <div class="card-body">
@@ -584,24 +593,31 @@ const state = {
         render();
       });
 
-      resultsGrid.addEventListener("click", (event) => {
+      resultsGrid.addEventListener("click", async (event) => {
         const saveButton = event.target.closest("[data-save]");
         if (saveButton) {
           const key = saveButton.dataset.save;
-          const school = universities.find((item) => schoolKey(item) === key);
+          const school = universities.find((item) => schoolEntityId(item) === key);
           const name = school ? schoolName(school) : key;
           const resumeSelector = window.CUAC?.dataAttributeSelector?.("data-save", saveButton?.dataset.save || key) || "[data-save]";
           if (window.CUAC?.requireStudentSignedIn && !window.CUAC.requireStudentSignedIn("Save this university", { resumeAction: { type: "click-selector", selector: resumeSelector } })) return;
           const savedNow = !state.saved.has(key);
-          if (savedNow) state.saved.add(key);
-          else state.saved.delete(key);
-          render();
-          showUniversityAgentNotice(
-            savedNow
-              ? `Saved ${name} to Favourites. <a href="favourites.html">Find matching programs</a>`
-              : `Removed ${name} from Favourites.`,
-            { html: savedNow },
-          );
+          saveButton.disabled = true;
+          try {
+            await window.CuacCatalogList.setSaved("school", key, savedNow);
+            if (savedNow) state.saved.add(key);
+            else state.saved.delete(key);
+            render();
+            showUniversityAgentNotice(
+              savedNow
+                ? `Saved ${name} to Favourites. <a href="favourites-api.html">Find matching programs</a>`
+                : `Removed ${name} from Favourites.`,
+              { html: savedNow },
+            );
+          } catch (error) {
+            saveButton.disabled = false;
+            showUniversityAgentNotice(error.message || "Could not update Favourites.");
+          }
           return;
         }
         const universityCard = event.target.closest("[data-university-card]");
@@ -650,7 +666,8 @@ const state = {
         resultCount.textContent = "Loading universities";
         resultContext.textContent = "Reading the current published catalog.";
         try {
-          const records = await window.CuacCatalogList.load("schools", { limit: 100 });
+          const savedIdsRequest = window.CuacCatalogList.loadSavedEntityIds("school");
+          const records = await window.CuacCatalogList.loadAll("schools", { limit: 100 });
           universities.splice(0, universities.length, ...records);
           const scholarshipTotal = universities.reduce((total, item) => total + Number(item.scholarshipCount || 0), 0);
           const englishRouteTotal = universities.reduce((total, item) => total + Number(item.englishProgramCount || 0), 0);
@@ -659,6 +676,10 @@ const state = {
           const summary = document.querySelector("#summaryScholarships");
           if (summary) summary.textContent = scholarshipTotal;
           render();
+          savedIdsRequest.then((savedIds) => {
+            state.saved = savedIds;
+            render();
+          }).catch((error) => console.warn("Could not load saved universities.", error));
         } catch (error) {
           resultCount.textContent = "Universities unavailable";
           resultContext.textContent = "The published catalog could not be loaded.";

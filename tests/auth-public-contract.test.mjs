@@ -19,21 +19,30 @@ test("public account page uses real Auth APIs without browser-owned authenticati
     assert.match(script, new RegExp(endpoint.replaceAll("/", "\\/")));
   }
   assert.match(script, /credentials:\s*"same-origin"/);
-  assert.match(script, /selectedSurface:\s*roleProfiles\[currentRole\]\.requestSurface/);
+  assert.match(script, /body:\s*\{ email, password \}/);
+  assert.match(script, /workspaceSelectionRequired/);
+  assert.match(script, /dataset\.workspaceIndex/);
+  assert.match(script, /selectedSurface:\s*workspace\.selectedSurface/);
   assert.match(script, /"cuac_admin"/);
   assert.match(script, /requiredRole === "cuac_admin"/);
   assert.match(script, /safeLocalUrl/);
   assert.match(script, /sign-in-continuations\/\$\{encodeURIComponent\(capability\.continuationId\)\}\/consume/);
   assert.match(script, /window\.history\.replaceState/);
   assert.doesNotMatch(script, /cuacAuthDemoState|cuacAuthContinuationDemoState|localStorage|sessionStorage/);
-  assert.match(html, /data-auth-school-id/);
-  assert.match(html, /data-auth-role="ops">CUAC staff<\/button>/);
+  assert.match(html, /data-workspace-picker/);
+  assert.match(script, /data-workspace-index/);
+  assert.doesNotMatch(html, /data-auth-school-id|data-auth-role|data-reset-account-type/);
+  assert.match(html, /One CUAC account/);
   assert.match(html, /data-register-password[^>]+minlength="15"/);
   assert.doesNotMatch(html, /Keep me signed in|Study goal|social-auth|Agent context|Agent conversations/);
 
   assert.match(shell, /fetch\("\/api\/v1\/me"/);
   assert.match(shell, /fetch\("\/api\/v1\/auth\/logout"/);
   assert.match(shell, /runtimeAuthState/);
+  assert.match(shell, /authStrength: actor\.authStrength === "step_up"/);
+  assert.match(shell, /mode === "ops"/);
+  assert.match(shell, /描述需要检查的运营风险/);
+  assert.match(shell, /runtimeAuthReadyPromise\.finally\(initAgentShell\)/);
   assert.match(shell, /fetch\("\/api\/v1\/auth\/guest-session"/);
   assert.match(shell, /fetch\("\/api\/v1\/auth\/sign-in-continuations"/);
   assert.match(shell, /navigation\.open_student_workspace/);

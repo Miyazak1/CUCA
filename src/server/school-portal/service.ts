@@ -74,7 +74,8 @@ export type SchoolApplicationStatusMutationDto = {
 export type SchoolWorkflowCommandOptions = { idempotencyKey?: string };
 
 export type SchoolPortalRepository = {
-  listApplicationQueueBySchoolId(schoolId: string, cuacId?: string): Promise<SchoolApplicationQueueItemDto[]>;
+  listApplicationQueueBySchoolId(schoolId: string, cuacId?: string,
+    pagination?: { limit: number; offset: number }): Promise<SchoolApplicationQueueItemDto[]>;
   getApplicationById(applicationId: string, schoolId: string): Promise<SchoolApplicationDetailDto | null>;
   updateApplicationStatus(input: {
     applicationId: string;
@@ -107,11 +108,14 @@ export class SchoolPortalService {
     this.notifications = notifications;
   }
 
-  async listTenantApplicationQueue(context: RequestContext, options: { cuacId?: string } = {}): Promise<SchoolApplicationQueueItemDto[]> {
+  async listTenantApplicationQueue(context: RequestContext,
+    options: { cuacId?: string; limit?: number; offset?: number } = {}): Promise<SchoolApplicationQueueItemDto[]> {
     const schoolId = requireSchoolTenant(context);
     authorizeTenantProjection(context, schoolId);
     const cuacId = options.cuacId === undefined ? undefined : parseCuacId(options.cuacId);
-    const queue = await this.repository.listApplicationQueueBySchoolId(schoolId, cuacId);
+    const limit = boundedQueueInteger(options.limit, "limit", 50, 1, 100);
+    const offset = boundedQueueInteger(options.offset, "offset", 0, 0, 10_000);
+    const queue = await this.repository.listApplicationQueueBySchoolId(schoolId, cuacId, { limit, offset });
     await this.recordAudit(context, {
       action: "school.application_queue.list",
       resourceType: "school_application_queue",
@@ -120,6 +124,8 @@ export class SchoolPortalService {
       metadata: {
         schoolId,
         filteredByCuacId: cuacId !== undefined,
+        limit,
+        offset,
         resultCount: queue.length,
       },
     });
@@ -261,6 +267,14 @@ export class SchoolPortalService {
       }),
     );
   }
+}
+
+function boundedQueueInteger(value: number | undefined, field: string, fallback: number, minimum: number, maximum: number): number {
+  const candidate = value ?? fallback;
+  if (!Number.isSafeInteger(candidate) || candidate < minimum || candidate > maximum) {
+    throw new CuacError("BAD_REQUEST", `${field} must be an integer from ${minimum} to ${maximum}.`, 400);
+  }
+  return candidate;
 }
 
 function parseCuacId(value: unknown): string {

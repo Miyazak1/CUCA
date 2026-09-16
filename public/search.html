@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Search CUAC</title>
+    <link rel="stylesheet" href="shared-shell.css" />
+    <link rel="stylesheet" href="search.css" />
+  </head>
+  <body data-agent-mode="off">
+    <div class="page search-page">
+      <div data-cuac-header data-active="search" data-note="CUAC Search:" data-note-detail="published programs, universities, scholarships, cities, and guides"></div>
+      <main class="site-search-main">
+        <section class="search-intro" aria-labelledby="search-title">
+          <p class="search-kicker">Published catalog</p>
+          <h1 id="search-title">Search across CUAC</h1>
+          <p>Find programs, universities, scholarships, cities, and practical guides without choosing a catalog first.</p>
+          <div class="search-locales" aria-label="Search display language">
+            <button type="button" data-search-locale="en">English</button>
+            <button type="button" data-search-locale="zh">中文</button>
+          </div>
+          <form class="site-search-form" data-site-search-form role="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+            <input data-site-search-input type="search" maxlength="120" autocomplete="off" placeholder="Computer science, Tsinghua, scholarship, Hangzhou..." aria-label="Search published CUAC catalog" />
+            <button type="submit">Search</button>
+          </form>
+        </section>
+
+        <nav class="search-types" aria-label="Search result types" data-search-types>
+          <button class="active" type="button" data-search-type="">All <span data-count-for="all">0</span></button>
+          <button type="button" data-search-type="program">Programs <span data-count-for="program">0</span></button>
+          <button type="button" data-search-type="school">Universities <span data-count-for="school">0</span></button>
+          <button type="button" data-search-type="scholarship">Scholarships <span data-count-for="scholarship">0</span></button>
+          <button type="button" data-search-type="city">Cities <span data-count-for="city">0</span></button>
+          <button type="button" data-search-type="guide">Guides <span data-count-for="guide">0</span></button>
+        </nav>
+
+        <section class="search-status" data-search-status role="status" aria-live="polite"></section>
+        <section class="search-results" data-search-results aria-live="polite"></section>
+      </main>
+      <div data-cuac-footer></div>
+    </div>
+    <script src="shared-shell.js"></script>
+    <script src="search.js"></script>
+  </body>
+</html>

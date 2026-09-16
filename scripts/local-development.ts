@@ -17,6 +17,7 @@ import {
   localRuntimeEnvironment,
   localSyntheticAccounts,
   isHealthyLocalApplicationStatus,
+  isDockerPortConflictDiagnostic,
   parseLocalDevelopmentCommand,
   postgresDockerRunArgs,
   resolveLocalPort,
@@ -290,7 +291,7 @@ async function recreateContainerAfterPortConflict(state: LocalDevelopmentState, 
 }
 
 function isPortConflict(error: unknown): boolean {
-  return error instanceof DockerCommandError && /port is already allocated|address already in use|bind for .* failed/i.test(error.diagnostic);
+  return error instanceof DockerCommandError && isDockerPortConflictDiagnostic(error.diagnostic);
 }
 
 async function publishedPostgresBinding(state: LocalDevelopmentState): Promise<string | null> {

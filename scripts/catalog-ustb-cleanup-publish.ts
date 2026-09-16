@@ -1,0 +1,61 @@
+import { createHash } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { CatalogSeedWriter } from "../src/server/catalog/seed-writer.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+import { assertLocalCatalogPublishTarget, LOCAL_CATALOG_PUBLISH_CONFIRMATION } from "../src/server/catalog/local-publish-safety.ts";
+import { createPostgresPool, createTransactionalSqlClient } from "../src/server/db/postgres-client.ts";
+
+const args = new Map(process.argv.slice(2).map((arg) => { const at = arg.indexOf("="); if (!arg.startsWith("--") || at < 0) throw new Error(`Option requires a value: ${arg}`); return [arg.slice(2, at), arg.slice(at + 1)]; }));
+if ([...args.keys()].some((key) => !["review-hash", "review", "approved-at", "confirm"].includes(key))) throw new Error("Unknown publication option.");
+const required = (name: string) => { const value = args.get(name)?.trim(); if (!value) throw new Error(`Missing --${name}=...`); return value; };
+const approvedReviewHash = required("review-hash"), reviewReference = required("review"), approvedAt = required("approved-at"), confirmation = required("confirm");
+if (!/^[a-f0-9]{64}$/.test(approvedReviewHash) || Number.isNaN(Date.parse(approvedAt)) || confirmation !== LOCAL_CATALOG_PUBLISH_CONFIRMATION) throw new Error("Invalid publication authorization options.");
+const root = process.cwd();
+const paths = { candidate: resolve(root, "seeds/catalog.ustb-cleanup.draft.json"), validation: resolve(root, "seeds/catalog.ustb-cleanup.validation.json"), review: resolve(root, "seeds/catalog.ustb-cleanup.review.json"), output: resolve(root, "seeds/catalog.ustb-cleanup.approved.local.json"), approval: resolve(root, "seeds/catalog.ustb-cleanup.approval.json"), safeApproval: resolve(root, "seeds/catalog.ustb-safe-new-batch-01.approval.json"), state: resolve(root, ".cuac-local/runtime.json") };
+const parse = async (path: string) => JSON.parse(await readFile(path, "utf8"));
+const hash = (value: string) => createHash("sha256").update(value).digest("hex");
+const candidateText = await readFile(paths.candidate, "utf8"), candidate = JSON.parse(candidateText) as CatalogSeedBundle;
+const [validation, review, safeApproval, state] = await Promise.all([parse(paths.validation), parse(paths.review), parse(paths.safeApproval), parse(paths.state)]);
+const { reviewHash: storedHash, requiredApproval: storedApproval, ...reviewBase } = review;
+if (storedHash !== approvedReviewHash || hash(JSON.stringify(reviewBase)) !== approvedReviewHash || storedApproval !== reviewReference) throw new Error("Approved USTB cleanup hash/reference mismatch.");
+const fresh = createCatalogMigrationValidationReport(candidate);
+if (!fresh.ok || !validation.ok || hash(candidateText) !== review.candidateSha256 || fresh.bundleSha256 !== review.candidateBundleSha256 || fresh.bundleSha256 !== validation.bundleSha256 || fresh.operationPlanSha256 !== review.operationPlanSha256 || fresh.operationPlanSha256 !== validation.operationPlanSha256) throw new Error("USTB cleanup candidate changed after review.");
+if (review.status !== "requires_explicit_approval" || review.sensitiveDataCheck?.result !== "pass" || review.sourceReview?.result !== "pass" || review.visualReview?.result !== "pass" || review.reconciliation?.destructiveDeletion !== false || review.scope?.schoolOverwriteCount !== 1 || review.scope?.stableProgramOverwriteCount !== 11 || review.scope?.archiveProgramAliasCount !== 1 || review.scope?.archiveScholarshipAliasCount !== 1) throw new Error("USTB cleanup review scope mismatch.");
+const programAliases = review.reconciliation.archives.filter((row: any) => row.entityType === "program").map((row: any) => row.slug), scholarshipAliases = review.reconciliation.archives.filter((row: any) => row.entityType === "scholarship").map((row: any) => row.slug);
+const sourceSchemaSha256 = hash(JSON.stringify({ cityFields: [...new Set((candidate.cities ?? []).flatMap(Object.keys))].sort(), schoolFields: [...new Set((candidate.schools ?? []).flatMap(Object.keys))].sort(), programFields: [...new Set((candidate.programs ?? []).flatMap(Object.keys))].sort(), intakeFields: [...new Set((candidate.programIntakes ?? []).flatMap(Object.keys))].sort() }));
+const publication: CatalogSeedBundle = { version: 2, generatedAt: approvedAt, handoff: { sourceSystem: "CUAC reviewed official USTB cleanup", cleanedExportName: "catalog.ustb-cleanup.draft.json", cleanedExportSha256: fresh.bundleSha256, sourceSchemaSha256, reviewReference, prohibitedDataReviewReference: reviewReference, approvalRecordedAt: approvedAt, sourceReadOnly: true, prohibitedDataConfirmedExcluded: true }, cities: candidate.cities, schools: candidate.schools?.map((row) => ({ ...row, status: "active" as const, verificationStatus: "verified" as const, lastVerifiedAt: approvedAt })), programs: candidate.programs?.map((row) => ({ ...row, status: "active" as const, verificationStatus: "verified" as const, lastVerifiedAt: approvedAt })), programIntakes: candidate.programIntakes, scholarships: [] };
+const report = createCatalogMigrationValidationReport(publication);
+if (!report.ok || report.summary.cities !== 1 || report.summary.schools !== 1 || report.summary.programs !== 11 || report.summary.programIntakes !== 11 || report.summary.scholarships !== 0) throw new Error(`Invalid USTB cleanup publication: ${report.errors.join(" ")}`);
+const approval = { version: 1, approvedAt, approvalMode: "explicit-product-owner-approval", reviewReference, approvedReviewSha256: approvedReviewHash, approvedCandidateFileSha256: hash(candidateText), approvedCandidateBundleSha256: fresh.bundleSha256, publicationBundle: "seeds/catalog.ustb-cleanup.approved.local.json", publicationBundleSha256: report.bundleSha256, schoolSlug: review.scope.schoolSlug, programSlugs: publication.programs!.map((row) => row.slug), archivedProgramAliases: programAliases, archivedScholarshipAliases: scholarshipAliases, protectedSafeProgramSlugs: safeApproval.programSlugs, protectedSafeScholarshipSlugs: safeApproval.scholarshipSlugs, prohibitedDataConfirmedExcluded: true };
+async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: any) { if (error?.code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
+await writeOrVerify(paths.output, publication); await writeOrVerify(paths.approval, approval);
+const target = assertLocalCatalogPublishTarget(state, publication, confirmation, reviewReference), pool = createPostgresPool({ databaseUrl: target.databaseUrl, max: 1, applicationName: "cuac:ustb-cleanup-publish" });
+try {
+  const client = createTransactionalSqlClient(pool);
+  const result = await client.transaction(async (tx) => {
+    const identity = await tx.query<any>("select current_database() database_name,current_user database_user", []);
+    if (identity[0]?.database_name !== target.publicTarget.databaseName || identity[0]?.database_user !== target.publicTarget.databaseUser) throw new Error("Database identity mismatch.");
+    const cityBefore = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='beijing'", []);
+    const school = await tx.query<any>("select id,status,verification_status from schools where slug='university-of-science-and-technology-beijing'", []);
+    const stable = await tx.query<any>("select id,slug,status,verification_status from programs where id=any($1::uuid[]) order by id", [review.reconciliation.databaseBaseline.stableProgramIds]);
+    const protectedPrograms = await tx.query<any>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug", [safeApproval.programSlugs]);
+    const protectedScholarships = await tx.query<any>("select slug,status,verification_status,last_verified_at from scholarships where slug=any($1::text[]) order by slug", [safeApproval.scholarshipSlugs]);
+    const legacyPrograms = await tx.query<any>("select slug,status,verification_status from programs where slug=any($1::text[]) order by slug", [programAliases]);
+    const legacyScholarships = await tx.query<any>("select slug,status,verification_status from scholarships where slug=any($1::text[]) order by slug", [scholarshipAliases]);
+    if (cityBefore.length !== 1 || cityBefore[0].snapshot.id !== review.reconciliation.databaseBaseline.cityId || school.length !== 1 || school[0].id !== review.reconciliation.databaseBaseline.schoolId || school[0].status !== "active" || school[0].verification_status !== "unverified") throw new Error("USTB school/city baseline changed.");
+    if (stable.length !== 11 || stable.some((row) => row.status !== "active" || row.verification_status !== "unverified") || protectedPrograms.length !== 145 || protectedScholarships.length !== 5 || [...protectedPrograms, ...protectedScholarships].some((row) => row.status !== "active" || row.verification_status !== "verified" || row.last_verified_at?.toISOString() !== safeApproval.approvedAt)) throw new Error("USTB protected or stable records changed.");
+    if (legacyPrograms.length !== 1 || legacyScholarships.length !== 1 || [...legacyPrograms, ...legacyScholarships].some((row) => row.status !== "active" || row.verification_status !== "unverified")) throw new Error("USTB legacy aliases changed.");
+    const written = await new CatalogSeedWriter(tx).writeBundle(publication, { preserveExistingCitySlugs: ["beijing"] });
+    if (!written.ok) throw new Error(`USTB cleanup write failed: ${written.errors.join(" ")}`);
+    await tx.query("update programs set status='archived',updated_at=now() where slug=any($1::text[]) and status='active'", [programAliases]);
+    await tx.query("update scholarships set status='archived',updated_at=now() where slug=any($1::text[]) and status='active'", [scholarshipAliases]);
+    const cityAfter = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='beijing'", []);
+    if (JSON.stringify(cityAfter[0]?.snapshot) !== JSON.stringify(cityBefore[0].snapshot)) throw new Error("Beijing city dependency changed.");
+    const totals = await tx.query<any>("select (select verification_status from schools where id=$1) school_status,(select count(*) from programs where school_id=$1 and status='active')::int programs,(select count(*) from programs where school_id=$1 and status='active' and verification_status='verified')::int verified_programs,(select count(*) from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=$1)::int intakes,(select count(*) from scholarships where school_id=$1 and status='active')::int scholarships,(select count(*) from scholarships where school_id=$1 and status='active' and verification_status='verified')::int verified_scholarships,(select count(*) from programs where slug=any($2::text[]) and status='archived')::int archived_programs,(select count(*) from scholarships where slug=any($3::text[]) and status='archived')::int archived_scholarships", [school[0].id, programAliases, scholarshipAliases]);
+    const expected = { school_status: "verified", programs: 156, verified_programs: 156, intakes: 156, scholarships: 5, verified_scholarships: 5, archived_programs: 1, archived_scholarships: 1 };
+    if (Object.entries(expected).some(([key, value]) => totals[0]?.[key] !== value)) throw new Error(`USTB cleanup verification failed: ${JSON.stringify({ expected, actual: totals[0] })}`);
+    return { written: written.summary, totals: totals[0], schoolId: school[0].id };
+  });
+  console.log(JSON.stringify({ ok: true, target: target.publicTarget, approvedReviewSha256: approvedReviewHash, publicationBundleSha256: report.bundleSha256, approvalPath: paths.approval, outputPath: paths.output, ...result }, null, 2));
+} finally { await pool.end(); }

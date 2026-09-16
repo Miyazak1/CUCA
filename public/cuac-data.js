@@ -3062,7 +3062,7 @@
         status: ["Funding route", "Competitive", "Review notice"],
         metrics: [["Full/partial", "coverage"], ["Master/PhD", "common fit"], ["Study plan", "usually needed"], ["Early", "timing"]],
         facts: [["Coverage", "Tuition or stipend possible"], ["Eligibility", "Varies by program"], ["Documents", "Study plan and recommendations"], ["Risk", "Competitive"], ["Best use", "Parallel route"], ["Guarantee", "Never guaranteed"]],
-        routes: [["Find funded programs", "Filter programs with scholarship signal.", "programs.html?scholarship=true"], ["Compare funding risk", "Use CUAC Agent to separate funding-sensitive choices.", "scholarships.html"]],
+        routes: [["Find funded programs", "Filter programs with scholarship signal.", "programs.html?scholarship=true"], ["Compare funding risk", "Compare published scholarship coverage and eligibility.", "scholarships.html"]],
         checklist: ["Check degree eligibility", "Prepare study plan", "Confirm recommendation timeline", "Keep one realistic non-scholarship route"],
         timeline: ["Shortlist funded programs", "Review notice and deadline", "Add concrete choices", "School requests official scholarship materials"],
       },
@@ -7163,7 +7163,7 @@
       summary: guide.snippet || "Focused guide for understanding what CUAC tracks, what schools request directly, and which next action keeps the application moving.",
       status: ["Guide", guide.metadata?.status || "Published", guide.metadata?.category || "Checklist"],
       metrics: [[guide.metadata?.category || "Guide", "topic"], [String(guide.score || 80), "relevance"], ["No upload", "MVP boundary"], ["School follow-up", "next step"]],
-      facts: [["Topic", guide.subtitle || guide.title || "Guide"], ["CUAC role", "Organizes application information"], ["School role", "Requests official materials"], ["Student role", "Prepares and verifies"], ["Guide status", guide.metadata?.status || "Published"], ["Agent", "Can summarize next step"]],
+      facts: [["Topic", guide.subtitle || guide.title || "Guide"], ["CUAC role", "Organizes application information"], ["School role", "Requests official materials"], ["Student role", "Prepares and verifies"], ["Guide status", guide.metadata?.status || "Published"], ["Site search", "Finds the next published route"]],
       schemaTitle: "Guide information source",
       schemaSections: [
         {

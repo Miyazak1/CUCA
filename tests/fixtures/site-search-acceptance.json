@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "cases": [
+    { "query": "computer", "type": "program", "locale": "en" },
+    { "query": "CS", "type": "program", "locale": "en", "interpretedQuery": "computer science" },
+    { "query": "清华", "type": "school", "locale": "zh" },
+    { "query": "scholarship", "type": "scholarship", "locale": "en" },
+    { "query": "杭州", "type": "city", "locale": "zh" },
+    { "query": "JW form", "type": "guide", "locale": "en" }
+  ]
+}

@@ -309,8 +309,112 @@ export const cities = pgTable(
     slugUnique: uniqueIndex("cities_slug_unique").on(table.slug),
     statusIdx: index("cities_status_idx").on(table.status),
     regionIdx: index("cities_region_idx").on(table.region),
+    publicSearchTrgmIdx: index("cities_public_search_trgm_idx").using("gin", sql`(
+      coalesce(lower(${table.nameEn}), '') || ' ' || coalesce(lower(${table.nameZh}), '') || ' ' ||
+      coalesce(lower(${table.slug}), '') || ' ' || coalesce(lower(${table.province}), '') || ' ' ||
+      coalesce(lower(${table.region}), '') || ' ' || lower(${table.tags}::text) || ' ' ||
+      coalesce(lower(${table.contentJson}->>'summary'), '') || ' ' || coalesce(lower(${table.contentJson}->>'overview'), '')
+    ) gin_trgm_ops`).where(sql`${table.status} = 'active'`),
   }),
 );
+
+export const catalogPublicationRevisions = pgTable(
+  "catalog_publication_revisions",
+  {
+    scopeKey: text("scope_key").primaryKey().default("public_catalog"),
+    revision: integer("revision").notNull().default(1),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    scopeCheck: check("catalog_publication_revisions_scope_check", sql`${table.scopeKey} = 'public_catalog'`),
+    revisionCheck: check("catalog_publication_revisions_revision_check", sql`${table.revision} between 1 and 2147483647`),
+  }),
+);
+
+export const publicGuides = pgTable(
+  "public_guides",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    slug: text("slug").notNull(),
+    titleEn: text("title_en").notNull(),
+    titleZh: text("title_zh"),
+    subtitleEn: text("subtitle_en"),
+    subtitleZh: text("subtitle_zh"),
+    summaryEn: text("summary_en"),
+    summaryZh: text("summary_zh"),
+    contentJson: jsonb("content_json").notNull().default({ sections: [] }),
+    href: text("href").notNull(),
+    searchTerms: jsonb("search_terms").notNull().default([]),
+    status: text("status").notNull().default("draft"),
+    verificationStatus: text("verification_status").notNull().default("unverified"),
+    sortOrder: integer("sort_order").notNull().default(0),
+    version: integer("version").notNull().default(1),
+    publishedAt: timestamp("published_at", { withTimezone: true }),
+    ...timestamps,
+  },
+  (table) => ({
+    slugUnique: uniqueIndex("public_guides_slug_unique").on(table.slug),
+    statusIdx: index("public_guides_status_idx").on(table.status, table.sortOrder),
+    publicSearchTrgmIdx: index("public_guides_public_search_trgm_idx").using("gin", sql`(
+      coalesce(lower(${table.titleEn}), '') || ' ' || coalesce(lower(${table.titleZh}), '') || ' ' ||
+      coalesce(lower(${table.subtitleEn}), '') || ' ' || coalesce(lower(${table.subtitleZh}), '') || ' ' ||
+      coalesce(lower(${table.summaryEn}), '') || ' ' || coalesce(lower(${table.summaryZh}), '') || ' ' ||
+      lower(${table.searchTerms}::text)
+    ) gin_trgm_ops`).where(sql`${table.status} = 'published'`),
+    statusCheck: check("public_guides_status_check", sql`${table.status} in ('draft','published','archived')`),
+    verificationCheck: check("public_guides_verification_check", sql`${table.verificationStatus} in ('unverified','verified')`),
+    publicationCheck: check("public_guides_publication_check", sql`(${table.status} = 'draft' and ${table.publishedAt} is null)
+      or (${table.status} in ('published','archived') and ${table.publishedAt} is not null)`),
+    versionCheck: check("public_guides_version_check", sql`${table.version} between 1 and 2147483647`),
+    hrefCheck: check("public_guides_href_check", sql`${table.href} ~ '^guide(s|-detail)\\.html([?#].*)?$' and ${table.href} !~ '[[:cntrl:]]'`),
+  }),
+);
+
+export const guideVersions = pgTable("guide_versions", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  guideId: uuid("guide_id").notNull(),
+  version: integer("version").notNull(),
+  contentJson: jsonb("content_json").notNull(),
+  contentSha256: text("content_sha256").notNull(),
+  preparedByUserId: uuid("prepared_by_user_id").notNull(),
+  reviewStatus: text("review_status").notNull().default("draft"),
+  approvedByUserId: uuid("approved_by_user_id"),
+  reviewedAt: timestamp("reviewed_at", { withTimezone: true }),
+  effectiveFrom: timestamp("effective_from", { withTimezone: true }),
+  reviewDueAt: timestamp("review_due_at", { withTimezone: true }),
+  reviewEvidenceJson: jsonb("review_evidence_json"),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, table => ({
+  guideFk: foreignKey({ name: "guide_version_guide_fk", columns: [table.guideId], foreignColumns: [publicGuides.id] }).onDelete("restrict"),
+  preparerFk: foreignKey({ name: "guide_version_preparer_fk", columns: [table.preparedByUserId], foreignColumns: [users.id] }).onDelete("restrict"),
+  reviewerFk: foreignKey({ name: "guide_version_reviewer_fk", columns: [table.approvedByUserId], foreignColumns: [users.id] }).onDelete("restrict"),
+  versionUnique: uniqueIndex("guide_version_unique").on(table.guideId, table.version),
+  idGuideUnique: uniqueIndex("guide_version_id_guide_unique").on(table.id, table.guideId),
+  reviewIdx: index("guide_version_review_idx").on(table.reviewStatus, table.createdAt),
+  versionCheck: check("guide_version_number_check", sql`${table.version} > 0`),
+  digestCheck: check("guide_version_digest_check", sql`${table.contentSha256} ~ '^[a-f0-9]{64}$'`),
+  contentCheck: check("guide_version_content_check", sql`jsonb_typeof(${table.contentJson}) = 'object' and octet_length(${table.contentJson}::text) <= 131072`),
+  reviewCheck: check("guide_version_review_check", sql`(${table.reviewStatus} = 'draft' and ${table.approvedByUserId} is null and ${table.reviewedAt} is null and ${table.effectiveFrom} is null and ${table.reviewDueAt} is null and ${table.reviewEvidenceJson} is null)
+    or (${table.reviewStatus} = 'approved' and ${table.approvedByUserId} is not null and ${table.approvedByUserId} <> ${table.preparedByUserId}
+      and ${table.reviewedAt} is not null and ${table.effectiveFrom} is not null and ${table.reviewDueAt} is not null
+      and ${table.createdAt} <= ${table.reviewedAt} and ${table.reviewedAt} <= ${table.effectiveFrom} and ${table.effectiveFrom} < ${table.reviewDueAt}
+      and ${table.reviewEvidenceJson} is not null and jsonb_typeof(${table.reviewEvidenceJson}) = 'object' and octet_length(${table.reviewEvidenceJson}::text) <= 16384)`),
+}));
+
+export const guidePublications = pgTable("guide_publications", {
+  guideId: uuid("guide_id").primaryKey(),
+  versionId: uuid("version_id").notNull(),
+  contentSha256: text("content_sha256").notNull(),
+  approvalSha256: text("approval_sha256").notNull(),
+  revision: integer("revision").notNull(),
+  status: text("status").notNull().default("active"),
+  ...timestamps,
+}, table => ({
+  versionFk: foreignKey({ name: "guide_publication_version_fk", columns: [table.versionId, table.guideId], foreignColumns: [guideVersions.id, guideVersions.guideId] }).onDelete("restrict"),
+  digestCheck: check("guide_publication_digest_check", sql`${table.contentSha256} ~ '^[a-f0-9]{64}$' and ${table.approvalSha256} ~ '^[a-f0-9]{64}$'`),
+  revisionCheck: check("guide_publication_revision_check", sql`${table.revision} > 0`),
+  statusCheck: check("guide_publication_status_check", sql`${table.status} in ('active','withdrawn')`),
+}));
 
 export const schools = pgTable(
   "schools",
@@ -358,6 +462,13 @@ export const schools = pgTable(
     cityIdx: index("schools_city_idx").on(table.cityId),
     statusIdx: index("schools_status_idx").on(table.status),
     verificationIdx: index("schools_verification_status_idx").on(table.verificationStatus),
+    publicSearchTrgmIdx: index("schools_public_search_trgm_idx").using("gin", sql`(
+      coalesce(lower(${table.nameEn}), '') || ' ' || coalesce(lower(${table.nameZh}), '') || ' ' ||
+      coalesce(lower(${table.slug}), '') || ' ' || coalesce(lower(${table.city}), '') || ' ' ||
+      coalesce(lower(${table.cityZh}), '') || ' ' || coalesce(lower(${table.province}), '') || ' ' ||
+      coalesce(lower(${table.schoolType}), '') || ' ' || coalesce(lower(${table.region}), '') || ' ' ||
+      lower(${table.subjectTags}::text) || ' ' || lower(${table.languageTags}::text)
+    ) gin_trgm_ops`).where(sql`${table.status} = 'active'`),
   }),
 );
 
@@ -642,6 +753,13 @@ export const programs = pgTable(
     idSchoolUnique: uniqueIndex("programs_id_school_unique").on(table.id, table.schoolId),
     cityIdx: index("programs_city_idx").on(table.cityId),
     degreeStatusIdx: index("programs_degree_status_idx").on(table.degreeLevel, table.status),
+    publicSearchTrgmIdx: index("programs_public_search_trgm_idx").using("gin", sql`(
+      coalesce(lower(${table.nameEn}), '') || ' ' || coalesce(lower(${table.nameZh}), '') || ' ' ||
+      coalesce(lower(${table.fieldCategory}), '') || ' ' || coalesce(lower(${table.subjectArea}), '') || ' ' ||
+      coalesce(lower(${table.degreeLevel}), '') || ' ' || coalesce(lower(${table.teachingLanguage}), '') || ' ' ||
+      coalesce(lower(${table.scholarshipText}), '') || ' ' || coalesce(lower(${table.englishRequirement}), '') || ' ' ||
+      coalesce(lower(${table.hskRequirement}), '')
+    ) gin_trgm_ops`).where(sql`${table.status} = 'active'`),
   }),
 );
 
@@ -861,6 +979,15 @@ export const scholarships = pgTable(
     schoolIdx: index("scholarships_school_idx").on(table.schoolId),
     programIdx: index("scholarships_program_idx").on(table.programId),
     statusIdx: index("scholarships_status_idx").on(table.status),
+    publicSearchTrgmIdx: index("scholarships_public_search_trgm_idx").using("gin", sql`(
+      coalesce(lower(${table.title}), '') || ' ' || coalesce(lower(${table.nameZh}), '') || ' ' ||
+      coalesce(lower(${table.providerName}), '') || ' ' || coalesce(lower(${table.providerNameEn}), '') || ' ' ||
+      coalesce(lower(${table.providerLocation}), '') || ' ' || coalesce(lower(${table.type}), '') || ' ' ||
+      coalesce(lower(${table.typeLabel}), '') || ' ' || coalesce(lower(${table.fundingLevel}), '') || ' ' ||
+      coalesce(lower(${table.coverage}), '') || ' ' || coalesce(lower(${table.applicableDegree}), '') || ' ' ||
+      coalesce(lower(${table.applicableProgram}), '') || ' ' || coalesce(lower(${table.summary}), '') || ' ' ||
+      lower(${table.tags}::text)
+    ) gin_trgm_ops`).where(sql`${table.status} = 'active' and ${table.verificationStatus} = 'verified'`),
   }),
 );
 

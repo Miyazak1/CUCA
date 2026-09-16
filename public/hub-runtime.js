@@ -66,6 +66,14 @@ function textOrFallback(value, fallback = "Not recorded") {
   return typeof value === "string" && value.trim() ? value.trim() : fallback;
 }
 
+const applicationSetIdPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function applicationSetHref(set) {
+  if (!applicationSetIdPattern.test(set?.id || "")) return "application.html";
+  const hash = set.status === "draft" ? "#overview" : "#send";
+  return `application.html?applicationSet=${encodeURIComponent(set.id)}${hash}`;
+}
+
 function renderMetrics() {
   const activeChoices = hubState.applicationSets.flatMap(set => Array.isArray(set.choices) ? set.choices : [])
     .filter(choice => choice?.status !== "removed").length;
@@ -81,6 +89,45 @@ function renderMetrics() {
   }
 }
 
+function renderNextStep() {
+  const title = document.querySelector("[data-hub-next-title]");
+  const copy = document.querySelector("[data-hub-next-copy]");
+  const action = document.querySelector("[data-hub-next-action]");
+  const stage = document.querySelector("[data-hub-next-stage]");
+  const attention = document.querySelector("[data-hub-next-attention]");
+  if (!title || !copy || !action || !stage || !attention) return;
+
+  if (hubState.errors.applications) {
+    title.textContent = "Your application records are temporarily unavailable";
+    copy.textContent = "Your saved work has not been changed. Try the application workspace again in a moment.";
+    action.textContent = "Try application workspace";
+    stage.textContent = "Unavailable";
+    attention.textContent = "Reconnect to application records";
+    return;
+  }
+
+  const activeSets = hubState.applicationSets.filter(set => set?.status !== "archived");
+  const activeChoices = activeSets.flatMap(set => Array.isArray(set.choices) ? set.choices : [])
+    .filter(choice => choice?.status !== "removed");
+  if (!activeSets.length || !activeChoices.length) {
+    title.textContent = "Choose your first school and program";
+    copy.textContent = "Add one exact program to start the application. You can review requirements before anything is sent.";
+    action.textContent = "Browse and add a program";
+    action.href = "programs.html";
+    stage.textContent = "Not started";
+    attention.textContent = "Select a program";
+    return;
+  }
+
+  const current = activeSets.find(set => set?.status === "draft") || activeSets[0];
+  title.textContent = "Continue your current application";
+  copy.textContent = `${activeChoices.length} active ${activeChoices.length === 1 ? "choice" : "choices"}. Review the next required section before payment or submission.`;
+  action.textContent = "Continue application";
+  action.href = applicationSetHref(current);
+  stage.textContent = textOrFallback(current.status, "In progress").replaceAll("_", " ");
+  attention.textContent = current.cuacId ? "Review required information" : "Complete setup for a CUAC reference";
+}
+
 function renderApplications() {
   const root = document.querySelector("[data-hub-applications]");
   if (!root) return;
@@ -94,7 +141,7 @@ function renderApplications() {
   }
   root.innerHTML = `<ol class="hub-api-application-list">${hubState.applicationSets.slice(0, 5).map(set => {
     const choices = Array.isArray(set.choices) ? set.choices.filter(choice => choice?.status !== "removed") : [];
-    return `<li class="hub-api-application">
+    return `<li class="hub-api-application"><a class="hub-api-application-link" href="${applicationSetHref(set)}" aria-label="Open ${escapeHtml(textOrFallback(set.name, "unnamed application"))}">
       <div>
         <span class="hub-api-status">${escapeHtml(textOrFallback(set.status, "unknown"))}</span>
         <h3>${escapeHtml(textOrFallback(set.name, "Unnamed application set"))}</h3>
@@ -105,7 +152,7 @@ function renderApplications() {
         <span>${escapeHtml(set.targetIntake || "No target intake")}</span>
         <span>Revision ${escapeHtml(Number.isInteger(set.revision) ? set.revision : "-")}</span>
       </div>
-    </li>`;
+    </a></li>`;
   }).join("")}</ol>`;
 }
 
@@ -154,6 +201,7 @@ function renderProfile() {
 }
 
 function renderHub() {
+  renderNextStep();
   renderMetrics();
   renderApplications();
   renderNotifications();

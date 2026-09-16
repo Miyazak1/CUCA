@@ -77,6 +77,10 @@ export function resolveLocalPort(value: string | undefined, fallback: number, la
   return port;
 }
 
+export function isDockerPortConflictDiagnostic(value: string): boolean {
+  return /port is already allocated|ports? (?:are|is) not available|address already in use|bind for .* failed|listen tcp .* bind:|forbidden by its access permissions/i.test(value);
+}
+
 export function createLocalDevelopmentState(input: {
   postgresImageId: string;
   postgresPort?: number;

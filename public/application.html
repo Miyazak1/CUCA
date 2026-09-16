@@ -3,26 +3,66 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CUAC | Application basket</title>
+    <title>CUAC | My applications</title>
     <link rel="stylesheet" href="shared-shell.css" />
-    <link rel="stylesheet" href="application.css" />
+    <link rel="stylesheet" href="application.css?v=20260915-spacing-v3" />
   </head>
   <body data-agent-mode="off">
     <div class="page application-page">
       <div data-cuac-header data-active="hub" data-note="CUAC Application:" data-note-detail="multi-choice China study workspace"></div>
 
       <main>
+        <section class="application-overview reveal" id="overview" data-application-step="overview" aria-label="Application overview">
+          <div class="overview-next">
+            <div>
+              <span class="module-kicker">Your next step</span>
+              <h2 data-overview-next-title>Choose a school and program</h2>
+              <p data-overview-next-detail>Complete one required step at a time. Nothing is sent until your final review.</p>
+            </div>
+            <button class="primary-action" type="button" data-overview-next-action data-next-application-step="choices">Add a program</button>
+          </div>
+
+          <div class="section-cards overview-section-cards" aria-label="Required application sections">
+            <button class="section-card ready" type="button" data-overview-step="choices" data-flow-target="choices">
+              <strong>1. School choices</strong>
+              <p>Pick exact programs.</p>
+              <em class="section-status" data-overview-step-status="choices">Start here</em>
+            </button>
+            <button class="section-card ready" type="button" data-overview-step="info" data-flow-target="info">
+              <strong>2. Student info</strong>
+              <p>Confirm what schools receive.</p>
+              <em class="section-status" data-overview-step-status="info">After choices</em>
+            </button>
+            <button class="section-card warning" type="button" data-overview-step="fee" data-flow-target="fee" hidden>
+              <strong>3. Fee review</strong>
+              <p>Understand the total.</p>
+              <em class="section-status" data-overview-step-status="fee">After information</em>
+            </button>
+            <button class="section-card warning" type="button" data-overview-step="payment" data-flow-target="payment" hidden>
+              <strong>4. Payment</strong>
+              <p>Complete the CUAC fee.</p>
+              <em class="section-status" data-overview-step-status="payment">After fee review</em>
+            </button>
+            <button class="section-card locked" type="button" data-overview-step="send" data-flow-target="send">
+              <strong>3. Send to schools</strong>
+              <p>Share basic information for school follow-up.</p>
+              <em class="section-status" data-overview-step-status="send">Final step</em>
+            </button>
+          </div>
+        </section>
+
         <section class="app-hero reveal" aria-label="Application status">
           <article class="draft-card set-card application-status-card">
             <div class="status-copy">
               <a class="back-link" href="hub-api.html">Back to Hub</a>
+              <nav class="application-set-switcher" data-application-set-switcher aria-label="Application sets" hidden></nav>
               <p class="eyebrow">Application status</p>
-              <h1>Application center</h1>
-              <p class="status-helper">Complete, pay, send.</p>
+              <h1>My applications</h1>
+              <p class="status-helper">Your application record and progress details.</p>
               <div class="status-facts">
                 <span><strong data-application-label>Application draft</strong><em data-application-scope>server record</em></span>
                 <span><strong data-school-count>0</strong><em>schools</em></span>
-                <span><strong data-total-fee>Not quoted</strong><em>due now</em></span>
+                <span><strong>Not required</strong><em>CUAC payment now</em></span>
                 <span><strong data-earliest-deadline>Not set</strong><em>earliest date</em></span>
               </div>
               <div class="application-gate" data-application-gate hidden aria-live="polite"></div>
@@ -44,12 +84,12 @@
                 <strong>Student info</strong>
                 <em data-step-status="info">Ready</em>
               </button>
-              <button class="status-ring" type="button" data-required-step="fee" data-flow-target="fee">
+              <button class="status-ring" type="button" data-required-step="fee" data-flow-target="fee" hidden>
                 <span><b>Fee</b></span>
                 <strong>Fee review</strong>
                 <em data-step-status="fee">Locked</em>
               </button>
-              <button class="status-ring" type="button" data-required-step="payment" data-flow-target="payment">
+              <button class="status-ring" type="button" data-required-step="payment" data-flow-target="payment" hidden>
                 <span><b>Pay</b></span>
                 <strong>Payment</strong>
                 <em data-step-status="payment">Locked</em>
@@ -62,7 +102,7 @@
               <div class="status-ring status-ring-total" aria-label="Overall application readiness">
                 <span><b data-progress-label>0%</b><i data-progress-bar></i></span>
                 <strong>Overall</strong>
-                <em>ready</em>
+                <em>steps complete</em>
               </div>
             </div>
           </article>
@@ -80,45 +120,6 @@
               <span>Your CUAC ID</span>
               <strong data-cuac-id>Not assigned</strong>
             </aside>
-          </div>
-        </section>
-
-        <section class="application-overview reveal" id="overview" data-application-step="overview" aria-label="Application overview">
-          <div class="overview-next">
-            <div>
-              <span class="module-kicker">Next</span>
-              <h2 data-overview-next-title>Next step</h2>
-              <p data-overview-next-detail>Finish one section at a time.</p>
-            </div>
-            <button class="primary-action" type="button" data-overview-next-action data-next-application-step="choices">Review choices</button>
-          </div>
-
-          <div class="section-cards overview-section-cards" aria-label="Required application sections">
-            <button class="section-card ready" type="button" data-overview-step="choices" data-flow-target="choices">
-              <strong>School choices</strong>
-              <p>Pick and order programs.</p>
-              <em class="section-status" data-overview-step-status="choices">Confirm</em>
-            </button>
-            <button class="section-card ready" type="button" data-overview-step="info" data-flow-target="info">
-              <strong>Student info</strong>
-              <p>Confirm what schools receive.</p>
-              <em class="section-status" data-overview-step-status="info">Review</em>
-            </button>
-            <button class="section-card warning" type="button" data-overview-step="fee" data-flow-target="fee">
-              <strong>Fee review</strong>
-              <p>Check before payment.</p>
-              <em class="section-status" data-overview-step-status="fee">Locked</em>
-            </button>
-            <button class="section-card warning" type="button" data-overview-step="payment" data-flow-target="payment">
-              <strong>Payment</strong>
-              <p>Pay CUAC fee.</p>
-              <em class="section-status" data-overview-step-status="payment">Locked</em>
-            </button>
-            <button class="section-card locked" type="button" data-overview-step="send" data-flow-target="send">
-              <strong>Send to schools</strong>
-              <p>Final review and submit.</p>
-              <em class="section-status" data-overview-step-status="send">Locked</em>
-            </button>
           </div>
         </section>
 
@@ -185,16 +186,17 @@
                   <p>Planned tests and reported results</p>
                   <em data-profile-section-status="assessments">Loading</em>
                 </button>
-                <button class="profile-section-card" type="button" data-profile-section-target="files">
+                <button class="profile-section-card" type="button" data-profile-section-target="files" hidden aria-hidden="true">
                   <strong>Private files</strong>
                   <p>Uploaded evidence and scan status</p>
                   <em data-profile-section-status="files">Not connected</em>
                 </button>
-                <button class="profile-section-card" type="button" data-profile-section-target="authorization">
+                <button class="profile-section-card" type="button" data-profile-section-target="authorization" hidden aria-hidden="true">
                   <strong>Submission sharing</strong>
                   <p>Approval for each exact program choice</p>
                   <em data-profile-section-status="authorization">Required later</em>
                 </button>
+                <p class="profile-release-boundary"><strong>Current release boundary</strong> Application materials are submitted directly to each school through its official channel. CUAC does not collect, store or send student application materials in this release.</p>
               </div>
 
               <div class="profile-editor-shell" data-profile-editor hidden>
@@ -202,8 +204,8 @@
                   <button class="active" type="button" data-profile-section-target="applicant"><span>Applicant record</span><em data-profile-section-status="applicant">Loading</em></button>
                   <button type="button" data-profile-section-target="education"><span>Education history</span><em data-profile-section-status="education">Loading</em></button>
                   <button type="button" data-profile-section-target="assessments"><span>Exams & tests</span><em data-profile-section-status="assessments">Loading</em></button>
-                  <button type="button" data-profile-section-target="files"><span>Private files</span><em data-profile-section-status="files">Not connected</em></button>
-                  <button type="button" data-profile-section-target="authorization"><span>Submission sharing</span><em data-profile-section-status="authorization">Required later</em></button>
+                  <button type="button" data-profile-section-target="files" hidden aria-hidden="true"><span>Private files</span><em data-profile-section-status="files">Not available</em></button>
+                  <button type="button" data-profile-section-target="authorization" hidden aria-hidden="true"><span>Submission sharing</span><em data-profile-section-status="authorization">Not available</em></button>
                 </nav>
                 <div class="profile-section-panels">
                   <section class="profile-form-panel active" data-profile-section="applicant">
@@ -299,7 +301,7 @@
                     <p class="record-operation-status" data-profile-operation-status="assessments" aria-live="polite"></p>
                   </section>
 
-                  <section class="profile-form-panel" data-profile-section="files">
+                  <section class="profile-form-panel" data-profile-section="files" hidden aria-hidden="true">
                     <div class="profile-panel-head">
                       <span>Private evidence</span>
                       <strong>Private files</strong>
@@ -324,7 +326,7 @@
                     <p class="record-operation-status" data-profile-operation-status="files" aria-live="polite"></p>
                   </section>
 
-                  <section class="profile-form-panel" data-profile-section="authorization">
+                  <section class="profile-form-panel" data-profile-section="authorization" hidden aria-hidden="true">
                     <div class="profile-panel-head">
                       <span>Choice-specific approval</span>
                       <strong>Review each material envelope</strong>
@@ -352,12 +354,12 @@
               </div>
             </div>
             <div class="action-row step-action-row">
-              <button class="primary-action" type="button" data-next-application-step="fee">Confirm info</button>
+              <button class="primary-action" type="button" data-next-application-step="send">Confirm info</button>
               <button class="secondary-action" type="button" data-next-application-step="choices">Back</button>
             </div>
           </article>
 
-          <aside class="fee-card" id="fee" data-fee-card>
+          <aside class="fee-card" id="fee" data-fee-card hidden>
             <div class="section-head">
               <div><span class="module-kicker">Fee review</span><h2>Check fee before payment</h2></div>
               <span class="source-pill" data-fee-quote-source>Server quote</span>
@@ -390,7 +392,7 @@
                   <h3>Before payment</h3>
                   <span data-submit-check="choices"><b>Choices</b><em>Confirm order</em></span>
                   <span data-submit-check="info"><b>Student info</b><em>Ready for school</em></span>
-                  <span data-submit-check="consent"><b>Per-choice authorization</b><em>Not authorized</em></span>
+                  <span data-submit-check="consent"><b>School handoff</b><em>Materials sent directly to school</em></span>
                 </div>
                 <div class="fee-actions">
                   <button class="primary-action full-action" type="button" data-open-payment data-submit-action>Continue to payment</button>
@@ -402,7 +404,7 @@
           </aside>
         </section>
 
-        <section class="payment-page reveal" id="payment" data-application-step="payment" aria-label="Payment review">
+        <section class="payment-page reveal" id="payment" data-application-step="payment" aria-label="Payment review" hidden>
           <div class="payment-page-head">
             <div>
               <span class="module-kicker">Payment</span>
@@ -419,7 +421,7 @@
             <aside class="payment-side-panel">
               <div class="payment-status-panel" data-payment-status aria-live="polite"></div>
               <div class="consent-row" data-submit-authorization-status>
-                <span>Payment stays locked until every exact application choice has a current material snapshot and submission authorization.</span>
+                <span>Application materials are handled directly with each school and are not included in CUAC checkout.</span>
               </div>
               <div class="fee-actions">
                 <button class="primary-action full-action" type="button" data-start-checkout>Open secure checkout</button>
@@ -435,38 +437,37 @@
           <div data-send-review>
             <div>
               <span class="module-kicker">Send review</span>
-              <h2>Submit the exact application set</h2>
-              <p>Review every program and intake. CUAC will lock this set atomically, then queue policy-bound delivery groups for the selected schools.</p>
+              <h2>Send basic information to schools</h2>
+              <p>Review every program and intake. CUAC shares only your saved basic profile and education history; application materials stay between you and each school.</p>
             </div>
             <div class="send-review-grid">
               <article><span>Schools</span><strong data-school-count>0</strong></article>
-              <article><span>Payment</span><strong data-fee-step>Not quoted</strong></article>
+              <article><span>CUAC payment</span><strong>Not required now</strong></article>
               <article><span>Student info</span><strong>Ready</strong></article>
             </div>
             <div class="school-status-grid" data-send-school-list></div>
             <form class="submission-confirmation-form" data-submission-confirmation-form>
               <label><span>Confirm your account password</span><input name="password" type="password" autocomplete="current-password" required maxlength="1024" /></label>
-              <div><button class="primary-action" type="submit" data-submit-application>Authorize and submit application set</button><button class="secondary-action" type="button" data-next-application-step="payment">Back to payment</button></div>
-              <p>Password confirmation creates a short-lived step-up session. Submission then locks the complete application set and creates one school application per exact program and intake.</p>
+              <div><button class="primary-action" type="submit" data-submit-application>Confirm and send to schools</button><button class="secondary-action" type="button" data-next-application-step="info">Back to student info</button></div>
+              <p>Password confirmation protects this handoff. Schools receive basic information only and will contact you directly about materials or their own fees.</p>
             </form>
             <p class="payment-error" data-submission-error hidden aria-live="polite"></p>
           </div>
           <div data-sent-tracker hidden>
             <div>
-              <span class="module-kicker">CUAC accepted</span>
-              <h2>Submission locked and queued</h2>
-              <p>The receipt below confirms CUAC internal acceptance. School delivery status advances separately through the official delivery queue.</p>
+              <span class="module-kicker">Sent to schools</span>
+              <h2>Basic information delivered</h2>
+              <p>Follow each school's latest review and contact status below. Materials and school fees are handled directly with the school.</p>
             </div>
             <div class="next-steps">
-              <article><strong>Application set locked</strong><span>The submitted choices and source revision cannot drift.</span></article>
-              <article><strong>Delivery grouped by policy</strong><span>Each recipient receives only its authorized program records.</span></article>
-              <article><strong>Watch status</strong><span>School contact follows external delivery and review.</span></article>
+              <article><strong>Choices locked</strong><span>The schools and programs you sent cannot drift.</span></article>
+              <article><strong>Basic information only</strong><span>No application materials or payment details were shared.</span></article>
+              <article><strong>Watch status</strong><span>Each school can record contact and review progress.</span></article>
             </div>
             <div class="submission-receipt-strip" data-submission-receipt></div>
             <div class="school-status-grid" data-submitted-school-list></div>
             <div class="action-row">
-              <a class="primary-action" href="application.html#send">View submission status</a>
-              <a class="secondary-action" href="billing-api.html">View billing</a>
+              <a class="primary-action" href="application.html#send" data-submission-status-link>View submission status</a>
               <a class="secondary-action" href="hub-api.html">Back to Hub</a>
             </div>
           </div>
@@ -485,7 +486,7 @@
             <span class="module-kicker">Add choice</span>
             <h2 id="choice-dialog-title">Add choice</h2>
             <p>Select one university and one concrete program from CUAC data, then add it to this application set.</p>
-            <p class="choice-fee-note">The current server fee quote appears after you save the exact program and intake choices.</p>
+            <p class="choice-fee-note">After saving, confirm the order and your basic information before sending it to schools.</p>
           </div>
           <button class="choice-dialog-close" type="button" data-close-choice-modal aria-label="Close add choice">×</button>
         </div>
@@ -534,6 +535,6 @@
     </div>
 
     <script src="shared-shell.js"></script>
-    <script src="application.js"></script>
+    <script src="application.js?v=20260914-student-flow-fix"></script>
   </body>
 </html>

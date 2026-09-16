@@ -36,9 +36,12 @@ let catalogProgramsById = new Map();
 let catalogSchoolsById = new Map();
 const catalogIntakesByProgramId = new Map();
 const catalogProgramDetailIds = new Set();
+const unavailableCatalogProgramIds = new Set();
 let currentApplicationStage = "overview";
 const applicationStages = ["overview", "choices", "info", "fee", "payment", "send"];
-const profileSections = ["applicant", "education", "assessments", "files", "authorization"];
+const STUDENT_MATERIAL_SUBMISSION_ENABLED = false;
+const APPLICATION_PAYMENT_ENABLED = false;
+const profileSections = ["applicant", "education", "assessments"];
 const profileSectionRouteAliases = {
   account: "applicant",
   personal: "applicant",
@@ -213,12 +216,12 @@ function renderIcons() {
 
 function getRequiredStepState() {
   const infoReady = isStudentProfileReady();
-  const choicesReady = choiceCount > 0 && orderConfirmed;
+  const choicesReady = choiceCount > 0 && (!APPLICATION_PAYMENT_ENABLED || orderConfirmed);
   const canReviewFee = choiceCount > 0 || submittedToSchools;
   const submitReady = choicesReady && infoReady;
-  const paymentComplete = submittedToSchools || isBillingEntitlementReady();
-  const feeComplete = paymentComplete || submitReady;
-  const sendReady = submittedToSchools || paymentComplete;
+  const paymentComplete = !APPLICATION_PAYMENT_ENABLED || submittedToSchools || isBillingEntitlementReady();
+  const feeComplete = !APPLICATION_PAYMENT_ENABLED || paymentComplete || submitReady;
+  const sendReady = submittedToSchools || (!APPLICATION_PAYMENT_ENABLED ? submitReady : paymentComplete);
   return {
     choices: {
       complete: choicesReady,
@@ -233,17 +236,17 @@ function getRequiredStepState() {
     fee: {
       complete: feeComplete,
       open: canReviewFee,
-      status: paymentComplete ? "Done" : feeComplete ? "Ready" : canReviewFee ? "Review" : "Locked",
+      status: !APPLICATION_PAYMENT_ENABLED ? "Later" : paymentComplete ? "Done" : feeComplete ? "Ready" : canReviewFee ? "Review" : "Locked",
     },
     payment: {
       complete: paymentComplete,
       open: submitReady || paymentComplete,
-      status: paymentComplete ? "Paid" : submitReady ? "Pay" : "Locked",
+      status: !APPLICATION_PAYMENT_ENABLED ? "Later" : paymentComplete ? "Paid" : submitReady ? "Pay" : "Locked",
     },
     send: {
       complete: submittedToSchools,
       open: sendReady,
-      status: submittedToSchools ? "Sent" : paymentComplete ? "Ready" : submitReady ? "Pay first" : "Locked",
+      status: submittedToSchools ? "Sent" : sendReady ? "Ready" : APPLICATION_PAYMENT_ENABLED && submitReady ? "Pay first" : "Locked",
     },
   };
 }
@@ -310,7 +313,7 @@ function getOverviewNextAction(state = getRequiredStepState()) {
       action: "Review student info",
     };
   }
-  if (!state.fee.complete) {
+  if (APPLICATION_PAYMENT_ENABLED && !state.fee.complete) {
     return {
       target: "fee",
       title: "Check fee",
@@ -318,7 +321,7 @@ function getOverviewNextAction(state = getRequiredStepState()) {
       action: "Fee review",
     };
   }
-  if (!state.payment.complete) {
+  if (APPLICATION_PAYMENT_ENABLED && !state.payment.complete) {
     return {
       target: "payment",
       title: "Pay CUAC fee",
@@ -329,15 +332,15 @@ function getOverviewNextAction(state = getRequiredStepState()) {
   if (!submittedToSchools) {
     return {
       target: "send",
-      title: "Ready to submit",
-      detail: "Review the exact set before CUAC locks and queues it.",
-      action: "Submit review",
+      title: "Ready to send",
+      detail: "Review the exact choices and basic information schools will receive.",
+      action: "Send review",
     };
   }
   return {
     target: "send",
-    title: "Accepted by CUAC",
-    detail: "Track official delivery and later school actions separately.",
+    title: "Sent to schools",
+    detail: "Track each school's contact and review progress here.",
     action: "View status",
   };
 }
@@ -357,18 +360,12 @@ function updateOverviewNextAction(state = getRequiredStepState()) {
 
 function updateProgress() {
   const state = getRequiredStepState();
-  const progress = submittedToSchools
-    ? 100
-    : Math.min(
-        92,
-        18 +
-          (choiceCount ? 8 : 0) +
-          (state.choices.complete ? 18 : 0) +
-          (state.info.complete ? 22 : 0) +
-          (state.fee.open ? 8 : 0) +
-          (state.payment.complete ? 18 : 0),
-      );
-  document.querySelector("[data-progress-label]").textContent = `${progress}%`;
+  const steps = APPLICATION_PAYMENT_ENABLED
+    ? [state.choices, state.info, state.fee, state.payment, state.send]
+    : [state.choices, state.info, state.send];
+  const completedSteps = steps.filter(step => step.complete).length;
+  const progress = Math.round((completedSteps / steps.length) * 100);
+  document.querySelector("[data-progress-label]").textContent = `${completedSteps}/${steps.length}`;
   document.querySelector("[data-progress-bar]").style.width = `${progress}%`;
   document.querySelector("[data-progress-bar]")?.closest(".status-ring")?.style.setProperty("--progress", `${progress}%`);
   updateRequiredStepCards();
@@ -397,9 +394,9 @@ function canOpenApplicationStage(stage) {
   if (stage === "overview") return true;
   if (stage === "choices") return true;
   if (stage === "info") return true;
-  if (stage === "fee") return choiceCount > 0 || submittedToSchools;
-  if (stage === "payment") return getSubmitBlockers().length === 0 || submittedToSchools;
-  if (stage === "send") return submittedToSchools || getRequiredStepState().payment.complete;
+  if (stage === "fee") return APPLICATION_PAYMENT_ENABLED && (choiceCount > 0 || submittedToSchools);
+  if (stage === "payment") return APPLICATION_PAYMENT_ENABLED && (getSubmitBlockers().length === 0 || submittedToSchools);
+  if (stage === "send") return submittedToSchools || getSubmitBlockers().length === 0;
   return false;
 }
 
@@ -436,7 +433,7 @@ function setApplicationStage(stage, { scroll = false } = {}) {
       } else {
         stage = currentApplicationStage;
       }
-    } else if (stage === "send") {
+    } else if (stage === "send" && APPLICATION_PAYMENT_ENABLED) {
       if (canOpenApplicationStage("fee")) {
         showPageAction("Complete payment before final send.");
         stage = canOpenApplicationStage("payment") ? "payment" : "fee";
@@ -520,6 +517,12 @@ async function confirmChoice({ scrollToFee = false } = {}) {
 
 function resetChoiceConfirmationAfterChange() {
   invalidateBillingState();
+  if (!APPLICATION_PAYMENT_ENABLED) {
+    orderConfirmed = choiceCount > 0;
+    syncChoiceConfirmationUi();
+    updateProgress();
+    return;
+  }
   if (!orderConfirmed) return;
   orderConfirmed = false;
   document.querySelector("[data-choice-status]").textContent = choiceRingValue();
@@ -656,18 +659,25 @@ async function ensureProgramIntakes(programId) {
 }
 
 async function ensureProgramDetail(programId) {
-  const summary = catalogProgramsById.get(programId);
-  if (!summary) throw new Error("The selected published program is unavailable.");
-  if (catalogProgramDetailIds.has(programId)) return summary;
+  let summary = catalogProgramsById.get(programId);
+  if (catalogProgramDetailIds.has(programId) && summary) return summary;
   const detail = await applicationApi(`/api/v1/catalog/programs/${encodeURIComponent(programId)}`);
-  if (!detail || detail.id !== programId || detail.schoolId !== summary.schoolId) {
+  if (!detail || detail.id !== programId || (summary && detail.schoolId !== summary.schoolId)) {
     throw new Error("The published program detail did not match the selected school and program.");
   }
-  const school = summary.school;
-  Object.assign(summary, detail, {
-    university: detail.school?.nameEn || summary.university,
-    school: { ...school, ...detail.school },
-  });
+  const knownSchool = catalogSchoolsById.get(detail.schoolId) || {};
+  const school = { ...knownSchool, ...(summary?.school || {}), ...(detail.school || {}) };
+  if (school.id) catalogSchoolsById.set(school.id, school);
+  summary = {
+    ...(summary || {}),
+    ...detail,
+    university: detail.school?.nameEn || summary?.university || school.nameEn || "Published university",
+    school,
+  };
+  catalogProgramsById.set(programId, summary);
+  const university = appProgramSchoolName(summary);
+  if (!programCatalog[university]) programCatalog[university] = [];
+  if (!programCatalog[university].some((item) => appProgramId(item) === programId)) programCatalog[university].push(summary);
   catalogProgramDetailIds.add(programId);
   return summary;
 }
@@ -719,6 +729,7 @@ function applicationChoiceRoute(choice) {
   const school = catalogSchoolsById.get(choice?.schoolId);
   const intake = (choice?.programId ? catalogIntakesByProgramId.get(choice.programId) : [])
     ?.find((item) => item.id === choice.programIntakeId);
+  const unavailable = !choice?.programId || !program || unavailableCatalogProgramIds.has(choice.programId);
   return {
     ...(program || {}),
     choiceId: choice.id,
@@ -726,15 +737,18 @@ function applicationChoiceRoute(choice) {
     programId: choice.programId || "",
     programIntakeId: choice.programIntakeId || "",
     university: school?.nameEn || program?.university || "Published university",
-    program: program?.nameEn || "Published program",
-    programName: program?.nameEn || "Published program",
+    program: program?.nameEn || "Program no longer available",
+    programName: program?.nameEn || "Program no longer available",
     degree: program ? appProgramDegree(program) : "Degree",
-    city: school?.cityZh || school?.city || program?.city || "China",
+    city: school
+      ? appProgramCity({ ...(program || {}), school, city: school.cityZh || school.city || program?.city })
+      : appProgramCity(program || {}),
     intake: intakeDisplayName(intake),
     language: program ? appProgramLanguage(program) : "Language pending",
     tuition: program?.tuitionText || program?.displayTuition || "Tuition pending",
     deadline: intake?.deadlineLabel || intake?.deadlineDate || program?.deadlineLabel || "Deadline pending",
-    signal: choice.status || "draft",
+    signal: unavailable ? "Replace or remove" : choice.status || "draft",
+    unavailable,
     choiceNote: choice.studentNotes || "",
     rankOrder: choice.rankOrder,
   };
@@ -744,7 +758,11 @@ async function renderServerApplicationSet(applicationSet) {
   currentApplicationSet = applicationSet;
   const choices = Array.isArray(applicationSet?.choices) ? [...applicationSet.choices].sort((a, b) => a.rankOrder - b.rankOrder) : [];
   const programIds = [...new Set(choices.map((choice) => choice.programId).filter(Boolean))];
-  await Promise.all(programIds.flatMap((programId) => [ensureProgramDetail(programId), ensureProgramIntakes(programId)]));
+  unavailableCatalogProgramIds.clear();
+  await Promise.all(programIds.map(async (programId) => {
+    const results = await Promise.allSettled([ensureProgramDetail(programId), ensureProgramIntakes(programId)]);
+    if (results.some((result) => result.status === "rejected")) unavailableCatalogProgramIds.add(programId);
+  }));
   const choiceRoutes = choices.map(applicationChoiceRoute);
   const list = document.querySelector("[data-choice-list]");
   if (!list) return;
@@ -766,7 +784,7 @@ async function renderServerApplicationSet(applicationSet) {
   document.querySelectorAll("[data-cuac-id]").forEach((target) => { target.textContent = cuacId; });
   document.querySelector('[name="cuacId"]')?.setAttribute("value", cuacId);
   submittedToSchools = applicationSet?.status !== "draft";
-  orderConfirmed = choices.length > 0 && applicationSet?.status !== "draft";
+  orderConfirmed = choices.length > 0 && (!APPLICATION_PAYMENT_ENABLED || applicationSet?.status !== "draft");
   applicationRuntimeState = "ready";
   for (const choiceId of [...materialChoiceStates.keys()]) {
     if (!choices.some((choice) => choice.id === choiceId)) materialChoiceStates.delete(choiceId);
@@ -776,6 +794,95 @@ async function renderServerApplicationSet(applicationSet) {
   updateChoiceLabels();
   syncChoiceConfirmationUi();
   updateSubmissionSummary();
+  if (submittedToSchools) {
+    await loadSchoolProgress();
+    renderSubmissionState();
+  }
+}
+
+async function loadSchoolProgress() {
+  if (!currentApplicationSet?.id) return null;
+  try {
+    const progress = await applicationApi(`/api/v1/student/application-sets/${encodeURIComponent(currentApplicationSet.id)}/school-progress`);
+    if (progress?.applicationSetId !== currentApplicationSet.id || !Array.isArray(progress.items)) {
+      throw new Error("School progress did not match this application set.");
+    }
+    submissionRecord = {
+      applicationSetId: currentApplicationSet.id,
+      cuacId: currentApplicationSet.cuacId,
+      revision: currentApplicationSet.revision,
+      status: "accepted",
+      handoffScope: "school_contact",
+      materialsShared: false,
+      paymentRequired: false,
+      programApplications: progress.items,
+    };
+    return progress;
+  } catch (error) {
+    setApplicationRuntimeMessage("School progress is temporarily unavailable", error.message);
+    return null;
+  }
+}
+
+const studentSchoolStatusLabels = {
+  new: "School received basic information",
+  needs_review: "Under school review",
+  contact_queued: "School preparing to contact you",
+  contacted: "School contacted you",
+  waiting_for_documents: "Send materials directly to the school",
+  documents_received_by_school: "School received your direct materials",
+  not_a_fit: "School marked this choice as not suitable",
+  converted_to_official_application: "Moved to the school's official application",
+  archived: "School closed this record",
+};
+
+function studentSchoolStatusLabel(status) {
+  return studentSchoolStatusLabels[status] || "Waiting for school update";
+}
+
+function applicationSetHref(applicationSet, hash = "#overview") {
+  if (!APPLICATION_SET_LOCATOR_PATTERN.test(applicationSet?.id || "")) return "application.html";
+  return `application.html?applicationSet=${encodeURIComponent(applicationSet.id)}${hash}`;
+}
+
+function renderApplicationSetSwitcher(applicationSets, selectedId) {
+  const switcher = document.querySelector("[data-application-set-switcher]");
+  if (!switcher) return;
+  const sets = Array.isArray(applicationSets) ? applicationSets.filter((item) => APPLICATION_SET_LOCATOR_PATTERN.test(item?.id || "")) : [];
+  switcher.hidden = sets.length < 2;
+  switcher.innerHTML = sets.map((item) => {
+    const active = item.id === selectedId;
+    const hash = item.status === "draft" ? "#overview" : "#send";
+    return `<a href="${applicationSetHref(item, hash)}" ${active ? 'aria-current="page"' : ""}><strong>${escapeHtml(item.name || "Unnamed application")}</strong><span>${escapeHtml(String(item.status || "unknown").replaceAll("_", " "))}</span></a>`;
+  }).join("");
+}
+
+async function prefillChoiceFromRoute(routeParams) {
+  const programId = routeParams.get("programId")?.trim() || "";
+  const intakeId = routeParams.get("intakeId")?.trim() || "";
+  if (!programId) return;
+  if (!APPLICATION_SET_LOCATOR_PATTERN.test(programId) || (intakeId && !APPLICATION_SET_LOCATOR_PATTERN.test(intakeId))) {
+    showPageAction("The selected program link is invalid. Choose a published program from the selector.");
+    return;
+  }
+  let program;
+  try {
+    program = await ensureProgramDetail(programId);
+    await ensureProgramIntakes(programId);
+  } catch {
+    showPageAction("That program is no longer available. Choose a current published program instead.");
+    return;
+  }
+  const form = document.querySelector("[data-choice-form]");
+  if (!form) return;
+  form.elements.degree.value = appProgramDegree(program);
+  renderUniversityOptions(form.elements.degree.value, appProgramSchoolName(program));
+  renderProgramOptions(form.elements.university.value, appProgramOptionValue(program));
+  await syncProgramFields();
+  if (intakeId && (catalogIntakesByProgramId.get(programId) || []).some((item) => item.id === intakeId)) {
+    renderIntakeOptions(catalogIntakesByProgramId.get(programId), intakeId);
+    await syncProgramFields();
+  }
 }
 
 async function refreshCurrentApplicationSet() {
@@ -809,7 +916,7 @@ async function initializeApplicationRuntime() {
     renderApplicantProfile();
     renderEducationHistory();
     renderAssessmentHistory();
-    void loadStudentFiles();
+    if (STUDENT_MATERIAL_SUBMISSION_ENABLED) void loadStudentFiles();
     rebuildProgramCatalog(Array.isArray(programs) ? programs : [], Array.isArray(schools) ? schools : []);
     const sets = Array.isArray(applicationSets) ? applicationSets : [];
     const routeParams = new URLSearchParams(location.search);
@@ -837,13 +944,14 @@ async function initializeApplicationRuntime() {
       ? sets.find((applicationSet) => applicationSet?.id === applicationSetLocator) || null
       : sets.find((applicationSet) => applicationSet?.status === "draft") || sets[0] || null;
     if (applicationSetLocator && !selected) throw new Error("The requested application set is not available to this student account.");
+    renderApplicationSetSwitcher(sets, selected?.id || "");
     if (selected?.id) {
       const current = await applicationApi(`/api/v1/student/application-sets/${encodeURIComponent(selected.id)}`);
       await renderServerApplicationSet(current);
       if (requestedInvoice) savePendingInvoiceLocator(requestedInvoice);
       if (current?.status === "draft") {
-        await refreshAllChoicePreflights();
-        await loadBillingFeePreview();
+        if (STUDENT_MATERIAL_SUBMISSION_ENABLED) await refreshAllChoicePreflights();
+        if (APPLICATION_PAYMENT_ENABLED) await loadBillingFeePreview();
         const checkoutHint = new URLSearchParams(location.search).get("checkout");
         if (readPendingInvoiceLocator()) await refreshCheckoutStatus({ silent: !requestedInvoice && checkoutHint !== "success" });
         else if (checkoutHint) {
@@ -864,6 +972,7 @@ async function initializeApplicationRuntime() {
     }
     renderUniversityOptions(document.querySelector("[data-degree-select]")?.value || "Master");
     await syncProgramFields();
+    await prefillChoiceFromRoute(routeParams);
     openChoiceModalFromHash();
   } catch (error) {
     applicationRuntimeState = "unavailable";
@@ -1050,6 +1159,7 @@ async function saveEducationRecord(form) {
     resetEducationForm();
     renderEducationHistory();
     updateSubmissionSummary();
+    updateProgress();
   } catch (error) {
     const detail = error.status === 409 ? "The history changed elsewhere. Reload before saving this record." : error.message;
     setProfileOperationStatus("education", `Education record was not saved: ${detail}`, "error");
@@ -1070,6 +1180,7 @@ async function removeEducationRecord(recordId, button) {
     invalidateMaterialPreparation();
     renderEducationHistory();
     updateSubmissionSummary();
+    updateProgress();
   } catch (error) {
     const detail = error.status === 409 ? "The history changed elsewhere. Reload before removing this record." : error.message;
     setProfileOperationStatus("education", `Education record was not removed: ${detail}`, "error");
@@ -1936,7 +2047,7 @@ function stepProfileSection(direction = 1) {
   }
   if (nextIndex >= profileSections.length) {
     showProfileOverview({ updateHash: true, replace: true });
-    setApplicationStage("fee", { scroll: true });
+    setApplicationStage(APPLICATION_PAYMENT_ENABLED ? "fee" : "send", { scroll: true });
     return;
   }
   openProfileDetail(profileSections[nextIndex], { focus: true, replace: true, scroll: false });
@@ -1951,6 +2062,7 @@ function isStudentProfileReady() {
 }
 
 function isSubmissionAuthorizationReady() {
+  if (!STUDENT_MATERIAL_SUBMISSION_ENABLED) return true;
   const choices = applicationChoices();
   return choices.length > 0 && choices.every((choice) => {
     const preflight = materialChoiceStates.get(choice.id)?.preflight;
@@ -1970,6 +2082,7 @@ function renderStudentInfoStatus() {
 
 function getSubmitBlockers() {
   const hasChoices = choiceCount > 0;
+  const unavailableChoices = document.querySelectorAll('[data-choice-availability="unavailable"]').length;
   return [
     {
       key: "choices",
@@ -1984,24 +2097,30 @@ function getSubmitBlockers() {
       complete: hasChoices && orderConfirmed,
     },
     {
+      key: "choice-availability",
+      target: "choices",
+      label: "replace or remove unavailable program choices",
+      complete: unavailableChoices === 0,
+    },
+    {
       key: "student-info",
       target: "info",
       label: "save applicant details and at least one education record",
       complete: isStudentProfileReady(),
     },
-    {
+    ...(STUDENT_MATERIAL_SUBMISSION_ENABLED ? [{
       key: "application-preparation",
       target: "info",
       label: "complete server material selection, preflight and per-choice authorization",
       complete: isSubmissionAuthorizationReady(),
-    },
+    }] : []),
   ].filter((item) => !item.complete);
 }
 
 function renderApplicationGate(blockers = getSubmitBlockers(), { force = false, message = "Final submit is locked until the required sections are complete." } = {}) {
   const gate = document.querySelector("[data-application-gate]");
   if (!gate) return;
-  if (!blockers.length) {
+  if (submittedToSchools || !blockers.length) {
     gate.hidden = true;
     gate.innerHTML = "";
     return;
@@ -2061,7 +2180,7 @@ async function addChoice(form) {
     });
     invalidateBillingState();
     await refreshCurrentApplicationSet();
-    void loadBillingFeePreview();
+    if (APPLICATION_PAYMENT_ENABLED) void loadBillingFeePreview();
     const feeInfo = getFeeInfo();
     showPageAction(`${selected.university} ${selected.program} added. ${feeInfo.schoolCount} school${feeInfo.schoolCount === 1 ? "" : "s"} selected. The server fee quote is refreshing; confirm order before continuing.`);
     form.elements.choiceNote.value = "";
@@ -2103,9 +2222,10 @@ function appendChoiceRoute(route = {}, options = {}) {
     applicationUrl: route.applicationUrl || route.sourceUrl || "",
     applicationNote: route.applicationNote || "",
     sourceLabel: route.sourceLabel || "",
+    unavailable: route.unavailable === true,
   };
   const { choiceId, schoolId, programId, programIntakeId, rankOrder, university, program, programName, degree, city, tuition, deadline, signal } = selected;
-  const { intake, language, choiceNote, durationYears, fieldCategory, cscaSubjects, cscaRequirement, hskRequirement, englishRequirement, applicationRound, applicationUrl, applicationNote, sourceLabel } = selected;
+  const { intake, language, choiceNote, durationYears, fieldCategory, cscaSubjects, cscaRequirement, hskRequirement, englishRequirement, applicationRound, applicationUrl, applicationNote, sourceLabel, unavailable } = selected;
   const index = nextChoiceId++;
   const safeChoiceId = escapeHtml(choiceId);
   const safeSchoolId = escapeHtml(schoolId);
@@ -2136,9 +2256,9 @@ function appendChoiceRoute(route = {}, options = {}) {
   list.insertAdjacentHTML(
     "beforeend",
     `
-      <article class="choice-route backup" data-choice="${index}" data-choice-id="${safeChoiceId}" data-school-id="${safeSchoolId}" data-program-id="${safeProgramId}" data-program-intake-id="${safeProgramIntakeId}" data-rank-order="${safeRankOrder}" data-school="${safeUniversity}" data-program="${safeProgram}" data-program-name="${safeProgramName}" data-degree="${safeDegree}" data-city="${safeCity}" data-intake="${safeIntake}" data-language="${safeLanguage}" data-tuition="${safeTuition}" data-deadline="${safeDeadline}" data-signal="${safeSignal}" data-choice-note="${safeChoiceNote}" data-duration-years="${safeDurationYears}" data-field-category="${safeFieldCategory}" data-csca-subjects="${safeCscaSubjects}" data-csca-requirement="${safeCscaRequirement}" data-hsk-requirement="${safeHskRequirement}" data-english-requirement="${safeEnglishRequirement}" data-application-round="${safeApplicationRound}" data-application-url="${safeApplicationUrl}" data-application-note="${safeApplicationNote}" data-source-label="${safeSourceLabel}">
+      <article class="choice-route backup${unavailable ? " unavailable" : ""}" data-choice="${index}" data-choice-id="${safeChoiceId}" data-school-id="${safeSchoolId}" data-program-id="${safeProgramId}" data-program-intake-id="${safeProgramIntakeId}" data-rank-order="${safeRankOrder}" data-school="${safeUniversity}" data-program="${safeProgram}" data-program-name="${safeProgramName}" data-degree="${safeDegree}" data-city="${safeCity}" data-intake="${safeIntake}" data-language="${safeLanguage}" data-tuition="${safeTuition}" data-deadline="${safeDeadline}" data-signal="${safeSignal}" data-choice-note="${safeChoiceNote}" data-duration-years="${safeDurationYears}" data-field-category="${safeFieldCategory}" data-csca-subjects="${safeCscaSubjects}" data-csca-requirement="${safeCscaRequirement}" data-hsk-requirement="${safeHskRequirement}" data-english-requirement="${safeEnglishRequirement}" data-application-round="${safeApplicationRound}" data-application-url="${safeApplicationUrl}" data-application-note="${safeApplicationNote}" data-source-label="${safeSourceLabel}" data-choice-availability="${unavailable ? "unavailable" : "available"}">
         <div class="choice-topline">
-          <span class="role-pill">To check</span>
+          <span class="role-pill">${unavailable ? "Unavailable" : "To check"}</span>
           <div class="choice-route-actions">
             <button type="button" data-remove-choice aria-label="Remove ${safeUniversity} ${safeProgram}">Remove</button>
           </div>
@@ -2146,6 +2266,7 @@ function appendChoiceRoute(route = {}, options = {}) {
         <div>
           <h3>${safeUniversity}</h3>
           <p>${safeProgram} · ${safeCity} · ${safeIntake} · ${safeLanguage}</p>
+          ${unavailable ? '<p class="choice-unavailable-message"><strong>This catalog route is no longer available.</strong> Remove it from this draft or choose a current published program. Your other choices and student information remain available.</p>' : ""}
         </div>
         <div class="choice-route-meta">
           <span>${safeDeadline}</span>
@@ -2187,7 +2308,7 @@ async function removeChoice(button) {
     invalidateBillingState();
     await refreshCurrentApplicationSet();
     resetChoiceConfirmationAfterChange();
-    void loadBillingFeePreview();
+    if (APPLICATION_PAYMENT_ENABLED) void loadBillingFeePreview();
     const feeInfo = getFeeInfo();
     showPageAction(`${university} ${program} removed. ${feeInfo.schoolCount} school${feeInfo.schoolCount === 1 ? "" : "s"} selected. The server fee quote is refreshing.`);
   } catch (error) {
@@ -2480,6 +2601,10 @@ function renderSendPanelState() {
 
 function validateSubmissionConsent() {
   const paymentError = document.querySelector("[data-payment-error]");
+  if (!STUDENT_MATERIAL_SUBMISSION_ENABLED) {
+    if (paymentError) paymentError.hidden = true;
+    return true;
+  }
   if (isSubmissionAuthorizationReady()) {
     if (paymentError) paymentError.hidden = true;
     return true;
@@ -2539,7 +2664,11 @@ async function createHostedCheckout() {
 }
 
 async function refreshAllChoicePreflights() {
-  for (const choice of applicationChoices()) await loadChoicePreparation(choice.id, { force: true });
+  if (!STUDENT_MATERIAL_SUBMISSION_ENABLED) return;
+  for (const choice of applicationChoices()) {
+    if (choice.programId && unavailableCatalogProgramIds.has(choice.programId)) continue;
+    await loadChoicePreparation(choice.id, { force: true });
+  }
 }
 
 async function refreshCheckoutStatus({ silent = false } = {}) {
@@ -2590,7 +2719,7 @@ function isBillingEntitlementReady() {
 function getFinalSubmissionBlockers() {
   return [
     ...getSubmitBlockers(),
-    { key: "billing", target: "payment", label: "confirm payment and current billing entitlement for every choice", complete: isBillingEntitlementReady() },
+    ...(APPLICATION_PAYMENT_ENABLED ? [{ key: "billing", target: "payment", label: "confirm payment and current billing entitlement for every choice", complete: isBillingEntitlementReady() }] : []),
   ].filter((item) => !item.complete);
 }
 
@@ -2615,17 +2744,18 @@ async function submitApplicationSet(form) {
   if (errorTarget) errorTarget.hidden = true;
   try {
     await applicationApi("/api/v1/auth/step-up", { method: "POST", body: { password } });
-    if (button) button.textContent = "Submitting application set...";
+    if (button) button.textContent = "Sending basic information...";
     const choiceIds = currentApplicationChoiceIds();
-    submissionRecord = await applicationApi(`/api/v1/student/application-sets/${encodeURIComponent(currentApplicationSet.id)}/submit`, {
+    submissionRecord = await applicationApi(`/api/v1/student/application-sets/${encodeURIComponent(currentApplicationSet.id)}/school-handoff`, {
       method: "POST",
-      headers: { "Idempotency-Key": applicationIdempotencyKey("application_submit") },
-      body: { expectedRevision: currentApplicationSet.revision, choiceIds, confirmSubmission: true },
+      headers: { "Idempotency-Key": applicationIdempotencyKey("school_handoff") },
+      body: { expectedRevision: currentApplicationSet.revision, choiceIds, confirmHandoff: true },
     });
     if (submissionRecord?.applicationSetId !== currentApplicationSet.id || submissionRecord?.status !== "accepted"
-      || submissionRecord?.acceptanceScope !== "cuac_internal" || !Array.isArray(submissionRecord.programApplications)
-      || !Array.isArray(submissionRecord.officialSubmissionGroups) || submissionRecord.programApplications.length !== choiceIds.length) {
-      throw new Error("The server submission receipt was incomplete or did not match the exact application set.");
+      || submissionRecord?.handoffScope !== "school_contact" || submissionRecord?.materialsShared !== false
+      || submissionRecord?.paymentRequired !== false || !Array.isArray(submissionRecord.programApplications)
+      || submissionRecord.programApplications.length !== choiceIds.length) {
+      throw new Error("The school handoff receipt was incomplete or did not match the exact application set.");
     }
     submittedToSchools = submissionRecord?.status === "accepted";
     clearPendingInvoiceLocator();
@@ -2635,18 +2765,18 @@ async function submitApplicationSet(form) {
       // The accepted server receipt remains sufficient to render this completed command.
     }
     renderSubmissionState({ scroll: true });
-    showPageAction("CUAC accepted and locked the application set. Official school delivery now follows the server queue status.");
+    showPageAction("Basic application information was sent. Each school will contact you directly about materials and next steps.");
   } catch (error) {
     if (errorTarget) {
       errorTarget.hidden = false;
       errorTarget.textContent = error.status === 409
-        ? "The application changed before submission. Refresh the current choices, authorizations and fee state before trying again."
-        : `Application submission was not accepted: ${error.message}`;
+        ? "The application changed before sending. Refresh the current choices and basic information before trying again."
+        : `School handoff was not accepted: ${error.message}`;
     }
   } finally {
     if (button && !submittedToSchools) {
       button.disabled = false;
-      button.textContent = "Authorize and submit application set";
+      button.textContent = "Confirm and send to schools";
     }
   }
 }
@@ -2660,7 +2790,7 @@ function renderSubmissionChoiceLists() {
   const applications = Array.isArray(submissionRecord?.programApplications) ? submissionRecord.programApplications : [];
   submitted.innerHTML = routes.map((route) => {
     const application = applications.find((item) => item.applicationChoiceId === route.choiceId);
-    return `<article><strong>${escapeHtml(route.university)}</strong><span>${escapeHtml(route.program)} · ${escapeHtml(application?.status || "submitted")}</span></article>`;
+    return `<article><strong>${escapeHtml(route.university)}</strong><span>${escapeHtml(route.program)} · ${escapeHtml(studentSchoolStatusLabel(application?.status))}</span></article>`;
   }).join("");
 }
 
@@ -2671,10 +2801,11 @@ function renderSubmissionReceipt() {
     target.innerHTML = submittedToSchools ? `<span>Application set</span><strong>${escapeHtml(currentApplicationSet?.cuacId || "Submitted")}</strong><em>Server status: ${escapeHtml(currentApplicationSet?.status || "submitted")}</em>` : "";
     return;
   }
+  const items = Array.isArray(submissionRecord.programApplications) ? submissionRecord.programApplications : [];
   target.innerHTML = `
-    <span>CUAC internal receipt</span>
-    <strong>${escapeHtml(submissionRecord.cuacId)} · ${escapeHtml(submissionRecord.id)}</strong>
-    <em>${escapeHtml(new Date(submissionRecord.submittedAt).toLocaleString())} · ${submissionRecord.programApplications.length} program application${submissionRecord.programApplications.length === 1 ? "" : "s"} · ${submissionRecord.officialSubmissionGroups.length} delivery group${submissionRecord.officialSubmissionGroups.length === 1 ? "" : "s"}</em>
+    <span>School handoff</span>
+    <strong>${escapeHtml(submissionRecord.cuacId || currentApplicationSet?.cuacId || "Sent")}</strong>
+    <em>${items.length} program record${items.length === 1 ? "" : "s"} · materials not shared · payment not required</em>
   `;
 }
 
@@ -2688,6 +2819,9 @@ function renderSubmissionState({ scroll = false } = {}) {
     button.removeAttribute("disabled");
     button.setAttribute("aria-label", "View sent application status");
   });
+  const statusLink = document.querySelector("[data-submission-status-link]");
+  if (statusLink) statusLink.href = applicationSetHref(currentApplicationSet, "#send");
+  renderApplicationGate([]);
   renderSubmissionChoiceLists();
   renderSubmissionReceipt();
   updateProgress();
@@ -2702,7 +2836,7 @@ function viewSentStatus() {
   setApplicationStage("send", { scroll: true });
   status.focus({ preventScroll: true });
   if (location.hash !== "#send") history.replaceState(null, "", "#send");
-  showPageAction("This application set has been accepted and locked by CUAC. The status panel separates internal acceptance from external school delivery.");
+  showPageAction("This application set is locked. The status panel shows each school's latest follow-up state.");
 }
 
 function getSelectedProgram() {

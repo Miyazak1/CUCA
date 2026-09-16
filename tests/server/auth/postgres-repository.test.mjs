@@ -123,6 +123,29 @@ test("Postgres auth repository finds password identity by normalized email with 
   assert.deepEqual(calls[0].params, ["student@example.com"]);
 });
 
+test("Postgres auth repository discovers only active server-owned workspace authorities", async () => {
+  const calls = [];
+  const schoolId = "11111111-1111-4111-8111-111111111111";
+  const repository = new PostgresAuthSessionRepository({
+    async query(statement, params) {
+      calls.push({ statement, params });
+      if (/Student workspace/.test(statement)) return [{ selectedSurface: "student", activeRole: "student", tenantSchoolId: null, label: "Student workspace" }];
+      if (/school_staff_memberships/.test(statement)) return [{ selectedSurface: "school", activeRole: "school_staff", tenantSchoolId: schoolId, label: "Example University" }];
+      return [{ selectedSurface: "ops", activeRole: "cuac_ops", tenantSchoolId: null, label: "CUAC staff workspace" }];
+    },
+  });
+  const now = new Date("2026-08-28T00:00:00.000Z");
+  const workspaces = await repository.listAvailableSessionAuthorities("multi-1", now);
+  assert.equal(workspaces.length, 3);
+  assert.deepEqual(workspaces.map(item => item.selectedSurface), ["student", "school", "ops"]);
+  assert.match(calls[0].statement, /r\.revoked_at is null/);
+  assert.match(calls[1].statement, /m\.status = 'active'/);
+  assert.match(calls[1].statement, /s\.status = 'active'/);
+  assert.match(calls[2].statement, /g\.status = 'approved'/);
+  assert.match(calls[2].statement, /g\.expires_at > \$2/);
+  assert.deepEqual(calls[2].params, ["multi-1", now]);
+});
+
 test("Postgres auth repository creates student account identity and role without school or Ops grants", async () => {
   const calls = [];
   const now = new Date("2026-08-28T00:00:00.000Z");
