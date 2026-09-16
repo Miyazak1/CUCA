@@ -12,15 +12,16 @@ Explicitly disabled: Agent, payment collection, student file upload, and officia
 
 - Production build and production-source lint pass.
 - Frontend contracts pass: 56/56.
-- Backend suite passes.
-- PostgreSQL snapshot check passes: 52 migrations, 43 snapshots, 77 tables.
+- Backend suite passes: 688/688.
+- PostgreSQL snapshot check passes: 53 migrations, 44 snapshots, 80 tables.
 - Disposable PostgreSQL rehearsal passes: 417/417.
-- Schema parity covers 77 tables, 1,187 columns, 446 constraints, 297 indexes, plus the migration-owned catalog revision function and five triggers.
+- Schema parity covers 80 tables, 1,218 columns, 455 constraints, 306 indexes, plus the migration-owned catalog revision function and five triggers.
 - Production-build HTTP plus PostgreSQL rehearsal passes: 527/527 on an isolated loopback port.
 - Linux migration release rehearsal passes: 7/7 using Node `v22.23.2`, `linux/amd64`, non-root execution, no default egress route, read-only runtime, digest verification, interruption recovery, and redacted failures.
-- Migration release manifest SHA-256: `48c6f509e335d93b92c333ffebc5b790ec50f5c02ca8db2d97503a5b63e3aa53`.
+- Migration release manifest SHA-256: `dd48979a757654a5da0362327c177a05c138989b1a7c779982e5e9cbe298f8eb`.
 - Application container rehearsal passes with a pinned Node `v22.23.2` Bookworm Slim image, non-root UID/GID 1000, read-only root filesystem, explicit fail-closed start mode, PostgreSQL health `ok`, and graceful exit code 0.
-- Local application image digest: `sha256:fb2581d917b2855859b2a3cc9df4e61e8c5e994321547bee098d0865e3be0fc4`; unpacked size 130,085,947 bytes. This local digest is evidence only and must be replaced by the immutable registry digest built from the final committed source.
+- Candidate source commit: `f6d0a849609e0bdb13bd7d80f518592bdacf20d1`.
+- Local application image digest: `sha256:39be1b6162e9b48f4d7528503ab15c6b0c3d39d7dbae547671f9b56b5138afdc`. This local digest is evidence only and must be replaced by the immutable registry digest produced when the same commit is pushed to the selected registry.
 - `npm audit --omit=dev` reports zero production dependency vulnerabilities after upgrading Vinext, Vite, React Server Components, Nodemailer and affected transitive packages.
 
 All database rehearsals used randomly named, loopback-only, memory-backed PostgreSQL containers. Owned containers, networks, and transient runtime images were removed after each run. No cloud database or production data was used.
