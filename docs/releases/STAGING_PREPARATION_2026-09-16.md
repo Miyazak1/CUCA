@@ -19,6 +19,9 @@ Explicitly disabled: Agent, payment collection, student file upload, and officia
 - Production-build HTTP plus PostgreSQL rehearsal passes: 527/527 on an isolated loopback port.
 - Linux migration release rehearsal passes: 7/7 using Node `v22.23.2`, `linux/amd64`, non-root execution, no default egress route, read-only runtime, digest verification, interruption recovery, and redacted failures.
 - Migration release manifest SHA-256: `48c6f509e335d93b92c333ffebc5b790ec50f5c02ca8db2d97503a5b63e3aa53`.
+- Application container rehearsal passes with a pinned Node `v22.23.2` Bookworm Slim image, non-root UID/GID 1000, read-only root filesystem, explicit fail-closed start mode, PostgreSQL health `ok`, and graceful exit code 0.
+- Local application image digest: `sha256:fb2581d917b2855859b2a3cc9df4e61e8c5e994321547bee098d0865e3be0fc4`; unpacked size 130,085,947 bytes. This local digest is evidence only and must be replaced by the immutable registry digest built from the final committed source.
+- `npm audit --omit=dev` reports zero production dependency vulnerabilities after upgrading Vinext, Vite, React Server Components, Nodemailer and affected transitive packages.
 
 All database rehearsals used randomly named, loopback-only, memory-backed PostgreSQL containers. Owned containers, networks, and transient runtime images were removed after each run. No cloud database or production data was used.
 
@@ -27,8 +30,9 @@ All database rehearsals used randomly named, loopback-only, memory-backed Postgr
 1. The schema comparison database did not install `pg_trgm`, so Drizzle-generated GIN indexes could not be created.
 2. The schema comparison omitted the migration-owned catalog revision function and triggers because Drizzle cannot declare those objects.
 3. The pinned Linux migration runtime was Node `v22.22.3`, while the release was built by Node `v22.23.2`.
+4. The first application image inherited the full Node base and carried 12 production dependency advisories.
 
-The rehearsal now installs the required extension, reuses the reviewed migration statements for non-declarative objects, detects trigger/function drift, and pins the exact Node `v22.23.2` image digest.
+The rehearsal now installs the required extension, reuses the reviewed migration statements for non-declarative objects, detects trigger/function drift, pins exact Node image digests, uses the 80 MB Bookworm Slim base, and verifies a zero-advisory production dependency set inside the build.
 
 ## Cloud inputs still required
 
@@ -60,12 +64,11 @@ Do not place any credential in Git or chat. Store secrets in Alibaba Cloud KMS/s
 
 ## Source gaps before staging deployment
 
-- There is a reviewed migration-runtime container, but no complete immutable application container artifact yet.
 - Staff MFA/IdP is required by staging acceptance and is not complete.
 - Cloud observability and backup/restore are acceptance work, not locally provable.
 - Real Auth/notification email delivery is intentionally disabled until provider configuration and staging acceptance exist.
-- The exact release commit SHA and immutable application image digest cannot be recorded until the application image artifact is implemented and built.
+- A final application image must still be rebuilt from the reviewed commit, pushed to the selected immutable registry, and recorded by registry digest.
 
 ## Next execution step
 
-Build the immutable application container and its local runtime smoke test. After that artifact passes locally, provision staging infrastructure and inject the exact commit, application image digest, and migration manifest digest into the candidate environment.
+Provision staging infrastructure, then rebuild and push the reviewed application image. Inject the exact commit, registry image digest, and migration manifest digest into the candidate environment before collecting staging evidence.
