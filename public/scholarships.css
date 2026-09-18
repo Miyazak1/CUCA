@@ -700,8 +700,8 @@ h1 {
 .scholarship-card-open {
   position: absolute;
   z-index: 1;
-  right: 58px;
-  top: 14px;
+  right: 14px;
+  bottom: 14px;
   display: grid;
   width: 34px;
   height: 34px;
@@ -717,38 +717,6 @@ h1 {
   width: 17px;
   height: 17px;
   stroke-width: 2.2;
-}
-
-.save-button {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 0;
-  border-radius: var(--radius-pill);
-  background: rgb(255 255 255 / 0.92);
-  color: var(--accent-dark);
-  font-size: 18px;
-  line-height: 1;
-}
-
-.save-button.saved {
-  background: var(--accent);
-  color: white;
-}
-
-.save-button:hover {
-  background: white;
-}
-
-.save-button.saved:hover {
-  background: var(--accent-dark);
-  color: white;
-}
-
-.save-button:focus-visible {
-  outline: 3px solid rgb(var(--accent-rgb) / 0.28);
-  outline-offset: 3px;
 }
 
 .scholarship-card h3 {

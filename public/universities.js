@@ -343,7 +343,7 @@ const state = {
           <article class="university-card result-enter" style="--enter-index: ${index}" data-name="${escapeCatalogHtml(name)}" role="link" tabindex="0" data-university-card data-detail-href="${detailHref}" aria-label="View ${escapeCatalogHtml(name)} university guide">
             <div class="card-image">
               <span class="badge">${escapeCatalogHtml(imageBadge)}</span>
-              <button class="save ${saved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved}" aria-label="${saved ? `Remove ${escapeCatalogHtml(name)} from Favourites` : `Save ${escapeCatalogHtml(name)} to Favourites`}" title="${saved ? "Saved — click to remove" : "Save to Favourites"}">${saved ? "♥" : "♡"}</button>
+              <button class="save catalog-save-control ${saved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved}" aria-label="${saved ? `Remove ${escapeCatalogHtml(name)} from Favourites` : `Save ${escapeCatalogHtml(name)} to Favourites`}" title="${saved ? "Saved — click to remove" : "Save to Favourites"}">${window.CuacCatalogList.saveHeartIcon()}</button>
               <img data-catalog-cover alt="${escapeCatalogHtml(name)} cover" src="${schoolImage(item)}" />
               <span class="university-card-open" aria-hidden="true">${universityArrowRight}</span>
             </div>

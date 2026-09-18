@@ -519,8 +519,7 @@
         transform: translateX(2px);
       }
 
-      .badge,
-      .save {
+      .badge {
         position: absolute;
         z-index: 1;
         display: inline-grid;
@@ -539,15 +538,10 @@
       }
 
       .save {
+        position: absolute;
+        z-index: 1;
         top: 9px;
         right: 9px;
-        width: 34px;
-        height: 34px;
-      }
-
-      .save.saved {
-        background: var(--accent);
-        color: white;
       }
 
       .card-body {

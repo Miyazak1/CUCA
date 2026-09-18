@@ -491,7 +491,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
               </a>
               <div class="row-top">
                 <span class="badge ${badgeClassName}">${escapeCatalogHtml(badgeLabel)}</span>
-                <button class="save-button ${isSaved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(id)}" aria-pressed="${isSaved}" aria-label="${isSaved ? `Remove ${escapeCatalogHtml(name)} from Favourites` : `Save ${escapeCatalogHtml(name)} to Favourites`}" title="${isSaved ? "Saved — click to remove" : "Save to Favourites"}">${isSaved ? "♥" : "♡"}</button>
+                <button class="save-button catalog-save-control ${isSaved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(id)}" aria-pressed="${isSaved}" aria-label="${isSaved ? `Remove ${escapeCatalogHtml(name)} from Favourites` : `Save ${escapeCatalogHtml(name)} to Favourites`}" title="${isSaved ? "Saved — click to remove" : "Save to Favourites"}">${window.CuacCatalogList.saveHeartIcon()}</button>
               </div>
               <span class="program-card-open" aria-hidden="true">${iconArrowRight}</span>
             </div>

@@ -412,7 +412,7 @@ function renderCards() {
         <div class="scholarship-media">
           <img alt="Scholarship catalog marker" src="${scholarshipImage(item)}" loading="lazy" />
           <span class="badge type-badge ${type}">${escapeCatalogHtml(scholarshipTypeLabel(item))}</span>
-          <button class="save-button ${saved.has(entityId) ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved.has(entityId)}" aria-label="${saved.has(entityId) ? `Remove ${escapeCatalogHtml(title)} from Favourites` : `Save ${escapeCatalogHtml(title)} to Favourites`}" title="${saved.has(entityId) ? "Saved — click to remove" : "Save to Favourites"}">${saved.has(entityId) ? "♥" : "♡"}</button>
+          <button class="save-button catalog-save-control ${saved.has(entityId) ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved.has(entityId)}" aria-label="${saved.has(entityId) ? `Remove ${escapeCatalogHtml(title)} from Favourites` : `Save ${escapeCatalogHtml(title)} to Favourites`}" title="${saved.has(entityId) ? "Saved — click to remove" : "Save to Favourites"}">${window.CuacCatalogList.saveHeartIcon()}</button>
           <span class="scholarship-card-open" aria-hidden="true">${scholarshipIcons.arrowRight}</span>
         </div>
         <h3>${escapeCatalogHtml(title)}</h3>

@@ -48,6 +48,70 @@ body[data-catalog-list-page] [hidden] {
   display: none !important;
 }
 
+body[data-catalog-list-page] .catalog-save-control {
+  appearance: none;
+  display: inline-grid;
+  box-sizing: border-box;
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  min-height: 34px;
+  margin: 0;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.92);
+  color: var(--accent-dark, #075b55);
+  box-shadow: none;
+  cursor: pointer;
+  transition: background 170ms ease, color 170ms ease, transform 170ms ease;
+}
+
+body[data-catalog-list-page] .catalog-save-control .catalog-save-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+body[data-catalog-list-page] .catalog-save-control.saved,
+body[data-catalog-list-page] .catalog-save-control[aria-pressed="true"] {
+  background: var(--accent, #008c83);
+  color: #ffffff;
+}
+
+body[data-catalog-list-page] .catalog-save-control.saved .catalog-save-icon,
+body[data-catalog-list-page] .catalog-save-control[aria-pressed="true"] .catalog-save-icon {
+  fill: currentColor;
+  stroke-width: 1.6;
+}
+
+body[data-catalog-list-page] .catalog-save-control:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+body[data-catalog-list-page] .catalog-save-control.saved:hover,
+body[data-catalog-list-page] .catalog-save-control[aria-pressed="true"]:hover {
+  background: var(--accent-dark, #075b55);
+}
+
+body[data-catalog-list-page] .catalog-save-control:focus-visible {
+  outline: 3px solid rgb(var(--accent-rgb, 0 140 131) / 0.28);
+  outline-offset: 3px;
+}
+
+body[data-catalog-list-page] .catalog-save-control:disabled {
+  cursor: progress;
+  opacity: 0.72;
+  transform: none;
+}
+
 body[data-catalog-list-page="programs"] .program-art,
 body[data-catalog-list-page="universities"] .card-image,
 body[data-catalog-list-page="scholarships"] .scholarship-media,

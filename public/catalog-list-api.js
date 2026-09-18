@@ -194,6 +194,10 @@
     })[character]);
   }
 
+  function saveHeartIcon() {
+    return `<svg class="catalog-save-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z" /></svg>`;
+  }
+
   function listState(target, state, options = {}) {
     if (!target) return;
     const noun = options.noun || "records";
@@ -205,5 +209,5 @@
     target.innerHTML = `<div class="catalog-list-state catalog-list-state-error" role="alert"><strong>Catalog unavailable</strong><span>${escapeHtml(detail)}</span><button type="button" data-catalog-retry>Retry</button></div>`;
   }
 
-  global.CuacCatalogList = Object.freeze({ load, loadPage, loadAll, cover, loadSavedEntityIds, setSaved, escapeHtml, listState });
+  global.CuacCatalogList = Object.freeze({ load, loadPage, loadAll, cover, loadSavedEntityIds, setSaved, saveHeartIcon, escapeHtml, listState });
 })(window);
