@@ -11,7 +11,7 @@ Status: implemented and locally verified on 2026-09-03. This runtime is for back
 3. Publishes PostgreSQL only on `127.0.0.1`; the runtime keeps its generated port while available and automatically rebinds an owned stopped container when Windows later reserves that port.
 4. Applies the reviewed 48-migration chain through `0047_school_catalog_corrections`.
 5. Idempotently loads synthetic local-only catalog, student, school staff, school application, CUAC Ops and separate CUAC Admin reviewer fixtures.
-6. Starts the Node/Vinext API on loopback; the Windows launcher pins port `52118`, while a first direct npm run may select an available loopback port.
+6. Starts the Node/Vinext API on loopback; the Windows launcher pins port `52118`, while a first direct npm run may select an available loopback port. If an earlier direct run recorded another application port, the launcher safely updates only that application-port field when no CUAC API is running and `52118` is available; PostgreSQL data, credentials and installation identity are retained.
 
 The normal `npm run dev` path retains the existing Sites/Cloudflare frontend-preview configuration. Only the generated `CUAC_LOCAL_RUNTIME=1` process uses the Node backend path that matches the future Alibaba Cloud application runtime more closely.
 
@@ -28,6 +28,9 @@ For the supported Windows entry, double-click
 PostgreSQL uses the generated loopback port recorded in `.cuac-local/runtime.json`; if
 Windows later reserves it, CUAC re-creates only its owned container on a new loopback
 port while retaining the named data volume. It never connects to a different database.
+An existing runtime created by `npm run dev:local` on another application port is
+automatically moved to `52118` without resetting its database. If that old CUAC API is
+still running, the launcher asks you to stop it first instead of starting a duplicate.
 
 Keep that terminal running. In another terminal:
 

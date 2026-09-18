@@ -157,7 +157,9 @@ test("local command grammar and repository wiring remain explicit", async () => 
   assert.match(localDevelopment, /Application port .* belongs to another service/);
   assert.match(localDevelopment, /CUAC_LOCAL_APP_PORT .* already in use by another service/);
   assert.match(localDevelopment, /CUAC_LOCAL_PG_PORT .* already in use by another service/);
-  assert.match(localDevelopment, /Configured local ports do not match the existing owned CUAC runtime state/);
+  assert.match(localDevelopment, /Configured local PostgreSQL port does not match the existing owned CUAC runtime state/);
+  assert.match(localDevelopment, /Local application port changed from .* persistent PostgreSQL data was retained/);
+  assert.match(localDevelopment, /stop it before changing the application port/);
   assert.match(localDevelopment, /Removed a stale CUAC Vinext development lock; no process was terminated/);
   assert.match(localDevelopment, /recordSuccessfulSeed\(state\)/);
   assert.match(localDevelopment, /await assertSuccessfulSeed\(state\)/);
@@ -180,6 +182,7 @@ test("local command grammar and repository wiring remain explicit", async () => 
   assert.match(viteConfig, /process\.env\.CUAC_LOCAL_RUNTIME === "1"/);
   assert.match(viteConfig, /isCuacLocalRuntime\s*\? \[\]/);
   assert.match(windowsLauncher, /set "CUAC_LOCAL_APP_PORT=52118"/);
+  assert.doesNotMatch(windowsLauncher, /Existing CUAC local state uses app port|port_mismatch/);
   assert.match(windowsLauncher, /Postgres: automatic 127\.0\.0\.1 port/);
   assert.match(windowsLauncher, /call npm run dev:local/);
   assert.match(windowsLauncher, /docker version/);

@@ -221,16 +221,29 @@ async function resolvePinnedPostgresImage(): Promise<string> {
 async function loadOrCreateState(): Promise<LocalDevelopmentState> {
   const existing = await readState();
   if (existing) {
+    const inspected = await docker(["image", "inspect", existing.postgresImageId, "--format", "{{.Id}}"]);
+    if (inspected !== existing.postgresImageId) throw new Error("Pinned local PostgreSQL image is no longer available.");
     const configuredPostgresPort = process.env.CUAC_LOCAL_PG_PORT === undefined ? existing.postgresPort
       : resolveLocalPort(process.env.CUAC_LOCAL_PG_PORT, existing.postgresPort, "CUAC_LOCAL_PG_PORT");
     const configuredApplicationPort = process.env.CUAC_LOCAL_APP_PORT === undefined ? existing.applicationPort
       : resolveLocalPort(process.env.CUAC_LOCAL_APP_PORT, existing.applicationPort, "CUAC_LOCAL_APP_PORT");
-    if (configuredPostgresPort !== existing.postgresPort || configuredApplicationPort !== existing.applicationPort) {
-      throw new Error("Configured local ports do not match the existing owned CUAC runtime state.");
+    if (configuredPostgresPort !== existing.postgresPort) {
+      throw new Error("Configured local PostgreSQL port does not match the existing owned CUAC runtime state.");
     }
-    const inspected = await docker(["image", "inspect", existing.postgresImageId, "--format", "{{.Id}}"]);
-    if (inspected !== existing.postgresImageId) throw new Error("Pinned local PostgreSQL image is no longer available.");
-    return existing;
+    if (configuredApplicationPort === existing.applicationPort) return existing;
+    if (configuredApplicationPort === existing.postgresPort) {
+      throw new Error("Local PostgreSQL and application ports must differ.");
+    }
+    const current = await readApplicationHealth(`http://127.0.0.1:${existing.applicationPort}/api/v1/health`);
+    if (isCuacApplicationStatus(current)) {
+      throw new Error(`CUAC local API is already running at http://127.0.0.1:${existing.applicationPort}; stop it before changing the application port.`);
+    }
+    if (!await canBindLoopback(configuredApplicationPort)) {
+      throw new Error(`CUAC_LOCAL_APP_PORT ${configuredApplicationPort} is already in use by another service.`);
+    }
+    const updated = await replaceState({ ...existing, applicationPort: configuredApplicationPort });
+    console.log(`Local application port changed from ${existing.applicationPort} to ${updated.applicationPort}; persistent PostgreSQL data was retained.`);
+    return updated;
   }
   const postgresPort = await selectLoopbackPort(process.env.CUAC_LOCAL_PG_PORT, 55432, "CUAC_LOCAL_PG_PORT");
   const applicationPort = await selectLoopbackPort(process.env.CUAC_LOCAL_APP_PORT, 3000, "CUAC_LOCAL_APP_PORT");
