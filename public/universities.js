@@ -598,8 +598,13 @@ const state = {
           const key = saveButton.dataset.save;
           const school = universities.find((item) => schoolEntityId(item) === key);
           const name = school ? schoolName(school) : key;
-          const resumeSelector = window.CUAC?.dataAttributeSelector?.("data-save", saveButton?.dataset.save || key) || "[data-save]";
-          if (window.CUAC?.requireStudentSignedIn && !window.CUAC.requireStudentSignedIn("Save this university", { resumeAction: { type: "click-selector", selector: resumeSelector } })) return;
+          event.preventDefault();
+          event.stopPropagation();
+          if (window.CUAC?.requireStudentSignedInReady && !await window.CUAC.requireStudentSignedInReady("Save this university", {
+            targetRoute: "/universities.html",
+            actionKey: "catalog.save_school",
+            payloadPreview: { schoolId: key },
+          })) return;
           const savedNow = !state.saved.has(key);
           saveButton.disabled = true;
           try {

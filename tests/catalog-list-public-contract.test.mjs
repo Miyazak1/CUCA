@@ -100,6 +100,9 @@ test("catalog save actions use authenticated student saved-item APIs", async () 
   assert.match(programs, /setSaved\("program", id, savedNow\)/);
   assert.match(universities, /setSaved\("school", key, savedNow\)/);
   assert.match(scholarships, /setSaved\("scholarship", key, savedNow\)/);
+  assert.match(programs, /requireStudentSignedInReady[\s\S]*catalog\.save_program[\s\S]*programId: id/);
+  assert.match(universities, /requireStudentSignedInReady[\s\S]*catalog\.save_school[\s\S]*schoolId: key/);
+  assert.match(scholarships, /requireStudentSignedInReady[\s\S]*catalog\.save_scholarship[\s\S]*scholarshipId: key/);
   assert.doesNotMatch(`${api}\n${programs}\n${universities}\n${scholarships}`, /localStorage|sessionStorage/);
   assert.match(savedPage, /href="hub-api\.html"/);
 });
@@ -128,7 +131,7 @@ test("program university routes send the school slug to the published API and re
     source("programs.css"),
   ]);
 
-  assert.match(html, /programs\.js\?v=20260914-server-pagination-2/);
+  assert.match(html, /programs\.js\?v=20260918-saved-continuation/);
   assert.match(script, /const focusedUniversity = routeParams\.get\("university"\)/);
   assert.match(script, /loadPage\("programs", \{[\s\S]*school: focusedUniversity,/);
   assert.doesNotMatch(script, /function programMatchesUniversity/);

@@ -663,9 +663,14 @@ function applyScholarshipAgentAction(action, detail = {}) {
 document.addEventListener("click", async (event) => {
   const save = event.target.closest("[data-save]");
   if (save) {
-    const resumeSelector = window.CUAC?.dataAttributeSelector?.("data-save", save.dataset.save) || "[data-save]";
-    if (window.CUAC?.requireStudentSignedIn && !window.CUAC.requireStudentSignedIn("Save this scholarship", { resumeAction: { type: "click-selector", selector: resumeSelector } })) return;
     const key = save.dataset.save;
+    event.preventDefault();
+    event.stopPropagation();
+    if (window.CUAC?.requireStudentSignedInReady && !await window.CUAC.requireStudentSignedInReady("Save this scholarship", {
+      targetRoute: "/scholarships.html",
+      actionKey: "catalog.save_scholarship",
+      payloadPreview: { scholarshipId: key },
+    })) return;
     const item = scholarships.find((entry) => scholarshipEntityId(entry) === key);
     const savedNow = !saved.has(key);
     save.disabled = true;

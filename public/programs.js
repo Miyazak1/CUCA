@@ -822,9 +822,14 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
 
         const save = event.target.closest("[data-save]");
         if (save) {
-          const resumeSelector = window.CUAC?.dataAttributeSelector?.("data-save", save.dataset.save) || "[data-save]";
-          if (window.CUAC?.requireStudentSignedIn && !window.CUAC.requireStudentSignedIn("Save this program", { resumeAction: { type: "click-selector", selector: resumeSelector } })) return;
           const id = save.dataset.save;
+          event.preventDefault();
+          event.stopPropagation();
+          if (window.CUAC?.requireStudentSignedInReady && !await window.CUAC.requireStudentSignedInReady("Save this program", {
+            targetRoute: "/programs.html",
+            actionKey: "catalog.save_program",
+            payloadPreview: { programId: id },
+          })) return;
           const program = programs.find((item) => programId(item) === id);
           const savedNow = !state.saved.has(id);
           save.disabled = true;

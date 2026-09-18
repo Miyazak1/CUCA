@@ -1028,6 +1028,11 @@
     return false;
   }
 
+  async function requireStudentSignedInReady(label = "Use this feature", afterSignIn) {
+    await runtimeAuthReadyPromise;
+    return requireStudentSignedIn(label, afterSignIn);
+  }
+
   function initProtectedStudentLinks() {
     document.addEventListener("click", (event) => {
       const link = event.target.closest("a[href]");
@@ -1893,7 +1898,7 @@
 
   document.querySelectorAll("[data-cuac-header]").forEach(renderHeader);
   document.querySelectorAll("[data-cuac-footer]").forEach(renderFooter);
-  window.CUAC = { ...(window.CUAC || {}), requireSignedIn, requireStudentSignedIn, showSignInRequired, dataAttributeSelector, isSignedIn: () => getShellContext().authState === "signed-in", isStudentSignedIn, authReady: () => runtimeAuthReadyPromise };
+  window.CUAC = { ...(window.CUAC || {}), requireSignedIn, requireStudentSignedIn, requireStudentSignedInReady, showSignInRequired, dataAttributeSelector, isSignedIn: () => getShellContext().authState === "signed-in", isStudentSignedIn, authReady: () => runtimeAuthReadyPromise };
   initProtectedStudentLinks();
   initAuthNavigationControls();
   initAccountMenus();

@@ -172,6 +172,7 @@ function validateConsumedContinuation(value, role) {
   const actionKey = value?.actionKey;
   const requiredRole = value?.requiredRole;
   const normalizedRole = normalizeAuthRole(role);
+  const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
   const roleAllowed = requiredRole === "student"
     ? normalizedRole === "student"
     : requiredRole === "school_staff"
@@ -183,11 +184,14 @@ function validateConsumedContinuation(value, role) {
           : false;
   const routeAllowed = (
     (actionKey === "application.add_choice" && ["/application.html", "/application.html#add-choice"].includes(targetRoute))
+    || (actionKey === "catalog.save_program" && targetRoute === "/programs.html" && uuidPattern.test(value?.payloadPreview?.programId || ""))
+    || (actionKey === "catalog.save_school" && targetRoute === "/universities.html" && uuidPattern.test(value?.payloadPreview?.schoolId || ""))
+    || (actionKey === "catalog.save_scholarship" && targetRoute === "/scholarships.html" && uuidPattern.test(value?.payloadPreview?.scholarshipId || ""))
     || (actionKey === "navigation.open_student_workspace" && ["/onboarding-api.html", "/hub-api.html", "/favourites-api.html", "/application.html", "/billing-api.html", "/notifications.html", "/preferences-api.html"].includes(targetRoute))
     || (actionKey === "navigation.open_school_workspace" && ["/school-portal.html", "/school-settings-api.html"].includes(targetRoute))
     || (actionKey === "navigation.open_ops_workspace" && targetRoute === "/ops-admin-api.html")
   );
-  return roleAllowed && routeAllowed ? targetRoute : null;
+  return roleAllowed && routeAllowed ? { targetRoute, actionKey, payloadPreview: value.payloadPreview || {} } : null;
 }
 
 async function consumePendingContinuation(role) {
@@ -197,10 +201,31 @@ async function consumePendingContinuation(role) {
     method: "POST",
     body: { continuationToken: capability.continuationToken },
   });
-  const targetRoute = validateConsumedContinuation(consumed, role);
-  if (!targetRoute) throw new Error("The server returned an unregistered continuation destination.");
+  const validated = validateConsumedContinuation(consumed, role);
+  if (!validated) throw new Error("The server returned an unregistered continuation destination.");
   pendingContinuation = null;
-  return targetRoute;
+  return validated;
+}
+
+async function completeConsumedContinuation(continuation) {
+  const saveActions = {
+    "catalog.save_program": ["program", "programId"],
+    "catalog.save_school": ["school", "schoolId"],
+    "catalog.save_scholarship": ["scholarship", "scholarshipId"],
+  };
+  const saveAction = saveActions[continuation.actionKey];
+  if (!saveAction) return continuation.targetRoute;
+  const [entityType, referenceKey] = saveAction;
+  const entityId = continuation.payloadPreview[referenceKey];
+  const existing = await requestJson("/api/v1/student/saved-items");
+  if (!Array.isArray(existing)) throw new Error("The saved-item response was invalid.");
+  if (!existing.some((item) => item?.entityType === entityType && item.entityId === entityId)) {
+    await requestJson("/api/v1/student/saved-items", {
+      method: "POST",
+      body: { entityType, entityId, notes: null },
+    });
+  }
+  return continuation.targetRoute;
 }
 
 function setButtonBusy(button, busy, busyLabel) {
@@ -260,7 +285,8 @@ function renderWorkspaceChoices(workspaces) {
 
 async function finishSignIn(session) {
   const serverRole = normalizeAuthRole(session?.activeRole);
-  const destination = await consumePendingContinuation(session?.activeRole) || destinationFor(serverRole);
+  const continuation = await consumePendingContinuation(session?.activeRole);
+  const destination = continuation ? await completeConsumedContinuation(continuation) : destinationFor(serverRole);
   document.querySelector("[data-auth-password]").value = "";
   clearWorkspaceChoices();
   setStatus("Signed in. Opening the authorized workspace...", "success");

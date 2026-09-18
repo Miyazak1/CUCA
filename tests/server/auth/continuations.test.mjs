@@ -76,32 +76,45 @@ test("sign-in continuation creates short-lived guest continuation with hashed to
 test("sign-in continuation admits only role-bound protected workspace routes", async () => {
   const guest = createRequestContext({ guestSessionId: "guest-session-1" });
   const allowed = [
-    ["/hub.html", "navigation.open_student_workspace", "student"],
+    ["/hub-api.html", "navigation.open_student_workspace", "student"],
     ["/school-portal.html", "navigation.open_school_workspace", "school_staff"],
-    ["/ops-admin.html", "navigation.open_ops_workspace", "cuac_ops"],
+    ["/ops-admin-api.html", "navigation.open_ops_workspace", "cuac_ops"],
+    ["/programs.html", "catalog.save_program", "student", { programId: "c1111111-c111-4111-8111-c11111111111" }],
+    ["/universities.html", "catalog.save_school", "student", { schoolId: "b1111111-b111-4111-8111-b11111111111" }],
+    ["/scholarships.html", "catalog.save_scholarship", "student", { scholarshipId: "d1111111-d111-4111-8111-d11111111111" }],
   ];
 
-  for (const [targetRoute, actionKey, requiredRole] of allowed) {
+  for (const [targetRoute, actionKey, requiredRole, payloadPreview] of allowed) {
     const { calls, repository } = createRepository();
-    await new SignInContinuationService(repository, { now }).createGuestContinuation(guest, { targetRoute, actionKey, requiredRole });
+    await new SignInContinuationService(repository, { now }).createGuestContinuation(guest, { targetRoute, actionKey, requiredRole, payloadPreview });
     assert.equal(calls[0].input.targetRoute, targetRoute);
     assert.equal(calls[0].input.requiredRole, requiredRole);
   }
 
   for (const input of [
-    { targetRoute: "/ops-admin.html", actionKey: "navigation.open_student_workspace", requiredRole: "student" },
+    { targetRoute: "/ops-admin-api.html", actionKey: "navigation.open_student_workspace", requiredRole: "student" },
     { targetRoute: "/school-portal.html", actionKey: "navigation.open_school_workspace", requiredRole: "student" },
-    { targetRoute: "/hub.html", actionKey: "navigation.open_ops_workspace", requiredRole: "cuac_ops" },
+    { targetRoute: "/hub-api.html", actionKey: "navigation.open_ops_workspace", requiredRole: "cuac_ops" },
   ]) {
     await assert.rejects(new SignInContinuationService(createRepository().repository, { now }).createGuestContinuation(guest, input), /not registered/);
   }
+
+  await assert.rejects(
+    new SignInContinuationService(createRepository().repository, { now }).createGuestContinuation(guest, {
+      targetRoute: "/programs.html",
+      actionKey: "catalog.save_program",
+      requiredRole: "student",
+      payloadPreview: { schoolId: "b1111111-b111-4111-8111-b11111111111" },
+    }),
+    /exact object reference/,
+  );
 });
 
 test("CUAC administrators may consume an Ops continuation without weakening its stored role", async () => {
   const { calls, repository } = createRepository({
     id: "a1111111-a111-4111-8111-a11111111111",
     guestSessionId: "guest-session-1",
-    targetRoute: "/ops-admin.html",
+    targetRoute: "/ops-admin-api.html",
     actionKey: "navigation.open_ops_workspace",
     requiredRole: "cuac_ops",
     tenantSchoolId: null,
@@ -117,7 +130,7 @@ test("CUAC administrators may consume an Ops continuation without weakening its 
     "AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQE",
   );
 
-  assert.equal(result.targetRoute, "/ops-admin.html");
+  assert.equal(result.targetRoute, "/ops-admin-api.html");
   assert.equal(calls[1].input.requiredRole, "cuac_ops");
   assert.equal(calls[1].input.activeRole, "cuac_admin");
 });

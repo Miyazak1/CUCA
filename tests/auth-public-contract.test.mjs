@@ -27,6 +27,10 @@ test("public account page uses real Auth APIs without browser-owned authenticati
   assert.match(script, /requiredRole === "cuac_admin"/);
   assert.match(script, /safeLocalUrl/);
   assert.match(script, /sign-in-continuations\/\$\{encodeURIComponent\(capability\.continuationId\)\}\/consume/);
+  assert.match(script, /catalog\.save_program/);
+  assert.match(script, /catalog\.save_school/);
+  assert.match(script, /catalog\.save_scholarship/);
+  assert.match(script, /completeConsumedContinuation/);
   assert.match(script, /window\.history\.replaceState/);
   assert.doesNotMatch(script, /cuacAuthDemoState|cuacAuthContinuationDemoState|localStorage|sessionStorage/);
   assert.match(html, /data-workspace-picker/);
@@ -52,6 +56,7 @@ test("public account page uses real Auth APIs without browser-owned authenticati
   assert.match(shell, /fetch\("\/api\/v1\/auth\/guest-session"/);
   assert.match(shell, /fetch\("\/api\/v1\/auth\/sign-in-continuations"/);
   assert.match(shell, /navigation\.open_student_workspace/);
+  assert.match(shell, /requireStudentSignedInReady/);
   assert.doesNotMatch(shell, /cuacAuthDemoState|cuacAuthContinuationDemoState|approved-preview|readStoredAuthState/);
 });
 

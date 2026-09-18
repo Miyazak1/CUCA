@@ -75,17 +75,29 @@ const registeredNavigations = new Map<string, { requiredRole: SignInContinuation
     requiredRole: "student",
     routes: new Set(["/application.html", "/application.html#add-choice"]),
   }],
+  ["catalog.save_program", {
+    requiredRole: "student",
+    routes: new Set(["/programs.html"]),
+  }],
+  ["catalog.save_school", {
+    requiredRole: "student",
+    routes: new Set(["/universities.html"]),
+  }],
+  ["catalog.save_scholarship", {
+    requiredRole: "student",
+    routes: new Set(["/scholarships.html"]),
+  }],
   ["navigation.open_student_workspace", {
     requiredRole: "student",
-    routes: new Set(["/onboarding.html", "/hub.html", "/favourites.html", "/application.html", "/billing.html", "/notifications.html", "/preferences.html"]),
+    routes: new Set(["/onboarding-api.html", "/hub-api.html", "/favourites-api.html", "/application.html", "/billing-api.html", "/notifications.html", "/preferences-api.html"]),
   }],
   ["navigation.open_school_workspace", {
     requiredRole: "school_staff",
-    routes: new Set(["/school-portal.html", "/school-settings.html"]),
+    routes: new Set(["/school-portal.html", "/school-settings-api.html"]),
   }],
   ["navigation.open_ops_workspace", {
     requiredRole: "cuac_ops",
-    routes: new Set(["/ops-admin.html"]),
+    routes: new Set(["/ops-admin-api.html"]),
   }],
 ]);
 const sensitivePreviewKeys = new Set([
@@ -211,6 +223,7 @@ export class SignInContinuationService {
     const actionKey = normalizeActionKey(continuation.actionKey);
     requireRegisteredNavigation(targetRoute, actionKey, continuation.requiredRole);
     const payloadPreview = normalizePayloadPreview(continuation.payloadPreview);
+    requireRegisteredPayload(actionKey, payloadPreview);
 
     const consumed = await this.repository.markContinuationConsumed({
       continuationId: continuation.id,
@@ -264,6 +277,7 @@ function normalizeCreateInput(input: CreateSignInContinuationInput) {
   const requiredRole = normalizeRole(value.requiredRole);
   requireRegisteredNavigation(targetRoute, actionKey, requiredRole);
   const payloadPreview = normalizePayloadPreview(value.payloadPreview);
+  requireRegisteredPayload(actionKey, payloadPreview);
   const deviceFingerprint = authOptionalText(value.deviceFingerprint, "Device fingerprint", 256);
 
   return { targetRoute, actionKey, requiredRole, payloadPreview, deviceFingerprint };
@@ -274,6 +288,19 @@ function requireRegisteredNavigation(route: string, action: string, role: SignIn
   const registration = registeredNavigations.get(action);
   if (!registration || role !== registration.requiredRole || !registration.routes.has(route)) {
     throw badRequest("Sign-in continuation navigation is not registered.");
+  }
+}
+
+function requireRegisteredPayload(action: string, payload: Record<string, unknown>) {
+  const requiredReference = {
+    "catalog.save_program": "programId",
+    "catalog.save_school": "schoolId",
+    "catalog.save_scholarship": "scholarshipId",
+  }[action];
+  if (!requiredReference) return;
+  const keys = Object.keys(payload);
+  if (keys.length !== 1 || keys[0] !== requiredReference) {
+    throw badRequest("Sign-in continuation catalog save requires its exact object reference.");
   }
 }
 
