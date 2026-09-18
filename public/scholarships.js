@@ -373,8 +373,12 @@ function cityScholarshipAliases(value) {
   return aliases[routeSlug] || [String(value).toLowerCase()];
 }
 
-function scholarshipImage() {
-  return "file.svg";
+function scholarshipImage(item = {}) {
+  return window.CuacCatalogList.cover("scholarship", {
+    ...item,
+    type: scholarshipType(item),
+    typeLabel: scholarshipTypeLabel(item),
+  });
 }
 
 function matchingProgramsHref(item = {}) {
@@ -410,7 +414,7 @@ function renderCards() {
     return `
       <article class="scholarship-card" role="link" tabindex="0" data-scholarship-card data-detail-href="${detailHref}" aria-label="View ${escapeCatalogHtml(title)} funding details">
         <div class="scholarship-media">
-          <img alt="Scholarship catalog marker" src="${scholarshipImage(item)}" loading="lazy" />
+          <img data-catalog-cover alt="${escapeCatalogHtml(title)} cover" src="${scholarshipImage(item)}" loading="lazy" />
           <span class="badge type-badge ${type}">${escapeCatalogHtml(scholarshipTypeLabel(item))}</span>
           <button class="save-button catalog-save-control ${saved.has(entityId) ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved.has(entityId)}" aria-label="${saved.has(entityId) ? `Remove ${escapeCatalogHtml(title)} from Favourites` : `Save ${escapeCatalogHtml(title)} to Favourites`}" title="${saved.has(entityId) ? "Saved — click to remove" : "Save to Favourites"}">${window.CuacCatalogList.saveHeartIcon()}</button>
           <span class="scholarship-card-open" aria-hidden="true">${scholarshipIcons.arrowRight}</span>

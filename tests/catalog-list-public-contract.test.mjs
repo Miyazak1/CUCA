@@ -44,6 +44,8 @@ test("catalog list detail routes use public record identities", async () => {
   assert.match(universities, /university-detail\.html\?university=\$\{encodeURIComponent\(item\.id\)\}/);
   assert.match(universities, /CuacCatalogList\.cover\("school", item\)/);
   assert.match(programs, /CuacCatalogList\.cover\("program", program\)/);
+  assert.match(scholarships, /CuacCatalogList\.cover\("scholarship", \{/);
+  assert.match(scholarships, /data-catalog-cover alt="\$\{escapeCatalogHtml\(title\)\} cover"/);
   assert.match(programs, /\$\{renderRequirementCards\(program\)\}/);
   assert.match(universities, /item\.cscaSubjects/);
   assert.match(universities, /item\.hskRequirement \|\| item\.englishRequirement/);
@@ -69,6 +71,8 @@ test("catalog list UI has explicit loading and failure states", async () => {
   assert.match(api, /offset \+= pageSize \* pageCount/);
   assert.match(api, /Object\.freeze\(\{ load, loadPage, loadAll,/);
   assert.match(api, /function cover\(kind, item = \{\}\)/);
+  assert.match(api, /kind === "scholarship"/);
+  assert.match(api, /government: \["#15365F", "#2F70B7", "#DCEBFA"\]/);
   assert.match(api, /data:image\/svg\+xml/);
   assert.match(css, /catalog-list-state-error/);
   assert.match(css, /data-catalog-list-page/);

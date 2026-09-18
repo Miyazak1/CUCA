@@ -123,17 +123,35 @@
     const title = item.nameEn || item.nameZh || item.title || "CUAC";
     const seed = [kind, item.id, item.slug, title, item.citySlug, item.fieldCategory].filter(Boolean).join("|");
     const hash = coverHash(seed);
-    const [dark, accent, light] = palettes[hash % palettes.length];
+    const scholarshipPalettes = {
+      government: ["#15365F", "#2F70B7", "#DCEBFA"],
+      university: ["#07514D", "#10A394", "#D1F0EA"],
+      province: ["#70400F", "#D58B2D", "#F8E7C8"],
+      partner: ["#58314F", "#A95882", "#F4DCE9"],
+      other: ["#34464B", "#738C91", "#E2EAEB"],
+    };
+    const scholarshipType = String(item.type || "other").trim().toLowerCase();
+    const [dark, accent, light] = kind === "scholarship"
+      ? scholarshipPalettes[scholarshipType] || scholarshipPalettes.other
+      : palettes[hash % palettes.length];
     const initials = coverInitials(title);
     const label = kind === "program"
       ? item.fieldCategory || item.subjectArea || item.degreeLevel || "Study program"
-      : item.city || item.cityZh || item.region || item.province || "China university";
+      : kind === "scholarship"
+        ? item.providerNameEn || item.providerName || item.schoolName || item.typeLabel || "Funding route"
+        : item.city || item.cityZh || item.region || item.province || "China university";
     const safeInitials = escapeHtml(initials);
     const safeLabel = escapeHtml(String(label).slice(0, 38));
     const motif = kind === "program"
       ? `<circle cx="760" cy="118" r="170" fill="none" stroke="${light}" stroke-width="34" opacity=".26"/><circle cx="760" cy="118" r="92" fill="none" stroke="white" stroke-width="3" opacity=".34"/><path d="M560 510 790 280 970 460" fill="none" stroke="white" stroke-width="16" opacity=".18"/>`
-      : `<path d="M500 470V280l150-82 150 82v190M540 470V315h220v155M390 470V350h110M800 470V350h110" fill="none" stroke="white" stroke-width="18" opacity=".22"/><path d="M355 486h590" stroke="white" stroke-width="10" opacity=".3"/>`;
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${dark}"/><stop offset="1" stop-color="${accent}"/></linearGradient><pattern id="p" width="46" height="46" patternUnits="userSpaceOnUse"><path d="M0 46 46 0M-12 12 12-12M34 58 58 34" stroke="${light}" stroke-width="2" opacity=".09"/></pattern></defs><rect width="960" height="600" rx="24" fill="url(#g)"/><rect width="960" height="600" rx="24" fill="url(#p)"/>${motif}<circle cx="148" cy="156" r="76" fill="white" opacity=".14"/><circle cx="148" cy="156" r="62" fill="none" stroke="white" stroke-width="2" opacity=".6"/><text x="148" y="176" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="50" font-weight="700">${safeInitials}</text><text x="80" y="500" fill="white" font-family="Arial,sans-serif" font-size="31" font-weight="700">${kind === "program" ? "PROGRAM" : "UNIVERSITY"}</text><text x="80" y="544" fill="${light}" font-family="Arial,sans-serif" font-size="22">${safeLabel}</text></svg>`;
+      : kind === "scholarship"
+        ? `<circle cx="735" cy="302" r="122" fill="white" opacity=".1"/><circle cx="735" cy="302" r="82" fill="none" stroke="${light}" stroke-width="12" opacity=".55"/><path d="m692 374-24 106 67-37 67 37-24-106" fill="${light}" opacity=".28"/><path d="m735 242 18 37 41 6-30 29 7 41-36-19-36 19 7-41-30-29 41-6Z" fill="white" opacity=".48"/>`
+        : `<path d="M500 470V280l150-82 150 82v190M540 470V315h220v155M390 470V350h110M800 470V350h110" fill="none" stroke="white" stroke-width="18" opacity=".22"/><path d="M355 486h590" stroke="white" stroke-width="10" opacity=".3"/>`;
+    const kindLabel = kind === "program" ? "PROGRAM" : kind === "scholarship" ? "SCHOLARSHIP" : "UNIVERSITY";
+    const identity = kind === "scholarship"
+      ? `<circle cx="150" cy="304" r="82" fill="white" opacity=".14"/><circle cx="150" cy="304" r="66" fill="none" stroke="white" stroke-width="2" opacity=".6"/><text x="150" y="324" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="48" font-weight="700">${safeInitials}</text><text x="270" y="300" fill="white" font-family="Arial,sans-serif" font-size="31" font-weight="700">${kindLabel}</text><text x="270" y="342" fill="${light}" font-family="Arial,sans-serif" font-size="22">${safeLabel}</text>`
+      : `<circle cx="148" cy="156" r="76" fill="white" opacity=".14"/><circle cx="148" cy="156" r="62" fill="none" stroke="white" stroke-width="2" opacity=".6"/><text x="148" y="176" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="50" font-weight="700">${safeInitials}</text><text x="80" y="500" fill="white" font-family="Arial,sans-serif" font-size="31" font-weight="700">${kindLabel}</text><text x="80" y="544" fill="${light}" font-family="Arial,sans-serif" font-size="22">${safeLabel}</text>`;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${dark}"/><stop offset="1" stop-color="${accent}"/></linearGradient><pattern id="p" width="46" height="46" patternUnits="userSpaceOnUse"><path d="M0 46 46 0M-12 12 12-12M34 58 58 34" stroke="${light}" stroke-width="2" opacity=".09"/></pattern></defs><rect width="960" height="600" rx="24" fill="url(#g)"/><rect width="960" height="600" rx="24" fill="url(#p)"/>${motif}${identity}</svg>`;
     return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
   }
 
