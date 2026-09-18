@@ -619,8 +619,10 @@ h1 {
 .scholarship-card {
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto auto auto minmax(58px, 1fr) auto auto auto;
   gap: 10px;
+  min-width: 0;
   min-height: 500px;
   overflow: hidden;
   padding: 0 18px 18px;
@@ -640,6 +642,8 @@ h1 {
 
 .scholarship-media {
   position: relative;
+  width: calc(100% + 36px);
+  min-width: 0;
   height: 126px;
   margin: 0 -18px 4px;
   overflow: hidden;
@@ -690,10 +694,17 @@ h1 {
 
 .scholarship-media .type-badge {
   left: 14px;
+  box-sizing: border-box;
+  max-width: calc(100% - 76px);
+  overflow: hidden;
+  justify-content: flex-start;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   box-shadow: 0 8px 20px rgb(0 0 0 / 0.08);
 }
 
 .scholarship-media .save-button {
+  z-index: 2;
   right: 14px;
 }
 

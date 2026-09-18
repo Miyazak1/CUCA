@@ -132,6 +132,10 @@ test("scholarship pagination stays compact and exposes the current page", async 
   assert.match(script, /aria-label="Next page"/);
   assert.match(css, /\.pagination\s*\{[^}]*flex-wrap:\s*wrap/s);
   assert.match(css, /\.pagination button:disabled/);
+  assert.match(css, /\.scholarship-card\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1fr\)[^}]*min-width:\s*0/s);
+  assert.match(css, /\.scholarship-media\s*\{[^}]*width:\s*calc\(100% \+ 36px\)[^}]*min-width:\s*0/s);
+  assert.match(css, /\.scholarship-media \.type-badge\s*\{[^}]*max-width:\s*calc\(100% - 76px\)[^}]*text-overflow:\s*ellipsis[^}]*white-space:\s*nowrap/s);
+  assert.match(css, /\.scholarship-media \.save-button\s*\{[^}]*z-index:\s*2[^}]*right:\s*14px/s);
 });
 
 test("program university routes send the school slug to the published API and render safely", async () => {
