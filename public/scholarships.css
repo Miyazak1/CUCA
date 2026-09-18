@@ -695,9 +695,6 @@ h1 {
 
 .scholarship-media .save-button {
   right: 14px;
-  border-color: rgb(255 255 255 / 0.7);
-  background: rgb(255 255 255 / 0.92);
-  box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
 }
 
 .scholarship-card-open {
@@ -727,21 +724,31 @@ h1 {
   width: 34px;
   height: 34px;
   place-items: center;
-  border: 1px solid var(--border);
+  border: 0;
   border-radius: var(--radius-pill);
-  background: white;
+  background: rgb(255 255 255 / 0.92);
   color: var(--accent-dark);
-}
-
-.save-button svg {
-  width: 18px;
-  height: 18px;
-  stroke-width: 2;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .save-button.saved {
-  border-color: rgb(var(--accent-rgb) / 0.22);
-  background: var(--accent-soft);
+  background: var(--accent);
+  color: white;
+}
+
+.save-button:hover {
+  background: white;
+}
+
+.save-button.saved:hover {
+  background: var(--accent-dark);
+  color: white;
+}
+
+.save-button:focus-visible {
+  outline: 3px solid rgb(var(--accent-rgb) / 0.28);
+  outline-offset: 3px;
 }
 
 .scholarship-card h3 {

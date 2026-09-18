@@ -491,7 +491,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
               </a>
               <div class="row-top">
                 <span class="badge ${badgeClassName}">${escapeCatalogHtml(badgeLabel)}</span>
-                <button class="save-button ${isSaved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(id)}" aria-pressed="${isSaved}" aria-label="${isSaved ? `Remove ${escapeCatalogHtml(name)} from Favourites` : `Save ${escapeCatalogHtml(name)} to Favourites`}" title="${isSaved ? "Saved — click to remove" : "Save to Favourites"}">${iconHeart}</button>
+                <button class="save-button ${isSaved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(id)}" aria-pressed="${isSaved}" aria-label="${isSaved ? `Remove ${escapeCatalogHtml(name)} from Favourites` : `Save ${escapeCatalogHtml(name)} to Favourites`}" title="${isSaved ? "Saved — click to remove" : "Save to Favourites"}">${isSaved ? "♥" : "♡"}</button>
               </div>
               <span class="program-card-open" aria-hidden="true">${iconArrowRight}</span>
             </div>
@@ -838,11 +838,6 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
             if (savedNow) state.saved.add(id);
             else state.saved.delete(id);
             render();
-            if (savedNow) {
-              const updatedSaveButton = Array.from(document.querySelectorAll("[data-save]"))
-                .find((button) => button.dataset.save === id);
-              updatedSaveButton?.classList.add("save-confirmed");
-            }
             showAgentProgramNotice(
               savedNow
                 ? `Saved ${program ? programName(program) : "program"} to Favourites. <a href="favourites-api.html">Review saved items</a>`
