@@ -50,6 +50,10 @@ export type PublicProgramDto = {
   deadlineDate: Date | null;
   deadlineLabel: string | null;
   applicationRound: string | null;
+  intakeAvailability: "open" | "expired" | "closed" | "not_published";
+  latestIntakeTerm: string | null;
+  latestIntakeYear: number | null;
+  latestIntakeDeadlineDate: Date | null;
   applicationUrl: string | null;
   applicationNote: string | null;
   scholarshipText: string | null;

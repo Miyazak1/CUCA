@@ -308,13 +308,22 @@ const programListFromSql = `
 from programs p
 join schools s on s.id = p.school_id and s.status = 'active'
 left join cities c on c.id = coalesce(p.city_id, s.city_id) and c.status = 'active'
-left join lateral (
-  select pi.deadline_date, pi.deadline_label, pi.application_round
+  left join lateral (
+  select pi.id, pi.deadline_date, pi.deadline_label, pi.application_round
   from program_intakes pi
   where pi.program_id = p.id and pi.status = 'open'
+    and (pi.deadline_date is null or pi.deadline_date > clock_timestamp())
+    and (pi.open_date is null or pi.deadline_date is null or pi.open_date < pi.deadline_date)
   order by pi.deadline_date asc nulls last
   limit 1
-) next_intake on true`;
+) next_intake on true
+left join lateral (
+  select pi.intake_term, pi.intake_year, pi.deadline_date, pi.status
+  from program_intakes pi
+  where pi.program_id = p.id
+  order by pi.intake_year desc, pi.sort_order desc, pi.intake_term desc, pi.id desc
+  limit 1
+) latest_intake on true`;
 
 const programSelectSql = `
 select
@@ -365,7 +374,16 @@ select
   c.name_en as "cityNameEn",
   next_intake.deadline_date as "deadlineDate",
   next_intake.deadline_label as "deadlineLabel",
-  next_intake.application_round as "applicationRound"
+  next_intake.application_round as "applicationRound",
+  case
+    when next_intake.id is not null then 'open'
+    when latest_intake.intake_year is null then 'not_published'
+    when latest_intake.deadline_date is not null and latest_intake.deadline_date <= clock_timestamp() then 'expired'
+    else 'closed'
+  end as "intakeAvailability",
+  latest_intake.intake_term as "latestIntakeTerm",
+  latest_intake.intake_year as "latestIntakeYear",
+  latest_intake.deadline_date as "latestIntakeDeadlineDate"
 ${programListFromSql}`;
 
 const schoolSelectSql = `

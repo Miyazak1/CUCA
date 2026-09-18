@@ -21,6 +21,11 @@ test("student application choices use server-owned application sets and exact pu
   assert.match(script, /method:\s*"DELETE"/);
   assert.match(script, /credentials:\s*"same-origin"/);
   assert.match(script, /programIntakeId:\s*selected\.programIntakeId/);
+  assert.match(script, /programIntakeId:\s*selected\.programIntakeId \|\| null/);
+  assert.match(script, /Save as intake pending/);
+  assert.match(script, /program\.intakeAvailability === "expired"/);
+  assert.match(script, /select an open intake for every program before sending/);
+  assert.match(script, /renderLockedChoiceField\(form\.elements\.language, appProgramLanguage\(detail\), "Teaching language"\)/);
   assert.match(script, /data-program-intake-id=/);
   assert.match(script, /data-choice-id=/);
   assert.match(script, /"Idempotency-Key":\s*applicationIdempotencyKey\("application_set_create"\)/);

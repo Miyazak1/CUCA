@@ -743,7 +743,7 @@ function applicationChoiceRoute(choice) {
     city: school
       ? appProgramCity({ ...(program || {}), school, city: school.cityZh || school.city || program?.city })
       : appProgramCity(program || {}),
-    intake: intakeDisplayName(intake),
+    intake: intake ? intakeDisplayName(intake) : "Intake pending",
     language: program ? appProgramLanguage(program) : "Language pending",
     tuition: program?.tuitionText || program?.displayTuition || "Tuition pending",
     deadline: intake?.deadlineLabel || intake?.deadlineDate || program?.deadlineLabel || "Deadline pending",
@@ -2083,6 +2083,7 @@ function renderStudentInfoStatus() {
 function getSubmitBlockers() {
   const hasChoices = choiceCount > 0;
   const unavailableChoices = document.querySelectorAll('[data-choice-availability="unavailable"]').length;
+  const pendingIntakes = document.querySelectorAll('[data-choice][data-program-intake-id=""]').length;
   return [
     {
       key: "choices",
@@ -2101,6 +2102,12 @@ function getSubmitBlockers() {
       target: "choices",
       label: "replace or remove unavailable program choices",
       complete: unavailableChoices === 0,
+    },
+    {
+      key: "choice-intakes",
+      target: "choices",
+      label: "select an open intake for every program before sending",
+      complete: pendingIntakes === 0,
     },
     {
       key: "student-info",
@@ -2153,8 +2160,8 @@ async function addChoice(form) {
     showPageAction("Wait for your server-backed application data to finish loading before adding a choice.");
     return;
   }
-  if (!selected.schoolId || !selected.programId || !selected.programIntakeId) {
-    showPageAction("Choose a published university, program, and intake before adding this choice.");
+  if (!selected.schoolId || !selected.programId) {
+    showPageAction("Choose a published university and program before adding this choice.");
     return;
   }
   const submit = form.querySelector('button[type="submit"]');
@@ -2164,7 +2171,10 @@ async function addChoice(form) {
       currentApplicationSet = await applicationApi("/api/v1/student/application-sets", {
         method: "POST",
         headers: { "Idempotency-Key": applicationIdempotencyKey("application_set_create") },
-        body: { name: `${selected.intake} application`, targetIntake: selected.intake },
+        body: {
+          name: `${selected.programIntakeId ? selected.intake : "Intake pending"} application`,
+          targetIntake: selected.programIntakeId ? selected.intake : null,
+        },
       });
     }
     await applicationApi(`/api/v1/student/application-sets/${encodeURIComponent(currentApplicationSet.id)}/choices`, {
@@ -2173,7 +2183,7 @@ async function addChoice(form) {
       body: {
         schoolId: selected.schoolId,
         programId: selected.programId,
-        programIntakeId: selected.programIntakeId,
+        programIntakeId: selected.programIntakeId || null,
         rankOrder: choiceCount,
         studentNotes: getFieldValue(form, "choiceNote", "").trim() || null,
       },
@@ -2182,7 +2192,10 @@ async function addChoice(form) {
     await refreshCurrentApplicationSet();
     if (APPLICATION_PAYMENT_ENABLED) void loadBillingFeePreview();
     const feeInfo = getFeeInfo();
-    showPageAction(`${selected.university} ${selected.program} added. ${feeInfo.schoolCount} school${feeInfo.schoolCount === 1 ? "" : "s"} selected. The server fee quote is refreshing; confirm order before continuing.`);
+    const intakeMessage = selected.programIntakeId
+      ? selected.intake
+      : "saved as intake pending; it cannot be sent until an open intake is selected";
+    showPageAction(`${selected.university} ${selected.program} added (${intakeMessage}). ${feeInfo.schoolCount} school${feeInfo.schoolCount === 1 ? "" : "s"} selected.`);
     form.elements.choiceNote.value = "";
     setChoiceModal(false);
   } catch (error) {
@@ -2226,6 +2239,7 @@ function appendChoiceRoute(route = {}, options = {}) {
   };
   const { choiceId, schoolId, programId, programIntakeId, rankOrder, university, program, programName, degree, city, tuition, deadline, signal } = selected;
   const { intake, language, choiceNote, durationYears, fieldCategory, cscaSubjects, cscaRequirement, hskRequirement, englishRequirement, applicationRound, applicationUrl, applicationNote, sourceLabel, unavailable } = selected;
+  const intakePending = !programIntakeId;
   const index = nextChoiceId++;
   const safeChoiceId = escapeHtml(choiceId);
   const safeSchoolId = escapeHtml(schoolId);
@@ -2258,7 +2272,7 @@ function appendChoiceRoute(route = {}, options = {}) {
     `
       <article class="choice-route backup${unavailable ? " unavailable" : ""}" data-choice="${index}" data-choice-id="${safeChoiceId}" data-school-id="${safeSchoolId}" data-program-id="${safeProgramId}" data-program-intake-id="${safeProgramIntakeId}" data-rank-order="${safeRankOrder}" data-school="${safeUniversity}" data-program="${safeProgram}" data-program-name="${safeProgramName}" data-degree="${safeDegree}" data-city="${safeCity}" data-intake="${safeIntake}" data-language="${safeLanguage}" data-tuition="${safeTuition}" data-deadline="${safeDeadline}" data-signal="${safeSignal}" data-choice-note="${safeChoiceNote}" data-duration-years="${safeDurationYears}" data-field-category="${safeFieldCategory}" data-csca-subjects="${safeCscaSubjects}" data-csca-requirement="${safeCscaRequirement}" data-hsk-requirement="${safeHskRequirement}" data-english-requirement="${safeEnglishRequirement}" data-application-round="${safeApplicationRound}" data-application-url="${safeApplicationUrl}" data-application-note="${safeApplicationNote}" data-source-label="${safeSourceLabel}" data-choice-availability="${unavailable ? "unavailable" : "available"}">
         <div class="choice-topline">
-          <span class="role-pill">${unavailable ? "Unavailable" : "To check"}</span>
+          <span class="role-pill">${unavailable ? "Unavailable" : intakePending ? "Intake pending" : "To check"}</span>
           <div class="choice-route-actions">
             <button type="button" data-remove-choice aria-label="Remove ${safeUniversity} ${safeProgram}">Remove</button>
           </div>
@@ -2267,6 +2281,7 @@ function appendChoiceRoute(route = {}, options = {}) {
           <h3>${safeUniversity}</h3>
           <p>${safeProgram} · ${safeCity} · ${safeIntake} · ${safeLanguage}</p>
           ${unavailable ? '<p class="choice-unavailable-message"><strong>This catalog route is no longer available.</strong> Remove it from this draft or choose a current published program. Your other choices and student information remain available.</p>' : ""}
+          ${intakePending && !unavailable ? '<p class="choice-unavailable-message"><strong>No open intake is available.</strong> This is saved as an interest only and cannot be sent to the school until an open intake is selected.</p>' : ""}
         </div>
         <div class="choice-route-meta">
           <span>${safeDeadline}</span>
@@ -2889,14 +2904,29 @@ function renderProgramOptions(university, selectedProgram) {
   }
 }
 
-function renderIntakeOptions(intakes, selectedIntakeId = "") {
+function intakeAvailabilityMessage(program = {}) {
+  const term = String(program.latestIntakeTerm || "").trim();
+  const year = Number(program.latestIntakeYear);
+  const intake = [term ? `${term.charAt(0).toUpperCase()}${term.slice(1).toLowerCase()}` : "", Number.isInteger(year) ? year : ""]
+    .filter(Boolean).join(" ");
+  const rawDeadline = program.latestIntakeDeadlineDate;
+  const deadline = rawDeadline ? new Date(rawDeadline).toLocaleDateString() : "";
+  if (program.intakeAvailability === "expired") {
+    return `Closed${intake ? `: ${intake}` : ""}${deadline ? ` deadline passed on ${deadline}` : ""}`;
+  }
+  if (program.intakeAvailability === "closed") return `Not open${intake ? `: ${intake} is currently closed` : ""}`;
+  if (program.intakeAvailability === "not_published") return "No intake has been published yet";
+  return "No open intake is currently available";
+}
+
+function renderIntakeOptions(intakes, selectedIntakeId = "", program = {}) {
   const select = document.querySelector("[data-intake-select]");
   if (!select) return;
-  select.innerHTML = intakes.map((intake) => {
+  select.innerHTML = intakes.length ? intakes.map((intake) => {
     const label = intakeDisplayName(intake);
     const deadline = intake.deadlineLabel || (intake.deadlineDate ? new Date(intake.deadlineDate).toLocaleDateString() : "");
     return `<option value="${escapeHtml(intake.id)}">${escapeHtml([label, deadline].filter(Boolean).join(" · "))}</option>`;
-  }).join("");
+  }).join("") : `<option value="">${escapeHtml(intakeAvailabilityMessage(program))}</option>`;
   select.disabled = intakes.length === 0;
   select.required = true;
   if (intakes.some((intake) => intake.id === selectedIntakeId)) select.value = selectedIntakeId;
@@ -2941,7 +2971,8 @@ async function syncProgramFields() {
     ]);
     if (form.elements.program.value !== appProgramOptionValue(item)) return;
     item = detail;
-    renderIntakeOptions(intakes, previousIntakeId);
+    renderIntakeOptions(intakes, previousIntakeId, detail);
+    renderLockedChoiceField(form.elements.language, appProgramLanguage(detail), "Teaching language");
   } catch (error) {
     renderIntakeOptions([]);
     preview.innerHTML = `<strong>Published program details are unavailable.</strong><p>${escapeHtml(error.message)}</p>`;
@@ -2950,10 +2981,24 @@ async function syncProgramFields() {
   }
   const selected = getSelectedProgram();
   if (!selected?.programIntakeId) {
-    preview.innerHTML = "<strong>No published intake is currently available for this program.</strong>";
-    if (sourceMap) sourceMap.innerHTML = "";
+    const availability = intakeAvailabilityMessage(item);
+    preview.innerHTML = `
+      <strong>${escapeHtml(availability)}</strong>
+      <p>You can save this program as an intake-pending interest. It cannot be sent to the school until a new open intake is published and selected.</p>
+      <div><span>${escapeHtml(selected?.language || appProgramLanguage(item))}</span><span>Intake pending</span></div>
+    `;
+    if (sourceMap) sourceMap.innerHTML = `
+      <div class="choice-source-intro">
+        <strong>Save now, choose the intake later</strong>
+        <p>The program will stay in your application set as an interest only. Final confirmation and school handoff remain locked.</p>
+      </div>
+    `;
+    const submit = form.querySelector('button[type="submit"]');
+    if (submit) submit.textContent = "Save as intake pending";
     return;
   }
+  const submit = form.querySelector('button[type="submit"]');
+  if (submit) submit.textContent = "Add to application set";
   const student = getStudentProfile();
   const choiceNote = getFieldValue(form, "choiceNote", "");
   const cscaSummary = [

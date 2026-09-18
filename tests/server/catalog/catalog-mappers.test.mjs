@@ -64,6 +64,10 @@ test("program mapper returns only public program DTO fields", () => {
     citySlug: "hangzhou",
     cityNameEn: "Hangzhou",
     cityNameZh: "杭州",
+    intakeAvailability: "expired",
+    latestIntakeTerm: "Fall",
+    latestIntakeYear: 2026,
+    latestIntakeDeadlineDate: new Date("2026-05-30T00:00:00.000Z"),
     createdByUserId: "ops_1",
     updatedByUserId: "ops_2",
     qualityScore: 92,
@@ -83,6 +87,10 @@ test("program mapper returns only public program DTO fields", () => {
   assert.equal(dto.cscaRequirement, "Required");
   assert.equal(dto.englishRequirement, "IELTS 6.0");
   assert.equal(dto.scholarshipText, "Available");
+  assert.equal(dto.intakeAvailability, "expired");
+  assert.equal(dto.latestIntakeTerm, "Fall");
+  assert.equal(dto.latestIntakeYear, 2026);
+  assert.equal(dto.latestIntakeDeadlineDate.toISOString(), "2026-05-30T00:00:00.000Z");
   assert.equal(dto.sourceStatus, "verified");
   assert.deepEqual(dto.sourceFieldLineage, { nameEn: "official" });  assert.equal("qualityScore" in dto, false);
   assert.equal("missingFields" in dto, false);
