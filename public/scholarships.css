@@ -713,21 +713,27 @@ h1 {
   z-index: 1;
   right: 14px;
   bottom: 14px;
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgb(255 255 255 / 0.72);
   border-radius: var(--radius-pill);
-  background: rgb(255 255 255 / 0.9);
-  color: var(--accent-dark);
-  box-shadow: 0 8px 20px rgb(0 0 0 / 0.08);
+  background: rgb(255 255 255 / 0.92);
+  color: var(--accent);
+  box-shadow: 0 12px 24px rgb(0 0 0 / 0.1);
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
 .scholarship-card-open svg {
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
   stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .scholarship-card h3 {

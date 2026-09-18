@@ -140,6 +140,8 @@ test("scholarship pagination stays compact and exposes the current page", async 
   assert.match(css, /\.scholarship-media\s*\{[^}]*width:\s*calc\(100% \+ 36px\)[^}]*min-width:\s*0/s);
   assert.match(css, /\.scholarship-media \.type-badge\s*\{[^}]*max-width:\s*calc\(100% - 76px\)[^}]*text-overflow:\s*ellipsis[^}]*white-space:\s*nowrap/s);
   assert.match(css, /\.scholarship-media \.save-button\s*\{[^}]*z-index:\s*2[^}]*right:\s*14px/s);
+  assert.match(css, /\.scholarship-card-open\s*\{[^}]*width:\s*40px[^}]*height:\s*40px[^}]*color:\s*var\(--accent\)/s);
+  assert.match(css, /\.scholarship-card-open svg\s*\{[^}]*width:\s*18px[^}]*fill:\s*none[^}]*stroke:\s*currentColor[^}]*stroke-linecap:\s*round/s);
 });
 
 test("program university routes send the school slug to the published API and render safely", async () => {
