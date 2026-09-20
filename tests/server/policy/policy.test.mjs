@@ -90,7 +90,9 @@ test("data-rights triage policy requires a dedicated internal Ops context", () =
     assert.equal(evaluatePolicy({...allowed,activeRole:"student",selectedSurface:"student"},action,resource).allowed,false);
   }
   assert.equal(evaluatePolicy(allowed,"ops.approve_data_rights_outcome",resource).allowed,false);
+  assert.equal(evaluatePolicy(allowed,"ops.extend_data_rights_deadline",resource).allowed,false);
   assert.equal(evaluatePolicy({...allowed,activeRole:"cuac_admin",authStrength:"step_up"},"ops.approve_data_rights_outcome",resource).allowed,true);
+  assert.equal(evaluatePolicy({...allowed,activeRole:"cuac_admin",authStrength:"step_up"},"ops.extend_data_rights_deadline",resource).allowed,true);
 });
 
 test("policy denies cross-tenant school reads", () => {

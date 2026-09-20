@@ -343,6 +343,7 @@ export const dataRightsRequests = pgTable("data_rights_requests", {
   ownerStatusIdx: index("data_rights_requests_owner_status_idx").on(table.userId, table.status, table.receivedAt),
   queueIdx: index("data_rights_requests_queue_idx").on(table.status, table.receivedAt),
   deadlineIdx: index("data_rights_requests_deadline_idx").on(table.status, table.responseDueAt, table.receivedAt),
+  deadlineScopeUnique: uniqueIndex("data_rights_requests_id_response_due_unique").on(table.id, table.responseDueAt),
   activeTypeUnique: uniqueIndex("data_rights_requests_active_type_unique").on(table.userId, table.requestType)
     .where(sql`${table.userId} is not null and ${table.status} in ('received', 'identity_confirmed', 'in_progress', 'escalated')`),
   subjectHashCheck: check("data_rights_requests_subject_hash_check", sql`${table.subjectReferenceHash} ~ '^sha256:[a-f0-9]{64}$'`),
@@ -960,6 +961,45 @@ export const opsDataRightsReviews = pgTable("ops_data_rights_reviews", {
       or (${table.status} = 'escalated' and ${table.revision} = 2
         and ${table.escalationCode} in ('identity_verification_required','legal_review_required','security_review_required','retention_exception_review')
         and ${table.escalationReference} is not null and ${table.escalatedAt} is not null and isfinite(${table.escalatedAt})))`),
+}));
+
+export const dataRightsDeadlineExtensions = pgTable("data_rights_deadline_extensions", {
+  id: uuid("id").primaryKey(),
+  dataRightsRequestId: uuid("data_rights_request_id").notNull(),
+  originalResponseDueAt: timestamp("original_response_due_at", { withTimezone: true }).notNull(),
+  reviewId: uuid("review_id").notNull().references(() => opsDataRightsReviews.id, { onDelete: "restrict" }),
+  sourceRequestRevision: integer("source_request_revision").notNull(),
+  sourceReviewRevision: integer("source_review_revision").notNull(),
+  reasonCode: text("reason_code").notNull(),
+  caseReference: text("case_reference").notNull(),
+  extendedDueAt: timestamp("extended_due_at", { withTimezone: true }).notNull(),
+  approvedByUserId: uuid("approved_by_user_id").notNull(),
+  approvedByGrantId: uuid("approved_by_grant_id").notNull(),
+  approvedByRole: text("approved_by_role").notNull(),
+  approvedAt: timestamp("approved_at", { withTimezone: true }).notNull().defaultNow(),
+  ...timestamps,
+}, table => ({
+  requestUnique: uniqueIndex("data_rights_deadline_extensions_request_unique").on(table.dataRightsRequestId),
+  approvedAtIdx: index("data_rights_deadline_extensions_approved_at_idx").on(table.approvedAt, table.id),
+  requestDeadlineFk: foreignKey({
+    columns: [table.dataRightsRequestId, table.originalResponseDueAt],
+    foreignColumns: [dataRightsRequests.id, dataRightsRequests.responseDueAt],
+    name: "data_rights_deadline_extensions_request_deadline_fk",
+  }).onDelete("restrict"),
+  approvedGrantScopeFk: foreignKey({ columns: [table.approvedByGrantId, table.approvedByUserId, table.approvedByRole],
+    foreignColumns: [cuacStaffAccessGrants.id, cuacStaffAccessGrants.userId, cuacStaffAccessGrants.requestedRole],
+    name: "data_rights_deadline_extensions_approved_grant_scope_fk" }).onDelete("restrict"),
+  reasonCheck: check("data_rights_deadline_extensions_reason_check", sql`${table.reasonCode} in
+    ('request_complexity','exceptional_volume','legal_retention_review','third_party_dependency','service_disruption_recovery')`),
+  referenceCheck: check("data_rights_deadline_extensions_reference_check", sql`${table.caseReference} ~ '^[A-Za-z0-9._:-]{1,128}$'`),
+  approvalCheck: check("data_rights_deadline_extensions_approval_check", sql`
+    ${table.sourceRequestRevision} > 0 and ${table.sourceReviewRevision} in (1,2)
+    and ${table.approvedByRole} = 'cuac_admin'
+    and isfinite(${table.originalResponseDueAt}) and isfinite(${table.extendedDueAt}) and isfinite(${table.approvedAt})
+    and ${table.approvedAt} < ${table.originalResponseDueAt}
+    and ${table.extendedDueAt} > ${table.originalResponseDueAt}
+    and ${table.extendedDueAt} <= ${table.originalResponseDueAt} + interval '60 days'
+    and isfinite(${table.createdAt}) and isfinite(${table.updatedAt}) and ${table.updatedAt} >= ${table.createdAt}`),
 }));
 
 export const opsDataRightsOutcomes = pgTable("ops_data_rights_outcomes", {

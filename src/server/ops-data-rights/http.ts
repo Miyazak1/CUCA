@@ -1,7 +1,7 @@
 import { resolveRequestContextFromRequest, type AuthSessionRepository } from "../auth/session.ts";
 import { badRequest, toErrorEnvelope } from "../shared/errors.ts";
 import type { OpsDataRightsService } from "./service.ts";
-type Service = Pick<OpsDataRightsService,"list"|"claim"|"escalate"|"propose"|"approve">;
+type Service = Pick<OpsDataRightsService,"list"|"claim"|"escalate"|"extend"|"propose"|"approve">;
 export function createOpsDataRightsHttpHandlers(service: Service, auth: AuthSessionRepository) {
   const run = async (request: Request, work: (context: Awaited<ReturnType<typeof resolveRequestContextFromRequest>>) => Promise<unknown>) => {
     const context = await resolveRequestContextFromRequest(request, auth, { purpose: "data_rights_review" });
@@ -12,6 +12,7 @@ export function createOpsDataRightsHttpHandlers(service: Service, auth: AuthSess
     list: (request: Request) => run(request, context => service.list(context, listInput(request))),
     claim: (request: Request,id: string) => run(request, async context => service.claim(context,id,await request.json())),
     escalate: (request: Request,id: string) => run(request, async context => service.escalate(context,id,await request.json())),
+    extend: (request: Request,id: string) => run(request, async context => service.extend(context,id,await request.json())),
     propose: (request: Request,id: string) => run(request, async context => service.propose(context,id,await request.json())),
     approve: (request: Request,id: string) => run(request, async context => service.approve(context,id,await request.json())),
   };

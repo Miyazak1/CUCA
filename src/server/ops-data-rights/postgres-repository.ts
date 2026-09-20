@@ -1,15 +1,17 @@
 import { lockLiveCuacStaffAuthority } from "../auth/cuac-staff-authority.ts";
 import type { TransactionalSqlClient } from "../db/postgres-client.ts";
-import type { OpsDataRightsOutcome, OpsDataRightsQueueRow, OpsDataRightsRepository, OpsDataRightsReview } from "./service.ts";
+import type { OpsDataRightsExtension, OpsDataRightsOutcome, OpsDataRightsQueueRow, OpsDataRightsRepository, OpsDataRightsReview } from "./service.ts";
 
 const reviewColumns = `r.id as "reviewId",r.revision as "reviewRevision",r.status as "reviewStatus",
  r.assigned_user_id as "assignedUserId",r.assigned_role as "assignedRole",r.escalation_code as "escalationCode",
  r.escalation_reference as "escalationReference",r.escalated_at as "escalatedAt",r.created_at as "reviewCreatedAt",r.updated_at as "reviewUpdatedAt"`;
-type Row = Omit<OpsDataRightsQueueRow, "review" | "outcome"> & { reviewId: string | null; reviewRevision: number | null;
+type Row = Omit<OpsDataRightsQueueRow, "review" | "extension" | "outcome"> & { reviewId: string | null; reviewRevision: number | null;
   reviewStatus: OpsDataRightsReview["status"] | null; assignedUserId: string | null; assignedRole: "cuac_ops" | "cuac_admin" | null;
   escalationCode: string | null; escalationReference: string | null; escalatedAt: Date | null;
   reviewCreatedAt: Date | null; reviewUpdatedAt: Date | null; outcomeId:string|null;outcomeCode:OpsDataRightsOutcome["outcomeCode"]|null;
   reasonCode:string|null;caseReference:string|null;proposalSha256:string|null;approvalMode:OpsDataRightsOutcome["approvalMode"]|null;
+  extensionId:string|null;extensionReasonCode:OpsDataRightsExtension["reasonCode"]|null;extensionCaseReference:string|null;
+  originalResponseDueAt:Date|null;extensionDueAt:Date|null;extensionApprovedAt:Date|null;extensionApprovedByUserId:string|null;
   outcomeStatus:OpsDataRightsOutcome["status"]|null;outcomeRevision:number|null;proposedByUserId:string|null;
   proposedByRole:"cuac_ops"|"cuac_admin"|null;approvedByUserId:string|null;approvedAt:Date|null;outcomeCreatedAt:Date|null;outcomeUpdatedAt:Date|null };
 const requestColumns = `q.id as "requestId",q.request_type as "requestType",q.correction_scope as "correctionScope",
@@ -21,13 +23,17 @@ const outcomeColumns=`o.id as "outcomeId",o.outcome_code as "outcomeCode",o.reas
  o.proposal_sha256 as "proposalSha256",o.approval_mode as "approvalMode",o.status as "outcomeStatus",o.revision as "outcomeRevision",
  o.proposed_by_user_id as "proposedByUserId",o.proposed_by_role as "proposedByRole",o.approved_by_user_id as "approvedByUserId",
  o.approved_at as "approvedAt",o.created_at as "outcomeCreatedAt",o.updated_at as "outcomeUpdatedAt"`;
+const extensionColumns=`x.id as "extensionId",x.reason_code as "extensionReasonCode",x.case_reference as "extensionCaseReference",
+ x.original_response_due_at as "originalResponseDueAt",x.extended_due_at as "extensionDueAt",x.approved_at as "extensionApprovedAt",
+ x.approved_by_user_id as "extensionApprovedByUserId"`;
 export class PostgresOpsDataRightsRepository implements OpsDataRightsRepository {
   private readonly client: TransactionalSqlClient;
   constructor(client: TransactionalSqlClient) { this.client = client; }
   async list(input: Parameters<OpsDataRightsRepository["list"]>[0]) { return this.client.transaction(async tx => {
     if (!await lockLiveCuacStaffAuthority(tx, input)) return { authorized: false } as const;
-    const rows = await tx.query<Row>(`select ${requestColumns},${reviewColumns},${outcomeColumns} from data_rights_requests q
+    const rows = await tx.query<Row>(`select ${requestColumns},${reviewColumns},${extensionColumns},${outcomeColumns} from data_rights_requests q
       left join ops_data_rights_reviews r on r.data_rights_request_id=q.id
+      left join data_rights_deadline_extensions x on x.data_rights_request_id=q.id
       left join ops_data_rights_outcomes o on o.data_rights_request_id=q.id
       where q.status in ('received','identity_confirmed','in_progress','escalated')
       order by coalesce(q.extended_due_at,q.response_due_at),q.received_at,q.id limit $1`, [input.limit]);
@@ -60,6 +66,29 @@ export class PostgresOpsDataRightsRepository implements OpsDataRightsRepository 
       where id=$1 and revision=$2 and status='in_progress'`, [input.requestId,input.expectedRevision]);
     return { authorized: true, value: await this.read(tx,input.requestId) } as const;
   }); }
+  async extend(input:Parameters<OpsDataRightsRepository["extend"]>[0]){return this.client.transaction(async tx=>{
+    if(input.activeRole!=="cuac_admin")return{authorized:false}as const;
+    const authority=await lockLiveCuacStaffAuthority(tx,input);if(!authority)return{authorized:false}as const;
+    const inserted=await tx.query(`insert into data_rights_deadline_extensions
+      (id,data_rights_request_id,original_response_due_at,review_id,source_request_revision,source_review_revision,
+       reason_code,case_reference,extended_due_at,approved_by_user_id,approved_by_grant_id,approved_by_role)
+      select $1::uuid,q.id,q.response_due_at,r.id,q.revision,r.revision,$8::text,$9::text,$10::timestamptz,
+       $4::uuid,$5::uuid,$6::text
+      from data_rights_requests q join ops_data_rights_reviews r on r.data_rights_request_id=q.id
+      where q.id=$2::uuid and q.revision=$3 and q.status in ('in_progress','escalated') and q.extended_due_at is null
+        and r.revision=$7 and clock_timestamp()<q.response_due_at
+        and $10::timestamptz>q.response_due_at and $10::timestamptz<=q.response_due_at+interval '60 days'
+        and not exists (select 1 from ops_data_rights_outcomes o where o.data_rights_request_id=q.id)
+        and exists (select 1 from data_rights_identity_confirmations c where c.data_rights_request_id=q.id
+          and c.subject_reference_hash=q.subject_reference_hash)
+      on conflict do nothing returning id`,[input.extensionId,input.requestId,input.expectedRevision,input.actorUserId,
+      authority.grantId,input.activeRole,input.expectedReviewRevision,input.reasonCode,input.caseReference,input.extendedDueAt]);
+    if(!inserted[0])return{authorized:true,value:null}as const;
+    const updated=await tx.query(`update data_rights_requests set extended_due_at=$3,revision=revision+1,updated_at=clock_timestamp()
+      where id=$1 and revision=$2 and extended_due_at is null returning id`,[input.requestId,input.expectedRevision,input.extendedDueAt]);
+    if(!updated[0])throw new Error("Deadline extension request changed during its transaction.");
+    return{authorized:true,value:await this.read(tx,input.requestId)}as const;
+  });}
   async propose(input:Parameters<OpsDataRightsRepository["propose"]>[0]){return this.client.transaction(async tx=>{
     const authority=await lockLiveCuacStaffAuthority(tx,input);if(!authority)return{authorized:false}as const;
     const compatible=`(($8::text='access_ready' and q.request_type='access') or ($8::text='correction_ready' and q.request_type='correction')
@@ -93,8 +122,9 @@ export class PostgresOpsDataRightsRepository implements OpsDataRightsRepository 
     if(!rows[0])return{authorized:true,value:null}as const;return{authorized:true,value:await this.read(tx,input.requestId)}as const;
   });}
   private async read(tx: TransactionalSqlClient, requestId: string) {
-    const rows = await tx.query<Row>(`select ${requestColumns},${reviewColumns},${outcomeColumns} from data_rights_requests q
+    const rows = await tx.query<Row>(`select ${requestColumns},${reviewColumns},${extensionColumns},${outcomeColumns} from data_rights_requests q
       left join ops_data_rights_reviews r on r.data_rights_request_id=q.id
+      left join data_rights_deadline_extensions x on x.data_rights_request_id=q.id
       left join ops_data_rights_outcomes o on o.data_rights_request_id=q.id where q.id=$1`, [requestId]); return rows[0] ? mapRow(rows[0]) : null;
   }
 }
@@ -106,6 +136,9 @@ function mapRow(row: Row): OpsDataRightsQueueRow { return { requestId: row.reque
   updatedAt: row.updatedAt,review: row.reviewId ? { reviewId: row.reviewId,revision: row.reviewRevision!,
     status: row.reviewStatus!,assignedUserId: row.assignedUserId!,assignedRole: row.assignedRole!,escalationCode: row.escalationCode,
     escalationReference: row.escalationReference,escalatedAt: row.escalatedAt,createdAt: row.reviewCreatedAt!,updatedAt: row.reviewUpdatedAt! } : null,
+  extension:row.extensionId?{extensionId:row.extensionId,reasonCode:row.extensionReasonCode!,caseReference:row.extensionCaseReference!,
+    originalResponseDueAt:row.originalResponseDueAt!,extendedDueAt:row.extensionDueAt!,approvedAt:row.extensionApprovedAt!,
+    approvedByUserId:row.extensionApprovedByUserId!}:null,
   outcome:row.outcomeId?{outcomeId:row.outcomeId,outcomeCode:row.outcomeCode!,reasonCode:row.reasonCode,
     caseReference:row.caseReference!,proposalSha256:row.proposalSha256!,approvalMode:row.approvalMode!,status:row.outcomeStatus!,
     revision:row.outcomeRevision!,proposedByUserId:row.proposedByUserId!,proposedByRole:row.proposedByRole!,approvedByUserId:row.approvedByUserId,

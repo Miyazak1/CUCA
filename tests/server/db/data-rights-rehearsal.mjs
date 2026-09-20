@@ -100,11 +100,30 @@ export async function runDataRightsRehearsal(t, pool) {
     assert.equal(reviewStarted.length,2);
     assert.ok(reviewStarted.every(row=>row.locale==="zh-CN"));
     assert.deepEqual(reviewStarted.map(row=>[row.channel,row.status]),[["email","queued"],["in_app","unread"]]);
-    const escalated=(await ops.escalate({...actor,requestId:activeRequestId,expectedRevision:3,expectedReviewRevision:1,
+    const extensionId=randomUUID(),extendedDueAt=new Date(new Date(claimed.responseDueAt).getTime()+30*86_400_000).toISOString();
+    const adminContext=createRequestContext({actorUserId:adminUserId,activeRole:"cuac_admin",selectedSurface:"ops",
+      purpose:"data_rights_review",authStrength:"step_up"});
+    const extended=await client.transaction(async tx=>new OpsDataRightsService(new PostgresOpsDataRightsRepository(tx),
+      new PostgresAuditWriter(tx),new PostgresNotificationPublisher(tx)).extend(adminContext,activeRequestId,{extensionId,
+      expectedRevision:3,expectedReviewRevision:1,reasonCode:"request_complexity",caseReference:"case:extension-rehearsal",extendedDueAt}));
+    assert.equal(extended.revision,4);assert.equal(extended.extension.extensionId,extensionId);
+    assert.equal(extended.effectiveDueAt,extendedDueAt);
+    const extensionEvidence=(await pool.query(`select reason_code,original_response_due_at,extended_due_at,approved_by_user_id
+      from data_rights_deadline_extensions where data_rights_request_id=$1`,[activeRequestId])).rows[0];
+    assert.equal(extensionEvidence.reason_code,"request_complexity");assert.equal(extensionEvidence.approved_by_user_id,adminUserId);
+    assert.equal(extensionEvidence.extended_due_at.toISOString(),extendedDueAt);
+    const extensionNotices=(await pool.query(`select t.locale,d.channel,d.status,d.body from notification_events e
+      join notification_deliveries d on d.event_id=e.id join notification_templates t on t.id=d.template_id
+      where e.resource_id=$1 and e.event_type='data_rights_deadline_extended' order by d.channel`,[activeRequestId])).rows;
+    assert.equal(extensionNotices.length,2);assert.ok(extensionNotices.every(row=>row.locale==="zh-CN"&&row.body.includes(extendedDueAt.slice(0,10))));
+    assert.equal((await ops.extend({actorUserId:adminUserId,activeRole:"cuac_admin",requestId:activeRequestId,
+      extensionId:randomUUID(),expectedRevision:4,expectedReviewRevision:1,reasonCode:"request_complexity",
+      caseReference:"case:duplicate-extension",extendedDueAt:new Date(extendedDueAt)})).value,null,"a request can be extended only once");
+    const escalated=(await ops.escalate({...actor,requestId:activeRequestId,expectedRevision:4,expectedReviewRevision:1,
       code:"legal_review_required",reference:"case:rehearsal"})).value;
     assert.equal(escalated.status,"escalated"); assert.equal(escalated.review.status,"escalated");
     const proposalSha256=`sha256:${"b".repeat(64)}`;
-    const proposed=(await ops.propose({...actor,requestId:activeRequestId,proposalId:randomUUID(),expectedRevision:4,
+    const proposed=(await ops.propose({...actor,requestId:activeRequestId,proposalId:randomUUID(),expectedRevision:5,
       expectedReviewRevision:2,outcomeCode:"request_denied",reasonCode:"legal_restriction",caseReference:"case:rights-denial",
       proposalSha256,approvalMode:"dual_control"})).value;
     assert.equal(proposed.outcome.status,"proposed");
@@ -115,6 +134,23 @@ export async function runDataRightsRehearsal(t, pool) {
     assert.equal(approved.outcome.status,"approved");
     assert.equal(approved.outcome.approvedByUserId,adminUserId);
     assert.equal(approved.status,"escalated","approving a plan must not execute or close the request");
+
+    const plannedRequestId=randomUUID();
+    await client.transaction(async tx=>new DataRightsService(new PostgresDataRightsRepository(tx),
+      new PostgresAuditWriter(tx),new PostgresNotificationPublisher(tx)).createOwn(studentContext,
+      {requestId:plannedRequestId,requestType:"correction",correctionScope:"applicant_profile",preferredLocale:"zh-CN"}));
+    await client.transaction(async tx=>new DataRightsService(new PostgresDataRightsRepository(tx),
+      new PostgresAuditWriter(tx),new PostgresNotificationPublisher(tx)).confirmOwn(
+      {...studentContext,authStrength:"step_up"},plannedRequestId,{confirmationId:randomUUID(),expectedRevision:1}));
+    await ops.claim({...actor,requestId:plannedRequestId,expectedRevision:2});
+    const planned=await ops.propose({...actor,requestId:plannedRequestId,proposalId:randomUUID(),expectedRevision:3,
+      expectedReviewRevision:1,outcomeCode:"correction_ready",reasonCode:null,caseReference:"case:planned-correction",
+      proposalSha256:`sha256:${"c".repeat(64)}`,approvalMode:"single_operator"});
+    assert.equal(planned.value.outcome.status,"approved");
+    assert.equal((await ops.extend({actorUserId:adminUserId,activeRole:"cuac_admin",requestId:plannedRequestId,
+      extensionId:randomUUID(),expectedRevision:3,expectedReviewRevision:1,reasonCode:"request_complexity",
+      caseReference:"case:late-extension",extendedDueAt:new Date(new Date(planned.value.responseDueAt).getTime()+30*86_400_000)})).value,null,
+    "a request with an existing outcome cannot be extended");
 
     await pool.query("update user_roles set revoked_at = clock_timestamp() where user_id = $1 and role = 'student'", [firstUserId]);
     assert.equal((await repository.listOwn(firstUserId)).authorized, false);

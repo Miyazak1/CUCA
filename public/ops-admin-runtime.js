@@ -802,6 +802,19 @@ function renderDataRights(items) {
   const deadlineLabels={on_track:"正常",internal_due_soon:"内部目标临近",internal_target_missed:"内部目标未达成",
     response_due_soon:"最迟答复临近",overdue:"已逾期"};
   const deadlineClass=state=>state==="overdue"?" is-danger":state==="on_track"?"":" is-warning";
+  const extensionLabels={request_complexity:"请求较为复杂",exceptional_volume:"请求数量异常",legal_retention_review:"依法保留事项复核",
+    third_party_dependency:"等待必要的第三方确认",service_disruption_recovery:"服务中断恢复"};
+  const extensionState=item=>item.extension?`<p class="ops-state"><strong>延期已批准</strong> · ${escapeHtml(extensionLabels[item.extension.reasonCode]||item.extension.reasonCode)}
+      · 新期限 ${escapeHtml(new Date(item.extension.extendedDueAt).toLocaleDateString())} · ${escapeHtml(item.extension.caseReference)}</p>`:
+    item.review&&!item.outcome&&new Date(item.responseDueAt).getTime()>Date.now()&&["in_progress","escalated"].includes(item.status)?`<form data-ops-action-form data-kind="privacy" data-target="${escapeHtml(item.requestId)}" data-action="deadline-extension"
+      data-revision="${item.revision}" data-review-revision="${item.review.revision}" data-response-due="${escapeHtml(item.responseDueAt)}">
+      <label><span>延期原因</span><select name="reasonCode" required>${Object.entries(extensionLabels).map(([value,label])=>`<option value="${value}">${label}</option>`).join("")}</select></label>
+      <label><span>新的最迟答复时间</span><input name="extendedDueAt" type="datetime-local" required /></label>
+      <label><span>内部工单引用</span><input name="caseReference" maxlength="128" pattern="[A-Za-z0-9._:-]+" required /></label>
+      <button class="ops-button" type="submit" ${opsState.role==="cuac_admin"&&opsState.authStrength==="step_up"?"":"disabled"}>批准延期</button>
+      ${opsState.role==="cuac_admin"&&opsState.authStrength==="step_up"?"":"<p class=\"ops-state\">延期需要管理员完成二次验证后批准，且必须在原期限前操作。</p>"}</form>`:
+    item.outcome?"<p class=\"ops-state\">已有处理方案，不能再变更答复期限。</p>":
+    item.review?"<p class=\"ops-state\">原答复期限已到或请求状态不允许延期。</p>":"";
   root.innerHTML=`${sectionHeading("隐私请求处理","这里记录处理方案及必要审批；当前版本不会实际导出、删除、拒绝或关闭请求。")}
     <div class="ops-review-list">${items.length?items.map(item=>`<article class="ops-review-card">
       <header><div><strong>${escapeHtml(labels[item.requestType]||item.requestType)}</strong>
@@ -818,6 +831,7 @@ function renderDataRights(items) {
           <button class="ops-button" type="submit">升级处理</button></form>`:
         `<p class="ops-state">已升级：${escapeHtml(item.review.escalationCode||"")} · ${escapeHtml(item.review.escalationReference||"")}</p>`}
       ${item.review?outcomeState(item):""}
+      ${extensionState(item)}
     </article>`).join(""):"<p class=\"ops-state\">当前没有待处理隐私请求。</p>"}</div>`;
 }
 
@@ -935,6 +949,19 @@ function actionRequest(form) {
   } else if (kind === "privacy") {
     path = `/api/v1/ops/data-rights/requests/${encodeURIComponent(target)}/${action}`;
     if (action === "escalate") body.expectedReviewRevision = Number(form.dataset.reviewRevision);
+    else if (action === "deadline-extension") {
+      body.extensionId = crypto.randomUUID();
+      body.expectedReviewRevision = Number(form.dataset.reviewRevision);
+      body.reasonCode = cleanText(values.get("reasonCode"));
+      body.caseReference = cleanText(values.get("caseReference"));
+      const due = cleanText(values.get("extendedDueAt"));
+      if (!due || !Number.isFinite(new Date(due).getTime())) throw new OpsRequestError("必须填写有效的新答复时间。", 400, "INVALID_INPUT");
+      const originalDue = new Date(form.dataset.responseDue).getTime(), nextDue = new Date(due).getTime();
+      if (!Number.isFinite(originalDue) || originalDue <= Date.now() || nextDue <= originalDue || nextDue > originalDue + 60 * 86400000) {
+        throw new OpsRequestError("新期限必须晚于原期限、不得超过原期限 60 天，且批准必须发生在原期限前。", 400, "INVALID_INPUT");
+      }
+      body.extendedDueAt = new Date(due).toISOString();
+    }
     else if (action === "outcome") {
       body.proposalId = crypto.randomUUID();
       body.expectedReviewRevision = Number(form.dataset.reviewRevision);

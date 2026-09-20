@@ -59,7 +59,7 @@ export type NotificationEventMaterialization = {
 type BuiltinDefinition = { topic: NotificationTopic; title: string; body: string };
 
 type DataRightsEventType = "data_rights_received" | "data_rights_identity_required" | "data_rights_identity_confirmed"
-  | "data_rights_review_started" | "data_rights_cancelled";
+  | "data_rights_review_started" | "data_rights_deadline_extended" | "data_rights_cancelled";
 
 const dataRightsDefinitions: Readonly<Record<"en"|"zh-CN",Readonly<Record<DataRightsEventType,BuiltinDefinition>>>>={
   en:{
@@ -67,6 +67,7 @@ const dataRightsDefinitions: Readonly<Record<"en"|"zh-CN",Readonly<Record<DataRi
     data_rights_identity_required:{topic:"privacy_requests",title:"Confirm your identity",body:"Re-enter your password in Account settings. Staff cannot claim or process this request until confirmation is complete."},
     data_rights_identity_confirmed:{topic:"privacy_requests",title:"Identity confirmed",body:"Your identity confirmation is complete and the request can enter the staff review queue."},
     data_rights_review_started:{topic:"privacy_requests",title:"Privacy request review started",body:"A staff member has claimed your request. You can track later status changes in Account settings."},
+    data_rights_deadline_extended:{topic:"privacy_requests",title:"Privacy request deadline extended",body:"The response deadline is now {{extendedDueDate}}. Reason: {{extensionReason}}. Track the request in Account settings."},
     data_rights_cancelled:{topic:"privacy_requests",title:"Privacy request cancelled",body:"You cancelled this request. CUAC will not continue processing it."},
   },
   "zh-CN":{
@@ -74,6 +75,7 @@ const dataRightsDefinitions: Readonly<Record<"en"|"zh-CN",Readonly<Record<DataRi
     data_rights_identity_required:{topic:"privacy_requests",title:"请确认身份",body:"请在账户设置中重新输入密码。完成身份确认前，工作人员不能认领或处理此请求。"},
     data_rights_identity_confirmed:{topic:"privacy_requests",title:"身份确认成功",body:"身份确认已经完成，你的请求现在可以进入人工处理队列。"},
     data_rights_review_started:{topic:"privacy_requests",title:"隐私请求已开始处理",body:"工作人员已经认领你的请求。你可以在账户设置中查看后续状态。"},
+    data_rights_deadline_extended:{topic:"privacy_requests",title:"隐私请求答复期限已延长",body:"新的答复期限为 {{extendedDueDate}}。原因：{{extensionReason}}。请在账户设置中查看请求状态。"},
     data_rights_cancelled:{topic:"privacy_requests",title:"隐私请求已取消",body:"你已取消此请求，CUAC 不会继续处理。"},
   },
 };
@@ -129,10 +131,21 @@ export function defaultNotificationPreference(role: NotificationAudienceRole, to
 }
 
 export function materializeDataRightsNotification(input:{recipientUserId:string;requestId:string;eventType:DataRightsEventType;
-  locale:"en"|"zh-CN";transitionReference:string;occurredAt:Date}):NotificationEventMaterialization{
-  const definition=dataRightsDefinitions[input.locale],copy=definition[input.eventType],variables={};
+  locale:"en"|"zh-CN";transitionReference:string;occurredAt:Date;extendedDueDate?:string;
+  extensionReasonCode?:"request_complexity"|"exceptional_volume"|"legal_retention_review"|"third_party_dependency"|"service_disruption_recovery"}):NotificationEventMaterialization{
+  const definition=dataRightsDefinitions[input.locale],copy=definition[input.eventType];
+  const reasonLabels={en:{request_complexity:"request complexity",exceptional_volume:"exceptional request volume",
+    legal_retention_review:"legal retention review",third_party_dependency:"necessary third-party dependency",
+    service_disruption_recovery:"service disruption recovery"},"zh-CN":{request_complexity:"请求较为复杂",exceptional_volume:"请求数量异常",
+    legal_retention_review:"依法保留事项复核",third_party_dependency:"等待必要的第三方确认",service_disruption_recovery:"服务中断恢复"}} as const;
+  const extension=input.eventType==="data_rights_deadline_extended";
+  if(extension&&(!/^\d{4}-\d{2}-\d{2}$/.test(input.extendedDueDate??"")||!input.extensionReasonCode))
+    throw serviceUnavailable("Deadline extension notification data is invalid.");
+  const variables:Record<string,string>=extension?{extendedDueDate:input.extendedDueDate!,
+    extensionReason:reasonLabels[input.locale][input.extensionReasonCode!]}:{};
+  const variableKeys=extension?["extendedDueDate","extensionReason"]:[];
   const templates=(["in_app","email"] as const).map(channel=>buildTemplate(input.eventType,copy,channel,
-    "/preferences-api.html#privacy-requests",[],input.locale));
+    "/preferences-api.html#privacy-requests",variableKeys,input.locale));
   return{recipientUserId:input.recipientUserId,audienceRole:"student",tenantSchoolId:null,topic:copy.topic,
     eventType:input.eventType,resourceType:"data_rights_request",resourceId:input.requestId,
     eventKeySha256:digest({version:1,source:"data_rights_transition",eventType:input.eventType,
@@ -249,14 +262,19 @@ export function renderNotificationTemplate(template: NotificationTemplate, varia
       throw serviceUnavailable("Notification template variable is invalid.");
     }
   }
-  const replace = (value: string | null) => value?.replace(/\{\{([a-zA-Z][a-zA-Z0-9]*)\}\}/g, (_, key: string) => {
+  const replaceText = (value: string | null) => value?.replace(/\{\{([a-zA-Z][a-zA-Z0-9]*)\}\}/g, (_, key: string) => {
+    const replacement = variables[key];
+    if (replacement === undefined) throw serviceUnavailable("Notification template contains an unsupported variable.");
+    return replacement;
+  }) ?? null;
+  const replacePath = (value: string | null) => value?.replace(/\{\{([a-zA-Z][a-zA-Z0-9]*)\}\}/g, (_, key: string) => {
     const replacement = variables[key];
     if (replacement === undefined) throw serviceUnavailable("Notification template contains an unsupported variable.");
     return encodeURIComponent(replacement);
   }) ?? null;
-  const title = replace(template.titleTemplate)!;
-  const body = replace(template.bodyTemplate)!;
-  const actionPath = replace(template.actionPathTemplate);
+  const title = replaceText(template.titleTemplate)!;
+  const body = replaceText(template.bodyTemplate)!;
+  const actionPath = replacePath(template.actionPathTemplate);
   if (title.length > 160 || body.length > 2000 || (actionPath && actionPath.length > 512)) {
     throw serviceUnavailable("Rendered notification exceeds its bounded contract.");
   }

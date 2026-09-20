@@ -9,10 +9,10 @@ const row=(extra={})=>({requestId:"b1111111-b111-4111-8111-b11111111111",request
   preferredLocale:"en",status:"received",revision:1,receivedAt:new Date("2026-09-20T00:00:00Z"),
   identityConfirmedAt:new Date("2026-09-20T00:01:00Z"),deadlinePolicyVersion:"data_rights_response_v1",
   internalTargetAt:new Date("2026-10-05T00:00:00Z"),responseDueAt:new Date("2026-10-20T00:00:00Z"),extendedDueAt:null,
-  observedAt:new Date("2026-09-21T00:00:00Z"),updatedAt:new Date("2026-09-20T00:00:00Z"),review:null,outcome:null,...extra});
+  observedAt:new Date("2026-09-21T00:00:00Z"),updatedAt:new Date("2026-09-20T00:00:00Z"),review:null,extension:null,outcome:null,...extra});
 const review={reviewId:"c1111111-c111-4111-8111-c11111111111",revision:1,status:"investigating",assignedUserId:actor().actorUserId,
   assignedRole:"cuac_ops",escalationCode:null,escalationReference:null,escalatedAt:null,createdAt:new Date(),updatedAt:new Date()};
-const unused={async propose(){throw 0;},async approve(){throw 0;}};
+const unused={async extend(){throw 0;},async propose(){throw 0;},async approve(){throw 0;}};
 test("Ops queue exposes minimal request metadata and rechecks authority",async()=>{const calls=[];
   const service=new OpsDataRightsService({async list(input){calls.push(input);return{authorized:true,value:[row()]};},async claim(){throw 0;},async escalate(){throw 0;},...unused},{async record(){}});
   const result=await service.list(actor(),{}); assert.equal(result.length,1); assert.equal("userId" in result[0],false); assert.equal(calls[0].actorUserId,actor().actorUserId);
@@ -40,9 +40,24 @@ test("claim and escalation are revision-bound and use fixed codes",async()=>{con
   assert.deepEqual(events.map(e=>e.eventType),["data_rights_review_started"]);
   await assert.rejects(service.escalate(actor(),row().requestId,{expectedRevision:2,expectedReviewRevision:1,code:"erase_now",reference:"case:123"}),e=>e.status===400);
 });
+test("deadline extension requires a stepped-up administrator and emits the approved localized transition",async()=>{const events=[],audits=[],calls=[];
+  const extension={extensionId:"d1111111-d111-4111-8111-d11111111111",reasonCode:"request_complexity",caseReference:"case:extension-1",
+    originalResponseDueAt:new Date("2026-10-20T00:00:00Z"),extendedDueAt:new Date("2026-11-20T00:00:00Z"),
+    approvedAt:new Date("2026-09-22T00:00:00Z"),approvedByUserId:"a1111111-a111-4111-8111-a11111111111"};
+  const service=new OpsDataRightsService({async list(){throw 0;},async claim(){throw 0;},async escalate(){throw 0;},
+    async extend(input){calls.push(input);return{authorized:true,value:row({status:"in_progress",revision:3,review,extension,
+      extendedDueAt:extension.extendedDueAt})};},async propose(){throw 0;},async approve(){throw 0;}},{async record(e){audits.push(e);}},{async publish(e){events.push(e);}});
+  const body={extensionId:extension.extensionId,expectedRevision:2,expectedReviewRevision:1,reasonCode:"request_complexity",
+    caseReference:"case:extension-1",extendedDueAt:"2026-11-20T00:00:00.000Z"};
+  await assert.rejects(service.extend(actor(),row().requestId,body),e=>e.status===403);assert.equal(calls.length,0);
+  const result=await service.extend(actor({activeRole:"cuac_admin",authStrength:"step_up"}),row().requestId,body);
+  assert.equal(result.extension.reasonCode,"request_complexity");assert.equal(calls[0].activeRole,"cuac_admin");
+  assert.equal(audits[0].action,"ops.data_rights.deadline.extend");assert.equal(events[0].eventType,"data_rights_deadline_extended");
+  assert.equal(events[0].variables.extendedDueDate,"2026-11-20");
+});
 test("repository denial and stale transitions never acknowledge success",async()=>{const service=new OpsDataRightsService({async list(){return{authorized:false};},
   async claim(){return{authorized:true,value:null};},async escalate(){return{authorized:true,value:null};},
-  async propose(){return{authorized:true,value:null};},async approve(){return{authorized:true,value:null};}},{async record(){}});
+  async extend(){return{authorized:true,value:null};},async propose(){return{authorized:true,value:null};},async approve(){return{authorized:true,value:null};}},{async record(){}});
   await assert.rejects(service.list(actor()),e=>e.status===403);
   await assert.rejects(service.claim(actor(),row().requestId,{expectedRevision:1}),e=>e.status===409);
 });

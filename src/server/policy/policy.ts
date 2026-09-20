@@ -37,6 +37,7 @@ export type PolicyAction =
   | "ops.read_data_rights_review"
   | "ops.claim_data_rights_review"
   | "ops.escalate_data_rights_review"
+  | "ops.extend_data_rights_deadline"
   | "ops.propose_data_rights_outcome"
   | "ops.approve_data_rights_outcome"
   | "billing.manage_own"
@@ -301,10 +302,10 @@ export function evaluatePolicy(context: RequestContext, action: PolicyAction, re
   }
 
   if (resource.type === "ops_data_rights_review" && ["ops.read_data_rights_review",
-    "ops.claim_data_rights_review", "ops.escalate_data_rights_review", "ops.propose_data_rights_outcome",
+    "ops.claim_data_rights_review", "ops.escalate_data_rights_review", "ops.extend_data_rights_deadline", "ops.propose_data_rights_outcome",
     "ops.approve_data_rights_outcome"].includes(action)) {
     const internal = context.activeRole === "cuac_ops" || context.activeRole === "cuac_admin";
-    const approving = action === "ops.approve_data_rights_outcome";
+    const approving = action === "ops.approve_data_rights_outcome" || action === "ops.extend_data_rights_deadline";
     return context.actorUserId && internal && context.selectedSurface === "ops"
       && context.purpose === "data_rights_review" && context.tenantSchoolId === null
       && (context.authStrength === "session" || context.authStrength === "step_up")

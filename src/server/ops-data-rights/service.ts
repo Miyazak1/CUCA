@@ -10,6 +10,8 @@ export const OPS_DATA_RIGHTS_ESCALATION_CODES = ["identity_verification_required
   "security_review_required", "retention_exception_review"] as const;
 export const OPS_DATA_RIGHTS_OUTCOMES = ["access_ready","correction_ready","portable_export_ready",
   "account_deletion_ready","request_denied","retention_exception"] as const;
+export const DATA_RIGHTS_EXTENSION_REASONS = ["request_complexity","exceptional_volume","legal_retention_review",
+  "third_party_dependency","service_disruption_recovery"] as const;
 const OUTCOME_REASONS = ["identity_not_proven","request_out_of_scope","legal_restriction",
   "legal_hold","fraud_or_security","financial_record"] as const;
 type Role = "cuac_ops" | "cuac_admin";
@@ -22,7 +24,9 @@ export type OpsDataRightsQueueRow = { requestId: string; requestType: string; co
   identityConfirmedAt: Date | null; deadlinePolicyVersion: "data_rights_response_v1";
   internalTargetAt: Date; responseDueAt: Date; extendedDueAt: Date | null; observedAt: Date;
   notificationRecipientUserId:string|null;
-  review: OpsDataRightsReview | null; outcome: OpsDataRightsOutcome | null };
+  review: OpsDataRightsReview | null; extension:OpsDataRightsExtension|null; outcome: OpsDataRightsOutcome | null };
+export type OpsDataRightsExtension={extensionId:string;reasonCode:typeof DATA_RIGHTS_EXTENSION_REASONS[number];caseReference:string;
+  originalResponseDueAt:Date;extendedDueAt:Date;approvedAt:Date;approvedByUserId:string};
 export type OpsDataRightsOutcome = { outcomeId:string; outcomeCode:typeof OPS_DATA_RIGHTS_OUTCOMES[number];reasonCode:string|null;
   caseReference:string;proposalSha256:string;approvalMode:"single_operator"|"single_admin"|"dual_control";
   status:"proposed"|"approved";revision:number;proposedByUserId:string;proposedByRole:Role;
@@ -33,6 +37,8 @@ export type OpsDataRightsRepository = {
   claim(input: Actor & { requestId: string; expectedRevision: number }): Promise<Authorized<OpsDataRightsQueueRow | null>>;
   escalate(input: Actor & { requestId: string; expectedRevision: number; expectedReviewRevision: number;
     code: typeof OPS_DATA_RIGHTS_ESCALATION_CODES[number]; reference: string }): Promise<Authorized<OpsDataRightsQueueRow | null>>;
+  extend(input:Actor&{requestId:string;extensionId:string;expectedRevision:number;expectedReviewRevision:number;
+    reasonCode:typeof DATA_RIGHTS_EXTENSION_REASONS[number];caseReference:string;extendedDueAt:Date}):Promise<Authorized<OpsDataRightsQueueRow|null>>;
   propose(input: Actor & { requestId:string;proposalId:string;expectedRevision:number;expectedReviewRevision:number;
     outcomeCode:typeof OPS_DATA_RIGHTS_OUTCOMES[number];reasonCode:string|null;caseReference:string;proposalSha256:string;
     approvalMode:OpsDataRightsOutcome["approvalMode"] }):Promise<Authorized<OpsDataRightsQueueRow|null>>;
@@ -86,6 +92,27 @@ export class OpsDataRightsService {
       metadata: { revision: result.value.revision, reviewId: result.value.review?.reviewId, code } }));
     return project(result.value);
   }
+  async extend(context:RequestContext,requestIdValue:unknown,value:unknown){
+    const actor=requireActor(context),decisionId=authorize(context,"ops.extend_data_rights_deadline");
+    if(actor.activeRole!=="cuac_admin"||context.authStrength!=="step_up")throw forbidden("Step-up CUAC administrator approval is required for an extension.");
+    const requestId=inputUuid(requestIdValue,"Request id"),fields=inputRecord(value,
+      ["extensionId","expectedRevision","expectedReviewRevision","reasonCode","caseReference","extendedDueAt"]);
+    const extensionId=inputUuid(fields.extensionId,"Extension id");
+    const expectedRevision=inputInteger(fields.expectedRevision,"Expected revision",1,2_147_483_646);
+    const expectedReviewRevision=inputInteger(fields.expectedReviewRevision,"Expected review revision",1,2);
+    const reasonCode=inputEnum(fields.reasonCode,"Extension reason",DATA_RIGHTS_EXTENSION_REASONS);
+    const caseReference=reference(fields.caseReference),extendedDueAt=parseExtensionDate(fields.extendedDueAt);
+    const result=await this.repository.extend({...actor,requestId,extensionId,expectedRevision,expectedReviewRevision,
+      reasonCode,caseReference,extendedDueAt});requireAuthority(result);if(!result.value)throw changed();
+    await this.audit.record(buildAuditEvent(context,{action:"ops.data_rights.deadline.extend",resourceType:"data_rights_request",
+      resourceId:requestId,allowed:true,policyDecisionId:decisionId,dataClasses,metadata:{extensionId,reasonCode,
+        extendedDueAt:result.value.extendedDueAt?.toISOString(),revision:result.value.revision}}));
+    if(result.value.notificationRecipientUserId)await this.notifications.publish(materializeDataRightsNotification({
+      recipientUserId:result.value.notificationRecipientUserId,requestId,eventType:"data_rights_deadline_extended",
+      locale:result.value.preferredLocale,transitionReference:extensionId,occurredAt:result.value.extension!.approvedAt,
+      extendedDueDate:result.value.extension!.extendedDueAt.toISOString().slice(0,10),extensionReasonCode:reasonCode}));
+    return project(result.value);
+  }
   async propose(context:RequestContext,requestIdValue:unknown,value:unknown){
     const actor=requireActor(context), fields=inputRecord(value,["proposalId","expectedRevision","expectedReviewRevision","outcomeCode","reasonCode","caseReference"]);
     const requestId=inputUuid(requestIdValue,"Request id"),proposalId=inputUuid(fields.proposalId,"Proposal id");
@@ -125,7 +152,7 @@ function requireActor(context: RequestContext): Actor {
     || !["session", "step_up"].includes(context.authStrength)) throw forbidden("Authenticated data-rights review context is required.");
   return { actorUserId: context.actorUserId, activeRole: context.activeRole as Role };
 }
-function authorize(context: RequestContext, action: "ops.read_data_rights_review" | "ops.claim_data_rights_review" | "ops.escalate_data_rights_review"|"ops.propose_data_rights_outcome"|"ops.approve_data_rights_outcome") {
+function authorize(context: RequestContext, action: "ops.read_data_rights_review" | "ops.claim_data_rights_review" | "ops.escalate_data_rights_review"|"ops.extend_data_rights_deadline"|"ops.propose_data_rights_outcome"|"ops.approve_data_rights_outcome") {
   const decision = evaluatePolicy(context, action, { type: "ops_data_rights_review", dataClasses });
   if (!decision.allowed) throw forbidden(decision.reason); return decision.id;
 }
@@ -140,6 +167,8 @@ function project(row: OpsDataRightsQueueRow) { const {observedAt,notificationRec
   extendedDueAt:row.extendedDueAt?.toISOString()??null,effectiveDueAt:effectiveDueAt.toISOString(),deadlineState:deadlineState(row),
   review: row.review ? { ...row.review, escalatedAt: row.review.escalatedAt?.toISOString() ?? null,
     createdAt: row.review.createdAt.toISOString(), updatedAt: row.review.updatedAt.toISOString() } : null,
+  extension:row.extension?{...row.extension,originalResponseDueAt:row.extension.originalResponseDueAt.toISOString(),
+    extendedDueAt:row.extension.extendedDueAt.toISOString(),approvedAt:row.extension.approvedAt.toISOString()}:null,
   outcome:row.outcome?{...row.outcome,approvedAt:row.outcome.approvedAt?.toISOString()??null,
     createdAt:row.outcome.createdAt.toISOString(),updatedAt:row.outcome.updatedAt.toISOString()}:null }; }
 export function deadlineState(row: Pick<OpsDataRightsQueueRow,"internalTargetAt"|"responseDueAt"|"extendedDueAt"|"observedAt">) {
@@ -160,4 +189,6 @@ function parseReason(code:typeof OPS_DATA_RIGHTS_OUTCOMES[number],value:unknown)
   if(code==="request_denied"&&!OUTCOME_REASONS.slice(0,3).includes(parsed as never))throw badRequest("Denial reason is invalid.");
   if(code==="retention_exception"&&!OUTCOME_REASONS.slice(3).includes(parsed as never))throw badRequest("Retention reason is invalid.");return parsed;}
 function reference(value:unknown){const v=inputText(value,"Case reference",128);if(!/^[A-Za-z0-9._:-]+$/.test(v))throw badRequest("Case reference is invalid.");return v;}
+function parseExtensionDate(value:unknown){const text=inputText(value,"Extended due date",40),date=new Date(text);
+  if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(text)||!Number.isFinite(date.getTime()))throw badRequest("Extended due date must be a UTC timestamp.");return date;}
 function digest(value:unknown){return`sha256:${createHash("sha256").update(JSON.stringify(value)).digest("hex")}`;}

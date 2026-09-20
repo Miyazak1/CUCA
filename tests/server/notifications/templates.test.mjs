@@ -81,3 +81,14 @@ test("data-rights notifications use independently fixed English and Chinese copy
   assert.deepEqual(defaultNotificationPreference("student","privacy_requests"),
     {inAppEnabled:true,emailEnabled:true,smsEnabled:false});
 });
+
+test("deadline extension notifications include only a reviewed localized reason and date",()=>{
+  for(const [locale,reason] of [["en","request complexity"],["zh-CN","请求较为复杂"]]){
+    const event=materializeDataRightsNotification({recipientUserId:ids.user,requestId:ids.application,
+      eventType:"data_rights_deadline_extended",locale,transitionReference:ids.event,occurredAt:new Date(),
+      extendedDueDate:"2026-11-30",extensionReasonCode:"request_complexity"});
+    const rendered=renderNotificationTemplate(event.templates[0],event.variables);
+    assert.match(rendered.body,/2026-11-30/);assert.match(rendered.body,new RegExp(reason));
+    assert.doesNotMatch(rendered.body,/case|password|token/i);
+  }
+});
