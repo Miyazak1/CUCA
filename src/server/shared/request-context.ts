@@ -35,6 +35,7 @@ export type RequestPurpose =
   | "audit"
   | "billing"
   | "notification_management"
+  | "data_rights"
   | "agent_tool";
 
 export type AuthStrength = "guest" | "session" | "step_up";

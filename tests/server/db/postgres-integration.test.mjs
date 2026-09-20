@@ -57,6 +57,7 @@ import { runOpsBillingReviewRehearsal } from "./ops-billing-review-rehearsal.mjs
 import { runOpsRoutingReviewRehearsal } from "./ops-routing-review-rehearsal.mjs";
 import { runOpsDataQualityRehearsal } from "./ops-data-quality-rehearsal.mjs";
 import { runSchoolCatalogCorrectionRehearsal } from "./school-catalog-correction-rehearsal.mjs";
+import { runDataRightsRehearsal } from "./data-rights-rehearsal.mjs";
 
 const databaseUrl = process.env.CUAC_PG_REHEARSAL_URL;
 assert.ok(databaseUrl, "Run npm run db:pg:rehearse; this test never uses DATABASE_URL.");
@@ -99,6 +100,7 @@ test("real PostgreSQL migration and repository rehearsal", { timeout: rehearsalT
   await runOpsApplicationSupportRehearsal(t, pool);
   await runNotificationDeliveryRehearsal(t, pool);
   await runOpsOperationsMonitoringRehearsal(t, pool);
+  await runDataRightsRehearsal(t, pool);
 
   await t.test("catalog seed replay preserves IDs/evidence and public queries exclude drafts", async () => {
     const bundle = JSON.parse(await readFile(new URL("../../../seeds/catalog.sample.json", import.meta.url), "utf8"));

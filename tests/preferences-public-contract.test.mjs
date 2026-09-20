@@ -26,7 +26,7 @@ test("preferences candidate uses server-backed account, student profile and noti
   assert.match(script, /method: "PUT"/);
   assert.match(script, /expectedRevision: current\.revision/);
   assert.match(script, /requiredRole: "student"/);
-  assert.doesNotMatch(script, /localStorage|sessionStorage|CuacDataClient|agent|password|theme|marketing|recommend/i);
+  assert.doesNotMatch(script, /localStorage|sessionStorage|CuacDataClient|agent|theme|marketing|recommend/i);
 });
 
 test("study preference controls match the server parser contract", async () => {
@@ -67,4 +67,14 @@ test("preferences workspace is restrained and responsive", async () => {
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.match(css, /account-identity-card/);
   assert.doesNotMatch(css, /linear-gradient|radial-gradient|border-radius:\s*(?:[1-9][0-9]|[1-9][0-9][0-9])px/);
+});
+
+test("privacy requests are account-owned, structured and require step-up for export or deletion", async () => {
+  const [html, script] = await Promise.all([source("public/preferences-api.html"), source("public/preferences-runtime.js")]);
+  assert.match(html, /id="data-rights"/);
+  assert.match(script, /\/api\/v1\/data-rights\/requests/);
+  assert.match(script, /\/api\/v1\/auth\/step-up/);
+  assert.match(script, /portable_export/);
+  assert.match(script, /account_deletion/);
+  assert.doesNotMatch(script, /dataRights.*localStorage|dataRights.*sessionStorage/i);
 });

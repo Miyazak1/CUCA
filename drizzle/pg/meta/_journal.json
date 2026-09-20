@@ -407,6 +407,13 @@
       "when": 1789876623410,
       "tag": "0057_legal_notice_scopes",
       "breakpoints": true
+    },
+    {
+      "idx": 58,
+      "version": "7",
+      "when": 1789877706368,
+      "tag": "0058_data_rights_requests",
+      "breakpoints": true
     }
   ]
 }

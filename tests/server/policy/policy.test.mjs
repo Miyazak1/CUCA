@@ -62,6 +62,24 @@ test("policy allows students to read only their own resources", () => {
   );
 });
 
+test("data-rights policy is owner-only and isolated to the dedicated student purpose", () => {
+  const owner = "student_1";
+  const allowed = createRequestContext({ actorUserId: owner, activeRole: "student", selectedSurface: "student",
+    purpose: "data_rights", authStrength: "session" });
+  const resource = { type: "data_rights_request", ownerUserId: owner, dataClasses: ["student_pii"] };
+  for (const action of ["student.read_data_rights", "student.manage_data_rights"]) {
+    assert.equal(evaluatePolicy(allowed, action, resource).allowed, true);
+    for (const context of [
+      { ...allowed, actorUserId: "student_2" },
+      { ...allowed, purpose: "student_action" },
+      { ...allowed, selectedSurface: "public" },
+      { ...allowed, activeRole: "school_staff", selectedSurface: "school" },
+      { ...allowed, tenantSchoolId: "school_1" },
+    ]) assert.equal(evaluatePolicy(context, action, resource).allowed, false);
+    assert.equal(evaluatePolicy(allowed, action, { ...resource, type: "student" }).allowed, false);
+  }
+});
+
 test("policy denies cross-tenant school reads", () => {
   const context = createRequestContext({
     activeRole: "school_staff",

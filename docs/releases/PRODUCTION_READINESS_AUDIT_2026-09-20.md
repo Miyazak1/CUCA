@@ -65,9 +65,9 @@ Deferred payment, private-file and official-material workers are not deployed fo
 | Local full-site data interaction | 14/14 pass | Twelve released surfaces, five public catalogs, search/ETag, anonymous and cross-role denial, student choices, school queue, Ops/Admin projections and malformed-input rejection passed against the persistent local PostgreSQL runtime. |
 | Local role smoke | Pass | Student, school staff, Ops and stepped-up Admin flows pass, including staff MFA and the school intake lifecycle. |
 | Invitation-first identity check | Pass | A real local PostgreSQL transaction created a verified staff-only account, denied replay, isolated all four local fixture roles, and invalidated an existing school session immediately after membership removal. Test data was rolled back. |
-| Main server suite | 700/700 pass | The complete server suite, including the detached reproducible migration package, Auth-email invitation templates, legal policy schemas and tamper rejection, is green. |
-| Real PostgreSQL rehearsal | 421 tests pass | PostgreSQL 16.15 applied and replayed the complete migration chain, matched 82 tables/1,249 columns/470 constraints/315 indexes, exercised historical upgrades, concurrency and authorization, and removed the disposable database afterward. |
-| Migration release | Pass | The detached release was reproduced as `08568f8d306f98a0ca9d61561995f00fe33a94500c2d72cc6b6a8d321c9c3353` with 15 pinned runtime dependencies. |
+| Main server suite | 701/701 pass | The complete server suite, including the data-rights policy boundary, detached reproducible migration package, Auth-email invitation templates, legal policy schemas and tamper rejection, is green. |
+| Real PostgreSQL rehearsal | 422 tests pass | PostgreSQL 16.15 applied and replayed the complete migration chain, matched 83 tables/1,263 columns/480 constraints/319 indexes, exercised the data-rights owner/revision/retention boundary plus historical upgrades, concurrency and authorization, and removed the disposable database afterward. |
+| Migration release | Pass | The detached release was reproduced as `6f2552558fd4a94790494a026594d3df12925019329c9e3555f31492e9f46432` with 15 pinned runtime dependencies. |
 | Release and staging contract tests | 25/25 pass | Release identity binding, reviewed startup, worker boundaries and protected staging-evidence rules are green; real cloud evidence is still intentionally absent. |
 | Production readiness preflight | Expected fail without deployment environment | No RDS URL, production origin, KMS, mail credentials, MFA keyring, WAF attestations or cloud runtime were supplied locally. |
 | Legacy demo suite | Not a release gate and currently stale | It references files outside this repository and historical titles. It must not be presented as production evidence. |
@@ -96,7 +96,7 @@ Local acceptance now includes the atomic activation SQL against persistent local
 
 Implementation status: **local technical gates, source review and Git freeze are complete; remote CI and immutable application-image binding remain open.**
 
-The reviewed source is frozen as one atomic release-candidate baseline because its identity, invitation, intake, UI and migration changes were exercised together. Migrations `0053`–`0055`, the journal and generated snapshots pass schema parity and real PostgreSQL replay as one migration chain. The detached migration release is reproducible and identified by digest. The resulting commit must now be rebuilt by remote CI and bound to an immutable application-image digest before staging approval.
+The reviewed source is frozen as one atomic release-candidate baseline because its identity, invitation, intake, UI and migration changes were exercised together. Migrations `0053`–`0058`, the journal and generated snapshots pass schema parity and real PostgreSQL replay as one migration chain. The detached migration release is reproducible and identified by digest. The resulting commit must now be rebuilt by remote CI and bound to an immutable application-image digest before staging approval.
 
 Acceptance: clean checkout; no untracked release files; lint, build, active frontend contracts, complete backend suite, schema snapshot, migration rehearsal, container rehearsal and release gate all green in the controlled builder.
 
@@ -110,11 +110,13 @@ Acceptance: approved sender domain, KMS-held credentials and outbox keyring; sup
 
 ### P0-4 Legal and user-rights surfaces
 
-Implementation status: **stable fail-closed policy routes and governed publication scopes are implemented; approved wording and the authenticated rights-request workflow remain open release blockers.**
+Implementation status: **stable fail-closed policy routes, governed publication scopes and authenticated student request intake are implemented; approved wording and operational fulfilment remain open release blockers.**
 
 Privacy, Terms, Cookie and admissions-data/source links now resolve to dedicated public routes. Each route reads its exact locale and purpose-specific document from the existing digest-bound, independently reviewed publication system and displays version, effective date and review due date. Missing, expired, withdrawn or corrupt content is shown as unpublished and cannot silently fall back to a draft, another locale or the application disclosure. The database scope constraint and real migration now admit the four legal policy keys. See `LEGAL_AND_DATA_RIGHTS_READINESS_2026-09-20.md` for the browser-storage inventory, required owner decisions, rights workflow and release checklist.
 
 Confirmed inputs: `privacy@cuca.com` and `support@cuca.com` are the intended public addresses after the mail domain is provisioned and tested; minors are an intended audience; English and Simplified Chinese require separate reviewed publications. The legal operator identity, minor age/guardian rules and actual mail acceptance evidence remain unresolved and therefore keep production blocked.
+
+The account preferences area now accepts structured access, correction, portable-export and account-deletion requests, lists only the signed-in student's records and permits revision-safe cancellation while a request is still received. Export and deletion require fresh password verification. The PostgreSQL boundary rechecks the active account and student role, permits only one active request per type, preserves a minimum one-way subject reference after account deletion and couples create/cancel writes to metadata-only audit. Eight service/HTTP tests, five preferences contracts, the production build, lint, migration-history checks and the disposable PostgreSQL migration rehearsal are green. This is Phase A intake only: no export artifact, erasure job, staff queue, SLA workflow, notification or legal decision is implied.
 
 Required:
 
@@ -124,7 +126,7 @@ Required:
 - support process for access, correction, export and account deletion requests;
 - retention and deletion schedule covering PostgreSQL, logs, backups and audit exceptions.
 
-Acceptance: legal owner approval, published version evidence, link checker, withdrawal/request runbook and a tested support workflow.
+Acceptance: legal owner approval, published version evidence, link checker, independently reviewed English and Simplified Chinese UI/policy copy, withdrawal/request runbook, operational queue, export/deletion execution and a tested support workflow.
 
 ### P0-5 Cloud staging and operations
 

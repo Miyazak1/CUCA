@@ -32,6 +32,8 @@ export type PolicyAction =
   | "student.manage_private_files"
   | "student.submit_application"
   | "student.write_own"
+  | "student.read_data_rights"
+  | "student.manage_data_rights"
   | "billing.manage_own"
   | "notification.read_own_scope"
   | "notification.manage_own_scope"
@@ -68,7 +70,7 @@ export type PolicyAction =
   | "agent.invoke_tool";
 
 export type PolicyResource = {
-  type: "catalog" | "notice" | "student" | "billing" | "notification" | "school_application" | "school_tenant" | "school_catalog_correction" | "school_catalog_intake" | "ops_application_support" | "ops_summary" | "ops_billing_review" | "ops_routing_review" | "ops_data_quality_review" | "audit" | "agent_tool";
+  type: "catalog" | "notice" | "student" | "data_rights_request" | "billing" | "notification" | "school_application" | "school_tenant" | "school_catalog_correction" | "school_catalog_intake" | "ops_application_support" | "ops_summary" | "ops_billing_review" | "ops_routing_review" | "ops_data_quality_review" | "audit" | "agent_tool";
   ownerUserId?: string | null;
   tenantSchoolId?: string | null;
   dataClasses?: readonly DataClass[];
@@ -217,6 +219,15 @@ export function evaluatePolicy(context: RequestContext, action: PolicyAction, re
       && (context.authStrength === "session" || context.authStrength === "step_up")
       ? allow("School staff may use the correction workflow for the verified tenant; live membership and catalog generation must be rechecked.")
       : deny("Verified school catalog correction authority is required.");
+  }
+
+  if (resource.type === "data_rights_request" && resource.ownerUserId
+    && ["student.read_data_rights", "student.manage_data_rights"].includes(action)) {
+    return context.actorUserId === resource.ownerUserId && context.activeRole === "student"
+      && context.selectedSurface === "student" && context.purpose === "data_rights"
+      && context.tenantSchoolId === null && (context.authStrength === "session" || context.authStrength === "step_up")
+      ? allow("Student may access their own data-rights request; live account authority must be rechecked.")
+      : deny("Authenticated student data-rights authority is required.");
   }
 
   if (resource.type === "school_catalog_intake" && resource.tenantSchoolId

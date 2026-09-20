@@ -321,6 +321,34 @@ export const cities = pgTable(
   }),
 );
 
+export const dataRightsRequests = pgTable("data_rights_requests", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id").references(() => users.id, { onDelete: "set null" }),
+  subjectReferenceHash: text("subject_reference_hash").notNull(),
+  requestType: text("request_type").notNull(),
+  correctionScope: text("correction_scope"),
+  preferredLocale: text("preferred_locale").notNull(),
+  status: text("status").notNull().default("received"),
+  revision: integer("revision").notNull().default(1),
+  receivedAt: timestamp("received_at", { withTimezone: true }).notNull().defaultNow(),
+  identityConfirmedAt: timestamp("identity_confirmed_at", { withTimezone: true }),
+  assignedUserId: uuid("assigned_user_id").references(() => users.id, { onDelete: "set null" }),
+  closedAt: timestamp("closed_at", { withTimezone: true }),
+  ...timestamps,
+}, (table) => ({
+  ownerStatusIdx: index("data_rights_requests_owner_status_idx").on(table.userId, table.status, table.receivedAt),
+  queueIdx: index("data_rights_requests_queue_idx").on(table.status, table.receivedAt),
+  activeTypeUnique: uniqueIndex("data_rights_requests_active_type_unique").on(table.userId, table.requestType)
+    .where(sql`${table.userId} is not null and ${table.status} in ('received', 'identity_confirmed', 'in_progress')`),
+  subjectHashCheck: check("data_rights_requests_subject_hash_check", sql`${table.subjectReferenceHash} ~ '^sha256:[a-f0-9]{64}$'`),
+  typeCheck: check("data_rights_requests_type_check", sql`${table.requestType} in ('access', 'correction', 'portable_export', 'account_deletion')`),
+  correctionCheck: check("data_rights_requests_correction_check", sql`(${table.requestType} = 'correction' and ${table.correctionScope} in ('account', 'applicant_profile', 'education', 'assessment', 'application', 'other')) or (${table.requestType} <> 'correction' and ${table.correctionScope} is null)`),
+  localeCheck: check("data_rights_requests_locale_check", sql`${table.preferredLocale} in ('en', 'zh-CN')`),
+  statusCheck: check("data_rights_requests_status_check", sql`${table.status} in ('received', 'identity_confirmed', 'in_progress', 'fulfilled', 'denied', 'cancelled')`),
+  revisionCheck: check("data_rights_requests_revision_check", sql`${table.revision} > 0`),
+  lifecycleCheck: check("data_rights_requests_lifecycle_check", sql`(${table.status} in ('fulfilled', 'denied', 'cancelled')) = (${table.closedAt} is not null)`),
+}));
+
 export const authMfaFactors = pgTable(
   "auth_mfa_factors",
   {

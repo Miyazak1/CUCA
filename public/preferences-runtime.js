@@ -18,6 +18,7 @@ const topicLabels = {
 let currentProfile = null;
 let currentNotificationPreferences = [];
 let currentAccountIdentity = null;
+let currentDataRightsRequests = [];
 
 class PreferenceRequestError extends Error {
   constructor(message, status, code) {
@@ -169,6 +170,41 @@ function renderNotificationPreferences() {
   </form>`;
 }
 
+const dataRightsLabels = {
+  access: "Access my data", correction: "Correct my data", portable_export: "Export my data", account_deletion: "Delete my account",
+};
+
+function renderDataRights() {
+  const root = document.querySelector("[data-data-rights]");
+  if (!root) return;
+  root.innerHTML = `<form class="preferences-form data-rights-form" data-data-rights-form>
+    <div class="preferences-field-grid">
+      <label class="preferences-field"><span>Request type</span><select name="requestType" required>${Object.entries(dataRightsLabels).map(([value, label]) => `<option value="${value}">${label}</option>`).join("")}</select></label>
+      <label class="preferences-field" data-correction-scope hidden><span>Information to correct</span><select name="correctionScope"><option value="account">Account identity</option><option value="applicant_profile">Applicant profile</option><option value="education">Education</option><option value="assessment">Exams and tests</option><option value="application">Application records</option><option value="other">Other structured account data</option></select></label>
+      <label class="preferences-field"><span>Reply language</span><select name="preferredLocale"><option value="en">English</option><option value="zh-CN">简体中文</option></select></label>
+      <label class="preferences-field" data-rights-password hidden><span>Confirm current password</span><input name="password" type="password" autocomplete="current-password" minlength="15" /><small>Required only for export and deletion.</small></label>
+    </div>
+    <p class="preferences-form-note">Do not enter identity documents or sensitive details here. CUAC will provide the next verification step after receipt.</p>
+    <div class="preferences-form-footer"><button type="submit">Submit privacy request</button></div>
+  </form>
+  <div class="data-rights-list">${currentDataRightsRequests.length ? currentDataRightsRequests.map(item => `<article>
+    <div><strong>${escapeHtml(dataRightsLabels[item.requestType] || humanize(item.requestType))}</strong><span>Received ${escapeHtml(new Date(item.receivedAt).toLocaleDateString())} · ${escapeHtml(humanize(item.status))}</span></div>
+    ${item.status === "received" ? `<button class="preferences-secondary" type="button" data-cancel-rights="${escapeHtml(item.requestId)}" data-revision="${item.revision}">Cancel</button>` : ""}
+  </article>`).join("") : "<p class=\"preferences-loading\">No privacy requests have been submitted.</p>"}</div>`;
+  updateDataRightsFields(root.querySelector('[name="requestType"]'));
+}
+
+function updateDataRightsFields(select) {
+  if (!select) return;
+  const form = select.form, correction = select.value === "correction", sensitive = ["portable_export", "account_deletion"].includes(select.value);
+  const correctionField = form.querySelector("[data-correction-scope]"), passwordField = form.querySelector("[data-rights-password]");
+  correctionField.hidden = !correction;
+  correctionField.querySelector("select").disabled = !correction;
+  passwordField.hidden = !sensitive;
+  passwordField.querySelector("input").disabled = !sensitive;
+  passwordField.querySelector("input").required = sensitive;
+}
+
 function renderPreferenceError(target, title, error) {
   const root = document.querySelector(target);
   if (!root) return;
@@ -201,6 +237,7 @@ async function loadPreferences() {
   const results = await Promise.allSettled([
     requestJson("/api/v1/student/profile"),
     requestJson("/api/v1/notifications/preferences"),
+    requestJson("/api/v1/data-rights/requests"),
   ]);
   const errors = results.filter(result => result.status === "rejected").map(result => result.reason);
   if (await requireStudent(errors)) return;
@@ -212,6 +249,43 @@ async function loadPreferences() {
     currentNotificationPreferences = results[1].value.preferences.map(notificationPreference).filter(Boolean);
     renderNotificationPreferences();
   } else renderPreferenceError("[data-notification-preferences]", "Notification preferences could not be loaded", results[1].status === "rejected" ? results[1].reason : null);
+  if (results[2].status === "fulfilled" && Array.isArray(results[2].value)) {
+    currentDataRightsRequests = results[2].value;
+    renderDataRights();
+  } else renderPreferenceError("[data-data-rights]", "Privacy requests could not be loaded", results[2].status === "rejected" ? results[2].reason : null);
+}
+
+async function submitDataRights(form) {
+  const requestType = form.elements.requestType.value;
+  const sensitive = ["portable_export", "account_deletion"].includes(requestType);
+  const button = form.querySelector('button[type="submit"]');
+  button.disabled = true;
+  try {
+    const auth = await window.CUAC?.authReady?.();
+    if (sensitive && auth?.authStrength !== "step_up") {
+      await requestJson("/api/v1/auth/step-up", { method: "POST", body: JSON.stringify({ password: form.elements.password.value }) });
+    }
+    const created = await requestJson("/api/v1/data-rights/requests", { method: "POST", body: JSON.stringify({
+      requestId: crypto.randomUUID(), requestType,
+      correctionScope: requestType === "correction" ? form.elements.correctionScope.value : null,
+      preferredLocale: form.elements.preferredLocale.value,
+    }) });
+    currentDataRightsRequests = [created, ...currentDataRightsRequests];
+    renderDataRights();
+    showPreferenceToast("Privacy request received.");
+  } catch (error) { showPreferenceToast(error?.message || "Privacy request was not submitted."); }
+  finally { if (button?.isConnected) button.disabled = false; }
+}
+
+async function cancelDataRights(button) {
+  button.disabled = true;
+  try {
+    const updated = await requestJson(`/api/v1/data-rights/requests/${encodeURIComponent(button.dataset.cancelRights)}/cancel`, {
+      method: "POST", body: JSON.stringify({ expectedRevision: Number(button.dataset.revision) }),
+    });
+    currentDataRightsRequests = currentDataRightsRequests.map(item => item.requestId === updated.requestId ? updated : item);
+    renderDataRights(); showPreferenceToast("Privacy request cancelled.");
+  } catch (error) { button.disabled = false; showPreferenceToast(error?.message || "Privacy request was not cancelled."); }
 }
 
 async function saveStudyPreferences(form) {
@@ -293,10 +367,17 @@ document.addEventListener("submit", event => {
     event.preventDefault();
     void saveNotificationPreferences(event.target);
   }
+  if (event.target.matches("[data-data-rights-form]")) { event.preventDefault(); void submitDataRights(event.target); }
+});
+
+document.addEventListener("change", event => {
+  if (event.target.matches('[data-data-rights-form] [name="requestType"]')) updateDataRightsFields(event.target);
 });
 
 document.addEventListener("click", event => {
   if (event.target.closest("[data-retry-preferences]")) void loadPreferences();
+  const cancel = event.target.closest("[data-cancel-rights]");
+  if (cancel) void cancelDataRights(cancel);
 });
 
 void loadAccountIdentity();

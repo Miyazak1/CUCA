@@ -403,6 +403,13 @@
   line-height: 1.55;
 }
 
+.preferences-section-copy,
+.preferences-form-note { color: var(--preferences-muted); font-size: 13px; line-height: 1.6; }
+.data-rights-list { display: grid; gap: 8px; margin-top: 18px; }
+.data-rights-list article { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; border-top: 1px solid var(--preferences-line); }
+.data-rights-list article div { display: grid; gap: 4px; }
+.data-rights-list article span { color: var(--preferences-muted); font-size: 12px; }
+
 .preferences-toast {
   position: fixed;
   right: 22px;

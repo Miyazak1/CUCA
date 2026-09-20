@@ -1,6 +1,6 @@
 # CUAC Legal Publication and Data-Rights Readiness
 
-Status: technical publication framework implemented; legal wording and the authenticated rights-request workflow are release blockers.
+Status: technical publication framework and authenticated student request intake are implemented; approved legal wording and the operational fulfilment workflow remain release blockers.
 
 This document is an engineering and operations control record. It is not legal advice and does not approve policy wording.
 
@@ -65,7 +65,22 @@ Required lifecycle:
 7. Backups expire under the approved schedule; they are not selectively rewritten. Restore procedures must reapply completed deletion tombstones before restored data can serve traffic.
 8. The user receives status and completion notices through the verified account email. No raw personal data or download token appears in operational logs.
 
-This workflow is not yet implemented. A generic support email alone is not sufficient release evidence.
+### Implemented intake boundary
+
+The signed-in student account area now supports structured access, correction, portable-export and account-deletion requests. Identity is derived only from the authenticated session; browser-supplied ownership is rejected. Correction requests capture a bounded data area rather than unrestricted sensitive text. Export and deletion require fresh password reauthentication. Students can list their own requests and cancel only a still-received request using its current revision.
+
+The database enforces one active request of each type per account, explicit lifecycle states, terminal timestamps and bounded locale/type/scope values. Each create and cancel operation is transactionally coupled to a metadata-only audit event. Repository reads and mutations recheck the live active account and student role. If an account is later deleted, the direct user link is removed while a one-way subject reference and minimum request evidence remain available for the future legally approved retention rule.
+
+This is intake Phase A, not a completed rights operation. The following remain release blockers:
+
+- privacy-authorized staff queue, assignment, SLA/deadline and dual-control status transitions;
+- the actual scoped export generator, encrypted short-lived delivery and expiry evidence;
+- staged account closure/deletion, session revocation, retention exceptions, tombstones and restore handling;
+- completion/denial notifications, appeal/escalation handling and tested operations runbook;
+- any additional objection, restriction or consent-withdrawal request types required by the approved launch jurisdictions;
+- independently reviewed English and Simplified Chinese interface copy and legal publications.
+
+A generic support email alone is not sufficient release evidence, and the new intake endpoint must not be presented as proof that a request was fulfilled.
 
 ## 5. Publication checklist
 
@@ -81,4 +96,4 @@ This workflow is not yet implemented. A generic support email alone is not suffi
 
 ## 6. Release decision
 
-The new framework removes fake footer links and prevents draft text from masquerading as an approved policy. It does not make CUAC legally ready by itself. Production remains blocked until approved publications exist for the launch locales and the rights-request workflow is implemented and tested.
+The new framework removes fake footer links, prevents draft text from masquerading as an approved policy and provides a controlled authenticated intake record. It does not make CUAC legally ready by itself. Production remains blocked until approved publications exist for both launch locales and the operational rights-request fulfilment workflow is implemented and tested end to end.

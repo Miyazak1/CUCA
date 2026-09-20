@@ -31,6 +31,7 @@
           <a href="#account-details">Account</a>
           <a href="#study-preferences">Study preferences</a>
           <a href="#notification-preferences">Notifications</a>
+          <a href="#data-rights">Privacy requests</a>
         </nav>
 
         <section class="preferences-api-section" id="account-details" aria-labelledby="account-details-title">
@@ -71,6 +72,15 @@
             <p class="preferences-loading" aria-busy="true">Loading notification preferences.</p>
           </div>
         </section>
+
+        <section class="preferences-api-section" id="data-rights" aria-labelledby="data-rights-title">
+          <header class="preferences-section-heading">
+            <div><p class="preferences-kicker">Privacy controls</p><h2 id="data-rights-title">Your data rights</h2></div>
+            <a href="privacy.html">Privacy notice</a>
+          </header>
+          <p class="preferences-section-copy">Request access, correction, a portable export, or account deletion. Export and deletion require fresh password verification and are reviewed before any data operation occurs.</p>
+          <div data-data-rights aria-live="polite"><p class="preferences-loading" aria-busy="true">Loading privacy requests.</p></div>
+        </section>
       </main>
 
       <div data-cuac-footer></div>
@@ -78,6 +88,6 @@
     </div>
 
     <script src="shared-shell.js?v=20260920-account-email"></script>
-    <script src="preferences-runtime.js?v=20260920-account-email"></script>
+    <script src="preferences-runtime.js?v=20260920-data-rights"></script>
   </body>
 </html>

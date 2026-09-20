@@ -1,0 +1,70 @@
+import assert from "node:assert/strict";
+import { randomUUID } from "node:crypto";
+import test from "node:test";
+import { createRequestContext } from "../../../src/server/shared/request-context.ts";
+import { DataRightsService } from "../../../src/server/data-rights/service.ts";
+
+const student = (extra = {}) => createRequestContext({ actorUserId: randomUUID(), activeRole: "student", selectedSurface: "student",
+  purpose: "data_rights", authStrength: "session", ...extra });
+const row = (extra = {}) => ({ id: randomUUID(), requestType: "access", correctionScope: null, preferredLocale: "en",
+  status: "received", revision: 1, receivedAt: new Date("2026-09-20T00:00:00.000Z"), identityConfirmedAt: null,
+  closedAt: null, updatedAt: new Date("2026-09-20T00:00:00.000Z"), ...extra });
+
+test("students create minimal rights requests without free text or another user identity", async () => {
+  const calls = [], audits = [], context = student(), requestId = randomUUID();
+  const service = new DataRightsService({
+    async listOwn() { return { authorized: true, rows: [] }; },
+    async createOwn(input) { calls.push(input); return { authorized: true, row: row({ id: input.requestId, requestType: input.requestType,
+      correctionScope: input.correctionScope, preferredLocale: input.preferredLocale }) }; },
+    async cancelOwn() { throw new Error("unused"); },
+  }, { async record(event) { audits.push(event); } });
+  const result = await service.createOwn(context, { requestId, requestType: "correction", correctionScope: "education", preferredLocale: "zh-CN" });
+  assert.equal(result.requestId, requestId);
+  assert.equal(calls[0].userId, context.actorUserId);
+  assert.match(calls[0].subjectReferenceHash, /^sha256:[a-f0-9]{64}$/);
+  assert.equal(audits[0].action, "data_rights.request.create");
+  await assert.rejects(service.createOwn(context, { requestId: randomUUID(), requestType: "access", correctionScope: null,
+    preferredLocale: "en", note: "do not store this" }), e => e.status === 400);
+});
+
+test("export and deletion requests require fresh authentication while access and correction use a live session", async () => {
+  let creates = 0;
+  const repository = { async listOwn() { return { authorized: true, rows: [] }; },
+    async createOwn(input) { creates++; return { authorized: true, row: row({ id: input.requestId, requestType: input.requestType }) }; },
+    async cancelOwn() { throw new Error("unused"); } };
+  const service = new DataRightsService(repository, { async record() {} });
+  for (const requestType of ["portable_export", "account_deletion"]) {
+    await assert.rejects(service.createOwn(student(), { requestId: randomUUID(), requestType, correctionScope: null, preferredLocale: "en" }), e => e.status === 403);
+    await service.createOwn(student({ authStrength: "step_up" }), { requestId: randomUUID(), requestType, correctionScope: null, preferredLocale: "en" });
+  }
+  assert.equal(creates, 2);
+});
+
+test("rights requests are owner-only and received requests use optimistic cancellation", async () => {
+  const target = row(), audits = [];
+  const service = new DataRightsService({
+    async listOwn() { return { authorized: true, rows: [target] }; },
+    async createOwn() { throw new Error("unused"); },
+    async cancelOwn(input) { return { authorized: true, row: input.expectedRevision === 1
+      ? row({ ...target, status: "cancelled", revision: 2, closedAt: new Date("2026-09-21T00:00:00.000Z") }) : null }; },
+  }, { async record(event) { audits.push(event); } });
+  assert.equal((await service.listOwn(student())).length, 1);
+  assert.equal((await service.cancelOwn(student(), target.id, { expectedRevision: 1 })).status, "cancelled");
+  assert.equal(audits[0].action, "data_rights.request.cancel");
+  await assert.rejects(service.cancelOwn(student(), target.id, { expectedRevision: 2 }), e => e.status === 409);
+  for (const context of [createRequestContext(), student({ activeRole: "school_staff", selectedSurface: "school" }), student({ purpose: "student_action" })]) {
+    await assert.rejects(service.listOwn(context), e => e.status === 403);
+  }
+});
+
+test("repository and audit failures do not become successful acknowledgements", async () => {
+  const context = student(), requestId = randomUUID();
+  const unavailable = new DataRightsService({ async listOwn() { return { authorized: false, rows: [] }; },
+    async createOwn() { return { authorized: false, row: null }; }, async cancelOwn() { return { authorized: false, row: null }; } }, { async record() {} });
+  await assert.rejects(unavailable.listOwn(context), e => e.status === 403);
+  await assert.rejects(unavailable.createOwn(context, { requestId, requestType: "access", correctionScope: null, preferredLocale: "en" }), e => e.status === 403);
+  const auditFailure = new DataRightsService({ async listOwn() { return { authorized: true, rows: [] }; },
+    async createOwn(input) { return { authorized: true, row: row({ id: input.requestId }) }; }, async cancelOwn() { return { authorized: true, row: row() }; } },
+  { async record() { throw new Error("audit unavailable"); } });
+  await assert.rejects(auditFailure.createOwn(context, { requestId, requestType: "access", correctionScope: null, preferredLocale: "en" }), /audit unavailable/);
+});
