@@ -140,13 +140,36 @@
                 <span>Password</span>
                 <input type="password" autocomplete="new-password" placeholder="At least 15 characters" data-register-password minlength="15" required />
               </label>
+              <label>
+                <span>Age eligibility</span>
+                <select data-register-age-band required>
+                  <option value="">Choose one</option>
+                  <option value="14_or_older">I am 14 or older</option>
+                  <option value="under_14">I am under 14</option>
+                </select>
+              </label>
+              <div class="guardian-fields" data-guardian-fields hidden>
+                <p class="form-hint"><strong>Guardian approval is required.</strong> No usable account will be created until your parent or legal guardian approves the exact children's privacy notice sent to them.</p>
+                <label>
+                  <span>Parent or legal guardian email</span>
+                  <input type="email" autocomplete="email" placeholder="guardian@example.com" data-guardian-email />
+                </label>
+                <label>
+                  <span>Guardian relationship</span>
+                  <select data-guardian-relationship>
+                    <option value="">Choose one</option>
+                    <option value="parent">Parent</option>
+                    <option value="other_legal_guardian">Other legal guardian</option>
+                  </select>
+                </label>
+              </div>
             </div>
             <button class="primary" type="submit" data-auth-register-submit>Create account</button>
             <div class="verification-note" data-verification-note>
               <strong>Email verification required</strong>
               <span data-verification-copy>After account creation, CUAC sends a verification link before long-term workspace memory is kept.</span>
             </div>
-            <p class="form-hint" data-register-hint>Email verification and profile completion happen after account creation.</p>
+            <p class="form-hint" data-register-hint>Email verification and profile completion happen after account creation. CUAC does not ask for an identity document to make this age declaration.</p>
           </form>
 
           <p class="auth-runtime-status" data-auth-runtime-status role="status" aria-live="polite"></p>

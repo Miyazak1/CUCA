@@ -112,7 +112,7 @@ export const privacyNoticeScopes = pgTable("privacy_notice_scopes", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 }, (table) => ({
   scopeUnique: uniqueIndex("privacy_notice_scope_unique").on(table.noticeKey, table.locale),
-  scopeCheck: check("privacy_notice_scope_check", sql`${table.noticeKey} in ('application_disclosure', 'privacy_notice', 'terms_of_service', 'cookie_notice', 'admissions_data_policy') and ${table.locale} in ('en', 'zh-CN') and ${table.scopeKey} = ${table.noticeKey} || ':' || ${table.locale}`),
+  scopeCheck: check("privacy_notice_scope_check", sql`${table.noticeKey} in ('application_disclosure', 'privacy_notice', 'terms_of_service', 'cookie_notice', 'admissions_data_policy', 'children_privacy_notice') and ${table.locale} in ('en', 'zh-CN') and ${table.scopeKey} = ${table.noticeKey} || ':' || ${table.locale}`),
 }));
 
 export const privacyNoticeVersions = pgTable("privacy_notice_versions", {
@@ -211,6 +211,7 @@ export const authEmailOutbox = pgTable("auth_email_outbox", {
   verificationChallengeId: uuid("verification_challenge_id"),
   resetChallengeId: uuid("reset_challenge_id"),
   schoolStaffInviteId: uuid("school_staff_invite_id"),
+  guardianConsentRequestId: uuid("guardian_consent_request_id").references(() => guardianConsentRequests.id, { onDelete: "cascade" }),
   expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
   envelopeJson: jsonb("envelope_json"),
   status: text("status").notNull().default("queued"),
@@ -228,9 +229,10 @@ export const authEmailOutbox = pgTable("auth_email_outbox", {
   verificationUnique: uniqueIndex("auth_email_outbox_verification_unique").on(table.verificationChallengeId),
   resetUnique: uniqueIndex("auth_email_outbox_reset_unique").on(table.resetChallengeId),
   schoolInviteUnique: uniqueIndex("auth_email_outbox_school_invite_unique").on(table.schoolStaffInviteId),
+  guardianConsentUnique: uniqueIndex("auth_email_outbox_guardian_consent_unique").on(table.guardianConsentRequestId),
   queueIdx: index("auth_email_outbox_queue_idx").on(table.status, table.availableAt, table.id),
   expiryIdx: index("auth_email_outbox_expiry_idx").on(table.status, table.expiresAt, table.leaseExpiresAt),
-  kindCheck: check("auth_email_outbox_kind_check", sql`(${table.messageType} = 'auth.email_verification' and ${table.verificationChallengeId} is not null and ${table.resetChallengeId} is null and ${table.schoolStaffInviteId} is null) or (${table.messageType} = 'auth.password_reset' and ${table.resetChallengeId} is not null and ${table.verificationChallengeId} is null and ${table.schoolStaffInviteId} is null) or (${table.messageType} = 'auth.school_staff_invite' and ${table.schoolStaffInviteId} is not null and ${table.verificationChallengeId} is null and ${table.resetChallengeId} is null)`),
+  kindCheck: check("auth_email_outbox_kind_check", sql`(${table.messageType} = 'auth.email_verification' and ${table.verificationChallengeId} is not null and ${table.resetChallengeId} is null and ${table.schoolStaffInviteId} is null and ${table.guardianConsentRequestId} is null) or (${table.messageType} = 'auth.password_reset' and ${table.resetChallengeId} is not null and ${table.verificationChallengeId} is null and ${table.schoolStaffInviteId} is null and ${table.guardianConsentRequestId} is null) or (${table.messageType} = 'auth.school_staff_invite' and ${table.schoolStaffInviteId} is not null and ${table.verificationChallengeId} is null and ${table.resetChallengeId} is null and ${table.guardianConsentRequestId} is null) or (${table.messageType} = 'auth.guardian_consent' and ${table.guardianConsentRequestId} is not null and ${table.verificationChallengeId} is null and ${table.resetChallengeId} is null and ${table.schoolStaffInviteId} is null)`),
   attemptCheck: check("auth_email_outbox_attempt_check", sql`${table.attemptCount} between 0 and 5`),
   stateCheck: check("auth_email_outbox_state_check", sql`(${table.status} = 'queued' and ${table.leaseId} is null and ${table.leaseExpiresAt} is null) or (${table.status} in ('leased', 'sending') and ${table.leaseId} is not null and ${table.leaseExpiresAt} is not null) or (${table.status} in ('accepted', 'cancelled', 'failed', 'uncertain') and ${table.leaseId} is null and ${table.leaseExpiresAt} is null)`),
   payloadCheck: check("auth_email_outbox_payload_check", sql`(${table.status} in ('queued', 'leased', 'sending') and ${table.completedAt} is null and ${table.envelopeJson} is not null and jsonb_typeof(${table.envelopeJson}) = 'object' and octet_length(${table.envelopeJson}::text) <= 1024) or (${table.status} in ('accepted', 'cancelled', 'failed', 'uncertain') and ${table.completedAt} is not null and ${table.envelopeJson} is null)`),
@@ -360,6 +362,59 @@ export const dataRightsRequests = pgTable("data_rights_requests", {
       and ${table.extendedDueAt} > ${table.responseDueAt}
       and ${table.extendedDueAt} <= ${table.responseDueAt} + interval '60 days'))`),
   lifecycleCheck: check("data_rights_requests_lifecycle_check", sql`(${table.status} in ('fulfilled', 'denied', 'cancelled')) = (${table.closedAt} is not null)`),
+}));
+
+export const studentAgeAssurances = pgTable("student_age_assurances", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  ageBand: text("age_band").notNull(),
+  assuranceMethod: text("assurance_method").notNull(),
+  guardianRelationship: text("guardian_relationship"),
+  guardianEmailSha256: text("guardian_email_sha256"),
+  noticeScopeKey: text("notice_scope_key"),
+  noticeVersionId: uuid("notice_version_id"),
+  noticeContentSha256: text("notice_content_sha256"),
+  noticePublicationRevision: integer("notice_publication_revision"),
+  sourceRegistrationId: uuid("source_registration_id").references(() => guardianConsentRequests.id, { onDelete: "restrict" }),
+  assuredAt: timestamp("assured_at", { withTimezone: true }).notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, (table) => ({
+  userUnique: uniqueIndex("student_age_assurances_user_unique").on(table.userId),
+  sourceUnique: uniqueIndex("student_age_assurances_source_unique").on(table.sourceRegistrationId),
+  noticeFk: foreignKey({ name: "student_age_assurances_notice_fk", columns: [table.noticeVersionId, table.noticeScopeKey], foreignColumns: [privacyNoticeVersions.id, privacyNoticeVersions.scopeKey] }).onDelete("restrict"),
+  ageCheck: check("student_age_assurances_age_check", sql`${table.ageBand} in ('14_or_older','under_14')`),
+  evidenceCheck: check("student_age_assurances_evidence_check", sql`(${table.ageBand} = '14_or_older' and ${table.assuranceMethod} = 'self_declaration' and ${table.guardianRelationship} is null and ${table.guardianEmailSha256} is null and ${table.noticeScopeKey} is null and ${table.noticeVersionId} is null and ${table.noticeContentSha256} is null and ${table.noticePublicationRevision} is null and ${table.sourceRegistrationId} is null) or (${table.ageBand} = 'under_14' and ${table.assuranceMethod} = 'guardian_consent' and ${table.guardianRelationship} in ('parent','other_legal_guardian') and ${table.guardianEmailSha256} ~ '^[a-f0-9]{64}$' and ${table.noticeScopeKey} in ('children_privacy_notice:en','children_privacy_notice:zh-CN') and ${table.noticeVersionId} is not null and ${table.noticeContentSha256} ~ '^[a-f0-9]{64}$' and ${table.noticePublicationRevision} > 0 and ${table.sourceRegistrationId} is not null)`),
+}));
+
+export const guardianConsentRequests = pgTable("guardian_consent_requests", {
+  id: uuid("id").primaryKey(),
+  userId: uuid("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  guardianEmail: text("guardian_email"),
+  guardianEmailSha256: text("guardian_email_sha256").notNull(),
+  guardianRelationship: text("guardian_relationship").notNull(),
+  locale: text("locale").notNull(),
+  noticeScopeKey: text("notice_scope_key").notNull(),
+  noticeVersionId: uuid("notice_version_id").notNull(),
+  noticeContentSha256: text("notice_content_sha256").notNull(),
+  noticePublicationRevision: integer("notice_publication_revision").notNull(),
+  consentTokenHash: text("consent_token_hash"),
+  status: text("status").notNull().default("pending"),
+  requestedAt: timestamp("requested_at", { withTimezone: true }).notNull(),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  respondedAt: timestamp("responded_at", { withTimezone: true }),
+  ipHash: text("ip_hash"),
+  userAgentHash: text("user_agent_hash"),
+  ...timestamps,
+}, (table) => ({
+  userUnique: uniqueIndex("guardian_consent_requests_user_unique").on(table.userId),
+  tokenUnique: uniqueIndex("guardian_consent_requests_token_unique").on(table.consentTokenHash),
+  noticeFk: foreignKey({ name: "guardian_consent_requests_notice_fk", columns: [table.noticeVersionId, table.noticeScopeKey], foreignColumns: [privacyNoticeVersions.id, privacyNoticeVersions.scopeKey] }).onDelete("restrict"),
+  statusExpiryIdx: index("guardian_consent_requests_status_expiry_idx").on(table.status, table.expiresAt),
+  relationshipCheck: check("guardian_consent_requests_relationship_check", sql`${table.guardianRelationship} in ('parent','other_legal_guardian')`),
+  localeCheck: check("guardian_consent_requests_locale_check", sql`${table.locale} in ('en','zh-CN') and ${table.noticeScopeKey} = 'children_privacy_notice:' || ${table.locale}`),
+  digestCheck: check("guardian_consent_requests_digest_check", sql`${table.guardianEmailSha256} ~ '^[a-f0-9]{64}$' and ${table.noticeContentSha256} ~ '^[a-f0-9]{64}$' and ${table.noticePublicationRevision} > 0`),
+  stateCheck: check("guardian_consent_requests_state_check", sql`(${table.status} = 'pending' and ${table.guardianEmail} is not null and ${table.consentTokenHash} is not null and ${table.respondedAt} is null) or (${table.status} in ('consented','declined','expired') and ${table.guardianEmail} is null and ${table.consentTokenHash} is null and ${table.respondedAt} is not null)`),
+  timeCheck: check("guardian_consent_requests_time_check", sql`${table.requestedAt} < ${table.expiresAt} and ${table.expiresAt} <= ${table.requestedAt} + interval '72 hours'`),
 }));
 
 export const dataRightsIdentityConfirmations = pgTable("data_rights_identity_confirmations", {

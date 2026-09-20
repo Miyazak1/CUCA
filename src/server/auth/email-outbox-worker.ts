@@ -1,4 +1,4 @@
-import { composeEmailVerificationMessage, composePasswordResetMessage, composeSchoolStaffInviteMessage,
+import { composeEmailVerificationMessage, composePasswordResetMessage, composeSchoolStaffInviteMessage, composeGuardianConsentMessage,
   validateAuthEmailDeliveryConfig, type AuthEmailMessage, type AuthEmailDeliveryConfig } from "./email-delivery.ts";
 import { PostgresAuthEmailOutbox, type EmailDeliveryResult } from "./postgres-email-outbox.ts";
 
@@ -21,11 +21,17 @@ export async function processOneAuthEmail(outbox: PostgresAuthEmailOutbox, provi
       ? composeEmailVerificationMessage(config, { ...job, verificationToken: job.token })
       : job.messageType === "auth.password_reset"
         ? composePasswordResetMessage(config, { ...job, resetToken: job.token })
-        : composeSchoolStaffInviteMessage(config, {
+        : job.messageType === "auth.school_staff_invite" ? composeSchoolStaffInviteMessage(config, {
           inviteId: job.challengeId,
           invitedByUserId: job.userId,
           emailNormalized: job.emailNormalized,
           inviteToken: job.token,
+          expiresAt: job.expiresAt,
+        }) : composeGuardianConsentMessage(config, {
+          requestId: job.challengeId,
+          userId: job.userId,
+          emailNormalized: job.emailNormalized,
+          consentToken: job.token,
           expiresAt: job.expiresAt,
         });
     const unknown = new Promise<{ status: "unknown" }>(resolve => {

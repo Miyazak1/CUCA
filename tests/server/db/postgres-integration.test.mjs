@@ -58,6 +58,7 @@ import { runOpsRoutingReviewRehearsal } from "./ops-routing-review-rehearsal.mjs
 import { runOpsDataQualityRehearsal } from "./ops-data-quality-rehearsal.mjs";
 import { runSchoolCatalogCorrectionRehearsal } from "./school-catalog-correction-rehearsal.mjs";
 import { runDataRightsRehearsal } from "./data-rights-rehearsal.mjs";
+import { runGuardianConsentRehearsal } from "./guardian-consent-rehearsal.mjs";
 
 const databaseUrl = process.env.CUAC_PG_REHEARSAL_URL;
 assert.ok(databaseUrl, "Run npm run db:pg:rehearse; this test never uses DATABASE_URL.");
@@ -271,6 +272,7 @@ test("real PostgreSQL migration and repository rehearsal", { timeout: rehearsalT
   });
 
   await runIdentityIsolationRehearsal(t, pool);
+  await runGuardianConsentRehearsal(t, pool);
   await runCuacApplicationReferenceRehearsal(t, pool);
   await runAuthSessionStepUpRehearsal(t, pool);
   await runAuthChallengesRehearsal(t, pool);

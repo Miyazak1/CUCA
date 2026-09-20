@@ -414,15 +414,27 @@ async function handleRegister(form) {
   const lastName = form.querySelector("[data-register-last-name]")?.value.trim() || "";
   const email = form.querySelector("[data-register-email]")?.value.trim();
   const password = form.querySelector("[data-register-password]")?.value;
+  const ageBand = form.querySelector("[data-register-age-band]")?.value;
+  const guardianEmail = form.querySelector("[data-guardian-email]")?.value.trim();
+  const guardianRelationship = form.querySelector("[data-guardian-relationship]")?.value;
   const button = form.querySelector("[data-auth-register-submit]");
   const restore = setButtonBusy(button, true, "Creating account...");
-  setStatus("Creating your student account securely...");
+  setStatus(ageBand === "under_14" ? "Sending a secure approval request to your guardian..." : "Creating your student account securely...");
 
   try {
-    await requestJson("/api/v1/auth/register", {
+    const registration = await requestJson("/api/v1/auth/register", {
       method: "POST",
-      body: { email, password, displayName: `${firstName} ${lastName}`.trim() },
+      body: { email, password, displayName: `${firstName} ${lastName}`.trim(), ageBand,
+        ...(ageBand === "under_14" ? { guardianEmail, guardianRelationship, locale: document.documentElement.lang === "zh-CN" ? "zh-CN" : "en" } : {}) },
     });
+
+    if (registration?.guardianConsentRequired) {
+      form.reset();
+      syncGuardianFields();
+      setStatus("Approval request sent. Your account stays locked until your parent or legal guardian approves it within 72 hours.", "success");
+      restore();
+      return;
+    }
 
     let verificationMessage = "Account created.";
     try {
@@ -442,6 +454,20 @@ async function handleRegister(form) {
     restore();
   }
 }
+
+function syncGuardianFields() {
+  const ageBand = document.querySelector("[data-register-age-band]")?.value;
+  const panel = document.querySelector("[data-guardian-fields]");
+  const email = document.querySelector("[data-guardian-email]");
+  const relationship = document.querySelector("[data-guardian-relationship]");
+  const required = ageBand === "under_14";
+  if (panel) panel.hidden = !required;
+  if (email) email.required = required;
+  if (relationship) relationship.required = required;
+}
+
+document.querySelector("[data-register-age-band]")?.addEventListener("change", syncGuardianFields);
+syncGuardianFields();
 
 async function handleResetRequest(form) {
   if (!form.reportValidity()) return;

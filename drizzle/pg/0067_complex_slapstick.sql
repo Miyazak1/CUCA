@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "auth_email_outbox_guardian_consent_unique" ON "auth_email_outbox" USING btree ("guardian_consent_request_id");

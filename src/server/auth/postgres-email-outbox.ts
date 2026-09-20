@@ -16,7 +16,7 @@ type Job = EmailTokenBinding & {
 export type PreparedAuthEmail = EmailTokenBinding & { emailNormalized: string; token: string };
 
 const projection = `id, user_id as "userId", message_type as "messageType",
-  coalesce(verification_challenge_id, reset_challenge_id, school_staff_invite_id) as "challengeId", expires_at as "expiresAt",
+  coalesce(verification_challenge_id, reset_challenge_id, school_staff_invite_id, guardian_consent_request_id) as "challengeId", expires_at as "expiresAt",
   status, attempt_count as "attemptCount", envelope_json as envelope, lease_id as "leaseId",
   lease_expires_at > clock_timestamp() as "leaseValid", expires_at > clock_timestamp() as unexpired`;
 const hash = (token: string) => `sha256:${createHash("sha256").update(token).digest("hex")}`;
@@ -49,19 +49,34 @@ export class PostgresAuthEmailOutbox {
     };
   }
 
+  guardianConsentSink() {
+    return {
+      enqueue: (input: { requestId: string; userId: string; guardianEmailNormalized: string; consentToken: string; expiresAt: Date }) =>
+        this.enqueue("auth.guardian_consent", {
+          challengeId: input.requestId,
+          userId: input.userId,
+          emailNormalized: input.guardianEmailNormalized,
+          expiresAt: input.expiresAt,
+        }, input.consentToken),
+    };
+  }
+
   private async enqueue(messageType: AuthEmailMessageType, input: { challengeId: string; userId: string; emailNormalized: string; expiresAt: Date }, token: string): Promise<void> {
     const binding = { id: randomUUID(), userId: input.userId, challengeId: input.challengeId, messageType, expiresAt: input.expiresAt };
     const envelope = this.cipher.seal(binding, token);
     await this.client.transaction(async tx => {
       await tx.query("select id from users where id = $1 for update", [input.userId]);
       const challenge = await eligibleChallenge(tx, binding);
-      if (!challenge || challenge.emailNormalized !== input.emailNormalized || challenge.tokenHash !== hash(token)
-        || challenge.expiresAt.getTime() !== input.expiresAt.getTime()) throw serviceUnavailable("Auth email request changed before enqueue.");
-      await tx.query(`insert into auth_email_outbox (id,user_id,message_type,verification_challenge_id,reset_challenge_id,school_staff_invite_id,expires_at,envelope_json)
-        values ($1,$2,$3,$4,$5,$6,$7,$8::jsonb)`, [binding.id, binding.userId, messageType,
+      if (!challenge) throw serviceUnavailable("Auth email request became ineligible before enqueue.");
+      if (challenge.emailNormalized !== input.emailNormalized) throw serviceUnavailable("Auth email recipient changed before enqueue.");
+      if (challenge.tokenHash !== hash(token)) throw serviceUnavailable("Auth email credential changed before enqueue.");
+      if (challenge.expiresAt.getTime() !== input.expiresAt.getTime()) throw serviceUnavailable("Auth email expiry changed before enqueue.");
+      await tx.query(`insert into auth_email_outbox (id,user_id,message_type,verification_challenge_id,reset_challenge_id,school_staff_invite_id,guardian_consent_request_id,expires_at,envelope_json)
+        values ($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb)`, [binding.id, binding.userId, messageType,
         messageType === "auth.email_verification" ? binding.challengeId : null,
         messageType === "auth.password_reset" ? binding.challengeId : null,
         messageType === "auth.school_staff_invite" ? binding.challengeId : null,
+        messageType === "auth.guardian_consent" ? binding.challengeId : null,
         binding.expiresAt, JSON.stringify(envelope)]);
       await audit(tx, binding.id, "enqueued", messageType, 0, null);
     });
@@ -87,7 +102,10 @@ export class PostgresAuthEmailOutbox {
       await tx.query("select id from users where id = $1 for update", [lease.userId]);
       const job = await lockedJob(tx, lease, "leased");
       if (!job) return null;
-      if (!job.unexpired) { await terminal(tx, job, "cancelled", "expired"); return null; }
+      if (!job.unexpired) {
+        if (job.messageType === "auth.guardian_consent") await expireGuardianRegistration(tx, job.challengeId);
+        await terminal(tx, job, "cancelled", "expired"); return null;
+      }
       const challenge = await eligibleChallenge(tx, job);
       if (!challenge || challenge.expiresAt.getTime() !== job.expiresAt.getTime()) {
         await terminal(tx, job, "cancelled", "ineligible"); return null;
@@ -140,7 +158,10 @@ export class PostgresAuthEmailOutbox {
         order by expires_at, id limit $1 for update skip locked`, [limit]);
       for (const job of jobs) {
         if (job.status === "sending") await terminal(tx, job, "uncertain", "lease_expired");
-        else if (!job.unexpired) await terminal(tx, job, "cancelled", "expired");
+        else if (!job.unexpired) {
+          if (job.messageType === "auth.guardian_consent") await expireGuardianRegistration(tx, job.challengeId);
+          await terminal(tx, job, "cancelled", "expired");
+        }
         else if (job.attemptCount >= 5) await terminal(tx, job, "failed", "attempt_limit");
         else {
           await tx.query(`update auth_email_outbox set status = 'queued', lease_id = null, lease_expires_at = null,
@@ -162,6 +183,16 @@ async function lockedJob(tx: TransactionalSqlClient, lease: EmailOutboxLease, st
 }
 
 async function eligibleChallenge(tx: TransactionalSqlClient, binding: EmailTokenBinding) {
+  if (binding.messageType === "auth.guardian_consent") {
+    const rows = await tx.query<{ emailNormalized: string; tokenHash: string; expiresAt: Date }>(`select
+      c.guardian_email as "emailNormalized", c.consent_token_hash as "tokenHash", c.expires_at as "expiresAt"
+      from guardian_consent_requests c join users u on u.id = c.user_id
+      where c.id = $1 and c.user_id = $2 and c.status = 'pending' and c.responded_at is null
+        and c.expires_at > clock_timestamp() and u.account_status = 'pending_guardian_consent'
+        and c.guardian_email is not null and c.consent_token_hash is not null for share of c`,
+    [binding.challengeId, binding.userId]);
+    return rows[0] ?? null;
+  }
   if (binding.messageType === "auth.school_staff_invite") {
     const rows = await tx.query<{ emailNormalized: string; tokenHash: string; expiresAt: Date }>(`select c.email_normalized as "emailNormalized",
       c.token_hash as "tokenHash", c.expires_at as "expiresAt" from school_staff_invites c
@@ -192,6 +223,20 @@ async function terminal(tx: TransactionalSqlClient, job: Job, status: "accepted"
   await tx.query(`update auth_email_outbox set status = $2, outcome = $3, envelope_json = null, lease_id = null,
     lease_expires_at = null, completed_at = clock_timestamp(), updated_at = clock_timestamp() where id = $1`, [job.id, status, outcome]);
   await audit(tx, job.id, status, job.messageType, job.attemptCount, outcome);
+}
+
+async function expireGuardianRegistration(tx: TransactionalSqlClient, requestId: string) {
+  const rows = await tx.query<{ userId: string }>(`update guardian_consent_requests set status = 'expired',
+    guardian_email = null,consent_token_hash = null,responded_at = clock_timestamp(),updated_at = clock_timestamp()
+    where id = $1 and status = 'pending' and expires_at <= clock_timestamp() returning user_id as "userId"`, [requestId]);
+  if (!rows[0]) return;
+  await tx.query(`update auth_identities set password_hash = null,updated_at = clock_timestamp()
+    where user_id = $1 and provider = 'password'`, [rows[0].userId]);
+  await tx.query(`update users set account_status = 'guardian_expired',updated_at = clock_timestamp()
+    where id = $1 and account_status = 'pending_guardian_consent'`, [rows[0].userId]);
+  await tx.query(`insert into audit_logs (request_id,actor_type,active_role,action,resource_type,resource_id,
+    allowed,data_classes,redaction_applied,metadata_json) values ($1,'service','system','auth.guardian_consent.expired',
+    'guardian_consent_request',$2,true,'["account","minor"]'::jsonb,true,'{}'::jsonb)`, [randomUUID(), requestId]);
 }
 
 async function audit(tx: TransactionalSqlClient, id: string, transition: string, messageType: AuthEmailMessageType, attemptCount: number, outcome: Outcome | null) {

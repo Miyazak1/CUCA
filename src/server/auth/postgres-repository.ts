@@ -276,9 +276,13 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
          insert into user_roles (user_id, role, grant_source, created_at)
          select user_id, 'student', 'self_registration', $4 from created_identity
          returning user_id
+       ), created_age_assurance as (
+         insert into student_age_assurances (user_id,age_band,assurance_method,assured_at,created_at)
+         select user_id,$6,'self_declaration',$4,$4 from created_role
+         returning user_id
        )
-       select user_id as "userId" from created_role`,
-      [input.email, input.emailNormalized, input.displayName, input.now, input.passwordHash],
+       select user_id as "userId" from created_age_assurance`,
+      [input.email, input.emailNormalized, input.displayName, input.now, input.passwordHash, input.ageBand],
     );
     const userId = users[0]?.userId;
 

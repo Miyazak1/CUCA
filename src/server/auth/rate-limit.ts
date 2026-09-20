@@ -19,6 +19,8 @@ export const AUTH_RATE_LIMIT_ACTIONS = [
   "auth.school_staff_invite.revoke",
   "auth.sign_in_continuation.create",
   "auth.sign_in_continuation.consume",
+  "auth.guardian_consent.accept",
+  "auth.guardian_consent.decline",
 ] as const;
 
 export type AuthRateLimitAction = (typeof AUTH_RATE_LIMIT_ACTIONS)[number];
@@ -79,6 +81,8 @@ export const DEFAULT_AUTH_RATE_LIMIT_RULES: Record<AuthRateLimitAction, AuthRate
   "auth.school_staff_invite.revoke": { maxAttempts: 30, windowSeconds: 900 },
   "auth.sign_in_continuation.create": { maxAttempts: 20, windowSeconds: 600 },
   "auth.sign_in_continuation.consume": { maxAttempts: 20, windowSeconds: 600 },
+  "auth.guardian_consent.accept": { maxAttempts: 10, windowSeconds: 900 },
+  "auth.guardian_consent.decline": { maxAttempts: 10, windowSeconds: 900 },
 };
 
 export class AuthRateLimitService {

@@ -1,6 +1,6 @@
 import { serviceUnavailable } from "../shared/errors.ts";
 
-export type AuthEmailMessageType = "auth.email_verification" | "auth.password_reset" | "auth.school_staff_invite";
+export type AuthEmailMessageType = "auth.email_verification" | "auth.password_reset" | "auth.school_staff_invite" | "auth.guardian_consent";
 
 export type AuthEmailMessage = {
   messageType: AuthEmailMessageType;
@@ -21,6 +21,7 @@ export type AuthEmailDeliveryConfig = {
   verificationPath: string;
   passwordResetPath: string;
   schoolInvitePath: string;
+  guardianConsentPath: string;
 };
 
 export function composeEmailVerificationMessage(
@@ -77,6 +78,24 @@ export function composeSchoolStaffInviteMessage(
   };
 }
 
+export function composeGuardianConsentMessage(
+  config: AuthEmailDeliveryConfig,
+  input: { requestId: string; userId: string; emailNormalized: string; consentToken: string; expiresAt: Date },
+): AuthEmailMessage {
+  return {
+    messageType: "auth.guardian_consent",
+    to: normalizeEmail(input.emailNormalized),
+    from: normalizeEmail(config.from),
+    subject: "Review a CUAC child account request",
+    templateData: {
+      challengeId: input.requestId,
+      userId: input.userId,
+      expiresAt: input.expiresAt.toISOString(),
+      actionUrl: actionUrl(config.publicAppUrl, config.guardianConsentPath, input.requestId, input.consentToken, "request"),
+    },
+  };
+}
+
 export function validateAuthEmailDeliveryConfig(config: Partial<AuthEmailDeliveryConfig>): AuthEmailDeliveryConfig {
   return {
     from: normalizeEmail(config.from),
@@ -84,6 +103,7 @@ export function validateAuthEmailDeliveryConfig(config: Partial<AuthEmailDeliver
     verificationPath: normalizeActionPath(config.verificationPath),
     passwordResetPath: normalizeActionPath(config.passwordResetPath),
     schoolInvitePath: normalizeActionPath(config.schoolInvitePath),
+    guardianConsentPath: normalizeActionPath(config.guardianConsentPath ?? "/auth-guardian-consent.html"),
   };
 }
 
@@ -110,7 +130,7 @@ function normalizePublicAppUrl(value: string | null | undefined): string {
 }
 
 function normalizeActionPath(value: string | undefined): string {
-  if (typeof value !== "string" || !/^\/[A-Za-z0-9_-]+(?:\/[A-Za-z0-9_-]+)*$/.test(value) || value.length > 200 || /^\/api(?:\/|$)/i.test(value)) {
+  if (typeof value !== "string" || !/^\/[A-Za-z0-9_-]+(?:\/[A-Za-z0-9_-]+)*(?:\.html)?$/.test(value) || value.length > 200 || /^\/api(?:\/|$)/i.test(value)) {
     throw serviceUnavailable("Auth email delivery requires a configured action page path.");
   }
   return value;

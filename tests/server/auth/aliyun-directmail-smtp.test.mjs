@@ -121,6 +121,22 @@ test("Aliyun SMTP provider accepts only the fixed school invitation template", a
   assert.equal(f.calls[0].to, "teacher@example.edu");
 });
 
+test("Aliyun SMTP provider accepts only the fixed guardian consent template", async () => {
+  const f = fixture();
+  const guardian = message({
+    messageType: "auth.guardian_consent",
+    subject: "Review a CUAC child account request",
+    to: "guardian@example.invalid",
+    templateData: {
+      challengeId: "request-1", userId: "pending-user-1", expiresAt: "2030-01-01T00:00:00.000Z",
+      actionUrl: "https://cuac.example.invalid/auth-guardian-consent.html#request=request-1&token=PRIVATE_TOKEN",
+    },
+  });
+  assert.deepEqual(await f.provider.deliver(guardian, { idempotencyKey: "auth-email:guardian-job", signal: new AbortController().signal }), { status: "accepted" });
+  assert.equal(f.calls[0].subject, "Review a CUAC child account request");
+  assert.equal(f.calls[0].to, "guardian@example.invalid");
+});
+
 test("Aliyun SMTP provider maps exact accepted rejected and ambiguous recipient outcomes", async () => {
   const signal = new AbortController().signal;
   for (const [result, expected] of [

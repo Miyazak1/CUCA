@@ -177,7 +177,7 @@ test("Postgres auth repository creates student account identity and role without
   const repository = new PostgresAuthSessionRepository({
     async query(statement, params) {
       calls.push({ statement, params });
-      if (/select user_id as "userId" from created_role/.test(statement)) {
+      if (/select user_id as "userId" from created_age_assurance/.test(statement)) {
         return [{ userId: "student-1" }];
       }
       return [];
@@ -189,6 +189,7 @@ test("Postgres auth repository creates student account identity and role without
     emailNormalized: "student@example.com",
     displayName: "Student",
     passwordHash: "scrypt$salt$hash",
+    ageBand: "14_or_older",
     now,
   });
 
@@ -200,7 +201,8 @@ test("Postgres auth repository creates student account identity and role without
   assert.match(calls[0].statement, /insert into user_roles/);
   assert.match(calls[0].statement, /'student'/);
   assert.match(calls[0].statement, /'self_registration'/);
-  assert.deepEqual(calls[0].params, ["student@example.com", "student@example.com", "Student", now, "scrypt$salt$hash"]);
+  assert.match(calls[0].statement, /insert into student_age_assurances/);
+  assert.deepEqual(calls[0].params, ["student@example.com", "student@example.com", "Student", now, "scrypt$salt$hash", "14_or_older"]);
   assert.doesNotMatch(calls.map((call) => call.statement).join("\n"), /school_staff_memberships|cuac_staff_access_grants/i);
 });
 

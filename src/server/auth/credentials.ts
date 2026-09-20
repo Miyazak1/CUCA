@@ -21,6 +21,7 @@ export type CreateStudentAccountInput = {
   displayName: string | null;
   passwordHash: string;
   now: Date;
+  ageBand: "14_or_older";
 };
 
 export type CreateAuthSessionInput = {
@@ -136,8 +137,9 @@ export class AuthCredentialsService {
     this.staffMfa = options.staffMfa ?? null;
   }
 
-  async registerStudent(input: { email: unknown; password: unknown; displayName?: unknown; userAgent?: string | null; ip?: string | null }, requestId: string = randomUUID()): Promise<AuthCredentialsResult> {
-    const value = authInput(input, ["email", "password", "displayName", "userAgent", "ip"]);
+  async registerStudent(input: { email: unknown; password: unknown; displayName?: unknown; ageBand?: unknown; userAgent?: string | null; ip?: string | null }, requestId: string = randomUUID()): Promise<AuthCredentialsResult> {
+    const value = authInput(input, ["email", "password", "displayName", "ageBand", "userAgent", "ip"]);
+    if (value.ageBand !== undefined && value.ageBand !== "14_or_older") throw badRequest("Age eligibility must be declared before account creation.");
     const email = authEmail(value.email);
     const password = authPassword(value.password, true);
     const displayName = authDisplayName(value.displayName);
@@ -156,6 +158,7 @@ export class AuthCredentialsService {
       displayName,
       passwordHash,
       now,
+      ageBand: "14_or_older",
     });
 
     const result = await this.issueSession(account.userId, metadata, now, passwordHash);

@@ -5,7 +5,7 @@ import { EmailTokenCipher, EmailTokenEnvelopeError } from "../../../src/server/a
 import { processOneAuthEmail } from "../../../src/server/auth/email-outbox-worker.ts";
 import { validateAuthEmailDeliveryConfig } from "../../../src/server/auth/email-delivery.ts";
 
-const config = { from: "no-reply@example.invalid", publicAppUrl: "https://cuac.example.invalid", verificationPath: "/auth/verify-email", passwordResetPath: "/auth/reset-password", schoolInvitePath: "/auth/school-invite" };
+const config = { from: "no-reply@example.invalid", publicAppUrl: "https://cuac.example.invalid", verificationPath: "/auth/verify-email", passwordResetPath: "/auth/reset-password", schoolInvitePath: "/auth/school-invite", guardianConsentPath: "/auth-guardian-consent.html" };
 const binding = () => ({ id: randomUUID(), userId: randomUUID(), challengeId: randomUUID(), messageType: "auth.email_verification", expiresAt: new Date(Date.now() + 60000) });
 const key = randomBytes(32), cipher = () => new EmailTokenCipher({ activeKeyId: "key-a", keys: new Map([["key-a", key]]) });
 const invalid = reason => error => error instanceof EmailTokenEnvelopeError && error.reason === reason && !error.message.includes(key.toString("hex"));

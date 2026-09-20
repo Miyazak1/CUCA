@@ -198,7 +198,8 @@ test("hash engine errors become generic HTTP 503 responses with no session cooki
   const handlers = createAuthCredentialsHttpHandlers(new AuthCredentialsService(repository(), { passwordHasher: hasher }));
   for (const handler of [handlers.registerStudent, handlers.createSession]) {
     const response = await handler(new Request("https://cuac.test/api/v1/auth/test", {
-      method: "POST", body: JSON.stringify({ email: "student@example.com", password }),
+      method: "POST", body: JSON.stringify({ email: "student@example.com", password,
+        ...(handler === handlers.registerStudent ? { ageBand: "14_or_older" } : {}) }),
     }));
     assert.equal(response.status, 503);
     assert.equal(response.headers.get("set-cookie"), null);

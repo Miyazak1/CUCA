@@ -81,6 +81,21 @@ test("email action pages clear fragment credentials and submit only explicit POS
   assert.match(resetPage, /AuthActionClient kind="reset"/);
 });
 
+test("registration requires age eligibility and provides a one-time guardian approval page", async () => {
+  const [html, script, guardianHtml, guardianScript] = await Promise.all([
+    source("public/auth.html"), source("public/auth.js"),
+    source("public/auth-guardian-consent.html"), source("public/auth-guardian-consent.js"),
+  ]);
+  assert.match(html, /data-register-age-band required/);
+  assert.match(html, /data-guardian-fields hidden/);
+  assert.match(script, /ageBand === "under_14"/);
+  assert.match(script, /guardianConsentRequired/);
+  assert.match(guardianHtml, /children's privacy notice/i);
+  assert.match(guardianScript, /window\.history\.replaceState/);
+  assert.match(guardianScript, /guardian-consent\/\$\{action\}/);
+  assert.doesNotMatch(guardianScript, /localStorage|sessionStorage|console\./);
+});
+
 test("school invitation action separates new staff activation from explicit existing-account binding", async () => {
   const [client, page, route] = await Promise.all([
     source("app/auth/school-invite/school-invite-client.tsx"),

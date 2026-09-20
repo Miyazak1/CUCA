@@ -21,6 +21,7 @@ This document is an engineering and operations control record. It is not legal a
 | `/terms.html` | `terms_of_service` | Legal/business owner |
 | `/cookies.html` | `cookie_notice` | Privacy/legal owner |
 | `/admissions-data-policy.html` | `admissions_data_policy` | Admissions data owner + legal reviewer |
+| `/children-privacy.html` | `children_privacy_notice` | Privacy/legal owner + child-safeguarding reviewer |
 
 The pages fetch only the exact locale and notice key from `GET /api/v1/notices/:noticeKey/:locale`. They show the published version, effective date and review-due date. Missing, expired, withdrawn, structurally invalid or unavailable content fails closed with an explicit unpublished state. There is no fallback to another locale, another policy or hard-coded legal copy.
 
@@ -91,6 +92,8 @@ This is intake and triage, not a completed rights operation. The following remai
 - a way to communicate completion or a reasoned refusal and available review path; reviewed manual email is acceptable until automated notices are justified by volume;
 - any additional objection, restriction or consent-withdrawal request types required by the approved launch jurisdictions;
 - independently reviewed English and Simplified Chinese interface copy and legal publications.
+
+Because minors are an intended audience, under-14 onboarding follows the separate [guardian-consent contract](../architecture/CUAC_UNDER14_GUARDIAN_CONSENT_CONTRACT.md). The design does not require all 14–17-year-old students to obtain guardian consent and does not collect identity documents by default. The pending-registration state machine, exact-version binding, one-time consent, decline and expiry cleanup are implemented and pass disposable PostgreSQL rehearsal. Production activation remains blocked until independently approved bilingual children's notices are published, the `cuca.com` guardian email path passes protected staging acceptance, and the withdrawal procedure is rehearsed.
 
 A generic support email alone is not sufficient release evidence, and the new intake endpoint must not be presented as proof that a request was fulfilled.
 

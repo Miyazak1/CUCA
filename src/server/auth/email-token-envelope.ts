@@ -79,7 +79,7 @@ function decode(value: unknown, bytes: number): Buffer {
 
 function aad(binding: EmailTokenBinding, keyId: string): Buffer {
   if (![binding.id, binding.userId, binding.challengeId].every(value => typeof value === "string" && uuidPattern.test(value))
-    || !["auth.email_verification", "auth.password_reset", "auth.school_staff_invite"].includes(binding.messageType)
+    || !["auth.email_verification", "auth.password_reset", "auth.school_staff_invite", "auth.guardian_consent"].includes(binding.messageType)
     || !(binding.expiresAt instanceof Date) || !Number.isFinite(binding.expiresAt.getTime())) throw new EmailTokenEnvelopeError("invalid_envelope");
   return Buffer.from(JSON.stringify(["cuac.auth-email-token", 1, keyId, binding.id, binding.userId, binding.challengeId, binding.messageType, binding.expiresAt.toISOString()]));
 }

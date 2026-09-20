@@ -98,7 +98,7 @@ export async function runIdentityIsolationRehearsal(t, pool) {
 
   await t.test("real registration/login/logout stores hashes and revokes only the selected session", async () => {
     const email = `register-${randomUUID()}@example.invalid`;
-    const response = await authHttp.registerStudent(request("/api/v1/auth/register", null, { email, password, role: "cuac_admin", schoolId: randomUUID() }));
+    const response = await authHttp.registerStudent(request("/api/v1/auth/register", null, { email, password, ageBand: "14_or_older", role: "cuac_admin", schoolId: randomUUID() }));
     assert.equal(response.status, 201);
     const body = await response.json();
     assert.equal(body.data.activeRole, "student");

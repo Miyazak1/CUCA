@@ -5,6 +5,7 @@ import {
   composeEmailVerificationMessage,
   composePasswordResetMessage,
   composeSchoolStaffInviteMessage,
+  composeGuardianConsentMessage,
   validateAuthEmailDeliveryConfig,
 } from "../../../src/server/index.ts";
 
@@ -14,6 +15,7 @@ const config = {
   verificationPath: "/auth/verify-email",
   passwordResetPath: "/auth/reset-password",
   schoolInvitePath: "/auth/school-invite",
+  guardianConsentPath: "/auth-guardian-consent.html",
 };
 
 test("Auth email composer builds verification messages without provider coupling", () => {
@@ -62,6 +64,16 @@ test("Auth email composer builds school staff invite messages with an invite-bou
   assert.equal(message.subject, "Activate your CUAC school account");
   assert.equal(message.templateData.userId, "ops-1");
   assert.match(message.templateData.actionUrl, /^https:\/\/cuac\.example\.com\/auth\/school-invite#invite=invite-1&token=/);
+});
+
+test("Auth email composer builds guardian consent with a request-bound fragment", () => {
+  const message = composeGuardianConsentMessage(config, {
+    requestId: "request-1", userId: "pending-user-1", emailNormalized: "guardian@example.com",
+    consentToken: "raw-guardian-token", expiresAt: new Date("2026-08-31T00:00:00.000Z"),
+  });
+  assert.equal(message.messageType, "auth.guardian_consent");
+  assert.equal(message.subject, "Review a CUAC child account request");
+  assert.match(message.templateData.actionUrl, /^https:\/\/cuac\.example\.com\/auth-guardian-consent\.html#request=request-1&token=/);
 });
 
 test("Auth email delivery config rejects non-HTTPS public URLs and invalid senders", () => {

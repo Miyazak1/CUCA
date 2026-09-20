@@ -7,7 +7,7 @@ test("auth credentials runtime fails closed without PostgreSQL credentials repos
   const response = await createAuthCredentialsRouteHandlers().registerStudent(
     new Request("https://cuac.test/api/v1/auth/register", {
       method: "POST",
-      body: JSON.stringify({ email: "student@example.com", password: "strong-password" }),
+      body: JSON.stringify({ email: "student@example.com", password: "strong-password", ageBand: "14_or_older" }),
     }),
   );
   const body = await response.json();

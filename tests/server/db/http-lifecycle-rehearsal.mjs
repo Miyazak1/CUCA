@@ -102,7 +102,7 @@ export async function runHttpLifecycleRehearsal(t, pool, databaseUrl) {
     try {
       await blocker.query("begin"); await blocker.query("lock table audit_logs in access exclusive mode");
       pending = fetch(server.origin + "/api/v1/auth/register", { method: "POST", signal: AbortSignal.timeout(15000),
-        headers: { origin: server.origin, "content-type": "application/json" }, body: JSON.stringify({ email, password }),
+        headers: { origin: server.origin, "content-type": "application/json" }, body: JSON.stringify({ email, password, ageBand: "14_or_older" }),
       }).then(async response => ({ status: response.status, body: await response.text() }), () => "disconnected");
       await waitForLock(); const started = performance.now();
       server.send({ type: "signal", signal: "SIGTERM" });

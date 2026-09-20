@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Guardian approval · CUAC</title>
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-card" aria-labelledby="guardian-title">
+      <div class="form-head">
+        <span class="eyebrow">Child account protection</span>
+        <h1 id="guardian-title">Review a child account request</h1>
+        <p>Approve only if you are the child's parent or legal guardian and you have reviewed CUAC's published children's privacy notice.</p>
+      </div>
+      <div class="verification-note">
+        <strong>What approval means</strong>
+        <span>CUAC will create a student login for the child using the email they supplied. Application materials are not collected by CUAC in this release.</span>
+      </div>
+      <p><a href="/children-privacy.html" target="_blank" rel="noopener">Open the children's privacy notice</a></p>
+      <div class="split-fields">
+        <button class="primary" type="button" data-guardian-accept>Approve child account</button>
+        <button type="button" data-guardian-decline>Decline</button>
+      </div>
+      <p class="auth-runtime-status" data-guardian-status role="status" aria-live="polite"></p>
+      <p class="form-hint">This one-time link expires after 72 hours. Approval does not sign the child in; the child must sign in and verify their own account email.</p>
+    </section>
+  </main>
+  <script src="auth-guardian-consent.js"></script>
+</body>
+</html>

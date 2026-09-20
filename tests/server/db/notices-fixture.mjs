@@ -7,7 +7,19 @@ import { noticeDocument } from "../notices/fixture.mjs";
 
 // Only the validated disposable rehearsal invokes this fixture; no production content is seeded.
 export async function noticeFixture(pool, reset = true) {
-  if (reset) for (const table of ["privacy_notice_publications", "privacy_notice_versions", "privacy_notice_scopes"]) await pool.query(`delete from ${table}`);
+  if (reset) {
+    // The disposable rehearsal may have exercised under-14 consent before another
+    // notice fixture resets governed notice versions. Remove that synthetic evidence
+    // in dependency order; production notice evidence remains intentionally restricted.
+    const guardianTables = await pool.query(`select
+      to_regclass('public.student_age_assurances') as assurances,
+      to_regclass('public.guardian_consent_requests') as requests`);
+    if (guardianTables.rows[0].assurances) {
+      await pool.query("delete from student_age_assurances where source_registration_id is not null");
+    }
+    if (guardianTables.rows[0].requests) await pool.query("delete from guardian_consent_requests");
+    for (const table of ["privacy_notice_publications", "privacy_notice_versions", "privacy_notice_scopes"]) await pool.query(`delete from ${table}`);
+  }
   const identities = [];
   for (const role of ["cuac_ops", "cuac_admin", "cuac_admin"]) {
     const id = (await pool.query("insert into users (email, email_normalized) values ($1, $1) returning id", [`notice-${randomUUID()}@example.invalid`])).rows[0].id;

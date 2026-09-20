@@ -1,14 +1,16 @@
 import { randomUUID } from "node:crypto";
-import { CuacError, toErrorEnvelope } from "../shared/errors.ts";
+import { badRequest, CuacError, toErrorEnvelope } from "../shared/errors.ts";
 import { AuthCredentialsService } from "./credentials.ts";
 import { hashAuthRateLimitSubjectValue, type AuthRateLimiter } from "./rate-limit.ts";
 import { parseCookieHeader, SESSION_COOKIE_NAME } from "./session.ts";
 import { clearGuestSessionCookie } from "./guest-session.ts";
 import { authRateLimitEmail, readAuthBody } from "./input.ts";
+import type { GuardianConsentService } from "./guardian-consent.ts";
 
 export type AuthCredentialsHttpOptions = {
   secureCookies?: boolean;
   rateLimiter?: AuthRateLimiter;
+  guardianConsent?: Pick<GuardianConsentService, "request">;
 };
 
 export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsService, keyof AuthCredentialsService>, options: AuthCredentialsHttpOptions = {}) {
@@ -17,7 +19,10 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
       const requestId = request.headers.get("x-request-id") ?? randomUUID();
 
       try {
-        const body = await readAuthBody(request, ["email", "password", "displayName"]);
+        const body = await readAuthBody(request, ["email", "password", "displayName", "ageBand", "guardianEmail", "guardianRelationship", "locale"]);
+        if (body.ageBand !== "14_or_older" && body.ageBand !== "under_14") {
+          throw badRequest("Age eligibility must be declared before account creation.");
+        }
         await options.rateLimiter?.assertAllowed({
           action: "auth.register",
           subject: {
@@ -26,10 +31,21 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
             route: "/api/v1/auth/register",
           },
         });
+        if (body.ageBand === "under_14") {
+          if (!options.guardianConsent) throw new CuacError("SERVICE_UNAVAILABLE", "Guardian consent email delivery is not configured.", 503);
+          const pending = await options.guardianConsent.request({
+            email: body.email, password: body.password, displayName: body.displayName,
+            guardianEmail: body.guardianEmail, guardianRelationship: body.guardianRelationship, locale: body.locale,
+            userAgent: request.headers.get("user-agent"), ip: resolveRequestIp(request),
+          });
+          return Response.json({ data: { guardianConsentRequired: true, requestId: pending.requestId,
+            expiresAt: pending.expiresAt.toISOString() } }, { status: 202, headers: { "x-request-id": requestId } });
+        }
         const result = await service.registerStudent({
           email: body.email,
           password: body.password,
           displayName: body.displayName,
+          ageBand: body.ageBand,
           userAgent: request.headers.get("user-agent"),
           ip: resolveRequestIp(request),
         }, requestId);

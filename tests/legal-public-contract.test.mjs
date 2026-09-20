@@ -10,6 +10,7 @@ test("legal routes are stable, governed and fail closed without approved content
     "terms.html": "terms_of_service",
     "cookies.html": "cookie_notice",
     "admissions-data-policy.html": "admissions_data_policy",
+    "children-privacy.html": "children_privacy_notice",
   };
   const runtime = await read("legal-runtime.js");
   const shell = await read("shared-shell.js");

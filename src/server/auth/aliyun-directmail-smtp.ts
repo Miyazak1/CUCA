@@ -150,7 +150,9 @@ function buildMessage(config: ValidatedConfig, message: AuthEmailMessage, idempo
       ? { subject: "Reset your CUAC password", path: config.passwordResetPath, action: "Reset password", idParameter: "challenge" }
       : message.messageType === "auth.school_staff_invite"
         ? { subject: "Activate your CUAC school account", path: config.schoolInvitePath, action: "Activate school account", idParameter: "invite" }
-        : undefined;
+        : message.messageType === "auth.guardian_consent"
+          ? { subject: "Review a CUAC child account request", path: config.guardianConsentPath, action: "Review child account request", idParameter: "request" }
+          : undefined;
   if (!expected || message.subject !== expected.subject || normalizeAddress(message.from) !== config.from) return undefined;
 
   const recipient = normalizeAddress(message.to);

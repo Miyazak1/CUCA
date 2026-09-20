@@ -56,6 +56,7 @@ export function createAuthEmailWorkerConfigurationFromEnv(
     verificationPath: env.CUAC_AUTH_EMAIL_VERIFICATION_PATH,
     passwordResetPath: env.CUAC_AUTH_PASSWORD_RESET_PATH,
     schoolInvitePath: env.CUAC_AUTH_SCHOOL_INVITE_PATH,
+    guardianConsentPath: env.CUAC_AUTH_GUARDIAN_CONSENT_PATH ?? "/auth-guardian-consent.html",
   });
   const smtp: AliyunDirectMailSmtpConfig = {
     ...delivery,

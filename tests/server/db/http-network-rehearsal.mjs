@@ -93,7 +93,7 @@ export async function runHttpNetworkRehearsal(t, pool, databaseUrl) {
     }
     async function register(client) {
       const email = `network-${randomUUID()}@example.invalid`;
-      const response = await client.send("/api/v1/auth/register", { method: "POST", body: { email, password, role: "cuac_admin" } });
+      const response = await client.send("/api/v1/auth/register", { method: "POST", body: { email, password, ageBand: "14_or_older", role: "cuac_admin" } });
       assert.equal(response.status, 201, await response.clone().text());
       const data = (await response.json()).data;
       assert.equal(data.activeRole, "student");
@@ -230,7 +230,7 @@ export async function runHttpNetworkRehearsal(t, pool, databaseUrl) {
 
     await t.test("network registration rejects malformed domain inputs without creating identities or sessions", async () => {
       const before = await authCounts();
-      const base = { email: `input-${randomUUID()}@example.invalid`, password };
+      const base = { email: `input-${randomUUID()}@example.invalid`, password, ageBand: "14_or_older" };
       for (const body of [{ ...base, email: {} }, { ...base, email: "x".repeat(321) }, { ...base, email: "a..b@example.invalid" }, { ...base, password: {} }, { ...base, password: "legacy08" }, { ...base, password: "x".repeat(1025) }, { ...base, password: "\u{1f600}".repeat(257) }, { ...base, displayName: [] }, { ...base, displayName: "x".repeat(121) }, { ...base, ip: "forged" }, { ...base, PRIVATE_AUTH_MARKER: "NEVER_STORE_AUTH_INPUT" }]) {
         const response = await send("/api/v1/auth/register", { method: "POST", body });
         assert.equal(response.status, 400, await response.clone().text());
@@ -350,7 +350,7 @@ export async function runHttpNetworkRehearsal(t, pool, databaseUrl) {
       const client = browser(), email = `atomic-network-${randomUUID()}@example.invalid`;
       try {
         for (const [action, path, body, success] of [
-          ["auth.register", "/api/v1/auth/register", { email, password }, 201],
+          ["auth.register", "/api/v1/auth/register", { email, password, ageBand: "14_or_older" }, 201],
           ["auth.login", "/api/v1/auth/sessions", { email, password }, 200],
           ["auth.logout", "/api/v1/auth/logout", {}, 200],
         ]) {

@@ -10,6 +10,11 @@ import type { PasswordHasher } from "../password-hasher.ts";
 import { mfaKeyringFromEnv, type MfaKeyring } from "../mfa-crypto.ts";
 import { StaffMfaService } from "../staff-mfa.ts";
 import { createStaffMfaHttpHandlers } from "../staff-mfa-http.ts";
+import { GuardianConsentService } from "../guardian-consent.ts";
+import { PostgresGuardianConsentRepository } from "../postgres-guardian-consent.ts";
+import { createAuthEmailOutboxCipherFromEnv } from "./email-delivery.ts";
+import { createGuardianConsentHttpHandlers } from "../guardian-consent-http.ts";
+import type { EmailTokenCipher } from "../email-token-envelope.ts";
 
 const unavailableCredentialsRepository: AuthCredentialsRepository = {
   async findPasswordIdentityByEmailNormalized() {
@@ -58,13 +63,27 @@ export function getAuthCredentialsRouteHandlers() {
   try {
     const pool = getSharedPostgresPool();
     const client = createTransactionalSqlClient(pool);
+    const cipher = createAuthEmailOutboxCipherFromEnv();
+    const guardianConsent = cipher ? createPostgresGuardianConsentService(client, cipher) : undefined;
     return createAuthCredentialsHttpHandlers(createPostgresAuthCredentialsService(client), {
       secureCookies: process.env.NODE_ENV === "production",
       rateLimiter: createAuthRateLimiterFromEnv({ client }),
+      guardianConsent,
     });
   } catch {
     return createAuthCredentialsRouteHandlers();
   }
+}
+
+export function getGuardianConsentRouteHandlers() {
+  try {
+    const client = createTransactionalSqlClient(getSharedPostgresPool());
+    const cipher = createAuthEmailOutboxCipherFromEnv();
+    if (!cipher) return createGuardianConsentHttpHandlers();
+    return createGuardianConsentHttpHandlers(createPostgresGuardianConsentService(client, cipher), {
+      rateLimiter: createAuthRateLimiterFromEnv({ client }),
+    });
+  } catch { return createGuardianConsentHttpHandlers(); }
 }
 
 export function getStaffMfaRouteHandlers() {
@@ -111,5 +130,14 @@ export function createPostgresStaffMfaService(client: TransactionalSqlClient, ke
   return {
     startEnrollment: transactionalMethod(client, create, "startEnrollment"),
     completeLogin: transactionalMethod(client, create, "completeLogin"),
+  };
+}
+
+export function createPostgresGuardianConsentService(client: TransactionalSqlClient, cipher: EmailTokenCipher) {
+  const create = (tx: TransactionalSqlClient) => new GuardianConsentService(new PostgresGuardianConsentRepository(tx, cipher));
+  return {
+    request: transactionalMethod(client, create, "request"),
+    accept: transactionalMethod(client, create, "accept"),
+    decline: transactionalMethod(client, create, "decline"),
   };
 }

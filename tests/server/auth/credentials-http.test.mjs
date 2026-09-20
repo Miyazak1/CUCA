@@ -23,9 +23,9 @@ test("malformed email never reaches the Auth rate limiter as an object or causes
     subjects.push(input.subject.email);
     assert.match(createAuthRateLimitKey(input), /^sha256:/);
   } } });
-  for (const handler of [handlers.registerStudent, handlers.createSession]) {
+  for (const [handler, extra] of [[handlers.registerStudent, { ageBand: "14_or_older" }], [handlers.createSession, {}]]) {
     for (const email of [{ nested: true }, [], 123, null, "x".repeat(321)]) {
-      const response = await handler(new Request("https://cuac.test/api/v1/auth/test", { method: "POST", body: JSON.stringify({ email, password: "strong-password" }) }));
+      const response = await handler(new Request("https://cuac.test/api/v1/auth/test", { method: "POST", body: JSON.stringify({ email, password: "strong-password", ...extra }) }));
       assert.equal(response.status, 400, await response.clone().text());
     }
   }
@@ -83,7 +83,7 @@ test("auth credentials HTTP registration sets session cookie without returning s
     new Request("https://cuac.test/api/v1/auth/register", {
       method: "POST",
       headers: { "user-agent": "browser", "x-forwarded-for": "203.0.113.10" },
-      body: JSON.stringify({ email: "student@example.com", password: "strong-password", displayName: "Student" }),
+      body: JSON.stringify({ email: "student@example.com", password: "strong-password", displayName: "Student", ageBand: "14_or_older" }),
     }),
   );
   const body = await response.json();
@@ -97,6 +97,44 @@ test("auth credentials HTTP registration sets session cookie without returning s
   assert.match(cookie, /SameSite=Lax/);
   assert.match(cookie, /Secure/);
   assert.doesNotMatch(JSON.stringify(body), /strong-password|sha256:|scrypt|cuac_session/);
+});
+
+test("auth credentials HTTP registration requires an explicit supported age declaration", async () => {
+  const { calls, handlers } = createHandlers();
+  for (const ageBand of [undefined, null, "", "under_13", 14]) {
+    const response = await handlers.registerStudent(new Request("https://cuac.test/api/v1/auth/register", {
+      method: "POST", body: JSON.stringify({ email: "student@example.com", password: "strong-password", ageBand }),
+    }));
+    assert.equal(response.status, 400);
+    assert.equal(response.headers.get("set-cookie"), null);
+  }
+  assert.equal(calls.length, 0);
+});
+
+test("under-14 HTTP registration creates only a pending guardian request and no login cookie", async () => {
+  const calls = [];
+  const handlers = createAuthCredentialsHttpHandlers({
+    async registerStudent() { throw new Error("adult registration must not run"); },
+  }, { guardianConsent: { async request(input) {
+    calls.push(input);
+    return { requestId: "00000000-0000-4000-8000-000000000020", expiresAt: new Date("2026-09-23T08:00:00.000Z") };
+  } } });
+  const response = await handlers.registerStudent(new Request("https://cuac.test/api/v1/auth/register", {
+    method: "POST", headers: { "user-agent": "child-browser", "x-forwarded-for": "203.0.113.12" },
+    body: JSON.stringify({ email: "child@example.com", password: "strong-password", displayName: "Child",
+      ageBand: "under_14", guardianEmail: "guardian@example.com", guardianRelationship: "parent", locale: "zh-CN" }),
+  }));
+  assert.equal(response.status, 202);
+  assert.equal(response.headers.get("set-cookie"), null);
+  assert.deepEqual((await response.json()).data, {
+    guardianConsentRequired: true,
+    requestId: "00000000-0000-4000-8000-000000000020",
+    expiresAt: "2026-09-23T08:00:00.000Z",
+  });
+  assert.equal(calls[0].email, "child@example.com");
+  assert.equal(calls[0].guardianEmail, "guardian@example.com");
+  assert.equal(calls[0].guardianRelationship, "parent");
+  assert.equal(calls[0].locale, "zh-CN");
 });
 
 test("auth credentials HTTP login returns stable forbidden error without revealing account state", async () => {
@@ -194,7 +232,7 @@ test("auth credentials HTTP registration is rate limited before account creation
     new Request("https://cuac.test/api/v1/auth/register", {
       method: "POST",
       headers: { "x-forwarded-for": "203.0.113.10" },
-      body: JSON.stringify({ email: "student@example.com", password: "strong-password" }),
+      body: JSON.stringify({ email: "student@example.com", password: "strong-password", ageBand: "14_or_older" }),
     }),
   );
   const body = await response.json();
