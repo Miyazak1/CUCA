@@ -95,6 +95,8 @@ This is intake and triage, not a completed rights operation. The following remai
 
 Because minors are an intended audience, under-14 onboarding follows the separate [guardian-consent contract](../architecture/CUAC_UNDER14_GUARDIAN_CONSENT_CONTRACT.md). The design does not require all 14–17-year-old students to obtain guardian consent and does not collect identity documents by default. The pending-registration state machine, exact-version binding, one-time consent, decline and expiry cleanup are implemented and pass disposable PostgreSQL rehearsal. Production activation remains blocked until independently approved bilingual children's notices are published, the `cuca.com` guardian email path passes protected staging acceptance, and the withdrawal procedure is rehearsed.
 
+Review drafts now exist for the [Simplified Chinese children's rules](../legal-drafts/CHILDREN_PRIVACY_NOTICE_ZH-CN_DRAFT.md) and [English children's rules](../legal-drafts/CHILDREN_PRIVACY_NOTICE_EN_DRAFT.md). They deliberately retain visible publication blockers for the legal entity, hosting and processor facts, retention schedule and approved contacts. The [guardian withdrawal runbook](../architecture/CUAC_GUARDIAN_CONSENT_WITHDRAWAL_RUNBOOK.md) and [owner input checklist](CHILDREN_PRIVACY_OWNER_INPUT_CHECKLIST.md) define the operating roles and evidence required before either draft can be published.
+
 A generic support email alone is not sufficient release evidence, and the new intake endpoint must not be presented as proof that a request was fulfilled.
 
 ## 5. Publication checklist
