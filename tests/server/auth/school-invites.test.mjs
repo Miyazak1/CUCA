@@ -102,6 +102,7 @@ test("school staff invite creation is limited to CUAC internal roles and returns
   assert.equal(calls[2].input.emailNormalized, "teacher@example.edu");
   assert.notEqual(calls[2].input.inviteTokenHash, deliveries[0].inviteToken);
   assert.equal(deliveries[0].emailNormalized, "teacher@example.edu");
+  assert.equal(deliveries[0].invitedByUserId, "ops-1");
   assert.equal(auditEvents[0].metadata.emailDomain, "example.edu");
   assert.equal(JSON.stringify(auditEvents[0]).includes(deliveries[0].inviteToken), false);
 });

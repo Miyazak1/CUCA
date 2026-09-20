@@ -145,14 +145,16 @@ function buildTransportOptions(config: ValidatedConfig): AliyunDirectMailSmtpOpt
 
 function buildMessage(config: ValidatedConfig, message: AuthEmailMessage, idempotencyKey: string): AliyunDirectMailMessage | undefined {
   const expected = message.messageType === "auth.email_verification"
-    ? { subject: "Verify your CUAC email", path: config.verificationPath, action: "Verify email" }
+    ? { subject: "Verify your CUAC email", path: config.verificationPath, action: "Verify email", idParameter: "challenge" }
     : message.messageType === "auth.password_reset"
-      ? { subject: "Reset your CUAC password", path: config.passwordResetPath, action: "Reset password" }
-      : undefined;
+      ? { subject: "Reset your CUAC password", path: config.passwordResetPath, action: "Reset password", idParameter: "challenge" }
+      : message.messageType === "auth.school_staff_invite"
+        ? { subject: "Activate your CUAC school account", path: config.schoolInvitePath, action: "Activate school account", idParameter: "invite" }
+        : undefined;
   if (!expected || message.subject !== expected.subject || normalizeAddress(message.from) !== config.from) return undefined;
 
   const recipient = normalizeAddress(message.to);
-  const actionUrl = validateActionUrl(message, config.publicAppUrl, expected.path);
+  const actionUrl = validateActionUrl(message, config.publicAppUrl, expected.path, expected.idParameter);
   const expiresAt = validateExpiry(message.templateData?.expiresAt);
   const key = normalizeIdempotencyKey(idempotencyKey);
   if (!recipient || !actionUrl || !expiresAt || !key) return undefined;
@@ -181,7 +183,7 @@ function buildMessage(config: ValidatedConfig, message: AuthEmailMessage, idempo
   };
 }
 
-function validateActionUrl(message: AuthEmailMessage, publicAppUrl: string, expectedPath: string): string | undefined {
+function validateActionUrl(message: AuthEmailMessage, publicAppUrl: string, expectedPath: string, idParameter: string): string | undefined {
   const raw = message.templateData?.actionUrl;
   if (typeof raw !== "string" || raw.length > 2_048 || hasControlCharacter(raw)) return undefined;
   try {
@@ -189,9 +191,9 @@ function validateActionUrl(message: AuthEmailMessage, publicAppUrl: string, expe
     if (url.protocol !== "https:" || url.origin !== publicAppUrl || url.pathname !== expectedPath || url.search || url.username || url.password) return undefined;
     const parameters = new URLSearchParams(url.hash.slice(1));
     const names = Array.from(parameters.keys());
-    const challenge = parameters.get("challenge");
+    const challenge = parameters.get(idParameter);
     const token = parameters.get("token");
-    if (names.length !== 2 || names[0] !== "challenge" || names[1] !== "token" || !challenge || challenge !== message.templateData.challengeId
+    if (names.length !== 2 || names[0] !== idParameter || names[1] !== "token" || !challenge || challenge !== message.templateData.challengeId
       || !token || token.length > 512 || hasControlCharacter(token)) return undefined;
     return url.toString();
   } catch {

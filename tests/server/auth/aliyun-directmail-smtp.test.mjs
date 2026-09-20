@@ -13,6 +13,7 @@ const config = {
   publicAppUrl: "https://cuac.example.invalid",
   verificationPath: "/auth/verify-email",
   passwordResetPath: "/auth/reset-password",
+  schoolInvitePath: "/auth/school-invite",
 };
 
 function message(overrides = {}) {
@@ -100,6 +101,24 @@ test("Aliyun SMTP provider builds a fixed message without injectable delivery fi
   assert.equal(outgoing.text.includes("PRIVATE_TOKEN"), true);
   assert.equal(outgoing.html.includes("PRIVATE_TOKEN"), true);
   assert.equal(JSON.stringify(outgoing).includes(config.password), false);
+});
+
+test("Aliyun SMTP provider accepts only the fixed school invitation template", async () => {
+  const f = fixture();
+  const invite = message({
+    messageType: "auth.school_staff_invite",
+    subject: "Activate your CUAC school account",
+    to: "teacher@example.edu",
+    templateData: {
+      challengeId: "invite-1",
+      userId: "ops-1",
+      expiresAt: "2030-01-01T00:00:00.000Z",
+      actionUrl: "https://cuac.example.invalid/auth/school-invite#invite=invite-1&token=PRIVATE_TOKEN",
+    },
+  });
+  assert.deepEqual(await f.provider.deliver(invite, { idempotencyKey: "auth-email:invite-job", signal: new AbortController().signal }), { status: "accepted" });
+  assert.equal(f.calls[0].subject, "Activate your CUAC school account");
+  assert.equal(f.calls[0].to, "teacher@example.edu");
 });
 
 test("Aliyun SMTP provider maps exact accepted rejected and ambiguous recipient outcomes", async () => {

@@ -1,4 +1,5 @@
-import { composeEmailVerificationMessage, composePasswordResetMessage, validateAuthEmailDeliveryConfig, type AuthEmailMessage, type AuthEmailDeliveryConfig } from "./email-delivery.ts";
+import { composeEmailVerificationMessage, composePasswordResetMessage, composeSchoolStaffInviteMessage,
+  validateAuthEmailDeliveryConfig, type AuthEmailMessage, type AuthEmailDeliveryConfig } from "./email-delivery.ts";
 import { PostgresAuthEmailOutbox, type EmailDeliveryResult } from "./postgres-email-outbox.ts";
 
 export type AuthEmailProvider = {
@@ -18,7 +19,15 @@ export async function processOneAuthEmail(outbox: PostgresAuthEmailOutbox, provi
   try {
     const message = job.messageType === "auth.email_verification"
       ? composeEmailVerificationMessage(config, { ...job, verificationToken: job.token })
-      : composePasswordResetMessage(config, { ...job, resetToken: job.token });
+      : job.messageType === "auth.password_reset"
+        ? composePasswordResetMessage(config, { ...job, resetToken: job.token })
+        : composeSchoolStaffInviteMessage(config, {
+          inviteId: job.challengeId,
+          invitedByUserId: job.userId,
+          emailNormalized: job.emailNormalized,
+          inviteToken: job.token,
+          expiresAt: job.expiresAt,
+        });
     const unknown = new Promise<{ status: "unknown" }>(resolve => {
       timeout = setTimeout(() => { controller.abort(); resolve({ status: "unknown" }); }, 10_000);
     });

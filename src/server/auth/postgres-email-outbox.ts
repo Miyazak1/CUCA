@@ -5,6 +5,7 @@ import type { AuthEmailMessageType } from "./email-delivery.ts";
 import { EmailTokenCipher, EmailTokenEnvelopeError, type EmailTokenBinding } from "./email-token-envelope.ts";
 import type { EmailVerificationDeliverySink } from "./email-verification.ts";
 import type { PasswordResetDeliverySink } from "./password-reset.ts";
+import type { SchoolStaffInviteDeliverySink } from "./school-invites.ts";
 
 export type EmailOutboxLease = { id: string; userId: string; leaseId: string };
 export type EmailDeliveryResult = "accepted" | "not_accepted" | "unknown";
@@ -15,7 +16,7 @@ type Job = EmailTokenBinding & {
 export type PreparedAuthEmail = EmailTokenBinding & { emailNormalized: string; token: string };
 
 const projection = `id, user_id as "userId", message_type as "messageType",
-  coalesce(verification_challenge_id, reset_challenge_id) as "challengeId", expires_at as "expiresAt",
+  coalesce(verification_challenge_id, reset_challenge_id, school_staff_invite_id) as "challengeId", expires_at as "expiresAt",
   status, attempt_count as "attemptCount", envelope_json as envelope, lease_id as "leaseId",
   lease_expires_at > clock_timestamp() as "leaseValid", expires_at > clock_timestamp() as unexpired`;
 const hash = (token: string) => `sha256:${createHash("sha256").update(token).digest("hex")}`;
@@ -37,6 +38,17 @@ export class PostgresAuthEmailOutbox {
     return { enqueue: input => this.enqueue("auth.password_reset", input, input.resetToken) };
   }
 
+  schoolInviteSink(): SchoolStaffInviteDeliverySink {
+    return {
+      send: input => this.enqueue("auth.school_staff_invite", {
+        challengeId: input.inviteId,
+        userId: input.invitedByUserId,
+        emailNormalized: input.emailNormalized,
+        expiresAt: input.expiresAt,
+      }, input.inviteToken),
+    };
+  }
+
   private async enqueue(messageType: AuthEmailMessageType, input: { challengeId: string; userId: string; emailNormalized: string; expiresAt: Date }, token: string): Promise<void> {
     const binding = { id: randomUUID(), userId: input.userId, challengeId: input.challengeId, messageType, expiresAt: input.expiresAt };
     const envelope = this.cipher.seal(binding, token);
@@ -45,10 +57,12 @@ export class PostgresAuthEmailOutbox {
       const challenge = await eligibleChallenge(tx, binding);
       if (!challenge || challenge.emailNormalized !== input.emailNormalized || challenge.tokenHash !== hash(token)
         || challenge.expiresAt.getTime() !== input.expiresAt.getTime()) throw serviceUnavailable("Auth email request changed before enqueue.");
-      await tx.query(`insert into auth_email_outbox (id,user_id,message_type,verification_challenge_id,reset_challenge_id,expires_at,envelope_json)
-        values ($1,$2,$3,$4,$5,$6,$7::jsonb)`, [binding.id, binding.userId, messageType,
+      await tx.query(`insert into auth_email_outbox (id,user_id,message_type,verification_challenge_id,reset_challenge_id,school_staff_invite_id,expires_at,envelope_json)
+        values ($1,$2,$3,$4,$5,$6,$7,$8::jsonb)`, [binding.id, binding.userId, messageType,
         messageType === "auth.email_verification" ? binding.challengeId : null,
-        messageType === "auth.password_reset" ? binding.challengeId : null, binding.expiresAt, JSON.stringify(envelope)]);
+        messageType === "auth.password_reset" ? binding.challengeId : null,
+        messageType === "auth.school_staff_invite" ? binding.challengeId : null,
+        binding.expiresAt, JSON.stringify(envelope)]);
       await audit(tx, binding.id, "enqueued", messageType, 0, null);
     });
   }
@@ -148,6 +162,20 @@ async function lockedJob(tx: TransactionalSqlClient, lease: EmailOutboxLease, st
 }
 
 async function eligibleChallenge(tx: TransactionalSqlClient, binding: EmailTokenBinding) {
+  if (binding.messageType === "auth.school_staff_invite") {
+    const rows = await tx.query<{ emailNormalized: string; tokenHash: string; expiresAt: Date }>(`select c.email_normalized as "emailNormalized",
+      c.token_hash as "tokenHash", c.expires_at as "expiresAt" from school_staff_invites c
+      join users u on u.id = c.invited_by_user_id join schools s on s.id = c.school_id
+      where c.id = $1 and c.invited_by_user_id = $2 and c.status = 'pending' and c.revoked_at is null
+        and c.accepted_at is null and c.expires_at > clock_timestamp() and u.account_status = 'active' and s.status = 'active'
+        and exists (select 1 from user_roles r join cuac_staff_access_grants g
+          on g.user_id = u.id and g.requested_role = r.role
+          where r.user_id = u.id and r.role in ('cuac_ops','cuac_admin') and r.revoked_at is null
+            and g.status = 'approved' and g.approved_at is not null and g.approved_by_user_id is not null
+            and g.revoked_at is null and g.expires_at > clock_timestamp()) for share of c`,
+    [binding.challengeId, binding.userId]);
+    return rows[0] ?? null;
+  }
   const verification = binding.messageType === "auth.email_verification";
   const table = verification ? "email_verification_challenges" : "password_reset_challenges";
   const hashColumn = verification ? "verification_token_hash" : "reset_token_hash";

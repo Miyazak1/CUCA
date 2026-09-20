@@ -5,7 +5,7 @@ import { EmailTokenCipher, EmailTokenEnvelopeError } from "../../../src/server/a
 import { processOneAuthEmail } from "../../../src/server/auth/email-outbox-worker.ts";
 import { validateAuthEmailDeliveryConfig } from "../../../src/server/auth/email-delivery.ts";
 
-const config = { from: "no-reply@example.invalid", publicAppUrl: "https://cuac.example.invalid", verificationPath: "/auth/verify-email", passwordResetPath: "/auth/reset-password" };
+const config = { from: "no-reply@example.invalid", publicAppUrl: "https://cuac.example.invalid", verificationPath: "/auth/verify-email", passwordResetPath: "/auth/reset-password", schoolInvitePath: "/auth/school-invite" };
 const binding = () => ({ id: randomUUID(), userId: randomUUID(), challengeId: randomUUID(), messageType: "auth.email_verification", expiresAt: new Date(Date.now() + 60000) });
 const key = randomBytes(32), cipher = () => new EmailTokenCipher({ activeKeyId: "key-a", keys: new Map([["key-a", key]]) });
 const invalid = reason => error => error instanceof EmailTokenEnvelopeError && error.reason === reason && !error.message.includes(key.toString("hex"));
@@ -61,6 +61,21 @@ test("email worker never invokes provider before prepared transaction resolves a
     return { status: "accepted" };
   } }, config);
   assert.deepEqual(order, ["claim", "prepare-committed", "provider", "accepted"]); assert.deepEqual(result, { status: "accepted" });
+});
+
+test("email worker composes a school invite from the prepared outbox record", async () => {
+  const job = { ...binding(), messageType: "auth.school_staff_invite", emailNormalized: "teacher@example.edu", token: randomBytes(32).toString("base64url") };
+  const lease = { id: job.id, userId: job.userId, leaseId: randomUUID() };
+  let delivered;
+  const result = await processOneAuthEmail({
+    async claim() { return lease; },
+    async prepare() { return job; },
+    async finish(_lease, status) { assert.equal(status, "accepted"); return true; },
+  }, { async deliver(message) { delivered = message; return { status: "accepted" }; } }, config);
+  assert.deepEqual(result, { status: "accepted" });
+  assert.equal(delivered.messageType, "auth.school_staff_invite");
+  assert.equal(delivered.to, "teacher@example.edu");
+  assert.match(delivered.templateData.actionUrl, new RegExp(`/auth/school-invite#invite=${job.challengeId}&token=`));
 });
 
 test("email worker stops on ambiguous prepare and treats raw provider failures or malformed results as unknown", async () => {

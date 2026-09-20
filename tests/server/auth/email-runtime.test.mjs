@@ -15,6 +15,7 @@ const enabled = {
   CUAC_PUBLIC_APP_URL: "https://cuac.example.invalid",
   CUAC_AUTH_EMAIL_VERIFICATION_PATH: "/auth/verify-email",
   CUAC_AUTH_PASSWORD_RESET_PATH: "/auth/reset-password",
+  CUAC_AUTH_SCHOOL_INVITE_PATH: "/auth/school-invite",
   CUAC_AUTH_EMAIL_SMTP_REGION: "cn-hangzhou",
   CUAC_AUTH_EMAIL_SMTP_USERNAME: "no-reply@example.invalid",
   CUAC_AUTH_EMAIL_SMTP_PASSWORD: "PRIVATE_SMTP_PASSWORD",
@@ -38,6 +39,7 @@ test("Auth email runtime parses exact delivery config, bounded timing and rotata
     publicAppUrl: "https://cuac.example.invalid",
     verificationPath: "/auth/verify-email",
     passwordResetPath: "/auth/reset-password",
+    schoolInvitePath: "/auth/school-invite",
   });
   assert.equal(config.smtp.region, "cn-hangzhou");
   assert.equal(config.pollIntervalMs, 250);

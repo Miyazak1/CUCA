@@ -31,6 +31,7 @@ const opsSubmissionDeliveryReviewsMigrationPath = new URL("../../../drizzle/pg/0
 const opsCatalogQualityReviewsMigrationPath = new URL("../../../drizzle/pg/0045_ops_catalog_quality_reviews.sql", import.meta.url);
 const schoolCatalogCorrectionsMigrationPath = new URL("../../../drizzle/pg/0046_school_catalog_corrections.sql", import.meta.url);
 const schoolCatalogCorrectionUrlCheckMigrationPath = new URL("../../../drizzle/pg/0047_school_catalog_correction_url_check.sql", import.meta.url);
+const schoolInviteEmailOutboxMigrationPath = new URL("../../../drizzle/pg/0056_auth_school_invite_email_outbox.sql", import.meta.url);
 const journalPath = new URL("../../../drizzle/pg/meta/_journal.json", import.meta.url);
 
 test("school catalog correction URL follow-up replaces only the invalid PostgreSQL repetition check", async () => {
@@ -712,4 +713,19 @@ test("PostgreSQL migration 0041 adds only grant-bound time-limited Ops support s
     /"(?:student_profiles|student_applicant_profiles|application_material_snapshots|invoices|payments|agent_[^"]*)"/i,
   );
   assert.equal(journal.entries.find(entry => entry.tag === "0041_ops_support_access_session").idx, 41);
+});
+
+test("school invite email migration creates owner uniqueness before its composite foreign key", async () => {
+  const [sql, journalText] = await Promise.all([
+    readFile(schoolInviteEmailOutboxMigrationPath, "utf8"),
+    readFile(journalPath, "utf8"),
+  ]);
+  const journal = JSON.parse(journalText);
+  assert.match(sql, /ADD COLUMN "school_staff_invite_id" uuid/);
+  assert.match(sql, /auth_email_outbox_school_invite_owner_fk/);
+  assert.match(sql, /auth_email_outbox_school_invite_unique/);
+  assert.match(sql, /'auth\.school_staff_invite'/);
+  assert.ok(sql.indexOf("school_staff_invites_owner_unique") < sql.indexOf("auth_email_outbox_school_invite_owner_fk"));
+  assert.doesNotMatch(sql, /^\s*(?:UPDATE|DELETE FROM|INSERT INTO)\b/im);
+  assert.equal(journal.entries.find(entry => entry.tag === "0056_auth_school_invite_email_outbox")?.idx, 56);
 });

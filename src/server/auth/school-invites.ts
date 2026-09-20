@@ -123,6 +123,7 @@ export type SchoolStaffInviteRepository = {
 export type SchoolStaffInviteDeliverySink = {
   send(input: {
     inviteId: string;
+    invitedByUserId: string;
     schoolId: string;
     emailNormalized: string;
     role: SchoolStaffInviteRole;
@@ -202,6 +203,7 @@ export class SchoolStaffInviteService {
     if (this.deliverySink) {
       await this.deliverySink.send({
         inviteId: invite.inviteId,
+        invitedByUserId: actor.actorUserId,
         schoolId,
         emailNormalized: email.normalized,
         role,

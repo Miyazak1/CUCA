@@ -9,6 +9,9 @@ import { resolveRequestContextFromRequest, type AuthSessionRepository } from "./
 import { SchoolStaffInviteService, type ActivateSchoolStaffInviteInput, type CreateSchoolStaffInviteInput, type SchoolStaffInviteRepository } from "./school-invites.ts";
 import { PostgresSchoolStaffInviteRepository } from "./school-invites-postgres-repository.ts";
 import { readAuthBody } from "./input.ts";
+import { PostgresAuthEmailOutbox } from "./postgres-email-outbox.ts";
+import type { EmailTokenCipher } from "./email-token-envelope.ts";
+import { createAuthEmailOutboxCipherFromEnv } from "./runtime/email-delivery.ts";
 
 type InviteService = Pick<SchoolStaffInviteService, keyof SchoolStaffInviteService>;
 
@@ -69,7 +72,7 @@ export function getSchoolStaffInviteRouteHandlers() {
     const pool = getSharedPostgresPool();
     const client = createTransactionalSqlClient(pool);
     return createSchoolStaffInviteHttpHandlers(
-      createPostgresSchoolStaffInviteService(client),
+      createPostgresSchoolStaffInviteService(client, { emailCipher: createAuthEmailOutboxCipherFromEnv() }),
       new PostgresAuthSessionRepository(client),
       { rateLimiter: createAuthRateLimiterFromEnv({ client }) },
     );
@@ -78,8 +81,11 @@ export function getSchoolStaffInviteRouteHandlers() {
   }
 }
 
-export function createPostgresSchoolStaffInviteService(client: TransactionalSqlClient) {
-  const create = (tx: TransactionalSqlClient) => new SchoolStaffInviteService(new PostgresSchoolStaffInviteRepository(tx), { auditSink: new PostgresAuditWriter(tx) });
+export function createPostgresSchoolStaffInviteService(client: TransactionalSqlClient, options: { emailCipher?: EmailTokenCipher } = {}) {
+  const create = (tx: TransactionalSqlClient) => new SchoolStaffInviteService(new PostgresSchoolStaffInviteRepository(tx), {
+    auditSink: new PostgresAuditWriter(tx),
+    deliverySink: options.emailCipher ? new PostgresAuthEmailOutbox(tx, options.emailCipher).schoolInviteSink() : undefined,
+  });
   return {
     createInvite: transactionalMethod(client, create, "createInvite"),
     activateInvite: transactionalMethod(client, create, "activateInvite"),

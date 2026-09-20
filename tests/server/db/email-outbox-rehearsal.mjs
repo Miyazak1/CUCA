@@ -4,6 +4,7 @@ import { createTransactionalSqlClient } from "../../../src/server/db/postgres-cl
 import { createRequestContext } from "../../../src/server/shared/request-context.ts";
 import { createPostgresEmailVerificationService, createEmailVerificationHttpHandlers } from "../../../src/server/auth/email-verification-http.ts";
 import { createPostgresPasswordResetService, createPasswordResetHttpHandlers } from "../../../src/server/auth/password-reset-http.ts";
+import { createPostgresSchoolStaffInviteService } from "../../../src/server/auth/school-invites-http.ts";
 import { PostgresEmailVerificationRepository } from "../../../src/server/auth/email-verification-postgres-repository.ts";
 import { PostgresPasswordResetRepository } from "../../../src/server/auth/password-reset-postgres-repository.ts";
 import { EmailTokenCipher } from "../../../src/server/auth/email-token-envelope.ts";
@@ -11,9 +12,10 @@ import { PostgresAuthEmailOutbox } from "../../../src/server/auth/postgres-email
 import { processOneAuthEmail } from "../../../src/server/auth/email-outbox-worker.ts";
 import { createAuditFailureFixture, snapshotAuditedBusinessTables } from "./audit-failure-fixture.mjs";
 import { gateSelectionClient, waitForSelectionBlock } from "./material-selection-fixture.mjs";
+import { grantCuacStaffAccess } from "./cuac-staff-access-fixture.mjs";
 
 const key = randomBytes(32), cipher = () => new EmailTokenCipher({ activeKeyId: "synthetic", keys: new Map([["synthetic", key]]) });
-const config = { from: "no-reply@example.invalid", publicAppUrl: "https://synthetic.example.invalid", verificationPath: "/auth/verify-email", passwordResetPath: "/auth/reset-password" };
+const config = { from: "no-reply@example.invalid", publicAppUrl: "https://synthetic.example.invalid", verificationPath: "/auth/verify-email", passwordResetPath: "/auth/reset-password", schoolInvitePath: "/auth/school-invite" };
 const body = value => new Request("https://synthetic.example.invalid/api/v1/auth/password-reset", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(value) });
 
 export async function emailOutboxFixture(pool, kind = "verify") {
@@ -39,6 +41,23 @@ export async function runEmailOutboxRehearsal(t, pool) {
     await t.test(name, async () => { ids = []; try { await work(); } finally { await pool.query("delete from auth_email_outbox where user_id = any($1::uuid[])", [ids]); } });
   }
 
+  async function inviteFixture() {
+    const userId = randomUUID(), email = `invite-ops-${userId}@example.invalid`, client = createTransactionalSqlClient(pool);
+    await pool.query("insert into users (id,email,email_normalized) values ($1,$2,$2)", [userId, email]);
+    await pool.query("insert into user_roles (user_id,role) values ($1,'cuac_ops')", [userId]);
+    const grant = await grantCuacStaffAccess(pool, userId, "cuac_ops");
+    const schoolId = (await pool.query("select id from schools where status = 'active' order by id limit 1")).rows[0].id;
+    const context = createRequestContext({ actorUserId: userId, activeRole: "cuac_ops", selectedSurface: "ops", purpose: "ops_support" });
+    const service = createPostgresSchoolStaffInviteService(client, { emailCipher: cipher() });
+    const outbox = new PostgresAuthEmailOutbox(client, cipher());
+    ids.push(userId);
+    return {
+      userId, schoolId, context, service, outbox, grant,
+      request: () => service.createInvite(context, { schoolId, email: `teacher-${randomUUID()}@example.edu`, role: "viewer" }),
+      async row(inviteId) { return (await pool.query("select * from auth_email_outbox where school_staff_invite_id = $1", [inviteId])).rows[0]; },
+    };
+  }
+
   await check("email outbox production factory atomically queues encrypted verification and reset credentials", async () => {
     for (const kind of ["verify", "reset"]) {
       const f = await fixture(kind); assert.equal((await f.request()).deliveryStatus, "queued");
@@ -54,6 +73,47 @@ export async function runEmailOutboxRehearsal(t, pool) {
       if (kind === "verify") assert.equal((await f.verification.verifyEmail(f.context, prepared.challengeId, prepared.token)).status, "verified");
       else assert.equal((await f.reset.resetPassword(f.context, prepared.challengeId, prepared.token, "Synthetic-reset-password-2026")).status, "reset");
     }
+  });
+
+  await check("school staff invite is atomically queued, encrypted and bound to the authorized inviter", async () => {
+    const f = await inviteFixture(), invite = await f.request();
+    assert.equal(invite.deliveryStatus, "queued");
+    const row = await f.row(invite.inviteId);
+    assert.equal(row.message_type, "auth.school_staff_invite");
+    assert.equal(row.user_id, f.userId);
+    assert.equal(row.school_staff_invite_id, invite.inviteId);
+    assert.equal(JSON.stringify(row).includes(invite.emailNormalized), false);
+    const lease = await f.outbox.claim(), prepared = await f.outbox.prepare(lease);
+    assert.equal(prepared.messageType, "auth.school_staff_invite");
+    assert.equal(prepared.challengeId, invite.inviteId);
+    assert.equal(prepared.emailNormalized, invite.emailNormalized);
+    assert.equal(JSON.stringify(row).includes(prepared.token), false);
+    assert.equal(await f.outbox.finish(lease, "accepted"), true);
+    assert.equal((await f.row(invite.inviteId)).status, "accepted");
+  });
+
+  await check("school invite delivery is cancelled if the invite or inviter authority is revoked before send", async () => {
+    for (const change of ["invite", "authority"]) {
+      const f = await inviteFixture(), invite = await f.request(), lease = await f.outbox.claim();
+      if (change === "invite") await pool.query("update school_staff_invites set status = 'revoked', revoked_at = clock_timestamp() where id = $1", [invite.inviteId]);
+      else await pool.query("update cuac_staff_access_grants set status = 'revoked', revoked_at = clock_timestamp() where id = $1", [f.grant.grantId]);
+      assert.equal(await f.outbox.prepare(lease), null, change);
+      const row = await f.row(invite.inviteId);
+      assert.equal(row.status, "cancelled");
+      assert.equal(row.envelope_json, null);
+      assert.equal(row.outcome, "ineligible");
+    }
+  });
+
+  await check("school invite and its queued credential roll back together when either audit write fails", async () => {
+    const f = await inviteFixture(), fault = await createAuditFailureFixture(pool);
+    try {
+      for (const action of ["auth.email_outbox.enqueued", "auth.school_staff_invite.create"]) {
+        const before = await snapshotAuditedBusinessTables(pool);
+        await fault.during(action, async () => { await assert.rejects(f.request(), /Synthetic audit storage failure/); });
+        assert.deepEqual(await snapshotAuditedBusinessTables(pool), before);
+      }
+    } finally { await fault.close(); }
   });
 
   await check("email outbox queue and challenge both roll back when enqueue or request success audit fails", async () => {
@@ -201,7 +261,7 @@ export async function runEmailOutboxRehearsal(t, pool) {
       ["update auth_email_outbox set status = 'accepted' where id = $1", [row.id], "23514"],
       ["update auth_email_outbox set message_type = 'auth.password_reset' where id = $1", [row.id], "23514"],
       ["update auth_email_outbox set attempt_count = 6 where id = $1", [row.id], "23514"],
-      ["insert into auth_email_outbox select $2::uuid,user_id,message_type,verification_challenge_id,reset_challenge_id,expires_at,envelope_json,status,attempt_count,available_at,lease_id,lease_expires_at,outcome,completed_at,created_at,updated_at from auth_email_outbox where id = $1", [row.id, randomUUID()], "23505"],
+      ["insert into auth_email_outbox select $2::uuid,user_id,message_type,verification_challenge_id,reset_challenge_id,expires_at,envelope_json,status,attempt_count,available_at,lease_id,lease_expires_at,outcome,completed_at,created_at,updated_at,school_staff_invite_id from auth_email_outbox where id = $1", [row.id, randomUUID()], "23505"],
     ]) await assert.rejects(pool.query(sql, params), e => e.code === code);
     await pool.query("delete from email_verification_challenges where id = $1", [row.verification_challenge_id]); assert.equal(await a.row(), undefined);
   });

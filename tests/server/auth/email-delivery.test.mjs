@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   composeEmailVerificationMessage,
   composePasswordResetMessage,
+  composeSchoolStaffInviteMessage,
   validateAuthEmailDeliveryConfig,
 } from "../../../src/server/index.ts";
 
@@ -12,6 +13,7 @@ const config = {
   publicAppUrl: "https://cuac.example.com/",
   verificationPath: "/auth/verify-email",
   passwordResetPath: "/auth/reset-password",
+  schoolInvitePath: "/auth/school-invite",
 };
 
 test("Auth email composer builds verification messages without provider coupling", () => {
@@ -45,6 +47,21 @@ test("Auth email composer builds password reset messages with HTTPS action URL",
   assert.equal(message.subject, "Reset your CUAC password");
   assert.match(message.templateData.actionUrl, /^https:\/\/cuac\.example\.com\/auth\/reset-password#challenge=reset-challenge-1&token=/);
   assert.match(message.templateData.actionUrl, /raw-reset-token/);
+});
+
+test("Auth email composer builds school staff invite messages with an invite-bound fragment", () => {
+  const message = composeSchoolStaffInviteMessage(config, {
+    inviteId: "invite-1",
+    invitedByUserId: "ops-1",
+    emailNormalized: "teacher@example.edu",
+    inviteToken: "raw-invite-token",
+    expiresAt: new Date("2026-08-28T00:45:00.000Z"),
+  });
+
+  assert.equal(message.messageType, "auth.school_staff_invite");
+  assert.equal(message.subject, "Activate your CUAC school account");
+  assert.equal(message.templateData.userId, "ops-1");
+  assert.match(message.templateData.actionUrl, /^https:\/\/cuac\.example\.com\/auth\/school-invite#invite=invite-1&token=/);
 });
 
 test("Auth email delivery config rejects non-HTTPS public URLs and invalid senders", () => {

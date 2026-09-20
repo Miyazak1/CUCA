@@ -206,10 +206,11 @@ export const passwordResetChallenges = pgTable(
 
 export const authEmailOutbox = pgTable("auth_email_outbox", {
   id: uuid("id").primaryKey(),
-  userId: uuid("user_id").notNull(),
+  userId: uuid("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
   messageType: text("message_type").notNull(),
   verificationChallengeId: uuid("verification_challenge_id"),
   resetChallengeId: uuid("reset_challenge_id"),
+  schoolStaffInviteId: uuid("school_staff_invite_id"),
   expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
   envelopeJson: jsonb("envelope_json"),
   status: text("status").notNull().default("queued"),
@@ -223,11 +224,13 @@ export const authEmailOutbox = pgTable("auth_email_outbox", {
 }, (table) => ({
   verificationFk: foreignKey({ name: "auth_email_outbox_verification_owner_fk", columns: [table.verificationChallengeId, table.userId], foreignColumns: [emailVerificationChallenges.id, emailVerificationChallenges.userId] }).onDelete("cascade"),
   resetFk: foreignKey({ name: "auth_email_outbox_reset_owner_fk", columns: [table.resetChallengeId, table.userId], foreignColumns: [passwordResetChallenges.id, passwordResetChallenges.userId] }).onDelete("cascade"),
+  schoolInviteFk: foreignKey({ name: "auth_email_outbox_school_invite_owner_fk", columns: [table.schoolStaffInviteId, table.userId], foreignColumns: [schoolStaffInvites.id, schoolStaffInvites.invitedByUserId] }).onDelete("cascade"),
   verificationUnique: uniqueIndex("auth_email_outbox_verification_unique").on(table.verificationChallengeId),
   resetUnique: uniqueIndex("auth_email_outbox_reset_unique").on(table.resetChallengeId),
+  schoolInviteUnique: uniqueIndex("auth_email_outbox_school_invite_unique").on(table.schoolStaffInviteId),
   queueIdx: index("auth_email_outbox_queue_idx").on(table.status, table.availableAt, table.id),
   expiryIdx: index("auth_email_outbox_expiry_idx").on(table.status, table.expiresAt, table.leaseExpiresAt),
-  kindCheck: check("auth_email_outbox_kind_check", sql`(${table.messageType} = 'auth.email_verification' and ${table.verificationChallengeId} is not null and ${table.resetChallengeId} is null) or (${table.messageType} = 'auth.password_reset' and ${table.resetChallengeId} is not null and ${table.verificationChallengeId} is null)`),
+  kindCheck: check("auth_email_outbox_kind_check", sql`(${table.messageType} = 'auth.email_verification' and ${table.verificationChallengeId} is not null and ${table.resetChallengeId} is null and ${table.schoolStaffInviteId} is null) or (${table.messageType} = 'auth.password_reset' and ${table.resetChallengeId} is not null and ${table.verificationChallengeId} is null and ${table.schoolStaffInviteId} is null) or (${table.messageType} = 'auth.school_staff_invite' and ${table.schoolStaffInviteId} is not null and ${table.verificationChallengeId} is null and ${table.resetChallengeId} is null)`),
   attemptCheck: check("auth_email_outbox_attempt_check", sql`${table.attemptCount} between 0 and 5`),
   stateCheck: check("auth_email_outbox_state_check", sql`(${table.status} = 'queued' and ${table.leaseId} is null and ${table.leaseExpiresAt} is null) or (${table.status} in ('leased', 'sending') and ${table.leaseId} is not null and ${table.leaseExpiresAt} is not null) or (${table.status} in ('accepted', 'cancelled', 'failed', 'uncertain') and ${table.leaseId} is null and ${table.leaseExpiresAt} is null)`),
   payloadCheck: check("auth_email_outbox_payload_check", sql`(${table.status} in ('queued', 'leased', 'sending') and ${table.completedAt} is null and ${table.envelopeJson} is not null and jsonb_typeof(${table.envelopeJson}) = 'object' and octet_length(${table.envelopeJson}::text) <= 1024) or (${table.status} in ('accepted', 'cancelled', 'failed', 'uncertain') and ${table.completedAt} is not null and ${table.envelopeJson} is null)`),
@@ -569,6 +572,7 @@ export const schoolStaffInvites = pgTable(
   },
   (table) => ({
     tokenHashUnique: uniqueIndex("school_staff_invites_token_hash_unique").on(table.tokenHash),
+    ownerUnique: uniqueIndex("school_staff_invites_owner_unique").on(table.id, table.invitedByUserId),
     pendingSchoolEmailUnique: uniqueIndex("school_staff_invites_pending_school_email_unique")
       .on(table.schoolId, table.emailNormalized)
       .where(sql`${table.status} = 'pending' and ${table.acceptedAt} is null and ${table.revokedAt} is null`),

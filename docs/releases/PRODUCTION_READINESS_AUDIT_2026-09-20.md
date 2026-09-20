@@ -65,9 +65,9 @@ Deferred payment, private-file and official-material workers are not deployed fo
 | Local full-site data interaction | 14/14 pass | Twelve released surfaces, five public catalogs, search/ETag, anonymous and cross-role denial, student choices, school queue, Ops/Admin projections and malformed-input rejection passed against the persistent local PostgreSQL runtime. |
 | Local role smoke | Pass | Student, school staff, Ops and stepped-up Admin flows pass, including staff MFA and the school intake lifecycle. |
 | Invitation-first identity check | Pass | A real local PostgreSQL transaction created a verified staff-only account, denied replay, isolated all four local fixture roles, and invalidated an existing school session immediately after membership removal. Test data was rolled back. |
-| Main server suite | 695/695 pass | The complete server suite, including the detached reproducible migration package and tamper rejection, is green. |
-| Real PostgreSQL rehearsal | 418/418 pass | PostgreSQL 16.15 applied and replayed the complete migration chain, matched 82 tables/1,248 columns/468 constraints/313 indexes, exercised historical upgrades, concurrency and authorization, and removed the disposable database afterward. |
-| Migration release | Pass | The detached release was reproduced as `ba7308d1561673b04d5cd7c9d4c85042e3f80c57d659ab92e55588a0b062fdad` with 15 pinned runtime dependencies. |
+| Main server suite | 699/699 pass | The complete server suite, including the detached reproducible migration package, Auth-email invitation templates and tamper rejection, is green. |
+| Real PostgreSQL rehearsal | 420/420 pass | PostgreSQL 16.15 applied and replayed the complete migration chain, matched 82 tables/1,249 columns/470 constraints/315 indexes, exercised historical upgrades, concurrency and authorization, and removed the disposable database afterward. |
+| Migration release | Pass | The detached release was reproduced as `93470ac62b16955868acc9e5844bb85cae754e370816cf20f07cbb40f73453b3` with 15 pinned runtime dependencies. |
 | Release and staging contract tests | 25/25 pass | Release identity binding, reviewed startup, worker boundaries and protected staging-evidence rules are green; real cloud evidence is still intentionally absent. |
 | Production readiness preflight | Expected fail without deployment environment | No RDS URL, production origin, KMS, mail credentials, MFA keyring, WAF attestations or cloud runtime were supplied locally. |
 | Legacy demo suite | Not a release gate and currently stale | It references files outside this repository and historical titles. It must not be presented as production evidence. |
@@ -90,7 +90,7 @@ Required design:
 5. School, Ops and Admin sessions always require MFA and an explicit workspace.
 6. Existing synthetic dual-role fixtures are replaced; existing real dual-role records require a reviewed migration report, not silent deletion.
 
-Local acceptance now includes the atomic activation SQL against persistent local PostgreSQL (inside a rolled-back test transaction), one-time replay rejection, role-isolated student/school/Ops/Admin fixtures, immediate rejection of an existing school session after membership or CUAC staff-grant removal, and the full disposable PostgreSQL rehearsal. Remaining acceptance: add real-browser coverage, generate and review any real dual-role report, and complete production invite-email delivery.
+Local acceptance now includes the atomic activation SQL against persistent local PostgreSQL (inside a rolled-back test transaction), one-time replay rejection, role-isolated student/school/Ops/Admin fixtures, immediate rejection of an existing school session after membership or CUAC staff-grant removal, an encrypted reliable invitation-email outbox, and the full disposable PostgreSQL rehearsal. Remaining acceptance: add real-browser coverage, generate and review any real dual-role report, and complete the real sender-domain staging round trip.
 
 ### P0-2 Reproducible release baseline
 
@@ -102,7 +102,9 @@ Acceptance: clean checkout; no untracked release files; lint, build, active fron
 
 ### P0-3 Real account email
 
-Verification, password reset and staff invitation depend on real mail delivery. The adapter exists, but production templates intentionally disable it.
+Implementation status: **all three Auth email purposes now share one encrypted, recoverable and audited local outbox; cloud sender configuration and staging acceptance remain open.**
+
+Verification, password reset and staff invitation now use the same fixed-template Aliyun Direct Mail adapter and supervised-worker contract. School invitation creation and queue insertion commit atomically. The worker rechecks the pending invite, active school, active inviter account and live CUAC staff grant before releasing the encrypted one-time token; a revoked invite or inviter authority cancels and scrubs the queued credential. The database binds each invitation task to the exact invite and inviter with composite foreign keys and one-task uniqueness. Real PostgreSQL tests prove queue encryption, authority invalidation, audit rollback, terminal credential erasure and complete migration replay. Production and staging templates intentionally keep the provider disabled until protected credentials and acceptance evidence exist.
 
 Acceptance: approved sender domain, KMS-held credentials and outbox keyring; supervised Auth mail worker; staging delivery, expiry, replay and reset tests; bounce/incident owner; no token or address leakage in logs.
 

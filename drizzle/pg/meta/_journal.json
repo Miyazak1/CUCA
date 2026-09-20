@@ -393,6 +393,13 @@
       "when": 1789703930121,
       "tag": "0055_school_intake_attestation_evidence",
       "breakpoints": true
+    },
+    {
+      "idx": 56,
+      "version": "7",
+      "when": 1789875417355,
+      "tag": "0056_auth_school_invite_email_outbox",
+      "breakpoints": true
     }
   ]
 }

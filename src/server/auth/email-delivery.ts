@@ -1,6 +1,6 @@
 import { serviceUnavailable } from "../shared/errors.ts";
 
-export type AuthEmailMessageType = "auth.email_verification" | "auth.password_reset";
+export type AuthEmailMessageType = "auth.email_verification" | "auth.password_reset" | "auth.school_staff_invite";
 
 export type AuthEmailMessage = {
   messageType: AuthEmailMessageType;
@@ -20,6 +20,7 @@ export type AuthEmailDeliveryConfig = {
   publicAppUrl: string;
   verificationPath: string;
   passwordResetPath: string;
+  schoolInvitePath: string;
 };
 
 export function composeEmailVerificationMessage(
@@ -58,12 +59,31 @@ export function composePasswordResetMessage(
   };
 }
 
+export function composeSchoolStaffInviteMessage(
+  config: AuthEmailDeliveryConfig,
+  input: { inviteId: string; invitedByUserId: string; emailNormalized: string; inviteToken: string; expiresAt: Date },
+): AuthEmailMessage {
+  return {
+    messageType: "auth.school_staff_invite",
+    to: normalizeEmail(input.emailNormalized),
+    from: normalizeEmail(config.from),
+    subject: "Activate your CUAC school account",
+    templateData: {
+      challengeId: input.inviteId,
+      userId: input.invitedByUserId,
+      expiresAt: input.expiresAt.toISOString(),
+      actionUrl: actionUrl(config.publicAppUrl, config.schoolInvitePath, input.inviteId, input.inviteToken, "invite"),
+    },
+  };
+}
+
 export function validateAuthEmailDeliveryConfig(config: Partial<AuthEmailDeliveryConfig>): AuthEmailDeliveryConfig {
   return {
     from: normalizeEmail(config.from),
     publicAppUrl: normalizePublicAppUrl(config.publicAppUrl),
     verificationPath: normalizeActionPath(config.verificationPath),
     passwordResetPath: normalizeActionPath(config.passwordResetPath),
+    schoolInvitePath: normalizeActionPath(config.schoolInvitePath),
   };
 }
 
@@ -100,8 +120,8 @@ function hasControlCharacter(value: string): boolean {
   return Array.from(value).some(character => character.charCodeAt(0) < 32 || character.charCodeAt(0) === 127);
 }
 
-function actionUrl(origin: string, path: string, challengeId: string, token: string): string {
+function actionUrl(origin: string, path: string, challengeId: string, token: string, idParameter = "challenge"): string {
   const url = new URL(normalizeActionPath(path), normalizePublicAppUrl(origin));
-  url.hash = new URLSearchParams({ challenge: challengeId, token }).toString();
+  url.hash = new URLSearchParams({ [idParameter]: challengeId, token }).toString();
   return url.toString();
 }

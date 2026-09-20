@@ -55,6 +55,7 @@ export function createAuthEmailWorkerConfigurationFromEnv(
     publicAppUrl: env.CUAC_PUBLIC_APP_URL,
     verificationPath: env.CUAC_AUTH_EMAIL_VERIFICATION_PATH,
     passwordResetPath: env.CUAC_AUTH_PASSWORD_RESET_PATH,
+    schoolInvitePath: env.CUAC_AUTH_SCHOOL_INVITE_PATH,
   });
   const smtp: AliyunDirectMailSmtpConfig = {
     ...delivery,
