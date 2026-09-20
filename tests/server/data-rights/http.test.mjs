@@ -109,3 +109,18 @@ test("data-rights app routes remain thin and contain no SQL or identity authorit
     assert.doesNotMatch(source, /select\s+|insert\s+|update\s+|userId|subjectReferenceHash/i);
   }
 });
+
+test("Ops outcome routes remain thin and expose no execution endpoint", async () => {
+  const routes = [
+    "../../../app/api/v1/ops/data-rights/requests/[requestId]/outcome/route.ts",
+    "../../../app/api/v1/ops/data-rights/requests/[requestId]/outcome-approval/route.ts",
+  ];
+  const sources = await Promise.all(routes.map(route => readFile(new URL(route, import.meta.url), "utf8")));
+  assert.match(sources[0], /getOpsDataRightsRouteHandlers\(\)\.propose/);
+  assert.match(sources[1], /getOpsDataRightsRouteHandlers\(\)\.approve/);
+  for (const source of sources) {
+    assert.match(source, /secureApiRoute\("POST"/);
+    assert.doesNotMatch(source, /select\s+|insert\s+|update\s+|delete\s+from|actorUserId|approvedByUserId/i);
+  }
+  assert.equal(routes.some(route => /execute|fulfil|export|erase|delete/.test(route)), false);
+});

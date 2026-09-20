@@ -421,6 +421,13 @@
       "when": 1789880209507,
       "tag": "0059_ops_data_rights_triage",
       "breakpoints": true
+    },
+    {
+      "idx": 60,
+      "version": "7",
+      "when": 1789881858803,
+      "tag": "0060_ops_data_rights_outcomes",
+      "breakpoints": true
     }
   ]
 }

@@ -30,15 +30,21 @@ export async function runDataRightsRehearsal(t, pool) {
     const activeRequestId=randomUUID();
     assert.ok((await repository.createOwn({ ...input, requestId: activeRequestId })).row, "a terminal request frees the active-type slot");
 
-    const opsUserId=randomUUID(), approverId=randomUUID();
-    for(const [id,label] of [[opsUserId,"ops"],[approverId,"approver"]]){const email=`rights-${label}-${id}@example.invalid`;
+    const opsUserId=randomUUID(), adminUserId=randomUUID(), approverId=randomUUID();
+    for(const [id,label] of [[opsUserId,"ops"],[adminUserId,"admin"],[approverId,"approver"]]){const email=`rights-${label}-${id}@example.invalid`;
       await pool.query("insert into users (id,email,email_normalized) values ($1,$2,$2)",[id,email]);}
     await pool.query("insert into user_roles (user_id,role) values ($1,'cuac_ops')",[opsUserId]);
+    await pool.query("insert into user_roles (user_id,role) values ($1,'cuac_admin')",[adminUserId]);
     const grant=(await pool.query(`insert into cuac_staff_access_grants
       (user_id,email,email_normalized,requested_role,status,approved_by_user_id,reason,approved_at,expires_at)
       values ($1,$2,$2,'cuac_ops','approved',$3,'privacy triage rehearsal',clock_timestamp(),clock_timestamp()+interval '1 day') returning id`,
     [opsUserId,`rights-ops-${opsUserId}@example.invalid`,approverId])).rows[0];
     assert.ok(grant.id);
+    const adminGrant=(await pool.query(`insert into cuac_staff_access_grants
+      (user_id,email,email_normalized,requested_role,status,approved_by_user_id,reason,approved_at,expires_at)
+      values ($1,$2,$2,'cuac_admin','approved',$3,'privacy outcome approval rehearsal',clock_timestamp(),clock_timestamp()+interval '1 day') returning id`,
+    [adminUserId,`rights-admin-${adminUserId}@example.invalid`,approverId])).rows[0];
+    assert.ok(adminGrant.id);
     const ops=new PostgresOpsDataRightsRepository(client), actor={actorUserId:opsUserId,activeRole:"cuac_ops"};
     assert.ok((await ops.list({...actor,limit:100})).value.some(item=>item.requestId===activeRequestId));
     const claimed=(await ops.claim({...actor,requestId:activeRequestId,expectedRevision:1})).value;
@@ -46,6 +52,18 @@ export async function runDataRightsRehearsal(t, pool) {
     const escalated=(await ops.escalate({...actor,requestId:activeRequestId,expectedRevision:2,expectedReviewRevision:1,
       code:"legal_review_required",reference:"case:rehearsal"})).value;
     assert.equal(escalated.status,"escalated"); assert.equal(escalated.review.status,"escalated");
+    const proposalSha256=`sha256:${"b".repeat(64)}`;
+    const proposed=(await ops.propose({...actor,requestId:activeRequestId,proposalId:randomUUID(),expectedRevision:3,
+      expectedReviewRevision:2,outcomeCode:"request_denied",reasonCode:"legal_restriction",caseReference:"case:rights-denial",
+      proposalSha256,approvalMode:"dual_control"})).value;
+    assert.equal(proposed.outcome.status,"proposed");
+    assert.equal((await ops.approve({...actor,requestId:activeRequestId,expectedOutcomeRevision:1,expectedProposalSha256:proposalSha256})).authorized,false,
+      "an Ops grant cannot approve a destructive outcome");
+    const approved=(await ops.approve({actorUserId:adminUserId,activeRole:"cuac_admin",requestId:activeRequestId,
+      expectedOutcomeRevision:1,expectedProposalSha256:proposalSha256})).value;
+    assert.equal(approved.outcome.status,"approved");
+    assert.equal(approved.outcome.approvedByUserId,adminUserId);
+    assert.equal(approved.status,"escalated","approving a plan must not execute or close the request");
 
     await pool.query("update user_roles set revoked_at = clock_timestamp() where user_id = $1 and role = 'student'", [firstUserId]);
     assert.equal((await repository.listOwn(firstUserId)).authorized, false);

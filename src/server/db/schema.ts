@@ -930,6 +930,64 @@ export const opsDataRightsReviews = pgTable("ops_data_rights_reviews", {
         and ${table.escalationReference} is not null and ${table.escalatedAt} is not null and isfinite(${table.escalatedAt})))`),
 }));
 
+export const opsDataRightsOutcomes = pgTable("ops_data_rights_outcomes", {
+  id: uuid("id").primaryKey(),
+  dataRightsRequestId: uuid("data_rights_request_id").notNull()
+    .references(() => dataRightsRequests.id, { onDelete: "restrict" }),
+  reviewId: uuid("review_id").notNull().references(() => opsDataRightsReviews.id, { onDelete: "restrict" }),
+  sourceRequestRevision: integer("source_request_revision").notNull(),
+  sourceReviewRevision: integer("source_review_revision").notNull(),
+  outcomeCode: text("outcome_code").notNull(),
+  reasonCode: text("reason_code"),
+  caseReference: text("case_reference").notNull(),
+  proposalSha256: text("proposal_sha256").notNull(),
+  approvalMode: text("approval_mode").notNull(),
+  status: text("status").notNull(),
+  revision: integer("revision").notNull().default(1),
+  proposedByUserId: uuid("proposed_by_user_id").notNull(),
+  proposedByGrantId: uuid("proposed_by_grant_id").notNull(),
+  proposedByRole: text("proposed_by_role").notNull(),
+  approvedByUserId: uuid("approved_by_user_id"),
+  approvedByGrantId: uuid("approved_by_grant_id"),
+  approvedByRole: text("approved_by_role"),
+  approvedAt: timestamp("approved_at", { withTimezone: true }),
+  ...timestamps,
+}, table => ({
+  requestUnique: uniqueIndex("ops_data_rights_outcomes_request_unique").on(table.dataRightsRequestId),
+  reviewUnique: uniqueIndex("ops_data_rights_outcomes_review_unique").on(table.reviewId),
+  statusUpdatedIdx: index("ops_data_rights_outcomes_status_updated_idx").on(table.status, table.updatedAt, table.id),
+  proposedGrantScopeFk: foreignKey({ columns: [table.proposedByGrantId, table.proposedByUserId, table.proposedByRole],
+    foreignColumns: [cuacStaffAccessGrants.id, cuacStaffAccessGrants.userId, cuacStaffAccessGrants.requestedRole],
+    name: "ops_data_rights_outcomes_proposed_grant_scope_fk" }).onDelete("restrict"),
+  approvedGrantScopeFk: foreignKey({ columns: [table.approvedByGrantId, table.approvedByUserId, table.approvedByRole],
+    foreignColumns: [cuacStaffAccessGrants.id, cuacStaffAccessGrants.userId, cuacStaffAccessGrants.requestedRole],
+    name: "ops_data_rights_outcomes_approved_grant_scope_fk" }).onDelete("restrict"),
+  digestCheck: check("ops_data_rights_outcomes_digest_check", sql`${table.proposalSha256} ~ '^sha256:[a-f0-9]{64}$'`),
+  referenceCheck: check("ops_data_rights_outcomes_reference_check", sql`${table.caseReference} ~ '^[A-Za-z0-9._:-]{1,128}$'`),
+  outcomeCheck: check("ops_data_rights_outcomes_outcome_check", sql`
+    (${table.outcomeCode} in ('access_ready','correction_ready','portable_export_ready','account_deletion_ready') and ${table.reasonCode} is null)
+    or (${table.outcomeCode} = 'request_denied' and ${table.reasonCode} in ('identity_not_proven','request_out_of_scope','legal_restriction'))
+    or (${table.outcomeCode} = 'retention_exception' and ${table.reasonCode} in ('legal_hold','fraud_or_security','financial_record'))`),
+  lifecycleCheck: check("ops_data_rights_outcomes_lifecycle_check", sql`
+    ${table.sourceRequestRevision} > 0 and ${table.sourceReviewRevision} in (1,2) and ${table.revision} in (1,2)
+    and ${table.proposedByRole} in ('cuac_ops','cuac_admin') and (${table.approvedByRole} is null or ${table.approvedByRole} in ('cuac_ops','cuac_admin'))
+    and isfinite(${table.createdAt}) and isfinite(${table.updatedAt}) and ${table.updatedAt} >= ${table.createdAt}
+    and ((${table.approvalMode} = 'single_operator' and ${table.outcomeCode} in ('access_ready','correction_ready')
+      and ${table.status} = 'approved' and ${table.revision} = 1 and ${table.approvedByUserId} = ${table.proposedByUserId}
+      and ${table.approvedByGrantId} = ${table.proposedByGrantId} and ${table.approvedByRole} = ${table.proposedByRole}
+      and ${table.approvedAt} is not null and isfinite(${table.approvedAt}))
+    or (${table.approvalMode} = 'single_admin' and ${table.outcomeCode} = 'portable_export_ready'
+      and ${table.proposedByRole} = 'cuac_admin' and ${table.status} = 'approved' and ${table.revision} = 1
+      and ${table.approvedByUserId} = ${table.proposedByUserId} and ${table.approvedByGrantId} = ${table.proposedByGrantId}
+      and ${table.approvedByRole} = 'cuac_admin' and ${table.approvedAt} is not null and isfinite(${table.approvedAt}))
+    or (${table.approvalMode} = 'dual_control' and ${table.outcomeCode} in ('account_deletion_ready','request_denied','retention_exception') and (
+      (${table.status} = 'proposed' and ${table.revision} = 1 and ${table.approvedByUserId} is null
+        and ${table.approvedByGrantId} is null and ${table.approvedByRole} is null and ${table.approvedAt} is null)
+      or (${table.status} = 'approved' and ${table.revision} = 2 and ${table.approvedByUserId} <> ${table.proposedByUserId}
+        and ${table.approvedByGrantId} is not null and ${table.approvedByRole} = 'cuac_admin'
+        and ${table.approvedAt} is not null and isfinite(${table.approvedAt})))))`),
+}));
+
 export const schoolProgramIntakeVersions = pgTable(
   "school_program_intake_versions",
   {

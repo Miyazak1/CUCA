@@ -770,9 +770,36 @@ function renderDataRights(items) {
   const root=document.querySelector("[data-ops-view]");
   if(!Array.isArray(items)) throw new OpsRequestError("隐私请求队列响应无效。",503,"INVALID_RESPONSE");
   const labels={access:"数据访问",correction:"数据更正",portable_export:"数据导出",account_deletion:"账号删除"};
+  const outcomeLabels={access_ready:"访问材料已准备",correction_ready:"更正方案已确认",portable_export_ready:"导出方案已确认",
+    account_deletion_ready:"删除方案已确认",request_denied:"请求不予处理",retention_exception:"适用数据保留例外"};
+  const approvalLabels={single_operator:"经授权人员单人确认",single_admin:"二次验证管理员确认",dual_control:"独立管理员双人复核"};
   const codes=[["identity_verification_required","需要身份核验"],["legal_review_required","需要法务复核"],
     ["security_review_required","需要安全复核"],["retention_exception_review","需要保留例外复核"]];
-  root.innerHTML=`${sectionHeading("隐私请求分流","这里只认领和升级请求，不提供导出、删除、完成或拒绝按钮。")}
+  const outcomeOptions={access:[["access_ready","访问材料已准备"]],correction:[["correction_ready","更正方案已确认"]],
+    portable_export:[["portable_export_ready","导出方案已确认"]],account_deletion:[["account_deletion_ready","删除方案已确认"]]};
+  const outcomeForm=item=>`<form data-ops-action-form data-kind="privacy" data-target="${escapeHtml(item.requestId)}" data-action="outcome"
+      data-revision="${item.revision}" data-review-revision="${item.review.revision}">
+      <label><span>处理方案</span><select name="outcomeCode" required>
+        ${(outcomeOptions[item.requestType]||[]).concat([["request_denied","请求不予处理"],["retention_exception","适用数据保留例外"]])
+          .map(([value,label])=>`<option value="${value}">${label}</option>`).join("")}</select></label>
+      <label><span>固定原因（仅拒绝或保留例外）</span><select name="reasonCode">
+        <option value="">不适用</option><option value="identity_not_proven">身份无法核验</option>
+        <option value="request_out_of_scope">请求超出适用范围</option><option value="legal_restriction">法律限制</option>
+        <option value="legal_hold">诉讼或调查保留</option><option value="fraud_or_security">反欺诈或安全保留</option>
+        <option value="financial_record">财务记录保留</option></select></label>
+      <label><span>内部工单引用</span><input name="caseReference" maxlength="128" pattern="[A-Za-z0-9._:-]+" required /></label>
+      <button class="ops-button" type="submit">提交处理方案</button>
+      <p class="ops-state">访问和普通更正可由认领人确认；导出需管理员二次验证；删除、拒绝及保留例外需另一位管理员批准。</p></form>`;
+  const outcomeState=item=>{const outcome=item.outcome;if(!outcome)return outcomeForm(item);
+    if(outcome.status==="proposed")return`<div class="ops-state"><strong>${escapeHtml(outcomeLabels[outcome.outcomeCode]||outcome.outcomeCode)}</strong>
+      · 等待独立管理员批准 · ${escapeHtml(outcome.caseReference)}<br />摘要：${escapeHtml(outcome.proposalSha256)}</div>
+      <form data-ops-action-form data-kind="privacy" data-target="${escapeHtml(item.requestId)}" data-action="outcome-approval"
+        data-revision="${item.revision}" data-outcome-revision="${outcome.revision}" data-proposal-sha="${escapeHtml(outcome.proposalSha256)}">
+        <button class="ops-button" type="submit" ${opsState.role==="cuac_admin"&&opsState.authStrength==="step_up"?"":"disabled"}>独立批准方案</button>
+        ${opsState.role==="cuac_admin"&&opsState.authStrength==="step_up"?"":"<p class=\"ops-state\">需要另一位管理员完成二次验证后批准。</p>"}</form>`;
+    return`<p class="ops-state"><strong>${escapeHtml(outcomeLabels[outcome.outcomeCode]||outcome.outcomeCode)}</strong>
+      · ${escapeHtml(approvalLabels[outcome.approvalMode]||outcome.approvalMode)} · 已批准，等待执行能力上线。当前不会导出、删除、拒绝或关闭请求。</p>`;};
+  root.innerHTML=`${sectionHeading("隐私请求处理","这里记录处理方案及必要审批；当前版本不会实际导出、删除、拒绝或关闭请求。")}
     <div class="ops-review-list">${items.length?items.map(item=>`<article class="ops-review-card">
       <header><div><strong>${escapeHtml(labels[item.requestType]||item.requestType)}</strong>
       <span>${escapeHtml(item.preferredLocale)} · ${escapeHtml(item.status)} · ${escapeHtml(new Date(item.receivedAt).toLocaleString())}</span></div></header>
@@ -785,6 +812,7 @@ function renderDataRights(items) {
           <label><span>内部工单引用</span><input name="reference" maxlength="128" pattern="[A-Za-z0-9._:-]+" required /></label>
           <button class="ops-button" type="submit">升级处理</button></form>`:
         `<p class="ops-state">已升级：${escapeHtml(item.review.escalationCode||"")} · ${escapeHtml(item.review.escalationReference||"")}</p>`}
+      ${item.review?outcomeState(item):""}
     </article>`).join(""):"<p class=\"ops-state\">当前没有待处理隐私请求。</p>"}</div>`;
 }
 
@@ -902,8 +930,28 @@ function actionRequest(form) {
   } else if (kind === "privacy") {
     path = `/api/v1/ops/data-rights/requests/${encodeURIComponent(target)}/${action}`;
     if (action === "escalate") body.expectedReviewRevision = Number(form.dataset.reviewRevision);
+    else if (action === "outcome") {
+      body.proposalId = crypto.randomUUID();
+      body.expectedReviewRevision = Number(form.dataset.reviewRevision);
+      body.outcomeCode = cleanText(values.get("outcomeCode"));
+      body.reasonCode = cleanText(values.get("reasonCode")) || null;
+      body.caseReference = cleanText(values.get("caseReference"));
+      const denialReasons = ["identity_not_proven", "request_out_of_scope", "legal_restriction"];
+      const retentionReasons = ["legal_hold", "fraud_or_security", "financial_record"];
+      if (body.outcomeCode === "request_denied" && !denialReasons.includes(body.reasonCode)) {
+        throw new OpsRequestError("请求不予处理时必须选择对应的固定原因。", 400, "INVALID_INPUT");
+      }
+      if (body.outcomeCode === "retention_exception" && !retentionReasons.includes(body.reasonCode)) {
+        throw new OpsRequestError("适用保留例外时必须选择对应的固定原因。", 400, "INVALID_INPUT");
+      }
+      if (!['request_denied', 'retention_exception'].includes(body.outcomeCode)) body.reasonCode = null;
+    } else if (action === "outcome-approval") {
+      delete body.expectedRevision;
+      body.expectedOutcomeRevision = Number(form.dataset.outcomeRevision);
+      body.expectedProposalSha256 = cleanText(form.dataset.proposalSha);
+    }
   }
-  if (!path || !Number.isSafeInteger(revision) || revision < 0) {
+  if (!path || (action !== "outcome-approval" && (!Number.isSafeInteger(revision) || revision < 0))) {
     throw new OpsRequestError("运营操作参数无效。", 400, "INVALID_INPUT");
   }
   return { path, body };

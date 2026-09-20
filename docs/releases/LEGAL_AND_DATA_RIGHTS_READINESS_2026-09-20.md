@@ -1,6 +1,6 @@
 # CUAC Legal Publication and Data-Rights Readiness
 
-Status: technical publication framework and authenticated student request intake are implemented; approved legal wording and the operational fulfilment workflow remain release blockers.
+Status: technical publication framework, authenticated student request intake, internal triage and outcome approval controls are implemented; approved legal wording and the operational fulfilment workflow remain release blockers.
 
 This document is an engineering and operations control record. It is not legal advice and does not approve policy wording.
 
@@ -71,11 +71,13 @@ The signed-in student account area now supports structured access, correction, p
 
 The database enforces one active request of each type per account, explicit lifecycle states, terminal timestamps and bounded locale/type/scope values. Each create and cancel operation is transactionally coupled to a metadata-only audit event. Repository reads and mutations recheck the live active account and student role. If an account is later deleted, the direct user link is removed while a one-way subject reference and minimum request evidence remain available for the future legally approved retention rule.
 
-Phase B now adds an internal least-privilege triage queue. A currently authorized CUAC operator can list only minimal request metadata, claim a received request using its current revision, and escalate an assigned investigation with one of four fixed reason codes and an opaque internal case reference. The claim is bound to the exact live staff grant; stale revisions, revoked grants and a different assignee fail closed. There is deliberately no fulfil, deny, export or erase command.
+Phase B adds an internal least-privilege triage queue. A currently authorized CUAC operator can list only minimal request metadata, claim a received request using its current revision, and escalate an assigned investigation with one of four fixed reason codes and an opaque internal case reference. The claim is bound to the exact live staff grant; stale revisions, revoked grants and a different assignee fail closed.
+
+Phase C adds an immutable, digest-bound **outcome plan**, not an execution command. Access and ordinary correction plans may be confirmed by the authorized operator who owns the case. A portable-export plan requires a `cuac_admin` session with fresh step-up authentication. An account-deletion plan, denial or retention exception requires a second, different stepped-up administrator; the proposer cannot approve their own plan. Fixed outcome/reason codes, exact request/review revisions, the current live staff grant and an opaque case reference are enforced again at the database boundary. Approval deliberately leaves the request in its existing operational state and creates no export, deletion, denial, notification or closure side effect. A student's own profile edits remain direct owner-scoped changes and never enter this staff approval workflow.
 
 This is intake and triage, not a completed rights operation. The following remain release blockers:
 
-- approved privacy staff roster, SLA/deadline rules and dual-control outcome transitions;
+- approved privacy staff roster, SLA/deadline rules and a reviewed operating runbook for the implemented outcome controls;
 - the actual scoped export generator, encrypted short-lived delivery and expiry evidence;
 - staged account closure/deletion, session revocation, retention exceptions, tombstones and restore handling;
 - completion/denial notifications, appeal/escalation handling and tested operations runbook;
