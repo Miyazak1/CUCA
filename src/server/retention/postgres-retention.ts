@@ -1,5 +1,7 @@
 import { randomUUID } from "node:crypto";
 import type { TransactionalSqlClient } from "../db/postgres-client.ts";
+import { PostgresNotificationPublisher } from "../notifications/postgres-repository.ts";
+import { materializeInactiveAccountWarning } from "../notifications/templates.ts";
 import { serviceUnavailable } from "../shared/errors.ts";
 
 export type RetentionBatchSummary = {
@@ -14,11 +16,20 @@ export type RetentionBatchSummary = {
   continuationsDeleted: number;
   mfaChallengesDeleted: number;
   rateLimitBucketsDeleted: number;
+  businessNotificationEventsDeleted: number;
+  inactiveAccountWarningsCreated: number;
   processed: number;
 };
 
 type IdRow = { id: string };
 type GuardianRow = { id: string; userId: string };
+type InactiveStudentRow = {
+  id: string;
+  locale: string;
+  inactiveSince: Date;
+  reviewAt: Date;
+  occurredAt: Date;
+};
 
 export class PostgresRetentionProcessor {
   private readonly client: TransactionalSqlClient;
@@ -99,6 +110,18 @@ export class PostgresRetentionProcessor {
           coalesce(revoked_at,'-infinity'::timestamptz)),id limit $1 for update skip locked
       ) delete from school_staff_invites target using candidates c
         where target.id=c.id returning target.id`, limit);
+      const businessNotificationEventsDeleted = await deleteCount(tx, `with candidates as (
+        select e.id from notification_events e
+        where e.created_at <= clock_timestamp() - interval '180 days'
+          and e.topic not in ('account_security','privacy_requests')
+          and not exists (
+            select 1 from notification_deliveries d where d.event_id=e.id
+              and d.channel in ('email','sms') and d.status in ('queued','leased','sending')
+          )
+        order by e.created_at,e.id limit $1 for update of e skip locked
+      ) delete from notification_events target using candidates c
+        where target.id=c.id returning target.id`, limit);
+      const inactiveAccountWarningsCreated = await warnInactiveStudentAccounts(tx, limit);
 
       const partial = {
         guardianRegistrationsExpired,
@@ -112,6 +135,8 @@ export class PostgresRetentionProcessor {
         continuationsDeleted,
         mfaChallengesDeleted,
         rateLimitBucketsDeleted,
+        businessNotificationEventsDeleted,
+        inactiveAccountWarningsCreated,
       };
       const processed = Object.values(partial).reduce((total, value) => total + value, 0);
       const result = { ...partial, processed };
@@ -119,6 +144,40 @@ export class PostgresRetentionProcessor {
       return result;
     });
   }
+}
+
+async function warnInactiveStudentAccounts(tx: TransactionalSqlClient, limit: number): Promise<number> {
+  const candidates = await tx.query<InactiveStudentRow>(`select u.id,
+      case when u.locale='zh-CN' then 'zh-CN' else 'en' end as locale,
+      coalesce(u.last_login_at,u.created_at) as "inactiveSince",
+      coalesce(u.last_login_at,u.created_at) + interval '24 months' as "reviewAt",
+      clock_timestamp() as "occurredAt"
+    from users u
+    where u.account_status='active'
+      and coalesce(u.last_login_at,u.created_at) <= clock_timestamp() - interval '23 months'
+      and coalesce(u.last_login_at,u.created_at) > clock_timestamp() - interval '24 months'
+      and exists (select 1 from user_roles r where r.user_id=u.id and r.role='student' and r.revoked_at is null)
+      and not exists (
+        select 1 from notification_events e
+        where e.recipient_user_id=u.id and e.audience_role='student'
+          and e.event_type='account_inactivity_warning' and e.resource_type='account' and e.resource_id=u.id::text
+          and e.occurred_at >= coalesce(u.last_login_at,u.created_at)
+      )
+    order by coalesce(u.last_login_at,u.created_at),u.id
+    limit $1 for update of u skip locked`, [limit]);
+  const publisher = new PostgresNotificationPublisher(tx);
+  let created = 0;
+  for (const candidate of candidates) {
+    const result = await publisher.publish(materializeInactiveAccountWarning({
+      recipientUserId: candidate.id,
+      locale: candidate.locale === "zh-CN" ? "zh-CN" : "en",
+      inactiveSince: candidate.inactiveSince,
+      reviewAt: candidate.reviewAt,
+      occurredAt: candidate.occurredAt,
+    }));
+    if (result.created) created += 1;
+  }
+  return created;
 }
 
 async function expireGuardianRegistrations(tx: TransactionalSqlClient, limit: number): Promise<number> {

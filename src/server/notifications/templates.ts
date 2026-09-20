@@ -141,6 +141,19 @@ const applicationDefinitions: Readonly<Record<string, BuiltinDefinition>> = {
   },
 };
 
+const inactiveAccountWarningDefinitions: Readonly<Record<"en" | "zh-CN", BuiltinDefinition>> = {
+  en: {
+    topic: "account_security",
+    title: "Sign in to keep your CUAC account active",
+    body: "Your CUAC account has been inactive for nearly 24 months. Sign in before {{reviewDate}} to keep it active. CUAC will not delete the account automatically until the account-deletion and backup safeguards are enabled.",
+  },
+  "zh-CN": {
+    topic: "account_security",
+    title: "请登录以保持 CUAC 账户活跃",
+    body: "你的 CUAC 账户已接近 24 个月未使用。请在 {{reviewDate}} 前登录以保持账户活跃。在账户删除与备份保护机制正式启用前，CUAC 不会自动删除该账户。",
+  },
+};
+
 export function defaultNotificationPreference(role: NotificationAudienceRole, topic: NotificationTopic): NotificationChannelPreference {
   assertTopicAllowed(role, topic);
   if (["account_security","privacy_requests"].includes(topic)) return { inAppEnabled: true, emailEnabled: true, smsEnabled: false };
@@ -253,6 +266,47 @@ export function materializeApplicationSubmittedNotification(input: {
     resourceId: input.applicationSubmissionId,
     eventKeySha256: digest({ version: 1, source: "application_submission", id: input.applicationSubmissionId,
       recipientUserId: input.recipientUserId }),
+    variables,
+    variablesSha256: digest(variables),
+    occurredAt: input.occurredAt,
+    templates,
+  };
+}
+
+export function materializeInactiveAccountWarning(input: {
+  recipientUserId: string;
+  locale: "en" | "zh-CN";
+  inactiveSince: Date;
+  reviewAt: Date;
+  occurredAt: Date;
+}): NotificationEventMaterialization {
+  for (const date of [input.inactiveSince, input.reviewAt, input.occurredAt]) {
+    if (!Number.isFinite(date.getTime())) throw serviceUnavailable("Inactive-account notification date is invalid.");
+  }
+  if (input.reviewAt.getTime() <= input.occurredAt.getTime()
+    || input.inactiveSince.getTime() >= input.occurredAt.getTime()) {
+    throw serviceUnavailable("Inactive-account notification window is invalid.");
+  }
+  const eventType = "account_inactivity_warning";
+  const definition = inactiveAccountWarningDefinitions[input.locale];
+  const variables = { reviewDate: input.reviewAt.toISOString().slice(0, 10) };
+  const templates = (["in_app", "email"] as const).map(channel => buildTemplate(
+    eventType, definition, channel, "/preferences-api.html#account", ["reviewDate"], input.locale,
+  ));
+  return {
+    recipientUserId: input.recipientUserId,
+    audienceRole: "student",
+    tenantSchoolId: null,
+    topic: "account_security",
+    eventType,
+    resourceType: "account",
+    resourceId: input.recipientUserId,
+    eventKeySha256: digest({
+      version: 1,
+      source: "account_inactivity_warning",
+      recipientUserId: input.recipientUserId,
+      inactiveSince: input.inactiveSince.toISOString(),
+    }),
     variables,
     variablesSha256: digest(variables),
     occurredAt: input.occurredAt,

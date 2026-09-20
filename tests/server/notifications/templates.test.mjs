@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { defaultNotificationPreference, materializeApplicationSubmittedNotification, materializePaymentStatusNotification,
-  materializeDataRightsNotification,materializeDataRightsReminder,materializeSchoolApplicationStatusNotification,
+  materializeDataRightsNotification,materializeDataRightsReminder,materializeInactiveAccountWarning,
+  materializeSchoolApplicationStatusNotification,
   renderNotificationTemplate } from "../../../src/server/notifications/templates.ts";
 
 const ids = { user: "11111111-1111-4111-8111-111111111111", application: "22222222-2222-4222-8222-222222222222", event: "33333333-3333-4333-8333-333333333333" };
@@ -66,6 +67,26 @@ test("notification defaults keep account security mandatory and SMS disabled", (
   assert.deepEqual(defaultNotificationPreference("student", "account_security"), { inAppEnabled: true, emailEnabled: true, smsEnabled: false });
   assert.deepEqual(defaultNotificationPreference("cuac_ops", "platform_operations"), { inAppEnabled: true, emailEnabled: false, smsEnabled: false });
   assert.throws(() => defaultNotificationPreference("student", "platform_operations"), /not allowed/);
+});
+
+test("inactive-account warning is localized, mandatory and stable for one inactivity cycle", () => {
+  const input = { recipientUserId: ids.user, inactiveSince: new Date("2024-09-20T00:00:00.000Z"),
+    reviewAt: new Date("2026-09-20T00:00:00.000Z"), occurredAt: new Date("2026-08-20T00:00:00.000Z") };
+  const english = materializeInactiveAccountWarning({ ...input, locale: "en" });
+  const chinese = materializeInactiveAccountWarning({ ...input, locale: "zh-CN" });
+  assert.equal(english.eventKeySha256, chinese.eventKeySha256);
+  assert.equal(english.topic, "account_security");
+  assert.deepEqual(english.templates.map(item => item.channel), ["in_app", "email"]);
+  assert.ok(chinese.templates.every(item => item.locale === "zh-CN"));
+  const renderedEnglish = renderNotificationTemplate(english.templates[0], english.variables);
+  const renderedChinese = renderNotificationTemplate(chinese.templates[0], chinese.variables);
+  assert.match(renderedEnglish.body, /2026-09-20/);
+  assert.match(renderedEnglish.body, /will not delete.*automatically/i);
+  assert.match(renderedChinese.title, /保持 CUAC 账户活跃/);
+  assert.doesNotMatch(JSON.stringify({ variables: english.variables, title: renderedEnglish.title,
+    body: renderedEnglish.body }), /email address|display.?name|passport/i);
+  assert.throws(() => materializeInactiveAccountWarning({ ...input, locale: "en",
+    occurredAt: new Date("2026-09-21T00:00:00.000Z") }), /window is invalid/);
 });
 
 test("data-rights notifications use independently fixed English and Chinese copy without private content",()=>{

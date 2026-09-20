@@ -39,15 +39,17 @@ test("retention processor uses bounded skip-locked deletes and records aggregate
   });
   const result = await new PostgresRetentionProcessor(client).processBatch(25);
   assert.equal(result.guardianRegistrationsExpired, 1);
-  assert.equal(result.processed, 11);
+  assert.equal(result.processed, 12);
   const sql = calls.map(call => call.statement).join("\n");
   for (const table of ["auth_email_outbox", "email_verification_challenges", "password_reset_challenges",
     "school_staff_invites", "auth_sessions", "sign_in_continuations", "auth_mfa_challenges",
-    "auth_rate_limit_buckets"]) assert.match(sql, new RegExp(table));
+    "auth_rate_limit_buckets", "notification_events"]) assert.match(sql, new RegExp(table));
   assert.match(sql, /for update skip locked/);
   assert.match(sql, /interval '1 day'/);
   assert.match(sql, /interval '30 days'/);
   assert.match(sql, /interval '180 days'/);
+  assert.match(sql, /interval '23 months'/);
+  assert.match(sql, /account_security','privacy_requests/);
   assert.match(sql, /retention\.batch\.completed/);
   assert.ok(calls.filter(call => call.statement.startsWith("with candidates")).every(call => call.params[0] === 25));
 });
