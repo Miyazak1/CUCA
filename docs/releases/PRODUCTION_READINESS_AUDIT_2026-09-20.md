@@ -1,5 +1,7 @@
 # CUAC production readiness audit — 2026-09-20
 
+> 2026-09-20 update: Hong Kong is the owner-confirmed principal application-server location, but the production example still contains Shanghai/Hangzhou region values. Production remains blocked until the [data-flow inventory](../architecture/CUAC_HONG_KONG_DATA_FLOW_INVENTORY.md), [cross-border impact assessment](../legal-drafts/CUAC_MAINLAND_TO_HONG_KONG_PIPIA_DRAFT.md), [retention schedule](../architecture/CUAC_DATA_RETENTION_SCHEDULE_DRAFT.md) and [missing external inputs](HONG_KONG_DATA_FLOW_MISSING_INPUTS.md) are completed and approved against real cloud resources.
+
 Status: **not ready for public production traffic**. The application has a substantial server, database, policy and release-gate foundation, but it is not yet one reviewed, reproducible and operationally accepted release.
 
 This document is the launch authority for the current release. Older design documents remain implementation history; when they conflict with this audit or the checked-in release-scope code, this audit and the `school-handoff-v1` scope win.

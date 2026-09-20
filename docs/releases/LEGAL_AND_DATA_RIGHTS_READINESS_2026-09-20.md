@@ -99,6 +99,8 @@ Review drafts now exist for the [Simplified Chinese children's rules](../legal-d
 
 The project owner has confirmed that the principal application servers are deployed in Hong Kong. This resolves only one hosting fact. Database, storage, backup, logging and email regions still require inventory evidence, and Mainland-to-Hong Kong flows must be assessed as cross-border processing before production. Hong Kong hosting does not identify the legal operator or remove the need for an accountable entity and privacy contact.
 
+The repository-backed [Hong Kong data-flow inventory](../architecture/CUAC_HONG_KONG_DATA_FLOW_INVENTORY.md), [Mainland-to-Hong Kong PIPIA draft](../legal-drafts/CUAC_MAINLAND_TO_HONG_KONG_PIPIA_DRAFT.md), [retention schedule draft](../architecture/CUAC_DATA_RETENTION_SCHEDULE_DRAFT.md) and [missing-input checklist](HONG_KONG_DATA_FLOW_MISSING_INPUTS.md) now make that boundary concrete. They also record a release-blocking mismatch: the production example still names Shanghai/Hangzhou regions while the target application location is Hong Kong. No region string should be changed or published as fact until the real application, database, backup, email, edge and logging resources are inventoried.
+
 A generic support email alone is not sufficient release evidence, and the new intake endpoint must not be presented as proof that a request was fulfilled.
 
 ## 5. Publication checklist
