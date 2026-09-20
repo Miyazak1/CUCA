@@ -18,7 +18,8 @@ export type OpsDataRightsReview = { reviewId: string; revision: number; status: 
   escalatedAt: Date | null; createdAt: Date; updatedAt: Date };
 export type OpsDataRightsQueueRow = { requestId: string; requestType: string; correctionScope: string | null;
   preferredLocale: string; status: string; revision: number; receivedAt: Date; updatedAt: Date;
-  identityConfirmedAt: Date | null;
+  identityConfirmedAt: Date | null; deadlinePolicyVersion: "data_rights_response_v1";
+  internalTargetAt: Date; responseDueAt: Date; extendedDueAt: Date | null; observedAt: Date;
   review: OpsDataRightsReview | null; outcome: OpsDataRightsOutcome | null };
 export type OpsDataRightsOutcome = { outcomeId:string; outcomeCode:typeof OPS_DATA_RIGHTS_OUTCOMES[number];reasonCode:string|null;
   caseReference:string;proposalSha256:string;approvalMode:"single_operator"|"single_admin"|"dual_control";
@@ -121,12 +122,25 @@ function authorize(context: RequestContext, action: "ops.read_data_rights_review
 function requireAuthority<T>(result: Authorized<T>): asserts result is { authorized: true; value: T } {
   if (!result.authorized) throw forbidden("Active CUAC staff access grant is required.");
 }
-function project(row: OpsDataRightsQueueRow) { return { ...row, receivedAt: row.receivedAt.toISOString(), updatedAt: row.updatedAt.toISOString(),
+function project(row: OpsDataRightsQueueRow) { const {observedAt,...safe}=row,effectiveDueAt=row.extendedDueAt??row.responseDueAt;
+  void observedAt;return { ...safe,
+  receivedAt: row.receivedAt.toISOString(), updatedAt: row.updatedAt.toISOString(),
   identityConfirmedAt: row.identityConfirmedAt?.toISOString() ?? null,
+  internalTargetAt:row.internalTargetAt.toISOString(),responseDueAt:row.responseDueAt.toISOString(),
+  extendedDueAt:row.extendedDueAt?.toISOString()??null,effectiveDueAt:effectiveDueAt.toISOString(),deadlineState:deadlineState(row),
   review: row.review ? { ...row.review, escalatedAt: row.review.escalatedAt?.toISOString() ?? null,
     createdAt: row.review.createdAt.toISOString(), updatedAt: row.review.updatedAt.toISOString() } : null,
   outcome:row.outcome?{...row.outcome,approvedAt:row.outcome.approvedAt?.toISOString()??null,
     createdAt:row.outcome.createdAt.toISOString(),updatedAt:row.outcome.updatedAt.toISOString()}:null }; }
+export function deadlineState(row: Pick<OpsDataRightsQueueRow,"internalTargetAt"|"responseDueAt"|"extendedDueAt"|"observedAt">) {
+  const day=86_400_000,now=row.observedAt.getTime(),target=row.internalTargetAt.getTime();
+  const due=(row.extendedDueAt??row.responseDueAt).getTime();
+  if(now>due)return"overdue" as const;
+  if(now>=due-6*day)return"response_due_soon" as const;
+  if(now>=target)return"internal_target_missed" as const;
+  if(now>=target-3*day)return"internal_due_soon" as const;
+  return"on_track" as const;
+}
 function changed() { return new CuacError("CONFLICT", "Data-rights review state changed; reload before retrying.", 409); }
 function mode(code:typeof OPS_DATA_RIGHTS_OUTCOMES[number]):OpsDataRightsOutcome["approvalMode"]{if(code==="portable_export_ready")return"single_admin";
   if(["account_deletion_ready","request_denied","retention_exception"].includes(code))return"dual_control";return"single_operator";}

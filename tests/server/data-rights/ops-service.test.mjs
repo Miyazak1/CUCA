@@ -6,14 +6,28 @@ const actor=(extra={})=>createRequestContext({actorUserId:"a1111111-a111-4111-81
   selectedSurface:"ops",purpose:"data_rights_review",authStrength:"session",...extra});
 const row=(extra={})=>({requestId:"b1111111-b111-4111-8111-b11111111111",requestType:"access",correctionScope:null,
   preferredLocale:"en",status:"received",revision:1,receivedAt:new Date("2026-09-20T00:00:00Z"),
-  identityConfirmedAt:new Date("2026-09-20T00:01:00Z"),updatedAt:new Date("2026-09-20T00:00:00Z"),review:null,outcome:null,...extra});
+  identityConfirmedAt:new Date("2026-09-20T00:01:00Z"),deadlinePolicyVersion:"data_rights_response_v1",
+  internalTargetAt:new Date("2026-10-05T00:00:00Z"),responseDueAt:new Date("2026-10-20T00:00:00Z"),extendedDueAt:null,
+  observedAt:new Date("2026-09-21T00:00:00Z"),updatedAt:new Date("2026-09-20T00:00:00Z"),review:null,outcome:null,...extra});
 const review={reviewId:"c1111111-c111-4111-8111-c11111111111",revision:1,status:"investigating",assignedUserId:actor().actorUserId,
   assignedRole:"cuac_ops",escalationCode:null,escalationReference:null,escalatedAt:null,createdAt:new Date(),updatedAt:new Date()};
 const unused={async propose(){throw 0;},async approve(){throw 0;}};
 test("Ops queue exposes minimal request metadata and rechecks authority",async()=>{const calls=[];
   const service=new OpsDataRightsService({async list(input){calls.push(input);return{authorized:true,value:[row()]};},async claim(){throw 0;},async escalate(){throw 0;},...unused},{async record(){}});
   const result=await service.list(actor(),{}); assert.equal(result.length,1); assert.equal("userId" in result[0],false); assert.equal(calls[0].actorUserId,actor().actorUserId);
+  assert.equal("observedAt" in result[0],false);assert.equal(result[0].deadlineState,"on_track");
   await assert.rejects(service.list(actor({purpose:"ops_support"}),{}),e=>e.status===403);
+});
+test("deadline states use database time and the effective response deadline",async()=>{const service=new OpsDataRightsService({
+  async list(){return{authorized:true,value:[
+    row({observedAt:new Date("2026-10-02T00:00:00Z")}),
+    row({observedAt:new Date("2026-10-05T00:00:00Z")}),
+    row({observedAt:new Date("2026-10-14T00:00:00Z")}),
+    row({observedAt:new Date("2026-10-21T00:00:00Z")}),
+    row({responseDueAt:new Date("2026-10-20T00:00:00Z"),extendedDueAt:new Date("2026-11-19T00:00:00Z"),observedAt:new Date("2026-10-21T00:00:00Z")}),
+  ]};},async claim(){throw 0;},async escalate(){throw 0;},...unused},{async record(){}});
+  assert.deepEqual((await service.list(actor())).map(item=>item.deadlineState),
+    ["internal_due_soon","internal_target_missed","response_due_soon","overdue","internal_target_missed"]);
 });
 test("claim and escalation are revision-bound and use fixed codes",async()=>{const audits=[];
   const service=new OpsDataRightsService({async list(){throw 0;},async claim(){return{authorized:true,value:row({status:"in_progress",revision:2,review})};},

@@ -77,7 +77,7 @@ Phase C adds an immutable, digest-bound **outcome plan**, not an execution comma
 
 This is intake and triage, not a completed rights operation. The following remain release blockers:
 
-- approved privacy staff roster, legal approval and technical enforcement of the provisional 15/30-day response target, identity-confirmation exception handling and a reviewed operating runbook for the implemented outcome controls;
+- approved privacy staff roster, legal approval plus notification/extension enforcement for the stored provisional 15/30-day response target, identity-confirmation exception handling and a reviewed operating runbook for the implemented outcome controls;
 - the actual scoped export generator, encrypted short-lived delivery and expiry evidence;
 - staged account closure/deletion, session revocation, retention exceptions, tombstones and restore handling;
 - completion/denial notifications, appeal/escalation handling and tested operations runbook;

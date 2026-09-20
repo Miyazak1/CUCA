@@ -14,7 +14,9 @@ type Row = Omit<OpsDataRightsQueueRow, "review" | "outcome"> & { reviewId: strin
   proposedByRole:"cuac_ops"|"cuac_admin"|null;approvedByUserId:string|null;approvedAt:Date|null;outcomeCreatedAt:Date|null;outcomeUpdatedAt:Date|null };
 const requestColumns = `q.id as "requestId",q.request_type as "requestType",q.correction_scope as "correctionScope",
  q.preferred_locale as "preferredLocale",q.status,q.revision,q.received_at as "receivedAt",
- q.identity_confirmed_at as "identityConfirmedAt",q.updated_at as "updatedAt"`;
+ q.identity_confirmed_at as "identityConfirmedAt",q.deadline_policy_version as "deadlinePolicyVersion",
+ q.internal_target_at as "internalTargetAt",q.response_due_at as "responseDueAt",q.extended_due_at as "extendedDueAt",
+ clock_timestamp() as "observedAt",q.updated_at as "updatedAt"`;
 const outcomeColumns=`o.id as "outcomeId",o.outcome_code as "outcomeCode",o.reason_code as "reasonCode",o.case_reference as "caseReference",
  o.proposal_sha256 as "proposalSha256",o.approval_mode as "approvalMode",o.status as "outcomeStatus",o.revision as "outcomeRevision",
  o.proposed_by_user_id as "proposedByUserId",o.proposed_by_role as "proposedByRole",o.approved_by_user_id as "approvedByUserId",
@@ -28,7 +30,7 @@ export class PostgresOpsDataRightsRepository implements OpsDataRightsRepository 
       left join ops_data_rights_reviews r on r.data_rights_request_id=q.id
       left join ops_data_rights_outcomes o on o.data_rights_request_id=q.id
       where q.status in ('received','identity_confirmed','in_progress','escalated')
-      order by q.received_at,q.id limit $1`, [input.limit]);
+      order by coalesce(q.extended_due_at,q.response_due_at),q.received_at,q.id limit $1`, [input.limit]);
     return { authorized: true, value: rows.map(mapRow) } as const;
   }); }
   async claim(input: Parameters<OpsDataRightsRepository["claim"]>[0]) { return this.client.transaction(async tx => {
@@ -98,7 +100,9 @@ export class PostgresOpsDataRightsRepository implements OpsDataRightsRepository 
 }
 function mapRow(row: Row): OpsDataRightsQueueRow { return { requestId: row.requestId,requestType: row.requestType,
   correctionScope: row.correctionScope,preferredLocale: row.preferredLocale,status: row.status,revision: row.revision,
-  receivedAt: row.receivedAt,identityConfirmedAt:row.identityConfirmedAt,updatedAt: row.updatedAt,review: row.reviewId ? { reviewId: row.reviewId,revision: row.reviewRevision!,
+  receivedAt: row.receivedAt,identityConfirmedAt:row.identityConfirmedAt,deadlinePolicyVersion:row.deadlinePolicyVersion,
+  internalTargetAt:row.internalTargetAt,responseDueAt:row.responseDueAt,extendedDueAt:row.extendedDueAt,observedAt:row.observedAt,
+  updatedAt: row.updatedAt,review: row.reviewId ? { reviewId: row.reviewId,revision: row.reviewRevision!,
     status: row.reviewStatus!,assignedUserId: row.assignedUserId!,assignedRole: row.assignedRole!,escalationCode: row.escalationCode,
     escalationReference: row.escalationReference,escalatedAt: row.escalatedAt,createdAt: row.reviewCreatedAt!,updatedAt: row.reviewUpdatedAt! } : null,
   outcome:row.outcomeId?{outcomeId:row.outcomeId,outcomeCode:row.outcomeCode!,reasonCode:row.reasonCode,

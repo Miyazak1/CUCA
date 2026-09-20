@@ -331,6 +331,10 @@ export const dataRightsRequests = pgTable("data_rights_requests", {
   status: text("status").notNull().default("received"),
   revision: integer("revision").notNull().default(1),
   receivedAt: timestamp("received_at", { withTimezone: true }).notNull().defaultNow(),
+  deadlinePolicyVersion: text("deadline_policy_version").notNull().default("data_rights_response_v1"),
+  internalTargetAt: timestamp("internal_target_at", { withTimezone: true }).notNull().default(sql`now() + interval '15 days'`),
+  responseDueAt: timestamp("response_due_at", { withTimezone: true }).notNull().default(sql`now() + interval '30 days'`),
+  extendedDueAt: timestamp("extended_due_at", { withTimezone: true }),
   identityConfirmedAt: timestamp("identity_confirmed_at", { withTimezone: true }),
   assignedUserId: uuid("assigned_user_id").references(() => users.id, { onDelete: "set null" }),
   closedAt: timestamp("closed_at", { withTimezone: true }),
@@ -338,6 +342,7 @@ export const dataRightsRequests = pgTable("data_rights_requests", {
 }, (table) => ({
   ownerStatusIdx: index("data_rights_requests_owner_status_idx").on(table.userId, table.status, table.receivedAt),
   queueIdx: index("data_rights_requests_queue_idx").on(table.status, table.receivedAt),
+  deadlineIdx: index("data_rights_requests_deadline_idx").on(table.status, table.responseDueAt, table.receivedAt),
   activeTypeUnique: uniqueIndex("data_rights_requests_active_type_unique").on(table.userId, table.requestType)
     .where(sql`${table.userId} is not null and ${table.status} in ('received', 'identity_confirmed', 'in_progress', 'escalated')`),
   subjectHashCheck: check("data_rights_requests_subject_hash_check", sql`${table.subjectReferenceHash} ~ '^sha256:[a-f0-9]{64}$'`),
@@ -346,6 +351,13 @@ export const dataRightsRequests = pgTable("data_rights_requests", {
   localeCheck: check("data_rights_requests_locale_check", sql`${table.preferredLocale} in ('en', 'zh-CN')`),
   statusCheck: check("data_rights_requests_status_check", sql`${table.status} in ('received', 'identity_confirmed', 'in_progress', 'escalated', 'fulfilled', 'denied', 'cancelled')`),
   revisionCheck: check("data_rights_requests_revision_check", sql`${table.revision} > 0`),
+  deadlineCheck: check("data_rights_requests_deadline_check", sql`
+    ${table.deadlinePolicyVersion} = 'data_rights_response_v1'
+    and isfinite(${table.internalTargetAt}) and isfinite(${table.responseDueAt})
+    and ${table.internalTargetAt} > ${table.receivedAt} and ${table.responseDueAt} > ${table.internalTargetAt}
+    and (${table.extendedDueAt} is null or (isfinite(${table.extendedDueAt})
+      and ${table.extendedDueAt} > ${table.responseDueAt}
+      and ${table.extendedDueAt} <= ${table.responseDueAt} + interval '60 days'))`),
   lifecycleCheck: check("data_rights_requests_lifecycle_check", sql`(${table.status} in ('fulfilled', 'denied', 'cancelled')) = (${table.closedAt} is not null)`),
 }));
 

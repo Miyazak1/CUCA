@@ -19,6 +19,16 @@ export async function runDataRightsRehearsal(t, pool) {
     const input = { requestId: firstRequestId, userId: firstUserId,
       subjectReferenceHash: `sha256:${"a".repeat(64)}`, requestType: "access", correctionScope: null, preferredLocale: "en" };
     assert.equal((await repository.createOwn(input)).row.id, firstRequestId);
+    const deadlines = (await pool.query(`select deadline_policy_version,extended_due_at,
+      extract(epoch from internal_target_at-received_at) as internal_seconds,
+      extract(epoch from response_due_at-received_at) as response_seconds
+      from data_rights_requests where id=$1`, [firstRequestId])).rows[0];
+    assert.equal(deadlines.deadline_policy_version,"data_rights_response_v1");
+    assert.equal(deadlines.extended_due_at,null);
+    assert.equal(Number(deadlines.internal_seconds),15*86_400);
+    assert.equal(Number(deadlines.response_seconds),30*86_400);
+    await assert.rejects(pool.query(`update data_rights_requests set extended_due_at=response_due_at+interval '61 days' where id=$1`,
+      [firstRequestId]),/data_rights_requests_deadline_check/);
     assert.deepEqual((await repository.listOwn(firstUserId)).rows.map(row => row.id), [firstRequestId]);
     assert.deepEqual((await repository.listOwn(secondUserId)).rows, []);
     assert.equal((await repository.cancelOwn({ requestId: firstRequestId, userId: secondUserId, expectedRevision: 1 })).row, null);

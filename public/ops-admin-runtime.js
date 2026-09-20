@@ -799,11 +799,16 @@ function renderDataRights(items) {
         ${opsState.role==="cuac_admin"&&opsState.authStrength==="step_up"?"":"<p class=\"ops-state\">需要另一位管理员完成二次验证后批准。</p>"}</form>`;
     return`<p class="ops-state"><strong>${escapeHtml(outcomeLabels[outcome.outcomeCode]||outcome.outcomeCode)}</strong>
       · ${escapeHtml(approvalLabels[outcome.approvalMode]||outcome.approvalMode)} · 已批准，等待执行能力上线。当前不会导出、删除、拒绝或关闭请求。</p>`;};
+  const deadlineLabels={on_track:"正常",internal_due_soon:"内部目标临近",internal_target_missed:"内部目标未达成",
+    response_due_soon:"最迟答复临近",overdue:"已逾期"};
+  const deadlineClass=state=>state==="overdue"?" is-danger":state==="on_track"?"":" is-warning";
   root.innerHTML=`${sectionHeading("隐私请求处理","这里记录处理方案及必要审批；当前版本不会实际导出、删除、拒绝或关闭请求。")}
     <div class="ops-review-list">${items.length?items.map(item=>`<article class="ops-review-card">
       <header><div><strong>${escapeHtml(labels[item.requestType]||item.requestType)}</strong>
       <span>${escapeHtml(item.preferredLocale)} · ${escapeHtml(item.status)} · ${escapeHtml(new Date(item.receivedAt).toLocaleString())}</span></div></header>
       <p>请求编号：${escapeHtml(item.requestId)}${item.correctionScope?` · 更正范围：${escapeHtml(item.correctionScope)}`:""}</p>
+      <p><span class="ops-badge${deadlineClass(item.deadlineState)}">${escapeHtml(deadlineLabels[item.deadlineState]||item.deadlineState)}</span>
+        内部目标：${escapeHtml(new Date(item.internalTargetAt).toLocaleDateString())} · 当前最迟答复：${escapeHtml(new Date(item.effectiveDueAt).toLocaleDateString())}</p>
       ${!item.review?(item.identityConfirmedAt?`<form data-ops-action-form data-kind="privacy" data-target="${escapeHtml(item.requestId)}" data-action="claim" data-revision="${item.revision}">
         <button class="ops-button" type="submit">认领分流</button></form>`:`<p class="ops-state">等待学生完成身份确认；当前不可认领或制定处理方案。</p>`):
         item.review.status==="investigating"?`<form data-ops-action-form data-kind="privacy" data-target="${escapeHtml(item.requestId)}" data-action="escalate"
