@@ -131,6 +131,8 @@ Required:
 
 Acceptance: legal owner approval, published version evidence, link checker, independently reviewed English and Simplified Chinese UI/policy copy, withdrawal/request runbook, operational queue, export/deletion execution and a tested support workflow.
 
+The first release may satisfy the execution requirement through the reviewed [manual fulfilment runbook](../architecture/CUAC_DATA_RIGHTS_MANUAL_FULFILMENT_RUNBOOK.md); it does not require an automated export or deletion engine. Production remains blocked until the controlled manual commands/tools and all five rehearsal cases in that runbook have protected staging evidence.
+
 ### P0-5 Cloud staging and operations
 
 Local evidence cannot approve production. Required staging controls are: HTTPS redirect, WAF/shared Auth and search rate limits, RDS `verify-full`, least-privilege roles, migration replay, backup restore, staff MFA, email round trips, scoped worker recovery, alert delivery, secret rotation, three-role E2E and image rollback.

@@ -2,6 +2,8 @@
 
 Status: technical publication framework, authenticated student request intake, password-based identity confirmation evidence, internal triage and outcome approval controls are implemented; approved legal wording and the operational fulfilment workflow remain release blockers.
 
+The initial low-volume fulfilment model is the reviewed manual procedure in [CUAC_DATA_RIGHTS_MANUAL_FULFILMENT_RUNBOOK](../architecture/CUAC_DATA_RIGHTS_MANUAL_FULFILMENT_RUNBOOK.md). Automation is not required, but real execution, secure result communication and staging rehearsal are required.
+
 This document is an engineering and operations control record. It is not legal advice and does not approve policy wording.
 
 ## Confirmed product decisions
