@@ -18,8 +18,8 @@ export type NotificationTopic =
 export const NOTIFICATION_TOPICS_BY_ROLE: Readonly<Record<NotificationAudienceRole, readonly NotificationTopic[]>> = {
   student: ["application_updates", "billing_updates", "deadline_reminders", "document_reminders", "funding_updates", "privacy_requests", "account_security"],
   school_staff: ["school_workflow", "account_security"],
-  cuac_ops: ["platform_operations", "account_security"],
-  cuac_admin: ["platform_operations", "account_security"],
+  cuac_ops: ["platform_operations", "privacy_requests", "account_security"],
+  cuac_admin: ["platform_operations", "privacy_requests", "account_security"],
 };
 
 export type NotificationChannelPreference = {
@@ -60,6 +60,8 @@ type BuiltinDefinition = { topic: NotificationTopic; title: string; body: string
 
 type DataRightsEventType = "data_rights_received" | "data_rights_identity_required" | "data_rights_identity_confirmed"
   | "data_rights_review_started" | "data_rights_deadline_extended" | "data_rights_cancelled";
+export const DATA_RIGHTS_REMINDER_CODES = ["identity_24h","identity_day5","internal_day12","response_due_soon","response_due_today"] as const;
+export type DataRightsReminderCode = typeof DATA_RIGHTS_REMINDER_CODES[number];
 
 const dataRightsDefinitions: Readonly<Record<"en"|"zh-CN",Readonly<Record<DataRightsEventType,BuiltinDefinition>>>>={
   en:{
@@ -77,6 +79,23 @@ const dataRightsDefinitions: Readonly<Record<"en"|"zh-CN",Readonly<Record<DataRi
     data_rights_review_started:{topic:"privacy_requests",title:"隐私请求已开始处理",body:"工作人员已经认领你的请求。你可以在账户设置中查看后续状态。"},
     data_rights_deadline_extended:{topic:"privacy_requests",title:"隐私请求答复期限已延长",body:"新的答复期限为 {{extendedDueDate}}。原因：{{extensionReason}}。请在账户设置中查看请求状态。"},
     data_rights_cancelled:{topic:"privacy_requests",title:"隐私请求已取消",body:"你已取消此请求，CUAC 不会继续处理。"},
+  },
+};
+
+const dataRightsReminderDefinitions:Readonly<Record<"en"|"zh-CN",Readonly<Record<DataRightsReminderCode,BuiltinDefinition>>>>={
+  en:{
+    identity_24h:{topic:"privacy_requests",title:"Confirm your identity to continue",body:"Your privacy request is waiting for identity confirmation. Re-enter your password in Account settings so staff can begin review."},
+    identity_day5:{topic:"privacy_requests",title:"Privacy request still needs identity confirmation",body:"Your privacy request is still paused. Confirm your identity in Account settings; the response clock continues while confirmation is pending."},
+    internal_day12:{topic:"privacy_requests",title:"Privacy request internal target approaching",body:"The assigned request reaches its internal target on {{targetDate}}. Review it in the Ops workspace."},
+    response_due_soon:{topic:"privacy_requests",title:"Privacy request response deadline approaching",body:"The assigned request has an effective response deadline of {{targetDate}}. Review the case and approved next action in the Ops workspace."},
+    response_due_today:{topic:"privacy_requests",title:"Privacy request response deadline reached",body:"The assigned request reached its effective response deadline on {{targetDate}}. Immediate review is required in the Ops workspace."},
+  },
+  "zh-CN":{
+    identity_24h:{topic:"privacy_requests",title:"请确认身份以继续处理",body:"你的隐私请求正在等待身份确认。请在账户设置中重新输入密码，完成后工作人员才能开始处理。"},
+    identity_day5:{topic:"privacy_requests",title:"隐私请求仍需确认身份",body:"你的隐私请求仍处于暂停状态。请在账户设置中确认身份；等待确认期间，答复期限仍会继续计算。"},
+    internal_day12:{topic:"privacy_requests",title:"隐私请求内部目标临近",body:"已分配的请求将在 {{targetDate}} 到达内部处理目标，请在运营工作区检查。"},
+    response_due_soon:{topic:"privacy_requests",title:"隐私请求答复期限临近",body:"已分配请求的当前有效答复期限为 {{targetDate}}，请在运营工作区检查案件和已批准的下一步。"},
+    response_due_today:{topic:"privacy_requests",title:"隐私请求已到答复期限",body:"已分配的请求已于 {{targetDate}} 到达当前有效答复期限，请立即在运营工作区处理。"},
   },
 };
 
@@ -151,6 +170,27 @@ export function materializeDataRightsNotification(input:{recipientUserId:string;
     eventKeySha256:digest({version:1,source:"data_rights_transition",eventType:input.eventType,
       transitionReference:input.transitionReference,recipientUserId:input.recipientUserId}),variables,
     variablesSha256:digest(variables),occurredAt:input.occurredAt,templates};
+}
+
+export function materializeDataRightsReminder(input:{recipientUserId:string;requestId:string;reminderCode:DataRightsReminderCode;
+  audienceRole:"student"|"cuac_ops"|"cuac_admin";locale:"en"|"zh-CN";targetAt:Date;deadlineAt:Date|null;
+  occurredAt:Date}):NotificationEventMaterialization{
+  const student=input.reminderCode==="identity_24h"||input.reminderCode==="identity_day5";
+  if(student!== (input.audienceRole==="student")||!Number.isFinite(input.targetAt.getTime())||!Number.isFinite(input.occurredAt.getTime())
+    ||(student?input.deadlineAt!==null:!input.deadlineAt||!Number.isFinite(input.deadlineAt.getTime())))
+    throw serviceUnavailable("Data-rights reminder target is invalid.");
+  const copy=dataRightsReminderDefinitions[input.locale][input.reminderCode];
+  const variables=student?{}:{targetDate:input.deadlineAt!.toISOString().slice(0,10)};
+  const variableKeys=student?[]:["targetDate"];
+  const actionPath=student?"/preferences-api.html#privacy-requests":"/ops-admin-api.html#privacy";
+  const eventType=`data_rights_reminder_${input.reminderCode}`;
+  const templates=(["in_app","email"] as const).map(channel=>buildTemplate(eventType,copy,channel,actionPath,
+    variableKeys,input.locale,input.audienceRole));
+  return{recipientUserId:input.recipientUserId,audienceRole:input.audienceRole,tenantSchoolId:null,topic:"privacy_requests",
+    eventType,resourceType:"data_rights_request",resourceId:input.requestId,
+    eventKeySha256:digest({version:1,source:"data_rights_reminder",requestId:input.requestId,reminderCode:input.reminderCode,
+      targetAt:input.targetAt.toISOString(),recipientUserId:input.recipientUserId,audienceRole:input.audienceRole}),
+    variables,variablesSha256:digest(variables),occurredAt:input.occurredAt,templates};
 }
 
 export function assertTopicAllowed(role: NotificationAudienceRole, topic: string): asserts topic is NotificationTopic {
@@ -282,10 +322,11 @@ export function renderNotificationTemplate(template: NotificationTemplate, varia
 }
 
 function buildTemplate(eventType: string, definition: BuiltinDefinition, channel: NotificationChannel,
-  actionPathTemplate: string, variableKeys: readonly string[],locale:"en"|"zh-CN"="en"): NotificationTemplate {
+  actionPathTemplate: string, variableKeys: readonly string[],locale:"en"|"zh-CN"="en",
+  audienceRole:NotificationAudienceRole="student"): NotificationTemplate {
   const base = {
-    templateKey: `student.${eventType}`,
-    audienceRole: "student" as const,
+    templateKey: `${audienceRole}.${eventType}`,
+    audienceRole,
     channel,
     locale,
     version: 1,

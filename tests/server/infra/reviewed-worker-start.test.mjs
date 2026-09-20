@@ -42,6 +42,7 @@ test("every external-effect worker authorizes release state before loading provi
   const entries = [
     ["auth-email", "scripts/start-auth-email-worker.ts"],
     ["notification", "scripts/start-notification-worker.ts"],
+    ["data-rights-reminder", "scripts/start-data-rights-reminder-worker.ts"],
     ["student-file", "scripts/start-student-file-worker.ts"],
     ["official-submission", "scripts/start-official-submission-worker.ts"],
     ["payment-reconciliation", "scripts/start-payment-reconciliation-worker.ts"],

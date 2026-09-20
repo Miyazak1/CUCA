@@ -1002,6 +1002,44 @@ export const dataRightsDeadlineExtensions = pgTable("data_rights_deadline_extens
     and isfinite(${table.createdAt}) and isfinite(${table.updatedAt}) and ${table.updatedAt} >= ${table.createdAt}`),
 }));
 
+export const dataRightsReminders = pgTable("data_rights_reminders", {
+  id: uuid("id").primaryKey(),
+  dataRightsRequestId: uuid("data_rights_request_id").notNull()
+    .references(() => dataRightsRequests.id, { onDelete: "restrict" }),
+  reviewId: uuid("review_id").references(() => opsDataRightsReviews.id, { onDelete: "restrict" }),
+  reminderCode: text("reminder_code").notNull(),
+  targetAt: timestamp("target_at", { withTimezone: true }).notNull(),
+  deadlineBasisAt: timestamp("deadline_basis_at", { withTimezone: true }),
+  sourceRequestRevision: integer("source_request_revision").notNull(),
+  recipientUserId: uuid("recipient_user_id").references(() => users.id, { onDelete: "set null" }),
+  recipientRole: text("recipient_role").notNull(),
+  locale: text("locale").notNull(),
+  eventKeySha256: text("event_key_sha256").notNull(),
+  emittedAt: timestamp("emitted_at", { withTimezone: true }).notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, table => ({
+  milestoneUnique: uniqueIndex("data_rights_reminders_milestone_unique")
+    .on(table.dataRightsRequestId, table.reminderCode, table.targetAt),
+  eventKeyUnique: uniqueIndex("data_rights_reminders_event_key_unique").on(table.eventKeySha256),
+  dueIdx: index("data_rights_reminders_due_idx").on(table.targetAt, table.id),
+  shapeCheck: check("data_rights_reminders_shape_check", sql`
+    ${table.reminderCode} in ('identity_24h','identity_day5','internal_day12','response_due_soon','response_due_today')
+    and ${table.sourceRequestRevision} > 0 and ${table.locale} in ('en','zh-CN')
+    and ${table.eventKeySha256} ~ '^[a-f0-9]{64}$'
+    and isfinite(${table.targetAt}) and isfinite(${table.emittedAt}) and isfinite(${table.createdAt})
+    and ${table.emittedAt} >= ${table.targetAt}
+    and ((${table.reminderCode} in ('identity_24h','identity_day5') and ${table.recipientRole} = 'student'
+      and ${table.reviewId} is null and ${table.deadlineBasisAt} is null)
+    or (${table.reminderCode} = 'internal_day12' and ${table.recipientRole} in ('cuac_ops','cuac_admin')
+      and ${table.reviewId} is not null and ${table.deadlineBasisAt} is not null
+      and isfinite(${table.deadlineBasisAt}) and ${table.targetAt} = ${table.deadlineBasisAt} - interval '3 days')
+    or (${table.reminderCode} in ('response_due_soon','response_due_today')
+      and ${table.recipientRole} in ('cuac_ops','cuac_admin') and ${table.reviewId} is not null
+      and ${table.deadlineBasisAt} is not null and isfinite(${table.deadlineBasisAt})
+      and ((${table.reminderCode} = 'response_due_soon' and ${table.targetAt} = ${table.deadlineBasisAt} - interval '6 days')
+        or (${table.reminderCode} = 'response_due_today' and ${table.targetAt} = ${table.deadlineBasisAt}))))`),
+}));
+
 export const opsDataRightsOutcomes = pgTable("ops_data_rights_outcomes", {
   id: uuid("id").primaryKey(),
   dataRightsRequestId: uuid("data_rights_request_id").notNull()

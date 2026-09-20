@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { defaultNotificationPreference, materializeApplicationSubmittedNotification, materializePaymentStatusNotification,
-  materializeDataRightsNotification,materializeSchoolApplicationStatusNotification, renderNotificationTemplate } from "../../../src/server/notifications/templates.ts";
+  materializeDataRightsNotification,materializeDataRightsReminder,materializeSchoolApplicationStatusNotification,
+  renderNotificationTemplate } from "../../../src/server/notifications/templates.ts";
 
 const ids = { user: "11111111-1111-4111-8111-111111111111", application: "22222222-2222-4222-8222-222222222222", event: "33333333-3333-4333-8333-333333333333" };
 
@@ -91,4 +92,23 @@ test("deadline extension notifications include only a reviewed localized reason 
     assert.match(rendered.body,/2026-11-30/);assert.match(rendered.body,new RegExp(reason));
     assert.doesNotMatch(rendered.body,/case|password|token/i);
   }
+});
+
+test("data-rights reminders are role-bound localized and stable for one milestone",()=>{
+  const targetAt=new Date("2026-10-02T00:00:00.000Z"),deadlineAt=new Date("2026-10-05T00:00:00.000Z");
+  const ops=materializeDataRightsReminder({recipientUserId:ids.user,requestId:ids.application,
+    reminderCode:"internal_day12",audienceRole:"cuac_ops",locale:"zh-CN",targetAt,deadlineAt,occurredAt:targetAt});
+  const replay=materializeDataRightsReminder({recipientUserId:ids.user,requestId:ids.application,
+    reminderCode:"internal_day12",audienceRole:"cuac_ops",locale:"zh-CN",targetAt,deadlineAt,
+    occurredAt:new Date("2026-10-02T01:00:00.000Z")});
+  assert.equal(ops.eventKeySha256,replay.eventKeySha256);assert.equal(ops.topic,"privacy_requests");
+  assert.ok(ops.templates.every(item=>item.audienceRole==="cuac_ops"&&item.locale==="zh-CN"));
+  const rendered=renderNotificationTemplate(ops.templates[0],ops.variables);
+  assert.match(rendered.title,/内部目标临近/);assert.match(rendered.body,/2026-10-05/);
+  assert.equal(rendered.actionPath,"/ops-admin-api.html#privacy");
+  const student=materializeDataRightsReminder({recipientUserId:ids.user,requestId:ids.event,
+    reminderCode:"identity_24h",audienceRole:"student",locale:"en",targetAt,deadlineAt:null,occurredAt:targetAt});
+  assert.match(renderNotificationTemplate(student.templates[0],student.variables).title,/Confirm your identity/);
+  assert.throws(()=>materializeDataRightsReminder({recipientUserId:ids.user,requestId:ids.event,
+    reminderCode:"identity_24h",audienceRole:"cuac_admin",locale:"en",targetAt,deadlineAt:null,occurredAt:targetAt}),/target is invalid/);
 });

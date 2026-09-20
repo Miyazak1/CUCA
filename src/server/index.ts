@@ -118,6 +118,8 @@ export * from "./notifications/runtime/worker.ts";
 export * from "./notifications/service.ts";
 export * from "./notifications/templates.ts";
 export * from "./notifications/worker.ts";
+export * from "./data-rights/reminders.ts";
+export * from "./data-rights/runtime/reminder-worker.ts";
 export * from "./policy/policy.ts";
 export * from "./shared/errors.ts";
 export * from "./shared/request-context.ts";

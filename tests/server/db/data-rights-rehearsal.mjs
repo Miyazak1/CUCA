@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import { PostgresAuditWriter } from "../../../src/server/audit/postgres-writer.ts";
 import { createTransactionalSqlClient } from "../../../src/server/db/postgres-client.ts";
 import { PostgresDataRightsRepository } from "../../../src/server/data-rights/postgres-repository.ts";
+import { PostgresDataRightsReminderScheduler } from "../../../src/server/data-rights/reminders.ts";
 import { DataRightsService } from "../../../src/server/data-rights/service.ts";
 import { PostgresNotificationPublisher } from "../../../src/server/notifications/postgres-repository.ts";
 import { PostgresOpsDataRightsRepository } from "../../../src/server/ops-data-rights/postgres-repository.ts";
@@ -151,6 +152,37 @@ export async function runDataRightsRehearsal(t, pool) {
       extensionId:randomUUID(),expectedRevision:3,expectedReviewRevision:1,reasonCode:"request_complexity",
       caseReference:"case:late-extension",extendedDueAt:new Date(new Date(planned.value.responseDueAt).getTime()+30*86_400_000)})).value,null,
     "a request with an existing outcome cannot be extended");
+
+    const pendingReminderRequestId=randomUUID();
+    const secondStudentContext=createRequestContext({actorUserId:secondUserId,activeRole:"student",selectedSurface:"student",
+      purpose:"data_rights",authStrength:"session"});
+    await client.transaction(async tx=>new DataRightsService(new PostgresDataRightsRepository(tx),
+      new PostgresAuditWriter(tx),new PostgresNotificationPublisher(tx)).createOwn(
+      secondStudentContext,{requestId:pendingReminderRequestId,requestType:"access",
+        correctionScope:null,preferredLocale:"zh-CN"}));
+    await pool.query(`update data_rights_requests set received_at=clock_timestamp()-interval '6 days',
+      internal_target_at=clock_timestamp()+interval '9 days',response_due_at=clock_timestamp()+interval '24 days'
+      where id=$1`,[pendingReminderRequestId]);
+    await pool.query("update users set locale='zh-CN' where id=$1",[opsUserId]);
+    await pool.query(`update data_rights_requests set received_at=clock_timestamp()-interval '31 days',
+      internal_target_at=clock_timestamp()-interval '16 days',response_due_at=clock_timestamp()-interval '1 day'
+      where id=$1`,[plannedRequestId]);
+    const reminderBatch=await new PostgresDataRightsReminderScheduler(client).processBatch(10);
+    assert.deepEqual(reminderBatch,{processed:5,created:5});
+    assert.deepEqual(await new PostgresDataRightsReminderScheduler(client).processBatch(10),{processed:0,created:0},
+      "a repeated scheduler pass does not duplicate milestones");
+    const reminderRows=(await pool.query(`select reminder_code,recipient_role,locale from data_rights_reminders
+      where data_rights_request_id in ($1,$2) order by reminder_code`,[pendingReminderRequestId,plannedRequestId])).rows;
+    assert.deepEqual(reminderRows.map(row=>row.reminder_code),
+      ["identity_24h","identity_day5","internal_day12","response_due_soon","response_due_today"]);
+    assert.ok(reminderRows.filter(row=>row.reminder_code.startsWith("identity")).every(row=>row.recipient_role==="student"&&row.locale==="zh-CN"));
+    assert.ok(reminderRows.filter(row=>!row.reminder_code.startsWith("identity")).every(row=>row.recipient_role==="cuac_ops"&&row.locale==="zh-CN"));
+    const reminderDeliveries=(await pool.query(`select e.event_type,d.audience_role,d.channel,d.status,d.body
+      from notification_events e join notification_deliveries d on d.event_id=e.id
+      where e.resource_id in ($1,$2) and e.event_type like 'data_rights_reminder_%'`,
+    [pendingReminderRequestId,plannedRequestId])).rows;
+    assert.equal(reminderDeliveries.length,10);assert.ok(reminderDeliveries.every(row=>/[\u3400-\u9fff]/u.test(row.body)));
+    assert.ok(reminderDeliveries.filter(row=>row.channel==="email").every(row=>row.status==="queued"));
 
     await pool.query("update user_roles set revoked_at = clock_timestamp() where user_id = $1 and role = 'student'", [firstUserId]);
     assert.equal((await repository.listOwn(firstUserId)).authorized, false);
