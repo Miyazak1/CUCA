@@ -35,6 +35,10 @@ export function badRequest(message: string, details?: unknown): CuacError {
   return new CuacError("BAD_REQUEST", message, 400, details);
 }
 
+export function conflict(message: string, details?: unknown): CuacError {
+  return new CuacError("CONFLICT", message, 409, details);
+}
+
 export function serviceUnavailable(message: string, details?: unknown): CuacError {
   return new CuacError("SERVICE_UNAVAILABLE", message, 503, details);
 }

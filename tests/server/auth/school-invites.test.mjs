@@ -42,6 +42,21 @@ function createRepository(account, invite) {
           schoolStaffRoleGranted: true,
         };
       },
+      async activateInviteForNewAccount(input) {
+        calls.push({ method: "activateInviteForNewAccount", input });
+        return {
+          inviteId: input.inviteId,
+          schoolId: input.schoolId,
+          userId: "school-user-1",
+          role: input.role,
+          membershipId: "membership-1",
+          acceptedAt: input.activatedAt,
+          schoolStaffRoleGranted: true,
+          emailNormalized: invite?.emailNormalized ?? "teacher@example.edu",
+          accountCreated: true,
+          emailVerified: true,
+        };
+      },
       async revokePendingInvite(input) {
         calls.push({ method: "revokePendingInvite", input });
         return { revoked: true };
@@ -235,6 +250,85 @@ test("school staff invite acceptance rejects guests, wrong accounts, and disallo
         { now },
       ).acceptInvite(createRequestContext({ actorUserId: "user-1", activeRole: "student" }), "a2222222-a222-4222-8222-a22222222222", "AQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQE"),
     /role is not allowed/,
+  );
+});
+
+test("school staff invite activation creates only the invited school account authority", async () => {
+  const { calls, repository } = createRepository(null, {
+    id: "a2222222-a222-4222-8222-a22222222222",
+    schoolId: "b1111111-b111-4111-8111-b11111111111",
+    emailNormalized: "teacher@example.edu",
+    role: "school_admin",
+    invitedByUserId: "ops-1",
+    expiresAt: new Date("2026-08-29T00:00:00.000Z"),
+  });
+  const auditEvents = [];
+  const service = new SchoolStaffInviteService(repository, {
+    now,
+    passwordHasher: {
+      async hash(value) { assert.equal(value, "correct horse battery staple"); return "scrypt:test"; },
+      async verify() { return false; },
+      async verifyForLogin() { return { valid: false, upgradedHash: null }; },
+    },
+    auditSink: { async record(event) { auditEvents.push(event); } },
+  });
+
+  const result = await service.activateInvite(
+    createRequestContext(),
+    "a2222222-a222-4222-8222-a22222222222",
+    {
+      inviteToken: "BAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ",
+      password: "correct horse battery staple",
+      displayName: "Dr Teacher",
+    },
+  );
+
+  assert.equal(result.userId, "school-user-1");
+  assert.equal(result.role, "school_admin");
+  assert.equal(result.accountCreated, true);
+  assert.deepEqual(calls.map(call => call.method), ["findActiveInviteByIdAndTokenHash", "activateInviteForNewAccount"]);
+  assert.equal(calls[1].input.passwordHash, "scrypt:test");
+  assert.equal(calls[1].input.displayName, "Dr Teacher");
+  assert.equal("student" in calls[1].input, false);
+  assert.equal(auditEvents[0].action, "auth.school_staff_invite.activate");
+  assert.equal(auditEvents[0].metadata.studentRoleGranted, false);
+  assert.equal(JSON.stringify(auditEvents[0]).includes("correct horse battery staple"), false);
+});
+
+test("school staff invite activation rejects signed-in actors and existing-account races", async () => {
+  const invite = {
+    id: "a2222222-a222-4222-8222-a22222222222",
+    schoolId: "b1111111-b111-4111-8111-b11111111111",
+    emailNormalized: "teacher@example.edu",
+    role: "viewer",
+    invitedByUserId: "ops-1",
+    expiresAt: new Date("2026-08-29T00:00:00.000Z"),
+  };
+  const signedIn = createRepository(null, invite);
+  await assert.rejects(
+    () => new SchoolStaffInviteService(signedIn.repository, { now }).activateInvite(
+      createRequestContext({ actorUserId: "student-1", activeRole: "student" }),
+      invite.id,
+      { inviteToken: "BAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ", password: "correct horse battery staple" },
+    ),
+    /Sign out before activating/,
+  );
+  assert.equal(signedIn.calls.length, 0);
+
+  const raced = createRepository(null, invite);
+  raced.repository.activateInviteForNewAccount = async (input) => {
+    raced.calls.push({ method: "activateInviteForNewAccount", input });
+    return null;
+  };
+  await assert.rejects(
+    () => new SchoolStaffInviteService(raced.repository, {
+      now,
+      passwordHasher: { async hash() { return "scrypt:test"; }, async verify() { return false; }, async verifyForLogin() { return { valid: false, upgradedHash: null }; } },
+    }).activateInvite(createRequestContext(), invite.id, {
+      inviteToken: "BAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ",
+      password: "correct horse battery staple",
+    }),
+    /already has a CUAC account/,
   );
 });
 

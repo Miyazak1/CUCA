@@ -185,6 +185,44 @@ test("Postgres school staff invite repository accepts invite, creates membership
   assert.deepEqual(calls[0].params, ["invite-1", "teacher-1", "school-1", "admissions", "ops-1", acceptedAt]);
 });
 
+test("Postgres school staff invite activation atomically creates a verified staff-only account", async () => {
+  const calls = [];
+  const activatedAt = new Date("2026-08-28T00:00:00.000Z");
+  const repository = new PostgresSchoolStaffInviteRepository({
+    async query(statement, params) {
+      calls.push({ statement, params });
+      return [{ membershipId: "membership-1", userId: "school-user-1", emailNormalized: "teacher@example.edu", schoolStaffRoleGranted: true }];
+    },
+  });
+
+  const result = await repository.activateInviteForNewAccount({
+    inviteId: "invite-1",
+    inviteTokenHash: "sha256:abc",
+    schoolId: "school-1",
+    role: "school_admin",
+    invitedByUserId: "ops-1",
+    passwordHash: "scrypt:test",
+    displayName: "Dr Teacher",
+    activatedAt,
+  });
+
+  assert.equal(result.userId, "school-user-1");
+  assert.equal(result.emailNormalized, "teacher@example.edu");
+  assert.equal(result.emailVerified, true);
+  assert.equal(calls.length, 1);
+  assert.match(calls[0].statement, /for update/);
+  assert.match(calls[0].statement, /insert into users/);
+  assert.match(calls[0].statement, /email_verified_at/);
+  assert.match(calls[0].statement, /on conflict \(email_normalized\) do nothing/);
+  assert.match(calls[0].statement, /insert into auth_identities/);
+  assert.match(calls[0].statement, /insert into school_staff_memberships/);
+  assert.match(calls[0].statement, /insert into user_roles/);
+  assert.match(calls[0].statement, /'school_staff'/);
+  assert.doesNotMatch(calls[0].statement, /'student'/);
+  assert.doesNotMatch(calls[0].statement, /cuac_admin|cuac_ops/);
+  assert.deepEqual(calls[0].params, ["invite-1", "sha256:abc", "school-1", "school_admin", "ops-1", activatedAt, "Dr Teacher", "scrypt:test"]);
+});
+
 test("Postgres school staff invite repository revokes pending invite only", async () => {
   const calls = [];
   const revokedAt = new Date("2026-08-28T00:00:00.000Z");

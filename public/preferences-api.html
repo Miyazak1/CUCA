@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CUAC | Preferences</title>
-    <link rel="stylesheet" href="shared-shell.css" />
-    <link rel="stylesheet" href="preferences-workspace.css?v=20260904-api-v1" />
+    <link rel="stylesheet" href="shared-shell.css?v=20260920-account-email" />
+    <link rel="stylesheet" href="preferences-workspace.css?v=20260920-account-email" />
   </head>
   <body data-agent-mode="off">
     <div class="page preferences-api-page">
@@ -28,9 +28,23 @@
         </header>
 
         <nav class="preferences-section-nav" aria-label="Preference sections">
+          <a href="#account-details">Account</a>
           <a href="#study-preferences">Study preferences</a>
           <a href="#notification-preferences">Notifications</a>
         </nav>
+
+        <section class="preferences-api-section" id="account-details" aria-labelledby="account-details-title">
+          <header class="preferences-section-heading">
+            <div>
+              <p class="preferences-kicker">Sign-in identity</p>
+              <h2 id="account-details-title">Account</h2>
+            </div>
+            <p>Registration identity is managed separately from application contact details.</p>
+          </header>
+          <div data-account-identity aria-live="polite">
+            <p class="preferences-loading" aria-busy="true">Loading account identity.</p>
+          </div>
+        </section>
 
         <section class="preferences-api-section" id="study-preferences" aria-labelledby="study-preferences-title">
           <header class="preferences-section-heading">
@@ -63,7 +77,7 @@
       <div class="preferences-toast" role="status" data-preferences-toast hidden></div>
     </div>
 
-    <script src="shared-shell.js"></script>
-    <script src="preferences-runtime.js?v=20260904-api-v1"></script>
+    <script src="shared-shell.js?v=20260920-account-email"></script>
+    <script src="preferences-runtime.js?v=20260920-account-email"></script>
   </body>
 </html>

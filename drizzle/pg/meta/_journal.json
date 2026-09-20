@@ -372,6 +372,27 @@
       "when": 1789532699386,
       "tag": "0052_staff_totp_mfa",
       "breakpoints": true
+    },
+    {
+      "idx": 53,
+      "version": "7",
+      "when": 1789703641663,
+      "tag": "0053_school_program_intake_governance",
+      "breakpoints": true
+    },
+    {
+      "idx": 54,
+      "version": "7",
+      "when": 1789703700339,
+      "tag": "0054_school_program_intake_scope_integrity",
+      "breakpoints": true
+    },
+    {
+      "idx": 55,
+      "version": "7",
+      "when": 1789703930121,
+      "tag": "0055_school_intake_attestation_evidence",
+      "breakpoints": true
     }
   ]
 }

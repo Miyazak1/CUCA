@@ -158,6 +158,7 @@ export function normalizeProgramListOptions(options: CatalogListOptions): Catalo
     deadline: text(options.deadline),
     tuition: text(options.tuition),
     scholarship: options.scholarship === true || undefined,
+    applicationReady: options.applicationReady === true || undefined,
     upcomingDeadline: options.upcomingDeadline === true || undefined,
     languageRequirement: text(options.languageRequirement),
     sort: text(options.sort, 40),

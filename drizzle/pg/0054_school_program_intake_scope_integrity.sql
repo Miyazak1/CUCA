@@ -1,0 +1,1 @@
+ALTER TABLE "school_program_intake_versions" ADD CONSTRAINT "school_program_intake_versions_program_school_fk" FOREIGN KEY ("program_id","school_id") REFERENCES "public"."programs"("id","school_id") ON DELETE restrict ON UPDATE no action;

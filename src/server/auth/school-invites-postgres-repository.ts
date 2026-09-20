@@ -3,6 +3,7 @@ import { badRequest } from "../shared/errors.ts";
 import { lockLiveCuacStaffAuthority, type CuacInternalRole } from "./cuac-staff-authority.ts";
 import type {
   AcceptedSchoolStaffInvite,
+  ActivatedSchoolStaffInvite,
   ActiveSchoolStaffInvite,
   SchoolStaffInviteAccount,
   SchoolStaffInviteRepository,
@@ -25,6 +26,11 @@ type InviteRow = {
   role: string;
   invitedByUserId: string | null;
   expiresAt: Date;
+};
+
+type ActivatedMembershipRow = MembershipRow & {
+  userId: string;
+  emailNormalized: string;
 };
 
 type SchoolRow = {
@@ -247,6 +253,111 @@ export class PostgresSchoolStaffInviteRepository implements SchoolStaffInviteRep
       membershipId,
       acceptedAt: input.acceptedAt,
       schoolStaffRoleGranted: membershipRows[0].schoolStaffRoleGranted,
+    };
+  }
+
+  async activateInviteForNewAccount(input: {
+    inviteId: string;
+    inviteTokenHash: string;
+    schoolId: string;
+    role: SchoolStaffInviteRole;
+    invitedByUserId: string | null;
+    passwordHash: string;
+    displayName: string | null;
+    activatedAt: Date;
+  }): Promise<ActivatedSchoolStaffInvite | null> {
+    const rows = await this.client.query<ActivatedMembershipRow>(
+      `with locked_invite as (
+         select id, school_id, email, email_normalized, role, invited_by_user_id
+         from school_staff_invites
+         where id = $1
+           and token_hash = $2
+           and school_id = $3
+           and role = $4
+           and status = 'pending'
+           and revoked_at is null
+           and accepted_at is null
+           and expires_at > $6
+         for update
+       ),
+       created_user as (
+         insert into users (
+           email, email_normalized, email_verified_at, display_name,
+           account_status, created_at, updated_at
+         )
+         select email, email_normalized, $6, $7, 'active', $6, $6
+         from locked_invite
+         on conflict (email_normalized) do nothing
+         returning id
+       ),
+       created_identity as (
+         insert into auth_identities (
+           user_id, provider, provider_subject, password_hash,
+           email_normalized, metadata_json, created_at, updated_at
+         )
+         select u.id, 'password', i.email_normalized, $8,
+                i.email_normalized, '{"activation":"school_staff_invite"}'::jsonb, $6, $6
+         from created_user u cross join locked_invite i
+         returning user_id
+       ),
+       accepted_invite as (
+         update school_staff_invites i
+         set status = 'accepted',
+             accepted_by_user_id = a.user_id,
+             accepted_at = $6,
+             updated_at = $6
+         from created_identity a
+         where i.id = $1
+         returning i.id, i.school_id, i.role, i.invited_by_user_id,
+                   i.accepted_by_user_id as user_id
+       ),
+       membership as (
+         insert into school_staff_memberships (
+           school_id, user_id, role, status, invited_by_user_id, created_at, updated_at
+         )
+         select school_id, user_id, role, 'active', invited_by_user_id, $6, $6
+         from accepted_invite
+         returning id as "membershipId", user_id as "userId"
+       ),
+       role_grant as (
+         insert into user_roles (
+           user_id, role, granted_by_user_id, grant_source, created_at
+         )
+         select "userId", 'school_staff', $5, 'school_staff_invite', $6
+         from membership
+         returning id
+       )
+       select
+         membership."membershipId",
+         membership."userId",
+         locked_invite.email_normalized as "emailNormalized",
+         exists(select 1 from role_grant) as "schoolStaffRoleGranted"
+       from membership cross join locked_invite`,
+      [
+        input.inviteId,
+        input.inviteTokenHash,
+        input.schoolId,
+        input.role,
+        input.invitedByUserId,
+        input.activatedAt,
+        input.displayName,
+        input.passwordHash,
+      ],
+    );
+    const row = rows[0];
+    if (!row) return null;
+
+    return {
+      inviteId: input.inviteId,
+      schoolId: input.schoolId,
+      userId: row.userId,
+      role: input.role,
+      membershipId: row.membershipId,
+      acceptedAt: input.activatedAt,
+      schoolStaffRoleGranted: row.schoolStaffRoleGranted,
+      emailNormalized: row.emailNormalized,
+      accountCreated: true,
+      emailVerified: true,
     };
   }
 

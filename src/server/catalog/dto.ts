@@ -11,7 +11,7 @@ export type PublicProgramIntakeDto = {
   deadlineDate: Date | null;
   deadlineLabel: string | null;
   applicationRound: string | null;
-  status: "open";
+  status: "open" | "upcoming";
 };
 
 export type PublicSchoolUpcomingDeadlineDto = {
@@ -50,9 +50,10 @@ export type PublicProgramDto = {
   deadlineDate: Date | null;
   deadlineLabel: string | null;
   applicationRound: string | null;
-  intakeAvailability: "open" | "expired" | "closed" | "not_published";
+  intakeAvailability: "open" | "upcoming" | "expired" | "closed" | "not_published";
   latestIntakeTerm: string | null;
   latestIntakeYear: number | null;
+  latestIntakeOpenDate: Date | null;
   latestIntakeDeadlineDate: Date | null;
   applicationUrl: string | null;
   applicationNote: string | null;
@@ -318,6 +319,7 @@ export type CatalogListOptions = {
   deadline?: string;
   tuition?: string;
   scholarship?: boolean;
+  applicationReady?: boolean;
   upcomingDeadline?: boolean;
   languageRequirement?: string;
   sort?: string;

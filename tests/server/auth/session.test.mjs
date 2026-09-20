@@ -201,6 +201,10 @@ test("me HTTP handler hides an unverified school tenant and never returns the se
         accountStatus: "active",
       };
     },
+    async findCurrentAccountByUserId(userId) {
+      assert.equal(userId, "school-user-1");
+      return { email: "staff@example.edu", emailVerified: true };
+    },
   }).getMe(
     new Request("https://cuac.test/api/v1/me", {
       headers: { cookie: `${SESSION_COOKIE_NAME}=school-token` },
@@ -212,7 +216,21 @@ test("me HTTP handler hides an unverified school tenant and never returns the se
   assert.equal(body.data.actorUserId, "school-user-1");
   assert.equal(body.data.activeRole, "school_staff");
   assert.equal(body.data.tenantSchoolId, null);
+  assert.equal(body.data.accountEmail, "staff@example.edu");
+  assert.equal(body.data.accountEmailVerified, true);
   assert.doesNotMatch(JSON.stringify(body), /school-token|sha256:/);
+});
+
+test("me HTTP handler does not expose account identity to a guest", async () => {
+  let accountLookup = false;
+  const response = await createAuthHttpHandlers({
+    async findActiveSessionByTokenHash() { return null; },
+    async findCurrentAccountByUserId() { accountLookup = true; return { email: "hidden@example.com", emailVerified: true }; },
+  }).getMe(new Request("https://cuac.test/api/v1/me"));
+  const body = await response.json();
+  assert.equal(accountLookup, false);
+  assert.equal(body.data.accountEmail, null);
+  assert.equal(body.data.accountEmailVerified, null);
 });
 
 test("request context resolver requires a live role-matched CUAC staff access grant", async () => {

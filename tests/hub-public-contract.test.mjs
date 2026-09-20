@@ -13,7 +13,7 @@ test("Hub candidate aggregates only authenticated account APIs", async () => {
 
   assert.match(html, /<body data-agent-mode="off">/);
   assert.match(html, /hub-workspace\.css\?v=/);
-  assert.match(html, /src="shared-shell\.js"/);
+  assert.match(html, /src="shared-shell\.js(?:\?[^\"]*)?"/);
   assert.match(html, /src="hub-runtime\.js\?v=/);
   assert.doesNotMatch(html, /cuac-data\.js|cuac-actions\.js|hub\.js|data-cuac-agent/);
   for (const endpoint of [

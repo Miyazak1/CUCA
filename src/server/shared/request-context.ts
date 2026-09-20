@@ -24,6 +24,7 @@ export type RequestPurpose =
   | "student_action"
   | "school_review"
   | "school_catalog_correction"
+  | "school_catalog_intake"
   | "ops_support"
   | "ops_monitoring"
   | "billing_review"

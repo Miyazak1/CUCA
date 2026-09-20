@@ -863,6 +863,82 @@ export const programIntakes = pgTable(
   }),
 );
 
+export const schoolProgramIntakeVersions = pgTable(
+  "school_program_intake_versions",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    schoolId: uuid("school_id").notNull().references(() => schools.id, { onDelete: "restrict" }),
+    programId: uuid("program_id").notNull().references(() => programs.id, { onDelete: "restrict" }),
+    intakeTerm: text("intake_term").notNull(),
+    intakeYear: integer("intake_year").notNull(),
+    version: integer("version").notNull(),
+    openDate: timestamp("open_date", { withTimezone: true }),
+    deadlineDate: timestamp("deadline_date", { withTimezone: true }),
+    deadlineLabel: text("deadline_label"),
+    applicationRound: text("application_round"),
+    evidenceType: text("evidence_type").notNull().default("official_url"),
+    sourceUrl: text("source_url"),
+    sourceLabel: text("source_label"),
+    changeNote: text("change_note"),
+    status: text("status").notNull().default("draft"),
+    createdByUserId: uuid("created_by_user_id").notNull().references(() => users.id, { onDelete: "restrict" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  table => ({
+    scopeVersionUnique: uniqueIndex("school_program_intake_versions_scope_version_unique")
+      .on(table.programId, table.intakeTerm, table.intakeYear, table.version),
+    oneDraftPerScope: uniqueIndex("school_program_intake_versions_one_draft_unique")
+      .on(table.programId, table.intakeTerm, table.intakeYear).where(sql`${table.status} = 'draft'`),
+    idScopeUnique: uniqueIndex("school_program_intake_versions_id_scope_unique")
+      .on(table.id, table.schoolId, table.programId, table.intakeTerm, table.intakeYear),
+    programSchoolFk: foreignKey({
+      name: "school_program_intake_versions_program_school_fk",
+      columns: [table.programId, table.schoolId], foreignColumns: [programs.id, programs.schoolId],
+    }).onDelete("restrict"),
+    schoolUpdatedIdx: index("school_program_intake_versions_school_updated_idx").on(table.schoolId, table.updatedAt),
+    stateCheck: check("school_program_intake_versions_state_check", sql`${table.status} in ('draft','published','superseded','withdrawn')
+      and ${table.intakeTerm} in ('spring','summer','fall','winter')
+      and ${table.intakeYear} between 2000 and 2200 and ${table.version} > 0
+      and (${table.openDate} is null or ${table.deadlineDate} is null or ${table.openDate} < ${table.deadlineDate})
+      and ((${table.evidenceType} = 'official_url' and ${table.sourceUrl} ~ '^https://[^[:space:]]+$')
+        or (${table.evidenceType} = 'school_attestation' and ${table.sourceUrl} is null
+          and nullif(btrim(${table.sourceLabel}), '') is not null and nullif(btrim(${table.changeNote}), '') is not null))`),
+  }),
+);
+
+export const schoolProgramIntakePublications = pgTable(
+  "school_program_intake_publications",
+  {
+    schoolId: uuid("school_id").notNull().references(() => schools.id, { onDelete: "restrict" }),
+    programId: uuid("program_id").notNull().references(() => programs.id, { onDelete: "restrict" }),
+    intakeTerm: text("intake_term").notNull(),
+    intakeYear: integer("intake_year").notNull(),
+    versionId: uuid("version_id").notNull(),
+    revision: integer("revision").notNull().default(1),
+    status: text("status").notNull().default("active"),
+    publishedByUserId: uuid("published_by_user_id").notNull().references(() => users.id, { onDelete: "restrict" }),
+    publishedAt: timestamp("published_at", { withTimezone: true }).notNull().defaultNow(),
+    withdrawnByUserId: uuid("withdrawn_by_user_id").references(() => users.id, { onDelete: "restrict" }),
+    withdrawnAt: timestamp("withdrawn_at", { withTimezone: true }),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  table => ({
+    pk: primaryKey({ name: "school_program_intake_publications_pk", columns: [table.programId, table.intakeTerm, table.intakeYear] }),
+    versionScopeFk: foreignKey({
+      name: "school_program_intake_publications_version_scope_fk",
+      columns: [table.versionId, table.schoolId, table.programId, table.intakeTerm, table.intakeYear],
+      foreignColumns: [schoolProgramIntakeVersions.id, schoolProgramIntakeVersions.schoolId,
+        schoolProgramIntakeVersions.programId, schoolProgramIntakeVersions.intakeTerm, schoolProgramIntakeVersions.intakeYear],
+    }).onDelete("restrict"),
+    schoolStatusIdx: index("school_program_intake_publications_school_status_idx").on(table.schoolId, table.status),
+    stateCheck: check("school_program_intake_publications_state_check", sql`${table.status} in ('active','withdrawn')
+      and ${table.revision} > 0
+      and ((${table.status} = 'active' and ${table.withdrawnByUserId} is null and ${table.withdrawnAt} is null)
+        or (${table.status} = 'withdrawn' and ${table.withdrawnByUserId} is not null and ${table.withdrawnAt} is not null))`),
+  }),
+);
+
 export const programRequirementVersions = pgTable("program_requirement_versions", {
   id: uuid("id").primaryKey().defaultRandom(),
   programIntakeId: uuid("program_intake_id").notNull(),

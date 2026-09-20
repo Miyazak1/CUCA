@@ -1,17 +1,23 @@
-import { readFile } from "node:fs/promises";
+import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { LOCAL_STATE_RELATIVE_PATH, assertLocalDevelopmentState, localSyntheticAccounts } from "./lib/local-development.ts";
+import { totpCode } from "../src/server/auth/mfa-crypto.ts";
 
 const projectDir = fileURLToPath(new URL("../", import.meta.url));
 const state = JSON.parse(await readFile(resolve(projectDir, LOCAL_STATE_RELATIVE_PATH), "utf8")) as unknown;
 assertLocalDevelopmentState(state);
 const accounts = localSyntheticAccounts(state);
 const origin = `http://127.0.0.1:${state.applicationPort}`;
+const localMfaPath = resolve(projectDir, ".cuac-local/smoke-mfa.json");
 const results: Array<{ area: string; status: "passed"; evidence: string }> = [];
 
 type Json = Record<string, unknown>;
 type Session = { cookie: string; role: string };
+type LocalMfaAccount = { secret: string; lastUsedCounter: number };
+type LocalMfaState = { version: 1; installationId: string; accounts: Record<string, LocalMfaAccount> };
+
+const localMfa = await loadLocalMfaState();
 
 function record(value: unknown): Json {
   return value && typeof value === "object" && !Array.isArray(value) ? value as Json : {};
@@ -42,9 +48,77 @@ async function login(account: { email: string; password: string }, expectedRole:
       ...(expectedRole === "student" ? {} : { selectedSurface: expectedRole === "school_staff" ? "school_staff" : "cuac_internal" }),
       ...(schoolId ? { schoolId } : {}) }),
   });
-  const cookie = result.response.headers.get("set-cookie")?.split(";", 1)[0] ?? "";
-  assert(result.response.ok && record(record(result.body).data).activeRole === expectedRole && cookie, `${expectedRole} login failed.`);
+  const data = record(record(result.body).data);
+  if (expectedRole === "student") {
+    const cookie = result.response.headers.get("set-cookie")?.split(";", 1)[0] ?? "";
+    assert(result.response.ok && data.activeRole === expectedRole && cookie, `${expectedRole} login failed.`);
+    return { cookie, role: expectedRole };
+  }
+
+  assert(result.response.status === 202 && data.mfaRequired === true && typeof data.challengeToken === "string",
+    `${expectedRole} MFA challenge failed.`);
+  let mfaAccount = localMfa.accounts[account.email];
+  if (data.enrollmentRequired === true) {
+    const enrollment = await request("/api/v1/auth/mfa/enrollment", {
+      method: "POST", headers: { "content-type": "application/json", origin },
+      body: JSON.stringify({ challengeToken: data.challengeToken }),
+    });
+    const enrollmentData = record(record(enrollment.body).data);
+    assert(enrollment.response.status === 201 && typeof enrollmentData.secret === "string"
+      && /^[A-Z2-7]{32}$/.test(enrollmentData.secret), `${expectedRole} MFA enrollment failed.`);
+    mfaAccount = { secret: enrollmentData.secret, lastUsedCounter: -1 };
+    localMfa.accounts[account.email] = mfaAccount;
+    await saveLocalMfaState();
+  }
+  assert(mfaAccount, `${expectedRole} MFA state is unavailable; reset and reseed the local runtime.`);
+  const counter = await nextAcceptedMfaCounter(mfaAccount);
+  const completed = await request("/api/v1/auth/mfa/complete", {
+    method: "POST", headers: { "content-type": "application/json", origin },
+    body: JSON.stringify({ challengeToken: data.challengeToken, code: totpCode(mfaAccount.secret, new Date(counter * 30_000)).code }),
+  });
+  const completedData = record(record(completed.body).data);
+  const cookie = completed.response.headers.get("set-cookie")?.split(";", 1)[0] ?? "";
+  assert(completed.response.ok && completedData.activeRole === expectedRole && cookie
+    && (!schoolId || completedData.tenantSchoolId === schoolId), `${expectedRole} MFA completion failed.`);
+  mfaAccount.lastUsedCounter = counter;
+  await saveLocalMfaState();
   return { cookie, role: expectedRole };
+}
+
+async function loadLocalMfaState(): Promise<LocalMfaState> {
+  try {
+    const value = JSON.parse(await readFile(localMfaPath, "utf8")) as unknown;
+    const candidate = record(value);
+    if (candidate.version !== 1 || candidate.installationId !== state.installationId
+      || !candidate.accounts || typeof candidate.accounts !== "object" || Array.isArray(candidate.accounts)) throw new Error();
+    for (const account of Object.values(candidate.accounts as Record<string, unknown>)) {
+      const item = record(account);
+      if (typeof item.secret !== "string" || !/^[A-Z2-7]{32}$/.test(item.secret)
+        || !Number.isSafeInteger(item.lastUsedCounter) || Number(item.lastUsedCounter) < -1) throw new Error();
+    }
+    return candidate as LocalMfaState;
+  } catch (error) {
+    if (error instanceof Error && "code" in error && error.code === "ENOENT") {
+      return { version: 1, installationId: state.installationId, accounts: {} };
+    }
+    throw new Error("Local MFA state is invalid; reset and reseed the local runtime before acceptance.");
+  }
+}
+
+async function saveLocalMfaState() {
+  await mkdir(resolve(projectDir, ".cuac-local"), { recursive: true });
+  const temporary = `${localMfaPath}.tmp`;
+  await writeFile(temporary, `${JSON.stringify(localMfa, null, 2)}\n`, { encoding: "utf8", mode: 0o600 });
+  await rename(temporary, localMfaPath);
+}
+
+async function nextAcceptedMfaCounter(account: LocalMfaAccount) {
+  for (;;) {
+    const current = Math.floor(Date.now() / 30_000);
+    const next = Math.max(current, account.lastUsedCounter + 1);
+    if (next <= current + 1) return next;
+    await new Promise(resolveDelay => setTimeout(resolveDelay, 30_000 - (Date.now() % 30_000) + 50));
+  }
 }
 
 async function expectDenied(path: string, session?: Session) {

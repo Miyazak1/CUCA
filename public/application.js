@@ -88,6 +88,20 @@ const profileSectionSaveState = Object.fromEntries(profileSections.map((section)
 
 let programCatalog = {};
 
+function applyReleaseFeatureVisibility() {
+  if (STUDENT_MATERIAL_SUBMISSION_ENABLED) return;
+  document.querySelectorAll([
+    '[data-profile-section-target="files"]',
+    '[data-profile-section="files"]',
+    '[data-profile-section-target="authorization"]',
+    '[data-profile-section="authorization"]',
+  ].join(",")).forEach((element) => {
+    element.setAttribute("hidden", "");
+    element.setAttribute("aria-hidden", "true");
+  });
+  studentFilesRuntimeState = "unavailable";
+}
+
 function appProgramSchoolName(program = {}) {
   return program.schoolNameEn || program.university || program.school?.nameEn || program.school || "School to confirm";
 }
@@ -903,7 +917,7 @@ async function initializeApplicationRuntime() {
     }
     const [applicationSets, programs, schools, applicantProfile, educationHistory, assessmentHistory] = await Promise.all([
       applicationApi("/api/v1/student/application-sets"),
-      applicationApi("/api/v1/catalog/programs?limit=100"),
+      applicationApi("/api/v1/catalog/programs?limit=100&applicationReady=true"),
       applicationApi("/api/v1/catalog/schools?limit=100"),
       applicationApi("/api/v1/student/applicant-profile"),
       applicationApi("/api/v1/student/education-records"),
@@ -2148,6 +2162,48 @@ function showSubmitBlockers(message = "Complete all required sections before fin
   return false;
 }
 
+function setStudentInfoConfirmNotice(message = "", tone = "warning") {
+  const notice = document.querySelector("[data-student-info-confirm-notice]");
+  if (!notice) return;
+  notice.textContent = message;
+  notice.dataset.tone = tone;
+  notice.toggleAttribute("hidden", !message);
+}
+
+function confirmStudentInfo() {
+  if (studentRecordsRuntimeState === "loading") {
+    setStudentInfoConfirmNotice("Student records are still loading. Please try again in a moment.");
+    return;
+  }
+  if (studentRecordsRuntimeState !== "ready") {
+    setStudentInfoConfirmNotice("Student records could not be loaded. Refresh the page before confirming.");
+    return;
+  }
+  if (!isApplicantRecordReady()) {
+    setStudentInfoConfirmNotice("Applicant record is required. Complete and save your legal name, email and citizenship.");
+    openProfileDetail("applicant", { focus: true, scroll: true });
+    setProfileOperationStatus("applicant", "Complete all three required fields, then save the applicant record.", "error");
+    return;
+  }
+  if (educationHistoryRecord.records.length === 0) {
+    setStudentInfoConfirmNotice("Education history is required. Add and save at least one institution.");
+    openProfileDetail("education", { focus: true, scroll: true });
+    setProfileOperationStatus("education", "Add at least one education record before confirming student info.", "error");
+    return;
+  }
+
+  const remainingBlocker = getSubmitBlockers().find((blocker) => blocker.key !== "student-info");
+  if (remainingBlocker) {
+    setStudentInfoConfirmNotice(`Student info is ready. Next, ${remainingBlocker.label}.`, "success");
+    navigateApplicationStage(remainingBlocker.target, { scroll: true });
+    showPageAction(`Student info is ready. Next, ${remainingBlocker.label}.`);
+    return;
+  }
+
+  setStudentInfoConfirmNotice("Student info confirmed. Opening the final review.", "success");
+  navigateApplicationStage("send", { scroll: true });
+}
+
 function canReviewAndSubmit() {
   return getSubmitBlockers().length === 0;
 }
@@ -2911,6 +2967,11 @@ function intakeAvailabilityMessage(program = {}) {
     .filter(Boolean).join(" ");
   const rawDeadline = program.latestIntakeDeadlineDate;
   const deadline = rawDeadline ? new Date(rawDeadline).toLocaleDateString() : "";
+  const rawOpenDate = program.latestIntakeOpenDate;
+  const openDate = rawOpenDate ? new Date(rawOpenDate).toLocaleDateString() : "";
+  if (program.intakeAvailability === "upcoming") {
+    return `Not open yet${intake ? `: ${intake}` : ""}${openDate ? ` opens on ${openDate}` : ""}`;
+  }
   if (program.intakeAvailability === "expired") {
     return `Closed${intake ? `: ${intake}` : ""}${deadline ? ` deadline passed on ${deadline}` : ""}`;
   }
@@ -3091,6 +3152,9 @@ document.addEventListener("click", (event) => {
       navigateApplicationStage("payment", { scroll: true });
     }
   }
+
+  const confirmInfo = event.target.closest("[data-confirm-student-info]");
+  if (confirmInfo) confirmStudentInfo();
 
   const nextStep = event.target.closest("[data-next-application-step]");
   if (nextStep) {
@@ -3280,6 +3344,7 @@ document.addEventListener("click", (event) => {
   showProfileOverview({ scroll: true });
 });
 
+applyReleaseFeatureVisibility();
 renderIcons();
 renderStudentInfoStatus();
 updateProfileSaveStatus();

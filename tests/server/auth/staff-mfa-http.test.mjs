@@ -6,6 +6,7 @@ const challengeToken = Buffer.alloc(32, 5).toString("base64url");
 
 test("MFA enrollment response is no-store and returns only authenticator enrollment material", async () => {
   const calls = [];
+  const rateLimitCalls = [];
   const handlers = createStaffMfaHttpHandlers({
     async startEnrollment(input) {
       calls.push(input);
@@ -13,7 +14,7 @@ test("MFA enrollment response is no-store and returns only authenticator enrollm
         otpauthUri: "otpauth://totp/CUAC%3Astaff%40example.edu?secret=" + "A".repeat(32),
         expiresAt: new Date("2026-09-16T00:05:00.000Z") };
     },
-  });
+  }, { rateLimiter: { async assertAllowed(input) { rateLimitCalls.push(input); } } });
   const response = await handlers.startEnrollment(new Request("https://cuac.test/api/v1/auth/mfa/enrollment", {
     method: "POST", headers: { "content-type": "application/json" },
     body: JSON.stringify({ challengeToken }),
@@ -24,16 +25,19 @@ test("MFA enrollment response is no-store and returns only authenticator enrollm
   const body = await response.json();
   assert.equal(body.data.secret, "A".repeat(32));
   assert.equal(JSON.stringify(body).includes("ciphertext"), false);
+  assert.equal(rateLimitCalls[0].action, "auth.mfa.enrollment");
+  assert.equal(rateLimitCalls[0].subject.route, "/api/v1/auth/mfa/enrollment");
 });
 
 test("successful MFA completion issues the normal secure session cookie and shows recovery codes only when enrolled", async () => {
+  const rateLimitCalls = [];
   const handlers = createStaffMfaHttpHandlers({
     async completeLogin() {
       return { userId: "staff-1", sessionId: "session-1", sessionToken: Buffer.alloc(32, 6).toString("base64url"),
         expiresAt: new Date(Date.now() + 60_000), selectedSurface: "ops", activeRole: "cuac_admin",
         tenantSchoolId: null, recoveryCodes: ["AAAA-BBBB-CCCC-DDDD"] };
     },
-  }, { secureCookies: true });
+  }, { secureCookies: true, rateLimiter: { async assertAllowed(input) { rateLimitCalls.push(input); } } });
   const response = await handlers.completeLogin(new Request("https://cuac.test/api/v1/auth/mfa/complete", {
     method: "POST", headers: { "content-type": "application/json" },
     body: JSON.stringify({ challengeToken, code: "123456" }),
@@ -44,6 +48,8 @@ test("successful MFA completion issues the normal secure session cookie and show
   const body = await response.json();
   assert.deepEqual(body.data.recoveryCodes, ["AAAA-BBBB-CCCC-DDDD"]);
   assert.equal(JSON.stringify(body).includes("sessionToken"), false);
+  assert.equal(rateLimitCalls[0].action, "auth.mfa.complete");
+  assert.equal(rateLimitCalls[0].subject.route, "/api/v1/auth/mfa/complete");
 });
 
 test("failed MFA completion is a stable forbidden response without a cookie", async () => {

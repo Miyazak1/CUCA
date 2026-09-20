@@ -353,6 +353,18 @@ body {
   color: var(--text-muted);
 }
 
+.account-popover-head .account-email {
+  display: block;
+  max-width: 215px;
+  margin-top: 3px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .account-auth-pending {
   display: grid;
   width: 42px;

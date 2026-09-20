@@ -19,6 +19,9 @@ test("public account page uses real Auth APIs without browser-owned authenticati
     assert.match(script, new RegExp(endpoint.replaceAll("/", "\\/")));
   }
   assert.match(script, /credentials:\s*"same-origin"/);
+  assert.match(shell, /actor\.accountEmail/);
+  assert.match(shell, /actor\.accountEmailVerified/);
+  assert.match(shell, /Registered account email/);
   assert.match(script, /body:\s*\{ email, password \}/);
   assert.match(script, /workspaceSelectionRequired/);
   assert.match(script, /dataset\.workspaceIndex/);
@@ -76,4 +79,25 @@ test("email action pages clear fragment credentials and submit only explicit POS
   assert.doesNotMatch(client, /localStorage|sessionStorage|console\./);
   assert.match(verifyPage, /AuthActionClient kind="verify"/);
   assert.match(resetPage, /AuthActionClient kind="reset"/);
+});
+
+test("school invitation action separates new staff activation from explicit existing-account binding", async () => {
+  const [client, page, route] = await Promise.all([
+    source("app/auth/school-invite/school-invite-client.tsx"),
+    source("app/auth/school-invite/page.tsx"),
+    source("app/api/v1/auth/school-invites/[inviteId]/activate/route.ts"),
+  ]);
+
+  assert.match(client, /window\.location\.hash\.slice\(1\)/);
+  assert.match(client, /window\.history\.replaceState/);
+  assert.match(client, /\/api\/v1\/auth\/school-invites\/\$\{encodeURIComponent\(credential\.inviteId\)\}\/\$\{action\}/);
+  assert.match(client, /action: "activate" \| "accept"/);
+  assert.match(client, /This does not create student access/);
+  assert.match(client, /Accept with this account/);
+  assert.match(client, /minLength=\{15\}/);
+  assert.doesNotMatch(client, /localStorage|sessionStorage|console\./);
+  assert.match(page, /SchoolInviteClient/);
+  assert.match(route, /secureApiRoute\("POST"/);
+  assert.match(route, /getSchoolStaffInviteRouteHandlers\(\)\.activate/);
+  assert.doesNotMatch(route, /sha256|token_hash|insert\s+|update\s+/i);
 });

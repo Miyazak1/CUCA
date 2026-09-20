@@ -24,6 +24,7 @@ import {
 } from "./mappers.ts";
 import type { PublicCatalogRepository } from "./service.ts";
 import { getPublishedProgramRequirements } from "./postgres-requirements.ts";
+import { currentIntakeWindowSql, upcomingIntakeWindowSql } from "./intake-window.ts";
 
 export type SqlCatalogClient = {
   query<T extends Record<string, unknown>>(statement: string, params: readonly unknown[]): Promise<T[]>;
@@ -75,11 +76,11 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
     const rows = await this.client.query<PublicProgramIntakeDto>(
       `select pi.id, pi.program_id as "programId", pi.intake_term as "intakeTerm", pi.intake_year as "intakeYear",
          pi.open_date as "openDate", pi.deadline_date as "deadlineDate", pi.deadline_label as "deadlineLabel",
-         pi.application_round as "applicationRound", pi.status
+         pi.application_round as "applicationRound",
+         case when ${upcomingIntakeWindowSql()} then 'upcoming' else 'open' end as status
        from program_intakes pi join programs p on p.id = pi.program_id join schools s on s.id = p.school_id
        where pi.program_id = $1 and p.status = 'active' and s.status = 'active' and pi.status = 'open'
-         and (pi.deadline_date is null or pi.deadline_date > clock_timestamp())
-         and (pi.open_date is null or pi.deadline_date is null or pi.open_date < pi.deadline_date)
+         and ((${currentIntakeWindowSql()}) or (${upcomingIntakeWindowSql()}))
        order by pi.intake_year asc, pi.sort_order asc, pi.intake_term asc, pi.id asc
        limit $2 offset $3`, [programId, options.limit ?? 20, options.offset ?? 0],
     );
@@ -274,6 +275,7 @@ function buildProgramListQuery(options: CatalogListOptions) {
     clauses.push(`(lower(s.id::text) = ${ref} or lower(s.slug) = ${ref} or lower(s.name_en) = ${ref} or lower(coalesce(s.name_zh, '')) = ${ref})`);
   }
   if (options.scholarship) clauses.push("p.has_scholarship = true");
+  if (options.applicationReady) clauses.push("next_intake.id is not null");
   if (options.upcomingDeadline) clauses.push("next_intake.deadline_date is not null");
   if (options.intake) clauses.push(`lower(coalesce(next_intake.application_round, '')) like ${add(`%${options.intake.toLowerCase()}%`)}`);
   if (options.languageRequirement) {
@@ -312,13 +314,20 @@ left join cities c on c.id = coalesce(p.city_id, s.city_id) and c.status = 'acti
   select pi.id, pi.deadline_date, pi.deadline_label, pi.application_round
   from program_intakes pi
   where pi.program_id = p.id and pi.status = 'open'
-    and (pi.deadline_date is null or pi.deadline_date > clock_timestamp())
-    and (pi.open_date is null or pi.deadline_date is null or pi.open_date < pi.deadline_date)
+    and ${currentIntakeWindowSql()}
   order by pi.deadline_date asc nulls last
   limit 1
 ) next_intake on true
 left join lateral (
-  select pi.intake_term, pi.intake_year, pi.deadline_date, pi.status
+  select pi.id, pi.intake_term, pi.intake_year, pi.open_date, pi.deadline_date
+  from program_intakes pi
+  where pi.program_id = p.id and pi.status = 'open'
+    and ${upcomingIntakeWindowSql()}
+  order by pi.open_date asc, pi.intake_year asc, pi.sort_order asc, pi.intake_term asc, pi.id asc
+  limit 1
+) upcoming_intake on true
+left join lateral (
+  select pi.intake_term, pi.intake_year, pi.open_date, pi.deadline_date, pi.status
   from program_intakes pi
   where pi.program_id = p.id
   order by pi.intake_year desc, pi.sort_order desc, pi.intake_term desc, pi.id desc
@@ -377,13 +386,15 @@ select
   next_intake.application_round as "applicationRound",
   case
     when next_intake.id is not null then 'open'
+    when upcoming_intake.id is not null then 'upcoming'
     when latest_intake.intake_year is null then 'not_published'
     when latest_intake.deadline_date is not null and latest_intake.deadline_date <= clock_timestamp() then 'expired'
     else 'closed'
   end as "intakeAvailability",
-  latest_intake.intake_term as "latestIntakeTerm",
-  latest_intake.intake_year as "latestIntakeYear",
-  latest_intake.deadline_date as "latestIntakeDeadlineDate"
+  coalesce(upcoming_intake.intake_term, latest_intake.intake_term) as "latestIntakeTerm",
+  coalesce(upcoming_intake.intake_year, latest_intake.intake_year) as "latestIntakeYear",
+  coalesce(upcoming_intake.open_date, latest_intake.open_date) as "latestIntakeOpenDate",
+  coalesce(upcoming_intake.deadline_date, latest_intake.deadline_date) as "latestIntakeDeadlineDate"
 ${programListFromSql}`;
 
 const schoolSelectSql = `
@@ -446,7 +457,7 @@ select
       from programs p2
       join program_intakes pi on pi.program_id = p2.id and pi.status = 'open'
       where p2.school_id = s.id and p2.status = 'active'
-        and (pi.deadline_date is null or pi.deadline_date > clock_timestamp())
+        and ${currentIntakeWindowSql()}
       order by pi.deadline_date asc nulls last, p2.name_en asc
       limit 8
     ) deadline

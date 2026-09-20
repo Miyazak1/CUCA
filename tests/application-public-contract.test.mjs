@@ -15,6 +15,7 @@ test("student application choices use server-owned application sets and exact pu
   ]);
 
   assert.match(script, /applicationApi\("\/api\/v1\/student\/application-sets"/);
+  assert.match(script, /\/api\/v1\/catalog\/programs\?limit=100&applicationReady=true/);
   assert.match(script, /applicationApi\(`\/api\/v1\/catalog\/programs\/\$\{encodeURIComponent\(programId\)\}`\)/);
   assert.match(script, /\/api\/v1\/student\/application-sets\/\$\{encodeURIComponent\(currentApplicationSet\.id\)\}\/choices/);
   assert.match(script, /\/choice-order/);
@@ -24,6 +25,8 @@ test("student application choices use server-owned application sets and exact pu
   assert.match(script, /programIntakeId:\s*selected\.programIntakeId \|\| null/);
   assert.match(script, /Save as intake pending/);
   assert.match(script, /program\.intakeAvailability === "expired"/);
+  assert.match(script, /program\.intakeAvailability === "upcoming"/);
+  assert.match(script, /latestIntakeOpenDate/);
   assert.match(script, /select an open intake for every program before sending/);
   assert.match(script, /renderLockedChoiceField\(form\.elements\.language, appProgramLanguage\(detail\), "Teaching language"\)/);
   assert.match(script, /data-program-intake-id=/);
@@ -40,6 +43,10 @@ test("student application choices use server-owned application sets and exact pu
   assert.match(html, /href="hub-api\.html"/);
   assert.match(html, /href="favourites-api\.html"/);
   assert.match(script, /const APPLICATION_PAYMENT_ENABLED = false/);
+  assert.match(script, /const STUDENT_MATERIAL_SUBMISSION_ENABLED = false/);
+  assert.match(script, /function applyReleaseFeatureVisibility\(\)/);
+  assert.match(html, /data-profile-section-target="files" hidden aria-hidden="true"/);
+  assert.match(html, /data-profile-section-target="authorization" hidden aria-hidden="true"/);
   assert.match(html, /data-application-step="payment"[^>]*hidden/);
   assert.match(html, /data-fee-card hidden/);
   assert.match(script, /let programCatalog = \{\};/);
@@ -62,6 +69,12 @@ test("student application choices use server-owned application sets and exact pu
   assert.match(script, /materialsShared !== false/);
   assert.match(script, /paymentRequired !== false/);
   assert.match(html, /Confirm and send to schools/);
+  assert.match(html, /data-confirm-student-info/);
+  assert.match(html, /data-student-info-confirm-notice aria-live="polite" hidden/);
+  assert.match(script, /function confirmStudentInfo\(\)/);
+  assert.match(script, /openProfileDetail\("applicant", \{ focus: true, scroll: true \}\)/);
+  assert.match(script, /openProfileDetail\("education", \{ focus: true, scroll: true \}\)/);
+  assert.match(script, /Student info confirmed\. Opening the final review\./);
   assert.match(html, /No application materials or payment details were shared/);
   assert.match(script, /prefillChoiceFromRoute\(routeParams\)/);
   assert.match(script, /catalogProgramsById\.set\(programId, summary\)/);

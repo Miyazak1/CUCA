@@ -53,7 +53,7 @@ const correctionStatusLabels = {
   rejected: "未采纳",
 };
 
-const schoolSettingsState = { corrections: null, busy: false };
+const schoolSettingsState = { corrections: null, intakes: null, actor: null, busy: false };
 
 function formatDate(value) {
   const date = new Date(value);
@@ -130,7 +130,41 @@ function renderCorrectionWorkspace(corrections) {
   </section>`;
 }
 
-function renderSettings(actor, school, corrections) {
+const intakeStatusLabels = { draft: "草稿", published: "已发布", superseded: "历史版本", withdrawn: "已撤回" };
+
+function renderIntakeWorkspace(data, actor) {
+  const programs = Array.isArray(data?.programs) ? data.programs : [];
+  const items = Array.isArray(data?.items) ? data.items : [];
+  const options = programs.map(program => `<option value="${escapeHtml(program.id)}">${escapeHtml(textOrFallback(program.nameZh, program.nameEn))} · ${escapeHtml(program.degreeLevel)}</option>`).join("");
+  const history = items.length ? `<div class="school-settings-history">${items.map(item => `<article class="school-settings-history-row">
+    <header><div><strong>${escapeHtml(textOrFallback(item.programNameZh, item.programNameEn))}</strong><span>${escapeHtml(item.intakeTerm)} ${escapeHtml(item.intakeYear)} · ${escapeHtml(intakeStatusLabels[item.status] || item.status)}</span></div><span class="school-settings-badge is-neutral">版本 ${escapeHtml(item.version)}</span></header>
+    <dl><div><dt>开放时间</dt><dd>${escapeHtml(item.openDate ? formatDate(item.openDate) : "发布后立即开放")}</dd></div><div><dt>截止时间</dt><dd>${escapeHtml(formatDate(item.deadlineDate))}</dd></div><div><dt>依据</dt><dd>${escapeHtml(item.evidenceType === "school_attestation" ? item.sourceLabel : textOrFallback(item.sourceLabel, "官方简章"))}</dd></div></dl>
+    <p>${item.sourceUrl ? `<a class="school-settings-link" href="${escapeHtml(safeHttpsLink(item.sourceUrl))}" target="_blank" rel="noopener noreferrer">查看官方简章</a>` : escapeHtml(item.changeNote || "认证学校声明")}</p>
+    <div class="school-settings-row-actions">${item.status === "draft" ? `<button class="school-settings-primary" type="button" data-intake-publish="${escapeHtml(item.id)}">发布批次</button>` : ""}${item.publicationStatus === "active" ? `<button class="school-settings-secondary" type="button" data-intake-withdraw="${escapeHtml(item.id)}">撤回批次</button>` : ""}</div>
+  </article>`).join("")}</div>` : '<p class="school-settings-empty">尚未创建年度招生批次。</p>';
+  return `<section class="school-settings-corrections" aria-labelledby="school-intakes-title">
+    <header class="school-settings-section-heading"><div><p class="school-settings-kicker">年度招生</p><h2 id="school-intakes-title">项目与招生批次</h2></div><p>每个年份创建独立批次；历史年度不会被覆盖。发布与撤回需要加强验证。</p></header>
+    <div class="school-settings-correction-layout">
+      <form class="school-settings-correction-form" data-school-intake-form>
+        <label><span>项目</span><select name="programId" required>${options || '<option value="">本校暂无可维护项目</option>'}</select></label>
+        <div class="school-settings-inline-fields"><label><span>入学季</span><select name="intakeTerm" required><option value="spring">春季</option><option value="summer">夏季</option><option value="fall">秋季</option><option value="winter">冬季</option></select></label><label><span>入学年份</span><input name="intakeYear" type="number" min="${new Date().getUTCFullYear()}" max="2200" value="${new Date().getUTCFullYear() + 1}" required /></label></div>
+        <div class="school-settings-inline-fields"><label><span>开放日期（可空）</span><input name="openDate" type="date" /></label><label><span>截止日期</span><input name="deadlineDate" type="date" required /></label></div>
+        <label><span>申请轮次</span><input name="applicationRound" maxlength="256" placeholder="例如 Fall 2027 international intake" /></label>
+        <label><span>日期说明</span><input name="deadlineLabel" maxlength="256" placeholder="例如 June 30, 2027" /></label>
+        <label><span>更新依据</span><select name="evidenceType" required><option value="official_url">学校官方简章链接</option><option value="school_attestation">认证学校招生办声明</option></select></label>
+        <label data-intake-source-url><span>官方简章链接</span><input name="sourceUrl" type="url" maxlength="2048" placeholder="https://" required /></label>
+        <label><span>依据名称</span><input name="sourceLabel" maxlength="256" placeholder="简章名称或招生办公室确认" /></label>
+        <label><span>更新说明</span><textarea name="changeNote" maxlength="1000" rows="3" placeholder="学校声明模式下必须填写"></textarea></label>
+        <button class="school-settings-primary" type="submit" ${programs.length ? "" : "disabled"}>保存草稿</button>
+        <p class="school-settings-form-note" data-school-intake-note>保存草稿不会影响学生端；发布后才进入公开目录。</p>
+        ${actor.authStrength === "step_up" ? '<p class="school-settings-form-note">当前会话已完成加强验证。</p>' : '<label><span>发布前验证密码</span><input name="stepUpPassword" type="password" autocomplete="current-password" placeholder="发布或撤回时使用" /></label><label><span>验证器动态码</span><input name="stepUpCode" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="6 位动态码" /></label>'}
+      </form>
+      <section class="school-settings-history-section"><h3>批次版本记录</h3>${history}</section>
+    </div>
+  </section>`;
+}
+
+function renderSettings(actor, school, corrections, intakes) {
   const root = document.querySelector("[data-school-settings-view]");
   if (!root) return;
   const website = safeHttpsLink(school.websiteUrl);
@@ -147,7 +181,7 @@ function renderSettings(actor, school, corrections) {
         <h2 id="school-access-title">会话与租户</h2>
         <dl class="school-settings-facts">
           <div><dt>当前角色</dt><dd>学校工作人员</dd></div>
-          <div><dt>登录强度</dt><dd>${actor.authStrength === "step-up" ? "已加强验证" : "普通登录"}</dd></div>
+          <div><dt>登录强度</dt><dd>${actor.authStrength === "step_up" ? "已加强验证" : "普通登录"}</dd></div>
           <div><dt>工作区范围</dt><dd>仅当前学校</dd></div>
         </dl>
       </section>
@@ -166,6 +200,7 @@ function renderSettings(actor, school, corrections) {
         <p class="school-settings-note"><strong>目录治理边界</strong>名称、学校归属和核验状态不能由学校工作区直接修改。下方更正仅支持当前 API 已定义的七个公开字段。</p>
       </section>
     </div>
+    ${renderIntakeWorkspace(intakes, actor)}
     ${renderCorrectionWorkspace(corrections)}`;
 }
 
@@ -191,10 +226,11 @@ async function loadSchoolSettings() {
   const auth = await requireSchoolAccount();
   if (!auth) return;
   try {
-    const [actor, school, corrections] = await Promise.all([
+    const [actor, school, corrections, intakes] = await Promise.all([
       requestJson("/api/v1/me"),
       requestJson(`/api/v1/catalog/schools/${encodeURIComponent(auth.tenantSchoolId)}`),
       requestJson("/api/v1/school/catalog-corrections"),
+      requestJson("/api/v1/school/catalog/intakes"),
     ]);
     if (!isRecord(actor)
       || actor.activeRole !== "school_staff"
@@ -203,11 +239,14 @@ async function loadSchoolSettings() {
       || !isRecord(school) || school.id !== auth.tenantSchoolId
       || !isRecord(corrections) || !isRecord(corrections.school) || !Array.isArray(corrections.items)
       || corrections.school.id !== auth.tenantSchoolId
-      || typeof corrections.school.updatedAt !== "string") {
+      || typeof corrections.school.updatedAt !== "string"
+      || !isRecord(intakes) || !Array.isArray(intakes.programs) || !Array.isArray(intakes.items)) {
       throw new SchoolSettingsRequestError("学校工作区响应与当前租户不一致。", 200, "INVALID_RESPONSE");
     }
     schoolSettingsState.corrections = corrections;
-    renderSettings(actor, school, corrections);
+    schoolSettingsState.intakes = intakes;
+    schoolSettingsState.actor = actor;
+    renderSettings(actor, school, corrections, intakes);
   } catch (error) {
     renderError(error);
   }
@@ -267,8 +306,74 @@ async function submitCorrection(form) {
   }
 }
 
+function intakeDate(value, endOfDay = false) {
+  if (!value) return null;
+  const suffix = endOfDay ? "T23:59:59.000Z" : "T00:00:00.000Z";
+  const date = new Date(`${value}${suffix}`);
+  return Number.isFinite(date.getTime()) ? date.toISOString() : null;
+}
+
+function updateIntakeEvidenceFields(form) {
+  const attestation = form.elements.evidenceType?.value === "school_attestation";
+  const sourceRow = form.querySelector("[data-intake-source-url]");
+  if (sourceRow) sourceRow.hidden = attestation;
+  if (form.elements.sourceUrl) {
+    form.elements.sourceUrl.required = !attestation;
+    if (attestation) form.elements.sourceUrl.value = "";
+  }
+  if (form.elements.sourceLabel) form.elements.sourceLabel.required = attestation;
+  if (form.elements.changeNote) form.elements.changeNote.required = attestation;
+}
+
+async function submitIntakeDraft(form) {
+  if (schoolSettingsState.busy) return;
+  const values = new FormData(form), note = form.querySelector("[data-school-intake-note]"), button = form.querySelector("button[type=submit]");
+  schoolSettingsState.busy = true; button?.setAttribute("disabled", "");
+  if (note) note.textContent = "正在保存批次草稿。";
+  try {
+    await requestJson("/api/v1/school/catalog/intakes", { method: "POST", body: JSON.stringify({
+      programId: String(values.get("programId") || ""), intakeTerm: String(values.get("intakeTerm") || ""),
+      intakeYear: Number(values.get("intakeYear")), openDate: intakeDate(String(values.get("openDate") || "")),
+      deadlineDate: intakeDate(String(values.get("deadlineDate") || ""), true),
+      deadlineLabel: String(values.get("deadlineLabel") || "").trim() || null,
+      applicationRound: String(values.get("applicationRound") || "").trim() || null,
+      evidenceType: String(values.get("evidenceType") || ""),
+      sourceUrl: String(values.get("sourceUrl") || "").trim() || null,
+      sourceLabel: String(values.get("sourceLabel") || "").trim() || null,
+      changeNote: String(values.get("changeNote") || "").trim() || null,
+    }) });
+    await loadSchoolSettings();
+  } catch (error) { if (note) note.textContent = error?.message || "批次草稿保存失败。"; }
+  finally { schoolSettingsState.busy = false; button?.removeAttribute("disabled"); }
+}
+
+async function ensureSchoolStepUp(form) {
+  if (schoolSettingsState.actor?.authStrength === "step_up") return;
+  const password = String(form?.elements?.stepUpPassword?.value || "");
+  const code = String(form?.elements?.stepUpCode?.value || "").trim();
+  if (!password || !code) throw new SchoolSettingsRequestError("发布或撤回前，请输入当前账号密码和验证器动态码。", 403, "STEP_UP_REQUIRED");
+  await requestJson("/api/v1/auth/step-up", { method: "POST", body: JSON.stringify({ password, code }) });
+  schoolSettingsState.actor = await requestJson("/api/v1/me");
+}
+
+async function changeIntakePublication(versionId, action) {
+  if (schoolSettingsState.busy) return;
+  const form = document.querySelector("[data-school-intake-form]"), note = form?.querySelector("[data-school-intake-note]");
+  schoolSettingsState.busy = true;
+  try {
+    await ensureSchoolStepUp(form);
+    await requestJson(`/api/v1/school/catalog/intakes/${encodeURIComponent(versionId)}/${action}`, { method: "POST" });
+    await loadSchoolSettings();
+  } catch (error) { if (note) note.textContent = error?.message || "批次发布状态更新失败。"; }
+  finally { schoolSettingsState.busy = false; }
+}
+
 document.addEventListener("click", event => {
   if (event.target.closest("[data-retry-school-settings]")) void loadSchoolSettings();
+  const publish = event.target.closest("[data-intake-publish]");
+  if (publish) void changeIntakePublication(publish.dataset.intakePublish, "publish");
+  const withdraw = event.target.closest("[data-intake-withdraw]");
+  if (withdraw) void changeIntakePublication(withdraw.dataset.intakeWithdraw, "withdraw");
 });
 
 document.addEventListener("change", event => {
@@ -279,12 +384,17 @@ document.addEventListener("change", event => {
     form.elements.value.disabled = event.target.checked;
     form.elements.value.required = !event.target.checked;
   }
+  const intakeForm = event.target.closest("[data-school-intake-form]");
+  if (intakeForm && event.target.name === "evidenceType") updateIntakeEvidenceFields(intakeForm);
 });
 
 document.addEventListener("submit", event => {
-  if (!event.target.matches("[data-school-correction-form]")) return;
-  event.preventDefault();
-  void submitCorrection(event.target);
+  if (event.target.matches("[data-school-correction-form]")) {
+    event.preventDefault(); void submitCorrection(event.target);
+  }
+  if (event.target.matches("[data-school-intake-form]")) {
+    event.preventDefault(); void submitIntakeDraft(event.target);
+  }
 });
 
 void loadSchoolSettings();

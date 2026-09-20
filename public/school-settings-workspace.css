@@ -320,6 +320,10 @@
 .school-settings-correction-form textarea:disabled { background: var(--school-settings-soft); }
 .school-settings-correction-form .school-settings-primary { width: max-content; border: 0; cursor: pointer; }
 .school-settings-correction-form .school-settings-primary:disabled { cursor: wait; opacity: 0.55; }
+.school-settings-inline-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.school-settings-row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.school-settings-row-actions button { min-height: 36px; padding: 7px 12px; cursor: pointer; }
+[data-intake-source-url][hidden] { display: none; }
 
 .school-settings-current {
   display: grid;
@@ -371,6 +375,7 @@
 
   .school-settings-section-heading,
   .school-settings-correction-layout { grid-template-columns: 1fr; gap: 24px; }
+  .school-settings-inline-fields { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 500px) {

@@ -40,6 +40,13 @@ test("Postgres auth session repository uses fixed active-session SQL", async () 
   assert.match(calls[0].statement, /s\.revoked_at is null/);
   assert.match(calls[0].statement, /u\.account_status = 'active'/);
   assert.match(calls[0].statement, /r\.user_id = s\.user_id and r\.role = s\.active_role and r\.revoked_at is null/);
+  assert.match(calls[0].statement, /s\.selected_surface = 'student' and s\.active_role = 'student'/);
+  assert.match(calls[0].statement, /from school_staff_memberships m/);
+  assert.match(calls[0].statement, /m\.school_id = s\.tenant_school_id/);
+  assert.match(calls[0].statement, /m\.status = 'active'/);
+  assert.match(calls[0].statement, /from cuac_staff_access_grants g/);
+  assert.match(calls[0].statement, /g\.requested_role = s\.active_role/);
+  assert.match(calls[0].statement, /g\.expires_at > \$2/);
   assert.doesNotMatch(calls[0].statement, /select \*/i);
   assert.deepEqual(calls[0].params, ["sha256:abc", now]);
 });
@@ -121,6 +128,24 @@ test("Postgres auth repository finds password identity by normalized email with 
   assert.match(calls[0].statement, /i\.email_normalized = \$1/);
   assert.doesNotMatch(calls[0].statement, /select \*/i);
   assert.deepEqual(calls[0].params, ["student@example.com"]);
+});
+
+test("Postgres auth repository projects only the current active account email state", async () => {
+  const calls = [];
+  const repository = new PostgresAuthSessionRepository({
+    async query(statement, params) {
+      calls.push({ statement, params });
+      return [{ email: "student@example.com", emailVerified: true }];
+    },
+  });
+  const account = await repository.findCurrentAccountByUserId("user-1");
+  assert.deepEqual(account, { email: "student@example.com", emailVerified: true });
+  assert.match(calls[0].statement, /email_verified_at is not null/);
+  assert.match(calls[0].statement, /from users/);
+  assert.match(calls[0].statement, /id = \$1/);
+  assert.match(calls[0].statement, /account_status = 'active'/);
+  assert.doesNotMatch(calls[0].statement, /select \*/i);
+  assert.deepEqual(calls[0].params, ["user-1"]);
 });
 
 test("Postgres auth repository discovers only active server-owned workspace authorities", async () => {

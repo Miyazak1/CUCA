@@ -148,6 +148,8 @@ export async function runIdentityIsolationRehearsal(t, pool) {
     assert.equal((await authHttp.createSession(request("/api/v1/auth/sessions", null, {
       email: staff.email, password, selectedSurface: "school_staff", schoolId: otherSchool.id,
     }))).status, 403);
+    await pool.query("update school_staff_memberships set status = 'removed', removed_at = now() where school_id = $1 and user_id = $2", [school.id, staff.userId]);
+    assert.equal((await resolveRequestContextFromRequest(request("/api/v1/me", schoolToken), auth)).activeRole, "guest");
 
     const ops = await createStudent();
     await pool.query("insert into user_roles (user_id, role) values ($1, 'cuac_ops')", [ops.userId]);
@@ -161,6 +163,8 @@ export async function runIdentityIsolationRehearsal(t, pool) {
       tenantSchoolId: opsBody.data.tenantSchoolId },
     { activeRole: "cuac_ops", selectedSurface: "ops", tenantSchoolId: null });
     await pool.query("update cuac_staff_access_grants set status = 'revoked', revoked_at = now() where id = $1", [grantId]);
+    const opsToken = opsLogin.headers.get("set-cookie").split(";")[0].split("=")[1];
+    assert.equal((await resolveRequestContextFromRequest(request("/api/v1/me", opsToken), auth)).activeRole, "guest");
     assert.equal((await authHttp.createSession(request("/api/v1/auth/sessions", null, {
       email: ops.email, password, selectedSurface: "cuac_internal",
     }))).status, 403);
@@ -177,11 +181,18 @@ export async function runIdentityIsolationRehearsal(t, pool) {
 
   await t.test("role revocation invalidates old sessions for student and CUAC roles", async () => {
     const student = await createStudent();
+    const { rows: [school] } = await pool.query(
+      "insert into schools (slug, name_en, status) values ($1, 'Revocation School', 'active') returning id",
+      [randomUUID()],
+    );
     for (const role of ["student", "school_staff", "cuac_ops", "cuac_admin"]) {
       await pool.query("insert into user_roles (user_id, role) values ($1, $2) on conflict (user_id, role) where revoked_at is null do nothing", [student.userId, role]);
+      if (role === "school_staff") {
+        await pool.query("insert into school_staff_memberships (school_id, user_id, role, status) values ($1, $2, 'viewer', 'active')", [school.id, student.userId]);
+      }
       if (role === "cuac_ops" || role === "cuac_admin") await grantCuacStaffAccess(pool, student.userId, role);
       const token = randomUUID();
-      await pool.query("insert into auth_sessions (user_id, session_token_hash, selected_surface, active_role, expires_at) values ($1, $2, $3, $4, now() + interval '1 hour')", [student.userId, hashSessionToken(token), role === "student" ? "student" : role === "school_staff" ? "school" : "ops", role]);
+      await pool.query("insert into auth_sessions (user_id, session_token_hash, selected_surface, active_role, tenant_school_id, expires_at) values ($1, $2, $3, $4, $5, now() + interval '1 hour')", [student.userId, hashSessionToken(token), role === "student" ? "student" : role === "school_staff" ? "school" : "ops", role, role === "school_staff" ? school.id : null]);
       assert.equal((await resolveRequestContextFromRequest(request("/api/v1/me", token), auth)).activeRole, role);
       await pool.query("update user_roles set revoked_at = now() where user_id = $1 and role = $2", [student.userId, role]);
       assert.equal((await resolveRequestContextFromRequest(request("/api/v1/me", token), auth)).activeRole, "guest");

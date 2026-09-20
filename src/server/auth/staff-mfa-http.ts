@@ -15,7 +15,7 @@ export function createStaffMfaHttpHandlers(
       try {
         const body = await readAuthBody(request, ["challengeToken"]);
         await options.rateLimiter?.assertAllowed({
-          action: "auth.mfa_enrollment",
+          action: "auth.mfa.enrollment",
           subject: {
             sessionTokenHash: typeof body.challengeToken === "string" ? hashAuthRateLimitSubjectValue(body.challengeToken) : null,
             route: "/api/v1/auth/mfa/enrollment",
@@ -39,7 +39,7 @@ export function createStaffMfaHttpHandlers(
       try {
         const body = await readAuthBody(request, ["challengeToken", "code", "recoveryCode"]);
         await options.rateLimiter?.assertAllowed({
-          action: "auth.mfa_complete",
+          action: "auth.mfa.complete",
           subject: {
             sessionTokenHash: typeof body.challengeToken === "string" ? hashAuthRateLimitSubjectValue(body.challengeToken) : null,
             route: "/api/v1/auth/mfa/complete",

@@ -17,6 +17,7 @@ const topicLabels = {
 
 let currentProfile = null;
 let currentNotificationPreferences = [];
+let currentAccountIdentity = null;
 
 class PreferenceRequestError extends Error {
   constructor(message, status, code) {
@@ -76,6 +77,31 @@ function validatedPreferences(value) {
 
 function selectOptions(values, selected, emptyLabel = "Not set") {
   return `<option value="">${escapeHtml(emptyLabel)}</option>${values.map(value => `<option value="${escapeHtml(value)}" ${selected === value ? "selected" : ""}>${escapeHtml(humanize(value))}</option>`).join("")}`;
+}
+
+function renderAccountIdentity() {
+  const root = document.querySelector("[data-account-identity]");
+  if (!root) return;
+  const email = currentAccountIdentity?.accountEmail;
+  if (!email) {
+    root.innerHTML = '<div class="preferences-error"><h3>Account email unavailable</h3><p>The current session did not return an account identity. Sign in again or refresh this page.</p></div>';
+    return;
+  }
+  const verified = currentAccountIdentity.accountEmailVerified === true;
+  root.innerHTML = `<div class="account-identity-card">
+    <div><span>Registered email</span><strong>${escapeHtml(email)}</strong><small>This email is used to sign in and recover account access. It does not automatically replace your application contact email.</small></div>
+    <em class="account-verification-status ${verified ? "verified" : "pending"}">${verified ? "Verified" : "Verification pending"}</em>
+  </div>`;
+}
+
+async function loadAccountIdentity() {
+  try {
+    const auth = await window.CUAC?.authReady?.();
+    currentAccountIdentity = auth?.authState === "signed-in" ? auth : null;
+  } catch {
+    currentAccountIdentity = null;
+  }
+  renderAccountIdentity();
 }
 
 function renderStudyPreferences() {
@@ -273,4 +299,5 @@ document.addEventListener("click", event => {
   if (event.target.closest("[data-retry-preferences]")) void loadPreferences();
 });
 
+void loadAccountIdentity();
 void loadPreferences();

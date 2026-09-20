@@ -24,6 +24,7 @@ import type {
   SchoolTenantMembershipRecord,
   SchoolTenantMembershipRepository,
 } from "./session.ts";
+import type { CurrentAccountRecord, CurrentAccountRepository } from "./me.ts";
 
 export type SqlAuthClient = TransactionalSqlClient;
 
@@ -101,7 +102,7 @@ async function lockStepUpAuthority(client: TransactionalSqlClient, input: Activa
   return false;
 }
 
-export class PostgresAuthSessionRepository implements AuthSessionRepository, SchoolTenantMembershipRepository, AuthCredentialsRepository, StaffMfaRepository {
+export class PostgresAuthSessionRepository implements AuthSessionRepository, SchoolTenantMembershipRepository, AuthCredentialsRepository, StaffMfaRepository, CurrentAccountRepository {
   private readonly client: SqlAuthClient;
 
   constructor(client: SqlAuthClient) {
@@ -128,6 +129,33 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
          and exists (
            select 1 from user_roles r
            where r.user_id = s.user_id and r.role = s.active_role and r.revoked_at is null
+         )
+         and (
+           (s.selected_surface = 'student' and s.active_role = 'student' and s.tenant_school_id is null)
+           or (s.selected_surface = 'school' and s.active_role = 'school_staff' and s.tenant_school_id is not null
+             and exists (
+               select 1
+               from school_staff_memberships m
+               join schools school on school.id = m.school_id and school.status = 'active'
+               where m.user_id = s.user_id
+                 and m.school_id = s.tenant_school_id
+                 and m.status = 'active'
+                 and m.removed_at is null
+                 and m.role in ('admissions','counselor','viewer','school_admin')
+             ))
+           or (s.selected_surface = 'ops' and s.active_role in ('cuac_ops','cuac_admin') and s.tenant_school_id is null
+             and exists (
+               select 1
+               from cuac_staff_access_grants g
+               where g.user_id = s.user_id
+                 and g.requested_role = s.active_role
+                 and g.requested_surface = 'cuac_internal'
+                 and g.status = 'approved'
+                 and g.approved_by_user_id is not null
+                 and g.approved_at is not null
+                 and g.expires_at > $2
+                 and g.revoked_at is null
+             ))
          )
        limit 1`,
       [sessionTokenHash, now],
@@ -179,6 +207,20 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
       [emailNormalized],
     );
 
+    return rows[0] ?? null;
+  }
+
+  async findCurrentAccountByUserId(userId: string): Promise<CurrentAccountRecord | null> {
+    const rows = await this.client.query<CurrentAccountRecord>(
+      `select
+         email,
+         (email_verified_at is not null) as "emailVerified"
+       from users
+       where id = $1
+         and account_status = 'active'
+       limit 1`,
+      [userId],
+    );
     return rows[0] ?? null;
   }
 

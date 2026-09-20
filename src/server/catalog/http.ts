@@ -76,6 +76,7 @@ function parseListOptions(request: Request) {
     deadline: url.searchParams.get("deadline") ?? undefined,
     tuition: url.searchParams.get("tuition") ?? undefined,
     scholarship: boolean("scholarship"),
+    applicationReady: boolean("applicationReady"),
     upcomingDeadline: boolean("upcomingDeadline"),
     languageRequirement: url.searchParams.get("languageRequirement") ?? undefined,
     sort: url.searchParams.get("sort") ?? undefined,

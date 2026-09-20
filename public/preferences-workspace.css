@@ -170,6 +170,70 @@
   margin: 0;
 }
 
+.account-identity-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 20px;
+  border: 1px solid var(--preferences-line);
+  border-radius: 8px;
+  background: var(--preferences-paper);
+}
+
+.account-identity-card > div {
+  min-width: 0;
+}
+
+.account-identity-card span,
+.account-identity-card strong,
+.account-identity-card small {
+  display: block;
+}
+
+.account-identity-card span {
+  margin-bottom: 6px;
+  color: var(--preferences-muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.account-identity-card strong {
+  overflow-wrap: anywhere;
+  font-size: 18px;
+}
+
+.account-identity-card small {
+  margin-top: 8px;
+  color: var(--preferences-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.account-verification-status {
+  flex: none;
+  padding: 6px 9px;
+  border: 1px solid var(--preferences-line);
+  border-radius: 6px;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.account-verification-status.verified {
+  border-color: rgba(11, 107, 87, 0.24);
+  background: var(--preferences-accent-soft);
+  color: var(--preferences-accent);
+}
+
+.account-verification-status.pending {
+  border-color: rgba(154, 61, 52, 0.24);
+  background: #fff4f1;
+  color: var(--preferences-danger);
+}
+
 .preferences-field-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -368,6 +432,11 @@
 
   .preferences-field-grid {
     grid-template-columns: 1fr;
+  }
+
+  .account-identity-card {
+    flex-direction: column;
+    gap: 14px;
   }
 
   .preferences-subjects {

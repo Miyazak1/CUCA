@@ -39,6 +39,10 @@ export type PolicyAction =
   | "school.manage_tenant_workflow"
   | "school.read_catalog_correction"
   | "school.submit_catalog_correction"
+  | "school.read_catalog_intake"
+  | "school.prepare_catalog_intake"
+  | "school.publish_catalog_intake"
+  | "school.withdraw_catalog_intake"
   | "ops.manage_school_invites"
   | "ops.read_application_support"
   | "ops.open_application_support_session"
@@ -64,7 +68,7 @@ export type PolicyAction =
   | "agent.invoke_tool";
 
 export type PolicyResource = {
-  type: "catalog" | "notice" | "student" | "billing" | "notification" | "school_application" | "school_tenant" | "school_catalog_correction" | "ops_application_support" | "ops_summary" | "ops_billing_review" | "ops_routing_review" | "ops_data_quality_review" | "audit" | "agent_tool";
+  type: "catalog" | "notice" | "student" | "billing" | "notification" | "school_application" | "school_tenant" | "school_catalog_correction" | "school_catalog_intake" | "ops_application_support" | "ops_summary" | "ops_billing_review" | "ops_routing_review" | "ops_data_quality_review" | "audit" | "agent_tool";
   ownerUserId?: string | null;
   tenantSchoolId?: string | null;
   dataClasses?: readonly DataClass[];
@@ -213,6 +217,18 @@ export function evaluatePolicy(context: RequestContext, action: PolicyAction, re
       && (context.authStrength === "session" || context.authStrength === "step_up")
       ? allow("School staff may use the correction workflow for the verified tenant; live membership and catalog generation must be rechecked.")
       : deny("Verified school catalog correction authority is required.");
+  }
+
+  if (resource.type === "school_catalog_intake" && resource.tenantSchoolId
+    && ["school.read_catalog_intake", "school.prepare_catalog_intake", "school.publish_catalog_intake",
+      "school.withdraw_catalog_intake"].includes(action)) {
+    const privileged = action === "school.publish_catalog_intake" || action === "school.withdraw_catalog_intake";
+    return context.actorUserId && context.activeRole === "school_staff" && context.selectedSurface === "school"
+      && context.tenantSchoolId === resource.tenantSchoolId && context.purpose === "school_catalog_intake"
+      && (context.authStrength === "session" || context.authStrength === "step_up")
+      && (!privileged || context.authStrength === "step_up")
+      ? allow("School staff may manage versioned intake data for the verified tenant; publishing requires step-up and live membership revalidation.")
+      : deny("Verified school intake management authority is required.");
   }
 
   if (resource.type === "school_catalog_correction" && !resource.tenantSchoolId

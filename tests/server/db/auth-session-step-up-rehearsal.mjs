@@ -128,7 +128,7 @@ export async function runAuthSessionStepUpRehearsal(t, pool) {
       await assert.rejects(service.stepUpSession({ sessionToken: token, password: "correct-password",
         recoveryCode: enrolled.recoveryCodes[1] }),
         error => error.status === 403);
-      assert.equal((await repository.findActiveSessionByTokenHash(tokenHash, new Date())).authStrength, "session");
+      assert.equal(await repository.findActiveSessionByTokenHash(tokenHash, new Date()), null);
     } finally {
       await pool.query("delete from users where id = $1", [user.id]);
       if (approverId) await pool.query("delete from users where id = $1", [approverId]);

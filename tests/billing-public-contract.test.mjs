@@ -13,7 +13,7 @@ test("billing API page reads only the authenticated server invoice", async () =>
 
   assert.match(html, /billing-workspace\.css\?v=/);
   assert.match(html, /<body data-agent-mode="off">/);
-  assert.match(html, /src="shared-shell\.js"/);
+  assert.match(html, /src="shared-shell\.js(?:\?[^\"]*)?"/);
   assert.match(html, /src="billing-runtime\.js\?v=/);
   assert.doesNotMatch(html, /completion\.js|completion\.css|cuac-data\.js|cuac-actions\.js|data-cuac-agent/);
   assert.match(script, /\/api\/v1\/billing\/invoices\/\$\{encodeURIComponent\(invoiceId\)\}/);

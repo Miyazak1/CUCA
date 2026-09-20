@@ -190,6 +190,57 @@ test("real PostgreSQL migration and repository rehearsal", { timeout: rehearsalT
     assert.deepEqual(roles.rows, [{ role: "school_staff" }]);
   });
 
+  await t.test("invite activation creates a verified school-only account atomically", async () => {
+    const suffix = randomUUID();
+    const invitedEmail = `new-school-staff-${suffix}@example.invalid`;
+    const inviterEmail = `invite-manager-${suffix}@example.invalid`;
+    const { rows: [school] } = await pool.query("insert into schools (slug, name_en, status) values ($1, 'Activation School', 'active') returning id", [`activation-${suffix}`]);
+    const { rows: [inviter] } = await pool.query("insert into users (email, email_normalized) values ($1, $1) returning id", [inviterEmail]);
+    const now = new Date();
+    const tokenHash = hashSchoolStaffInviteToken(randomUUID());
+    const { inviteId } = await invites.createInvite({
+      schoolId: school.id,
+      email: invitedEmail,
+      emailNormalized: invitedEmail,
+      role: "school_admin",
+      inviteTokenHash: tokenHash,
+      invitedByUserId: inviter.id,
+      now,
+      expiresAt: new Date(now.getTime() + 60_000),
+    });
+
+    const activatedAt = new Date();
+    const activated = await invites.activateInviteForNewAccount({
+      inviteId,
+      inviteTokenHash: tokenHash,
+      schoolId: school.id,
+      role: "school_admin",
+      invitedByUserId: inviter.id,
+      passwordHash: "scrypt$test-only-rehearsal",
+      displayName: "Activation Teacher",
+      activatedAt,
+    });
+
+    assert.equal(activated.emailNormalized, invitedEmail);
+    const account = await pool.query("select email_verified_at, display_name from users where id = $1", [activated.userId]);
+    assert.equal(account.rows[0].display_name, "Activation Teacher");
+    assert.ok(account.rows[0].email_verified_at instanceof Date);
+    const roles = await pool.query("select role from user_roles where user_id = $1 and revoked_at is null", [activated.userId]);
+    assert.deepEqual(roles.rows, [{ role: "school_staff" }]);
+    assert.equal((await pool.query("select count(*)::int as total from school_staff_memberships where user_id = $1 and school_id = $2 and status = 'active'", [activated.userId, school.id])).rows[0].total, 1);
+    assert.equal((await pool.query("select count(*)::int as total from auth_identities where user_id = $1 and provider = 'password'", [activated.userId])).rows[0].total, 1);
+    assert.equal(await invites.activateInviteForNewAccount({
+      inviteId,
+      inviteTokenHash: tokenHash,
+      schoolId: school.id,
+      role: "school_admin",
+      invitedByUserId: inviter.id,
+      passwordHash: "scrypt$test-only-rehearsal",
+      displayName: null,
+      activatedAt: new Date(),
+    }), null);
+  });
+
   await t.test("failed replacement rolls back revocation of the prior invite", async () => {
     const { create } = await fixture();
     const first = await invites.createInvite(create);

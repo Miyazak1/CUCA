@@ -1,4 +1,3 @@
-﻿const iconHeart = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 8.6c0 5.7-8.5 10.4-8.5 10.4S3.5 14.3 3.5 8.6A4.6 4.6 0 0 1 12 6a4.6 4.6 0 0 1 8.5 2.6Z"/></svg>';
 const iconCompare = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 7h14"/><path d="m6 7-3 7"/><path d="m8 7 3 7"/><path d="m16 7-3 7"/><path d="m18 7 3 7"/><path d="M3 14h8"/><path d="M13 14h8"/><path d="M7 21h10"/></svg>';
 const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 

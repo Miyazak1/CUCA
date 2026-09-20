@@ -16,9 +16,9 @@
 | --- | --- | --- |
 | 账号邮件 | challenge、加密 outbox、验证/重置动作页、固定阿里云 Direct Mail 适配器和常驻 worker 已有本地证据；没有真实提供方验收 | 未配置/disabled：开发 warn，staging/production fail；其他任何提供方名称均 fail。outbox 和适配器通过不等于真实邮箱投递完成 |
 | 通用通知 | 站内 API、偏好、事件/投递持久化、学校状态、CUAC 接受提交、支付成功/取消/退款事件源、固定阿里云 Direct Mail 适配器及常驻 worker 入口已有本地证据；模板默认关闭外发 | staging/production 必须配置固定适配器，并同时确认 worker 受监管和 staging 投递/退信验收；任意 provider 名、缺失凭据或任一确认缺失均 fail。站内通过不等于外部投递通过 |
-| 支付 | 固定 hosted gateway、双向 HMAC、验签 webhook inbox、成功/取消/退款事务、对账 worker、精确 entitlement/撤权和本人状态查询已实现 | disabled：开发 warn、staging/production fail；production 仅 live；test/live 必须是固定 provider、完整 HTTPS/host/分离密钥配置，并确认 worker 受监管和 staging 签名闭环，否则 fail |
-| 敏感上传 | 固定区域私有 OSS 签名、精确对象版本、隔离扫描、owner-scoped 下载、租约删除 worker 和恢复语义已在本地实现；没有真实 OSS/KMS/ClamAV 云端验收 | 未配置/false 表示关闭并阻断 staging/production；true 仍须完整 OSS/KMS/ClamAV/worker 配置及五项 staging 验收，只有桶名不能通过 |
-| 官方递交 | `0036` 已实现密文材料复核、固定 HTTPS handoff、HMAC 双向绑定、租约 worker 和原子签收；未配置真实网关 | disabled：开发 warn、staging/production fail；任意 provider 或不完整密钥失败；只有受监管 worker 与签名 staging 回执往返均确认才可通过离线配置门禁 |
+| 支付 | 固定 hosted gateway、双向 HMAC、验签 webhook inbox、成功/取消/退款事务、对账 worker、精确 entitlement/撤权和本人状态查询已实现 | `school-handoff-v1` 必须 disabled，启用即 fail；`full-platform` 下 disabled 在 staging/production fail，production 仅 live，且必须完成固定 provider、完整 HTTPS/host/分离密钥、worker 监管与 staging 签名闭环 |
+| 敏感上传 | 固定区域私有 OSS 签名、精确对象版本、隔离扫描、owner-scoped 下载、租约删除 worker 和恢复语义已在本地实现；没有真实 OSS/KMS/ClamAV 云端验收 | `school-handoff-v1` 必须关闭，启用即 fail；`full-platform` 下 staging/production 才要求完整 OSS/KMS/ClamAV/worker 配置及五项验收 |
+| 官方递交 | `0036` 已实现密文材料复核、固定 HTTPS handoff、HMAC 双向绑定、租约 worker 和原子签收；未配置真实网关 | `school-handoff-v1` 必须 disabled，启用即 fail；`full-platform` 下才要求固定 provider、完整密钥、受监管 worker 与签名 staging 回执往返 |
 | 数据库、KMS、WAF、Agent 边界 | staging/production 强制 `PGSSLMODE=verify-full`，数据库 URL 禁止可覆盖 TLS/host/identity/session 的 query 或 fragment；Agent 可关闭，启用时强制 Gateway/Sandbox，且任何发布都必须显式 `CUAC_AGENT_DIRECT_DB_ACCESS=false/disabled` | 通过不证明连通、证书可信、ACL、入口限流或隔离实际生效，必须单独做运行验收；私网声明不能替代 RDS 证书与主机名校验，Agent 也不能凭环境缺省获得数据库权限 |
 
 代码证据：邮件实际消息配置仍由 `auth/email-delivery.ts` 校验；支付由 `billing/runtime/payment.ts` 只接收固定 provider，并由 `hosted-gateway.ts`、`webhook-http.ts` 与 `postgres-payment-events.ts` 固定外部和事务边界。不能把本预检当作真实消息/支付调用、商户验收或发布批准。

@@ -630,6 +630,8 @@
     surface: "public",
     tenantSchoolId: null,
     authStrength: "guest",
+    accountEmail: null,
+    accountEmailVerified: null,
   };
 
   function runtimeSurface(role, selectedSurface) {
@@ -644,7 +646,14 @@
     const portalRole = document.body.dataset.portalRole || target.dataset?.portalRole || "";
     const routeSurface = portalRole === "school" ? "school-staff" : routeContract.surface || "public";
     if (runtimeAuthState.authState === "signed-in") {
-      return { authState: "signed-in", role: runtimeAuthState.role, surface: runtimeAuthState.surface, authStrength: runtimeAuthState.authStrength };
+      return {
+        authState: "signed-in",
+        role: runtimeAuthState.role,
+        surface: runtimeAuthState.surface,
+        authStrength: runtimeAuthState.authStrength,
+        accountEmail: runtimeAuthState.accountEmail,
+        accountEmailVerified: runtimeAuthState.accountEmailVerified,
+      };
     }
     return { authState: "signed-out", role: "visitor", surface: routeSurface };
   }
@@ -661,6 +670,7 @@
         ? "CUAC internal account"
         : "Student account";
     const initial = userName.charAt(0).toUpperCase();
+    const accountEmail = shellContext.accountEmail || "Account email unavailable";
 
     if (authState === "signed-out") {
       const localized = ["school", "ops"].includes(document.body.dataset.agentMode || "");
@@ -705,6 +715,7 @@
             <span class="account-avatar large">${escapeHTML(initial)}</span>
             <div>
               <strong>${escapeHTML(userName)}</strong>
+              <span class="account-email" title="Registered account email">${escapeHTML(accountEmail)}</span>
               <a href="${profileHref}">${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "编辑账号" : "Student info"}</a>
             </div>
           </div>
@@ -967,10 +978,12 @@
             surface: runtimeSurface(role, actor.selectedSurface),
             tenantSchoolId: actor.tenantSchoolId || null,
             authStrength: actor.authStrength === "step_up" ? "step_up" : "session",
+            accountEmail: typeof actor.accountEmail === "string" ? actor.accountEmail : null,
+            accountEmailVerified: typeof actor.accountEmailVerified === "boolean" ? actor.accountEmailVerified : null,
           }
-        : { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest" };
+        : { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest", accountEmail: null, accountEmailVerified: null };
     } catch {
-      runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest" };
+      runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest", accountEmail: null, accountEmailVerified: null };
     }
 
     refreshRenderedHeader();

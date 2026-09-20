@@ -82,6 +82,8 @@ test("PostgresCatalogRepository uses fixed public SQL for program lists", async 
   assert.match(calls[0].statement, /where p\.status = 'active'/);
   assert.match(calls[0].statement, /latest_intake\.deadline_date <= clock_timestamp\(\).*'expired'/s);
   assert.match(calls[0].statement, /pi\.deadline_date is null or pi\.deadline_date > clock_timestamp\(\)/);
+  assert.match(calls[0].statement, /pi\.open_date is null or pi\.open_date <= clock_timestamp\(\)/);
+  assert.match(calls[0].statement, /when upcoming_intake\.id is not null then 'upcoming'/);
   assert.equal(detail.slug, "cs");
   assert.deepEqual(detail.school, { id: "school_1", slug: "zju", nameZh: "浙江大学", nameEn: "Zhejiang University" });
   assert.deepEqual(detail.city, { slug: "hangzhou", nameZh: "杭州", nameEn: "Hangzhou" });
@@ -153,6 +155,15 @@ test("PostgresCatalogRepository applies program page filters to list and count q
   assert.match(calls[1].statement, /select count\(\*\)::int as total/);
   assert.deepEqual(calls[0].params.slice(0, -2), calls[1].params);
   assert.deepEqual(calls[0].params.slice(-2), [8, 8]);
+});
+
+test("PostgresCatalogRepository can restrict application selectors to currently open intakes", async () => {
+  const calls = [];
+  const repo = new PostgresCatalogRepository({ async query(statement, params) { calls.push({ statement, params }); return []; } });
+  await repo.listPrograms({ applicationReady: true, limit: 100, offset: 0 });
+  assert.match(calls[0].statement, /next_intake\.id is not null/);
+  assert.match(calls[0].statement, /open_date <= clock_timestamp\(\)/);
+  assert.match(calls[0].statement, /deadline_date > clock_timestamp\(\)/);
 });
 
 test("PostgresCatalogRepository publishes guide cards without editorial search terms", async () => {

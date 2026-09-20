@@ -1,6 +1,7 @@
 import type { SqlCatalogClient } from "../catalog/postgres-repository.ts";
 import { serviceUnavailable } from "../shared/errors.ts";
 import { inputInteger, inputUuid } from "../shared/input.ts";
+import { currentIntakeWindowSql } from "../catalog/intake-window.ts";
 import {
   approvedOfficialSubmissionPolicyReview,
   MAX_OFFICIAL_SUBMISSION_POLICY_VERSION,
@@ -128,8 +129,7 @@ async function readPublishedOfficialSubmissionPolicy(
     join official_submission_policy_versions v on v.id = selected_target.policy_version_id and v.school_id = p.school_id
       and v.admission_route_key = pub.admission_route_key
     where p.id = $1 and pi.id = $2 and p.status = 'active' and s.status = 'active' and pi.status = 'open'
-      and (pi.deadline_date is null or pi.deadline_date > ${at})
-      and (pi.open_date is null or pi.deadline_date is null or pi.open_date < pi.deadline_date)
+      and ${currentIntakeWindowSql("pi", at)}
       and pub.status = 'active' and v.review_status = 'approved' and v.approved_by_user_id is not null
       and v.review_evidence_json is not null and v.reviewed_at <= ${at} and v.effective_from <= ${at} and v.review_due_at > ${at}
       ${lockRows ? "for share of pub, v, selected_target" : ""}`,

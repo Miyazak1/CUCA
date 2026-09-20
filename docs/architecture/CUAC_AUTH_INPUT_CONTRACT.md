@@ -21,6 +21,7 @@
 | `/password-reset` | `email` | 正常响应固定 `data.status = accepted`，不返回 deliveryStatus |
 | `/password-reset/{challengeId}/reset` | `resetToken`, `newPassword` | UUID + 一次性证明；修改密码与撤销旧会话一并提交 |
 | `/school-invites` | `schoolId`, `email`, `role` | 仅当前 CUAC Ops/Admin 可创建，学校必须 active |
+| `/school-invites/{inviteId}/activate` | `inviteToken`, `password`, `displayName?` | 仅未登录访问者；一次事务创建已验证邮箱的账号、password identity、`school_staff` role 和目标学校 membership；不授予 student；邮箱已有账号时返回 409，要求走登录后的显式绑定 |
 | `/school-invites/{inviteId}/accept` | `inviteToken` | 必须是被邀请邮箱所属的当前账号，学校与角色取邀请记录 |
 | `/school-invites/{inviteId}/revoke` | 无 | 仅当前 CUAC Ops/Admin 可撤销 |
 | `/sign-in-continuations` | `targetRoute`, `actionKey`, `requiredRole?`, `payloadPreview?`, `deviceFingerprint?` | 仅已绑定游客；只允许已登记导航，不执行业务写入 |

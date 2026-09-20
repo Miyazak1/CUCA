@@ -38,9 +38,10 @@ export type ProgramProjectionRow = ProgramRow & {
   deadlineDate?: Date | null;
   deadlineLabel?: string | null;
   applicationRound?: string | null;
-  intakeAvailability?: "open" | "expired" | "closed" | "not_published";
+  intakeAvailability?: "open" | "upcoming" | "expired" | "closed" | "not_published";
   latestIntakeTerm?: string | null;
   latestIntakeYear?: number | null;
+  latestIntakeOpenDate?: Date | null;
   latestIntakeDeadlineDate?: Date | null;
 };
 
@@ -324,6 +325,7 @@ export function toPublicProgramDto(row: ProgramProjectionRow): PublicProgramDto 
     intakeAvailability: row.intakeAvailability ?? "not_published",
     latestIntakeTerm: row.latestIntakeTerm ?? null,
     latestIntakeYear: row.latestIntakeYear ?? null,
+    latestIntakeOpenDate: row.latestIntakeOpenDate ?? null,
     latestIntakeDeadlineDate: row.latestIntakeDeadlineDate ?? null,
     applicationUrl: row.applicationUrl,
     applicationNote: row.applicationNote,

@@ -12,7 +12,7 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   ]);
 
   assert.match(html, /ops-workspace\.css\?v=/);
-  assert.match(html, /src="shared-shell\.js"/);
+  assert.match(html, /src="shared-shell\.js(?:\?[^\"]*)?"/);
   assert.match(html, /src="ops-admin-runtime\.js\?v=/);
   assert.doesNotMatch(html, /completion\.js|completion\.css|cuac-data\.js|cuac-actions\.js|data-cuac-agent/);
 

@@ -70,6 +70,21 @@ function createHandlers(options = {}) {
         schoolStaffRoleGranted: true,
       };
     },
+    async activateInviteForNewAccount(input) {
+      calls.push({ method: "activateInviteForNewAccount", input });
+      return {
+        inviteId: input.inviteId,
+        schoolId: input.schoolId,
+        userId: "school-user-1",
+        role: input.role,
+        membershipId: "membership-1",
+        acceptedAt: input.activatedAt,
+        schoolStaffRoleGranted: true,
+        emailNormalized: "teacher@example.edu",
+        accountCreated: true,
+        emailVerified: true,
+      };
+    },
     async revokePendingInvite(input) {
       calls.push({ method: "revokePendingInvite", input });
       return { revoked: true };
@@ -208,6 +223,31 @@ test("school staff invite HTTP accept rejects guests before grant creation", asy
   assert.equal(calls.some((call) => call.method === "acceptInvite"), false);
 });
 
+test("school staff invite HTTP activation permits guests and does not create student access", async () => {
+  const { calls, handlers } = createHandlers();
+  const response = await handlers.activate(
+    new Request("https://cuac.test/api/v1/auth/school-invites/a2222222-a222-4222-8222-a22222222222/activate", {
+      method: "POST",
+      headers: { "x-forwarded-for": "203.0.113.8" },
+      body: JSON.stringify({
+        inviteToken: "BAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ",
+        password: "correct horse battery staple",
+        displayName: "Dr Teacher",
+      }),
+    }),
+    "a2222222-a222-4222-8222-a22222222222",
+  );
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(body.data.userId, "school-user-1");
+  assert.equal(body.data.role, "school_admin");
+  assert.equal(body.data.accountCreated, true);
+  assert.equal(JSON.stringify(body).includes("password"), false);
+  assert.equal(calls.some(call => call.method === "activateInviteForNewAccount"), true);
+  assert.equal(calls.some(call => call.method === "acceptInvite"), false);
+});
+
 test("school staff invite HTTP revoke resolves Ops actor and ignores body authority", async () => {
   const { calls, handlers } = createHandlers({ sessionUserId: "ops-1", sessionRole: "cuac_admin", sessionSurface: "ops" });
   const response = await handlers.revoke(
@@ -293,6 +333,7 @@ test("school staff invite app routes stay thin and contain no token hashing or S
   const routePaths = [
     "../../../app/api/v1/auth/school-invites/route.ts",
     "../../../app/api/v1/auth/school-invites/[inviteId]/accept/route.ts",
+    "../../../app/api/v1/auth/school-invites/[inviteId]/activate/route.ts",
     "../../../app/api/v1/auth/school-invites/[inviteId]/revoke/route.ts",
   ];
   const contents = await Promise.all(routePaths.map((routePath) => readFile(new URL(routePath, import.meta.url), "utf8")));

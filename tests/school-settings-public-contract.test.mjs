@@ -13,11 +13,14 @@ test("school settings candidate uses current actor and tenant catalog APIs", asy
 
   assert.match(html, /<body data-agent-mode="off">/);
   assert.match(html, /school-settings-workspace\.css\?v=/);
-  assert.match(html, /src="shared-shell\.js"/);
+  assert.match(html, /src="shared-shell\.js(?:\?[^\"]*)?"/);
   assert.match(html, /src="school-settings-runtime\.js\?v=/);
   assert.doesNotMatch(html, /completion\.js|completion\.css|cuac-data\.js|cuac-actions\.js|data-cuac-agent/);
   assert.match(script, /requestJson\("\/api\/v1\/me"\)/);
   assert.match(script, /requestJson\("\/api\/v1\/school\/catalog-corrections"/);
+  assert.match(script, /requestJson\("\/api\/v1\/school\/catalog\/intakes"/);
+  assert.match(script, /\/api\/v1\/school\/catalog\/intakes\/\$\{encodeURIComponent\(versionId\)\}\/\$\{action\}/);
+  assert.match(script, /requestJson\("\/api\/v1\/auth\/step-up"/);
   assert.match(script, /\/api\/v1\/catalog\/schools\/\$\{encodeURIComponent\(auth\.tenantSchoolId\)\}/);
   assert.match(script, /actor\.tenantSchoolId !== auth\.tenantSchoolId/);
   assert.match(script, /school\.id !== auth\.tenantSchoolId/);
@@ -38,6 +41,9 @@ test("school settings page displays only real actor and school detail fields", a
   }
   assert.match(script, /sourceSchoolUpdatedAt: schoolSettingsState\.corrections\.school\.updatedAt/);
   assert.match(script, /changes: \{ \[field\]: clearValue \? null : proposed \}/);
+  assert.match(script, /evidenceType: String\(values\.get\("evidenceType"\)/);
+  assert.match(script, /school_attestation/);
+  assert.match(script, /保存草稿不会影响学生端/);
   assert.doesNotMatch(script, /teamCount|applicantCount|acceptanceRate|contactEmail|owner/i);
 });
 

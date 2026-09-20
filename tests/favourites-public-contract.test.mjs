@@ -13,7 +13,7 @@ test("saved-items candidate uses authenticated APIs without demo state", async (
 
   assert.match(html, /<body data-agent-mode="off">/);
   assert.match(html, /saved-workspace\.css\?v=/);
-  assert.match(html, /src="shared-shell\.js"/);
+  assert.match(html, /src="shared-shell\.js(?:\?[^\"]*)?"/);
   assert.match(html, /src="favourites-runtime\.js\?v=/);
   assert.doesNotMatch(html, /cuac-data\.js|cuac-actions\.js|favourites\.js|data-cuac-agent/);
   assert.match(script, /requestJson\("\/api\/v1\/student\/saved-items"\)/);

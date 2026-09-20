@@ -6,7 +6,7 @@ import { PostgresAuthSessionRepository } from "./postgres-repository.ts";
 import { hashAuthRateLimitSubjectValue, type AuthRateLimiter } from "./rate-limit.ts";
 import { createAuthRateLimiterFromEnv } from "./runtime/rate-limit.ts";
 import { resolveRequestContextFromRequest, type AuthSessionRepository } from "./session.ts";
-import { SchoolStaffInviteService, type CreateSchoolStaffInviteInput, type SchoolStaffInviteRepository } from "./school-invites.ts";
+import { SchoolStaffInviteService, type ActivateSchoolStaffInviteInput, type CreateSchoolStaffInviteInput, type SchoolStaffInviteRepository } from "./school-invites.ts";
 import { PostgresSchoolStaffInviteRepository } from "./school-invites-postgres-repository.ts";
 import { readAuthBody } from "./input.ts";
 
@@ -37,6 +37,9 @@ const unavailableSchoolStaffInviteRepository: SchoolStaffInviteRepository = {
   async acceptInvite() {
     throw serviceUnavailable("School staff invite repository is not configured.");
   },
+  async activateInviteForNewAccount() {
+    throw serviceUnavailable("School staff invite repository is not configured.");
+  },
   async revokePendingInvite() {
     throw serviceUnavailable("School staff invite repository is not configured.");
   },
@@ -49,6 +52,7 @@ export function createSchoolStaffInviteHttpHandlers(
 ) {
   return {
     create: (request: Request) => handleSchoolStaffInviteCreate(request, service, authRepository, options),
+    activate: (request: Request, inviteId: string) => handleSchoolStaffInviteActivate(request, inviteId, service, authRepository, options),
     accept: (request: Request, inviteId: string) => handleSchoolStaffInviteAccept(request, inviteId, service, authRepository, options),
     revoke: (request: Request, inviteId: string) => handleSchoolStaffInviteRevoke(request, inviteId, service, authRepository, options),
   };
@@ -78,9 +82,40 @@ export function createPostgresSchoolStaffInviteService(client: TransactionalSqlC
   const create = (tx: TransactionalSqlClient) => new SchoolStaffInviteService(new PostgresSchoolStaffInviteRepository(tx), { auditSink: new PostgresAuditWriter(tx) });
   return {
     createInvite: transactionalMethod(client, create, "createInvite"),
+    activateInvite: transactionalMethod(client, create, "activateInvite"),
     acceptInvite: transactionalMethod(client, create, "acceptInvite"),
     revokeInvite: transactionalMethod(client, create, "revokeInvite"),
   };
+}
+
+async function handleSchoolStaffInviteActivate(
+  request: Request,
+  inviteId: string,
+  service: InviteService,
+  authRepository: AuthSessionRepository,
+  options: { rateLimiter?: AuthRateLimiter },
+): Promise<Response> {
+  const context = await resolveRequestContextFromRequest(request, authRepository, {
+    purpose: "school_review",
+  });
+
+  try {
+    const body = await readAuthBody(request, ["inviteToken", "password", "displayName"]);
+    await options.rateLimiter?.assertAllowed({
+      action: "auth.school_staff_invite.activate",
+      subject: {
+        actorUserId: context.actorUserId,
+        guestSessionId: context.guestSessionId,
+        ipHash: hashRequestIp(request),
+        route: inviteId,
+      },
+    });
+    const data = await service.activateInvite(context, inviteId, body as ActivateSchoolStaffInviteInput);
+
+    return jsonResponse({ data });
+  } catch (error) {
+    return jsonResponse(toErrorEnvelope(error, context.requestId), error instanceof Error && "status" in error ? Number(error.status) : 500);
+  }
 }
 
 async function handleSchoolStaffInviteCreate(

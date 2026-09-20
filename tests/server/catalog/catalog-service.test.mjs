@@ -65,7 +65,7 @@ test("program pages preserve normalized server-side filters and totals", async (
 
   const page = await service.listProgramsPage(createRequestContext(), {
     limit: 8, offset: 16, query: "  computer science  ", degree: " master ", language: "english",
-    scholarship: true, sort: "tuition",
+    scholarship: true, applicationReady: true, sort: "tuition",
   });
 
   assert.deepEqual(page, { items: [{ id: "program_1" }], total: 321, limit: 8, offset: 16 });
@@ -73,6 +73,7 @@ test("program pages preserve normalized server-side filters and totals", async (
   assert.equal(calls[0][1].query, "computer science");
   assert.equal(calls[0][1].degree, "master");
   assert.equal(calls[0][1].scholarship, true);
+  assert.equal(calls[0][1].applicationReady, true);
   assert.equal(calls[0][1].sort, "tuition");
   assert.deepEqual(calls[0][1], calls[1][1]);
   assert.equal(normalizeProgramListOptions({ limit: 1000, offset: -1 }).limit, 100);

@@ -5,7 +5,7 @@ import test from "node:test";
 const root = new URL("../", import.meta.url);
 const source = path => readFile(new URL(path, root), "utf8");
 
-test("preferences candidate uses only student profile and notification APIs", async () => {
+test("preferences candidate uses server-backed account, student profile and notification state", async () => {
   const [html, script] = await Promise.all([
     source("public/preferences-api.html"),
     source("public/preferences-runtime.js"),
@@ -13,11 +13,15 @@ test("preferences candidate uses only student profile and notification APIs", as
 
   assert.match(html, /<body data-agent-mode="off">/);
   assert.match(html, /preferences-workspace\.css\?v=/);
-  assert.match(html, /src="shared-shell\.js"/);
+  assert.match(html, /src="shared-shell\.js\?v=/);
   assert.match(html, /src="preferences-runtime\.js\?v=/);
   assert.doesNotMatch(html, /cuac-data\.js|cuac-actions\.js|preferences\.js|data-cuac-agent/);
   assert.match(script, /requestJson\("\/api\/v1\/student\/profile"/);
   assert.match(script, /requestJson\("\/api\/v1\/notifications\/preferences"/);
+  assert.match(script, /window\.CUAC\?\.authReady\?\.\(\)/);
+  assert.match(script, /accountEmailVerified/);
+  assert.match(html, /data-account-identity/);
+  assert.match(html, /Registered email|Loading account identity/);
   assert.match(script, /method: "PATCH"/);
   assert.match(script, /method: "PUT"/);
   assert.match(script, /expectedRevision: current\.revision/);
@@ -61,5 +65,6 @@ test("preferences workspace is restrained and responsive", async () => {
   assert.match(css, /@media \(max-width: 760px\)/);
   assert.match(css, /@media \(max-width: 520px\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);
+  assert.match(css, /account-identity-card/);
   assert.doesNotMatch(css, /linear-gradient|radial-gradient|border-radius:\s*(?:[1-9][0-9]|[1-9][0-9][0-9])px/);
 });

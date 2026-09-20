@@ -27,7 +27,7 @@ test("public intake SQL exposes only available catalog fields with stable pagina
   assert.equal("secret" in result[0], false);
   assert.deepEqual(calls[0].params, [id, 7, 2]);
   for (const re of [/pi.program_id = \$1/, /p.status = 'active'/, /s.status = 'active'/, /pi.status = 'open'/,
-    /deadline_date > clock_timestamp\(\)/, /pi.id asc/, /limit \$2 offset \$3/]) assert.match(calls[0].sql, re);
+    /open_date <= clock_timestamp\(\)/, /deadline_date > clock_timestamp\(\)/, /pi.id asc/, /limit \$2 offset \$3/]) assert.match(calls[0].sql, re);
   assert.doesNotMatch(calls[0].sql, /select \*|users|application_choices|payments|audit_logs/i);
 });
 

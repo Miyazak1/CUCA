@@ -181,8 +181,8 @@ try {
     const catalog = await new CatalogSeedWriter(tx).writeBundle(bundle);
     if (!catalog.ok) throw new Error("Synthetic catalog fixture is invalid.");
     const intakeRows = [
-      ["local-north-computer-science", "fall", 2027, "2026-10-01T00:00:00.000Z", "2027-05-31T23:59:59.000Z", "Fall 2027"],
-      ["local-north-international-business", "fall", 2027, "2026-10-01T00:00:00.000Z", "2027-05-31T23:59:59.000Z", "Fall 2027"],
+      ["local-north-computer-science", "fall", 2027, "2026-09-01T00:00:00.000Z", "2027-05-31T23:59:59.000Z", "Fall 2027 · Demo open"],
+      ["local-north-international-business", "fall", 2027, "2026-09-01T00:00:00.000Z", "2027-05-31T23:59:59.000Z", "Fall 2027 · Demo open"],
       ["local-harbor-data-engineering", "spring", 2028, "2027-03-01T00:00:00.000Z", "2027-10-31T23:59:59.000Z", "Spring 2028"],
     ] as const;
     for (const [slug, term, year, openDate, deadlineDate, label] of intakeRows) {
@@ -242,6 +242,14 @@ try {
          ($3, 'cuac_admin', 'local_fixture')
        on conflict (user_id, role) where revoked_at is null do nothing`,
       [schoolIdentity.userId, opsIdentity.userId, adminIdentity.userId],
+    );
+    await tx.query(
+      `update user_roles
+       set revoked_at = clock_timestamp()
+       where user_id = any($1::uuid[])
+         and role = 'student'
+         and revoked_at is null`,
+      [[schoolIdentity.userId, opsIdentity.userId, adminIdentity.userId]],
     );
     await tx.query(
       `insert into school_staff_memberships (school_id, user_id, role, status)

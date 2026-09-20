@@ -2,10 +2,11 @@ import { createHash, randomBytes } from "node:crypto";
 
 import { buildAuditEvent, type AuditEvent } from "../audit/audit.ts";
 import { evaluatePolicy } from "../policy/policy.ts";
-import { badRequest, forbidden } from "../shared/errors.ts";
+import { badRequest, conflict, forbidden } from "../shared/errors.ts";
 import type { RequestContext } from "../shared/request-context.ts";
 import { inputText, inputUuid } from "../shared/input.ts";
-import { authEmail, authInput, authToken } from "./input.ts";
+import { authDisplayName, authEmail, authInput, authPassword, authToken } from "./input.ts";
+import { passwordHasher, type PasswordHasher } from "./password-hasher.ts";
 import type { CuacInternalRole } from "./cuac-staff-authority.ts";
 
 export const SCHOOL_STAFF_INVITE_ROLES = ["admissions", "counselor", "viewer", "school_admin"] as const;
@@ -51,6 +52,12 @@ export type AcceptedSchoolStaffInvite = {
   schoolStaffRoleGranted: boolean;
 };
 
+export type ActivatedSchoolStaffInvite = AcceptedSchoolStaffInvite & {
+  emailNormalized: string;
+  accountCreated: true;
+  emailVerified: true;
+};
+
 export type RevokedSchoolStaffInvite = {
   inviteId: string;
   revoked: boolean;
@@ -61,6 +68,12 @@ export type CreateSchoolStaffInviteInput = {
   schoolId: unknown;
   email: unknown;
   role: unknown;
+};
+
+export type ActivateSchoolStaffInviteInput = {
+  inviteToken: unknown;
+  password: unknown;
+  displayName?: unknown;
 };
 
 export type SchoolStaffInviteRepository = {
@@ -90,6 +103,16 @@ export type SchoolStaffInviteRepository = {
     acceptedAt: Date;
     invitedByUserId: string | null;
   }): Promise<AcceptedSchoolStaffInvite | null>;
+  activateInviteForNewAccount(input: {
+    inviteId: string;
+    inviteTokenHash: string;
+    schoolId: string;
+    role: SchoolStaffInviteRole;
+    invitedByUserId: string | null;
+    passwordHash: string;
+    displayName: string | null;
+    activatedAt: Date;
+  }): Promise<ActivatedSchoolStaffInvite | null>;
   revokePendingInvite(input: {
     inviteId: string;
     revokedByUserId: string;
@@ -116,6 +139,7 @@ export class SchoolStaffInviteService {
   private readonly repository: SchoolStaffInviteRepository;
   private readonly deliverySink: SchoolStaffInviteDeliverySink | null;
   private readonly auditSink: SchoolStaffInviteAuditSink | null;
+  private readonly passwordHasher: PasswordHasher;
   private readonly now: () => Date;
   private readonly inviteTtlMs: number;
 
@@ -124,6 +148,7 @@ export class SchoolStaffInviteService {
     options: {
       deliverySink?: SchoolStaffInviteDeliverySink | null;
       auditSink?: SchoolStaffInviteAuditSink | null;
+      passwordHasher?: PasswordHasher;
       now?: Date;
       inviteTtlMs?: number;
     } = {},
@@ -131,6 +156,7 @@ export class SchoolStaffInviteService {
     this.repository = repository;
     this.deliverySink = options.deliverySink ?? null;
     this.auditSink = options.auditSink ?? null;
+    this.passwordHasher = options.passwordHasher ?? passwordHasher;
     this.now = () => options.now ?? new Date();
     this.inviteTtlMs = options.inviteTtlMs ?? 7 * 24 * 60 * 60 * 1000;
   }
@@ -270,6 +296,71 @@ export class SchoolStaffInviteService {
     });
 
     return accepted;
+  }
+
+  async activateInvite(
+    context: RequestContext,
+    inviteId: unknown,
+    input: ActivateSchoolStaffInviteInput,
+  ): Promise<ActivatedSchoolStaffInvite> {
+    if (context.actorUserId || context.activeRole !== "guest") {
+      throw forbidden("Sign out before activating a new school staff account. Existing accounts must use the signed-in invite acceptance flow.");
+    }
+
+    const value = authInput(input, ["inviteToken", "password", "displayName"]);
+    const normalizedInviteId = inputUuid(inviteId, "School staff invite id");
+    const normalizedInviteToken = authToken(value.inviteToken);
+    const password = authPassword(value.password, true);
+    const displayName = authDisplayName(value.displayName);
+    const activatedAt = this.now();
+    const inviteTokenHash = sha256(normalizedInviteToken);
+    const invite = await this.repository.findActiveInviteByIdAndTokenHash({
+      inviteId: normalizedInviteId,
+      inviteTokenHash,
+      now: activatedAt,
+    });
+
+    if (!invite) {
+      throw badRequest("School invite is invalid, expired, or already consumed.");
+    }
+
+    const role = parseSchoolStaffInviteRole(invite.role);
+    const passwordHash = await this.passwordHasher.hash(password);
+    const activated = await this.repository.activateInviteForNewAccount({
+      inviteId: invite.id,
+      inviteTokenHash,
+      schoolId: invite.schoolId,
+      role,
+      invitedByUserId: invite.invitedByUserId,
+      passwordHash,
+      displayName,
+      activatedAt,
+    });
+
+    if (!activated) {
+      throw conflict("This invitation cannot create a new account. If this email already has a CUAC account, sign in and accept the invitation from that account.");
+    }
+
+    await this.recordAudit(context, {
+      action: "auth.school_staff_invite.activate",
+      resourceType: "school_staff_invite",
+      resourceId: invite.id,
+      allowed: true,
+      policyDecisionId: context.policyDecisionId,
+      dataClasses: ["tenant_confidential", "secret"],
+      metadata: {
+        activatedUserId: activated.userId,
+        schoolId: invite.schoolId,
+        role,
+        emailDomain: extractEmailDomain(activated.emailNormalized),
+        membershipId: activated.membershipId,
+        accountCreated: true,
+        emailVerifiedByInvite: true,
+        studentRoleGranted: false,
+      },
+    });
+
+    return activated;
   }
 
   async revokeInvite(context: RequestContext, inviteId: unknown): Promise<RevokedSchoolStaffInvite> {
