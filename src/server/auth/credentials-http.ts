@@ -33,6 +33,14 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
         });
         if (body.ageBand === "under_14") {
           if (!options.guardianConsent) throw new CuacError("SERVICE_UNAVAILABLE", "Guardian consent email delivery is not configured.", 503);
+          await options.rateLimiter?.assertAllowed({
+            action: "auth.guardian_consent.request",
+            subject: {
+              email: authRateLimitEmail(body.guardianEmail),
+              ipHash: hashRequestIp(request),
+              route: "/api/v1/auth/register",
+            },
+          });
           const pending = await options.guardianConsent.request({
             email: body.email, password: body.password, displayName: body.displayName,
             guardianEmail: body.guardianEmail, guardianRelationship: body.guardianRelationship, locale: body.locale,

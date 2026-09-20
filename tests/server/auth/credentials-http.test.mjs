@@ -137,6 +137,28 @@ test("under-14 HTTP registration creates only a pending guardian request and no 
   assert.equal(calls[0].locale, "zh-CN");
 });
 
+test("under-14 HTTP registration rate limits both the child registration and guardian recipient", async () => {
+  const rateCalls = [];
+  const handlers = createAuthCredentialsHttpHandlers({
+    async registerStudent() { throw new Error("adult registration must not run"); },
+  }, {
+    rateLimiter: { async assertAllowed(input) { rateCalls.push(input); } },
+    guardianConsent: { async request() {
+      return { requestId: "00000000-0000-4000-8000-000000000021", expiresAt: new Date("2026-09-23T08:00:00.000Z") };
+    } },
+  });
+  const response = await handlers.registerStudent(new Request("https://cuac.test/api/v1/auth/register", {
+    method: "POST", headers: { "x-forwarded-for": "203.0.113.12" },
+    body: JSON.stringify({ email: "child@example.com", password: "strong-password", ageBand: "under_14",
+      guardianEmail: "guardian@example.com", guardianRelationship: "parent", locale: "en" }),
+  }));
+  assert.equal(response.status, 202);
+  assert.deepEqual(rateCalls.map(call => [call.action, call.subject.email]), [
+    ["auth.register", "child@example.com"],
+    ["auth.guardian_consent.request", "guardian@example.com"],
+  ]);
+});
+
 test("auth credentials HTTP login returns stable forbidden error without revealing account state", async () => {
   const repository = {
     async findPasswordIdentityByEmailNormalized() {
