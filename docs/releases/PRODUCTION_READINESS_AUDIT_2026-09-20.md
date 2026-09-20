@@ -60,14 +60,14 @@ Deferred payment, private-file and official-material workers are not deployed fo
 | --- | --- | --- |
 | Production build | Pass | The current source compiles. |
 | Production-source lint | Pass after removing one stale icon declaration | The lint gate is green. |
-| Frontend contracts | 57/57 pass | Active static workspaces remain server-backed, invitation activation is separated from account binding, and release boundaries are visible. |
+| Frontend contracts | 58/58 pass | Active static workspaces remain server-backed, invitation activation is separated from account binding, legal routes fail closed, and release boundaries are visible. |
 | Intake governance tests | 7/7 pass | Future annual intake drafts, publication, withdrawal, tenant scope and official evidence are covered. |
 | Local full-site data interaction | 14/14 pass | Twelve released surfaces, five public catalogs, search/ETag, anonymous and cross-role denial, student choices, school queue, Ops/Admin projections and malformed-input rejection passed against the persistent local PostgreSQL runtime. |
 | Local role smoke | Pass | Student, school staff, Ops and stepped-up Admin flows pass, including staff MFA and the school intake lifecycle. |
 | Invitation-first identity check | Pass | A real local PostgreSQL transaction created a verified staff-only account, denied replay, isolated all four local fixture roles, and invalidated an existing school session immediately after membership removal. Test data was rolled back. |
-| Main server suite | 699/699 pass | The complete server suite, including the detached reproducible migration package, Auth-email invitation templates and tamper rejection, is green. |
-| Real PostgreSQL rehearsal | 420/420 pass | PostgreSQL 16.15 applied and replayed the complete migration chain, matched 82 tables/1,249 columns/470 constraints/315 indexes, exercised historical upgrades, concurrency and authorization, and removed the disposable database afterward. |
-| Migration release | Pass | The detached release was reproduced as `93470ac62b16955868acc9e5844bb85cae754e370816cf20f07cbb40f73453b3` with 15 pinned runtime dependencies. |
+| Main server suite | 700/700 pass | The complete server suite, including the detached reproducible migration package, Auth-email invitation templates, legal policy schemas and tamper rejection, is green. |
+| Real PostgreSQL rehearsal | 421 tests pass | PostgreSQL 16.15 applied and replayed the complete migration chain, matched 82 tables/1,249 columns/470 constraints/315 indexes, exercised historical upgrades, concurrency and authorization, and removed the disposable database afterward. |
+| Migration release | Pass | The detached release was reproduced as `08568f8d306f98a0ca9d61561995f00fe33a94500c2d72cc6b6a8d321c9c3353` with 15 pinned runtime dependencies. |
 | Release and staging contract tests | 25/25 pass | Release identity binding, reviewed startup, worker boundaries and protected staging-evidence rules are green; real cloud evidence is still intentionally absent. |
 | Production readiness preflight | Expected fail without deployment environment | No RDS URL, production origin, KMS, mail credentials, MFA keyring, WAF attestations or cloud runtime were supplied locally. |
 | Legacy demo suite | Not a release gate and currently stale | It references files outside this repository and historical titles. It must not be presented as production evidence. |
@@ -110,7 +110,9 @@ Acceptance: approved sender domain, KMS-held credentials and outbox keyring; sup
 
 ### P0-4 Legal and user-rights surfaces
 
-Footer Privacy, Terms, Cookie and data-policy links currently point to a general page anchor. The governed application disclosure backend does not replace public legal pages or account-rights workflows.
+Implementation status: **stable fail-closed policy routes and governed publication scopes are implemented; approved wording and the authenticated rights-request workflow remain open release blockers.**
+
+Privacy, Terms, Cookie and admissions-data/source links now resolve to dedicated public routes. Each route reads its exact locale and purpose-specific document from the existing digest-bound, independently reviewed publication system and displays version, effective date and review due date. Missing, expired, withdrawn or corrupt content is shown as unpublished and cannot silently fall back to a draft, another locale or the application disclosure. The database scope constraint and real migration now admit the four legal policy keys. See `LEGAL_AND_DATA_RIGHTS_READINESS_2026-09-20.md` for the browser-storage inventory, required owner decisions, rights workflow and release checklist.
 
 Required:
 

@@ -400,6 +400,13 @@
       "when": 1789875417355,
       "tag": "0056_auth_school_invite_email_outbox",
       "breakpoints": true
+    },
+    {
+      "idx": 57,
+      "version": "7",
+      "when": 1789876623410,
+      "tag": "0057_legal_notice_scopes",
+      "breakpoints": true
     }
   ]
 }

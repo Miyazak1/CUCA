@@ -1,0 +1,2 @@
+ALTER TABLE "privacy_notice_scopes" DROP CONSTRAINT "privacy_notice_scope_check";--> statement-breakpoint
+ALTER TABLE "privacy_notice_scopes" ADD CONSTRAINT "privacy_notice_scope_check" CHECK ("privacy_notice_scopes"."notice_key" in ('application_disclosure', 'privacy_notice', 'terms_of_service', 'cookie_notice', 'admissions_data_policy') and "privacy_notice_scopes"."locale" in ('en', 'zh-CN') and "privacy_notice_scopes"."scope_key" = "privacy_notice_scopes"."notice_key" || ':' || "privacy_notice_scopes"."locale");

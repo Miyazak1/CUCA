@@ -95,8 +95,8 @@
       links: [
         ["About us", "home-v3.html#cuac-hub"],
         ["Accessibility", "home-v3.html#application-guides"],
-        ["Privacy", "home-v3.html#application-guides"],
-        ["Terms", "home-v3.html#application-guides"],
+        ["Privacy", "privacy.html"],
+        ["Terms", "terms.html"],
       ],
     },
   ];
@@ -134,8 +134,8 @@
       links: [
         ["关于我们", "home-v3.html#cuac-hub"],
         ["无障碍", "home-v3.html#application-guides"],
-        ["隐私", "home-v3.html#application-guides"],
-        ["条款", "home-v3.html#application-guides"],
+        ["隐私", "privacy.html?lang=zh-CN"],
+        ["条款", "terms.html?lang=zh-CN"],
       ],
     },
   ];
@@ -801,7 +801,7 @@
         <footer class="footer footer-workspace">
           <div>${brand()}<span>${workspace.kind === "student" ? "Your China application workspace" : workspace.kind === "school" ? "当前学校租户内的招生工作区" : "受控、可审计的 CUAC 运营工作区"}</span></div>
           <div class="footer-legal">
-            <a href="home-v3.html#application-guides">${localized ? "隐私与数据边界" : "Privacy and data use"}</a>
+            <a href="privacy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "隐私与数据边界" : "Privacy and data use"}</a>
             <a href="home-v3.html#cuac-hub">${localized ? "获取支持" : "Get support"}</a>
           </div>
         </footer>
@@ -840,9 +840,9 @@
         <div class="footer-bottom">
           <span>© CUAC 2026</span>
           <div class="footer-legal">
-            <a href="home-v3.html#application-guides">${localized ? "Cookie 偏好" : "Cookie preferences"}</a>
-            <a href="home-v3.html#application-guides">${localized ? "数据与来源政策" : "Data and source policy"}</a>
-            <a href="home-v3.html#application-guides">${localized ? "招生透明政策" : "Admissions clarity policy"}</a>
+            <a href="cookies.html${localized ? "?lang=zh-CN" : ""}">${localized ? "Cookie 说明" : "Cookie notice"}</a>
+            <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "数据与来源政策" : "Data and source policy"}</a>
+            <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "招生透明政策" : "Admissions clarity policy"}</a>
           </div>
         </div>
       </footer>

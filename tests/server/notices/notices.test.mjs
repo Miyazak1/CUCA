@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto";
 import test from "node:test";
 import { evaluatePolicy } from "../../../src/server/policy/policy.ts";
 import { createRequestContext } from "../../../src/server/shared/request-context.ts";
-import { MAX_NOTICE_VERSION, noticeDigest, noticeScope, parseNoticeDocument, parseNoticeReview } from "../../../src/server/notices/document.ts";
+import { LEGAL_NOTICE_SECTIONS, MAX_NOTICE_VERSION, noticeDigest, noticeScope, parseNoticeDocument, parseNoticeReview } from "../../../src/server/notices/document.ts";
 import { PostgresNoticeGovernance } from "../../../src/server/notices/postgres-governance.ts";
 import { PostgresNoticeReader } from "../../../src/server/notices/public-reader.ts";
 import { managedNoticeVersion } from "../../../src/server/notices/versions.ts";
@@ -46,6 +46,20 @@ test("notice identity binds exact purpose and locale without fallback or client 
   assert.throws(() => parseNoticeDocument(noticeDocument("zh-CN"), scope), bad);
   const chinese = noticeScope("application_disclosure", "zh-CN");
   assert.equal(parseNoticeDocument(noticeDocument("zh-CN"), chinese).locale, "zh-CN");
+});
+
+test("each public legal policy has an exact versioned schema and rejects application-disclosure fields", () => {
+  for (const [noticeKey, keys] of Object.entries(LEGAL_NOTICE_SECTIONS)) {
+    const legalScope = noticeScope(noticeKey, "en");
+    const input = { schemaVersion: 2, noticeKey, locale: "en", title: `Synthetic ${noticeKey}`,
+      sections: keys.map(key => ({ key, heading: `Synthetic ${key}`, body: "Synthetic policy text; not approved wording." })) };
+    const parsed = parseNoticeDocument(input, legalScope);
+    assert.deepEqual(parsed.sections.map(section => section.key), keys);
+    assert.throws(() => parseNoticeDocument({ ...input, coveredData: ["applicant_basics"] }, legalScope), bad);
+    assert.throws(() => parseNoticeDocument({ ...input, schemaVersion: 1 }, legalScope), bad);
+    assert.throws(() => parseNoticeDocument({ ...input, sections: input.sections.slice(1) }, legalScope), bad);
+    assert.throws(() => parseNoticeDocument({ ...input, sections: input.sections.map(() => input.sections[0]) }, legalScope), bad);
+  }
 });
 
 test("notice review binds identity body scope and dates but does not assert legal compliance", () => {

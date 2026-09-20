@@ -112,7 +112,7 @@ export const privacyNoticeScopes = pgTable("privacy_notice_scopes", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 }, (table) => ({
   scopeUnique: uniqueIndex("privacy_notice_scope_unique").on(table.noticeKey, table.locale),
-  scopeCheck: check("privacy_notice_scope_check", sql`${table.noticeKey} = 'application_disclosure' and ${table.locale} in ('en', 'zh-CN') and ${table.scopeKey} = ${table.noticeKey} || ':' || ${table.locale}`),
+  scopeCheck: check("privacy_notice_scope_check", sql`${table.noticeKey} in ('application_disclosure', 'privacy_notice', 'terms_of_service', 'cookie_notice', 'admissions_data_policy') and ${table.locale} in ('en', 'zh-CN') and ${table.scopeKey} = ${table.noticeKey} || ':' || ${table.locale}`),
 }));
 
 export const privacyNoticeVersions = pgTable("privacy_notice_versions", {

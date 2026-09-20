@@ -39,7 +39,7 @@ privacy_notice_scopes、privacy_notice_versions、privacy_notice_publications �
 
 ## 5. 接口与上线边界
 
-只读合同：GET /api/v1/notices/:noticeKey/:locale，200 { data: PublishedNoticeDto | null }。返回准确范围、版本 ID、正文摘要、发布 revision、生效/复核时间及正文，不返回准备者、审核者、内部审查引用或学生信息。错误范围 400，损坏已发布数据或 repository 不可用为脱敏 503。查询参数不得选择另一范围或历史版本。
+只读合同：GET /api/v1/notices/:noticeKey/:locale，200 { data: PublishedNoticeDto | null }。支持 `application_disclosure`、`privacy_notice`、`terms_of_service`、`cookie_notice` 和 `admissions_data_policy`；每个 key 使用独立且完整的章节清单，不允许用另一类政策正文代替。返回准确范围、版本 ID、正文摘要、发布 revision、生效/复核时间及正文，不返回准备者、审核者、内部审查引用或学生信息。错误范围 400，损坏已发布数据或 repository 不可用为脱敏 503。查询参数不得选择另一范围或历史版本。
 
 无 POST/PATCH/DELETE 管理接口，无同意按钮接线，无生产告知种子。真实内容必须先审查才可通过内部授权流程发布。即使告知可读，未成年人/监护、具体接收方说明、字段最小化、资料快照、撤回后处理及正式提交仍需各自实现，不能开放一个 consent=true 替代。
 
