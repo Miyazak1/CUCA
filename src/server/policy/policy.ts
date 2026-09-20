@@ -43,6 +43,7 @@ export type PolicyAction =
   | "ops.read_account_deletion_execution"
   | "ops.refresh_account_deletion_execution"
   | "ops.review_account_deletion_legal_hold"
+  | "ops.quarantine_account_deletion"
   | "billing.manage_own"
   | "notification.read_own_scope"
   | "notification.manage_own_scope"
@@ -318,9 +319,10 @@ export function evaluatePolicy(context: RequestContext, action: PolicyAction, re
   }
 
   if (resource.type === "ops_account_deletion_execution" && ["ops.read_account_deletion_execution",
-    "ops.refresh_account_deletion_execution", "ops.review_account_deletion_legal_hold"].includes(action)) {
+    "ops.refresh_account_deletion_execution", "ops.review_account_deletion_legal_hold",
+    "ops.quarantine_account_deletion"].includes(action)) {
     const internal = context.activeRole === "cuac_ops" || context.activeRole === "cuac_admin";
-    const reviewing = action === "ops.review_account_deletion_legal_hold";
+    const reviewing = action === "ops.review_account_deletion_legal_hold" || action === "ops.quarantine_account_deletion";
     return context.actorUserId && internal && context.selectedSurface === "ops"
       && context.purpose === "account_deletion_execution" && context.tenantSchoolId === null
       && (context.authStrength === "session" || context.authStrength === "step_up")

@@ -18,7 +18,10 @@ export type LegalHoldReview = { reviewId: string; version: number; sourceExecuti
 export type AccountDeletionExecution = { executionId: string; dataRightsRequestId: string;
   status: "review_required" | "blocked" | "quarantined" | "purge_ready" | "completed";
   blockerCodes: AccountDeletionBlocker[]; revision: number; preparedAt: Date; updatedAt: Date;
+  quarantinedAt: Date | null; purgeAfter: Date | null;
   latestLegalHoldReview: LegalHoldReview | null };
+export type BackupTombstoneEvidence = { receiptSha256: string; recordedAt: Date };
+export type BackupTombstoneVerifier = { verify(executionId: string): Promise<BackupTombstoneEvidence | null> };
 type Authorized<T> = { authorized: false } | { authorized: true; value: T };
 export type AccountDeletionExecutionRepository = {
   list(input: Actor & { limit: number }): Promise<Authorized<AccountDeletionExecution[]>>;
@@ -26,6 +29,8 @@ export type AccountDeletionExecutionRepository = {
   recordLegalHoldReview(input: Actor & { executionId: string; reviewId: string; expectedRevision: number;
     result: LegalHoldReview["result"]; reasonCode: LegalHoldReview["reasonCode"];
     caseReference: string }): Promise<Authorized<AccountDeletionExecution | null>>;
+  quarantine(input: Actor & { executionId: string; quarantineId: string; expectedRevision: number;
+    tombstone: BackupTombstoneEvidence }): Promise<Authorized<AccountDeletionExecution | null>>;
 };
 
 const dataClasses = ["ops_confidential", "audit_security"] as const;
@@ -33,8 +38,10 @@ const dataClasses = ["ops_confidential", "audit_security"] as const;
 export class OpsAccountDeletionService {
   private readonly repository: AccountDeletionExecutionRepository;
   private readonly audit: AuditSink;
-  constructor(repository: AccountDeletionExecutionRepository, audit: AuditSink) {
-    this.repository = repository; this.audit = audit;
+  private readonly tombstones: BackupTombstoneVerifier;
+  constructor(repository: AccountDeletionExecutionRepository, audit: AuditSink,
+    tombstones: BackupTombstoneVerifier = { async verify() { throw serviceUnavailable("Backup tombstone verification is not configured."); } }) {
+    this.repository = repository; this.audit = audit; this.tombstones = tombstones;
   }
 
   async list(context: RequestContext, value: unknown = {}) {
@@ -89,6 +96,29 @@ export class OpsAccountDeletionService {
         reasonCode, revision: execution.revision, status: execution.status } }));
     return project(execution);
   }
+
+  async quarantine(context: RequestContext, executionIdValue: unknown, value: unknown) {
+    const actor = requireActor(context), decisionId = authorize(context, "ops.quarantine_account_deletion");
+    if (actor.activeRole !== "cuac_admin" || context.authStrength !== "step_up") {
+      throw forbidden("Step-up CUAC administrator authority is required for account quarantine.");
+    }
+    const executionId = inputUuid(executionIdValue, "Execution id");
+    const fields = inputRecord(value, ["quarantineId", "expectedRevision"]);
+    const quarantineId = inputUuid(fields.quarantineId, "Quarantine id");
+    const expectedRevision = inputInteger(fields.expectedRevision, "Expected revision", 1, 2_147_483_646);
+    const tombstone = await this.tombstones.verify(executionId);
+    if (!tombstone || !/^sha256:[a-f0-9]{64}$/.test(tombstone.receiptSha256) || !date(tombstone.recordedAt)) {
+      throw serviceUnavailable("Verified backup tombstone evidence is required before account quarantine.");
+    }
+    const result = await this.repository.quarantine({ ...actor, executionId, quarantineId, expectedRevision, tombstone });
+    requireAuthority(result); if (!result.value) throw changed();
+    const execution = validate(result.value);
+    await this.audit.record(buildAuditEvent(context, { action: "ops.account_deletion.quarantine",
+      resourceType: "account_deletion_execution", resourceId: executionId, allowed: true,
+      policyDecisionId: decisionId, dataClasses, metadata: { quarantineId, revision: execution.revision,
+        status: execution.status, purgeAfter: execution.purgeAfter?.toISOString(), tombstoneReceiptSha256: tombstone.receiptSha256 } }));
+    return project(execution);
+  }
 }
 
 function requireActor(context: RequestContext): Actor {
@@ -114,7 +144,9 @@ function validate(row: AccountDeletionExecution) {
     || !["review_required", "blocked", "quarantined", "purge_ready", "completed"].includes(row.status)
     || !Array.isArray(row.blockerCodes) || new Set(row.blockerCodes).size !== row.blockerCodes.length
     || row.blockerCodes.some(code => !ACCOUNT_DELETION_BLOCKERS.includes(code))
-    || !date(row.preparedAt) || !date(row.updatedAt) || row.updatedAt < row.preparedAt) throw unavailable();
+    || !date(row.preparedAt) || !date(row.updatedAt) || row.updatedAt < row.preparedAt
+    || !dateOrNull(row.quarantinedAt) || !dateOrNull(row.purgeAfter)
+    || (row.status === "quarantined" && (!row.quarantinedAt || !row.purgeAfter || row.purgeAfter <= row.quarantinedAt))) throw unavailable();
   const review = row.latestLegalHoldReview;
   if (review && (!uuid(review.reviewId) || !Number.isSafeInteger(review.version) || review.version < 1
     || !Number.isSafeInteger(review.sourceExecutionRevision) || review.sourceExecutionRevision < 1
@@ -125,8 +157,10 @@ function validate(row: AccountDeletionExecution) {
 }
 function project(row: AccountDeletionExecution) { validate(row); return { ...row,
   preparedAt: row.preparedAt.toISOString(), updatedAt: row.updatedAt.toISOString(),
+  quarantinedAt: row.quarantinedAt?.toISOString() ?? null, purgeAfter: row.purgeAfter?.toISOString() ?? null,
   latestLegalHoldReview: row.latestLegalHoldReview ? { ...row.latestLegalHoldReview,
     reviewedAt: row.latestLegalHoldReview.reviewedAt.toISOString() } : null }; }
 function uuid(value: string) { return /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(value); }
 function date(value: unknown): value is Date { return value instanceof Date && Number.isFinite(value.getTime()); }
+function dateOrNull(value: unknown): value is Date | null { return value === null || date(value); }
 function unavailable() { return serviceUnavailable("Account-deletion execution data is unavailable."); }

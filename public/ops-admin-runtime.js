@@ -856,6 +856,9 @@ function renderAccountDeletions(items) {
       <header><div><strong>${escapeHtml(statusLabels[item.status] || item.status)}</strong>
       <span>版本 ${item.revision} · ${escapeHtml(new Date(item.preparedAt).toLocaleString())}</span></div></header>
       <p>执行编号：${escapeHtml(item.executionId)}<br />隐私请求编号：${escapeHtml(item.dataRightsRequestId)}</p>
+      ${item.quarantinedAt && item.purgeAfter ? `<p class="ops-state"><strong>隔离等待期：</strong>
+        ${escapeHtml(new Date(item.quarantinedAt).toLocaleString())} 至 ${escapeHtml(new Date(item.purgeAfter).toLocaleString())}。
+        当前账号已停用且会话已撤销；等待期内不会自动清除数据。</p>` : ""}
       <div class="ops-chip-row">${item.blockerCodes.map(code => `<span class="ops-badge${code === "backup_tombstone_required" ? " is-warning" : ""}">${escapeHtml(blockerLabels[code] || code)}</span>`).join("")}</div>
       ${latestReview(item)}
       ${["review_required", "blocked"].includes(item.status) ? `<form class="ops-action-form" data-ops-action-form data-kind="deletion" data-target="${escapeHtml(item.executionId)}"

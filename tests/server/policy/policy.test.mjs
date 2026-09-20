@@ -102,8 +102,11 @@ test("account-deletion execution policy separates queue work from legal-hold dec
   assert.equal(evaluatePolicy(ops,"ops.read_account_deletion_execution",resource).allowed,true);
   assert.equal(evaluatePolicy(ops,"ops.refresh_account_deletion_execution",resource).allowed,true);
   assert.equal(evaluatePolicy(ops,"ops.review_account_deletion_legal_hold",resource).allowed,false);
+  assert.equal(evaluatePolicy(ops,"ops.quarantine_account_deletion",resource).allowed,false);
   assert.equal(evaluatePolicy({...ops,activeRole:"cuac_admin",authStrength:"step_up"},
     "ops.review_account_deletion_legal_hold",resource).allowed,true);
+  assert.equal(evaluatePolicy({...ops,activeRole:"cuac_admin",authStrength:"step_up"},
+    "ops.quarantine_account_deletion",resource).allowed,true);
   assert.equal(evaluatePolicy({...ops,purpose:"data_rights_review"},
     "ops.read_account_deletion_execution",resource).allowed,false);
 });

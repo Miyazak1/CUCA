@@ -11,6 +11,7 @@ function client(responder) { const calls = [], value = { async transaction(work)
 const dbRow = { executionId, dataRightsRequestId: "44444444-4444-4444-8444-444444444444",
   status: "review_required", blockerCodes: ["legal_hold_review_required", "backup_tombstone_required"], revision: 2,
   preparedAt: new Date("2026-09-20T00:00:00Z"), updatedAt: new Date("2026-09-20T00:01:00Z"),
+  quarantinedAt: null, purgeAfter: null,
   reviewId: null, reviewVersion: null, sourceExecutionRevision: null, legalHoldResult: null,
   legalHoldReasonCode: null, legalHoldCaseReference: null, reviewedByUserId: null, reviewedAt: null };
 
@@ -47,4 +48,25 @@ test("repository checks live staff authority before queue access", async () => {
   const f = client(() => []);
   assert.deepEqual(await new PostgresAccountDeletionExecutionRepository(f.value).list({ ...actor, limit: 50 }),
     { authorized: false }); assert.equal(f.calls.length, 1);
+});
+
+test("quarantine atomically revokes sessions, disables login, advances execution and stores trusted evidence", async () => {
+  const quarantinedAt = new Date("2026-09-20T00:05:00Z"), purgeAfter = new Date("2026-10-20T00:05:00Z");
+  const quarantined = { ...dbRow, status: "quarantined", blockerCodes: [], revision: 3,
+    updatedAt: quarantinedAt, quarantinedAt, purgeAfter };
+  const f = client(statement => /from users u/.test(statement) && /cuac_staff_access_grants/.test(statement) ? [authority]
+    : /with target as/.test(statement) && /account_deletion_quarantine_receipts/.test(statement) ? [{ id: executionId }]
+    : /select x.id as/.test(statement) ? [quarantined] : []);
+  const result = await new PostgresAccountDeletionExecutionRepository(f.value).quarantine({ ...actor, executionId,
+    quarantineId: "66666666-6666-4666-8666-666666666666", expectedRevision: 2,
+    tombstone: { receiptSha256: `sha256:${"c".repeat(64)}`, recordedAt: dbRow.preparedAt } });
+  assert.equal(result.value.status, "quarantined");
+  const sql = f.calls[1].statement;
+  assert.match(sql, /h\.source_execution_revision\+1=x\.revision/);
+  assert.match(sql, /account_status='deletion_quarantined'/);
+  assert.match(sql, /update auth_sessions s set revoked_at=/);
+  assert.match(sql, /step_up_expires_at=null/);
+  assert.match(sql, /purge_after=d\.quarantined_at\+interval '30 days'/);
+  assert.match(sql, /insert into account_deletion_quarantine_receipts/);
+  assert.doesNotMatch(sql, /delete from/i);
 });

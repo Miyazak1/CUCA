@@ -13,6 +13,7 @@ type Row = Omit<AccountDeletionExecution, "blockerCodes" | "latestLegalHoldRevie
 
 const projection = `select x.id as "executionId",x.data_rights_request_id as "dataRightsRequestId",
   x.status,x.blocker_codes_json as "blockerCodes",x.revision,x.prepared_at as "preparedAt",x.updated_at as "updatedAt",
+  x.quarantined_at as "quarantinedAt",x.purge_after as "purgeAfter",
   h.id as "reviewId",h.version as "reviewVersion",h.source_execution_revision as "sourceExecutionRevision",
   h.result as "legalHoldResult",h.reason_code as "legalHoldReasonCode",h.case_reference as "legalHoldCaseReference",
   h.reviewed_by_user_id as "reviewedByUserId",h.reviewed_at as "reviewedAt"
@@ -97,6 +98,48 @@ export class PostgresAccountDeletionExecutionRepository implements AccountDeleti
       return { authorized: true, value: await load(tx, input.executionId) } as const;
     });
   }
+
+  async quarantine(input: Actor & { executionId: string; quarantineId: string; expectedRevision: number;
+    tombstone: { receiptSha256: string; recordedAt: Date } }) {
+    return this.client.transaction(async tx => {
+      const authority = await lockLiveCuacStaffAuthority(tx, input);
+      if (!authority) return { authorized: false } as const;
+      const rows = await tx.query<{ id: string }>(`with target as (
+          select x.id,x.user_id,x.revision,h.id legal_review_id,clock_timestamp() quarantined_at
+          from account_deletion_executions x join users u on u.id=x.user_id and u.account_status='active'
+          join lateral (select r.* from account_deletion_legal_hold_reviews r where r.execution_id=x.id
+            order by r.version desc,r.id desc limit 1) h on true
+          where x.id=$1 and x.revision=$2 and x.status='review_required'
+            and jsonb_array_length(x.blocker_codes_json)=2
+            and x.blocker_codes_json @> '["legal_hold_review_required","backup_tombstone_required"]'::jsonb
+            and h.result='clear_candidate' and h.reason_code='no_hold_found'
+            and h.source_execution_revision+1=x.revision
+            and $4::timestamptz>=x.prepared_at and $4::timestamptz<=clock_timestamp()
+            and not exists (select 1 from account_deletion_quarantine_receipts q where q.execution_id=x.id)
+          for update of x,u
+        ), revoked as (
+          update auth_sessions s set revoked_at=coalesce(s.revoked_at,t.quarantined_at),step_up_expires_at=null
+          from target t where s.user_id=t.user_id and s.revoked_at is null returning s.id
+        ), disabled as (
+          update users u set account_status='deletion_quarantined',updated_at=t.quarantined_at
+          from target t cross join (select count(*) from revoked) r where u.id=t.user_id returning t.*
+        ), advanced as (
+          update account_deletion_executions x set status='quarantined',blocker_codes_json='[]'::jsonb,
+            revision=x.revision+1,quarantined_at=d.quarantined_at,purge_after=d.quarantined_at+interval '30 days',
+            updated_at=d.quarantined_at from disabled d where x.id=d.id returning x.*,d.legal_review_id
+        ), receipt as (
+          insert into account_deletion_quarantine_receipts
+            (id,execution_id,source_execution_revision,legal_hold_review_id,backup_tombstone_receipt_sha256,
+              backup_tombstone_recorded_at,approved_by_user_id,approved_by_grant_id,approved_by_role,
+              quarantined_at,purge_after,created_at)
+          select $3,a.id,$2,a.legal_review_id,$5,$4,$6,$7,$8,a.quarantined_at,a.purge_after,a.quarantined_at
+          from advanced a returning execution_id
+        ) select execution_id id from receipt`, [input.executionId, input.expectedRevision, input.quarantineId,
+        input.tombstone.recordedAt, input.tombstone.receiptSha256, input.actorUserId, authority.grantId, input.activeRole]);
+      if (rows.length === 0) return { authorized: true, value: null } as const;
+      return { authorized: true, value: await load(tx, input.executionId) } as const;
+    });
+  }
 }
 
 async function load(client: TransactionalSqlClient, id: string) {
@@ -106,6 +149,7 @@ async function load(client: TransactionalSqlClient, id: string) {
 function mapRow(row: Row): AccountDeletionExecution {
   return { executionId: row.executionId, dataRightsRequestId: row.dataRightsRequestId, status: row.status,
     blockerCodes: row.blockerCodes, revision: row.revision, preparedAt: row.preparedAt, updatedAt: row.updatedAt,
+    quarantinedAt: row.quarantinedAt, purgeAfter: row.purgeAfter,
     latestLegalHoldReview: row.reviewId ? { reviewId: row.reviewId, version: row.reviewVersion!,
       sourceExecutionRevision: row.sourceExecutionRevision!, result: row.legalHoldResult!,
       reasonCode: row.legalHoldReasonCode!, caseReference: row.legalHoldCaseReference!,

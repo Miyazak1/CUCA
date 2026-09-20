@@ -1235,6 +1235,8 @@ export const accountDeletionLegalHoldReviews = pgTable("account_deletion_legal_h
 }, table => ({
   executionVersionUnique: uniqueIndex("account_deletion_legal_hold_reviews_execution_version_unique")
     .on(table.executionId, table.version),
+  idExecutionUnique: uniqueIndex("account_deletion_legal_hold_reviews_id_execution_unique")
+    .on(table.id, table.executionId),
   executionReviewedIdx: index("account_deletion_legal_hold_reviews_execution_reviewed_idx")
     .on(table.executionId, table.reviewedAt, table.id),
   reviewerGrantScopeFk: foreignKey({
@@ -1253,6 +1255,45 @@ export const accountDeletionLegalHoldReviews = pgTable("account_deletion_legal_h
     and ${table.sourceExecutionRevision} > 0
     and isfinite(${table.reviewedAt}) and isfinite(${table.createdAt})
     and ${table.createdAt} >= ${table.reviewedAt}`),
+}));
+
+export const accountDeletionQuarantineReceipts = pgTable("account_deletion_quarantine_receipts", {
+  id: uuid("id").primaryKey(),
+  executionId: uuid("execution_id").notNull()
+    .references(() => accountDeletionExecutions.id, { onDelete: "restrict" }),
+  sourceExecutionRevision: integer("source_execution_revision").notNull(),
+  legalHoldReviewId: uuid("legal_hold_review_id").notNull(),
+  backupTombstoneReceiptSha256: text("backup_tombstone_receipt_sha256").notNull(),
+  backupTombstoneRecordedAt: timestamp("backup_tombstone_recorded_at", { withTimezone: true }).notNull(),
+  policyVersion: text("policy_version").notNull().default("account_deletion_quarantine_v1"),
+  approvedByUserId: uuid("approved_by_user_id").notNull(),
+  approvedByGrantId: uuid("approved_by_grant_id").notNull(),
+  approvedByRole: text("approved_by_role").notNull(),
+  quarantinedAt: timestamp("quarantined_at", { withTimezone: true }).notNull(),
+  purgeAfter: timestamp("purge_after", { withTimezone: true }).notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, table => ({
+  executionUnique: uniqueIndex("account_deletion_quarantine_receipts_execution_unique").on(table.executionId),
+  legalReviewExecutionFk: foreignKey({
+    name: "account_deletion_quarantine_receipts_legal_review_execution_fk",
+    columns: [table.legalHoldReviewId, table.executionId],
+    foreignColumns: [accountDeletionLegalHoldReviews.id, accountDeletionLegalHoldReviews.executionId],
+  }).onDelete("restrict"),
+  approverGrantScopeFk: foreignKey({
+    name: "account_deletion_quarantine_receipts_approver_grant_scope_fk",
+    columns: [table.approvedByGrantId, table.approvedByUserId, table.approvedByRole],
+    foreignColumns: [cuacStaffAccessGrants.id, cuacStaffAccessGrants.userId, cuacStaffAccessGrants.requestedRole],
+  }).onDelete("restrict"),
+  receiptCheck: check("account_deletion_quarantine_receipts_receipt_check", sql`
+    ${table.backupTombstoneReceiptSha256} ~ '^sha256:[a-f0-9]{64}$'
+    and ${table.policyVersion} = 'account_deletion_quarantine_v1'
+    and ${table.sourceExecutionRevision} > 0 and ${table.approvedByRole} = 'cuac_admin'`),
+  timeCheck: check("account_deletion_quarantine_receipts_time_check", sql`
+    isfinite(${table.backupTombstoneRecordedAt}) and isfinite(${table.quarantinedAt})
+    and isfinite(${table.purgeAfter}) and isfinite(${table.createdAt})
+    and ${table.backupTombstoneRecordedAt} <= ${table.quarantinedAt}
+    and ${table.purgeAfter} = ${table.quarantinedAt} + interval '30 days'
+    and ${table.createdAt} >= ${table.quarantinedAt}`),
 }));
 
 export const schoolProgramIntakeVersions = pgTable(

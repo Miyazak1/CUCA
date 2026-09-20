@@ -11,6 +11,7 @@ const unavailable: AccountDeletionExecutionRepository = {
   async list() { throw serviceUnavailable("Account-deletion execution queue is unavailable."); },
   async refresh() { throw serviceUnavailable("Account-deletion execution queue is unavailable."); },
   async recordLegalHoldReview() { throw serviceUnavailable("Account-deletion execution queue is unavailable."); },
+  async quarantine() { throw serviceUnavailable("Account-deletion execution queue is unavailable."); },
 };
 const guest = { async findActiveSessionByTokenHash() { return null; } };
 export function createOpsAccountDeletionRouteHandlers(repository = unavailable) {
@@ -23,6 +24,7 @@ export function getOpsAccountDeletionRouteHandlers() {
     const service: OpsAccountDeletionHttpService = {
       list: transactionalMethod(client, create, "list"), refresh: transactionalMethod(client, create, "refresh"),
       reviewLegalHold: transactionalMethod(client, create, "reviewLegalHold"),
+      quarantine: transactionalMethod(client, create, "quarantine"),
     };
     return createOpsAccountDeletionHttpHandlers(service, new PostgresAuthSessionRepository(client));
   } catch { return createOpsAccountDeletionRouteHandlers(); }

@@ -182,6 +182,31 @@ test("real PostgreSQL retention boundaries and aggregate audit", { timeout: 120_
     where data_rights_request_id=$1`, [deletionRequestId]), error => error.code === "23514");
   await assert.rejects(pool.query("delete from users where id=$1", [deletionUserId]), error => error.code === "23514");
   assert.equal((await pool.query("select account_status from users where id=$1", [deletionUserId])).rows[0].account_status, "active");
+  await pool.query("update user_roles set revoked_at=clock_timestamp() where user_id=$1 and role='school_staff' and revoked_at is null",
+    [deletionUserId]);
+  const finalRefresh = await executionRepository.refresh({ actorUserId: opsUserId, activeRole: "cuac_ops",
+    executionId: deletionExecution.id, expectedRevision: refreshed.value.revision });
+  assert.deepEqual(finalRefresh.value.blockerCodes, ["legal_hold_review_required", "backup_tombstone_required"]);
+  const finalLegalReview = await executionRepository.recordLegalHoldReview({ actorUserId: adminUserId,
+    activeRole: "cuac_admin", executionId: deletionExecution.id, reviewId: randomUUID(),
+    expectedRevision: finalRefresh.value.revision, result: "clear_candidate", reasonCode: "no_hold_found",
+    caseReference: "LEGAL:retention-final" });
+  const deletionSessionId = randomUUID();
+  await pool.query(`insert into auth_sessions(id,user_id,session_token_hash,selected_surface,active_role,expires_at)
+    values($1,$2,$3,'student','student',clock_timestamp()+interval '1 day')`,
+  [deletionSessionId, deletionUserId, `sha256:${"c".repeat(64)}`]);
+  const quarantined = await executionRepository.quarantine({ actorUserId: adminUserId, activeRole: "cuac_admin",
+    executionId: deletionExecution.id, quarantineId: randomUUID(), expectedRevision: finalLegalReview.value.revision,
+    tombstone: { receiptSha256: `sha256:${"d".repeat(64)}`, recordedAt: new Date() } });
+  assert.equal(quarantined.authorized, true);
+  assert.equal(quarantined.value.status, "quarantined");
+  assert.deepEqual(quarantined.value.blockerCodes, []);
+  assert.equal(quarantined.value.purgeAfter.getTime() - quarantined.value.quarantinedAt.getTime(), 30 * 86_400_000);
+  assert.equal((await pool.query("select account_status from users where id=$1", [deletionUserId])).rows[0].account_status,
+    "deletion_quarantined");
+  assert.ok((await pool.query("select revoked_at from auth_sessions where id=$1", [deletionSessionId])).rows[0].revoked_at);
+  assert.equal((await pool.query("select count(*)::int n from account_deletion_quarantine_receipts where execution_id=$1",
+    [deletionExecution.id])).rows[0].n, 1);
   const replay = await new PostgresRetentionProcessor(createTransactionalSqlClient(pool)).processBatch(100);
   assert.equal(replay.inactiveAccountWarningsCreated, 0);
   assert.equal(replay.accountDeletionExecutionsPrepared, 0);

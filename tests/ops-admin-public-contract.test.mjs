@@ -89,6 +89,10 @@ test("Ops write controls preserve backend revision and evidence boundaries", asy
   assert.match(script, /backup_tombstone_required/);
   assert.match(script, /body\.reviewId = crypto\.randomUUID\(\)/);
   assert.match(script, /legal-hold-review/);
+  assert.match(script, /隔离等待期/);
+  assert.match(script, /等待期内不会自动清除数据/);
+  assert.doesNotMatch(script, /data-action="quarantine"/);
+  assert.doesNotMatch(script, /backupTombstone|tombstoneReceipt|receiptSha256/);
   assert.doesNotMatch(script, /account-deletions[^\n]{0,180}(?:force-delete|purge|bypass|skip)/i);
   assert.doesNotMatch(script, /data-rights\/requests\/\$\{encodeURIComponent\(target\)\}\/execute/);
   assert.doesNotMatch(script, /data-rights[\s\S]{0,160}(?:fulfilled|denied|erase|export artifact)/i);

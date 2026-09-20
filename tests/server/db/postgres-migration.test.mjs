@@ -34,6 +34,7 @@ const schoolCatalogCorrectionUrlCheckMigrationPath = new URL("../../../drizzle/p
 const schoolInviteEmailOutboxMigrationPath = new URL("../../../drizzle/pg/0056_auth_school_invite_email_outbox.sql", import.meta.url);
 const accountDeletionExecutionMigrationPath = new URL("../../../drizzle/pg/0069_account_deletion_execution.sql", import.meta.url);
 const accountDeletionLegalHoldReviewsMigrationPath = new URL("../../../drizzle/pg/0070_account_deletion_legal_hold_reviews.sql", import.meta.url);
+const accountDeletionQuarantineMigrationPath = new URL("../../../drizzle/pg/0071_account_deletion_quarantine.sql", import.meta.url);
 const journalPath = new URL("../../../drizzle/pg/meta/_journal.json", import.meta.url);
 
 test("school catalog correction URL follow-up replaces only the invalid PostgreSQL repetition check", async () => {
@@ -762,4 +763,21 @@ test("account deletion legal-hold reviews are append-only and cannot bypass back
   assert.doesNotMatch(sql, /^\s*(?:UPDATE|DELETE FROM|INSERT INTO)\b/im);
   assert.doesNotMatch(sql, /backup_tombstone_required|ALTER TABLE "users"|DROP TABLE/);
   assert.equal(journal.entries.find(entry => entry.tag === "0070_account_deletion_legal_hold_reviews")?.idx, 70);
+});
+
+test("account deletion quarantine stores trusted evidence without deleting account content", async () => {
+  const [sql, journalText] = await Promise.all([
+    readFile(accountDeletionQuarantineMigrationPath, "utf8"), readFile(journalPath, "utf8"),
+  ]);
+  const journal = JSON.parse(journalText);
+  assert.match(sql, /CREATE TABLE "account_deletion_quarantine_receipts"/);
+  assert.match(sql, /account_deletion_quarantine_receipts_legal_review_execution_fk/);
+  assert.match(sql, /account_deletion_quarantine_receipts_approver_grant_scope_fk/);
+  assert.ok(sql.indexOf("account_deletion_legal_hold_reviews_id_execution_unique")
+    < sql.indexOf("account_deletion_quarantine_receipts_legal_review_execution_fk"));
+  assert.match(sql, /account_deletion_quarantine_v1/);
+  assert.match(sql, /interval '30 days'/);
+  assert.doesNotMatch(sql, /^\s*(?:UPDATE|DELETE FROM|INSERT INTO)\b/im);
+  assert.doesNotMatch(sql, /ALTER TABLE "users"|DROP TABLE/);
+  assert.equal(journal.entries.find(entry => entry.tag === "0071_account_deletion_quarantine")?.idx, 71);
 });
