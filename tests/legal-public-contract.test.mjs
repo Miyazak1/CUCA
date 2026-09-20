@@ -24,6 +24,8 @@ test("legal routes are stable, governed and fail closed without approved content
   }
   assert.match(runtime, /\/api\/v1\/notices\//);
   assert.match(runtime, /Production release remains blocked/);
+  assert.match(runtime, /招生数据与来源政策/);
+  assert.match(runtime, /document\.documentElement\.lang = locale/);
   assert.match(runtime, /textContent = item\.heading/);
   assert.doesNotMatch(runtime, /innerHTML|localStorage|sessionStorage|document\.cookie/);
   for (const href of Object.keys(pages)) assert.match(shell, new RegExp(href.replace(".", "\\.")));

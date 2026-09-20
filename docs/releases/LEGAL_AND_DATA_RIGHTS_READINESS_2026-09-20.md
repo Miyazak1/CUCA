@@ -4,6 +4,13 @@ Status: technical publication framework implemented; legal wording and the authe
 
 This document is an engineering and operations control record. It is not legal advice and does not approve policy wording.
 
+## Confirmed product decisions
+
+- The operating entity and registered address are intentionally undecided and must not be fabricated in a publication.
+- Planned public addresses are `privacy@cuca.com` for privacy/data-rights requests, `support@cuca.com` for customer support, and optionally `legal@cuca.com` for contracts, infringement and regulator correspondence. They must not be published until the `cuca.com` mail domain, inbound handling, access control and delivery tests are complete.
+- Minors are an intended audience because CUAC primarily serves high-school students. Registration must remain blocked for production until the applicable age threshold, guardian authority evidence, consent/notice flow and withdrawal process are legally approved and technically tested.
+- English and Simplified Chinese are required launch locales. They are independently prepared, reviewed, published, expired and withdrawn; neither locale falls back to the other.
+
 ## 1. Stable public policy surfaces
 
 | Public route | Governed notice key | Required content owner |

@@ -114,6 +114,8 @@ Implementation status: **stable fail-closed policy routes and governed publicati
 
 Privacy, Terms, Cookie and admissions-data/source links now resolve to dedicated public routes. Each route reads its exact locale and purpose-specific document from the existing digest-bound, independently reviewed publication system and displays version, effective date and review due date. Missing, expired, withdrawn or corrupt content is shown as unpublished and cannot silently fall back to a draft, another locale or the application disclosure. The database scope constraint and real migration now admit the four legal policy keys. See `LEGAL_AND_DATA_RIGHTS_READINESS_2026-09-20.md` for the browser-storage inventory, required owner decisions, rights workflow and release checklist.
 
+Confirmed inputs: `privacy@cuca.com` and `support@cuca.com` are the intended public addresses after the mail domain is provisioned and tested; minors are an intended audience; English and Simplified Chinese require separate reviewed publications. The legal operator identity, minor age/guardian rules and actual mail acceptance evidence remain unresolved and therefore keep production blocked.
+
 Required:
 
 - approved Privacy Notice, Terms, Cookie Notice and admissions-data/source policy at stable routes;
