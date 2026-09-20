@@ -52,12 +52,14 @@ test("notification controls expose only backend topics and supported actions", a
     "deadline_reminders",
     "document_reminders",
     "funding_updates",
+    "privacy_requests",
     "account_security",
   ]) {
     assert.match(html, new RegExp(`data-notification-topic="${topic}"`));
     assert.match(script, new RegExp(`${topic}:`));
   }
   assert.match(html, /checked disabled data-notification-topic="account_security"/);
+  assert.match(html, /checked disabled data-notification-topic="privacy_requests"/);
   assert.doesNotMatch(html, /data-quiet-pref|data-filter="agent"|Agent result/);
   assert.doesNotMatch(script, /mark unread|data-dismiss|Agent result/i);
 });

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { defaultNotificationPreference, materializeApplicationSubmittedNotification, materializePaymentStatusNotification,
-  materializeSchoolApplicationStatusNotification, renderNotificationTemplate } from "../../../src/server/notifications/templates.ts";
+  materializeDataRightsNotification,materializeSchoolApplicationStatusNotification, renderNotificationTemplate } from "../../../src/server/notifications/templates.ts";
 
 const ids = { user: "11111111-1111-4111-8111-111111111111", application: "22222222-2222-4222-8222-222222222222", event: "33333333-3333-4333-8333-333333333333" };
 
@@ -65,4 +65,19 @@ test("notification defaults keep account security mandatory and SMS disabled", (
   assert.deepEqual(defaultNotificationPreference("student", "account_security"), { inAppEnabled: true, emailEnabled: true, smsEnabled: false });
   assert.deepEqual(defaultNotificationPreference("cuac_ops", "platform_operations"), { inAppEnabled: true, emailEnabled: false, smsEnabled: false });
   assert.throws(() => defaultNotificationPreference("student", "platform_operations"), /not allowed/);
+});
+
+test("data-rights notifications use independently fixed English and Chinese copy without private content",()=>{
+  for(const locale of ["en","zh-CN"]){const event=materializeDataRightsNotification({recipientUserId:ids.user,
+    requestId:ids.event,eventType:"data_rights_identity_required",locale,transitionReference:"transition:1",occurredAt:new Date()});
+    assert.equal(event.topic,"privacy_requests");assert.equal(event.templates.length,2);
+    assert.deepEqual(event.templates.map(item=>item.locale),[locale,locale]);
+    assert.deepEqual(event.templates.map(item=>item.channel),["in_app","email"]);
+    const rendered=renderNotificationTemplate(event.templates[0],event.variables);
+    assert.equal(rendered.actionPath,"/preferences-api.html#privacy-requests");
+    assert.doesNotMatch(JSON.stringify(rendered),/password value|passport|email address|document/i);
+    if(locale==="zh-CN")assert.match(rendered.title,/确认身份/);else assert.match(rendered.title,/Confirm your identity/);
+  }
+  assert.deepEqual(defaultNotificationPreference("student","privacy_requests"),
+    {inAppEnabled:true,emailEnabled:true,smsEnabled:false});
 });

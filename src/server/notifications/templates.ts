@@ -10,12 +10,13 @@ export type NotificationTopic =
   | "deadline_reminders"
   | "document_reminders"
   | "funding_updates"
+  | "privacy_requests"
   | "account_security"
   | "school_workflow"
   | "platform_operations";
 
 export const NOTIFICATION_TOPICS_BY_ROLE: Readonly<Record<NotificationAudienceRole, readonly NotificationTopic[]>> = {
-  student: ["application_updates", "billing_updates", "deadline_reminders", "document_reminders", "funding_updates", "account_security"],
+  student: ["application_updates", "billing_updates", "deadline_reminders", "document_reminders", "funding_updates", "privacy_requests", "account_security"],
   school_staff: ["school_workflow", "account_security"],
   cuac_ops: ["platform_operations", "account_security"],
   cuac_admin: ["platform_operations", "account_security"],
@@ -56,6 +57,26 @@ export type NotificationEventMaterialization = {
 };
 
 type BuiltinDefinition = { topic: NotificationTopic; title: string; body: string };
+
+type DataRightsEventType = "data_rights_received" | "data_rights_identity_required" | "data_rights_identity_confirmed"
+  | "data_rights_review_started" | "data_rights_cancelled";
+
+const dataRightsDefinitions: Readonly<Record<"en"|"zh-CN",Readonly<Record<DataRightsEventType,BuiltinDefinition>>>>={
+  en:{
+    data_rights_received:{topic:"privacy_requests",title:"Privacy request received",body:"CUAC recorded your request. You can track its status in Account settings."},
+    data_rights_identity_required:{topic:"privacy_requests",title:"Confirm your identity",body:"Re-enter your password in Account settings. Staff cannot claim or process this request until confirmation is complete."},
+    data_rights_identity_confirmed:{topic:"privacy_requests",title:"Identity confirmed",body:"Your identity confirmation is complete and the request can enter the staff review queue."},
+    data_rights_review_started:{topic:"privacy_requests",title:"Privacy request review started",body:"A staff member has claimed your request. You can track later status changes in Account settings."},
+    data_rights_cancelled:{topic:"privacy_requests",title:"Privacy request cancelled",body:"You cancelled this request. CUAC will not continue processing it."},
+  },
+  "zh-CN":{
+    data_rights_received:{topic:"privacy_requests",title:"隐私请求已收到",body:"CUAC 已记录你的请求。你可以在账户设置中查看处理状态。"},
+    data_rights_identity_required:{topic:"privacy_requests",title:"请确认身份",body:"请在账户设置中重新输入密码。完成身份确认前，工作人员不能认领或处理此请求。"},
+    data_rights_identity_confirmed:{topic:"privacy_requests",title:"身份确认成功",body:"身份确认已经完成，你的请求现在可以进入人工处理队列。"},
+    data_rights_review_started:{topic:"privacy_requests",title:"隐私请求已开始处理",body:"工作人员已经认领你的请求。你可以在账户设置中查看后续状态。"},
+    data_rights_cancelled:{topic:"privacy_requests",title:"隐私请求已取消",body:"你已取消此请求，CUAC 不会继续处理。"},
+  },
+};
 
 const applicationSubmittedDefinition: BuiltinDefinition = {
   topic: "application_updates",
@@ -101,10 +122,22 @@ const applicationDefinitions: Readonly<Record<string, BuiltinDefinition>> = {
 
 export function defaultNotificationPreference(role: NotificationAudienceRole, topic: NotificationTopic): NotificationChannelPreference {
   assertTopicAllowed(role, topic);
-  if (topic === "account_security") return { inAppEnabled: true, emailEnabled: true, smsEnabled: false };
+  if (["account_security","privacy_requests"].includes(topic)) return { inAppEnabled: true, emailEnabled: true, smsEnabled: false };
   if (role === "cuac_ops" || role === "cuac_admin") return { inAppEnabled: true, emailEnabled: false, smsEnabled: false };
   if (topic === "funding_updates") return { inAppEnabled: true, emailEnabled: false, smsEnabled: false };
   return { inAppEnabled: true, emailEnabled: true, smsEnabled: false };
+}
+
+export function materializeDataRightsNotification(input:{recipientUserId:string;requestId:string;eventType:DataRightsEventType;
+  locale:"en"|"zh-CN";transitionReference:string;occurredAt:Date}):NotificationEventMaterialization{
+  const definition=dataRightsDefinitions[input.locale],copy=definition[input.eventType],variables={};
+  const templates=(["in_app","email"] as const).map(channel=>buildTemplate(input.eventType,copy,channel,
+    "/preferences-api.html#privacy-requests",[],input.locale));
+  return{recipientUserId:input.recipientUserId,audienceRole:"student",tenantSchoolId:null,topic:copy.topic,
+    eventType:input.eventType,resourceType:"data_rights_request",resourceId:input.requestId,
+    eventKeySha256:digest({version:1,source:"data_rights_transition",eventType:input.eventType,
+      transitionReference:input.transitionReference,recipientUserId:input.recipientUserId}),variables,
+    variablesSha256:digest(variables),occurredAt:input.occurredAt,templates};
 }
 
 export function assertTopicAllowed(role: NotificationAudienceRole, topic: string): asserts topic is NotificationTopic {
@@ -231,12 +264,12 @@ export function renderNotificationTemplate(template: NotificationTemplate, varia
 }
 
 function buildTemplate(eventType: string, definition: BuiltinDefinition, channel: NotificationChannel,
-  actionPathTemplate: string, variableKeys: readonly string[]): NotificationTemplate {
+  actionPathTemplate: string, variableKeys: readonly string[],locale:"en"|"zh-CN"="en"): NotificationTemplate {
   const base = {
     templateKey: `student.${eventType}`,
     audienceRole: "student" as const,
     channel,
-    locale: "en" as const,
+    locale,
     version: 1,
     titleTemplate: definition.title,
     bodyTemplate: definition.body,

@@ -15,6 +15,7 @@ const topicPresentation = {
   deadline_reminders: { category: "deadline", label: "Deadline" },
   document_reminders: { category: "document", label: "Documents" },
   funding_updates: { category: "funding", label: "Funding" },
+  privacy_requests: { category: "security", label: "Privacy" },
   account_security: { category: "security", label: "Security" },
   school_workflow: { category: "application", label: "School workflow" },
   platform_operations: { category: "update", label: "Operations" },
@@ -70,7 +71,7 @@ function presentationFor(item) {
 
 function severityFor(item) {
   if (item.status !== "unread") return "done";
-  if (item.topic === "account_security") return "urgent";
+  if (["account_security","privacy_requests"].includes(item.topic)) return "urgent";
   if (["deadline_reminders", "document_reminders"].includes(item.topic)) return "action";
   if (["school_waiting_documents", "payment_canceled", "payment_refunded"].includes(item.eventType)) return "action";
   return "update";
@@ -213,7 +214,7 @@ function syncPreferenceControls() {
   document.querySelectorAll("[data-notification-topic]").forEach((input) => {
     const preference = preferenceMap.get(input.dataset.notificationTopic);
     input.checked = preference?.inAppEnabled === true;
-    input.disabled = !preference || preference.topic === "account_security";
+    input.disabled = !preference || ["account_security","privacy_requests"].includes(preference.topic);
   });
   const summary = document.querySelector("[data-quiet-summary]");
   if (!summary) return;
@@ -309,7 +310,7 @@ async function markAllNotificationsRead(button) {
 
 async function updatePreference(topic, enabled, input) {
   const current = notificationPreferences.find((item) => item.topic === topic);
-  if (!current || current.topic === "account_security" || !Number.isSafeInteger(current.revision)) {
+  if (!current || ["account_security","privacy_requests"].includes(current.topic) || !Number.isSafeInteger(current.revision)) {
     syncPreferenceControls();
     return;
   }

@@ -100,8 +100,8 @@ export class NotificationService {
       const inAppEnabled = item.inAppEnabled as boolean;
       const emailEnabled = item.emailEnabled as boolean;
       const smsEnabled = item.smsEnabled as boolean;
-      if (item.topic === "account_security" && (!inAppEnabled || !emailEnabled)) {
-        throw badRequest("Account security in-app and email notifications cannot be disabled.");
+      if (["account_security","privacy_requests"].includes(item.topic) && (!inAppEnabled || !emailEnabled)) {
+        throw badRequest("Required in-app and email notifications cannot be disabled.");
       }
       return {
         topic: item.topic,

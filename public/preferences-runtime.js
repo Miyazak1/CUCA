@@ -12,6 +12,7 @@ const topicLabels = {
   deadline_reminders: ["Deadline reminders", "Published application timing reminders"],
   document_reminders: ["Document reminders", "File and material preparation events"],
   funding_updates: ["Funding updates", "Scholarship-related account events"],
+  privacy_requests: ["Privacy requests", "Required updates about your privacy and data-rights requests"],
   account_security: ["Account security", "Required sign-in and account protection events"],
 };
 
@@ -157,7 +158,7 @@ function renderNotificationPreferences() {
       <thead><tr><th scope="col">Topic</th><th scope="col">In app</th><th scope="col">Email</th><th scope="col">SMS</th></tr></thead>
       <tbody>${currentNotificationPreferences.map(item => {
         const [title, copy] = topicLabels[item.topic] || [humanize(item.topic), "Account notification topic"];
-        const required = item.topic === "account_security";
+        const required = ["account_security","privacy_requests"].includes(item.topic);
         return `<tr data-notification-topic="${escapeHtml(item.topic)}">
           <td class="notification-topic"><strong>${escapeHtml(title)}</strong><span>${escapeHtml(copy)}</span></td>
           <td><label class="notification-channel"><input type="checkbox" name="inAppEnabled" aria-label="${escapeHtml(title)} in-app notifications" ${item.inAppEnabled ? "checked" : ""} ${required ? "disabled" : ""} /></label></td>
@@ -351,7 +352,7 @@ async function saveNotificationPreferences(form) {
   const rows = [...form.querySelectorAll("[data-notification-topic]")];
   const preferences = rows.map(row => {
     const current = currentNotificationPreferences.find(item => item.topic === row.dataset.notificationTopic);
-    const required = current?.topic === "account_security";
+    const required = ["account_security","privacy_requests"].includes(current?.topic);
     return {
       topic: current.topic,
       inAppEnabled: required ? true : row.querySelector('[name="inAppEnabled"]').checked,

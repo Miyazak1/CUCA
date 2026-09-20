@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { buildAuditEvent, type AuditSink } from "../audit/audit.ts";
+import { materializeDataRightsNotification, type NotificationEventMaterialization } from "../notifications/templates.ts";
 import { evaluatePolicy } from "../policy/policy.ts";
 import { badRequest, CuacError, forbidden } from "../shared/errors.ts";
 import { inputEnum, inputInteger, inputRecord, inputText, inputUuid } from "../shared/input.ts";
@@ -20,6 +21,7 @@ export type OpsDataRightsQueueRow = { requestId: string; requestType: string; co
   preferredLocale: string; status: string; revision: number; receivedAt: Date; updatedAt: Date;
   identityConfirmedAt: Date | null; deadlinePolicyVersion: "data_rights_response_v1";
   internalTargetAt: Date; responseDueAt: Date; extendedDueAt: Date | null; observedAt: Date;
+  notificationRecipientUserId:string|null;
   review: OpsDataRightsReview | null; outcome: OpsDataRightsOutcome | null };
 export type OpsDataRightsOutcome = { outcomeId:string; outcomeCode:typeof OPS_DATA_RIGHTS_OUTCOMES[number];reasonCode:string|null;
   caseReference:string;proposalSha256:string;approvalMode:"single_operator"|"single_admin"|"dual_control";
@@ -40,7 +42,11 @@ export type OpsDataRightsRepository = {
 export class OpsDataRightsService {
   private readonly repository: OpsDataRightsRepository;
   private readonly audit: AuditSink;
-  constructor(repository: OpsDataRightsRepository, audit: AuditSink) { this.repository = repository; this.audit = audit; }
+  private readonly notifications:{publish(input:NotificationEventMaterialization):Promise<unknown>};
+  constructor(repository: OpsDataRightsRepository, audit: AuditSink,
+    notifications:{publish(input:NotificationEventMaterialization):Promise<unknown>}={async publish(){}}) {
+    this.repository = repository; this.audit = audit;this.notifications=notifications;
+  }
   async list(context: RequestContext, value: unknown = {}) {
     const actor = requireActor(context), decisionId = authorize(context, "ops.read_data_rights_review");
     const fields = inputRecord(value, ["limit"]), limit = fields.limit === undefined ? 50 : inputInteger(fields.limit, "Limit", 1, 100);
@@ -58,6 +64,10 @@ export class OpsDataRightsService {
     await this.audit.record(buildAuditEvent(context, { action: "ops.data_rights.claim", resourceType: "data_rights_request",
       resourceId: requestId, allowed: true, policyDecisionId: decisionId, dataClasses,
       metadata: { revision: result.value.revision, reviewId: result.value.review?.reviewId } }));
+    if(result.value.notificationRecipientUserId)await this.notifications.publish(materializeDataRightsNotification({
+      recipientUserId:result.value.notificationRecipientUserId,requestId:result.value.requestId,
+      eventType:"data_rights_review_started",locale:result.value.preferredLocale,
+      transitionReference:result.value.review!.reviewId,occurredAt:result.value.review!.createdAt}));
     return project(result.value);
   }
   async escalate(context: RequestContext, requestIdValue: unknown, value: unknown) {
@@ -122,8 +132,8 @@ function authorize(context: RequestContext, action: "ops.read_data_rights_review
 function requireAuthority<T>(result: Authorized<T>): asserts result is { authorized: true; value: T } {
   if (!result.authorized) throw forbidden("Active CUAC staff access grant is required.");
 }
-function project(row: OpsDataRightsQueueRow) { const {observedAt,...safe}=row,effectiveDueAt=row.extendedDueAt??row.responseDueAt;
-  void observedAt;return { ...safe,
+function project(row: OpsDataRightsQueueRow) { const {observedAt,notificationRecipientUserId,...safe}=row,effectiveDueAt=row.extendedDueAt??row.responseDueAt;
+  void observedAt;void notificationRecipientUserId;return { ...safe,
   receivedAt: row.receivedAt.toISOString(), updatedAt: row.updatedAt.toISOString(),
   identityConfirmedAt: row.identityConfirmedAt?.toISOString() ?? null,
   internalTargetAt:row.internalTargetAt.toISOString(),responseDueAt:row.responseDueAt.toISOString(),

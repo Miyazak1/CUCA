@@ -6,7 +6,7 @@ import { DataRightsService } from "../../../src/server/data-rights/service.ts";
 
 const student = (extra = {}) => createRequestContext({ actorUserId: randomUUID(), activeRole: "student", selectedSurface: "student",
   purpose: "data_rights", authStrength: "session", ...extra });
-const row = (extra = {}) => ({ id: randomUUID(), requestType: "access", correctionScope: null, preferredLocale: "en",
+const row = (extra = {}) => ({ id: randomUUID(), userId:randomUUID(), requestType: "access", correctionScope: null, preferredLocale: "en",
   status: "received", revision: 1, receivedAt: new Date("2026-09-20T00:00:00.000Z"), identityConfirmedAt: null,
   closedAt: null, updatedAt: new Date("2026-09-20T00:00:00.000Z"), ...extra });
 
@@ -86,4 +86,17 @@ test("identity confirmation requires step-up and records only bounded evidence",
   assert.match(calls[0].confirmationReferenceSha256,/^sha256:[a-f0-9]{64}$/);
   assert.equal(audits[0].action,"data_rights.request.identity_confirm");
   assert.deepEqual(audits[0].metadata,{method:"password_step_up",revision:2});
+});
+
+test("request lifecycle materializes only locale-bound notification events",async()=>{const events=[],context=student(),target=row({userId:context.actorUserId,preferredLocale:"zh-CN"});
+  const service=new DataRightsService({async listOwn(){throw 0;},async createOwn(){return{authorized:true,row:target};},
+    async confirmOwn(){return{authorized:true,row:row({...target,status:"identity_confirmed",revision:2,identityConfirmedAt:new Date()})};},
+    async cancelOwn(){return{authorized:true,row:row({...target,status:"cancelled",revision:2,closedAt:new Date()})};}},
+  {async record(){}},{async publish(event){events.push(event);}});
+  await service.createOwn(context,{requestId:target.id,requestType:"access",correctionScope:null,preferredLocale:"zh-CN"});
+  await service.confirmOwn(student({actorUserId:context.actorUserId,authStrength:"step_up"}),target.id,{confirmationId:randomUUID(),expectedRevision:1});
+  await service.cancelOwn(context,target.id,{expectedRevision:1});
+  assert.deepEqual(events.map(event=>event.eventType),["data_rights_received","data_rights_identity_required",
+    "data_rights_identity_confirmed","data_rights_cancelled"]);
+  assert.ok(events.every(event=>event.templates.every(template=>template.locale==="zh-CN")));
 });

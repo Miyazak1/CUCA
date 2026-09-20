@@ -2,9 +2,9 @@ import type { TransactionalSqlClient } from "../db/postgres-client.ts";
 import type { DataRightsRepository, DataRightsRequestDto } from "./service.ts";
 
 type Row = Omit<DataRightsRequestDto, "requestId" | "receivedAt" | "identityConfirmedAt" | "closedAt" | "updatedAt"> & {
-  id: string; receivedAt: Date; identityConfirmedAt: Date | null; closedAt: Date | null; updatedAt: Date;
+  id: string; userId:string; receivedAt: Date; identityConfirmedAt: Date | null; closedAt: Date | null; updatedAt: Date;
 };
-const columns = `id, request_type as "requestType", correction_scope as "correctionScope", preferred_locale as "preferredLocale",
+const columns = `id, user_id as "userId", request_type as "requestType", correction_scope as "correctionScope", preferred_locale as "preferredLocale",
   status, revision, received_at as "receivedAt", identity_confirmed_at as "identityConfirmedAt", closed_at as "closedAt", updated_at as "updatedAt"`;
 
 export class PostgresDataRightsRepository implements DataRightsRepository {

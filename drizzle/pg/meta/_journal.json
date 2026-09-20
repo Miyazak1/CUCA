@@ -442,6 +442,13 @@
       "when": 1789886971315,
       "tag": "0062_data_rights_response_targets",
       "breakpoints": true
+    },
+    {
+      "idx": 63,
+      "version": "7",
+      "when": 1789887946775,
+      "tag": "0063_required_privacy_notifications",
+      "breakpoints": true
     }
   ]
 }

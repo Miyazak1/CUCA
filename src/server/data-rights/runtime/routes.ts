@@ -1,6 +1,7 @@
 import { PostgresAuditWriter } from "../../audit/postgres-writer.ts";
 import { PostgresAuthSessionRepository } from "../../auth/postgres-repository.ts";
 import { createTransactionalSqlClient, getSharedPostgresPool } from "../../db/postgres-client.ts";
+import { PostgresNotificationPublisher } from "../../notifications/postgres-repository.ts";
 import { transactionalMethod } from "../../db/transactional-method.ts";
 import { serviceUnavailable } from "../../shared/errors.ts";
 import { createDataRightsHttpHandlers } from "../http.ts";
@@ -22,7 +23,8 @@ export function createDataRightsRouteHandlers(repository = unavailableRepository
 export function getDataRightsRouteHandlers() {
   try {
     const client = createTransactionalSqlClient(getSharedPostgresPool());
-    const create = (tx: typeof client) => new DataRightsService(new PostgresDataRightsRepository(tx), new PostgresAuditWriter(tx));
+    const create = (tx: typeof client) => new DataRightsService(new PostgresDataRightsRepository(tx), new PostgresAuditWriter(tx),
+      new PostgresNotificationPublisher(tx));
     const reads = create(client);
     return createDataRightsHttpHandlers({ listOwn: reads.listOwn.bind(reads),
       createOwn: transactionalMethod(client, create, "createOwn"), cancelOwn: transactionalMethod(client, create, "cancelOwn"),

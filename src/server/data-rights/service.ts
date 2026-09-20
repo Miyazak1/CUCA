@@ -1,5 +1,6 @@
 import { createHash, randomUUID } from "node:crypto";
 import { buildAuditEvent, type AuditSink } from "../audit/audit.ts";
+import { materializeDataRightsNotification, type NotificationEventMaterialization } from "../notifications/templates.ts";
 import { evaluatePolicy } from "../policy/policy.ts";
 import { badRequest, conflict, forbidden } from "../shared/errors.ts";
 import { inputEnum, inputInteger, inputRecord, inputUuid } from "../shared/input.ts";
@@ -18,7 +19,7 @@ export type DataRightsRequestDto = {
 };
 
 type StoredRequest = Omit<DataRightsRequestDto, "requestId" | "receivedAt" | "identityConfirmedAt" | "closedAt" | "updatedAt"> & {
-  id: string; receivedAt: Date; identityConfirmedAt: Date | null; closedAt: Date | null; updatedAt: Date;
+  id: string; userId:string; receivedAt: Date; identityConfirmedAt: Date | null; closedAt: Date | null; updatedAt: Date;
 };
 
 export type DataRightsRepository = {
@@ -33,7 +34,11 @@ export type DataRightsRepository = {
 export class DataRightsService {
   private readonly repository: DataRightsRepository;
   private readonly audit: AuditSink;
-  constructor(repository: DataRightsRepository, audit: AuditSink) { this.repository = repository; this.audit = audit; }
+  private readonly notifications: {publish(input:NotificationEventMaterialization):Promise<unknown>};
+  constructor(repository: DataRightsRepository, audit: AuditSink,
+    notifications:{publish(input:NotificationEventMaterialization):Promise<unknown>}={async publish(){}}) {
+    this.repository = repository; this.audit = audit;this.notifications=notifications;
+  }
 
   async listOwn(context: RequestContext): Promise<DataRightsRequestDto[]> {
     const { userId } = authorize(context, "student.read_data_rights");
@@ -60,8 +65,10 @@ export class DataRightsService {
     if (!result.row) throw conflict("An active request of this type already exists.");
     let created = result.row;
     const sensitive = ["portable_export", "account_deletion"].includes(requestType);
+    let confirmationId:string|null=null;
     if (sensitive) {
-      const confirmed = await this.repository.confirmOwn({ requestId, confirmationId: randomUUID(), userId, expectedRevision: created.revision,
+      confirmationId=randomUUID();
+      const confirmed = await this.repository.confirmOwn({ requestId, confirmationId, userId, expectedRevision: created.revision,
         subjectReferenceHash: subjectReference(userId), confirmationReferenceSha256: confirmationReference(userId, requestId, context.requestId) });
       if (!confirmed.authorized) throw forbidden("Active student account is required.");
       if (!confirmed.row) throw conflict("The new request could not be identity-confirmed.");
@@ -70,6 +77,9 @@ export class DataRightsService {
     await this.audit.record(buildAuditEvent(context, { action: "data_rights.request.create", resourceType: "data_rights_request",
       resourceId: requestId, allowed: true, policyDecisionId: decisionId, dataClasses: ["student_pii"],
       metadata: { requestType, correctionScope, preferredLocale, identityConfirmed: sensitive } }));
+    await this.notify(created,"data_rights_received",`${requestId}:received`);
+    await this.notify(created,sensitive?"data_rights_identity_confirmed":"data_rights_identity_required",
+      confirmationId??`${requestId}:identity-required`);
     return project(created);
   }
 
@@ -86,6 +96,7 @@ export class DataRightsService {
     await this.audit.record(buildAuditEvent(context, { action: "data_rights.request.identity_confirm", resourceType: "data_rights_request",
       resourceId: requestId, allowed: true, policyDecisionId: decisionId, dataClasses: ["student_pii"],
       metadata: { method: "password_step_up", revision: result.row.revision } }));
+    await this.notify(result.row,"data_rights_identity_confirmed",confirmationId);
     return project(result.row);
   }
 
@@ -99,7 +110,15 @@ export class DataRightsService {
     await this.audit.record(buildAuditEvent(context, { action: "data_rights.request.cancel", resourceType: "data_rights_request",
       resourceId: requestId, allowed: true, policyDecisionId: decisionId, dataClasses: ["student_pii"],
       metadata: { expectedRevision } }));
+    await this.notify(result.row,"data_rights_cancelled",`${requestId}:${result.row.revision}`);
     return project(result.row);
+  }
+
+  private notify(row:StoredRequest,eventType:Parameters<typeof materializeDataRightsNotification>[0]["eventType"],transitionReference:string){
+    const occurredAt=eventType==="data_rights_identity_confirmed"?(row.identityConfirmedAt??row.updatedAt)
+      :eventType==="data_rights_cancelled"?(row.closedAt??row.updatedAt):row.receivedAt;
+    return this.notifications.publish(materializeDataRightsNotification({recipientUserId:row.userId,requestId:row.id,eventType,
+      locale:row.preferredLocale,transitionReference,occurredAt}));
   }
 }
 

@@ -5,6 +5,7 @@ import { OpsDataRightsService } from "../../../src/server/ops-data-rights/servic
 const actor=(extra={})=>createRequestContext({actorUserId:"a1111111-a111-4111-8111-a11111111111",activeRole:"cuac_ops",
   selectedSurface:"ops",purpose:"data_rights_review",authStrength:"session",...extra});
 const row=(extra={})=>({requestId:"b1111111-b111-4111-8111-b11111111111",requestType:"access",correctionScope:null,
+  notificationRecipientUserId:"f1111111-f111-4111-8111-f11111111111",
   preferredLocale:"en",status:"received",revision:1,receivedAt:new Date("2026-09-20T00:00:00Z"),
   identityConfirmedAt:new Date("2026-09-20T00:01:00Z"),deadlinePolicyVersion:"data_rights_response_v1",
   internalTargetAt:new Date("2026-10-05T00:00:00Z"),responseDueAt:new Date("2026-10-20T00:00:00Z"),extendedDueAt:null,
@@ -29,13 +30,14 @@ test("deadline states use database time and the effective response deadline",asy
   assert.deepEqual((await service.list(actor())).map(item=>item.deadlineState),
     ["internal_due_soon","internal_target_missed","response_due_soon","overdue","internal_target_missed"]);
 });
-test("claim and escalation are revision-bound and use fixed codes",async()=>{const audits=[];
+test("claim and escalation are revision-bound and use fixed codes",async()=>{const audits=[],events=[];
   const service=new OpsDataRightsService({async list(){throw 0;},async claim(){return{authorized:true,value:row({status:"in_progress",revision:2,review})};},
     async escalate(){return{authorized:true,value:row({status:"escalated",revision:3,review:{...review,status:"escalated",revision:2,
-      escalationCode:"legal_review_required",escalationReference:"case:123",escalatedAt:new Date()}})};},...unused},{async record(e){audits.push(e);}});
+      escalationCode:"legal_review_required",escalationReference:"case:123",escalatedAt:new Date()}})};},...unused},{async record(e){audits.push(e);}},{async publish(e){events.push(e);}});
   assert.equal((await service.claim(actor(),row().requestId,{expectedRevision:1})).status,"in_progress");
   assert.equal((await service.escalate(actor(),row().requestId,{expectedRevision:2,expectedReviewRevision:1,code:"legal_review_required",reference:"case:123"})).status,"escalated");
   assert.deepEqual(audits.map(e=>e.action),["ops.data_rights.claim","ops.data_rights.escalate"]);
+  assert.deepEqual(events.map(e=>e.eventType),["data_rights_review_started"]);
   await assert.rejects(service.escalate(actor(),row().requestId,{expectedRevision:2,expectedReviewRevision:1,code:"erase_now",reference:"case:123"}),e=>e.status===400);
 });
 test("repository denial and stale transitions never acknowledge success",async()=>{const service=new OpsDataRightsService({async list(){return{authorized:false};},

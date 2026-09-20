@@ -1,8 +1,13 @@
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
+import { PostgresAuditWriter } from "../../../src/server/audit/postgres-writer.ts";
 import { createTransactionalSqlClient } from "../../../src/server/db/postgres-client.ts";
 import { PostgresDataRightsRepository } from "../../../src/server/data-rights/postgres-repository.ts";
+import { DataRightsService } from "../../../src/server/data-rights/service.ts";
+import { PostgresNotificationPublisher } from "../../../src/server/notifications/postgres-repository.ts";
 import { PostgresOpsDataRightsRepository } from "../../../src/server/ops-data-rights/postgres-repository.ts";
+import { OpsDataRightsService } from "../../../src/server/ops-data-rights/service.ts";
+import { createRequestContext } from "../../../src/server/shared/request-context.ts";
 
 export async function runDataRightsRehearsal(t, pool) {
   await t.test("data-rights requests stay owner-scoped, revision-safe and retained after account deletion", async () => {
@@ -38,7 +43,12 @@ export async function runDataRightsRehearsal(t, pool) {
     assert.equal(cancelled.status, "cancelled");
     assert.equal(cancelled.revision, 2);
     const activeRequestId=randomUUID();
-    assert.ok((await repository.createOwn({ ...input, requestId: activeRequestId })).row, "a terminal request frees the active-type slot");
+    const studentContext=createRequestContext({actorUserId:firstUserId,activeRole:"student",selectedSurface:"student",
+      purpose:"data_rights",authStrength:"session"});
+    const created=await client.transaction(async tx=>new DataRightsService(new PostgresDataRightsRepository(tx),
+      new PostgresAuditWriter(tx),new PostgresNotificationPublisher(tx)).createOwn(studentContext,
+      {requestId:activeRequestId,requestType:"access",correctionScope:null,preferredLocale:"zh-CN"}));
+    assert.equal(created.requestId,activeRequestId,"a terminal request frees the active-type slot");
 
     const opsUserId=randomUUID(), adminUserId=randomUUID(), approverId=randomUUID();
     for(const [id,label] of [[opsUserId,"ops"],[adminUserId,"admin"],[approverId,"approver"]]){const email=`rights-${label}-${id}@example.invalid`;
@@ -58,13 +68,38 @@ export async function runDataRightsRehearsal(t, pool) {
     const ops=new PostgresOpsDataRightsRepository(client), actor={actorUserId:opsUserId,activeRole:"cuac_ops"};
     assert.equal((await ops.claim({...actor,requestId:activeRequestId,expectedRevision:1})).value,null,
       "an unconfirmed request cannot be claimed by Ops");
-    const identityConfirmed=(await repository.confirmOwn({requestId:activeRequestId,confirmationId:randomUUID(),userId:firstUserId,
-      expectedRevision:1,subjectReferenceHash:input.subjectReferenceHash,confirmationReferenceSha256:`sha256:${"c".repeat(64)}`})).row;
+    const identityConfirmed=await client.transaction(async tx=>new DataRightsService(new PostgresDataRightsRepository(tx),
+      new PostgresAuditWriter(tx),new PostgresNotificationPublisher(tx)).confirmOwn(
+      {...studentContext,authStrength:"step_up"},activeRequestId,{confirmationId:randomUUID(),expectedRevision:1}));
     assert.equal(identityConfirmed.status,"identity_confirmed");assert.equal(identityConfirmed.revision,2);
 
+    const studentNotifications=(await pool.query(`select e.event_type,t.locale,d.channel,d.status,d.title,d.action_path
+      from notification_events e join notification_deliveries d on d.event_id=e.id
+      join notification_templates t on t.id=d.template_id
+      where e.resource_type='data_rights_request' and e.resource_id=$1
+      order by e.occurred_at,e.event_type,d.channel`,[activeRequestId])).rows;
+    assert.equal(studentNotifications.length,6,"three student-visible transitions create in-app and email deliveries");
+    assert.deepEqual([...new Set(studentNotifications.map(row=>row.event_type))].sort(),
+      ["data_rights_identity_confirmed","data_rights_identity_required","data_rights_received"]);
+    assert.ok(studentNotifications.every(row=>row.locale==="zh-CN"));
+    assert.ok(studentNotifications.every(row=>row.action_path==="/preferences-api.html#privacy-requests"));
+    assert.ok(studentNotifications.filter(row=>row.channel==="in_app").every(row=>row.status==="unread"&&/[\u3400-\u9fff]/u.test(row.title)));
+    assert.ok(studentNotifications.filter(row=>row.channel==="email").every(row=>row.status==="queued"));
+
     assert.ok((await ops.list({...actor,limit:100})).value.some(item=>item.requestId===activeRequestId));
-    const claimed=(await ops.claim({...actor,requestId:activeRequestId,expectedRevision:2})).value;
+    const opsContext=createRequestContext({actorUserId:opsUserId,activeRole:"cuac_ops",selectedSurface:"ops",
+      purpose:"data_rights_review",authStrength:"session"});
+    const claimed=await client.transaction(async tx=>new OpsDataRightsService(new PostgresOpsDataRightsRepository(tx),
+      new PostgresAuditWriter(tx),new PostgresNotificationPublisher(tx)).claim(opsContext,activeRequestId,{expectedRevision:2}));
     assert.equal(claimed.status,"in_progress"); assert.equal(claimed.review.status,"investigating");
+    const reviewStarted=(await pool.query(`select e.event_type,t.locale,d.channel,d.status
+      from notification_events e join notification_deliveries d on d.event_id=e.id
+      join notification_templates t on t.id=d.template_id
+      where e.resource_type='data_rights_request' and e.resource_id=$1 and e.event_type='data_rights_review_started'
+      order by d.channel`,[activeRequestId])).rows;
+    assert.equal(reviewStarted.length,2);
+    assert.ok(reviewStarted.every(row=>row.locale==="zh-CN"));
+    assert.deepEqual(reviewStarted.map(row=>[row.channel,row.status]),[["email","queued"],["in_app","unread"]]);
     const escalated=(await ops.escalate({...actor,requestId:activeRequestId,expectedRevision:3,expectedReviewRevision:1,
       code:"legal_review_required",reference:"case:rehearsal"})).value;
     assert.equal(escalated.status,"escalated"); assert.equal(escalated.review.status,"escalated");

@@ -3258,7 +3258,7 @@ export const notificationPreferences = pgTable("notification_preferences", {
     )`),
   topicCheck: check("notification_preferences_topic_check", sql`${table.topic} ~ '^[a-z][a-z0-9_]{0,63}$'`),
   revisionCheck: check("notification_preferences_revision_check", sql`${table.revision} between 0 and 2147483647`),
-  securityCheck: check("notification_preferences_security_check", sql`${table.topic} <> 'account_security'
+  securityCheck: check("notification_preferences_security_check", sql`${table.topic} not in ('account_security','privacy_requests')
     or (${table.inAppEnabled} and ${table.emailEnabled})`),
 }));
 

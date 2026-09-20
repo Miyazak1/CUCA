@@ -15,8 +15,8 @@ type Row = Omit<OpsDataRightsQueueRow, "review" | "outcome"> & { reviewId: strin
 const requestColumns = `q.id as "requestId",q.request_type as "requestType",q.correction_scope as "correctionScope",
  q.preferred_locale as "preferredLocale",q.status,q.revision,q.received_at as "receivedAt",
  q.identity_confirmed_at as "identityConfirmedAt",q.deadline_policy_version as "deadlinePolicyVersion",
- q.internal_target_at as "internalTargetAt",q.response_due_at as "responseDueAt",q.extended_due_at as "extendedDueAt",
- clock_timestamp() as "observedAt",q.updated_at as "updatedAt"`;
+  q.internal_target_at as "internalTargetAt",q.response_due_at as "responseDueAt",q.extended_due_at as "extendedDueAt",
+ q.user_id as "notificationRecipientUserId",clock_timestamp() as "observedAt",q.updated_at as "updatedAt"`;
 const outcomeColumns=`o.id as "outcomeId",o.outcome_code as "outcomeCode",o.reason_code as "reasonCode",o.case_reference as "caseReference",
  o.proposal_sha256 as "proposalSha256",o.approval_mode as "approvalMode",o.status as "outcomeStatus",o.revision as "outcomeRevision",
  o.proposed_by_user_id as "proposedByUserId",o.proposed_by_role as "proposedByRole",o.approved_by_user_id as "approvedByUserId",
@@ -102,6 +102,7 @@ function mapRow(row: Row): OpsDataRightsQueueRow { return { requestId: row.reque
   correctionScope: row.correctionScope,preferredLocale: row.preferredLocale,status: row.status,revision: row.revision,
   receivedAt: row.receivedAt,identityConfirmedAt:row.identityConfirmedAt,deadlinePolicyVersion:row.deadlinePolicyVersion,
   internalTargetAt:row.internalTargetAt,responseDueAt:row.responseDueAt,extendedDueAt:row.extendedDueAt,observedAt:row.observedAt,
+  notificationRecipientUserId:row.notificationRecipientUserId,
   updatedAt: row.updatedAt,review: row.reviewId ? { reviewId: row.reviewId,revision: row.reviewRevision!,
     status: row.reviewStatus!,assignedUserId: row.assignedUserId!,assignedRole: row.assignedRole!,escalationCode: row.escalationCode,
     escalationReference: row.escalationReference,escalatedAt: row.escalatedAt,createdAt: row.reviewCreatedAt!,updatedAt: row.reviewUpdatedAt! } : null,

@@ -60,9 +60,12 @@ test("read and read-all use only the authenticated persona and record changed me
 test("preference API returns role defaults and enforces topic and security boundaries", async () => {
   const { service, calls, audits } = fixture();
   const defaults = await service.getPreferences(context);
-  assert.equal(defaults.preferences.length, 6);
+  assert.equal(defaults.preferences.length, 7);
   assert.deepEqual(defaults.preferences.find(x => x.topic === "account_security"), {
     topic: "account_security", revision: 0, inAppEnabled: true, emailEnabled: true, smsEnabled: false,
+  });
+  assert.deepEqual(defaults.preferences.find(x => x.topic === "privacy_requests"), {
+    topic: "privacy_requests", revision: 0, inAppEnabled: true, emailEnabled: true, smsEnabled: false,
   });
   const input = { preferences: [{ topic: "application_updates", inAppEnabled: true, emailEnabled: false, smsEnabled: false, expectedRevision: 0 }] };
   const result = await service.updatePreferences(context, input);
@@ -72,6 +75,7 @@ test("preference API returns role defaults and enforces topic and security bound
   for (const invalid of [
     { preferences: [{ ...input.preferences[0], topic: "platform_operations" }] },
     { preferences: [{ topic: "account_security", inAppEnabled: false, emailEnabled: true, smsEnabled: false, expectedRevision: 0 }] },
+    { preferences: [{ topic: "privacy_requests", inAppEnabled: true, emailEnabled: false, smsEnabled: false, expectedRevision: 0 }] },
     { preferences: [input.preferences[0], input.preferences[0]] },
     { preferences: [{ ...input.preferences[0], tenantSchoolId: userId }] },
   ]) await assert.rejects(service.updatePreferences(context, invalid), error => [400, 503].includes(error.status));

@@ -49,7 +49,7 @@ test("notification controls preserve channel booleans and revisions", async () =
   for (const field of ["topic", "inAppEnabled", "emailEnabled", "smsEnabled", "revision"]) {
     assert.ok(script.includes(field), `missing notification preference field: ${field}`);
   }
-  assert.match(script, /current\?\.topic === "account_security"/);
+  assert.match(script, /\["account_security","privacy_requests"\]\.includes\(current\?\.topic\)/);
   assert.match(script, /inAppEnabled: required \? true/);
   assert.match(script, /emailEnabled: required \? true/);
 });
