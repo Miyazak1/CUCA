@@ -39,6 +39,9 @@ function createHandlers(session = activeStudentSession()) {
     async cancelOwn(input) { calls.push({ method: "cancelOwn", input }); return { authorized: true, row: row({
       requestId: input.requestId, requestType: "access", correctionScope: null, preferredLocale: "en",
     }, { status: "cancelled", revision: input.expectedRevision + 1, closedAt: new Date("2026-09-21T00:00:00.000Z") }) }; },
+    async confirmOwn(input) { calls.push({ method: "confirmOwn", input }); return { authorized: true, row: row({
+      requestId: input.requestId, requestType: "access", correctionScope: null, preferredLocale: "en",
+    }, { status: "identity_confirmed", revision: input.expectedRevision + 1, identityConfirmedAt: new Date("2026-09-20T01:00:00.000Z") }) }; },
   };
   const authRepository = { async findActiveSessionByTokenHash() { return session; } };
   const service = new DataRightsService(repository, { async record(event) { calls.push({ method: "audit", event }); } });
@@ -98,10 +101,24 @@ test("data-rights HTTP preserves step-up enforcement for export and deletion", a
   assert.equal(accepted.status, 200);
 });
 
+test("identity confirmation is owner-bound and requires a stepped-up session",async()=>{
+  const ordinary=createHandlers();
+  assert.equal((await ordinary.handlers.confirmIdentity(request(`/api/v1/data-rights/requests/${requestId}/identity-confirmation`,
+    {confirmationId:"c1111111-c111-4111-8111-c11111111111",expectedRevision:1}),requestId)).status,403);
+  assert.equal(ordinary.calls.some(item=>item.method==="confirmOwn"),false);
+  const stepped=createHandlers(activeStudentSession("step_up"));
+  const response=await stepped.handlers.confirmIdentity(request(`/api/v1/data-rights/requests/${requestId}/identity-confirmation`,
+    {confirmationId:"c1111111-c111-4111-8111-c11111111111",expectedRevision:1}),requestId);
+  assert.equal(response.status,200);
+  const call=stepped.calls.find(item=>item.method==="confirmOwn");
+  assert.equal(call.input.userId,userId);assert.match(call.input.confirmationReferenceSha256,/^sha256:[a-f0-9]{64}$/);
+});
+
 test("data-rights app routes remain thin and contain no SQL or identity authority", async () => {
   const routes = [
     "../../../app/api/v1/data-rights/requests/route.ts",
     "../../../app/api/v1/data-rights/requests/[requestId]/cancel/route.ts",
+    "../../../app/api/v1/data-rights/requests/[requestId]/identity-confirmation/route.ts",
   ];
   const sources = await Promise.all(routes.map(route => readFile(new URL(route, import.meta.url), "utf8")));
   for (const source of sources) {

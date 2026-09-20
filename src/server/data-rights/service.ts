@@ -1,4 +1,4 @@
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { buildAuditEvent, type AuditSink } from "../audit/audit.ts";
 import { evaluatePolicy } from "../policy/policy.ts";
 import { badRequest, conflict, forbidden } from "../shared/errors.ts";
@@ -26,6 +26,8 @@ export type DataRightsRepository = {
   createOwn(input: { requestId: string; userId: string; subjectReferenceHash: string; requestType: DataRightsRequestType;
     correctionScope: DataRightsCorrectionScope | null; preferredLocale: typeof DATA_RIGHTS_LOCALES[number] }): Promise<{ authorized: boolean; row: StoredRequest | null }>;
   cancelOwn(input: { requestId: string; userId: string; expectedRevision: number }): Promise<{ authorized: boolean; row: StoredRequest | null }>;
+  confirmOwn(input: { requestId: string; confirmationId: string; userId: string; expectedRevision: number;
+    subjectReferenceHash: string; confirmationReferenceSha256: string }): Promise<{ authorized: boolean; row: StoredRequest | null }>;
 };
 
 export class DataRightsService {
@@ -56,9 +58,34 @@ export class DataRightsService {
       requestType, correctionScope, preferredLocale });
     if (!result.authorized) throw forbidden("Active student account is required.");
     if (!result.row) throw conflict("An active request of this type already exists.");
+    let created = result.row;
+    const sensitive = ["portable_export", "account_deletion"].includes(requestType);
+    if (sensitive) {
+      const confirmed = await this.repository.confirmOwn({ requestId, confirmationId: randomUUID(), userId, expectedRevision: created.revision,
+        subjectReferenceHash: subjectReference(userId), confirmationReferenceSha256: confirmationReference(userId, requestId, context.requestId) });
+      if (!confirmed.authorized) throw forbidden("Active student account is required.");
+      if (!confirmed.row) throw conflict("The new request could not be identity-confirmed.");
+      created = confirmed.row;
+    }
     await this.audit.record(buildAuditEvent(context, { action: "data_rights.request.create", resourceType: "data_rights_request",
       resourceId: requestId, allowed: true, policyDecisionId: decisionId, dataClasses: ["student_pii"],
-      metadata: { requestType, correctionScope, preferredLocale } }));
+      metadata: { requestType, correctionScope, preferredLocale, identityConfirmed: sensitive } }));
+    return project(created);
+  }
+
+  async confirmOwn(context: RequestContext, requestIdValue: unknown, value: unknown): Promise<DataRightsRequestDto> {
+    const { userId, decisionId } = authorize(context, "student.manage_data_rights");
+    if (context.authStrength !== "step_up") throw forbidden("Fresh authentication is required to confirm identity.");
+    const requestId = inputUuid(requestIdValue, "Request id"), fields = inputRecord(value, ["confirmationId", "expectedRevision"]);
+    const confirmationId = inputUuid(fields.confirmationId, "Confirmation id");
+    const expectedRevision = inputInteger(fields.expectedRevision, "Expected revision", 1, 2_147_483_646);
+    const result = await this.repository.confirmOwn({ requestId, confirmationId, userId, expectedRevision,
+      subjectReferenceHash: subjectReference(userId), confirmationReferenceSha256: confirmationReference(userId, requestId, context.requestId) });
+    if (!result.authorized) throw forbidden("Active student account is required.");
+    if (!result.row) throw conflict("Only a current received request can be identity-confirmed.");
+    await this.audit.record(buildAuditEvent(context, { action: "data_rights.request.identity_confirm", resourceType: "data_rights_request",
+      resourceId: requestId, allowed: true, policyDecisionId: decisionId, dataClasses: ["student_pii"],
+      metadata: { method: "password_step_up", revision: result.row.revision } }));
     return project(result.row);
   }
 
@@ -68,7 +95,7 @@ export class DataRightsService {
     const expectedRevision = inputInteger(fields.expectedRevision, "Expected revision", 1, 2_147_483_647);
     const result = await this.repository.cancelOwn({ requestId, userId, expectedRevision });
     if (!result.authorized) throw forbidden("Active student account is required.");
-    if (!result.row) throw conflict("Only a current received request can be cancelled.");
+    if (!result.row) throw conflict("Only a current unclaimed request can be cancelled.");
     await this.audit.record(buildAuditEvent(context, { action: "data_rights.request.cancel", resourceType: "data_rights_request",
       resourceId: requestId, allowed: true, policyDecisionId: decisionId, dataClasses: ["student_pii"],
       metadata: { expectedRevision } }));
@@ -85,6 +112,10 @@ function authorize(context: RequestContext, action: "student.read_data_rights" |
 
 function subjectReference(userId: string): string {
   return `sha256:${createHash("sha256").update(`cuac-data-rights:${userId}`).digest("hex")}`;
+}
+
+function confirmationReference(userId: string, requestId: string, auditRequestId: string): string {
+  return `sha256:${createHash("sha256").update(`cuac-data-rights-confirmation:${userId}:${requestId}:${auditRequestId}`).digest("hex")}`;
 }
 
 function project(row: StoredRequest): DataRightsRequestDto {

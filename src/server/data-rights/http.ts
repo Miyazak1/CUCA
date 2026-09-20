@@ -2,7 +2,7 @@ import { resolveRequestContextFromRequest, type AuthSessionRepository } from "..
 import { toErrorEnvelope } from "../shared/errors.ts";
 import type { DataRightsService } from "./service.ts";
 
-type Service = Pick<DataRightsService, "listOwn" | "createOwn" | "cancelOwn">;
+type Service = Pick<DataRightsService, "listOwn" | "createOwn" | "cancelOwn" | "confirmOwn">;
 
 export function createDataRightsHttpHandlers(service: Service, authRepository: AuthSessionRepository) {
   async function context(request: Request) {
@@ -17,5 +17,7 @@ export function createDataRightsHttpHandlers(service: Service, authRepository: A
     list: (request: Request) => respond(request, resolved => service.listOwn(resolved)),
     create: (request: Request) => respond(request, async resolved => service.createOwn(resolved, await request.json())),
     cancel: (request: Request, requestId: string) => respond(request, async resolved => service.cancelOwn(resolved, requestId, await request.json())),
+    confirmIdentity: (request: Request, requestId: string) => respond(request,
+      async resolved => service.confirmOwn(resolved, requestId, await request.json())),
   };
 }

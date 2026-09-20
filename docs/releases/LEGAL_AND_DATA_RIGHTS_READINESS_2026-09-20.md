@@ -1,6 +1,6 @@
 # CUAC Legal Publication and Data-Rights Readiness
 
-Status: technical publication framework, authenticated student request intake, internal triage and outcome approval controls are implemented; approved legal wording and the operational fulfilment workflow remain release blockers.
+Status: technical publication framework, authenticated student request intake, password-based identity confirmation evidence, internal triage and outcome approval controls are implemented; approved legal wording and the operational fulfilment workflow remain release blockers.
 
 This document is an engineering and operations control record. It is not legal advice and does not approve policy wording.
 
@@ -58,7 +58,7 @@ Required lifecycle:
 
 1. The signed-in user creates a request from the account area. The server derives the user identity from the session; it never accepts another user ID from the browser.
 2. The server assigns an immutable reference, request type, received timestamp and status. The initial request contains no uploaded identity document.
-3. Sensitive requests require a fresh authentication step. Staff cannot use ordinary support impersonation to approve a request.
+3. Every request must have a bounded identity-confirmation record before staff can claim it or prepare an outcome. Sensitive requests require that fresh password step during creation; access and correction require it before triage. Staff cannot use ordinary support impersonation to confirm or approve a request.
 4. A privacy-authorized operations queue records assignment, scoped notes, deadlines and every status transition in the audit log.
 5. Export generation uses a short-lived encrypted artifact and one-time retrieval authorization. It excludes internal security signals, other tenants and legally protected third-party data.
 6. Deletion is a staged, idempotent job with an explicit retention-exception ledger. It revokes sessions first, prevents new work, erases or anonymizes eligible data, and records only the minimum completion evidence.
@@ -67,17 +67,17 @@ Required lifecycle:
 
 ### Implemented intake boundary
 
-The signed-in student account area now supports structured access, correction, portable-export and account-deletion requests. Identity is derived only from the authenticated session; browser-supplied ownership is rejected. Correction requests capture a bounded data area rather than unrestricted sensitive text. Export and deletion require fresh password reauthentication. Students can list their own requests and cancel only a still-received request using its current revision.
+The signed-in student account area now supports structured access, correction, portable-export and account-deletion requests. Identity is derived only from the authenticated session; browser-supplied ownership is rejected. Correction requests capture a bounded data area rather than unrestricted sensitive text. Export and deletion require fresh password reauthentication during creation. Access and correction remain unclaimable until the student completes a separate password reauthentication from the request list. Students can list their own requests and cancel an unclaimed request using its current revision.
 
-The database enforces one active request of each type per account, explicit lifecycle states, terminal timestamps and bounded locale/type/scope values. Each create and cancel operation is transactionally coupled to a metadata-only audit event. Repository reads and mutations recheck the live active account and student role. If an account is later deleted, the direct user link is removed while a one-way subject reference and minimum request evidence remain available for the future legally approved retention rule.
+The database enforces one active request of each type per account, explicit lifecycle states, terminal timestamps and bounded locale/type/scope values. Each create, confirmation and cancel operation is transactionally coupled to a metadata-only audit event. Identity evidence stores only the fixed password-step-up method, request revision and one-way subject/confirmation references; it stores no password, session token or identity document. Repository reads and mutations recheck the live active account and student role. If an account is later deleted, the direct user link is removed while one-way subject and confirmation references remain available for the future legally approved retention rule.
 
-Phase B adds an internal least-privilege triage queue. A currently authorized CUAC operator can list only minimal request metadata, claim a received request using its current revision, and escalate an assigned investigation with one of four fixed reason codes and an opaque internal case reference. The claim is bound to the exact live staff grant; stale revisions, revoked grants and a different assignee fail closed.
+Phase B adds an internal least-privilege triage queue. A currently authorized CUAC operator can list only minimal request metadata. An unconfirmed request is visibly queued but cannot be claimed or used to prepare an outcome. After confirmation, an operator may claim it using its current revision and escalate an assigned investigation with one of four fixed reason codes and an opaque internal case reference. Claim and proposal SQL independently require matching one-way subject evidence. The claim is bound to the exact live staff grant; stale revisions, revoked grants and a different assignee fail closed.
 
 Phase C adds an immutable, digest-bound **outcome plan**, not an execution command. Access and ordinary correction plans may be confirmed by the authorized operator who owns the case. A portable-export plan requires a `cuac_admin` session with fresh step-up authentication. An account-deletion plan, denial or retention exception requires a second, different stepped-up administrator; the proposer cannot approve their own plan. Fixed outcome/reason codes, exact request/review revisions, the current live staff grant and an opaque case reference are enforced again at the database boundary. Approval deliberately leaves the request in its existing operational state and creates no export, deletion, denial, notification or closure side effect. A student's own profile edits remain direct owner-scoped changes and never enter this staff approval workflow.
 
 This is intake and triage, not a completed rights operation. The following remain release blockers:
 
-- approved privacy staff roster, SLA/deadline rules and a reviewed operating runbook for the implemented outcome controls;
+- approved privacy staff roster, response target/SLA and deadline rules, identity-confirmation exception handling and a reviewed operating runbook for the implemented outcome controls;
 - the actual scoped export generator, encrypted short-lived delivery and expiry evidence;
 - staged account closure/deletion, session revocation, retention exceptions, tombstones and restore handling;
 - completion/denial notifications, appeal/escalation handling and tested operations runbook;

@@ -38,8 +38,26 @@ export class PostgresDataRightsRepository implements DataRightsRepository {
     if (!await this.authorize(input.userId)) return { authorized: false, row: null };
     const rows = await this.client.query<Row>(`update data_rights_requests set status = 'cancelled', revision = revision + 1,
       closed_at = clock_timestamp(), updated_at = clock_timestamp()
-      where id = $1 and user_id = $2 and revision = $3 and status = 'received' returning ${columns}`,
+      where id = $1 and user_id = $2 and revision = $3 and status in ('received','identity_confirmed') returning ${columns}`,
     [input.requestId, input.userId, input.expectedRevision]);
+    return { authorized: true, row: rows[0] ?? null };
+  }
+
+  async confirmOwn(input: Parameters<DataRightsRepository["confirmOwn"]>[0]) {
+    if (!await this.authorize(input.userId)) return { authorized: false, row: null };
+    const locked = await this.client.query<{ subjectReferenceHash: string }>(`select subject_reference_hash as "subjectReferenceHash"
+      from data_rights_requests where id = $1 and user_id = $2 and revision = $3 and status = 'received' for update`,
+    [input.requestId, input.userId, input.expectedRevision]);
+    if (!locked[0] || locked[0].subjectReferenceHash !== input.subjectReferenceHash) return { authorized: true, row: null };
+    const evidence = await this.client.query<{ id: string }>(`insert into data_rights_identity_confirmations
+      (id,data_rights_request_id,source_request_revision,method,subject_reference_hash,confirmation_reference_sha256)
+      values ($1,$2,$3,'password_step_up',$4,$5) on conflict do nothing returning id`,
+    [input.confirmationId,input.requestId,input.expectedRevision,input.subjectReferenceHash,input.confirmationReferenceSha256]);
+    if (!evidence[0]) return { authorized: true, row: null };
+    const rows = await this.client.query<Row>(`update data_rights_requests set status = 'identity_confirmed', revision = revision + 1,
+      identity_confirmed_at = clock_timestamp(), updated_at = clock_timestamp()
+      where id = $1 and user_id = $2 and revision = $3 and status = 'received' returning ${columns}`,
+    [input.requestId,input.userId,input.expectedRevision]);
     return { authorized: true, row: rows[0] ?? null };
   }
 }

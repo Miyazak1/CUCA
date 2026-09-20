@@ -17,6 +17,7 @@ test("students create minimal rights requests without free text or another user 
     async createOwn(input) { calls.push(input); return { authorized: true, row: row({ id: input.requestId, requestType: input.requestType,
       correctionScope: input.correctionScope, preferredLocale: input.preferredLocale }) }; },
     async cancelOwn() { throw new Error("unused"); },
+    async confirmOwn() { throw new Error("unused"); },
   }, { async record(event) { audits.push(event); } });
   const result = await service.createOwn(context, { requestId, requestType: "correction", correctionScope: "education", preferredLocale: "zh-CN" });
   assert.equal(result.requestId, requestId);
@@ -31,7 +32,9 @@ test("export and deletion requests require fresh authentication while access and
   let creates = 0;
   const repository = { async listOwn() { return { authorized: true, rows: [] }; },
     async createOwn(input) { creates++; return { authorized: true, row: row({ id: input.requestId, requestType: input.requestType }) }; },
-    async cancelOwn() { throw new Error("unused"); } };
+    async cancelOwn() { throw new Error("unused"); },
+    async confirmOwn(input) { return { authorized: true, row: row({ id: input.requestId, requestType: "portable_export",
+      status: "identity_confirmed", revision: 2, identityConfirmedAt: new Date("2026-09-20T00:01:00.000Z") }) }; } };
   const service = new DataRightsService(repository, { async record() {} });
   for (const requestType of ["portable_export", "account_deletion"]) {
     await assert.rejects(service.createOwn(student(), { requestId: randomUUID(), requestType, correctionScope: null, preferredLocale: "en" }), e => e.status === 403);
@@ -47,6 +50,7 @@ test("rights requests are owner-only and received requests use optimistic cancel
     async createOwn() { throw new Error("unused"); },
     async cancelOwn(input) { return { authorized: true, row: input.expectedRevision === 1
       ? row({ ...target, status: "cancelled", revision: 2, closedAt: new Date("2026-09-21T00:00:00.000Z") }) : null }; },
+    async confirmOwn() { throw new Error("unused"); },
   }, { async record(event) { audits.push(event); } });
   assert.equal((await service.listOwn(student())).length, 1);
   assert.equal((await service.cancelOwn(student(), target.id, { expectedRevision: 1 })).status, "cancelled");
@@ -60,11 +64,26 @@ test("rights requests are owner-only and received requests use optimistic cancel
 test("repository and audit failures do not become successful acknowledgements", async () => {
   const context = student(), requestId = randomUUID();
   const unavailable = new DataRightsService({ async listOwn() { return { authorized: false, rows: [] }; },
-    async createOwn() { return { authorized: false, row: null }; }, async cancelOwn() { return { authorized: false, row: null }; } }, { async record() {} });
+    async createOwn() { return { authorized: false, row: null }; }, async cancelOwn() { return { authorized: false, row: null }; },
+    async confirmOwn() { return { authorized: false, row: null }; } }, { async record() {} });
   await assert.rejects(unavailable.listOwn(context), e => e.status === 403);
   await assert.rejects(unavailable.createOwn(context, { requestId, requestType: "access", correctionScope: null, preferredLocale: "en" }), e => e.status === 403);
   const auditFailure = new DataRightsService({ async listOwn() { return { authorized: true, rows: [] }; },
-    async createOwn(input) { return { authorized: true, row: row({ id: input.requestId }) }; }, async cancelOwn() { return { authorized: true, row: row() }; } },
+    async createOwn(input) { return { authorized: true, row: row({ id: input.requestId }) }; }, async cancelOwn() { return { authorized: true, row: row() }; },
+    async confirmOwn() { return { authorized: true, row: row() }; } },
   { async record() { throw new Error("audit unavailable"); } });
   await assert.rejects(auditFailure.createOwn(context, { requestId, requestType: "access", correctionScope: null, preferredLocale: "en" }), /audit unavailable/);
+});
+
+test("identity confirmation requires step-up and records only bounded evidence",async()=>{const calls=[],audits=[],target=row();
+  const service=new DataRightsService({async listOwn(){throw 0;},async createOwn(){throw 0;},async cancelOwn(){throw 0;},
+    async confirmOwn(input){calls.push(input);return{authorized:true,row:row({...target,status:"identity_confirmed",revision:2,
+      identityConfirmedAt:new Date("2026-09-20T00:02:00.000Z")})};}},{async record(event){audits.push(event);}});
+  const body={confirmationId:randomUUID(),expectedRevision:1};
+  await assert.rejects(service.confirmOwn(student(),target.id,body),e=>e.status===403);
+  const confirmed=await service.confirmOwn(student({authStrength:"step_up"}),target.id,body);
+  assert.equal(confirmed.status,"identity_confirmed");
+  assert.match(calls[0].confirmationReferenceSha256,/^sha256:[a-f0-9]{64}$/);
+  assert.equal(audits[0].action,"data_rights.request.identity_confirm");
+  assert.deepEqual(audits[0].metadata,{method:"password_step_up",revision:2});
 });

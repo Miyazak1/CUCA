@@ -11,6 +11,7 @@ const unavailableRepository: DataRightsRepository = {
   async listOwn() { throw serviceUnavailable("Data-rights repository is not configured."); },
   async createOwn() { throw serviceUnavailable("Data-rights repository is not configured."); },
   async cancelOwn() { throw serviceUnavailable("Data-rights repository is not configured."); },
+  async confirmOwn() { throw serviceUnavailable("Data-rights repository is not configured."); },
 };
 const guestOnlyAuthRepository = { async findActiveSessionByTokenHash() { return null; } };
 
@@ -24,7 +25,8 @@ export function getDataRightsRouteHandlers() {
     const create = (tx: typeof client) => new DataRightsService(new PostgresDataRightsRepository(tx), new PostgresAuditWriter(tx));
     const reads = create(client);
     return createDataRightsHttpHandlers({ listOwn: reads.listOwn.bind(reads),
-      createOwn: transactionalMethod(client, create, "createOwn"), cancelOwn: transactionalMethod(client, create, "cancelOwn") },
+      createOwn: transactionalMethod(client, create, "createOwn"), cancelOwn: transactionalMethod(client, create, "cancelOwn"),
+      confirmOwn: transactionalMethod(client, create, "confirmOwn") },
     new PostgresAuthSessionRepository(client));
   } catch { return createDataRightsRouteHandlers(); }
 }

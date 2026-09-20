@@ -428,6 +428,13 @@
       "when": 1789881858803,
       "tag": "0060_ops_data_rights_outcomes",
       "breakpoints": true
+    },
+    {
+      "idx": 61,
+      "version": "7",
+      "when": 1789885471429,
+      "tag": "0061_data_rights_identity_confirmation",
+      "breakpoints": true
     }
   ]
 }

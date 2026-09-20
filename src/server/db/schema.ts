@@ -349,6 +349,26 @@ export const dataRightsRequests = pgTable("data_rights_requests", {
   lifecycleCheck: check("data_rights_requests_lifecycle_check", sql`(${table.status} in ('fulfilled', 'denied', 'cancelled')) = (${table.closedAt} is not null)`),
 }));
 
+export const dataRightsIdentityConfirmations = pgTable("data_rights_identity_confirmations", {
+  id: uuid("id").primaryKey(),
+  dataRightsRequestId: uuid("data_rights_request_id").notNull()
+    .references(() => dataRightsRequests.id, { onDelete: "restrict" }),
+  sourceRequestRevision: integer("source_request_revision").notNull(),
+  method: text("method").notNull(),
+  subjectReferenceHash: text("subject_reference_hash").notNull(),
+  confirmationReferenceSha256: text("confirmation_reference_sha256").notNull(),
+  confirmedAt: timestamp("confirmed_at", { withTimezone: true }).notNull().defaultNow(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, table => ({
+  requestUnique: uniqueIndex("data_rights_identity_confirmations_request_unique").on(table.dataRightsRequestId),
+  confirmedIdx: index("data_rights_identity_confirmations_confirmed_idx").on(table.confirmedAt, table.id),
+  evidenceCheck: check("data_rights_identity_confirmations_evidence_check", sql`
+    ${table.sourceRequestRevision} = 1 and ${table.method} = 'password_step_up'
+    and ${table.subjectReferenceHash} ~ '^sha256:[a-f0-9]{64}$'
+    and ${table.confirmationReferenceSha256} ~ '^sha256:[a-f0-9]{64}$'
+    and isfinite(${table.confirmedAt}) and isfinite(${table.createdAt})`),
+}));
+
 export const authMfaFactors = pgTable(
   "auth_mfa_factors",
   {

@@ -5,7 +5,8 @@ import { OpsDataRightsService } from "../../../src/server/ops-data-rights/servic
 const actor=(extra={})=>createRequestContext({actorUserId:"a1111111-a111-4111-8111-a11111111111",activeRole:"cuac_ops",
   selectedSurface:"ops",purpose:"data_rights_review",authStrength:"session",...extra});
 const row=(extra={})=>({requestId:"b1111111-b111-4111-8111-b11111111111",requestType:"access",correctionScope:null,
-  preferredLocale:"en",status:"received",revision:1,receivedAt:new Date("2026-09-20T00:00:00Z"),updatedAt:new Date("2026-09-20T00:00:00Z"),review:null,outcome:null,...extra});
+  preferredLocale:"en",status:"received",revision:1,receivedAt:new Date("2026-09-20T00:00:00Z"),
+  identityConfirmedAt:new Date("2026-09-20T00:01:00Z"),updatedAt:new Date("2026-09-20T00:00:00Z"),review:null,outcome:null,...extra});
 const review={reviewId:"c1111111-c111-4111-8111-c11111111111",revision:1,status:"investigating",assignedUserId:actor().actorUserId,
   assignedRole:"cuac_ops",escalationCode:null,escalationReference:null,escalatedAt:null,createdAt:new Date(),updatedAt:new Date()};
 const unused={async propose(){throw 0;},async approve(){throw 0;}};

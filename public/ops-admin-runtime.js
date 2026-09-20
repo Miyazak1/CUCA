@@ -804,8 +804,8 @@ function renderDataRights(items) {
       <header><div><strong>${escapeHtml(labels[item.requestType]||item.requestType)}</strong>
       <span>${escapeHtml(item.preferredLocale)} · ${escapeHtml(item.status)} · ${escapeHtml(new Date(item.receivedAt).toLocaleString())}</span></div></header>
       <p>请求编号：${escapeHtml(item.requestId)}${item.correctionScope?` · 更正范围：${escapeHtml(item.correctionScope)}`:""}</p>
-      ${!item.review?`<form data-ops-action-form data-kind="privacy" data-target="${escapeHtml(item.requestId)}" data-action="claim" data-revision="${item.revision}">
-        <button class="ops-button" type="submit">认领分流</button></form>`:
+      ${!item.review?(item.identityConfirmedAt?`<form data-ops-action-form data-kind="privacy" data-target="${escapeHtml(item.requestId)}" data-action="claim" data-revision="${item.revision}">
+        <button class="ops-button" type="submit">认领分流</button></form>`:`<p class="ops-state">等待学生完成身份确认；当前不可认领或制定处理方案。</p>`):
         item.review.status==="investigating"?`<form data-ops-action-form data-kind="privacy" data-target="${escapeHtml(item.requestId)}" data-action="escalate"
           data-revision="${item.revision}" data-review-revision="${item.review.revision}"><label><span>升级原因</span><select name="code" required>
           ${codes.map(([value,label])=>`<option value="${value}">${label}</option>`).join("")}</select></label>

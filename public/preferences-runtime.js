@@ -189,7 +189,11 @@ function renderDataRights() {
   </form>
   <div class="data-rights-list">${currentDataRightsRequests.length ? currentDataRightsRequests.map(item => `<article>
     <div><strong>${escapeHtml(dataRightsLabels[item.requestType] || humanize(item.requestType))}</strong><span>Received ${escapeHtml(new Date(item.receivedAt).toLocaleDateString())} · ${escapeHtml(humanize(item.status))}</span></div>
-    ${item.status === "received" ? `<button class="preferences-secondary" type="button" data-cancel-rights="${escapeHtml(item.requestId)}" data-revision="${item.revision}">Cancel</button>` : ""}
+    ${["received","identity_confirmed"].includes(item.status)?`<div class="data-rights-actions">
+      ${item.status==="received"?`<form data-confirm-rights="${escapeHtml(item.requestId)}" data-revision="${item.revision}">
+        <label class="preferences-field"><span>Confirm identity to start review</span><input name="password" type="password" autocomplete="current-password" minlength="15" required /></label>
+        <button type="submit">Confirm identity</button></form>`:`<span>Identity confirmed · waiting for review</span>`}
+      <button class="preferences-secondary" type="button" data-cancel-rights="${escapeHtml(item.requestId)}" data-revision="${item.revision}">Cancel</button></div>`:""}
   </article>`).join("") : "<p class=\"preferences-loading\">No privacy requests have been submitted.</p>"}</div>`;
   updateDataRightsFields(root.querySelector('[name="requestType"]'));
 }
@@ -288,6 +292,22 @@ async function cancelDataRights(button) {
   } catch (error) { button.disabled = false; showPreferenceToast(error?.message || "Privacy request was not cancelled."); }
 }
 
+async function confirmDataRights(form) {
+  const button = form.querySelector('button[type="submit"]');
+  button.disabled = true;
+  try {
+    const auth = await window.CUAC?.authReady?.();
+    if (auth?.authStrength !== "step_up") {
+      await requestJson("/api/v1/auth/step-up", { method: "POST", body: JSON.stringify({ password: form.elements.password.value }) });
+    }
+    const updated = await requestJson(`/api/v1/data-rights/requests/${encodeURIComponent(form.dataset.confirmRights)}/identity-confirmation`, {
+      method: "POST", body: JSON.stringify({ confirmationId: crypto.randomUUID(), expectedRevision: Number(form.dataset.revision) }),
+    });
+    currentDataRightsRequests = currentDataRightsRequests.map(item => item.requestId === updated.requestId ? updated : item);
+    renderDataRights(); showPreferenceToast("Identity confirmed. Your request is ready for review.");
+  } catch (error) { button.disabled = false; showPreferenceToast(error?.message || "Identity was not confirmed."); }
+}
+
 async function saveStudyPreferences(form) {
   const values = new FormData(form);
   const subjectAreas = values.getAll("subjectAreas").filter(value => preferenceOptions.subjectAreas.includes(value));
@@ -368,6 +388,7 @@ document.addEventListener("submit", event => {
     void saveNotificationPreferences(event.target);
   }
   if (event.target.matches("[data-data-rights-form]")) { event.preventDefault(); void submitDataRights(event.target); }
+  if (event.target.matches("[data-confirm-rights]")) { event.preventDefault(); void confirmDataRights(event.target); }
 });
 
 document.addEventListener("change", event => {

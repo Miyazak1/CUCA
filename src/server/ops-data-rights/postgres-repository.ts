@@ -13,7 +13,8 @@ type Row = Omit<OpsDataRightsQueueRow, "review" | "outcome"> & { reviewId: strin
   outcomeStatus:OpsDataRightsOutcome["status"]|null;outcomeRevision:number|null;proposedByUserId:string|null;
   proposedByRole:"cuac_ops"|"cuac_admin"|null;approvedByUserId:string|null;approvedAt:Date|null;outcomeCreatedAt:Date|null;outcomeUpdatedAt:Date|null };
 const requestColumns = `q.id as "requestId",q.request_type as "requestType",q.correction_scope as "correctionScope",
- q.preferred_locale as "preferredLocale",q.status,q.revision,q.received_at as "receivedAt",q.updated_at as "updatedAt"`;
+ q.preferred_locale as "preferredLocale",q.status,q.revision,q.received_at as "receivedAt",
+ q.identity_confirmed_at as "identityConfirmedAt",q.updated_at as "updatedAt"`;
 const outcomeColumns=`o.id as "outcomeId",o.outcome_code as "outcomeCode",o.reason_code as "reasonCode",o.case_reference as "caseReference",
  o.proposal_sha256 as "proposalSha256",o.approval_mode as "approvalMode",o.status as "outcomeStatus",o.revision as "outcomeRevision",
  o.proposed_by_user_id as "proposedByUserId",o.proposed_by_role as "proposedByRole",o.approved_by_user_id as "approvedByUserId",
@@ -32,8 +33,11 @@ export class PostgresOpsDataRightsRepository implements OpsDataRightsRepository 
   }); }
   async claim(input: Parameters<OpsDataRightsRepository["claim"]>[0]) { return this.client.transaction(async tx => {
     const authority = await lockLiveCuacStaffAuthority(tx, input); if (!authority) return { authorized: false } as const;
-    const requests = await tx.query<{ revision: number }>(`update data_rights_requests set status='in_progress',revision=revision+1,
-      assigned_user_id=$3,updated_at=clock_timestamp() where id=$1 and revision=$2 and status='received' returning revision`,
+    const requests = await tx.query<{ revision: number }>(`update data_rights_requests q set status='in_progress',revision=q.revision+1,
+      assigned_user_id=$3,updated_at=clock_timestamp() where q.id=$1 and q.revision=$2 and q.status='identity_confirmed'
+      and exists (select 1 from data_rights_identity_confirmations c where c.data_rights_request_id=q.id
+        and c.subject_reference_hash=q.subject_reference_hash)
+      returning revision`,
     [input.requestId,input.expectedRevision,input.actorUserId]);
     if (!requests[0]) return { authorized: true, value: null } as const;
     await tx.query(`insert into ops_data_rights_reviews
@@ -68,7 +72,9 @@ export class PostgresOpsDataRightsRepository implements OpsDataRightsRepository 
        case when $12::text='dual_control' then null else $6::text end,case when $12::text='dual_control' then null else clock_timestamp() end
       from data_rights_requests q join ops_data_rights_reviews r on r.data_rights_request_id=q.id
       where q.id=$2::uuid and q.revision=$3 and q.status in ('in_progress','escalated') and r.revision=$7
-        and r.assigned_user_id=$4::uuid and r.assigned_grant_id=$5::uuid and ${compatible}
+        and r.assigned_user_id=$4::uuid and r.assigned_grant_id=$5::uuid
+        and exists (select 1 from data_rights_identity_confirmations c where c.data_rights_request_id=q.id
+          and c.subject_reference_hash=q.subject_reference_hash) and ${compatible}
       on conflict do nothing returning id`,[input.proposalId,input.requestId,input.expectedRevision,input.actorUserId,authority.grantId,input.activeRole,
       input.expectedReviewRevision,input.outcomeCode,input.reasonCode,input.caseReference,input.proposalSha256,input.approvalMode]);
     if(!rows[0])return{authorized:true,value:null}as const;return{authorized:true,value:await this.read(tx,input.requestId)}as const;
@@ -92,7 +98,7 @@ export class PostgresOpsDataRightsRepository implements OpsDataRightsRepository 
 }
 function mapRow(row: Row): OpsDataRightsQueueRow { return { requestId: row.requestId,requestType: row.requestType,
   correctionScope: row.correctionScope,preferredLocale: row.preferredLocale,status: row.status,revision: row.revision,
-  receivedAt: row.receivedAt,updatedAt: row.updatedAt,review: row.reviewId ? { reviewId: row.reviewId,revision: row.reviewRevision!,
+  receivedAt: row.receivedAt,identityConfirmedAt:row.identityConfirmedAt,updatedAt: row.updatedAt,review: row.reviewId ? { reviewId: row.reviewId,revision: row.reviewRevision!,
     status: row.reviewStatus!,assignedUserId: row.assignedUserId!,assignedRole: row.assignedRole!,escalationCode: row.escalationCode,
     escalationReference: row.escalationReference,escalatedAt: row.escalatedAt,createdAt: row.reviewCreatedAt!,updatedAt: row.reviewUpdatedAt! } : null,
   outcome:row.outcomeId?{outcomeId:row.outcomeId,outcomeCode:row.outcomeCode!,reasonCode:row.reasonCode,

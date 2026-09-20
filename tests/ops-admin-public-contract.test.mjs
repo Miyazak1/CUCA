@@ -75,6 +75,7 @@ test("Ops write controls preserve backend revision and evidence boundaries", asy
   assert.match(script, /expectedOutcomeRevision/);
   assert.match(script, /expectedProposalSha256/);
   assert.match(script, /account_deletion_ready/);
+  assert.match(script, /等待学生完成身份确认；当前不可认领或制定处理方案/);
   assert.match(script, /当前不会导出、删除、拒绝或关闭请求/);
   assert.doesNotMatch(script, /data-rights\/requests\/\$\{encodeURIComponent\(target\)\}\/execute/);
   assert.doesNotMatch(script, /data-rights[\s\S]{0,160}(?:fulfilled|denied|erase|export artifact)/i);

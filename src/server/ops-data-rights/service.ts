@@ -18,6 +18,7 @@ export type OpsDataRightsReview = { reviewId: string; revision: number; status: 
   escalatedAt: Date | null; createdAt: Date; updatedAt: Date };
 export type OpsDataRightsQueueRow = { requestId: string; requestType: string; correctionScope: string | null;
   preferredLocale: string; status: string; revision: number; receivedAt: Date; updatedAt: Date;
+  identityConfirmedAt: Date | null;
   review: OpsDataRightsReview | null; outcome: OpsDataRightsOutcome | null };
 export type OpsDataRightsOutcome = { outcomeId:string; outcomeCode:typeof OPS_DATA_RIGHTS_OUTCOMES[number];reasonCode:string|null;
   caseReference:string;proposalSha256:string;approvalMode:"single_operator"|"single_admin"|"dual_control";
@@ -121,6 +122,7 @@ function requireAuthority<T>(result: Authorized<T>): asserts result is { authori
   if (!result.authorized) throw forbidden("Active CUAC staff access grant is required.");
 }
 function project(row: OpsDataRightsQueueRow) { return { ...row, receivedAt: row.receivedAt.toISOString(), updatedAt: row.updatedAt.toISOString(),
+  identityConfirmedAt: row.identityConfirmedAt?.toISOString() ?? null,
   review: row.review ? { ...row.review, escalatedAt: row.review.escalatedAt?.toISOString() ?? null,
     createdAt: row.review.createdAt.toISOString(), updatedAt: row.review.updatedAt.toISOString() } : null,
   outcome:row.outcome?{...row.outcome,approvedAt:row.outcome.approvedAt?.toISOString()??null,

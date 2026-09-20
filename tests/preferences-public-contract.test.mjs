@@ -73,6 +73,8 @@ test("privacy requests are account-owned, structured and require step-up for exp
   const [html, script] = await Promise.all([source("public/preferences-api.html"), source("public/preferences-runtime.js")]);
   assert.match(html, /id="data-rights"/);
   assert.match(script, /\/api\/v1\/data-rights\/requests/);
+  assert.match(script, /identity-confirmation/);
+  assert.match(script, /Confirm identity to start review/);
   assert.match(script, /\/api\/v1\/auth\/step-up/);
   assert.match(script, /portable_export/);
   assert.match(script, /account_deletion/);

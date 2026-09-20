@@ -46,14 +46,20 @@ export async function runDataRightsRehearsal(t, pool) {
     [adminUserId,`rights-admin-${adminUserId}@example.invalid`,approverId])).rows[0];
     assert.ok(adminGrant.id);
     const ops=new PostgresOpsDataRightsRepository(client), actor={actorUserId:opsUserId,activeRole:"cuac_ops"};
+    assert.equal((await ops.claim({...actor,requestId:activeRequestId,expectedRevision:1})).value,null,
+      "an unconfirmed request cannot be claimed by Ops");
+    const identityConfirmed=(await repository.confirmOwn({requestId:activeRequestId,confirmationId:randomUUID(),userId:firstUserId,
+      expectedRevision:1,subjectReferenceHash:input.subjectReferenceHash,confirmationReferenceSha256:`sha256:${"c".repeat(64)}`})).row;
+    assert.equal(identityConfirmed.status,"identity_confirmed");assert.equal(identityConfirmed.revision,2);
+
     assert.ok((await ops.list({...actor,limit:100})).value.some(item=>item.requestId===activeRequestId));
-    const claimed=(await ops.claim({...actor,requestId:activeRequestId,expectedRevision:1})).value;
+    const claimed=(await ops.claim({...actor,requestId:activeRequestId,expectedRevision:2})).value;
     assert.equal(claimed.status,"in_progress"); assert.equal(claimed.review.status,"investigating");
-    const escalated=(await ops.escalate({...actor,requestId:activeRequestId,expectedRevision:2,expectedReviewRevision:1,
+    const escalated=(await ops.escalate({...actor,requestId:activeRequestId,expectedRevision:3,expectedReviewRevision:1,
       code:"legal_review_required",reference:"case:rehearsal"})).value;
     assert.equal(escalated.status,"escalated"); assert.equal(escalated.review.status,"escalated");
     const proposalSha256=`sha256:${"b".repeat(64)}`;
-    const proposed=(await ops.propose({...actor,requestId:activeRequestId,proposalId:randomUUID(),expectedRevision:3,
+    const proposed=(await ops.propose({...actor,requestId:activeRequestId,proposalId:randomUUID(),expectedRevision:4,
       expectedReviewRevision:2,outcomeCode:"request_denied",reasonCode:"legal_restriction",caseReference:"case:rights-denial",
       proposalSha256,approvalMode:"dual_control"})).value;
     assert.equal(proposed.outcome.status,"proposed");
@@ -71,5 +77,11 @@ export async function runDataRightsRehearsal(t, pool) {
     const retained = await pool.query("select user_id, subject_reference_hash from data_rights_requests where id = $1", [firstRequestId]);
     assert.equal(retained.rows[0].user_id, null);
     assert.match(retained.rows[0].subject_reference_hash, /^sha256:[a-f0-9]{64}$/);
+    const retainedConfirmation = await pool.query(`select c.method,c.subject_reference_hash,c.confirmation_reference_sha256
+      from data_rights_identity_confirmations c where c.data_rights_request_id = $1`, [activeRequestId]);
+    assert.equal(retainedConfirmation.rowCount, 1);
+    assert.equal(retainedConfirmation.rows[0].method, "password_step_up");
+    assert.match(retainedConfirmation.rows[0].subject_reference_hash, /^sha256:[a-f0-9]{64}$/);
+    assert.match(retainedConfirmation.rows[0].confirmation_reference_sha256, /^sha256:[a-f0-9]{64}$/);
   });
 }
