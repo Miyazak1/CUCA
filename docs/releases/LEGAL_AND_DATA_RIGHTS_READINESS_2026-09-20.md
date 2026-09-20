@@ -45,7 +45,7 @@ Do not put credentials, personal identity documents or private keys in this docu
 4. Processing purposes and legal bases for each data class and each account role.
 5. Hosting region, subprocessors, recipients and any cross-border transfer mechanism.
 6. Retention periods for active accounts, dormant accounts, PostgreSQL records, object storage, email delivery records, operational logs, security logs, backups and legally retained audit evidence.
-7. Data-rights scope, identity-verification method, response owner, response target/SLA, exception handling and appeal/escalation route.
+7. Data-rights scope, identity-verification method, response owner, final approval of the provisional response target in `DATA_RIGHTS_RESPONSE_TARGET_V1_2026-09-20.md`, exception handling and appeal/escalation route.
 8. Terms: service provider, eligibility, acceptable use, admissions disclaimer, suspension rules, intellectual-property position, liability position, governing law and dispute route.
 9. Admissions-data correction owner, evidence standard, freshness targets, expiry/archival rules and school self-service responsibility.
 10. Named preparer and independent approver for each locale and policy, with approval reference and next review date.
@@ -77,7 +77,7 @@ Phase C adds an immutable, digest-bound **outcome plan**, not an execution comma
 
 This is intake and triage, not a completed rights operation. The following remain release blockers:
 
-- approved privacy staff roster, response target/SLA and deadline rules, identity-confirmation exception handling and a reviewed operating runbook for the implemented outcome controls;
+- approved privacy staff roster, legal approval and technical enforcement of the provisional 15/30-day response target, identity-confirmation exception handling and a reviewed operating runbook for the implemented outcome controls;
 - the actual scoped export generator, encrypted short-lived delivery and expiry evidence;
 - staged account closure/deletion, session revocation, retention exceptions, tombstones and restore handling;
 - completion/denial notifications, appeal/escalation handling and tested operations runbook;
