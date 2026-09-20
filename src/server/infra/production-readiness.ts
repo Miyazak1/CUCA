@@ -11,7 +11,6 @@ import { publicApiOrigin } from "../shared/http-config.ts";
 import { createOfficialSubmissionWorkerConfigurationFromEnv } from "../submission-delivery/runtime.ts";
 import { resolveApplicationMaterialSnapshotCipher } from "../student/application-material-snapshot-envelope.ts";
 import { NOTIFICATION_EMAIL_PROVIDER_ALIYUN_SMTP, createNotificationWorkerConfigurationFromEnv } from "../notifications/runtime/worker.ts";
-import { dataRightsReminderWorkerConfigFromEnv } from "../data-rights/runtime/reminder-worker.ts";
 import { assertSafeApplicationProcessEnvironment } from "./startup-policy.ts";
 import {
   includesDeferredApplicationCapabilities,
@@ -62,7 +61,6 @@ export function inspectProductionReadiness(env: Record<string, string | undefine
     checkPublicSearchRateLimit(env, strict),
     checkAuthEmailDelivery(env, strict),
     checkNotificationDelivery(env, strict),
-    checkDataRightsReminderWorker(env, strict),
     checkAgentSandbox(env, strict),
     checkBillingFeeSchedule(env, strict),
     checkPaymentProvider(env, environment, releaseScope),
@@ -344,19 +342,6 @@ function checkNotificationDelivery(env: Record<string, string | undefined>, stri
       "Notification provider configuration and staging acceptance attestations are present; runtime evidence remains separate.")
     : item(strict ? "fail" : "warn", "notification.delivery",
       "Notification runtime is configured, but supervised worker operation and a staging delivery/bounce round trip must both be confirmed.");
-}
-
-function checkDataRightsReminderWorker(env: Record<string, string | undefined>, strict: boolean): ProductionReadinessItem {
-  try { dataRightsReminderWorkerConfigFromEnv(env); }
-  catch {
-    return item("fail", "data_rights.reminder_worker",
-      "Data-rights reminder worker polling and batch configuration must be valid.");
-  }
-  return normalize(env.CUAC_DATA_RIGHTS_REMINDER_WORKER_SUPERVISED) === "true"
-    ? item("pass", "data_rights.reminder_worker",
-      "Data-rights reminder generation is configured as a supervised process; runtime evidence remains separate.")
-    : item(strict ? "fail" : "warn", "data_rights.reminder_worker",
-      "The data-rights reminder worker must be supervised and monitored before staging or production.");
 }
 
 function checkAgentSandbox(env: Record<string, string | undefined>, strict: boolean): ProductionReadinessItem {

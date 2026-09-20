@@ -498,28 +498,6 @@ test("disabled payments block staging and production while remaining a local war
   }
 });
 
-test("data-rights reminder generation requires valid configuration and production supervision", () => {
-  const missingSupervision = inspectProductionReadiness({ ...configuredProduction });
-  assert.equal(check(missingSupervision, "data_rights.reminder_worker").status, "fail");
-  assert.match(check(missingSupervision, "data_rights.reminder_worker").message, /supervised and monitored/);
-
-  const accepted = inspectProductionReadiness({
-    ...configuredProduction,
-    CUAC_DATA_RIGHTS_REMINDER_POLL_MS: "60000",
-    CUAC_DATA_RIGHTS_REMINDER_BATCH_SIZE: "100",
-    CUAC_DATA_RIGHTS_REMINDER_WORKER_SUPERVISED: "true",
-  });
-  assert.equal(check(accepted, "data_rights.reminder_worker").status, "pass");
-
-  const malformed = inspectProductionReadiness({
-    ...configuredProduction,
-    CUAC_DATA_RIGHTS_REMINDER_POLL_MS: "999",
-    CUAC_DATA_RIGHTS_REMINDER_WORKER_SUPERVISED: "true",
-  });
-  assert.equal(check(malformed, "data_rights.reminder_worker").status, "fail");
-  assert.match(check(malformed, "data_rights.reminder_worker").message, /configuration must be valid/);
-});
-
 test("school handoff v1 requires payment, file upload and official material submission to stay disabled", () => {
   const accepted = inspectProductionReadiness({
     ...configuredProduction,

@@ -1,6 +1,6 @@
 # CUAC data-rights reminder worker runbook
 
-Status: implemented locally; production supervision, approved recipients and real email delivery still require staging acceptance.
+Status: implemented optional operational safeguard; it is not a legal prerequisite or a hard production-readiness gate. If enabled, production supervision, approved recipients and real email delivery still require staging acceptance.
 
 ## Purpose and boundary
 
@@ -58,7 +58,7 @@ If the worker stops, restart the reviewed process after confirming database conn
 
 ## Production acceptance
 
-Before production approval:
+Before enabling this optional worker in production:
 
 1. deploy the worker under the platform supervisor with restart and failure alerts;
 2. verify all five milestones in protected staging using both locales and an approved extension;

@@ -194,9 +194,10 @@ Run external notification delivery as a separately supervised process after Aliy
 npm run start:notification-worker
 ```
 
-Run data-rights reminder generation as a separately supervised process. It only
-creates in-app and email-queue records and is required even while external email
-delivery remains disabled:
+Optionally run data-rights reminder generation as a separately supervised
+process. It only creates in-app and email-queue records. The initial release may
+instead use the reviewed manual queue procedure; this worker is not a production
+readiness prerequisite:
 
 ```bash
 npm run start:data-rights-reminder-worker
