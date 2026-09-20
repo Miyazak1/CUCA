@@ -8,6 +8,7 @@ import { createTransactionalSqlClient } from "../../../src/server/db/postgres-cl
 import { PostgresNotificationPublisher } from "../../../src/server/notifications/postgres-repository.ts";
 import { materializeApplicationSubmittedNotification } from "../../../src/server/notifications/templates.ts";
 import { PostgresRetentionProcessor } from "../../../src/server/retention/postgres-retention.ts";
+import { PostgresAccountDeletionExecutionRepository } from "../../../src/server/ops-account-deletions/postgres-repository.ts";
 
 const databaseUrl = process.env.CUAC_PG_REHEARSAL_URL;
 assert.ok(databaseUrl, "Run npm run db:pg:rehearse:retention; this test never uses DATABASE_URL.");
@@ -151,7 +152,7 @@ test("real PostgreSQL retention boundaries and aggregate audit", { timeout: 120_
     where e.recipient_user_id=$1 and e.event_type='account_inactivity_warning' order by d.channel`, [dormantUserId]);
   assert.equal(warning.rows.length, 2);
   assert.ok(warning.rows.every(row => row.topic === "account_security" && row.locale === "zh-CN" && row.deliveries === 2));
-  const deletionExecution = (await pool.query(`select status,blocker_codes_json,user_id,source_request_revision,
+  const deletionExecution = (await pool.query(`select id,status,blocker_codes_json,user_id,source_request_revision,
     source_outcome_revision,source_proposal_sha256 from account_deletion_executions where data_rights_request_id=$1`,
   [deletionRequestId])).rows[0];
   assert.equal(deletionExecution.status, "review_required");
@@ -160,6 +161,22 @@ test("real PostgreSQL retention boundaries and aggregate audit", { timeout: 120_
   assert.equal(deletionExecution.source_outcome_revision, 2);
   assert.equal(deletionExecution.source_proposal_sha256, proposalSha256);
   assert.deepEqual(deletionExecution.blocker_codes_json,
+    ["legal_hold_review_required", "backup_tombstone_required", "privileged_role_review_required"]);
+  const executionRepository = new PostgresAccountDeletionExecutionRepository(createTransactionalSqlClient(pool));
+  const listed = await executionRepository.list({ actorUserId: opsUserId, activeRole: "cuac_ops", limit: 10 });
+  assert.equal(listed.authorized, true);
+  assert.equal(listed.value.some(item => item.executionId === deletionExecution.id), true);
+  const legalReview = await executionRepository.recordLegalHoldReview({ actorUserId: adminUserId,
+    activeRole: "cuac_admin", executionId: deletionExecution.id, reviewId: randomUUID(), expectedRevision: 1,
+    result: "clear_candidate", reasonCode: "no_hold_found", caseReference: "LEGAL:retention-rehearsal" });
+  assert.equal(legalReview.authorized, true);
+  assert.equal(legalReview.value.latestLegalHoldReview.result, "clear_candidate");
+  assert.deepEqual(legalReview.value.blockerCodes,
+    ["legal_hold_review_required", "backup_tombstone_required", "privileged_role_review_required"]);
+  const refreshed = await executionRepository.refresh({ actorUserId: opsUserId, activeRole: "cuac_ops",
+    executionId: deletionExecution.id, expectedRevision: legalReview.value.revision });
+  assert.equal(refreshed.authorized, true);
+  assert.deepEqual(refreshed.value.blockerCodes,
     ["legal_hold_review_required", "backup_tombstone_required", "privileged_role_review_required"]);
   await assert.rejects(pool.query(`update account_deletion_executions set blocker_codes_json='[]'::jsonb
     where data_rights_request_id=$1`, [deletionRequestId]), error => error.code === "23514");

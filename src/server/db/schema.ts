@@ -1218,6 +1218,43 @@ export const accountDeletionExecutions = pgTable("account_deletion_executions", 
       and isfinite(${table.completedAt}) and ${table.completedAt} >= ${table.purgeAfter}))`),
 }));
 
+export const accountDeletionLegalHoldReviews = pgTable("account_deletion_legal_hold_reviews", {
+  id: uuid("id").primaryKey(),
+  executionId: uuid("execution_id").notNull()
+    .references(() => accountDeletionExecutions.id, { onDelete: "restrict" }),
+  version: integer("version").notNull(),
+  sourceExecutionRevision: integer("source_execution_revision").notNull(),
+  result: text("result").notNull(),
+  reasonCode: text("reason_code").notNull(),
+  caseReference: text("case_reference").notNull(),
+  reviewedByUserId: uuid("reviewed_by_user_id").notNull(),
+  reviewedByGrantId: uuid("reviewed_by_grant_id").notNull(),
+  reviewedByRole: text("reviewed_by_role").notNull(),
+  reviewedAt: timestamp("reviewed_at", { withTimezone: true }).notNull().defaultNow(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, table => ({
+  executionVersionUnique: uniqueIndex("account_deletion_legal_hold_reviews_execution_version_unique")
+    .on(table.executionId, table.version),
+  executionReviewedIdx: index("account_deletion_legal_hold_reviews_execution_reviewed_idx")
+    .on(table.executionId, table.reviewedAt, table.id),
+  reviewerGrantScopeFk: foreignKey({
+    name: "account_deletion_legal_hold_reviews_reviewer_grant_scope_fk",
+    columns: [table.reviewedByGrantId, table.reviewedByUserId, table.reviewedByRole],
+    foreignColumns: [cuacStaffAccessGrants.id, cuacStaffAccessGrants.userId, cuacStaffAccessGrants.requestedRole],
+  }).onDelete("restrict"),
+  decisionCheck: check("account_deletion_legal_hold_reviews_decision_check", sql`
+    (${table.result} = 'clear_candidate' and ${table.reasonCode} = 'no_hold_found')
+    or (${table.result} = 'blocked' and ${table.reasonCode} in
+      ('legal_hold','fraud_or_security','financial_record'))`),
+  referenceCheck: check("account_deletion_legal_hold_reviews_reference_check", sql`
+    ${table.caseReference} ~ '^[A-Za-z0-9._:-]{1,128}$'`),
+  authorityCheck: check("account_deletion_legal_hold_reviews_authority_check", sql`
+    ${table.reviewedByRole} = 'cuac_admin' and ${table.version} > 0
+    and ${table.sourceExecutionRevision} > 0
+    and isfinite(${table.reviewedAt}) and isfinite(${table.createdAt})
+    and ${table.createdAt} >= ${table.reviewedAt}`),
+}));
+
 export const schoolProgramIntakeVersions = pgTable(
   "school_program_intake_versions",
   {

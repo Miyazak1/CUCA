@@ -37,6 +37,7 @@ export type RequestPurpose =
   | "notification_management"
   | "data_rights"
   | "data_rights_review"
+  | "account_deletion_execution"
   | "agent_tool";
 
 export type AuthStrength = "guest" | "session" | "step_up";

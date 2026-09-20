@@ -40,6 +40,9 @@ export type PolicyAction =
   | "ops.extend_data_rights_deadline"
   | "ops.propose_data_rights_outcome"
   | "ops.approve_data_rights_outcome"
+  | "ops.read_account_deletion_execution"
+  | "ops.refresh_account_deletion_execution"
+  | "ops.review_account_deletion_legal_hold"
   | "billing.manage_own"
   | "notification.read_own_scope"
   | "notification.manage_own_scope"
@@ -76,7 +79,7 @@ export type PolicyAction =
   | "agent.invoke_tool";
 
 export type PolicyResource = {
-  type: "catalog" | "notice" | "student" | "data_rights_request" | "ops_data_rights_review" | "billing" | "notification" | "school_application" | "school_tenant" | "school_catalog_correction" | "school_catalog_intake" | "ops_application_support" | "ops_summary" | "ops_billing_review" | "ops_routing_review" | "ops_data_quality_review" | "audit" | "agent_tool";
+  type: "catalog" | "notice" | "student" | "data_rights_request" | "ops_data_rights_review" | "ops_account_deletion_execution" | "billing" | "notification" | "school_application" | "school_tenant" | "school_catalog_correction" | "school_catalog_intake" | "ops_application_support" | "ops_summary" | "ops_billing_review" | "ops_routing_review" | "ops_data_quality_review" | "audit" | "agent_tool";
   ownerUserId?: string | null;
   tenantSchoolId?: string | null;
   dataClasses?: readonly DataClass[];
@@ -312,6 +315,18 @@ export function evaluatePolicy(context: RequestContext, action: PolicyAction, re
       && (!approving || (context.activeRole === "cuac_admin" && context.authStrength === "step_up"))
       ? allow("Explicit data-rights triage authority is allowed; live grant must be rechecked.")
       : deny("Data-rights triage authority is required.");
+  }
+
+  if (resource.type === "ops_account_deletion_execution" && ["ops.read_account_deletion_execution",
+    "ops.refresh_account_deletion_execution", "ops.review_account_deletion_legal_hold"].includes(action)) {
+    const internal = context.activeRole === "cuac_ops" || context.activeRole === "cuac_admin";
+    const reviewing = action === "ops.review_account_deletion_legal_hold";
+    return context.actorUserId && internal && context.selectedSurface === "ops"
+      && context.purpose === "account_deletion_execution" && context.tenantSchoolId === null
+      && (context.authStrength === "session" || context.authStrength === "step_up")
+      && (!reviewing || (context.activeRole === "cuac_admin" && context.authStrength === "step_up"))
+      ? allow("Account-deletion execution review is allowed; legal-hold decisions require step-up administrator authority and live grant revalidation.")
+      : deny("Account-deletion execution authority is required.");
   }
 
   if (["ops.read_application_support", "ops.open_application_support_session", "ops.close_application_support_session"].includes(action)

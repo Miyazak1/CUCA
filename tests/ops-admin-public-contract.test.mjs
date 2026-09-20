@@ -12,7 +12,7 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   ]);
 
   assert.match(html, /ops-workspace\.css\?v=/);
-  assert.match(html, /src="shared-shell\.js(?:\?[^\"]*)?"/);
+  assert.match(html, /src="shared-shell\.js(?:\?[^"]*)?"/);
   assert.match(html, /src="ops-admin-runtime\.js\?v=/);
   assert.doesNotMatch(html, /completion\.js|completion\.css|cuac-data\.js|cuac-actions\.js|data-cuac-agent/);
 
@@ -26,6 +26,7 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
     "/api/v1/ops/support-sessions",
     "/api/v1/ops/application-lookups",
     "/api/v1/ops/data-rights/requests?limit=100",
+    "/api/v1/ops/account-deletions?limit=100",
   ]) {
     assert.ok(script.includes(endpoint), `missing real Ops endpoint: ${endpoint}`);
   }
@@ -38,6 +39,7 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   assert.match(script, /authStrength === "step_up"/);
   assert.match(html, /data-ops-tab="guides"/);
   assert.match(html, /data-ops-tab="privacy"/);
+  assert.match(html, /data-ops-tab="deletions"/);
   assert.match(script, /data-guide-draft/);
   assert.match(script, /data-guide-command="approve"/);
   assert.match(script, /expectedApprovalSha256/);
@@ -83,6 +85,11 @@ test("Ops write controls preserve backend revision and evidence boundaries", asy
   assert.match(script, /internal_target_missed/);
   assert.match(script, /当前最迟答复/);
   assert.match(script, /当前不会导出、删除、拒绝或关闭请求/);
+  assert.match(script, /重新扫描实际阻塞项/);
+  assert.match(script, /backup_tombstone_required/);
+  assert.match(script, /body\.reviewId = crypto\.randomUUID\(\)/);
+  assert.match(script, /legal-hold-review/);
+  assert.doesNotMatch(script, /account-deletions[^\n]{0,180}(?:force-delete|purge|bypass|skip)/i);
   assert.doesNotMatch(script, /data-rights\/requests\/\$\{encodeURIComponent\(target\)\}\/execute/);
   assert.doesNotMatch(script, /data-rights[\s\S]{0,160}(?:fulfilled|denied|erase|export artifact)/i);
 });

@@ -518,6 +518,37 @@ a:focus-visible {
   font-weight: 750;
 }
 
+.ops-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.ops-review-list {
+  display: grid;
+  gap: 14px;
+}
+
+.ops-review-card {
+  padding: 18px 20px;
+  border: 1px solid var(--ops-line);
+  border-radius: 7px;
+  background: var(--ops-paper);
+}
+
+.ops-review-card header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.ops-review-card header strong,
+.ops-review-card header span { display: block; }
+.ops-review-card header span { margin-top: 4px; color: var(--ops-muted); font-size: 12px; }
+.ops-review-card > form { margin-top: 12px; }
+
 .ops-pagination {
   display: flex;
   justify-content: space-between;

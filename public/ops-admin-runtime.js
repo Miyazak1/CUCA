@@ -835,6 +835,45 @@ function renderDataRights(items) {
     </article>`).join(""):"<p class=\"ops-state\">当前没有待处理隐私请求。</p>"}</div>`;
 }
 
+function renderAccountDeletions(items) {
+  const root = document.querySelector("[data-ops-view]");
+  if (!Array.isArray(items)) throw new OpsRequestError("账号删除执行队列响应无效。", 503, "INVALID_RESPONSE");
+  const blockerLabels = { legal_hold_review_required: "法律保留复核待完成",
+    backup_tombstone_required: "备份删除墓碑尚未就绪", private_object_cleanup_required: "私密对象待清理",
+    financial_record_review_required: "财务记录待复核", application_evidence_review_required: "申请证据待复核",
+    school_handoff_review_required: "学校交接待复核", privileged_role_review_required: "账号角色待复核",
+    minor_evidence_review_required: "未成年人同意证据待复核" };
+  const statusLabels = { review_required: "等待复核", blocked: "法律保留阻塞", quarantined: "已隔离",
+    purge_ready: "等待最终清除", completed: "已完成" };
+  const latestReview = item => item.latestLegalHoldReview ? `<p class="ops-state"><strong>最新法律复核：</strong>
+    ${item.latestLegalHoldReview.result === "blocked" ? "阻塞" : "未发现保留事项（候选结论）"}
+    · ${escapeHtml(item.latestLegalHoldReview.reasonCode)} · ${escapeHtml(item.latestLegalHoldReview.caseReference)}
+    · ${escapeHtml(new Date(item.latestLegalHoldReview.reviewedAt).toLocaleString())}</p>` :
+    `<p class="ops-state">尚未记录法律保留复核。</p>`;
+  root.innerHTML = `${sectionHeading("账号删除执行队列",
+    "仅复核已完成双人审批的执行单。刷新不会删除数据；法律复核也不会自动清除备份墓碑门禁。")}
+    <div class="ops-review-list">${items.length ? items.map(item => `<article class="ops-review-card">
+      <header><div><strong>${escapeHtml(statusLabels[item.status] || item.status)}</strong>
+      <span>版本 ${item.revision} · ${escapeHtml(new Date(item.preparedAt).toLocaleString())}</span></div></header>
+      <p>执行编号：${escapeHtml(item.executionId)}<br />隐私请求编号：${escapeHtml(item.dataRightsRequestId)}</p>
+      <div class="ops-chip-row">${item.blockerCodes.map(code => `<span class="ops-badge${code === "backup_tombstone_required" ? " is-warning" : ""}">${escapeHtml(blockerLabels[code] || code)}</span>`).join("")}</div>
+      ${latestReview(item)}
+      ${["review_required", "blocked"].includes(item.status) ? `<form class="ops-action-form" data-ops-action-form data-kind="deletion" data-target="${escapeHtml(item.executionId)}"
+        data-action="refresh" data-revision="${item.revision}"><button class="ops-button" type="submit">重新扫描实际阻塞项</button></form>
+      <form class="ops-action-form" data-ops-action-form data-kind="deletion" data-target="${escapeHtml(item.executionId)}"
+        data-action="legal-hold-review" data-revision="${item.revision}">
+        <label><span>法律保留结论</span><select name="result" required><option value="clear_candidate">未发现保留事项（候选结论）</option>
+          <option value="blocked">存在保留事项，阻塞执行</option></select></label>
+        <label><span>固定原因</span><select name="reasonCode" required><option value="no_hold_found">未发现保留事项</option>
+          <option value="legal_hold">诉讼或调查保留</option><option value="fraud_or_security">反欺诈或安全保留</option>
+          <option value="financial_record">财务记录保留</option></select></label>
+        <label><span>内部案件引用</span><input name="caseReference" maxlength="128" pattern="[A-Za-z0-9._:-]+" required /></label>
+        <button class="ops-button" type="submit" ${opsState.role === "cuac_admin" && opsState.authStrength === "step_up" ? "" : "disabled"}>记录法律保留复核</button>
+        ${opsState.role === "cuac_admin" && opsState.authStrength === "step_up" ? "" : `<p class="ops-state">需要管理员先完成二次验证。</p>`}
+      </form>` : `<p class="ops-state">当前状态不接受阻塞刷新或新的法律复核。</p>`}
+    </article>`).join("") : `<p class="ops-state">当前没有账号删除执行单。</p>`}</div>`;
+}
+
 async function loadCurrentView() {
   renderLoading();
   try {
@@ -845,6 +884,7 @@ async function loadCurrentView() {
     else if (opsState.view === "corrections") renderCorrections(await requestJson("/api/v1/ops/catalog-corrections?limit=50"));
     else if (opsState.view === "guides") await loadGuideManagement();
     else if (opsState.view === "privacy") renderDataRights(await requestJson("/api/v1/ops/data-rights/requests?limit=100"));
+    else if (opsState.view === "deletions") renderAccountDeletions(await requestJson("/api/v1/ops/account-deletions?limit=100"));
     else renderSupport();
   } catch (error) {
     if (error?.status === 401) {
@@ -923,7 +963,7 @@ function actionRequest(form) {
   const revision = Number(form.dataset.revision);
   const values = new FormData(form);
   const body = { expectedRevision: revision };
-  if (action !== "claim") {
+  if (["escalate", "resolve", "retry"].includes(action)) {
     body.code = cleanText(values.get("code"));
     body.reference = cleanText(values.get("reference"));
   }
@@ -981,6 +1021,17 @@ function actionRequest(form) {
       delete body.expectedRevision;
       body.expectedOutcomeRevision = Number(form.dataset.outcomeRevision);
       body.expectedProposalSha256 = cleanText(form.dataset.proposalSha);
+    }
+  } else if (kind === "deletion") {
+    path = `/api/v1/ops/account-deletions/${encodeURIComponent(target)}/${action}`;
+    if (action === "legal-hold-review") {
+      body.reviewId = crypto.randomUUID();
+      body.result = cleanText(values.get("result"));
+      body.reasonCode = cleanText(values.get("reasonCode"));
+      body.caseReference = cleanText(values.get("caseReference"));
+      if ((body.result === "clear_candidate") !== (body.reasonCode === "no_hold_found")) {
+        throw new OpsRequestError("未发现保留事项只能选择对应原因；阻塞结论必须选择具体保留原因。", 400, "INVALID_INPUT");
+      }
     }
   }
   if (!path || (action !== "outcome-approval" && (!Number.isSafeInteger(revision) || revision < 0))) {
@@ -1043,7 +1094,7 @@ async function stepUpAdminSession(form) {
 }
 
 async function selectOpsView(view) {
-  if (!["overview", "routing", "billing", "quality", "corrections", "guides", "support", "privacy"].includes(view) || view === opsState.view) return;
+  if (!["overview", "routing", "billing", "quality", "corrections", "guides", "support", "privacy", "deletions"].includes(view) || view === opsState.view) return;
   if (opsState.view === "support") await closeSupportSession({ quiet: true });
   opsState.view = view;
   document.querySelectorAll("[data-ops-tab]").forEach(button => {

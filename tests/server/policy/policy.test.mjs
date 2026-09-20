@@ -95,6 +95,19 @@ test("data-rights triage policy requires a dedicated internal Ops context", () =
   assert.equal(evaluatePolicy({...allowed,activeRole:"cuac_admin",authStrength:"step_up"},"ops.extend_data_rights_deadline",resource).allowed,true);
 });
 
+test("account-deletion execution policy separates queue work from legal-hold decisions", () => {
+  const ops=createRequestContext({actorUserId:"ops-1",activeRole:"cuac_ops",selectedSurface:"ops",
+    purpose:"account_deletion_execution",authStrength:"session"});
+  const resource={type:"ops_account_deletion_execution",dataClasses:["ops_confidential","audit_security"]};
+  assert.equal(evaluatePolicy(ops,"ops.read_account_deletion_execution",resource).allowed,true);
+  assert.equal(evaluatePolicy(ops,"ops.refresh_account_deletion_execution",resource).allowed,true);
+  assert.equal(evaluatePolicy(ops,"ops.review_account_deletion_legal_hold",resource).allowed,false);
+  assert.equal(evaluatePolicy({...ops,activeRole:"cuac_admin",authStrength:"step_up"},
+    "ops.review_account_deletion_legal_hold",resource).allowed,true);
+  assert.equal(evaluatePolicy({...ops,purpose:"data_rights_review"},
+    "ops.read_account_deletion_execution",resource).allowed,false);
+});
+
 test("policy denies cross-tenant school reads", () => {
   const context = createRequestContext({
     activeRole: "school_staff",
