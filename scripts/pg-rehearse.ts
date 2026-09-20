@@ -27,6 +27,7 @@ const baselinePendingCount = baselineOption?.includes("=") ? baselineOption.slic
 const withLinux = process.argv.includes("--linux");
 const routingReviewOnly = process.argv.includes("--routing-review");
 const dataQualityOnly = process.argv.includes("--data-quality");
+const retentionOnly = process.argv.includes("--retention");
 const catalogSeedOptions = process.argv.slice(2).filter(arg => arg.startsWith("--catalog-seed="));
 const catalogSeedPath = catalogSeedOptions[0]
   ? resolve(projectDir, catalogSeedOptions[0].slice("--catalog-seed=".length))
@@ -49,13 +50,14 @@ async function docker(args: string[], env = process.env): Promise<string> {
 }
 
 try {
-  if (process.argv.slice(2).some(arg => !["--http", "--linux", "--routing-review", "--data-quality"].includes(arg)
+  if (process.argv.slice(2).some(arg => !["--http", "--linux", "--routing-review", "--data-quality", "--retention"].includes(arg)
       && !/^--write-schema-baseline(?:=[1-9]\d*)?$/.test(arg) && !/^--catalog-seed=.+/.test(arg))
     || catalogSeedOptions.length > 1
-    || withLinux && (withHttp || writeSchemaBaseline || routingReviewOnly || dataQualityOnly)
-    || routingReviewOnly && (withHttp || writeSchemaBaseline || dataQualityOnly)
-    || dataQualityOnly && (withHttp || writeSchemaBaseline)
-    || catalogSeedPath && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly)) throw new Error("Unknown or incompatible rehearsal options.");
+    || withLinux && (withHttp || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly)
+    || routingReviewOnly && (withHttp || writeSchemaBaseline || dataQualityOnly || retentionOnly)
+    || dataQualityOnly && (withHttp || writeSchemaBaseline || retentionOnly)
+    || retentionOnly && (withHttp || writeSchemaBaseline)
+    || catalogSeedPath && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly)) throw new Error("Unknown or incompatible rehearsal options.");
   if (catalogSeedPath) {
     stage = "catalog-bundle-validation";
     const bundle = JSON.parse(await readFile(catalogSeedPath, "utf8")) as unknown;
@@ -125,6 +127,7 @@ try {
     const testFile = withLinux ? "tests/server/db/linux-migration.test.mjs"
       : routingReviewOnly ? "tests/server/db/ops-routing-review-integration.test.mjs"
       : dataQualityOnly ? "tests/server/db/ops-data-quality-integration.test.mjs"
+      : retentionOnly ? "tests/server/db/retention-integration.test.mjs"
       : catalogSeedPath ? "tests/server/db/catalog-seed-migration-rehearsal.mjs"
       : "tests/server/db/postgres-integration.test.mjs";
     const child = spawn(process.execPath, ["--test", testFile], {

@@ -203,18 +203,28 @@ readiness prerequisite:
 npm run start:data-rights-reminder-worker
 ```
 
+Run the required first-phase authentication/security retention cleanup as a
+separately supervised process:
+
+```bash
+npm run start:retention-worker
+```
+
 These direct commands accept no manifest in development or during a bound staging
 candidate acceptance run. In production, append the same protected staging
 manifest used by `start:reviewed`, for example
 `npm run start:notification-worker -- /protected/path/staging-acceptance.json` or
-`npm run start:data-rights-reminder-worker -- /protected/path/staging-acceptance.json`.
+`npm run start:data-rights-reminder-worker -- /protected/path/staging-acceptance.json` or
+`npm run start:retention-worker -- /protected/path/staging-acceptance.json`.
 Every worker validates its release mode before loading PostgreSQL or an external
 provider. Production refuses missing, incomplete, or mismatched evidence.
 
 Configuration, failure semantics, staging evidence and rollback steps are fixed in
-`../../CUAC_NOTIFICATION_WORKER_RUNBOOK.md`.
+`../docs/architecture/CUAC_NOTIFICATION_WORKER_RUNBOOK.md`.
 The data-rights scheduler has its own
-`../../CUAC_DATA_RIGHTS_REMINDER_WORKER_RUNBOOK.md`.
+`../docs/architecture/CUAC_DATA_RIGHTS_REMINDER_WORKER_RUNBOOK.md`.
+The retention process is defined in
+`../docs/architecture/CUAC_RETENTION_WORKER_RUNBOOK.md`.
 
 The API must use a dedicated least-privilege RAM identity. The private bucket must
 have versioning, Block Public Access/private ACL posture, KMS encryption, exact
