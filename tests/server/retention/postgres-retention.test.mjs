@@ -31,6 +31,9 @@ test("retention processor uses bounded skip-locked deletes and records aggregate
     if (statement.startsWith("update guardian_consent_requests")) {
       return [{ id: "guardian-1", userId: "user-1" }];
     }
+    if (statement.includes("insert into account_deletion_executions")) {
+      return [{ id: "execution-1", requestId: "request-1" }];
+    }
     if (statement.startsWith("with candidates") && (statement.includes("returning q.id")
       || statement.includes("returning s.id") || statement.includes("returning target.id"))) {
       return [{ id: "row-1" }];
@@ -39,7 +42,8 @@ test("retention processor uses bounded skip-locked deletes and records aggregate
   });
   const result = await new PostgresRetentionProcessor(client).processBatch(25);
   assert.equal(result.guardianRegistrationsExpired, 1);
-  assert.equal(result.processed, 12);
+  assert.equal(result.accountDeletionExecutionsPrepared, 1);
+  assert.equal(result.processed, 13);
   const sql = calls.map(call => call.statement).join("\n");
   for (const table of ["auth_email_outbox", "email_verification_challenges", "password_reset_challenges",
     "school_staff_invites", "auth_sessions", "sign_in_continuations", "auth_mfa_challenges",
@@ -50,6 +54,10 @@ test("retention processor uses bounded skip-locked deletes and records aggregate
   assert.match(sql, /interval '180 days'/);
   assert.match(sql, /interval '23 months'/);
   assert.match(sql, /account_security','privacy_requests/);
+  assert.match(sql, /account_deletion_ready/);
+  assert.match(sql, /legal_hold_review_required/);
+  assert.match(sql, /backup_tombstone_required/);
+  assert.match(sql, /account_deletion\.execution\.prepared/);
   assert.match(sql, /retention\.batch\.completed/);
   assert.ok(calls.filter(call => call.statement.startsWith("with candidates")).every(call => call.params[0] === 25));
 });

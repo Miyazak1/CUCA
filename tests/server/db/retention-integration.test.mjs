@@ -94,6 +94,43 @@ test("real PostgreSQL retention boundaries and aggregate audit", { timeout: 120_
       clock_timestamp()-interval '23 months 15 days',clock_timestamp()-interval '23 months 15 days')`, [dormantUserId]);
   await pool.query("insert into user_roles(user_id,role) values($1,'student')", [dormantUserId]);
 
+  const deletionUserId = randomUUID(), opsUserId = randomUUID(), adminUserId = randomUUID(), grantApproverId = randomUUID();
+  for (const [id, label] of [[deletionUserId, "delete"], [opsUserId, "ops"], [adminUserId, "admin"], [grantApproverId, "approver"]]) {
+    const email = `${label}-${id}@example.invalid`;
+    await pool.query("insert into users(id,email,email_normalized,account_status) values($1,$2,$2,'active')", [id, email]);
+  }
+  await pool.query(`insert into user_roles(user_id,role) values($1,'student'),($1,'school_staff'),
+    ($2,'cuac_ops'),($3,'cuac_admin')`, [deletionUserId, opsUserId, adminUserId]);
+  const opsGrant = (await pool.query(`insert into cuac_staff_access_grants
+    (user_id,email,email_normalized,requested_role,status,approved_by_user_id,reason,approved_at,expires_at)
+    values($1,$2,$2,'cuac_ops','approved',$3,'retention rehearsal',clock_timestamp(),clock_timestamp()+interval '1 day') returning id`,
+  [opsUserId, `ops-${opsUserId}@example.invalid`, grantApproverId])).rows[0].id;
+  const adminGrant = (await pool.query(`insert into cuac_staff_access_grants
+    (user_id,email,email_normalized,requested_role,status,approved_by_user_id,reason,approved_at,expires_at)
+    values($1,$2,$2,'cuac_admin','approved',$3,'retention rehearsal',clock_timestamp(),clock_timestamp()+interval '1 day') returning id`,
+  [adminUserId, `admin-${adminUserId}@example.invalid`, grantApproverId])).rows[0].id;
+  const deletionRequestId = randomUUID(), reviewId = randomUUID(), outcomeId = randomUUID();
+  const subjectReferenceHash = `sha256:${"9".repeat(64)}`, proposalSha256 = `sha256:${"a".repeat(64)}`;
+  await pool.query(`insert into data_rights_requests
+    (id,user_id,subject_reference_hash,request_type,correction_scope,preferred_locale,status,revision,
+      identity_confirmed_at,assigned_user_id)
+    values($1,$2,$3,'account_deletion',null,'en','in_progress',3,clock_timestamp(),$4)`,
+  [deletionRequestId, deletionUserId, subjectReferenceHash, opsUserId]);
+  await pool.query(`insert into data_rights_identity_confirmations
+    (id,data_rights_request_id,source_request_revision,method,subject_reference_hash,confirmation_reference_sha256)
+    values($1,$2,1,'password_step_up',$3,$4)`,
+  [randomUUID(), deletionRequestId, subjectReferenceHash, `sha256:${"b".repeat(64)}`]);
+  await pool.query(`insert into ops_data_rights_reviews
+    (id,data_rights_request_id,source_request_revision,revision,status,assigned_user_id,assigned_grant_id,assigned_role)
+    values($1,$2,2,1,'investigating',$3,$4,'cuac_ops')`, [reviewId, deletionRequestId, opsUserId, opsGrant]);
+  await pool.query(`insert into ops_data_rights_outcomes
+    (id,data_rights_request_id,review_id,source_request_revision,source_review_revision,outcome_code,reason_code,
+      case_reference,proposal_sha256,approval_mode,status,revision,proposed_by_user_id,proposed_by_grant_id,
+      proposed_by_role,approved_by_user_id,approved_by_grant_id,approved_by_role,approved_at)
+    values($1,$2,$3,3,1,'account_deletion_ready',null,'case:retention-rehearsal',$4,'dual_control',
+      'approved',2,$5,$6,'cuac_ops',$7,$8,'cuac_admin',clock_timestamp())`,
+  [outcomeId, deletionRequestId, reviewId, proposalSha256, opsUserId, opsGrant, adminUserId, adminGrant]);
+
   const result = await new PostgresRetentionProcessor(createTransactionalSqlClient(pool)).processBatch(100);
   assert.equal(result.sessionsDeleted, 1);
   assert.equal(result.verificationChallengesDeleted, 1);
@@ -102,6 +139,7 @@ test("real PostgreSQL retention boundaries and aggregate audit", { timeout: 120_
   assert.equal(result.rateLimitBucketsDeleted, 1);
   assert.equal(result.businessNotificationEventsDeleted, 1);
   assert.equal(result.inactiveAccountWarningsCreated, 1);
+  assert.equal(result.accountDeletionExecutionsPrepared, 1);
   assert.equal((await pool.query("select count(*)::int n from auth_sessions where id=$1", [oldSession])).rows[0].n, 0);
   assert.equal((await pool.query("select count(*)::int n from auth_sessions where id=$1", [recentSession])).rows[0].n, 1);
   assert.equal((await pool.query("select count(*)::int n from email_verification_challenges where id=$1", [freshVerification])).rows[0].n, 1);
@@ -113,8 +151,23 @@ test("real PostgreSQL retention boundaries and aggregate audit", { timeout: 120_
     where e.recipient_user_id=$1 and e.event_type='account_inactivity_warning' order by d.channel`, [dormantUserId]);
   assert.equal(warning.rows.length, 2);
   assert.ok(warning.rows.every(row => row.topic === "account_security" && row.locale === "zh-CN" && row.deliveries === 2));
+  const deletionExecution = (await pool.query(`select status,blocker_codes_json,user_id,source_request_revision,
+    source_outcome_revision,source_proposal_sha256 from account_deletion_executions where data_rights_request_id=$1`,
+  [deletionRequestId])).rows[0];
+  assert.equal(deletionExecution.status, "review_required");
+  assert.equal(deletionExecution.user_id, deletionUserId);
+  assert.equal(deletionExecution.source_request_revision, 3);
+  assert.equal(deletionExecution.source_outcome_revision, 2);
+  assert.equal(deletionExecution.source_proposal_sha256, proposalSha256);
+  assert.deepEqual(deletionExecution.blocker_codes_json,
+    ["legal_hold_review_required", "backup_tombstone_required", "privileged_role_review_required"]);
+  await assert.rejects(pool.query(`update account_deletion_executions set blocker_codes_json='[]'::jsonb
+    where data_rights_request_id=$1`, [deletionRequestId]), error => error.code === "23514");
+  await assert.rejects(pool.query("delete from users where id=$1", [deletionUserId]), error => error.code === "23514");
+  assert.equal((await pool.query("select account_status from users where id=$1", [deletionUserId])).rows[0].account_status, "active");
   const replay = await new PostgresRetentionProcessor(createTransactionalSqlClient(pool)).processBatch(100);
   assert.equal(replay.inactiveAccountWarningsCreated, 0);
+  assert.equal(replay.accountDeletionExecutionsPrepared, 0);
   const audits = await pool.query(`select metadata_json from audit_logs
     where action='retention.batch.completed' order by created_at desc limit 1`);
   assert.equal(audits.rows.length, 1);

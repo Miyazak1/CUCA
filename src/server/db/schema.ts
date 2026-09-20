@@ -1120,6 +1120,7 @@ export const opsDataRightsOutcomes = pgTable("ops_data_rights_outcomes", {
 }, table => ({
   requestUnique: uniqueIndex("ops_data_rights_outcomes_request_unique").on(table.dataRightsRequestId),
   reviewUnique: uniqueIndex("ops_data_rights_outcomes_review_unique").on(table.reviewId),
+  idRequestUnique: uniqueIndex("ops_data_rights_outcomes_id_request_unique").on(table.id, table.dataRightsRequestId),
   statusUpdatedIdx: index("ops_data_rights_outcomes_status_updated_idx").on(table.status, table.updatedAt, table.id),
   proposedGrantScopeFk: foreignKey({ columns: [table.proposedByGrantId, table.proposedByUserId, table.proposedByRole],
     foreignColumns: [cuacStaffAccessGrants.id, cuacStaffAccessGrants.userId, cuacStaffAccessGrants.requestedRole],
@@ -1151,6 +1152,70 @@ export const opsDataRightsOutcomes = pgTable("ops_data_rights_outcomes", {
       or (${table.status} = 'approved' and ${table.revision} = 2 and ${table.approvedByUserId} <> ${table.proposedByUserId}
         and ${table.approvedByGrantId} is not null and ${table.approvedByRole} = 'cuac_admin'
         and ${table.approvedAt} is not null and isfinite(${table.approvedAt})))))`),
+}));
+
+export const accountDeletionExecutions = pgTable("account_deletion_executions", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  dataRightsRequestId: uuid("data_rights_request_id").notNull()
+    .references(() => dataRightsRequests.id, { onDelete: "restrict" }),
+  outcomeId: uuid("outcome_id").notNull(),
+  userId: uuid("user_id").references(() => users.id, { onDelete: "set null" }),
+  subjectReferenceHash: text("subject_reference_hash").notNull(),
+  sourceRequestRevision: integer("source_request_revision").notNull(),
+  sourceOutcomeRevision: integer("source_outcome_revision").notNull(),
+  sourceProposalSha256: text("source_proposal_sha256").notNull(),
+  status: text("status").notNull().default("review_required"),
+  blockerCodesJson: jsonb("blocker_codes_json").notNull()
+    .default(["legal_hold_review_required", "backup_tombstone_required"]),
+  revision: integer("revision").notNull().default(1),
+  preparedAt: timestamp("prepared_at", { withTimezone: true }).notNull().defaultNow(),
+  quarantinedAt: timestamp("quarantined_at", { withTimezone: true }),
+  purgeAfter: timestamp("purge_after", { withTimezone: true }),
+  completedAt: timestamp("completed_at", { withTimezone: true }),
+  ...timestamps,
+}, table => ({
+  requestUnique: uniqueIndex("account_deletion_executions_request_unique").on(table.dataRightsRequestId),
+  outcomeUnique: uniqueIndex("account_deletion_executions_outcome_unique").on(table.outcomeId),
+  statusPreparedIdx: index("account_deletion_executions_status_prepared_idx").on(table.status, table.preparedAt, table.id),
+  outcomeRequestFk: foreignKey({
+    name: "account_deletion_executions_outcome_request_fk",
+    columns: [table.outcomeId, table.dataRightsRequestId],
+    foreignColumns: [opsDataRightsOutcomes.id, opsDataRightsOutcomes.dataRightsRequestId],
+  }).onDelete("restrict"),
+  digestCheck: check("account_deletion_executions_digest_check", sql`
+    ${table.subjectReferenceHash} ~ '^sha256:[a-f0-9]{64}$'
+    and ${table.sourceProposalSha256} ~ '^sha256:[a-f0-9]{64}$'`),
+  sourceCheck: check("account_deletion_executions_source_check", sql`
+    ${table.sourceRequestRevision} > 0 and ${table.sourceOutcomeRevision} = 2
+    and ${table.revision} between 1 and 2147483647`),
+  blockerCheck: check("account_deletion_executions_blocker_check", sql`
+    jsonb_typeof(${table.blockerCodesJson}) = 'array'
+    and jsonb_array_length(${table.blockerCodesJson}) between 0 and 8
+    and ${table.blockerCodesJson} <@ '["legal_hold_review_required","backup_tombstone_required",
+      "private_object_cleanup_required","financial_record_review_required","application_evidence_review_required",
+      "school_handoff_review_required","privileged_role_review_required","minor_evidence_review_required"]'::jsonb`),
+  lifecycleCheck: check("account_deletion_executions_lifecycle_check", sql`
+    isfinite(${table.preparedAt}) and isfinite(${table.createdAt}) and isfinite(${table.updatedAt})
+    and ${table.updatedAt} >= ${table.createdAt}
+    and ((${table.status} in ('review_required','blocked')
+      and jsonb_array_length(${table.blockerCodesJson}) > 0
+      and ${table.userId} is not null and ${table.quarantinedAt} is null
+      and ${table.purgeAfter} is null and ${table.completedAt} is null)
+    or (${table.status} = 'quarantined'
+      and jsonb_array_length(${table.blockerCodesJson}) = 0
+      and ${table.userId} is not null and ${table.quarantinedAt} is not null
+      and isfinite(${table.quarantinedAt}) and ${table.purgeAfter} is not null
+      and isfinite(${table.purgeAfter}) and ${table.purgeAfter} > ${table.quarantinedAt}
+      and ${table.completedAt} is null)
+    or (${table.status} = 'purge_ready'
+      and jsonb_array_length(${table.blockerCodesJson}) = 0
+      and ${table.quarantinedAt} is not null and isfinite(${table.quarantinedAt})
+      and ${table.purgeAfter} is not null and isfinite(${table.purgeAfter})
+      and ${table.purgeAfter} > ${table.quarantinedAt} and ${table.completedAt} is null)
+    or (${table.status} = 'completed' and jsonb_array_length(${table.blockerCodesJson}) = 0
+      and ${table.userId} is null and ${table.quarantinedAt} is not null
+      and ${table.purgeAfter} is not null and ${table.completedAt} is not null
+      and isfinite(${table.completedAt}) and ${table.completedAt} >= ${table.purgeAfter}))`),
 }));
 
 export const schoolProgramIntakeVersions = pgTable(

@@ -32,6 +32,7 @@ const opsCatalogQualityReviewsMigrationPath = new URL("../../../drizzle/pg/0045_
 const schoolCatalogCorrectionsMigrationPath = new URL("../../../drizzle/pg/0046_school_catalog_corrections.sql", import.meta.url);
 const schoolCatalogCorrectionUrlCheckMigrationPath = new URL("../../../drizzle/pg/0047_school_catalog_correction_url_check.sql", import.meta.url);
 const schoolInviteEmailOutboxMigrationPath = new URL("../../../drizzle/pg/0056_auth_school_invite_email_outbox.sql", import.meta.url);
+const accountDeletionExecutionMigrationPath = new URL("../../../drizzle/pg/0069_account_deletion_execution.sql", import.meta.url);
 const journalPath = new URL("../../../drizzle/pg/meta/_journal.json", import.meta.url);
 
 test("school catalog correction URL follow-up replaces only the invalid PostgreSQL repetition check", async () => {
@@ -728,4 +729,22 @@ test("school invite email migration creates owner uniqueness before its composit
   assert.ok(sql.indexOf("school_staff_invites_owner_unique") < sql.indexOf("auth_email_outbox_school_invite_owner_fk"));
   assert.doesNotMatch(sql, /^\s*(?:UPDATE|DELETE FROM|INSERT INTO)\b/im);
   assert.equal(journal.entries.find(entry => entry.tag === "0056_auth_school_invite_email_outbox")?.idx, 56);
+});
+
+test("account deletion execution migration binds approved outcomes without deleting or disabling accounts", async () => {
+  const [sql, journalText] = await Promise.all([
+    readFile(accountDeletionExecutionMigrationPath, "utf8"),
+    readFile(journalPath, "utf8"),
+  ]);
+  const journal = JSON.parse(journalText);
+  assert.match(sql, /CREATE TABLE "account_deletion_executions"/);
+  assert.match(sql, /account_deletion_executions_outcome_request_fk/);
+  assert.ok(sql.indexOf("ops_data_rights_outcomes_id_request_unique")
+    < sql.indexOf("account_deletion_executions_outcome_request_fk"));
+  assert.match(sql, /legal_hold_review_required/);
+  assert.match(sql, /backup_tombstone_required/);
+  assert.match(sql, /status" in \('review_required','blocked'\)/);
+  assert.doesNotMatch(sql, /^\s*(?:UPDATE|DELETE FROM|INSERT INTO)\b/im);
+  assert.doesNotMatch(sql, /ALTER TABLE "users"|DROP TABLE/);
+  assert.equal(journal.entries.find(entry => entry.tag === "0069_account_deletion_execution")?.idx, 69);
 });

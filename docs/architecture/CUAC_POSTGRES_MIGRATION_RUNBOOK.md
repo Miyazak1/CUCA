@@ -390,3 +390,9 @@ Keep the public submit route and outbox worker disabled. An accepted submission 
 ### Auth Email Outbox Rollout (0023, Historical)
 
 Apply the owner-unique challenge indexes before adding outbox composite FKs; the new reviewed SQL orders these dependencies explicitly. Existing challenges and all original table values remain unchanged, and the new table is empty: historical hash-only proofs are never reconstructed. Deploy the enqueue-only services with delivery disabled, then approve keys/provider/action pages and worker supervision separately. For rollback, stop the worker and new issuance configuration while preserving schema and queue evidence. Never blindly resend uncertain jobs or drop the encrypted queue to force a retry.
+
+### Account Deletion Execution Preparation (0069)
+
+Migration `0069` adds `account_deletion_executions` and a composite outcome/request identity needed to bind each execution to the exact dual-control result. The target unique index is created before the composite foreign key. The migration creates no execution rows and never updates or deletes an account. Deploy the schema before enabling the retention-worker version that prepares execution records.
+
+Rollback must stop that worker and preserve existing execution evidence; do not drop the table to bypass a blocked deletion. Account quarantine and physical deletion remain disabled until legal-hold review, external backup tombstones and restore-first replay have been implemented and rehearsed. See the [account deletion execution runbook](CUAC_ACCOUNT_DELETION_EXECUTION_RUNBOOK.md).

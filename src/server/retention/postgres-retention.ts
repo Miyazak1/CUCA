@@ -18,6 +18,7 @@ export type RetentionBatchSummary = {
   rateLimitBucketsDeleted: number;
   businessNotificationEventsDeleted: number;
   inactiveAccountWarningsCreated: number;
+  accountDeletionExecutionsPrepared: number;
   processed: number;
 };
 
@@ -30,6 +31,7 @@ type InactiveStudentRow = {
   reviewAt: Date;
   occurredAt: Date;
 };
+type PreparedDeletionRow = { id: string; requestId: string };
 
 export class PostgresRetentionProcessor {
   private readonly client: TransactionalSqlClient;
@@ -122,6 +124,7 @@ export class PostgresRetentionProcessor {
       ) delete from notification_events target using candidates c
         where target.id=c.id returning target.id`, limit);
       const inactiveAccountWarningsCreated = await warnInactiveStudentAccounts(tx, limit);
+      const accountDeletionExecutionsPrepared = await prepareApprovedAccountDeletions(tx, limit);
 
       const partial = {
         guardianRegistrationsExpired,
@@ -137,6 +140,7 @@ export class PostgresRetentionProcessor {
         rateLimitBucketsDeleted,
         businessNotificationEventsDeleted,
         inactiveAccountWarningsCreated,
+        accountDeletionExecutionsPrepared,
       };
       const processed = Object.values(partial).reduce((total, value) => total + value, 0);
       const result = { ...partial, processed };
@@ -144,6 +148,62 @@ export class PostgresRetentionProcessor {
       return result;
     });
   }
+}
+
+async function prepareApprovedAccountDeletions(tx: TransactionalSqlClient, limit: number): Promise<number> {
+  const rows = await tx.query<PreparedDeletionRow>(`with candidates as (
+      select q.id as request_id,q.user_id,q.subject_reference_hash,q.revision as request_revision,
+        o.id as outcome_id,o.revision as outcome_revision,o.proposal_sha256
+      from data_rights_requests q
+      join ops_data_rights_outcomes o on o.data_rights_request_id=q.id
+      join users u on u.id=q.user_id
+      where q.request_type='account_deletion' and q.status in ('in_progress','escalated')
+        and o.outcome_code='account_deletion_ready' and o.approval_mode='dual_control'
+        and o.status='approved' and o.revision=2 and o.source_request_revision=q.revision
+        and o.approved_by_user_id is not null and o.approved_by_user_id<>o.proposed_by_user_id
+        and exists (select 1 from data_rights_identity_confirmations c
+          where c.data_rights_request_id=q.id and c.subject_reference_hash=q.subject_reference_hash)
+        and not exists (select 1 from account_deletion_executions x where x.data_rights_request_id=q.id)
+      order by o.approved_at,q.id limit $1 for update of q,u skip locked
+    ), prepared as (
+      select c.*,to_jsonb(array_remove(array[
+        'legal_hold_review_required','backup_tombstone_required',
+        case when exists (select 1 from student_file_assets f where f.user_id=c.user_id and f.status<>'deleted')
+          then 'private_object_cleanup_required' end,
+        case when exists (select 1 from invoices i where i.user_id=c.user_id)
+          or exists (select 1 from payments p where p.user_id=c.user_id)
+          or exists (select 1 from application_fee_entitlements e where e.user_id=c.user_id)
+          then 'financial_record_review_required' end,
+        case when exists (select 1 from application_submissions s where s.user_id=c.user_id)
+          or exists (select 1 from application_submission_authorizations a where a.user_id=c.user_id)
+          or exists (select 1 from application_material_snapshots m where m.user_id=c.user_id)
+          then 'application_evidence_review_required' end,
+        case when exists (select 1 from school_applications a where a.student_user_id=c.user_id)
+          then 'school_handoff_review_required' end,
+        case when not exists (select 1 from user_roles r where r.user_id=c.user_id
+            and r.role='student' and r.revoked_at is null)
+          or exists (select 1 from user_roles r where r.user_id=c.user_id
+            and r.role<>'student' and r.revoked_at is null)
+          then 'privileged_role_review_required' end,
+        case when exists (select 1 from student_age_assurances a where a.user_id=c.user_id and a.age_band='under_14')
+          then 'minor_evidence_review_required' end
+      ]::text[],null)) as blockers
+      from candidates c
+    )
+    insert into account_deletion_executions
+      (data_rights_request_id,outcome_id,user_id,subject_reference_hash,source_request_revision,
+        source_outcome_revision,source_proposal_sha256,status,blocker_codes_json)
+    select request_id,outcome_id,user_id,subject_reference_hash,request_revision,
+      outcome_revision,proposal_sha256,'review_required',blockers from prepared
+    on conflict do nothing returning id,data_rights_request_id as "requestId"`, [limit]);
+  for (const row of rows) {
+    await tx.query(`insert into audit_logs (request_id,actor_type,active_role,action,resource_type,
+      resource_id,allowed,data_classes,redaction_applied,metadata_json)
+      values ($1,'service','system','account_deletion.execution.prepared','account_deletion_execution',
+        $2,true,'["audit_security","student_pii"]'::jsonb,true,$3::jsonb)`,
+    [randomUUID(), row.id, JSON.stringify({ dataRightsRequestId: row.requestId, status: "review_required" })]);
+  }
+  return rows.length;
 }
 
 async function warnInactiveStudentAccounts(tx: TransactionalSqlClient, limit: number): Promise<number> {
