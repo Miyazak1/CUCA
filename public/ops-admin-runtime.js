@@ -766,6 +766,28 @@ async function submitGuideCommand(form) {
   } finally { opsState.busy = false; }
 }
 
+function renderDataRights(items) {
+  const root=document.querySelector("[data-ops-view]");
+  if(!Array.isArray(items)) throw new OpsRequestError("隐私请求队列响应无效。",503,"INVALID_RESPONSE");
+  const labels={access:"数据访问",correction:"数据更正",portable_export:"数据导出",account_deletion:"账号删除"};
+  const codes=[["identity_verification_required","需要身份核验"],["legal_review_required","需要法务复核"],
+    ["security_review_required","需要安全复核"],["retention_exception_review","需要保留例外复核"]];
+  root.innerHTML=`${sectionHeading("隐私请求分流","这里只认领和升级请求，不提供导出、删除、完成或拒绝按钮。")}
+    <div class="ops-review-list">${items.length?items.map(item=>`<article class="ops-review-card">
+      <header><div><strong>${escapeHtml(labels[item.requestType]||item.requestType)}</strong>
+      <span>${escapeHtml(item.preferredLocale)} · ${escapeHtml(item.status)} · ${escapeHtml(new Date(item.receivedAt).toLocaleString())}</span></div></header>
+      <p>请求编号：${escapeHtml(item.requestId)}${item.correctionScope?` · 更正范围：${escapeHtml(item.correctionScope)}`:""}</p>
+      ${!item.review?`<form data-ops-action-form data-kind="privacy" data-target="${escapeHtml(item.requestId)}" data-action="claim" data-revision="${item.revision}">
+        <button class="ops-button" type="submit">认领分流</button></form>`:
+        item.review.status==="investigating"?`<form data-ops-action-form data-kind="privacy" data-target="${escapeHtml(item.requestId)}" data-action="escalate"
+          data-revision="${item.revision}" data-review-revision="${item.review.revision}"><label><span>升级原因</span><select name="code" required>
+          ${codes.map(([value,label])=>`<option value="${value}">${label}</option>`).join("")}</select></label>
+          <label><span>内部工单引用</span><input name="reference" maxlength="128" pattern="[A-Za-z0-9._:-]+" required /></label>
+          <button class="ops-button" type="submit">升级处理</button></form>`:
+        `<p class="ops-state">已升级：${escapeHtml(item.review.escalationCode||"")} · ${escapeHtml(item.review.escalationReference||"")}</p>`}
+    </article>`).join(""):"<p class=\"ops-state\">当前没有待处理隐私请求。</p>"}</div>`;
+}
+
 async function loadCurrentView() {
   renderLoading();
   try {
@@ -775,6 +797,7 @@ async function loadCurrentView() {
     else if (opsState.view === "quality") renderQuality(await requestJson(qualityRequestPath()));
     else if (opsState.view === "corrections") renderCorrections(await requestJson("/api/v1/ops/catalog-corrections?limit=50"));
     else if (opsState.view === "guides") await loadGuideManagement();
+    else if (opsState.view === "privacy") renderDataRights(await requestJson("/api/v1/ops/data-rights/requests?limit=100"));
     else renderSupport();
   } catch (error) {
     if (error?.status === 401) {
@@ -876,6 +899,9 @@ function actionRequest(form) {
   } else if (kind === "correction") {
     const suffix = action === "claim" ? "claim" : action === "resolve" ? "resolution" : null;
     if (suffix) path = `/api/v1/ops/catalog-corrections/${encodeURIComponent(target)}/${suffix}`;
+  } else if (kind === "privacy") {
+    path = `/api/v1/ops/data-rights/requests/${encodeURIComponent(target)}/${action}`;
+    if (action === "escalate") body.expectedReviewRevision = Number(form.dataset.reviewRevision);
   }
   if (!path || !Number.isSafeInteger(revision) || revision < 0) {
     throw new OpsRequestError("运营操作参数无效。", 400, "INVALID_INPUT");
@@ -937,7 +963,7 @@ async function stepUpAdminSession(form) {
 }
 
 async function selectOpsView(view) {
-  if (!["overview", "routing", "billing", "quality", "corrections", "guides", "support"].includes(view) || view === opsState.view) return;
+  if (!["overview", "routing", "billing", "quality", "corrections", "guides", "support", "privacy"].includes(view) || view === opsState.view) return;
   if (opsState.view === "support") await closeSupportSession({ quiet: true });
   opsState.view = view;
   document.querySelectorAll("[data-ops-tab]").forEach(button => {

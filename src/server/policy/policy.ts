@@ -34,6 +34,9 @@ export type PolicyAction =
   | "student.write_own"
   | "student.read_data_rights"
   | "student.manage_data_rights"
+  | "ops.read_data_rights_review"
+  | "ops.claim_data_rights_review"
+  | "ops.escalate_data_rights_review"
   | "billing.manage_own"
   | "notification.read_own_scope"
   | "notification.manage_own_scope"
@@ -70,7 +73,7 @@ export type PolicyAction =
   | "agent.invoke_tool";
 
 export type PolicyResource = {
-  type: "catalog" | "notice" | "student" | "data_rights_request" | "billing" | "notification" | "school_application" | "school_tenant" | "school_catalog_correction" | "school_catalog_intake" | "ops_application_support" | "ops_summary" | "ops_billing_review" | "ops_routing_review" | "ops_data_quality_review" | "audit" | "agent_tool";
+  type: "catalog" | "notice" | "student" | "data_rights_request" | "ops_data_rights_review" | "billing" | "notification" | "school_application" | "school_tenant" | "school_catalog_correction" | "school_catalog_intake" | "ops_application_support" | "ops_summary" | "ops_billing_review" | "ops_routing_review" | "ops_data_quality_review" | "audit" | "agent_tool";
   ownerUserId?: string | null;
   tenantSchoolId?: string | null;
   dataClasses?: readonly DataClass[];
@@ -293,6 +296,16 @@ export function evaluatePolicy(context: RequestContext, action: PolicyAction, re
       && (!resolving || (context.activeRole === "cuac_admin" && context.authStrength === "step_up"))
       ? allow("Explicit catalog data-quality review authority is allowed; live grant and source generation must be rechecked.")
       : deny("Catalog data-quality review authority is required.");
+  }
+
+  if (resource.type === "ops_data_rights_review" && ["ops.read_data_rights_review",
+    "ops.claim_data_rights_review", "ops.escalate_data_rights_review"].includes(action)) {
+    const internal = context.activeRole === "cuac_ops" || context.activeRole === "cuac_admin";
+    return context.actorUserId && internal && context.selectedSurface === "ops"
+      && context.purpose === "data_rights_review" && context.tenantSchoolId === null
+      && (context.authStrength === "session" || context.authStrength === "step_up")
+      ? allow("Explicit data-rights triage authority is allowed; live grant must be rechecked.")
+      : deny("Data-rights triage authority is required.");
   }
 
   if (["ops.read_application_support", "ops.open_application_support_session", "ops.close_application_support_session"].includes(action)

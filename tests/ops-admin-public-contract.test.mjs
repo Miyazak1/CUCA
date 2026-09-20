@@ -25,6 +25,7 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
     "/api/v1/ops/catalog/guides",
     "/api/v1/ops/support-sessions",
     "/api/v1/ops/application-lookups",
+    "/api/v1/ops/data-rights/requests?limit=100",
   ]) {
     assert.ok(script.includes(endpoint), `missing real Ops endpoint: ${endpoint}`);
   }
@@ -36,6 +37,7 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   assert.match(script, /\/api\/v1\/auth\/step-up/);
   assert.match(script, /authStrength === "step_up"/);
   assert.match(html, /data-ops-tab="guides"/);
+  assert.match(html, /data-ops-tab="privacy"/);
   assert.match(script, /data-guide-draft/);
   assert.match(script, /data-guide-command="approve"/);
   assert.match(script, /expectedApprovalSha256/);
@@ -69,6 +71,8 @@ test("Ops write controls preserve backend revision and evidence boundaries", asy
   assert.match(script, /method: "DELETE"/);
   assert.match(script, /opsState\.supportSession = null/);
   assert.doesNotMatch(script, /studentUserId|contactEmail|passport|fileName|objectKey/);
+  assert.match(script, /expectedReviewRevision/);
+  assert.doesNotMatch(script, /data-rights[\s\S]{0,160}(?:fulfilled|denied|erase|export artifact)/i);
 });
 
 test("Ops workspace stays restrained and responsive", async () => {

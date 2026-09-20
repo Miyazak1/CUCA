@@ -80,6 +80,17 @@ test("data-rights policy is owner-only and isolated to the dedicated student pur
   }
 });
 
+test("data-rights triage policy requires a dedicated internal Ops context", () => {
+  const allowed=createRequestContext({actorUserId:"ops-1",activeRole:"cuac_ops",selectedSurface:"ops",
+    purpose:"data_rights_review",authStrength:"session"});
+  const resource={type:"ops_data_rights_review",dataClasses:["ops_confidential","audit_security"]};
+  for(const action of ["ops.read_data_rights_review","ops.claim_data_rights_review","ops.escalate_data_rights_review"]){
+    assert.equal(evaluatePolicy(allowed,action,resource).allowed,true);
+    assert.equal(evaluatePolicy({...allowed,purpose:"ops_support"},action,resource).allowed,false);
+    assert.equal(evaluatePolicy({...allowed,activeRole:"student",selectedSurface:"student"},action,resource).allowed,false);
+  }
+});
+
 test("policy denies cross-tenant school reads", () => {
   const context = createRequestContext({
     activeRole: "school_staff",

@@ -71,9 +71,11 @@ The signed-in student account area now supports structured access, correction, p
 
 The database enforces one active request of each type per account, explicit lifecycle states, terminal timestamps and bounded locale/type/scope values. Each create and cancel operation is transactionally coupled to a metadata-only audit event. Repository reads and mutations recheck the live active account and student role. If an account is later deleted, the direct user link is removed while a one-way subject reference and minimum request evidence remain available for the future legally approved retention rule.
 
-This is intake Phase A, not a completed rights operation. The following remain release blockers:
+Phase B now adds an internal least-privilege triage queue. A currently authorized CUAC operator can list only minimal request metadata, claim a received request using its current revision, and escalate an assigned investigation with one of four fixed reason codes and an opaque internal case reference. The claim is bound to the exact live staff grant; stale revisions, revoked grants and a different assignee fail closed. There is deliberately no fulfil, deny, export or erase command.
 
-- privacy-authorized staff queue, assignment, SLA/deadline and dual-control status transitions;
+This is intake and triage, not a completed rights operation. The following remain release blockers:
+
+- approved privacy staff roster, SLA/deadline rules and dual-control outcome transitions;
 - the actual scoped export generator, encrypted short-lived delivery and expiry evidence;
 - staged account closure/deletion, session revocation, retention exceptions, tombstones and restore handling;
 - completion/denial notifications, appeal/escalation handling and tested operations runbook;

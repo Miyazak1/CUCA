@@ -339,12 +339,12 @@ export const dataRightsRequests = pgTable("data_rights_requests", {
   ownerStatusIdx: index("data_rights_requests_owner_status_idx").on(table.userId, table.status, table.receivedAt),
   queueIdx: index("data_rights_requests_queue_idx").on(table.status, table.receivedAt),
   activeTypeUnique: uniqueIndex("data_rights_requests_active_type_unique").on(table.userId, table.requestType)
-    .where(sql`${table.userId} is not null and ${table.status} in ('received', 'identity_confirmed', 'in_progress')`),
+    .where(sql`${table.userId} is not null and ${table.status} in ('received', 'identity_confirmed', 'in_progress', 'escalated')`),
   subjectHashCheck: check("data_rights_requests_subject_hash_check", sql`${table.subjectReferenceHash} ~ '^sha256:[a-f0-9]{64}$'`),
   typeCheck: check("data_rights_requests_type_check", sql`${table.requestType} in ('access', 'correction', 'portable_export', 'account_deletion')`),
   correctionCheck: check("data_rights_requests_correction_check", sql`(${table.requestType} = 'correction' and ${table.correctionScope} in ('account', 'applicant_profile', 'education', 'assessment', 'application', 'other')) or (${table.requestType} <> 'correction' and ${table.correctionScope} is null)`),
   localeCheck: check("data_rights_requests_locale_check", sql`${table.preferredLocale} in ('en', 'zh-CN')`),
-  statusCheck: check("data_rights_requests_status_check", sql`${table.status} in ('received', 'identity_confirmed', 'in_progress', 'fulfilled', 'denied', 'cancelled')`),
+  statusCheck: check("data_rights_requests_status_check", sql`${table.status} in ('received', 'identity_confirmed', 'in_progress', 'escalated', 'fulfilled', 'denied', 'cancelled')`),
   revisionCheck: check("data_rights_requests_revision_check", sql`${table.revision} > 0`),
   lifecycleCheck: check("data_rights_requests_lifecycle_check", sql`(${table.status} in ('fulfilled', 'denied', 'cancelled')) = (${table.closedAt} is not null)`),
 }));
@@ -894,6 +894,41 @@ export const programIntakes = pgTable(
     deadlineIdx: index("program_intakes_deadline_idx").on(table.deadlineDate),
   }),
 );
+
+export const opsDataRightsReviews = pgTable("ops_data_rights_reviews", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  dataRightsRequestId: uuid("data_rights_request_id").notNull()
+    .references(() => dataRightsRequests.id, { onDelete: "restrict" }),
+  sourceRequestRevision: integer("source_request_revision").notNull(),
+  revision: integer("revision").notNull().default(1),
+  status: text("status").notNull().default("investigating"),
+  assignedUserId: uuid("assigned_user_id").notNull(),
+  assignedGrantId: uuid("assigned_grant_id").notNull(),
+  assignedRole: text("assigned_role").notNull(),
+  escalationCode: text("escalation_code"),
+  escalationReference: text("escalation_reference"),
+  escalatedAt: timestamp("escalated_at", { withTimezone: true }),
+  ...timestamps,
+}, table => ({
+  requestUnique: uniqueIndex("ops_data_rights_reviews_request_unique").on(table.dataRightsRequestId),
+  statusUpdatedIdx: index("ops_data_rights_reviews_status_updated_idx").on(table.status, table.updatedAt, table.id),
+  assignedGrantScopeFk: foreignKey({
+    columns: [table.assignedGrantId, table.assignedUserId, table.assignedRole],
+    foreignColumns: [cuacStaffAccessGrants.id, cuacStaffAccessGrants.userId, cuacStaffAccessGrants.requestedRole],
+    name: "ops_data_rights_reviews_assigned_grant_scope_fk",
+  }).onDelete("restrict"),
+  roleCheck: check("ops_data_rights_reviews_role_check", sql`${table.assignedRole} in ('cuac_ops','cuac_admin')`),
+  referenceCheck: check("ops_data_rights_reviews_reference_check", sql`${table.escalationReference} is null
+    or ${table.escalationReference} ~ '^[A-Za-z0-9._:-]{1,128}$'`),
+  lifecycleCheck: check("ops_data_rights_reviews_lifecycle_check", sql`
+    ${table.sourceRequestRevision} > 0 and ${table.revision} in (1,2)
+    and isfinite(${table.createdAt}) and isfinite(${table.updatedAt}) and ${table.updatedAt} >= ${table.createdAt}
+    and ((${table.status} = 'investigating' and ${table.revision} = 1
+      and ${table.escalationCode} is null and ${table.escalationReference} is null and ${table.escalatedAt} is null)
+      or (${table.status} = 'escalated' and ${table.revision} = 2
+        and ${table.escalationCode} in ('identity_verification_required','legal_review_required','security_review_required','retention_exception_review')
+        and ${table.escalationReference} is not null and ${table.escalatedAt} is not null and isfinite(${table.escalatedAt})))`),
+}));
 
 export const schoolProgramIntakeVersions = pgTable(
   "school_program_intake_versions",
