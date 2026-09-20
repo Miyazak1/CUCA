@@ -81,7 +81,7 @@ Only people and service providers that need the information for the purposes abo
 
 CUAC requires processors to follow defined purposes, scope, duration, security responsibilities and assistance obligations. The current release does not send student application materials to universities because CUAC does not collect those materials.
 
-The actual hosting regions, processor list and any cross-border transfer must be verified before publication: [required before publication: hosting regions, principal processors and cross-border conclusion]. CUAC will not make a cross-border transfer without the required assessment, notice, consent or other lawful procedure.
+CUAC currently confirms that its principal application servers are deployed in the Hong Kong Special Administrative Region of China. The locations of the database, backups, object storage, logs, email service and every other processor must still be verified against the actual architecture. Personal information collected from Mainland China and transmitted to Hong Kong will be treated as a cross-border processing matter. Before publication, CUAC must complete a personal information protection impact assessment and determine the applicable transfer mechanism, overseas recipient information, separate notice and consent requirements. The principal processors, backup regions and final cross-border conclusion remain [required before publication]. CUAC will not conduct production processing without the required assessment, notice, consent or other lawful procedure.
 
 ## retention — Retention and end-of-life handling
 
@@ -145,5 +145,6 @@ A withdrawn, expired or unapproved version is not displayed publicly and cannot 
 - [Provisions on the Cyber Protection of Children's Personal Information](https://www.cac.gov.cn/2019-08/23/c_1124913903.htm)
 - [Regulations on the Protection of Minors in Cyberspace](https://www.moe.gov.cn/jyb_xxgk/moe_1777/moe_1778/202310/t20231025_1087333.html)
 - [Regulations on Network Data Security Management](https://app.www.gov.cn/govdata/gov/202409/30/520076/article.html)
+- [Implementation Guidelines for the GBA Standard Contract for Cross-boundary Flow of Personal Information between Mainland China and Hong Kong](https://www.cac.gov.cn/2023-12/13/c_1704042786237103.htm)
 
 Legal review must also consider the actual operating entity, launch territories, cloud deployment, university relationship and any other rules effective at launch. This list is not sufficient by itself to approve publication.

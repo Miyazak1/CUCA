@@ -97,6 +97,8 @@ Because minors are an intended audience, under-14 onboarding follows the separat
 
 Review drafts now exist for the [Simplified Chinese children's rules](../legal-drafts/CHILDREN_PRIVACY_NOTICE_ZH-CN_DRAFT.md) and [English children's rules](../legal-drafts/CHILDREN_PRIVACY_NOTICE_EN_DRAFT.md). They deliberately retain visible publication blockers for the legal entity, hosting and processor facts, retention schedule and approved contacts. The [guardian withdrawal runbook](../architecture/CUAC_GUARDIAN_CONSENT_WITHDRAWAL_RUNBOOK.md) and [owner input checklist](CHILDREN_PRIVACY_OWNER_INPUT_CHECKLIST.md) define the operating roles and evidence required before either draft can be published.
 
+The project owner has confirmed that the principal application servers are deployed in Hong Kong. This resolves only one hosting fact. Database, storage, backup, logging and email regions still require inventory evidence, and Mainland-to-Hong Kong flows must be assessed as cross-border processing before production. Hong Kong hosting does not identify the legal operator or remove the need for an accountable entity and privacy contact.
+
 A generic support email alone is not sufficient release evidence, and the new intake endpoint must not be presented as proof that a request was fulfilled.
 
 ## 5. Publication checklist
