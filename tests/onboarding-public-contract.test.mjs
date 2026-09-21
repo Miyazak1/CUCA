@@ -11,7 +11,7 @@ test("onboarding candidate initializes only the real student profile", async () 
     source("public/onboarding-runtime.js"),
   ]);
 
-  assert.match(html, /<body data-agent-mode="off">/);
+  assert.match(html, /<body data-agent-mode="off" data-i18n-locales="en,vi,th,id,ms,ar">/);
   assert.match(html, /onboarding-workspace\.css\?v=/);
   assert.match(html, /src="shared-shell\.js(?:\?[^\"]*)?"/);
   assert.match(html, /src="onboarding-runtime\.js\?v=/);
@@ -19,8 +19,28 @@ test("onboarding candidate initializes only the real student profile", async () 
   assert.match(script, /requestJson\("\/api\/v1\/student\/profile"/);
   assert.match(script, /method: "PATCH"/);
   assert.match(script, /requiredRole: "student"/);
-  assert.match(script, /window\.location\.assign\("hub-api\.html"\)/);
+  assert.match(script, /window\.location\.assign\(localizedHref\("hub-api\.html"\)\)/);
   assert.doesNotMatch(script, /localStorage|sessionStorage|readiness|passport|transcript|budget|agent|mock/i);
+});
+
+test("student onboarding translates static and dynamic controls while preserving locale navigation", async () => {
+  const [html, messages, script] = await Promise.all([
+    source("public/onboarding-api.html"),
+    source("public/onboarding-i18n.js"),
+    source("public/onboarding-runtime.js"),
+  ]);
+  const scripts = [...html.matchAll(/<script src="([^"]+)"/g)].map(match => match[1].split("?")[0]);
+  assert.ok(scripts.indexOf("i18n-runtime.js") < scripts.indexOf("onboarding-i18n.js"));
+  assert.ok(scripts.indexOf("onboarding-i18n.js") < scripts.indexOf("shared-shell.js"));
+  assert.ok(scripts.indexOf("shared-shell.js") < scripts.indexOf("onboarding-runtime.js"));
+  assert.match(script, /ui\("Display name"\)/);
+  assert.match(script, /ui\("Subject areas"\)/);
+  assert.match(script, /localizedHref\("hub-api\.html"\)/);
+  for (const marker of ["Thiết lập tài khoản", "ตั้งค่าบัญชี", "Penyiapan akun", "Penyediaan akaun", "إعداد الحساب"]) {
+    assert.match(messages, new RegExp(marker));
+  }
+  assert.match(messages, /MutationObserver/);
+  assert.match(messages, /url\.searchParams\.set\("lang", i18n\.locale\)/);
 });
 
 test("onboarding fields match and preserve the study preference contract", async () => {

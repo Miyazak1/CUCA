@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="shared-shell.css?v=20260920-account-email" />
     <link rel="stylesheet" href="onboarding-workspace.css?v=20260904-api-v1" />
   </head>
-  <body data-agent-mode="off">
+  <body data-agent-mode="off" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page onboarding-api-page">
       <div data-cuac-header data-active="auth" data-note="CUAC Account setup:" data-note-detail="student research preferences"></div>
 
@@ -40,7 +40,9 @@
       <div class="onboarding-toast" role="status" data-onboarding-toast hidden></div>
     </div>
 
+    <script src="i18n-runtime.js?v=20260921-public-locales"></script>
+    <script src="onboarding-i18n.js?v=20260921-student-locales"></script>
     <script src="shared-shell.js?v=20260920-account-email"></script>
-    <script src="onboarding-runtime.js?v=20260904-api-v1"></script>
+    <script src="onboarding-runtime.js?v=20260921-student-locales"></script>
   </body>
 </html>

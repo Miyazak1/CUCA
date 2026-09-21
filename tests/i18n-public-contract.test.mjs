@@ -24,6 +24,27 @@ test("browser locale runtime uses bounded URL state, native labels and Arabic RT
   assert.doesNotMatch(runtime, /localStorage|sessionStorage|document\.cookie/);
 });
 
+test("shared student account navigation localizes labels and preserves the selected locale", async () => {
+  const [runtime, shell] = await Promise.all([
+    source("public/i18n-runtime.js"),
+    source("public/shared-shell.js"),
+  ]);
+  for (const key of ["accountChecking", "openAccountMenu", "savedList", "signOut", "workspace.studentInfo", "workspace.notifications", "workspace.preferences"]) {
+    assert.match(shell, new RegExp(`shellText\\("${key.replaceAll(".", "\\.")}"`));
+  }
+  for (const locale of ["vi", "th", "id", "ms", "ar"]) {
+    const localeStart = runtime.indexOf(`${locale}: {`);
+    assert.notEqual(localeStart, -1);
+    const localeCopy = runtime.slice(localeStart, runtime.indexOf("\n    },", localeStart));
+    for (const key of ["shell.savedList", "shell.openAccountMenu", "shell.signOut", "shell.workspace.studentInfo"]) {
+      assert.ok(localeCopy.includes(`"${key}"`), `${locale} missing ${key}`);
+    }
+  }
+  assert.match(shell, /function localizedPageHref\(rawHref\)/);
+  assert.match(shell, /localizedPageHref\("favourites-api\.html"\)/);
+  assert.match(shell, /accountLinks\.map\(\(\[href, icon, label\]\) => `<a href="\$\{localizedPageHref\(href\)\}"/);
+});
+
 test("non-English home is a complete bounded landing experience and labels English destinations", async () => {
   const [home, shell, css] = await Promise.all([
     source("public/home-i18n.js"), source("public/shared-shell.js"), source("public/shared-shell.css"),

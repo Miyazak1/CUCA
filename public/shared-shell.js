@@ -644,6 +644,15 @@
     return locale && locale !== "en" ? `search.html?lang=${encodeURIComponent(locale)}` : "search.html";
   }
 
+  function localizedPageHref(rawHref) {
+    const locale = window.CUACI18n?.locale;
+    if (!locale || locale === "en" || !rawHref) return rawHref;
+    const url = new URL(rawHref, window.location.href);
+    if (url.origin !== window.location.origin || !url.pathname.toLowerCase().endsWith(".html")) return rawHref;
+    url.searchParams.set("lang", locale);
+    return `${url.pathname.split("/").pop()}${url.search}${url.hash}`;
+  }
+
   let authNavigationPending = false;
   let runtimeAuthState = {
     resolved: false,
@@ -684,7 +693,7 @@
 
   function renderAccountMenu(target) {
     if (!runtimeAuthState.resolved) {
-      return '<span class="account-auth-pending" role="status" aria-label="Checking account status"><span aria-hidden="true"></span></span>';
+      return `<span class="account-auth-pending" role="status" aria-label="${escapeHTML(shellText("accountChecking", "Checking account status"))}"><span aria-hidden="true"></span></span>`;
     }
     const shellContext = getShellContext(target);
     const authState = shellContext.authState;
@@ -692,9 +701,9 @@
       ? "School staff account"
       : ["cuac_ops", "cuac_admin"].includes(shellContext.role)
         ? "CUAC internal account"
-        : "Student account";
+        : shellText("studentAccount", "Student account");
     const initial = userName.charAt(0).toUpperCase();
-    const accountEmail = shellContext.accountEmail || "Account email unavailable";
+    const accountEmail = shellContext.accountEmail || shellText("emailUnavailable", "Account email unavailable");
 
     if (authState === "signed-out") {
       const localized = ["school", "ops"].includes(document.body.dataset.agentMode || "");
@@ -721,17 +730,17 @@
               ["ops-admin-api.html", icons.search, "数据质量"],
             ]
           : [
-              ["hub-api.html", icons.account, "Hub"],
-              ["application.html#info", icons.shield, "Student info"],
-              ["notifications.html", icons.bell, "Notifications"],
-              ["favourites-api.html", icons.saved, "Favourites"],
-              ["billing-api.html", icons.intent, "Billing"],
-              ["preferences-api.html", icons.settings, "Preferences"],
+              ["hub-api.html", icons.account, shellText("workspace.hub", "Hub")],
+              ["application.html#info", icons.shield, shellText("workspace.studentInfo", "Student info")],
+              ["notifications.html", icons.bell, shellText("workspace.notifications", "Notifications")],
+              ["favourites-api.html", icons.saved, shellText("workspace.favourites", "Favourites")],
+              ["billing-api.html", icons.intent, shellText("workspace.billing", "Billing")],
+              ["preferences-api.html", icons.settings, shellText("workspace.preferences", "Preferences")],
             ];
 
     return `
       <div class="account-menu" data-account-menu>
-        <button class="account-avatar-button" type="button" data-account-menu-trigger aria-expanded="false" aria-label="${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "打开账号菜单" : "Open account menu"}">
+        <button class="account-avatar-button" type="button" data-account-menu-trigger aria-expanded="false" aria-label="${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "打开账号菜单" : escapeHTML(shellText("openAccountMenu", "Open account menu"))}">
           <span class="account-avatar">${escapeHTML(initial)}</span>
         </button>
         <div class="account-popover" data-account-menu-popover hidden>
@@ -739,12 +748,12 @@
             <span class="account-avatar large">${escapeHTML(initial)}</span>
             <div>
               <strong>${escapeHTML(userName)}</strong>
-              <span class="account-email" title="Registered account email">${escapeHTML(accountEmail)}</span>
-              <a href="${profileHref}">${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "编辑账号" : "Student info"}</a>
+              <span class="account-email" title="${escapeHTML(shellText("registeredEmail", "Registered account email"))}">${escapeHTML(accountEmail)}</span>
+              <a href="${localizedPageHref(profileHref)}">${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "编辑账号" : escapeHTML(shellText("workspace.studentInfo", "Student info"))}</a>
             </div>
           </div>
-          ${accountLinks.map(([href, icon, label]) => `<a href="${href}">${icon}<span>${label}</span></a>`).join("")}
-          <a href="auth.html" class="account-signout">${icons.logout}<span>${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "退出登录" : "Sign out"}</span></a>
+          ${accountLinks.map(([href, icon, label]) => `<a href="${localizedPageHref(href)}">${icon}<span>${label}</span></a>`).join("")}
+          <a href="${localizedPageHref("auth.html")}" class="account-signout">${icons.logout}<span>${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "退出登录" : escapeHTML(shellText("signOut", "Sign out"))}</span></a>
         </div>
       </div>
     `;
@@ -782,7 +791,7 @@
   }
 
   function renderSavedShortcut() {
-    return `<a class="nav-icon" data-nav-saved-shortcut href="favourites-api.html" aria-label="Saved list">${icons.saved}</a>`;
+    return `<a class="nav-icon" data-nav-saved-shortcut href="${localizedPageHref("favourites-api.html")}" aria-label="${escapeHTML(shellText("savedList", "Saved list"))}">${icons.saved}</a>`;
   }
 
   function renderHeader(target) {
@@ -798,9 +807,13 @@
       : ["cuac_ops", "cuac_admin"].includes(shellContext.role)
         ? "ops-admin-api.html"
         : "hub-api.html";
-    const headerNavItems = workspace?.items || (localizedNav ? roleNavItems : navItems).map((item) => (
-      { ...item, label: shellText(`nav.${item.id}`, item.label), ...(item.id === "home" && window.CUACI18n && window.CUACI18n.locale !== "en" ? { href: `home-v3.html?lang=${encodeURIComponent(window.CUACI18n.locale)}` } : {}), ...(item.id === "hub" ? { href: workspaceHref } : {}) }
-    ));
+    const headerNavItems = (workspace?.items || (localizedNav ? roleNavItems : navItems)).map((item) => {
+      if (localizedNav) return item.id === "hub" ? { ...item, href: workspaceHref } : item;
+      const label = workspace?.kind === "student"
+        ? shellText(`workspace.${item.id}`, item.label)
+        : shellText(`nav.${item.id}`, item.label);
+      return { ...item, label, href: localizedPageHref(item.id === "hub" ? workspaceHref : item.href) };
+    });
     target.outerHTML = `
       <div class="top-note">${note}${noteDetail ? `<span>&nbsp;${noteDetail}</span>` : ""}</div>
       <header class="nav ${workspace ? `nav-workspace nav-workspace-${workspace.kind}` : ""}">

@@ -6,6 +6,10 @@ const onboardingOptions = {
   intakeTerms: ["spring", "summer", "fall", "winter"],
 };
 
+const onboardingI18n = window.CUACOnboardingI18n;
+const ui = (english) => onboardingI18n?.ui(english) || english;
+const localizedHref = (href) => onboardingI18n?.href(href) || href;
+
 let onboardingProfile = null;
 
 class OnboardingRequestError extends Error {
@@ -29,7 +33,7 @@ function isRecord(value) {
 
 function humanize(value) {
   const text = String(value || "").replaceAll("_", " ");
-  return text ? `${text.charAt(0).toUpperCase()}${text.slice(1)}` : "Not set";
+  return ui(text ? `${text.charAt(0).toUpperCase()}${text.slice(1)}` : "Not set");
 }
 
 async function requestJson(path, options = {}) {
@@ -38,8 +42,8 @@ async function requestJson(path, options = {}) {
   if (options.body !== undefined && !headers.has("content-type")) headers.set("content-type", "application/json");
   const response = await fetch(path, { credentials: "same-origin", cache: "no-store", ...options, headers });
   const payload = await response.json().catch(() => null);
-  if (!response.ok) throw new OnboardingRequestError(payload?.error?.message || "Account setup could not be completed.", response.status, payload?.error?.code || "REQUEST_FAILED");
-  if (!payload || !Object.prototype.hasOwnProperty.call(payload, "data")) throw new OnboardingRequestError("The profile response is missing its data envelope.", response.status, "INVALID_RESPONSE");
+  if (!response.ok) throw new OnboardingRequestError(ui("Account setup could not be completed."), response.status, payload?.error?.code || "REQUEST_FAILED");
+  if (!payload || !Object.prototype.hasOwnProperty.call(payload, "data")) throw new OnboardingRequestError(ui("The profile response is missing its data envelope."), response.status, "INVALID_RESPONSE");
   return payload.data;
 }
 
@@ -57,7 +61,7 @@ function preservedPreferences(value) {
 }
 
 function options(values, selected) {
-  return `<option value="">Not set</option>${values.map(value => `<option value="${escapeHtml(value)}" ${value === selected ? "selected" : ""}>${escapeHtml(humanize(value))}</option>`).join("")}`;
+  return `<option value="">${escapeHtml(ui("Not set"))}</option>${values.map(value => `<option value="${escapeHtml(value)}" ${value === selected ? "selected" : ""}>${escapeHtml(humanize(value))}</option>`).join("")}`;
 }
 
 function renderOnboarding() {
@@ -68,20 +72,20 @@ function renderOnboarding() {
   const subjects = new Set(preferences.subjectAreas || []);
   root.innerHTML = `<form class="onboarding-form" data-onboarding-form>
     <div class="onboarding-fields">
-      <label class="onboarding-field"><span>Display name</span><input name="displayName" maxlength="120" autocomplete="name" value="${escapeHtml(profile.displayName || "")}" /></label>
-      <label class="onboarding-field"><span>Target degree</span><select name="targetDegreeLevel">${options(onboardingOptions.degreeLevels, profile.targetDegreeLevel)}</select></label>
-      <label class="onboarding-field"><span>Teaching language</span><select name="teachingLanguage">${options(onboardingOptions.teachingLanguages, preferences.teachingLanguage)}</select></label>
-      <label class="onboarding-field"><span>Funding intent</span><select name="fundingIntent">${options(onboardingOptions.fundingIntents, preferences.fundingIntent)}</select></label>
-      <label class="onboarding-field"><span>Intake year</span><input name="intakeYear" type="number" min="2000" max="2100" step="1" value="${escapeHtml(preferences.intakeYear || "")}" /></label>
-      <label class="onboarding-field"><span>Intake term</span><select name="intakeTerm">${options(onboardingOptions.intakeTerms, preferences.intakeTerm)}</select></label>
+      <label class="onboarding-field"><span>${escapeHtml(ui("Display name"))}</span><input name="displayName" maxlength="120" autocomplete="name" value="${escapeHtml(profile.displayName || "")}" /></label>
+      <label class="onboarding-field"><span>${escapeHtml(ui("Target degree"))}</span><select name="targetDegreeLevel">${options(onboardingOptions.degreeLevels, profile.targetDegreeLevel)}</select></label>
+      <label class="onboarding-field"><span>${escapeHtml(ui("Teaching language"))}</span><select name="teachingLanguage">${options(onboardingOptions.teachingLanguages, preferences.teachingLanguage)}</select></label>
+      <label class="onboarding-field"><span>${escapeHtml(ui("Funding intent"))}</span><select name="fundingIntent">${options(onboardingOptions.fundingIntents, preferences.fundingIntent)}</select></label>
+      <label class="onboarding-field"><span>${escapeHtml(ui("Intake year"))}</span><input name="intakeYear" type="number" min="2000" max="2100" step="1" value="${escapeHtml(preferences.intakeYear || "")}" /></label>
+      <label class="onboarding-field"><span>${escapeHtml(ui("Intake term"))}</span><select name="intakeTerm">${options(onboardingOptions.intakeTerms, preferences.intakeTerm)}</select></label>
     </div>
     <fieldset class="onboarding-subjects">
-      <legend>Subject areas</legend>
+      <legend>${escapeHtml(ui("Subject areas"))}</legend>
       <div class="onboarding-subject-grid">${onboardingOptions.subjectAreas.map(value => `<label class="onboarding-check"><input type="checkbox" name="subjectAreas" value="${escapeHtml(value)}" ${subjects.has(value) ? "checked" : ""} /><span>${escapeHtml(humanize(value))}</span></label>`).join("")}</div>
     </fieldset>
     <div class="onboarding-form-footer">
-      <a class="onboarding-secondary" href="hub-api.html">Skip for now</a>
-      <button class="onboarding-primary" type="submit">Save and open Hub</button>
+      <a class="onboarding-secondary" href="${escapeHtml(localizedHref("hub-api.html"))}">${escapeHtml(ui("Skip for now"))}</a>
+      <button class="onboarding-primary" type="submit">${escapeHtml(ui("Save and open Hub"))}</button>
     </div>
   </form>`;
 }
@@ -89,7 +93,7 @@ function renderOnboarding() {
 function renderError(error) {
   const root = document.querySelector("[data-onboarding-view]");
   if (!root) return;
-  root.innerHTML = `<div class="onboarding-error"><h3>Account setup could not be loaded</h3><p>${escapeHtml(error?.message || "The student profile service is unavailable.")}</p><button class="onboarding-secondary" type="button" data-retry-onboarding>Retry</button></div>`;
+  root.innerHTML = `<div class="onboarding-error"><h3>${escapeHtml(ui("Account setup could not be loaded"))}</h3><p>${escapeHtml(error?.message || ui("The student profile service is unavailable."))}</p><button class="onboarding-secondary" type="button" data-retry-onboarding>${escapeHtml(ui("Retry"))}</button></div>`;
 }
 
 let onboardingToastTimer;
@@ -127,7 +131,7 @@ async function saveOnboarding(form) {
   const values = new FormData(form);
   const subjectAreas = values.getAll("subjectAreas").filter(value => onboardingOptions.subjectAreas.includes(value));
   if (subjectAreas.length > 8) {
-    showOnboardingToast("Select no more than eight subject areas.");
+    showOnboardingToast(ui("Select no more than eight subject areas."));
     return;
   }
   const preferences = preservedPreferences(onboardingProfile?.preferences);
@@ -151,8 +155,8 @@ async function saveOnboarding(form) {
         preferences,
       }),
     });
-    if (!isRecord(profile)) throw new OnboardingRequestError("The saved profile response was incomplete.", 200, "INVALID_RESPONSE");
-    window.location.assign("hub-api.html");
+    if (!isRecord(profile)) throw new OnboardingRequestError(ui("The saved profile response was incomplete."), 200, "INVALID_RESPONSE");
+    window.location.assign(localizedHref("hub-api.html"));
   } catch (error) {
     if (!(await requireStudent(error))) renderError(error);
   } finally {
