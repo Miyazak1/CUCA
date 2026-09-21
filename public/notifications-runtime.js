@@ -21,6 +21,12 @@ const topicPresentation = {
   platform_operations: { category: "update", label: "Operations" },
 };
 
+const notificationI18n = window.CUACNotificationsI18n;
+const notificationLocale = window.CUACI18n?.locale || "en";
+const ui = (english) => notificationI18n?.ui(english) || english;
+const format = (template, values) => notificationI18n?.format(template, values) || template;
+const localizedHref = (href) => notificationI18n?.href(href) || href;
+
 let activeFilter = "all";
 let notificationItems = [];
 let notificationPreferences = [];
@@ -50,17 +56,17 @@ async function requestJson(path, options = {}) {
   try {
     payload = await response.json();
   } catch {
-    throw new NotificationRequestError("The notification service returned an unreadable response.", response.status, "INVALID_RESPONSE");
+    throw new NotificationRequestError(ui("The notification service returned an invalid response."), response.status, "INVALID_RESPONSE");
   }
   if (!response.ok) {
     throw new NotificationRequestError(
-      payload?.error?.message || "The notification request could not be completed.",
+      ui("The notification request could not be completed."),
       response.status,
       payload?.error?.code || "REQUEST_FAILED",
     );
   }
   if (!payload || !Object.prototype.hasOwnProperty.call(payload, "data")) {
-    throw new NotificationRequestError("The notification response is missing its data envelope.", response.status, "INVALID_RESPONSE");
+    throw new NotificationRequestError(ui("The notification service returned an invalid response."), response.status, "INVALID_RESPONSE");
   }
   return payload.data;
 }
@@ -90,8 +96,8 @@ function safeActionPath(value) {
 
 function notificationTime(value) {
   const date = new Date(value);
-  if (!Number.isFinite(date.getTime())) return "Time unavailable";
-  return new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }).format(date);
+  if (!Number.isFinite(date.getTime())) return ui("Time unavailable");
+  return new Intl.DateTimeFormat(notificationLocale, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }).format(date);
 }
 
 function groupFor(item) {
@@ -131,10 +137,10 @@ function renderSummary() {
   }
   const copy = document.querySelector("[data-notification-summary-copy]");
   if (!copy) return;
-  if (runtimeState === "loading") copy.textContent = "Loading your account notifications.";
-  else if (runtimeState === "error") copy.textContent = "Notifications are temporarily unavailable.";
-  else if (unread.length === 0) copy.textContent = "You are caught up.";
-  else copy.textContent = `${unread.length} unread ${unread.length === 1 ? "item needs" : "items need"} your attention.`;
+  if (runtimeState === "loading") copy.textContent = ui("Loading your account notifications.");
+  else if (runtimeState === "error") copy.textContent = ui("Notifications are temporarily unavailable.");
+  else if (unread.length === 0) copy.textContent = ui("You are caught up.");
+  else copy.textContent = format(unread.length === 1 ? "{count} unread item needs your attention." : "{count} unread items need your attention.", { count: unread.length });
 }
 
 function renderPriority() {
@@ -146,11 +152,11 @@ function renderPriority() {
     target.innerHTML = `
       ${renderIcon("done")}
       <div class="priority-copy">
-        <span class="status-pill done">Current</span>
-        <h2>${runtimeState === "error" ? "Notifications could not be loaded." : "No unread notification needs action."}</h2>
-        <p>${runtimeState === "error" ? "Retry the account notification service before relying on this inbox." : "New account events will appear here after the server records them."}</p>
+        <span class="status-pill done">${escapeHtml(ui("Current"))}</span>
+        <h2>${escapeHtml(ui(runtimeState === "error" ? "Notifications could not be loaded." : "No unread notification needs action."))}</h2>
+        <p>${escapeHtml(ui(runtimeState === "error" ? "Retry the account notification service before relying on this inbox." : "New account events will appear here after the server records them."))}</p>
       </div>
-      <div class="priority-actions"><button class="text-action" type="button" data-retry-notifications>Retry</button></div>`;
+      <div class="priority-actions"><button class="text-action" type="button" data-retry-notifications>${escapeHtml(ui("Retry"))}</button></div>`;
     return;
   }
   const presentation = presentationFor(item);
@@ -159,11 +165,12 @@ function renderPriority() {
   target.innerHTML = `
     ${renderIcon(presentation.category)}
     <div class="priority-copy">
-      <span class="status-pill ${escapeHtml(severity)}">${escapeHtml(item.status === "unread" ? "Unread" : "Read")}</span>
+      <span class="status-pill ${escapeHtml(severity)}">${escapeHtml(ui(item.status === "unread" ? "Unread" : "Read"))}</span>
       <h2>${escapeHtml(item.title)}</h2>
       <p>${escapeHtml(item.body)}</p>
+      ${notificationLocale === "en" ? "" : `<span class="notice-source-language">${escapeHtml(ui("Original notification content"))}</span>`}
     </div>
-    ${actionPath ? `<div class="priority-actions"><a href="${escapeHtml(actionPath)}">Open</a></div>` : ""}`;
+    ${actionPath ? `<div class="priority-actions"><a href="${escapeHtml(localizedHref(actionPath))}">${escapeHtml(ui("Open"))}</a></div>` : ""}`;
 }
 
 function renderNotifications() {
@@ -173,19 +180,19 @@ function renderNotifications() {
   const items = visibleItems();
   empty.hidden = runtimeState === "loading" || items.length > 0;
   if (runtimeState === "loading") {
-    list.innerHTML = '<p class="notice-runtime-message" role="status">Loading account notifications...</p>';
+    list.innerHTML = `<p class="notice-runtime-message" role="status">${escapeHtml(ui("Loading account notifications..."))}</p>`;
     return;
   }
   if (!items.length) {
-    list.innerHTML = nextCursor ? '<div class="notice-load-more"><button class="text-action" type="button" data-load-more>Load older notifications</button></div>' : "";
+    list.innerHTML = nextCursor ? `<div class="notice-load-more"><button class="text-action" type="button" data-load-more>${escapeHtml(ui("Load older notifications"))}</button></div>` : "";
     return;
   }
   const groups = ["Today", "This week", "Earlier"]
     .map((group) => ({ group, items: items.filter((item) => groupFor(item) === group) }))
     .filter((entry) => entry.items.length > 0);
   list.innerHTML = `${groups.map(({ group, items: groupItems }) => `
-    <section class="notice-group" aria-label="${escapeHtml(group)} notifications">
-      <h3>${escapeHtml(group)}</h3>
+    <section class="notice-group" aria-label="${escapeHtml(format("{group} notifications", { group: ui(group) }))}">
+      <h3>${escapeHtml(ui(group))}</h3>
       <div class="notice-stack">
         ${groupItems.map((item) => {
           const presentation = presentationFor(item);
@@ -194,19 +201,20 @@ function renderNotifications() {
           return `<article class="notice-row ${item.status === "unread" ? "" : "is-read"}" data-notice-id="${escapeHtml(item.id)}">
             ${renderIcon(presentation.category)}
             <div class="notice-copy">
-              <div class="notice-topline"><span class="status-pill ${escapeHtml(severity)}">${escapeHtml(item.status === "unread" ? "Unread" : "Read")}</span><span class="notice-meta">${escapeHtml(notificationTime(item.occurredAt))}</span></div>
+              <div class="notice-topline"><span class="status-pill ${escapeHtml(severity)}">${escapeHtml(ui(item.status === "unread" ? "Unread" : "Read"))}</span><span class="notice-meta">${escapeHtml(notificationTime(item.occurredAt))}</span></div>
               <h2 class="notice-title">${escapeHtml(item.title)}</h2>
               <p class="notice-body">${escapeHtml(item.body)}</p>
-              <div class="notice-meta"><span>${escapeHtml(presentation.label)}</span><span>${escapeHtml(item.eventType)}</span></div>
+              ${notificationLocale === "en" ? "" : `<span class="notice-source-language">${escapeHtml(ui("Original notification content"))}</span>`}
+              <div class="notice-meta"><span>${escapeHtml(ui(presentation.label))}</span><span>${escapeHtml(item.eventType)}</span></div>
             </div>
             <div class="notice-actions">
-              ${actionPath ? `<a href="${escapeHtml(actionPath)}">Open</a>` : ""}
-              ${item.status === "unread" ? `<button class="notice-read" type="button" data-mark-read="${escapeHtml(item.id)}">Mark read</button>` : '<span class="notice-meta">Read</span>'}
+              ${actionPath ? `<a href="${escapeHtml(localizedHref(actionPath))}">${escapeHtml(ui("Open"))}</a>` : ""}
+              ${item.status === "unread" ? `<button class="notice-read" type="button" data-mark-read="${escapeHtml(item.id)}">${escapeHtml(ui("Mark read"))}</button>` : `<span class="notice-meta">${escapeHtml(ui("Read"))}</span>`}
             </div>
           </article>`;
         }).join("")}
       </div>
-    </section>`).join("")}${nextCursor ? '<div class="notice-load-more"><button class="text-action" type="button" data-load-more>Load older notifications</button></div>' : ""}`;
+    </section>`).join("")}${nextCursor ? `<div class="notice-load-more"><button class="text-action" type="button" data-load-more>${escapeHtml(ui("Load older notifications"))}</button></div>` : ""}`;
 }
 
 function syncPreferenceControls() {
@@ -219,11 +227,11 @@ function syncPreferenceControls() {
   const summary = document.querySelector("[data-quiet-summary]");
   if (!summary) return;
   if (!notificationPreferences.length) {
-    summary.textContent = runtimeState === "error" ? "Account delivery preferences are unavailable." : "Loading account-level delivery preferences.";
+    summary.textContent = ui(runtimeState === "error" ? "Account delivery preferences are unavailable." : "Loading account-level delivery preferences.");
     return;
   }
   const enabledCount = notificationPreferences.filter((item) => item.inAppEnabled).length;
-  summary.textContent = `${enabledCount} of ${notificationPreferences.length} in-app topics are enabled. Email and SMS rules remain account-level preferences.`;
+  summary.textContent = format("{enabled} of {total} in-app topics are enabled. Email and SMS rules remain account-level preferences.", { enabled: enabledCount, total: notificationPreferences.length });
 }
 
 function renderAll() {
@@ -235,7 +243,7 @@ function renderAll() {
 
 function requireNotificationAccount(error) {
   if (![401, 403].includes(error?.status)) return false;
-  window.CUAC?.requireSignedIn?.("view account notifications", { resumeAction: { type: "navigate", href: "notifications.html" } });
+  window.CUAC?.requireSignedIn?.(ui("view account notifications"), { resumeAction: { type: "navigate", href: localizedHref("notifications.html") } });
   return true;
 }
 
@@ -250,7 +258,7 @@ async function loadNotifications({ append = false } = {}) {
     if (append && nextCursor) query.set("cursor", nextCursor);
     const data = await requestJson(`/api/v1/notifications?${query}`);
     if (!data || !Array.isArray(data.items) || (data.nextCursor !== null && typeof data.nextCursor !== "string")) {
-      throw new NotificationRequestError("The notification list does not match the expected contract.", 503, "INVALID_RESPONSE");
+      throw new NotificationRequestError(ui("The notification service returned an invalid response."), 503, "INVALID_RESPONSE");
     }
     const known = new Set(append ? notificationItems.map((item) => item.id) : []);
     const incoming = data.items.filter((item) => item && typeof item.id === "string" && !known.has(item.id));
@@ -267,7 +275,7 @@ async function loadNotifications({ append = false } = {}) {
 async function loadPreferences() {
   try {
     const data = await requestJson("/api/v1/notifications/preferences");
-    if (!data || !Array.isArray(data.preferences)) throw new NotificationRequestError("The notification preferences do not match the expected contract.", 503, "INVALID_RESPONSE");
+    if (!data || !Array.isArray(data.preferences)) throw new NotificationRequestError(ui("The notification service returned an invalid response."), 503, "INVALID_RESPONSE");
     notificationPreferences = data.preferences;
   } catch (error) {
     notificationPreferences = [];
@@ -284,7 +292,7 @@ async function markNotificationRead(id, button) {
     const updated = await requestJson(`/api/v1/notifications/${encodeURIComponent(id)}/read`, {
       method: "PATCH", body: JSON.stringify({ expectedRevision: item.revision }),
     });
-    if (!updated || updated.id !== id) throw new NotificationRequestError("The read receipt does not match this notification.", 503, "INVALID_RESPONSE");
+    if (!updated || updated.id !== id) throw new NotificationRequestError(ui("The notification service returned an invalid response."), 503, "INVALID_RESPONSE");
     notificationItems = notificationItems.map((entry) => entry.id === id ? updated : entry);
     renderAll();
   } catch (error) {
@@ -327,7 +335,7 @@ async function updatePreference(topic, enabled, input) {
       }] }),
     });
     if (!data || !Array.isArray(data.preferences) || data.preferences.length !== 1 || data.preferences[0].topic !== topic) {
-      throw new NotificationRequestError("The preference receipt does not match this topic.", 503, "INVALID_RESPONSE");
+      throw new NotificationRequestError(ui("The notification service returned an invalid response."), 503, "INVALID_RESPONSE");
     }
     notificationPreferences = notificationPreferences.map((item) => item.topic === topic ? data.preferences[0] : item);
   } catch (error) {

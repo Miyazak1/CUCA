@@ -16,7 +16,7 @@ test("notification center uses account-scoped server state and revisions", async
 
   assert.match(html, /notifications-runtime\.js\?v=/);
   assert.match(html, /notifications-workspace\.css\?v=/);
-  assert.match(html, /<body data-agent-mode="off">/);
+  assert.match(html, /<body data-agent-mode="off" data-i18n-locales="en,vi,th,id,ms,ar">/);
   assert.doesNotMatch(html, /<script src="notifications\.js"/);
   assert.doesNotMatch(html, /cuac-data\.js|cuac-actions\.js|data-cuac-agent/);
   assert.match(html, /href="hub-api\.html"/);
@@ -77,4 +77,29 @@ test("notification workspace is restrained and responsive", async () => {
   assert.match(css, /@media \(max-width: 620px\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.doesNotMatch(css, /linear-gradient|radial-gradient|border-radius:\s*(?:[1-9][0-9]|[1-9][0-9][0-9])px/);
+});
+
+test("student notification center localizes controls without translating server notices", async () => {
+  const [html, messages, script, css] = await Promise.all([
+    source("public/notifications.html"),
+    source("public/notifications-i18n.js"),
+    source("public/notifications-runtime.js"),
+    source("public/notifications-workspace.css"),
+  ]);
+  const scripts = [...html.matchAll(/<script src="([^"]+)"/g)].map(match => match[1].split("?")[0]);
+  assert.ok(scripts.indexOf("i18n-runtime.js") < scripts.indexOf("notifications-i18n.js"));
+  assert.ok(scripts.indexOf("notifications-i18n.js") < scripts.indexOf("shared-shell.js"));
+  assert.ok(scripts.indexOf("shared-shell.js") < scripts.indexOf("notifications-runtime.js"));
+  assert.match(script, /new Intl\.DateTimeFormat\(notificationLocale/);
+  assert.match(script, /localizedHref\(actionPath\)/);
+  assert.match(script, /Original notification content/);
+  assert.match(script, /escapeHtml\(item\.title\)/);
+  assert.match(script, /escapeHtml\(item\.body\)/);
+  assert.doesNotMatch(script, /translate|machineTranslation|machine_translation/i);
+  for (const marker of ["Thông báo", "การแจ้งเตือน", "Notifikasi", "الإشعارات"]) {
+    assert.match(messages, new RegExp(marker));
+  }
+  assert.match(messages, /MutationObserver/);
+  assert.match(messages, /url\.searchParams\.set\("lang", i18n\.locale\)/);
+  assert.match(css, /\.notice-source-language/);
 });

@@ -188,6 +188,14 @@ a { color: inherit; }
   font-size: 14px;
 }
 
+.notice-source-language {
+  display: inline-flex;
+  margin-top: 8px;
+  color: var(--notice-muted);
+  font-size: 11px;
+  font-weight: 680;
+}
+
 .priority-actions,
 .notice-actions {
   display: flex;
