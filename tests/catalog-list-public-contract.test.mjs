@@ -98,6 +98,8 @@ test("catalog save actions use authenticated student saved-item APIs", async () 
   ]);
 
   assert.match(api, /credentials: "same-origin"/);
+  assert.match(api, /await auth\.authReady\(\)/);
+  assert.match(api, /if \(!auth\.isStudentSignedIn\(\)\) return new Set\(\)/);
   assert.match(api, /requestSavedItems\("\/api\/v1\/student\/saved-items"/);
   assert.match(api, /method: "POST"/);
   assert.match(api, /method: "DELETE"/);

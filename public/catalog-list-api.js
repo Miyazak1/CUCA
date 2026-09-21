@@ -178,6 +178,14 @@
   }
 
   async function loadSavedEntityIds(entityType) {
+    const auth = global.CUAC;
+    if (typeof auth?.authReady !== "function" || typeof auth?.isStudentSignedIn !== "function") return new Set();
+    try {
+      await auth.authReady();
+    } catch {
+      return new Set();
+    }
+    if (!auth.isStudentSignedIn()) return new Set();
     try {
       const items = await requestSavedItems();
       return new Set(items
