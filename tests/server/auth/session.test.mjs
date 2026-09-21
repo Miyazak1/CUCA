@@ -203,7 +203,7 @@ test("me HTTP handler hides an unverified school tenant and never returns the se
     },
     async findCurrentAccountByUserId(userId) {
       assert.equal(userId, "school-user-1");
-      return { email: "staff@example.edu", emailVerified: true };
+      return { email: "staff@example.edu", emailVerified: true, locale: "ar-SA" };
     },
   }).getMe(
     new Request("https://cuac.test/api/v1/me", {
@@ -218,6 +218,7 @@ test("me HTTP handler hides an unverified school tenant and never returns the se
   assert.equal(body.data.tenantSchoolId, null);
   assert.equal(body.data.accountEmail, "staff@example.edu");
   assert.equal(body.data.accountEmailVerified, true);
+  assert.equal(body.data.accountLocale, "ar");
   assert.doesNotMatch(JSON.stringify(body), /school-token|sha256:/);
 });
 
@@ -231,6 +232,7 @@ test("me HTTP handler does not expose account identity to a guest", async () => 
   assert.equal(accountLookup, false);
   assert.equal(body.data.accountEmail, null);
   assert.equal(body.data.accountEmailVerified, null);
+  assert.equal(body.data.accountLocale, null);
 });
 
 test("request context resolver requires a live role-matched CUAC staff access grant", async () => {

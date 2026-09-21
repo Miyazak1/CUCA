@@ -214,7 +214,8 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
     const rows = await this.client.query<CurrentAccountRecord>(
       `select
          email,
-         (email_verified_at is not null) as "emailVerified"
+         (email_verified_at is not null) as "emailVerified",
+         locale
        from users
        where id = $1
          and account_status = 'active'

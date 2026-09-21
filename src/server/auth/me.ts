@@ -1,4 +1,5 @@
 import type { RequestContext } from "../shared/request-context.ts";
+import { normalizeUiLocale, type SupportedUiLocale } from "../i18n/locales.ts";
 
 export type CurrentActorDto = {
   requestId: string;
@@ -11,11 +12,13 @@ export type CurrentActorDto = {
   dataClassAllowlist: readonly string[];
   accountEmail: string | null;
   accountEmailVerified: boolean | null;
+  accountLocale: SupportedUiLocale | null;
 };
 
 export type CurrentAccountRecord = {
   email: string;
   emailVerified: boolean;
+  locale?: string;
 };
 
 export type CurrentAccountRepository = {
@@ -34,5 +37,6 @@ export function toCurrentActorDto(context: RequestContext, account: CurrentAccou
     dataClassAllowlist: context.dataClassAllowlist,
     accountEmail: context.actorUserId ? account?.email ?? null : null,
     accountEmailVerified: context.actorUserId ? account?.emailVerified ?? null : null,
+    accountLocale: context.actorUserId ? normalizeUiLocale(account?.locale) : null,
   };
 }

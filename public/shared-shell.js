@@ -634,6 +634,7 @@
     authStrength: "guest",
     accountEmail: null,
     accountEmailVerified: null,
+    accountLocale: null,
   };
 
   function runtimeSurface(role, selectedSurface) {
@@ -655,6 +656,7 @@
         authStrength: runtimeAuthState.authStrength,
         accountEmail: runtimeAuthState.accountEmail,
         accountEmailVerified: runtimeAuthState.accountEmailVerified,
+        accountLocale: runtimeAuthState.accountLocale,
       };
     }
     return { authState: "signed-out", role: "visitor", surface: routeSurface };
@@ -982,10 +984,11 @@
             authStrength: actor.authStrength === "step_up" ? "step_up" : "session",
             accountEmail: typeof actor.accountEmail === "string" ? actor.accountEmail : null,
             accountEmailVerified: typeof actor.accountEmailVerified === "boolean" ? actor.accountEmailVerified : null,
+            accountLocale: ["en", "vi", "th", "id", "ms", "ar", "zh-CN"].includes(actor.accountLocale) ? actor.accountLocale : null,
           }
-        : { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest", accountEmail: null, accountEmailVerified: null };
+        : { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest", accountEmail: null, accountEmailVerified: null, accountLocale: null };
     } catch {
-      runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest", accountEmail: null, accountEmailVerified: null };
+      runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest", accountEmail: null, accountEmailVerified: null, accountLocale: null };
     }
 
     refreshRenderedHeader();
@@ -1889,7 +1892,7 @@
             body: "{}",
           });
           if (!response.ok) throw new Error("Sign out failed.");
-          runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest" };
+          runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest", accountEmail: null, accountEmailVerified: null, accountLocale: null };
           window.location.assign("auth.html");
         } catch {
           link.removeAttribute("aria-disabled");
