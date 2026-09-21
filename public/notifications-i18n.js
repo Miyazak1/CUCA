@@ -96,7 +96,7 @@
     const nodes = [];
     while (walker.nextNode()) nodes.push(walker.currentNode);
     nodes.forEach((node) => {
-      if (["SCRIPT", "STYLE"].includes(node.parentElement?.tagName)) return;
+      if (["SCRIPT", "STYLE"].includes(node.parentElement?.tagName) || node.parentElement?.closest?.(".language-selector")) return;
       const trimmed = node.nodeValue.trim();
       if (trimmed && dictionary.has(trimmed)) node.nodeValue = node.nodeValue.replace(trimmed, ui(trimmed));
     });

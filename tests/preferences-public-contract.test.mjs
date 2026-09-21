@@ -11,7 +11,7 @@ test("preferences candidate uses server-backed account, student profile and noti
     source("public/preferences-runtime.js"),
   ]);
 
-  assert.match(html, /<body data-agent-mode="off">/);
+  assert.match(html, /<body data-agent-mode="off" data-i18n-locales="en,vi,th,id,ms,ar">/);
   assert.match(html, /preferences-workspace\.css\?v=/);
   assert.match(html, /src="shared-shell\.js\?v=/);
   assert.match(html, /src="preferences-runtime\.js\?v=/);
@@ -79,4 +79,25 @@ test("privacy requests are account-owned, structured and require step-up for exp
   assert.match(script, /portable_export/);
   assert.match(script, /account_deletion/);
   assert.doesNotMatch(script, /dataRights.*localStorage|dataRights.*sessionStorage/i);
+});
+
+test("student preferences localize bounded controls while preserving account write contracts", async () => {
+  const [html, messages, script] = await Promise.all([
+    source("public/preferences-api.html"),
+    source("public/preferences-i18n.js"),
+    source("public/preferences-runtime.js"),
+  ]);
+  const scripts = [...html.matchAll(/<script src="([^"]+)"/g)].map(match => match[1].split("?")[0]);
+  assert.ok(scripts.indexOf("i18n-runtime.js") < scripts.indexOf("onboarding-i18n.js"));
+  assert.ok(scripts.indexOf("onboarding-i18n.js") < scripts.indexOf("notifications-i18n.js"));
+  assert.ok(scripts.indexOf("notifications-i18n.js") < scripts.indexOf("preferences-i18n.js"));
+  assert.ok(scripts.indexOf("preferences-i18n.js") < scripts.indexOf("shared-shell.js"));
+  assert.match(script, /new Intl\.DateTimeFormat\(preferencesLocale\)/);
+  assert.match(script, /localizedHref\("preferences-api\.html"\)/);
+  assert.match(script, /ui\(rawTitle\)/);
+  assert.doesNotMatch(script, /translate|machineTranslation|machine_translation/i);
+  for (const marker of ["Tùy chọn", "การตั้งค่า", "Preferensi", "التفضيلات"]) assert.match(messages, new RegExp(marker));
+  assert.match(messages, /CUACOnboardingI18n/);
+  assert.match(messages, /CUACNotificationsI18n/);
+  assert.match(messages, /MutationObserver/);
 });

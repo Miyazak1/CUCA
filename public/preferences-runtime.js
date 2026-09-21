@@ -16,6 +16,12 @@ const topicLabels = {
   account_security: ["Account security", "Required sign-in and account protection events"],
 };
 
+const preferencesI18n = window.CUACPreferencesI18n;
+const preferencesLocale = window.CUACI18n?.locale || "en";
+const ui = (english) => preferencesI18n?.ui(english) || english;
+const format = (template, values) => preferencesI18n?.format(template, values) || template;
+const localizedHref = (href) => preferencesI18n?.href(href) || href;
+
 let currentProfile = null;
 let currentNotificationPreferences = [];
 let currentAccountIdentity = null;
@@ -42,7 +48,7 @@ function isRecord(value) {
 
 function humanize(value) {
   const text = String(value || "").replaceAll("_", " ");
-  return text ? `${text.charAt(0).toUpperCase()}${text.slice(1)}` : "Not set";
+  return text ? ui(`${text.charAt(0).toUpperCase()}${text.slice(1)}`) : ui("Not set");
 }
 
 async function requestJson(path, options = {}) {
@@ -53,13 +59,13 @@ async function requestJson(path, options = {}) {
   const payload = await response.json().catch(() => null);
   if (!response.ok) {
     throw new PreferenceRequestError(
-      payload?.error?.message || "The preference request could not be completed.",
+      ui("The preference request could not be completed."),
       response.status,
       payload?.error?.code || "REQUEST_FAILED",
     );
   }
   if (!payload || !Object.prototype.hasOwnProperty.call(payload, "data")) {
-    throw new PreferenceRequestError("The preference response is missing its data envelope.", response.status, "INVALID_RESPONSE");
+    throw new PreferenceRequestError(ui("The preference response is invalid."), response.status, "INVALID_RESPONSE");
   }
   return payload.data;
 }
@@ -78,7 +84,7 @@ function validatedPreferences(value) {
 }
 
 function selectOptions(values, selected, emptyLabel = "Not set") {
-  return `<option value="">${escapeHtml(emptyLabel)}</option>${values.map(value => `<option value="${escapeHtml(value)}" ${selected === value ? "selected" : ""}>${escapeHtml(humanize(value))}</option>`).join("")}`;
+  return `<option value="">${escapeHtml(ui(emptyLabel))}</option>${values.map(value => `<option value="${escapeHtml(value)}" ${selected === value ? "selected" : ""}>${escapeHtml(humanize(value))}</option>`).join("")}`;
 }
 
 function renderAccountIdentity() {
@@ -157,13 +163,15 @@ function renderNotificationPreferences() {
     <table class="notification-table">
       <thead><tr><th scope="col">Topic</th><th scope="col">In app</th><th scope="col">Email</th><th scope="col">SMS</th></tr></thead>
       <tbody>${currentNotificationPreferences.map(item => {
-        const [title, copy] = topicLabels[item.topic] || [humanize(item.topic), "Account notification topic"];
+        const [rawTitle, rawCopy] = topicLabels[item.topic] || [humanize(item.topic), "Account notification topic"];
+        const title = ui(rawTitle);
+        const copy = ui(rawCopy);
         const required = ["account_security","privacy_requests"].includes(item.topic);
         return `<tr data-notification-topic="${escapeHtml(item.topic)}">
           <td class="notification-topic"><strong>${escapeHtml(title)}</strong><span>${escapeHtml(copy)}</span></td>
-          <td><label class="notification-channel"><input type="checkbox" name="inAppEnabled" aria-label="${escapeHtml(title)} in-app notifications" ${item.inAppEnabled ? "checked" : ""} ${required ? "disabled" : ""} /></label></td>
-          <td><label class="notification-channel"><input type="checkbox" name="emailEnabled" aria-label="${escapeHtml(title)} email notifications" ${item.emailEnabled ? "checked" : ""} ${required ? "disabled" : ""} /></label></td>
-          <td><label class="notification-channel"><input type="checkbox" name="smsEnabled" aria-label="${escapeHtml(title)} SMS notifications" ${item.smsEnabled ? "checked" : ""} /></label></td>
+          <td><label class="notification-channel"><input type="checkbox" name="inAppEnabled" aria-label="${escapeHtml(format("{title} in-app notifications", { title }))}" ${item.inAppEnabled ? "checked" : ""} ${required ? "disabled" : ""} /></label></td>
+          <td><label class="notification-channel"><input type="checkbox" name="emailEnabled" aria-label="${escapeHtml(format("{title} email notifications", { title }))}" ${item.emailEnabled ? "checked" : ""} ${required ? "disabled" : ""} /></label></td>
+          <td><label class="notification-channel"><input type="checkbox" name="smsEnabled" aria-label="${escapeHtml(format("{title} SMS notifications", { title }))}" ${item.smsEnabled ? "checked" : ""} /></label></td>
         </tr>`;
       }).join("")}</tbody>
     </table>
@@ -180,7 +188,7 @@ function renderDataRights() {
   if (!root) return;
   root.innerHTML = `<form class="preferences-form data-rights-form" data-data-rights-form>
     <div class="preferences-field-grid">
-      <label class="preferences-field"><span>Request type</span><select name="requestType" required>${Object.entries(dataRightsLabels).map(([value, label]) => `<option value="${value}">${label}</option>`).join("")}</select></label>
+      <label class="preferences-field"><span>Request type</span><select name="requestType" required>${Object.entries(dataRightsLabels).map(([value, label]) => `<option value="${value}">${escapeHtml(ui(label))}</option>`).join("")}</select></label>
       <label class="preferences-field" data-correction-scope hidden><span>Information to correct</span><select name="correctionScope"><option value="account">Account identity</option><option value="applicant_profile">Applicant profile</option><option value="education">Education</option><option value="assessment">Exams and tests</option><option value="application">Application records</option><option value="other">Other structured account data</option></select></label>
       <label class="preferences-field"><span>Reply language</span><select name="preferredLocale"><option value="en">English</option><option value="zh-CN">简体中文</option></select></label>
       <label class="preferences-field" data-rights-password hidden><span>Confirm current password</span><input name="password" type="password" autocomplete="current-password" minlength="15" /><small>Required only for export and deletion.</small></label>
@@ -189,7 +197,7 @@ function renderDataRights() {
     <div class="preferences-form-footer"><button type="submit">Submit privacy request</button></div>
   </form>
   <div class="data-rights-list">${currentDataRightsRequests.length ? currentDataRightsRequests.map(item => `<article>
-    <div><strong>${escapeHtml(dataRightsLabels[item.requestType] || humanize(item.requestType))}</strong><span>Received ${escapeHtml(new Date(item.receivedAt).toLocaleDateString())} · ${escapeHtml(humanize(item.status))}</span></div>
+    <div><strong>${escapeHtml(ui(dataRightsLabels[item.requestType] || humanize(item.requestType)))}</strong><span>${escapeHtml(format("Received {date} · {status}", { date: new Intl.DateTimeFormat(preferencesLocale).format(new Date(item.receivedAt)), status: humanize(item.status) }))}</span></div>
     ${["received","identity_confirmed"].includes(item.status)?`<div class="data-rights-actions">
       ${item.status==="received"?`<form data-confirm-rights="${escapeHtml(item.requestId)}" data-revision="${item.revision}">
         <label class="preferences-field"><span>Confirm identity to start review</span><input name="password" type="password" autocomplete="current-password" minlength="15" required /></label>
@@ -213,7 +221,7 @@ function updateDataRightsFields(select) {
 function renderPreferenceError(target, title, error) {
   const root = document.querySelector(target);
   if (!root) return;
-  root.innerHTML = `<div class="preferences-error"><h3>${escapeHtml(title)}</h3><p>${escapeHtml(error?.message || "This account service is unavailable.")}</p><button class="preferences-secondary" type="button" data-retry-preferences>Retry</button></div>`;
+  root.innerHTML = `<div class="preferences-error"><h3>${escapeHtml(ui(title))}</h3><p>${escapeHtml(error?.message || ui("This account service is unavailable."))}</p><button class="preferences-secondary" type="button" data-retry-preferences>${escapeHtml(ui("Retry"))}</button></div>`;
 }
 
 let preferenceToastTimer;
@@ -231,9 +239,9 @@ async function requireStudent(errors) {
   if (!authError) return false;
   const auth = await window.CUAC?.authReady?.();
   if (auth?.authState !== "signed-out") return false;
-  window.CUAC?.requireSignedIn?.("manage your preferences", {
+  window.CUAC?.requireSignedIn?.(ui("manage your preferences"), {
     requiredRole: "student",
-    resumeAction: { type: "navigate", href: "preferences-api.html" },
+    resumeAction: { type: "navigate", href: localizedHref("preferences-api.html") },
   });
   return true;
 }
