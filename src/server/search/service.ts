@@ -12,6 +12,35 @@ export const SITE_SEARCH_SYNONYMS = Object.freeze({
   "bachelors": "bachelor",
   "masters": "master",
   "master's": "master",
+  "học bổng": "scholarship",
+  "cử nhân": "bachelor",
+  "thạc sĩ": "master",
+  "khoa học máy tính": "computer science",
+  "trí tuệ nhân tạo": "artificial intelligence",
+  "tiếng anh": "english",
+  "ทุนการศึกษา": "scholarship",
+  "ปริญญาตรี": "bachelor",
+  "ปริญญาโท": "master",
+  "วิทยาการคอมพิวเตอร์": "computer science",
+  "ปัญญาประดิษฐ์": "artificial intelligence",
+  "ภาษาอังกฤษ": "english",
+  "beasiswa": "scholarship",
+  "sarjana": "bachelor",
+  "magister": "master",
+  "ilmu komputer": "computer science",
+  "kecerdasan buatan": "artificial intelligence",
+  "bahasa inggris": "english",
+  "biasiswa": "scholarship",
+  "ijazah sarjana muda": "bachelor",
+  "sains komputer": "computer science",
+  "bahasa inggeris": "english",
+  "منحة": "scholarship",
+  "منح": "scholarship",
+  "بكالوريوس": "bachelor",
+  "ماجستير": "master",
+  "علوم الحاسوب": "computer science",
+  "الذكاء الاصطناعي": "artificial intelligence",
+  "الإنجليزية": "english",
 } as const);
 
 export type SiteSearchType = (typeof SITE_SEARCH_TYPES)[number];
@@ -143,9 +172,26 @@ export function normalizeSiteSearchLocale(value: unknown): SiteSearchLocale {
 
 export function expandSiteSearchQuery(query: string): string {
   const normalized = query.toLocaleLowerCase();
-  const phrase = SITE_SEARCH_SYNONYMS[normalized as keyof typeof SITE_SEARCH_SYNONYMS];
-  if (phrase) return phrase;
-  return normalized.split(" ").map(token => SITE_SEARCH_SYNONYMS[token as keyof typeof SITE_SEARCH_SYNONYMS] ?? token).join(" ");
+  const tokens = normalized.split(" ").filter(Boolean);
+  const maximumPhraseLength = Math.max(...Object.keys(SITE_SEARCH_SYNONYMS).map(item => item.split(" ").length));
+  const interpreted: string[] = [];
+  for (let index = 0; index < tokens.length;) {
+    let matched = false;
+    for (let size = Math.min(maximumPhraseLength, tokens.length - index); size >= 1; size -= 1) {
+      const candidate = tokens.slice(index, index + size).join(" ");
+      const synonym = SITE_SEARCH_SYNONYMS[candidate as keyof typeof SITE_SEARCH_SYNONYMS];
+      if (!synonym) continue;
+      interpreted.push(synonym);
+      index += size;
+      matched = true;
+      break;
+    }
+    if (!matched) {
+      interpreted.push(tokens[index]);
+      index += 1;
+    }
+  }
+  return interpreted.join(" ");
 }
 
 export function encodeSiteSearchCursor(input: { query: string; type: SiteSearchType; locale: SiteSearchLocale; offset: number }): string {

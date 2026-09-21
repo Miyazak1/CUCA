@@ -11,17 +11,22 @@ test("released surfaces defer Agent UI and expose deterministic site search", as
     source("public/search.html"), source("public/search.js"),
   ]);
   assert.match(shell, /AGENT_PRODUCT_SURFACES_ENABLED = false/);
-  assert.match(shell, /href="search\.html"/);
+  assert.match(shell, /function localizedSearchHref\(\)/);
+  assert.match(shell, /`search\.html\?lang=\$\{encodeURIComponent\(locale\)\}`/);
   assert.match(homeHtml, /<body\b[^>]*\bdata-agent-mode="off"[^>]*>/);
   assert.match(homeHtml, /data-site-search-form/);
   assert.doesNotMatch(homeHtml, /data-planner-form|data-agent-prompt/);
-  assert.match(homeScript, /search\.html\?q=/);
+  assert.match(homeScript, /new URLSearchParams\(\{ q: query \}\)/);
+  assert.match(homeScript, /params\.set\("lang", window\.CUACI18n\.locale\)/);
   assert.match(searchHtml, /Programs[\s\S]*Universities[\s\S]*Scholarships[\s\S]*Cities[\s\S]*Guides/);
   assert.match(searchScript, /\/api\/v1\/search/);
   assert.match(searchScript, /AbortController/);
   assert.match(searchScript, /data-search-more/);
   assert.match(searchScript, /interpretedQuery/);
-  assert.match(searchHtml, /data-search-locale="zh"/);
+  assert.match(searchHtml, /data-i18n-locales="en,vi,th,id,ms,ar"/);
+  assert.match(searchHtml, /search-i18n\.js/);
+  assert.doesNotMatch(searchHtml, /data-search-locale=/);
+  assert.match(searchScript, /state\.locale === "zh-CN" \? "zh" : "en"/);
   assert.match(searchScript, /displayTitle/);
 });
 

@@ -10,6 +10,11 @@
     { "query": "计算机科学", "type": "program", "interpretedQuery": "计算机科学", "tokens": ["计算机科学"] },
     { "query": "Tsinghua University", "type": "school", "interpretedQuery": "tsinghua university", "tokens": ["tsinghua", "university"] },
     { "query": "杭州", "type": "city", "interpretedQuery": "杭州", "tokens": ["杭州"] },
-    { "query": "JW form", "type": "guide", "interpretedQuery": "jw form", "tokens": ["jw", "form"] }
+    { "query": "JW form", "type": "guide", "interpretedQuery": "jw form", "tokens": ["jw", "form"] },
+    { "query": "học bổng Tsinghua", "type": "scholarship", "interpretedQuery": "scholarship tsinghua", "tokens": ["scholarship", "tsinghua"] },
+    { "query": "ทุนการศึกษา ปักกิ่ง", "type": "scholarship", "interpretedQuery": "scholarship ปักกิ่ง", "tokens": ["scholarship", "ปักกิ่ง"] },
+    { "query": "beasiswa ilmu komputer", "type": "program", "interpretedQuery": "scholarship computer science", "tokens": ["scholarship", "computer", "science"] },
+    { "query": "biasiswa sains komputer", "type": "program", "interpretedQuery": "scholarship computer science", "tokens": ["scholarship", "computer", "science"] },
+    { "query": "منحة علوم الحاسوب", "type": "scholarship", "interpretedQuery": "scholarship computer science", "tokens": ["scholarship", "computer", "science"] }
   ]
 }

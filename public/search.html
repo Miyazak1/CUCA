@@ -7,32 +7,29 @@
     <link rel="stylesheet" href="shared-shell.css?v=20260920-account-email" />
     <link rel="stylesheet" href="search.css" />
   </head>
-  <body data-agent-mode="off">
+  <body data-agent-mode="off" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page search-page">
       <div data-cuac-header data-active="search" data-note="CUAC Search:" data-note-detail="published programs, universities, scholarships, cities, and guides"></div>
       <main class="site-search-main">
         <section class="search-intro" aria-labelledby="search-title">
-          <p class="search-kicker">Published catalog</p>
-          <h1 id="search-title">Search across CUAC</h1>
-          <p>Find programs, universities, scholarships, cities, and practical guides without choosing a catalog first.</p>
-          <div class="search-locales" aria-label="Search display language">
-            <button type="button" data-search-locale="en">English</button>
-            <button type="button" data-search-locale="zh">中文</button>
-          </div>
+          <p class="search-kicker" data-search-copy="kicker">Published catalog</p>
+          <h1 id="search-title" data-search-copy="title">Search across CUAC</h1>
+          <p data-search-copy="intro">Find programs, universities, scholarships, cities, and practical guides without choosing a catalog first.</p>
+          <p class="search-language-note" data-search-copy="contentNotice">Official catalog names and result content currently remain in English while reviewed translations are completed.</p>
           <form class="site-search-form" data-site-search-form role="search">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
             <input data-site-search-input type="search" maxlength="120" autocomplete="off" placeholder="Computer science, Tsinghua, scholarship, Hangzhou..." aria-label="Search published CUAC catalog" />
-            <button type="submit">Search</button>
+            <button type="submit" data-search-copy="submit">Search</button>
           </form>
         </section>
 
         <nav class="search-types" aria-label="Search result types" data-search-types>
-          <button class="active" type="button" data-search-type="">All <span data-count-for="all">0</span></button>
-          <button type="button" data-search-type="program">Programs <span data-count-for="program">0</span></button>
-          <button type="button" data-search-type="school">Universities <span data-count-for="school">0</span></button>
-          <button type="button" data-search-type="scholarship">Scholarships <span data-count-for="scholarship">0</span></button>
-          <button type="button" data-search-type="city">Cities <span data-count-for="city">0</span></button>
-          <button type="button" data-search-type="guide">Guides <span data-count-for="guide">0</span></button>
+          <button class="active" type="button" data-search-type=""><span data-search-type-label="all">All</span> <span data-count-for="all">0</span></button>
+          <button type="button" data-search-type="program"><span data-search-type-label="program">Programs</span> <span data-count-for="program">0</span></button>
+          <button type="button" data-search-type="school"><span data-search-type-label="school">Universities</span> <span data-count-for="school">0</span></button>
+          <button type="button" data-search-type="scholarship"><span data-search-type-label="scholarship">Scholarships</span> <span data-count-for="scholarship">0</span></button>
+          <button type="button" data-search-type="city"><span data-search-type-label="city">Cities</span> <span data-count-for="city">0</span></button>
+          <button type="button" data-search-type="guide"><span data-search-type-label="guide">Guides</span> <span data-count-for="guide">0</span></button>
         </nav>
 
         <section class="search-status" data-search-status role="status" aria-live="polite"></section>
@@ -40,7 +37,9 @@
       </main>
       <div data-cuac-footer></div>
     </div>
-    <script src="shared-shell.js?v=20260920-account-email"></script>
-    <script src="search.js"></script>
+    <script src="i18n-runtime.js?v=20260921-public-locales"></script>
+    <script src="search-i18n.js?v=20260921-search-locales"></script>
+    <script src="shared-shell.js?v=20260921-public-locales"></script>
+    <script src="search.js?v=20260921-search-locales"></script>
   </body>
 </html>

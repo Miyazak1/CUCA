@@ -1,7 +1,15 @@
 (function initSiteSearch() {
   "use strict";
 
-  const labels = { program: "Programs", school: "Universities", scholarship: "Scholarships", city: "Cities", guide: "Guides" };
+  const i18n = window.CUACI18n;
+  const t = (key, fallback) => i18n?.t(`search.${key}`, fallback) || fallback;
+  const format = (template, values = {}) => Object.entries(values).reduce(
+    (result, [key, value]) => result.replaceAll(`{${key}}`, String(value)), template,
+  );
+  const labels = {
+    program: t("type.program", "Programs"), school: t("type.school", "Universities"),
+    scholarship: t("type.scholarship", "Scholarships"), city: t("type.city", "Cities"), guide: t("type.guide", "Guides"),
+  };
   const icons = { program: "PR", school: "UN", scholarship: "SC", city: "CI", guide: "GU" };
   const form = document.querySelector("[data-site-search-form]");
   const input = document.querySelector("[data-site-search-input]");
@@ -10,16 +18,27 @@
   let controller = null;
   let loadedGroups = [];
 
+  function applyStaticCopy() {
+    document.title = t("pageTitle", "Search CUAC");
+    document.querySelectorAll("[data-search-copy]").forEach(target => {
+      target.textContent = t(target.dataset.searchCopy, target.textContent);
+    });
+    document.querySelectorAll("[data-search-type-label]").forEach(target => {
+      const key = target.dataset.searchTypeLabel;
+      target.textContent = key === "all" ? t("type.all", "All") : labels[key] || target.textContent;
+    });
+    input.placeholder = t("placeholder", input.placeholder);
+    input.setAttribute("aria-label", t("inputLabel", input.getAttribute("aria-label") || "Search published CUAC catalog"));
+    document.querySelector("[data-search-types]")?.setAttribute("aria-label", t("resultTypes", "Search result types"));
+  }
+
   function escapeHtml(value) {
     return String(value ?? "").replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
   }
 
   function stateFromUrl() {
     const params = new URLSearchParams(location.search);
-    const requestedLocale = params.get("locale");
-    const locale = requestedLocale === "zh" || requestedLocale === "en"
-      ? requestedLocale
-      : (navigator.language || "en").toLowerCase().startsWith("zh") ? "zh" : "en";
+    const locale = i18n?.locale || "en";
     return { query: (params.get("q") || "").trim(), type: params.get("type") || "", locale };
   }
 
@@ -27,18 +46,13 @@
     const params = new URLSearchParams();
     if (query) params.set("q", query);
     if (type) params.set("type", type);
-    if (locale === "zh") params.set("locale", locale);
+    if (locale !== "en") params.set("lang", locale);
     const url = `search.html${params.size ? `?${params}` : ""}`;
     history[replace ? "replaceState" : "pushState"]({}, "", url);
   }
 
   function setActiveLocale(locale) {
-    document.documentElement.lang = locale === "zh" ? "zh-CN" : "en";
-    document.querySelectorAll("[data-search-locale]").forEach(button => {
-      const active = button.dataset.searchLocale === locale;
-      button.classList.toggle("active", active);
-      button.setAttribute("aria-pressed", String(active));
-    });
+    document.documentElement.lang = locale;
   }
 
   function setActiveType(type) {
@@ -71,24 +85,24 @@
         ${item.subtitle ? `<span>${escapeHtml(item.subtitle)}</span>` : ""}
         ${item.summary ? `<p>${escapeHtml(item.summary)}</p>` : ""}
       </span>
-      <span class="search-verified">${verified ? "Verified" : "Source listed"}</span>
+      <span class="search-verified">${escapeHtml(verified ? t("verified", "Verified") : t("sourceListed", "Source listed"))}</span>
     </a>`;
   }
 
   function renderGroups(groups, selectedType) {
     const visible = groups.filter(group => group.items.length > 0);
     if (!visible.length) {
-      results.innerHTML = `<div class="search-empty"><strong>No published results match</strong><p>Try a shorter subject, university name, city, or funding term.</p></div>`;
+      results.innerHTML = `<div class="search-empty"><strong>${escapeHtml(t("noResults", "No published results match"))}</strong><p>${escapeHtml(t("noResultsHelp", "Try a shorter subject, university name, city, or funding term."))}</p></div>`;
       return;
     }
     results.innerHTML = `<div class="search-result-groups">${visible.map(group => `
       <section class="search-result-group" aria-labelledby="search-group-${group.type}">
         <div class="search-group-head">
           <h2 id="search-group-${group.type}">${labels[group.type]} <small>(${group.total})</small></h2>
-          ${!selectedType && group.total > group.items.length ? `<button type="button" data-view-type="${group.type}">View all</button>` : ""}
+          ${!selectedType && group.total > group.items.length ? `<button type="button" data-view-type="${group.type}">${escapeHtml(t("viewAll", "View all"))}</button>` : ""}
         </div>
         <div class="search-card-list">${group.items.map(renderCard).join("")}</div>
-        ${selectedType && group.nextCursor ? `<div class="search-more"><button type="button" data-search-more data-cursor="${escapeHtml(group.nextCursor)}">Load more</button><span>Showing ${group.items.length} of ${group.total}</span></div>` : ""}
+        ${selectedType && group.nextCursor ? `<div class="search-more"><button type="button" data-search-more data-cursor="${escapeHtml(group.nextCursor)}">${escapeHtml(t("loadMore", "Load more"))}</button><span>${escapeHtml(format(t("showing", "Showing {loaded} of {total}"), { loaded: group.items.length, total: group.total }))}</span></div>` : ""}
       </section>`).join("")}</div>`;
   }
 
@@ -111,36 +125,41 @@
     controller = requestController;
     if (!cursor) {
       loadedGroups = [];
-      results.innerHTML = '<div class="search-loading" aria-busy="true"><span></span><strong>Searching published catalog</strong></div>';
-      status.textContent = state.query ? `Searching for “${state.query}”…` : "Browsing current published catalog.";
+      results.innerHTML = `<div class="search-loading" aria-busy="true"><span></span><strong>${escapeHtml(t("loading", "Searching published catalog"))}</strong></div>`;
+      status.textContent = state.query
+        ? format(t("searchingFor", "Searching for “{query}”…"), { query: state.query })
+        : t("browsing", "Browsing current published catalog.");
     } else {
       const moreButton = results.querySelector("[data-search-more]");
-      if (moreButton) { moreButton.disabled = true; moreButton.textContent = "Loading…"; }
+      if (moreButton) { moreButton.disabled = true; moreButton.textContent = t("loadingMore", "Loading…"); }
     }
     const params = new URLSearchParams({ q: state.query, limit: state.type ? "20" : "4" });
     if (state.type) params.set("type", state.type);
-    params.set("locale", state.locale);
+    params.set("locale", state.locale === "zh-CN" ? "zh" : "en");
     if (cursor) params.set("cursor", cursor);
     try {
       const response = await fetch(`/api/v1/search?${params}`, { headers: { accept: "application/json" }, signal: requestController.signal });
       const payload = await response.json().catch(() => null);
-      if (!response.ok || !Array.isArray(payload?.data?.groups)) throw new Error(payload?.error?.message || "Search is temporarily unavailable.");
+      if (!response.ok || !Array.isArray(payload?.data?.groups)) throw new Error(payload?.error?.message || t("unavailableMessage", "Search is temporarily unavailable."));
       loadedGroups = cursor ? mergeGroups(loadedGroups, payload.data.groups) : payload.data.groups;
       setCounts(loadedGroups);
       renderGroups(loadedGroups, state.type);
       const total = payload.data.groups.reduce((sum, group) => sum + group.total, 0);
       const loaded = loadedGroups.reduce((sum, group) => sum + group.items.length, 0);
-      const interpretation = payload.data.interpretedQuery ? ` · Interpreted as “${payload.data.interpretedQuery}”` : "";
-      status.textContent = `${total} published result${total === 1 ? "" : "s"}${state.query ? ` for “${state.query}”` : ""}${state.type && loaded < total ? ` · ${loaded} shown` : ""}${interpretation} · ${Number(payload?.meta?.tookMs) || 0} ms`;
+      const resultLabel = format(t(total === 1 ? "resultOne" : "resultMany", total === 1 ? "{total} published result" : "{total} published results"), { total });
+      const queryLabel = state.query ? ` ${format(t("forQuery", "for “{query}”"), { query: state.query })}` : "";
+      const shownLabel = state.type && loaded < total ? ` · ${format(t("shown", "{loaded} shown"), { loaded })}` : "";
+      const interpretation = payload.data.interpretedQuery ? ` · ${format(t("interpreted", "Interpreted as “{query}”"), { query: payload.data.interpretedQuery })}` : "";
+      status.textContent = `${resultLabel}${queryLabel}${shownLabel}${interpretation} · ${Number(payload?.meta?.tookMs) || 0} ms`;
     } catch (error) {
       if (error.name === "AbortError") return;
       if (cursor && loadedGroups.length) {
         renderGroups(loadedGroups, state.type);
-        status.textContent = `More results could not be loaded. ${error.message}`;
+        status.textContent = `${t("moreFailed", "More results could not be loaded.")} ${error.message}`;
         return;
       }
-      results.innerHTML = `<div class="search-error"><strong>Search unavailable</strong><p>${escapeHtml(error.message)}</p><button type="button" data-search-retry>Try again</button></div>`;
-      status.textContent = "The latest search could not be completed.";
+      results.innerHTML = `<div class="search-error"><strong>${escapeHtml(t("unavailable", "Search unavailable"))}</strong><p>${escapeHtml(error.message)}</p><button type="button" data-search-retry>${escapeHtml(t("retry", "Try again"))}</button></div>`;
+      status.textContent = t("latestFailed", "The latest search could not be completed.");
     }
   }
 
@@ -160,13 +179,6 @@
       runSearch();
       return;
     }
-    const localeButton = event.target.closest("[data-search-locale]");
-    if (localeButton) {
-      const state = stateFromUrl();
-      updateUrl(input.value.trim(), state.type, localeButton.dataset.searchLocale || "en");
-      runSearch();
-      return;
-    }
     const moreButton = event.target.closest("[data-search-more]");
     if (moreButton) {
       runSearch(moreButton.dataset.cursor || null);
@@ -176,5 +188,6 @@
   });
 
   window.addEventListener("popstate", runSearch);
+  applyStaticCopy();
   runSearch();
 })();

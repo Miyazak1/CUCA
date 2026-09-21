@@ -47,3 +47,15 @@ test("multilingual UI does not silently broaden reviewed legal notice locales", 
   assert.match(shell, /shellText\("englishOnly", "English version"\)/);
   assert.match(runtime, /"shell\.englishOnly"/);
 });
+
+test("site search exposes the complete public locale set while labeling English catalog content", async () => {
+  const [html, messages, script] = await Promise.all([
+    source("public/search.html"), source("public/search-i18n.js"), source("public/search.js"),
+  ]);
+  assert.match(html, /data-i18n-locales="en,vi,th,id,ms,ar"/);
+  assert.match(html, /data-search-copy="contentNotice"/);
+  for (const locale of ["en", "vi", "th", "id", "ms", "ar"]) assert.match(messages, new RegExp(`\\b${locale}: \\{`));
+  assert.match(script, /CUACI18n/);
+  assert.match(script, /params\.set\("lang", locale\)/);
+  assert.match(await source("public/shared-shell.js"), /function localizedSearchHref\(\)/);
+});

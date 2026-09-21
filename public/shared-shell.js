@@ -639,6 +639,11 @@
       </select></label>`;
   }
 
+  function localizedSearchHref() {
+    const locale = window.CUACI18n?.locale;
+    return locale && locale !== "en" ? `search.html?lang=${encodeURIComponent(locale)}` : "search.html";
+  }
+
   let authNavigationPending = false;
   let runtimeAuthState = {
     resolved: false,
@@ -805,7 +810,7 @@
         </nav>
         <div class="nav-actions" aria-label="Account actions">
           ${renderLanguageSelector()}
-          <a class="nav-icon" href="search.html" aria-label="${localizedNav ? "全站搜索" : escapeHTML(shellText("search", "Search CUAC"))}">${icons.search}</a>
+          <a class="nav-icon" href="${localizedSearchHref()}" aria-label="${localizedNav ? "全站搜索" : escapeHTML(shellText("search", "Search CUAC"))}">${icons.search}</a>
           ${showSavedShortcut ? renderSavedShortcut() : ""}
           ${renderAccountMenu(target)}
         </div>
@@ -976,7 +981,7 @@
     const navActions = header?.querySelector(".nav-actions");
     if (!header || !navActions) return;
     const shellContext = getShellContext();
-    navActions.innerHTML = `${renderLanguageSelector()}<a class="nav-icon" href="search.html" aria-label="${escapeHTML(shellText("search", "Search CUAC"))}">${icons.search}</a>${shouldShowSavedShortcut(shellContext) ? renderSavedShortcut() : ""}${renderAccountMenu({ dataset: {} })}`;
+    navActions.innerHTML = `${renderLanguageSelector()}<a class="nav-icon" href="${localizedSearchHref()}" aria-label="${escapeHTML(shellText("search", "Search CUAC"))}">${icons.search}</a>${shouldShowSavedShortcut(shellContext) ? renderSavedShortcut() : ""}${renderAccountMenu({ dataset: {} })}`;
     initAccountMenus();
     initLanguageSelectors();
   }

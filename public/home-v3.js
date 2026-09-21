@@ -42,7 +42,9 @@
           plannerInputs[0]?.focus();
           return;
         }
-        window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+        const params = new URLSearchParams({ q: query });
+        if (window.CUACI18n?.locale && window.CUACI18n.locale !== "en") params.set("lang", window.CUACI18n.locale);
+        window.location.href = `search.html?${params}`;
       });
 
       document.querySelector("[data-create-list]")?.addEventListener("click", () => {
