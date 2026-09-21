@@ -11,7 +11,7 @@ test("Hub candidate aggregates only authenticated account APIs", async () => {
     source("public/hub-runtime.js"),
   ]);
 
-  assert.match(html, /<body data-agent-mode="off">/);
+  assert.match(html, /<body data-agent-mode="off" data-i18n-locales="en,vi,th,id,ms,ar">/);
   assert.match(html, /hub-workspace\.css\?v=/);
   assert.match(html, /src="shared-shell\.js(?:\?[^\"]*)?"/);
   assert.match(html, /src="hub-runtime\.js\?v=/);
@@ -57,4 +57,33 @@ test("Hub workspace is restrained and responsive", async () => {
   assert.match(css, /@media \(max-width: 620px\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.doesNotMatch(css, /linear-gradient|radial-gradient|border-radius:\s*(?:1[5-9]|[2-9][0-9]|[1-9][0-9][0-9])px/);
+});
+
+test("student Hub localizes static and dynamic account state without translating server records", async () => {
+  const [html, messages, script] = await Promise.all([
+    source("public/hub-api.html"),
+    source("public/hub-i18n.js"),
+    source("public/hub-runtime.js"),
+  ]);
+  const scripts = [...html.matchAll(/<script src="([^"]+)"/g)].map(match => match[1].split("?")[0]);
+  assert.ok(scripts.indexOf("i18n-runtime.js") < scripts.indexOf("hub-i18n.js"));
+  assert.ok(scripts.indexOf("hub-i18n.js") < scripts.indexOf("shared-shell.js"));
+  assert.ok(scripts.indexOf("shared-shell.js") < scripts.indexOf("hub-runtime.js"));
+  assert.match(script, /new Intl\.DateTimeFormat\(hubLocale/);
+  assert.match(script, /function localizedIntake\(/);
+  assert.match(script, /\^\(Spring\|Summer\|Fall\|Winter\)/);
+  assert.match(script, /localizedStatus\(profile\.targetDegreeLevel/);
+  assert.match(script, /localizedIntake\(profile\.targetIntake/);
+  for (const controlledValue of ["Bachelor", "Doctoral", "Fall", "Winter"]) {
+    assert.match(messages, new RegExp(`\\[\\"${controlledValue}\\"`));
+  }
+  assert.match(script, /localizedHref\(`application\.html\?applicationSet=/);
+  assert.match(script, /Original notification content/);
+  assert.match(script, /textOrFallback\(item\.title, "Account event"\)/);
+  assert.doesNotMatch(script, /translate|machineTranslation|machine_translation/i);
+  for (const marker of ["Trung tâm sinh viên", "ศูนย์นักศึกษา", "Ruang pelajar", "مساحة الطالب"]) {
+    assert.match(messages, new RegExp(marker));
+  }
+  assert.match(messages, /MutationObserver/);
+  assert.match(messages, /url\.searchParams\.set\("lang", i18n\.locale\)/);
 });

@@ -10,6 +10,16 @@
   --hub-api-warning: #9a5b08;
 }
 
+.hub-api-source-language {
+  display: inline-flex;
+  width: fit-content;
+  padding: 3px 7px;
+  border: 1px solid var(--hub-api-line);
+  color: var(--hub-api-muted);
+  font-size: 11px;
+  font-weight: 750;
+}
+
 .hub-api-page {
   min-height: 100vh;
   background: #f8f9fa;

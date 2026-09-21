@@ -6,6 +6,12 @@ const hubState = {
   errors: {},
 };
 
+const hubI18n = window.CUACHubI18n;
+const hubLocale = window.CUACI18n?.locale || "en";
+const ui = (english) => hubI18n?.ui(english) || english;
+const format = (template, values) => hubI18n?.format(template, values) || template;
+const localizedHref = (href) => hubI18n?.href(href) || href;
+
 class HubRequestError extends Error {
   constructor(message, status, code) {
     super(message);
@@ -34,13 +40,13 @@ async function requestJson(path) {
   const payload = await response.json().catch(() => null);
   if (!response.ok) {
     throw new HubRequestError(
-      payload?.error?.message || "The account request could not be completed.",
+      ui("The account request could not be completed."),
       response.status,
       payload?.error?.code || "REQUEST_FAILED",
     );
   }
   if (!payload || !Object.prototype.hasOwnProperty.call(payload, "data")) {
-    throw new HubRequestError("The account response is missing its data envelope.", response.status, "INVALID_RESPONSE");
+    throw new HubRequestError(ui("The account response is missing its data envelope."), response.status, "INVALID_RESPONSE");
   }
   return payload.data;
 }
@@ -58,20 +64,33 @@ function safeActionPath(value) {
 
 function formatDate(value, fallback = "Not recorded") {
   const date = new Date(value);
-  if (!Number.isFinite(date.getTime())) return fallback;
-  return new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", year: "numeric" }).format(date);
+  if (!Number.isFinite(date.getTime())) return ui(fallback);
+  return new Intl.DateTimeFormat(hubLocale, { month: "short", day: "numeric", year: "numeric" }).format(date);
 }
 
 function textOrFallback(value, fallback = "Not recorded") {
-  return typeof value === "string" && value.trim() ? value.trim() : fallback;
+  return typeof value === "string" && value.trim() ? value.trim() : ui(fallback);
+}
+
+function localizedStatus(value, fallback = "In progress") {
+  const text = textOrFallback(value, fallback).replaceAll("_", " ");
+  return ui(`${text.charAt(0).toUpperCase()}${text.slice(1)}`);
+}
+
+function localizedIntake(value, fallback = "No target intake") {
+  const text = textOrFallback(value, fallback);
+  const match = text.match(/^(Spring|Summer|Fall|Winter)\s+(\d{4})$/i);
+  if (!match) return text;
+  const term = `${match[1].charAt(0).toUpperCase()}${match[1].slice(1).toLowerCase()}`;
+  return `${ui(term)} ${match[2]}`;
 }
 
 const applicationSetIdPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 function applicationSetHref(set) {
-  if (!applicationSetIdPattern.test(set?.id || "")) return "application.html";
+  if (!applicationSetIdPattern.test(set?.id || "")) return localizedHref("application.html");
   const hash = set.status === "draft" ? "#overview" : "#send";
-  return `application.html?applicationSet=${encodeURIComponent(set.id)}${hash}`;
+  return localizedHref(`application.html?applicationSet=${encodeURIComponent(set.id)}${hash}`);
 }
 
 function renderMetrics() {
@@ -98,11 +117,11 @@ function renderNextStep() {
   if (!title || !copy || !action || !stage || !attention) return;
 
   if (hubState.errors.applications) {
-    title.textContent = "Your application records are temporarily unavailable";
-    copy.textContent = "Your saved work has not been changed. Try the application workspace again in a moment.";
-    action.textContent = "Try application workspace";
-    stage.textContent = "Unavailable";
-    attention.textContent = "Reconnect to application records";
+    title.textContent = ui("Your application records are temporarily unavailable");
+    copy.textContent = ui("Your saved work has not been changed. Try the application workspace again in a moment.");
+    action.textContent = ui("Try application workspace");
+    stage.textContent = ui("Unavailable");
+    attention.textContent = ui("Reconnect to application records");
     return;
   }
 
@@ -110,22 +129,22 @@ function renderNextStep() {
   const activeChoices = activeSets.flatMap(set => Array.isArray(set.choices) ? set.choices : [])
     .filter(choice => choice?.status !== "removed");
   if (!activeSets.length || !activeChoices.length) {
-    title.textContent = "Choose your first school and program";
-    copy.textContent = "Add one exact program to start the application. You can review requirements before anything is sent.";
-    action.textContent = "Browse and add a program";
-    action.href = "programs.html";
-    stage.textContent = "Not started";
-    attention.textContent = "Select a program";
+    title.textContent = ui("Choose your first school and program");
+    copy.textContent = ui("Add one exact program to start the application. You can review requirements before anything is sent.");
+    action.textContent = ui("Browse and add a program");
+    action.href = localizedHref("programs.html");
+    stage.textContent = ui("Not started");
+    attention.textContent = ui("Select a program");
     return;
   }
 
   const current = activeSets.find(set => set?.status === "draft") || activeSets[0];
-  title.textContent = "Continue your current application";
-  copy.textContent = `${activeChoices.length} active ${activeChoices.length === 1 ? "choice" : "choices"}. Review the next required section before payment or submission.`;
-  action.textContent = "Continue application";
+  title.textContent = ui("Continue your current application");
+  copy.textContent = `${format(activeChoices.length === 1 ? "{count} active choice" : "{count} active choices", { count: activeChoices.length })}. ${ui("Review the next required section before payment or submission.")}`;
+  action.textContent = ui("Continue application");
   action.href = applicationSetHref(current);
-  stage.textContent = textOrFallback(current.status, "In progress").replaceAll("_", " ");
-  attention.textContent = current.cuacId ? "Review required information" : "Complete setup for a CUAC reference";
+  stage.textContent = localizedStatus(current.status);
+  attention.textContent = current.cuacId ? ui("Review required information") : ui("Complete setup for a CUAC reference");
 }
 
 function renderApplications() {
@@ -136,21 +155,21 @@ function renderApplications() {
     return;
   }
   if (!hubState.applicationSets.length) {
-    root.innerHTML = '<div class="hub-api-empty"><h3>No application set yet</h3><p>Open the application workspace to create a named set and add exact program choices.</p></div>';
+    root.innerHTML = `<div class="hub-api-empty"><h3>${escapeHtml(ui("No application set yet"))}</h3><p>${escapeHtml(ui("Open the application workspace to create a named set and add exact program choices."))}</p></div>`;
     return;
   }
   root.innerHTML = `<ol class="hub-api-application-list">${hubState.applicationSets.slice(0, 5).map(set => {
     const choices = Array.isArray(set.choices) ? set.choices.filter(choice => choice?.status !== "removed") : [];
-    return `<li class="hub-api-application"><a class="hub-api-application-link" href="${applicationSetHref(set)}" aria-label="Open ${escapeHtml(textOrFallback(set.name, "unnamed application"))}">
+    return `<li class="hub-api-application"><a class="hub-api-application-link" href="${applicationSetHref(set)}" aria-label="${escapeHtml(`${ui("Open")} ${textOrFallback(set.name, "unnamed application")}`)}">
       <div>
-        <span class="hub-api-status">${escapeHtml(textOrFallback(set.status, "unknown"))}</span>
+        <span class="hub-api-status">${escapeHtml(localizedStatus(set.status, "Unknown"))}</span>
         <h3>${escapeHtml(textOrFallback(set.name, "Unnamed application set"))}</h3>
         <p>${escapeHtml(set.cuacId || "CUAC reference not issued")}</p>
       </div>
       <div class="hub-api-application-meta">
-        <span>${choices.length} ${choices.length === 1 ? "choice" : "choices"}</span>
-        <span>${escapeHtml(set.targetIntake || "No target intake")}</span>
-        <span>Revision ${escapeHtml(Number.isInteger(set.revision) ? set.revision : "-")}</span>
+        <span>${escapeHtml(format(choices.length === 1 ? "{count} choice" : "{count} choices", { count: choices.length }))}</span>
+        <span>${escapeHtml(localizedIntake(set.targetIntake))}</span>
+        <span>${escapeHtml(format("Revision {revision}", { revision: Number.isInteger(set.revision) ? set.revision : "-" }))}</span>
       </div>
     </a></li>`;
   }).join("")}</ol>`;
@@ -164,16 +183,17 @@ function renderNotifications() {
     return;
   }
   if (!hubState.notifications.length) {
-    root.innerHTML = '<div class="hub-api-empty"><h3>No account events</h3><p>Server-created application, billing, document, and security notices will appear here.</p></div>';
+    root.innerHTML = `<div class="hub-api-empty"><h3>${escapeHtml(ui("No account events"))}</h3><p>${escapeHtml(ui("Server-created application, billing, document, and security notices will appear here."))}</p></div>`;
     return;
   }
   root.innerHTML = `<ol class="hub-api-notice-list">${hubState.notifications.slice(0, 4).map(item => {
     const href = safeActionPath(item.actionPath);
     return `<li class="hub-api-notice">
-      <div class="hub-api-notice-topline"><span>${escapeHtml(formatDate(item.occurredAt))}</span>${item.status === "unread" ? "<strong>Unread</strong>" : `<span>${escapeHtml(item.status)}</span>`}</div>
+      <div class="hub-api-notice-topline"><span>${escapeHtml(formatDate(item.occurredAt))}</span>${item.status === "unread" ? `<strong>${escapeHtml(ui("Unread"))}</strong>` : `<span>${escapeHtml(localizedStatus(item.status, "Unknown"))}</span>`}</div>
       <h3>${escapeHtml(textOrFallback(item.title, "Account event"))}</h3>
       <p>${escapeHtml(textOrFallback(item.body, "No event detail was provided."))}</p>
-      ${href ? `<a href="${escapeHtml(href)}">Open</a>` : ""}
+      ${hubLocale === "en" ? "" : `<span class="hub-api-source-language">${escapeHtml(ui("Original notification content"))}</span>`}
+      ${href ? `<a href="${escapeHtml(localizedHref(href))}">${escapeHtml(ui("Open"))}</a>` : ""}
     </li>`;
   }).join("")}</ol>`;
 }
@@ -187,17 +207,17 @@ function renderProfile() {
   }
   const profile = hubState.profile;
   if (!profile) {
-    root.innerHTML = '<div class="hub-api-empty"><h3>No profile record yet</h3><p>Open the applicant profile to add the information used by your application.</p></div>';
+    root.innerHTML = `<div class="hub-api-empty"><h3>${escapeHtml(ui("No profile record yet"))}</h3><p>${escapeHtml(ui("Open the applicant profile to add the information used by your application."))}</p></div>`;
     return;
   }
   root.innerHTML = `<dl class="hub-api-profile">
-    <div><dt>Display name</dt><dd>${escapeHtml(textOrFallback(profile.displayName))}</dd></div>
-    <div><dt>Citizenship</dt><dd>${escapeHtml(textOrFallback(profile.citizenshipCountry))}</dd></div>
-    <div><dt>Target degree</dt><dd>${escapeHtml(textOrFallback(profile.targetDegreeLevel))}</dd></div>
-    <div><dt>Target intake</dt><dd>${escapeHtml(textOrFallback(profile.targetIntake))}</dd></div>
+    <div><dt>${escapeHtml(ui("Display name"))}</dt><dd>${escapeHtml(textOrFallback(profile.displayName))}</dd></div>
+    <div><dt>${escapeHtml(ui("Citizenship"))}</dt><dd>${escapeHtml(textOrFallback(profile.citizenshipCountry))}</dd></div>
+    <div><dt>${escapeHtml(ui("Target degree"))}</dt><dd>${escapeHtml(localizedStatus(profile.targetDegreeLevel, "Not recorded"))}</dd></div>
+    <div><dt>${escapeHtml(ui("Target intake"))}</dt><dd>${escapeHtml(localizedIntake(profile.targetIntake, "Not recorded"))}</dd></div>
   </dl>`;
   const greeting = document.querySelector("[data-hub-greeting]");
-  if (greeting && profile.displayName) greeting.textContent = `${profile.displayName}'s application hub`;
+  if (greeting && profile.displayName) greeting.textContent = format("{name}'s application hub", { name: profile.displayName });
 }
 
 function renderHub() {
@@ -233,7 +253,7 @@ async function loadHub() {
   results.forEach((result, index) => {
     const key = requests[index][0];
     if (result.status === "rejected") {
-      hubState.errors[key] = result.reason?.message || "This account service is unavailable.";
+      hubState.errors[key] = result.reason?.message || ui("This account service is unavailable.");
       return;
     }
     if (key === "profile") hubState.profile = isRecord(result.value) ? result.value : null;

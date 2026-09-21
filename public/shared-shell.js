@@ -818,10 +818,10 @@
       <div class="top-note">${note}${noteDetail ? `<span>&nbsp;${noteDetail}</span>` : ""}</div>
       <header class="nav ${workspace ? `nav-workspace nav-workspace-${workspace.kind}` : ""}">
         ${brand()}
-        <nav class="nav-links" aria-label="${workspace?.label || (localizedNav ? "主导航" : "Primary")}">
+        <nav class="nav-links" aria-label="${workspace?.kind === "student" ? escapeHTML(shellText("studentWorkspace", "Student workspace")) : workspace?.label || (localizedNav ? "主导航" : escapeHTML(shellText("primaryNav", "Primary navigation")))}">
           ${headerNavItems.map((item) => `<a class="${item.id === active ? "active" : ""}" href="${item.href}">${item.label}</a>`).join("")}
         </nav>
-        <div class="nav-actions" aria-label="Account actions">
+        <div class="nav-actions" aria-label="${localizedNav ? "账号操作" : escapeHTML(shellText("accountActions", "Account actions"))}">
           ${renderLanguageSelector()}
           <a class="nav-icon" href="${localizedSearchHref()}" aria-label="${localizedNav ? "全站搜索" : escapeHTML(shellText("search", "Search CUAC"))}">${icons.search}</a>
           ${showSavedShortcut ? renderSavedShortcut() : ""}
@@ -837,10 +837,10 @@
     if (workspace) {
       target.outerHTML = `
         <footer class="footer footer-workspace">
-          <div>${brand()}<span>${workspace.kind === "student" ? "Your China application workspace" : workspace.kind === "school" ? "当前学校租户内的招生工作区" : "受控、可审计的 CUAC 运营工作区"}</span></div>
+          <div>${brand()}<span>${workspace.kind === "student" ? escapeHTML(shellText("studentWorkspaceTagline", "Your China application workspace")) : workspace.kind === "school" ? "当前学校租户内的招生工作区" : "受控、可审计的 CUAC 运营工作区"}</span></div>
           <div class="footer-legal">
-            <a href="privacy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "隐私与数据边界" : "Privacy and data use"}</a>
-            <a href="home-v3.html#cuac-hub">${localized ? "获取支持" : "Get support"}</a>
+            <a href="${localized ? "privacy.html?lang=zh-CN" : localizedPageHref("privacy.html")}">${localized ? "隐私与数据边界" : escapeHTML(shellText("privacyData", "Privacy and data use"))}</a>
+            <a href="${localized ? "home-v3.html#cuac-hub" : localizedPageHref("home-v3.html#cuac-hub")}">${localized ? "获取支持" : escapeHTML(shellText("getSupport", "Get support"))}</a>
           </div>
         </footer>
       `;

@@ -29,7 +29,7 @@ test("shared student account navigation localizes labels and preserves the selec
     source("public/i18n-runtime.js"),
     source("public/shared-shell.js"),
   ]);
-  for (const key of ["accountChecking", "openAccountMenu", "savedList", "signOut", "workspace.studentInfo", "workspace.notifications", "workspace.preferences"]) {
+  for (const key of ["accountChecking", "openAccountMenu", "savedList", "signOut", "studentWorkspaceTagline", "privacyData", "getSupport", "workspace.studentInfo", "workspace.notifications", "workspace.preferences"]) {
     assert.match(shell, new RegExp(`shellText\\("${key.replaceAll(".", "\\.")}"`));
   }
   for (const locale of ["vi", "th", "id", "ms", "ar"]) {
