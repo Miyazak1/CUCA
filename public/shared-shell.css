@@ -353,6 +353,26 @@ body {
   color: var(--text-muted);
 }
 
+.language-selector select {
+  min-height: 36px;
+  max-width: 150px;
+  padding: 0 28px 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-xs);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+[dir="rtl"] .language-selector select { padding: 0 10px 0 28px; }
+[dir="rtl"] .nav,
+[dir="rtl"] .footer,
+[dir="rtl"] main { text-align: right; }
+[dir="rtl"] .nav-actions { justify-self: start; }
+[dir="rtl"] .brand { justify-self: end; }
+
 .account-popover-head .account-email {
   display: block;
   max-width: 215px;

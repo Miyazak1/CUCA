@@ -29,7 +29,7 @@
           const addition = chip.dataset.searchChip;
           syncPlannerValue(addition);
           plannerInputs[0]?.dispatchEvent(new Event("input", { bubbles: true }));
-          if (plannerFeedback) plannerFeedback.textContent = "Press Enter or Search to view matching published catalog results.";
+          if (plannerFeedback) plannerFeedback.textContent = window.CUACI18n?.t("home.feedback.search") || "Press Enter or Search to view matching published catalog results.";
           plannerInputs[0]?.focus();
         });
       });
@@ -38,7 +38,7 @@
         event.preventDefault();
         const query = plannerInputs[0]?.value.trim() || "";
         if (!query) {
-          if (plannerFeedback) plannerFeedback.textContent = "Enter a program, university, scholarship, or city.";
+          if (plannerFeedback) plannerFeedback.textContent = window.CUACI18n?.t("home.feedback.empty") || "Enter a program, university, scholarship, or city.";
           plannerInputs[0]?.focus();
           return;
         }
@@ -134,5 +134,5 @@
         `).join(""));
       }
 
-      renderHomeSummary();
+      if (!window.CUACI18n || window.CUACI18n.locale === "en") renderHomeSummary();
 

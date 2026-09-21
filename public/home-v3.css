@@ -1184,3 +1184,6 @@
         }
       }
 
+.localized-categories .cat { min-height: 128px; align-content: center; }
+.localized-boundary { grid-template-columns: 1fr; }
+[dir="rtl"] .planner button { right: auto; left: 10px; }

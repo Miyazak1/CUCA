@@ -12,7 +12,7 @@ test("released surfaces defer Agent UI and expose deterministic site search", as
   ]);
   assert.match(shell, /AGENT_PRODUCT_SURFACES_ENABLED = false/);
   assert.match(shell, /href="search\.html"/);
-  assert.match(homeHtml, /<body data-agent-mode="off">/);
+  assert.match(homeHtml, /<body\b[^>]*\bdata-agent-mode="off"[^>]*>/);
   assert.match(homeHtml, /data-site-search-form/);
   assert.doesNotMatch(homeHtml, /data-planner-form|data-agent-prompt/);
   assert.match(homeScript, /search\.html\?q=/);

@@ -621,7 +621,22 @@
   }
 
   function brand() {
-    return '<a class="brand" href="home-v3.html"><span class="logo">CU</span><span>CUAC</span></a>';
+    const locale = window.CUACI18n?.locale;
+    const href = locale && locale !== "en" ? `home-v3.html?lang=${encodeURIComponent(locale)}` : "home-v3.html";
+    return `<a class="brand" href="${href}"><span class="logo">CU</span><span>CUAC</span></a>`;
+  }
+
+  function shellText(key, fallback) {
+    return window.CUACI18n?.t(`shell.${key}`, fallback) || fallback;
+  }
+
+  function renderLanguageSelector() {
+    const i18n = window.CUACI18n;
+    if (!i18n || i18n.readyLocales.length < 2) return "";
+    return `<label class="language-selector"><span class="sr-only">${escapeHTML(shellText("language", "Language"))}</span>
+      <select data-cuac-language aria-label="${escapeHTML(shellText("language", "Language"))}">
+        ${i18n.readyLocales.map(locale => `<option value="${escapeHTML(locale)}" ${locale === i18n.locale ? "selected" : ""}>${escapeHTML(i18n.metadata[locale].name)}</option>`).join("")}
+      </select></label>`;
   }
 
   let authNavigationPending = false;
@@ -681,7 +696,7 @@
       return `
         <button class="sign-in-pill" type="button" data-cuac-sign-in-trigger>
           ${icons.account}
-          <span>${localized ? "登录" : "Sign in"}</span>
+          <span>${localized ? "登录" : escapeHTML(shellText("signIn", "Sign in"))}</span>
         </button>
       `;
     }
@@ -768,8 +783,8 @@
   function renderHeader(target) {
     const workspace = workspaceNavigation();
     const active = workspace?.active || normalizeActiveNav(target.dataset.active || "home");
-    const note = target.dataset.note || "China admissions 2026:";
-    const noteDetail = target.dataset.noteDetail || "";
+    const note = window.CUACI18n ? shellText("note", target.dataset.note || "China admissions 2026:") : target.dataset.note || "China admissions 2026:";
+    const noteDetail = window.CUACI18n ? shellText("noteDetail", target.dataset.noteDetail || "") : target.dataset.noteDetail || "";
     const shellContext = getShellContext(target);
     const showSavedShortcut = shouldShowSavedShortcut(shellContext);
     const localizedNav = ["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) || ["school", "ops"].includes(document.body.dataset.agentMode || "");
@@ -779,7 +794,7 @@
         ? "ops-admin-api.html"
         : "hub-api.html";
     const headerNavItems = workspace?.items || (localizedNav ? roleNavItems : navItems).map((item) => (
-      item.id === "hub" ? { ...item, href: workspaceHref } : item
+      { ...item, label: shellText(`nav.${item.id}`, item.label), ...(item.id === "home" && window.CUACI18n?.locale !== "en" ? { href: `home-v3.html?lang=${encodeURIComponent(window.CUACI18n.locale)}` } : {}), ...(item.id === "hub" ? { href: workspaceHref } : {}) }
     ));
     target.outerHTML = `
       <div class="top-note">${note}${noteDetail ? `<span>&nbsp;${noteDetail}</span>` : ""}</div>
@@ -789,7 +804,8 @@
           ${headerNavItems.map((item) => `<a class="${item.id === active ? "active" : ""}" href="${item.href}">${item.label}</a>`).join("")}
         </nav>
         <div class="nav-actions" aria-label="Account actions">
-          <a class="nav-icon" href="search.html" aria-label="${localizedNav ? "全站搜索" : "Search CUAC"}">${icons.search}</a>
+          ${renderLanguageSelector()}
+          <a class="nav-icon" href="search.html" aria-label="${localizedNav ? "全站搜索" : escapeHTML(shellText("search", "Search CUAC"))}">${icons.search}</a>
           ${showSavedShortcut ? renderSavedShortcut() : ""}
           ${renderAccountMenu(target)}
         </div>
@@ -812,16 +828,18 @@
       `;
       return;
     }
-    const groups = localized ? footerGroupsZh : footerGroups;
+    const translatedPublicShell = Boolean(window.CUACI18n && window.CUACI18n.locale !== "en");
+    const groups = localized ? footerGroupsZh : translatedPublicShell ? [] : footerGroups;
+    const englishOnly = translatedPublicShell ? ` (${escapeHTML(shellText("englishOnly", "English version"))})` : "";
     target.outerHTML = `
       <footer class="footer">
         <div class="footer-grid">
           <div>
             ${brand()}
-            <p>${localized ? "面向国际学生申请中国高校的招生搜索与管理平台。" : "China admissions search for international students applying to Chinese universities."}</p>
+            <p>${localized ? "面向国际学生申请中国高校的招生搜索与管理平台。" : escapeHTML(shellText("tagline", "China admissions search for international students applying to Chinese universities."))}</p>
             <div class="footer-actions">
-              <a href="home-v3.html#cuac-hub">${localized ? "联系我们" : "Contact us"}</a>
-              <a href="home-v3.html#cuac-hub">${localized ? "需要帮助？" : "Need help?"}</a>
+              <a href="home-v3.html#cuac-hub">${localized ? "联系我们" : escapeHTML(shellText("contact", "Contact us"))}</a>
+              <a href="home-v3.html#cuac-hub">${localized ? "需要帮助？" : escapeHTML(shellText("help", "Need help?"))}</a>
             </div>
             <div class="socials" aria-label="Social links">
               <button type="button" aria-label="TikTok">${icons.tiktok}</button>
@@ -844,9 +862,9 @@
         <div class="footer-bottom">
           <span>© CUAC 2026</span>
           <div class="footer-legal">
-            <a href="cookies.html${localized ? "?lang=zh-CN" : ""}">${localized ? "Cookie 说明" : "Cookie notice"}</a>
-            <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "数据与来源政策" : "Data and source policy"}</a>
-            <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "招生透明政策" : "Admissions clarity policy"}</a>
+            <a href="cookies.html${localized ? "?lang=zh-CN" : ""}">${localized ? "Cookie 说明" : `${escapeHTML(shellText("cookies", "Cookie notice"))}${englishOnly}`}</a>
+            <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "数据与来源政策" : `${escapeHTML(shellText("dataPolicy", "Data and source policy"))}${englishOnly}`}</a>
+            <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "招生透明政策" : `${escapeHTML(shellText("clarity", "Admissions clarity policy"))}${englishOnly}`}</a>
           </div>
         </div>
       </footer>
@@ -958,8 +976,9 @@
     const navActions = header?.querySelector(".nav-actions");
     if (!header || !navActions) return;
     const shellContext = getShellContext();
-    navActions.innerHTML = `${shouldShowSavedShortcut(shellContext) ? renderSavedShortcut() : ""}${renderAccountMenu({ dataset: {} })}`;
+    navActions.innerHTML = `${renderLanguageSelector()}<a class="nav-icon" href="search.html" aria-label="${escapeHTML(shellText("search", "Search CUAC"))}">${icons.search}</a>${shouldShowSavedShortcut(shellContext) ? renderSavedShortcut() : ""}${renderAccountMenu({ dataset: {} })}`;
     initAccountMenus();
+    initLanguageSelectors();
   }
 
   async function loadRuntimeAuthState() {
@@ -1914,12 +1933,19 @@
     });
   }
 
+  function initLanguageSelectors() {
+    document.querySelectorAll("[data-cuac-language]").forEach(select => select.addEventListener("change", () => {
+      window.CUACI18n?.changeLocale(select.value);
+    }));
+  }
+
   document.querySelectorAll("[data-cuac-header]").forEach(renderHeader);
   document.querySelectorAll("[data-cuac-footer]").forEach(renderFooter);
   window.CUAC = { ...(window.CUAC || {}), requireSignedIn, requireStudentSignedIn, requireStudentSignedInReady, showSignInRequired, dataAttributeSelector, isSignedIn: () => getShellContext().authState === "signed-in", isStudentSignedIn, authReady: () => runtimeAuthReadyPromise };
   initProtectedStudentLinks();
   initAuthNavigationControls();
   initAccountMenus();
+  initLanguageSelectors();
   const runtimeAuthReadyPromise = loadRuntimeAuthState();
   void runtimeAuthReadyPromise.finally(initAgentShell);
   window.CUAC = { ...(window.CUAC || {}), reveal: initPageReveal };
