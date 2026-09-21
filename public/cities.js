@@ -4,6 +4,10 @@
 };
 
 const cities = [];
+const cityI18n = window.CUACCitiesI18n;
+const cityUi = (value) => cityI18n?.ui(value) || value;
+const cityHref = (value) => cityI18n?.href(value) || value;
+const cityNumber = (value) => Number(value).toLocaleString(window.CUACI18n?.locale || "en");
 
 let activeCity = "hangzhou";
 const escapeCatalogHtml = window.CuacCatalogList.escapeHtml;
@@ -62,7 +66,7 @@ function normalizeLevel(value) {
 
 function money(value) {
   const amount = Number(value);
-  return Number.isFinite(amount) && amount > 0 ? `RMB ${amount.toLocaleString("en-US")}` : "Not published";
+  return Number.isFinite(amount) && amount > 0 ? `RMB ${cityNumber(amount)}` : cityUi("Not published");
 }
 
 function currentCity() {
@@ -190,15 +194,15 @@ function renderFeature() {
       </div>
       <div class="story-facts">
         <div><strong>${money(cityMonthlyCost(city))}</strong><span>monthly living estimate</span></div>
-        <div><strong>${cityEnglishRouteCount(city)}</strong><span>English-taught routes</span></div>
-        <div><strong>${cityScholarshipCount(city)}</strong><span>scholarship routes</span></div>
-        <div><strong>${citySchoolCount(city)}</strong><span>referenced schools</span></div>
+        <div><strong>${cityNumber(cityEnglishRouteCount(city))}</strong><span>${cityUi("English-taught routes")}</span></div>
+        <div><strong>${cityNumber(cityScholarshipCount(city))}</strong><span>${cityUi("scholarship routes")}</span></div>
+        <div><strong>${cityNumber(citySchoolCount(city))}</strong><span>${cityUi("referenced schools")}</span></div>
       </div>
       <div class="story-actions">
-        <a class="city-story-action city-story-main" href="city-detail.html?city=${encodeURIComponent(citySlug(city))}">View city</a>
-        <a class="city-story-action" href="programs.html?city=${encodeURIComponent(citySlug(city))}">Programs</a>
-        <a class="city-story-action" href="universities.html?city=${encodeURIComponent(citySlug(city))}">Universities</a>
-        <a class="city-story-action" href="scholarships.html?city=${encodeURIComponent(citySlug(city))}">Scholarships</a>
+        <a class="city-story-action city-story-main" href="${cityHref(`city-detail.html?city=${encodeURIComponent(citySlug(city))}`)}">${cityUi("View city")}</a>
+        <a class="city-story-action" href="${cityHref(`programs.html?city=${encodeURIComponent(citySlug(city))}`)}">${cityUi("Programs")}</a>
+        <a class="city-story-action" href="${cityHref(`universities.html?city=${encodeURIComponent(citySlug(city))}`)}">${cityUi("Universities")}</a>
+        <a class="city-story-action" href="${cityHref(`scholarships.html?city=${encodeURIComponent(citySlug(city))}`)}">${cityUi("Scholarships")}</a>
       </div>
     </article>
   `;
@@ -215,13 +219,13 @@ function renderMatrix() {
     <table class="matrix-table">
       <thead>
         <tr>
-          <th>City</th>
-          <th>Monthly cost</th>
-          <th>Schools</th>
-          <th>English routes</th>
-          <th>Scholarships</th>
-          <th>Programs</th>
-          <th>Next</th>
+          <th>${cityUi("City")}</th>
+          <th>${cityUi("Monthly cost")}</th>
+          <th>${cityUi("Schools")}</th>
+          <th>${cityUi("English routes")}</th>
+          <th>${cityUi("Scholarships")}</th>
+          <th>${cityUi("Programs")}</th>
+          <th>${cityUi("Next")}</th>
         </tr>
       </thead>
       <tbody>
@@ -233,7 +237,7 @@ function renderMatrix() {
             <td>${cityEnglishRouteCount(city)}<div class="signal">program routes</div></td>
             <td>${cityScholarshipCount(city)}<div class="signal">funding routes</div></td>
             <td>${cityProgramCount(city)}<div class="signal">catalog snapshot</div></td>
-            <td><a class="matrix-action" href="programs.html?city=${encodeURIComponent(citySlug(city))}">Programs</a></td>
+            <td><a class="matrix-action" href="${cityHref(`programs.html?city=${encodeURIComponent(citySlug(city))}`)}">${cityUi("Programs")}</a></td>
           </tr>
         `).join("")}
       </tbody>
@@ -249,7 +253,7 @@ function renderNeeds() {
     <button class="need-card ${activeNeed === String(tag).toLowerCase() ? "active" : ""}" type="button" data-need="${String(tag).toLowerCase()}">
       <span class="need-icon">${cityIcons.cost}</span>
       <strong>${escapeCatalogHtml(tag)}</strong>
-      <span>Published city tag</span>
+      <span>${cityUi("Published city tag")}</span>
     </button>
   `).join("");
 }
@@ -263,7 +267,7 @@ function renderActiveChips() {
   if (activeNeed !== "all") chips.push(["need", activeNeed]);
   document.querySelector("#activeChips").innerHTML = chips.length
     ? chips.map(([key, label]) => `<button class="filter-chip active" type="button" data-clear-city-filter="${key}">${escapeCatalogHtml(label)} x</button>`).join("")
-    : '<span class="filter-chip">No city filters selected</span>';
+    : `<span class="filter-chip">${cityUi("No city filters selected")}</span>`;
 }
 
 function syncCityControls() {
@@ -275,10 +279,10 @@ function renderCityCards() {
   const list = filteredCities();
   document.querySelector("#cityCount").textContent = list.length;
   document.querySelector("#cityContext").textContent = activeNeed === "all"
-    ? "Published city guides with source-backed costs and catalog reference snapshots."
-    : `Filtered by ${activeNeed}.`;
+    ? cityUi("Published city guides with source-backed costs and catalog reference snapshots.")
+    : `${cityUi("Filtered by")} ${activeNeed}.`;
   document.querySelector("#cityGrid").innerHTML = list.map((city) => {
-    const detailHref = `city-detail.html?city=${encodeURIComponent(citySlug(city))}`;
+    const detailHref = cityHref(`city-detail.html?city=${encodeURIComponent(citySlug(city))}`);
     return `
     <article class="city-card" role="link" tabindex="0" data-city-card data-detail-href="${detailHref}" aria-label="View ${escapeCatalogHtml(cityName(city))} city guide">
       <div class="city-media">
@@ -292,8 +296,8 @@ function renderCityCards() {
       <div class="city-tags">${(city.tags || []).slice(0, 3).map((tag) => `<span>${escapeCatalogHtml(tag)}</span>`).join("")}</div>
       <div class="city-stats">
         <span><b>${money(cityMonthlyCost(city))}</b>monthly</span>
-        <span><b>${cityProgramCount(city)}</b>programs</span>
-        <span><b>${cityEnglishRouteCount(city)}</b>English</span>
+        <span><b>${cityNumber(cityProgramCount(city))}</b>${cityUi("programs")}</span>
+        <span><b>${cityNumber(cityEnglishRouteCount(city))}</b>${cityUi("English")}</span>
       </div>
     </article>
   `;
@@ -321,7 +325,7 @@ function renderBudget() {
   if (!entries.length) return;
   const total = entries.reduce((sum, [, value]) => sum + value, 0);
   document.querySelector("#budgetCity").textContent = cityName(city);
-  document.querySelector("#budgetTotal").textContent = total ? money(total) : "Pending";
+  document.querySelector("#budgetTotal").textContent = total ? money(total) : cityUi("Pending");
   document.querySelector("#budgetIntro").textContent = `Start with ${cityName(city)}, then switch lifestyle level to see how accommodation, food, transport, and personal spending change.`;
   document.querySelector("#budgetBars").innerHTML = entries.map(([label, value]) => `
     <div class="budget-row">
@@ -338,8 +342,8 @@ function renderBudget() {
 function renderAll() {
   if (!cities.length) {
     document.querySelector("#cityCount").textContent = "0";
-    document.querySelector("#cityContext").textContent = "No published city guides are available.";
-    window.CuacCatalogList.listState(document.querySelector("#cityGrid"), "error", { noun: "cities", message: "No published city guides are available." });
+    document.querySelector("#cityContext").textContent = cityUi("No published city guides are available.");
+    window.CuacCatalogList.listState(document.querySelector("#cityGrid"), "error", { noun: cityUi("cities"), message: cityUi("No published city guides are available.") });
     document.querySelector("#cityRail").innerHTML = "";
     document.querySelector("#featureStory").innerHTML = "";
     document.querySelector("#fitMatrix").innerHTML = "";
@@ -549,13 +553,13 @@ if ("IntersectionObserver" in window && !document.body.classList.contains("motio
   revealItems.forEach((item) => item.classList.add("visible"));
 }
 
-window.CuacCatalogList.listState(document.querySelector("#cityGrid"), "loading", { noun: "cities" });
+window.CuacCatalogList.listState(document.querySelector("#cityGrid"), "loading", { noun: cityUi("cities") });
 
 async function loadCities() {
   const grid = document.querySelector("#cityGrid");
-  window.CuacCatalogList.listState(grid, "loading", { noun: "cities" });
+  window.CuacCatalogList.listState(grid, "loading", { noun: cityUi("cities") });
   document.querySelector("#cityCount").textContent = "-";
-  document.querySelector("#cityContext").textContent = "Reading the current published catalog.";
+  document.querySelector("#cityContext").textContent = cityUi("Reading the current published catalog.");
   try {
     const records = await window.CuacCatalogList.loadAll("cities", { limit: 100 });
     cities.splice(0, cities.length, ...records);

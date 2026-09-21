@@ -82,6 +82,25 @@ test("public catalog lists share bounded launch locales and preserve language ac
   for (const locale of ["vi", "th", "id", "ms", "ar"]) assert.match(catalogI18n, new RegExp(`\\b${locale}: \\{`));
 });
 
+test("student city discovery is multilingual while school and site administration stay Chinese-only", async () => {
+  const [cities, cityDetail, cityMessages, schoolPortal, schoolSettings, opsAdmin] = await Promise.all([
+    source("public/cities.html"),
+    source("public/city-detail.html"),
+    source("public/cities-i18n.js"),
+    source("public/school-portal.html"),
+    source("public/school-settings.html"),
+    source("public/ops-admin.html"),
+  ]);
+  for (const html of [cities, cityDetail]) assert.match(html, /data-i18n-locales="en,vi,th,id,ms,ar"/);
+  for (const html of [schoolPortal, schoolSettings, opsAdmin]) assert.doesNotMatch(html, /data-i18n-locales=/);
+  const cityScripts = [...cities.matchAll(/<script src="([^"]+)"/g)].map(match => match[1].split("?")[0]);
+  assert.ok(cityScripts.indexOf("i18n-runtime.js") < cityScripts.indexOf("cities-i18n.js"));
+  assert.ok(cityScripts.indexOf("cities-i18n.js") < cityScripts.indexOf("shared-shell.js"));
+  for (const marker of ["Thành phố", "เมือง", "Kota", "Bandar", "المدن"]) assert.match(cityMessages, new RegExp(marker));
+  assert.match(cityMessages, /url\.searchParams\.set\("lang", i18n\.locale\)/);
+  assert.match(cityMessages, /MutationObserver/);
+});
+
 test("catalog control translations keep dynamic filters and card status labels aligned", async () => {
   const script = await source("public/catalog-list-i18n.js");
   const expectedSortLabels = {
