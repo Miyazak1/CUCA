@@ -1,14 +1,18 @@
 const detailRoot = document.querySelector("[data-catalog-detail-root]");
 const detailType = document.body.dataset.catalogDetailPage;
 const query = new URLSearchParams(location.search);
+const detailI18n = window.CUACCatalogDetailI18n;
+const detailUi = (english) => detailI18n?.ui(english) || english;
+const detailHref = (href) => detailI18n?.href(href) || href;
+const detailLocale = detailI18n?.locale || "en";
 
 const DETAIL_CONFIG = {
   program: {
     queryKey: "program",
     collection: "programs",
     backHref: "programs.html",
-    backLabel: "Back to programs",
-    typeLabel: "Program record",
+    backLabel: detailUi("Back to programs"),
+    typeLabel: detailUi("Program record"),
     icon: "file.svg",
     code: "PR",
     uuid: true,
@@ -17,8 +21,8 @@ const DETAIL_CONFIG = {
     queryKey: "university",
     collection: "schools",
     backHref: "universities.html",
-    backLabel: "Back to universities",
-    typeLabel: "University record",
+    backLabel: detailUi("Back to universities"),
+    typeLabel: detailUi("University record"),
     icon: "window.svg",
     code: "UN",
     uuid: true,
@@ -27,8 +31,8 @@ const DETAIL_CONFIG = {
     queryKey: "scholarship",
     collection: "scholarships",
     backHref: "scholarships.html",
-    backLabel: "Back to scholarships",
-    typeLabel: "Scholarship record",
+    backLabel: detailUi("Back to scholarships"),
+    typeLabel: detailUi("Scholarship record"),
     icon: "file.svg",
     code: "SC",
     uuid: true,
@@ -110,26 +114,26 @@ function titleCase(value) {
     .replace(/\b\w/g, (character) => character.toUpperCase());
 }
 
-function formatDate(value, fallback = "Not provided") {
+function formatDate(value, fallback = detailUi("Not provided")) {
   if (!value) return fallback;
   const date = new Date(value);
   if (!Number.isFinite(date.valueOf())) return fallback;
-  return new Intl.DateTimeFormat("en", { year: "numeric", month: "short", day: "numeric" }).format(date);
+  return new Intl.DateTimeFormat(detailLocale, { year: "numeric", month: "short", day: "numeric" }).format(date);
 }
 
-function formatMoney(record, fallback = "Not provided") {
+function formatMoney(record, fallback = detailUi("Not provided")) {
   if (cleanText(record.displayTuition)) return cleanText(record.displayTuition);
   if (cleanText(record.tuitionText)) return cleanText(record.tuitionText);
   if (Number.isFinite(record.tuitionAmount)) {
     const currency = cleanText(record.tuitionCurrency) || "CNY";
     const period = cleanText(record.tuitionPeriod);
-    const amount = new Intl.NumberFormat("en").format(record.tuitionAmount);
+    const amount = new Intl.NumberFormat(detailLocale).format(record.tuitionAmount);
     return `${currency} ${amount}${period ? ` / ${period}` : ""}`;
   }
   return fallback;
 }
 
-function formatDuration(record, fallback = "Not provided") {
+function formatDuration(record, fallback = detailUi("Not provided")) {
   const years = Number(record.durationYears);
   const months = Number(record.durationMonths);
   if (Number.isInteger(years) && years > 0) return `${years} ${years === 1 ? "year" : "years"}`;
@@ -137,10 +141,10 @@ function formatDuration(record, fallback = "Not provided") {
   return fallback;
 }
 
-function displayValue(value, fallback = "Not provided") {
-  if (typeof value === "boolean") return value ? "Yes" : "No";
+function displayValue(value, fallback = detailUi("Not provided")) {
+  if (typeof value === "boolean") return detailUi(value ? "Yes" : "No");
   const text = cleanText(value);
-  return text || fallback;
+  return detailUi(text || fallback);
 }
 
 function hasDisplayValue(value) {
@@ -157,7 +161,7 @@ function statusLabel(value) {
     draft: "Draft source record",
     unknown: "Verification unknown",
   };
-  return labels[value] || labels.unknown;
+  return detailUi(labels[value] || labels.unknown);
 }
 
 function sourceClass(value) {
@@ -174,20 +178,20 @@ function renderDefinitions(rows, emptyMessage = "") {
   const visible = rows.filter((row) => row && cleanText(row[0]) && hasDisplayValue(row[1]));
   if (!visible.length) return emptyMessage ? renderEmpty(emptyMessage) : "";
   return `<dl class="catalog-definition-list">${visible.map(([label, value]) => `
-    <div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(displayValue(value))}</dd></div>
+    <div><dt>${escapeHtml(detailUi(label))}</dt><dd>${escapeHtml(displayValue(value))}</dd></div>
   `).join("")}</dl>`;
 }
 
 function renderEmpty(message) {
-  return `<p class="catalog-empty-inline">${escapeHtml(message)}</p>`;
+  return `<p class="catalog-empty-inline">${escapeHtml(detailUi(message))}</p>`;
 }
 
 function renderSection(kicker, title, content, description = "") {
   if (!content) return "";
   return `<section class="catalog-section">
     <header class="catalog-section-head">
-      <span class="catalog-section-kicker">${escapeHtml(kicker)}</span>
-      <h2>${escapeHtml(title)}</h2>
+      <span class="catalog-section-kicker">${escapeHtml(detailUi(kicker))}</span>
+      <h2>${escapeHtml(detailUi(title))}</h2>
       ${description ? `<p>${escapeHtml(description)}</p>` : ""}
     </header>
     ${content}
@@ -197,14 +201,14 @@ function renderSection(kicker, title, content, description = "") {
 function renderSource(record) {
   const status = record.sourceStatus || "unknown";
   const sourceHref = safeUrl(record.sourceUrl);
-  return `<aside class="catalog-evidence-rail ${sourceClass(status)}" aria-label="Source status">
+  return `<aside class="catalog-evidence-rail ${sourceClass(status)}" aria-label="${escapeHtml(detailUi("Source status"))}">
     <div class="catalog-evidence-heading">
       <span class="catalog-evidence-dot" aria-hidden="true"></span>
-      <div><span class="catalog-evidence-label">Source status</span>
+      <div><span class="catalog-evidence-label">${escapeHtml(detailUi("Source status"))}</span>
       <strong>${escapeHtml(statusLabel(status))}</strong></div>
     </div>
-    <p>${record.lastVerifiedAt ? `Last verified ${escapeHtml(formatDate(record.lastVerifiedAt))}.` : "This published record has not yet completed source verification."}</p>
-    ${sourceHref ? `<a class="catalog-source-link" href="${escapeHtml(sourceHref)}" target="_blank" rel="noopener noreferrer">${escapeHtml(record.sourceLabel || "Open source")}</a>` : `<p>${escapeHtml(record.sourceLabel || "No public source link provided")}</p>`}
+    <p>${record.lastVerifiedAt ? `${escapeHtml(detailUi("Last verified"))} ${escapeHtml(formatDate(record.lastVerifiedAt))}.` : escapeHtml(detailUi("This published record has not yet completed source verification."))}</p>
+    ${sourceHref ? `<a class="catalog-source-link" href="${escapeHtml(sourceHref)}" target="_blank" rel="noopener noreferrer">${escapeHtml(record.sourceLabel || detailUi("Open source"))}</a>` : `<p>${escapeHtml(record.sourceLabel || detailUi("No public source link provided"))}</p>`}
   </aside>`;
 }
 
@@ -212,7 +216,7 @@ function renderHero(record, options) {
   const localName = cleanText(options.localName);
   const intro = cleanText(options.intro);
   const context = (options.context || []).filter(Boolean);
-  const title = cleanText(options.title) || "Published catalog record";
+  const title = cleanText(options.title) || detailUi("Published catalog record");
   return `<section class="catalog-record-hero">
     <div class="catalog-record-code" aria-hidden="true"><span>${escapeHtml(config.code)}</span><small>CUAC</small></div>
     <div class="catalog-record-title">
@@ -229,8 +233,8 @@ function renderHero(record, options) {
 function renderStrip(items) {
   const values = items.filter((item) => item && cleanText(item[0]) && hasDisplayValue(item[1])).slice(0, 4);
   if (!values.length) return "";
-  return `<section class="catalog-record-strip" style="--summary-count:${values.length}" aria-label="Record summary">${values.map(([label, value]) => `
-    <article><span>${escapeHtml(label)}</span><strong>${escapeHtml(displayValue(value))}</strong></article>
+  return `<section class="catalog-record-strip" style="--summary-count:${values.length}" aria-label="${escapeHtml(detailUi("Record summary"))}">${values.map(([label, value]) => `
+    <article><span>${escapeHtml(detailUi(label))}</span><strong>${escapeHtml(displayValue(value))}</strong></article>
   `).join("")}</section>`;
 }
 
@@ -238,25 +242,25 @@ function renderActions(actions) {
   const visible = actions.map((action) => ({ ...action, href: safeUrl(action.href) })).filter((action) => action.href);
   if (!visible.length) return "";
   return `<div class="catalog-action-list">${visible.map((action, index) => `
-    <a class="catalog-action ${index === 0 ? "primary" : ""}" href="${escapeHtml(action.href)}" ${action.external ? 'target="_blank" rel="noopener noreferrer"' : ""}>
-      <span>${escapeHtml(action.label)}</span><span aria-hidden="true">&rarr;</span>
+    <a class="catalog-action ${index === 0 ? "primary" : ""}" href="${escapeHtml(detailHref(action.href))}" ${action.external ? 'target="_blank" rel="noopener noreferrer"' : ""}>
+      <span>${escapeHtml(detailUi(action.label))}</span><span aria-hidden="true">&rarr;</span>
     </a>
   `).join("")}</div>`;
 }
 
 function renderAside(record, heading, actions, note) {
-  const updateParts = [record.updatedAt ? formatDate(record.updatedAt) : "", Number.isSafeInteger(record.version) ? `Version ${record.version}` : ""].filter(Boolean);
+  const updateParts = [record.updatedAt ? formatDate(record.updatedAt) : "", Number.isSafeInteger(record.version) ? `${detailUi("Version")} ${record.version}` : ""].filter(Boolean);
   return `<aside class="catalog-aside">
     <section class="catalog-aside-panel">
-      <h2>${escapeHtml(heading)}</h2>
+      <h2>${escapeHtml(detailUi(heading))}</h2>
       ${renderActions(actions)}
     </section>
     <section class="catalog-aside-panel catalog-disclaimer">
-      <h3>Before you decide</h3>
+      <h3>${escapeHtml(detailUi("Before you decide"))}</h3>
       <p>${escapeHtml(note)}</p>
     </section>
     ${updateParts.length ? `<section class="catalog-aside-panel">
-      <h3>Record update</h3>
+      <h3>${escapeHtml(detailUi("Record update"))}</h3>
       <p>${escapeHtml(updateParts.join(". "))}.</p>
     </section>` : ""}
   </aside>`;
@@ -268,7 +272,7 @@ function renderLayout(main, aside) {
 
 function relationLink(file, key, record, label) {
   if (!record || !record.id) return "";
-  return `<a href="${escapeHtml(`${file}?${key}=${encodeURIComponent(record.id)}`)}">${escapeHtml(label || record.nameEn)}</a>`;
+  return `<a href="${escapeHtml(detailHref(`${file}?${key}=${encodeURIComponent(record.id)}`))}">${escapeHtml(label || record.nameEn)}</a>`;
 }
 
 function renderIntakes(intakes) {
@@ -308,8 +312,8 @@ function renderProgram(record, extras) {
   const school = record.school || null;
   const city = record.city || null;
   const schoolLink = relationLink("university-detail.html", "university", school, school && school.nameEn);
-  const cityLink = city ? `<a href="city-detail.html?city=${encodeURIComponent(city.slug)}">${escapeHtml(city.nameEn)}</a>` : "";
-  const context = [schoolLink, cityLink, record.degreeLevel ? escapeHtml(titleCase(record.degreeLevel)) : ""];
+  const cityLink = city ? `<a href="${escapeHtml(detailHref(`city-detail.html?city=${encodeURIComponent(city.slug)}`))}">${escapeHtml(city.nameEn)}</a>` : "";
+  const context = [schoolLink, cityLink, record.degreeLevel ? escapeHtml(detailUi(titleCase(record.degreeLevel))) : ""];
   const intakes = extras.intakes || [];
   const firstIntake = intakes[0];
   const admissionFacts = renderDefinitions([
@@ -357,7 +361,7 @@ function renderDeadlineItems(items) {
       <div class="catalog-item-copy">
         <strong>${escapeHtml(item.programNameEn || "Published program")}</strong>
         <p>${escapeHtml(formatDate(item.deadlineDate, item.deadlineLabel || "Deadline not provided"))}</p>
-        ${item.programId ? `<div class="catalog-item-meta"><a href="program-detail.html?program=${encodeURIComponent(item.programId)}">Open program record</a></div>` : ""}
+        ${item.programId ? `<div class="catalog-item-meta"><a href="${escapeHtml(detailHref(`program-detail.html?program=${encodeURIComponent(item.programId)}`))}">${escapeHtml(detailUi("Open program record"))}</a></div>` : ""}
       </div>
     </li>
   `).join("")}</ol>`;
@@ -365,7 +369,7 @@ function renderDeadlineItems(items) {
 
 function renderSchool(record) {
   const location = [record.cityZh || record.city, record.province, record.regionLabel || record.region].filter(Boolean).map(escapeHtml).join(", ");
-  const cityLink = record.citySlug ? `<a href="city-detail.html?city=${encodeURIComponent(record.citySlug)}">${escapeHtml(record.cityZh || record.city || "City record")}</a>` : "";
+  const cityLink = record.citySlug ? `<a href="${escapeHtml(detailHref(`city-detail.html?city=${encodeURIComponent(record.citySlug)}`))}">${escapeHtml(record.cityZh || record.city || "City record")}</a>` : "";
   const campusLabels = [...(textItems(record.subjectTags)), ...(textItems(record.languageTags)), ...(textItems(record.campusHighlights))];
   const nextDeadline = Array.isArray(record.upcomingDeadlines) ? record.upcomingDeadlines[0] : null;
   const main = [
@@ -397,7 +401,7 @@ function renderSchool(record) {
       : "",
     campusLabels.length ? renderSection("Campus context", "Source-backed tags and highlights", renderChips(campusLabels)) : "",
   ].join("");
-  return `${renderHero(record, { title: record.nameEn, localName: record.nameZh, context: [cityLink, escapeHtml(titleCase(record.schoolType)), escapeHtml(location)] })}
+  return `${renderHero(record, { title: record.nameEn, localName: record.nameZh, context: [cityLink, escapeHtml(detailUi(titleCase(record.schoolType))), escapeHtml(location)] })}
     ${renderStrip([
       ["Programs", record.programCount],
       ["English routes", record.englishProgramCount],
@@ -444,7 +448,7 @@ function renderTextList(items, emptyMessage, ordered = false) {
     <li class="${item.included === false ? "catalog-item-excluded" : ""}">
       <span class="catalog-item-label ${ordered ? "" : "catalog-item-bullet"}" aria-hidden="${ordered ? "false" : "true"}">${ordered ? String(index + 1).padStart(2, "0") : ""}</span>
       <div class="catalog-item-copy">
-        ${item.included !== null ? `<span class="catalog-item-state">${item.included ? "Included" : "Not included"}</span>` : ""}
+        ${item.included !== null ? `<span class="catalog-item-state">${escapeHtml(detailUi(item.included ? "Included" : "Not included"))}</span>` : ""}
         <strong>${escapeHtml(item.label)}</strong>
         ${item.body ? `<p>${escapeHtml(item.body)}</p>` : ""}
       </div>
@@ -621,8 +625,8 @@ async function loadProgramExtras(record) {
 function renderLoading() {
   detailRoot.innerHTML = `<section class="catalog-state" aria-busy="true">
     <span class="catalog-state-mark"><img src="${escapeHtml(config.icon)}" alt="" /></span>
-    <h1>Loading published record</h1>
-    <p>Reading the current public catalog and source status.</p>
+    <h1>${escapeHtml(detailUi("Loading published record"))}</h1>
+    <p>${escapeHtml(detailUi("Reading the current public catalog and source status."))}</p>
     <div class="catalog-loading-line" aria-hidden="true"></div>
   </section>`;
 }
@@ -630,11 +634,11 @@ function renderLoading() {
 function renderError(error) {
   detailRoot.innerHTML = `<section class="catalog-state" role="alert">
     <span class="catalog-state-mark"><img src="${escapeHtml(config.icon)}" alt="" /></span>
-    <h1>Record unavailable</h1>
-    <p>${escapeHtml(error instanceof Error ? error.message : "The published catalog record could not be loaded.")}</p>
+    <h1>${escapeHtml(detailUi("Record unavailable"))}</h1>
+    <p>${escapeHtml(error instanceof Error ? detailUi(error.message) : detailUi("The published catalog record could not be loaded."))}</p>
     <div class="catalog-state-actions">
-      <button type="button" data-catalog-retry>Try again</button>
-      <a class="catalog-action" href="${escapeHtml(config.backHref)}">${escapeHtml(config.backLabel)}</a>
+      <button type="button" data-catalog-retry>${escapeHtml(detailUi("Try again"))}</button>
+      <a class="catalog-action" href="${escapeHtml(detailHref(config.backHref))}">${escapeHtml(config.backLabel)}</a>
     </div>
   </section>`;
   detailRoot.querySelector("[data-catalog-retry]")?.addEventListener("click", loadDetail);
@@ -653,7 +657,7 @@ async function loadDetail() {
     if (detailType === "city") html = renderCity(record);
     const name = record.nameEn || record.title || record.slug;
     document.title = `${name} | CUAC`;
-    detailRoot.innerHTML = `<a class="catalog-back-link" href="${escapeHtml(config.backHref)}"><span aria-hidden="true">&larr;</span>${escapeHtml(config.backLabel)}</a>${html}`;
+    detailRoot.innerHTML = `<a class="catalog-back-link" href="${escapeHtml(detailHref(config.backHref))}"><span aria-hidden="true">&larr;</span>${escapeHtml(config.backLabel)}</a>${html}`;
   } catch (error) {
     renderError(error);
   }

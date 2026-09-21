@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import vm from "node:vm";
 
 const root = new URL("../", import.meta.url);
 
@@ -122,7 +123,41 @@ test("catalog detail layout remains restrained and responsive", async () => {
   for (const html of pages) {
     assert.match(html, /<body data-agent-mode="off" data-catalog-detail-page=/);
     assert.match(html, /href="catalog-detail\.css"/);
-    assert.match(html, /src="catalog-detail\.js"/);
+    assert.match(html, /src="catalog-detail\.js(?:\?[^\"]+)?"/);
     assert.doesNotMatch(html, /cuac-data\.js|cuac-actions\.js|completion\.js|data-cuac-agent/);
+  }
+});
+
+test("core catalog detail pages preserve the selected public locale", async () => {
+  const pages = await Promise.all(["program-detail.html", "university-detail.html", "scholarship-detail.html"]
+    .map((file) => source(`public/${file}`)));
+  for (const html of pages) {
+    assert.match(html, /data-i18n-locales="en,vi,th,id,ms,ar"/);
+    assert.ok(html.indexOf("i18n-runtime.js") < html.indexOf("catalog-detail-i18n.js"));
+    assert.ok(html.indexOf("catalog-detail-i18n.js") < html.indexOf("shared-shell.js"));
+    assert.ok(html.indexOf("shared-shell.js") < html.indexOf("catalog-detail.js"));
+  }
+
+  const script = await source("public/catalog-detail-i18n.js");
+  const expected = {
+    vi: "Quay lại chương trình",
+    th: "กลับไปยังหลักสูตร",
+    id: "Kembali ke program",
+    ms: "Kembali ke program",
+    ar: "العودة إلى البرامج",
+  };
+  for (const [locale, backLabel] of Object.entries(expected)) {
+    const context = {
+      URL,
+      Node: { ELEMENT_NODE: 1 },
+      MutationObserver: class { observe() {} },
+      location: { href: "https://example.test/program-detail.html?program=one", origin: "https://example.test" },
+      document: { body: {}, querySelectorAll: () => [] },
+      window: { CUACI18n: { locale } },
+    };
+    vm.runInNewContext(script, context);
+    assert.equal(context.window.CUACCatalogDetailI18n.ui("Back to programs"), backLabel);
+    assert.equal(context.window.CUACCatalogDetailI18n.href("programs.html"), `programs.html?lang=${locale}`);
+    assert.notEqual(context.window.CUACCatalogDetailI18n.ui("Record unavailable"), "Record unavailable");
   }
 });
