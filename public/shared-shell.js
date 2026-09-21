@@ -794,7 +794,7 @@
         ? "ops-admin-api.html"
         : "hub-api.html";
     const headerNavItems = workspace?.items || (localizedNav ? roleNavItems : navItems).map((item) => (
-      { ...item, label: shellText(`nav.${item.id}`, item.label), ...(item.id === "home" && window.CUACI18n?.locale !== "en" ? { href: `home-v3.html?lang=${encodeURIComponent(window.CUACI18n.locale)}` } : {}), ...(item.id === "hub" ? { href: workspaceHref } : {}) }
+      { ...item, label: shellText(`nav.${item.id}`, item.label), ...(item.id === "home" && window.CUACI18n && window.CUACI18n.locale !== "en" ? { href: `home-v3.html?lang=${encodeURIComponent(window.CUACI18n.locale)}` } : {}), ...(item.id === "hub" ? { href: workspaceHref } : {}) }
     ));
     target.outerHTML = `
       <div class="top-note">${note}${noteDetail ? `<span>&nbsp;${noteDetail}</span>` : ""}</div>

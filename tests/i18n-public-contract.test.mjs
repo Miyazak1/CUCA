@@ -32,6 +32,7 @@ test("non-English home is a complete bounded landing experience and labels Engli
   assert.match(home, /home\.destinationNotice/);
   assert.match(shell, /data-cuac-language/);
   assert.match(shell, /initLanguageSelectors/);
+  assert.match(shell, /window\.CUACI18n && window\.CUACI18n\.locale !== "en"/);
   assert.match(css, /\[dir="rtl"\]/);
 });
 
