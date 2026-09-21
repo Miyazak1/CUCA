@@ -162,7 +162,8 @@ async function allocateLoopbackPort(): Promise<number> {
 async function readApplicationHealth(url: string): Promise<unknown | null> {
   try {
     const response = await fetch(url, { signal: AbortSignal.timeout(1500) });
-    return response.ok ? await response.json() : null;
+    const contentType = response.headers.get("content-type") || "";
+    return contentType.toLowerCase().includes("application/json") ? await response.json() : null;
   } catch {
     return null;
   }
@@ -482,6 +483,8 @@ try {
       if (isHealthyLocalApplicationStatus(current)) {
         console.log(`CUAC local API is already healthy at http://127.0.0.1:${state.applicationPort}`);
         process.exitCode = 0;
+      } else if (isCuacApplicationStatus(current)) {
+        throw new Error(`CUAC local API is already running but unhealthy at http://127.0.0.1:${state.applicationPort}; stop the existing development process and rerun npm run dev:local.`);
       } else {
         await removeStaleVinextLock();
         process.exitCode = await startDevelopmentServer(state);

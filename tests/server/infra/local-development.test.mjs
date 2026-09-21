@@ -161,6 +161,9 @@ test("local command grammar and repository wiring remain explicit", async () => 
   assert.match(localDevelopment, /Local application port changed from .* persistent PostgreSQL data was retained/);
   assert.match(localDevelopment, /stop it before changing the application port/);
   assert.match(localDevelopment, /Removed a stale CUAC Vinext development lock; no process was terminated/);
+  assert.match(localDevelopment, /content-type.*application\/json/s);
+  assert.match(localDevelopment, /CUAC local API is already running but unhealthy/);
+  assert.match(localDevelopment, /stop the existing development process and rerun npm run dev:local/);
   assert.match(localDevelopment, /recordSuccessfulSeed\(state\)/);
   assert.match(localDevelopment, /await assertSuccessfulSeed\(state\)/);
   assert.match(localDevelopment, /installationId: state\.installationId/);
