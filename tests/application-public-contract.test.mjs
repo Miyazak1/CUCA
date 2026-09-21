@@ -140,7 +140,7 @@ test("application student records localize controls without translating private 
     source("public/application-i18n.js"),
     source("public/application.js"),
   ]);
-  assert.match(html, /application-i18n\.js\?v=20260921-student-profile/);
+  assert.match(html, /application-i18n\.js\?v=20260921-student-handoff-2/);
   assert.match(script, /appFormat\("Saved revision \{revision\}\."/);
   assert.match(script, /appFormat\("History revision \{revision\}\."/);
   assert.match(script, /appFormat\("\{ready\}\/\{total\} required records ready"/);
@@ -152,4 +152,22 @@ test("application student records localize controls without translating private 
     assert.match(messages, new RegExp(marker));
   }
   assert.doesNotMatch(script, /appUi\(record\.institutionName\)|appUi\(record\.assessmentName\)|appUi\(record\.fieldOfStudy\)/);
+});
+
+test("application school handoff localizes status controls and preserves school records", async () => {
+  const [messages, script] = await Promise.all([
+    source("public/application-i18n.js"),
+    source("public/application.js"),
+  ]);
+  assert.match(script, /return appUi\(studentSchoolStatusLabels\[status\] \|\| "Waiting for school update"\)/);
+  assert.match(script, /appFormat\("Submission is locked: \{items\}\."/);
+  assert.match(script, /"\{count\} program record · materials not shared · payment not required"/);
+  assert.match(script, /"\{count\} program records · materials not shared · payment not required"/);
+  assert.match(script, /appRecordLabel\(route\.intake\)/);
+  assert.match(script, /button\.textContent = appUi\("View submission status"\)/);
+  assert.match(script, /showPageAction\(appUi\("This application set is locked\./);
+  for (const marker of ["Đã chuyển thông tin cơ bản", "ส่งข้อมูลพื้นฐานแล้ว", "Informasi dasar terkirim", "تم تسليم المعلومات الأساسية"]) {
+    assert.match(messages, new RegExp(marker));
+  }
+  assert.doesNotMatch(script, /appUi\(route\.university\)|appUi\(route\.program\)/);
 });

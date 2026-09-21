@@ -861,7 +861,7 @@ const studentSchoolStatusLabels = {
 };
 
 function studentSchoolStatusLabel(status) {
-  return studentSchoolStatusLabels[status] || "Waiting for school update";
+  return appUi(studentSchoolStatusLabels[status] || "Waiting for school update");
 }
 
 function applicationSetHref(applicationSet, hash = "#overview") {
@@ -2168,9 +2168,10 @@ function renderApplicationGate(blockers = getSubmitBlockers(), { force = false, 
   }
   if (!force && gate.hidden) return;
   gate.hidden = false;
+  const blockerText = blockers.map((item) => appUi(item.label)).join(" · ");
   gate.innerHTML = `
-    <strong>${escapeHtml(message)}</strong>
-    <span>Finish: ${blockers.map((item) => escapeHtml(item.label)).join(" · ")}</span>
+    <strong>${escapeHtml(appUi(message))}</strong>
+    <span>${escapeHtml(appFormat("Finish: {items}", { items: blockerText }))}</span>
   `;
 }
 
@@ -2178,7 +2179,7 @@ function showSubmitBlockers(message = "Complete all required sections before fin
   const blockers = getSubmitBlockers();
   if (!blockers.length) return true;
   renderApplicationGate(blockers, { force: true, message });
-  showPageAction(`${message} ${blockers.map((item) => item.label).join(" / ")}.`);
+  showPageAction(`${appUi(message)} ${blockers.map((item) => appUi(item.label)).join(" / ")}.`);
   return false;
 }
 
@@ -2613,13 +2614,13 @@ function updateSubmissionSummary() {
     item.classList.toggle("missing", !complete);
     const status = item.querySelector("em");
     if (!status) return;
-    status.textContent = complete ? "Done" : key === "choices" ? "Confirm order" : key === "info" ? "Complete info" : "Authorize each choice";
+    status.textContent = appUi(complete ? "Done" : key === "choices" ? "Confirm order" : key === "info" ? "Complete info" : "Authorize each choice");
   });
   document.querySelectorAll("[data-submit-action]").forEach((button) => {
-    button.textContent = submittedToSchools ? "View submission status" : billingPreviewRecord ? `Review payment (${formatFeeQuote()})` : "Review payment";
+    button.textContent = submittedToSchools ? appUi("View submission status") : billingPreviewRecord ? appFormat("Review payment ({amount})", { amount: formatFeeQuote() }) : appUi("Review payment");
     button.disabled = !submittedToSchools && submitBlockers.length > 0;
-    button.title = !submittedToSchools && submitBlockers.length ? `Finish before payment: ${submitBlockers.map((item) => item.label).join(", ")}` : "";
-    button.setAttribute("aria-label", submittedToSchools ? "View submitted application status" : "Review the server fee before hosted checkout");
+    button.title = !submittedToSchools && submitBlockers.length ? appFormat("Finish before payment: {items}", { items: submitBlockers.map((item) => appUi(item.label)).join(", ") }) : "";
+    button.setAttribute("aria-label", appUi(submittedToSchools ? "View submitted application status" : "Review the server fee before hosted checkout"));
   });
   renderApplicationGate(submitBlockers);
   renderPaymentPage();
@@ -2822,7 +2823,7 @@ async function submitApplicationSet(form) {
   if (blockers.length) {
     if (errorTarget) {
       errorTarget.hidden = false;
-      errorTarget.textContent = `Submission is locked: ${blockers.map((item) => item.label).join(", ")}.`;
+      errorTarget.textContent = appFormat("Submission is locked: {items}.", { items: blockers.map((item) => appUi(item.label)).join(", ") });
     }
     navigateApplicationStage(blockers[0].target, { scroll: true });
     return;
@@ -2831,12 +2832,12 @@ async function submitApplicationSet(form) {
   form.elements.password.value = "";
   if (button) {
     button.disabled = true;
-    button.textContent = "Authorizing account...";
+    button.textContent = appUi("Authorizing account...");
   }
   if (errorTarget) errorTarget.hidden = true;
   try {
     await applicationApi("/api/v1/auth/step-up", { method: "POST", body: { password } });
-    if (button) button.textContent = "Sending basic information...";
+    if (button) button.textContent = appUi("Sending basic information...");
     const choiceIds = currentApplicationChoiceIds();
     submissionRecord = await applicationApi(`/api/v1/student/application-sets/${encodeURIComponent(currentApplicationSet.id)}/school-handoff`, {
       method: "POST",
@@ -2857,18 +2858,18 @@ async function submitApplicationSet(form) {
       // The accepted server receipt remains sufficient to render this completed command.
     }
     renderSubmissionState({ scroll: true });
-    showPageAction("Basic application information was sent. Each school will contact you directly about materials and next steps.");
+    showPageAction(appUi("Basic application information was sent. Each school will contact you directly about materials and next steps."));
   } catch (error) {
     if (errorTarget) {
       errorTarget.hidden = false;
       errorTarget.textContent = error.status === 409
-        ? "The application changed before sending. Refresh the current choices and basic information before trying again."
-        : `School handoff was not accepted: ${error.message}`;
+        ? appUi("The application changed before sending. Refresh the current choices and basic information before trying again.")
+        : appFormat("School handoff was not accepted: {detail}", { detail: appUi(error.message) });
     }
   } finally {
     if (button && !submittedToSchools) {
       button.disabled = false;
-      button.textContent = "Confirm and send to schools";
+      button.textContent = appUi("Confirm and send to schools");
     }
   }
 }
@@ -2876,7 +2877,7 @@ async function submitApplicationSet(form) {
 function renderSubmissionChoiceLists() {
   const routes = getChoiceRoutes();
   const review = document.querySelector("[data-send-school-list]");
-  if (review) review.innerHTML = routes.map((route) => `<article><strong>${escapeHtml(route.university)}</strong><span>${escapeHtml(route.program)} · ${escapeHtml(route.intake)}</span></article>`).join("");
+  if (review) review.innerHTML = routes.map((route) => `<article><strong>${escapeHtml(route.university)}</strong><span>${escapeHtml(route.program)} · ${escapeHtml(appRecordLabel(route.intake))}</span></article>`).join("");
   const submitted = document.querySelector("[data-submitted-school-list]");
   if (!submitted) return;
   const applications = Array.isArray(submissionRecord?.programApplications) ? submissionRecord.programApplications : [];
@@ -2890,26 +2891,28 @@ function renderSubmissionReceipt() {
   const target = document.querySelector("[data-submission-receipt]");
   if (!target) return;
   if (!submissionRecord) {
-    target.innerHTML = submittedToSchools ? `<span>Application set</span><strong>${escapeHtml(currentApplicationSet?.cuacId || "Submitted")}</strong><em>Server status: ${escapeHtml(currentApplicationSet?.status || "submitted")}</em>` : "";
+    target.innerHTML = submittedToSchools ? `<span>${escapeHtml(appUi("Application set"))}</span><strong>${escapeHtml(currentApplicationSet?.cuacId || appUi("Submitted"))}</strong><em>${escapeHtml(appFormat("Server status: {status}", { status: appRecordLabel(currentApplicationSet?.status || "submitted") }))}</em>` : "";
     return;
   }
   const items = Array.isArray(submissionRecord.programApplications) ? submissionRecord.programApplications : [];
   target.innerHTML = `
-    <span>School handoff</span>
-    <strong>${escapeHtml(submissionRecord.cuacId || currentApplicationSet?.cuacId || "Sent")}</strong>
-    <em>${items.length} program record${items.length === 1 ? "" : "s"} · materials not shared · payment not required</em>
+    <span>${escapeHtml(appUi("School handoff"))}</span>
+    <strong>${escapeHtml(submissionRecord.cuacId || currentApplicationSet?.cuacId || appUi("Sent"))}</strong>
+    <em>${escapeHtml(appFormat(items.length === 1
+      ? "{count} program record · materials not shared · payment not required"
+      : "{count} program records · materials not shared · payment not required", { count: items.length }))}</em>
   `;
 }
 
 function renderSubmissionState({ scroll = false } = {}) {
-  document.querySelector("[data-submit-step]").textContent = "Accepted";
+  document.querySelector("[data-submit-step]").textContent = appUi("Accepted");
   document.querySelector("[data-submission-status]")?.removeAttribute("hidden");
   renderSendPanelState();
   document.querySelector("[data-fee-card]")?.classList.add("submitted");
   document.querySelectorAll("[data-submit-action]").forEach((button) => {
-    button.textContent = "View submission status";
+    button.textContent = appUi("View submission status");
     button.removeAttribute("disabled");
-    button.setAttribute("aria-label", "View sent application status");
+    button.setAttribute("aria-label", appUi("View sent application status"));
   });
   const statusLink = document.querySelector("[data-submission-status-link]");
   if (statusLink) statusLink.href = applicationSetHref(currentApplicationSet, "#send");
@@ -2928,7 +2931,7 @@ function viewSentStatus() {
   setApplicationStage("send", { scroll: true });
   status.focus({ preventScroll: true });
   if (location.hash !== "#send") history.replaceState(null, "", "#send");
-  showPageAction("This application set is locked. The status panel shows each school's latest follow-up state.");
+  showPageAction(appUi("This application set is locked. The status panel shows each school's latest follow-up state."));
 }
 
 function getSelectedProgram() {
