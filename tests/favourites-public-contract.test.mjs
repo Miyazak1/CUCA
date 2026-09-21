@@ -11,7 +11,7 @@ test("saved-items candidate uses authenticated APIs without demo state", async (
     source("public/favourites-runtime.js"),
   ]);
 
-  assert.match(html, /<body data-agent-mode="off">/);
+  assert.match(html, /<body data-agent-mode="off" data-i18n-locales="en,vi,th,id,ms,ar">/);
   assert.match(html, /saved-workspace\.css\?v=/);
   assert.match(html, /src="shared-shell\.js(?:\?[^\"]*)?"/);
   assert.match(html, /src="favourites-runtime\.js\?v=/);
@@ -52,4 +52,31 @@ test("saved-items workspace stays restrained and responsive", async () => {
   assert.match(css, /@media \(max-width: 520px\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.doesNotMatch(css, /linear-gradient|radial-gradient|border-radius:\s*(?:[1-9][0-9]|[1-9][0-9][0-9])px/);
+});
+
+test("saved items localize student controls while preserving catalog and private content", async () => {
+  const [html, messages, script] = await Promise.all([
+    source("public/favourites-api.html"),
+    source("public/favourites-i18n.js"),
+    source("public/favourites-runtime.js"),
+  ]);
+  const scripts = [...html.matchAll(/<script src="([^"]+)"/g)].map(match => match[1].split("?")[0]);
+  assert.ok(scripts.indexOf("i18n-runtime.js") < scripts.indexOf("favourites-i18n.js"));
+  assert.ok(scripts.indexOf("favourites-i18n.js") < scripts.indexOf("shared-shell.js"));
+  assert.ok(scripts.indexOf("shared-shell.js") < scripts.indexOf("favourites-runtime.js"));
+  assert.match(script, /new Intl\.DateTimeFormat\(savedLocale/);
+  assert.match(script, /localizedHref\(`program-detail\.html\?program=/);
+  assert.match(script, /ui\(savedTypeLabels\[item\.entityType\]\)/);
+  assert.match(script, /item\.notes \|\| ""/);
+  assert.match(script, /catalog\?\.nameEn/);
+  assert.doesNotMatch(script, /translate|machineTranslation|machine_translation/i);
+  for (const marker of ["Mục đã lưu", "รายการที่บันทึก", "Item tersimpan", "العناصر المحفوظة"]) {
+    assert.match(messages, new RegExp(marker));
+  }
+  for (const status of ["Verified", "Unverified", "Stale", "Disputed", "Invalid"]) {
+    assert.match(messages, new RegExp(`\\[\\"${status}\\"`));
+  }
+  assert.match(messages, /MutationObserver/);
+  assert.match(messages, /url\.searchParams\.set\("lang", i18n\.locale\)/);
+  assert.match(messages, /"TEXTAREA"/);
 });
