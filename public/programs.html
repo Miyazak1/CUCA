@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="catalog-list-api.css?v=20260918-shared-save" />
     <link rel="stylesheet" href="programs.css?v=20260918-shared-save" />
   </head>
-  <body data-agent-mode="off" data-catalog-list-page="programs">
+  <body data-agent-mode="off" data-catalog-list-page="programs" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page">
       <div data-cuac-header data-active="programs" data-note="China admissions 2026:" data-note-detail="compare programs before choosing"></div>
 
@@ -16,14 +16,15 @@
         <div class="shell">
           <section class="page-title reveal" aria-label="Program search header">
             <div>
-              <div class="eyebrow">Program Search</div>
-              <h1>Find programs you can realistically apply to</h1>
-              <p>Compare published degree, language, deadline, tuition, scholarship, and source status before you add a choice.</p>
+              <div class="eyebrow" data-catalog-copy="programs.kicker">Program Search</div>
+              <h1 data-catalog-copy="programs.title">Find programs you can realistically apply to</h1>
+              <p data-catalog-copy="programs.intro">Compare published degree, language, deadline, tuition, scholarship, and source status before you add a choice.</p>
+              <p class="catalog-language-note" data-catalog-copy="common.contentNotice">Core navigation and status controls are translated. Official catalog names, detailed filters, and admissions content remain in English while reviewed translations are completed.</p>
             </div>
             <div class="quick-summary" aria-label="Program page summary">
-              <div class="summary-item"><strong id="summaryOpen">-</strong><span>matching programs</span></div>
-              <div class="summary-item"><strong id="summaryScholarship">-</strong><span>scholarships on page</span></div>
-              <div class="summary-item"><strong id="summaryUrgent">-</strong><span>closing on page</span></div>
+              <div class="summary-item"><strong id="summaryOpen">-</strong><span data-catalog-copy="programs.summaryMatches">matching programs</span></div>
+              <div class="summary-item"><strong id="summaryScholarship">-</strong><span data-catalog-copy="programs.summaryScholarships">scholarships on page</span></div>
+              <div class="summary-item"><strong id="summaryUrgent">-</strong><span data-catalog-copy="programs.summaryClosing">closing on page</span></div>
             </div>
           </section>
 
@@ -31,7 +32,7 @@
             <div class="search-row">
               <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
               <input id="searchInput" aria-label="Search programs" placeholder='Try "English-taught computer science"' />
-              <button class="primary" id="searchButton" type="button">Search</button>
+              <button class="primary" id="searchButton" type="button" data-catalog-copy="common.search">Search</button>
             </div>
             <div class="suggestions" aria-label="Suggested program filters">
               <button class="chip" type="button" data-quick="degree:master">English-taught master</button>
@@ -43,11 +44,11 @@
 
           <section class="toolbar reveal" aria-label="Result controls">
             <div class="result-copy">
-              <strong id="resultCount">Loading programs</strong>
-              <span id="resultContext">Reading the current published catalog.</span>
+              <strong id="resultCount" data-catalog-copy="programs.loading">Loading programs</strong>
+              <span id="resultContext" data-catalog-copy="common.reading">Reading the current published catalog.</span>
             </div>
             <div class="controls">
-              <button class="secondary mobile-filter" id="openFilters" type="button">All filters</button>
+              <button class="secondary mobile-filter" id="openFilters" type="button" data-catalog-copy="common.allFilters">All filters</button>
               <select class="select" id="sortSelect" aria-label="Sort programs">
                 <option value="relevance">Sort: Relevance</option>
                 <option value="deadline">Deadline soonest</option>
@@ -55,8 +56,8 @@
                 <option value="scholarship">Scholarship route</option>
               </select>
               <div class="view-toggle" aria-label="View mode">
-                <button class="active" type="button" data-view="list">Cards</button>
-                <button type="button" data-view="compact">Dense</button>
+                <button class="active" type="button" data-view="list" data-catalog-copy="common.cards">Cards</button>
+                <button type="button" data-view="compact" data-catalog-copy="common.dense">Dense</button>
               </div>
             </div>
           </section>
@@ -71,9 +72,9 @@
             <section class="results-pane" aria-label="Program results">
               <div class="program-list" id="programList"></div>
               <section class="empty-state" id="emptyState">
-                <h2>No programs match these filters yet.</h2>
-                <p>Try relaxing degree, language, deadline, tuition, or scholarship filters.</p>
-                <button class="primary" id="resetEmpty" type="button">Relax filters</button>
+                <h2 data-catalog-copy="programs.empty">No programs match these filters yet.</h2>
+                <p data-catalog-copy="programs.emptyHelp">Try relaxing degree, language, deadline, tuition, or scholarship filters.</p>
+                <button class="primary" id="resetEmpty" type="button" data-catalog-copy="programs.relax">Relax filters</button>
               </section>
               <nav class="pagination" id="pagination" aria-label="Program results pages"></nav>
             </section>
@@ -92,23 +93,25 @@
       <aside class="filter-drawer" id="filterDrawer" aria-label="Program filters" aria-hidden="true" inert>
         <div class="drawer-head">
           <div class="drawer-title">
-            <h2>All filters</h2>
-            <p>Refine the list by study goal, China fit, timing, and application effort.</p>
+            <h2 data-catalog-copy="common.allFilters">All filters</h2>
+            <p data-catalog-copy="programs.filterHelp">Refine the list by study goal, China fit, timing, and application effort.</p>
           </div>
-          <button class="drawer-close" id="closeFilters" type="button">Close</button>
+          <button class="drawer-close" id="closeFilters" type="button" data-catalog-copy="common.close">Close</button>
         </div>
         <div id="mobileFilters"></div>
         <div class="drawer-actions">
-          <button class="ghost" id="drawerReset" type="button">Reset</button>
-          <button class="primary" id="drawerApply" type="button">Show programs</button>
+          <button class="ghost" id="drawerReset" type="button" data-catalog-copy="common.reset">Reset</button>
+          <button class="primary" id="drawerApply" type="button" data-catalog-copy="programs.show">Show programs</button>
         </div>
       </aside>
     </div>
 
     <script src="cuac-actions.js"></script>
-    <script src="shared-shell.js?v=20260918-saved-continuation"></script>
-    <script src="catalog-list-api.js?v=20260918-shared-save"></script>
-    <script src="programs.js?v=20260918-shared-save"></script>
+    <script src="i18n-runtime.js?v=20260921-public-locales"></script>
+    <script src="catalog-list-i18n.js?v=20260921-catalog-locales"></script>
+    <script src="shared-shell.js?v=20260921-public-locales"></script>
+    <script src="catalog-list-api.js?v=20260921-catalog-locales"></script>
+    <script src="programs.js?v=20260921-catalog-locales"></script>
 </body>
 </html>
 

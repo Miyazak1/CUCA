@@ -2,6 +2,7 @@ const universities = [];
 
 const universityArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 const escapeCatalogHtml = window.CuacCatalogList.escapeHtml;
+const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallback, values) || fallback;
 
 const state = {
         query: "",
@@ -343,7 +344,7 @@ const state = {
           <article class="university-card result-enter" style="--enter-index: ${index}" data-name="${escapeCatalogHtml(name)}" role="link" tabindex="0" data-university-card data-detail-href="${detailHref}" aria-label="View ${escapeCatalogHtml(name)} university guide">
             <div class="card-image">
               <span class="badge">${escapeCatalogHtml(imageBadge)}</span>
-              <button class="save catalog-save-control ${saved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved}" aria-label="${saved ? `Remove ${escapeCatalogHtml(name)} from Favourites` : `Save ${escapeCatalogHtml(name)} to Favourites`}" title="${saved ? "Saved — click to remove" : "Save to Favourites"}">${window.CuacCatalogList.saveHeartIcon()}</button>
+              <button class="save catalog-save-control ${saved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved}" aria-label="${escapeCatalogHtml(catalogT(saved ? "common.remove" : "common.save", saved ? `Remove ${name} from Favourites` : `Save ${name} to Favourites`, { name }))}" title="${escapeCatalogHtml(catalogT(saved ? "common.savedTitle" : "common.saveTitle", saved ? "Saved — click to remove" : "Save to Favourites"))}">${window.CuacCatalogList.saveHeartIcon()}</button>
               <img data-catalog-cover alt="${escapeCatalogHtml(name)} cover" src="${schoolImage(item)}" />
               <span class="university-card-open" aria-hidden="true">${universityArrowRight}</span>
             </div>
@@ -408,7 +409,7 @@ const state = {
 
         const pageButtons = Array.from({ length: pages }, (_, index) => {
           const page = index + 1;
-          return `<button type="button" class="${page === state.page ? "active" : ""}" data-page="${page}" aria-label="Page ${page}" ${page === state.page ? 'aria-current="page"' : ""}>${page}</button>`;
+          return `<button type="button" class="${page === state.page ? "active" : ""}" data-page="${page}" aria-label="${escapeCatalogHtml(catalogT("common.page", `Page ${page}`, { page }))}" ${page === state.page ? 'aria-current="page"' : ""}>${page}</button>`;
         }).join("");
 
         pagination.innerHTML = `
@@ -422,7 +423,7 @@ const state = {
         const results = getResults();
         const start = (state.page - 1) * state.perPage;
         const shown = results.slice(start, start + state.perPage);
-        resultCount.textContent = `${results.length} ${results.length === 1 ? "university" : "universities"}`;
+        resultCount.textContent = catalogT(results.length === 1 ? "universities.countOne" : "universities.countMany", `${results.length} ${results.length === 1 ? "university" : "universities"}`, { count: results.length });
         resultContext.textContent = state.query || state.filters.size || Object.keys(state.criteria || {}).length
           ? "Filtered by your current search and China-study signals."
           : "Showing Chinese universities with international admissions routes.";
@@ -667,8 +668,8 @@ const state = {
 
       async function loadUniversities() {
         window.CuacCatalogList.listState(resultsGrid, "loading", { noun: "universities" });
-        resultCount.textContent = "Loading universities";
-        resultContext.textContent = "Reading the current published catalog.";
+        resultCount.textContent = catalogT("universities.loading", "Loading universities");
+        resultContext.textContent = catalogT("common.reading", "Reading the current published catalog.");
         try {
           const savedIdsRequest = window.CuacCatalogList.loadSavedEntityIds("school");
           const records = await window.CuacCatalogList.loadAll("schools", { limit: 100 });
@@ -685,8 +686,8 @@ const state = {
             render();
           }).catch((error) => console.warn("Could not load saved universities.", error));
         } catch (error) {
-          resultCount.textContent = "Universities unavailable";
-          resultContext.textContent = "The published catalog could not be loaded.";
+          resultCount.textContent = catalogT("universities.unavailable", "Universities unavailable");
+          resultContext.textContent = catalogT("common.loadFailed", "The published catalog could not be loaded.", { noun: "catalog" });
           window.CuacCatalogList.listState(resultsGrid, "error", { noun: "universities", message: error.message });
         }
       }

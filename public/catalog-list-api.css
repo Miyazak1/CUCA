@@ -48,6 +48,26 @@ body[data-catalog-list-page] [hidden] {
   display: none !important;
 }
 
+body[data-catalog-list-page] .catalog-language-note {
+  width: fit-content;
+  max-width: 760px;
+  margin-top: 14px;
+  padding: 9px 12px;
+  border: 1px solid rgba(9, 135, 126, 0.2);
+  border-radius: 12px;
+  background: #eff9f7;
+  color: #315c59;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+html[dir="rtl"] body[data-catalog-list-page] .page-title,
+html[dir="rtl"] body[data-catalog-list-page] .toolbar,
+html[dir="rtl"] body[data-catalog-list-page] .browser-tools,
+html[dir="rtl"] body[data-catalog-list-page] .drawer-head {
+  text-align: right;
+}
+
 body[data-catalog-list-page] .catalog-save-control {
   appearance: none;
   display: inline-grid;

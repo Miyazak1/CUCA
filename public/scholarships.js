@@ -13,6 +13,7 @@
   heart: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 8.6c0 5.7-8.5 10.4-8.5 10.4S3.5 14.3 3.5 8.6A4.6 4.6 0 0 1 12 6a4.6 4.6 0 0 1 8.5 2.6Z"/></svg>',
   arrowRight: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>',
 };
+const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallback, values) || fallback;
 
 document.querySelectorAll("[data-icon]").forEach((target) => {
   target.innerHTML = scholarshipIcons[target.dataset.icon] || "";
@@ -416,7 +417,7 @@ function renderCards() {
         <div class="scholarship-media">
           <img data-catalog-cover alt="${escapeCatalogHtml(title)} cover" src="${scholarshipImage(item)}" loading="lazy" />
           <span class="badge type-badge ${type}">${escapeCatalogHtml(scholarshipTypeLabel(item))}</span>
-          <button class="save-button catalog-save-control ${saved.has(entityId) ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved.has(entityId)}" aria-label="${saved.has(entityId) ? `Remove ${escapeCatalogHtml(title)} from Favourites` : `Save ${escapeCatalogHtml(title)} to Favourites`}" title="${saved.has(entityId) ? "Saved — click to remove" : "Save to Favourites"}">${window.CuacCatalogList.saveHeartIcon()}</button>
+          <button class="save-button catalog-save-control ${saved.has(entityId) ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved.has(entityId)}" aria-label="${escapeCatalogHtml(catalogT(saved.has(entityId) ? "common.remove" : "common.save", saved.has(entityId) ? `Remove ${title} from Favourites` : `Save ${title} to Favourites`, { name: title }))}" title="${escapeCatalogHtml(catalogT(saved.has(entityId) ? "common.savedTitle" : "common.saveTitle", saved.has(entityId) ? "Saved — click to remove" : "Save to Favourites"))}">${window.CuacCatalogList.saveHeartIcon()}</button>
           <span class="scholarship-card-open" aria-hidden="true">${scholarshipIcons.arrowRight}</span>
         </div>
         <h3>${escapeCatalogHtml(title)}</h3>
@@ -430,7 +431,7 @@ function renderCards() {
     `;
   }).join("");
   if (!items.length) {
-    grid.innerHTML = '<div class="catalog-list-state"><strong>No scholarships match</strong><span>Remove a filter or search for another published route.</span></div>';
+    grid.innerHTML = `<div class="catalog-list-state"><strong>${escapeCatalogHtml(catalogT("scholarships.empty", "No scholarships match"))}</strong><span>${escapeCatalogHtml(catalogT("scholarships.emptyHelp", "Remove a filter or search for another published route."))}</span></div>`;
   }
   renderPagination(totalPages, filtered.length);
   renderActiveChips();
@@ -464,7 +465,7 @@ function renderPagination(totalPages, totalResults) {
 
   const pageItems = compactPaginationPages(page, totalPages).map((item) => {
     if (item === "ellipsis") return '<span class="pagination-ellipsis" aria-hidden="true">…</span>';
-    return `<button class="${item === page ? "active" : ""}" type="button" data-page="${item}" aria-label="Page ${item}" ${item === page ? 'aria-current="page"' : ""}>${item}</button>`;
+    return `<button class="${item === page ? "active" : ""}" type="button" data-page="${item}" aria-label="${escapeCatalogHtml(catalogT("common.page", `Page ${item}`, { page: item }))}" ${item === page ? 'aria-current="page"' : ""}>${item}</button>`;
   }).join("");
 
   pagination.innerHTML = `
@@ -816,7 +817,7 @@ async function loadScholarships() {
   const grid = document.querySelector("#scholarshipGrid");
   window.CuacCatalogList.listState(grid, "loading", { noun: "scholarships" });
   document.querySelector("#resultCount").textContent = "-";
-  document.querySelector("#resultContext").textContent = "Reading the current published catalog.";
+  document.querySelector("#resultContext").textContent = catalogT("common.reading", "Reading the current published catalog.");
   try {
     const savedIdsRequest = window.CuacCatalogList.loadSavedEntityIds("scholarship");
     const records = await window.CuacCatalogList.loadAll("scholarships", { limit: 100, concurrency: 2 });
@@ -828,7 +829,7 @@ async function loadScholarships() {
     document.querySelector("#summaryFundingRoutes").textContent = scholarships.length;
     document.querySelector("#summaryFullFunding").textContent = scholarships.filter((item) => scholarshipFundingLevel(item) === "full").length;
     document.querySelector("#summaryDeadlineWindow").textContent = futureDeadlines.length
-      ? new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(futureDeadlines[0])
+      ? new Intl.DateTimeFormat(window.CUACCatalogI18n?.locale || "en", { month: "short", day: "numeric", year: "numeric" }).format(futureDeadlines[0])
       : "Not published";
     applyHashFocus();
     renderFilters();
@@ -839,7 +840,7 @@ async function loadScholarships() {
       renderCards();
     }).catch((error) => console.warn("Could not load saved scholarships.", error));
   } catch (error) {
-    document.querySelector("#resultContext").textContent = "The published catalog could not be loaded.";
+    document.querySelector("#resultContext").textContent = catalogT("common.loadFailed", "The published catalog could not be loaded.", { noun: "catalog" });
     window.CuacCatalogList.listState(grid, "error", { noun: "scholarships", message: error.message });
   }
 }

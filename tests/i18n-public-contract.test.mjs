@@ -59,3 +59,24 @@ test("site search exposes the complete public locale set while labeling English 
   assert.match(script, /params\.set\("lang", locale\)/);
   assert.match(await source("public/shared-shell.js"), /function localizedSearchHref\(\)/);
 });
+
+test("public catalog lists share bounded launch locales and preserve language across catalog navigation", async () => {
+  const [runtime, universities, programs, scholarships, catalogI18n] = await Promise.all([
+    source("public/i18n-runtime.js"),
+    source("public/universities.html"),
+    source("public/programs.html"),
+    source("public/scholarships.html"),
+    source("public/catalog-list-i18n.js"),
+  ]);
+  for (const html of [universities, programs, scholarships]) {
+    assert.match(html, /data-i18n-locales="en,vi,th,id,ms,ar"/);
+    assert.match(html, /i18n-runtime\.js\?v=20260921-public-locales/);
+    assert.match(html, /catalog-list-i18n\.js\?v=20260921-catalog-locales/);
+    assert.match(html, /data-catalog-copy="common\.contentNotice"/);
+  }
+  assert.match(runtime, /document\.documentElement\.dir = metadata\[locale\]\.dir/);
+  assert.match(catalogI18n, /window\.CUACI18n\?\.register\(messages\)/);
+  assert.match(catalogI18n, /url\.searchParams\.set\("lang", i18n\.locale\)/);
+  assert.match(catalogI18n, /MutationObserver/);
+  for (const locale of ["vi", "th", "id", "ms", "ar"]) assert.match(catalogI18n, new RegExp(`\\b${locale}: \\{`));
+});

@@ -105,7 +105,7 @@ test("catalog save actions use authenticated student saved-item APIs", async () 
   assert.match(api, /method: "DELETE"/);
   assert.match(programs, /setSaved\("program", id, savedNow\)/);
   assert.match(programs, /aria-pressed="\$\{isSaved\}"/);
-  assert.match(programs, /Remove \$\{escapeCatalogHtml\(name\)\} from Favourites/);
+  assert.match(programs, /catalogT\(isSaved \? "common\.remove" : "common\.save"/);
   assert.match(api, /function saveHeartIcon\(\)/);
   assert.match(api, /saveHeartIcon, escapeHtml/);
   assert.match(programs, /save-button catalog-save-control/);
@@ -153,7 +153,7 @@ test("program university routes send the school slug to the published API and re
     source("programs.css"),
   ]);
 
-  assert.match(html, /programs\.js\?v=20260918-shared-save/);
+  assert.match(html, /programs\.js\?v=20260921-catalog-locales/);
   assert.match(script, /const focusedUniversity = routeParams\.get\("university"\)/);
   assert.match(script, /loadPage\("programs", \{[\s\S]*school: focusedUniversity,/);
   assert.doesNotMatch(script, /function programMatchesUniversity/);

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="catalog-list-api.css?v=20260918-shared-save" />
   <link rel="stylesheet" href="scholarships.css?v=20260918-equal-card-actions" />
   </head>
-  <body data-agent-mode="off" data-catalog-list-page="scholarships">
+  <body data-agent-mode="off" data-catalog-list-page="scholarships" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page">
       <div data-cuac-header data-active="scholarships" data-note="China funding routes:" data-note-detail="compare coverage before applying"></div>
 
@@ -16,14 +16,15 @@
         <div class="shell">
           <section class="page-title" aria-label="Scholarship search introduction">
             <div>
-              <span class="eyebrow">Scholarships</span>
-              <h1>Find funding routes for studying in China</h1>
-              <p>Compare published funding routes by provider, coverage, deadline, eligibility, and source status.</p>
+              <span class="eyebrow" data-catalog-copy="scholarships.kicker">Scholarships</span>
+              <h1 data-catalog-copy="scholarships.title">Find funding routes for studying in China</h1>
+              <p data-catalog-copy="scholarships.intro">Compare published funding routes by provider, coverage, deadline, eligibility, and source status.</p>
+              <p class="catalog-language-note" data-catalog-copy="common.contentNotice">Core navigation and status controls are translated. Official catalog names, detailed filters, and admissions content remain in English while reviewed translations are completed.</p>
             </div>
             <div class="trust-strip" aria-label="Scholarship data summary">
-              <div><strong id="summaryFundingRoutes">-</strong><span>funding routes</span></div>
-              <div><strong id="summaryFullFunding">-</strong><span>full-funding routes</span></div>
-              <div><strong id="summaryDeadlineWindow">-</strong><span>next deadline</span></div>
+              <div><strong id="summaryFundingRoutes">-</strong><span data-catalog-copy="scholarships.summaryRoutes">funding routes</span></div>
+              <div><strong id="summaryFullFunding">-</strong><span data-catalog-copy="scholarships.summaryFull">full-funding routes</span></div>
+              <div><strong id="summaryDeadlineWindow">-</strong><span data-catalog-copy="scholarships.summaryDeadline">next deadline</span></div>
             </div>
           </section>
 
@@ -101,11 +102,11 @@
           <section class="section reveal" id="scholarship-browser" aria-label="Scholarship browser">
             <div class="browser-tools">
               <div>
-                <h2><span id="resultCount">-</span> scholarships</h2>
-                <p id="resultContext">Reading the current published catalog.</p>
+                <h2><span id="resultCount">-</span> <span data-catalog-copy="scholarships.resultNoun">scholarships</span></h2>
+                <p id="resultContext" data-catalog-copy="common.reading">Reading the current published catalog.</p>
               </div>
               <div class="controls">
-                <button class="secondary" id="openFilters" type="button">All filters</button>
+                <button class="secondary" id="openFilters" type="button" data-catalog-copy="common.allFilters">All filters</button>
                 <select class="select" id="sortSelect" aria-label="Sort scholarships">
                   <option value="relevance">Sort: Relevance</option>
                   <option value="deadline">Deadline soonest</option>
@@ -169,20 +170,22 @@
       <div class="drawer-backdrop" id="drawerBackdrop"></div>
       <aside class="filter-drawer" id="filterDrawer" aria-label="Scholarship filters" aria-hidden="true" inert>
         <div class="drawer-head">
-          <div class="drawer-title"><h2>All filters</h2><p>Refine by funding level, route type, degree, country scope, timing, and coverage.</p></div>
-          <button class="drawer-close" id="closeFilters" type="button">Close</button>
+          <div class="drawer-title"><h2 data-catalog-copy="common.allFilters">All filters</h2><p data-catalog-copy="scholarships.filterHelp">Refine by funding level, route type, degree, country scope, timing, and coverage.</p></div>
+          <button class="drawer-close" id="closeFilters" type="button" data-catalog-copy="common.close">Close</button>
         </div>
         <div class="filter-groups" id="filterGroups"></div>
         <div class="drawer-actions">
-          <button class="ghost" id="resetFilters" type="button">Reset</button>
-          <button class="primary" id="applyFilters" type="button">Show scholarships</button>
+          <button class="ghost" id="resetFilters" type="button" data-catalog-copy="common.reset">Reset</button>
+          <button class="primary" id="applyFilters" type="button" data-catalog-copy="scholarships.show">Show scholarships</button>
         </div>
       </aside>
     </div>
 
     <script src="cuac-actions.js"></script>
-    <script src="shared-shell.js?v=20260918-saved-continuation"></script>
-  <script src="catalog-list-api.js?v=20260918-scholarship-covers"></script>
-  <script src="scholarships.js?v=20260918-scholarship-covers"></script>
+    <script src="i18n-runtime.js?v=20260921-public-locales"></script>
+    <script src="catalog-list-i18n.js?v=20260921-catalog-locales"></script>
+    <script src="shared-shell.js?v=20260921-public-locales"></script>
+  <script src="catalog-list-api.js?v=20260921-catalog-locales"></script>
+  <script src="scholarships.js?v=20260921-catalog-locales"></script>
   </body>
 </html>

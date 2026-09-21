@@ -227,12 +227,16 @@
   function listState(target, state, options = {}) {
     if (!target) return;
     const noun = options.noun || "records";
+    const page = document.body.dataset.catalogListPage || "";
+    const t = (key, fallback, values) => global.CUACCatalogI18n?.t(key, fallback, values) || fallback;
     if (state === "loading") {
-      target.innerHTML = `<div class="catalog-list-state" role="status"><strong>Loading published ${escapeHtml(noun)}</strong><span>Reading the current catalog.</span></div>`;
+      const loading = t(`${page}.loading`, t("common.loading", `Loading published ${noun}`, { noun }), { noun });
+      const reading = t("common.reading", "Reading the current catalog.");
+      target.innerHTML = `<div class="catalog-list-state" role="status"><strong>${escapeHtml(loading)}</strong><span>${escapeHtml(reading)}</span></div>`;
       return;
     }
-    const detail = options.message || `Published ${noun} could not be loaded.`;
-    target.innerHTML = `<div class="catalog-list-state catalog-list-state-error" role="alert"><strong>Catalog unavailable</strong><span>${escapeHtml(detail)}</span><button type="button" data-catalog-retry>Retry</button></div>`;
+    const detail = options.message || t("common.loadFailed", `Published ${noun} could not be loaded.`, { noun });
+    target.innerHTML = `<div class="catalog-list-state catalog-list-state-error" role="alert"><strong>${escapeHtml(t("common.unavailable", "Catalog unavailable"))}</strong><span>${escapeHtml(detail)}</span><button type="button" data-catalog-retry>${escapeHtml(t("common.retry", "Retry"))}</button></div>`;
   }
 
   global.CuacCatalogList = Object.freeze({ load, loadPage, loadAll, cover, loadSavedEntityIds, setSaved, saveHeartIcon, escapeHtml, listState });

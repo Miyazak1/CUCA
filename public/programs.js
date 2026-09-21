@@ -1,5 +1,6 @@
 const iconCompare = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 7h14"/><path d="m6 7-3 7"/><path d="m8 7 3 7"/><path d="m16 7-3 7"/><path d="m18 7 3 7"/><path d="M3 14h8"/><path d="M13 14h8"/><path d="M7 21h10"/></svg>';
 const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
+const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallback, values) || fallback;
 
       let programs = [];
       let programTotal = 0;
@@ -490,7 +491,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
               </a>
               <div class="row-top">
                 <span class="badge ${badgeClassName}">${escapeCatalogHtml(badgeLabel)}</span>
-                <button class="save-button catalog-save-control ${isSaved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(id)}" aria-pressed="${isSaved}" aria-label="${isSaved ? `Remove ${escapeCatalogHtml(name)} from Favourites` : `Save ${escapeCatalogHtml(name)} to Favourites`}" title="${isSaved ? "Saved — click to remove" : "Save to Favourites"}">${window.CuacCatalogList.saveHeartIcon()}</button>
+                <button class="save-button catalog-save-control ${isSaved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(id)}" aria-pressed="${isSaved}" aria-label="${escapeCatalogHtml(catalogT(isSaved ? "common.remove" : "common.save", isSaved ? `Remove ${name} from Favourites` : `Save ${name} to Favourites`, { name }))}" title="${escapeCatalogHtml(catalogT(isSaved ? "common.savedTitle" : "common.saveTitle", isSaved ? "Saved — click to remove" : "Save to Favourites"))}">${window.CuacCatalogList.saveHeartIcon()}</button>
               </div>
               <span class="program-card-open" aria-hidden="true">${iconArrowRight}</span>
             </div>
@@ -540,7 +541,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         });
         const pageButtons = pageItems.map((item) => {
           if (item === "ellipsis") return '<span class="pagination-ellipsis" aria-hidden="true">…</span>';
-          return `<button class="${item === state.page ? "active" : ""}" type="button" data-page="${item}" aria-label="Page ${item}" ${item === state.page ? 'aria-current="page"' : ""}>${item}</button>`;
+          return `<button class="${item === state.page ? "active" : ""}" type="button" data-page="${item}" aria-label="${escapeCatalogHtml(catalogT("common.page", `Page ${item}`, { page: item }))}" ${item === state.page ? 'aria-current="page"' : ""}>${item}</button>`;
         }).join("");
 
         pagination.innerHTML = `
@@ -556,7 +557,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         const totalPages = Math.max(1, Math.ceil(programTotal / state.pageSize));
         if (state.page > totalPages) state.page = totalPages;
         const visible = results;
-        resultCount.textContent = `${programTotal} program${programTotal === 1 ? "" : "s"}`;
+        resultCount.textContent = catalogT(programTotal === 1 ? "programs.countOne" : "programs.countMany", `${programTotal} program${programTotal === 1 ? "" : "s"}`, { count: programTotal });
         resultContext.textContent = !catalogLoadingComplete
           ? "Loading the matching published programs."
           : activeFilterEntries().length
@@ -753,7 +754,7 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
         const requestVersion = ++loadVersion;
         catalogLoadingComplete = false;
         if (!programs.length) window.CuacCatalogList.listState(programList, "loading", { noun: "programs" });
-        resultContext.textContent = "Loading the matching published programs.";
+        resultContext.textContent = catalogT("programs.loading", "Loading programs");
         try {
           const page = await window.CuacCatalogList.loadPage("programs", {
             limit: state.pageSize,
@@ -786,8 +787,8 @@ const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 
           render();
         } catch (error) {
           if (requestVersion !== loadVersion) return;
-          resultCount.textContent = "Programs unavailable";
-          resultContext.textContent = "The published catalog could not be loaded.";
+          resultCount.textContent = catalogT("programs.unavailable", "Programs unavailable");
+          resultContext.textContent = catalogT("common.loadFailed", "The published catalog could not be loaded.", { noun: "catalog" });
           window.CuacCatalogList.listState(programList, "error", { noun: "programs", message: error.message });
         }
       }

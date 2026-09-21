@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="catalog-list-api.css?v=20260918-shared-save" />
     <link rel="stylesheet" href="universities.css?v=20260918-shared-save" />
   </head>
-  <body data-agent-mode="off" data-catalog-list-page="universities">
+  <body data-agent-mode="off" data-catalog-list-page="universities" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page">
       <div data-cuac-header data-active="universities" data-note="China admissions 2026:" data-note-detail="compare universities before choosing programs"></div>
 
@@ -16,15 +16,16 @@
         <div class="shell">
           <section class="page-title reveal" aria-label="University search header">
             <div>
-              <div class="eyebrow">Universities & colleges</div>
-              <h1>Find Chinese universities that fit</h1>
-              <p>Search by published city, language route, scholarship count, deadline, and admissions links.</p>
-              <div class="handoff-copy">Use this page when the campus, city, or university strength should shape your program shortlist.</div>
+              <div class="eyebrow" data-catalog-copy="universities.kicker">Universities & colleges</div>
+              <h1 data-catalog-copy="universities.title">Find Chinese universities that fit</h1>
+              <p data-catalog-copy="universities.intro">Search by published city, language route, scholarship count, deadline, and admissions links.</p>
+              <div class="handoff-copy" data-catalog-copy="universities.handoff">Use this page when the campus, city, or university strength should shape your program shortlist.</div>
+              <p class="catalog-language-note" data-catalog-copy="common.contentNotice">Core navigation and status controls are translated. Official catalog names, detailed filters, and admissions content remain in English while reviewed translations are completed.</p>
             </div>
             <div class="quick-facts" aria-label="University page summary">
-              <div class="fact"><strong id="summaryUniversities">-</strong><span>universities</span></div>
-              <div class="fact"><strong id="summaryEnglishRoutes">-</strong><span>English routes</span></div>
-              <div class="fact"><strong id="summaryScholarships">-</strong><span>scholarship options</span></div>
+              <div class="fact"><strong id="summaryUniversities">-</strong><span data-catalog-copy="universities.summaryUniversities">universities</span></div>
+              <div class="fact"><strong id="summaryEnglishRoutes">-</strong><span data-catalog-copy="universities.summaryEnglish">English routes</span></div>
+              <div class="fact"><strong id="summaryScholarships">-</strong><span data-catalog-copy="universities.summaryScholarships">scholarship options</span></div>
             </div>
           </section>
 
@@ -32,7 +33,7 @@
             <div class="search-row">
               <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
               <input id="searchInput" aria-label="Search universities, cities, or subjects" value="" placeholder="Search universities or cities" />
-              <button class="primary" id="searchButton" type="button">Search</button>
+              <button class="primary" id="searchButton" type="button" data-catalog-copy="common.search">Search</button>
             </div>
             <div class="chips" aria-label="Suggested filters">
               <button class="chip" type="button" data-chip="English routes">English-taught routes</button>
@@ -42,8 +43,8 @@
 
           <section class="toolbar reveal" aria-label="Result controls">
             <div class="result-copy">
-              <strong id="resultCount">Loading universities</strong>
-              <span id="resultContext">Reading the current published catalog.</span>
+              <strong id="resultCount" data-catalog-copy="universities.loading">Loading universities</strong>
+              <span id="resultContext" data-catalog-copy="common.reading">Reading the current published catalog.</span>
             </div>
             <div class="controls">
               <select class="select" id="sortSelect" aria-label="Sort universities">
@@ -54,8 +55,8 @@
                 <option value="readiness">Application readiness</option>
               </select>
               <div class="toggle" aria-label="View mode">
-                <button class="active" type="button" data-view="grid">Grid</button>
-                <button type="button" data-view="list">List</button>
+                <button class="active" type="button" data-view="grid" data-catalog-copy="common.grid">Grid</button>
+                <button type="button" data-view="list" data-catalog-copy="common.list">List</button>
               </div>
             </div>
           </section>
@@ -72,9 +73,9 @@
           <section class="results reveal" aria-label="University results">
             <div class="university-grid" id="resultsGrid"></div>
             <div class="empty-state" id="emptyState">
-              <h2>No universities match these filters yet.</h2>
-              <p>Try removing one filter or search by city.</p>
-              <button class="load-more" id="resetEmpty" type="button">Reset filters</button>
+              <h2 data-catalog-copy="universities.empty">No universities match these filters yet.</h2>
+              <p data-catalog-copy="universities.emptyHelp">Try removing one filter or search by city.</p>
+              <button class="load-more" id="resetEmpty" type="button" data-catalog-copy="common.resetFilters">Reset filters</button>
             </div>
             <nav class="pagination" id="pagination" aria-label="University results pages"></nav>
           </section>
@@ -87,9 +88,11 @@
     </div>
 
     <script src="cuac-actions.js"></script>
-    <script src="shared-shell.js?v=20260918-saved-continuation"></script>
-    <script src="catalog-list-api.js?v=20260918-shared-save"></script>
-    <script src="universities.js?v=20260918-shared-save"></script>
+    <script src="i18n-runtime.js?v=20260921-public-locales"></script>
+    <script src="catalog-list-i18n.js?v=20260921-catalog-locales"></script>
+    <script src="shared-shell.js?v=20260921-public-locales"></script>
+    <script src="catalog-list-api.js?v=20260921-catalog-locales"></script>
+    <script src="universities.js?v=20260921-catalog-locales"></script>
 </body>
 </html>
 
