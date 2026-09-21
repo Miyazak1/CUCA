@@ -26,6 +26,259 @@
   --shadow-md: 0 24px 64px rgb(var(--shadow-rgb) / 0.12);
 }
 
+/* Published guide discovery */
+.guide-discovery {
+  padding-bottom: 64px;
+}
+
+.guide-search {
+  display: grid;
+  gap: 8px;
+  max-width: 720px;
+}
+
+.guide-search label {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.guide-search > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.guide-search input {
+  min-width: 0;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  background: white;
+  color: var(--text);
+  font: inherit;
+}
+
+.guide-search input:focus-visible {
+  border-color: var(--accent);
+  outline: 3px solid rgb(var(--accent-rgb) / 0.14);
+}
+
+.guide-publication-note {
+  display: grid;
+  gap: 10px;
+  width: min(100%, 410px);
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: var(--surface-soft);
+}
+
+.guide-publication-note strong {
+  font-size: 18px;
+}
+
+.guide-publication-note p,
+.guide-publication-note span {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.guide-results {
+  padding-top: 34px;
+}
+
+.guide-filter-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  align-items: center;
+  margin: 18px 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  background: var(--surface-soft);
+}
+
+.guide-filter-summary[hidden] {
+  display: none;
+}
+
+.guide-filter-summary a {
+  margin-inline-start: auto;
+  color: var(--accent-dark);
+  font-weight: 800;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.published-guide-card,
+.guide-loading,
+.guide-state-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  min-height: 280px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: white;
+}
+
+.published-guide-meta,
+.published-guide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.published-guide-meta span {
+  padding: 5px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 820;
+}
+
+.published-guide-meta small,
+.published-guide-actions span,
+.published-guide-card > p,
+.guide-loading span,
+.guide-state-card span {
+  color: var(--text-muted);
+}
+
+.published-guide-card h3 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.16;
+}
+
+.published-guide-card > p {
+  margin: 0;
+}
+
+.published-guide-subtitle {
+  font-weight: 720;
+}
+
+.guide-translation-status {
+  padding: 10px 12px;
+  border-inline-start: 3px solid var(--warning);
+  background: var(--warning-soft);
+  color: var(--text) !important;
+  font-size: 13px;
+}
+
+.published-guide-actions {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.published-guide-actions a,
+.guide-state-card a,
+.guide-state-card button,
+.guide-next-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-xs);
+  background: white;
+  color: var(--accent-dark);
+  font: inherit;
+  font-weight: 820;
+}
+
+.guide-loading,
+.guide-state-card {
+  grid-column: 1 / -1;
+  min-height: 160px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.guide-rule-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.guide-rule-grid article {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border-inline-start: 3px solid var(--accent);
+  background: var(--surface-soft);
+}
+
+.guide-rule-grid span,
+.guide-next p {
+  color: var(--text-muted);
+}
+
+.guide-next {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
+}
+
+.guide-next-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .guide-search,
+[dir="rtl"] .guide-publication-note,
+[dir="rtl"] .published-guide-card,
+[dir="rtl"] .guide-state-card,
+[dir="rtl"] .guide-loading {
+  text-align: right;
+}
+
+@media (max-width: 980px) {
+  .guide-grid,
+  .guide-rule-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .guide-next {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-next-links {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 680px) {
+  .guide-grid,
+  .guide-rule-grid,
+  .guide-search > div {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-publication-note {
+    width: 100%;
+  }
+}
+
 * {
   box-sizing: border-box;
 }

@@ -76,9 +76,11 @@ test("guide discovery reads the published catalog API and has no Agent event beh
     source("public/guides.html"), source("public/guides.js"),
     source("app/api/v1/catalog/guides/route.ts"), source("app/api/v1/catalog/guides/[guideSlug]/route.ts"),
   ]);
-  assert.match(html, /data-guide-routes/);
-  assert.match(script, /fetch\("\/api\/v1\/catalog\/guides\?limit=20"/);
-  assert.doesNotMatch(script, /getDiscoveryGuides|cuac:agent-action|applyGuideAgentAction|Agent highlighted/);
+  assert.match(html, /data-guide-grid/);
+  assert.match(script, /new URL\("\/api\/v1\/catalog\/guides", location\.origin\)/);
+  assert.match(script, /api\.searchParams\.set\("limit", "100"\)/);
+  assert.doesNotMatch(html, /cuac-data\.js|data-application-timeline|timelineRail/);
+  assert.doesNotMatch(script, /getDiscoveryGuides|CuacDataClient|cuac:agent-action|applyGuideAgentAction|Agent highlighted/);
   assert.match(listRoute, /\.listGuides\(request\)/);
   assert.match(detailRoute, /\.getGuide\(request, params\.guideSlug\)/);
 });

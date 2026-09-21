@@ -101,6 +101,30 @@ test("student city discovery is multilingual while school and site administratio
   assert.match(cityMessages, /MutationObserver/);
 });
 
+test("student guide discovery is multilingual and renders only governed published records", async () => {
+  const [html, messages, script] = await Promise.all([
+    source("public/guides.html"),
+    source("public/guides-i18n.js"),
+    source("public/guides.js"),
+  ]);
+  assert.match(html, /data-i18n-locales="en,vi,th,id,ms,ar"/);
+  const scripts = [...html.matchAll(/<script src="([^"]+)"/g)].map(match => match[1].split("?")[0]);
+  assert.ok(scripts.indexOf("i18n-runtime.js") < scripts.indexOf("guides-i18n.js"));
+  assert.ok(scripts.indexOf("guides-i18n.js") < scripts.indexOf("shared-shell.js"));
+  assert.ok(scripts.indexOf("shared-shell.js") < scripts.indexOf("guides.js"));
+  assert.doesNotMatch(html, /cuac-data\.js|data-application-timeline|timelineRail/);
+  assert.match(script, /\/api\/v1\/catalog\/guides/);
+  assert.match(script, /guide\.content\?\.translations\?\.\[locale\]/);
+  assert.match(script, /guide-detail\.html\?guide=\$\{encodeURIComponent\(guide\.slug\)\}/);
+  assert.match(script, /English content shown — reviewed translation not yet published\./);
+  assert.doesNotMatch(script, /localStorage|sessionStorage|CuacDataClient/);
+  for (const marker of ["Hướng dẫn nộp hồ sơ", "คู่มือการสมัคร", "Panduan pendaftaran", "Panduan permohonan", "أدلة التقديم"]) {
+    assert.match(messages, new RegExp(marker));
+  }
+  assert.match(messages, /url\.searchParams\.set\("lang", i18n\.locale\)/);
+  assert.match(messages, /MutationObserver/);
+});
+
 test("catalog control translations keep dynamic filters and card status labels aligned", async () => {
   const script = await source("public/catalog-list-i18n.js");
   const expectedSortLabels = {
