@@ -1042,7 +1042,7 @@ function nullableYear(form, name) {
 function setProfileOperationStatus(section, message = "", tone = "") {
   const status = document.querySelector(`[data-profile-operation-status="${section}"]`);
   if (!status) return;
-  status.textContent = message;
+  status.textContent = appUi(message);
   status.dataset.tone = tone;
 }
 
@@ -1065,7 +1065,7 @@ function renderApplicantProfile() {
   form.elements.citizenshipCountry.value = applicantProfileRecord?.citizenshipCountry || "";
   profileSectionSaveState.applicant = true;
   setProfileOperationStatus("applicant", applicantProfileRecord
-    ? `Saved revision ${applicantProfileRecord.revision}.`
+    ? appFormat("Saved revision {revision}.", { revision: applicantProfileRecord.revision })
     : "No applicant record yet. Save these fields to create revision 1.", applicantProfileRecord ? "success" : "neutral");
   renderStudentInfoStatus();
   updateProfileSaveStatus("applicant");
@@ -1076,7 +1076,7 @@ async function saveApplicantProfile() {
   const button = document.querySelector("[data-save-profile-section]");
   if (!form || !form.reportValidity()) return;
   if (button) button.disabled = true;
-  setProfileOperationStatus("applicant", "Saving applicant record...", "pending");
+  setProfileOperationStatus("applicant", appUi("Saving applicant record..."), "pending");
   try {
     applicantProfileRecord = await applicationApi("/api/v1/student/applicant-profile", {
       method: "PATCH",
@@ -1089,7 +1089,7 @@ async function saveApplicantProfile() {
     });
     invalidateMaterialPreparation();
     profileSectionSaveState.applicant = true;
-    setProfileOperationStatus("applicant", `Saved revision ${applicantProfileRecord.revision}.`, "success");
+    setProfileOperationStatus("applicant", appFormat("Saved revision {revision}.", { revision: applicantProfileRecord.revision }), "success");
     renderStudentInfoStatus();
     updateSubmissionSummary();
     updateProfileSaveStatus("applicant");
@@ -1097,8 +1097,9 @@ async function saveApplicantProfile() {
     const detail = error.status === 409
       ? "This record changed elsewhere. Your entries are still here; reload before saving again."
       : error.message;
-    setProfileOperationStatus("applicant", `Applicant record was not saved: ${detail}`, "error");
-    showPageAction(`Applicant record was not saved: ${detail}`);
+    const message = appFormat("Applicant record was not saved: {detail}", { detail: appUi(detail) });
+    setProfileOperationStatus("applicant", message, "error");
+    showPageAction(message);
   } finally {
     if (button) button.disabled = false;
   }
@@ -1106,9 +1107,9 @@ async function saveApplicantProfile() {
 
 function educationPeriod(record) {
   if (record.startYear && record.endYear) return `${record.startYear}-${record.endYear}`;
-  if (record.startYear && record.expectedCompletionYear) return `${record.startYear}-expected ${record.expectedCompletionYear}`;
-  if (record.startYear) return `From ${record.startYear}`;
-  return "Dates not set";
+  if (record.startYear && record.expectedCompletionYear) return appFormat("{start}-expected {end}", { start: record.startYear, end: record.expectedCompletionYear });
+  if (record.startYear) return appFormat("From {year}", { year: record.startYear });
+  return appUi("Dates not set");
 }
 
 function renderEducationHistory() {
@@ -1117,15 +1118,15 @@ function renderEducationHistory() {
   const records = educationHistoryRecord.records;
   list.innerHTML = records.length ? records.map((record) => `
     <article class="profile-record-item">
-      <div><strong>${escapeHtml(record.institutionName)}</strong><span>${escapeHtml(record.qualificationName || record.educationLevel)}${record.fieldOfStudy ? ` · ${escapeHtml(record.fieldOfStudy)}` : ""}</span></div>
-      <div class="profile-record-meta"><span>${escapeHtml(record.institutionCountry || "Country not set")}</span><span>${escapeHtml(educationPeriod(record))}</span><span>${escapeHtml(String(record.attendanceStatus || "unknown").replaceAll("_", " "))}</span></div>
+      <div><strong>${escapeHtml(record.institutionName)}</strong><span>${escapeHtml(record.qualificationName || appRecordLabel(record.educationLevel))}${record.fieldOfStudy ? ` · ${escapeHtml(record.fieldOfStudy)}` : ""}</span></div>
+      <div class="profile-record-meta"><span>${escapeHtml(record.institutionCountry || appUi("Country not set"))}</span><span>${escapeHtml(educationPeriod(record))}</span><span>${escapeHtml(appRecordLabel(String(record.attendanceStatus || "unknown").replaceAll("_", " ")))}</span></div>
       <div class="profile-record-actions">
         <button class="record-edit-button" type="button" data-edit-education-record="${escapeHtml(record.id)}">Edit</button>
-        <button class="record-remove-button" type="button" data-remove-education-record="${escapeHtml(record.id)}" aria-label="Remove ${escapeHtml(record.institutionName)}">Remove</button>
+        <button class="record-remove-button" type="button" data-remove-education-record="${escapeHtml(record.id)}" aria-label="${escapeHtml(appFormat("Remove {name}", { name: record.institutionName }))}">Remove</button>
       </div>
     </article>
   `).join("") : '<div class="profile-record-empty"><strong>No education records</strong><span>Add the latest or current institution first.</span></div>';
-  setProfileOperationStatus("education", `History revision ${educationHistoryRecord.revision}.`, records.length ? "success" : "neutral");
+  setProfileOperationStatus("education", appFormat("History revision {revision}.", { revision: educationHistoryRecord.revision }), records.length ? "success" : "neutral");
   renderStudentInfoStatus();
 }
 
@@ -1136,7 +1137,7 @@ function resetEducationForm() {
   delete form.dataset.educationRecordId;
   const save = form.querySelector("[data-save-education-record]");
   const cancel = form.querySelector("[data-cancel-education-edit]");
-  if (save) save.textContent = "Add education record";
+  if (save) save.textContent = appUi("Add education record");
   if (cancel) cancel.hidden = true;
 }
 
@@ -1150,7 +1151,7 @@ function startEducationEdit(recordId) {
   }
   const save = form.querySelector("[data-save-education-record]");
   const cancel = form.querySelector("[data-cancel-education-edit]");
-  if (save) save.textContent = "Save education changes";
+  if (save) save.textContent = appUi("Save education changes");
   if (cancel) cancel.hidden = false;
   form.elements.institutionName.focus();
   form.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -1161,7 +1162,7 @@ async function saveEducationRecord(form) {
   const recordId = form.dataset.educationRecordId || "";
   const button = form.querySelector("[data-save-education-record]");
   if (button) button.disabled = true;
-  setProfileOperationStatus("education", recordId ? "Saving education changes..." : "Adding education record...", "pending");
+  setProfileOperationStatus("education", appUi(recordId ? "Saving education changes..." : "Adding education record..."), "pending");
   try {
     const path = recordId
       ? `/api/v1/student/education-records/${encodeURIComponent(recordId)}`
@@ -1188,7 +1189,7 @@ async function saveEducationRecord(form) {
     updateProgress();
   } catch (error) {
     const detail = error.status === 409 ? "The history changed elsewhere. Reload before saving this record." : error.message;
-    setProfileOperationStatus("education", `Education record was not saved: ${detail}`, "error");
+    setProfileOperationStatus("education", appFormat("Education record was not saved: {detail}", { detail: appUi(detail) }), "error");
   } finally {
     if (button) button.disabled = false;
   }
@@ -1197,7 +1198,7 @@ async function saveEducationRecord(form) {
 async function removeEducationRecord(recordId, button) {
   if (!recordId || !educationHistoryRecord.records.some((record) => record.id === recordId)) return;
   if (button) button.disabled = true;
-  setProfileOperationStatus("education", "Removing education record...", "pending");
+  setProfileOperationStatus("education", appUi("Removing education record..."), "pending");
   try {
     educationHistoryRecord = normalizeHistory(await applicationApi(`/api/v1/student/education-records/${encodeURIComponent(recordId)}/remove`, {
       method: "POST",
@@ -1209,13 +1210,13 @@ async function removeEducationRecord(recordId, button) {
     updateProgress();
   } catch (error) {
     const detail = error.status === 409 ? "The history changed elsewhere. Reload before removing this record." : error.message;
-    setProfileOperationStatus("education", `Education record was not removed: ${detail}`, "error");
+    setProfileOperationStatus("education", appFormat("Education record was not removed: {detail}", { detail: appUi(detail) }), "error");
     if (button) button.disabled = false;
   }
 }
 
 function assessmentResult(record) {
-  if (record.resultStatus !== "reported") return String(record.resultStatus || "planned").replaceAll("_", " ");
+  if (record.resultStatus !== "reported") return appRecordLabel(String(record.resultStatus || "planned").replaceAll("_", " "));
   return record.components.map((component) => `${component.name}: ${component.value}${component.scale ? ` (${component.scale})` : ""}`).join(" · ");
 }
 
@@ -1225,15 +1226,15 @@ function renderAssessmentHistory() {
   const records = assessmentHistoryRecord.records;
   list.innerHTML = records.length ? records.map((record) => `
     <article class="profile-record-item">
-      <div><strong>${escapeHtml(record.assessmentName)}</strong><span>${escapeHtml(record.assessmentVariant || record.assessmentCategory)}</span></div>
-      <div class="profile-record-meta"><span>${escapeHtml(assessmentResult(record))}</span><span>${escapeHtml(record.testDate || "Date not set")}</span><span>Self-reported</span></div>
+      <div><strong>${escapeHtml(record.assessmentName)}</strong><span>${escapeHtml(record.assessmentVariant || appRecordLabel(record.assessmentCategory))}</span></div>
+      <div class="profile-record-meta"><span>${escapeHtml(assessmentResult(record))}</span><span>${escapeHtml(record.testDate || appUi("Date not set"))}</span><span>Self-reported</span></div>
       <div class="profile-record-actions">
         <button class="record-edit-button" type="button" data-edit-assessment-record="${escapeHtml(record.id)}">Edit</button>
-        <button class="record-remove-button" type="button" data-remove-assessment-record="${escapeHtml(record.id)}" aria-label="Remove ${escapeHtml(record.assessmentName)}">Remove</button>
+        <button class="record-remove-button" type="button" data-remove-assessment-record="${escapeHtml(record.id)}" aria-label="${escapeHtml(appFormat("Remove {name}", { name: record.assessmentName }))}">Remove</button>
       </div>
     </article>
   `).join("") : '<div class="profile-record-empty"><strong>No exams or tests</strong><span>Add a planned test or a self-reported result when relevant.</span></div>';
-  setProfileOperationStatus("assessments", `History revision ${assessmentHistoryRecord.revision}.`, records.length ? "success" : "neutral");
+  setProfileOperationStatus("assessments", appFormat("History revision {revision}.", { revision: assessmentHistoryRecord.revision }), records.length ? "success" : "neutral");
   renderStudentInfoStatus();
 }
 
@@ -1261,7 +1262,7 @@ function resetAssessmentForm() {
   document.querySelector("[data-assessment-component-list]")?.replaceChildren();
   const save = form.querySelector("[data-save-assessment-record]");
   const cancel = form.querySelector("[data-cancel-assessment-edit]");
-  if (save) save.textContent = "Add exam or test";
+  if (save) save.textContent = appUi("Add exam or test");
   if (cancel) cancel.hidden = true;
   syncAssessmentEntryState();
 }
@@ -1278,7 +1279,7 @@ function startAssessmentEdit(recordId) {
   if (list) list.innerHTML = record.components.map(assessmentComponentMarkup).join("");
   const save = form.querySelector("[data-save-assessment-record]");
   const cancel = form.querySelector("[data-cancel-assessment-edit]");
-  if (save) save.textContent = "Save exam or test changes";
+  if (save) save.textContent = appUi("Save exam or test changes");
   if (cancel) cancel.hidden = false;
   syncAssessmentEntryState();
   form.elements.assessmentName.focus();
@@ -1309,7 +1310,7 @@ async function saveAssessmentRecord(form) {
   const recordId = form.dataset.assessmentRecordId || "";
   const button = form.querySelector("[data-save-assessment-record]");
   if (button) button.disabled = true;
-  setProfileOperationStatus("assessments", recordId ? "Saving exam or test changes..." : "Adding exam or test...", "pending");
+  setProfileOperationStatus("assessments", appUi(recordId ? "Saving exam or test changes..." : "Adding exam or test..."), "pending");
   try {
     const path = recordId
       ? `/api/v1/student/assessment-records/${encodeURIComponent(recordId)}`
@@ -1333,7 +1334,7 @@ async function saveAssessmentRecord(form) {
     renderAssessmentHistory();
   } catch (error) {
     const detail = error.status === 409 ? "The history changed elsewhere. Reload before saving this record." : error.message;
-    setProfileOperationStatus("assessments", `Exam or test was not saved: ${detail}`, "error");
+    setProfileOperationStatus("assessments", appFormat("Exam or test was not saved: {detail}", { detail: appUi(detail) }), "error");
   } finally {
     if (button) button.disabled = false;
   }
@@ -1342,7 +1343,7 @@ async function saveAssessmentRecord(form) {
 async function removeAssessmentRecord(recordId, button) {
   if (!recordId || !assessmentHistoryRecord.records.some((record) => record.id === recordId)) return;
   if (button) button.disabled = true;
-  setProfileOperationStatus("assessments", "Removing exam or test...", "pending");
+  setProfileOperationStatus("assessments", appUi("Removing exam or test..."), "pending");
   try {
     assessmentHistoryRecord = normalizeHistory(await applicationApi(`/api/v1/student/assessment-records/${encodeURIComponent(recordId)}/remove`, {
       method: "POST",
@@ -1352,7 +1353,7 @@ async function removeAssessmentRecord(recordId, button) {
     renderAssessmentHistory();
   } catch (error) {
     const detail = error.status === 409 ? "The history changed elsewhere. Reload before removing this record." : error.message;
-    setProfileOperationStatus("assessments", `Exam or test was not removed: ${detail}`, "error");
+    setProfileOperationStatus("assessments", appFormat("Exam or test was not removed: {detail}", { detail: appUi(detail) }), "error");
     if (button) button.disabled = false;
   }
 }
@@ -1936,7 +1937,7 @@ function renderProfileSectionState() {
       const preflight = materialChoiceStates.get(choice.id)?.preflight;
       return preflight?.submissionAuthorization?.current && preflight?.materialSnapshot?.current;
     }).length;
-    status.textContent = unsaved
+    const statusText = unsaved
       ? "Unsaved"
       : section === "assessments" && assessmentHistoryRecord.records.length === 0
         ? "Optional"
@@ -1959,6 +1960,11 @@ function renderProfileSectionState() {
               : studentRecordsRuntimeState === "loading"
                 ? "Loading"
                 : "Missing";
+    status.textContent = /^(\d+) clean$/.test(statusText)
+      ? appFormat("{count} clean", { count: statusText.split(" ")[0] })
+      : /^(\d+)\/(\d+) sealed$/.test(statusText)
+        ? appFormat("{ready}/{total} sealed", { ready: sealedChoices, total: totalChoices })
+        : appUi(statusText);
   });
 }
 
@@ -1970,11 +1976,11 @@ function updateProfileSaveStatus(section = currentProfileSection) {
   const saveGroup = document.querySelector(".profile-save-group");
   if (saveGroup) saveGroup.hidden = section !== "applicant" || saved;
   if (status) {
-    status.textContent = saved ? "Saved" : "Unsaved changes";
+    status.textContent = appUi(saved ? "Saved" : "Unsaved changes");
     status.classList.toggle("saved", saved);
     status.classList.toggle("unsaved", !saved);
   }
-  if (button) button.textContent = "Save changes";
+  if (button) button.textContent = appUi("Save changes");
 }
 
 function markProfileSectionDirty(section = currentProfileSection) {
@@ -2023,8 +2029,8 @@ function updateProfileDetailHeader(section) {
   const label = profileSectionLabels[section] || "Student info";
   const title = document.querySelector("[data-profile-detail-title]");
   const subtitle = document.querySelector("[data-profile-detail-subtitle]");
-  if (title) title.textContent = label;
-  if (subtitle) subtitle.textContent = currentApplicationSet?.targetIntake || currentApplicationSet?.name || "Current application";
+  if (title) title.textContent = appUi(label);
+  if (subtitle) subtitle.textContent = currentApplicationSet?.targetIntake || currentApplicationSet?.name || appUi("Current application");
 }
 
 function closeProfileDetailMode() {
@@ -2101,7 +2107,9 @@ function renderStudentInfoStatus() {
   const status = document.querySelector("[data-info-status]");
   const requiredSections = ["applicant", "education"];
   const readySections = requiredSections.filter((section) => isProfileSectionComplete(section)).length;
-  if (status) status.textContent = ready ? "Basic record ready" : `${readySections}/${requiredSections.length} required records ready`;
+  if (status) status.textContent = ready
+    ? appUi("Basic record ready")
+    : appFormat("{ready}/{total} required records ready", { ready: readySections, total: requiredSections.length });
   renderProfileSectionState();
   return ready;
 }
@@ -2177,7 +2185,7 @@ function showSubmitBlockers(message = "Complete all required sections before fin
 function setStudentInfoConfirmNotice(message = "", tone = "warning") {
   const notice = document.querySelector("[data-student-info-confirm-notice]");
   if (!notice) return;
-  notice.textContent = message;
+  notice.textContent = appUi(message);
   notice.dataset.tone = tone;
   notice.toggleAttribute("hidden", !message);
 }
@@ -2206,9 +2214,10 @@ function confirmStudentInfo() {
 
   const remainingBlocker = getSubmitBlockers().find((blocker) => blocker.key !== "student-info");
   if (remainingBlocker) {
-    setStudentInfoConfirmNotice(`Student info is ready. Next, ${remainingBlocker.label}.`, "success");
+    const message = appFormat("Student info is ready. Next, {next}.", { next: appUi(remainingBlocker.label) });
+    setStudentInfoConfirmNotice(message, "success");
     navigateApplicationStage(remainingBlocker.target, { scroll: true });
-    showPageAction(`Student info is ready. Next, ${remainingBlocker.label}.`);
+    showPageAction(message);
     return;
   }
 

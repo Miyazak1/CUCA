@@ -133,3 +133,23 @@ test("application choice flow localizes bounded UI and preserves server records"
   assert.match(messages, /CUACOnboardingI18n/);
   assert.match(messages, /MutationObserver/);
 });
+
+test("application student records localize controls without translating private record values", async () => {
+  const [html, messages, script] = await Promise.all([
+    source("public/application.html"),
+    source("public/application-i18n.js"),
+    source("public/application.js"),
+  ]);
+  assert.match(html, /application-i18n\.js\?v=20260921-student-profile/);
+  assert.match(script, /appFormat\("Saved revision \{revision\}\."/);
+  assert.match(script, /appFormat\("History revision \{revision\}\."/);
+  assert.match(script, /appFormat\("\{ready\}\/\{total\} required records ready"/);
+  assert.match(script, /record\.qualificationName \|\| appRecordLabel\(record\.educationLevel\)/);
+  assert.match(script, /record\.assessmentVariant \|\| appRecordLabel\(record\.assessmentCategory\)/);
+  assert.match(script, /appFormat\("Remove \{name\}"/);
+  assert.match(script, /Student info is ready\. Next, \{next\}/);
+  for (const marker of ["Lịch sử học tập", "ประวัติการศึกษา", "Riwayat pendidikan", "السجل التعليمي"]) {
+    assert.match(messages, new RegExp(marker));
+  }
+  assert.doesNotMatch(script, /appUi\(record\.institutionName\)|appUi\(record\.assessmentName\)|appUi\(record\.fieldOfStudy\)/);
+});
