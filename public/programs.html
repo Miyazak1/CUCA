@@ -35,8 +35,8 @@
               <button class="primary" id="searchButton" type="button" data-catalog-copy="common.search">Search</button>
             </div>
             <div class="suggestions" aria-label="Suggested program filters">
-              <button class="chip" type="button" data-quick="degree:master">English-taught master</button>
-              <button class="chip" type="button" data-quick="scholarship:true">Scholarship available</button>
+              <button class="chip" type="button" data-quick="degree:master" data-catalog-ui>English-taught master</button>
+              <button class="chip" type="button" data-quick="scholarship:true" data-catalog-ui>Scholarship available</button>
             </div>
           </section>
 
@@ -50,10 +50,10 @@
             <div class="controls">
               <button class="secondary mobile-filter" id="openFilters" type="button" data-catalog-copy="common.allFilters">All filters</button>
               <select class="select" id="sortSelect" aria-label="Sort programs">
-                <option value="relevance">Sort: Relevance</option>
-                <option value="deadline">Deadline soonest</option>
-                <option value="tuition">Tuition low to high</option>
-                <option value="scholarship">Scholarship route</option>
+                <option value="relevance" data-catalog-ui>Sort: Relevance</option>
+                <option value="deadline" data-catalog-ui>Deadline soonest</option>
+                <option value="tuition" data-catalog-ui>Tuition low to high</option>
+                <option value="scholarship" data-catalog-ui>Scholarship route</option>
               </select>
               <div class="view-toggle" aria-label="View mode">
                 <button class="active" type="button" data-view="list" data-catalog-copy="common.cards">Cards</button>

@@ -14,6 +14,7 @@
   arrowRight: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>',
 };
 const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallback, values) || fallback;
+const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
 
 document.querySelectorAll("[data-icon]").forEach((target) => {
   target.innerHTML = scholarshipIcons[target.dataset.icon] || "";
@@ -278,9 +279,9 @@ function scholarshipNextStepSummary(item = {}) {
 
 function renderScholarshipReadiness(item = {}) {
   const rows = [
-    ["Eligibility", scholarshipEligibilitySummary(item)],
-    ["Materials", scholarshipMaterialsSummary(item)],
-    ["Next step", scholarshipNextStepSummary(item)],
+    [catalogUi("Eligibility"), scholarshipEligibilitySummary(item)],
+    [catalogUi("Materials"), scholarshipMaterialsSummary(item)],
+    [catalogUi("Next step"), scholarshipNextStepSummary(item)],
   ];
   return `
     <div class="scholarship-readiness" aria-label="Scholarship readiness summary">
@@ -400,9 +401,9 @@ function renderCards() {
   page = Math.min(page, totalPages);
   const items = filtered.slice((page - 1) * pageSize, page * pageSize);
   document.querySelector("#resultCount").textContent = filtered.length;
-  document.querySelector("#resultContext").textContent = filtered.length === scholarships.length
+  document.querySelector("#resultContext").textContent = catalogUi(filtered.length === scholarships.length
     ? "Funding routes with type, country scope, coverage, deadline, and student fit."
-    : "Filtered by your scholarship route preferences.";
+    : "Filtered by your scholarship route preferences.");
   const grid = document.querySelector("#scholarshipGrid");
   grid.innerHTML = items.map((item) => {
     const entityId = scholarshipEntityId(item);
@@ -424,7 +425,7 @@ function renderCards() {
         <p class="school-line">${escapeCatalogHtml(scholarshipProvider(item))}</p>
         <p class="summary">${escapeCatalogHtml(scholarshipSummary(item))}</p>
         <div class="coverage-chips">${shownCoverage.map((value) => `<span>${escapeCatalogHtml(value)}</span>`).join("")}${hiddenCoverage ? `<span>+${hiddenCoverage}</span>` : ""}</div>
-        <div class="facts"><span><b>${escapeCatalogHtml(scholarshipFundingLabel(item))}</b>funding</span><span><b>${escapeCatalogHtml(scholarshipDegree(item))}</b>degree fit</span><span><b>${escapeCatalogHtml(scholarshipDeadlineLabel(item))}</b>deadline</span></div>
+        <div class="facts"><span><b>${escapeCatalogHtml(scholarshipFundingLabel(item))}</b>${escapeCatalogHtml(catalogUi("funding"))}</span><span><b>${escapeCatalogHtml(scholarshipDegree(item))}</b>${escapeCatalogHtml(catalogUi("degree fit"))}</span><span><b>${escapeCatalogHtml(scholarshipDeadlineLabel(item))}</b>${escapeCatalogHtml(catalogUi("deadline"))}</span></div>
         <div class="scope-row" aria-label="Scholarship scope">${scholarshipScopeItems(item, filters.country).map((value) => `<span>${escapeCatalogHtml(value)}</span>`).join("")}</div>
         ${renderScholarshipReadiness(item)}
       </article>
@@ -469,10 +470,10 @@ function renderPagination(totalPages, totalResults) {
   }).join("");
 
   pagination.innerHTML = `
-    <span class="pagination-summary">Page ${page} of ${totalPages}</span>
-    <button class="pagination-step" type="button" data-page="${page - 1}" aria-label="Previous page" ${page === 1 ? "disabled" : ""}>‹</button>
+    <span class="pagination-summary">${escapeCatalogHtml(catalogT("common.page", `Page ${page}`, { page }))} / ${totalPages}</span>
+    <button class="pagination-step" type="button" data-page="${page - 1}" aria-label="${escapeCatalogHtml(catalogUi("Previous page"))}" ${page === 1 ? "disabled" : ""}>‹</button>
     ${pageItems}
-    <button class="pagination-step" type="button" data-page="${page + 1}" aria-label="Next page" ${page === totalPages ? "disabled" : ""}>›</button>
+    <button class="pagination-step" type="button" data-page="${page + 1}" aria-label="${escapeCatalogHtml(catalogUi("Next page"))}" ${page === totalPages ? "disabled" : ""}>›</button>
   `;
 }
 
@@ -504,28 +505,28 @@ function renderActiveChips() {
   const chips = [];
   if (filters.keyword) chips.push(["keyword", `Search: ${filters.keyword}`]);
   if (routeCityFocus) chips.push(["city", `${routeCityFocus} related`]);
-  if (filters.funding !== "all") chips.push(["funding", filters.funding === "full" ? "Full funding" : "Partial funding"]);
-  if (filters.type !== "all") chips.push(["type", `${filters.type} route`]);
+  if (filters.funding !== "all") chips.push(["funding", catalogUi(filters.funding === "full" ? "Full funding" : "Partial funding")]);
+  if (filters.type !== "all") chips.push(["type", catalogUi({ government: "CSC / government", university: "University award", province: "Province / city", partner: "Partner or subject" }[filters.type] || filters.type)]);
   if (filters.degree !== "all") chips.push(["degree", filters.degree]);
   if (filters.country !== "all") chips.push(["country", filters.country]);
-  if (filters.deadline !== "all") chips.push(["deadline", filters.deadline === "soon" ? "Deadline soon" : filters.deadline]);
-  if (filters.coverage) chips.push(["coverage", "Includes stipend"]);
+  if (filters.deadline !== "all") chips.push(["deadline", catalogUi(filters.deadline === "soon" ? "Deadline soon" : filters.deadline === "open" ? "Open or later" : filters.deadline === "rolling" ? "Rolling" : filters.deadline)]);
+  if (filters.coverage) chips.push(["coverage", catalogUi("Includes living stipend")]);
   document.querySelector("#activeChips").innerHTML = chips.length
     ? chips.map(([key, label]) => `<button class="filter-chip active" type="button" data-clear="${key}">${escapeCatalogHtml(label)} x</button>`).join("")
-    : '<span class="filter-chip">No filters applied</span>';
+    : `<span class="filter-chip">${escapeCatalogHtml(catalogUi("No filters applied"))}</span>`;
 }
 
 function renderFilters() {
   document.querySelector("#filterGroups").innerHTML = `
     ${filterConfig.map(([group, controls]) => `
-      <div class="filter-group"><span>${group}</span>${controls.map(([key, label, options]) => {
+      <div class="filter-group"><span>${escapeCatalogHtml(catalogUi(group))}</span>${controls.map(([key, label, options]) => {
         const resolvedOptions = typeof options === "function" ? options() : options;
         return `
-        <label><span>${label}</span><select class="filter-select" data-filter-key="${key}">${resolvedOptions.map(([value, text]) => `<option value="${escapeCatalogHtml(value)}">${escapeCatalogHtml(text)}</option>`).join("")}</select></label>
+        <label><span>${escapeCatalogHtml(catalogUi(label))}</span><select class="filter-select" data-filter-key="${key}">${resolvedOptions.map(([value, text]) => `<option value="${escapeCatalogHtml(value)}">${escapeCatalogHtml(catalogUi(text))}</option>`).join("")}</select></label>
       `;
       }).join("")}</div>
     `).join("")}
-    <div class="filter-group"><span>Coverage</span><div class="check-list"><label><input type="checkbox" data-filter-key="coverage" /> Includes living stipend</label></div></div>
+    <div class="filter-group"><span>${escapeCatalogHtml(catalogUi("Coverage"))}</span><div class="check-list"><label><input type="checkbox" data-filter-key="coverage" /> ${escapeCatalogHtml(catalogUi("Includes living stipend"))}</label></div></div>
   `;
   syncFilters();
 }

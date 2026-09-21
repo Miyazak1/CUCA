@@ -36,8 +36,8 @@
               <button class="primary" id="searchButton" type="button" data-catalog-copy="common.search">Search</button>
             </div>
             <div class="chips" aria-label="Suggested filters">
-              <button class="chip" type="button" data-chip="English routes">English-taught routes</button>
-              <button class="chip" type="button" data-chip="Scholarship">Scholarship options</button>
+              <button class="chip" type="button" data-chip="English routes" data-catalog-ui>English-taught routes</button>
+              <button class="chip" type="button" data-chip="Scholarship" data-catalog-ui>Scholarship options</button>
             </div>
           </section>
 
@@ -48,11 +48,11 @@
             </div>
             <div class="controls">
               <select class="select" id="sortSelect" aria-label="Sort universities">
-                <option value="relevance">Sort: Relevance</option>
-                <option value="name">Name A-Z</option>
-                <option value="scholarship">Scholarship options</option>
-                <option value="routes">International routes</option>
-                <option value="readiness">Application readiness</option>
+                <option value="relevance" data-catalog-ui>Sort: Relevance</option>
+                <option value="name" data-catalog-ui>Name A-Z</option>
+                <option value="scholarship" data-catalog-ui>Scholarship options</option>
+                <option value="routes" data-catalog-ui>International routes</option>
+                <option value="readiness" data-catalog-ui>Application readiness</option>
               </select>
               <div class="toggle" aria-label="View mode">
                 <button class="active" type="button" data-view="grid" data-catalog-copy="common.grid">Grid</button>
@@ -62,10 +62,10 @@
           </section>
 
           <section class="filters reveal" aria-label="University filters">
-            <button class="filter-button" type="button" data-filter="Application ready">Application ready</button>
-            <button class="filter-button" type="button" data-filter="English routes">English routes</button>
-            <button class="filter-button" type="button" data-filter="Scholarship">Scholarship</button>
-            <button class="filter-button" type="button" data-filter="Upcoming deadlines">Upcoming deadlines</button>
+            <button class="filter-button" type="button" data-filter="Application ready" data-catalog-ui>Application ready</button>
+            <button class="filter-button" type="button" data-filter="English routes" data-catalog-ui>English routes</button>
+            <button class="filter-button" type="button" data-filter="Scholarship" data-catalog-ui>Scholarship</button>
+            <button class="filter-button" type="button" data-filter="Upcoming deadlines" data-catalog-ui>Upcoming deadlines</button>
           </section>
 
           <div class="active-filters reveal" id="activeFilters" aria-live="polite"></div>

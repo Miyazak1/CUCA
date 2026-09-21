@@ -1,6 +1,7 @@
 const iconCompare = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 7h14"/><path d="m6 7-3 7"/><path d="m8 7 3 7"/><path d="m16 7-3 7"/><path d="m18 7 3 7"/><path d="M3 14h8"/><path d="M13 14h8"/><path d="M7 21h10"/></svg>';
 const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallback, values) || fallback;
+const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
 
       let programs = [];
       let programTotal = 0;
@@ -102,20 +103,20 @@ const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallb
       }
 
       function labelDegree(value) {
-        return {
+        return catalogUi({
           undergraduate: "Undergraduate",
           master: "Master",
           phd: "PhD",
           "non-degree": "Non-degree",
-        }[value] || value;
+        }[value] || value);
       }
 
       function labelLanguage(value) {
-        return {
+        return catalogUi({
           english: "English-taught",
           chinese: "Chinese-taught",
           bilingual: "Bilingual",
-        }[value] || value;
+        }[value] || value);
       }
 
       function labelDocuments(value) {
@@ -166,7 +167,7 @@ const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallb
       }
 
       function programIntake(program = {}) {
-        return program.applicationRound || program.intake || "Intake pending";
+        return catalogUi(program.applicationRound || program.intake || "Intake pending");
       }
 
       function programTerm(program = {}) {
@@ -277,8 +278,8 @@ const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallb
       function programReadiness(program = {}) {
         const readiness = program.readiness;
         const normalizedReadiness = String(readiness || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-        if (readiness && !["source-pending", "confirm-details", "official-details"].includes(normalizedReadiness)) return readiness;
-        return programSourceStatus(program) === "verified" ? "Ready to compare" : "Review before applying";
+        if (readiness && !["source-pending", "confirm-details", "official-details"].includes(normalizedReadiness)) return catalogUi(readiness);
+        return catalogUi(programSourceStatus(program) === "verified" ? "Ready to compare" : "Review before applying");
       }
 
       function programReadinessType(program = {}) {
@@ -287,20 +288,20 @@ const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallb
 
       function deadlineBadge(program) {
         const deadline = programDeadline(program);
-        const dateLabel = deadline ? formatShortDate(deadline) : "date pending";
+        const dateLabel = deadline ? formatShortDate(deadline) : catalogUi("date pending");
         const status = programDeadlineStatus(program);
-        if (status === "urgent") return ["danger", `Urgent: ${dateLabel}`];
-        if (status === "closes-soon") return ["warning", `Closes ${dateLabel}`];
-        if (status === "late") return ["success", `Late intake until ${dateLabel}`];
-        if (status === "closed") return ["danger", `Closed ${dateLabel}`];
-        return ["", `Open until ${dateLabel}`];
+        if (status === "urgent") return ["danger", `${catalogUi("Urgent:")} ${dateLabel}`];
+        if (status === "closes-soon") return ["warning", `${catalogUi("Closes")} ${dateLabel}`];
+        if (status === "late") return ["success", `${catalogUi("Late intake until")} ${dateLabel}`];
+        if (status === "closed") return ["danger", `${catalogUi("Closed")} ${dateLabel}`];
+        return ["", `${catalogUi("Open until")} ${dateLabel}`];
       }
 
       function programDecisionNote(program) {
         const source = programSourceStatus(program);
-        if (source === "verified") return "Ready to compare with saved choices";
-        if (source === "stale") return "Review deadline and requirements before adding";
-        return "Check program fit before adding";
+        if (source === "verified") return catalogUi("Ready to compare with saved choices");
+        if (source === "stale") return catalogUi("Review deadline and requirements before adding");
+        return catalogUi("Check program fit before adding");
       }
 
       function slugifyRouteParam(value) {
@@ -386,27 +387,27 @@ const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallb
         target.innerHTML = `
           ${showHeader ? `
             <div class="filter-head">
-              <h2>Filters</h2>
-              <button class="ghost" type="button" data-reset>Reset</button>
+              <h2>${escapeCatalogHtml(catalogUi("Filters"))}</h2>
+              <button class="ghost" type="button" data-reset>${escapeCatalogHtml(catalogT("common.reset", "Reset"))}</button>
             </div>
           ` : ""}
           ${filterGroups.map((group) => `
             <div class="filter-group">
-              <span>${group.label}</span>
+              <span>${escapeCatalogHtml(catalogUi(group.label))}</span>
               ${group.fields.map(([key, label, options]) => `
                 <label>
-                  <span>${label}</span>
+                  <span>${escapeCatalogHtml(catalogUi(label))}</span>
                   <select class="filter-select" data-filter-key="${key}">
-                    ${options.map(([value, optionLabel]) => `<option value="${value}">${optionLabel}</option>`).join("")}
+                    ${options.map(([value, optionLabel]) => `<option value="${value}">${escapeCatalogHtml(catalogUi(optionLabel))}</option>`).join("")}
                   </select>
                 </label>
               `).join("")}
             </div>
           `).join("")}
           <div class="filter-group">
-            <span>Opportunity</span>
+            <span>${escapeCatalogHtml(catalogUi("Opportunity"))}</span>
             <div class="check-list">
-              <label><input type="checkbox" data-filter-key="scholarship" /> Scholarship available</label>
+              <label><input type="checkbox" data-filter-key="scholarship" /> ${escapeCatalogHtml(catalogUi("Scholarship available"))}</label>
             </div>
           </div>
         `;
@@ -460,8 +461,8 @@ const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallb
         if (f.intake) entries.push(["intake", f.intake === "late" ? "Late intake" : `${f.intake[0].toUpperCase()}${f.intake.slice(1)} intake`]);
         if (f.deadline) entries.push(["deadline", f.deadline.replace("-", " ")]);
         if (f.tuition) entries.push(["tuition", document.querySelector(`[data-filter-key="tuition"] option[value="${f.tuition}"]`)?.textContent || f.tuition]);
-        if (f.scholarship) entries.push(["scholarship", "Scholarship"]);
-        if (f.upcomingDeadline) entries.push(["upcomingDeadline", "Upcoming deadline"]);
+        if (f.scholarship) entries.push(["scholarship", catalogUi("Scholarship")]);
+        if (f.upcomingDeadline) entries.push(["upcomingDeadline", catalogUi("Upcoming deadlines")]);
         if (f.langReq) entries.push(["langReq", document.querySelector(`[data-filter-key="langReq"] option[value="${f.langReq}"]`)?.textContent || f.langReq]);
         if (f.documents) entries.push(["documents", labelDocuments(f.documents)]);
         return entries;
@@ -499,12 +500,12 @@ const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallb
               <h2><a href="${programHref}">${escapeCatalogHtml(name)}</a></h2>
               <div class="meta"><a href="${universityHref}">${escapeCatalogHtml(university)}</a> · ${escapeCatalogHtml(labelDegree(programDegreeValue(program)))} · ${escapeCatalogHtml(programLanguageLabel(program) || "Language not published")}</div>
               <div class="facts">
-                <div class="fact"><strong>${escapeCatalogHtml(programIntake(program))}</strong><span>application round</span></div>
-                <div class="fact"><strong>${escapeCatalogHtml(formatMoney(programTuitionAmount(program)))}</strong><span>tuition</span></div>
+                <div class="fact"><strong>${escapeCatalogHtml(programIntake(program))}</strong><span>${escapeCatalogHtml(catalogUi("application round"))}</span></div>
+                <div class="fact"><strong>${escapeCatalogHtml(formatMoney(programTuitionAmount(program)))}</strong><span>${escapeCatalogHtml(catalogUi("tuition"))}</span></div>
               </div>
               <div class="signals">
-                <span class="signal ${scholarship ? "good" : ""}">${scholarship ? "Scholarship signal" : "No award listed"}</span>
-                <span class="signal ${programSourceStatus(program) === "verified" ? "good" : "warn"}">${escapeCatalogHtml(programSourceStatus(program))}</span>
+                <span class="signal ${scholarship ? "good" : ""}">${escapeCatalogHtml(catalogUi(scholarship ? "Scholarship signal" : "No award listed"))}</span>
+                <span class="signal ${programSourceStatus(program) === "verified" ? "good" : "warn"}">${escapeCatalogHtml(catalogUi(programSourceStatus(program) === "verified" ? "Verified" : "Unverified"))}</span>
                 <span class="signal ${programReadinessType(program)}">${escapeCatalogHtml(programReadiness(program))}</span>
               </div>
               ${renderRequirementCards(program)}
@@ -545,10 +546,10 @@ const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallb
         }).join("");
 
         pagination.innerHTML = `
-          <span class="pagination-summary">Showing ${start}-${end} of ${total}</span>
-          <button type="button" data-page="${state.page - 1}" aria-label="Previous page" ${state.page === 1 ? "disabled" : ""}>‹</button>
+          <span class="pagination-summary">${escapeCatalogHtml(catalogUi("Showing"))} ${start}-${end} ${escapeCatalogHtml(catalogUi("of"))} ${total}</span>
+          <button type="button" data-page="${state.page - 1}" aria-label="${escapeCatalogHtml(catalogUi("Previous page"))}" ${state.page === 1 ? "disabled" : ""}>‹</button>
           ${pageButtons}
-          <button type="button" data-page="${state.page + 1}" aria-label="Next page" ${state.page === totalPages ? "disabled" : ""}>›</button>
+          <button type="button" data-page="${state.page + 1}" aria-label="${escapeCatalogHtml(catalogUi("Next page"))}" ${state.page === totalPages ? "disabled" : ""}>›</button>
         `;
       }
 
@@ -559,10 +560,10 @@ const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallb
         const visible = results;
         resultCount.textContent = catalogT(programTotal === 1 ? "programs.countOne" : "programs.countMany", `${programTotal} program${programTotal === 1 ? "" : "s"}`, { count: programTotal });
         resultContext.textContent = !catalogLoadingComplete
-          ? "Loading the matching published programs."
-          : activeFilterEntries().length
-          ? "Filtered by China-study fit, requirements, and application details."
-          : "Published programs with deadline, tuition, language, and source status.";
+          ? catalogT("programs.loading", "Loading programs")
+          : catalogUi(activeFilterEntries().length
+            ? "Filtered by China-study fit, requirements, and application details."
+            : "Published programs with deadline, tuition, language, and source status.");
         programList.className = `program-list ${state.view === "compact" ? "compact" : ""}`;
         programList.innerHTML = visible.map(renderRow).join("");
         window.CUAC?.reveal?.(programList);

@@ -3,7 +3,7 @@
 
   const messages = {
     en: {
-      "catalog.common.contentNotice": "Core navigation and status controls are translated. Official catalog names, detailed filters, and admissions content remain in English while reviewed translations are completed.",
+      "catalog.common.contentNotice": "Catalog controls are translated. Official names, detail pages, and long-form admissions content remain in English while reviewed translations are completed.",
       "catalog.common.search": "Search", "catalog.common.reading": "Reading the current published catalog.", "catalog.common.grid": "Grid", "catalog.common.list": "List", "catalog.common.cards": "Cards", "catalog.common.dense": "Dense",
       "catalog.common.allFilters": "All filters", "catalog.common.resetFilters": "Reset filters", "catalog.common.close": "Close", "catalog.common.reset": "Reset", "catalog.common.retry": "Retry",
       "catalog.common.loading": "Loading published {noun}", "catalog.common.unavailable": "Catalog unavailable", "catalog.common.loadFailed": "Published {noun} could not be loaded.",
@@ -18,7 +18,7 @@
       "catalog.scholarships.summaryRoutes": "funding routes", "catalog.scholarships.summaryFull": "full-funding routes", "catalog.scholarships.summaryDeadline": "next deadline", "catalog.scholarships.resultNoun": "scholarships", "catalog.scholarships.filterHelp": "Refine by funding level, route type, degree, country scope, timing, and coverage.", "catalog.scholarships.show": "Show scholarships", "catalog.scholarships.empty": "No scholarships match", "catalog.scholarships.emptyHelp": "Remove a filter or search for another published route.",
     },
     vi: {
-      "catalog.common.contentNotice": "Điều hướng và trạng thái cốt lõi đã được dịch. Tên chính thức, bộ lọc chi tiết và nội dung tuyển sinh vẫn bằng tiếng Anh trong khi bản dịch được rà soát.",
+      "catalog.common.contentNotice": "Các điều khiển danh mục đã được dịch. Tên chính thức, trang chi tiết và nội dung tuyển sinh dài vẫn bằng tiếng Anh trong khi bản dịch được rà soát.",
       "catalog.common.search": "Tìm kiếm", "catalog.common.reading": "Đang đọc danh mục đã công bố.", "catalog.common.grid": "Lưới", "catalog.common.list": "Danh sách", "catalog.common.cards": "Thẻ", "catalog.common.dense": "Thu gọn", "catalog.common.allFilters": "Tất cả bộ lọc", "catalog.common.resetFilters": "Đặt lại bộ lọc", "catalog.common.close": "Đóng", "catalog.common.reset": "Đặt lại", "catalog.common.retry": "Thử lại",
       "catalog.common.loading": "Đang tải {noun} đã công bố", "catalog.common.unavailable": "Danh mục không khả dụng", "catalog.common.loadFailed": "Không thể tải {noun} đã công bố.", "catalog.common.page": "Trang {page}", "catalog.common.save": "Lưu {name} vào Yêu thích", "catalog.common.remove": "Xóa {name} khỏi Yêu thích", "catalog.common.savedTitle": "Đã lưu — nhấn để xóa", "catalog.common.saveTitle": "Lưu vào Yêu thích",
       "catalog.universities.pageTitle": "CUAC | Trường đại học", "catalog.universities.kicker": "Trường đại học và học viện", "catalog.universities.title": "Tìm trường đại học Trung Quốc phù hợp", "catalog.universities.intro": "Tìm theo thành phố, lộ trình ngôn ngữ, học bổng, thời hạn và liên kết tuyển sinh đã công bố.", "catalog.universities.handoff": "Dùng trang này khi khuôn viên, thành phố hoặc thế mạnh của trường ảnh hưởng đến danh sách chương trình của bạn.", "catalog.universities.summaryUniversities": "trường đại học", "catalog.universities.summaryEnglish": "lộ trình tiếng Anh", "catalog.universities.summaryScholarships": "lựa chọn học bổng", "catalog.universities.loading": "Đang tải trường đại học", "catalog.universities.empty": "Chưa có trường nào phù hợp với các bộ lọc này.", "catalog.universities.emptyHelp": "Hãy bỏ bớt một bộ lọc hoặc tìm theo thành phố.", "catalog.universities.countOne": "{count} trường đại học", "catalog.universities.countMany": "{count} trường đại học", "catalog.universities.unavailable": "Không thể tải trường đại học",
@@ -51,12 +51,79 @@
     },
   };
 
+  const uiEnglish = [
+    "Sort: Relevance", "Name A-Z", "Scholarship options", "International routes", "Application readiness",
+    "Application ready", "Admissions page review", "English-taught routes", "English routes", "Scholarship", "Upcoming deadlines",
+    "programs", "tuition", "routes", "Previous page", "Next page",
+    "Showing Chinese universities with international admissions routes.", "Filtered by your current search and China-study signals.",
+    "Deadline soonest", "Tuition low to high", "Scholarship route", "English-taught master", "Scholarship available",
+    "Filters", "Study goal", "Degree level", "All levels", "Undergraduate", "Master", "Non-degree / Language", "Subject", "Any subject",
+    "Teaching language", "Any language", "English-taught", "Chinese-taught", "Bilingual", "Cost", "Tuition", "Any published tuition",
+    "Application timing", "Deadline", "Any open status", "Open", "Closes soon", "Urgent", "Late intake", "Opportunity",
+    "application round", "Scholarship signal", "No award listed", "Verified", "Unverified",
+    "Filtered by China-study fit, requirements, and application details.", "Published programs with deadline, tuition, language, and source status.",
+    "Full funding first", "Funding level", "Funding", "Any funding", "Full funding", "Partial funding", "Route type", "Type", "Any route",
+    "CSC / government", "University award", "Province / city", "Partner or subject", "Country scope", "Country / region", "Any country / region",
+    "Any status", "Deadline soon", "Open or later", "Rolling", "Coverage", "Includes living stipend", "No filters applied",
+    "funding", "degree fit", "deadline", "Eligibility", "Materials", "Next step",
+    "Funding routes with type, country scope, coverage, deadline, and student fit.", "Filtered by your scholarship route preferences.",
+  ];
+  const uiTranslations = {
+    vi: [
+      "Sắp xếp: Liên quan", "Tên A-Z", "Lựa chọn học bổng", "Lộ trình quốc tế", "Mức sẵn sàng nộp hồ sơ",
+      "Sẵn sàng nộp", "Cần xem trang tuyển sinh", "Lộ trình dạy bằng tiếng Anh", "Lộ trình tiếng Anh", "Học bổng", "Hạn sắp tới",
+      "chương trình", "học phí", "lộ trình", "Trang trước", "Trang sau",
+      "Hiển thị các trường đại học Trung Quốc có lộ trình tuyển sinh quốc tế.", "Đã lọc theo tìm kiếm và tín hiệu du học Trung Quốc hiện tại.",
+      "Hạn gần nhất", "Học phí thấp đến cao", "Lộ trình học bổng", "Thạc sĩ dạy bằng tiếng Anh", "Có học bổng",
+      "Bộ lọc", "Mục tiêu học tập", "Bậc học", "Tất cả bậc", "Đại học", "Thạc sĩ", "Không cấp bằng / Ngôn ngữ", "Ngành học", "Mọi ngành",
+      "Ngôn ngữ giảng dạy", "Mọi ngôn ngữ", "Dạy bằng tiếng Anh", "Dạy bằng tiếng Trung", "Song ngữ", "Chi phí", "Học phí", "Mọi học phí đã công bố",
+      "Thời gian nộp", "Hạn", "Mọi trạng thái mở", "Đang mở", "Sắp đóng", "Khẩn cấp", "Kỳ muộn", "Cơ hội",
+      "đợt nộp hồ sơ", "Có tín hiệu học bổng", "Không thấy học bổng", "Đã xác minh", "Chưa xác minh",
+      "Đã lọc theo mức phù hợp, yêu cầu và chi tiết nộp hồ sơ.", "Các chương trình đã công bố có hạn, học phí, ngôn ngữ và trạng thái nguồn.",
+      "Toàn phần trước", "Mức tài trợ", "Tài trợ", "Mọi mức tài trợ", "Tài trợ toàn phần", "Tài trợ một phần", "Loại lộ trình", "Loại", "Mọi lộ trình",
+      "CSC / chính phủ", "Học bổng trường", "Tỉnh / thành phố", "Đối tác hoặc ngành", "Phạm vi quốc gia", "Quốc gia / khu vực", "Mọi quốc gia / khu vực",
+      "Mọi trạng thái", "Sắp đến hạn", "Đang mở hoặc muộn hơn", "Liên tục", "Quyền lợi", "Có sinh hoạt phí", "Chưa áp dụng bộ lọc",
+      "tài trợ", "bậc phù hợp", "hạn", "Điều kiện", "Hồ sơ", "Bước tiếp theo",
+      "Các lộ trình tài trợ theo loại, phạm vi quốc gia, quyền lợi, thời hạn và độ phù hợp.", "Đã lọc theo lựa chọn lộ trình học bổng của bạn.",
+    ],
+    th: [
+      "เรียง: ความเกี่ยวข้อง", "ชื่อ A-Z", "ตัวเลือกทุน", "เส้นทางนานาชาติ", "ความพร้อมในการสมัคร", "พร้อมสมัคร", "ตรวจหน้ารับสมัคร", "หลักสูตรภาษาอังกฤษ", "เส้นทางภาษาอังกฤษ", "ทุนการศึกษา", "กำหนดใกล้ถึง", "หลักสูตร", "ค่าเล่าเรียน", "เส้นทาง", "หน้าก่อน", "หน้าถัดไป", "แสดงมหาวิทยาลัยจีนที่มีเส้นทางรับนักศึกษาต่างชาติ", "กรองตามการค้นหาและเงื่อนไขเรียนต่อจีน", "กำหนดใกล้ที่สุด", "ค่าเล่าเรียนต่ำไปสูง", "เส้นทางทุน", "ปริญญาโทภาษาอังกฤษ", "มีทุน", "ตัวกรอง", "เป้าหมายการเรียน", "ระดับปริญญา", "ทุกระดับ", "ปริญญาตรี", "ปริญญาโท", "ไม่รับปริญญา / ภาษา", "สาขา", "ทุกสาขา", "ภาษาการสอน", "ทุกภาษา", "สอนภาษาอังกฤษ", "สอนภาษาจีน", "สองภาษา", "ค่าใช้จ่าย", "ค่าเล่าเรียน", "ค่าเล่าเรียนที่เผยแพร่ทั้งหมด", "ช่วงสมัคร", "กำหนดเวลา", "ทุกสถานะเปิด", "เปิด", "ใกล้ปิด", "เร่งด่วน", "รอบล่าช้า", "โอกาส", "รอบสมัคร", "มีสัญญาณทุน", "ไม่มีทุนที่ระบุ", "ตรวจสอบแล้ว", "ยังไม่ตรวจสอบ", "กรองตามความเหมาะสม ข้อกำหนด และรายละเอียดการสมัคร", "หลักสูตรที่เผยแพร่พร้อมกำหนด ค่าเล่าเรียน ภาษา และสถานะแหล่งข้อมูล", "ทุนเต็มก่อน", "ระดับทุน", "ทุน", "ทุกระดับทุน", "ทุนเต็ม", "ทุนบางส่วน", "ประเภทเส้นทาง", "ประเภท", "ทุกเส้นทาง", "CSC / รัฐบาล", "ทุนมหาวิทยาลัย", "มณฑล / เมือง", "พันธมิตรหรือสาขา", "ขอบเขตประเทศ", "ประเทศ / ภูมิภาค", "ทุกประเทศ / ภูมิภาค", "ทุกสถานะ", "ใกล้ถึงกำหนด", "เปิดหรือภายหลัง", "ต่อเนื่อง", "ความคุ้มครอง", "รวมค่าครองชีพ", "ยังไม่มีตัวกรอง", "ทุน", "ระดับที่เหมาะ", "กำหนดเวลา", "คุณสมบัติ", "เอกสาร", "ขั้นตอนถัดไป", "เส้นทางทุนตามประเภท ขอบเขต ความคุ้มครอง กำหนด และความเหมาะสม", "กรองตามความต้องการเส้นทางทุนของคุณ",
+    ],
+    id: [
+      "Urutkan: Relevansi", "Nama A-Z", "Pilihan beasiswa", "Jalur internasional", "Kesiapan pendaftaran", "Siap didaftar", "Tinjau halaman penerimaan", "Jalur berbahasa Inggris", "Jalur bahasa Inggris", "Beasiswa", "Tenggat mendatang", "program", "biaya kuliah", "jalur", "Halaman sebelumnya", "Halaman berikutnya", "Menampilkan universitas Tiongkok dengan jalur penerimaan internasional.", "Disaring menurut pencarian dan indikator studi Tiongkok saat ini.", "Tenggat terdekat", "Biaya rendah ke tinggi", "Jalur beasiswa", "Magister berbahasa Inggris", "Beasiswa tersedia", "Filter", "Tujuan studi", "Jenjang", "Semua jenjang", "Sarjana", "Magister", "Non-gelar / Bahasa", "Bidang", "Semua bidang", "Bahasa pengantar", "Semua bahasa", "Berbahasa Inggris", "Berbahasa Mandarin", "Dwibahasa", "Biaya", "Biaya kuliah", "Semua biaya yang dipublikasikan", "Waktu pendaftaran", "Tenggat", "Semua status buka", "Buka", "Segera tutup", "Mendesak", "Penerimaan terlambat", "Peluang", "putaran pendaftaran", "Ada indikasi beasiswa", "Tidak ada bantuan terdaftar", "Terverifikasi", "Belum terverifikasi", "Disaring menurut kecocokan, persyaratan, dan rincian pendaftaran.", "Program terbit dengan tenggat, biaya, bahasa, dan status sumber.", "Dana penuh dahulu", "Tingkat pendanaan", "Pendanaan", "Semua pendanaan", "Dana penuh", "Dana sebagian", "Jenis jalur", "Jenis", "Semua jalur", "CSC / pemerintah", "Beasiswa universitas", "Provinsi / kota", "Mitra atau bidang", "Cakupan negara", "Negara / wilayah", "Semua negara / wilayah", "Semua status", "Tenggat segera", "Buka atau lebih lambat", "Bergulir", "Cakupan", "Termasuk tunjangan hidup", "Belum ada filter", "pendanaan", "kecocokan jenjang", "tenggat", "Kelayakan", "Dokumen", "Langkah berikutnya", "Jalur pendanaan menurut jenis, cakupan negara, manfaat, tenggat, dan kecocokan.", "Disaring menurut preferensi jalur beasiswa Anda.",
+    ],
+    ms: [
+      "Susun: Kaitan", "Nama A-Z", "Pilihan biasiswa", "Laluan antarabangsa", "Kesediaan permohonan", "Sedia dipohon", "Semak halaman kemasukan", "Laluan bahasa Inggeris", "Laluan bahasa Inggeris", "Biasiswa", "Tarikh akhir akan datang", "program", "yuran", "laluan", "Halaman sebelumnya", "Halaman seterusnya", "Menunjukkan universiti China dengan laluan kemasukan antarabangsa.", "Ditapis mengikut carian dan petunjuk pengajian China semasa.", "Tarikh akhir terdekat", "Yuran rendah ke tinggi", "Laluan biasiswa", "Sarjana bahasa Inggeris", "Biasiswa tersedia", "Penapis", "Matlamat pengajian", "Tahap pengajian", "Semua tahap", "Sarjana muda", "Sarjana", "Bukan ijazah / Bahasa", "Bidang", "Semua bidang", "Bahasa pengantar", "Semua bahasa", "Bahasa Inggeris", "Bahasa Cina", "Dwibahasa", "Kos", "Yuran", "Semua yuran diterbitkan", "Masa permohonan", "Tarikh akhir", "Semua status terbuka", "Terbuka", "Hampir tutup", "Segera", "Pengambilan lewat", "Peluang", "pusingan permohonan", "Ada petunjuk biasiswa", "Tiada anugerah disenaraikan", "Disahkan", "Belum disahkan", "Ditapis mengikut kesesuaian, syarat dan butiran permohonan.", "Program diterbitkan dengan tarikh akhir, yuran, bahasa dan status sumber.", "Pembiayaan penuh dahulu", "Tahap pembiayaan", "Pembiayaan", "Semua pembiayaan", "Pembiayaan penuh", "Pembiayaan separa", "Jenis laluan", "Jenis", "Semua laluan", "CSC / kerajaan", "Anugerah universiti", "Wilayah / bandar", "Rakan atau bidang", "Skop negara", "Negara / rantau", "Semua negara / rantau", "Semua status", "Tarikh hampir", "Terbuka atau kemudian", "Berterusan", "Liputan", "Termasuk elaun sara hidup", "Tiada penapis digunakan", "pembiayaan", "kesesuaian tahap", "tarikh akhir", "Kelayakan", "Dokumen", "Langkah seterusnya", "Laluan pembiayaan mengikut jenis, skop, liputan, tarikh dan kesesuaian.", "Ditapis mengikut pilihan laluan biasiswa anda.",
+    ],
+    ar: [
+      "الترتيب: الصلة", "الاسم A-Z", "خيارات المنح", "المسارات الدولية", "جاهزية التقديم", "جاهز للتقديم", "مراجعة صفحة القبول", "مسارات باللغة الإنجليزية", "مسارات إنجليزية", "منحة", "مواعيد قادمة", "برامج", "الرسوم", "مسارات", "الصفحة السابقة", "الصفحة التالية", "عرض الجامعات الصينية ذات مسارات القبول الدولي.", "تمت التصفية حسب البحث ومؤشرات الدراسة في الصين.", "الموعد الأقرب", "الرسوم من الأقل للأعلى", "مسار المنحة", "ماجستير باللغة الإنجليزية", "منحة متاحة", "عوامل التصفية", "هدف الدراسة", "الدرجة", "كل الدرجات", "بكالوريوس", "ماجستير", "غير مؤهل لدرجة / لغة", "التخصص", "أي تخصص", "لغة التدريس", "أي لغة", "بالإنجليزية", "بالصينية", "ثنائي اللغة", "التكلفة", "الرسوم", "أي رسوم منشورة", "توقيت التقديم", "الموعد", "أي حالة مفتوحة", "مفتوح", "يغلق قريبًا", "عاجل", "التحاق متأخر", "الفرص", "جولة التقديم", "توجد إشارة منحة", "لا توجد منحة مدرجة", "موثّق", "غير موثّق", "تمت التصفية حسب الملاءمة والمتطلبات وتفاصيل التقديم.", "برامج منشورة مع الموعد والرسوم واللغة وحالة المصدر.", "التمويل الكامل أولًا", "مستوى التمويل", "التمويل", "أي تمويل", "تمويل كامل", "تمويل جزئي", "نوع المسار", "النوع", "أي مسار", "CSC / حكومي", "منحة جامعية", "مقاطعة / مدينة", "شريك أو تخصص", "النطاق الجغرافي", "الدولة / المنطقة", "أي دولة / منطقة", "أي حالة", "الموعد قريب", "مفتوح أو لاحقًا", "مستمر", "التغطية", "يشمل بدل المعيشة", "لا توجد عوامل تصفية", "التمويل", "ملاءمة الدرجة", "الموعد", "الأهلية", "المستندات", "الخطوة التالية", "مسارات التمويل حسب النوع والنطاق والتغطية والموعد والملاءمة.", "تمت التصفية حسب تفضيلات مسار المنحة.",
+    ],
+  };
+
+  const statusUiEnglish = [
+    "Intake pending", "Ready to compare", "Review before applying", "Ready to compare with saved choices",
+    "Review deadline and requirements before adding", "Check program fit before adding", "date pending",
+    "Urgent:", "Closes", "Late intake until", "Closed", "Open until", "Showing", "of",
+  ];
+  const statusUiTranslations = {
+    vi: ["Chờ công bố kỳ tuyển sinh", "Sẵn sàng so sánh", "Xem lại trước khi nộp", "Sẵn sàng so sánh với lựa chọn đã lưu", "Xem lại hạn và yêu cầu trước khi thêm", "Kiểm tra độ phù hợp trước khi thêm", "chờ ngày", "Khẩn cấp:", "Đóng vào", "Kỳ muộn mở đến", "Đã đóng", "Mở đến", "Hiển thị", "trên tổng số"],
+    th: ["รอประกาศรอบรับสมัคร", "พร้อมเปรียบเทียบ", "ตรวจสอบก่อนสมัคร", "พร้อมเปรียบเทียบกับรายการที่บันทึก", "ตรวจสอบกำหนดและข้อกำหนดก่อนเพิ่ม", "ตรวจสอบความเหมาะสมก่อนเพิ่ม", "รอวันที่", "ด่วน:", "ปิด", "รอบปลายเปิดถึง", "ปิดแล้ว", "เปิดถึง", "แสดง", "จาก"],
+    id: ["Jadwal penerimaan belum terbit", "Siap dibandingkan", "Tinjau sebelum mendaftar", "Siap dibandingkan dengan pilihan tersimpan", "Tinjau tenggat dan persyaratan sebelum menambah", "Periksa kecocokan program sebelum menambah", "tanggal belum terbit", "Mendesak:", "Tutup", "Penerimaan terlambat hingga", "Ditutup", "Buka hingga", "Menampilkan", "dari"],
+    ms: ["Pengambilan belum diumumkan", "Sedia dibandingkan", "Semak sebelum memohon", "Sedia dibandingkan dengan pilihan disimpan", "Semak tarikh dan syarat sebelum menambah", "Semak kesesuaian program sebelum menambah", "tarikh belum diumumkan", "Segera:", "Tutup", "Pengambilan lewat hingga", "Ditutup", "Dibuka hingga", "Menunjukkan", "daripada"],
+    ar: ["بانتظار إعلان موعد القبول", "جاهز للمقارنة", "راجع قبل التقديم", "جاهز للمقارنة مع الخيارات المحفوظة", "راجع الموعد والمتطلبات قبل الإضافة", "تحقق من ملاءمة البرنامج قبل الإضافة", "بانتظار التاريخ", "عاجل:", "يغلق", "القبول المتأخر حتى", "مغلق", "مفتوح حتى", "عرض", "من"],
+  };
+  uiEnglish.push(...statusUiEnglish);
+  Object.entries(statusUiTranslations).forEach(([locale, translations]) => uiTranslations[locale].push(...translations));
+
   window.CUACI18n?.register(messages);
   const i18n = window.CUACI18n;
   const format = (template, values = {}) => Object.entries(values).reduce(
     (result, [key, value]) => result.replaceAll(`{${key}}`, String(value)), String(template),
   );
   const t = (key, fallback = key, values) => format(i18n?.t(`catalog.${key}`, fallback) || fallback, values);
+  const selectedUiTranslations = uiTranslations[i18n?.locale] || [];
+  const uiMap = new Map(uiEnglish.map((english, index) => [english, selectedUiTranslations[index] || english]));
+  const ui = (english) => uiMap.get(String(english)) || String(english);
   const page = document.body.dataset.catalogListPage || "";
 
   function localizeHref(href) {
@@ -75,20 +142,28 @@
     });
   }
 
+  function applyUi(root = document) {
+    const targets = root.matches?.("[data-catalog-ui]") ? [root] : [...(root.querySelectorAll?.("[data-catalog-ui]") || [])];
+    targets.forEach((target) => { target.textContent = ui(target.textContent.trim()); });
+    const placeholders = root.matches?.("[data-catalog-placeholder]") ? [root] : [...(root.querySelectorAll?.("[data-catalog-placeholder]") || [])];
+    placeholders.forEach((target) => { target.placeholder = ui(target.placeholder); });
+  }
+
   function apply() {
     document.querySelectorAll("[data-catalog-copy]").forEach((target) => {
       target.textContent = t(target.dataset.catalogCopy, target.textContent);
     });
     const pageTitle = t(`${page}.pageTitle`, document.title);
     if (pageTitle) document.title = pageTitle;
+    applyUi();
     applyLinks();
   }
 
-  window.CUACCatalogI18n = Object.freeze({ locale: i18n?.locale || "en", t, format, apply, applyLinks, localizeHref });
+  window.CUACCatalogI18n = Object.freeze({ locale: i18n?.locale || "en", t, ui, format, apply, applyUi, applyLinks, localizeHref });
   apply();
   if (i18n?.locale !== "en") {
     new MutationObserver((records) => records.forEach((record) => record.addedNodes.forEach((node) => {
-      if (node.nodeType === Node.ELEMENT_NODE) applyLinks(node);
+      if (node.nodeType === Node.ELEMENT_NODE) { applyUi(node); applyLinks(node); }
     }))).observe(document.body, { childList: true, subtree: true });
   }
 }());

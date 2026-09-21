@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import vm from "node:vm";
 
 const root = new URL("../", import.meta.url);
 const source = path => readFile(new URL(path, root), "utf8");
@@ -79,4 +80,31 @@ test("public catalog lists share bounded launch locales and preserve language ac
   assert.match(catalogI18n, /url\.searchParams\.set\("lang", i18n\.locale\)/);
   assert.match(catalogI18n, /MutationObserver/);
   for (const locale of ["vi", "th", "id", "ms", "ar"]) assert.match(catalogI18n, new RegExp(`\\b${locale}: \\{`));
+});
+
+test("catalog control translations keep dynamic filters and card status labels aligned", async () => {
+  const script = await source("public/catalog-list-i18n.js");
+  const expectedSortLabels = {
+    vi: "Sắp xếp: Liên quan",
+    th: "เรียง: ความเกี่ยวข้อง",
+    id: "Urutkan: Relevansi",
+    ms: "Susun: Kaitan",
+    ar: "الترتيب: الصلة",
+  };
+  for (const [locale, expected] of Object.entries(expectedSortLabels)) {
+    const context = {
+      URL,
+      Node: { ELEMENT_NODE: 1 },
+      MutationObserver: class { observe() {} },
+      location: { href: "https://example.test/programs.html", origin: "https://example.test" },
+      document: { body: { dataset: { catalogListPage: "programs" } }, title: "Programs", querySelectorAll: () => [] },
+      window: { CUACI18n: { locale, register() {}, t: (_key, fallback) => fallback } },
+    };
+    vm.runInNewContext(script, context);
+    assert.equal(context.window.CUACCatalogI18n.ui("Sort: Relevance"), expected);
+    assert.notEqual(context.window.CUACCatalogI18n.ui("Filtered by your scholarship route preferences."), "Filtered by your scholarship route preferences.");
+    assert.notEqual(context.window.CUACCatalogI18n.ui("Next step"), "Next step");
+    assert.notEqual(context.window.CUACCatalogI18n.ui("Ready to compare"), "Ready to compare");
+    assert.notEqual(context.window.CUACCatalogI18n.ui("Showing"), "Showing");
+  }
 });

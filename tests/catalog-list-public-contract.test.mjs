@@ -134,8 +134,8 @@ test("scholarship pagination stays compact and exposes the current page", async 
   assert.match(script, /function compactPaginationPages\(currentPage, totalPages\)/);
   assert.match(script, /pagination-ellipsis/);
   assert.match(script, /aria-current="page"/);
-  assert.match(script, /aria-label="Previous page"/);
-  assert.match(script, /aria-label="Next page"/);
+  assert.match(script, /catalogUi\("Previous page"\)/);
+  assert.match(script, /catalogUi\("Next page"\)/);
   assert.match(css, /\.pagination\s*\{[^}]*flex-wrap:\s*wrap/s);
   assert.match(css, /\.pagination button:disabled/);
   assert.match(css, /\.scholarship-card\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1fr\)[^}]*min-width:\s*0/s);

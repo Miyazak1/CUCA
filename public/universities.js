@@ -3,6 +3,7 @@ const universities = [];
 const universityArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 const escapeCatalogHtml = window.CuacCatalogList.escapeHtml;
 const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallback, values) || fallback;
+const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
 
 const state = {
         query: "",
@@ -337,7 +338,7 @@ const state = {
         const name = schoolName(item);
         const entityId = schoolEntityId(item);
         const saved = state.saved.has(entityId);
-        const imageBadge = schoolEnglishRouteCount(item) ? `${schoolEnglishRouteCount(item)} English routes` : `${schoolProgramCount(item)} programs`;
+        const imageBadge = schoolEnglishRouteCount(item) ? `${schoolEnglishRouteCount(item)} ${catalogUi("English routes")}` : `${schoolProgramCount(item)} ${catalogUi("programs")}`;
         const signals = [schoolApplicationReadiness(item), ...schoolTags(item).filter((tag) => tag !== "Verified").slice(0, 3)];
         const detailHref = schoolDetailHref(item);
         return `
@@ -351,12 +352,12 @@ const state = {
             <div class="card-body">
               <h2><a href="${detailHref}">${escapeCatalogHtml(name)}</a></h2>
               <div class="location">${escapeCatalogHtml(schoolCity(item))}, ${escapeCatalogHtml(schoolProvince(item))}</div>
-              <div class="signals">${signals.map((signal) => `<span class="signal">${escapeCatalogHtml(signal)}</span>`).join("")}</div>
+              <div class="signals">${signals.map((signal) => `<span class="signal">${escapeCatalogHtml(catalogUi(signal))}</span>`).join("")}</div>
               <p class="note">${escapeCatalogHtml(schoolNote(item))}</p>
               <div class="facts">
-                <div class="mini-fact"><strong>${schoolProgramCount(item)}</strong><span>programs</span></div>
-                <div class="mini-fact"><strong>${escapeCatalogHtml(schoolTuition(item))}</strong><span>tuition</span></div>
-                <div class="mini-fact"><strong>${schoolEnglishRouteCount(item)}</strong><span>routes</span></div>
+                <div class="mini-fact"><strong>${schoolProgramCount(item)}</strong><span>${escapeCatalogHtml(catalogUi("programs"))}</span></div>
+                <div class="mini-fact"><strong>${escapeCatalogHtml(schoolTuition(item))}</strong><span>${escapeCatalogHtml(catalogUi("tuition"))}</span></div>
+                <div class="mini-fact"><strong>${schoolEnglishRouteCount(item)}</strong><span>${escapeCatalogHtml(catalogUi("routes"))}</span></div>
               </div>
             </div>
           </article>
@@ -365,7 +366,7 @@ const state = {
 
       function renderActiveFilters() {
         const filters = [
-          ...[...state.filters].map((filter) => ({ type: "filter", key: filter, label: filter })),
+          ...[...state.filters].map((filter) => ({ type: "filter", key: filter, label: catalogUi(filter) })),
           ...Object.entries(state.criteria || {}).map(([key, value]) => ({ type: "criteria", key, label: criteriaLabel(key, value) })),
         ];
         activeFilters.innerHTML = filters
@@ -395,8 +396,8 @@ const state = {
           hasCscaRules: "CSCA rules",
           hasDetailedScholarship: "Detailed scholarships",
         };
-        if (String(value).toLowerCase() === "true") return labels[key] || key;
-        return `${labels[key] || key}: ${value}`;
+        if (String(value).toLowerCase() === "true") return catalogUi(labels[key] || key);
+        return `${catalogUi(labels[key] || key)}: ${catalogUi(value)}`;
       }
 
       function renderPagination(total) {
@@ -413,9 +414,9 @@ const state = {
         }).join("");
 
         pagination.innerHTML = `
-          <button type="button" data-page="${state.page - 1}" aria-label="Previous page" ${state.page === 1 ? "disabled" : ""}>‹</button>
+          <button type="button" data-page="${state.page - 1}" aria-label="${escapeCatalogHtml(catalogUi("Previous page"))}" ${state.page === 1 ? "disabled" : ""}>‹</button>
           ${pageButtons}
-          <button type="button" data-page="${state.page + 1}" aria-label="Next page" ${state.page === pages ? "disabled" : ""}>›</button>
+          <button type="button" data-page="${state.page + 1}" aria-label="${escapeCatalogHtml(catalogUi("Next page"))}" ${state.page === pages ? "disabled" : ""}>›</button>
         `;
       }
 
@@ -424,9 +425,9 @@ const state = {
         const start = (state.page - 1) * state.perPage;
         const shown = results.slice(start, start + state.perPage);
         resultCount.textContent = catalogT(results.length === 1 ? "universities.countOne" : "universities.countMany", `${results.length} ${results.length === 1 ? "university" : "universities"}`, { count: results.length });
-        resultContext.textContent = state.query || state.filters.size || Object.keys(state.criteria || {}).length
+        resultContext.textContent = catalogUi(state.query || state.filters.size || Object.keys(state.criteria || {}).length
           ? "Filtered by your current search and China-study signals."
-          : "Showing Chinese universities with international admissions routes.";
+          : "Showing Chinese universities with international admissions routes.");
         resultsGrid.className = `university-grid ${state.view === "list" ? "list" : ""}`;
         resultsGrid.innerHTML = shown.map(card).join("");
         window.CUAC?.reveal?.(resultsGrid);
