@@ -9,7 +9,17 @@ const appIcons = {
   education: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 9-10-5L2 9l10 5 10-5Z"/><path d="M6 11.5V16c2.5 2.2 9.5 2.2 12 0v-4.5"/></svg>',
 };
 
-const confirmedText = "Confirmed";
+const applicationI18n = window.CUACApplicationI18n;
+const applicationLocale = window.CUACI18n?.locale || "en";
+const appUi = (english) => applicationI18n?.ui(english) || english;
+const appFormat = (template, values) => applicationI18n?.format(template, values) || template;
+const appHref = (href) => applicationI18n?.href(href) || href;
+const appRecordLabel = (value) => String(value ?? "").split(" · ").map((part) => {
+  const exact = appUi(part);
+  if (exact !== part) return exact;
+  return part.replace(/^(Spring|Summer|Fall|Winter)(\s+\d{4})\b/, (_, term, year) => `${appUi(term)}${year}`);
+}).join(" · ");
+const confirmedText = appUi("Confirmed");
 const PENDING_INVOICE_SESSION_KEY = "cuacPendingApplicationInvoice";
 const APPLICATION_SET_LOCATOR_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 let orderConfirmed = false;
@@ -277,17 +287,17 @@ function updateRequiredStepCards() {
     card.classList.toggle("locked", !item.open);
     card.setAttribute("aria-disabled", item.open ? "false" : "true");
     const status = card.querySelector("[data-step-status]");
-    if (status) status.textContent = item.status;
+    if (status) status.textContent = appUi(item.status);
   });
 
   const lockSummary = document.querySelector("[data-lock-summary]");
   if (lockSummary) {
     const blockers = getSubmitBlockers();
     lockSummary.textContent = submittedToSchools
-      ? "Submitted"
+      ? appUi("Submitted")
       : blockers.length
-        ? `${blockers.length} left`
-        : "Ready";
+        ? appFormat("{count} left", { count: blockers.length })
+        : appUi("Ready");
   }
   updateOverviewStepCards(state);
 }
@@ -305,7 +315,7 @@ function updateOverviewStepCards(state = getRequiredStepState()) {
     card.classList.toggle("warning", item.open && !item.complete && (step === "fee" || step === "payment" || step === "send"));
     card.setAttribute("aria-disabled", item.open ? "false" : "true");
     const status = card.querySelector("[data-overview-step-status]");
-    if (status) status.textContent = item.status;
+    if (status) status.textContent = appUi(item.status);
   });
   updateOverviewNextAction(state);
 }
@@ -364,10 +374,10 @@ function updateOverviewNextAction(state = getRequiredStepState()) {
   const title = document.querySelector("[data-overview-next-title]");
   const detail = document.querySelector("[data-overview-next-detail]");
   const action = document.querySelector("[data-overview-next-action]");
-  if (title) title.textContent = next.title;
-  if (detail) detail.textContent = next.detail;
+  if (title) title.textContent = appUi(next.title);
+  if (detail) detail.textContent = appUi(next.detail);
   if (action) {
-    action.textContent = next.action;
+    action.textContent = appUi(next.action);
     action.dataset.nextApplicationStep = next.target;
   }
 }
@@ -472,12 +482,12 @@ function setApplicationStage(stage, { scroll = false } = {}) {
 }
 
 function choiceRingValue() {
-  return orderConfirmed ? "Done" : String(choiceCount);
+  return orderConfirmed ? appUi("Done") : String(choiceCount);
 }
 
 function updateChoiceLabels() {
   choiceCount = document.querySelectorAll("[data-choice]").length;
-  const selectedLabel = `${choiceCount} selected`;
+  const selectedLabel = appFormat("{count} selected", { count: choiceCount });
   document.querySelectorAll("[data-choice-total]").forEach((item) => {
     item.textContent = selectedLabel;
   });
@@ -496,7 +506,7 @@ function syncChoiceConfirmationUi() {
     document.querySelector("[data-choice-step]").textContent = confirmedText;
   }
   document.querySelectorAll("[data-confirm-choice]").forEach((button) => {
-    button.textContent = orderConfirmed ? "Choices confirmed" : "Confirm choices";
+    button.textContent = appUi(orderConfirmed ? "Choices confirmed" : "Confirm choices");
   });
 }
 
@@ -630,7 +640,7 @@ async function applicationApi(path, options = {}) {
   const response = await fetch(path, request);
   const payload = await response.json().catch(() => null);
   if (!response.ok) {
-    const error = new Error(payload?.error?.message || "The application request could not be completed.");
+    const error = new Error(appUi("The application request could not be completed."));
     error.code = payload?.error?.code || "REQUEST_FAILED";
     error.status = response.status;
     throw error;
@@ -647,7 +657,7 @@ function intakeDisplayName(intake = {}) {
   const rawTerm = String(intake.intakeTerm || "").trim();
   const term = rawTerm ? `${rawTerm.charAt(0).toUpperCase()}${rawTerm.slice(1).toLowerCase()}` : "";
   const year = Number(intake.intakeYear);
-  return [term, Number.isInteger(year) ? year : ""].filter(Boolean).join(" ") || "Published intake";
+  return [term ? appUi(term) : "", Number.isInteger(year) ? year : ""].filter(Boolean).join(" ") || appUi("Published intake");
 }
 
 function setApplicationRuntimeMessage(title, detail = "") {
@@ -655,7 +665,7 @@ function setApplicationRuntimeMessage(title, detail = "") {
   if (!list) return;
   list.innerHTML = `
     <article class="choice-route backup" data-application-runtime-message>
-      <div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(detail)}</p></div>
+      <div><h3>${escapeHtml(appUi(title))}</h3><p>${escapeHtml(appUi(detail))}</p></div>
     </article>
   `;
   updateChoiceLabels();
@@ -855,8 +865,8 @@ function studentSchoolStatusLabel(status) {
 }
 
 function applicationSetHref(applicationSet, hash = "#overview") {
-  if (!APPLICATION_SET_LOCATOR_PATTERN.test(applicationSet?.id || "")) return "application.html";
-  return `application.html?applicationSet=${encodeURIComponent(applicationSet.id)}${hash}`;
+  if (!APPLICATION_SET_LOCATOR_PATTERN.test(applicationSet?.id || "")) return appHref("application.html");
+  return appHref(`application.html?applicationSet=${encodeURIComponent(applicationSet.id)}${hash}`);
 }
 
 function renderApplicationSetSwitcher(applicationSets, selectedId) {
@@ -867,7 +877,9 @@ function renderApplicationSetSwitcher(applicationSets, selectedId) {
   switcher.innerHTML = sets.map((item) => {
     const active = item.id === selectedId;
     const hash = item.status === "draft" ? "#overview" : "#send";
-    return `<a href="${applicationSetHref(item, hash)}" ${active ? 'aria-current="page"' : ""}><strong>${escapeHtml(item.name || "Unnamed application")}</strong><span>${escapeHtml(String(item.status || "unknown").replaceAll("_", " "))}</span></a>`;
+    const rawStatus = String(item.status || "unknown").replaceAll("_", " ");
+    const status = `${rawStatus.charAt(0).toUpperCase()}${rawStatus.slice(1)}`;
+    return `<a href="${applicationSetHref(item, hash)}" ${active ? 'aria-current="page"' : ""}><strong>${escapeHtml(item.name || appUi("Unnamed application"))}</strong><span>${escapeHtml(appUi(status))}</span></a>`;
   }).join("");
 }
 
@@ -2985,8 +2997,10 @@ function renderIntakeOptions(intakes, selectedIntakeId = "", program = {}) {
   if (!select) return;
   select.innerHTML = intakes.length ? intakes.map((intake) => {
     const label = intakeDisplayName(intake);
-    const deadline = intake.deadlineLabel || (intake.deadlineDate ? new Date(intake.deadlineDate).toLocaleDateString() : "");
-    return `<option value="${escapeHtml(intake.id)}">${escapeHtml([label, deadline].filter(Boolean).join(" · "))}</option>`;
+    const deadline = appRecordLabel(intake.deadlineLabel || (intake.deadlineDate ? new Intl.DateTimeFormat(applicationLocale).format(new Date(intake.deadlineDate)) : ""));
+    const deadlineParts = deadline.split(" · ");
+    const detail = deadlineParts[0]?.trim() === label.trim() ? deadlineParts.slice(1).join(" · ") : deadline;
+    return `<option value="${escapeHtml(intake.id)}">${escapeHtml([label, detail].filter(Boolean).join(" · "))}</option>`;
   }).join("") : `<option value="">${escapeHtml(intakeAvailabilityMessage(program))}</option>`;
   select.disabled = intakes.length === 0;
   select.required = true;
@@ -2996,7 +3010,7 @@ function renderIntakeOptions(intakes, selectedIntakeId = "", program = {}) {
 function renderLockedChoiceField(select, value, label) {
   if (!select) return;
   const nextValue = value || label || "Confirm";
-  select.innerHTML = `<option value="${escapeHtml(nextValue)}">${escapeHtml(nextValue)}</option>`;
+  select.innerHTML = `<option value="${escapeHtml(nextValue)}">${escapeHtml(appRecordLabel(nextValue))}</option>`;
   select.value = nextValue;
   select.disabled = true;
   select.setAttribute("aria-readonly", "true");
@@ -3078,14 +3092,18 @@ async function syncProgramFields() {
   renderLockedChoiceField(form.elements.language, selected.language, "Teaching language");
   preview.innerHTML = `
     <strong>${selected.university} · ${selected.program}</strong>
-    <p>${selected.degree} route in ${selected.city}. ${selected.durationYears ? `${selected.durationYears} · ` : ""}${selected.fieldCategory || "Program field"}.</p>
+    <p>${escapeHtml(appFormat("{degree} route in {city}. {details}.", {
+      degree: appRecordLabel(selected.degree),
+      city: selected.city,
+      details: [selected.durationYears, appRecordLabel(selected.fieldCategory || "Program field")].filter(Boolean).join(" · "),
+    }))}</p>
     <div>
-      <span>${selected.deadline}</span>
+      <span>${escapeHtml(appRecordLabel(selected.deadline))}</span>
       <span>${selected.tuition}</span>
-      <span>${selected.language}</span>
+      <span>${escapeHtml(appRecordLabel(selected.language))}</span>
       ${selected.durationYears ? `<span>${escapeHtml(selected.durationYears)}</span>` : ""}
       ${selected.fieldCategory ? `<span>${escapeHtml(selected.fieldCategory)}</span>` : ""}
-      <span>${selected.signal}</span>
+      <span>${escapeHtml(appRecordLabel(selected.signal))}</span>
       <span>${escapeHtml(selected.scholarshipText || (selected.hasScholarship ? "Funding information available" : "No funding claim"))}</span>
     </div>
   `;
@@ -3098,22 +3116,22 @@ async function syncProgramFields() {
       <article>
         <span>Your selected route</span>
         <strong>${escapeHtml(selected.university)} · ${escapeHtml(selected.program)}</strong>
-        <em>${escapeHtml(selected.intake)} · ${escapeHtml(selected.language)}${choiceNote ? ` · Note: ${escapeHtml(choiceNote)}` : ""}</em>
+        <em>${escapeHtml(appRecordLabel(selected.intake))} · ${escapeHtml(appRecordLabel(selected.language))}${choiceNote ? ` · ${appUi("Note")}: ${escapeHtml(choiceNote)}` : ""}</em>
       </article>
       <article>
         <span>Academic route</span>
-        <strong>${escapeHtml(selected.degree)} · ${escapeHtml(selected.durationYears || "Duration to confirm")} · ${escapeHtml(selected.fieldCategory || selected.programName)}</strong>
-        <em>${escapeHtml(selected.language)} · ${escapeHtml(selected.deadline)} · ${escapeHtml(selected.tuition)}</em>
+        <strong>${escapeHtml(appRecordLabel(selected.degree))} · ${escapeHtml(appRecordLabel(selected.durationYears || "Duration to confirm"))} · ${escapeHtml(appRecordLabel(selected.fieldCategory || selected.programName))}</strong>
+        <em>${escapeHtml(appRecordLabel(selected.language))} · ${escapeHtml(appRecordLabel(selected.deadline))} · ${escapeHtml(selected.tuition)}</em>
       </article>
       <article>
         <span>Entry requirements</span>
-        <strong>${escapeHtml(cscaSummary)}</strong>
-        <em>${escapeHtml(languageSummary)}</em>
+        <strong>${escapeHtml(appRecordLabel(cscaSummary))}</strong>
+        <em>${escapeHtml(appRecordLabel(languageSummary))}</em>
       </article>
       <article>
         <span>Application route</span>
-        <strong>${escapeHtml(applicationSummary)}</strong>
-        <em>${escapeHtml(selected.sourceLabel || "CUAC catalog record")} · review exact materials separately before authorization</em>
+        <strong>${escapeHtml(appRecordLabel(applicationSummary))}</strong>
+        <em>${escapeHtml(appRecordLabel(selected.sourceLabel || "CUAC catalog record"))} · ${escapeHtml(appUi("review exact materials separately before authorization"))}</em>
       </article>
       <article>
         <span>Your contact profile</span>

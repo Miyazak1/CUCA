@@ -36,7 +36,7 @@ test("student application choices use server-owned application sets and exact pu
 
   assert.match(html, /<select name="intake" data-intake-select required><\/select>/);
   assert.match(html, /data-application-runtime-message/);
-  assert.match(html, /<body data-agent-mode="off">/);
+  assert.match(html, /<body data-agent-mode="off" data-i18n-locales="en,vi,th,id,ms,ar">/);
   assert.match(html, /<select name="degree" data-degree-select disabled>/);
   assert.match(html, /<select name="university" data-university-select disabled>/);
   assert.match(html, /<select name="program" data-program-select disabled><\/select>/);
@@ -110,4 +110,26 @@ test("application lifecycle state cannot fall back to browser demo storage", asy
   assert.match(script, /isStudentSignedIn/);
   assert.match(script, /applicationRuntimeState = "auth_required"/);
   assert.match(script, /refreshCurrentApplicationSet/);
+});
+
+test("application choice flow localizes bounded UI and preserves server records", async () => {
+  const [html, messages, script] = await Promise.all([
+    source("public/application.html"),
+    source("public/application-i18n.js"),
+    source("public/application.js"),
+  ]);
+  const scripts = [...html.matchAll(/<script src="([^"]+)"/g)].map(match => match[1].split("?")[0]);
+  assert.ok(scripts.indexOf("i18n-runtime.js") < scripts.indexOf("onboarding-i18n.js"));
+  assert.ok(scripts.indexOf("onboarding-i18n.js") < scripts.indexOf("application-i18n.js"));
+  assert.ok(scripts.indexOf("application-i18n.js") < scripts.indexOf("shared-shell.js"));
+  assert.ok(scripts.indexOf("shared-shell.js") < scripts.indexOf("application.js"));
+  assert.match(script, /new Intl\.DateTimeFormat\(applicationLocale\)/);
+  assert.match(script, /appHref\(`application\.html\?applicationSet=/);
+  assert.match(script, /appFormat\("\{count\} selected"/);
+  assert.match(script, /appUi\(term\)/);
+  assert.match(script, /deadlineParts\[0\]\?\.trim\(\) === label\.trim\(\)/);
+  assert.doesNotMatch(script, /machineTranslation|machine_translation/i);
+  for (const marker of ["Hồ sơ của tôi", "ใบสมัครของฉัน", "Pendaftaran saya", "طلباتي"]) assert.match(messages, new RegExp(marker));
+  assert.match(messages, /CUACOnboardingI18n/);
+  assert.match(messages, /MutationObserver/);
 });
