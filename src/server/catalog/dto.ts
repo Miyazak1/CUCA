@@ -334,7 +334,10 @@ export type PublicGuideDto = {
   subtitleZh: string | null;
   summaryEn: string | null;
   summaryZh: string | null;
-  content: { sections: unknown[] };
+  content: { sections: unknown[]; sources?: Array<{ url: string; label: string; capturedAt: string }>; translations?: Partial<Record<"vi" | "th" | "id" | "ms" | "ar", {
+    title: string; subtitle: string | null; summary: string | null; searchTerms: string[];
+    sections: Array<{ key: string; heading: string; body: string }>;
+  }>> };
   href: string;
   verificationStatus: string;
   sortOrder: number;

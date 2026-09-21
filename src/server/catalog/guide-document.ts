@@ -4,9 +4,18 @@ import { inputInteger, inputRecord, inputUuid } from "../shared/input.ts";
 
 export const MAX_GUIDE_VERSION = 2_147_483_647;
 export const GUIDE_WITHDRAWAL_REASONS = ["content_correction", "source_expired", "policy_change", "guide_superseded"] as const;
+export const GUIDE_TRANSLATION_LOCALES = ["vi", "th", "id", "ms", "ar"] as const;
+export type GuideTranslationLocale = typeof GUIDE_TRANSLATION_LOCALES[number];
 
-export type GuideDocument = {
-  schemaVersion: 1;
+export type GuideTranslation = {
+  title: string;
+  subtitle: string | null;
+  summary: string | null;
+  searchTerms: string[];
+  sections: Array<{ key: string; heading: string; body: string }>;
+};
+
+type GuideDocumentBase = {
   slug: string;
   titleEn: string;
   titleZh: string | null;
@@ -19,6 +28,11 @@ export type GuideDocument = {
   sections: Array<{ key: string; headingEn: string; headingZh: string | null; bodyEn: string; bodyZh: string | null }>;
   sources: Array<{ url: string; label: string; capturedAt: string }>;
 };
+
+export type GuideDocument = GuideDocumentBase & (
+  | { schemaVersion: 1 }
+  | { schemaVersion: 2; translations: Partial<Record<GuideTranslationLocale, GuideTranslation>> }
+);
 
 export type GuideReviewEvidence = {
   schemaVersion: 1; versionId: string; guideId: string; contentSha256: string; preparedByUserId: string;
@@ -39,8 +53,9 @@ function plainText(value: unknown, field: string, max: number, nullable = false,
 }
 
 export function parseGuideDocument(value: unknown): GuideDocument {
-  const fields = inputRecord(value, ["schemaVersion", "slug", "titleEn", "titleZh", "subtitleEn", "subtitleZh", "summaryEn", "summaryZh", "href", "searchTerms", "sections", "sources"]);
-  inputInteger(fields.schemaVersion, "Guide schemaVersion", 1, 1);
+  const fields = inputRecord(value, ["schemaVersion", "slug", "titleEn", "titleZh", "subtitleEn", "subtitleZh", "summaryEn", "summaryZh", "href", "searchTerms", "sections", "sources", "translations"]);
+  const schemaVersion = inputInteger(fields.schemaVersion, "Guide schemaVersion", 1, 2) as 1 | 2;
+  if (schemaVersion === 1 && fields.translations !== undefined) throw badRequest("Guide schemaVersion 1 cannot contain translations.");
   const slug = plainText(fields.slug, "Guide slug", 120)!;
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw badRequest("Guide slug must use lowercase URL-safe segments.");
   const href = plainText(fields.href, "Guide href", 240)!;
@@ -65,10 +80,35 @@ export function parseGuideDocument(value: unknown): GuideDocument {
     if (!['https:', 'http:'].includes(parsed.protocol) || parsed.username || parsed.password) throw badRequest("Guide source URL must use HTTP(S) without credentials.");
     return { url: parsed.toString(), label: plainText(row.label, "Guide source label", 160)!, capturedAt: canonicalTimestamp(row.capturedAt, "Guide source capture time") };
   });
-  const document: GuideDocument = { schemaVersion: 1, slug, titleEn: plainText(fields.titleEn, "Guide English title", 200)!,
+  const base: GuideDocumentBase = { slug, titleEn: plainText(fields.titleEn, "Guide English title", 200)!,
     titleZh: plainText(fields.titleZh, "Guide Chinese title", 200, true), subtitleEn: plainText(fields.subtitleEn, "Guide English subtitle", 240, true),
     subtitleZh: plainText(fields.subtitleZh, "Guide Chinese subtitle", 240, true), summaryEn: plainText(fields.summaryEn, "Guide English summary", 1200, true, true),
     summaryZh: plainText(fields.summaryZh, "Guide Chinese summary", 1200, true, true), href, searchTerms, sections, sources };
+  let document: GuideDocument;
+  if (schemaVersion === 1) document = { schemaVersion: 1, ...base };
+  else {
+    const translationFields = inputRecord(fields.translations, [...GUIDE_TRANSLATION_LOCALES]);
+    const translations: Partial<Record<GuideTranslationLocale, GuideTranslation>> = {};
+    for (const locale of GUIDE_TRANSLATION_LOCALES) {
+      if (translationFields[locale] === undefined) continue;
+      const translated = inputRecord(translationFields[locale], ["title", "subtitle", "summary", "searchTerms", "sections"]);
+      if (!Array.isArray(translated.searchTerms) || translated.searchTerms.length > 30) throw badRequest(`Guide ${locale} search terms must be a bounded list.`);
+      const localizedSearchTerms = translated.searchTerms.map(item => plainText(item, `Guide ${locale} search term`, 80)!).filter((item, index, all) => all.indexOf(item) === index);
+      if (!Array.isArray(translated.sections) || translated.sections.length !== sections.length) throw badRequest(`Guide ${locale} sections must cover every source section.`);
+      const localizedSections = translated.sections.map((item, index) => {
+        const row = inputRecord(item, ["key", "heading", "body"]);
+        const key = plainText(row.key, `Guide ${locale} section key`, 80)!;
+        if (key !== sections[index].key) throw badRequest(`Guide ${locale} section keys must match the source order.`);
+        return { key, heading: plainText(row.heading, `Guide ${locale} section heading`, 160)!, body: plainText(row.body, `Guide ${locale} section body`, 6000, false, true)! };
+      });
+      translations[locale] = { title: plainText(translated.title, `Guide ${locale} title`, 200)!,
+        subtitle: plainText(translated.subtitle, `Guide ${locale} subtitle`, 240, true),
+        summary: plainText(translated.summary, `Guide ${locale} summary`, 1200, true, true),
+        searchTerms: localizedSearchTerms, sections: localizedSections };
+    }
+    if (!Object.keys(translations).length) throw badRequest("Guide schemaVersion 2 requires at least one complete student-language translation.");
+    document = { schemaVersion: 2, ...base, translations };
+  }
   if (Buffer.byteLength(JSON.stringify(document), "utf8") > 98_304) throw badRequest("Guide document is too large.");
   return document;
 }

@@ -47,6 +47,16 @@ const DETAIL_CONFIG = {
     code: "CI",
     uuid: false,
   },
+  guide: {
+    queryKey: "guide",
+    collection: "guides",
+    backHref: "guides.html",
+    backLabel: detailUi("Back to guides"),
+    typeLabel: detailUi("Application guide"),
+    icon: "file.svg",
+    code: "GU",
+    uuid: false,
+  },
 };
 
 const config = DETAIL_CONFIG[detailType];
@@ -584,6 +594,40 @@ function renderCity(record) {
     ], "Use a city as a catalog filter, then make decisions from exact university, program, intake, and funding records."))}`;
 }
 
+function renderGuide(record) {
+  const content = record.content && typeof record.content === "object" ? record.content : {};
+  const translation = detailLocale === "en" ? null : content.translations?.[detailLocale];
+  const requestedTranslationMissing = detailLocale !== "en" && !translation;
+  const title = translation?.title || record.titleEn;
+  const subtitle = translation?.subtitle || record.subtitleEn;
+  const summary = translation?.summary || record.summaryEn;
+  const sections = Array.isArray(translation?.sections)
+    ? translation.sections.map((section) => ({ title: section.heading, body: section.body, paragraphs: [], items: [] }))
+    : (Array.isArray(content.sections) ? content.sections.map((section) => ({ title: section.headingEn, body: section.bodyEn, paragraphs: [], items: [] })) : []);
+  const sources = Array.isArray(content.sources) ? content.sources : [];
+  const firstSource = sources.find((source) => safeUrl(source?.url));
+  const evidenceRecord = { ...record,
+    sourceStatus: record.verificationStatus === "verified" ? "verified" : "unknown",
+    sourceUrl: firstSource?.url || null,
+    sourceLabel: firstSource?.label || null,
+    lastVerifiedAt: firstSource?.capturedAt || record.updatedAt,
+  };
+  const sourceLinks = sources.map((source) => ({ ...source, url: safeUrl(source?.url) })).filter((source) => source.url);
+  const fallbackNotice = requestedTranslationMissing
+    ? `<div class="catalog-language-fallback" role="status"><strong>${escapeHtml(detailUi("English content shown"))}</strong><p>${escapeHtml(detailUi("A reviewed translation is not yet published for this guide."))}</p></div>`
+    : "";
+  const main = [
+    fallbackNotice,
+    renderSection("Guide content", "Published guidance", renderBlocks(sections)),
+    sourceLinks.length ? renderSection("Evidence", "Official sources", `<ul class="catalog-item-list">${sourceLinks.map((source) => `<li><span class="catalog-item-label catalog-item-bullet" aria-hidden="true"></span><div class="catalog-item-copy"><strong><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.label)}</a></strong><p>${escapeHtml(formatDate(source.capturedAt))}</p></div></li>`).join("")}</ul>`) : "",
+  ].join("");
+  return `${renderHero(evidenceRecord, { title, intro: summary || subtitle, context: [subtitle, `${detailUi("Version")} ${record.version}`].filter(Boolean) })}
+    ${renderLayout(main, renderAside(record, "Use this guide", [
+      { label: "Browse programs", href: "programs.html" },
+      { label: "Search CUAC", href: "search.html" },
+    ], detailUi("Confirm current dates and requirements on each university's official source before applying.")))}`;
+}
+
 async function requestData(path) {
   const response = await fetch(path, { headers: { accept: "application/json" } });
   const body = await response.json().catch(() => ({}));
@@ -655,7 +699,9 @@ async function loadDetail() {
     if (detailType === "school") html = renderSchool(record);
     if (detailType === "scholarship") html = renderScholarship(record);
     if (detailType === "city") html = renderCity(record);
-    const name = record.nameEn || record.title || record.slug;
+    if (detailType === "guide") html = renderGuide(record);
+    const guideTranslation = detailType === "guide" && detailLocale !== "en" ? record.content?.translations?.[detailLocale] : null;
+    const name = guideTranslation?.title || record.nameEn || record.titleEn || record.title || record.slug;
     document.title = `${name} | CUAC`;
     detailRoot.innerHTML = `<a class="catalog-back-link" href="${escapeHtml(detailHref(config.backHref))}"><span aria-hidden="true">&larr;</span>${escapeHtml(config.backLabel)}</a>${html}`;
   } catch (error) {

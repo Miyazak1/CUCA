@@ -169,7 +169,8 @@ export class PostgresGuideGovernance {
         status = 'published', verification_status = 'verified', sort_order = sort_order, version = $12,
         published_at = coalesce(published_at, $13), updated_at = $13 where id = $1 returning id`,
       [scope.guideId, document.slug, document.titleEn, document.titleZh, document.subtitleEn, document.subtitleZh,
-        document.summaryEn, document.summaryZh, JSON.stringify({ sections: document.sections }), document.href,
+        document.summaryEn, document.summaryZh, JSON.stringify({ sections: document.sections, sources: document.sources,
+          ...(document.schemaVersion === 2 ? { translations: document.translations } : {}) }), document.href,
         JSON.stringify(document.searchTerms), version.version, now]);
       if (projected.length !== 1) throw serviceUnavailable("Guide public projection could not be updated.");
       await tx.query(`insert into guide_publications (guide_id, version_id, content_sha256, approval_sha256, revision, status, created_at, updated_at)

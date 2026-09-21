@@ -32,6 +32,37 @@ test("guide documents are canonical bounded plain text with official source evid
   }
 });
 
+test("guide schema v2 accepts only complete section-aligned student-language translations", () => {
+  const value = { ...document(), schemaVersion: 2, translations: {
+    vi: {
+      title: "Các bước xin thị thực và nhập cảnh", subtitle: "Giấy báo nhập học và biểu mẫu JW",
+      summary: "Xác nhận lộ trình hiện hành sau khi nhận thư mời.", searchTerms: ["thị thực X1", "biểu mẫu JW201"],
+      sections: [{ key: "visa", heading: "Lộ trình thị thực", body: "Xác nhận danh sách hồ sơ hiện hành của đại sứ quán." }],
+    },
+    ar: {
+      title: "خطوات التأشيرة والوصول", subtitle: "خطاب القبول ونموذج JW",
+      summary: "تحقق من المسار الحالي بعد الحصول على القبول.", searchTerms: ["تأشيرة X1", "نموذج JW201"],
+      sections: [{ key: "visa", heading: "مسار التأشيرة", body: "تحقق من قائمة السفارة الحالية." }],
+    },
+  } };
+  const parsed = parseGuideDocument(value);
+  assert.equal(parsed.schemaVersion, 2);
+  assert.deepEqual(Object.keys(parsed.translations), ["vi", "ar"]);
+  assert.equal(parsed.translations.vi.sections[0].key, parsed.sections[0].key);
+  assert.match(guideDigest(parsed), /^[a-f0-9]{64}$/);
+
+  for (const mutate of [
+    candidate => { candidate.translations = {}; },
+    candidate => { candidate.translations.fr = structuredClone(candidate.translations.vi); },
+    candidate => { candidate.translations.vi.sections = []; },
+    candidate => { candidate.translations.vi.sections[0].key = "other"; },
+    candidate => { candidate.translations.vi.sections[0].body = "<b>unsafe</b>"; },
+  ]) {
+    const candidate = structuredClone(value); mutate(candidate);
+    assert.throws(() => parseGuideDocument(candidate), error => error.status === 400);
+  }
+});
+
 test("guide governance policy requires Ops context and step-up admin for approval publication and withdrawal", () => {
   const resource = { type: "catalog", dataClasses: ["internal_catalog_metadata"] };
   for (const role of ["guest", "student", "school_staff", "cuac_ops", "cuac_admin"]) {
@@ -105,4 +136,11 @@ test("guide governance route files are thin UUID-validating secure adapters", as
     if (path.includes("[guideId]")) assert.match(source, /requireRouteUuid\(/);
     assert.doesNotMatch(source, /select |insert |update |delete from|Agent/i);
   }
+});
+
+test("guide publication projects reviewed translations and source evidence into the public record", async () => {
+  const source = await readFile(new URL("../../../src/server/catalog/postgres-guide-governance.ts", import.meta.url), "utf8");
+  assert.match(source, /sources: document\.sources/);
+  assert.match(source, /document\.schemaVersion === 2 \? \{ translations: document\.translations \}/);
+  assert.doesNotMatch(source, /machine.?translat|auto.?translat/i);
 });

@@ -157,6 +157,18 @@
     ["Application tips", "Mẹo nộp hồ sơ", "เคล็ดลับการสมัคร", "Tips pendaftaran", "Petua permohonan", "نصائح التقديم"],
     ["Related program directions", "Hướng chương trình liên quan", "แนวทางหลักสูตรที่เกี่ยวข้อง", "Arah program terkait", "Arah program berkaitan", "اتجاهات البرامج ذات الصلة"],
     ["City questions", "Câu hỏi về thành phố", "คำถามเกี่ยวกับเมือง", "Pertanyaan kota", "Soalan bandar", "أسئلة المدينة"],
+    ["Back to guides", "Quay lại hướng dẫn", "กลับไปยังคู่มือ", "Kembali ke panduan", "Kembali ke panduan", "العودة إلى الأدلة"],
+    ["Application guide", "Hướng dẫn nộp hồ sơ", "คู่มือการสมัคร", "Panduan pendaftaran", "Panduan permohonan", "دليل التقديم"],
+    ["Guide content", "Nội dung hướng dẫn", "เนื้อหาคู่มือ", "Isi panduan", "Kandungan panduan", "محتوى الدليل"],
+    ["Published guidance", "Hướng dẫn đã công bố", "คำแนะนำที่เผยแพร่", "Panduan diterbitkan", "Panduan diterbitkan", "الإرشادات المنشورة"],
+    ["Evidence", "Bằng chứng", "หลักฐาน", "Bukti", "Bukti", "الأدلة"],
+    ["Official sources", "Nguồn chính thức", "แหล่งข้อมูลทางการ", "Sumber resmi", "Sumber rasmi", "المصادر الرسمية"],
+    ["Use this guide", "Sử dụng hướng dẫn này", "ใช้คู่มือนี้", "Gunakan panduan ini", "Gunakan panduan ini", "استخدم هذا الدليل"],
+    ["Search CUAC", "Tìm kiếm trên CUAC", "ค้นหาใน CUAC", "Cari di CUAC", "Cari di CUAC", "البحث في CUAC"],
+    ["English content shown", "Đang hiển thị nội dung tiếng Anh", "กำลังแสดงเนื้อหาภาษาอังกฤษ", "Konten bahasa Inggris ditampilkan", "Kandungan bahasa Inggeris dipaparkan", "يُعرض المحتوى الإنجليزي"],
+    ["A reviewed translation is not yet published for this guide.", "Bản dịch đã được rà soát chưa được công bố cho hướng dẫn này.", "ยังไม่มีคำแปลที่ผ่านการตรวจทานสำหรับคู่มือนี้", "Terjemahan yang ditinjau belum diterbitkan untuk panduan ini.", "Terjemahan yang disemak belum diterbitkan untuk panduan ini.", "لم تُنشر بعد ترجمة مراجعة لهذا الدليل."],
+    ["No additional published description is available.", "Chưa có mô tả bổ sung nào được công bố.", "ยังไม่มีคำอธิบายเพิ่มเติมที่เผยแพร่", "Belum ada deskripsi tambahan yang diterbitkan.", "Belum ada penerangan tambahan diterbitkan.", "لا يتوفر وصف إضافي منشور."],
+    ["Confirm current dates and requirements on each university's official source before applying.", "Xác nhận ngày và yêu cầu hiện hành trên nguồn chính thức của từng trường trước khi nộp hồ sơ.", "ยืนยันวันที่และข้อกำหนดปัจจุบันจากแหล่งทางการของแต่ละมหาวิทยาลัยก่อนสมัคร", "Konfirmasikan tanggal dan persyaratan terkini pada sumber resmi setiap universitas sebelum mendaftar.", "Sahkan tarikh dan syarat semasa pada sumber rasmi setiap universiti sebelum memohon.", "أكد التواريخ والمتطلبات الحالية من المصدر الرسمي لكل جامعة قبل التقديم."],
   ];
 
   const i18n = window.CUACI18n;

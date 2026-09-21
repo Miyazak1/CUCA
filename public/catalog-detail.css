@@ -275,6 +275,16 @@ select { font: inherit; }
 }
 
 .catalog-detail-flow { min-width: 0; }
+.catalog-language-fallback {
+  margin: 0 0 34px;
+  padding: 16px 18px;
+  border: 1px solid var(--detail-line-strong);
+  border-inline-start: 4px solid var(--entity-color, var(--detail-brand));
+  background: #f6fbfa;
+}
+
+.catalog-language-fallback strong { color: var(--detail-ink); }
+.catalog-language-fallback p { margin: 5px 0 0; color: var(--detail-muted); line-height: 1.55; }
 .catalog-section { padding: 0 0 44px; }
 
 .catalog-section + .catalog-section {
