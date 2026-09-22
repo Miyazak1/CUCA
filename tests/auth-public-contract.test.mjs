@@ -57,7 +57,7 @@ test("public account page uses real Auth APIs without browser-owned authenticati
   assert.match(shell, /authStrength: actor\.authStrength === "step_up"/);
   assert.match(shell, /mode === "ops"/);
   assert.match(shell, /描述需要检查的运营风险/);
-  assert.match(shell, /runtimeAuthReadyPromise\.finally\(initAgentShell\)/);
+  assert.match(shell, /Promise\.allSettled\(\[runtimeAuthReadyPromise, runtimeCapabilitiesReadyPromise\]\)\.finally\(initAgentShell\)/);
   assert.match(shell, /fetch\("\/api\/v1\/auth\/guest-session"/);
   assert.match(shell, /fetch\("\/api\/v1\/auth\/sign-in-continuations"/);
   assert.match(shell, /navigation\.open_student_workspace/);

@@ -88,6 +88,8 @@ export * from "./files/http.ts";
 export * from "./files/runtime/routes.ts";
 export * from "./files/runtime/worker.ts";
 export * from "./infra/production-readiness.ts";
+export * from "./infra/release-capabilities.ts";
+export * from "./infra/release-scope.ts";
 export * from "./infra/release-gate.ts";
 export * from "./infra/startup-policy.ts";
 export * from "./ops-support/http.ts";

@@ -6,4 +6,4 @@ export const POST = secureApiRoute("POST", async function POST(request: Request,
 }) {
   const params = await context.params;
   return getApplicationMaterialPreviewHandler()(request, requireRouteUuid(params.applicationSetId), requireRouteUuid(params.choiceId));
-});
+}, { capability: "officialMaterialSubmission" });

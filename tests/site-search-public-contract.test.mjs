@@ -10,7 +10,9 @@ test("released surfaces defer Agent UI and expose deterministic site search", as
     source("public/shared-shell.js"), source("public/home-v3.html"), source("public/home-v3.js"),
     source("public/search.html"), source("public/search.js"),
   ]);
-  assert.match(shell, /AGENT_PRODUCT_SURFACES_ENABLED = false/);
+  assert.match(shell, /fetch\("\/api\/v1\/capabilities"/);
+  assert.match(shell, /isCapabilityEnabled\("agent"\)/);
+  assert.match(shell, /agent:\s*false/);
   assert.match(shell, /function localizedSearchHref\(\)/);
   assert.match(shell, /`search\.html\?lang=\$\{encodeURIComponent\(locale\)\}`/);
   assert.match(homeHtml, /<body\b[^>]*\bdata-agent-mode="off"[^>]*>/);

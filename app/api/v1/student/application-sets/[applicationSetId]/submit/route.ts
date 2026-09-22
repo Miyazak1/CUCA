@@ -8,4 +8,4 @@ type RouteContext = {
 export const POST = secureApiRoute("POST", async function POST(request: Request, context: RouteContext) {
   const params = await context.params;
   return getApplicationSubmissionHttpHandler()(request, requireRouteUuid(params.applicationSetId));
-});
+}, { capability: "officialMaterialSubmission" });

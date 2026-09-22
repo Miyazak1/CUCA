@@ -3,6 +3,7 @@ import { badRequest, CuacError, forbidden, serviceUnavailable, toErrorEnvelope }
 import { getApplicationLifecycle } from "./application-lifecycle.ts";
 import { publicApiOrigin, type RuntimeEnv } from "./http-config.ts";
 import { inputUuid } from "./input.ts";
+import { requireReleaseCapability, type ReleaseCapability } from "../infra/release-capabilities.ts";
 
 export const API_BODY_LIMIT_BYTES = 64 * 1024;
 type ApiMethod = "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
@@ -10,7 +11,8 @@ type ApiMethod = "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
 export function secureApiRoute<Args extends unknown[]>(
   method: ApiMethod,
   handler: (request: Request, ...args: Args) => Promise<Response>,
-  options: { env?: RuntimeEnv; body?: "json" | "empty" | "raw"; origin?: "same-origin" | "signed-external" } = {},
+  options: { env?: RuntimeEnv; body?: "json" | "empty" | "raw"; origin?: "same-origin" | "signed-external";
+    capability?: ReleaseCapability } = {},
 ) {
   return async (request: Request, ...args: Args): Promise<Response> => {
     const requestId = randomUUID();
@@ -20,6 +22,7 @@ export function secureApiRoute<Args extends unknown[]>(
       releaseRequest = getApplicationLifecycle().enterRequest();
       if (!releaseRequest) throw serviceUnavailable("Application is shutting down.");
       if (request.method !== method) throw new CuacError("METHOD_NOT_ALLOWED", "Method is not allowed.", 405);
+      if (options.capability) requireReleaseCapability(options.capability, options.env);
       const headers = new Headers(request.headers);
       headers.set("x-request-id", requestId);
       let body: string | undefined;

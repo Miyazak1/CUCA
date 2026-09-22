@@ -6,9 +6,9 @@ type RouteContext = { params: { applicationSetId: string; choiceId: string } | P
 export const GET = secureApiRoute("GET", async function GET(request: Request, context: RouteContext) {
   const params = await context.params;
   return getMaterialSelectionHttpHandler()(request, requireRouteUuid(params.applicationSetId), requireRouteUuid(params.choiceId), "get");
-});
+}, { capability: "officialMaterialSubmission" });
 
 export const PUT = secureApiRoute("PUT", async function PUT(request: Request, context: RouteContext) {
   const params = await context.params;
   return getMaterialSelectionHttpHandler()(request, requireRouteUuid(params.applicationSetId), requireRouteUuid(params.choiceId), "put");
-});
+}, { capability: "officialMaterialSubmission" });

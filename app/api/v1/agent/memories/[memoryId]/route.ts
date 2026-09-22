@@ -6,4 +6,4 @@ export const DELETE = secureApiRoute("DELETE", async function DELETE(request: Re
 }) {
   const { memoryId } = await context.params;
   return getMemoryManagementHttpHandler()(request, "clearOne", requireRouteUuid(memoryId));
-}, { body: "empty" });
+}, { body: "empty", capability: "agent" });

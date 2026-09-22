@@ -4,4 +4,5 @@ import { handlePaymentWebhookRoute } from "@/src/server/billing/runtime/payment.
 export const POST = secureApiRoute("POST", handlePaymentWebhookRoute, {
   body: "raw",
   origin: "signed-external",
+  capability: "payment",
 });

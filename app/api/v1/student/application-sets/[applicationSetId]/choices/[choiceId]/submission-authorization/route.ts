@@ -10,6 +10,9 @@ async function route(request: Request, context: RouteContext, operation: "get" |
     requireRouteUuid(params.choiceId), operation);
 }
 
-export const GET = secureApiRoute("GET", (request: Request, context: RouteContext) => route(request, context, "get"));
-export const POST = secureApiRoute("POST", (request: Request, context: RouteContext) => route(request, context, "record"));
-export const DELETE = secureApiRoute("DELETE", (request: Request, context: RouteContext) => route(request, context, "withdraw"));
+export const GET = secureApiRoute("GET", (request: Request, context: RouteContext) => route(request, context, "get"),
+  { capability: "officialMaterialSubmission" });
+export const POST = secureApiRoute("POST", (request: Request, context: RouteContext) => route(request, context, "record"),
+  { capability: "officialMaterialSubmission" });
+export const DELETE = secureApiRoute("DELETE", (request: Request, context: RouteContext) => route(request, context, "withdraw"),
+  { capability: "officialMaterialSubmission" });

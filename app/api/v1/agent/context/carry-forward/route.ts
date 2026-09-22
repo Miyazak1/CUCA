@@ -3,4 +3,4 @@ import { getAgentContextRouteHandlers } from "@/src/server/agent/runtime/routes.
 
 export const POST = secureApiRoute("POST", async function POST(request: Request) {
   return getAgentContextRouteHandlers().carryForwardCandidate(request);
-});
+}, { capability: "agent" });

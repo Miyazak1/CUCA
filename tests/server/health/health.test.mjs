@@ -16,6 +16,22 @@ test("health status reports a successful PostgreSQL probe without exposing secre
     status: "ok",
     service: "cuac-backend",
     checkedAt: "2026-08-28T00:00:00.000Z",
+    release: {
+      version: "cuac.release-capabilities.v1",
+      releaseScope: "school-handoff-v1",
+      enabled: {
+        publicCatalog: true,
+        siteSearch: true,
+        studentAccounts: true,
+        savedItems: true,
+        applicationPlanning: true,
+        schoolHandoff: true,
+        agent: false,
+        payment: false,
+        studentFiles: false,
+        officialMaterialSubmission: false,
+      },
+    },
     database: {
       provider: "postgresql",
       configured: true,

@@ -6,4 +6,4 @@ type RouteContext = { params: Promise<{ fileId: string }> };
 export const POST = secureApiRoute("POST", async function POST(request: Request, routeContext: RouteContext) {
   const { fileId } = await routeContext.params;
   return getStudentFileRouteHandlers().requestDelete(request, fileId);
-});
+}, { capability: "studentFiles" });

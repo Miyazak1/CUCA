@@ -1,9 +1,11 @@
 import { inspectPostgresMigrationEnv } from "../db/migration-runtime.ts";
+import { resolveReleaseCapabilities, type ReleaseCapabilities } from "../infra/release-capabilities.ts";
 
 export type HealthStatus = {
   status: "ok" | "degraded";
   service: "cuac-backend";
   checkedAt: string;
+  release: ReleaseCapabilities;
   database: {
     provider: "postgresql";
     configured: boolean;
@@ -22,6 +24,7 @@ export type HealthStatusOptions = {
 
 export async function createHealthStatus(options: HealthStatusOptions = {}): Promise<HealthStatus> {
   const check = inspectPostgresMigrationEnv(options.env);
+  const release = resolveReleaseCapabilities(options.env);
   let reachable = false;
   if (check.configured && options.databaseProbe) {
     try { reachable = await options.databaseProbe() === true; }
@@ -34,6 +37,7 @@ export async function createHealthStatus(options: HealthStatusOptions = {}): Pro
     status: reachable ? "ok" : "degraded",
     service: "cuac-backend",
     checkedAt: (options.now ?? new Date()).toISOString(),
+    release,
     database: {
       provider: "postgresql",
       configured: check.configured,

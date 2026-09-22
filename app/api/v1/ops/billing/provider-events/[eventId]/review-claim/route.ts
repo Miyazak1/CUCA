@@ -6,4 +6,4 @@ type RouteContext = { params: Promise<{ eventId: string }> };
 export const POST = secureApiRoute("POST", async function POST(request: Request, context: RouteContext) {
   const { eventId } = await context.params;
   return getOpsBillingReviewRouteHandlers().claim(request, requireRouteUuid(eventId));
-});
+}, { capability: "payment" });

@@ -3,4 +3,4 @@ import { getMemoryManagementHttpHandler } from "@/src/server/agent/memory-manage
 
 export const PATCH = secureApiRoute("PATCH", async function PATCH(request: Request) {
   return getMemoryManagementHttpHandler()(request, "setEnabled");
-});
+}, { capability: "agent" });

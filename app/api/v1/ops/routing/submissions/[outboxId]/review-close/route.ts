@@ -6,4 +6,4 @@ type RouteContext = { params: Promise<{ outboxId: string }> };
 export const POST = secureApiRoute("POST", async function POST(request: Request, context: RouteContext) {
   const { outboxId } = await context.params;
   return getOpsRoutingReviewRouteHandlers().close(request, requireRouteUuid(outboxId));
-});
+}, { capability: "officialMaterialSubmission" });

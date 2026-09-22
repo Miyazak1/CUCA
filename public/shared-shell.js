@@ -1,5 +1,51 @@
 (function () {
-  const AGENT_PRODUCT_SURFACES_ENABLED = false;
+  const safeReleaseCapabilities = Object.freeze({
+    version: "cuac.release-capabilities.v1",
+    releaseScope: "unavailable",
+    enabled: Object.freeze({
+      publicCatalog: true,
+      siteSearch: true,
+      studentAccounts: true,
+      savedItems: true,
+      applicationPlanning: true,
+      schoolHandoff: true,
+      agent: false,
+      payment: false,
+      studentFiles: false,
+      officialMaterialSubmission: false,
+    }),
+  });
+  let runtimeReleaseCapabilities = safeReleaseCapabilities;
+
+  function isCapabilityEnabled(capability) {
+    return runtimeReleaseCapabilities.enabled?.[capability] === true;
+  }
+
+  async function loadRuntimeReleaseCapabilities() {
+    try {
+      const response = await fetch("/api/v1/capabilities", {
+        credentials: "same-origin",
+        headers: { Accept: "application/json" },
+        cache: "no-store",
+      });
+      const manifest = await response.json();
+      if (!response.ok || manifest?.version !== "cuac.release-capabilities.v1" || !manifest.enabled) {
+        throw new Error("Release capabilities are unavailable.");
+      }
+      runtimeReleaseCapabilities = Object.freeze({
+        ...manifest,
+        enabled: Object.freeze({ ...safeReleaseCapabilities.enabled, ...manifest.enabled }),
+      });
+      document.documentElement.dataset.cuacReleaseScope = runtimeReleaseCapabilities.releaseScope;
+      document.documentElement.dataset.cuacCapabilities = "ready";
+    } catch {
+      runtimeReleaseCapabilities = safeReleaseCapabilities;
+      document.documentElement.dataset.cuacReleaseScope = "unavailable";
+      document.documentElement.dataset.cuacCapabilities = "unavailable";
+    }
+    document.dispatchEvent(new CustomEvent("cuac:capabilities-ready", { detail: runtimeReleaseCapabilities }));
+    return runtimeReleaseCapabilities;
+  }
 
   const icons = {
     search: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>',
@@ -1276,7 +1322,7 @@
   }
 
   function renderAgentShell() {
-    if (!AGENT_PRODUCT_SURFACES_ENABLED || document.body.dataset.agentMode === "off") return;
+    if (!isCapabilityEnabled("agent") || document.body.dataset.agentMode === "off") return;
     if (document.querySelector("[data-cuac-agent-shell]")) return;
     const agentMode = document.body.dataset.agentMode || "";
     const contextPolicy = getAgentContextPolicy();
@@ -1457,7 +1503,7 @@
   }
 
   function initAgentShell() {
-    if (!AGENT_PRODUCT_SURFACES_ENABLED || document.body.dataset.agentMode === "off") return;
+    if (!isCapabilityEnabled("agent") || document.body.dataset.agentMode === "off") return;
     renderAgentShell();
     const inputs = Array.from(document.querySelectorAll("[data-cuac-agent-input], [data-planner-input]"));
     const forms = Array.from(document.querySelectorAll("[data-cuac-agent-form], [data-planner-form]"));
@@ -1992,13 +2038,14 @@
 
   document.querySelectorAll("[data-cuac-header]").forEach(renderHeader);
   document.querySelectorAll("[data-cuac-footer]").forEach(renderFooter);
-  window.CUAC = { ...(window.CUAC || {}), requireSignedIn, requireStudentSignedIn, requireStudentSignedInReady, showSignInRequired, dataAttributeSelector, isSignedIn: () => getShellContext().authState === "signed-in", isStudentSignedIn, authReady: () => runtimeAuthReadyPromise };
+  window.CUAC = { ...(window.CUAC || {}), requireSignedIn, requireStudentSignedIn, requireStudentSignedInReady, showSignInRequired, dataAttributeSelector, isSignedIn: () => getShellContext().authState === "signed-in", isStudentSignedIn, isCapabilityEnabled, authReady: () => runtimeAuthReadyPromise, capabilitiesReady: () => runtimeCapabilitiesReadyPromise, releaseCapabilities: () => runtimeReleaseCapabilities };
   initProtectedStudentLinks();
   initAuthNavigationControls();
   initAccountMenus();
   initLanguageSelectors();
   const runtimeAuthReadyPromise = loadRuntimeAuthState();
-  void runtimeAuthReadyPromise.finally(initAgentShell);
+  const runtimeCapabilitiesReadyPromise = loadRuntimeReleaseCapabilities();
+  void Promise.allSettled([runtimeAuthReadyPromise, runtimeCapabilitiesReadyPromise]).finally(initAgentShell);
   window.CUAC = { ...(window.CUAC || {}), reveal: initPageReveal };
   initPageReveal();
 })();

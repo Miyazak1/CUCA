@@ -8,4 +8,4 @@ type RouteContext = {
 export const GET = secureApiRoute("GET", async function GET(request: Request, context: RouteContext) {
   const params = await context.params;
   return getBillingRouteHandlers().getCheckoutStatus(request, requireRouteUuid(params.invoiceId));
-});
+}, { capability: "payment" });
