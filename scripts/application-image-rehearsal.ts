@@ -112,21 +112,31 @@ try {
   const applicationPort = /^127\.0\.0\.1:(\d+)$/.exec(applicationBinding)?.[1];
   assert.ok(applicationPort);
   let health;
+  let healthHeaders: Headers | undefined;
   for (let attempt = 0; attempt < 80; attempt += 1) {
     try {
       const response = await fetch(`http://127.0.0.1:${applicationPort}/api/v1/health`);
-      if (response.ok) { health = await response.json(); break; }
+      if (response.ok) {
+        healthHeaders = response.headers;
+        health = await response.json();
+        break;
+      }
     } catch { /* startup is still in progress */ }
     await delay(250);
   }
   assert.equal(health?.status, "ok");
   assert.equal(health?.database?.reachable, true);
+  assert.equal(health?.release?.releaseScope, "school-handoff-v1");
+  assert.match(healthHeaders?.get("content-security-policy") ?? "", /default-src 'self'/);
+  assert.equal(healthHeaders?.get("x-frame-options"), "DENY");
+  assert.equal(healthHeaders?.get("x-content-type-options"), "nosniff");
   assert.equal((await docker(["exec", application, "node", "-e", "if(process.getuid()!==1000||process.getgid()!==1000)process.exit(1)"])).stdout, "");
   await docker(["stop", "--time", "40", application], { timeout: 50_000 });
   const state = JSON.parse((await docker(["inspect", "--format", "{{json .State}}", application])).stdout);
   assert.equal(state.ExitCode, 0);
   console.log(JSON.stringify({ imageId: image.Id, platform: config.platform, nodeVersion: config.nodeVersion,
-    nonRoot: true, readOnly: true, health: "ok", postgres: "reachable", shutdownExitCode: state.ExitCode }));
+    nonRoot: true, readOnly: true, health: "ok", postgres: "reachable", securityHeaders: "verified",
+    releaseScope: health.release.releaseScope, shutdownExitCode: state.ExitCode }));
 } finally {
   if (applicationCreated) {
     try { await ownedContainer(application); await docker(["rm", "--force", application]); } catch { /* report through the primary result */ }

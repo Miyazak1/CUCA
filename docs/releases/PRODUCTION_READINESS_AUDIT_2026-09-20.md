@@ -2,6 +2,8 @@
 
 > 2026-09-20 update: Hong Kong is the owner-confirmed principal application-server location, but the production example still contains Shanghai/Hangzhou region values. Production remains blocked until the [data-flow inventory](../architecture/CUAC_HONG_KONG_DATA_FLOW_INVENTORY.md), [cross-border impact assessment](../legal-drafts/CUAC_MAINLAND_TO_HONG_KONG_PIPIA_DRAFT.md), [retention schedule](../architecture/CUAC_DATA_RETENTION_SCHEDULE_DRAFT.md) and [missing external inputs](HONG_KONG_DATA_FLOW_MISSING_INPUTS.md) are completed and approved against real cloud resources.
 
+> 2026-09-22 local hardening update: the production/staging templates and least-privilege Compose topology now target `cn-hongkong`; this is a target contract, not cloud evidence. A server-owned `/api/v1/capabilities` manifest defaults closed, is included in health output and independently blocks Agent, payment, student files and official-material APIs. The production build now packages only an explicit public-asset allowlist, and the application runtime injects a strict CSP, HSTS in deployed environments, clickjacking protection and permissions policy. The detached migration artifact no longer depends on a user npm cache. Build, lint, the 80 active frontend contracts and the complete `test:backend` chain pass locally. The actual Linux/amd64 image also passes disposable-PostgreSQL migration, non-root/read-only runtime, health, capability, security-header and graceful-shutdown rehearsal. See [the local-to-cloud handoff](LOCAL_LAUNCH_READINESS_HANDOFF_2026-09-22.md).
+
 > Retention milestone: the supervised retention worker now independently expires stale guardian registrations, removes expired authentication secrets, deletes bounded batches of obsolete authentication records and school invites, removes terminal ordinary business-notification events after 180 days, and sends one mandatory bilingual in-app/email warning during each student's 23-to-24-month inactivity window. Queued external delivery and security/privacy topics are protected. Focused retention and notification tests, the full server suite, production build and a disposable PostgreSQL rehearsal pass. No account is automatically disabled or deleted; account quarantine/purge, legal-hold resolution, audit archive, application-log and backup lifecycle work remain open.
 
 > Account-deletion execution milestone: migration 0069 and the supervised retention worker now create one immutable-source `review_required` execution record only after a password-confirmed student request and a distinct-operator dual-control `account_deletion_ready` approval. The execution snapshot always blocks on legal-hold review and an external backup tombstone, and adds private-object, financial, application-evidence, school-handoff, privileged-role and minor-evidence reviews when present. Creation is idempotent and audited, but does not disable the account, revoke sessions, erase content, close the request or claim that backup recovery is safe. See the [execution runbook](../architecture/CUAC_ACCOUNT_DELETION_EXECUTION_RUNBOOK.md).
@@ -103,7 +105,7 @@ Local acceptance now includes the atomic activation SQL against persistent local
 
 ### P0-2 Reproducible release baseline
 
-Implementation status: **local technical gates, source review and Git freeze are complete; remote CI and immutable application-image binding remain open.**
+Implementation status: **local technical gates, cache-independent migration packaging, public-asset allowlisting, source review and Git freeze are complete; remote CI and immutable application-image binding remain open.**
 
 The reviewed source is frozen as one atomic release-candidate baseline because its identity, invitation, intake, UI and migration changes were exercised together. Migrations `0053`–`0065`, the journal and generated snapshots pass schema parity and real PostgreSQL replay as one migration chain. The detached migration release is reproducible and identified by digest. The resulting commit must now be rebuilt by remote CI and bound to an immutable application-image digest before staging approval.
 
@@ -159,7 +161,7 @@ Acceptance: all protected staging evidence is bound to the same commit, image, m
 
 ### P0-6 Security headers and public edge contract
 
-The API boundary already enforces same-origin writes, body limits, no-store responses, request IDs and conservative CORS. Page-level CSP, HSTS, clickjacking protection and permissions policy are not established by repository evidence and must be supplied and verified at the edge/runtime.
+The API boundary enforces same-origin writes, body limits, no-store responses, request IDs and conservative CORS. The application runtime now injects a strict self-hosted CSP without `unsafe-inline`/`unsafe-eval`, HSTS for staging/production, `DENY` framing, `nosniff`, cross-origin opener isolation and a camera/microphone/geolocation/payment/USB permissions denial. Every allowlisted production HTML entry is tested to contain no inline script or style that would violate this policy. The real TLS terminator/WAF must preserve or strengthen these values and is still unverified.
 
 Acceptance: automated header probe on every public/auth/workspace route, CSP report review, TLS scan, dependency/security scan, redacted logging check and negative cross-origin tests.
 
@@ -173,7 +175,7 @@ Decision: do not rewrite before the first launch. Freeze the static server-backe
 
 ### P1-2 Server-owned capability manifest
 
-Frontend booleans are useful for presentation but cannot define release authority. Add one read-only server capability response derived from `CUAC_RELEASE_SCOPE`; all pages consume it, while every deferred API independently rejects use. Keep launch scope immutable for the process lifetime and include it in health/build metadata without exposing secrets.
+Implementation status: **complete locally.** The public read-only `/api/v1/capabilities` response is derived from `CUAC_RELEASE_SCOPE`, all active pages consume it through the shared shell, and production fails closed for a missing/unknown scope. Agent, payment, student-file and official-material preparation/authorization/submission routes independently declare and enforce their required capability, including internal review routes. Health output exposes only the scope and boolean capability contract, never secrets.
 
 ### P1-3 Availability and observability
 
