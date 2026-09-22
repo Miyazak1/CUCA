@@ -118,7 +118,7 @@
   function changeLocale(nextLocale) {
     if (!ready.includes(nextLocale)) return;
     const url = new URL(location.href);
-    if (nextLocale === "en") url.searchParams.delete("lang"); else url.searchParams.set("lang", nextLocale);
+    url.searchParams.set("lang", nextLocale);
     location.assign(url);
   }
   window.CUACI18n = { locale, direction: metadata[locale].dir, readyLocales: Object.freeze([...ready]), metadata, normalize, register, t, changeLocale };

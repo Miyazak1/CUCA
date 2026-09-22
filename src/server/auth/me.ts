@@ -1,5 +1,5 @@
 import type { RequestContext } from "../shared/request-context.ts";
-import { normalizeUiLocale, type SupportedUiLocale } from "../i18n/locales.ts";
+import { normalizeUiLocale, type PublicUiLocale, type SupportedUiLocale } from "../i18n/locales.ts";
 
 export type CurrentActorDto = {
   requestId: string;
@@ -23,6 +23,9 @@ export type CurrentAccountRecord = {
 
 export type CurrentAccountRepository = {
   findCurrentAccountByUserId(userId: string): Promise<CurrentAccountRecord | null>;
+  updateCurrentAccountLocale?(input: {
+    userId: string; locale: PublicUiLocale; requestId: string; now: Date;
+  }): Promise<{ locale: PublicUiLocale; changed: boolean } | null>;
 };
 
 export function toCurrentActorDto(context: RequestContext, account: CurrentAccountRecord | null = null): CurrentActorDto {

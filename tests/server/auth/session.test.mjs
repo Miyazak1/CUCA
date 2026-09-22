@@ -235,6 +235,57 @@ test("me HTTP handler does not expose account identity to a guest", async () => 
   assert.equal(body.data.accountLocale, null);
 });
 
+test("me HTTP handler updates only the signed-in student account locale", async () => {
+  const updates = [];
+  const handlers = createAuthHttpHandlers({
+    async findActiveSessionByTokenHash() {
+      return { userId: "student-1", selectedSurface: "student", activeRole: "student", tenantSchoolId: null,
+        authStrength: "session", expiresAt: new Date("2026-09-29T00:00:00.000Z"), revokedAt: null, accountStatus: "active" };
+    },
+    async updateCurrentAccountLocale(input) { updates.push(input); return { locale: input.locale, changed: true }; },
+  });
+  const response = await handlers.updateLocale(new Request("https://cuac.test/api/v1/me", {
+    method: "PATCH", headers: { cookie: `${SESSION_COOKIE_NAME}=student-token`, "x-request-id": "request-locale-1",
+      "content-type": "application/json" }, body: JSON.stringify({ locale: "ar-SA" }),
+  }));
+  assert.equal(response.status, 200);
+  assert.deepEqual((await response.json()).data, { accountLocale: "ar", changed: true });
+  assert.equal(updates[0].userId, "student-1");
+  assert.equal(updates[0].locale, "ar");
+  assert.equal(updates[0].requestId, "request-locale-1");
+});
+
+test("me HTTP handler rejects staff, guests and non-public locales before account mutation", async () => {
+  let updates = 0;
+  const repository = {
+    async findActiveSessionByTokenHash() { return null; },
+    async updateCurrentAccountLocale() { updates++; return null; },
+  };
+  let response = await createAuthHttpHandlers(repository).updateLocale(new Request("https://cuac.test/api/v1/me", {
+    method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify({ locale: "vi" }),
+  }));
+  assert.equal(response.status, 403);
+
+  repository.findActiveSessionByTokenHash = async () => ({ userId: "staff-1", selectedSurface: "school", activeRole: "school_staff",
+    tenantSchoolId: "school-1", authStrength: "session", expiresAt: new Date("2026-09-29T00:00:00.000Z"),
+    revokedAt: null, accountStatus: "active" });
+  response = await createAuthHttpHandlers(repository).updateLocale(new Request("https://cuac.test/api/v1/me", {
+    method: "PATCH", headers: { cookie: `${SESSION_COOKIE_NAME}=staff-token`, "content-type": "application/json" },
+    body: JSON.stringify({ locale: "ar" }),
+  }));
+  assert.equal(response.status, 403);
+
+  repository.findActiveSessionByTokenHash = async () => ({ userId: "student-1", selectedSurface: "student", activeRole: "student",
+    tenantSchoolId: null, authStrength: "session", expiresAt: new Date("2026-09-29T00:00:00.000Z"),
+    revokedAt: null, accountStatus: "active" });
+  response = await createAuthHttpHandlers(repository).updateLocale(new Request("https://cuac.test/api/v1/me", {
+    method: "PATCH", headers: { cookie: `${SESSION_COOKIE_NAME}=student-token`, "content-type": "application/json" },
+    body: JSON.stringify({ locale: "zh-CN" }),
+  }));
+  assert.equal(response.status, 400);
+  assert.equal(updates, 0);
+});
+
 test("request context resolver requires a live role-matched CUAC staff access grant", async () => {
   const lookups = [];
   const repository = {

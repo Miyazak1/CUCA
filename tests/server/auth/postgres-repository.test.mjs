@@ -148,6 +148,34 @@ test("Postgres auth repository projects only the current active account email st
   assert.deepEqual(calls[0].params, ["user-1"]);
 });
 
+test("Postgres auth repository updates account locale and audits only an actual change", async () => {
+  const calls = [];
+  const now = new Date("2026-09-22T12:00:00.000Z");
+  const client = {
+    async transaction(work) { return work(this); },
+    async query(statement, params) {
+      calls.push({ statement, params });
+      if (/with target as/.test(statement)) return [{ locale: "ms", changed: true }];
+      return [];
+    },
+  };
+  const repository = new PostgresAuthSessionRepository(client);
+  assert.deepEqual(await repository.updateCurrentAccountLocale({ userId: "student-1", locale: "ms",
+    requestId: "request-1", now }), { locale: "ms", changed: true });
+  assert.equal(calls.length, 2);
+  assert.match(calls[0].statement, /for update/);
+  assert.match(calls[0].statement, /locale is distinct from \$2/);
+  assert.deepEqual(calls[0].params, ["student-1", "ms", now]);
+  assert.match(calls[1].statement, /auth\.account_locale\.updated/);
+  assert.deepEqual(calls[1].params, ["request-1", "student-1", JSON.stringify({ locale: "ms" })]);
+
+  calls.length = 0;
+  client.query = async (statement, params) => { calls.push({ statement, params }); return [{ locale: "ms", changed: false }]; };
+  assert.deepEqual(await repository.updateCurrentAccountLocale({ userId: "student-1", locale: "ms",
+    requestId: "request-2", now }), { locale: "ms", changed: false });
+  assert.equal(calls.length, 1);
+});
+
 test("Postgres auth repository discovers only active server-owned workspace authorities", async () => {
   const calls = [];
   const schoolId = "11111111-1111-4111-8111-111111111111";

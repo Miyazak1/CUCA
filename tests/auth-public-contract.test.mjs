@@ -50,6 +50,8 @@ test("public account page uses real Auth APIs without browser-owned authenticati
   assert.doesNotMatch(html, /Keep me signed in|Study goal|social-auth|Agent context|Agent conversations/);
 
   assert.match(shell, /fetch\("\/api\/v1\/me"/);
+  assert.match(shell, /method:\s*"PATCH"/);
+  assert.match(shell, /body:\s*JSON\.stringify\(\{ locale: nextLocale \}\)/);
   assert.match(shell, /fetch\("\/api\/v1\/auth\/logout"/);
   assert.match(shell, /runtimeAuthState/);
   assert.match(shell, /authStrength: actor\.authStrength === "step_up"/);

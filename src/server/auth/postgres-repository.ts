@@ -25,6 +25,7 @@ import type {
   SchoolTenantMembershipRepository,
 } from "./session.ts";
 import type { CurrentAccountRecord, CurrentAccountRepository } from "./me.ts";
+import type { PublicUiLocale } from "../i18n/locales.ts";
 
 export type SqlAuthClient = TransactionalSqlClient;
 
@@ -223,6 +224,28 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
       [userId],
     );
     return rows[0] ?? null;
+  }
+
+  async updateCurrentAccountLocale(input: { userId: string; locale: PublicUiLocale; requestId: string; now: Date }) {
+    return this.client.transaction(async tx => {
+      const rows = await tx.query<{ locale: PublicUiLocale; changed: boolean }>(`with target as (
+        select id,locale from users where id = $1 and account_status = 'active' for update
+      ), updated as (
+        update users u set locale = $2,updated_at = $3 from target t
+        where u.id = t.id and t.locale is distinct from $2 returning u.locale,true as changed
+      ) select locale,changed from updated union all
+        select locale,false as changed from target where not exists (select 1 from updated) limit 1`,
+      [input.userId, input.locale, input.now]);
+      const result = rows[0] ?? null;
+      if (result?.changed) {
+        await tx.query(`insert into audit_logs (request_id,actor_user_id,actor_type,active_role,action,
+          resource_type,resource_id,allowed,data_classes,redaction_applied,metadata_json)
+          values ($1,$2,'user','student','auth.account_locale.updated','user',$2,true,
+          '["account"]'::jsonb,true,$3::jsonb)`,
+        [input.requestId, input.userId, JSON.stringify({ locale: input.locale })]);
+      }
+      return result;
+    });
   }
 
   async listAvailableSessionAuthorities(userId: string, now: Date): Promise<AvailableAuthWorkspace[]> {

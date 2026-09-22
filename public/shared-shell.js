@@ -622,7 +622,7 @@
 
   function brand() {
     const locale = window.CUACI18n?.locale;
-    const href = locale && locale !== "en" ? `home-v3.html?lang=${encodeURIComponent(locale)}` : "home-v3.html";
+    const href = shouldCarryLocale(locale) ? `home-v3.html?lang=${encodeURIComponent(locale)}` : "home-v3.html";
     return `<a class="brand" href="${href}"><span class="logo">CU</span><span>CUAC</span></a>`;
   }
 
@@ -641,12 +641,16 @@
 
   function localizedSearchHref() {
     const locale = window.CUACI18n?.locale;
-    return locale && locale !== "en" ? `search.html?lang=${encodeURIComponent(locale)}` : "search.html";
+    return shouldCarryLocale(locale) ? `search.html?lang=${encodeURIComponent(locale)}` : "search.html";
+  }
+
+  function shouldCarryLocale(locale) {
+    return Boolean(locale && (locale !== "en" || new URLSearchParams(window.location.search).has("lang")));
   }
 
   function localizedPageHref(rawHref) {
     const locale = window.CUACI18n?.locale;
-    if (!locale || locale === "en" || !rawHref) return rawHref;
+    if (!shouldCarryLocale(locale) || !rawHref) return rawHref;
     const url = new URL(rawHref, window.location.href);
     if (url.origin !== window.location.origin || !url.pathname.toLowerCase().endsWith(".html")) return rawHref;
     url.searchParams.set("lang", locale);
@@ -1024,6 +1028,15 @@
             accountLocale: ["en", "vi", "th", "id", "ms", "ar", "zh-CN"].includes(actor.accountLocale) ? actor.accountLocale : null,
           }
         : { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest", accountEmail: null, accountEmailVerified: null, accountLocale: null };
+      const requestedLocale = window.CUACI18n?.normalize(new URLSearchParams(window.location.search).get("lang"));
+      if (runtimeAuthState.role === "student" && runtimeAuthState.accountLocale
+        && window.CUACI18n?.readyLocales.includes(runtimeAuthState.accountLocale)
+        && !requestedLocale && window.CUACI18n.locale !== runtimeAuthState.accountLocale) {
+        const localizedUrl = new URL(window.location.href);
+        localizedUrl.searchParams.set("lang", runtimeAuthState.accountLocale);
+        window.location.replace(localizedUrl);
+        return runtimeAuthState;
+      }
     } catch {
       runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest", accountEmail: null, accountEmailVerified: null, accountLocale: null };
     }
@@ -1952,8 +1965,28 @@
   }
 
   function initLanguageSelectors() {
-    document.querySelectorAll("[data-cuac-language]").forEach(select => select.addEventListener("change", () => {
-      window.CUACI18n?.changeLocale(select.value);
+    document.querySelectorAll("[data-cuac-language]").forEach(select => select.addEventListener("change", async () => {
+      const nextLocale = select.value;
+      if (runtimeAuthState.authState === "signed-in" && runtimeAuthState.role === "student") {
+        select.disabled = true;
+        try {
+          const response = await fetch("/api/v1/me", {
+            method: "PATCH",
+            credentials: "same-origin",
+            headers: { Accept: "application/json", "Content-Type": "application/json" },
+            body: JSON.stringify({ locale: nextLocale }),
+          });
+          const payload = await response.json().catch(() => null);
+          if (!response.ok || payload?.data?.accountLocale !== nextLocale) throw new Error("Language preference was not saved.");
+          runtimeAuthState.accountLocale = nextLocale;
+        } catch {
+          select.disabled = false;
+          select.value = window.CUACI18n?.locale || "en";
+          select.setAttribute("aria-invalid", "true");
+          return;
+        }
+      }
+      window.CUACI18n?.changeLocale(nextLocale);
     }));
   }
 

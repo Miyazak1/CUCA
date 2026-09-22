@@ -21,6 +21,7 @@ test("browser locale runtime uses bounded URL state, native labels and Arabic RT
   assert.match(runtime, /ar: \{ name: "العربية", dir: "rtl" \}/);
   assert.match(runtime, /document\.documentElement\.dir = metadata\[locale\]\.dir/);
   assert.match(runtime, /url\.searchParams\.set\("lang", nextLocale\)/);
+  assert.doesNotMatch(runtime, /nextLocale === "en"[\s\S]{0,80}delete\("lang"\)/);
   assert.doesNotMatch(runtime, /localStorage|sessionStorage|document\.cookie/);
 });
 
@@ -42,6 +43,9 @@ test("shared student account navigation localizes labels and preserves the selec
   }
   assert.match(shell, /function localizedPageHref\(rawHref\)/);
   assert.match(shell, /localizedPageHref\("favourites-api\.html"\)/);
+  assert.match(shell, /function shouldCarryLocale\(locale\)/);
+  assert.match(shell, /runtimeAuthState\.accountLocale/);
+  assert.match(shell, /localizedUrl\.searchParams\.set\("lang", runtimeAuthState\.accountLocale\)/);
   assert.match(shell, /accountLinks\.map\(\(\[href, icon, label\]\) => `<a href="\$\{localizedPageHref\(href\)\}"/);
 });
 
