@@ -81,6 +81,26 @@ test("email action pages clear fragment credentials and submit only explicit POS
   assert.match(resetPage, /AuthActionClient kind="reset"/);
 });
 
+test("public account entry supports bounded student locales without translating account data", async () => {
+  const [html, messages, script] = await Promise.all([
+    source("public/auth.html"),
+    source("public/auth-i18n.js"),
+    source("public/auth.js"),
+  ]);
+  assert.match(html, /data-i18n-locales="en,vi,th,id,ms,ar"/);
+  const scripts = [...html.matchAll(/<script src="([^"]+)"/g)].map(match => match[1].split("?")[0]);
+  assert.ok(scripts.indexOf("i18n-runtime.js") < scripts.indexOf("auth-i18n.js"));
+  assert.ok(scripts.indexOf("auth-i18n.js") < scripts.indexOf("shared-shell.js"));
+  assert.ok(scripts.indexOf("shared-shell.js") < scripts.indexOf("auth.js"));
+  for (const marker of ["Đăng nhập", "เข้าสู่ระบบ", "Masuk", "Log masuk", "تسجيل الدخول"]) assert.match(messages, new RegExp(marker));
+  assert.match(messages, /url\.searchParams\.set\("lang", i18n\.locale\)/);
+  assert.match(messages, /document\.createTreeWalker/);
+  assert.match(script, /authUi\(workspace\.selectedSurface/);
+  assert.match(script, /authUi\(verificationMessage\)/);
+  assert.match(script, /authI18n\?\.href\(destination\)/);
+  assert.doesNotMatch(script, /authUi\(workspace\.label\)|authUi\(email\)|authUi\(firstName\)|authUi\(lastName\)/);
+});
+
 test("registration requires age eligibility and provides a one-time guardian approval page", async () => {
   const [html, script, guardianHtml, guardianScript] = await Promise.all([
     source("public/auth.html"), source("public/auth.js"),

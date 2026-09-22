@@ -3,6 +3,8 @@ const authIcons = {
 };
 
 const authParams = new URLSearchParams(window.location.search);
+const authI18n = window.CUACAuthI18n;
+const authUi = value => authI18n?.ui(value) || value;
 const runtimeStatus = document.querySelector("[data-auth-runtime-status]");
 const workspacePicker = document.querySelector("[data-workspace-picker]");
 const workspaceOptions = document.querySelector("[data-workspace-options]");
@@ -76,12 +78,12 @@ function normalizeAuthRole(role) {
 
 function setText(selector, value) {
   const target = document.querySelector(selector);
-  if (target) target.textContent = value;
+  if (target) target.textContent = authUi(value);
 }
 
 function setStatus(message = "", state = "") {
   if (!runtimeStatus) return;
-  runtimeStatus.textContent = message;
+  runtimeStatus.textContent = authUi(message);
   if (state) runtimeStatus.dataset.state = state;
   else delete runtimeStatus.dataset.state;
 }
@@ -119,8 +121,8 @@ function safeLocalUrl(value) {
 }
 
 function destinationFor(role, registering = false) {
-  if (registering) return roleProfiles.student.registerHref;
-  return roleProfiles[role].nextHref;
+  const destination = registering ? roleProfiles.student.registerHref : roleProfiles[role].nextHref;
+  return authI18n?.href(destination) || destination;
 }
 
 function setRole(role) {
@@ -133,7 +135,8 @@ function setRole(role) {
   const nextLink = document.querySelector("[data-next-link]");
   if (nextLink) {
     nextLink.href = destinationFor(currentRole);
-    nextLink.textContent = hasContinuation ? "Continue task" : profile.nextLabel;
+    nextLink.textContent = authUi(hasContinuation ? "Continue task" : profile.nextLabel);
+    nextLink.href = authI18n?.href(nextLink.getAttribute("href")) || nextLink.href;
   }
 
   const continuationStrip = document.querySelector("[data-auth-continuation-strip]");
@@ -160,7 +163,7 @@ async function requestJson(path, options = {}) {
   const response = await fetch(path, requestOptions);
   const payload = await response.json().catch(() => null);
   if (!response.ok) {
-    const error = new Error(payload?.error?.message || "The request could not be completed.");
+    const error = new Error(payload?.error?.message || authUi("The request could not be completed."));
     error.code = payload?.error?.code || "REQUEST_FAILED";
     throw error;
   }
@@ -232,7 +235,7 @@ function setButtonBusy(button, busy, busyLabel) {
   if (!button) return () => {};
   const originalLabel = button.textContent;
   button.disabled = busy;
-  if (busy && busyLabel) button.textContent = busyLabel;
+  if (busy && busyLabel) button.textContent = authUi(busyLabel);
   return () => {
     button.disabled = false;
     button.textContent = originalLabel;
@@ -274,9 +277,9 @@ function renderWorkspaceChoices(workspaces) {
     const title = document.createElement("strong");
     title.textContent = workspace.label;
     const detail = document.createElement("span");
-    detail.textContent = workspace.selectedSurface === "student"
+    detail.textContent = authUi(workspace.selectedSurface === "student"
       ? "Student"
-      : workspace.selectedSurface === "school" ? "School staff" : "CUAC staff";
+      : workspace.selectedSurface === "school" ? "School staff" : "CUAC staff");
     button.append(title, detail);
     return button;
   }));
@@ -447,7 +450,7 @@ async function handleRegister(form) {
     }
 
     const destination = await consumePendingContinuation("student") || destinationFor("student", true);
-    setStatus(`${verificationMessage} Opening the authorized next step...`, "success");
+    setStatus(`${authUi(verificationMessage)} ${authUi("Opening the authorized next step...")}`, "success");
     window.setTimeout(() => window.location.assign(destination), 700);
   } catch (error) {
     setStatus(error.message, "error");

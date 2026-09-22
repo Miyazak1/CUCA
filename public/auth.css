@@ -259,6 +259,10 @@ h1 {
   text-align: left;
 }
 
+[dir="rtl"] .workspace-option {
+  text-align: right;
+}
+
 .workspace-option:hover,
 .workspace-option:focus-visible {
   border-color: rgb(var(--accent-rgb) / 0.45);
