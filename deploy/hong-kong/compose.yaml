@@ -1,0 +1,76 @@
+name: cuac-production
+
+x-runtime: &runtime
+  image: ${CUAC_IMAGE:?Set CUAC_IMAGE to the immutable registry digest}
+  user: "1000:1000"
+  env_file:
+    - ${CUAC_ENV_FILE:?Set CUAC_ENV_FILE to the protected production environment file}
+  restart: unless-stopped
+  read_only: true
+  init: true
+  stop_grace_period: 45s
+  tmpfs:
+    - /tmp:rw,noexec,nosuid,size=32m
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  volumes:
+    - type: bind
+      source: ${CUAC_EVIDENCE_FILE:?Set CUAC_EVIDENCE_FILE to the reviewed staging evidence manifest}
+      target: /run/cuac/staging-evidence.json
+      read_only: true
+  networks:
+    - app
+
+services:
+  app:
+    <<: *runtime
+    environment:
+      CUAC_START_MODE: reviewed
+      CUAC_STAGING_EVIDENCE_MANIFEST: /run/cuac/staging-evidence.json
+    ports:
+      - "127.0.0.1:3000:3000"
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 2G
+        reservations:
+          memory: 512M
+
+  auth-email-worker:
+    <<: *runtime
+    entrypoint: ["node", "scripts/start-auth-email-worker.ts"]
+    command: ["/run/cuac/staging-evidence.json"]
+    depends_on:
+      app:
+        condition: service_healthy
+
+  notification-worker:
+    <<: *runtime
+    entrypoint: ["node", "scripts/start-notification-worker.ts"]
+    command: ["/run/cuac/staging-evidence.json"]
+    depends_on:
+      app:
+        condition: service_healthy
+
+  data-rights-reminder-worker:
+    <<: *runtime
+    entrypoint: ["node", "scripts/start-data-rights-reminder-worker.ts"]
+    command: ["/run/cuac/staging-evidence.json"]
+    depends_on:
+      app:
+        condition: service_healthy
+
+  retention-worker:
+    <<: *runtime
+    entrypoint: ["node", "scripts/start-retention-worker.ts"]
+    command: ["/run/cuac/staging-evidence.json"]
+    depends_on:
+      app:
+        condition: service_healthy
+
+networks:
+  app:
+    driver: bridge

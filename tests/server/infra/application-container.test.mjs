@@ -22,6 +22,12 @@ test("application image is pinned, multi-stage, non-root, read-only compatible a
   assert.match(dockerfile, /USER 1000:1000/);
   assert.match(dockerfile, /HEALTHCHECK[\s\S]*\/api\/v1\/health/);
   assert.match(dockerfile, /ENTRYPOINT \["node", "scripts\/application-container-entry\.ts"\]/);
+  for (const worker of ["auth-email", "notification", "data-rights-reminder", "retention"]) {
+    assert.match(dockerfile, new RegExp(`COPY --from=build[^\\n]+start-${worker}-worker\\.ts`));
+  }
+  for (const deferredWorker of ["student-file", "official-submission", "payment-reconciliation"]) {
+    assert.doesNotMatch(dockerfile, new RegExp(`COPY --from=build[^\\n]+start-${deferredWorker}-worker\\.ts`));
+  }
   assert.equal(packageJson.dependencies.vinext, "1.0.0-beta.10");
   assert.equal(packageJson.devDependencies?.vinext, undefined);
   for (const excluded of [".env*", "node_modules", "releases", "tests", "seeds/catalog.*.json"]) {

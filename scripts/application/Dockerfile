@@ -24,6 +24,10 @@ COPY --from=build --chown=0:0 /opt/cuac/scripts/application-container-entry.ts .
 COPY --from=build --chown=0:0 /opt/cuac/scripts/start-app.ts ./scripts/start-app.ts
 COPY --from=build --chown=0:0 /opt/cuac/scripts/start-staging-candidate.ts ./scripts/start-staging-candidate.ts
 COPY --from=build --chown=0:0 /opt/cuac/scripts/start-reviewed-release.ts ./scripts/start-reviewed-release.ts
+COPY --from=build --chown=0:0 /opt/cuac/scripts/start-auth-email-worker.ts ./scripts/start-auth-email-worker.ts
+COPY --from=build --chown=0:0 /opt/cuac/scripts/start-notification-worker.ts ./scripts/start-notification-worker.ts
+COPY --from=build --chown=0:0 /opt/cuac/scripts/start-data-rights-reminder-worker.ts ./scripts/start-data-rights-reminder-worker.ts
+COPY --from=build --chown=0:0 /opt/cuac/scripts/start-retention-worker.ts ./scripts/start-retention-worker.ts
 COPY --from=build --chown=0:0 /opt/cuac/scripts/lib ./scripts/lib
 
 USER 1000:1000
