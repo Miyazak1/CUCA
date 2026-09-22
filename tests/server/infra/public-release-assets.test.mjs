@@ -17,6 +17,7 @@ test("production public allowlist is closed over local page assets and excludes 
   for (const file of manifest.files.filter(file => file.endsWith(".html"))) {
     const source = await readFile(resolve("public", file), "utf8");
     assert.doesNotMatch(source, /(?:cuac-data|cuac-actions|completion)\.(?:js|css)/, file);
+    assert.doesNotMatch(source, /<script(?![^>]*\bsrc=)[^>]*>|<style\b|\sstyle=/i, `${file} must remain compatible with the strict CSP`);
   }
 });
 

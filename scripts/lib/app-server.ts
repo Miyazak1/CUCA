@@ -2,6 +2,7 @@ import { fileURLToPath } from "node:url";
 import { isIP } from "node:net";
 import { startProdServer } from "../../node_modules/vinext/dist/server/prod-server.js";
 import { installHttpLifecycle } from "../../src/server/infra/http-lifecycle.ts";
+import { applicationSecurityHeaders } from "../../src/server/infra/security-headers.ts";
 
 export function applicationServerOptions(env: Record<string, string | undefined> = process.env) {
   const port = env.PORT ?? "3000", host = env.CUAC_HTTP_HOST ?? "127.0.0.1";
@@ -15,7 +16,10 @@ export async function startApplicationServer(options: { port: number; host: stri
   const { server, port } = await startProdServer({ port: options.port, host: options.host,
     outDir: fileURLToPath(new URL("../../dist", import.meta.url)), silent: true });
   try {
-    return { server, port, ...installHttpLifecycle(server, options) };
+    return { server, port, ...installHttpLifecycle(server, {
+      ...options,
+      responseHeaders: applicationSecurityHeaders(),
+    }) };
   } catch (error) {
     server.close(); server.closeAllConnections();
     throw error;
