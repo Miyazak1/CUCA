@@ -86,3 +86,19 @@ test("Auth email delivery config rejects non-HTTPS public URLs and invalid sende
     /valid email address/,
   );
 });
+
+test("Auth email composer localizes student messages and returns the locale through the action link", () => {
+  const verification = composeEmailVerificationMessage(config, {
+    challengeId: "email-challenge-ar", userId: "student-ar", emailNormalized: "student@example.com",
+    verificationToken: "raw-email-token", expiresAt: new Date("2026-08-28T00:15:00.000Z"), locale: "ar-SA",
+  });
+  assert.equal(verification.locale, "ar");
+  assert.equal(verification.subject, "تحقق من بريدك الإلكتروني في CUAC");
+  assert.match(verification.templateData.actionUrl, /\/auth\/verify-email\?lang=ar#challenge=/);
+  const guardian = composeGuardianConsentMessage(config, {
+    requestId: "request-vi", userId: "student-vi", emailNormalized: "guardian@example.com",
+    consentToken: "raw-guardian-token", expiresAt: new Date("2026-08-31T00:00:00.000Z"), locale: "vi",
+  });
+  assert.equal(guardian.subject, "Xem xét yêu cầu tài khoản trẻ em CUAC");
+  assert.match(guardian.templateData.actionUrl, /\?lang=vi#request=/);
+});

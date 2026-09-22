@@ -19,7 +19,7 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
       const requestId = request.headers.get("x-request-id") ?? randomUUID();
 
       try {
-        const body = await readAuthBody(request, ["email", "password", "displayName", "ageBand", "guardianEmail", "guardianRelationship", "locale"]);
+        const body = await readAuthBody(request, ["email", "password", "displayName", "ageBand", "guardianEmail", "guardianRelationship", "locale", "uiLocale"]);
         if (body.ageBand !== "14_or_older" && body.ageBand !== "under_14") {
           throw badRequest("Age eligibility must be declared before account creation.");
         }
@@ -44,6 +44,7 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
           const pending = await options.guardianConsent.request({
             email: body.email, password: body.password, displayName: body.displayName,
             guardianEmail: body.guardianEmail, guardianRelationship: body.guardianRelationship, locale: body.locale,
+            uiLocale: body.uiLocale,
             userAgent: request.headers.get("user-agent"), ip: resolveRequestIp(request),
           });
           return Response.json({ data: { guardianConsentRequired: true, requestId: pending.requestId,
@@ -54,6 +55,7 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
           password: body.password,
           displayName: body.displayName,
           ageBand: body.ageBand,
+          uiLocale: body.uiLocale,
           userAgent: request.headers.get("user-agent"),
           ip: resolveRequestIp(request),
         }, requestId);

@@ -20,12 +20,13 @@ function fixture() {
 test("under-14 registration binds a different guardian email, relationship, 72-hour expiry and hashed credentials", async () => {
   const { calls, service } = fixture();
   const result = await service.request({ email: "Child@Example.com", password: "very strong password", displayName: "Child",
-    guardianEmail: "Guardian@Example.com", guardianRelationship: "parent", locale: "zh-CN", ip: "203.0.113.1", userAgent: "browser" });
+    guardianEmail: "Guardian@Example.com", guardianRelationship: "parent", locale: "zh-CN", uiLocale: "ms-MY", ip: "203.0.113.1", userAgent: "browser" });
   assert.equal(result.expiresAt.toISOString(), "2026-09-23T08:00:00.000Z");
   assert.equal(calls[0].emailNormalized, "child@example.com");
   assert.equal(calls[0].guardianEmailNormalized, "guardian@example.com");
   assert.equal(calls[0].guardianRelationship, "parent");
   assert.equal(calls[0].locale, "zh-CN");
+  assert.equal(calls[0].uiLocale, "ms");
   assert.equal(calls[0].passwordHash, "test-hash:very strong password");
   assert.match(calls[0].consentTokenHash, /^sha256:[a-f0-9]{64}$/);
   assert.match(calls[0].guardianEmailSha256, /^[a-f0-9]{64}$/);

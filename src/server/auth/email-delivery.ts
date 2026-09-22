@@ -1,4 +1,6 @@
 import { serviceUnavailable } from "../shared/errors.ts";
+import { authEmailCopy, normalizeAuthEmailLocale } from "./email-copy.ts";
+import type { PublicUiLocale } from "../i18n/locales.ts";
 
 export type AuthEmailMessageType = "auth.email_verification" | "auth.password_reset" | "auth.school_staff_invite" | "auth.guardian_consent";
 
@@ -7,6 +9,7 @@ export type AuthEmailMessage = {
   to: string;
   from: string;
   subject: string;
+  locale: PublicUiLocale;
   templateData: {
     challengeId: string;
     userId: string;
@@ -26,36 +29,40 @@ export type AuthEmailDeliveryConfig = {
 
 export function composeEmailVerificationMessage(
   config: AuthEmailDeliveryConfig,
-  input: { challengeId: string; userId: string; emailNormalized: string; verificationToken: string; expiresAt: Date },
+  input: { challengeId: string; userId: string; emailNormalized: string; verificationToken: string; expiresAt: Date; locale?: unknown },
 ): AuthEmailMessage {
+  const locale = normalizeAuthEmailLocale(input.locale);
   return {
     messageType: "auth.email_verification",
     to: normalizeEmail(input.emailNormalized),
     from: normalizeEmail(config.from),
-    subject: "Verify your CUAC email",
+    subject: authEmailCopy("auth.email_verification", locale).subject,
+    locale,
     templateData: {
       challengeId: input.challengeId,
       userId: input.userId,
       expiresAt: input.expiresAt.toISOString(),
-      actionUrl: actionUrl(config.publicAppUrl, config.verificationPath, input.challengeId, input.verificationToken),
+      actionUrl: actionUrl(config.publicAppUrl, config.verificationPath, input.challengeId, input.verificationToken, "challenge", locale),
     },
   };
 }
 
 export function composePasswordResetMessage(
   config: AuthEmailDeliveryConfig,
-  input: { challengeId: string; userId: string; emailNormalized: string; resetToken: string; expiresAt: Date },
+  input: { challengeId: string; userId: string; emailNormalized: string; resetToken: string; expiresAt: Date; locale?: unknown },
 ): AuthEmailMessage {
+  const locale = normalizeAuthEmailLocale(input.locale);
   return {
     messageType: "auth.password_reset",
     to: normalizeEmail(input.emailNormalized),
     from: normalizeEmail(config.from),
-    subject: "Reset your CUAC password",
+    subject: authEmailCopy("auth.password_reset", locale).subject,
+    locale,
     templateData: {
       challengeId: input.challengeId,
       userId: input.userId,
       expiresAt: input.expiresAt.toISOString(),
-      actionUrl: actionUrl(config.publicAppUrl, config.passwordResetPath, input.challengeId, input.resetToken),
+      actionUrl: actionUrl(config.publicAppUrl, config.passwordResetPath, input.challengeId, input.resetToken, "challenge", locale),
     },
   };
 }
@@ -69,6 +76,7 @@ export function composeSchoolStaffInviteMessage(
     to: normalizeEmail(input.emailNormalized),
     from: normalizeEmail(config.from),
     subject: "Activate your CUAC school account",
+    locale: "en",
     templateData: {
       challengeId: input.inviteId,
       userId: input.invitedByUserId,
@@ -80,18 +88,20 @@ export function composeSchoolStaffInviteMessage(
 
 export function composeGuardianConsentMessage(
   config: AuthEmailDeliveryConfig,
-  input: { requestId: string; userId: string; emailNormalized: string; consentToken: string; expiresAt: Date },
+  input: { requestId: string; userId: string; emailNormalized: string; consentToken: string; expiresAt: Date; locale?: unknown },
 ): AuthEmailMessage {
+  const locale = normalizeAuthEmailLocale(input.locale);
   return {
     messageType: "auth.guardian_consent",
     to: normalizeEmail(input.emailNormalized),
     from: normalizeEmail(config.from),
-    subject: "Review a CUAC child account request",
+    subject: authEmailCopy("auth.guardian_consent", locale).subject,
+    locale,
     templateData: {
       challengeId: input.requestId,
       userId: input.userId,
       expiresAt: input.expiresAt.toISOString(),
-      actionUrl: actionUrl(config.publicAppUrl, config.guardianConsentPath, input.requestId, input.consentToken, "request"),
+      actionUrl: actionUrl(config.publicAppUrl, config.guardianConsentPath, input.requestId, input.consentToken, "request", locale),
     },
   };
 }
@@ -140,8 +150,9 @@ function hasControlCharacter(value: string): boolean {
   return Array.from(value).some(character => character.charCodeAt(0) < 32 || character.charCodeAt(0) === 127);
 }
 
-function actionUrl(origin: string, path: string, challengeId: string, token: string, idParameter = "challenge"): string {
+function actionUrl(origin: string, path: string, challengeId: string, token: string, idParameter = "challenge", locale?: PublicUiLocale): string {
   const url = new URL(normalizeActionPath(path), normalizePublicAppUrl(origin));
+  if (locale && locale !== "en") url.searchParams.set("lang", locale);
   url.hash = new URLSearchParams({ [idParameter]: challengeId, token }).toString();
   return url.toString();
 }

@@ -6,6 +6,7 @@ import { buildAuditEvent, type AuditSink } from "../audit/audit.ts";
 import { createRequestContext } from "../shared/request-context.ts";
 import { passwordHasher, type PasswordHasher } from "./password-hasher.ts";
 import type { StaffMfaChallengeResult, StaffMfaService } from "./staff-mfa.ts";
+import { PUBLIC_UI_LOCALES, normalizeUiLocale, type PublicUiLocale } from "../i18n/locales.ts";
 export { hashPassword, verifyPassword, verifyPasswordForLogin } from "./password-hasher.ts";
 
 export type PasswordIdentityRecord = {
@@ -22,6 +23,7 @@ export type CreateStudentAccountInput = {
   passwordHash: string;
   now: Date;
   ageBand: "14_or_older";
+  locale: PublicUiLocale;
 };
 
 export type CreateAuthSessionInput = {
@@ -137,12 +139,13 @@ export class AuthCredentialsService {
     this.staffMfa = options.staffMfa ?? null;
   }
 
-  async registerStudent(input: { email: unknown; password: unknown; displayName?: unknown; ageBand?: unknown; userAgent?: string | null; ip?: string | null }, requestId: string = randomUUID()): Promise<AuthCredentialsResult> {
-    const value = authInput(input, ["email", "password", "displayName", "ageBand", "userAgent", "ip"]);
+  async registerStudent(input: { email: unknown; password: unknown; displayName?: unknown; ageBand?: unknown; uiLocale?: unknown; userAgent?: string | null; ip?: string | null }, requestId: string = randomUUID()): Promise<AuthCredentialsResult> {
+    const value = authInput(input, ["email", "password", "displayName", "ageBand", "uiLocale", "userAgent", "ip"]);
     if (value.ageBand !== undefined && value.ageBand !== "14_or_older") throw badRequest("Age eligibility must be declared before account creation.");
     const email = authEmail(value.email);
     const password = authPassword(value.password, true);
     const displayName = authDisplayName(value.displayName);
+    const locale = publicUiLocale(value.uiLocale);
     const metadata = sessionMetadata(value);
     const existing = await this.repository.findPasswordIdentityByEmailNormalized(email.normalized);
 
@@ -159,6 +162,7 @@ export class AuthCredentialsService {
       passwordHash,
       now,
       ageBand: "14_or_older",
+      locale,
     });
 
     const result = await this.issueSession(account.userId, metadata, now, passwordHash);
@@ -326,6 +330,13 @@ export class AuthCredentialsService {
       ...metadata,
     });
   }
+}
+
+function publicUiLocale(value: unknown): PublicUiLocale {
+  if (value === undefined) return "en";
+  const locale = normalizeUiLocale(value);
+  if (!locale || !PUBLIC_UI_LOCALES.includes(locale as PublicUiLocale)) throw badRequest("UI locale is not supported.");
+  return locale as PublicUiLocale;
 }
 
 function authSignInSurface(value: unknown): AuthSignInSurface | null {

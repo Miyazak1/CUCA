@@ -3,6 +3,7 @@ import { createTransport } from "nodemailer";
 import { validateAuthEmailDeliveryConfig, type AuthEmailDeliveryConfig, type AuthEmailMessage } from "./email-delivery.ts";
 import type { AuthEmailProvider } from "./email-outbox-worker.ts";
 import { serviceUnavailable } from "../shared/errors.ts";
+import { authEmailCopy, normalizeAuthEmailLocale } from "./email-copy.ts";
 
 export const ALIYUN_DIRECT_MAIL_SMTP_ENDPOINTS = Object.freeze({
   "cn-hangzhou": "smtpdm.aliyun.com",
@@ -144,37 +145,39 @@ function buildTransportOptions(config: ValidatedConfig): AliyunDirectMailSmtpOpt
 }
 
 function buildMessage(config: ValidatedConfig, message: AuthEmailMessage, idempotencyKey: string): AliyunDirectMailMessage | undefined {
+  const locale = message.messageType === "auth.school_staff_invite" ? "en" : normalizeAuthEmailLocale(message.locale);
+  const copy = authEmailCopy(message.messageType, locale);
   const expected = message.messageType === "auth.email_verification"
-    ? { subject: "Verify your CUAC email", path: config.verificationPath, action: "Verify email", idParameter: "challenge" }
+    ? { path: config.verificationPath, idParameter: "challenge" }
     : message.messageType === "auth.password_reset"
-      ? { subject: "Reset your CUAC password", path: config.passwordResetPath, action: "Reset password", idParameter: "challenge" }
+      ? { path: config.passwordResetPath, idParameter: "challenge" }
       : message.messageType === "auth.school_staff_invite"
-        ? { subject: "Activate your CUAC school account", path: config.schoolInvitePath, action: "Activate school account", idParameter: "invite" }
+        ? { path: config.schoolInvitePath, idParameter: "invite" }
         : message.messageType === "auth.guardian_consent"
-          ? { subject: "Review a CUAC child account request", path: config.guardianConsentPath, action: "Review child account request", idParameter: "request" }
+          ? { path: config.guardianConsentPath, idParameter: "request" }
           : undefined;
-  if (!expected || message.subject !== expected.subject || normalizeAddress(message.from) !== config.from) return undefined;
+  if (!expected || message.locale !== locale || message.subject !== copy.subject || normalizeAddress(message.from) !== config.from) return undefined;
 
   const recipient = normalizeAddress(message.to);
-  const actionUrl = validateActionUrl(message, config.publicAppUrl, expected.path, expected.idParameter);
+  const actionUrl = validateActionUrl(message, config.publicAppUrl, expected.path, expected.idParameter, locale);
   const expiresAt = validateExpiry(message.templateData?.expiresAt);
   const key = normalizeIdempotencyKey(idempotencyKey);
   if (!recipient || !actionUrl || !expiresAt || !key) return undefined;
 
-  const text = `${expected.subject}\n\n${expected.action}:\n${actionUrl}\n\nThis secure link expires at ${expiresAt}. If you did not request this, you can ignore this email.`;
+  const text = `${copy.subject}\n\n${copy.action}:\n${actionUrl}\n\n${copy.expires} ${expiresAt}. ${copy.ignore}`;
   const html = [
-    "<!doctype html><html><body>",
-    `<h1>${escapeHtml(expected.subject)}</h1>`,
-    `<p><a href="${escapeHtml(actionUrl)}">${escapeHtml(expected.action)}</a></p>`,
-    `<p>This secure link expires at ${escapeHtml(expiresAt)}.</p>`,
-    "<p>If you did not request this, you can ignore this email.</p>",
+    `<!doctype html><html lang="${copy.locale}" dir="${copy.direction}"><body>`,
+    `<h1>${escapeHtml(copy.subject)}</h1>`,
+    `<p><a href="${escapeHtml(actionUrl)}">${escapeHtml(copy.action)}</a></p>`,
+    `<p>${escapeHtml(copy.expires)} ${escapeHtml(expiresAt)}.</p>`,
+    `<p>${escapeHtml(copy.ignore)}</p>`,
     "</body></html>",
   ].join("");
 
   return {
     from: config.from,
     to: recipient,
-    subject: expected.subject,
+    subject: copy.subject,
     text,
     html,
     messageId: deterministicMessageId(key, config.from),
@@ -185,12 +188,16 @@ function buildMessage(config: ValidatedConfig, message: AuthEmailMessage, idempo
   };
 }
 
-function validateActionUrl(message: AuthEmailMessage, publicAppUrl: string, expectedPath: string, idParameter: string): string | undefined {
+function validateActionUrl(message: AuthEmailMessage, publicAppUrl: string, expectedPath: string, idParameter: string, locale: string): string | undefined {
   const raw = message.templateData?.actionUrl;
   if (typeof raw !== "string" || raw.length > 2_048 || hasControlCharacter(raw)) return undefined;
   try {
     const url = new URL(raw);
-    if (url.protocol !== "https:" || url.origin !== publicAppUrl || url.pathname !== expectedPath || url.search || url.username || url.password) return undefined;
+    if (url.protocol !== "https:" || url.origin !== publicAppUrl || url.pathname !== expectedPath || url.username || url.password) return undefined;
+    const queryNames = Array.from(url.searchParams.keys());
+    const expectedQueryNames = locale === "en" ? [] : ["lang"];
+    if (queryNames.length !== expectedQueryNames.length || queryNames.some((name, index) => name !== expectedQueryNames[index])
+      || (locale !== "en" && url.searchParams.get("lang") !== locale)) return undefined;
     const parameters = new URLSearchParams(url.hash.slice(1));
     const names = Array.from(parameters.keys());
     const challenge = parameters.get(idParameter);

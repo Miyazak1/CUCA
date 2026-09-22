@@ -266,8 +266,8 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
   async createStudentAccount(input: CreateStudentAccountInput): Promise<{ userId: string }> {
     const users = await this.client.query<CreatedUserRow>(
       `with created_user as (
-         insert into users (email, email_normalized, display_name, account_status, created_at, updated_at)
-         values ($1, $2, $3, 'active', $4, $4)
+         insert into users (email, email_normalized, display_name, account_status, locale, created_at, updated_at)
+         values ($1, $2, $3, 'active', $7, $4, $4)
          returning id
        ), created_identity as (
          insert into auth_identities (user_id, provider, provider_subject, password_hash, email_normalized, metadata_json, created_at, updated_at)
@@ -283,7 +283,7 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
          returning user_id
        )
        select user_id as "userId" from created_age_assurance`,
-      [input.email, input.emailNormalized, input.displayName, input.now, input.passwordHash, input.ageBand],
+      [input.email, input.emailNormalized, input.displayName, input.now, input.passwordHash, input.ageBand, input.locale],
     );
     const userId = users[0]?.userId;
 

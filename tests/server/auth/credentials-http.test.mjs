@@ -44,8 +44,8 @@ function createHandlers(overrides = {}, options = {}) {
       calls.push({ method: "listAvailableSessionAuthorities" });
       return [{ selectedSurface: "student", activeRole: "student", tenantSchoolId: null, label: "Student workspace" }];
     },
-    async createStudentAccount() {
-      calls.push({ method: "createStudentAccount" });
+    async createStudentAccount(input) {
+      calls.push({ method: "createStudentAccount", input });
       return { userId: "student-1" };
     },
     async createSession(input) {
@@ -78,12 +78,12 @@ function createHandlers(overrides = {}, options = {}) {
 }
 
 test("auth credentials HTTP registration sets session cookie without returning secrets", async () => {
-  const { handlers } = createHandlers();
+  const { calls, handlers } = createHandlers();
   const response = await handlers.registerStudent(
     new Request("https://cuac.test/api/v1/auth/register", {
       method: "POST",
       headers: { "user-agent": "browser", "x-forwarded-for": "203.0.113.10" },
-      body: JSON.stringify({ email: "student@example.com", password: "strong-password", displayName: "Student", ageBand: "14_or_older" }),
+      body: JSON.stringify({ email: "student@example.com", password: "strong-password", displayName: "Student", ageBand: "14_or_older", uiLocale: "th-TH" }),
     }),
   );
   const body = await response.json();
@@ -97,6 +97,7 @@ test("auth credentials HTTP registration sets session cookie without returning s
   assert.match(cookie, /SameSite=Lax/);
   assert.match(cookie, /Secure/);
   assert.doesNotMatch(JSON.stringify(body), /strong-password|sha256:|scrypt|cuac_session/);
+  assert.equal(calls.find(call => call.method === "createStudentAccount")?.input.locale, "th");
 });
 
 test("auth credentials HTTP registration requires an explicit supported age declaration", async () => {
@@ -122,7 +123,7 @@ test("under-14 HTTP registration creates only a pending guardian request and no 
   const response = await handlers.registerStudent(new Request("https://cuac.test/api/v1/auth/register", {
     method: "POST", headers: { "user-agent": "child-browser", "x-forwarded-for": "203.0.113.12" },
     body: JSON.stringify({ email: "child@example.com", password: "strong-password", displayName: "Child",
-      ageBand: "under_14", guardianEmail: "guardian@example.com", guardianRelationship: "parent", locale: "zh-CN" }),
+      ageBand: "under_14", guardianEmail: "guardian@example.com", guardianRelationship: "parent", locale: "zh-CN", uiLocale: "ar" }),
   }));
   assert.equal(response.status, 202);
   assert.equal(response.headers.get("set-cookie"), null);
@@ -135,6 +136,7 @@ test("under-14 HTTP registration creates only a pending guardian request and no 
   assert.equal(calls[0].guardianEmail, "guardian@example.com");
   assert.equal(calls[0].guardianRelationship, "parent");
   assert.equal(calls[0].locale, "zh-CN");
+  assert.equal(calls[0].uiLocale, "ar");
 });
 
 test("under-14 HTTP registration rate limits both the child registration and guardian recipient", async () => {

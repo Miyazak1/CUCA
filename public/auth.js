@@ -428,6 +428,7 @@ async function handleRegister(form) {
     const registration = await requestJson("/api/v1/auth/register", {
       method: "POST",
       body: { email, password, displayName: `${firstName} ${lastName}`.trim(), ageBand,
+        uiLocale: document.documentElement.lang || "en",
         ...(ageBand === "under_14" ? { guardianEmail, guardianRelationship, locale: document.documentElement.lang === "zh-CN" ? "zh-CN" : "en" } : {}) },
     });
 

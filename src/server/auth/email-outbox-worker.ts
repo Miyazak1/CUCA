@@ -33,6 +33,7 @@ export async function processOneAuthEmail(outbox: PostgresAuthEmailOutbox, provi
           emailNormalized: job.emailNormalized,
           consentToken: job.token,
           expiresAt: job.expiresAt,
+          locale: job.locale,
         });
     const unknown = new Promise<{ status: "unknown" }>(resolve => {
       timeout = setTimeout(() => { controller.abort(); resolve({ status: "unknown" }); }, 10_000);

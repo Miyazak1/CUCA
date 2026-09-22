@@ -115,6 +115,7 @@ test("registration requires age eligibility and provides a one-time guardian app
   assert.match(html, /data-register-age-band required/);
   assert.match(html, /data-guardian-fields hidden/);
   assert.match(script, /ageBand === "under_14"/);
+  assert.match(script, /uiLocale:\s*document\.documentElement\.lang/);
   assert.match(script, /guardianConsentRequired/);
   assert.match(guardianHtml, /children's privacy notice/i);
   assert.match(guardianHtml, /data-i18n-locales="en,vi,th,id,ms,ar"/);

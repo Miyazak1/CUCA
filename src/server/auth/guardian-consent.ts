@@ -3,6 +3,7 @@ import { badRequest, conflict, forbidden, serviceUnavailable } from "../shared/e
 import { inputEnum, inputUuid } from "../shared/input.ts";
 import { authDisplayName, authEmail, authInput, authPassword, authToken } from "./input.ts";
 import { passwordHasher, type PasswordHasher } from "./password-hasher.ts";
+import { PUBLIC_UI_LOCALES, normalizeUiLocale, type PublicUiLocale } from "../i18n/locales.ts";
 
 export type GuardianRelationship = "parent" | "other_legal_guardian";
 export type GuardianConsentLocale = "en" | "zh-CN";
@@ -18,6 +19,7 @@ export type PendingGuardianRegistrationInput = {
   guardianEmailSha256: string;
   guardianRelationship: GuardianRelationship;
   locale: GuardianConsentLocale;
+  uiLocale: PublicUiLocale;
   consentTokenHash: string;
   consentToken: string;
   requestedAt: Date;
@@ -43,9 +45,9 @@ export class GuardianConsentService {
 
   async request(input: {
     email: unknown; password: unknown; displayName?: unknown; guardianEmail: unknown;
-    guardianRelationship: unknown; locale?: unknown; userAgent?: string | null; ip?: string | null;
+    guardianRelationship: unknown; locale?: unknown; uiLocale?: unknown; userAgent?: string | null; ip?: string | null;
   }) {
-    const value = authInput(input, ["email", "password", "displayName", "guardianEmail", "guardianRelationship", "locale", "userAgent", "ip"]);
+    const value = authInput(input, ["email", "password", "displayName", "guardianEmail", "guardianRelationship", "locale", "uiLocale", "userAgent", "ip"]);
     const child = authEmail(value.email);
     const guardian = authEmail(value.guardianEmail);
     if (child.normalized === guardian.normalized) throw badRequest("Guardian email must be different from the child's email.");
@@ -54,6 +56,8 @@ export class GuardianConsentService {
     const displayName = authDisplayName(value.displayName);
     const relationship = inputEnum(value.guardianRelationship, "Guardian relationship", ["parent", "other_legal_guardian"] as const);
     const locale = value.locale === undefined ? "en" : inputEnum(value.locale, "Notice locale", ["en", "zh-CN"] as const);
+    const normalizedUiLocale = normalizeUiLocale(value.uiLocale ?? "en");
+    if (!normalizedUiLocale || !PUBLIC_UI_LOCALES.includes(normalizedUiLocale as PublicUiLocale)) throw badRequest("UI locale is not supported.");
     const consentToken = randomBytes(32).toString("base64url");
     const now = this.options.now ?? new Date();
     const ttlMs = this.options.ttlMs ?? 72 * 60 * 60 * 1000;
@@ -64,6 +68,7 @@ export class GuardianConsentService {
         passwordHash: await (this.options.passwordHasher ?? passwordHasher).hash(password),
         guardianEmail: guardian.original, guardianEmailNormalized: guardian.normalized,
         guardianEmailSha256: sha256(guardian.normalized), guardianRelationship: relationship, locale,
+        uiLocale: normalizedUiLocale as PublicUiLocale,
         consentToken, consentTokenHash: tokenHash(consentToken), requestedAt: now,
         expiresAt: new Date(now.getTime() + ttlMs), ipHash: optionalMetadataHash(value.ip),
         userAgentHash: optionalMetadataHash(value.userAgent),

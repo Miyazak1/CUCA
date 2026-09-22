@@ -6,6 +6,8 @@ import { EmailTokenCipher, EmailTokenEnvelopeError, type EmailTokenBinding } fro
 import type { EmailVerificationDeliverySink } from "./email-verification.ts";
 import type { PasswordResetDeliverySink } from "./password-reset.ts";
 import type { SchoolStaffInviteDeliverySink } from "./school-invites.ts";
+import { normalizeAuthEmailLocale } from "./email-copy.ts";
+import type { PublicUiLocale } from "../i18n/locales.ts";
 
 export type EmailOutboxLease = { id: string; userId: string; leaseId: string };
 export type EmailDeliveryResult = "accepted" | "not_accepted" | "unknown";
@@ -13,7 +15,7 @@ type Outcome = EmailDeliveryResult | "expired" | "ineligible" | "invalid_envelop
 type Job = EmailTokenBinding & {
   status: string; attemptCount: number; envelope: unknown; leaseId: string | null; leaseValid: boolean; unexpired: boolean;
 };
-export type PreparedAuthEmail = EmailTokenBinding & { emailNormalized: string; token: string };
+export type PreparedAuthEmail = EmailTokenBinding & { emailNormalized: string; token: string; locale: PublicUiLocale };
 
 const projection = `id, user_id as "userId", message_type as "messageType",
   coalesce(verification_challenge_id, reset_challenge_id, school_staff_invite_id, guardian_consent_request_id) as "challengeId", expires_at as "expiresAt",
@@ -125,7 +127,8 @@ export class PostgresAuthEmailOutbox {
       if (!rows[0]) return null;
       await audit(tx, job.id, "sending", job.messageType, job.attemptCount + 1, null);
       return { id: job.id, userId: job.userId, challengeId: job.challengeId, messageType: job.messageType,
-        expiresAt: job.expiresAt, emailNormalized: challenge.emailNormalized, token };
+        expiresAt: job.expiresAt, emailNormalized: challenge.emailNormalized, token,
+        locale: job.messageType === "auth.school_staff_invite" ? "en" : normalizeAuthEmailLocale(challenge.locale) };
     });
   }
 
@@ -184,8 +187,8 @@ async function lockedJob(tx: TransactionalSqlClient, lease: EmailOutboxLease, st
 
 async function eligibleChallenge(tx: TransactionalSqlClient, binding: EmailTokenBinding) {
   if (binding.messageType === "auth.guardian_consent") {
-    const rows = await tx.query<{ emailNormalized: string; tokenHash: string; expiresAt: Date }>(`select
-      c.guardian_email as "emailNormalized", c.consent_token_hash as "tokenHash", c.expires_at as "expiresAt"
+    const rows = await tx.query<{ emailNormalized: string; tokenHash: string; expiresAt: Date; locale: string }>(`select
+      c.guardian_email as "emailNormalized", c.consent_token_hash as "tokenHash", c.expires_at as "expiresAt", u.locale
       from guardian_consent_requests c join users u on u.id = c.user_id
       where c.id = $1 and c.user_id = $2 and c.status = 'pending' and c.responded_at is null
         and c.expires_at > clock_timestamp() and u.account_status = 'pending_guardian_consent'
@@ -194,8 +197,8 @@ async function eligibleChallenge(tx: TransactionalSqlClient, binding: EmailToken
     return rows[0] ?? null;
   }
   if (binding.messageType === "auth.school_staff_invite") {
-    const rows = await tx.query<{ emailNormalized: string; tokenHash: string; expiresAt: Date }>(`select c.email_normalized as "emailNormalized",
-      c.token_hash as "tokenHash", c.expires_at as "expiresAt" from school_staff_invites c
+    const rows = await tx.query<{ emailNormalized: string; tokenHash: string; expiresAt: Date; locale: string }>(`select c.email_normalized as "emailNormalized",
+      c.token_hash as "tokenHash", c.expires_at as "expiresAt", 'en'::text as locale from school_staff_invites c
       join users u on u.id = c.invited_by_user_id join schools s on s.id = c.school_id
       where c.id = $1 and c.invited_by_user_id = $2 and c.status = 'pending' and c.revoked_at is null
         and c.accepted_at is null and c.expires_at > clock_timestamp() and u.account_status = 'active' and s.status = 'active'
@@ -212,8 +215,8 @@ async function eligibleChallenge(tx: TransactionalSqlClient, binding: EmailToken
   const hashColumn = verification ? "verification_token_hash" : "reset_token_hash";
   const available = verification ? "c.verified_at is null and u.email_verified_at is null"
     : "c.consumed_at is null and exists (select 1 from auth_identities i where i.user_id = u.id and i.provider = 'password' and i.email_normalized = u.email_normalized and i.password_hash is not null)";
-  const rows = await tx.query<{ emailNormalized: string; tokenHash: string; expiresAt: Date }>(`select c.email_normalized as "emailNormalized",
-    c.${hashColumn} as "tokenHash", c.expires_at as "expiresAt" from ${table} c join users u on u.id = c.user_id
+  const rows = await tx.query<{ emailNormalized: string; tokenHash: string; expiresAt: Date; locale: string }>(`select c.email_normalized as "emailNormalized",
+    c.${hashColumn} as "tokenHash", c.expires_at as "expiresAt", u.locale from ${table} c join users u on u.id = c.user_id
     where c.id = $1 and c.user_id = $2 and c.status = 'pending' and c.expires_at > clock_timestamp()
       and u.account_status = 'active' and u.email_normalized = c.email_normalized and ${available} for share of c`, [binding.challengeId, binding.userId]);
   return rows[0] ?? null;

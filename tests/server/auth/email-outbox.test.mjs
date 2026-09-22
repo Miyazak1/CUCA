@@ -78,6 +78,19 @@ test("email worker composes a school invite from the prepared outbox record", as
   assert.match(delivered.templateData.actionUrl, new RegExp(`/auth/school-invite#invite=${job.challengeId}&token=`));
 });
 
+test("email worker carries the prepared student locale into subject and action URL", async () => {
+  const job = { ...binding(), locale: "id", emailNormalized: "student@example.invalid", token: randomBytes(32).toString("base64url") };
+  const lease = { id: job.id, userId: job.userId, leaseId: randomUUID() };
+  let delivered;
+  const result = await processOneAuthEmail({
+    async claim() { return lease; }, async prepare() { return job; }, async finish() { return true; },
+  }, { async deliver(message) { delivered = message; return { status: "accepted" }; } }, config);
+  assert.deepEqual(result, { status: "accepted" });
+  assert.equal(delivered.locale, "id");
+  assert.equal(delivered.subject, "Verifikasi email CUAC Anda");
+  assert.equal(new URL(delivered.templateData.actionUrl).searchParams.get("lang"), "id");
+});
+
 test("email worker stops on ambiguous prepare and treats raw provider failures or malformed results as unknown", async () => {
   let sent = 0, completed;
   const outbox = { async claim() { return {}; }, async prepare() { throw new Error("uncertain commit"); }, async finish(_lease, status) { completed = status; return true; } };

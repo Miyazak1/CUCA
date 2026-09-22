@@ -22,6 +22,7 @@ function message(overrides = {}) {
     to: "student@example.invalid",
     from: config.from,
     subject: "Verify your CUAC email",
+    locale: "en",
     templateData: {
       challengeId: "challenge-1",
       userId: "user-1",
@@ -108,6 +109,7 @@ test("Aliyun SMTP provider accepts only the fixed school invitation template", a
   const invite = message({
     messageType: "auth.school_staff_invite",
     subject: "Activate your CUAC school account",
+    locale: "en",
     to: "teacher@example.edu",
     templateData: {
       challengeId: "invite-1",
@@ -126,6 +128,7 @@ test("Aliyun SMTP provider accepts only the fixed guardian consent template", as
   const guardian = message({
     messageType: "auth.guardian_consent",
     subject: "Review a CUAC child account request",
+    locale: "en",
     to: "guardian@example.invalid",
     templateData: {
       challengeId: "request-1", userId: "pending-user-1", expiresAt: "2030-01-01T00:00:00.000Z",
@@ -188,4 +191,24 @@ test("Aliyun SMTP HTML escapes action URL attributes and expiry text", async () 
   assert.equal(f.calls.length, 1);
   assert.match(f.calls[0].html, /challenge=challenge-1&amp;token=%22PRIVATE_TOKEN%22/);
   assert.equal(f.calls[0].html.includes('href="https://cuac.example.invalid/auth/verify-email#challenge=challenge-1&token='), false);
+});
+
+test("Aliyun SMTP provider renders Arabic student mail as RTL and accepts only its bounded locale link", async () => {
+  const f = fixture();
+  const arabic = message({
+    locale: "ar",
+    subject: "تحقق من بريدك الإلكتروني في CUAC",
+    templateData: {
+      ...message().templateData,
+      actionUrl: "https://cuac.example.invalid/auth/verify-email?lang=ar#challenge=challenge-1&token=PRIVATE_TOKEN",
+    },
+  });
+  assert.deepEqual(await f.provider.deliver(arabic, { idempotencyKey: "auth-email:arabic", signal: new AbortController().signal }), { status: "accepted" });
+  assert.equal(f.calls[0].subject, "تحقق من بريدك الإلكتروني في CUAC");
+  assert.match(f.calls[0].html, /<html lang="ar" dir="rtl">/);
+  assert.match(f.calls[0].text, /تنتهي صلاحية/);
+  const injected = { ...arabic, templateData: { ...arabic.templateData,
+    actionUrl: "https://cuac.example.invalid/auth/verify-email?lang=ar&next=evil#challenge=challenge-1&token=PRIVATE_TOKEN" } };
+  assert.deepEqual(await f.provider.deliver(injected, { idempotencyKey: "auth-email:arabic-injected", signal: new AbortController().signal }), { status: "unknown" });
+  assert.equal(f.calls.length, 1);
 });

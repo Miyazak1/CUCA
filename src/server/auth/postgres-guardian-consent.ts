@@ -37,7 +37,7 @@ export class PostgresGuardianConsentRepository implements GuardianConsentReposit
         insert into auth_identities (user_id,provider,provider_subject,password_hash,email_normalized,metadata_json,created_at,updated_at)
         select id,'password',$2,$6,$2,'{}'::jsonb,$5,$5 from created_user returning user_id
       ) select user_id as "userId" from created_identity`,
-      [input.email, input.emailNormalized, input.displayName, input.locale, input.requestedAt, input.passwordHash]);
+      [input.email, input.emailNormalized, input.displayName, input.uiLocale, input.requestedAt, input.passwordHash]);
       const userId = users[0]?.userId;
       if (!userId) throw serviceUnavailable("The pending child account could not be created.");
       await tx.query(`insert into guardian_consent_requests (
@@ -50,7 +50,9 @@ export class PostgresGuardianConsentRepository implements GuardianConsentReposit
         input.requestedAt, input.expiresAt, input.ipHash, input.userAgentHash]);
       await new PostgresAuthEmailOutbox(tx, this.cipher).guardianConsentSink().enqueue({ requestId: input.id, userId,
         guardianEmailNormalized: input.guardianEmailNormalized, consentToken: input.consentToken, expiresAt: input.expiresAt });
-      await audit(tx, "auth.guardian_consent.requested", input.id, { locale: input.locale, relationship: input.guardianRelationship });
+      await audit(tx, "auth.guardian_consent.requested", input.id, {
+        noticeLocale: input.locale, uiLocale: input.uiLocale, relationship: input.guardianRelationship,
+      });
       return { requestId: input.id, expiresAt: input.expiresAt };
     });
   }

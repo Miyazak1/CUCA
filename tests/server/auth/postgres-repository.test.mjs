@@ -190,6 +190,7 @@ test("Postgres auth repository creates student account identity and role without
     displayName: "Student",
     passwordHash: "scrypt$salt$hash",
     ageBand: "14_or_older",
+    locale: "vi",
     now,
   });
 
@@ -202,7 +203,8 @@ test("Postgres auth repository creates student account identity and role without
   assert.match(calls[0].statement, /'student'/);
   assert.match(calls[0].statement, /'self_registration'/);
   assert.match(calls[0].statement, /insert into student_age_assurances/);
-  assert.deepEqual(calls[0].params, ["student@example.com", "student@example.com", "Student", now, "scrypt$salt$hash", "14_or_older"]);
+  assert.deepEqual(calls[0].params, ["student@example.com", "student@example.com", "Student", now, "scrypt$salt$hash", "14_or_older", "vi"]);
+  assert.match(calls[0].statement, /account_status, locale, created_at/);
   assert.doesNotMatch(calls.map((call) => call.statement).join("\n"), /school_staff_memberships|cuac_staff_access_grants/i);
 });
 
