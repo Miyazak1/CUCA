@@ -48,6 +48,7 @@
   }
 
   const icons = {
+    globe: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.8 12h16.4M12 3.5c2.2 2.3 3.3 5.1 3.3 8.5S14.2 18.2 12 20.5C9.8 18.2 8.7 15.4 8.7 12S9.8 5.8 12 3.5Z"/></svg>',
     search: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>',
     saved: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 8.6c0 5.7-8.5 10.4-8.5 10.4S3.5 14.3 3.5 8.6A4.6 4.6 0 0 1 12 6a4.6 4.6 0 0 1 8.5 2.6Z"/></svg>',
     account: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>',
@@ -679,7 +680,9 @@
   function renderLanguageSelector() {
     const i18n = window.CUACI18n;
     if (!i18n || i18n.readyLocales.length < 2) return "";
-    return `<label class="language-selector"><span class="sr-only">${escapeHTML(shellText("language", "Language"))}</span>
+    const label = escapeHTML(shellText("language", "Language"));
+    return `<label class="language-selector" title="${label}"><span class="language-selector-label">${label}</span>
+      <span class="language-selector-icon">${icons.globe}</span>
       <select data-cuac-language aria-label="${escapeHTML(shellText("language", "Language"))}">
         ${i18n.readyLocales.map(locale => `<option value="${escapeHTML(locale)}" ${locale === i18n.locale ? "selected" : ""}>${escapeHTML(i18n.metadata[locale].name)}</option>`).join("")}
       </select></label>`;

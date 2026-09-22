@@ -26,9 +26,10 @@ test("browser locale runtime uses bounded URL state, native labels and Arabic RT
 });
 
 test("shared student account navigation localizes labels and preserves the selected locale", async () => {
-  const [runtime, shell] = await Promise.all([
+  const [runtime, shell, shellCss] = await Promise.all([
     source("public/i18n-runtime.js"),
     source("public/shared-shell.js"),
+    source("public/shared-shell.css"),
   ]);
   for (const key of ["accountChecking", "openAccountMenu", "savedList", "signOut", "studentWorkspaceTagline", "privacyData", "getSupport", "workspace.studentInfo", "workspace.notifications", "workspace.preferences"]) {
     assert.match(shell, new RegExp(`shellText\\("${key.replaceAll(".", "\\.")}"`));
@@ -47,6 +48,10 @@ test("shared student account navigation localizes labels and preserves the selec
   assert.match(shell, /runtimeAuthState\.accountLocale/);
   assert.match(shell, /localizedUrl\.searchParams\.set\("lang", runtimeAuthState\.accountLocale\)/);
   assert.match(shell, /accountLinks\.map\(\(\[href, icon, label\]\) => `<a href="\$\{localizedPageHref\(href\)\}"/);
+  assert.match(shell, /class="language-selector-icon">\$\{icons\.globe\}/);
+  assert.match(shell, /data-cuac-language aria-label=/);
+  assert.match(shellCss, /\.language-selector:focus-within/);
+  assert.match(shellCss, /\.language-selector-label[\s\S]*clip: rect\(0, 0, 0, 0\)/);
 });
 
 test("non-English home is a complete bounded landing experience and labels English destinations", async () => {
