@@ -49,9 +49,12 @@ test("shared student account navigation localizes labels and preserves the selec
   assert.match(shell, /localizedUrl\.searchParams\.set\("lang", runtimeAuthState\.accountLocale\)/);
   assert.match(shell, /accountLinks\.map\(\(\[href, icon, label\]\) => `<a href="\$\{localizedPageHref\(href\)\}"/);
   assert.match(shell, /class="language-selector-icon">\$\{icons\.globe\}/);
-  assert.match(shell, /data-cuac-language aria-label=/);
-  assert.match(shellCss, /\.language-selector:focus-within/);
-  assert.match(shellCss, /\.language-selector-label[\s\S]*clip: rect\(0, 0, 0, 0\)/);
+  assert.match(shell, /data-cuac-language/);
+  assert.match(shell, /role="listbox"/);
+  assert.match(shell, /role="option"[\s\S]*aria-selected=/);
+  assert.match(shell, /\["ArrowDown", "ArrowUp", "Home", "End"\]/);
+  assert.match(shellCss, /\.language-selector-trigger:focus-visible/);
+  assert.match(shellCss, /\.language-selector-menu\[hidden\]/);
 });
 
 test("non-English home is a complete bounded landing experience and labels English destinations", async () => {

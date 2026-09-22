@@ -49,6 +49,8 @@
 
   const icons = {
     globe: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.8 12h16.4M12 3.5c2.2 2.3 3.3 5.1 3.3 8.5S14.2 18.2 12 20.5C9.8 18.2 8.7 15.4 8.7 12S9.8 5.8 12 3.5Z"/></svg>',
+    chevron: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg>',
+    check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>',
     search: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>',
     saved: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 8.6c0 5.7-8.5 10.4-8.5 10.4S3.5 14.3 3.5 8.6A4.6 4.6 0 0 1 12 6a4.6 4.6 0 0 1 8.5 2.6Z"/></svg>',
     account: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>',
@@ -681,11 +683,24 @@
     const i18n = window.CUACI18n;
     if (!i18n || i18n.readyLocales.length < 2) return "";
     const label = escapeHTML(shellText("language", "Language"));
-    return `<label class="language-selector" title="${label}"><span class="language-selector-label">${label}</span>
-      <span class="language-selector-icon">${icons.globe}</span>
-      <select data-cuac-language aria-label="${escapeHTML(shellText("language", "Language"))}">
-        ${i18n.readyLocales.map(locale => `<option value="${escapeHTML(locale)}" ${locale === i18n.locale ? "selected" : ""}>${escapeHTML(i18n.metadata[locale].name)}</option>`).join("")}
-      </select></label>`;
+    const currentName = escapeHTML(i18n.metadata[i18n.locale].name);
+    return `<div class="language-selector" data-cuac-language>
+      <button class="language-selector-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="${label}: ${currentName}">
+        <span class="language-selector-icon">${icons.globe}</span>
+        <span class="language-selector-current" lang="${escapeHTML(i18n.locale)}">${currentName}</span>
+        <span class="language-selector-chevron">${icons.chevron}</span>
+      </button>
+      <div class="language-selector-menu" role="listbox" aria-label="${label}" hidden>
+        ${i18n.readyLocales.map(locale => {
+          const selected = locale === i18n.locale;
+          return `<button class="language-selector-option${selected ? " selected" : ""}" type="button" role="option" data-locale="${escapeHTML(locale)}" aria-selected="${selected}" lang="${escapeHTML(locale)}" dir="${escapeHTML(i18n.metadata[locale].dir)}">
+            <span class="language-option-code">${escapeHTML(locale.toUpperCase())}</span>
+            <span class="language-option-name">${escapeHTML(i18n.metadata[locale].name)}</span>
+            <span class="language-option-check">${icons.check}</span>
+          </button>`;
+        }).join("")}
+      </div>
+    </div>`;
   }
 
   function localizedSearchHref() {
@@ -2013,30 +2028,105 @@
     });
   }
 
-  function initLanguageSelectors() {
-    document.querySelectorAll("[data-cuac-language]").forEach(select => select.addEventListener("change", async () => {
-      const nextLocale = select.value;
+  let languageDismissBound = false;
+
+  function setLanguageMenu(root, open, focusOption = false) {
+    const trigger = root.querySelector(".language-selector-trigger");
+    const menu = root.querySelector(".language-selector-menu");
+    if (!trigger || !menu) return;
+    root.dataset.open = open ? "true" : "false";
+    trigger.setAttribute("aria-expanded", String(open));
+    menu.hidden = !open;
+    if (open && focusOption) {
+      (menu.querySelector('[aria-selected="true"]') || menu.querySelector(".language-selector-option"))?.focus();
+    }
+  }
+
+  async function applyLanguageSelection(root, nextLocale) {
+    const trigger = root.querySelector(".language-selector-trigger");
+    if (!trigger || nextLocale === window.CUACI18n?.locale) {
+      setLanguageMenu(root, false);
+      trigger?.focus();
+      return;
+    }
+    setLanguageMenu(root, false);
+    root.dataset.pending = "true";
+    trigger.disabled = true;
+    trigger.setAttribute("aria-busy", "true");
+    trigger.removeAttribute("aria-invalid");
+    try {
       if (runtimeAuthState.authState === "signed-in" && runtimeAuthState.role === "student") {
-        select.disabled = true;
-        try {
-          const response = await fetch("/api/v1/me", {
-            method: "PATCH",
-            credentials: "same-origin",
-            headers: { Accept: "application/json", "Content-Type": "application/json" },
-            body: JSON.stringify({ locale: nextLocale }),
-          });
-          const payload = await response.json().catch(() => null);
-          if (!response.ok || payload?.data?.accountLocale !== nextLocale) throw new Error("Language preference was not saved.");
-          runtimeAuthState.accountLocale = nextLocale;
-        } catch {
-          select.disabled = false;
-          select.value = window.CUACI18n?.locale || "en";
-          select.setAttribute("aria-invalid", "true");
-          return;
-        }
+        const response = await fetch("/api/v1/me", {
+          method: "PATCH",
+          credentials: "same-origin",
+          headers: { Accept: "application/json", "Content-Type": "application/json" },
+          body: JSON.stringify({ locale: nextLocale }),
+        });
+        const payload = await response.json().catch(() => null);
+        if (!response.ok || payload?.data?.accountLocale !== nextLocale) throw new Error("Language preference was not saved.");
+        runtimeAuthState.accountLocale = nextLocale;
       }
       window.CUACI18n?.changeLocale(nextLocale);
-    }));
+    } catch {
+      delete root.dataset.pending;
+      trigger.disabled = false;
+      trigger.removeAttribute("aria-busy");
+      trigger.setAttribute("aria-invalid", "true");
+      trigger.focus();
+    }
+  }
+
+  function initLanguageSelectors() {
+    document.querySelectorAll("[data-cuac-language]").forEach(root => {
+      if (root.dataset.initialized === "true") return;
+      root.dataset.initialized = "true";
+      const trigger = root.querySelector(".language-selector-trigger");
+      const menu = root.querySelector(".language-selector-menu");
+      const options = [...root.querySelectorAll(".language-selector-option")];
+      if (!trigger || !menu || options.length === 0) return;
+
+      trigger.addEventListener("click", event => {
+        event.stopPropagation();
+        setLanguageMenu(root, trigger.getAttribute("aria-expanded") !== "true");
+      });
+      trigger.addEventListener("keydown", event => {
+        if (!["ArrowDown", "ArrowUp"].includes(event.key)) return;
+        event.preventDefault();
+        setLanguageMenu(root, true, true);
+        if (event.key === "ArrowUp") options.at(-1)?.focus();
+      });
+      options.forEach(option => option.addEventListener("click", () => {
+        void applyLanguageSelection(root, option.dataset.locale);
+      }));
+      menu.addEventListener("keydown", event => {
+        const index = options.indexOf(document.activeElement);
+        if (event.key === "Escape") {
+          event.preventDefault();
+          setLanguageMenu(root, false);
+          trigger.focus();
+          return;
+        }
+        if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        const nextIndex = event.key === "Home" ? 0
+          : event.key === "End" ? options.length - 1
+            : event.key === "ArrowDown" ? (index + 1 + options.length) % options.length
+              : (index - 1 + options.length) % options.length;
+        options[nextIndex]?.focus();
+      });
+    });
+
+    if (languageDismissBound) return;
+    languageDismissBound = true;
+    document.addEventListener("click", event => {
+      document.querySelectorAll('[data-cuac-language][data-open="true"]').forEach(root => {
+        if (!root.contains(event.target)) setLanguageMenu(root, false);
+      });
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key !== "Escape") return;
+      document.querySelectorAll('[data-cuac-language][data-open="true"]').forEach(root => setLanguageMenu(root, false));
+    });
   }
 
   document.querySelectorAll("[data-cuac-header]").forEach(renderHeader);
