@@ -48,6 +48,12 @@ test("shared student account navigation localizes labels and preserves the selec
   assert.match(shell, /runtimeAuthState\.accountLocale/);
   assert.match(shell, /localizedUrl\.searchParams\.set\("lang", runtimeAuthState\.accountLocale\)/);
   assert.match(shell, /accountLinks\.map\(\(\[href, icon, label\]\) => `<a href="\$\{localizedPageHref\(href\)\}"/);
+  assert.match(shell, /const headerNavItems = \(localizedNav \? roleNavItems : navItems\)/);
+  assert.match(shell, /renderWorkspaceNavigation\(workspace\)/);
+  assert.match(shell, /class="workspace-nav-links"/);
+  assert.doesNotMatch(shell, /workspace\?\.items \|\|/);
+  assert.match(shellCss, /\.workspace-nav-shell/);
+  assert.match(shellCss, /\.nav \.nav-links[\s\S]*overflow-x: auto/);
   assert.match(shell, /class="language-selector-icon">\$\{icons\.globe\}/);
   assert.match(shell, /data-cuac-language/);
   assert.match(shell, /role="listbox"/);

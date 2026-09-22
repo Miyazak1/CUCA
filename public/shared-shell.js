@@ -862,9 +862,28 @@
     return `<a class="nav-icon" data-nav-saved-shortcut href="${localizedPageHref("favourites-api.html")}" aria-label="${escapeHTML(shellText("savedList", "Saved list"))}">${icons.saved}</a>`;
   }
 
+  function renderWorkspaceNavigation(workspace) {
+    if (!workspace) return "";
+    const localized = workspace.kind !== "student";
+    const label = localized ? workspace.label : shellText("studentWorkspace", "Student workspace");
+    const items = workspace.items.map(item => ({
+      ...item,
+      label: workspace.kind === "student" ? shellText(`workspace.${item.id}`, item.label) : item.label,
+      href: localizedPageHref(item.href),
+    }));
+    return `<div class="workspace-nav-shell workspace-nav-${workspace.kind}">
+      <nav class="workspace-nav" aria-label="${escapeHTML(label)}">
+        <span class="workspace-nav-label">${escapeHTML(label)}</span>
+        <div class="workspace-nav-links">
+          ${items.map(item => `<a class="${item.id === workspace.active ? "active" : ""}" href="${item.href}"${item.id === workspace.active ? ' aria-current="page"' : ""}>${escapeHTML(item.label)}</a>`).join("")}
+        </div>
+      </nav>
+    </div>`;
+  }
+
   function renderHeader(target) {
     const workspace = workspaceNavigation();
-    const active = workspace?.active || normalizeActiveNav(target.dataset.active || "home");
+    const active = normalizeActiveNav(target.dataset.active || "home");
     const note = window.CUACI18n ? shellText("note", target.dataset.note || "China admissions 2026:") : target.dataset.note || "China admissions 2026:";
     const noteDetail = window.CUACI18n ? shellText("noteDetail", target.dataset.noteDetail || "") : target.dataset.noteDetail || "";
     const shellContext = getShellContext(target);
@@ -875,19 +894,17 @@
       : ["cuac_ops", "cuac_admin"].includes(shellContext.role)
         ? "ops-admin-api.html"
         : "hub-api.html";
-    const headerNavItems = (workspace?.items || (localizedNav ? roleNavItems : navItems)).map((item) => {
+    const headerNavItems = (localizedNav ? roleNavItems : navItems).map((item) => {
       if (localizedNav) return item.id === "hub" ? { ...item, href: workspaceHref } : item;
-      const label = workspace?.kind === "student"
-        ? shellText(`workspace.${item.id}`, item.label)
-        : shellText(`nav.${item.id}`, item.label);
+      const label = shellText(`nav.${item.id}`, item.label);
       return { ...item, label, href: localizedPageHref(item.id === "hub" ? workspaceHref : item.href) };
     });
     target.outerHTML = `
       <div class="top-note">${note}${noteDetail ? `<span>&nbsp;${noteDetail}</span>` : ""}</div>
-      <header class="nav ${workspace ? `nav-workspace nav-workspace-${workspace.kind}` : ""}">
+      <header class="nav">
         ${brand()}
-        <nav class="nav-links" aria-label="${workspace?.kind === "student" ? escapeHTML(shellText("studentWorkspace", "Student workspace")) : workspace?.label || (localizedNav ? "主导航" : escapeHTML(shellText("primaryNav", "Primary navigation")))}">
-          ${headerNavItems.map((item) => `<a class="${item.id === active ? "active" : ""}" href="${item.href}">${item.label}</a>`).join("")}
+        <nav class="nav-links" aria-label="${localizedNav ? "主导航" : escapeHTML(shellText("primaryNav", "Primary navigation"))}">
+          ${headerNavItems.map((item) => `<a class="${item.id === active ? "active" : ""}" href="${item.href}"${item.id === active ? ' aria-current="page"' : ""}>${item.label}</a>`).join("")}
         </nav>
         <div class="nav-actions" aria-label="${localizedNav ? "账号操作" : escapeHTML(shellText("accountActions", "Account actions"))}">
           ${renderLanguageSelector()}
@@ -896,6 +913,7 @@
           ${renderAccountMenu(target)}
         </div>
       </header>
+      ${renderWorkspaceNavigation(workspace)}
     `;
   }
 
