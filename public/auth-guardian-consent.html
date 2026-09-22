@@ -7,7 +7,7 @@
   <title>Guardian approval · CUAC</title>
   <link rel="stylesheet" href="auth.css" />
 </head>
-<body>
+<body data-i18n-locales="en,vi,th,id,ms,ar">
   <main class="auth-page">
     <section class="auth-card" aria-labelledby="guardian-title">
       <div class="form-head">
@@ -19,7 +19,7 @@
         <strong>What approval means</strong>
         <span>CUAC will create a student login for the child using the email they supplied. Application materials are not collected by CUAC in this release.</span>
       </div>
-      <p><a href="/children-privacy.html" target="_blank" rel="noopener">Open the children's privacy notice</a></p>
+      <p><a href="/children-privacy.html" hreflang="en" target="_blank" rel="noopener">Open the children's privacy notice</a></p>
       <div class="split-fields">
         <button class="primary" type="button" data-guardian-accept>Approve child account</button>
         <button type="button" data-guardian-decline>Decline</button>
@@ -28,6 +28,8 @@
       <p class="form-hint">This one-time link expires after 72 hours. Approval does not sign the child in; the child must sign in and verify their own account email.</p>
     </section>
   </main>
-  <script src="auth-guardian-consent.js"></script>
+  <script src="i18n-runtime.js?v=20260921-public-locales"></script>
+  <script src="auth-guardian-consent-i18n.js?v=20260922-auth-actions"></script>
+  <script src="auth-guardian-consent.js?v=20260922-auth-actions"></script>
 </body>
 </html>

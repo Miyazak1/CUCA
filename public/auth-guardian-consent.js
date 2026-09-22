@@ -1,13 +1,15 @@
 const status = document.querySelector("[data-guardian-status]");
 const accept = document.querySelector("[data-guardian-accept]");
 const decline = document.querySelector("[data-guardian-decline]");
+const guardianI18n = window.CUACGuardianI18n;
+const guardianUi = value => guardianI18n?.ui(value) || value;
 const params = new URLSearchParams(window.location.hash.slice(1));
 const requestId = params.get("request");
 const token = params.get("token");
 window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
 
 function setStatus(message, kind = "") {
-  status.textContent = message;
+  status.textContent = guardianUi(message);
   status.dataset.state = kind;
 }
 

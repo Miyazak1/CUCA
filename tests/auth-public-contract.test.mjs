@@ -76,6 +76,11 @@ test("email action pages clear fragment credentials and submit only explicit POS
   assert.match(client, /resetToken:\s*credential\.token/);
   assert.match(client, /newPassword/);
   assert.match(client, /method:\s*"POST"/);
+  assert.match(client, /type AuthLocale = "en" \| "vi" \| "th" \| "id" \| "ms" \| "ar"/);
+  assert.match(client, /document\.documentElement\.dir = localeMeta\[resolvedLocale\]\.dir/);
+  assert.match(client, /document\.title = `\$\{translate\(resolvedLocale/);
+  assert.match(client, /url\.searchParams\.set\("lang", locale\)/);
+  assert.match(client, /translate\(locale, message\)/);
   assert.doesNotMatch(client, /localStorage|sessionStorage|console\./);
   assert.match(verifyPage, /AuthActionClient kind="verify"/);
   assert.match(resetPage, /AuthActionClient kind="reset"/);
@@ -102,15 +107,20 @@ test("public account entry supports bounded student locales without translating 
 });
 
 test("registration requires age eligibility and provides a one-time guardian approval page", async () => {
-  const [html, script, guardianHtml, guardianScript] = await Promise.all([
+  const [html, script, guardianHtml, guardianScript, guardianMessages] = await Promise.all([
     source("public/auth.html"), source("public/auth.js"),
     source("public/auth-guardian-consent.html"), source("public/auth-guardian-consent.js"),
+    source("public/auth-guardian-consent-i18n.js"),
   ]);
   assert.match(html, /data-register-age-band required/);
   assert.match(html, /data-guardian-fields hidden/);
   assert.match(script, /ageBand === "under_14"/);
   assert.match(script, /guardianConsentRequired/);
   assert.match(guardianHtml, /children's privacy notice/i);
+  assert.match(guardianHtml, /data-i18n-locales="en,vi,th,id,ms,ar"/);
+  assert.match(guardianMessages, /النسخة الإنجليزية/);
+  assert.match(guardianHtml, /href="\/children-privacy\.html" hreflang="en"/);
+  assert.match(guardianScript, /guardianUi\(message\)/);
   assert.match(guardianScript, /window\.history\.replaceState/);
   assert.match(guardianScript, /guardian-consent\/\$\{action\}/);
   assert.doesNotMatch(guardianScript, /localStorage|sessionStorage|console\./);

@@ -178,6 +178,11 @@
   color: #164ec7;
 }
 
+[dir="rtl"] .secondary {
+  margin-right: 12px;
+  margin-left: 0;
+}
+
 .securityNote {
   margin: 24px 0 0;
   padding-top: 18px;
