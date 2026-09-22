@@ -1,5 +1,6 @@
 import { spawn } from "node:child_process";
 import { resolve } from "node:path";
+import { pruneBuiltPublicAssets } from "./lib/public-release-assets.ts";
 
 function normalizedProxyEnvironment(source = process.env) {
   const environment = { ...source };
@@ -48,11 +49,22 @@ child.once("error", (error) => {
   process.exitCode = 1;
 });
 
-child.once("exit", (code, signal) => {
+child.once("exit", async (code, signal) => {
   if (signal) {
     console.error(`[build] Vinext terminated by ${signal}.`);
     process.exitCode = 1;
     return;
   }
-  process.exitCode = code ?? 1;
+  if (code !== 0) {
+    process.exitCode = code ?? 1;
+    return;
+  }
+  try {
+    const removed = await pruneBuiltPublicAssets();
+    console.log(`[build] Production public allowlist removed ${removed.length} obsolete asset(s).`);
+    process.exitCode = 0;
+  } catch (error) {
+    console.error(`[build] Public release asset validation failed: ${error instanceof Error ? error.message : "unknown error"}`);
+    process.exitCode = 1;
+  }
 });
