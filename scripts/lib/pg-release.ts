@@ -1,8 +1,6 @@
-import { execFile } from "node:child_process";
-import { lstat, mkdir, mkdtemp, readFile, realpath, rename, rm, writeFile } from "node:fs/promises";
+import { lstat, mkdir, mkdtemp, readFile, readdir, realpath, rename, rm, writeFile } from "node:fs/promises";
 import { dirname, join, posix, sep } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
-import { promisify } from "node:util";
 import ts from "typescript";
 import { readMigrationFiles } from "drizzle-orm/migrator";
 import { checkMigrationSnapshots } from "./pg-schema-snapshot.ts";
@@ -19,7 +17,32 @@ type LockedPackage = {
 type PackageLock = { lockfileVersion: number; packages: Record<string, LockedPackage> };
 const runtimeSources = ["src/server/db/migration-runtime.ts", "src/server/db/migration-guard.ts", "src/server/db/postgres-client.ts", "src/server/shared/errors.ts", "src/server/shared/application-lifecycle.ts"];
 const json = (value: unknown) => JSON.stringify(value, null, 2) + "\n";
-const exec = promisify(execFile);
+
+async function copyInstalledDependency(source: string, destination: string) {
+  const sourceStat = await lstat(source);
+  if (!sourceStat.isDirectory() || sourceStat.isSymbolicLink()) throw new Error("Installed migration dependency must be a real directory.");
+  await mkdir(destination, { recursive: true });
+  async function visit(from: string, to: string) {
+    for (const entry of await readdir(from, { withFileTypes: true })) {
+      if (entry.name === "node_modules") continue;
+      if (!/^[^/\\\0]+$/.test(entry.name) || entry.isSymbolicLink() || (!entry.isDirectory() && !entry.isFile())) {
+        throw new Error("Installed migration dependency contains an unsafe entry.");
+      }
+      const sourcePath = join(from, entry.name), targetPath = join(to, entry.name);
+      if (entry.isDirectory()) {
+        await mkdir(targetPath);
+        await visit(sourcePath, targetPath);
+      } else {
+        const stat = await lstat(sourcePath);
+        if (!stat.isFile() || stat.isSymbolicLink() || stat.size > 16 * 1024 * 1024) {
+          throw new Error("Installed migration dependency contains an unsafe file.");
+        }
+        await writeFile(targetPath, await readFile(sourcePath), { flag: "wx" });
+      }
+    }
+  }
+  await visit(source, destination);
+}
 
 async function publishReleaseDirectory(source: string, destination: string, digest: string) {
   let renameBlocked = false;
@@ -165,27 +188,21 @@ export async function buildMigrationRelease(project: string) {
     await put("migration-plan.json", json(plan));
     await put("package.json", json(packageJson));
     await put("package-lock.json", json(lock));
-    const npmCli = process.env.npm_execpath ?? join(dirname(process.execPath), "node_modules/npm/bin/npm-cli.js");
-    for (const file of ["npm-user.config", "npm-global.config"]) await writeFile(join(temp, file), "", { flag: "wx" });
-    const npmEnv: NodeJS.ProcessEnv = { NODE_ENV: "development", PATH: process.env.PATH, SystemRoot: process.env.SystemRoot, TEMP: process.env.TEMP,
-      USERPROFILE: process.env.USERPROFILE, LOCALAPPDATA: process.env.LOCALAPPDATA, CI: "true" };
-    const npmArgs = ["--offline", "--ignore-scripts", "--no-audit", "--no-fund", "--bin-links=false",
-      `--userconfig=${join(temp, "npm-user.config")}`, `--globalconfig=${join(temp, "npm-global.config")}`];
-    const npmVersion = (await exec(process.execPath, [npmCli, "--version"], { cwd: release, env: npmEnv, windowsHide: true, timeout: 10_000 })).stdout.trim();
-    try {
-      await exec(process.execPath, [npmCli, "ci", ...npmArgs], { cwd: release, env: npmEnv, windowsHide: true, timeout: 60_000, maxBuffer: 2 * 1024 * 1024 });
-    } catch { throw new Error("Offline release dependency installation failed; verify the approved npm cache and lockfile."); }
-    if ((await readFile(join(release, "package-lock.json"), "utf8")) !== json(lock)) throw new Error("npm changed the release lockfile.");
-    const installedLock = JSON.parse(await readFile(join(release, "node_modules/.package-lock.json"), "utf8"));
-    if (JSON.stringify(Object.keys(installedLock.packages).sort()) !== JSON.stringify([...selected.keys()].sort())) throw new Error("Installed dependency inventory differs from the release lock.");
+    // The project dependency installation has already been verified by npm ci.
+    // Copy its exact locked runtime closure without consulting a user cache or network.
     for (const [path, item] of selected) {
-      if (JSON.parse(await readFile(join(release, path, "package.json"), "utf8")).version !== item.version) throw new Error("Installed dependency version differs from the release lock.");
+      const installed = join(root, path);
+      if (JSON.parse(await readFile(join(installed, "package.json"), "utf8")).version !== item.version) {
+        throw new Error("Installed dependency version differs from the release lock.");
+      }
+      await copyInstalledDependency(installed, join(release, path));
     }
     for (const [path, hash] of Object.entries(sources)) if (sha256(await readFile(join(root, path))) !== hash) throw new Error("Source changed during release build.");
     if (sha256(await readFile(join(root, "package-lock.json"))) !== sha256(lockBytes)) throw new Error("Project lockfile changed during release build.");
     if (JSON.stringify(await checkMigrationSnapshots(folder)) !== JSON.stringify(checked)) throw new Error("Migration baseline changed during release build.");
     const files = await readReleaseFiles(release);
-    const manifest = { format: "cuac-postgres-release-v1", nodeVersion: process.version, compilerVersion: ts.version, npmVersion,
+    const manifest = { format: "cuac-postgres-release-v1", nodeVersion: process.version, compilerVersion: ts.version,
+      packagingMethod: "verified-installed-tree-v1",
       sourceLockSha256: sha256(lockBytes), sourceFiles: sources, migrations: checked.migrations, snapshots: checked.snapshots, tables: checked.tables,
       dependencies: Object.fromEntries([...selected].map(([path, item]) => [path, { version: item.version, integrity: item.integrity }])),
       files: Object.fromEntries([...files].map(([path, bytes]) => [path, { bytes: bytes.length, sha256: sha256(bytes) }])) };

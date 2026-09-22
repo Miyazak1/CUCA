@@ -37,6 +37,7 @@ test("detached migration release has reproducible bytes and rejects tampering be
     assert.equal(repeat.manifestSha256, build.manifestSha256);
     assert.equal(repeat.output, build.output);
     const { manifest } = await verifyRelease(folder, build.manifestSha256);
+    assert.equal(manifest.packagingMethod, "verified-installed-tree-v1");
     assert.ok(manifest.migrations >= 12);
     assert.equal(Object.keys(manifest.files).some(path => /^(?:public|app|seeds)\/|(?:^|\/)\.env/.test(path)), false);
     let connections = 0;
