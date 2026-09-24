@@ -12,8 +12,8 @@
     <section class="hero reveal visible" aria-labelledby="localized-home-title"><div class="hero-copy">
       <div class="kicker"><span class="dot"></span>${t("home.kicker")}</div>
       <h1 id="localized-home-title">${t("home.title")}</h1><p class="sub">${t("home.sub")}</p>
-      <form class="planner" data-site-search-form><textarea data-site-search-input aria-label="${t("shell.search")}" rows="2" placeholder="${t("home.placeholder")}"></textarea>
-        <button type="submit" aria-label="${t("home.search")}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg></button></form>
+      <form class="site-search" data-site-search-form role="search"><input data-site-search-input type="search" maxlength="120" autocomplete="off" enterkeyhint="search" aria-label="${t("shell.search")}" placeholder="${t("home.placeholder")}" />
+        <button type="submit" aria-label="${t("home.search")}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg><span>${t("home.search")}</span></button></form>
       <div class="chips" aria-label="${t("home.catalogTitle")}">
         <button type="button" data-search-chip="undergraduate">${t("home.chip.undergraduate")}</button><button type="button" data-search-chip="master">${t("home.chip.master")}</button>
         <button type="button" data-search-chip="English taught">${t("home.chip.english")}</button><button type="button" data-search-chip="scholarship">${t("home.chip.scholarship")}</button><button type="button" data-search-chip="Fall 2026">${t("home.chip.fall")}</button>

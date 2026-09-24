@@ -153,6 +153,14 @@ export class PostgresStudentCoreRepository implements StudentCoreRepository {
     const rows = await this.client.query<SavedItemRow>(
       `${savedItemSelectSql}
        where si.user_id = $1 and si.removed_at is null
+         and (
+           (si.entity_type = 'school' and school.status = 'active' and school.verification_status in ('verified','stale'))
+           or (si.entity_type = 'program' and program.status = 'active' and program.verification_status in ('verified','stale')
+             and program_school.status = 'active')
+           or (si.entity_type = 'scholarship' and scholarship.status = 'active' and scholarship.verification_status = 'verified')
+           or (si.entity_type = 'city' and city.status = 'active' and city.verification_status in ('verified','stale')
+             and city.slug !~ '^local-' and exists (select 1 from schools city_school where city_school.city_id = city.id and city_school.status = 'active'))
+         )
        order by si.created_at desc`,
       [userId],
     );
@@ -166,10 +174,13 @@ export class PostgresStudentCoreRepository implements StudentCoreRepository {
          user_id, entity_type, entity_id, notes
        ) select $1::uuid, $2::text, $3::uuid, $4::text
        where exists (
-         select id from schools where $2 = 'school' and id = $3 and status = 'active'
-         union all select id from programs where $2 = 'program' and id = $3 and status = 'active'
-         union all select id from scholarships where $2 = 'scholarship' and id = $3 and status = 'active'
-         union all select id from cities where $2 = 'city' and id = $3 and status = 'active'
+         select id from schools where $2 = 'school' and id = $3 and status = 'active' and verification_status in ('verified','stale')
+         union all select p.id from programs p join schools s on s.id = p.school_id and s.status = 'active'
+           where $2 = 'program' and p.id = $3 and p.status = 'active' and p.verification_status in ('verified','stale')
+         union all select id from scholarships where $2 = 'scholarship' and id = $3 and status = 'active' and verification_status = 'verified'
+         union all select c.id from cities c where $2 = 'city' and c.id = $3 and c.status = 'active'
+           and c.verification_status in ('verified','stale') and c.slug !~ '^local-'
+           and exists (select 1 from schools city_school where city_school.city_id = c.id and city_school.status = 'active')
        )
        on conflict (user_id, entity_type, entity_id) where removed_at is null do update set
          notes = excluded.notes
@@ -296,9 +307,11 @@ export class PostgresStudentCoreRepository implements StudentCoreRepository {
        select a.id, a.user_id, $3::uuid, $4::uuid, $5::uuid, $6::integer, $7::text, $8::uuid, $9::text
        from owned_application_set a
        where a.editable
-         and exists (select 1 from schools s where s.id = $3 and s.status = 'active')
+         and exists (select 1 from schools s where s.id = $3 and s.status = 'active'
+           and ($4::uuid is not null or s.verification_status in ('verified','stale')))
          and ($4::uuid is null or exists (
            select 1 from programs p where p.id = $4 and p.school_id = $3 and p.status = 'active'
+             and p.verification_status in ('verified','stale')
          ))
          and ($8::uuid is null or exists (
            select 1 from program_intakes pi where pi.id = $8 and pi.program_id = $4 and pi.status = 'open'
@@ -308,6 +321,7 @@ export class PostgresStudentCoreRepository implements StudentCoreRepository {
          ))
          and ($5::uuid is null or exists (
            select 1 from scholarships s where s.id = $5 and s.status = 'active'
+             and s.verification_status = 'verified'
              and (s.school_id is null or s.school_id = $3)
              and (s.program_id is null or s.program_id = $4)
          ))
@@ -682,6 +696,7 @@ select
 from saved_items si
 left join schools school on si.entity_type = 'school' and school.id = si.entity_id
 left join programs program on si.entity_type = 'program' and program.id = si.entity_id
+left join schools program_school on program_school.id = program.school_id
 left join scholarships scholarship on si.entity_type = 'scholarship' and scholarship.id = si.entity_id
 left join cities city on si.entity_type = 'city' and city.id = si.entity_id`;
 

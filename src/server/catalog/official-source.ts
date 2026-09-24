@@ -1,6 +1,20 @@
 import { createHash } from "node:crypto";
 
-export type OfficialCatalogSourceRole = "authority-list" | "school-admissions" | "program-catalog" | "scholarship" | "freshness-index";
+export type OfficialCatalogSourceRole =
+  | "authority-list"
+  | "school-admissions"
+  | "program-catalog"
+  | "scholarship"
+  | "freshness-index"
+  | "city-statistics"
+  | "city-public-transport"
+  | "city-public-prices"
+  | "city-student-cost"
+  | "city-climate"
+  | "city-international-services"
+  | "city-health-services"
+  | "city-student-guide"
+  | "school-accommodation";
 
 export type OfficialCatalogSource = {
   id: string;
@@ -9,6 +23,7 @@ export type OfficialCatalogSource = {
   allowedHosts: string[];
   sourceRole: OfficialCatalogSourceRole;
   schoolSlug?: string;
+  citySlug?: string;
 };
 
 export type OfficialCatalogSourceRegistry = {
@@ -21,6 +36,7 @@ export type OfficialCatalogSnapshotMetadata = {
   label: string;
   sourceRole: OfficialCatalogSourceRole;
   schoolSlug?: string;
+  citySlug?: string;
   url: string;
   finalUrl: string;
   fetchedAt: string;
@@ -67,6 +83,19 @@ const sourceRoles = new Set<OfficialCatalogSourceRole>([
   "program-catalog",
   "scholarship",
   "freshness-index",
+  "city-statistics",
+  "city-public-transport",
+  "city-public-prices",
+  "city-student-cost",
+  "city-climate",
+  "city-international-services",
+  "city-health-services",
+  "city-student-guide",
+  "school-accommodation",
+]);
+const citySourceRoles = new Set<OfficialCatalogSourceRole>([
+  "city-statistics", "city-public-transport", "city-public-prices", "city-student-cost", "city-climate", "city-international-services",
+  "city-health-services", "city-student-guide",
 ]);
 const allowedContentTypes = new Set([
   "text/html",
@@ -99,7 +128,7 @@ export function validateOfficialCatalogSourceRegistry(value: unknown): string[] 
       return;
     }
     for (const key of Object.keys(source)) {
-      if (!new Set(["id", "label", "url", "allowedHosts", "sourceRole", "schoolSlug"]).has(key)) {
+      if (!new Set(["id", "label", "url", "allowedHosts", "sourceRole", "schoolSlug", "citySlug"]).has(key)) {
         errors.push(`${label}.${key} is not allowed.`);
       }
     }
@@ -113,6 +142,15 @@ export function validateOfficialCatalogSourceRegistry(value: unknown): string[] 
     if (!sourceRoles.has(source.sourceRole as OfficialCatalogSourceRole)) errors.push(`${label}.sourceRole is not supported.`);
     if (source.schoolSlug !== undefined && (typeof source.schoolSlug !== "string" || !sourceIdPattern.test(source.schoolSlug))) {
       errors.push(`${label}.schoolSlug must use lowercase kebab-case.`);
+    }
+    if (source.citySlug !== undefined && (typeof source.citySlug !== "string" || !sourceIdPattern.test(source.citySlug))) {
+      errors.push(`${label}.citySlug must use lowercase kebab-case.`);
+    }
+    if (citySourceRoles.has(source.sourceRole as OfficialCatalogSourceRole) && source.citySlug === undefined) {
+      errors.push(`${label}.citySlug is required for city source roles.`);
+    }
+    if (source.sourceRole === "school-accommodation" && source.schoolSlug === undefined) {
+      errors.push(`${label}.schoolSlug is required for school-accommodation.`);
     }
     if (!Array.isArray(source.allowedHosts) || !source.allowedHosts.length) {
       errors.push(`${label}.allowedHosts must contain at least one exact official hostname.`);
@@ -199,6 +237,7 @@ export async function fetchOfficialCatalogSource(
       label: source.label,
       sourceRole: source.sourceRole,
       schoolSlug: source.schoolSlug,
+      citySlug: source.citySlug,
       url: source.url,
       finalUrl: currentUrl,
       fetchedAt,

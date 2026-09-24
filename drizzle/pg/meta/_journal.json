@@ -505,6 +505,55 @@
       "when": 1789916375394,
       "tag": "0071_account_deletion_quarantine",
       "breakpoints": true
+    },
+    {
+      "idx": 72,
+      "version": "7",
+      "when": 1790061391162,
+      "tag": "0072_city_data_foundation",
+      "breakpoints": true
+    },
+    {
+      "idx": 73,
+      "version": "7",
+      "when": 1790150664211,
+      "tag": "0073_robust_the_fury",
+      "breakpoints": true
+    },
+    {
+      "idx": 74,
+      "version": "7",
+      "when": 1790154087944,
+      "tag": "0074_elite_rattler",
+      "breakpoints": true
+    },
+    {
+      "idx": 75,
+      "version": "7",
+      "when": 1790156824616,
+      "tag": "0075_classy_mentor",
+      "breakpoints": true
+    },
+    {
+      "idx": 76,
+      "version": "7",
+      "when": 1790158668099,
+      "tag": "0076_chubby_dark_phoenix",
+      "breakpoints": true
+    },
+    {
+      "idx": 77,
+      "version": "7",
+      "when": 1790169248631,
+      "tag": "0077_orange_hitman",
+      "breakpoints": true
+    },
+    {
+      "idx": 78,
+      "version": "7",
+      "when": 1790173725752,
+      "tag": "0078_productive_tyger_tiger",
+      "breakpoints": true
     }
   ]
 }

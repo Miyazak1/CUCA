@@ -387,6 +387,14 @@ function projectCity(row: PublicCityDto) {
       englishPrograms: outputCount(row.references.englishProgramCount),
       scholarships: outputCount(row.references.scholarshipCount),
     },
+    currentCatalog: {
+      schools: outputCount(row.actualSchoolCount),
+      programs: outputCount(row.actualProgramCount),
+      englishPrograms: outputCount(row.actualEnglishProgramCount),
+      scholarships: outputCount(row.actualScholarshipCount),
+      openIntakes: outputCount(row.actualOpenIntakeCount),
+    },
+    publicationState: row.publicationState,
     navigation: { routeId: "catalog.city_detail", entityRef: slug },
   };
 }

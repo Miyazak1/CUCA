@@ -10,7 +10,7 @@ const deferred = () => { let resolve; const promise = new Promise(done => { reso
 
 export async function runApplicationRemovalRehearsal(t, pool) {
   const client = createTransactionalSqlClient(pool), service = createPostgresStudentService(client);
-  const schoolId = (await pool.query("select id from schools where status = 'active' limit 1")).rows[0].id;
+  const schoolId = (await pool.query("select id from schools where status = 'active' and verification_status in ('verified','stale') limit 1")).rows[0].id;
   const key = () => ({ idempotencyKey: randomUUID() });
   async function fixture() {
     const email = `remove-${randomUUID()}@example.invalid`;
@@ -18,7 +18,7 @@ export async function runApplicationRemovalRehearsal(t, pool) {
     await pool.query("insert into user_roles (user_id, role) values ($1, 'student')", [user.id]);
     const context = createRequestContext({ actorUserId: user.id, activeRole: "student", selectedSurface: "student", purpose: "student_action" });
     const set = await service.createOwnApplicationSet(context, { name: "Removal fixture" }, key());
-    const { rows: [program] } = await pool.query("insert into programs (school_id, slug, name_en, degree_level, status) values ($1, $2, 'Synthetic route', 'master', 'active') returning id", [schoolId, `remove-${randomUUID()}`]);
+    const { rows: [program] } = await pool.query("insert into programs (school_id, slug, name_en, degree_level, status, is_verified, verification_status) values ($1, $2, 'Synthetic route', 'master', 'active', true, 'verified') returning id", [schoolId, `remove-${randomUUID()}`]);
     const input = { applicationSetId: set.id, schoolId, programId: program.id, studentNotes: "private-removal-marker" }, originalKey = key();
     const choice = await service.addOwnApplicationChoice(context, input, originalKey);
     await pool.query("update application_choices set requirement_snapshot_json = $2::jsonb, metadata_json = $2::jsonb where id = $1", [choice.id, JSON.stringify({ note: "private-removal-marker" })]);

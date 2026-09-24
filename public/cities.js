@@ -108,19 +108,19 @@ function cityMonthlyCost(city = {}) {
 }
 
 function citySchoolCount(city = {}) {
-  return city.referenceSchoolCount ?? city.universities ?? city.references?.schoolCount ?? 0;
+  return city.actualSchoolCount ?? city.aggregate?.actualSchoolCount ?? city.referenceSchoolCount ?? city.universities ?? city.references?.schoolCount ?? 0;
 }
 
 function cityProgramCount(city = {}) {
-  return city.referenceProgramCount ?? city.programs ?? city.references?.programCount ?? 0;
+  return city.actualProgramCount ?? city.aggregate?.actualProgramCount ?? city.referenceProgramCount ?? city.programs ?? city.references?.programCount ?? 0;
 }
 
 function cityEnglishRouteCount(city = {}) {
-  return city.referenceEnglishProgramCount ?? city.englishRoutes ?? city.references?.englishProgramCount ?? 0;
+  return city.actualEnglishProgramCount ?? city.aggregate?.actualEnglishProgramCount ?? city.referenceEnglishProgramCount ?? city.englishRoutes ?? city.references?.englishProgramCount ?? 0;
 }
 
 function cityScholarshipCount(city = {}) {
-  return city.referenceScholarshipCount ?? city.scholarships ?? city.references?.scholarshipCount ?? 0;
+  return city.actualScholarshipCount ?? city.aggregate?.actualScholarshipCount ?? city.referenceScholarshipCount ?? city.scholarships ?? city.references?.scholarshipCount ?? 0;
 }
 
 function cityDensityLevel(city = {}) {
@@ -196,7 +196,7 @@ function renderFeature() {
         <div><strong>${money(cityMonthlyCost(city))}</strong><span>monthly living estimate</span></div>
         <div><strong>${cityNumber(cityEnglishRouteCount(city))}</strong><span>${cityUi("English-taught routes")}</span></div>
         <div><strong>${cityNumber(cityScholarshipCount(city))}</strong><span>${cityUi("scholarship routes")}</span></div>
-        <div><strong>${cityNumber(citySchoolCount(city))}</strong><span>${cityUi("referenced schools")}</span></div>
+        <div><strong>${cityNumber(citySchoolCount(city))}</strong><span>${cityUi("current schools")}</span></div>
       </div>
       <div class="story-actions">
         <a class="city-story-action city-story-main" href="${cityHref(`city-detail.html?city=${encodeURIComponent(citySlug(city))}`)}">${cityUi("View city")}</a>
@@ -233,10 +233,10 @@ function renderMatrix() {
           <tr data-city-row="${citySlug(city)}">
             <td><div class="matrix-city"><strong>${escapeCatalogHtml(cityName(city))}</strong><span>${escapeCatalogHtml(cityProvince(city))}</span></div></td>
             <td><span class="cost ${costClass(city)}">${money(cityMonthlyCost(city))}</span></td>
-            <td>${citySchoolCount(city)}<div class="signal">catalog snapshot</div></td>
+            <td>${citySchoolCount(city)}<div class="signal">current catalog</div></td>
             <td>${cityEnglishRouteCount(city)}<div class="signal">program routes</div></td>
             <td>${cityScholarshipCount(city)}<div class="signal">funding routes</div></td>
-            <td>${cityProgramCount(city)}<div class="signal">catalog snapshot</div></td>
+            <td>${cityProgramCount(city)}<div class="signal">current catalog</div></td>
             <td><a class="matrix-action" href="${cityHref(`programs.html?city=${encodeURIComponent(citySlug(city))}`)}">${cityUi("Programs")}</a></td>
           </tr>
         `).join("")}
@@ -340,6 +340,9 @@ function renderBudget() {
 }
 
 function renderAll() {
+  document.querySelectorAll("[data-city-dependent]").forEach((section) => {
+    section.hidden = cities.length === 0;
+  });
   if (!cities.length) {
     document.querySelector("#cityCount").textContent = "0";
     document.querySelector("#cityContext").textContent = cityUi("No published city guides are available.");

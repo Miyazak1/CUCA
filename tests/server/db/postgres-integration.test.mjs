@@ -118,7 +118,10 @@ test("real PostgreSQL migration and repository rehearsal", { timeout: rehearsalT
     for (const table of ["cities", "schools", "programs", "scholarships"]) {
       await pool.query(`update ${table} set status = 'active'`);
     }
-    await pool.query("update scholarships set verification_status = 'verified'");
+    await pool.query("update cities set verification_status = 'verified', last_verified_at = now(), next_review_due_at = now() + interval '180 days'");
+    await pool.query("update schools set verification_status = 'verified', last_verified_at = now(), next_review_due_at = now() + interval '180 days'");
+    await pool.query("update programs set verification_status = 'verified', is_verified = true, last_verified_at = now(), next_review_due_at = now() + interval '180 days'");
+    await pool.query("update scholarships set verification_status = 'verified', last_verified_at = now(), next_review_due_at = now() + interval '180 days'");
     for (const method of ["listCities", "listSchools", "listPrograms", "listScholarships"]) {
       assert.equal((await catalog[method]({})).length, 1);
     }
@@ -265,7 +268,7 @@ test("real PostgreSQL migration and repository rehearsal", { timeout: rehearsalT
     const { create } = await fixture();
     const first = await invites.createInvite(create);
     assert.equal((await invites.findSchoolById(create.schoolId)).status, "active");
-    await pool.query("update schools set status = 'inactive' where id = $1", [create.schoolId]);
+    await pool.query("update schools set status = 'draft' where id = $1", [create.schoolId]);
     await assert.rejects(invites.createInvite({ ...create, inviteTokenHash: hashSchoolStaffInviteToken(randomUUID()) }), /School is not available/);
     const prior = await pool.query("select status from school_staff_invites where id = $1", [first.inviteId]);
     assert.equal(prior.rows[0].status, "pending");

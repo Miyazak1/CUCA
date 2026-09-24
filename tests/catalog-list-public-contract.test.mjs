@@ -25,7 +25,7 @@ test("public catalog lists load the published APIs without demo data clients", a
     assert.match(html, /catalog-list-api\.js/);
     assert.match(html, /catalog-list-api\.css/);
     assert.doesNotMatch(html, /cuac-data\.js/);
-    assert.doesNotMatch(script, /CuacDataClient|actual[A-Z]|contactInfo|fitNotes|qualityScore|missingFields/);
+    assert.doesNotMatch(script, /CuacDataClient|contactInfo|fitNotes|qualityScore|missingFields/);
     assert.match(script, new RegExp(`CuacCatalogList\\.${page === "programs" ? "loadPage" : "loadAll"}\\("${resource}"`));
     assert.match(script, /data-catalog-retry/);
   }

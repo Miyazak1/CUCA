@@ -6,7 +6,7 @@
     <title>CUAC | Cities</title>
     <link rel="stylesheet" href="shared-shell.css?v=20260922-global-nav" />
     <link rel="stylesheet" href="catalog-list-api.css" />
-    <link rel="stylesheet" href="cities.css?v=20260825-card-action-polish" />
+    <link rel="stylesheet" href="cities.css?v=20260923-empty-state" />
   </head>
   <body data-agent-mode="off" data-catalog-list-page="cities" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page">
@@ -27,13 +27,13 @@
             </div>
           </section>
 
-          <section class="city-rail reveal" aria-label="Quick city comparison" id="cityRail"></section>
+          <section class="city-rail reveal" aria-label="Quick city comparison" id="cityRail" data-city-dependent></section>
 
-          <section class="section reveal" aria-label="Featured city story">
+          <section class="section reveal" aria-label="Featured city story" data-city-dependent>
             <div class="feature-story" id="featureStory"></div>
           </section>
 
-          <section class="section reveal" aria-label="City fit matrix">
+          <section class="section reveal" aria-label="City fit matrix" data-city-dependent>
             <div class="section-head">
               <div>
                 <h2>Compare city fit in one scan</h2>
@@ -44,7 +44,7 @@
             <div class="fit-matrix" id="fitMatrix"></div>
           </section>
 
-          <section class="section reveal" id="cityTagSection" aria-label="Browse city tags">
+          <section class="section reveal" id="cityTagSection" aria-label="Browse city tags" data-city-dependent>
             <div class="section-head">
               <div>
                 <h2>Browse published city tags</h2>
@@ -74,7 +74,7 @@
             <div class="city-grid" id="cityGrid"></div>
           </section>
 
-          <section class="section reveal" aria-label="Monthly cost breakdown">
+          <section class="section reveal" aria-label="Monthly cost breakdown" data-city-dependent>
             <div class="cost-lab">
               <div>
                 <span class="eyebrow">Budget check</span>
@@ -93,7 +93,7 @@
             </div>
           </section>
 
-          <section class="section reveal" aria-label="Linked city decisions">
+          <section class="section reveal" aria-label="Linked city decisions" data-city-dependent>
             <div class="decision-band">
               <div>
                 <h2>Turn city fit into an application route</h2>
@@ -132,6 +132,6 @@
     <script src="cities-i18n.js"></script>
     <script src="shared-shell.js?v=20260922-global-nav"></script>
     <script src="catalog-list-api.js"></script>
-    <script src="cities.js?v=20260825-card-action-polish"></script>
+    <script src="cities.js?v=20260923-empty-state"></script>
   </body>
 </html>

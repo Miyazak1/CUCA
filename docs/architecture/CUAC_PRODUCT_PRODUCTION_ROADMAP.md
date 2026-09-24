@@ -2,11 +2,11 @@
 
 Status: full production plan for moving from the current demo to a complete product.
 
-Last updated: 2026-09-01
+Last updated: 2026-09-24
 
-Execution status: started. Stage 0 architecture lock is accepted for Phase 0/1 backend execution, and the first backend foundation code has been added under `frontend/src/server`.
+Execution status: local release candidate accepted for `school-handoff-v1`; real Hong Kong staging infrastructure and provider configuration remain the next boundary.
 
-Current local evidence (2026-09-01): the reviewed chain is through `0032_agent_candidate_capacity`, with 33 migrations, 24 snapshots and 58 tables. The current suite passes 523/523 regular tests, 477/477 PostgreSQL plus built HTTP and 7/7 isolated Linux migration tests; the dedicated PostgreSQL entry passes 379/379 and overlaps the HTTP suite. `0031` enforces a finite database-clock ceiling of 365 days for confirmed low-sensitive student memory. `0032` caps active pending candidates at 12 per verified guest browser binding and 24 per student account with concurrent last-slot enforcement. The internal application grain remains one student + program + intake; same-school projects stay independent, while `0030` transport groups never merge identity, evidence, status or outcome. No public submit, external school delivery, live payment, production Agent memory/tool execution or cloud approval is implied.
+Current local evidence (2026-09-24): the reviewed chain contains 79 migrations, 70 snapshots and 97 declared tables. The backend suite passes 726/726 and the disposable PostgreSQL rehearsal passes 423/423. Production build and the Linux non-root/read-only container rehearsal pass. Persistent local smoke, 14-area whole-site data interaction acceptance and 7-step student runtime acceptance pass. The public directory and 26-city release candidates are deterministic, rehearsed, idempotent and rollback-proven, but deliberately unexecuted until an exact real staging target is configured. Hosted payment, private-file processing and official submission delivery remain disabled under `school-handoff-v1`. See [the current release-candidate record](../releases/LOCAL_RELEASE_CANDIDATE_2026-09-24.md).
 
 A persistent local-development runtime is now implemented separately from disposable rehearsals: a loopback-only PostgreSQL container and named volume, generated ignored secrets, automatic migration, idempotent synthetic catalog/application fixtures, Node API mode and health/catalog/Auth/per-program application smoke. See [local development runbook](CUAC_LOCAL_DEVELOPMENT_RUNBOOK.md). This enables staged V3 API integration without treating Demo layout as schema authority.
 

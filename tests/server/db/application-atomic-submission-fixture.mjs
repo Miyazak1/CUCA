@@ -23,7 +23,8 @@ export async function applicationAtomicSubmissionFixture(pool, options = {}) {
   const f = await materialSelectionFixture(pool, options.userId, true, { readVersionsDirectly: true });
   await f.publish();
   const secondProgram = (await pool.query(`insert into programs
-    (school_id,slug,name_en,degree_level,status) values ($1,$2,'Second same-school program','master','active') returning id`,
+    (school_id,slug,name_en,degree_level,status,is_verified,verification_status)
+    values ($1,$2,'Second same-school program','master','active',true,'verified') returning id`,
   [f.catalog.schoolId, randomUUID()])).rows[0];
   const secondIntake = (await pool.query(`insert into program_intakes
     (program_id,intake_term,intake_year,status,open_date,deadline_date)

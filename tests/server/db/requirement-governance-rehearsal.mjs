@@ -243,7 +243,7 @@ export async function runRequirementGovernanceRehearsal(t, pool) {
 
   await t.test("retired scopes permit emergency withdrawal but never new publication or approval", async () => {
     const f = await governanceFixture(pool), approved = await approvedRequirement(f), draft = await preparedRequirement(f); await publish(f, approved);
-    await pool.query("update schools set status = 'inactive' where id = $1", [f.schoolId]);
+    await pool.query("update schools set status = 'draft' where id = $1", [f.schoolId]);
     await assert.rejects(preparedRequirement(f), e => e.status === 409);
     await assert.rejects(f.service.approve(f.reviewer, f.programId, f.intakeId, approveInput(draft)), e => e.status === 409);
     await assert.rejects(publish(f, approved, 1), e => e.status === 409);

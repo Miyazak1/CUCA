@@ -13,7 +13,7 @@ const localMfaPath = resolve(projectDir, ".cuac-local/smoke-mfa.json");
 const results: Array<{ area: string; status: "passed"; evidence: string }> = [];
 
 type Json = Record<string, unknown>;
-type Session = { cookie: string; role: string };
+type Session = { cookie: string; role: string; tenantSchoolId?: string };
 type LocalMfaAccount = { secret: string; lastUsedCounter: number };
 type LocalMfaState = { version: 1; installationId: string; accounts: Record<string, LocalMfaAccount> };
 
@@ -45,7 +45,7 @@ async function login(account: { email: string; password: string }, expectedRole:
   const result = await request("/api/v1/auth/sessions", {
     method: "POST", headers: { "content-type": "application/json", origin },
     body: JSON.stringify({ email: account.email, password: account.password,
-      ...(expectedRole === "student" ? {} : { selectedSurface: expectedRole === "school_staff" ? "school_staff" : "cuac_internal" }),
+      ...(expectedRole === "cuac_ops" || expectedRole === "cuac_admin" ? { selectedSurface: "cuac_internal" } : {}),
       ...(schoolId ? { schoolId } : {}) }),
   });
   const data = record(record(result.body).data);
@@ -82,7 +82,8 @@ async function login(account: { email: string; password: string }, expectedRole:
     && (!schoolId || completedData.tenantSchoolId === schoolId), `${expectedRole} MFA completion failed.`);
   mfaAccount.lastUsedCounter = counter;
   await saveLocalMfaState();
-  return { cookie, role: expectedRole };
+  return { cookie, role: expectedRole,
+    ...(typeof completedData.tenantSchoolId === "string" ? { tenantSchoolId: completedData.tenantSchoolId } : {}) };
 }
 
 async function loadLocalMfaState(): Promise<LocalMfaState> {
@@ -175,12 +176,9 @@ await Promise.all([
 ]);
 results.push({ area: "anonymous-boundary", status: "passed", evidence: "student, school and Ops data denied" });
 
-const localSchools = await request("/api/v1/catalog/schools?limit=10&query=local%20north");
-const localSchool = records(record(localSchools.body).data).find(item => item.slug === "local-north-university");
-assert(localSchools.response.ok && typeof localSchool?.id === "string", "Local synthetic school is unavailable for tenant login.");
-
 const student = await login(accounts.student, "student");
-const school = await login(accounts.school, "school_staff", String(localSchool.id));
+const school = await login(accounts.school, "school_staff");
+assert(typeof school.tenantSchoolId === "string", "School tenant was not resolved from the authenticated membership.");
 const ops = await login(accounts.ops, "cuac_ops");
 const admin = await login(accounts.admin, "cuac_admin");
 
@@ -196,14 +194,24 @@ const sets = records(record(studentSets.body).data), configuredSet = sets.find(i
 assert(studentSets.response.ok && configuredSet, "Configured student application set is unavailable.");
 const choices = records(configuredSet.choices);
 assert(choices.length === state.choiceIds.length, "Student application choice count diverged from the local fixture.");
+let publiclyResolvedChoices = 0;
+let unavailableHistoricalChoices = 0;
 for (const choice of choices) {
   const detail = await request(`/api/v1/catalog/programs/${encodeURIComponent(String(choice.programId))}`);
-  assert(detail.response.ok && record(record(detail.body).data).id === choice.programId, "Student choice points to an unavailable public program.");
+  const detailProgramId = record(record(detail.body).data).id;
+  if (detail.response.status === 404 || (detail.response.ok && detailProgramId === undefined)) {
+    unavailableHistoricalChoices += 1;
+  } else {
+    assert(detail.response.ok && String(detailProgramId).toLowerCase() === String(choice.programId).toLowerCase(),
+      `Published student choice points to an unavailable public program (${detail.response.status}; expected ${choice.programId}; received ${detailProgramId}).`);
+    publiclyResolvedChoices += 1;
+  }
 }
 const progress = await request(`/api/v1/student/application-sets/${encodeURIComponent(state.applicationSetId)}/school-progress`, {}, student);
 assert(progress.response.ok && records(record(record(progress.body).data).items).length === choices.length,
   "Student school-progress projection does not match application choices.");
-results.push({ area: "student-projection", status: "passed", evidence: `${choices.length} choices resolve to catalog and school progress` });
+results.push({ area: "student-projection", status: "passed",
+  evidence: `${publiclyResolvedChoices} public choices resolved; ${unavailableHistoricalChoices} retained unpublished choices; school progress aligned` });
 
 const schoolQueue = await request("/api/v1/school/applications", {}, school);
 const schoolItems = records(record(schoolQueue.body).data);

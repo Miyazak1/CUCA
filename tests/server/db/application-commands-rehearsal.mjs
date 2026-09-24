@@ -38,7 +38,7 @@ export async function runApplicationCommandsRehearsal(t, pool) {
   const options = () => ({ idempotencyKey: randomUUID() });
   const retry = ctx => ({ ...ctx, requestId: randomUUID() });
   const count = async (table, userId) => (await pool.query(`select count(*)::int as n from ${table} where user_id = $1`, [userId])).rows[0].n;
-  const schoolId = (await pool.query("select id from schools where status = 'active' limit 1")).rows[0].id;
+  const schoolId = (await pool.query("select id from schools where status = 'active' and verification_status in ('verified','stale') limit 1")).rows[0].id;
   async function waitForReceiptWaiter() {
     for (let i = 0; i < 200; i++) {
       const result = await pool.query("select count(*)::int as n from pg_stat_activity where datname = current_database() and wait_event_type = 'Lock' and query like 'insert into student_application_command_receipts%'");

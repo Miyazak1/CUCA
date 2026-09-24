@@ -12,7 +12,7 @@ const deferred = () => { let resolve; const promise = new Promise(done => { reso
 export async function runApplicationDraftRehearsal(t, pool) {
   const client = createTransactionalSqlClient(pool), service = createPostgresStudentService(client);
   const repository = new PostgresStudentCoreRepository(client);
-  const schoolId = (await pool.query("select id from schools where status = 'active' limit 1")).rows[0].id;
+  const schoolId = (await pool.query("select id from schools where status = 'active' and verification_status in ('verified','stale') limit 1")).rows[0].id;
   const key = () => ({ idempotencyKey: randomUUID() });
   async function fixture() {
     const email = `draft-${randomUUID()}@example.invalid`;
@@ -134,7 +134,7 @@ export async function runApplicationDraftRehearsal(t, pool) {
   await t.test("same-school programs retain independent choices and school records, never a school-level merge", async () => {
     const { context, set, input } = await fixture(), programIds = [], choiceIds = [];
     for (let i = 0; i < 2; i++) {
-      const { rows: [program] } = await pool.query("insert into programs (school_id, slug, name_en, degree_level, status) values ($1, $2, 'Synthetic route', 'master', 'active') returning id", [schoolId, `draft-${randomUUID()}`]);
+      const { rows: [program] } = await pool.query("insert into programs (school_id, slug, name_en, degree_level, status, is_verified, verification_status) values ($1, $2, 'Synthetic route', 'master', 'active', true, 'verified') returning id", [schoolId, `draft-${randomUUID()}`]);
       programIds.push(program.id);
       const choice = await service.addOwnApplicationChoice(context, { ...input, programId: program.id }, key());
       choiceIds.push(choice.id);

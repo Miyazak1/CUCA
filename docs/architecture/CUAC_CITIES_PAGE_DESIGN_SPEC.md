@@ -2,6 +2,8 @@
 
 Date: 2026-08-13
 
+Production data sourcing, evidence, publication gates, multilingual handling, and refresh rules are defined in `CUAC_CITY_DATA_SOURCE_AND_PUBLICATION_SPEC.md`.
+
 ## 1. Purpose
 
 The Cities page helps international students decide where they can realistically live, study, and apply in China.

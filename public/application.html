@@ -4,14 +4,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CUAC | My applications</title>
-    <link rel="stylesheet" href="shared-shell.css?v=20260922-global-nav" />
-    <link rel="stylesheet" href="application.css?v=20260918-release-boundary" />
+    <link rel="stylesheet" href="shared-shell.css?v=20260923-shell-isolation" />
+    <link rel="stylesheet" href="application.css?v=20260923-workspace-spacing" />
+    <link rel="stylesheet" href="application-workspace-refresh.css?v=20260923-workspace-convergence" />
   </head>
   <body data-agent-mode="off" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page application-page">
       <div data-cuac-header data-active="hub" data-note="CUAC Application:" data-note-detail="multi-choice China study workspace"></div>
 
       <main>
+        <header class="application-page-heading reveal">
+          <div>
+            <p class="module-kicker">Application status</p>
+            <h1>My applications</h1>
+            <p>Your application record and progress details.</p>
+          </div>
+          <a class="secondary-action" href="hub-api.html">Back to Hub</a>
+        </header>
+
         <section class="application-overview reveal" id="overview" data-application-step="overview" aria-label="Application overview">
           <div class="overview-next">
             <div>
@@ -54,11 +64,7 @@
         <section class="app-hero reveal" aria-label="Application status">
           <article class="draft-card set-card application-status-card">
             <div class="status-copy">
-              <a class="back-link" href="hub-api.html">Back to Hub</a>
               <nav class="application-set-switcher" data-application-set-switcher aria-label="Application sets" hidden></nav>
-              <p class="eyebrow">Application status</p>
-              <h1>My applications</h1>
-              <p class="status-helper">Your application record and progress details.</p>
               <div class="status-facts">
                 <span><strong data-application-label>Application draft</strong><em data-application-scope>server record</em></span>
                 <span><strong data-school-count>0</strong><em>schools</em></span>

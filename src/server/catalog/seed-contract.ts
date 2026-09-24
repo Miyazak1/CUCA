@@ -5,7 +5,7 @@ export type CatalogSeedEntityStatus = "active" | "draft" | "archived";
 export const CATALOG_SEED_ALLOWED_FIELDS = Object.freeze({
   bundle: ["version", "generatedAt", "handoff", "cities", "schools", "programs", "programIntakes", "scholarships"],
   handoff: ["sourceSystem", "cleanedExportName", "cleanedExportSha256", "sourceSchemaSha256", "reviewReference", "prohibitedDataReviewReference", "approvalRecordedAt", "sourceReadOnly", "prohibitedDataConfirmedExcluded"],
-  cities: ["slug", "nameEn", "nameZh", "region", "province", "status", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "sourceFieldLineage"],
+  cities: ["slug", "nameEn", "nameZh", "region", "province", "monthlyCost", "monthlyCostRmb", "costLevel", "density", "tags", "content", "nearby", "sortOrder", "version", "status", "verificationStatus", "lastVerifiedAt", "nextReviewDueAt", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "sourceFieldLineage"],
   schools: ["slug", "nameEn", "nameZh", "citySlug", "schoolType", "region", "applicationLevel", "languageOfInstruction", "languageRequirement", "hskRequirement", "englishRequirement", "deadlineSummary", "tuitionSummary", "applicationFee", "websiteUrl", "admissionsUrl", "cscaRequired", "cscaRequirement", "cscaSubjects", "subjectTags", "languageTags", "tuitionBandLabel", "campusHighlights", "contactNotes", "status", "verificationStatus", "lastVerifiedAt", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "sourceFieldLineage"],
   programs: ["slug", "schoolSlug", "citySlug", "nameEn", "nameZh", "degreeLevel", "durationYears", "durationMonths", "fieldCategory", "subjectArea", "teachingLanguage", "cscaSubjects", "cscaRequirement", "hskRequirement", "englishRequirement", "tuitionAmount", "tuitionCurrency", "tuitionPeriod", "tuitionText", "scholarshipText", "applicationUrl", "applicationNote", "hasScholarship", "badgeText", "displayTuition", "displaySubjects", "displayGroup", "displayGroupLabel", "status", "verificationStatus", "lastVerifiedAt", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "sourceFieldLineage"],
   programIntakes: ["programSlug", "intakeTerm", "intakeYear", "openDate", "deadlineDate", "deadlineLabel", "applicationRound", "status", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "sourceFieldLineage"],
@@ -35,7 +35,19 @@ export type CatalogSeedCity = CatalogSeedSource & {
   nameZh?: string;
   region?: string;
   province?: string;
+  monthlyCost?: string;
+  monthlyCostRmb?: number;
+  costLevel?: string;
+  density?: string;
+  tags?: string[];
+  content?: Record<string, unknown>;
+  nearby?: string[];
+  sortOrder?: number;
+  version?: number;
   status?: CatalogSeedEntityStatus;
+  verificationStatus?: CatalogVerificationStatus;
+  lastVerifiedAt?: string;
+  nextReviewDueAt?: string;
 };
 
 export type CatalogSeedSchool = CatalogSeedSource & {
@@ -259,6 +271,7 @@ export function validateCatalogSeedBundle(bundle: unknown): CatalogSeedValidatio
   validateEntities("programIntakes", programIntakes, ["programSlug", "intakeTerm", "sourceUrl", "sourceLabel"],
     CATALOG_SEED_ALLOWED_FIELDS.programIntakes, errors, "programSlug", ["open", "closed"], false);
   validateEntities("scholarships", scholarships, ["slug", "title", "sourceUrl", "sourceLabel"], CATALOG_SEED_ALLOWED_FIELDS.scholarships, errors);
+  validateRichCityFields(cities, errors, value.version === 2);
   validateRichCatalogFields(schools, programs, programIntakes, scholarships, errors);
   validateReferences({
     cities: cities.filter((item) => asRecord(item)),
@@ -279,6 +292,104 @@ export function validateCatalogSeedBundle(bundle: unknown): CatalogSeedValidatio
       scholarships: scholarships.length,
     },
   };
+}
+
+const cityContentAllowedFields = [
+  "summary", "overview", "bestFor", "quickFacts", "budgetSummary", "costProfiles", "why", "costBreakdown",
+  "lifeSections", "transportNotes", "applicationTips", "applicationAdvice", "relatedProgramKeywords", "nextSteps",
+  "faqs", "cityFaqs",
+] as const;
+
+function validateRichCityFields(cities: readonly CatalogSeedCity[], errors: string[], enforceActiveGate: boolean) {
+  cities.forEach((city, index) => {
+    const label = `cities[${index}]`;
+    validateOptionalTextFields(city, ["nameZh", "region", "province", "monthlyCost", "costLevel", "density"], label, errors);
+    validateOptionalTextArrays(city, ["tags", "nearby"], label, errors);
+    validateOptionalPositiveInteger(city.monthlyCostRmb, `${label}.monthlyCostRmb`, errors, true);
+    validateOptionalPositiveInteger(city.sortOrder, `${label}.sortOrder`, errors, true);
+    validateOptionalPositiveInteger(city.version, `${label}.version`, errors);
+    validateVerificationFields(city, label, errors);
+    if (city.nextReviewDueAt !== undefined) validateTimestamp(city.nextReviewDueAt, `${label}.nextReviewDueAt`, errors);
+    if (enforceActiveGate && city.status === "active" && city.verificationStatus !== "verified" && city.verificationStatus !== "stale") {
+      errors.push(`${label}.verificationStatus must be verified or stale when status is active.`);
+    }
+    if (enforceActiveGate && city.status === "active" && city.slug.startsWith("local-")) {
+      errors.push(`${label}.slug uses the reserved local- fixture namespace and cannot be active.`);
+    }
+
+    if (city.content === undefined) return;
+    const content = asRecord(city.content);
+    if (!content) {
+      errors.push(`${label}.content must be an object.`);
+      return;
+    }
+    validateAllowedFields(content, cityContentAllowedFields, `${label}.content`, errors);
+    validateOptionalTextFields(content, ["summary", "overview"], `${label}.content`, errors);
+    validateOptionalTextArrays(content, ["bestFor", "applicationTips", "relatedProgramKeywords"], `${label}.content`, errors);
+    validateCityFactArray(content.quickFacts, `${label}.content.quickFacts`, errors);
+    validateCityFactArray(content.costProfiles, `${label}.content.costProfiles`, errors);
+    validateCityFactArray(content.costBreakdown, `${label}.content.costBreakdown`, errors);
+    for (const field of ["why", "lifeSections", "transportNotes", "applicationAdvice", "nextSteps"]) {
+      validateCityNarrativeArray(content[field], `${label}.content.${field}`, errors);
+    }
+    for (const field of ["faqs", "cityFaqs"]) validateCityFaqArray(content[field], `${label}.content.${field}`, errors);
+    if (content.budgetSummary !== undefined && content.budgetSummary !== null) {
+      const budget = asRecord(content.budgetSummary);
+      if (!budget) errors.push(`${label}.content.budgetSummary must be an object.`);
+      else {
+        validateAllowedFields(budget, ["monthly", "yearly", "note"], `${label}.content.budgetSummary`, errors);
+        validateOptionalNullableTextFields(budget, ["monthly", "yearly", "note"], `${label}.content.budgetSummary`, errors);
+        if (![budget.monthly, budget.yearly, budget.note].some(value => typeof value === "string" && value.trim())) {
+          errors.push(`${label}.content.budgetSummary must include at least one non-empty field.`);
+        }
+      }
+    }
+  });
+}
+
+function validateCityFactArray(value: unknown, label: string, errors: string[]) {
+  if (value === undefined) return;
+  if (!Array.isArray(value)) {
+    errors.push(`${label} must be an array.`);
+    return;
+  }
+  value.forEach((item, index) => {
+    const record = asRecord(item);
+    const itemLabel = `${label}[${index}]`;
+    if (!record) {
+      errors.push(`${itemLabel} must be an object.`);
+      return;
+    }
+    validateAllowedFields(record, ["label", "value", "note"], itemLabel, errors);
+    requireString(record, "label", `${itemLabel}.label`, errors);
+    requireString(record, "value", `${itemLabel}.value`, errors);
+    validateOptionalNullableTextFields(record, ["note"], itemLabel, errors);
+  });
+}
+
+function validateCityNarrativeArray(value: unknown, label: string, errors: string[]) {
+  if (value === undefined) return;
+  if (!Array.isArray(value)) {
+    errors.push(`${label} must be an array.`);
+    return;
+  }
+  value.forEach((item, index) => {
+    if (typeof item === "string" && item.trim()) return;
+    const record = asRecord(item);
+    if (!record) {
+      errors.push(`${label}[${index}] must be a non-empty string or an object.`);
+      return;
+    }
+    validateAllowedFields(record, ["title", "label", "body", "note", "value"], `${label}[${index}]`, errors);
+    validateOptionalNullableTextFields(record, ["title", "label", "body", "note", "value"], `${label}[${index}]`, errors);
+    if (![record.title, record.label, record.body, record.note, record.value].some(value => typeof value === "string" && value.trim())) {
+      errors.push(`${label}[${index}] must include display text.`);
+    }
+  });
+}
+
+function validateCityFaqArray(value: unknown, label: string, errors: string[]) {
+  validateStructuredArray(value, label, ["question", "answer"], ["question", "answer"], ["question", "answer"], [], errors);
 }
 
 export function createCatalogMigrationValidationReport(bundle: unknown): CatalogMigrationValidationReport {
@@ -498,6 +609,16 @@ function validateOptionalTextFields(value: object, fields: readonly string[], la
   for (const field of fields) {
     if (record[field] !== undefined && (typeof record[field] !== "string" || !String(record[field]).trim())) {
       errors.push(`${label}.${field} must be a non-empty string when provided.`);
+    }
+  }
+}
+
+function validateOptionalNullableTextFields(value: object, fields: readonly string[], label: string, errors: string[]) {
+  const record = value as Record<string, unknown>;
+  for (const field of fields) {
+    if (record[field] !== undefined && record[field] !== null
+      && (typeof record[field] !== "string" || !String(record[field]).trim())) {
+      errors.push(`${label}.${field} must be null or a non-empty string when provided.`);
     }
   }
 }

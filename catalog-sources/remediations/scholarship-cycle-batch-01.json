@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "batchId": "scholarship-cycle-batch-01",
+  "reviewReference": "standing-authorized-zjut-scholarships-safe-new-batch-01-2f2ebd1b864e93ae603794f50a448dae0bc84997e9a01c9c8d881452156d77b8",
+  "publicationAuthorized": true,
+  "evidencePath": "catalog-sources/remediations/scholarship-cycle-batch-01.evidence.json",
+  "evidenceSha256": "bf3ec9970f65123bd33b06ed8ad6663cf674e85675d119fd90895bcb24b5b3e4",
+  "operations": [
+    {
+      "scholarshipSlug": "official-2027-spring-zjut-international-chinese-language-teachers-one-semester",
+      "expectedVersion": 1,
+      "expectedStatus": "active",
+      "expectedVerificationStatus": "verified",
+      "expectedDeadlineDate": "2026-10-20",
+      "expectedApplicationRound": "March 2027 intake",
+      "seriesKey": "zjut-international-chinese-language-teachers-one-semester",
+      "cycleKey": "spring-2027",
+      "intakeYear": 2027,
+      "intakeLabel": "March 2027 intake",
+      "supersedesScholarshipSlug": null,
+      "officialSourceUrl": "https://www.gjxy.zjut.edu.cn/index.php/en/scholarship/international-chinese-language-teachers-scholarship",
+      "officialSourceSha256": "6f06242f0d8209f8c145073606e0fffc3f9281db8e00f833c0ab323fa6e00c8d",
+      "capturedAt": "2026-09-14T08:25:42.267Z"
+    }
+  ]
+}

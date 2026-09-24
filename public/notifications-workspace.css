@@ -31,9 +31,9 @@ a { color: inherit; }
 .notifications-page { min-height: 100vh; }
 
 .notifications-main {
-  width: min(1120px, calc(100% - 48px));
+  width: min(var(--workspace-content-width), calc(100% - (var(--workspace-page-gutter) * 2)));
   margin: 0 auto;
-  padding: 38px 0 82px;
+  padding: var(--workspace-main-top) 0 var(--workspace-main-bottom);
 }
 
 .notifications-breadcrumb {
@@ -467,8 +467,8 @@ a:focus-visible {
 
 @media (max-width: 620px) {
   .notifications-main {
-    width: min(100% - 32px, 1120px);
-    padding-top: 26px;
+    width: min(100% - 32px, var(--workspace-content-width));
+    padding-top: 24px;
   }
 
   .notification-heading {

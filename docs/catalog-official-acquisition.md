@@ -11,6 +11,19 @@
 - CSCA.app 等第三方聚合站仅能人工用于发现线索，不能进入自动采集注册表。
 - HTML、PDF、XLS、XLSX 的单文件上限为 15 MiB。
 
+城市资料可以使用以下受控 `sourceRole`，并且必须填写 `citySlug`：
+
+- `city-statistics`
+- `city-public-transport`
+- `city-public-prices`
+- `city-student-cost`
+- `city-climate`
+- `city-international-services`
+- `city-health-services`
+- `city-student-guide`
+
+学校住宿资料使用 `school-accommodation`，并且必须填写 `schoolSlug`。城市来源只能证明其直接覆盖的城市事实；学校住宿来源只能证明对应学校、校区和适用学年的住宿事实。
+
 ## 运行
 
 先离线检查来源配置：

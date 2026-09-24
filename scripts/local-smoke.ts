@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { LOCAL_STATE_RELATIVE_PATH, assertLocalDevelopmentState, localSyntheticAccounts } from "./lib/local-development.ts";
 import { totpCode } from "../src/server/auth/mfa-crypto.ts";
+import { NOTIFICATION_TOPICS_BY_ROLE } from "../src/server/notifications/templates.ts";
 
 const projectDir = fileURLToPath(new URL("../", import.meta.url));
 const state = JSON.parse(await readFile(resolve(projectDir, LOCAL_STATE_RELATIVE_PATH), "utf8")) as unknown;
@@ -18,6 +19,9 @@ type ApiBody = {
   status?: string;
   database?: { reachable?: boolean };
   data?: unknown;
+  version?: string;
+  releaseScope?: string;
+  enabled?: unknown;
 };
 
 function record(value: unknown): Record<string, unknown> {
@@ -35,14 +39,25 @@ const localMfa = await loadLocalMfaState();
 const health = await json("/api/v1/health");
 if (!health.response.ok || health.body.status !== "ok" || health.body.database?.reachable !== true) throw new Error("Local health check failed.");
 
+const capabilities = await json("/api/v1/capabilities");
+const releaseCapabilities = record(capabilities.body.enabled);
+if (!capabilities.response.ok || capabilities.body.version !== "cuac.release-capabilities.v1"
+  || capabilities.body.releaseScope !== "school-handoff-v1"
+  || releaseCapabilities.applicationPlanning !== true || releaseCapabilities.schoolHandoff !== true) {
+  throw new Error("Local release capability check failed.");
+}
+
 const programs = await json("/api/v1/catalog/programs?limit=100");
 if (!programs.response.ok || !Array.isArray(programs.body.data) || programs.body.data.length < 3) throw new Error("Synthetic catalog API check failed.");
 
-const schools = await json("/api/v1/catalog/schools?limit=10&query=local%20north");
-const localSchool = Array.isArray(schools.body.data)
-  ? schools.body.data.map(record).find(school => school.slug === "local-north-university")
-  : undefined;
-if (!schools.response.ok || typeof localSchool?.id !== "string") throw new Error("Synthetic school catalog API check failed.");
+const schools = await json("/api/v1/catalog/schools?limit=10");
+if (!schools.response.ok || !Array.isArray(schools.body.data) || schools.body.data.length === 0
+  || schools.body.data.map(record).some(school => String(school.slug ?? "").startsWith("local-"))) {
+  throw new Error("Published school catalog API check failed or exposed a local fixture.");
+}
+// Local fixture identities are intentionally excluded from the public catalog.
+// The authenticated staff challenge below resolves its sole tenant from live
+// membership instead of trusting a browser-supplied or runtime-file school ID.
 
 const login = await json("/api/v1/auth/sessions", {
   method: "POST",
@@ -95,10 +110,15 @@ const preparationBase = `/api/v1/student/application-sets/${fixtureSet.id}/choic
 const materialSelection = await json(`${preparationBase}/material-selection`, { headers: { cookie } });
 const materialSelectionData = record(materialSelection.body.data);
 const materialVersions = record(materialSelectionData.currentVersions);
-if (!materialSelection.response.ok || materialSelectionData.mode !== "selection_draft"
-  || !Number.isSafeInteger(materialSelectionData.revision)
-  || !["applicationSet", "applicant", "education", "assessments"].every(key => Number.isSafeInteger(materialVersions[key]))) {
-  throw new Error("Synthetic material selection API check failed.");
+const officialMaterialSubmissionEnabled = releaseCapabilities.officialMaterialSubmission === true;
+if (officialMaterialSubmissionEnabled) {
+  if (!materialSelection.response.ok || materialSelectionData.mode !== "selection_draft"
+    || !Number.isSafeInteger(materialSelectionData.revision)
+    || !["applicationSet", "applicant", "education", "assessments"].every(key => Number.isSafeInteger(materialVersions[key]))) {
+    throw new Error("Synthetic material selection API check failed.");
+  }
+} else if (materialSelection.response.status !== 503) {
+  throw new Error("Disabled material selection capability did not fail closed.");
 }
 const applicationPreflight = await json(`${preparationBase}/preflight?locale=en`, { headers: { cookie } });
 const applicationPreflightData = record(applicationPreflight.body.data);
@@ -109,12 +129,16 @@ if (!applicationPreflight.response.ok || applicationPreflightData.applicationSet
   throw new Error("Synthetic application preflight API check failed.");
 }
 const materialAuthorization = await json(`${preparationBase}/submission-authorization`, { headers: { cookie } });
-if (!materialAuthorization.response.ok || !("data" in materialAuthorization.body)) {
+if (officialMaterialSubmissionEnabled && (!materialAuthorization.response.ok || !("data" in materialAuthorization.body))) {
   throw new Error("Synthetic material authorization API check failed.");
+} else if (!officialMaterialSubmissionEnabled && materialAuthorization.response.status !== 503) {
+  throw new Error("Disabled material authorization capability did not fail closed.");
 }
 const materialSnapshot = await json(`${preparationBase}/material-snapshot`, { headers: { cookie } });
-if (!materialSnapshot.response.ok || !("data" in materialSnapshot.body)) {
+if (officialMaterialSubmissionEnabled && (!materialSnapshot.response.ok || !("data" in materialSnapshot.body))) {
   throw new Error("Synthetic material snapshot API check failed.");
+} else if (!officialMaterialSubmissionEnabled && materialSnapshot.response.status !== 503) {
+  throw new Error("Disabled material snapshot capability did not fail closed.");
 }
 const feePreview = await json("/api/v1/billing/fee-preview", {
   method: "POST",
@@ -122,11 +146,16 @@ const feePreview = await json("/api/v1/billing/fee-preview", {
   body: JSON.stringify({ applicationSetId: fixtureSet.id, applicationChoiceIds: state.choiceIds.toSorted() }),
 });
 const feePreviewData = record(feePreview.body.data);
-if (!feePreview.response.ok || feePreviewData.applicationSetId !== fixtureSet.id
-  || feePreviewData.currency !== "CNY" || !Number.isSafeInteger(feePreviewData.totalMinor)
-  || Number(feePreviewData.totalMinor) <= 0 || !Array.isArray(feePreviewData.lines)
-  || feePreviewData.lines.length !== choices.length) {
-  throw new Error(`Synthetic application fee preview check failed: ${feePreview.response.status} ${JSON.stringify(feePreview.body)}`);
+const paymentEnabled = releaseCapabilities.payment === true;
+if (paymentEnabled) {
+  if (!feePreview.response.ok || feePreviewData.applicationSetId !== fixtureSet.id
+    || feePreviewData.currency !== "CNY" || !Number.isSafeInteger(feePreviewData.totalMinor)
+    || Number(feePreviewData.totalMinor) <= 0 || !Array.isArray(feePreviewData.lines)
+    || feePreviewData.lines.length !== choices.length) {
+    throw new Error(`Synthetic application fee preview check failed: ${feePreview.response.status} ${JSON.stringify(feePreview.body)}`);
+  }
+} else if (feePreview.response.status !== 503) {
+  throw new Error("Disabled payment capability did not fail closed.");
 }
 
 const notifications = await json("/api/v1/notifications?limit=10", { headers: { cookie } });
@@ -141,7 +170,9 @@ const preferenceItems = Array.isArray(record(preferences.body.data).preferences)
   ? (record(preferences.body.data).preferences as unknown[]).map(record)
   : [];
 const securityPreference = preferenceItems.find(item => item.topic === "account_security");
-if (!preferences.response.ok || preferenceItems.length !== 6
+const expectedStudentNotificationTopics = NOTIFICATION_TOPICS_BY_ROLE.student;
+if (!preferences.response.ok || preferenceItems.length !== expectedStudentNotificationTopics.length
+  || preferenceItems.some((item, index) => item.topic !== expectedStudentNotificationTopics[index])
   || securityPreference?.inAppEnabled !== true || securityPreference?.emailEnabled !== true) {
   throw new Error("Synthetic notification preference check failed.");
 }
@@ -226,7 +257,9 @@ const logout = await json("/api/v1/auth/logout", {
 if (!logout.response.ok) throw new Error("Synthetic student logout check failed.");
 
 const schoolLogin = await staffLogin({ email: accounts.school.email, password: accounts.school.password,
-  selectedSurface: "school_staff", schoolId: localSchool.id, expectedRole: "school_staff" });
+  expectedRole: "school_staff" });
+if (typeof schoolLogin.data.tenantSchoolId !== "string") throw new Error("Synthetic school tenant resolution failed.");
+const localSchool = { id: schoolLogin.data.tenantSchoolId };
 const schoolCookie = schoolLogin.cookie;
 await staffStepUp({ cookie: schoolCookie, password: accounts.school.password,
   account: schoolLogin.account, label: "school staff" });
@@ -266,9 +299,9 @@ if (!intakePublished.response.ok || intakePublishedData.status !== "published"
 }
 const publicIntakes = await json(`/api/v1/catalog/programs/${schoolIntakeProgram.id}/intakes?limit=100`);
 const publicIntakeItems = Array.isArray(publicIntakes.body.data) ? publicIntakes.body.data.map(record) : [];
-if (!publicIntakes.response.ok || !publicIntakeItems.some(item => item.intakeYear === smokeIntakeYear
-  && item.intakeTerm === smokeIntakeTerm && item.status === "upcoming")) {
-  throw new Error("Synthetic published school intake was not visible as an upcoming public intake.");
+if (!publicIntakes.response.ok || publicIntakeItems.some(item => item.intakeYear === smokeIntakeYear
+  && item.intakeTerm === smokeIntakeTerm)) {
+  throw new Error("Synthetic local-only school intake escaped into the public catalog.");
 }
 const intakeWithdrawn = await json(`/api/v1/school/catalog/intakes/${intakeDraftData.id}/withdraw`, {
   method: "POST", headers: { cookie: schoolCookie, origin },
@@ -286,7 +319,7 @@ if (!publicIntakesAfterWithdrawal.response.ok || publicIntakeItemsAfterWithdrawa
   .some(item => item.intakeYear === smokeIntakeYear && item.intakeTerm === smokeIntakeTerm)) {
   throw new Error("Synthetic withdrawn school intake remained visible in the public catalog.");
 }
-const schoolIntakeLifecycle = "draft_published_public_upcoming_withdrawn_hidden";
+const schoolIntakeLifecycle = "draft_published_local_tenant_publicly_quarantined_withdrawn_hidden";
 const schoolQueue = await json("/api/v1/school/applications", { headers: { cookie: schoolCookie } });
 const queueItems = Array.isArray(schoolQueue.body.data) ? schoolQueue.body.data.map(record) : [];
 const firstDraftChoice = choices.find(choice => choice.id === state.choiceIds[0]);
@@ -394,17 +427,20 @@ async function nextAcceptedMfaCounter(account: LocalMfaAccount) {
   }
 }
 
-async function staffLogin(input: { email: string; password: string; selectedSurface: "school_staff" | "cuac_internal";
+async function staffLogin(input: { email: string; password: string; selectedSurface?: "school_staff" | "cuac_internal";
   schoolId?: string; expectedRole: "school_staff" | "cuac_ops" | "cuac_admin" }) {
   const started = await json("/api/v1/auth/sessions", {
     method: "POST",
     headers: { "content-type": "application/json", origin },
     body: JSON.stringify({ email: input.email, password: input.password,
-      selectedSurface: input.selectedSurface, ...(input.schoolId ? { schoolId: input.schoolId } : {}) }),
+      ...(input.selectedSurface ? { selectedSurface: input.selectedSurface } : {}),
+      ...(input.schoolId ? { schoolId: input.schoolId } : {}) }),
   });
   const challenge = record(started.body.data);
   if (started.response.status !== 202 || challenge.mfaRequired !== true
-    || typeof challenge.challengeToken !== "string") throw new Error(`Synthetic ${input.expectedRole} MFA challenge failed.`);
+    || typeof challenge.challengeToken !== "string") {
+    throw new Error(`Synthetic ${input.expectedRole} MFA challenge failed: ${started.response.status} ${JSON.stringify(started.body)}`);
+  }
   let account = localMfa.accounts[input.email];
   if (challenge.enrollmentRequired === true) {
     const enrollment = await json("/api/v1/auth/mfa/enrollment", {
@@ -485,10 +521,11 @@ if (catalogCorrection.status === "claimed") {
 if (catalogCorrection.status !== "rejected" || catalogCorrection.resolutionCode !== "rejected_unverifiable") {
   throw new Error("Synthetic catalog correction final state check failed.");
 }
-const schoolAfterCorrection = await json(`/api/v1/catalog/schools/${localSchool.id}`);
-if (!schoolAfterCorrection.response.ok
-  || record(schoolAfterCorrection.body.data).applicationFee === correctionCandidateFee) {
-  throw new Error("Rejected synthetic catalog correction changed the public school record.");
+const schoolAfterCorrection = await json("/api/v1/school/catalog-corrections", { headers: { cookie: schoolCookie } });
+const schoolAfterCorrectionData = record(record(schoolAfterCorrection.body.data).school);
+if (!schoolAfterCorrection.response.ok || schoolAfterCorrectionData.id !== localSchool.id
+  || schoolAfterCorrectionData.applicationFee === correctionCandidateFee) {
+  throw new Error("Rejected synthetic catalog correction changed the tenant school record.");
 }
 const operations = await json("/api/v1/ops/operations/summary", { headers: { cookie: opsCookie } });
 const operationsData = record(operations.body.data);
@@ -533,10 +570,14 @@ const billingReviews = await json("/api/v1/ops/billing/provider-events?limit=10"
 const billingReviewData = record(billingReviews.body.data);
 const billingReviewItems = Array.isArray(billingReviewData.items) ? billingReviewData.items.map(record) : null;
 const billingReviewJson = JSON.stringify(billingReviews.body);
-if (!billingReviews.response.ok || billingReviewItems === null
-  || (billingReviewData.nextCursor !== null && typeof billingReviewData.nextCursor !== "string")
-  || /"(?:payloadSha256|providerPaymentId|providerCheckoutSessionId|assignedGrantId|resolvedByGrantId)"\s*:/.test(billingReviewJson)) {
-  throw new Error("Synthetic Ops billing review queue check failed.");
+if (paymentEnabled) {
+  if (!billingReviews.response.ok || billingReviewItems === null
+    || (billingReviewData.nextCursor !== null && typeof billingReviewData.nextCursor !== "string")
+    || /"(?:payloadSha256|providerPaymentId|providerCheckoutSessionId|assignedGrantId|resolvedByGrantId)"\s*:/.test(billingReviewJson)) {
+    throw new Error("Synthetic Ops billing review queue check failed.");
+  }
+} else if (billingReviews.response.status !== 503) {
+  throw new Error("Disabled Ops billing review capability did not fail closed.");
 }
 const routingReviews = await json("/api/v1/ops/routing/submissions?limit=10", {
   headers: { cookie: opsCookie },
@@ -544,10 +585,14 @@ const routingReviews = await json("/api/v1/ops/routing/submissions?limit=10", {
 const routingReviewData = record(routingReviews.body.data);
 const routingReviewItems = Array.isArray(routingReviewData.items) ? routingReviewData.items.map(record) : null;
 const routingReviewJson = JSON.stringify(routingReviews.body);
-if (!routingReviews.response.ok || routingReviewItems === null
-  || (routingReviewData.nextCursor !== null && typeof routingReviewData.nextCursor !== "string")
-  || /"(?:payloadSha256|providerName|providerReceiptId|studentUserId|cuacId|assignedGrantId|resolvedByGrantId)"\s*:/.test(routingReviewJson)) {
-  throw new Error("Synthetic Ops routing review queue check failed.");
+if (officialMaterialSubmissionEnabled) {
+  if (!routingReviews.response.ok || routingReviewItems === null
+    || (routingReviewData.nextCursor !== null && typeof routingReviewData.nextCursor !== "string")
+    || /"(?:payloadSha256|providerName|providerReceiptId|studentUserId|cuacId|assignedGrantId|resolvedByGrantId)"\s*:/.test(routingReviewJson)) {
+    throw new Error("Synthetic Ops routing review queue check failed.");
+  }
+} else if (routingReviews.response.status !== 503) {
+  throw new Error("Disabled Ops routing review capability did not fail closed.");
 }
 const dataQualityReviews = await json("/api/v1/ops/data-quality/catalog?limit=50", {
   headers: { cookie: opsCookie },
@@ -606,21 +651,24 @@ console.log(JSON.stringify({
   opsRequirementVersions: requirementVersionItems.length,
   opsCatalogGovernance: "read",
   opsGovernedGuides: governedGuideItems.length,
-  opsBillingReviewEvents: billingReviewItems.length,
-  opsBillingReviewQueue: "read",
-  opsRoutingReviewDeliveries: routingReviewItems.length,
-  opsRoutingReviewQueue: "read",
+  opsBillingReviewEvents: billingReviewItems?.length ?? 0,
+  opsBillingReviewQueue: paymentEnabled ? "read" : "disabled-fail-closed",
+  opsRoutingReviewDeliveries: routingReviewItems?.length ?? 0,
+  opsRoutingReviewQueue: officialMaterialSubmissionEnabled ? "read" : "disabled-fail-closed",
   opsDataQualityItems: dataQualityReviewItems.length,
   opsDataQualityQueue: "read",
   opsSupportSession: "opened_lookup_closed",
   applicationSetId: state.applicationSetId,
   applicationChoices: choices.length,
   sameSchoolIndependentPrograms: 2,
-  materialSelection: `revision-${materialSelectionData.revision}`,
+  releaseScope: capabilities.body.releaseScope,
+  materialSelection: officialMaterialSubmissionEnabled ? `revision-${materialSelectionData.revision}` : "disabled-fail-closed",
   applicationPreflight: "read",
-  materialAuthorization: materialAuthorization.body.data === null ? "not-created" : "read",
-  materialSnapshot: materialSnapshot.body.data === null ? "not-created" : "read",
-  applicationFeePreview: `${feePreviewData.currency}-${feePreviewData.totalMinor}`,
+  materialAuthorization: officialMaterialSubmissionEnabled
+    ? (materialAuthorization.body.data === null ? "not-created" : "read") : "disabled-fail-closed",
+  materialSnapshot: officialMaterialSubmissionEnabled
+    ? (materialSnapshot.body.data === null ? "not-created" : "read") : "disabled-fail-closed",
+  applicationFeePreview: paymentEnabled ? `${feePreviewData.currency}-${feePreviewData.totalMinor}` : "disabled-fail-closed",
   notificationItems: notificationItems.length,
   notificationPreferences: preferenceItems.length,
   savedItemLifecycle,

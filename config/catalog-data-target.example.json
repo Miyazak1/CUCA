@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "environment": "staging",
+  "databaseName": "REPLACE_WITH_STAGING_DATABASE_NAME",
+  "databaseUser": "REPLACE_WITH_STAGING_DATABASE_USER",
+  "databaseHost": "REPLACE_WITH_STAGING_DATABASE_HOST",
+  "tlsCertificateSha256": "REPLACE_WITH_64_CHARACTER_LOWERCASE_SHA256",
+  "confirmationTokenSha256": "REPLACE_WITH_64_CHARACTER_LOWERCASE_SHA256",
+  "readinessPlanSha256": "9fb9867cdd8a7d6149a607482f70b91818760e46b6374c09ae5588579ca69cfd",
+  "operationsSha256": "fa44d9bb0ab91d0386d857b2a0edc7c1236acbba4b2a0e9694fe40e910836844",
+  "preimageSha256": "4ae19a2f1851936092b8e6589870d5218bba57f7bee9d9ac5976c4481b3835cd",
+  "migrationMode": "non_public_draft_and_archive_only",
+  "publicationAuthorized": false
+}

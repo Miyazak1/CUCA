@@ -1,7 +1,14 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+
+type ManifestSource = { id: string; url: string; label: string; sha256: string; fetchedAt: string; status: number };
+type GraduateRoute = {
+  degree: "Master" | "Doctoral"; code: string; teachingLanguage: "Chinese" | "English";
+  schoolOrDepartment: string; nameEn: string; durationYears: number | string; durationText: string;
+  requirementsAndTips: string; sourceId: string; sourcePage: number; sourceRow: number;
+};
 
 const root = process.cwd();
 const parsedPath = resolve(root, "work/catalog-official/nju-complete-batch-02/parsed-graduate-routes.json");
@@ -12,9 +19,9 @@ const reviewPath = resolve(root, "seeds/catalog.nju-complete-batch-02.review.jso
 const sha256 = (value: string) => createHash("sha256").update(value).digest("hex");
 const parsedText = await readFile(parsedPath, "utf8");
 if (sha256(parsedText) !== "d7f59317f68cfdcddf1b6307f9c915e5467dcdbf9e1953f6b944e9626f1d0773") throw new Error("NJU parsed graduate routes changed after visual review.");
-const parsed = JSON.parse(parsedText);
+const parsed = JSON.parse(parsedText) as { counts: Record<string, number>; duplicateIdentities: unknown[]; suspiciousRows: unknown[]; routes: GraduateRoute[] };
 if (JSON.stringify(parsed.counts) !== JSON.stringify({ total: 202, master: 141, doctoral: 61, chinese: 193, english: 9 }) || parsed.duplicateIdentities.length || parsed.suspiciousRows.length) throw new Error(`Unexpected NJU extraction summary: ${JSON.stringify(parsed.counts)}`);
-const prior = JSON.parse(await readFile(priorPath, "utf8"));
+const prior = JSON.parse(await readFile(priorPath, "utf8")) as CatalogSeedBundle;
 if (prior.schools?.length !== 1 || prior.schools[0].slug !== "nanjing-university" || prior.programs?.length !== 59) throw new Error("Reviewed NJU dependency bundle is unavailable.");
 
 const manifests = await Promise.all(["work/catalog-official/nju-complete-batch-02/manifest.json", "work/catalog-official/nju-complete-batch-02-en/manifest.json"].map(path => readFile(resolve(root, path), "utf8").then(JSON.parse)));
@@ -27,16 +34,16 @@ const expected: Record<string, string> = {
   "nanjing-university-cgs-excellence-2026": "06e9aa6b1ab24e8cac8775e80c68000f63f28904b97806b2f0b446dcf8ead08d",
   "nanjing-university-nanjing-government-scholarship-2026": "b119ba3101ec1f4efa4b4540a2cc0815ed2b96d0cf9bf8579182b33a4ed125ac",
 };
-const evidence = new Map<string, any>();
+const evidence = new Map<string, ManifestSource>();
 for (const manifest of manifests) for (const source of manifest.sources ?? []) if (expected[source.id] === source.sha256 && source.status === 200) evidence.set(source.id, source);
 const missing = Object.keys(expected).filter(id => !evidence.has(id));
 if (missing.length) throw new Error(`Missing locked NJU evidence: ${missing.join(", ")}`);
 
 const slugify = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const routeIdentity = (route: any) => [route.degree, route.code, route.teachingLanguage, route.schoolOrDepartment, route.nameEn].join("|");
-const programSlug = (route: any) => { const verbose = slugify(["nanjing-university", route.degree, route.code, route.schoolOrDepartment, route.nameEn, route.teachingLanguage].join(" ")); return verbose.length <= 180 ? verbose : `${verbose.slice(0, 163).replace(/-+$/g, "")}-${sha256(routeIdentity(route)).slice(0, 16)}`; };
+const routeIdentity = (route: GraduateRoute) => [route.degree, route.code, route.teachingLanguage, route.schoolOrDepartment, route.nameEn].join("|");
+const programSlug = (route: GraduateRoute) => { const verbose = slugify(["nanjing-university", route.degree, route.code, route.schoolOrDepartment, route.nameEn, route.teachingLanguage].join(" ")); return verbose.length <= 180 ? verbose : `${verbose.slice(0, 163).replace(/-+$/g, "")}-${sha256(routeIdentity(route)).slice(0, 16)}`; };
 const publicNote = (value: string) => value.replace(/https?:\/\/\S+/gi, "").replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "").replace(/\+?86[\d\s-]{7,}/g, "").replace(/\s+/g, " ").trim();
-const programs = parsed.routes.map((route: any) => {
+const programs: CatalogSeedProgram[] = parsed.routes.map((route) => {
   const source = evidence.get(route.sourceId)!;
   const duration = Number(route.durationYears);
   const normalizedDuration = Number.isInteger(duration) ? { durationYears: duration } : { durationMonths: Math.round(duration * 12) };
@@ -55,7 +62,7 @@ const programs = parsed.routes.map((route: any) => {
   };
 });
 if (new Set(programs.map(row => row.slug)).size !== programs.length) throw new Error("NJU graduate program slugs are not unique.");
-const programIntakes = programs.map((program: any) => ({ programSlug: program.slug, intakeTerm: "Fall", intakeYear: 2026, deadlineDate: "2026-05-20T00:00:00.000Z", deadlineLabel: "Application deadline: May 20, 2026", applicationRound: "2026 international graduate intake", status: "closed" as const, sourceUrl: program.sourceUrl, sourceLabel: program.sourceLabel, sourceSha256: program.sourceSha256, capturedAt: program.capturedAt, sourceFieldLineage: { deadlineDate: "official master's/doctoral admissions page, Application Duration; date-only value normalized to ISO UTC" } }));
+const programIntakes = programs.map((program) => ({ programSlug: program.slug, intakeTerm: "Fall", intakeYear: 2026, deadlineDate: "2026-05-20T00:00:00.000Z", deadlineLabel: "Application deadline: May 20, 2026", applicationRound: "2026 international graduate intake", status: "closed" as const, sourceUrl: program.sourceUrl, sourceLabel: program.sourceLabel, sourceSha256: program.sourceSha256, capturedAt: program.capturedAt, sourceFieldLineage: { deadlineDate: "official master's/doctoral admissions page, Application Duration; date-only value normalized to ISO UTC" } }));
 
 const item = (label: string, value?: string) => ({ label, ...(value ? { value } : {}) });
 const benefit = (label: string, note?: string) => ({ label, included: true, ...(note ? { note } : {}) });
@@ -70,14 +77,14 @@ const scholarships: CatalogSeedScholarship[] = [
 ];
 
 const generatedAt = new Date().toISOString();
-const candidate: CatalogSeedBundle = { version: 1, generatedAt, cities: prior.cities.map((row: any) => ({ ...row })), schools: prior.schools.map((row: any) => ({ ...row })), programs, programIntakes, scholarships };
+const candidate: CatalogSeedBundle = { version: 1, generatedAt, cities: prior.cities.map((row) => ({ ...row })), schools: prior.schools.map((row) => ({ ...row })), programs, programIntakes, scholarships };
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
 const validation = createCatalogMigrationValidationReport(JSON.parse(candidateText));
 if (!validation.ok) throw new Error(`NJU complete candidate validation failed:\n${validation.errors.join("\n")}`);
 const candidateSha256 = sha256(candidateText);
-const reviewBase = { version: 1, status: "standing_user_approval", generatedAt, scope: { schoolSlug: "nanjing-university", dependencyCityReplayCount: prior.cities.length, dependencySchoolReplayCount: 1, existingUndergraduateRouteCount: 59, newProgramRouteCount: 202, masterRouteCount: 141, doctoralRouteCount: 61, newProgramIntakeCount: 202, newScholarshipCount: 3, archiveProgramAliasCount: 0, archiveScholarshipAliasCount: 0 }, candidateSha256, evidence: [...evidence.values()].map(source => ({ sourceId: source.id, sourceUrl: source.url, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt })).sort((a, b) => a.sourceId.localeCompare(b.sourceId)), visualReview: { result: "pass", masterPdfPagesReviewed: 14, doctoralPdfPagesReviewed: 6, note: "All 20 official catalog pages were rendered and visually inspected; codes, schools, majors, teaching language, duration and notes are readable." }, standingAuthorization: { reference: "user-chat-2026-09-13-default-publication", instruction: "发布默认允许", appliesBecause: "The batch adds only new non-conflicting graduate routes, intakes and distinct scholarship records. It archives and deletes nothing." }, reconciliation: { actionAfterReview: "insert_new_verified_nju_graduate_routes_and_three_scholarships", destructiveDeletion: false, existingDependencyRowsReplayedByteEquivalently: true, newProgramSlugConflicts: 0, existingGraduateSemanticConflicts: 0, newScholarshipSlugConflicts: 0 }, unresolvedFields: ["Program-specific tuition is linked to the official NJU schedule because the reviewed catalogs do not publish a row-level tuition value.", "Chinese and English admission thresholds are summarized from the official admissions guides and should be confirmed for exceptional routes."], sensitiveDataCheck: { result: "pass", scope: "candidate bundle only", note: "Only public institutional, program, admissions and scholarship data is included. Applicant data is absent and personal contact details are not republished." }, reviewNotes: ["Program identity includes degree, code, language, school and major.", "The verified 2026 NJU Silk Road scholarship remains untouched."] };
+const reviewBase = { version: 1, status: "unreviewed_draft", generatedAt, publicationAuthorized: false, databaseWriteAuthorized: false, scope: { schoolSlug: "nanjing-university", dependencyCityReplayCount: prior.cities.length, dependencySchoolReplayCount: 1, existingUndergraduateRouteCount: 59, newProgramRouteCount: 202, masterRouteCount: 141, doctoralRouteCount: 61, newProgramIntakeCount: 202, newScholarshipCount: 3, archiveProgramAliasCount: 0, archiveScholarshipAliasCount: 0 }, candidateSha256, evidence: [...evidence.values()].map(source => ({ sourceId: source.id, sourceUrl: source.url, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt })).sort((a, b) => a.sourceId.localeCompare(b.sourceId)), visualReview: { result: "pass", masterPdfPagesReviewed: 14, doctoralPdfPagesReviewed: 6, note: "All 20 official catalog pages were rendered and visually inspected; codes, schools, majors, teaching language, duration and notes are readable." }, reconciliation: { futureActionAfterReview: "insert_new_verified_nju_graduate_routes_and_three_scholarships", destructiveDeletion: false, existingDependencyRowsReplayedByteEquivalently: true, newProgramSlugConflicts: 0, existingGraduateSemanticConflicts: 0, newScholarshipSlugConflicts: 0 }, unresolvedFields: ["Program-specific tuition is linked to the official NJU schedule because the reviewed catalogs do not publish a row-level tuition value.", "Chinese and English admission thresholds are summarized from the official admissions guides and should be confirmed for exceptional routes."], sensitiveDataCheck: { result: "pass", scope: "candidate bundle only", note: "Only public institutional, program, admissions and scholarship data is included. Applicant data is absent and personal contact details are not republished." }, reviewNotes: ["Program identity includes degree, code, language, school and major.", "The verified 2026 NJU Silk Road scholarship remains untouched.", "No review, publication or database write is authorized by this draft ledger."] };
 const reviewHash = sha256(JSON.stringify(reviewBase));
-await writeFile(candidatePath, candidateText, { flag: "wx" });
-await writeFile(validationPath, `${JSON.stringify(validation, null, 2)}\n`, { flag: "wx" });
-await writeFile(reviewPath, `${JSON.stringify({ ...reviewBase, reviewHash, publicationReference: "standing-user-default-publication" }, null, 2)}\n`, { flag: "wx" });
+await writeFile(candidatePath, candidateText, "utf8");
+await writeFile(validationPath, `${JSON.stringify({ ...validation, candidateSha256, publicationAuthorized: false, databaseWriteAuthorized: false }, null, 2)}\n`, "utf8");
+await writeFile(reviewPath, `${JSON.stringify({ ...reviewBase, reviewHash }, null, 2)}\n`, "utf8");
 console.log(JSON.stringify({ ok: true, counts: reviewBase.scope, candidateSha256, bundleSha256: validation.bundleSha256, reviewHash, candidatePath, validationPath, reviewPath }, null, 2));

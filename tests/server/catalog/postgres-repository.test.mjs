@@ -80,6 +80,8 @@ test("PostgresCatalogRepository uses fixed public SQL for program lists", async 
   assert.doesNotMatch(calls[0].statement, /select\s+\*/i);
   assert.doesNotMatch(calls[0].statement, /source_note|quality_score|missing_fields|created_by_user_id|updated_by_user_id|tenant_settings|staff_memberships/i);
   assert.match(calls[0].statement, /where p\.status = 'active'/);
+  assert.match(calls[0].statement, /p\.verification_status in \('verified','stale'\)/);
+  assert.match(calls[0].statement, /coalesce\(p\.application_url,\s*case when s\.verification_status in \('verified','stale'\) then s\.admissions_url end/s);
   assert.match(calls[0].statement, /latest_intake\.deadline_date <= clock_timestamp\(\).*'expired'/s);
   assert.match(calls[0].statement, /pi\.deadline_date is null or pi\.deadline_date > clock_timestamp\(\)/);
   assert.match(calls[0].statement, /pi\.open_date is null or pi\.open_date <= clock_timestamp\(\)/);
@@ -90,6 +92,7 @@ test("PostgresCatalogRepository uses fixed public SQL for program lists", async 
   assert.deepEqual(calls[1].params, ["11111111-1111-4111-8111-111111111111"]);
   assert.match(calls[1].statement, /join schools s on s\.id = p\.school_id and s\.status = 'active'/);
   assert.match(calls[1].statement, /left join cities c on c\.id = coalesce\(p\.city_id, s\.city_id\)/);
+  assert.match(calls[1].statement, /p\.verification_status in \('verified','stale'\)/);
 });
 
 test("PostgresCatalogRepository keeps school list SQL tenant-safe", async () => {
@@ -107,9 +110,11 @@ test("PostgresCatalogRepository keeps school list SQL tenant-safe", async () => 
   assert.doesNotMatch(calls[0].statement, /select\s+\*/i);
   assert.doesNotMatch(calls[0].statement, /school_staff_memberships|school_applications|tenant_settings|contact_notes|fit_notes|quality_score|missing_fields|completeness_label|source_note/i);
   assert.match(calls[0].statement, /where s\.status = 'active'/);
+  assert.match(calls[0].statement, /s\.verification_status in \('verified','stale'\)/);
   assert.match(calls[0].statement, /lower\(trim\(p\.teaching_language\)\).*'english'.*'english-taught'.*'英文授课'/);
   assert.doesNotMatch(calls[0].statement, /'\[\]'::jsonb as "upcomingDeadlines"/);
   assert.match(calls[0].statement, /join program_intakes pi/);
+  assert.match(calls[0].statement, /p2\.verification_status in \('verified','stale'\)/);
 });
 
 test("PostgresCatalogRepository excludes scholarship contact data from public SQL", async () => {
@@ -179,4 +184,24 @@ test("PostgresCatalogRepository publishes guide cards without editorial search t
   assert.doesNotMatch(calls[0].statement, /search_terms\s+as|created_at|select\s+\*/i);
   assert.deepEqual(calls[1].params, ["visa-arrival"]);
   assert.match(calls[1].statement, /g\.slug = \$1 and g\.status = 'published'/);
+});
+
+test("PostgresCatalogRepository computes city coverage and enforces publication gates", async () => {
+  const calls = [];
+  const repository = new PostgresCatalogRepository({ async query(statement, params) { calls.push({ statement, params }); return []; } });
+  await repository.listCities({ query: "beijing", limit: 20, offset: 0 });
+  await repository.getCity("beijing");
+
+  for (const call of calls) {
+    assert.match(call.statement, /actualSchoolCount/);
+    assert.match(call.statement, /actualProgramCount/);
+    assert.match(call.statement, /actualEnglishProgramCount/);
+    assert.match(call.statement, /actualScholarshipCount/);
+    assert.match(call.statement, /actualCscaRequiredSchoolCount/);
+    assert.match(call.statement, /actualOpenIntakeCount/);
+    assert.match(call.statement, /verification_status in \('verified','stale'\)/);
+    assert.match(call.statement, /slug !~ '\^local-'/);
+    assert.match(call.statement, /exists \(select 1 from schools city_school/);
+    assert.doesNotMatch(call.statement, /select\s+\*/i);
+  }
 });

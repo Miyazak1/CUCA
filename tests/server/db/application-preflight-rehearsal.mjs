@@ -43,7 +43,7 @@ export async function runApplicationPreflightRehearsal(t, pool) {
 
   await t.test("preflight distinguishes same-school programs and cycles and rejects cross-student or wrong-parent targets", async () => {
     const f = await preflightFixture(pool), other = await preflightFixture(pool);
-    const program = (await pool.query("insert into programs (school_id, slug, name_en, degree_level, status) values ($1, $2, 'Second program', 'master', 'active') returning id", [f.catalog.schoolId, randomUUID()])).rows[0];
+    const program = (await pool.query("insert into programs (school_id, slug, name_en, degree_level, status, is_verified, verification_status) values ($1, $2, 'Second program', 'master', 'active', true, 'verified') returning id", [f.catalog.schoolId, randomUUID()])).rows[0];
     const intake = (await pool.query("insert into program_intakes (program_id, intake_term, intake_year) values ($1, 'fall', 2027) returning id", [program.id])).rows[0];
     const second = await f.student.addOwnApplicationChoice(f.context, { applicationSetId: f.set.id, schoolId: f.catalog.schoolId, programId: program.id, programIntakeId: intake.id }, { idempotencyKey: randomUUID() });
     assert.equal((await f.get()).target.programId, f.catalog.programId);
@@ -88,7 +88,7 @@ export async function runApplicationPreflightRehearsal(t, pool) {
     for (const [sql, params, code] of [["update application_sets set locked_at = now() where id = $1", [f.set.id], "APPLICATION_SET_NOT_EDITABLE"],
       ["update application_choices set status = 'unknown' where id = $1", [f.choice.id], "CHOICE_NOT_EDITABLE"],
       ["update programs set status = 'draft' where id = $1", [f.catalog.programId], "PROGRAM_UNAVAILABLE"],
-      ["update schools set status = 'inactive' where id = $1", [f.catalog.schoolId], "SCHOOL_UNAVAILABLE"]]) {
+      ["update schools set status = 'draft' where id = $1", [f.catalog.schoolId], "SCHOOL_UNAVAILABLE"]]) {
       await pool.query(sql, params); assert.ok((await f.get()).issues.includes(code));
     }
     await pool.query("update application_choices set removed_at = now() where id = $1", [f.choice.id]);

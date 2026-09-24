@@ -27,9 +27,9 @@
 }
 
 .hub-api-main {
-  width: min(1200px, calc(100% - 64px));
+  width: min(var(--workspace-content-width), calc(100% - (var(--workspace-page-gutter) * 2)));
   margin: 0 auto;
-  padding: 40px 0 72px;
+  padding: var(--workspace-main-top) 0 var(--workspace-main-bottom);
 }
 
 .hub-api-heading {
@@ -435,7 +435,7 @@
 
 @media (max-width: 620px) {
   .hub-api-main {
-    width: min(100% - 28px, 1200px);
+    width: min(100% - 32px, var(--workspace-content-width));
     padding: 24px 0 56px;
   }
 

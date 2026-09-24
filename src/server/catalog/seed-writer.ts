@@ -123,14 +123,29 @@ export class CatalogSeedWriter {
   private async upsertCity(city: NonNullable<CatalogSeedBundle["cities"]>[number]): Promise<string> {
     const rows = await this.client.query<{ id: string }>(
       `insert into cities (
-         slug, name_zh, name_en, region, province, status, source_url, source_label, source_field_lineage_json
-       ) values ($1, $2, $3, $4, $5, $6, $7, $8, $9::jsonb)
+         slug, name_zh, name_en, region, province, monthly_cost, monthly_cost_rmb, cost_level, density,
+         tags, content_json, nearby, sort_order, version, status, verification_status, last_verified_at,
+         next_review_due_at, source_url, source_label, source_field_lineage_json
+       ) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10::jsonb, $11::jsonb, $12::jsonb, $13, $14,
+         $15, $16, $17::timestamptz, $18::timestamptz, $19, $20, $21::jsonb)
        on conflict (slug) do update set
          name_zh = excluded.name_zh,
          name_en = excluded.name_en,
          region = excluded.region,
          province = excluded.province,
+         monthly_cost = excluded.monthly_cost,
+         monthly_cost_rmb = excluded.monthly_cost_rmb,
+         cost_level = excluded.cost_level,
+         density = excluded.density,
+         tags = excluded.tags,
+         content_json = excluded.content_json,
+         nearby = excluded.nearby,
+         sort_order = excluded.sort_order,
+         version = excluded.version,
          status = excluded.status,
+         verification_status = excluded.verification_status,
+         last_verified_at = excluded.last_verified_at,
+         next_review_due_at = excluded.next_review_due_at,
          source_url = excluded.source_url,
          source_label = excluded.source_label,
          source_field_lineage_json = excluded.source_field_lineage_json,
@@ -142,7 +157,19 @@ export class CatalogSeedWriter {
         city.nameEn,
         city.region ?? null,
         city.province ?? null,
+        city.monthlyCost ?? null,
+        city.monthlyCostRmb ?? null,
+        city.costLevel ?? null,
+        city.density ?? null,
+        JSON.stringify(city.tags ?? []),
+        JSON.stringify(city.content ?? {}),
+        JSON.stringify(city.nearby ?? []),
+        city.sortOrder ?? 0,
+        city.version ?? 1,
         city.status ?? "draft",
+        city.verificationStatus ?? "unverified",
+        city.lastVerifiedAt ?? null,
+        city.nextReviewDueAt ?? null,
         city.sourceUrl,
         city.sourceLabel,
         JSON.stringify(city.sourceFieldLineage ?? {}),

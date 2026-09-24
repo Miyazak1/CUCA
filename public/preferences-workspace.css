@@ -16,9 +16,9 @@
 }
 
 .preferences-api-main {
-  width: min(960px, calc(100% - 48px));
+  width: min(var(--workspace-content-width), calc(100% - (var(--workspace-page-gutter) * 2)));
   margin: 0 auto;
-  padding: 38px 0 82px;
+  padding: var(--workspace-main-top) 0 var(--workspace-main-bottom);
 }
 
 .preferences-breadcrumb {
@@ -435,8 +435,8 @@
 
 @media (max-width: 760px) {
   .preferences-api-main {
-    width: min(100% - 32px, 960px);
-    padding-top: 28px;
+    width: min(100% - 32px, var(--workspace-content-width));
+    padding-top: 24px;
   }
 
   .preferences-api-heading,
@@ -461,7 +461,7 @@
 
 @media (max-width: 520px) {
   .preferences-api-main {
-    width: min(100% - 24px, 960px);
+    width: min(100% - 24px, var(--workspace-content-width));
   }
 
   .preferences-api-heading .preferences-secondary {

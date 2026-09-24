@@ -13,11 +13,12 @@ import { checkMigrationSnapshots, readMigrationArtifactState,
 const migrationsFolder = fileURLToPath(new URL("../../../drizzle/pg", import.meta.url));
 
 async function installNonDeclarativeSchemaObjects(client) {
-  for (const file of ["0049_catalog_publication_revision.sql", "0050_published_guides.sql"]) {
+  for (const file of ["0049_catalog_publication_revision.sql", "0050_published_guides.sql",
+    "0077_orange_hitman.sql", "0078_productive_tyger_tiger.sql"]) {
     const sql = await readFile(join(migrationsFolder, file), "utf8");
     const statements = sql.split("--> statement-breakpoint").map(value => value.trim()).filter(Boolean);
     for (const statement of statements) {
-      if (/^CREATE (?:FUNCTION|TRIGGER)\b/i.test(statement)) await client.query(statement);
+      if (/^CREATE (?:OR REPLACE )?(?:FUNCTION|TRIGGER)\b/i.test(statement)) await client.query(statement);
     }
   }
 }

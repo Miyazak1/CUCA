@@ -80,6 +80,7 @@ function parseListOptions(request: Request) {
     upcomingDeadline: boolean("upcomingDeadline"),
     languageRequirement: url.searchParams.get("languageRequirement") ?? undefined,
     sort: url.searchParams.get("sort") ?? undefined,
+    availability: url.searchParams.get("availability") ?? undefined,
   };
 }
 

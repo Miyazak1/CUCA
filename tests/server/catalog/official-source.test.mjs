@@ -25,6 +25,25 @@ test("official source registry requires exact HTTPS public hosts", () => {
   assert.ok(errors.some((error) => error.includes("hostname is not in allowedHosts")));
 });
 
+test("official source registry scopes city and accommodation evidence", () => {
+  const citySource = {
+    id: "beijing-statistics-2025", label: "Beijing statistics", url: "https://tjj.beijing.gov.cn/yearbook",
+    allowedHosts: ["tjj.beijing.gov.cn"], sourceRole: "city-statistics", citySlug: "beijing",
+  };
+  assert.deepEqual(validateOfficialCatalogSourceRegistry({ version: 1, sources: [citySource] }), []);
+  for (const sourceRole of ["city-public-prices", "city-student-cost"]) {
+    assert.deepEqual(validateOfficialCatalogSourceRegistry({ version: 1, sources: [{ ...citySource, sourceRole }] }), []);
+  }
+  const cityErrors = validateOfficialCatalogSourceRegistry({ version: 1, sources: [{ ...citySource, citySlug: undefined }] });
+  assert.match(cityErrors.join("\n"), /citySlug is required/);
+
+  const accommodationErrors = validateOfficialCatalogSourceRegistry({
+    version: 1,
+    sources: [{ ...validSource, sourceRole: "school-accommodation", schoolSlug: undefined }],
+  });
+  assert.match(accommodationErrors.join("\n"), /schoolSlug is required/);
+});
+
 test("official source fetch follows only allowlisted redirects and hashes the snapshot", async () => {
   const calls = [];
   const snapshot = await fetchOfficialCatalogSource(validSource, {

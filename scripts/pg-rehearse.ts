@@ -1,7 +1,7 @@
 import { execFile, spawn } from "node:child_process";
 import assert from "node:assert/strict";
 import { randomBytes } from "node:crypto";
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { promisify } from "node:util";
 import { setTimeout as delay } from "node:timers/promises";
@@ -28,6 +28,9 @@ const withLinux = process.argv.includes("--linux");
 const routingReviewOnly = process.argv.includes("--routing-review");
 const dataQualityOnly = process.argv.includes("--data-quality");
 const retentionOnly = process.argv.includes("--retention");
+const catalogDataPlanOnly = process.argv.includes("--catalog-data-plan");
+const catalogReleaseCandidateOnly = process.argv.includes("--catalog-release-candidate");
+const catalogCityReleaseCandidateOnly = process.argv.includes("--catalog-city-release-candidate");
 const catalogSeedOptions = process.argv.slice(2).filter(arg => arg.startsWith("--catalog-seed="));
 const catalogSeedPath = catalogSeedOptions[0]
   ? resolve(projectDir, catalogSeedOptions[0].slice("--catalog-seed=".length))
@@ -37,6 +40,7 @@ const linuxControlNetwork = `${linuxNetwork}-control`;
 let linuxNetworkCreated = false;
 let linuxControlNetworkCreated = false;
 let stage = "arguments";
+let migrationReleaseSha256: string | undefined;
 
 async function docker(args: string[], env = process.env): Promise<string> {
   const result = await execFileAsync("docker", ["--host", dockerEndpoint, ...args], {
@@ -50,14 +54,17 @@ async function docker(args: string[], env = process.env): Promise<string> {
 }
 
 try {
-  if (process.argv.slice(2).some(arg => !["--http", "--linux", "--routing-review", "--data-quality", "--retention"].includes(arg)
+  if (process.argv.slice(2).some(arg => !["--http", "--linux", "--routing-review", "--data-quality", "--retention", "--catalog-data-plan", "--catalog-release-candidate", "--catalog-city-release-candidate"].includes(arg)
       && !/^--write-schema-baseline(?:=[1-9]\d*)?$/.test(arg) && !/^--catalog-seed=.+/.test(arg))
     || catalogSeedOptions.length > 1
     || withLinux && (withHttp || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly)
     || routingReviewOnly && (withHttp || writeSchemaBaseline || dataQualityOnly || retentionOnly)
     || dataQualityOnly && (withHttp || writeSchemaBaseline || retentionOnly)
-    || retentionOnly && (withHttp || writeSchemaBaseline)
-    || catalogSeedPath && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly)) throw new Error("Unknown or incompatible rehearsal options.");
+    || retentionOnly && (withHttp || writeSchemaBaseline || catalogDataPlanOnly)
+    || catalogDataPlanOnly && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogReleaseCandidateOnly || catalogCityReleaseCandidateOnly || Boolean(catalogSeedPath))
+    || catalogReleaseCandidateOnly && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogDataPlanOnly || catalogCityReleaseCandidateOnly || Boolean(catalogSeedPath))
+    || catalogCityReleaseCandidateOnly && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogDataPlanOnly || catalogReleaseCandidateOnly || Boolean(catalogSeedPath))
+    || catalogSeedPath && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogDataPlanOnly || catalogReleaseCandidateOnly || catalogCityReleaseCandidateOnly)) throw new Error("Unknown or incompatible rehearsal options.");
   if (catalogSeedPath) {
     stage = "catalog-bundle-validation";
     const bundle = JSON.parse(await readFile(catalogSeedPath, "utf8")) as unknown;
@@ -67,6 +74,7 @@ try {
   }
   stage = "release-build";
   const release = await buildMigrationRelease(projectDir);
+  migrationReleaseSha256 = release.manifestSha256;
   console.log(`Prepared migration release: ${release.manifestSha256}`);
   stage = "linux-image-build";
   const linuxImage = withLinux ? await buildLinuxMigrationImage(projectDir, release, suffix, docker) : undefined;
@@ -128,6 +136,9 @@ try {
       : routingReviewOnly ? "tests/server/db/ops-routing-review-integration.test.mjs"
       : dataQualityOnly ? "tests/server/db/ops-data-quality-integration.test.mjs"
       : retentionOnly ? "tests/server/db/retention-integration.test.mjs"
+      : catalogDataPlanOnly ? "tests/server/db/catalog-data-plan-rehearsal.mjs"
+      : catalogReleaseCandidateOnly ? "tests/server/db/catalog-data-release-candidate-rehearsal.mjs"
+      : catalogCityReleaseCandidateOnly ? "tests/server/db/catalog-city-release-candidate-rehearsal.mjs"
       : catalogSeedPath ? "tests/server/db/catalog-seed-migration-rehearsal.mjs"
       : "tests/server/db/postgres-integration.test.mjs";
     const child = spawn(process.execPath, ["--test", testFile], {
@@ -144,6 +155,9 @@ try {
         CUAC_PG_WRITE_SCHEMA_BASELINE: writeSchemaBaseline ? "1" : "0",
         CUAC_PG_SCHEMA_BASELINE_PENDING_COUNT: baselinePendingCount,
         CUAC_PG_CATALOG_SEED_PATH: catalogSeedPath || "",
+        CUAC_PG_CATALOG_DATA_PLAN: catalogDataPlanOnly ? "1" : "0",
+        CUAC_PG_CATALOG_RELEASE_CANDIDATE: catalogReleaseCandidateOnly ? "1" : "0",
+        CUAC_PG_CATALOG_CITY_RELEASE_CANDIDATE: catalogCityReleaseCandidateOnly ? "1" : "0",
         CUAC_PG_RELEASE_PATH: release.output,
         CUAC_PG_RELEASE_SHA256: release.manifestSha256,
         ...(linuxImage ? {
@@ -197,10 +211,109 @@ try {
         process.exitCode = 1;
       } else {
         await docker(["rm", "--force", containerName]);
+        containerCreated = false;
         console.log("Disposable PostgreSQL container and memory-only data removed.");
       }
     } catch {
       console.error(`Cleanup failed for ${containerName}; inspect its cuac.rehearsal label before removing it.`);
+      process.exitCode = 1;
+    }
+  }
+  if (catalogDataPlanOnly && !containerCreated && process.exitCode === 0 && migrationReleaseSha256) {
+    try {
+      const readiness = JSON.parse(await readFile(resolve(projectDir, "work/catalog-quality/catalog-data-migration-readiness.draft.json"), "utf8"));
+      const resultPath = resolve(projectDir, "work/catalog-quality/catalog-data-migration-rehearsal.json");
+      await writeFile(resultPath, `${JSON.stringify({
+        version: 1,
+        generatedAt: new Date().toISOString(),
+        status: "passed_non_authorizing_rehearsal",
+        executionAuthorized: false,
+        publicationAuthorized: false,
+        databaseWriteAuthorized: false,
+        planSha256: readiness.planSha256,
+        migrationReleaseSha256,
+        summary: readiness.summary,
+        result: {
+          ownedDisposablePostgres: true,
+          loopbackOnly: true,
+          memoryOnlyData: true,
+          serializableTransaction: true,
+          fullPlanFirstPassChanges: readiness.summary.firstPassLogicalChanges,
+          fullPlanSecondPassChanges: 0,
+          rollbackRestoredOriginalHash: true,
+          ownedContainerRemoved: true,
+        },
+      }, null, 2)}\n`, "utf8");
+      console.log(`Catalog data-plan rehearsal evidence written: ${resultPath}`);
+    } catch {
+      console.error("Catalog data-plan rehearsal evidence could not be written.");
+      process.exitCode = 1;
+    }
+  }
+  if (catalogReleaseCandidateOnly && !containerCreated && process.exitCode === 0 && migrationReleaseSha256) {
+    try {
+      const candidate = JSON.parse(await readFile(resolve(projectDir, "work/catalog-quality/catalog-data-release-candidate.json"), "utf8"));
+      const resultPath = resolve(projectDir, "work/catalog-quality/catalog-data-release-candidate-rehearsal.json");
+      await writeFile(resultPath, `${JSON.stringify({
+        version: 1,
+        generatedAt: new Date().toISOString(),
+        status: "passed_non_authorizing_actual_schema_rehearsal",
+        executionAuthorized: false,
+        publicationAuthorized: false,
+        databaseWriteAuthorized: false,
+        readinessPlanSha256: candidate.readinessPlanSha256,
+        migrationReleaseSha256,
+        hashes: candidate.hashes,
+        summary: candidate.summary,
+        result: {
+          ownedDisposablePostgres: true,
+          loopbackOnly: true,
+          memoryOnlyData: true,
+          actualCatalogSchema: true,
+          serializableTransaction: true,
+          firstPassChanges: candidate.summary.expectedFirstPassChanges,
+          secondPassChanges: 0,
+          publicEligibleProhibitedSources: 0,
+          rollbackRestoredOriginalHash: true,
+          ownedContainerRemoved: true,
+        },
+      }, null, 2)}\n`, "utf8");
+      console.log(`Catalog release-candidate rehearsal evidence written: ${resultPath}`);
+    } catch {
+      console.error("Catalog release-candidate rehearsal evidence could not be written.");
+      process.exitCode = 1;
+    }
+  }
+  if (catalogCityReleaseCandidateOnly && !containerCreated && process.exitCode === 0 && migrationReleaseSha256) {
+    try {
+      const candidate = JSON.parse(await readFile(resolve(projectDir, "work/city-data/catalog-city-release-candidate.json"), "utf8"));
+      const resultPath = resolve(projectDir, "work/city-data/catalog-city-release-candidate-rehearsal.json");
+      await writeFile(resultPath, `${JSON.stringify({
+        version: 1,
+        generatedAt: new Date().toISOString(),
+        status: "passed_non_authorizing_actual_schema_rehearsal",
+        executionAuthorized: false,
+        publicationAuthorized: false,
+        databaseWriteAuthorized: false,
+        migrationReleaseSha256,
+        hashes: candidate.hashes,
+        summary: candidate.summary,
+        result: {
+          ownedDisposablePostgres: true,
+          loopbackOnly: true,
+          memoryOnlyData: true,
+          actualCatalogSchema: true,
+          serializableTransaction: true,
+          secondPassChanges: 0,
+          draftPublicResults: 0,
+          hypotheticalPublicQueryResults: candidate.summary.candidateCities,
+          rollbackRestoredOriginalHash: true,
+          ownedContainerRemoved: true,
+        },
+      }, null, 2)}\n`, "utf8");
+      console.log(`Catalog city release-candidate rehearsal evidence written: ${resultPath}`);
+    } catch {
+      console.error("Catalog city release-candidate rehearsal evidence could not be written.");
       process.exitCode = 1;
     }
   }

@@ -88,7 +88,7 @@ export async function runAuditAtomicityRehearsal(t, pool) {
     });
 
     const student = await account();
-    const schoolId = (await pool.query("select id from schools where status = 'active' limit 1")).rows[0].id;
+    const schoolId = (await pool.query("select id from schools where status = 'active' and verification_status in ('verified','stale') limit 1")).rows[0].id;
     const set = await students.createOwnApplicationSet(context(student), { name: "Audit fixture" });
     await students.updateOwnProfile(context(student), { displayName: "Before audit failure" });
     await students.saveOwnItem(context(student), { entityType: "school", entityId: schoolId, notes: "Original notes" });

@@ -202,3 +202,52 @@ test("verified school and program seeds require a valid verification timestamp",
   assert.match(result.errors.join("\n"), /schools\[0\]\.lastVerifiedAt is required/);
   assert.match(result.errors.join("\n"), /programs\[0\]\.lastVerifiedAt is required/);
 });
+
+test("city v2 contract accepts reviewed rich content and blocks active unreviewed cities", () => {
+  const handoff = {
+    sourceSystem: "Official city evidence",
+    cleanedExportName: "beijing-city-v2.json",
+    cleanedExportSha256: "a".repeat(64),
+    sourceSchemaSha256: "b".repeat(64),
+    reviewReference: "city-review-2026-09-22",
+    prohibitedDataReviewReference: "city-pii-review-2026-09-22",
+    approvalRecordedAt: "2026-09-22T00:00:00.000Z",
+    sourceReadOnly: true,
+    prohibitedDataConfirmedExcluded: true,
+  };
+  const city = {
+    slug: "beijing", nameEn: "Beijing", nameZh: "北京", region: "North China", province: "Beijing",
+    monthlyCost: "CUAC estimate: CNY 4,000-7,000", monthlyCostRmb: 5500, costLevel: "high", density: "large",
+    tags: ["research"], nearby: ["tianjin"], sortOrder: 1, version: 2, status: "active",
+    verificationStatus: "verified", lastVerifiedAt: "2026-09-22T00:00:00.000Z",
+    nextReviewDueAt: "2027-03-22T00:00:00.000Z",
+    content: {
+      summary: "A reviewed city summary.", overview: "A reviewed study overview.", bestFor: ["Research"],
+      quickFacts: [{ label: "Subway", value: "Distance based", note: "Check current fares" }],
+      budgetSummary: { monthly: "CNY 4,000-7,000", yearly: null, note: "CUAC estimate" },
+      costProfiles: [{ label: "On campus", value: "CNY 4,000-5,500" }],
+      why: [{ title: "Range", body: "Many study routes" }], costBreakdown: [],
+      lifeSections: ["Confirm the campus location."], transportNotes: ["Use official fare information."],
+      applicationTips: ["Check the exact intake"], applicationAdvice: [], relatedProgramKeywords: ["engineering"],
+      nextSteps: [], faqs: [{ question: "Is this official?", answer: "Sources are listed by field." }], cityFaqs: [],
+    },
+    sourceUrl: "https://official.example/beijing", sourceLabel: "Official Beijing source",
+    sourceFieldLineage: { nameEn: "official heading", content: "reviewed city sections" },
+  };
+  const accepted = validateCatalogSeedBundle({ version: 2, generatedAt: "2026-09-22T00:00:00.000Z", handoff, cities: [city] });
+  assert.equal(accepted.ok, true, accepted.errors.join("\n"));
+
+  const rejected = validateCatalogSeedBundle({
+    version: 2, generatedAt: "2026-09-22T00:00:00.000Z", handoff,
+    cities: [{ ...city, verificationStatus: "unverified", lastVerifiedAt: undefined }],
+  });
+  assert.equal(rejected.ok, false);
+  assert.match(rejected.errors.join("\n"), /must be verified or stale when status is active/);
+
+  const fixtureRejected = validateCatalogSeedBundle({
+    version: 2, generatedAt: "2026-09-22T00:00:00.000Z", handoff,
+    cities: [{ ...city, slug: "local-beijing-fixture" }],
+  });
+  assert.equal(fixtureRejected.ok, false);
+  assert.match(fixtureRejected.errors.join("\n"), /reserved local- fixture namespace/);
+});

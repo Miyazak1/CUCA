@@ -55,20 +55,32 @@ async function main() {
     }
   });
 
-  await step("every configured choice resolves its exact published program and intake", async () => {
+  await step("every configured choice resolves publicly or remains as a bounded historical reference", async () => {
     const configuredSet = applicationSets.find((set) => set.id === runtime.applicationSetId);
     const choices = records(configuredSet?.choices);
     if (choices.length !== runtime.choiceIds.length) throw new Error(`Expected ${runtime.choiceIds.length} configured choices, received ${choices.length}.`);
+    let published = 0;
+    let retained = 0;
     for (const choice of choices) {
       const [programResult, intakeResult] = await Promise.all([
         request(`/api/v1/catalog/programs/${encodeURIComponent(choice.programId)}`),
         request(`/api/v1/catalog/programs/${encodeURIComponent(choice.programId)}/intakes?limit=100`),
       ]);
-      if (!programResult.response.ok || programResult.body?.data?.id !== choice.programId) throw new Error(`Program ${choice.programId} is not available through its exact detail route.`);
-      if (!intakeResult.response.ok || !records(intakeResult.body?.data).some((intake) => intake.id === choice.programIntakeId)) {
-        throw new Error(`Intake ${choice.programIntakeId} is not available for program ${choice.programId}.`);
+      if (programResult.response.ok && programResult.body?.data?.id === choice.programId) {
+        if (!intakeResult.response.ok || !records(intakeResult.body?.data).some((intake) => intake.id === choice.programIntakeId)) {
+          throw new Error(`Published intake ${choice.programIntakeId} is not available for program ${choice.programId}.`);
+        }
+        published += 1;
+      } else if ((programResult.response.ok && programResult.body?.data == null) || programResult.response.status === 404) {
+        if (!intakeResult.response.ok || records(intakeResult.body?.data).length !== 0) {
+          throw new Error(`Unpublished program ${choice.programId} exposed an inconsistent intake projection.`);
+        }
+        retained += 1;
+      } else {
+        throw new Error(`Program ${choice.programId} detail lookup failed with ${programResult.response.status}.`);
       }
     }
+    process.stdout.write(`(${published} published; ${retained} retained unpublished) `);
   });
 
   await step("completed handoff exposes one bounded school progress record per choice", async () => {

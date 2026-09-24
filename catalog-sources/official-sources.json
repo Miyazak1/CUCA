@@ -1046,6 +1046,56 @@
       "schoolSlug": "dalian-university-of-technology"
     },
     {
+      "id": "dut-undergraduate-english-program-catalog-rar-2026",
+      "label": "DUT 2026 English-taught undergraduate program catalog attachment",
+      "url": "https://sie.dlut.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1894224773&wbfileid=267F86DB813E101075FB651ED572F52A",
+      "allowedHosts": [
+        "sie.dlut.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "dalian-university-of-technology"
+    },
+    {
+      "id": "dut-master-chinese-program-catalog-pdf-2026",
+      "label": "DUT 2026 Chinese-taught master program catalog attachment",
+      "url": "https://sie.dlut.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1894224773&wbfileid=48879A1FC036329877A44C14D003A195",
+      "allowedHosts": [
+        "sie.dlut.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "dalian-university-of-technology"
+    },
+    {
+      "id": "dut-master-english-program-catalog-pdf-2026",
+      "label": "DUT 2026 English-taught master program catalog attachment",
+      "url": "https://sie.dlut.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1894224773&wbfileid=193386BCBD1E7C5AF840F3E479CE57D1",
+      "allowedHosts": [
+        "sie.dlut.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "dalian-university-of-technology"
+    },
+    {
+      "id": "dut-doctoral-chinese-program-catalog-pdf-2026",
+      "label": "DUT 2026 Chinese-taught doctoral program catalog attachment",
+      "url": "https://sie.dlut.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1894224773&wbfileid=5CB44B769BADA102E2F0C907EB07C64E",
+      "allowedHosts": [
+        "sie.dlut.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "dalian-university-of-technology"
+    },
+    {
+      "id": "dut-doctoral-english-program-catalog-pdf-2026",
+      "label": "DUT 2026 English-taught doctoral program catalog attachment",
+      "url": "https://sie.dlut.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1894224773&wbfileid=49CB1F08690ADE37B0AD1316EF50EBEC",
+      "allowedHosts": [
+        "sie.dlut.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "dalian-university-of-technology"
+    },
+    {
       "id": "dut-cgs-type-a-scholarship-2026",
       "label": "DUT 2026 Chinese Government Scholarship Type A Bilateral Program",
       "url": "https://sie.dlut.edu.cn/info/1024/3042.htm",
@@ -2149,6 +2199,26 @@
         "sie.xjtu.edu.cn"
       ],
       "sourceRole": "program-catalog",
+      "schoolSlug": "xi-an-jiaotong-university"
+    },
+    {
+      "id": "xjtu-undergraduate-program-csca-table-2026",
+      "label": "Xi'an Jiaotong University 2026 International Undergraduate Program List and CSCA Subjects",
+      "url": "https://sie.xjtu.edu.cn/CS2026.xlsx",
+      "allowedHosts": [
+        "sie.xjtu.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "xi-an-jiaotong-university"
+    },
+    {
+      "id": "xjtu-medical-undergraduate-guide-2026",
+      "label": "Xi'an Jiaotong University 2026 Medical Education for International Undergraduate Students",
+      "url": "https://sie.xjtu.edu.cn/YXBK.pdf",
+      "allowedHosts": [
+        "sie.xjtu.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
       "schoolSlug": "xi-an-jiaotong-university"
     },
     {
@@ -5932,6 +6002,1346 @@
   "allowedHosts": ["english.dhu.edu.cn"],
   "sourceRole": "scholarship",
   "schoolSlug": "donghua-university"
+},
+{
+  "id": "beijing-statistical-publications-index",
+  "label": "Beijing Municipal Bureau of Statistics publications index",
+  "url": "https://tjj.beijing.gov.cn/tjsj_31433/tjsk_31457/",
+  "allowedHosts": ["tjj.beijing.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-statistical-communique-2025",
+  "label": "Beijing 2025 statistical communique",
+  "url": "https://tjj.beijing.gov.cn/zxfbu/202603/t20260324_4564401.html",
+  "allowedHosts": ["tjj.beijing.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-international-study-portal",
+  "label": "Beijing official international study portal",
+  "url": "https://english.beijing.gov.cn/studyinginbeijing/",
+  "allowedHosts": ["english.beijing.gov.cn"],
+  "sourceRole": "city-international-services",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-international-living-portal",
+  "label": "Beijing official international living portal",
+  "url": "https://english.beijing.gov.cn/livinginbeijing/",
+  "allowedHosts": ["english.beijing.gov.cn"],
+  "sourceRole": "city-international-services",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-foreign-student-arrival-guide",
+  "label": "Beijing official foreign student arrival guide",
+  "url": "https://english.beijing.gov.cn/studyinginbeijing/tips/202111/t20211119_2540585.html",
+  "allowedHosts": ["english.beijing.gov.cn"],
+  "sourceRole": "city-student-guide",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-medical-guide-for-foreigners",
+  "label": "Beijing official medical guide for foreigners",
+  "url": "https://english.beijing.gov.cn/quickguideservices/medicalguide/",
+  "allowedHosts": ["english.beijing.gov.cn"],
+  "sourceRole": "city-health-services",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-public-price-index",
+  "label": "Beijing official public prices and fees index",
+  "url": "https://www.beijing.gov.cn/fwcj/jiage/index.html",
+  "allowedHosts": ["www.beijing.gov.cn"],
+  "sourceRole": "city-public-transport",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-subway-fares-2025",
+  "label": "Beijing official subway fare explanation",
+  "url": "https://english.beijing.gov.cn/specials/beijinglifeonthesubway/noticeforpassengers/202504/t20250423_4072294.html",
+  "allowedHosts": ["english.beijing.gov.cn"],
+  "sourceRole": "city-public-transport",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-public-transport-prices",
+  "label": "Beijing official public transport price table",
+  "url": "https://www.beijing.gov.cn/fwcj/jiage/jtfw1/65c1e87611a82834a8639630.html",
+  "allowedHosts": ["www.beijing.gov.cn"],
+  "sourceRole": "city-public-transport",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-higher-education-accommodation-price-standard",
+  "label": "Beijing official higher-education accommodation price standard",
+  "url": "https://www.beijing.gov.cn/fwcj/jiage/jiaoiyufuwu1/65c1d87811a82834a863960c.html",
+  "allowedHosts": ["www.beijing.gov.cn"],
+  "sourceRole": "city-public-prices",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-pku-student-cost-reference",
+  "label": "Peking University reference costs of living and accommodation in Beijing",
+  "url": "https://www.isd.pku.edu.cn/en/detail.php?id=534",
+  "allowedHosts": ["www.isd.pku.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "peking-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-bnu-student-cost-reference",
+  "label": "Beijing Normal University international student fees and living-cost reference",
+  "url": "https://iso.bnu.edu.cn/cn/pages?cid=427",
+  "allowedHosts": ["iso.bnu.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "beijing-normal-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "beijing-bit-student-cost-2026",
+  "label": "Beijing Institute of Technology 2026 undergraduate accommodation and fees",
+  "url": "https://isc.bit.edu.cn/aboutbit/faq/b112085.htm",
+  "allowedHosts": ["isc.bit.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "beijing-institute-of-technology",
+  "citySlug": "beijing"
+},
+{
+  "id": "wuhan-statistical-communique-2025",
+  "label": "Wuhan 2025 statistical communique",
+  "url": "https://tjj.wuhan.gov.cn/tjfw/tjgb/202604/t20260408_2750693.shtml",
+  "allowedHosts": ["tjj.wuhan.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "wuhan"
+},
+{
+  "id": "wuhan-international-services-portal",
+  "label": "Wuhan official international resident portal",
+  "url": "https://english.wuhan.gov.cn/",
+  "allowedHosts": ["english.wuhan.gov.cn"],
+  "sourceRole": "city-international-services",
+  "citySlug": "wuhan"
+},
+{
+  "id": "wuhan-foreign-residence-guide",
+  "label": "Wuhan official foreign residence permit guide",
+  "url": "https://english.wuhan.gov.cn/procedures4for4entry4exit44residence/4residence4procedures/202110/t20211026_1819469.shtml",
+  "allowedHosts": ["english.wuhan.gov.cn"],
+  "sourceRole": "city-student-guide",
+  "citySlug": "wuhan"
+},
+{
+  "id": "wuhan-metro-fares",
+  "label": "Wuhan official metro fare schedule",
+  "url": "https://fgw.wuhan.gov.cn/xwzx/fgyw/202001/t20200115_860695.html",
+  "allowedHosts": ["fgw.wuhan.gov.cn"],
+  "sourceRole": "city-public-transport",
+  "citySlug": "wuhan"
+},
+{
+  "id": "shanghai-statistical-communique-2025",
+  "label": "Shanghai 2025 statistical communique",
+  "url": "https://tjj.sh.gov.cn/tjgb/20260330/e0772941e8e041eaaad2df850b44ef98.html",
+  "allowedHosts": ["tjj.sh.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "shanghai"
+},
+{
+  "id": "shanghai-international-study-portal",
+  "label": "Shanghai official international study portal",
+  "url": "https://english.shanghai.gov.cn/en-StudyinShanghai/index.html",
+  "allowedHosts": ["english.shanghai.gov.cn"],
+  "sourceRole": "city-international-services",
+  "citySlug": "shanghai"
+},
+{
+  "id": "shanghai-student-residence-guide-2025",
+  "label": "Shanghai official international-student residence permit guide",
+  "url": "https://english.shanghai.gov.cn/en-FAQs-StudyinShanghai/20250828/4aa4af7d361b4e39b0499362890c5b03.html",
+  "allowedHosts": ["english.shanghai.gov.cn"],
+  "sourceRole": "city-student-guide",
+  "citySlug": "shanghai"
+},
+{
+  "id": "shanghai-public-transport-fares-2026",
+  "label": "Shanghai official public transport and fare guide",
+  "url": "https://english.shanghai.gov.cn/en-Transportation/20240102/44f499a17b324b25996f2d58fcbf5f23.html",
+  "allowedHosts": ["english.shanghai.gov.cn"],
+  "sourceRole": "city-public-transport",
+  "citySlug": "shanghai"
+},
+{
+  "id": "nanjing-statistical-communique-2025",
+  "label": "Nanjing 2025 statistical communique",
+  "url": "https://tjj.nanjing.gov.cn/bmfw/njsj/202604/t20260403_5818444.html",
+  "allowedHosts": ["tjj.nanjing.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nanjing-statistical-communique-docx-2025",
+  "label": "Nanjing 2025 statistical communique DOCX attachment",
+  "url": "https://tjj.nanjing.gov.cn/bmfw/njsj/202604/P020260403596571125416.docx",
+  "allowedHosts": ["tjj.nanjing.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nanjing-international-living-portal",
+  "label": "Nanjing official international living portal",
+  "url": "https://english.nanjing.gov.cn/LivinginNanjing/",
+  "allowedHosts": ["english.nanjing.gov.cn"],
+  "sourceRole": "city-international-services",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nanjing-arrival-checklist",
+  "label": "Nanjing official arrival checklist for international residents",
+  "url": "https://english.nanjing.gov.cn/LivinginNanjing/ArrivalChecklist/index_20544.html",
+  "allowedHosts": ["english.nanjing.gov.cn"],
+  "sourceRole": "city-student-guide",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nanjing-public-transport-price-handbook-2026",
+  "label": "Nanjing 2026 public transport price handbook",
+  "url": "https://fgw.nanjing.gov.cn/njsfzhggwyh/202601/P020260107586054627681.pdf",
+  "allowedHosts": ["fgw.nanjing.gov.cn"],
+  "sourceRole": "city-public-transport",
+  "citySlug": "nanjing"
+},
+{
+  "id": "hangzhou-statistical-communique-index",
+  "label": "Hangzhou municipal statistical communique index",
+  "url": "https://tjj.hangzhou.gov.cn/col/col1229279682/index.html",
+  "allowedHosts": ["tjj.hangzhou.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "hangzhou-international-living-portal",
+  "label": "Hangzhou official international living portal",
+  "url": "https://eng.hangzhou.gov.cn/col/col811216/index.html",
+  "allowedHosts": ["eng.hangzhou.gov.cn"],
+  "sourceRole": "city-international-services",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "chengdu-statistical-communique-2025",
+  "label": "Chengdu 2025 statistical communique",
+  "url": "https://cdstats.chengdu.gov.cn/cdstjj/c154795/2026-04/14/content_58dc076a80974f999828b691bfca027f.shtml",
+  "allowedHosts": ["cdstats.chengdu.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "chengdu"
+},
+{
+  "id": "chengdu-rail-network-update-2023",
+  "label": "Chengdu Rail official Line 19 phase two network update",
+  "url": "https://www.chengdurail.com/info/1151/51732.htm",
+  "allowedHosts": ["www.chengdurail.com"],
+  "sourceRole": "city-public-transport",
+  "citySlug": "chengdu"
+},
+{
+  "id": "chengdu-scu-student-accommodation",
+  "label": "Sichuan University international student accommodation and fees",
+  "url": "https://global.scu.edu.cn/oso/article/index/18",
+  "allowedHosts": ["global.scu.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "sichuan-university",
+  "citySlug": "chengdu"
+},
+{
+  "id": "tianjin-statistical-communique-2025",
+  "label": "Tianjin 2025 statistical communique",
+  "url": "https://www.tj.gov.cn/sq/tjgb/202603/t20260327_7271193.html",
+  "allowedHosts": ["www.tj.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "tianjin"
+},
+{
+  "id": "tianjin-foreign-service-entry-exit",
+  "label": "Tianjin official entry and exit services guide",
+  "url": "https://en.tj.gov.cn/services/ForeignServiceChecklist/EntryandExit/",
+  "allowedHosts": ["en.tj.gov.cn"],
+  "sourceRole": "city-international-services",
+  "citySlug": "tianjin"
+},
+{
+  "id": "tianjin-private-affairs-residence-guide",
+  "label": "Tianjin official private-affairs residence permit guide",
+  "url": "https://en.tj.gov.cn/services/ForeignServiceChecklist/EntryandExit/TIANJIN_ENTRY_EXIT_SERVICES_GUIDE/RESIDENCY_PERMIT/202401/t20240118_6512345.html",
+  "allowedHosts": ["en.tj.gov.cn"],
+  "sourceRole": "city-student-guide",
+  "citySlug": "tianjin"
+},
+{
+  "id": "tianjin-nankai-undergraduate-cost-2026",
+  "label": "Nankai University 2026 undergraduate accommodation and fees",
+  "url": "https://ensie.nankai.edu.cn/info/1089/1167.htm",
+  "allowedHosts": ["ensie.nankai.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "nankai-university",
+  "citySlug": "tianjin"
+},
+{
+  "id": "tianjin-university-accommodation-2026",
+  "label": "Tianjin University 2026 international student accommodation fees",
+  "url": "https://sie.tju.edu.cn/jxj/qtjxj/202604/W020260416474983139363.pdf",
+  "allowedHosts": ["sie.tju.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "tianjin-university",
+  "citySlug": "tianjin"
+},
+{
+  "id": "xiamen-statistical-communique-2023",
+  "label": "Xiamen 2023 statistical communique",
+  "url": "https://tjj.xm.gov.cn/tjzl/ndgb/202403/t20240320_2829912.htm",
+  "allowedHosts": ["tjj.xm.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xiamen-official-city-overview",
+  "label": "Xiamen Foreign Affairs Office city overview",
+  "url": "https://en.fao.xm.gov.cn/thecity.html",
+  "allowedHosts": ["en.fao.xm.gov.cn"],
+  "sourceRole": "city-international-services",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xiamen-foreigners-service-guide-index",
+  "label": "Xiamen official guides for foreigners index",
+  "url": "https://en.fao.xm.gov.cn/guidesforforeigners_3.html",
+  "allowedHosts": ["en.fao.xm.gov.cn"],
+  "sourceRole": "city-student-guide",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xiamen-university-undergraduate-cost-2026",
+  "label": "Xiamen University 2026 international undergraduate accommodation and living costs",
+  "url": "https://admissions.xmu.edu.cn/cn/info/1019/2036.htm",
+  "allowedHosts": ["admissions.xmu.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "xiamen-university",
+  "citySlug": "xiamen"
+},
+{
+  "id": "guangzhou-statistical-communique-2025",
+  "label": "Guangzhou 2025 statistical communique",
+  "url": "https://tjj.gz.gov.cn/zzfwzq/tjkx/content/post_10804061.html",
+  "allowedHosts": ["tjj.gz.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "guangzhou-overseas-accommodation-registration-portal",
+  "label": "Guangzhou Police overseas accommodation registration portal",
+  "url": "https://gaj.gz.gov.cn/zwfw/ywtd/",
+  "allowedHosts": ["gaj.gz.gov.cn"],
+  "sourceRole": "city-international-services",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "guangzhou-foreign-arrival-accommodation-guide-2025",
+  "label": "Guangzhou official foreign arrival accommodation registration guide",
+  "url": "https://kgw.gz.gov.cn/xwzx/mtjj/content/post_10043543.html",
+  "allowedHosts": ["kgw.gz.gov.cn"],
+  "sourceRole": "city-student-guide",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "guangzhou-scut-predeparture-cost-guide",
+  "label": "South China University of Technology international student pre-departure cost guide",
+  "url": "https://www2.scut.edu.cn/_upload/article/files/4f/57/8a4abf2f4918a0ac0d360a03cd73/89f2ffc2-6a29-4c91-a0bb-169816b07ca3.pdf",
+  "allowedHosts": ["www2.scut.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "south-china-university-of-technology",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "guangzhou-sysu-dormitory-fees",
+  "label": "Sun Yat-sen University international student dormitory fees",
+  "url": "https://iso.sysu.edu.cn/docs/2022-08/20220818103618133249.pdf",
+  "allowedHosts": ["iso.sysu.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "sun-yat-sen-university",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "hefei-hksar-mainland-living-guide-2025",
+  "label": "Hong Kong SAR Government mainland living guide for Hefei",
+  "url": "https://www.sheto.gov.hk/filemanager/content/pdf/sc/SHETO-Hefei-Guide.pdf",
+  "allowedHosts": ["www.sheto.gov.hk"],
+  "sourceRole": "city-statistics",
+  "citySlug": "hefei"
+},
+{
+  "id": "hefei-ustc-accommodation-registration-2026",
+  "label": "USTC 2026 Hefei accommodation registration guide",
+  "url": "https://oic.ustc.edu.cn/en/teacher-affair/accommodation-registration-at-the-local-police-station/",
+  "allowedHosts": ["oic.ustc.edu.cn"],
+  "sourceRole": "city-student-guide",
+  "schoolSlug": "university-of-science-and-technology-of-china",
+  "citySlug": "hefei"
+},
+{
+  "id": "hefei-ustc-nondegree-cost-reference",
+  "label": "USTC international non-degree accommodation and insurance costs",
+  "url": "https://isa.ustc.edu.cn/xs/disp.asp?menu1=99&menu2=04&ucode=123",
+  "allowedHosts": ["isa.ustc.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "university-of-science-and-technology-of-china",
+  "citySlug": "hefei"
+},
+{
+  "id": "hangzhou-economic-update-h1-2025",
+  "label": "Hangzhou Statistics Bureau 2025 first-half economic update",
+  "url": "https://tjj.hangzhou.gov.cn/art/2025/7/22/art_1229279240_4380768.html",
+  "allowedHosts": ["tjj.hangzhou.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "hangzhou-zju-accommodation-current",
+  "label": "Zhejiang University international student on-campus accommodation rates",
+  "url": "https://iczu.zju.edu.cn/xnzs/list.htm",
+  "allowedHosts": ["iczu.zju.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "zhejiang-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "hangzhou-zju-freshmen-guide-2024",
+  "label": "Zhejiang University 2024 international student freshmen guide",
+  "url": "https://iczu.zju.edu.cn/_upload/article/files/2a/1a/e1883af54b2aaa3b06e9a54a9959/1594684e-8a32-48dc-bf7b-54efd4edbe62.pdf",
+  "allowedHosts": ["iczu.zju.edu.cn"],
+  "sourceRole": "city-student-guide",
+  "schoolSlug": "zhejiang-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "xian-statistical-communique-2024",
+  "label": "Xi'an 2024 national economic and social development statistical communique",
+  "url": "https://www.xa.gov.cn/web_files/xian/file/2025/04/15/202504150918368381892.pdf",
+  "allowedHosts": ["www.xa.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "xian"
+},
+{
+  "id": "changchun-statistical-communique-2024",
+  "label": "Changchun 2024 national economic and social development statistical communique",
+  "url": "https://tjj.changchun.gov.cn/tjgb/202506/t20250630_3412131.html",
+  "allowedHosts": ["tjj.changchun.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "changchun"
+},
+{
+  "id": "chongqing-statistical-communique-2025",
+  "label": "Chongqing 2025 national economic and social development statistical communique",
+  "url": "https://tjj.cq.gov.cn/zwgk_233/fdzdgknr/tjxx/sjjd_55469/202603/t20260326_15568538.html",
+  "allowedHosts": ["tjj.cq.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "chongqing"
+},
+{
+  "id": "zhengzhou-statistical-communique-2025",
+  "label": "Zhengzhou 2025 national economic and social development statistical communique",
+  "url": "https://tjj.zhengzhou.gov.cn/tjgb/10017864.jhtml",
+  "allowedHosts": ["tjj.zhengzhou.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "zhengzhou"
+},
+{
+  "id": "shijiazhuang-statistical-communique-2025",
+  "label": "Shijiazhuang 2025 national economic and social development statistical communique",
+  "url": "https://tjj.sjz.gov.cn/columns/940d701f-5e56-4f5d-9ece-7968f6354993/202605/26/f062dca8-ce95-46f8-b1c9-33f507db5a29.html",
+  "allowedHosts": ["tjj.sjz.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "shijiazhuang"
+},
+{
+  "id": "kunming-ynufe-study-guide-current",
+  "label": "Yunnan University of Finance and Economics international study and accommodation guide",
+  "url": "https://www.ynufe.edu.cn/en/Study_in_YUFE.htm",
+  "allowedHosts": ["www.ynufe.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "yunnan-university-of-finance-and-economics",
+  "citySlug": "kunming"
+},
+{
+  "id": "qinhuangdao-ysu-international-admission-guide-2026",
+  "label": "Yanshan University 2026 international student admission guide",
+  "url": "https://ies.ysu.edu.cn/info/1167/8510.htm",
+  "allowedHosts": ["ies.ysu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "yanshan-university",
+  "citySlug": "qinhuangdao"
+},
+{
+  "id": "qinhuangdao-ysu-international-admission-guide-image-2026",
+  "label": "Yanshan University 2026 international student admission guide image",
+  "url": "https://ies.ysu.edu.cn/__local/F/52/BA/F163B663629CBB56DEC447C1995_EEFA47D6_EBA7.png?e=.png",
+  "allowedHosts": ["ies.ysu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "yanshan-university",
+  "citySlug": "qinhuangdao"
+},
+{
+  "id": "qinhuangdao-ysu-international-admission-guide-pdf-1-2026",
+  "label": "Yanshan University 2026 international student admission guide PDF 1",
+  "url": "https://ies.ysu.edu.cn/__local/1/B7/CE/D519523D8C073C72BA7CA92612E_671545F7_699DFA.pdf",
+  "allowedHosts": ["ies.ysu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "yanshan-university",
+  "citySlug": "qinhuangdao"
+},
+{
+  "id": "qinhuangdao-ysu-international-admission-guide-pdf-2-2026",
+  "label": "Yanshan University 2026 international student admission guide PDF 2",
+  "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+  "allowedHosts": ["ies.ysu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "yanshan-university",
+  "citySlug": "qinhuangdao"
+},
+{
+  "id": "lanzhou-statistical-communique-2024",
+  "label": "Lanzhou 2024 national economic and social development statistical communique",
+  "url": "https://www.gsei.com.cn/html/1288/2025-10-13/content-626780.html",
+  "allowedHosts": ["www.gsei.com.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "lanzhou"
+},
+{
+  "id": "nanning-gxmu-undergraduate-admission-2026",
+  "label": "Guangxi Medical University 2026 international undergraduate admission guide",
+  "url": "https://gjy.gxmu.edu.cn/en/NN/Notice/t224270.html",
+  "allowedHosts": ["gjy.gxmu.edu.cn"],
+  "sourceRole": "city-student-cost",
+  "schoolSlug": "guangxi-medical-university",
+  "citySlug": "nanning"
+},
+{
+  "id": "guiyang-official-basic-facts-2026",
+  "label": "Guiyang official English portal basic facts 2026",
+  "url": "https://english.guiyang.gov.cn/2026-03/20/c_1095451.htm",
+  "allowedHosts": ["english.guiyang.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "guiyang"
+},
+{
+  "id": "guiyang-gmcu-undergraduate-admission-2026",
+  "label": "Guizhou Medical University 2026 international undergraduate admission guide",
+  "url": "https://soe.gmc.edu.cn/info/1008/1702.htm",
+  "allowedHosts": ["soe.gmc.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "guizhou-medical-university",
+  "citySlug": "guiyang"
+},
+{
+  "id": "guiyang-gmcu-undergraduate-admission-pdf-2026",
+  "label": "Guizhou Medical University 2026 international undergraduate admission guide PDF",
+  "url": "https://soe.gmc.edu.cn/__local/3/FC/52/1F9D6DB546BAA1A51B10844BA6E_E1AEE628_91911C.pdf",
+  "allowedHosts": ["soe.gmc.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "guizhou-medical-university",
+  "citySlug": "guiyang"
+},
+{
+  "id": "shanghai-development-plan-report-2025-2026",
+  "label": "Shanghai 2025 development plan execution and 2026 draft plan report",
+  "url": "https://www.shanghai.gov.cn/nw12337/20260324/cb9200da4ac04fba9aea428d8c444dbe.html",
+  "allowedHosts": ["www.shanghai.gov.cn"],
+  "sourceRole": "city-statistics",
+  "citySlug": "shanghai"
+},
+{
+  "id": "lnutcm-admission-index-current",
+  "label": "Liaoning University of Traditional Chinese Medicine international admission brochure index",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/lxlnzy/zsjz.htm",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "freshness-index",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-undergraduate-admissions-2026",
+  "label": "Liaoning University of Traditional Chinese Medicine 2026 self-funded international undergraduate admission guide",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/info/1223/3832.htm",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-master-admissions-2026",
+  "label": "Liaoning University of Traditional Chinese Medicine 2026 self-funded international master admission guide",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/info/1223/3822.htm",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-master-program-catalog-2026",
+  "label": "Liaoning University of Traditional Chinese Medicine 2026 master program catalog",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/liaoningzhongyiyaodaxue2026nianshuoshiyanjiushengzhaoshengzhuanyemulu.pdf",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-cgs-high-level-graduate-2026",
+  "label": "Liaoning University of Traditional Chinese Medicine 2026 Chinese Government Scholarship high-level graduate program",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/info/1223/3792.htm",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-international-chinese-language-teachers-scholarship-2026",
+  "label": "Liaoning University of Traditional Chinese Medicine 2026 International Chinese Language Teachers Scholarship",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/info/1223/3942.htm",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-chinese-language-program-2026-2027",
+  "label": "Liaoning University of Traditional Chinese Medicine 2026-2027 international Chinese language program",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/info/1293/4132.htm",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-chinese-language-program-guide-pdf-2026-2027",
+  "label": "Liaoning University of Traditional Chinese Medicine 2026-2027 Chinese language program guide PDF",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1992242172&wbfileid=9E6E327B83F32CFCF7F1567B073AB485",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "jnu-undergraduate-admission-index-current",
+  "label": "Jinan University undergraduate admission information index",
+  "url": "https://zsb.jnu.edu.cn/",
+  "allowedHosts": ["zsb.jnu.edu.cn"],
+  "sourceRole": "freshness-index",
+  "schoolSlug": "jinan-university",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "jnu-international-undergraduate-admissions-2026",
+  "label": "Jinan University 2026 admission guide for overseas Chinese and other international undergraduate students",
+  "url": "https://zsb.jnu.edu.cn/2025/1205/c40322a847522/page.htm",
+  "allowedHosts": ["zsb.jnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "jinan-university",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "jnu-international-graduate-admissions-2026",
+  "label": "Jinan University 2026 international graduate admission guide",
+  "url": "https://yz.jnu.edu.cn/2025/1111/c33045a845900/page.htm",
+  "allowedHosts": ["yz.jnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "jinan-university",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "jnu-cgs-high-level-graduate-2026",
+  "label": "Jinan University 2026 Chinese Government Scholarship high-level graduate program",
+  "url": "https://yz.jnu.edu.cn/2026/0121/c33059a850132/page.htm",
+  "allowedHosts": ["yz.jnu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "jinan-university",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "jnu-cgs-silk-road-undergraduate-2026",
+  "label": "Jinan University 2026 Chinese Government Scholarship Silk Road undergraduate program",
+  "url": "https://hwy.jnu.edu.cn/2026/0506/c13406a854755/page.htm",
+  "allowedHosts": ["hwy.jnu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "jinan-university",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "cmu-international-admissions-portal-current",
+  "label": "China Medical University international admissions portal",
+  "url": "https://ies.cmu.edu.cn/",
+  "allowedHosts": ["ies.cmu.edu.cn"],
+  "sourceRole": "freshness-index",
+  "schoolSlug": "china-medical-university",
+  "citySlug": "shenyang"
+},
+{
+  "id": "djtu-international-undergraduate-admissions-2026",
+  "label": "Dalian Jiaotong University 2026 international undergraduate admission guide",
+  "url": "https://fao.djtu.edu.cn/notice/928.html",
+  "allowedHosts": ["fao.djtu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "dalian-jiaotong-university",
+  "citySlug": "dalian"
+},
+{
+  "id": "djtu-cgs-high-level-graduate-2026-2027",
+  "label": "Dalian Jiaotong University 2026-2027 Chinese Government Scholarship high-level graduate program",
+  "url": "https://fao.djtu.edu.cn/notice/927.html",
+  "allowedHosts": ["fao.djtu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "dalian-jiaotong-university",
+  "citySlug": "dalian"
+},
+{
+  "id": "djtu-undergraduate-csca-requirements-2026-2027",
+  "label": "Dalian Jiaotong University 2026-2027 undergraduate CSCA requirements",
+  "url": "https://fao.djtu.edu.cn/Upload/file/20251010/9dd4dc74-297b-43a7-b02b-63ac9d75ac49.pdf",
+  "allowedHosts": ["fao.djtu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "dalian-jiaotong-university",
+  "citySlug": "dalian"
+},
+{
+  "id": "tjfsu-international-undergraduate-admissions-2026",
+  "label": "Tianjin Foreign Studies University 2026 international undergraduate admission guide",
+  "url": "https://isa.tjfsu.edu.cn/info/1066/1850.htm",
+  "allowedHosts": ["isa.tjfsu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tianjin-foreign-studies-university",
+  "citySlug": "tianjin"
+},
+{
+  "id": "tjfsu-tianjin-government-scholarship-2026",
+  "label": "Tianjin Foreign Studies University 2026 Tianjin Municipal Government Scholarship",
+  "url": "https://isa.tjfsu.edu.cn/info/1058/1904.htm",
+  "allowedHosts": ["isa.tjfsu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "tianjin-foreign-studies-university",
+  "citySlug": "tianjin"
+},
+{
+  "id": "tjfsu-cgs-bilateral-type-a-2026",
+  "label": "Tianjin Foreign Studies University 2026 Chinese Government Scholarship bilateral program Type A",
+  "url": "https://isa.tjfsu.edu.cn/info/1067/1823.htm",
+  "allowedHosts": ["isa.tjfsu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "tianjin-foreign-studies-university",
+  "citySlug": "tianjin"
+},
+{
+  "id": "tjfsu-cgs-high-level-graduate-type-b-2026",
+  "label": "Tianjin Foreign Studies University 2026 Chinese Government Scholarship high-level graduate program Type B",
+  "url": "https://isa.tjfsu.edu.cn/info/1040/1634.htm",
+  "allowedHosts": ["isa.tjfsu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "tianjin-foreign-studies-university",
+  "citySlug": "tianjin"
+},
+{
+  "id": "qdu-international-undergraduate-guide-pdf-2026",
+  "label": "Qingdao University 2026 international undergraduate admission guide",
+  "url": "https://istudy.qdu.edu.cn/uploads/attached/file/20251118/FB18352611137066.pdf",
+  "allowedHosts": ["istudy.qdu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "qingdao-university",
+  "citySlug": "qingdao"
+},
+{
+  "id": "qdu-mbbs-guide-pdf-2026",
+  "label": "Qingdao University 2026 English-taught MBBS admission guide",
+  "url": "https://istudy.qdu.edu.cn/uploads/attached/file/20260725/E725601154684175.pdf",
+  "allowedHosts": ["istudy.qdu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "qingdao-university",
+  "citySlug": "qingdao"
+},
+{
+  "id": "qdu-chinese-language-guide-pdf-spring-2027",
+  "label": "Qingdao University Spring 2027 Chinese language program guide",
+  "url": "https://istudy.qdu.edu.cn/uploads/attached/file/20260916/E916493127159720.pdf",
+  "allowedHosts": ["istudy.qdu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "qingdao-university",
+  "citySlug": "qingdao"
+},
+{
+  "id": "qdu-presidential-scholarship-2026",
+  "label": "Qingdao University 2026 Presidential Scholarship for international applicants",
+  "url": "https://istudy.qdu.edu.cn/en/article?cid=26&detail=422",
+  "allowedHosts": ["istudy.qdu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "qingdao-university",
+  "citySlug": "qingdao"
+},
+{
+  "id": "sisu-international-undergraduate-admissions-2026-2027",
+  "label": "Sichuan International Studies University 2026-2027 international undergraduate admission guide",
+  "url": "https://studyinsisu.sisu.edu.cn/zsxx/bks/295c30338d854df0adc33d38ff745fd4.htm",
+  "allowedHosts": ["studyinsisu.sisu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "sichuan-international-studies-university",
+  "citySlug": "chongqing"
+},
+{
+  "id": "sisu-chinese-language-admissions-2026-2027",
+  "label": "Sichuan International Studies University 2026-2027 international Chinese language admission guide",
+  "url": "https://studyinsisu.sisu.edu.cn/zsxx/hyjx/6388c2417dce48858bfeabb1ee3f2f1f.htm",
+  "allowedHosts": ["studyinsisu.sisu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "sichuan-international-studies-university",
+  "citySlug": "chongqing"
+},
+{
+  "id": "sisu-moe-chongqing-joint-scholarship-2026-2027",
+  "label": "Sichuan International Studies University 2026-2027 MOE-Chongqing Government joint scholarship",
+  "url": "https://studyinsisu.sisu.edu.cn/tzgg/9ed94d8caef240b287c1aecb0eadf88a.htm",
+  "allowedHosts": ["studyinsisu.sisu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "sichuan-international-studies-university",
+  "citySlug": "chongqing"
+},
+{
+  "id": "gdufs-international-degree-admissions-fall-2026",
+  "label": "Guangdong University of Foreign Studies Fall 2026 international degree admissions notice",
+  "url": "https://iie.gdufs.edu.cn/info/1099/5488.htm",
+  "allowedHosts": ["iie.gdufs.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "guangdong-university-of-foreign-studies",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "gdufs-undergraduate-program-catalog-2026",
+  "label": "Guangdong University of Foreign Studies current undergraduate program catalog",
+  "url": "https://zs.gdufs.edu.cn/info/1012/4289.htm",
+  "allowedHosts": ["zs.gdufs.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "guangdong-university-of-foreign-studies",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "gdufs-english-undergraduate-programs-current",
+  "label": "Guangdong University of Foreign Studies English-taught undergraduate programs",
+  "url": "https://iie.gdufs.edu.cn/info/1078/3349.htm",
+  "allowedHosts": ["iie.gdufs.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "guangdong-university-of-foreign-studies",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "gdufs-guangdong-government-scholarship-current",
+  "label": "Guangdong University of Foreign Studies Guangdong Government Outstanding International Student Scholarship",
+  "url": "https://iie.gdufs.edu.cn/jxj/gdszflylxsjxj.htm",
+  "allowedHosts": ["iie.gdufs.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "guangdong-university-of-foreign-studies",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "gdufs-international-student-scholarship-current",
+  "label": "Guangdong University of Foreign Studies International Student Scholarship",
+  "url": "https://iie.gdufs.edu.cn/jxj/gdwywmdxlhlxsjxj.htm",
+  "allowedHosts": ["iie.gdufs.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "guangdong-university-of-foreign-studies",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "shupl-international-admissions-2026",
+  "label": "Shanghai University of Political Science and Law 2026 international student admission guide",
+  "url": "https://iso.shupl.edu.cn/2025/1029/c3326a143594/page.htm",
+  "allowedHosts": ["iso.shupl.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "shanghai-university-of-political-science-and-law",
+  "citySlug": "shanghai"
+},
+{
+  "id": "shisu-international-undergraduate-admissions-2026",
+  "label": "Shanghai International Studies University 2026 international undergraduate admissions",
+  "url": "https://www.oisa.shisu.edu.cn/index.php/Index/lxxm/cid/87",
+  "allowedHosts": ["www.oisa.shisu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "shanghai-international-studies-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "shisu-international-master-admissions-2026",
+  "label": "Shanghai International Studies University 2026 international master admissions",
+  "url": "https://www.oisa.shisu.edu.cn/index.php/index/lxxm/cid/90.html",
+  "allowedHosts": ["www.oisa.shisu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "shanghai-international-studies-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "shisu-shanghai-government-scholarship-2026",
+  "label": "Shanghai International Studies University 2026 Shanghai Government Scholarship",
+  "url": "https://www.oisa.shisu.edu.cn/index.php/index/newscontent/cid/39/id/660.html",
+  "allowedHosts": ["www.oisa.shisu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "shanghai-international-studies-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "sdnu-international-program-catalog-2026-2027",
+  "label": "Shandong Normal University international program catalog 2026-2027",
+  "url": "https://cie.sdnu.edu.cn/info/1141/13332.htm",
+  "allowedHosts": ["cie.sdnu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "shandong-normal-university",
+  "citySlug": "jinan"
+},
+{
+  "id": "sdnu-international-program-catalog-image-1-2026-2027",
+  "label": "Shandong Normal University international program catalog image 1 2026-2027",
+  "url": "https://cie.sdnu.edu.cn/__local/E/E7/32/4116AA8719B51B4CC5064FA6D6D_89F390DA_2E660B.jpg",
+  "allowedHosts": ["cie.sdnu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "shandong-normal-university",
+  "citySlug": "jinan"
+},
+{
+  "id": "sdnu-international-program-catalog-image-2-2026-2027",
+  "label": "Shandong Normal University international program catalog image 2 2026-2027",
+  "url": "https://cie.sdnu.edu.cn/__local/7/78/FE/A77662A56B124EE6AA92725CF85_7E55AEAA_3AD1A0.jpg",
+  "allowedHosts": ["cie.sdnu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "shandong-normal-university",
+  "citySlug": "jinan"
+},
+{
+  "id": "sdnu-international-admission-brochure-page-2026",
+  "label": "Shandong Normal University international admission brochure page 2026",
+  "url": "https://cie.sdnu.edu.cn/info/1141/14242.htm",
+  "allowedHosts": ["cie.sdnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "shandong-normal-university",
+  "citySlug": "jinan"
+},
+{
+  "id": "sdnu-international-admission-brochure-pdf-2026",
+  "label": "Shandong Normal University international admission brochure PDF 2026",
+  "url": "https://cie.sdnu.edu.cn/__local/6/83/2D/9035CBBC4F944A4E15FD1C9F1F0_44FB66E1_6FAA5.pdf",
+  "allowedHosts": ["cie.sdnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "shandong-normal-university",
+  "citySlug": "jinan"
+},
+{
+  "id": "sdnu-shandong-government-scholarship-2026",
+  "label": "Shandong Normal University Shandong Government Scholarship 2026",
+  "url": "https://cie.sdnu.edu.cn/lxsgz/jxj/sdszfjxj.htm",
+  "allowedHosts": ["cie.sdnu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "shandong-normal-university",
+  "citySlug": "jinan"
+},
+{
+  "id": "pkuhsc-international-undergraduate-admissions-zh-2026",
+  "label": "Peking University Health Science Center 2026 international undergraduate admissions Chinese",
+  "url": "https://oic.bjmu.edu.cn/lxby/zsjz/b722ea27933042248caf4884c1f1a50f.htm",
+  "allowedHosts": ["oic.bjmu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "peking-university-health-science-center",
+  "citySlug": "beijing"
+},
+{
+  "id": "pkuhsc-international-undergraduate-admissions-en-2026",
+  "label": "Peking University Health Science Center 2026 international undergraduate admissions English",
+  "url": "https://e.bjmu.edu.cn/admission/internationalstudents/howtoapply/241.html",
+  "allowedHosts": ["e.bjmu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "peking-university-health-science-center",
+  "citySlug": "beijing"
+},
+{
+  "id": "pkuhsc-international-undergraduate-prearrival-2026",
+  "label": "Peking University Health Science Center international undergraduate pre-arrival guide 2026",
+  "url": "https://e.bjmu.edu.cn/admission/internationalstudents/237.html",
+  "allowedHosts": ["e.bjmu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "peking-university-health-science-center",
+  "citySlug": "beijing"
+},
+{
+  "id": "hitsz-international-undergraduate-prospectus-page-2026",
+  "label": "Harbin Institute of Technology Shenzhen 2026 international undergraduate prospectus page",
+  "url": "https://global.hitsz.edu.cn/info/1153/2381.htm",
+  "allowedHosts": ["global.hitsz.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "harbin-institute-of-technology-shenzhen",
+  "citySlug": "shenzhen"
+},
+{
+  "id": "hitsz-international-undergraduate-prospectus-pdf-2026",
+  "label": "Harbin Institute of Technology Shenzhen 2026 international undergraduate prospectus PDF",
+  "url": "https://global.hitsz.edu.cn/__local/3/28/34/93FAE9A2DB2126960BCB9567033_D6038EC1_2636E.pdf",
+  "allowedHosts": ["global.hitsz.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "harbin-institute-of-technology-shenzhen",
+  "citySlug": "shenzhen"
+},
+{
+  "id": "ymu-international-program-catalog-page-2026",
+  "label": "Yunnan Minzu University 2026 international student program catalog page",
+  "url": "https://web.ymu.edu.cn/gjxy/info/1078/3379.htm",
+  "allowedHosts": ["web.ymu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "yunnan-minzu-university",
+  "citySlug": "kunming"
+},
+{
+  "id": "ymu-international-program-catalog-xls-2026",
+  "label": "Yunnan Minzu University 2026 international student program catalog XLS",
+  "url": "https://web.ymu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2037654812&wbfileid=12EE531EE7F7AC9FDD72413BB1B4F4A9",
+  "allowedHosts": ["web.ymu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "yunnan-minzu-university",
+  "citySlug": "kunming"
+},
+{
+  "id": "hueb-international-undergraduate-admissions-2026",
+  "label": "Hebei University of Economics and Business 2026 international undergraduate admission guide",
+  "url": "https://ies.hueb.edu.cn/info/1158/1682.htm",
+  "allowedHosts": ["ies.hueb.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "hebei-university-of-economics-and-business",
+  "citySlug": "shijiazhuang"
+},
+{
+  "id": "hueb-cgs-high-level-graduate-2026",
+  "label": "Hebei University of Economics and Business Chinese Government Scholarship High-Level Graduate Program 2026",
+  "url": "https://ies.hueb.edu.cn/info/1158/1681.htm",
+  "allowedHosts": ["ies.hueb.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "hebei-university-of-economics-and-business",
+  "citySlug": "shijiazhuang"
+},
+{
+  "id": "hueb-hebei-government-scholarship-current",
+  "label": "Hebei University of Economics and Business Hebei Provincial Government Scholarship current guide",
+  "url": "https://ies.hueb.edu.cn/info/1158/1680.htm",
+  "allowedHosts": ["ies.hueb.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "hebei-university-of-economics-and-business",
+  "citySlug": "shijiazhuang"
+},
+{
+  "id": "ecupl-international-undergraduate-admissions-2026",
+  "label": "East China University of Political Science and Law 2026 international undergraduate admission guide",
+  "url": "https://study.ecupl.edu.cn/2025/1202/c10735a223431/page.htm",
+  "allowedHosts": ["study.ecupl.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "east-china-university-of-political-science-and-law",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecupl-international-undergraduate-program-catalog-xls-2026",
+  "label": "East China University of Political Science and Law 2026 international undergraduate program catalog XLS",
+  "url": "https://study.ecupl.edu.cn/_upload/article/files/80/dd/509280b84dcba4237777658d0329/4dd6ac12-463c-4939-9085-b94c81738b92.xls",
+  "allowedHosts": ["study.ecupl.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "east-china-university-of-political-science-and-law",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecupl-undergraduate-csca-subjects-docx-2026",
+  "label": "East China University of Political Science and Law 2026 undergraduate CSCA subjects DOCX",
+  "url": "https://study.ecupl.edu.cn/_upload/article/files/80/dd/509280b84dcba4237777658d0329/e144e0ba-5795-4154-84e5-2bb64860b92b.docx",
+  "allowedHosts": ["study.ecupl.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "east-china-university-of-political-science-and-law",
+  "citySlug": "shanghai"
+},
+{
+  "id": "tjufe-international-undergraduate-admissions-zh-2026",
+  "label": "Tianjin University of Finance and Economics 2026 international undergraduate admission guide Chinese",
+  "url": "https://inter.tjufe.edu.cn/info/1065/1663.htm",
+  "allowedHosts": ["inter.tjufe.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tianjin-university-of-finance-and-economics",
+  "citySlug": "tianjin"
+},
+{
+  "id": "tjufe-international-undergraduate-admissions-en-2026",
+  "label": "Tianjin University of Finance and Economics 2026 international undergraduate admission guide English",
+  "url": "https://inter.tjufe.edu.cn/info/1065/1662.htm",
+  "allowedHosts": ["inter.tjufe.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "tianjin-university-of-finance-and-economics",
+  "citySlug": "tianjin"
+},
+{
+  "id": "tjufe-cgs-bilateral-type-a-2026",
+  "label": "Tianjin University of Finance and Economics Chinese Government Scholarship Bilateral Type A guide 2026",
+  "url": "https://inter.tjufe.edu.cn/info/1065/1734.htm",
+  "allowedHosts": ["inter.tjufe.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "tianjin-university-of-finance-and-economics",
+  "citySlug": "tianjin"
+},
+{
+  "id": "tjufe-cgs-high-level-graduate-zh-2026",
+  "label": "Tianjin University of Finance and Economics Chinese Government Scholarship High-Level Graduate Program guide 2026 Chinese",
+  "url": "https://inter.tjufe.edu.cn/info/1065/1681.htm",
+  "allowedHosts": ["inter.tjufe.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "tianjin-university-of-finance-and-economics",
+  "citySlug": "tianjin"
+},
+{
+  "id": "hrbust-international-undergraduate-admissions-2026",
+  "label": "Harbin University of Science and Technology 2026 international undergraduate admission guide",
+  "url": "https://gjhz.hrbust.edu.cn/2026/0423/c513a104539/page.htm",
+  "allowedHosts": ["gjhz.hrbust.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "harbin-university-of-science-and-technology",
+  "citySlug": "harbin"
+},
+{
+  "id": "hrbust-undergraduate-program-catalog-current",
+  "label": "Harbin University of Science and Technology current undergraduate program catalog",
+  "url": "https://www.hrbust.edu.cn/rcpy/xkzysz/bkzy.htm",
+  "allowedHosts": ["www.hrbust.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "harbin-university-of-science-and-technology",
+  "citySlug": "harbin"
+},
+{
+  "id": "hrbust-cgs-silk-road-2026",
+  "label": "Harbin University of Science and Technology Chinese Government Scholarship Silk Road Program 2026",
+  "url": "https://gjhz.hrbust.edu.cn/2026/0520/c511a104855/pagem.htm",
+  "allowedHosts": ["gjhz.hrbust.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "harbin-university-of-science-and-technology",
+  "citySlug": "harbin"
+},
+{
+  "id": "cufe-international-undergraduate-admissions-zh-2026",
+  "label": "Central University of Finance and Economics 2026 international undergraduate admission guide Chinese",
+  "url": "https://sice.cufe.edu.cn/admissions/info/1045/3419.htm",
+  "allowedHosts": ["sice.cufe.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "central-university-of-finance-and-economics",
+  "citySlug": "beijing"
+},
+{
+  "id": "cufe-international-undergraduate-admissions-en-2026",
+  "label": "Central University of Finance and Economics 2026 international undergraduate admission guide English",
+  "url": "https://sice.cufe.edu.cn/admissions/info/1045/3420.htm",
+  "allowedHosts": ["sice.cufe.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "central-university-of-finance-and-economics",
+  "citySlug": "beijing"
+},
+{
+  "id": "cufe-international-undergraduate-program-catalog-zh-2026",
+  "label": "Central University of Finance and Economics 2026 international undergraduate program catalog Chinese",
+  "url": "https://sice.cufe.edu.cn/admissions/info/1045/3421.htm",
+  "allowedHosts": ["sice.cufe.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "central-university-of-finance-and-economics",
+  "citySlug": "beijing"
+},
+{
+  "id": "cufe-international-undergraduate-program-catalog-en-2026",
+  "label": "Central University of Finance and Economics 2026 international undergraduate program catalog English",
+  "url": "https://sice.cufe.edu.cn/admissions/info/1045/3422.htm",
+  "allowedHosts": ["sice.cufe.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "central-university-of-finance-and-economics",
+  "citySlug": "beijing"
+},
+{
+  "id": "cufe-finance-english-undergraduate-2026",
+  "label": "Central University of Finance and Economics 2026 English-taught Finance undergraduate guide",
+  "url": "https://sice.cufe.edu.cn/admissions/info/1045/3451.htm",
+  "allowedHosts": ["sice.cufe.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "central-university-of-finance-and-economics",
+  "citySlug": "beijing"
+},
+{
+  "id": "cufe-cgs-silk-road-2026",
+  "label": "Central University of Finance and Economics Chinese Government Scholarship Silk Road Program 2026",
+  "url": "https://sice.cufe.edu.cn/admissions/info/1061/3450.htm",
+  "allowedHosts": ["sice.cufe.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "central-university-of-finance-and-economics",
+  "citySlug": "beijing"
+},
+{
+  "id": "cufe-cgs-high-level-graduate-en-2026",
+  "label": "Central University of Finance and Economics Chinese Government Scholarship High Level Graduate Program 2026 English",
+  "url": "https://sice.cufe.edu.cn/admissions/info/1023/3454.htm",
+  "allowedHosts": ["sice.cufe.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "central-university-of-finance-and-economics",
+  "citySlug": "beijing"
+},
+{
+  "id": "gucm-international-admissions-portal-current",
+  "label": "Gansu University of Chinese Medicine official international admissions portal",
+  "url": "https://gjjy.gszy.edu.cn/channels/channel_1108_1.html",
+  "allowedHosts": ["gjjy.gszy.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "gansu-university-of-chinese-medicine",
+  "citySlug": "lanzhou"
+},
+{
+  "id": "swupl-international-admissions-portal-current",
+  "label": "Southwest University of Political Science and Law official international admissions portal",
+  "url": "https://studyin.swupl.edu.cn/",
+  "allowedHosts": ["studyin.swupl.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "southwest-university-of-political-science-and-law",
+  "citySlug": "chongqing"
+},
+{
+  "id": "ahu-international-admissions-fees-and-application-current",
+  "label": "Anhui University international admissions fees and application brochure",
+  "url": "https://sie.ahu.edu.cn/_upload/article/files/b4/e0/c137afce42859129fc0e68b094df/2fa37fb8-dd10-451b-a7c9-d1759a9bc289.pdf",
+  "allowedHosts": ["sie.ahu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "anhui-university",
+  "citySlug": "hefei"
+},
+{
+  "id": "bjfu-international-tuition-accommodation-current",
+  "label": "Beijing Forestry University international tuition and accommodation",
+  "url": "https://ic.bjfu.edu.cn/Admission/TuitionandAccommodation/index.htm",
+  "allowedHosts": ["ic.bjfu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "beijing-forestry-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "gdufs-international-degree-tuition-table-fall-2026",
+  "label": "Guangdong University of Foreign Studies Fall 2026 international degree tuition table",
+  "url": "https://iie.gdufs.edu.cn/virtual_attach_file.vsb?afc=pM7rvknlW7MzfRo6l78o7laMmWknRN_8nR67UzQVU8lZUm70gihFp2hmCIa0L1yiUSyiLkyYU49DMmvbUm-sLmviL8U8MNMfoz-4o7W7MzAFnzN4L8-PUz6FoRvYMzLJqjfjo4OeoDPZvsAbgDTJQty0LzGboSyiMR9ZgtA8pUFcc&oid=962243922&tid=1099&nid=5488&e=.jpg",
+  "allowedHosts": ["iie.gdufs.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "guangdong-university-of-foreign-studies",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "whu-undergraduate-tuition-fees-2026",
+  "label": "Wuhan University 2026 international undergraduate tuition and fees",
+  "url": "https://admission.whu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2063127468&wbfileid=712A3B4228FDB6459D50E5606D0D65EE",
+  "allowedHosts": ["admission.whu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "wuhan-university",
+  "citySlug": "wuhan"
+},
+{
+  "id": "whu-postgraduate-fee-standards-2026",
+  "label": "Wuhan University 2026 international postgraduate fee standards",
+  "url": "https://admission.whu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2063127468&wbfileid=B6EDB5B600828CB93646D38D368DB1B1",
+  "allowedHosts": ["admission.whu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "wuhan-university",
+  "citySlug": "wuhan"
+},
+{
+  "id": "whu-international-student-fees-current",
+  "label": "Wuhan University international student fees",
+  "url": "https://admission.whu.edu.cn/FRESHMEN_RELATED/FEES.htm",
+  "allowedHosts": ["admission.whu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "wuhan-university",
+  "citySlug": "wuhan"
+},
+{
+  "id": "lnutcm-chinese-language-guide-image-1-2026-2027",
+  "label": "LNUTCM 2026-2027 Chinese language program guide image 1",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/__local/F/42/4B/DF0E303C91175D9D301392FFB3D_C7531F09_8BF53.png",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-chinese-language-guide-image-2-2026-2027",
+  "label": "LNUTCM 2026-2027 Chinese language program guide image 2",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/__local/8/4B/05/42BCB8ED557054C6EBEC751D3C9_4743D551_C1481.png",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-chinese-language-guide-image-3-2026-2027",
+  "label": "LNUTCM 2026-2027 Chinese language program guide image 3",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/__local/A/4F/78/0E850BDF16F5527C638063C1206_FA47A055_7EC92.png",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-chinese-language-guide-image-4-2026-2027",
+  "label": "LNUTCM 2026-2027 Chinese language program guide image 4",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/__local/5/3E/B9/E2FAC7537D9D1EF73E3A5C01131_2BAE28D0_D638C.png",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-chinese-language-guide-image-5-2026-2027",
+  "label": "LNUTCM 2026-2027 Chinese language program guide image 5",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/__local/F/65/D8/0ED5E0339AD65704C53FDD50C97_68DABF37_71F9B.png",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "lnutcm-chinese-language-guide-image-6-2026-2027",
+  "label": "LNUTCM 2026-2027 Chinese language program guide image 6",
+  "url": "https://gjhzjlc.lnutcm.edu.cn/__local/5/10/1D/1D46D308D9DF6C0562E71ECA4E3_4BF129F0_92178.png",
+  "allowedHosts": ["gjhzjlc.lnutcm.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+  "citySlug": "shenyang"
+},
+{
+  "id": "ahu-cgs-university-program-brochure-2026-2027",
+  "label": "Anhui University 2026-2027 Chinese Government Scholarship University Program brochure",
+  "url": "https://sie.ahu.edu.cn/_upload/article/files/cf/ee/3543c52a4212b79315534aeeb995/98db637b-5d63-40a2-9d4b-1db3300f3701.pdf",
+  "allowedHosts": ["sie.ahu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "anhui-university",
+  "citySlug": "hefei"
+},
+{
+  "id": "scut-international-prospectus-en-pdf-2026-accessible",
+  "label": "South China University of Technology 2026 international prospectus English PDF accessible mirror",
+  "url": "https://www2.scut.edu.cn/_upload/article/files/d5/fd/33ee0e9b4036a568c1c80679f551/6b128e31-5520-42b6-80b7-ba5f45797fc9.pdf",
+  "allowedHosts": ["www2.scut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "south-china-university-of-technology",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "blcu-csca-instructions-en-2026",
+  "label": "Beijing Language and Culture University 2026 CSCA instructions and teaching-language table",
+  "url": "https://admission.blcu.edu.cn/en/2025/1212/c1587a3032/page.htm",
+  "allowedHosts": ["admission.blcu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "beijing-language-and-culture-university",
+  "citySlug": "beijing"
 }
 ]
 }

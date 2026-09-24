@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "effectiveDate": "2026-09-23",
+  "decisionReference": "project-owner-chat-default-acceptance-2026-09-23",
+  "decision": "default_accept_hash_pinned_official_evidence_candidates",
+  "scope": {
+    "officialEvidenceCandidates": "accepted_for_non_public_migration_candidate",
+    "officialEvidenceAccessBlockers": "skip_and_retain_gap_record",
+    "prohibitedAggregatorRecords": "recoverable_archive_only",
+    "conflictingOfficialEvidence": "remain_unresolved",
+    "physicalDeletion": false
+  },
+  "review": {
+    "perRecordHumanReviewRequiredByOwner": false,
+    "humanReviewCompleted": false,
+    "agentMayRepresentHumanReviewAsCompleted": false
+  },
+  "authorization": {
+    "candidatePreparationAuthorized": true,
+    "persistentDatabaseWriteAuthorized": false,
+    "publicationAuthorized": false
+  }
+}

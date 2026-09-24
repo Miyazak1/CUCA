@@ -231,3 +231,33 @@ test("sparse scholarship upserts preserve existing rich fields while explicit ar
   assert.match(scholarship.statement, /verification_status = coalesce\(\$33, scholarships\.verification_status\)/);
   assert.match(scholarship.statement, /last_verified_at = coalesce\(\$34::timestamptz, scholarships\.last_verified_at\)/);
 });
+
+test("catalog seed writer persists rich reviewed city fields", async () => {
+  const calls = [];
+  const writer = new CatalogSeedWriter({ async query(statement, params) {
+    calls.push({ statement, params });
+    return /returning id/.test(statement) ? [{ id: "city-rich-id" }] : [];
+  } });
+  const verifiedAt = "2026-09-22T00:00:00.000Z";
+  const result = await writer.writeBundle({
+    version: 1, generatedAt: verifiedAt,
+    cities: [{
+      slug: "beijing", nameEn: "Beijing", nameZh: "北京", monthlyCostRmb: 5500,
+      tags: ["research"], nearby: ["tianjin"], content: { summary: "Reviewed summary" },
+      status: "active", verificationStatus: "verified", lastVerifiedAt: verifiedAt,
+      nextReviewDueAt: "2027-03-22T00:00:00.000Z",
+      sourceUrl: "https://official.example/beijing", sourceLabel: "Official Beijing source",
+      sourceFieldLineage: { nameEn: "heading", content: "reviewed sections" },
+    }],
+  });
+  assert.equal(result.ok, true, result.errors?.join("\n"));
+  const city = calls.find(call => /insert into cities/.test(call.statement));
+  assert.ok(city);
+  assert.equal(city.params[6], 5500);
+  assert.equal(city.params[9], JSON.stringify(["research"]));
+  assert.equal(city.params[10], JSON.stringify({ summary: "Reviewed summary" }));
+  assert.equal(city.params[15], "verified");
+  assert.equal(city.params[16], verifiedAt);
+  assert.equal(city.params[17], "2027-03-22T00:00:00.000Z");
+  assert.match(city.statement, /content_json = excluded\.content_json/);
+});

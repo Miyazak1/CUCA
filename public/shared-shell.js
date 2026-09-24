@@ -816,7 +816,7 @@
             <span class="account-avatar large">${escapeHTML(initial)}</span>
             <div>
               <strong>${escapeHTML(userName)}</strong>
-              <span class="account-email" title="${escapeHTML(shellText("registeredEmail", "Registered account email"))}">${escapeHTML(accountEmail)}</span>
+              <span class="account-email" title="${escapeHTML(accountEmail)}" aria-label="${escapeHTML(shellText("registeredEmail", "Registered account email"))}: ${escapeHTML(accountEmail)}">${escapeHTML(accountEmail)}</span>
               <a href="${localizedPageHref(profileHref)}">${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "编辑账号" : escapeHTML(shellText("workspace.studentInfo", "Student info"))}</a>
             </div>
           </div>

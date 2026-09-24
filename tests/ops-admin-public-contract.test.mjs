@@ -21,6 +21,12 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
     "/api/v1/ops/routing/submissions?limit=50",
     "/api/v1/ops/billing/provider-events?limit=50",
     "/api/v1/ops/data-quality/catalog?limit=50",
+    "/api/v1/ops/catalog/cities",
+    "/api/v1/ops/catalog/schools",
+    "/api/v1/ops/catalog/programs",
+    "/api/v1/ops/catalog/scholarships",
+    "/api/v1/ops/catalog/readiness",
+    "/api/v1/ops/catalog/release-manifests",
     "/api/v1/ops/catalog-corrections?limit=50",
     "/api/v1/ops/catalog/guides",
     "/api/v1/ops/support-sessions",
@@ -38,6 +44,9 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   assert.match(script, /\/api\/v1\/auth\/step-up/);
   assert.match(script, /authStrength === "step_up"/);
   assert.match(html, /data-ops-tab="guides"/);
+  assert.match(html, /data-ops-tab="catalog"/);
+  assert.match(html, /data-ops-tab="readiness"/);
+  assert.match(html, /data-ops-tab="release-plans"/);
   assert.match(html, /data-ops-tab="privacy"/);
   assert.match(html, /data-ops-tab="deletions"/);
   assert.match(script, /data-guide-draft/);
@@ -45,6 +54,28 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   assert.match(script, /expectedApprovalSha256/);
   assert.match(script, /publicContentConfirmed: true/);
   assert.match(script, /第三方来源，不能作为官方确认依据/);
+  assert.match(script, /data-city-editor/);
+  assert.match(script, /expectedVersion/);
+  assert.match(script, /data-city-lifecycle="publish"/);
+  assert.match(script, /data-school-editor/);
+  assert.match(script, /data-school-lifecycle="publish"/);
+  assert.match(script, /data-program-editor/);
+  assert.match(script, /data-program-lifecycle="publish"/);
+  assert.match(script, /招生批次与申请要求在独立治理流程维护/);
+  assert.match(script, /data-scholarship-editor/);
+  assert.match(script, /data-scholarship-lifecycle="publish"/);
+  assert.match(script, /data-scholarship-program-search/);
+  assert.match(script, /data-readiness-filter/);
+  assert.match(script, /这里不会自动发布或修改任何数据/);
+  assert.match(script, /data-readiness-open/);
+  assert.match(script, /data-release-select/);
+  assert.match(script, /data-release-manifest-create/);
+  assert.match(script, /data-release-manifest-supersede/);
+  assert.match(script, /目录数据没有被发布或修改/);
+  assert.doesNotMatch(script, /release-manifests[^\n]{0,160}\/publication/);
+  assert.match(script, /data-catalog-entity="school"/);
+  assert.match(script, /活动项目、奖学金、员工或申请/);
+  assert.match(script, /不要求另一位管理员审批/);
   assert.match(script, /学校基础信息交接/);
   assert.match(script, /当前版本不在 CUAC 提交材料/);
   assert.match(script, /等待学生向学校直交材料/);

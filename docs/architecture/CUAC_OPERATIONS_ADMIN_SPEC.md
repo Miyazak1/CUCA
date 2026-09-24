@@ -220,11 +220,12 @@ The independent candidate `public/ops-admin-api.html` and `public/ops-admin-runt
 - quarantined official-delivery review with claim, escalation, dual-control close, and the sole bounded retry command;
 - quarantined payment-event review with claim, escalation, and dual-control no-change resolution;
 - catalog source-quality review for city, school, program, and scholarship entities;
+- city and school master-data create, versioned edit, evidence-gated publish, reversible archive/restore, and revision history;
 - application-scoped support lookup through a 15-minute audited session that is kept in memory and explicitly closed.
 
-The candidate does not load `CuacDataClient`, `completion.js`, local or session storage, or an Agent surface. It does not display fabricated owner, priority, analytics, export, refund, arbitrary catalog-edit, user-search, file, or applicant-profile capabilities. Switching the canonical `ops-admin.html` entry to this implementation requires explicit approval because that file is currently an untracked frontend artifact.
+The candidate does not load `CuacDataClient`, `completion.js`, local or session storage, or an Agent surface. It does not display fabricated owner, priority, analytics, export, refund, user-search, file, or applicant-profile capabilities. Its general catalog editing boundary currently covers cities and schools; program and scholarship editing remains unavailable until each entity adopts the same authority, evidence, concurrency, revision, and audit contract.
 
-Production still needs real staff IdP/MFA, school change requests and general catalog editing, automated freshness scheduling, external case integration, staging browser verification, and the approved canonical-entry switch.
+Production still needs real staff IdP/MFA, program/scholarship general catalog editing, automated freshness scheduling, external case integration, staging browser verification, and the approved canonical-entry switch.
 
 Frontend candidate evidence on 2026-09-03:
 

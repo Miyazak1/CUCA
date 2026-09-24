@@ -2518,7 +2518,7 @@ button.section-card {
 .submission-status {
   display: none;
   gap: 20px;
-  margin-top: 34px;
+  margin-top: var(--workspace-main-top);
   box-sizing: border-box;
   padding: 26px 24px;
   background:
@@ -4051,7 +4051,7 @@ a,
   --accent-rgb: 8 116 103;
   --accent-dark: #073f38;
   --accent-soft: #ddf4f0;
-  --page-width: min(1280px, calc(100vw - 64px));
+  --page-width: min(var(--workspace-content-width), calc(100vw - (var(--workspace-page-gutter) * 2)));
   --application-card-width: var(--page-width);
   --section-x: 0px;
   --radius-sm: 10px;
@@ -4210,7 +4210,7 @@ a,
 
 @media (max-width: 1080px) {
   :root {
-    --page-width: min(100vw - 48px, 1280px);
+    --page-width: min(100vw - 48px, var(--workspace-content-width));
     --section-x: 0px;
   }
 

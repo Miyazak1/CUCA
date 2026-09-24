@@ -314,6 +314,21 @@ export const cities = pgTable(
     slugUnique: uniqueIndex("cities_slug_unique").on(table.slug),
     statusIdx: index("cities_status_idx").on(table.status),
     regionIdx: index("cities_region_idx").on(table.region),
+    lifecycleCheck: check("cities_lifecycle_check", sql`
+      ${table.status} in ('active','draft','archived')
+      and ${table.verificationStatus} in ('unverified','verified','stale','disputed','invalid')
+      and ${table.version} > 0
+      and (${table.monthlyCostRmb} is null or ${table.monthlyCostRmb} >= 0)
+      and ${table.referenceSchoolCount} >= 0
+      and ${table.referenceProgramCount} >= 0
+      and ${table.referenceEnglishProgramCount} >= 0
+      and ${table.referenceScholarshipCount} >= 0
+      and ${table.referenceCscaSchoolCount} >= 0`),
+    contentShapeCheck: check("cities_content_shape_check", sql`
+      jsonb_typeof(${table.tags}) = 'array'
+      and jsonb_typeof(${table.contentJson}) = 'object'
+      and jsonb_typeof(${table.nearby}) = 'array'
+      and octet_length(convert_to(${table.contentJson}::text, 'UTF8')) <= 131072`),
     publicSearchTrgmIdx: index("cities_public_search_trgm_idx").using("gin", sql`(
       coalesce(lower(${table.nameEn}), '') || ' ' || coalesce(lower(${table.nameZh}), '') || ' ' ||
       coalesce(lower(${table.slug}), '') || ' ' || coalesce(lower(${table.province}), '') || ' ' ||
@@ -649,6 +664,7 @@ export const schools = pgTable(
     qualityScore: integer("quality_score"),
     missingFields: jsonb("missing_fields").notNull().default([]),
     completenessLabel: text("completeness_label"),
+    version: integer("version").notNull().default(1),
     ...catalogReviewFields,
     ...timestamps,
   },
@@ -657,6 +673,18 @@ export const schools = pgTable(
     cityIdx: index("schools_city_idx").on(table.cityId),
     statusIdx: index("schools_status_idx").on(table.status),
     verificationIdx: index("schools_verification_status_idx").on(table.verificationStatus),
+    lifecycleCheck: check("schools_lifecycle_check", sql`
+      ${table.status} in ('active','draft','archived')
+      and ${table.verificationStatus} in ('unverified','verified','stale','disputed','invalid')
+      and ${table.version} > 0
+      and (${table.qualityScore} is null or ${table.qualityScore} between 0 and 100)`),
+    collectionShapeCheck: check("schools_collection_shape_check", sql`
+      jsonb_typeof(${table.cscaSubjects}) = 'array'
+      and jsonb_typeof(${table.subjectTags}) = 'array'
+      and jsonb_typeof(${table.languageTags}) = 'array'
+      and jsonb_typeof(${table.campusHighlights}) = 'array'
+      and jsonb_typeof(${table.missingFields}) = 'array'
+      and jsonb_typeof(${table.sourceFieldLineageJson}) = 'object'`),
     publicSearchTrgmIdx: index("schools_public_search_trgm_idx").using("gin", sql`(
       coalesce(lower(${table.nameEn}), '') || ' ' || coalesce(lower(${table.nameZh}), '') || ' ' ||
       coalesce(lower(${table.slug}), '') || ' ' || coalesce(lower(${table.city}), '') || ' ' ||
@@ -938,6 +966,7 @@ export const programs = pgTable(
     displayGroup: text("display_group"),
     displayGroupLabel: text("display_group_label"),
     sortOrder: integer("sort_order").notNull().default(0),
+    version: integer("version").notNull().default(1),
     ...catalogReviewFields,
     createdByUserId: uuid("created_by_user_id").references(() => users.id, { onDelete: "set null" }),
     updatedByUserId: uuid("updated_by_user_id").references(() => users.id, { onDelete: "set null" }),
@@ -949,6 +978,16 @@ export const programs = pgTable(
     idSchoolUnique: uniqueIndex("programs_id_school_unique").on(table.id, table.schoolId),
     cityIdx: index("programs_city_idx").on(table.cityId),
     degreeStatusIdx: index("programs_degree_status_idx").on(table.degreeLevel, table.status),
+    lifecycleCheck: check("programs_catalog_lifecycle_check", sql`${table.version} > 0
+      and ${table.status} in ('draft','active','archived')
+      and ${table.verificationStatus} in ('unverified','verified','stale','disputed','invalid')
+      and (${table.durationYears} is null or ${table.durationYears} between 0 and 20)
+      and (${table.durationMonths} is null or ${table.durationMonths} between 0 and 240)
+      and (${table.tuitionAmount} is null or ${table.tuitionAmount} >= 0)
+      and (${table.tuitionCurrency} is null or ${table.tuitionCurrency} ~ '^[A-Z]{3}$')
+      and jsonb_typeof(${table.cscaSubjects}) = 'array'
+      and jsonb_typeof(${table.displaySubjects}) = 'array'
+      and jsonb_typeof(${table.sourceFieldLineageJson}) = 'object'`),
     publicSearchTrgmIdx: index("programs_public_search_trgm_idx").using("gin", sql`(
       coalesce(lower(${table.nameEn}), '') || ' ' || coalesce(lower(${table.nameZh}), '') || ' ' ||
       coalesce(lower(${table.fieldCategory}), '') || ' ' || coalesce(lower(${table.subjectArea}), '') || ' ' ||
@@ -1564,6 +1603,21 @@ export const scholarships = pgTable(
     schoolIdx: index("scholarships_school_idx").on(table.schoolId),
     programIdx: index("scholarships_program_idx").on(table.programId),
     statusIdx: index("scholarships_status_idx").on(table.status),
+    lifecycleCheck: check("scholarships_catalog_lifecycle_check", sql`${table.version} > 0
+      and ${table.status} in ('draft','active','archived')
+      and ${table.verificationStatus} in ('unverified','verified','stale','disputed','invalid')
+      and jsonb_typeof(${table.bodySections}) = 'array'
+      and jsonb_typeof(${table.benefitItems}) = 'array'
+      and jsonb_typeof(${table.eligibilityItems}) = 'array'
+      and jsonb_typeof(${table.applicationMaterials}) = 'array'
+      and jsonb_typeof(${table.applicationSteps}) = 'array'
+      and jsonb_typeof(${table.contactInfo}) = 'object'
+      and jsonb_typeof(${table.actionLinks}) = 'array'
+      and jsonb_typeof(${table.targetCountries}) = 'array'
+      and jsonb_typeof(${table.targetRegions}) = 'array'
+      and jsonb_typeof(${table.benefits}) = 'array'
+      and jsonb_typeof(${table.tags}) = 'array'
+      and jsonb_typeof(${table.sourceFieldLineageJson}) = 'object'`),
     publicSearchTrgmIdx: index("scholarships_public_search_trgm_idx").using("gin", sql`(
       coalesce(lower(${table.title}), '') || ' ' || coalesce(lower(${table.nameZh}), '') || ' ' ||
       coalesce(lower(${table.providerName}), '') || ' ' || coalesce(lower(${table.providerNameEn}), '') || ' ' ||
@@ -1573,6 +1627,41 @@ export const scholarships = pgTable(
       coalesce(lower(${table.applicableProgram}), '') || ' ' || coalesce(lower(${table.summary}), '') || ' ' ||
       lower(${table.tags}::text)
     ) gin_trgm_ops`).where(sql`${table.status} = 'active' and ${table.verificationStatus} = 'verified'`),
+  }),
+);
+
+export const scholarshipCycleLineage = pgTable(
+  "scholarship_cycle_lineage",
+  {
+    scholarshipId: uuid("scholarship_id")
+      .primaryKey()
+      .references(() => scholarships.id, { onDelete: "restrict" }),
+    seriesKey: text("series_key").notNull(),
+    cycleKey: text("cycle_key").notNull(),
+    intakeYear: integer("intake_year").notNull(),
+    intakeLabel: text("intake_label").notNull(),
+    supersedesScholarshipId: uuid("supersedes_scholarship_id")
+      .references(() => scholarships.id, { onDelete: "restrict" }),
+    officialSourceUrl: text("official_source_url").notNull(),
+    officialSourceSha256: text("official_source_sha256").notNull(),
+    capturedAt: timestamp("captured_at", { withTimezone: true }).notNull(),
+    registeredByUserId: uuid("registered_by_user_id")
+      .references(() => users.id, { onDelete: "set null" }),
+    registeredAt: timestamp("registered_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    seriesCycleUnique: unique("scholarship_cycle_lineage_series_cycle_unique")
+      .on(table.seriesKey, table.cycleKey),
+    intakeYearIdx: index("scholarship_cycle_lineage_intake_year_idx")
+      .on(table.intakeYear, table.seriesKey),
+    lineageCheck: check("scholarship_cycle_lineage_check", sql`
+      ${table.seriesKey} ~ '^[a-z][a-z0-9-]{2,127}$'
+      and ${table.cycleKey} ~ '^[a-z0-9][a-z0-9-]{2,127}$'
+      and ${table.intakeYear} between 2000 and 2100
+      and char_length(btrim(${table.intakeLabel})) between 1 and 200
+      and ${table.officialSourceUrl} ~ '^https://'
+      and ${table.officialSourceSha256} ~ '^[a-f0-9]{64}$'
+      and ${table.supersedesScholarshipId} is distinct from ${table.scholarshipId}`),
   }),
 );
 
@@ -1613,6 +1702,94 @@ export const catalogSourceEvidence = pgTable(
       .on(table.id, table.entityType, table.entityId, table.capturedAt),
     entityIdx: index("catalog_source_evidence_entity_idx").on(table.entityType, table.entityId),
     capturedAtIdx: index("catalog_source_evidence_captured_at_idx").on(table.capturedAt),
+  }),
+);
+
+export const catalogEntityRevisions = pgTable(
+  "catalog_entity_revisions",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    entityType: text("entity_type").notNull(),
+    entityId: uuid("entity_id").notNull(),
+    entityVersion: integer("entity_version").notNull(),
+    action: text("action").notNull(),
+    snapshotJson: jsonb("snapshot_json").notNull(),
+    changedFieldsJson: jsonb("changed_fields_json").notNull().default([]),
+    sourceEvidenceId: uuid("source_evidence_id").references(() => catalogSourceEvidence.id, { onDelete: "set null" }),
+    actorUserId: uuid("actor_user_id").references(() => users.id, { onDelete: "set null" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    entityVersionUnique: unique("catalog_entity_revisions_entity_version_unique")
+      .on(table.entityType, table.entityId, table.entityVersion),
+    entityCreatedIdx: index("catalog_entity_revisions_entity_created_idx")
+      .on(table.entityType, table.entityId, table.createdAt),
+    lifecycleCheck: check("catalog_entity_revisions_lifecycle_check", sql`
+      ${table.entityType} in ('city','school','program','scholarship')
+      and ${table.entityVersion} > 0
+      and ${table.action} in ('created','updated','published','archived','restored')
+      and jsonb_typeof(${table.snapshotJson}) = 'object'
+      and jsonb_typeof(${table.changedFieldsJson}) = 'array'
+      and octet_length(convert_to(${table.snapshotJson}::text, 'UTF8')) <= 262144`),
+  }),
+);
+
+export const catalogReleaseManifests = pgTable(
+  "catalog_release_manifests",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    title: text("title").notNull(),
+    status: text("status").notNull().default("frozen"),
+    version: integer("version").notNull().default(1),
+    selectionSha256: text("selection_sha256").notNull(),
+    createdByUserId: uuid("created_by_user_id").references(() => users.id, { onDelete: "set null" }),
+    supersededByUserId: uuid("superseded_by_user_id").references(() => users.id, { onDelete: "set null" }),
+    supersededAt: timestamp("superseded_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    createdIdx: index("catalog_release_manifests_created_idx").on(table.status, table.createdAt),
+    lifecycleCheck: check("catalog_release_manifests_lifecycle_check", sql`
+      char_length(btrim(${table.title})) between 1 and 200
+      and ${table.status} in ('frozen','superseded')
+      and ${table.version} > 0
+      and ${table.selectionSha256} ~ '^[a-f0-9]{64}$'
+      and ((${table.status} = 'frozen' and ${table.supersededAt} is null and ${table.supersededByUserId} is null)
+        or (${table.status} = 'superseded' and ${table.supersededAt} is not null and ${table.supersededByUserId} is not null))`),
+  }),
+);
+
+export const catalogReleaseManifestItems = pgTable(
+  "catalog_release_manifest_items",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    manifestId: uuid("manifest_id").notNull()
+      .references(() => catalogReleaseManifests.id, { onDelete: "cascade" }),
+    position: integer("position").notNull(),
+    entityType: text("entity_type").notNull(),
+    entityId: uuid("entity_id").notNull(),
+    entityVersion: integer("entity_version").notNull(),
+    slug: text("slug").notNull(),
+    label: text("label").notNull(),
+    readinessSnapshotJson: jsonb("readiness_snapshot_json").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    positionUnique: unique("catalog_release_manifest_items_position_unique").on(table.manifestId, table.position),
+    entityUnique: unique("catalog_release_manifest_items_entity_unique").on(table.manifestId, table.entityType, table.entityId),
+    entityIdx: index("catalog_release_manifest_items_entity_idx").on(table.entityType, table.entityId),
+    snapshotCheck: check("catalog_release_manifest_items_snapshot_check", sql`
+      ${table.position} >= 0 and ${table.entityVersion} > 0
+      and ${table.entityType} in ('city','school','program','scholarship')
+      and char_length(btrim(${table.slug})) between 1 and 200
+      and char_length(btrim(${table.label})) between 1 and 500
+      and jsonb_typeof(${table.readinessSnapshotJson}) = 'object'
+      and ${table.readinessSnapshotJson}->>'ready' = 'true'
+      and jsonb_typeof(${table.readinessSnapshotJson}->'blockingReasons') = 'array'
+      and jsonb_array_length(${table.readinessSnapshotJson}->'blockingReasons') = 0
+      and jsonb_typeof(${table.readinessSnapshotJson}->'warningReasons') = 'array'
+      and octet_length(convert_to(${table.readinessSnapshotJson}::text, 'UTF8')) <= 16384`),
   }),
 );
 

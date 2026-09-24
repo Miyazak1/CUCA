@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "status": "product-authorized-deferment",
+  "authorizedAt": "2026-09-23",
+  "policy": {
+    "meaning": "These rules remove externally blocked missing fields from the current completion gate without treating the fields as populated or verified.",
+    "recheckTrigger": "Reopen a rule when a new exact official source is registered, an existing official snapshot hash changes, or an operator supplies an accessible official attachment.",
+    "publicationEffect": "None. A deferment never authorizes review, database writes or publication."
+  },
+  "rules": [
+    {
+      "id": "ahu-route-language-not-published-2026",
+      "entity": "program",
+      "schoolSlug": "anhui-university",
+      "fields": ["teachingLanguage"],
+      "reasonCode": "official_field_not_published",
+      "reason": "The acquired official program and scholarship materials do not publish a route-level teaching medium.",
+      "expectedRecordCount": 170
+    },
+    {
+      "id": "scut-route-core-attachments-inaccessible-2026",
+      "entity": "program",
+      "schoolSlug": "south-china-university-of-technology",
+      "fields": ["teachingLanguage", "tuitionText"],
+      "reasonCode": "official_attachment_inaccessible",
+      "reason": "The registered official prospectus files exceed the collector safety limit, and the supplementary exact endpoint returns HTTP 404.",
+      "expectedRecordCount": 99
+    },
+    {
+      "id": "blcu-route-language-identity-ambiguous-2026",
+      "entity": "program",
+      "schoolSlug": "beijing-language-and-culture-university",
+      "fields": ["teachingLanguage"],
+      "reasonCode": "official_identity_ambiguous",
+      "reason": "The official table does not uniquely identify the remaining joint, associate, specialization or same-name bilingual routes.",
+      "expectedRecordCount": 25
+    },
+    {
+      "id": "ccnu-application-level-attachment-inaccessible-2026",
+      "entity": "school",
+      "schoolSlug": "central-china-normal-university",
+      "fields": ["applicationLevel"],
+      "reasonCode": "official_attachment_inaccessible",
+      "reason": "The official page is acquired, but the attached guide required to establish the complete application level remains inaccessible to the safe collector.",
+      "expectedRecordCount": 1
+    }
+  ],
+  "sourceSetRules": [
+    {
+      "id": "cmu-official-host-legacy-tls",
+      "schoolSlug": "china-medical-university",
+      "reasonCode": "official_host_legacy_tls",
+      "reason": "The official international-admissions host requires unsafe legacy TLS renegotiation."
+    },
+    {
+      "id": "djtu-official-host-tls-reset",
+      "schoolSlug": "dalian-jiaotong-university",
+      "reasonCode": "official_host_tls_reset",
+      "reason": "The official host resets the TLS connection before a secure session is established."
+    },
+    {
+      "id": "gucm-official-host-http-412",
+      "schoolSlug": "gansu-university-of-chinese-medicine",
+      "reasonCode": "official_host_http_412",
+      "reason": "The official international-admissions portal returns HTTP 412 to the safe collector."
+    },
+    {
+      "id": "hueb-official-host-certificate-chain",
+      "schoolSlug": "hebei-university-of-economics-and-business",
+      "reasonCode": "official_host_certificate_chain",
+      "reason": "The official host presents an incomplete certificate chain that the safe collector cannot verify."
+    },
+    {
+      "id": "ruc-official-attachment-redirect-loop",
+      "schoolSlug": "renmin-university-of-china",
+      "reasonCode": "official_attachment_redirect_loop",
+      "reason": "The official attachment enters a redirect loop and is rejected by strict HTTPS redirect validation."
+    },
+    {
+      "id": "swupl-official-host-http-412",
+      "schoolSlug": "southwest-university-of-political-science-and-law",
+      "reasonCode": "official_host_http_412",
+      "reason": "The official international-admissions portal returns HTTP 412 and exposes no retrievable current guide."
+    },
+    {
+      "id": "ymu-official-host-certificate-chain",
+      "schoolSlug": "yunnan-minzu-university",
+      "reasonCode": "official_host_certificate_chain",
+      "reason": "The official host presents an incomplete certificate chain that the safe collector cannot verify."
+    },
+    {
+      "id": "zzu-official-host-tls-reset",
+      "schoolSlug": "zhengzhou-university",
+      "reasonCode": "official_host_tls_reset",
+      "reason": "The official host resets the connection before TLS negotiation completes."
+    }
+  ]
+}

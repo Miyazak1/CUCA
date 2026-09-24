@@ -88,7 +88,7 @@ export class CatalogService {
 
   async listScholarships(context: RequestContext, options: CatalogListOptions = {}) {
     authorizePublicCatalogRead(context);
-    return this.repository.listScholarships(normalizeListOptions(options));
+    return this.repository.listScholarships(normalizeScholarshipListOptions(options));
   }
 
   async getScholarship(context: RequestContext, scholarshipId: string) {
@@ -142,6 +142,13 @@ export function normalizeListOptions(options: CatalogListOptions): Pick<CatalogL
     offset: Math.max(options.offset ?? 0, 0),
     query: options.query?.trim() || undefined,
   };
+}
+
+export function normalizeScholarshipListOptions(options: CatalogListOptions): CatalogListOptions & { limit: number; offset: number } {
+  const base = normalizeListOptions(options);
+  const availability = ["open", "closed", "unconfirmed"].includes(String(options.availability))
+    ? options.availability : undefined;
+  return { ...base, availability };
 }
 
 export function normalizeProgramListOptions(options: CatalogListOptions): CatalogListOptions & { limit: number; offset: number } {

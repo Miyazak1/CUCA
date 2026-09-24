@@ -266,6 +266,8 @@ test("Postgres student repository creates application choice with server-provide
   assert.match(calls[0].statement, /where id = \$1 and user_id = \$2\s+for update/);
   assert.match(calls[0].statement, /status = 'draft' and locked_at is null and submitted_at is null/);
   assert.match(calls[0].statement, /from owned_application_set a\s+where a.editable/);
+  assert.match(calls[0].statement, /p\.verification_status in \('verified','stale'\)/);
+  assert.match(calls[0].statement, /s\.verification_status = 'verified'/);
   assert.deepEqual(calls[0].params, ["set-1", "student-1", "school-1", "program-1", null, 2, "High fit", null, null]);
 });
 
@@ -292,6 +294,9 @@ test("Postgres student repository save item uses active unique conflict target",
   await repository.saveItem("student-1", { entityType: "program", entityId: "program-1" });
 
   assert.match(calls[0].statement, /on conflict \(user_id, entity_type, entity_id\) where removed_at is null do update/);
+  assert.match(calls[0].statement, /programs p join schools s on s\.id = p\.school_id and s\.status = 'active'/);
+  assert.match(calls[0].statement, /p\.verification_status in \('verified','stale'\)/);
+  assert.match(calls[0].statement, /scholarships where[^\n]+verification_status = 'verified'/);
   assert.deepEqual(calls[0].params, ["student-1", "program", "program-1", null]);
 });
 
@@ -328,11 +333,14 @@ test("Postgres saved-item listing projects only a minimal typed catalog summary"
   for (const pattern of [
     /left join schools school/,
     /left join programs program/,
+    /left join schools program_school/,
     /left join scholarships scholarship/,
     /left join cities city/,
     /where si\.user_id = \$1 and si\.removed_at is null/,
   ]) assert.match(calls[0].statement, pattern);
   assert.match(calls[0].statement, /school\.verification_status/);
+  assert.match(calls[0].statement, /program\.verification_status in \('verified','stale'\)/);
+  assert.match(calls[0].statement, /scholarship\.verification_status = 'verified'/);
   assert.match(calls[0].statement, /when coalesce\([^\n]+status[^\n]+\) = 'draft' then 'draft'/);
   assert.doesNotMatch(calls[0].statement, /\.source_status/);
   assert.doesNotMatch(calls[0].statement, /select \*/i);

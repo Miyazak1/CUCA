@@ -35,6 +35,11 @@ const schoolInviteEmailOutboxMigrationPath = new URL("../../../drizzle/pg/0056_a
 const accountDeletionExecutionMigrationPath = new URL("../../../drizzle/pg/0069_account_deletion_execution.sql", import.meta.url);
 const accountDeletionLegalHoldReviewsMigrationPath = new URL("../../../drizzle/pg/0070_account_deletion_legal_hold_reviews.sql", import.meta.url);
 const accountDeletionQuarantineMigrationPath = new URL("../../../drizzle/pg/0071_account_deletion_quarantine.sql", import.meta.url);
+const catalogMasterDataMigrationPath = new URL("../../../drizzle/pg/0073_robust_the_fury.sql", import.meta.url);
+const schoolMasterDataConstraintsMigrationPath = new URL("../../../drizzle/pg/0074_elite_rattler.sql", import.meta.url);
+const programMasterDataConstraintsMigrationPath = new URL("../../../drizzle/pg/0075_classy_mentor.sql", import.meta.url);
+const scholarshipMasterDataConstraintsMigrationPath = new URL("../../../drizzle/pg/0076_chubby_dark_phoenix.sql", import.meta.url);
+const catalogReleaseManifestMigrationPath = new URL("../../../drizzle/pg/0077_orange_hitman.sql", import.meta.url);
 const journalPath = new URL("../../../drizzle/pg/meta/_journal.json", import.meta.url);
 
 test("school catalog correction URL follow-up replaces only the invalid PostgreSQL repetition check", async () => {
@@ -780,4 +785,90 @@ test("account deletion quarantine stores trusted evidence without deleting accou
   assert.doesNotMatch(sql, /^\s*(?:UPDATE|DELETE FROM|INSERT INTO)\b/im);
   assert.doesNotMatch(sql, /ALTER TABLE "users"|DROP TABLE/);
   assert.equal(journal.entries.find(entry => entry.tag === "0071_account_deletion_quarantine")?.idx, 71);
+});
+
+test("catalog master-data migration adds optimistic versions and immutable typed revision snapshots", async () => {
+  const [sql, journalText] = await Promise.all([
+    readFile(catalogMasterDataMigrationPath, "utf8"), readFile(journalPath, "utf8"),
+  ]);
+  const journal = JSON.parse(journalText);
+  assert.match(sql, /CREATE TABLE "catalog_entity_revisions"/);
+  assert.match(sql, /catalog_entity_revisions_entity_version_unique/);
+  assert.match(sql, /entity_type" in \('city','school','program','scholarship'\)/);
+  assert.match(sql, /action" in \('created','updated','published','archived','restored'\)/);
+  assert.match(sql, /ALTER TABLE "schools" ADD COLUMN "version"/);
+  assert.match(sql, /ALTER TABLE "programs" ADD COLUMN "version"/);
+  assert.doesNotMatch(sql, /^\s*(?:UPDATE|DELETE FROM|INSERT INTO)\b/im);
+  assert.doesNotMatch(sql, /DROP TABLE|ALTER TABLE "users"/);
+  assert.equal(journal.entries.find(entry => entry.tag === "0073_robust_the_fury")?.idx, 73);
+});
+
+test("school master-data constraints protect lifecycle, version and bounded collection shapes", async () => {
+  const [sql, journalText] = await Promise.all([
+    readFile(schoolMasterDataConstraintsMigrationPath, "utf8"), readFile(journalPath, "utf8"),
+  ]);
+  const journal = JSON.parse(journalText);
+  assert.match(sql, /schools_lifecycle_check/);
+  assert.match(sql, /status" in \('active','draft','archived'\)/);
+  assert.match(sql, /verification_status" in \('unverified','verified','stale','disputed','invalid'\)/);
+  assert.match(sql, /quality_score" is null or "schools"\."quality_score" between 0 and 100/);
+  assert.match(sql, /schools_collection_shape_check/);
+  for (const field of ["csca_subjects", "subject_tags", "language_tags", "campus_highlights", "missing_fields"]) {
+    assert.match(sql, new RegExp(`jsonb_typeof\\("schools"\\."${field}"\\) = 'array'`));
+  }
+  assert.doesNotMatch(sql, /^\s*(?:UPDATE|DELETE FROM|INSERT INTO)\b/im);
+  assert.doesNotMatch(sql, /DROP TABLE|ALTER TABLE "users"/);
+  assert.equal(journal.entries.find(entry => entry.tag === "0074_elite_rattler")?.idx, 74);
+});
+
+test("program master-data constraints protect lifecycle, numeric bounds and collection shapes", async () => {
+  const [sql, journalText] = await Promise.all([
+    readFile(programMasterDataConstraintsMigrationPath, "utf8"), readFile(journalPath, "utf8"),
+  ]);
+  const journal = JSON.parse(journalText);
+  assert.match(sql, /programs_catalog_lifecycle_check/);
+  assert.match(sql, /status" in \('draft','active','archived'\)/);
+  assert.match(sql, /duration_years" is null or "programs"\."duration_years" between 0 and 20/);
+  assert.match(sql, /tuition_currency" is null or "programs"\."tuition_currency" ~ '\^\[A-Z\]\{3\}\$'/);
+  assert.match(sql, /jsonb_typeof\("programs"\."csca_subjects"\) = 'array'/);
+  assert.match(sql, /jsonb_typeof\("programs"\."display_subjects"\) = 'array'/);
+  assert.doesNotMatch(sql, /^\s*(?:UPDATE|DELETE FROM|INSERT INTO)\b/im);
+  assert.doesNotMatch(sql, /DROP TABLE|ALTER TABLE "users"/);
+  assert.equal(journal.entries.find(entry => entry.tag === "0075_classy_mentor")?.idx, 75);
+});
+
+test("scholarship master-data constraints protect lifecycle and structured collection shapes", async () => {
+  const [sql, journalText] = await Promise.all([
+    readFile(scholarshipMasterDataConstraintsMigrationPath, "utf8"), readFile(journalPath, "utf8"),
+  ]);
+  const journal = JSON.parse(journalText);
+  assert.match(sql, /scholarships_catalog_lifecycle_check/);
+  assert.match(sql, /status" in \('draft','active','archived'\)/);
+  for (const field of ["body_sections","benefit_items","eligibility_items","application_materials","application_steps",
+    "action_links","target_countries","target_regions","benefits","tags"]) {
+    assert.match(sql, new RegExp(`jsonb_typeof\\("scholarships"\\."${field}"\\) = 'array'`));
+  }
+  assert.match(sql, /jsonb_typeof\("scholarships"\."contact_info"\) = 'object'/);
+  assert.doesNotMatch(sql, /^\s*(?:UPDATE|DELETE FROM|INSERT INTO)\b/im);
+  assert.doesNotMatch(sql, /DROP TABLE|ALTER TABLE "users"/);
+  assert.equal(journal.entries.find(entry => entry.tag === "0076_chubby_dark_phoenix")?.idx, 76);
+});
+
+test("catalog release manifests freeze ready snapshots and are database-immutable", async () => {
+  const [sql, journalText] = await Promise.all([
+    readFile(catalogReleaseManifestMigrationPath, "utf8"), readFile(journalPath, "utf8"),
+  ]);
+  const journal = JSON.parse(journalText);
+  assert.match(sql, /CREATE TABLE "catalog_release_manifests"/);
+  assert.match(sql, /CREATE TABLE "catalog_release_manifest_items"/);
+  assert.match(sql, /catalog_release_manifest_items_entity_unique/);
+  assert.match(sql, /selection_sha256" ~ '\^\[a-f0-9\]\{64\}\$'/);
+  assert.match(sql, /readiness_snapshot_json"->>'ready' = 'true'/);
+  assert.match(sql, /jsonb_array_length\([^;]+blockingReasons[^;]+\) = 0/s);
+  assert.match(sql, /catalog_release_manifest_items_immutable/);
+  assert.match(sql, /catalog_release_manifests_guard/);
+  assert.match(sql, /OLD\.status = 'frozen' AND NEW\.status = 'superseded'/);
+  assert.match(sql, /catalog release manifests cannot be deleted/);
+  assert.doesNotMatch(sql, /DROP TABLE|ALTER TABLE "users"/);
+  assert.equal(journal.entries.find(entry => entry.tag === "0077_orange_hitman")?.idx, 77);
 });

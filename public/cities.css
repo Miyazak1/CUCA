@@ -249,6 +249,10 @@ h1 {
   padding: 22px 0 34px;
 }
 
+[data-city-dependent][hidden] {
+  display: none !important;
+}
+
 .rail-city {
   display: grid;
   gap: 8px;

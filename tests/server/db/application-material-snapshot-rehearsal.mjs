@@ -54,7 +54,7 @@ export async function runApplicationMaterialSnapshotRehearsal(t, pool) {
   await t.test("same-school projects receive independent authorization and encrypted snapshot identities", async () => {
     await isolated(async f => {
       const first = await f.createSnapshot();
-      const program = (await pool.query("insert into programs (school_id,slug,name_en,degree_level,status) values ($1,$2,'Second program','master','active') returning id",
+      const program = (await pool.query("insert into programs (school_id,slug,name_en,degree_level,status,is_verified,verification_status) values ($1,$2,'Second program','master','active',true,'verified') returning id",
         [f.catalog.schoolId, randomUUID()])).rows[0];
       const intake = (await pool.query("insert into program_intakes (program_id,intake_term,intake_year,status,open_date,deadline_date) values ($1,'fall',2028,'open',now()-interval '1 day',now()+interval '1 day') returning id",
         [program.id])).rows[0];

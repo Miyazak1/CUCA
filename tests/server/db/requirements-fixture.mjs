@@ -5,8 +5,8 @@ import { requirementDocument, syntheticReview } from "../catalog/requirements-fi
 // Synthetic SQL setup only; not an approved production publication workflow.
 export async function requirementFixture(pool) {
   const key = randomUUID();
-  const school = (await pool.query("insert into schools (slug, name_en, status) values ($1, 'Synthetic requirements school', 'active') returning id", [key])).rows[0];
-  const program = (await pool.query("insert into programs (school_id, slug, name_en, degree_level, status, hsk_requirement, is_verified) values ($1, $2, 'Synthetic program', 'master', 'active', 'Legacy description is not a reviewed rule', true) returning id", [school.id, key])).rows[0];
+  const school = (await pool.query("insert into schools (slug, name_en, status, verification_status) values ($1, 'Synthetic requirements school', 'active', 'verified') returning id", [key])).rows[0];
+  const program = (await pool.query("insert into programs (school_id, slug, name_en, degree_level, status, hsk_requirement, is_verified, verification_status) values ($1, $2, 'Synthetic program', 'master', 'active', 'Legacy description is not a reviewed rule', true, 'verified') returning id", [school.id, key])).rows[0];
   const intake = (await pool.query("insert into program_intakes (program_id, intake_term, intake_year) values ($1, 'fall', 2027) returning id", [program.id])).rows[0];
   const reviewer = (await pool.query("insert into users (email, email_normalized) values ($1, $1) returning id", [`requirements-${key}@example.invalid`])).rows[0];
   const preparer = (await pool.query("insert into users (email, email_normalized) values ($1, $1) returning id", [`requirements-preparer-${key}@example.invalid`])).rows[0];

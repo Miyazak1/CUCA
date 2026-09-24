@@ -16,9 +16,9 @@
 }
 
 .saved-main {
-  width: min(1100px, calc(100% - 48px));
+  width: min(var(--workspace-content-width), calc(100% - (var(--workspace-page-gutter) * 2)));
   margin: 0 auto;
-  padding: 38px 0 80px;
+  padding: var(--workspace-main-top) 0 var(--workspace-main-bottom);
 }
 
 .saved-breadcrumb {
@@ -387,8 +387,8 @@
 
 @media (max-width: 760px) {
   .saved-main {
-    width: min(100% - 32px, 1100px);
-    padding-top: 26px;
+    width: min(100% - 32px, var(--workspace-content-width));
+    padding-top: 24px;
   }
 
   .saved-heading,
@@ -409,7 +409,7 @@
 
 @media (max-width: 520px) {
   .saved-main {
-    width: min(100% - 24px, 1100px);
+    width: min(100% - 24px, var(--workspace-content-width));
   }
 
   .saved-tabs {

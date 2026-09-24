@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "evidenceKind": "reviewed-official-source-extract",
+  "derivedFromCandidate": "seeds/catalog.zjut-scholarships-safe-new-batch-01.draft.json",
+  "derivedFromCandidateSha256": "6d520c5ac30be5ab28239c975d3e9a19e6cc08dbbc50a00b2bea6cb79eb2a8d4",
+  "priorApproval": {
+    "reviewReference": "standing-authorized-zjut-scholarships-safe-new-batch-01-2f2ebd1b864e93ae603794f50a448dae0bc84997e9a01c9c8d881452156d77b8",
+    "approvalMode": "standing-user-default-publication",
+    "prohibitedDataConfirmedExcluded": true
+  },
+  "source": {
+    "sourceId": "zjut-international-chinese-language-teachers-scholarship-2027-spring",
+    "url": "https://www.gjxy.zjut.edu.cn/index.php/en/scholarship/international-chinese-language-teachers-scholarship",
+    "label": "Zhejiang University of Technology 2027 spring International Chinese Language Teachers Scholarship",
+    "sha256": "6f06242f0d8209f8c145073606e0fffc3f9281db8e00f833c0ab323fa6e00c8d",
+    "capturedAt": "2026-09-14T08:25:42.267Z"
+  },
+  "record": {
+    "slug": "official-2027-spring-zjut-international-chinese-language-teachers-one-semester",
+    "deadlineDate": "2026-10-20",
+    "deadlineLabel": "October 20, 2026",
+    "applicationRound": "March 2027 intake",
+    "sourceUrl": "https://www.gjxy.zjut.edu.cn/index.php/en/scholarship/international-chinese-language-teachers-scholarship",
+    "sourceSha256": "6f06242f0d8209f8c145073606e0fffc3f9281db8e00f833c0ab323fa6e00c8d"
+  }
+}

@@ -11,7 +11,7 @@ const deferred = () => { let resolve; const promise = new Promise(done => { reso
 
 export async function runApplicationEditRehearsal(t, pool) {
   const client = createTransactionalSqlClient(pool), service = createPostgresStudentService(client);
-  const schoolId = (await pool.query("select id from schools where status = 'active' limit 1")).rows[0].id;
+  const schoolId = (await pool.query("select id from schools where status = 'active' and verification_status in ('verified','stale') limit 1")).rows[0].id;
   const key = () => ({ idempotencyKey: randomUUID() });
   async function fixture(count = 2) {
     const email = `edit-${randomUUID()}@example.invalid`;
@@ -20,7 +20,7 @@ export async function runApplicationEditRehearsal(t, pool) {
     const context = createRequestContext({ actorUserId: user.id, activeRole: "student", selectedSurface: "student", purpose: "student_action" });
     const originalSet = await service.createOwnApplicationSet(context, { name: "Edit fixture" }, key()), choices = [];
     for (let i = 0; i < count; i++) {
-      const { rows: [program] } = await pool.query("insert into programs (school_id, slug, name_en, degree_level, status) values ($1, $2, 'Synthetic route', 'master', 'active') returning id", [schoolId, `edit-${randomUUID()}`]);
+      const { rows: [program] } = await pool.query("insert into programs (school_id, slug, name_en, degree_level, status, is_verified, verification_status) values ($1, $2, 'Synthetic route', 'master', 'active', true, 'verified') returning id", [schoolId, `edit-${randomUUID()}`]);
       choices.push(await service.addOwnApplicationChoice(context, { applicationSetId: originalSet.id, schoolId, programId: program.id, rankOrder: i, studentNotes: "Original note" }, key()));
     }
     const set = await service.getOwnApplicationSet(context, originalSet.id);

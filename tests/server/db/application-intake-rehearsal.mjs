@@ -17,8 +17,8 @@ export async function runApplicationIntakeRehearsal(t, pool) {
     const user = (await pool.query("insert into users (email, email_normalized) values ($1, $1) returning id", [email])).rows[0];
     await pool.query("insert into user_roles (user_id, role) values ($1, 'student')", [user.id]);
     const context = createRequestContext({ actorUserId: user.id, activeRole: "student", selectedSurface: "student", purpose: "student_action" });
-    const school = (await pool.query("insert into schools (slug, name_en, status) values ($1, 'Intake school', 'active') returning id", [`intake-${randomUUID()}`])).rows[0];
-    const program = (await pool.query("insert into programs (school_id, slug, name_en, degree_level, status) values ($1, $2, 'Intake program', 'master', 'active') returning id", [school.id, `intake-${randomUUID()}`])).rows[0];
+    const school = (await pool.query("insert into schools (slug, name_en, status, verification_status) values ($1, 'Intake school', 'active', 'verified') returning id", [`intake-${randomUUID()}`])).rows[0];
+    const program = (await pool.query("insert into programs (school_id, slug, name_en, degree_level, status, is_verified, verification_status) values ($1, $2, 'Intake program', 'master', 'active', true, 'verified') returning id", [school.id, `intake-${randomUUID()}`])).rows[0];
     const intakes = (await pool.query(`insert into program_intakes (program_id, intake_term, intake_year, open_date, deadline_date, status)
       values ($1, 'fall', 2090, now() + interval '1 year', now() + interval '2 years', 'open'),
         ($1, 'spring', 2091, null, null, 'open') returning id`, [program.id])).rows;

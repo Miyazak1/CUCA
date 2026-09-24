@@ -8,17 +8,10 @@
           if (input.value !== value) {
             input.value = value;
           }
-          autoSizePlanner(input);
         });
       }
 
-      function autoSizePlanner(input) {
-        input.style.height = "auto";
-        input.style.height = `${Math.min(input.scrollHeight, 124)}px`;
-      }
-
       plannerInputs.forEach((input) => {
-        autoSizePlanner(input);
         input.addEventListener("input", (event) => syncPlannerValue(event.target.value));
       });
 

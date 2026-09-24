@@ -17,6 +17,9 @@ test("released surfaces defer Agent UI and expose deterministic site search", as
   assert.match(shell, /`search\.html\?lang=\$\{encodeURIComponent\(locale\)\}`/);
   assert.match(homeHtml, /<body\b[^>]*\bdata-agent-mode="off"[^>]*>/);
   assert.match(homeHtml, /data-site-search-form/);
+  assert.match(homeHtml, /<form class="site-search"[^>]*role="search"/);
+  assert.match(homeHtml, /<input data-site-search-input type="search"[^>]*maxlength="120"/);
+  assert.doesNotMatch(homeHtml, /<textarea[^>]*data-site-search-input/);
   assert.doesNotMatch(homeHtml, /data-planner-form|data-agent-prompt/);
   assert.match(homeScript, /new URLSearchParams\(\{ q: query \}\)/);
   assert.match(homeScript, /params\.set\("lang", window\.CUACI18n\.locale\)/);

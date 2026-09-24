@@ -134,6 +134,7 @@ export class PostgresSchoolCatalogCorrectionRepository implements SchoolCatalogC
              tuition_summary = case when $2::jsonb ? 'tuitionSummary' then $2::jsonb ->> 'tuitionSummary' else tuition_summary end,
              application_fee = case when $2::jsonb ? 'applicationFee' then $2::jsonb ->> 'applicationFee' else application_fee end,
              source_field_lineage_json = source_field_lineage_json || $3::jsonb,
+             version = version + 1,
              verification_status = 'unverified', verified_by_user_id = null,
              last_verified_at = null, next_review_due_at = null, updated_at = $4
            where id = $1 and status = 'active'
@@ -146,6 +147,10 @@ export class PostgresSchoolCatalogCorrectionRepository implements SchoolCatalogC
         }
         status = "applied";
         resultSchoolUpdatedAt = recordedAt;
+        await tx.query(`insert into catalog_entity_revisions (
+          entity_type,entity_id,entity_version,action,snapshot_json,changed_fields_json,actor_user_id
+        ) select 'school',s.id,s.version,'updated',to_jsonb(s),$2::jsonb,$3 from schools s where s.id=$1`,
+        [current.schoolId, JSON.stringify(Object.keys(current.changes)), input.actorUserId]);
       }
 
       const updated = await tx.query<{ id: string }>(

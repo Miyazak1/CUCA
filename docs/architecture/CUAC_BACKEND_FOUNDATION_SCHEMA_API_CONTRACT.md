@@ -302,6 +302,9 @@ Must include:
 - `actualEnglishProgramCount`
 - `actualScholarshipCount`
 - `actualCscaRequiredSchoolCount`
+- `actualOpenIntakeCount`
+- `publicationState`
+- `contentComplete`
 - `status`
 - `sortOrder`
 - `version`

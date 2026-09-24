@@ -39,7 +39,7 @@ export async function runMaterialSelectionRehearsal(t, pool) {
 
   await t.test("selection keeps same-school projects and intakes separate without copying another choice's saved materials", async () => {
     const f = await materialSelectionFixture(pool);
-    const programId = (await pool.query("insert into programs (school_id,slug,name_en,degree_level,status) values ($1,$2,'Second project','master','active') returning id", [f.catalog.schoolId, randomUUID()])).rows[0].id;
+    const programId = (await pool.query("insert into programs (school_id,slug,name_en,degree_level,status,is_verified,verification_status) values ($1,$2,'Second project','master','active',true,'verified') returning id", [f.catalog.schoolId, randomUUID()])).rows[0].id;
     const intakeId = (await pool.query("insert into program_intakes (program_id,intake_term,intake_year) values ($1,'fall',2027) returning id", [programId])).rows[0].id;
     const second = await f.student.addOwnApplicationChoice(f.context, { applicationSetId: f.set.id, schoolId: f.catalog.schoolId, programId, programIntakeId: intakeId }, { idempotencyKey: randomUUID() });
     const nextIntake = (await pool.query("insert into program_intakes (program_id,intake_term,intake_year) values ($1,'spring',2028) returning id", [f.catalog.programId])).rows[0].id;

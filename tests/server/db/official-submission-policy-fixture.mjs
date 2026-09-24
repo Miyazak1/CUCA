@@ -17,12 +17,12 @@ export async function officialSubmissionPolicyFixture(pool, options = {}) {
   const reviewerId = await addStaff("cuac_admin", "policy-reviewer");
   const otherReviewerId = await addStaff("cuac_admin", "policy-other-reviewer");
   const school = options.schoolId ? { id: options.schoolId }
-    : (await pool.query("insert into schools (slug,name_en,status) values ($1,'Policy School','active') returning id",
+    : (await pool.query("insert into schools (slug,name_en,status,verification_status) values ($1,'Policy School','active','verified') returning id",
       [`policy-school-${suffix}`])).rows[0];
-  const otherSchool = (await pool.query("insert into schools (slug,name_en,status) values ($1,'Other Policy School','active') returning id", [`other-policy-school-${suffix}`])).rows[0];
+  const otherSchool = (await pool.query("insert into schools (slug,name_en,status,verification_status) values ($1,'Other Policy School','active','verified') returning id", [`other-policy-school-${suffix}`])).rows[0];
   const createTarget = async (owner, label) => {
-    const program = (await pool.query(`insert into programs (school_id,slug,name_en,degree_level,status)
-      values ($1,$2,$3,'master','active') returning id`, [owner.id, `${label}-${suffix}`, `${label} program`])).rows[0];
+    const program = (await pool.query(`insert into programs (school_id,slug,name_en,degree_level,status,is_verified,verification_status)
+      values ($1,$2,$3,'master','active',true,'verified') returning id`, [owner.id, `${label}-${suffix}`, `${label} program`])).rows[0];
     const intake = (await pool.query(`insert into program_intakes (program_id,intake_term,intake_year,status,open_date,deadline_date)
       values ($1,'fall',2027,'open',clock_timestamp() - interval '1 day',clock_timestamp() + interval '180 days') returning id`, [program.id])).rows[0];
     return { programId: program.id, programIntakeId: intake.id };

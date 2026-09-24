@@ -71,9 +71,9 @@ export async function runIdentityIsolationRehearsal(t, pool) {
     const programIds = [];
     const teachers = [];
     for (const label of ["A", "B"]) {
-      const { rows: [school] } = await pool.query("insert into schools (slug, name_en, status) values ($1, $2, 'active') returning id", [randomUUID(), `School ${label}`]);
+      const { rows: [school] } = await pool.query("insert into schools (slug, name_en, status, verification_status) values ($1, $2, 'active', 'verified') returning id", [randomUUID(), `School ${label}`]);
       schoolIds.push(school.id);
-      const { rows: [program] } = await pool.query("insert into programs (slug, school_id, name_en, degree_level, status) values ($1, $2, 'Program', 'bachelor', 'active') returning id", [randomUUID(), school.id]);
+      const { rows: [program] } = await pool.query("insert into programs (slug, school_id, name_en, degree_level, status, verification_status, is_verified) values ($1, $2, 'Program', 'bachelor', 'active', 'verified', true) returning id", [randomUUID(), school.id]);
       programIds.push(program.id);
       const { rows: [user] } = await pool.query("insert into users (email, email_normalized) values ($1, $1) returning id", [`teacher-${randomUUID()}@example.invalid`]);
       await pool.query("insert into user_roles (user_id, role) values ($1, 'school_staff')", [user.id]);
@@ -174,7 +174,15 @@ export async function runIdentityIsolationRehearsal(t, pool) {
     const existing = await createStudent();
     const orphanEmail = `orphan-${randomUUID()}@example.invalid`;
     await pool.query("update auth_identities set provider_subject = $1 where user_id = $2", [orphanEmail, existing.userId]);
-    await assert.rejects(auth.createStudentAccount({ email: orphanEmail, emailNormalized: orphanEmail, displayName: null, passwordHash: await hashPassword(password), now: new Date() }), (error) => error.code === "23505");
+    await assert.rejects(auth.createStudentAccount({
+      email: orphanEmail,
+      emailNormalized: orphanEmail,
+      displayName: null,
+      passwordHash: await hashPassword(password),
+      ageBand: "14_or_older",
+      locale: "en",
+      now: new Date(),
+    }), (error) => error.code === "23505");
     const orphan = await pool.query("select id from users where email_normalized = $1", [orphanEmail]);
     assert.deepEqual(orphan.rows, []);
   });
@@ -252,7 +260,7 @@ export async function runIdentityIsolationRehearsal(t, pool) {
     assert.doesNotMatch(JSON.stringify(logs.rows), /Approved projection|RAW_STUDENT_PROFILE_MARKER|PRIVATE_CHOICE_MARKER/);
   });
 
-  await t.test("missing membership enforcement, revoked membership and inactive school fail closed", async () => {
+  await t.test("missing membership enforcement, revoked membership and non-active school fail closed", async () => {
     const f = await fixture();
     const schoolRequest = () => request("/api/v1/school/applications", f.teachers[0].token);
     const unconfigured = createSchoolPortalHttpHandlers(new SchoolPortalService(schools), auth);
@@ -260,7 +268,7 @@ export async function runIdentityIsolationRehearsal(t, pool) {
     await pool.query("update school_staff_memberships set status = 'suspended' where user_id = $1", [f.teachers[0].userId]);
     assert.equal((await schoolHttp.listApplications(schoolRequest())).status, 403);
     await pool.query("update school_staff_memberships set status = 'active' where user_id = $1", [f.teachers[0].userId]);
-    await pool.query("update schools set status = 'inactive' where id = $1", [f.schoolIds[0]]);
+    await pool.query("update schools set status = 'draft' where id = $1", [f.schoolIds[0]]);
     assert.equal((await schoolHttp.listApplications(schoolRequest())).status, 403);
     assert.equal((await schoolHttp.listApplications(request("/api/v1/school/applications", f.a.sessionToken))).status, 403);
     assert.equal((await studentHttp.getProfile(schoolRequest())).status, 403);

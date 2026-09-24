@@ -191,6 +191,14 @@ export type PublicScholarshipDto = {
   deadlineDate: Date | null;
   deadlineLabel: string | null;
   applicationRound: string | null;
+  applicationAvailability: "open" | "closed" | "unconfirmed";
+  cycle: {
+    seriesKey: string;
+    cycleKey: string;
+    intakeYear: number;
+    intakeLabel: string;
+    supersedesScholarshipId: string | null;
+  } | null;
   targetCountries: string[];
   targetRegions: string[];
   sourceUrl: string | null;
@@ -290,6 +298,9 @@ export type PublicCityDto = {
   actualEnglishProgramCount: number;
   actualScholarshipCount: number;
   actualCscaRequiredSchoolCount: number;
+  actualOpenIntakeCount: number;
+  publicationState: "limited" | "published" | "stale";
+  contentComplete: boolean;
   status: string;
   sortOrder: number;
   version: number;
@@ -303,6 +314,7 @@ export type PublicCityDetailDto = PublicCityDto & {
   sourceUrl: string | null;
   sourceLabel: string | null;
   lastVerifiedAt: Date | null;
+  nextReviewDueAt: Date | null;
   sourceFieldLineage: SourceFieldLineage;
 };
 
@@ -323,6 +335,7 @@ export type CatalogListOptions = {
   upcomingDeadline?: boolean;
   languageRequirement?: string;
   sort?: string;
+  availability?: string;
 };
 
 export type PublicGuideDto = {

@@ -11,7 +11,7 @@ import type {
   PublicSchoolDetailDto,
   PublicSchoolDto,
 } from "./dto.ts";
-import type { CityRow, ProgramProjectionRow, ScholarshipProjectionRow, SchoolProjectionRow } from "./mappers.ts";
+import type { CityProjectionRow, ProgramProjectionRow, ScholarshipProjectionRow, SchoolProjectionRow } from "./mappers.ts";
 import {
   toPublicCityDetailDto,
   toPublicCityDto,
@@ -65,6 +65,7 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
     const rows = await this.client.query<ProgramProjectionRow>(
       `${programSelectSql}
        where p.id = $1 and p.status = 'active'
+         and p.verification_status in ('verified','stale')
        limit 1`,
       [programId],
     );
@@ -80,6 +81,7 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
          case when ${upcomingIntakeWindowSql()} then 'upcoming' else 'open' end as status
        from program_intakes pi join programs p on p.id = pi.program_id join schools s on s.id = p.school_id
        where pi.program_id = $1 and p.status = 'active' and s.status = 'active' and pi.status = 'open'
+         and p.verification_status in ('verified','stale')
          and ((${currentIntakeWindowSql()}) or (${upcomingIntakeWindowSql()}))
        order by pi.intake_year asc, pi.sort_order asc, pi.intake_term asc, pi.id asc
        limit $2 offset $3`, [programId, options.limit ?? 20, options.offset ?? 0],
@@ -95,7 +97,7 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
     const { whereSql, params } = buildPublicSearchWhere("s", [
       "s.name_en", "s.name_zh", "s.slug", "s.city", "s.city_zh", "s.province", "s.school_type",
       "s.region", "s.subject_tags::text", "s.language_tags::text",
-    ], options.query);
+    ], options.query, ["s.verification_status in ('verified','stale')"]);
     const rows = await this.client.query<SchoolProjectionRow>(
       `${schoolSelectSql}
        ${whereSql}
@@ -115,6 +117,7 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
     const rows = await this.client.query<SchoolProjectionRow>(
       `${schoolSelectSql}
        where s.id = $1 and s.status = 'active'
+         and s.verification_status in ('verified','stale')
        limit 1`,
       [schoolId],
     );
@@ -128,9 +131,12 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
       "sch.type", "sch.type_label", "sch.funding_level", "sch.coverage", "sch.applicable_degree",
       "sch.applicable_program", "sch.summary", "sch.tags::text",
     ], options.query);
+    const availabilitySql = options.availability === "open" ? " and sch.deadline_date > clock_timestamp()"
+      : options.availability === "closed" ? " and sch.deadline_date <= clock_timestamp()"
+        : options.availability === "unconfirmed" ? " and sch.deadline_date is null" : "";
     const rows = await this.client.query<ScholarshipProjectionRow>(
       `${scholarshipSelectSql}
-       ${whereSql} and sch.verification_status = 'verified'
+       ${whereSql} and sch.verification_status = 'verified'${availabilitySql}
        order by sch.sort_order asc, sch.title asc, sch.slug asc
        limit $${params.length + 1} offset $${params.length + 2}`,
       [...params, options.limit ?? 20, options.offset ?? 0],
@@ -154,8 +160,8 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
     const { whereSql, params } = buildPublicSearchWhere("c", [
       "c.name_en", "c.name_zh", "c.slug", "c.province", "c.region", "c.tags::text",
       "c.content_json->>'summary'", "c.content_json->>'overview'",
-    ], options.query);
-    const rows = await this.client.query<CityRow>(
+    ], options.query, cityPublicClauses("c"));
+    const rows = await this.client.query<CityProjectionRow>(
       `${citySelectSql}
        ${whereSql}
        order by c.sort_order asc, c.name_en asc, c.slug asc, c.id asc
@@ -167,9 +173,9 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
   }
 
   async getCity(citySlug: string): Promise<PublicCityDetailDto | null> {
-    const rows = await this.client.query<CityRow>(
+    const rows = await this.client.query<CityProjectionRow>(
       `${citySelectSql}
-       where c.slug = $1 and c.status = 'active'
+       where c.slug = $1 and ${cityPublicClauses("c").join(" and ")}
        limit 1`,
       [citySlug],
     );
@@ -214,8 +220,8 @@ const publicGuideSelectSql = `select g.id::text as id, g.slug, g.title_en as "ti
   g.sort_order as "sortOrder", g.version, g.published_at as "publishedAt", g.updated_at as "updatedAt"
 from public_guides g`;
 
-function buildPublicSearchWhere(alias: string, columns: readonly string[], query?: string) {
-  const clauses = [`${alias}.status = 'active'`];
+function buildPublicSearchWhere(alias: string, columns: readonly string[], query?: string, extraClauses: readonly string[] = []) {
+  const clauses = [`${alias}.status = 'active'`, ...extraClauses];
   const params: unknown[] = [];
 
   if (query) {
@@ -235,8 +241,19 @@ function buildPublicSearchWhere(alias: string, columns: readonly string[], query
   };
 }
 
+function cityPublicClauses(alias: string): string[] {
+  return [
+    `${alias}.verification_status in ('verified','stale')`,
+    `${alias}.slug !~ '^local-'`,
+    `exists (select 1 from schools city_school where city_school.city_id = ${alias}.id and city_school.status = 'active')`,
+  ];
+}
+
 function buildProgramListQuery(options: CatalogListOptions) {
-  const clauses = ["p.status = 'active'"];
+  const clauses = [
+    "p.status = 'active'",
+    "p.verification_status in ('verified','stale')",
+  ];
   const params: unknown[] = [];
   const add = (value: unknown) => {
     params.push(value);
@@ -357,7 +374,9 @@ select
   p.tuition_period as "tuitionPeriod",
   p.tuition_text as "tuitionText",
   p.scholarship_text as "scholarshipText",
-  p.application_url as "applicationUrl",
+  coalesce(p.application_url,
+    case when s.verification_status in ('verified','stale') then s.admissions_url end
+  ) as "applicationUrl",
   p.application_note as "applicationNote",
   p.is_verified as "isVerified",
   p.has_scholarship as "hasScholarship",
@@ -457,6 +476,7 @@ select
       from programs p2
       join program_intakes pi on pi.program_id = p2.id and pi.status = 'open'
       where p2.school_id = s.id and p2.status = 'active'
+        and p2.verification_status in ('verified','stale')
         and ${currentIntakeWindowSql()}
       order by pi.deadline_date asc nulls last, p2.name_en asc
       limit 8
@@ -469,6 +489,7 @@ left join lateral (
     count(*) filter (where lower(trim(p.teaching_language)) in ('english', 'english-taught', '英文授课'))::int as english_program_count
   from programs p
   where p.school_id = s.id and p.status = 'active'
+    and p.verification_status in ('verified','stale')
 ) program_stats on true
 left join lateral (
   select count(*)::int as scholarship_count
@@ -519,6 +540,11 @@ select
   sch.last_verified_at as "lastVerifiedAt",
   sch.created_at as "createdAt",
   sch.updated_at as "updatedAt",
+  lineage.series_key as "seriesKey",
+  lineage.cycle_key as "cycleKey",
+  lineage.intake_year as "intakeYear",
+  lineage.intake_label as "intakeLabel",
+  lineage.supersedes_scholarship_id as "supersedesScholarshipId",
   s.slug as "schoolSlug",
   s.name_zh as "schoolNameZh",
   s.name_en as "schoolNameEn",
@@ -526,6 +552,7 @@ select
   p.name_zh as "programNameZh",
   p.name_en as "programNameEn"
 from scholarships sch
+left join scholarship_cycle_lineage lineage on lineage.scholarship_id = sch.id
 left join schools s on s.id = sch.school_id and s.status = 'active'
 left join programs p on p.id = sch.program_id and p.status = 'active'`;
 
@@ -549,6 +576,30 @@ select
   c.reference_english_program_count as "referenceEnglishProgramCount",
   c.reference_scholarship_count as "referenceScholarshipCount",
   c.reference_csca_school_count as "referenceCscaSchoolCount",
+  (select count(*)::int from schools city_school
+    where city_school.city_id = c.id and city_school.status = 'active') as "actualSchoolCount",
+  (select count(*)::int from programs city_program
+    join schools program_school on program_school.id = city_program.school_id and program_school.status = 'active'
+    where coalesce(city_program.city_id, program_school.city_id) = c.id and city_program.status = 'active') as "actualProgramCount",
+  (select count(*)::int from programs city_program
+    join schools program_school on program_school.id = city_program.school_id and program_school.status = 'active'
+    where coalesce(city_program.city_id, program_school.city_id) = c.id and city_program.status = 'active'
+      and lower(trim(city_program.teaching_language)) in ('english','english-taught','英文授课')) as "actualEnglishProgramCount",
+  (select count(distinct city_scholarship.id)::int from scholarships city_scholarship
+    left join programs scholarship_program on scholarship_program.id = city_scholarship.program_id
+      and scholarship_program.status = 'active'
+    left join schools scholarship_school on scholarship_school.id = coalesce(city_scholarship.school_id, scholarship_program.school_id)
+      and scholarship_school.status = 'active'
+    where city_scholarship.status = 'active' and city_scholarship.verification_status = 'verified'
+      and coalesce(scholarship_program.city_id, scholarship_school.city_id) = c.id) as "actualScholarshipCount",
+  (select count(*)::int from schools city_school
+    where city_school.city_id = c.id and city_school.status = 'active' and city_school.csca_required = true)
+    as "actualCscaRequiredSchoolCount",
+  (select count(*)::int from program_intakes city_intake
+    join programs intake_program on intake_program.id = city_intake.program_id and intake_program.status = 'active'
+    join schools intake_school on intake_school.id = intake_program.school_id and intake_school.status = 'active'
+    where coalesce(intake_program.city_id, intake_school.city_id) = c.id
+      and city_intake.status = 'open' and ${currentIntakeWindowSql("city_intake")}) as "actualOpenIntakeCount",
   c.sort_order as "sortOrder",
   c.version,
   c.status,
@@ -557,6 +608,7 @@ select
   c.source_label as "sourceLabel",
   c.source_field_lineage_json as "sourceFieldLineageJson",
   c.last_verified_at as "lastVerifiedAt",
+  c.next_review_due_at as "nextReviewDueAt",
   c.created_at as "createdAt",
   c.updated_at as "updatedAt"
 from cities c`;

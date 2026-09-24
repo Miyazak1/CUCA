@@ -257,7 +257,7 @@ test("scholarship and city mappers return public DTO shapes", () => {
       why: ["Strong program range"],
       costBreakdown: [{ label: "Housing", value: "CNY 2,000", note: null }],
       lifeSections: [{ title: "Campus", body: "Confirm the exact campus" }],
-      transportNotes: [],
+      transportNotes: ["Use official transport information"],
       applicationTips: ["Choose a program first"],
       applicationAdvice: [],
       relatedProgramKeywords: ["engineering"],
@@ -271,6 +271,12 @@ test("scholarship and city mappers return public DTO shapes", () => {
     referenceEnglishProgramCount: 12,
     referenceScholarshipCount: 6,
     referenceCscaSchoolCount: 3,
+    actualSchoolCount: 11,
+    actualProgramCount: 52,
+    actualEnglishProgramCount: 17,
+    actualScholarshipCount: 9,
+    actualCscaRequiredSchoolCount: 4,
+    actualOpenIntakeCount: 7,
     sortOrder: 2,
     version: 1,
     ...baseCatalogFields(),
@@ -289,7 +295,12 @@ test("scholarship and city mappers return public DTO shapes", () => {
     eligibilityItems: [{ label: "Applicant", body: "International", contactInfo: "private" }] }), /projection/);
   assert.throws(() => toPublicScholarshipDetailDto({ ...scholarshipRow,
     bodySections: [{ title: "Overview", body: "Published", internalNote: "private" }] }), /projection/);
-  assert.equal(city.actualSchoolCount, 8);
+  assert.equal(city.actualSchoolCount, 11);
+  assert.equal(city.references.schoolCount, 8);
+  assert.equal(city.actualProgramCount, 52);
+  assert.equal(city.actualOpenIntakeCount, 7);
+  assert.equal(city.publicationState, "published");
+  assert.equal(city.contentComplete, true);
   assert.equal(city.content.quickFacts[0].label, "Climate");
   assert.deepEqual(city.content.lifeSections[0], { label: "Campus", text: "Confirm the exact campus" });
   assert.throws(() => toPublicCityDto({ ...cityRow, contentJson: { ...cityRow.contentJson, internalNotes: "private" } }), /city content projection/);
@@ -307,6 +318,28 @@ test("scholarship and city mappers return public DTO shapes", () => {
   assert.equal(cityDetail.id, "city_1");
   assert.equal(cityDetail.sourceStatus, "verified");
   assert.deepEqual(cityDetail.sourceFieldLineage, { nameEn: "official" });
+  assert.equal(cityDetail.nextReviewDueAt, null);
+});
+
+test("city mapper marks incomplete and overdue reviewed records honestly", () => {
+  const row = {
+    id: "city_2", slug: "nanjing", nameZh: "南京", nameEn: "Nanjing", region: "East China", province: "Jiangsu",
+    monthlyCost: null, monthlyCostRmb: null, costLevel: null, density: null, tags: [], contentJson: {}, nearby: [],
+    referenceSchoolCount: 99, referenceProgramCount: 99, referenceEnglishProgramCount: 99,
+    referenceScholarshipCount: 99, referenceCscaSchoolCount: 99,
+    actualSchoolCount: "3", actualProgramCount: "20", actualEnglishProgramCount: "5",
+    actualScholarshipCount: "2", actualCscaRequiredSchoolCount: "1",
+    actualOpenIntakeCount: "4",
+    sortOrder: 0, version: 1, ...baseCatalogFields(),
+    nextReviewDueAt: new Date("2026-01-01T00:00:00.000Z"),
+  };
+  const city = toPublicCityDetailDto(row);
+  assert.equal(city.publicationState, "stale");
+  assert.equal(city.sourceStatus, "stale");
+  assert.equal(city.contentComplete, false);
+  assert.equal(city.actualSchoolCount, 3);
+  assert.equal(city.references.schoolCount, 99);
+  assert.throws(() => toPublicCityDto({ ...row, actualSchoolCount: -1 }), /aggregate projection/);
 });
 
 test("detail source status preserves disputed and invalid review outcomes", () => {

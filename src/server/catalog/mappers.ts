@@ -27,6 +27,14 @@ export type ProgramRow = InferSelectModel<typeof programs>;
 export type SchoolRow = InferSelectModel<typeof schools>;
 export type ScholarshipRow = InferSelectModel<typeof scholarships>;
 export type CityRow = InferSelectModel<typeof cities>;
+export type CityProjectionRow = CityRow & {
+  actualSchoolCount?: number | string | null;
+  actualProgramCount?: number | string | null;
+  actualEnglishProgramCount?: number | string | null;
+  actualScholarshipCount?: number | string | null;
+  actualCscaRequiredSchoolCount?: number | string | null;
+  actualOpenIntakeCount?: number | string | null;
+};
 
 export type ProgramProjectionRow = ProgramRow & {
   schoolNameEn?: string | null;
@@ -52,6 +60,11 @@ export type ScholarshipProjectionRow = ScholarshipRow & {
   programSlug?: string | null;
   programNameEn?: string | null;
   programNameZh?: string | null;
+  seriesKey?: string | null;
+  cycleKey?: string | null;
+  intakeYear?: number | null;
+  intakeLabel?: string | null;
+  supersedesScholarshipId?: string | null;
 };
 
 export type SchoolProjectionRow = SchoolRow & {
@@ -231,9 +244,13 @@ function asCityContent(value: unknown): PublicCityContentDto {
   };
 }
 
-function sourceStatus(status: string | null | undefined, verificationStatus: string | null | undefined): SourceStatus {
+function sourceStatus(status: string | null | undefined, verificationStatus: string | null | undefined, nextReviewDueAt?: Date | null): SourceStatus {
   if (status === "draft") {
     return "draft";
+  }
+
+  if (verificationStatus === "verified" && nextReviewDueAt && nextReviewDueAt.getTime() <= Date.now()) {
+    return "stale";
   }
 
   if (verificationStatus === "verified") {
@@ -420,7 +437,10 @@ export function toPublicSchoolDetailDto(row: SchoolProjectionRow): PublicSchoolD
   };
 }
 
-export function toPublicScholarshipDto(row: ScholarshipRow): PublicScholarshipDto {
+export function toPublicScholarshipDto(row: ScholarshipProjectionRow): PublicScholarshipDto {
+  const applicationAvailability = row.deadlineDate
+    ? (row.deadlineDate.getTime() > Date.now() ? "open" : "closed")
+    : "unconfirmed";
   return {
     id: row.id,
     slug: row.slug,
@@ -446,6 +466,14 @@ export function toPublicScholarshipDto(row: ScholarshipRow): PublicScholarshipDt
     deadlineDate: row.deadlineDate,
     deadlineLabel: row.deadlineLabel,
     applicationRound: row.applicationRound,
+    applicationAvailability,
+    cycle: row.seriesKey && row.cycleKey && row.intakeYear && row.intakeLabel ? {
+      seriesKey: row.seriesKey,
+      cycleKey: row.cycleKey,
+      intakeYear: row.intakeYear,
+      intakeLabel: row.intakeLabel,
+      supersedesScholarshipId: row.supersedesScholarshipId ?? null,
+    } : null,
     targetCountries: asTextArray(row.targetCountries, "scholarship target countries"),
     targetRegions: asTextArray(row.targetRegions, "scholarship target regions"),
     sourceUrl: row.sourceUrl,
@@ -483,7 +511,29 @@ export function toPublicScholarshipDetailDto(row: ScholarshipProjectionRow): Pub
   };
 }
 
-export function toPublicCityDto(row: CityRow): PublicCityDto {
+function cityContentComplete(content: PublicCityContentDto): boolean {
+  return Boolean(
+    content.summary
+    && content.overview
+    && (content.budgetSummary || content.costProfiles.length || content.costBreakdown.length)
+    && content.lifeSections.length
+    && content.transportNotes.length,
+  );
+}
+
+function cityPublicationState(row: CityProjectionRow, content: PublicCityContentDto): PublicCityDto["publicationState"] {
+  if (row.verificationStatus === "stale" || (row.nextReviewDueAt && row.nextReviewDueAt.getTime() <= Date.now())) return "stale";
+  return cityContentComplete(content) ? "published" : "limited";
+}
+
+function projectionCount(value: number | string | null | undefined): number {
+  const count = Number(value ?? 0);
+  if (!Number.isInteger(count) || count < 0) throw new Error("Published city aggregate projection is invalid.");
+  return count;
+}
+
+export function toPublicCityDto(row: CityProjectionRow): PublicCityDto {
+  const content = asCityContent(row.contentJson);
   return {
     slug: row.slug,
     nameZh: row.nameZh,
@@ -495,7 +545,7 @@ export function toPublicCityDto(row: CityRow): PublicCityDto {
     costLevel: row.costLevel,
     density: row.density,
     tags: asTextArray(row.tags, "city tags"),
-    content: asCityContent(row.contentJson),
+    content,
     nearby: asTextArray(row.nearby, "city nearby references"),
     references: {
       schoolCount: row.referenceSchoolCount,
@@ -504,11 +554,14 @@ export function toPublicCityDto(row: CityRow): PublicCityDto {
       scholarshipCount: row.referenceScholarshipCount,
       cscaRequiredSchoolCount: row.referenceCscaSchoolCount,
     },
-    actualSchoolCount: row.referenceSchoolCount,
-    actualProgramCount: row.referenceProgramCount,
-    actualEnglishProgramCount: row.referenceEnglishProgramCount,
-    actualScholarshipCount: row.referenceScholarshipCount,
-    actualCscaRequiredSchoolCount: row.referenceCscaSchoolCount,
+    actualSchoolCount: projectionCount(row.actualSchoolCount),
+    actualProgramCount: projectionCount(row.actualProgramCount),
+    actualEnglishProgramCount: projectionCount(row.actualEnglishProgramCount),
+    actualScholarshipCount: projectionCount(row.actualScholarshipCount),
+    actualCscaRequiredSchoolCount: projectionCount(row.actualCscaRequiredSchoolCount),
+    actualOpenIntakeCount: projectionCount(row.actualOpenIntakeCount),
+    publicationState: cityPublicationState(row, content),
+    contentComplete: cityContentComplete(content),
     status: row.status,
     sortOrder: row.sortOrder,
     version: row.version,
@@ -516,15 +569,16 @@ export function toPublicCityDto(row: CityRow): PublicCityDto {
   };
 }
 
-export function toPublicCityDetailDto(row: CityRow): PublicCityDetailDto {
+export function toPublicCityDetailDto(row: CityProjectionRow): PublicCityDetailDto {
   return {
     ...toPublicCityDto(row),
     id: row.id,
     verificationStatus: row.verificationStatus,
-    sourceStatus: sourceStatus(row.status, row.verificationStatus),
+    sourceStatus: sourceStatus(row.status, row.verificationStatus, row.nextReviewDueAt),
     sourceUrl: row.sourceUrl,
     sourceLabel: row.sourceLabel,
     lastVerifiedAt: row.lastVerifiedAt,
+    nextReviewDueAt: row.nextReviewDueAt ?? null,
     sourceFieldLineage: asLineage(row.sourceFieldLineageJson),
   };
 }

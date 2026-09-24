@@ -105,7 +105,7 @@ Use CSCAlite `CityGuide` and `CityGuideAggregate`:
 - cost/density: `monthlyCost`, `costLevel`, `density`
 - content: `tags`, `content.summary`, `content.overview`, `content.quickFacts`, `content.budgetSummary`, `content.costProfiles`, `content.why`, `content.costBreakdown`, `content.lifeSections`, `content.transportNotes`, `content.applicationTips`, `content.applicationAdvice`, `content.relatedProgramKeywords`, `content.nextSteps`, `content.faqs`, `content.cityFaqs`
 - relationships: `nearby`, `references.schoolCount`, `references.programCount`, `references.englishProgramCount`, `references.scholarshipCount`, `references.cscaRequiredSchoolCount`
-- aggregate: `actualSchoolCount`, `actualProgramCount`, `actualEnglishProgramCount`, `actualScholarshipCount`, `actualCscaRequiredSchoolCount`, `visibleSchools`, `visiblePrograms`, `visibleScholarships`
+- aggregate: `actualSchoolCount`, `actualProgramCount`, `actualEnglishProgramCount`, `actualScholarshipCount`, `actualCscaRequiredSchoolCount`, `actualOpenIntakeCount`, `visibleSchools`, `visiblePrograms`, `visibleScholarships`
 - governance: `status`, `sortOrder`, `version`, `updatedAt`
 
 ## 4. Add Choice Information Sources

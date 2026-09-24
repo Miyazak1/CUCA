@@ -3199,8 +3199,8 @@ test("keeps frontend mock business data behind CuacDataClient", async () => {
   assert.match(citiesJs, /function cityFromHash\(value = window\.location\.hash\)/);
   assert.match(citiesJs, /function applyHashCity\(value = window\.location\.hash\)/);
   assert.match(citiesJs, /function cityMonthlyCost\(city = \{\}\)/);
-  assert.match(citiesJs, /referenceProgramCount \?\? city\.programs/);
-  assert.match(citiesJs, /referenceEnglishProgramCount \?\? city\.englishRoutes/);
+  assert.match(citiesJs, /actualProgramCount \?\? city\.aggregate\?\.actualProgramCount \?\? city\.referenceProgramCount/);
+  assert.match(citiesJs, /actualEnglishProgramCount \?\? city\.aggregate\?\.actualEnglishProgramCount \?\? city\.referenceEnglishProgramCount/);
   assert.match(citiesJs, /city\.contentJson\?\.summary/);
   assert.match(citiesJs, /applyHashCity\(\);[\s\S]*renderAll\(\);/);
   assert.match(citiesJs, /window\.addEventListener\("hashchange"/);
@@ -4153,6 +4153,9 @@ test("keeps the CUAC app shell and static demo assets wired", async () => {
   assert.match(sharedJs, /shellContext\.role === "student"/);
   assert.match(sharedCss, /\.cuac-agent-composer/);
   assert.match(sharedCss, /\.account-popover\[hidden\]/);
+  assert.match(sharedCss, /\.account-popover-head\s*>\s*div\s*\{[\s\S]*min-width:\s*0/);
+  assert.match(sharedCss, /\.account-popover-head \.account-email\s*\{[\s\S]*width:\s*100%[\s\S]*text-overflow:\s*ellipsis/);
+  assert.match(sharedJs, /class="account-email" title="\$\{escapeHTML\(accountEmail\)\}"/);
   assert.match(sharedCss, /\.sign-in-pill/);
   assert.match(sharedCss, /\.sign-in-pill\s*\{[\s\S]*border:\s*0/);
   assert.match(sharedCss, /\.sign-in-pill\s*\{[\s\S]*cursor:\s*pointer/);
