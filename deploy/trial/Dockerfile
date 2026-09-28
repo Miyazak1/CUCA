@@ -6,7 +6,6 @@ COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts --no-audit --no-fund
 COPY . .
 RUN npm run build \
-  && npm prune --omit=dev --ignore-scripts \
   && npm cache clean --force
 
 FROM ${CUAC_NODE_IMAGE} AS runtime

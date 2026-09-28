@@ -37,6 +37,7 @@ test("single-host trial stays synthetic, loopback-bound and HTTPS-fronted", asyn
 
   assert.match(dockerfile, /USER 1000:1000/);
   assert.match(dockerfile, /catalog\.local\.synthetic\.json/);
+  assert.doesNotMatch(dockerfile, /npm prune --omit=dev/, "trial migration image must retain drizzle-kit");
   assert.match(dockerignore, /!seeds\/catalog\.local\.synthetic\.json/);
   assert.match(readme, /must not hold real personal data/i);
 });
