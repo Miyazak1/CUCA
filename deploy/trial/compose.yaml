@@ -1,0 +1,84 @@
+name: cuac-trial
+
+x-cuac-image: &cuac-image
+  image: cuac-trial:local
+  build:
+    context: ../..
+    dockerfile: deploy/trial/Dockerfile
+
+x-cuac-job: &cuac-job
+  <<: *cuac-image
+  env_file:
+    - .env
+  network_mode: host
+  depends_on:
+    database:
+      condition: service_healthy
+  restart: "no"
+
+services:
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: cuac_local
+      POSTGRES_DB: cuac_local
+      POSTGRES_PASSWORD: ${CUAC_DB_PASSWORD:?Run bootstrap.sh first}
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cuac_local -d cuac_local"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  migrate:
+    <<: *cuac-job
+    entrypoint: ["node", "scripts/pg-migrate.ts"]
+
+  seed:
+    <<: *cuac-job
+    entrypoint: ["node", "scripts/local-seed.ts"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  app:
+    <<: *cuac-image
+    env_file:
+      - .env
+    network_mode: host
+    read_only: true
+    init: true
+    stop_grace_period: 45s
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=32m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    depends_on:
+      seed:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  proxy:
+    image: caddy:2-alpine
+    network_mode: host
+    environment:
+      CUAC_TRIAL_HOST: ${CUAC_TRIAL_HOST:?Run bootstrap.sh first}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      app:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  caddy-data:
+  caddy-config:

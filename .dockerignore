@@ -20,3 +20,4 @@ work
 *.log
 *.pem
 seeds/catalog.*.json
+!seeds/catalog.local.synthetic.json
