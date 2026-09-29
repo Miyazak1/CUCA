@@ -19,7 +19,10 @@ export function createAuthHttpHandlers(
 ) {
   return {
     async getMe(request: Request) {
-      const context = await resolveRequestContextFromRequest(request, repository, { schoolTenantMembershipRepository });
+      const context = await resolveRequestContextFromRequest(request, repository, {
+        schoolTenantMembershipRepository,
+        allowUnverifiedStudent: true,
+      });
       const account = context.actorUserId && repository.findCurrentAccountByUserId
         ? await repository.findCurrentAccountByUserId(context.actorUserId)
         : null;

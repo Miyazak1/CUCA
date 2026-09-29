@@ -135,6 +135,7 @@ test("student registration creates only student account authority and hashed ses
 
   assert.equal(result.userId, "student-1");
   assert.equal(result.sessionId, "session-1");
+  assert.equal(result.emailVerificationRequired, true);
   assert.equal(result.expiresAt.toISOString(), "2026-08-28T00:00:01.000Z");
   assert.match(result.sessionToken, /^[A-Za-z0-9_-]+$/);
   assert.equal(calls[0].emailNormalized, "student@example.com");
@@ -172,7 +173,7 @@ test("student login creates session only for active account with valid password"
     userId: "student-1",
     emailNormalized: "student@example.com",
     passwordHash: await hashPassword("strong-password"),
-    accountStatus: "active",
+    accountStatus: "active", emailVerified: true,
   });
   const service = new AuthCredentialsService(repository, { now });
   const result = await service.createStudentSession({ email: "student@example.com", password: "strong-password" });
@@ -181,6 +182,20 @@ test("student login creates session only for active account with valid password"
   assert.equal(result.activeRole, "student");
   assert.equal(calls.at(-1).method, "createSession");
   assert.equal(Object.hasOwn(calls.at(-1).input, "upgradedPasswordHash"), false);
+});
+
+test("unverified student login creates only a pending verification session", async () => {
+  const { calls, repository } = createRepository({
+    userId: "student-1", emailNormalized: "student@example.com",
+    passwordHash: await hashPassword("strong-password"), accountStatus: "active", emailVerified: false,
+  });
+  const result = await new AuthCredentialsService(repository, { now }).createStudentSession({
+    email: "student@example.com", password: "strong-password",
+  });
+
+  assert.equal(result.emailVerificationRequired, true);
+  assert.equal(result.activeRole, "student");
+  assert.equal(calls.some(call => call.method === "listAvailableSessionAuthorities"), false);
 });
 
 test("unified login returns only verified workspace choices and creates no session when several are available", async () => {

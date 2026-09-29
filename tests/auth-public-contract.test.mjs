@@ -103,7 +103,9 @@ test("public account entry supports bounded student locales without translating 
   assert.match(messages, /url\.searchParams\.set\("lang", i18n\.locale\)/);
   assert.match(messages, /document\.createTreeWalker/);
   assert.match(script, /authUi\(workspace\.selectedSurface/);
-  assert.match(script, /authUi\(verificationMessage\)/);
+  assert.match(script, /holdForEmailVerification/);
+  assert.match(script, /registration\?\.emailVerificationRequired/);
+  assert.doesNotMatch(script, /Opening the authorized next step/);
   assert.match(script, /authI18n\?\.href\(destination\)/);
   assert.doesNotMatch(script, /authUi\(workspace\.label\)|authUi\(email\)|authUi\(firstName\)|authUi\(lastName\)/);
 });

@@ -60,7 +60,7 @@ function createHandlers(challenge = null, options = {}) {
         activeRole: "student",
         tenantSchoolId: null,
         authStrength: "session",
-        expiresAt: new Date("2026-09-29T00:00:00.000Z"),
+        expiresAt: new Date("2027-09-29T00:00:00.000Z"),
         revokedAt: null,
         accountStatus: "active",
       };

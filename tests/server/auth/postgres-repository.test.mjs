@@ -22,6 +22,7 @@ test("Postgres auth session repository uses fixed active-session SQL", async () 
           expiresAt: new Date("2026-08-29T00:00:00.000Z"),
           revokedAt: null,
           accountStatus: "active",
+          emailVerified: false,
         },
       ];
     },
@@ -39,6 +40,7 @@ test("Postgres auth session repository uses fixed active-session SQL", async () 
   assert.match(calls[0].statement, /case when s\.step_up_expires_at > \$2 then 'step_up' else 'session' end/);
   assert.match(calls[0].statement, /s\.revoked_at is null/);
   assert.match(calls[0].statement, /u\.account_status = 'active'/);
+  assert.match(calls[0].statement, /u\.email_verified_at is not null/);
   assert.match(calls[0].statement, /r\.user_id = s\.user_id and r\.role = s\.active_role and r\.revoked_at is null/);
   assert.match(calls[0].statement, /s\.selected_surface = 'student' and s\.active_role = 'student'/);
   assert.match(calls[0].statement, /from school_staff_memberships m/);
@@ -114,6 +116,7 @@ test("Postgres auth repository finds password identity by normalized email with 
           emailNormalized: "student@example.com",
           passwordHash: "scrypt$salt$hash",
           accountStatus: "active",
+          emailVerified: false,
         },
       ];
     },
@@ -122,10 +125,12 @@ test("Postgres auth repository finds password identity by normalized email with 
   const identity = await repository.findPasswordIdentityByEmailNormalized("student@example.com");
 
   assert.equal(identity.userId, "student-1");
+  assert.equal(identity.emailVerified, false);
   assert.match(calls[0].statement, /from auth_identities i/);
   assert.match(calls[0].statement, /join users u on u\.id = i\.user_id/);
   assert.match(calls[0].statement, /i\.provider = 'password'/);
   assert.match(calls[0].statement, /i\.email_normalized = \$1/);
+  assert.match(calls[0].statement, /u\.email_verified_at is not null/);
   assert.doesNotMatch(calls[0].statement, /select \*/i);
   assert.deepEqual(calls[0].params, ["student@example.com"]);
 });

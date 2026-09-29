@@ -90,6 +90,7 @@ async function handleEmailVerificationRoute(
 ): Promise<Response> {
   const context = await resolveRequestContextFromRequest(request, authRepository, {
     purpose: routeName === "request" ? "student_action" : "public_catalog_read",
+    allowUnverifiedStudent: routeName === "request",
   });
 
   try {

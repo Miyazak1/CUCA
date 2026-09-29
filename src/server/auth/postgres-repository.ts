@@ -38,6 +38,7 @@ type AuthSessionRow = {
   expiresAt: Date;
   revokedAt: Date | null;
   accountStatus: string;
+  emailVerified: boolean;
 };
 
 type PasswordIdentityRow = {
@@ -45,6 +46,7 @@ type PasswordIdentityRow = {
   emailNormalized: string;
   passwordHash: string | null;
   accountStatus: string;
+  emailVerified: boolean;
 };
 
 type CreatedUserRow = {
@@ -120,7 +122,8 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
          case when s.step_up_expires_at > $2 then 'step_up' else 'session' end as "authStrength",
          s.expires_at as "expiresAt",
          s.revoked_at as "revokedAt",
-         u.account_status as "accountStatus"
+         u.account_status as "accountStatus",
+         (u.email_verified_at is not null) as "emailVerified"
        from auth_sessions s
        join users u on u.id = s.user_id
        where s.session_token_hash = $1
@@ -199,7 +202,8 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
          i.user_id as "userId",
          i.email_normalized as "emailNormalized",
          i.password_hash as "passwordHash",
-         u.account_status as "accountStatus"
+         u.account_status as "accountStatus",
+         (u.email_verified_at is not null) as "emailVerified"
        from auth_identities i
        join users u on u.id = i.user_id
        where i.provider = 'password'

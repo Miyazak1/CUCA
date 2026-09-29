@@ -287,6 +287,9 @@ function renderWorkspaceChoices(workspaces) {
 }
 
 async function finishSignIn(session) {
+  if (session?.emailVerificationRequired) {
+    throw new Error("Email verification is required before opening a workspace.");
+  }
   const serverRole = normalizeAuthRole(session?.activeRole);
   const continuation = await consumePendingContinuation(session?.activeRole);
   const destination = continuation ? await completeConsumedContinuation(continuation) : destinationFor(serverRole);
@@ -294,6 +297,21 @@ async function finishSignIn(session) {
   clearWorkspaceChoices();
   setStatus("Signed in. Opening the authorized workspace...", "success");
   window.setTimeout(() => window.location.assign(destination), 350);
+}
+
+async function holdForEmailVerification(prefix) {
+  let message;
+  try {
+    const verification = await requestJson("/api/v1/auth/email-verification", { method: "POST", body: {} });
+    message = verification?.deliveryStatus === "queued"
+      ? "Check your email for the verification link. Workspace access stays locked until verification is complete."
+      : "Email verification is pending delivery configuration. Workspace access remains locked.";
+  } catch {
+    message = "The verification email could not be queued yet. Sign in again to retry; workspace access remains locked.";
+  }
+  const signInPassword = document.querySelector("[data-auth-password]");
+  if (signInPassword) signInPassword.value = "";
+  setStatus(`${authUi(prefix)} ${authUi(message)}`, "success");
 }
 
 async function beginMfaVerification(challenge) {
@@ -372,6 +390,11 @@ async function signInToWorkspace(form, workspace, button) {
       await beginMfaVerification(session);
       return;
     }
+    if (session?.emailVerificationRequired) {
+      await holdForEmailVerification("Email verification required.");
+      restore();
+      return;
+    }
     await finishSignIn(session);
   } catch (error) {
     setStatus(error.message, "error");
@@ -400,6 +423,11 @@ async function handleSignIn(form) {
     }
     if (session?.mfaRequired) {
       await beginMfaVerification(session);
+      restore();
+      return;
+    }
+    if (session?.emailVerificationRequired) {
+      await holdForEmailVerification("Email verification required.");
       restore();
       return;
     }
@@ -440,19 +468,11 @@ async function handleRegister(form) {
       return;
     }
 
-    let verificationMessage = "Account created.";
-    try {
-      const verification = await requestJson("/api/v1/auth/email-verification", { method: "POST", body: {} });
-      verificationMessage = verification?.deliveryStatus === "queued"
-        ? "Account created. Check your email for the verification link."
-        : "Account created. Email verification is pending delivery configuration.";
-    } catch {
-      verificationMessage = "Account created. Email verification could not be queued yet; you can request it again after sign in.";
-    }
-
-    const destination = await consumePendingContinuation("student") || destinationFor("student", true);
-    setStatus(`${authUi(verificationMessage)} ${authUi("Opening the authorized next step...")}`, "success");
-    window.setTimeout(() => window.location.assign(destination), 700);
+    if (!registration?.emailVerificationRequired) throw new Error("The server did not enforce email verification.");
+    form.reset();
+    syncGuardianFields();
+    await holdForEmailVerification("Account created.");
+    restore();
   } catch (error) {
     setStatus(error.message, "error");
     restore();
@@ -494,6 +514,11 @@ async function loadCurrentActor() {
   try {
     const actor = await requestJson("/api/v1/me");
     if (!actor?.actorUserId || actor.activeRole === "guest") return;
+    if (actor.activeRole === "student" && actor.accountEmailVerified === false) {
+      setMode("signin");
+      setStatus(`${authUi("Email verification required.")} ${authUi("Workspace access stays locked until verification is complete.")}`);
+      return;
+    }
     const role = normalizeAuthRole(actor.activeRole);
     setRole(role);
     const destination = await consumePendingContinuation(actor.activeRole) || destinationFor(role);

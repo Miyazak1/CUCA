@@ -92,6 +92,7 @@ test("auth credentials HTTP registration sets session cookie without returning s
   assert.equal(response.status, 201);
   assert.equal(body.data.userId, "student-1");
   assert.equal(body.data.activeRole, "student");
+  assert.equal(body.data.emailVerificationRequired, true);
   assert.match(cookie, new RegExp(`${SESSION_COOKIE_NAME}=`));
   assert.match(cookie, /HttpOnly/);
   assert.match(cookie, /SameSite=Lax/);

@@ -55,7 +55,7 @@ function createHandlers(options = {}) {
         emailNormalized: "teacher@example.edu",
         role: "school_admin",
         invitedByUserId: "ops-1",
-        expiresAt: new Date("2026-09-29T00:00:00.000Z"),
+        expiresAt: new Date("2027-09-29T00:00:00.000Z"),
       };
     },
     async acceptInvite(input) {
@@ -103,7 +103,7 @@ function createHandlers(options = {}) {
         activeRole: options.sessionRole ?? "student",
         tenantSchoolId: null,
         authStrength: "session",
-        expiresAt: new Date("2026-09-29T00:00:00.000Z"),
+        expiresAt: new Date("2027-09-29T00:00:00.000Z"),
         revokedAt: null,
         accountStatus: "active",
       };
@@ -111,7 +111,7 @@ function createHandlers(options = {}) {
     async findActiveCuacStaffAccessGrantByUserAndRole(userId, role) {
       calls.push({ method: "findActiveCuacStaffAccessGrantByUserAndRole", userId, role });
       if (options.activeGrant === false) return null;
-      return { userId, role, status: "approved", expiresAt: new Date("2026-09-29T00:00:00.000Z") };
+      return { userId, role, status: "approved", expiresAt: new Date("2027-09-29T00:00:00.000Z") };
     },
   };
 

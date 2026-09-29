@@ -21,6 +21,7 @@ export type AuthSessionRecord = {
   expiresAt: Date;
   revokedAt: Date | null;
   accountStatus: string;
+  emailVerified: boolean;
 };
 
 export type AuthSessionRepository = {
@@ -50,6 +51,7 @@ export type ResolveRequestContextOptions = {
   purpose?: RequestPurpose;
   now?: Date;
   schoolTenantMembershipRepository?: SchoolTenantMembershipRepository;
+  allowUnverifiedStudent?: boolean;
 };
 
 export async function resolveRequestContextFromRequest(
@@ -81,6 +83,13 @@ export async function resolveRequestContextFromRequest(
   }
 
   const activeRole = parseRole(session.activeRole);
+  if (activeRole === "student" && session.emailVerified === false && !options.allowUnverifiedStudent) {
+    return createRequestContext({
+      requestId,
+      guestSessionId,
+      purpose: options.purpose,
+    });
+  }
   if ((activeRole === "cuac_ops" || activeRole === "cuac_admin")
     && !await resolveVerifiedCuacStaffAccess(session.userId, activeRole, repository, options.now ?? new Date())) {
     return createRequestContext({

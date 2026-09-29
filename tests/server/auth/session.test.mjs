@@ -88,6 +88,28 @@ test("request context resolver falls back to guest when session is expired", asy
   assert.equal(context.activeRole, "guest");
 });
 
+test("unverified student session is restricted except for explicit verification bootstrap", async () => {
+  const repository = {
+    async findActiveSessionByTokenHash() {
+      return {
+        userId: "student-1", selectedSurface: "student", activeRole: "student", tenantSchoolId: null,
+        authStrength: "session", expiresAt: new Date("2026-08-29T00:00:00.000Z"), revokedAt: null,
+        accountStatus: "active", emailVerified: false,
+      };
+    },
+  };
+  const request = new Request("https://cuac.test/api", { headers: { cookie: `${SESSION_COOKIE_NAME}=pending-token` } });
+  const blocked = await resolveRequestContextFromRequest(request, repository, { now, purpose: "student_action" });
+  const allowed = await resolveRequestContextFromRequest(request, repository, {
+    now, purpose: "student_action", allowUnverifiedStudent: true,
+  });
+
+  assert.equal(blocked.actorUserId, null);
+  assert.equal(blocked.activeRole, "guest");
+  assert.equal(allowed.actorUserId, "student-1");
+  assert.equal(allowed.activeRole, "student");
+});
+
 test("request context resolver falls back to guest when session is revoked or account inactive", async () => {
   for (const sessionPatch of [
     { revokedAt: new Date("2026-08-27T00:00:00.000Z"), accountStatus: "active" },
@@ -196,7 +218,7 @@ test("me HTTP handler hides an unverified school tenant and never returns the se
         activeRole: "school_staff",
         tenantSchoolId: "school-1",
         authStrength: "session",
-        expiresAt: new Date("2026-09-29T00:00:00.000Z"),
+        expiresAt: new Date("2027-09-29T00:00:00.000Z"),
         revokedAt: null,
         accountStatus: "active",
       };
@@ -240,7 +262,7 @@ test("me HTTP handler updates only the signed-in student account locale", async 
   const handlers = createAuthHttpHandlers({
     async findActiveSessionByTokenHash() {
       return { userId: "student-1", selectedSurface: "student", activeRole: "student", tenantSchoolId: null,
-        authStrength: "session", expiresAt: new Date("2026-09-29T00:00:00.000Z"), revokedAt: null, accountStatus: "active" };
+        authStrength: "session", expiresAt: new Date("2027-09-29T00:00:00.000Z"), revokedAt: null, accountStatus: "active" };
     },
     async updateCurrentAccountLocale(input) { updates.push(input); return { locale: input.locale, changed: true }; },
   });
@@ -267,7 +289,7 @@ test("me HTTP handler rejects staff, guests and non-public locales before accoun
   assert.equal(response.status, 403);
 
   repository.findActiveSessionByTokenHash = async () => ({ userId: "staff-1", selectedSurface: "school", activeRole: "school_staff",
-    tenantSchoolId: "school-1", authStrength: "session", expiresAt: new Date("2026-09-29T00:00:00.000Z"),
+    tenantSchoolId: "school-1", authStrength: "session", expiresAt: new Date("2027-09-29T00:00:00.000Z"),
     revokedAt: null, accountStatus: "active" });
   response = await createAuthHttpHandlers(repository).updateLocale(new Request("https://cuac.test/api/v1/me", {
     method: "PATCH", headers: { cookie: `${SESSION_COOKIE_NAME}=staff-token`, "content-type": "application/json" },
@@ -276,7 +298,7 @@ test("me HTTP handler rejects staff, guests and non-public locales before accoun
   assert.equal(response.status, 403);
 
   repository.findActiveSessionByTokenHash = async () => ({ userId: "student-1", selectedSurface: "student", activeRole: "student",
-    tenantSchoolId: null, authStrength: "session", expiresAt: new Date("2026-09-29T00:00:00.000Z"),
+    tenantSchoolId: null, authStrength: "session", expiresAt: new Date("2027-09-29T00:00:00.000Z"),
     revokedAt: null, accountStatus: "active" });
   response = await createAuthHttpHandlers(repository).updateLocale(new Request("https://cuac.test/api/v1/me", {
     method: "PATCH", headers: { cookie: `${SESSION_COOKIE_NAME}=student-token`, "content-type": "application/json" },

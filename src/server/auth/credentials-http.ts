@@ -166,7 +166,7 @@ export function createAuthCredentialsHttpHandlers(service: Pick<AuthCredentialsS
 
 export function authResponse(
   result: { userId: string; sessionId: string; sessionToken: string; expiresAt: Date;
-    selectedSurface: string; activeRole: string; tenantSchoolId: string | null },
+    selectedSurface: string; activeRole: string; tenantSchoolId: string | null; emailVerificationRequired?: true },
   requestId: string,
   status: number,
   options: AuthCredentialsHttpOptions,
@@ -179,6 +179,7 @@ export function authResponse(
         activeRole: result.activeRole,
         selectedSurface: result.selectedSurface,
         tenantSchoolId: result.tenantSchoolId,
+        ...(result.emailVerificationRequired ? { emailVerificationRequired: true } : {}),
         expiresAt: result.expiresAt.toISOString(),
       },
     },

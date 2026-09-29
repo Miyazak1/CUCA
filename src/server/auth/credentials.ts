@@ -14,6 +14,7 @@ export type PasswordIdentityRecord = {
   emailNormalized: string;
   passwordHash: string | null;
   accountStatus: string;
+  emailVerified: boolean;
 };
 
 export type CreateStudentAccountInput = {
@@ -104,6 +105,7 @@ export type AuthCredentialsResult = {
   selectedSurface: AuthSessionSurface;
   activeRole: AuthSessionRole;
   tenantSchoolId: string | null;
+  emailVerificationRequired?: true;
 };
 
 export type AuthWorkspaceSelectionResult = {
@@ -165,7 +167,7 @@ export class AuthCredentialsService {
       locale,
     });
 
-    const result = await this.issueSession(account.userId, metadata, now, passwordHash);
+    const result = await this.issueSession(account.userId, metadata, now, passwordHash, undefined, undefined, true);
     await this.recordAudit(requestId, "auth.register", { userId: result.userId, activeRole: "student", tenantSchoolId: null }, "user", result.userId, { sessionId: result.sessionId });
     return result;
   }
@@ -188,12 +190,19 @@ export class AuthCredentialsService {
     }
 
     const now = this.now();
+    if (identity.emailVerified === false) {
+      if (requestedSurface && requestedSurface !== "student") throw forbidden("Email verification is required before sign-in.");
+      const result = await this.issueSession(identity.userId, metadata, now, identity.passwordHash,
+        { requestedSurface: "student", requestedSchoolId: null }, verification.upgradedHash, true);
+      await this.recordLoginAudit(requestId, result, verification.upgradedHash);
+      return result;
+    }
     if (!requestedSurface) {
       const workspaces = await this.repository.listAvailableSessionAuthorities(identity.userId, now);
       if (workspaces.length === 0) throw forbidden("Invalid email or password.");
       if (workspaces.length > 1) return { workspaceSelectionRequired: true, workspaces };
       const workspace = workspaces[0];
-      if (workspace.selectedSurface !== "student") {
+      if (workspace.selectedSurface === "school" || workspace.selectedSurface === "ops") {
         return this.beginStaffMfa(identity.userId, identity.passwordHash, workspace, metadata);
       }
       const result = await this.issueSession(identity.userId, metadata, now, identity.passwordHash,
@@ -206,7 +215,9 @@ export class AuthCredentialsService {
       const workspaces = await this.repository.listAvailableSessionAuthorities(identity.userId, now);
       const workspace = workspaces.find(item => item.selectedSurface === (requestedSurface === "school_staff" ? "school" : "ops")
         && item.tenantSchoolId === requestedSchoolId);
-      if (!workspace || workspace.selectedSurface === "student") throw forbidden("Selected access context is not available.");
+      if (!workspace || (workspace.selectedSurface !== "school" && workspace.selectedSurface !== "ops")) {
+        throw forbidden("Selected access context is not available.");
+      }
       return this.beginStaffMfa(identity.userId, identity.passwordHash, workspace, metadata);
     }
     const result = await this.issueSession(identity.userId, metadata, now, identity.passwordHash, {
@@ -289,6 +300,7 @@ export class AuthCredentialsService {
       requestedSurface: "student", requestedSchoolId: null,
     },
     upgradedPasswordHash?: string | null,
+    emailVerificationRequired = false,
   ): Promise<AuthCredentialsResult> {
     const sessionToken = randomBytes(32).toString("base64url");
     const expiresAt = new Date(now.getTime() + this.sessionTtlMs);
@@ -311,16 +323,20 @@ export class AuthCredentialsService {
       ...session,
       sessionToken,
       expiresAt,
+      ...(emailVerificationRequired ? { emailVerificationRequired: true as const } : {}),
     };
   }
 
   private async beginStaffMfa(
     userId: string,
     passwordHash: string,
-    workspace: AvailableAuthWorkspace & { selectedSurface: "school" | "ops" },
+    workspace: AvailableAuthWorkspace,
     metadata: { userAgent: string | null; ip: string | null },
   ): Promise<StaffMfaChallengeResult> {
     if (!this.staffMfa) throw serviceUnavailable("Staff MFA is not configured.");
+    if (workspace.selectedSurface !== "school" && workspace.selectedSurface !== "ops") {
+      throw forbidden("Selected access context is not available.");
+    }
     return this.staffMfa.beginLogin({
       userId,
       passwordHash,
