@@ -66,3 +66,11 @@ test("shared navigation and Auth stay on server-backed workspaces", async () => 
     assert.doesNotMatch(`${shell}\n${auth}\n${home}`, new RegExp(`(?<![-a-z])${legacyTarget.replace(".", "\\.")}`));
   }
 });
+
+test("HTML entry points revalidate across deployments", async () => {
+  const config = await source("next.config.ts");
+
+  assert.match(config, /source: "\/"/);
+  assert.match(config, /source: "\/:path\*\.html"/);
+  assert.match(config, /key: "Cache-Control", value: "no-cache"/);
+});
