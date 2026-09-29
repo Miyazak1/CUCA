@@ -1,6 +1,6 @@
 @echo off
 setlocal EnableExtensions
-title CUAC Local Platform - 127.0.0.1:52118
+title CUAC Local Platform - 127.0.0.1:53118
 set "CUAC_LAUNCH_MODE=start"
 if /I "%~1"=="--check" set "CUAC_LAUNCH_MODE=check"
 
@@ -9,7 +9,7 @@ if errorlevel 1 goto project_missing
 
 echo.
 echo CUAC Local Platform
-echo App:      http://127.0.0.1:52118/home-v3.html
+echo App:      http://127.0.0.1:53118/home-v3.html
 echo Postgres: automatic 127.0.0.1 port ^(persistent data retained^)
 echo.
 
@@ -30,7 +30,7 @@ if errorlevel 1 goto docker_stopped
 
 if not exist "node_modules\vinext\dist\cli.js" goto dependencies_missing
 
-set "CUAC_LOCAL_APP_PORT=52118"
+set "CUAC_LOCAL_APP_PORT=53118"
 
 if /I "%CUAC_LAUNCH_MODE%"=="check" goto check_ok
 

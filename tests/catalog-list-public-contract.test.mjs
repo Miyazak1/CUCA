@@ -55,7 +55,7 @@ test("catalog list detail routes use public record identities", async () => {
   assert.match(cities, /city-detail\.html\?city=\$\{encodeURIComponent\(citySlug\(city\)\)\}/);
 });
 
-test("catalog list UI has explicit loading and failure states", async () => {
+test("catalog list UI has unified loading, empty, and failure states", async () => {
   const [api, css] = await Promise.all([
     source("catalog-list-api.js"),
     source("catalog-list-api.css"),
@@ -64,6 +64,9 @@ test("catalog list UI has explicit loading and failure states", async () => {
   assert.match(api, /Loading published/);
   assert.match(api, /Catalog unavailable/);
   assert.match(api, /data-catalog-retry/);
+  assert.match(api, /state === "empty"/);
+  assert.match(api, /data-catalog-reset/);
+  assert.match(api, /No published \$\{noun\} are available yet/);
   assert.match(api, /escapeHtml/);
   assert.match(api, /async function loadAll/);
   assert.match(api, /page < 100/);
@@ -75,6 +78,8 @@ test("catalog list UI has explicit loading and failure states", async () => {
   assert.match(api, /government: \["#15365F", "#2F70B7", "#DCEBFA"\]/);
   assert.match(api, /data:image\/svg\+xml/);
   assert.match(css, /catalog-list-state-error/);
+  assert.match(css, /catalog-list-state-empty/);
+  assert.match(css, /grid-column:\s*1 \/ -1/);
   assert.match(css, /data-catalog-list-page/);
 });
 
@@ -153,11 +158,37 @@ test("program university routes send the school slug to the published API and re
     source("programs.css"),
   ]);
 
-  assert.match(html, /programs\.js\?v=20260921-catalog-locales/);
+  assert.match(html, /programs\.js\?v=20260929-list-states/);
   assert.match(script, /const focusedUniversity = routeParams\.get\("university"\)/);
   assert.match(script, /loadPage\("programs", \{[\s\S]*school: focusedUniversity,/);
   assert.doesNotMatch(script, /function programMatchesUniversity/);
   assert.doesNotMatch(script, /escapeProgramHtml/);
   assert.match(script, /pagination-ellipsis/);
   assert.match(css, /\.pagination-ellipsis/);
+});
+
+test("all public catalog pages use the shared empty-state renderer", async () => {
+  const [programs, universities, scholarships, cities] = await Promise.all([
+    source("programs.js"),
+    source("universities.js"),
+    source("scholarships.js"),
+    source("cities.js"),
+  ]);
+
+  for (const script of [programs, universities, scholarships, cities]) {
+    assert.match(script, /CuacCatalogList\.listState\([^;]*"empty"/s);
+  }
+  assert.match(cities, /if \(!cities\.length\)[\s\S]*listState\([^;]*"empty"/);
+  assert.doesNotMatch(cities, /if \(!cities\.length\)[\s\S]{0,400}listState\([^;]*"error"/);
+});
+
+test("university pagination stays compact instead of stretching across the results row", async () => {
+  const [html, css] = await Promise.all([
+    source("universities.html"),
+    source("universities.css"),
+  ]);
+
+  assert.match(html, /universities\.css\?v=20260929-list-states/);
+  assert.match(css, /\.pagination\s*\{[^}]*flex-wrap:\s*wrap[^}]*justify-content:\s*center/s);
+  assert.match(css, /\.pagination button\s*\{[^}]*flex:\s*0 0 40px[^}]*width:\s*40px[^}]*min-width:\s*40px/s);
 });

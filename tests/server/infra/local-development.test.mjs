@@ -167,7 +167,7 @@ test("local command grammar and repository wiring remain explicit", async () => 
   assert.match(localDevelopment, /recordSuccessfulSeed\(state\)/);
   assert.match(localDevelopment, /await assertSuccessfulSeed\(state\)/);
   assert.match(localDevelopment, /installationId: state\.installationId/);
-  assert.match(windowsLauncher, /CUAC_LOCAL_APP_PORT=52118/);
+  assert.match(windowsLauncher, /CUAC_LOCAL_APP_PORT=53118/);
   assert.doesNotMatch(windowsLauncher, /CUAC_LOCAL_PG_PORT/);
   assert.match(windowsAccountsLauncher, /npm run local:credentials/);
   assert.doesNotMatch(windowsAccountsLauncher, /studentPassword|databasePassword|SESSION_SECRET/);
@@ -184,7 +184,7 @@ test("local command grammar and repository wiring remain explicit", async () => 
   assert.doesNotMatch(localSmoke, /localStorage|sessionStorage|cuacApplicationDemoState/);
   assert.match(viteConfig, /process\.env\.CUAC_LOCAL_RUNTIME === "1"/);
   assert.match(viteConfig, /isCuacLocalRuntime\s*\? \[\]/);
-  assert.match(windowsLauncher, /set "CUAC_LOCAL_APP_PORT=52118"/);
+  assert.match(windowsLauncher, /set "CUAC_LOCAL_APP_PORT=53118"/);
   assert.doesNotMatch(windowsLauncher, /Existing CUAC local state uses app port|port_mismatch/);
   assert.match(windowsLauncher, /Postgres: automatic 127\.0\.0\.1 port/);
   assert.match(windowsLauncher, /call npm run dev:local/);
@@ -192,7 +192,7 @@ test("local command grammar and repository wiring remain explicit", async () => 
   assert.match(windowsLauncher, /--check/);
   assert.doesNotMatch(windowsLauncher, /(?:call|start)\s+npm install|docker pull|local:stop|taskkill|Stop-Process/i);
   assert.match(localRunbook, /automatically rebinds an owned stopped container/);
-  assert.match(localRunbook, /Windows launcher pins port `52118`/);
+  assert.match(localRunbook, /Windows launcher pins port `53118`/);
   assert.match(localRunbook, /re-creates only its owned container on a new loopback/);
   assert.match(localRunbook, /`\.cuac-local\/seeded\.json` proves that migrations and the idempotent seed completed/);
 });

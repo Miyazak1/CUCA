@@ -544,8 +544,7 @@
       }
 
       .filter-card,
-      .shortlist-card,
-      .empty-state {
+      .shortlist-card {
         border: 1px solid var(--border);
         border-radius: var(--radius-sm);
         background: white;
@@ -1161,27 +1160,6 @@
         color: var(--text-muted);
         font-size: 12px;
         font-weight: 740;
-      }
-
-      .empty-state {
-        display: none;
-        gap: 10px;
-        padding: 26px;
-      }
-
-      .empty-state.visible {
-        display: grid;
-      }
-
-      .empty-state h2 {
-        margin: 0;
-        font-size: 24px;
-      }
-
-      .empty-state p {
-        max-width: 520px;
-        margin: 0;
-        color: var(--text-muted);
       }
 
       .pagination {

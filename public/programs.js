@@ -85,7 +85,6 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       const activeChips = document.querySelector("#activeChips");
       const programFocus = document.querySelector("#programFocus");
       const pagination = document.querySelector("#pagination");
-      const emptyState = document.querySelector("#emptyState");
       const shortlistCard = document.querySelector("#shortlistCard");
       const sortSelect = document.querySelector("#sortSelect");
       const drawer = document.querySelector("#filterDrawer");
@@ -566,8 +565,16 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
             : "Published programs with deadline, tuition, language, and source status.");
         programList.className = `program-list ${state.view === "compact" ? "compact" : ""}`;
         programList.innerHTML = visible.map(renderRow).join("");
+        if (catalogLoadingComplete && programTotal === 0) {
+          const filtered = activeFilterEntries().length > 0;
+          window.CuacCatalogList.listState(programList, "empty", {
+            noun: "programs",
+            filtered,
+            title: filtered ? catalogT("programs.empty", "No programs match these filters yet.") : undefined,
+            message: filtered ? catalogT("programs.emptyHelp", "Try removing one or more filters.") : undefined,
+          });
+        }
         window.CUAC?.reveal?.(programList);
-        emptyState.classList.toggle("visible", programTotal === 0);
         renderPagination(programTotal);
       }
 
@@ -886,7 +893,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
           return;
         }
 
-        const reset = event.target.closest("[data-reset], #resetEmpty, #drawerReset");
+        const reset = event.target.closest("[data-reset], [data-catalog-reset], #drawerReset");
         if (reset) {
           resetFilters();
           return;

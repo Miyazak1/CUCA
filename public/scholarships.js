@@ -432,7 +432,13 @@ function renderCards() {
     `;
   }).join("");
   if (!items.length) {
-    grid.innerHTML = `<div class="catalog-list-state"><strong>${escapeCatalogHtml(catalogT("scholarships.empty", "No scholarships match"))}</strong><span>${escapeCatalogHtml(catalogT("scholarships.emptyHelp", "Remove a filter or search for another published route."))}</span></div>`;
+    const filteredState = scholarships.length > 0;
+    window.CuacCatalogList.listState(grid, "empty", {
+      noun: "scholarships",
+      filtered: filteredState,
+      title: filteredState ? catalogT("scholarships.empty", "No scholarships match these filters yet.") : undefined,
+      message: filteredState ? catalogT("scholarships.emptyHelp", "Try removing one or more filters.") : undefined,
+    });
   }
   renderPagination(totalPages, filtered.length);
   renderActiveChips();
@@ -757,12 +763,14 @@ document.querySelector("#openFilters").addEventListener("click", () => openDrawe
 document.querySelector("#closeFilters").addEventListener("click", () => openDrawer(false));
 document.querySelector("#drawerBackdrop").addEventListener("click", () => openDrawer(false));
 document.querySelector("#applyFilters").addEventListener("click", () => openDrawer(false));
-document.querySelector("#resetFilters").addEventListener("click", () => {
+function resetScholarshipFilters() {
   Object.assign(filters, { keyword: "", funding: "all", type: "all", degree: "all", country: "all", deadline: "all", coverage: false });
+  routeCityFocus = "";
   page = 1;
   syncFilters();
   renderCards();
-});
+}
+document.querySelector("#resetFilters").addEventListener("click", resetScholarshipFilters);
 document.querySelector("#sortSelect").addEventListener("change", (event) => {
   sort = event.target.value;
   page = 1;
@@ -848,6 +856,7 @@ async function loadScholarships() {
 
 document.addEventListener("click", (event) => {
   if (event.target.closest("[data-catalog-retry]")) loadScholarships();
+  if (event.target.closest("[data-catalog-reset]")) resetScholarshipFilters();
 });
 
 loadScholarships();

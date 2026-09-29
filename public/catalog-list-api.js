@@ -235,6 +235,20 @@
       target.innerHTML = `<div class="catalog-list-state" role="status"><strong>${escapeHtml(loading)}</strong><span>${escapeHtml(reading)}</span></div>`;
       return;
     }
+    if (state === "empty") {
+      const filtered = options.filtered === true;
+      const title = options.title || (filtered
+        ? t(`${page}.empty`, `No ${noun} match these filters yet.`)
+        : t("common.noPublished", `No published ${noun} are available yet.`, { noun }));
+      const detail = options.message || (filtered
+        ? t(`${page}.emptyHelp`, "Try removing one or more filters.")
+        : t("common.noPublishedHelp", "Published entries will appear here when available."));
+      const action = filtered && options.resettable !== false
+        ? `<button type="button" data-catalog-reset>${escapeHtml(options.actionLabel || t("common.resetFilters", "Reset filters"))}</button>`
+        : "";
+      target.innerHTML = `<div class="catalog-list-state catalog-list-state-empty" role="status"><strong>${escapeHtml(title)}</strong><span>${escapeHtml(detail)}</span>${action}</div>`;
+      return;
+    }
     const detail = options.message || t("common.loadFailed", `Published ${noun} could not be loaded.`, { noun });
     target.innerHTML = `<div class="catalog-list-state catalog-list-state-error" role="alert"><strong>${escapeHtml(t("common.unavailable", "Catalog unavailable"))}</strong><span>${escapeHtml(detail)}</span><button type="button" data-catalog-retry>${escapeHtml(t("common.retry", "Retry"))}</button></div>`;
   }

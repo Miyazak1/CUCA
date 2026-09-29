@@ -12,7 +12,7 @@ For a new-machine setup, current verification evidence, safety boundaries, and u
 
 ## Start Locally
 
-On Windows, double-click `start-cuac-local.bat` (or the forwarding launcher one directory above). It validates the local prerequisites and starts the owned CUAC runtime on `http://127.0.0.1:52118` with PostgreSQL bound to `127.0.0.1:62251`.
+On Windows, double-click `start-cuac-local.bat` (or the forwarding launcher one directory above). It validates the local prerequisites and starts the owned CUAC runtime on `http://127.0.0.1:53118` with PostgreSQL bound to its generated loopback port.
 
 From this directory:
 
@@ -20,7 +20,7 @@ From this directory:
 npm run dev:local
 ```
 
-For the pinned Windows setup, double-click `../start-cuac-local.bat`. It provisions or resumes the owned PostgreSQL container, applies all migrations, idempotently seeds local-only fixtures, and starts Vinext on application port `52118` with PostgreSQL on `62251`. The launcher fails visibly if either pinned port belongs to another service; it never selects a remote database or silently changes ports.
+For the pinned Windows setup, double-click `../start-cuac-local.bat`. It provisions or resumes the owned PostgreSQL container, applies all migrations, idempotently seeds local-only fixtures, and starts Vinext on application port `53118` with PostgreSQL on its generated loopback port. The launcher fails visibly if the pinned application port belongs to another service; it never selects a remote database or silently changes ports.
 
 The npm command uses the saved local ports when a runtime already exists. Without the Windows launcher or explicit `CUAC_LOCAL_APP_PORT` and `CUAC_LOCAL_PG_PORT` values, a first-time runtime may select free loopback ports.
 

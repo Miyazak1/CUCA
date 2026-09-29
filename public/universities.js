@@ -243,7 +243,6 @@ const state = {
       const resultCount = document.getElementById("resultCount");
       const resultContext = document.getElementById("resultContext");
       const activeFilters = document.getElementById("activeFilters");
-      const emptyState = document.getElementById("emptyState");
       const pagination = document.getElementById("pagination");
       const searchInput = document.getElementById("searchInput");
       const sortSelect = document.getElementById("sortSelect");
@@ -430,8 +429,16 @@ const state = {
           : "Showing Chinese universities with international admissions routes.");
         resultsGrid.className = `university-grid ${state.view === "list" ? "list" : ""}`;
         resultsGrid.innerHTML = shown.map(card).join("");
+        if (!results.length) {
+          const filtered = Boolean(state.query || state.filters.size || Object.keys(state.criteria || {}).length);
+          window.CuacCatalogList.listState(resultsGrid, "empty", {
+            noun: "universities",
+            filtered,
+            title: filtered ? catalogT("universities.empty", "No universities match these filters yet.") : undefined,
+            message: filtered ? catalogT("universities.emptyHelp", "Try removing one filter or search by city.") : undefined,
+          });
+        }
         window.CUAC?.reveal?.(resultsGrid);
-        emptyState.style.display = results.length ? "none" : "block";
         renderPagination(results.length);
         renderActiveFilters();
         searchInput.value = state.query;
@@ -646,14 +653,14 @@ const state = {
         render();
       });
 
-      document.getElementById("resetEmpty").addEventListener("click", () => {
+      function resetUniversityFilters() {
         state.query = "";
         state.filters.clear();
         state.criteria = {};
         state.page = 1;
         searchInput.value = "";
         render();
-      });
+      }
 
       document.addEventListener("cuac:agent-action", (event) => {
         if (applyUniversityAgentAction(event.detail?.action || "", event.detail || {})) event.preventDefault();
@@ -695,6 +702,7 @@ const state = {
 
       document.addEventListener("click", (event) => {
         if (event.target.closest("[data-catalog-retry]")) loadUniversities();
+        if (event.target.closest("[data-catalog-reset]")) resetUniversityFilters();
       });
 
       loadUniversities();

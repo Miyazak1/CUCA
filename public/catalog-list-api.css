@@ -1,36 +1,57 @@
 .catalog-list-state {
   display: grid;
-  gap: 8px;
+  grid-column: 1 / -1;
+  gap: 10px;
+  box-sizing: border-box;
   width: 100%;
   min-height: 180px;
   place-content: center;
   padding: 32px;
-  border: 1px solid #d9dee5;
-  border-radius: 6px;
-  background: #ffffff;
-  color: #29313d;
+  border: 1px solid rgb(var(--text-rgb, 16 24 32) / 0.12);
+  border-radius: var(--radius-sm, 10px);
+  background: var(--surface, #ffffff);
+  color: var(--text, #29313d);
   text-align: center;
 }
 
 .catalog-list-state strong {
-  color: #101820;
-  font-size: 1rem;
+  color: var(--text, #101820);
+  font-size: 1.15rem;
+  line-height: 1.3;
 }
 
 .catalog-list-state span {
-  color: #647080;
-  font-size: 0.9rem;
+  max-width: 520px;
+  color: var(--text-muted, #647080);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .catalog-list-state button {
   justify-self: center;
-  min-height: 36px;
-  padding: 0 16px;
-  border: 1px solid #101820;
-  border-radius: 4px;
-  background: #101820;
+  min-height: 40px;
+  margin-top: 4px;
+  padding: 0 20px;
+  border: 1px solid var(--accent, #087f78);
+  border-radius: var(--radius-xs, 6px);
+  background: var(--accent, #087f78);
   color: #ffffff;
+  font: inherit;
+  font-weight: 800;
   cursor: pointer;
+}
+
+.catalog-list-state button:hover {
+  filter: brightness(0.94);
+}
+
+.catalog-list-state button:focus-visible {
+  outline: 3px solid rgb(var(--accent-rgb, 8 127 120) / 0.22);
+  outline-offset: 2px;
+}
+
+.catalog-list-state-empty {
+  background: rgb(var(--surface-rgb, 255 255 255) / 0.84);
 }
 
 .catalog-list-state-error {

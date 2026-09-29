@@ -281,7 +281,8 @@ function renderCityCards() {
   document.querySelector("#cityContext").textContent = activeNeed === "all"
     ? cityUi("Published city guides with source-backed costs and catalog reference snapshots.")
     : `${cityUi("Filtered by")} ${activeNeed}.`;
-  document.querySelector("#cityGrid").innerHTML = list.map((city) => {
+  const grid = document.querySelector("#cityGrid");
+  grid.innerHTML = list.map((city) => {
     const detailHref = cityHref(`city-detail.html?city=${encodeURIComponent(citySlug(city))}`);
     return `
     <article class="city-card" role="link" tabindex="0" data-city-card data-detail-href="${detailHref}" aria-label="View ${escapeCatalogHtml(cityName(city))} city guide">
@@ -302,6 +303,14 @@ function renderCityCards() {
     </article>
   `;
   }).join("");
+  if (!list.length) {
+    window.CuacCatalogList.listState(grid, "empty", {
+      noun: cityUi("cities"),
+      filtered: true,
+      title: cityUi("No cities match these filters yet."),
+      message: cityUi("Try removing one or more filters."),
+    });
+  }
   syncCityControls();
   renderActiveChips();
 }
@@ -346,7 +355,7 @@ function renderAll() {
   if (!cities.length) {
     document.querySelector("#cityCount").textContent = "0";
     document.querySelector("#cityContext").textContent = cityUi("No published city guides are available.");
-    window.CuacCatalogList.listState(document.querySelector("#cityGrid"), "error", { noun: cityUi("cities"), message: cityUi("No published city guides are available.") });
+    window.CuacCatalogList.listState(document.querySelector("#cityGrid"), "empty", { noun: cityUi("city guides"), filtered: false });
     document.querySelector("#cityRail").innerHTML = "";
     document.querySelector("#featureStory").innerHTML = "";
     document.querySelector("#fitMatrix").innerHTML = "";
@@ -432,6 +441,16 @@ function applyCityAgentAction(action, detail = {}) {
 document.addEventListener("click", (event) => {
   if (event.target.closest("[data-catalog-retry]")) {
     loadCities();
+    return;
+  }
+  if (event.target.closest("[data-catalog-reset]")) {
+    activeNeed = "all";
+    routeQuery = "";
+    routeRegion = "";
+    routeCostLevel = "";
+    routeDensity = "";
+    renderNeeds();
+    renderCityCards();
     return;
   }
   const cityCard = event.target.closest("[data-city-card]");
