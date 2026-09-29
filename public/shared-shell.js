@@ -1160,11 +1160,15 @@
 
   function isStudentSignedIn() {
     const shellContext = getShellContext();
-    return shellContext.authState === "signed-in" && shellContext.role === "student";
+    return shellContext.authState === "signed-in"
+      && shellContext.role === "student"
+      && shellContext.accountEmailVerified === true;
   }
 
   function activeWorkspaceHref() {
-    const role = getShellContext().role;
+    const shellContext = getShellContext();
+    const role = shellContext.role;
+    if (role === "student" && shellContext.accountEmailVerified !== true) return "auth.html";
     if (role === "student") return "hub-api.html";
     if (role === "school_staff") return "school-portal.html";
     if (["cuac_ops", "cuac_admin"].includes(role)) return "ops-admin-api.html";

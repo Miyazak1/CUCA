@@ -53,6 +53,8 @@ test("shared navigation and Auth stay on server-backed workspaces", async () => 
   assert.match(shell, /if \(!runtimeAuthState\.resolved\)/);
   assert.match(shell, /account-auth-pending/);
   assert.match(shell, /function activeWorkspaceHref\(\)/);
+  assert.match(shell, /shellContext\.accountEmailVerified === true/);
+  assert.match(shell, /role === "student" && shellContext\.accountEmailVerified !== true\) return "auth\.html"/);
   assert.match(shell, /if \(shellContext\.authState === "signed-in"\)[\s\S]*window\.location\.replace\(target\)/);
   assert.match(shellCss, /\.account-auth-pending/);
   assert.match(auth, /nextHref: "hub-api\.html"/);
