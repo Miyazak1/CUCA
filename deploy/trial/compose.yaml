@@ -64,6 +64,27 @@ services:
         condition: service_completed_successfully
     restart: unless-stopped
 
+  auth-email-worker:
+    <<: *cuac-image
+    profiles: ["auth-email"]
+    env_file:
+      - .env
+    network_mode: host
+    read_only: true
+    init: true
+    stop_grace_period: 45s
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=32m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    entrypoint: ["node", "scripts/start-auth-email-worker.ts"]
+    depends_on:
+      app:
+        condition: service_healthy
+    restart: unless-stopped
+
   proxy:
     image: caddy:2-alpine
     network_mode: host

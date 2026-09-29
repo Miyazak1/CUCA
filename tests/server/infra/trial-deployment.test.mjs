@@ -5,9 +5,10 @@ import test from "node:test";
 const root = new URL("../../../", import.meta.url);
 
 test("single-host trial stays synthetic, loopback-bound and HTTPS-fronted", async () => {
-  const [compose, bootstrap, caddy, dockerfile, readme, dockerignore] = await Promise.all([
+  const [compose, bootstrap, directmail, caddy, dockerfile, readme, dockerignore] = await Promise.all([
     readFile(new URL("deploy/trial/compose.yaml", root), "utf8"),
     readFile(new URL("deploy/trial/bootstrap.sh", root), "utf8"),
+    readFile(new URL("deploy/trial/configure-directmail.sh", root), "utf8"),
     readFile(new URL("deploy/trial/Caddyfile", root), "utf8"),
     readFile(new URL("deploy/trial/Dockerfile", root), "utf8"),
     readFile(new URL("deploy/trial/README.md", root), "utf8"),
@@ -21,6 +22,8 @@ test("single-host trial stays synthetic, loopback-bound and HTTPS-fronted", asyn
   assert.match(compose, /no-new-privileges:true/);
   assert.match(compose, /service_completed_successfully/);
   assert.match(compose, /caddy:2-alpine/);
+  assert.match(compose, /profiles: \["auth-email"\]/);
+  assert.match(compose, /scripts\/start-auth-email-worker\.ts/);
   assert.match(caddy, /reverse_proxy 127\.0\.0\.1:3000/);
 
   assert.match(bootstrap, /CUAC_PUBLIC_APP_URL=https:\/\//);
@@ -34,6 +37,14 @@ test("single-host trial stays synthetic, loopback-bound and HTTPS-fronted", asyn
     "CUAC_SUBMISSION_DELIVERY_PROVIDER=disabled",
   ]) assert.match(bootstrap, new RegExp(gate));
   assert.match(bootstrap, /chmod 600/);
+  assert.match(bootstrap, /CUAC_AUTH_EMAIL_OUTBOX_KEYS_JSON=/);
+
+  assert.match(directmail, /stty -echo/);
+  assert.match(directmail, /CUAC_AUTH_EMAIL_DELIVERY_PROVIDER.*aliyun-directmail-smtp/);
+  assert.match(directmail, /CUAC_AUTH_EMAIL_SMTP_REGION/);
+  assert.match(directmail, /CUAC_AUTH_EMAIL_SMTP_PASSWORD/);
+  assert.match(directmail, /chmod 600/);
+  assert.doesNotMatch(directmail, /echo.*smtp_password/i);
 
   assert.match(dockerfile, /USER 1000:1000/);
   assert.match(dockerfile, /catalog\.local\.synthetic\.json/);

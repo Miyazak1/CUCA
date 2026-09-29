@@ -38,6 +38,27 @@ grep -E '^CUAC_LOCAL_(STUDENT|SCHOOL|OPS|ADMIN)_(EMAIL|PASSWORD)=' .env
 
 Do not paste that output into issue trackers or chat.
 
+## Supervised DirectMail acceptance
+
+The auth-email worker is opt-in and is not started by the default command. After
+an Aliyun DirectMail sender domain and trigger sender have both been verified,
+configure one exact HTTPS origin, the complete sender address and the matching
+DirectMail region. The script reads the SMTP password without displaying it and
+stores it only in the protected `.env` file:
+
+```bash
+chmod +x configure-directmail.sh
+./configure-directmail.sh https://ucac.cn no-reply@notice.ucac.cn ap-southeast-1
+docker compose --profile auth-email up -d --build app auth-email-worker
+docker compose --profile auth-email ps
+docker compose --profile auth-email logs --tail=80 auth-email-worker
+```
+
+Do not paste `.env`, the SMTP password, or outbox keys into chat or logs. This
+profile is for a supervised owner-controlled delivery test. Keep public signup
+closed until verification, reset, expiry, replay and bounce behavior have been
+accepted and the deployment has been promoted to the reviewed production stack.
+
 ## Stop and update
 
 ```bash
