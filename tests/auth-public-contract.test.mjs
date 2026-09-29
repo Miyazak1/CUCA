@@ -40,6 +40,8 @@ test("public account page uses real Auth APIs without browser-owned authenticati
   assert.match(html, /data-auth-panel="mfa"/);
   assert.match(html, /autocomplete="one-time-code"/);
   assert.match(html, /data-mfa-recovery-codes/);
+  assert.match(html, /shared-shell\.js\?v=20260929-auth-cache-gate/);
+  assert.match(html, /auth\.js\?v=20260929-email-verification-gate/);
   assert.match(script, /mfaRequired/);
   assert.match(script, /recoveryCodes/);
   assert.doesNotMatch(script, /localStorage|sessionStorage/);

@@ -980,6 +980,7 @@
   }
 
   const protectedStudentRoutes = new Set(["onboarding-api.html", "hub-api.html", "favourites-api.html", "application.html", "billing-api.html", "notifications.html", "preferences-api.html"]);
+  const authPageVersion = "20260929-email-verification-gate";
   const protectedRoleRoutes = {
     "school-portal.html": { role: "school_staff", title: "Sign in to CUAC" },
     "school-settings-api.html": { role: "school_staff", title: "Sign in to CUAC" },
@@ -1066,6 +1067,7 @@
 
   function navigateToAuthPage(options = {}) {
     const params = new URLSearchParams();
+    params.set("v", authPageVersion);
     if (options.capability) params.set("continue", "1");
     if (options.mode === "register") params.set("mode", "register");
     const query = params.toString();
@@ -1168,7 +1170,7 @@
   function activeWorkspaceHref() {
     const shellContext = getShellContext();
     const role = shellContext.role;
-    if (role === "student" && shellContext.accountEmailVerified !== true) return "auth.html";
+    if (role === "student" && shellContext.accountEmailVerified !== true) return `auth.html?v=${authPageVersion}`;
     if (role === "student") return "hub-api.html";
     if (role === "school_staff") return "school-portal.html";
     if (["cuac_ops", "cuac_admin"].includes(role)) return "ops-admin-api.html";
