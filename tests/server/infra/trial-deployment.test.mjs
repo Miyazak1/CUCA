@@ -5,10 +5,11 @@ import test from "node:test";
 const root = new URL("../../../", import.meta.url);
 
 test("single-host trial stays synthetic, loopback-bound and HTTPS-fronted", async () => {
-  const [compose, bootstrap, directmail, caddy, dockerfile, readme, dockerignore] = await Promise.all([
+  const [compose, bootstrap, directmail, adminGrant, caddy, dockerfile, readme, dockerignore] = await Promise.all([
     readFile(new URL("deploy/trial/compose.yaml", root), "utf8"),
     readFile(new URL("deploy/trial/bootstrap.sh", root), "utf8"),
     readFile(new URL("deploy/trial/configure-directmail.sh", root), "utf8"),
+    readFile(new URL("deploy/trial/grant-cuac-admin.sh", root), "utf8"),
     readFile(new URL("deploy/trial/Caddyfile", root), "utf8"),
     readFile(new URL("deploy/trial/Dockerfile", root), "utf8"),
     readFile(new URL("deploy/trial/README.md", root), "utf8"),
@@ -45,6 +46,15 @@ test("single-host trial stays synthetic, loopback-bound and HTTPS-fronted", asyn
   assert.match(directmail, /CUAC_AUTH_EMAIL_SMTP_PASSWORD/);
   assert.match(directmail, /chmod 600/);
   assert.doesNotMatch(directmail, /echo.*smtp_password/i);
+
+  assert.match(adminGrant, /email_verified_at is not null/);
+  assert.match(adminGrant, /requested_role, status/);
+  assert.match(adminGrant, /'cuac_admin', 'approved'/);
+  assert.match(adminGrant, /approved_by_user_id/);
+  assert.match(adminGrant, /grant_source\)\s*\nselect target\.id, 'cuac_admin', approver\.id, 'admin_assignment'/);
+  assert.match(adminGrant, /update auth_sessions\s*\nset revoked_at = clock_timestamp\(\)/);
+  assert.match(adminGrant, /interval '1 year'/);
+  assert.doesNotMatch(adminGrant, /CUAC_LOCAL_ADMIN_PASSWORD/);
 
   assert.match(dockerfile, /USER 1000:1000/);
   assert.match(dockerfile, /catalog\.local\.synthetic\.json/);

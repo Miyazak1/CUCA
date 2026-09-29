@@ -38,6 +38,24 @@ grep -E '^CUAC_LOCAL_(STUDENT|SCHOOL|OPS|ADMIN)_(EMAIL|PASSWORD)=' .env
 
 Do not paste that output into issue trackers or chat.
 
+## Grant the first real CUAC administrator
+
+After the target account has verified its email, grant the internal administrator
+role from the owner-controlled server. The script uses the protected local admin
+fixture only as the recorded bootstrap approver; it never prints that fixture's
+password. It validates the target account, records a one-year access grant and
+revokes the target's existing sessions so the next sign-in must select and
+re-authorize the CUAC staff workspace.
+
+```bash
+chmod +x grant-cuac-admin.sh
+./grant-cuac-admin.sh person@example.com
+```
+
+Type the same target email when prompted. Then sign in again, choose the CUAC
+staff workspace and complete mandatory MFA enrollment. Do not grant this role to
+a shared mailbox or an account that is not controlled by a named administrator.
+
 ## Supervised DirectMail acceptance
 
 The auth-email worker is opt-in and is not started by the default command. After
