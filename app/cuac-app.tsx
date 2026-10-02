@@ -530,9 +530,8 @@ export function CuacApp({
   return (
     <div className="cuac-shell">
       <header className="top-nav">
-        <button className="brand" onClick={() => navigate("/")}>
-          <img className="brand-mark" src="/ucac-icon.png?v=20261002-contrast-logo" width="38" height="38" alt="" aria-hidden="true" />
-          <span>UCAC</span>
+        <button className="brand" aria-label="UCAC home" onClick={() => navigate("/")}>
+          <img className="brand-mark" src="/ucac-wordmark.png?v=20261002-transparent-wordmark" width="120" height="38" alt="" aria-hidden="true" />
         </button>
         <nav aria-label="Primary navigation">
           <button onClick={() => navigate("/programs")}>Find Programs</button>

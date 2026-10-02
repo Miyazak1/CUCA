@@ -94,7 +94,7 @@ body {
 
 .logo {
   display: block;
-  width: 40px;
+  width: 128px;
   height: 40px;
   flex: 0 0 auto;
   object-fit: contain;
@@ -654,7 +654,7 @@ body {
 }
 
 .footer-workspace .brand .logo {
-  width: 34px;
+  width: 113px;
   height: 34px;
 }
 
