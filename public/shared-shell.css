@@ -92,7 +92,7 @@ body {
   text-decoration: none;
 }
 
-.logo {
+.brand-wordmark {
   display: block;
   width: 128px;
   height: 40px;
@@ -653,7 +653,7 @@ body {
   gap: 16px;
 }
 
-.footer-workspace .brand .logo {
+.footer-workspace .brand .brand-wordmark {
   width: 113px;
   height: 34px;
 }
