@@ -169,7 +169,7 @@ export function AuthActionClient({ kind }: { kind: ActionKind }) {
     <div className={styles.shell} dir={localeMeta[locale].dir} lang={locale}>
       <header className={styles.header}>
         <a className={styles.brand} href={localeHref(locale, "/home-v3.html")} aria-label={translate(locale, "UCAC home")}>
-          <span className={styles.mark}>UC</span>
+          <img className={styles.mark} src="/favicon.svg?v=20261002-header-logo" width="38" height="38" alt="" aria-hidden="true" />
           <span>UCAC</span>
         </a>
         <a className={styles.signInLink} href={localeHref(locale, "/auth.html")}>{translate(locale, "Sign in")}</a>

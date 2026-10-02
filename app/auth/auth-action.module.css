@@ -23,14 +23,11 @@
 }
 
 .mark {
-  display: grid;
+  display: block;
   width: 38px;
   height: 38px;
-  place-items: center;
-  border-radius: 6px;
-  background: #00756f;
-  color: #ffffff;
-  font-size: 13px;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 .signInLink {

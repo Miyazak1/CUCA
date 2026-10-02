@@ -143,15 +143,11 @@ main {
 }
 
 .brand-mark {
-  display: grid;
+  display: block;
   width: 38px;
   height: 38px;
-  place-items: center;
-  border-radius: 8px;
-  background: var(--cuac-primary);
-  color: white;
-  font-size: 13px;
-  letter-spacing: 0;
+  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 .top-nav nav {

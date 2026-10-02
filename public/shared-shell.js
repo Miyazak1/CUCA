@@ -672,7 +672,7 @@
   function brand() {
     const locale = window.CUACI18n?.locale;
     const href = shouldCarryLocale(locale) ? `home-v3.html?lang=${encodeURIComponent(locale)}` : "home-v3.html";
-    return `<a class="brand" href="${href}"><span class="logo">UC</span><span>UCAC</span></a>`;
+    return `<a class="brand" href="${href}"><img class="logo" src="/favicon.svg?v=20261002-header-logo" width="40" height="40" alt="" aria-hidden="true" /><span>UCAC</span></a>`;
   }
 
   function shellText(key, fallback) {
