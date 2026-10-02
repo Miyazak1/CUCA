@@ -531,7 +531,7 @@ export function CuacApp({
     <div className="cuac-shell">
       <header className="top-nav">
         <button className="brand" onClick={() => navigate("/")}>
-          <img className="brand-mark" src="/ucac-icon.png?v=20261002-ribbon-logo" width="38" height="38" alt="" aria-hidden="true" />
+          <img className="brand-mark" src="/ucac-icon.png?v=20261002-contrast-logo" width="38" height="38" alt="" aria-hidden="true" />
           <span>UCAC</span>
         </button>
         <nav aria-label="Primary navigation">
