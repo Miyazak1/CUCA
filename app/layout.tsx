@@ -6,8 +6,8 @@ export const metadata: Metadata = {
   description:
     "A frontend-first admissions workspace for finding China programs, preparing documents, and requesting adviser review.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/ucac-icon.png?v=20261002-ribbon-logo",
+    shortcut: "/ucac-icon.png?v=20261002-ribbon-logo",
     apple: "/ucac-icon.png",
   },
 };

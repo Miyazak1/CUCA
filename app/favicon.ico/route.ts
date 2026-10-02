@@ -1,3 +1,3 @@
 export function GET(request: Request): Response {
-  return Response.redirect(new URL("/favicon.svg", request.url), 308);
+  return Response.redirect(new URL("/ucac-icon.png?v=20261002-ribbon-logo", request.url), 308);
 }
