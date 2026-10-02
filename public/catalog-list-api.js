@@ -99,7 +99,7 @@
 
   function coverHash(value) {
     let hash = 2166136261;
-    for (const character of String(value || "CUAC")) {
+    for (const character of String(value || "UCAC")) {
       hash ^= character.codePointAt(0);
       hash = Math.imul(hash, 16777619);
     }
@@ -107,7 +107,7 @@
   }
 
   function coverInitials(value) {
-    const words = String(value || "CUAC").trim().split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+    const words = String(value || "UCAC").trim().split(/[^\p{L}\p{N}]+/u).filter(Boolean);
     if (!words.length) return "CU";
     if (words.length === 1) return Array.from(words[0]).slice(0, 2).join("").toUpperCase();
     return words.slice(0, 3).map((word) => Array.from(word)[0]).join("").toUpperCase();
@@ -120,7 +120,7 @@
       ["#253F2F", "#6C9B72", "#E0EBDD"], ["#3F315A", "#7762A7", "#E8E0F4"],
       ["#183F50", "#3994A8", "#D7EFF2"], ["#57322D", "#B76252", "#F4DDD7"],
     ];
-    const title = item.nameEn || item.nameZh || item.title || "CUAC";
+    const title = item.nameEn || item.nameZh || item.title || "UCAC";
     const seed = [kind, item.id, item.slug, title, item.citySlug, item.fieldCategory].filter(Boolean).join("|");
     const hash = coverHash(seed);
     const scholarshipPalettes = {

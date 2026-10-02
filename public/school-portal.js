@@ -43,7 +43,7 @@ const applications = dataClient?.getSampleSchoolApplications?.(SCHOOL_ACCOUNT_NA
     due: "Due: today",
     nextAction: "Contact student and request transcript, passport scan, language proof, and program-specific checklist.",
     note: "Interested in a realistic English-taught CS route in Hangzhou. Transcript translation may need follow-up.",
-    timeline: ["CUAC received student route choice", "Routed to Zhejiang University tenant scope", "First contact not started"],
+    timeline: ["UCAC received student route choice", "Routed to Zhejiang University tenant scope", "First contact not started"],
   },
   amir: {
     school: "Zhejiang University",
@@ -154,8 +154,8 @@ const statusZh = {
 const priorityZh = { High: "高", Normal: "普通", Low: "低" };
 const sourceZh = {
   Prepared: "预置记录",
-  "Live CUAC submission": "CUAC 实时提交",
-  "CUAC submission": "CUAC 提交",
+  "Live UCAC submission": "UCAC 实时提交",
+  "UCAC submission": "UCAC 提交",
 };
 const countryZh = { Malaysia: "马来西亚", Pakistan: "巴基斯坦", Brazil: "巴西", Ghana: "加纳" };
 const fieldZh = {
@@ -198,7 +198,7 @@ function priorityLabel(value = "") {
 }
 
 function sourceLabel(value = "") {
-  return sourceZh[value] || (isIncomingSource(value) ? "CUAC 实时提交" : "预置记录");
+  return sourceZh[value] || (isIncomingSource(value) ? "UCAC 实时提交" : "预置记录");
 }
 
 function countryLabel(value = "") {
@@ -235,7 +235,7 @@ function commonZh(value = "") {
     .replaceAll("Strong engineering interest. The school should confirm lab availability and scholarship fit.", "学生工程方向意向较强，学校需确认实验室名额和奖学金匹配。")
     .replaceAll("School contacted student and is waiting for transcript and passport scan through its own process.", "学校已联系学生，正在等待学生按学校流程提交成绩单和护照扫描件。")
     .replaceAll("Student is comparing spring options and needs a clear document checklist before official school application.", "学生正在比较春季入学选项，需要学校在正式申请前提供清晰材料清单。")
-    .replaceAll("CUAC sent non-document application information for school follow-up.", "CUAC 已发送非材料申请信息，供学校后续联系学生。")
+    .replaceAll("UCAC sent non-document application information for school follow-up.", "UCAC 已发送非材料申请信息，供学校后续联系学生。")
     .replaceAll("Biomedical Engineering MSc", "生物医学工程硕士")
     .replaceAll("Computer Science MSc", "计算机科学硕士")
     .replaceAll("International Business BSc", "国际商务本科")
@@ -289,7 +289,7 @@ function commonZh(value = "") {
     .replaceAll("Route", "路线")
     .replaceAll("Deadline pending", "截止日期待确认")
     .replaceAll("Tuition pending", "学费待确认")
-    .replaceAll("CUAC received student route choice", "CUAC 已收到学生路线选择")
+    .replaceAll("UCAC received student route choice", "UCAC 已收到学生路线选择")
     .replaceAll("Routed to Zhejiang University tenant scope", "已发送到浙江大学租户范围")
     .replaceAll("First contact not started", "尚未开始首次联系")
     .replaceAll("Prepared record created", "预置记录已创建")
@@ -299,7 +299,7 @@ function commonZh(value = "") {
     .replaceAll("Waiting for transcript", "等待成绩单")
     .replaceAll("Contact queued", "已加入联系队列")
     .replaceAll("Document request sent", "材料请求已发送")
-    .replaceAll("CUAC application record submitted", "CUAC 申请记录已提交")
+    .replaceAll("UCAC application record submitted", "UCAC 申请记录已提交")
     .replaceAll("Routed to school tenant scope", "已发送到学校租户范围");
 }
 
@@ -332,9 +332,9 @@ function normalizeSubmittedRecord(record, index) {
   if (dataClient?.normalizeSchoolRecord) return dataClient.normalizeSchoolRecord(record, index, SCHOOL_ACCOUNT_NAME);
   return {
     school: SCHOOL_ACCOUNT_NAME,
-    name: record.name || "CUAC student",
+    name: record.name || "UCAC student",
     status: record.status || "New",
-    source: "Live CUAC submission",
+    source: "Live UCAC submission",
     programName: record.programName || "Selected program",
     degree: record.degree || "Route",
     intake: record.intake || "Fall 2026",
@@ -366,8 +366,8 @@ function normalizeSubmittedRecord(record, index) {
     receivedAt: record.receivedAt || new Date().toISOString(),
     due: record.due || "Due: today",
     nextAction: record.nextAction || "Contact student and request the school document checklist directly.",
-    note: record.note || "CUAC sent non-document application information for school follow-up.",
-    timeline: Array.isArray(record.timeline) && record.timeline.length ? record.timeline : ["CUAC application record submitted", "Routed to school tenant scope", "First contact not started"],
+    note: record.note || "UCAC sent non-document application information for school follow-up.",
+    timeline: Array.isArray(record.timeline) && record.timeline.length ? record.timeline : ["UCAC application record submitted", "Routed to school tenant scope", "First contact not started"],
     id: `live-${index}`,
   };
 }
@@ -383,9 +383,9 @@ function hydrateSubmittedRecords() {
 
 function markLiveRecordsViewed() {
   Object.values(applications)
-    .filter((record) => record.source === "Live CUAC submission")
+    .filter((record) => record.source === "Live UCAC submission")
     .forEach((record) => {
-      const wrote = persistSchoolFollowup(record, "viewed", "School viewed your CUAC record");
+      const wrote = persistSchoolFollowup(record, "viewed", "School viewed your UCAC record");
       if (wrote) addSchoolContactNotification(record, "viewed");
     });
 }
@@ -446,12 +446,12 @@ function addSchoolContactNotification(record, statusKey = "contacted") {
     type: "document",
     severity: viewed ? "info" : "action",
     group: "Today",
-    title: viewed ? `${school} viewed your CUAC record` : waiting ? `${school} is waiting for documents` : `${school} contacted the student`,
+    title: viewed ? `${school} viewed your UCAC record` : waiting ? `${school} is waiting for documents` : `${school} contacted the student`,
     body: waiting
       ? `${school} moved ${program} ${degree} to waiting for documents. The student should continue through the school's own document request.`
       : viewed
-        ? `${school} opened the school-only CUAC record for ${program} ${degree}. The school can contact the student directly for next steps.`
-      : `${school} marked first contact complete for ${program} ${degree}. Official documents should now move through the school process, not CUAC upload.`,
+        ? `${school} opened the school-only UCAC record for ${program} ${degree}. The school can contact the student directly for next steps.`
+      : `${school} marked first contact complete for ${program} ${degree}. Official documents should now move through the school process, not UCAC upload.`,
     entity: `${school} · ${program}`,
     time: "Just now",
     action: "Open application",
@@ -459,21 +459,21 @@ function addSchoolContactNotification(record, statusKey = "contacted") {
     prompt: waiting
       ? `Explain what to prepare now that ${school} is waiting for my documents`
       : viewed
-        ? `Explain what it means that ${school} viewed my CUAC record`
+        ? `Explain what it means that ${school} viewed my UCAC record`
       : `Explain what to do after ${school} contacted me for ${program}`,
     localized: {
       zh: {
-        title: viewed ? `${school} 已查看你的 CUAC 记录` : waiting ? `${school} 正在等待材料` : `${school} 已联系学生`,
+        title: viewed ? `${school} 已查看你的 UCAC 记录` : waiting ? `${school} 正在等待材料` : `${school} 已联系学生`,
         body: waiting
-          ? `${school} 已将 ${zhProgram} ${zhDegree} 标记为等待材料。学生应继续按学校自己的材料要求处理，不通过 CUAC 上传材料。`
+          ? `${school} 已将 ${zhProgram} ${zhDegree} 标记为等待材料。学生应继续按学校自己的材料要求处理，不通过 UCAC 上传材料。`
           : viewed
-            ? `${school} 已打开学校专属 CUAC 记录：${zhProgram} ${zhDegree}。学校可以直接联系学生确认下一步。`
-            : `${school} 已完成 ${zhProgram} ${zhDegree} 的首次联系。正式材料应按学校流程提交，不通过 CUAC 上传。`,
+            ? `${school} 已打开学校专属 UCAC 记录：${zhProgram} ${zhDegree}。学校可以直接联系学生确认下一步。`
+            : `${school} 已完成 ${zhProgram} ${zhDegree} 的首次联系。正式材料应按学校流程提交，不通过 UCAC 上传。`,
         action: "打开申请",
         prompt: waiting
           ? `说明 ${school} 正在等待我的材料时我应该准备什么`
           : viewed
-            ? `说明 ${school} 查看我的 CUAC 记录意味着什么`
+            ? `说明 ${school} 查看我的 UCAC 记录意味着什么`
             : `说明 ${school} 联系我申请 ${zhProgram} 后我应该做什么`,
       },
     },
@@ -594,7 +594,7 @@ function statusClass(status) {
 }
 
 function isIncomingSource(source = "") {
-  return source === "Live CUAC submission" || source === "CUAC submission";
+  return source === "Live UCAC submission" || source === "UCAC submission";
 }
 
 function displayRecordSource(source = "") {
@@ -792,7 +792,7 @@ function renderAnalytics() {
   }, new Map());
   const countryCounts = countBy(records, "country");
   const statusCounts = countBy(records, "status");
-  const sourceCounts = countBy(records, (record) => (isIncomingSource(record.source) ? "CUAC 实时提交" : "预置队列"));
+  const sourceCounts = countBy(records, (record) => (isIncomingSource(record.source) ? "UCAC 实时提交" : "预置队列"));
   const fundingCounts = countBy(records, (record) => {
     if (record.funding.toLowerCase().includes("scholarship") || record.funding.toLowerCase().includes("csc")) return "奖学金意向";
     if (record.funding.toLowerCase().includes("self")) return "自费";
@@ -823,7 +823,7 @@ function updateMetrics() {
   const needContact = records.filter((record) => !["Contacted", "Waiting for documents", "Documents received by school"].includes(record.status)).length;
   const waitingCount = records.filter((record) => record.status === "Waiting for documents").length;
   const contactedWeek = records.filter((record) => ["Contacted", "Waiting for documents"].includes(record.status)).length;
-  const liveCount = records.filter((record) => record.source === "Live CUAC submission").length;
+  const liveCount = records.filter((record) => record.source === "Live UCAC submission").length;
   document.querySelector("[data-school-view-name]").textContent = schoolLabel(currentSchool);
   document.querySelector("[data-school-record-count]").textContent = `${records.length} 条记录`;
   document.querySelector("[data-new-count]").textContent = newCount;
@@ -880,7 +880,7 @@ function renderSubmissionReceipt() {
   if (!banner || tenantRecords.length === 0) return;
   banner.hidden = false;
   document.querySelector("[data-submission-receipt-copy]").textContent =
-    `${schoolLabel(SCHOOL_ACCOUNT_NAME)}已收到 ${tenantRecords.length} 条 CUAC 记录。本门户不会显示学生申请的其他学校。`;
+    `${schoolLabel(SCHOOL_ACCOUNT_NAME)}已收到 ${tenantRecords.length} 条 UCAC 记录。本门户不会显示学生申请的其他学校。`;
 }
 
 function renderPortalWaitingState() {
@@ -956,7 +956,7 @@ function renderInformationSources(record) {
     profile.currentOrganizationId || record.currentOrganizationId ? `机构 ${profile.currentOrganizationId || record.currentOrganizationId}` : "",
     profile.updatedAt || record.studentProfileUpdatedAt ? `更新 ${String(profile.updatedAt || record.studentProfileUpdatedAt).slice(0, 10)}` : "",
   ].filter(Boolean).map(commonZh).join(" · ");
-  setText("[data-source-summary]", sourceSummaryParts.slice(0, 3).map(commonZh).join(" · ") || "学生选择、CUAC 目录和学生资料");
+  setText("[data-source-summary]", sourceSummaryParts.slice(0, 3).map(commonZh).join(" · ") || "学生选择、UCAC 目录和学生资料");
 
   if (target) {
     target.innerHTML = `
@@ -978,8 +978,8 @@ function renderInformationSources(record) {
         <em>${escapeHtml(applicationSummary)}</em>
       </article>
       <article>
-        <span>CUAC 目录</span>
-        <em>${escapeHtml(commonZh(program.deadlineLabel || record.deadline))} · ${escapeHtml(commonZh(program.tuitionText || record.tuition || "学费待确认"))} · ${escapeHtml(commonZh(program.sourceLabel || record.sourceLabel || "CUAC 目录"))}</em>
+        <span>UCAC 目录</span>
+        <em>${escapeHtml(commonZh(program.deadlineLabel || record.deadline))} · ${escapeHtml(commonZh(program.tuitionText || record.tuition || "学费待确认"))} · ${escapeHtml(commonZh(program.sourceLabel || record.sourceLabel || "UCAC 目录"))}</em>
       </article>
       <article>
         <span>资金背景</span>
@@ -995,7 +995,7 @@ function renderInformationSources(record) {
   if (notCollected) {
     const missingFiles = record.notCollectedByCuac || sources.notCollectedByCuac || ["transcriptFile", "passportScan", "languageCertificateFile"];
     notCollected.innerHTML = `
-      <span>CUAC 未收取文件</span>
+      <span>UCAC 未收取文件</span>
       ${missingFiles.map((item) => `<em>${escapeHtml(fieldLabel(item))}</em>`).join("")}
     `;
   }
@@ -1135,7 +1135,7 @@ function exportCsvMock(source = "manual") {
 }
 
 function copyRequestTemplate() {
-  showPortalToast("材料请求模板已复制。CUAC 未收取文件。");
+  showPortalToast("材料请求模板已复制。UCAC 未收取文件。");
 }
 
 function renderAll() {

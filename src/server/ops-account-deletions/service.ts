@@ -74,7 +74,7 @@ export class OpsAccountDeletionService {
   async reviewLegalHold(context: RequestContext, executionIdValue: unknown, value: unknown) {
     const actor = requireActor(context), decisionId = authorize(context, "ops.review_account_deletion_legal_hold");
     if (actor.activeRole !== "cuac_admin" || context.authStrength !== "step_up") {
-      throw forbidden("Step-up CUAC administrator authority is required for legal-hold review.");
+      throw forbidden("Step-up UCAC administrator authority is required for legal-hold review.");
     }
     const executionId = inputUuid(executionIdValue, "Execution id");
     const fields = inputRecord(value, ["reviewId", "expectedRevision", "result", "reasonCode", "caseReference"]);
@@ -100,7 +100,7 @@ export class OpsAccountDeletionService {
   async quarantine(context: RequestContext, executionIdValue: unknown, value: unknown) {
     const actor = requireActor(context), decisionId = authorize(context, "ops.quarantine_account_deletion");
     if (actor.activeRole !== "cuac_admin" || context.authStrength !== "step_up") {
-      throw forbidden("Step-up CUAC administrator authority is required for account quarantine.");
+      throw forbidden("Step-up UCAC administrator authority is required for account quarantine.");
     }
     const executionId = inputUuid(executionIdValue, "Execution id");
     const fields = inputRecord(value, ["quarantineId", "expectedRevision"]);
@@ -134,7 +134,7 @@ function authorize(context: RequestContext, action: PolicyAction) {
   if (!decision.allowed) throw forbidden(decision.reason); return decision.id;
 }
 function requireAuthority<T>(result: Authorized<T>): asserts result is { authorized: true; value: T } {
-  if (!result.authorized) throw forbidden("Active CUAC staff access grant is required.");
+  if (!result.authorized) throw forbidden("Active UCAC staff access grant is required.");
 }
 function reference(value: unknown) { const text = inputText(value, "Case reference", 128);
   if (!/^[A-Za-z0-9._:-]+$/.test(text)) throw badRequest("Case reference is invalid."); return text; }

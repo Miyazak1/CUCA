@@ -77,7 +77,7 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   assert.match(script, /活动项目、奖学金、员工或申请/);
   assert.match(script, /不要求另一位管理员审批/);
   assert.match(script, /学校基础信息交接/);
-  assert.match(script, /当前版本不在 CUAC 提交材料/);
+  assert.match(script, /当前版本不在 UCAC 提交材料/);
   assert.match(script, /等待学生向学校直交材料/);
   assert.match(script, /尚未找到已发送给学校的项目记录/);
   assert.doesNotMatch(script, /localStorage|sessionStorage|CuacDataClient|DemoState|Sample record/);

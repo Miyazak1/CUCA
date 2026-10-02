@@ -40,14 +40,14 @@ test("public account page uses real Auth APIs without browser-owned authenticati
   assert.match(html, /data-auth-panel="mfa"/);
   assert.match(html, /autocomplete="one-time-code"/);
   assert.match(html, /data-mfa-recovery-codes/);
-  assert.match(html, /shared-shell\.js\?v=20260929-auth-cache-gate/);
-  assert.match(html, /auth\.js\?v=20260929-email-verification-gate/);
+  assert.match(html, /shared-shell\.js\?v=20261002-ucac-brand/);
+  assert.match(html, /auth\.js\?v=20261002-ucac-brand/);
   assert.match(script, /mfaRequired/);
   assert.match(script, /recoveryCodes/);
   assert.doesNotMatch(script, /localStorage|sessionStorage/);
   assert.match(script, /data-workspace-index/);
   assert.doesNotMatch(html, /data-auth-school-id|data-auth-role|data-reset-account-type/);
-  assert.match(html, /One CUAC account/);
+  assert.match(html, /One UCAC account/);
   assert.match(html, /data-register-password[^>]+minlength="15"/);
   assert.doesNotMatch(html, /Keep me signed in|Study goal|social-auth|Agent context|Agent conversations/);
 

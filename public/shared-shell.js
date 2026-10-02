@@ -140,7 +140,7 @@
       ],
     },
     {
-      title: "CUAC",
+      title: "UCAC",
       links: [
         ["About us", "home-v3.html#cuac-hub"],
         ["Accessibility", "home-v3.html#application-guides"],
@@ -180,7 +180,7 @@
       ],
     },
     {
-      title: "CUAC",
+      title: "UCAC",
       links: [
         ["关于我们", "home-v3.html#cuac-hub"],
         ["无障碍", "home-v3.html#application-guides"],
@@ -223,12 +223,12 @@
     { group: "Language", label: "HSK / IELTS", prompt: "Do I need HSK for English-taught computer science?" },
     { group: "Application", label: "Organize choices", prompt: "Organize my application choices by risk and deadline" },
     { group: "Application", label: "Add choice", prompt: "Help me add a specific program choice" },
-    { group: "Application", label: "Fee summary", prompt: "Explain my CUAC fee and submission next step" },
+    { group: "Application", label: "Fee summary", prompt: "Explain my UCAC fee and submission next step" },
     { group: "Application", label: "Send to schools", prompt: "Submit my application to selected schools" },
-    { group: "School", label: "Queue summary", prompt: "Summarize this school's CUAC application queue" },
+    { group: "School", label: "Queue summary", prompt: "Summarize this school's UCAC application queue" },
     { group: "School", label: "Need contact", prompt: "Which Zhejiang University applicants need first contact?" },
     { group: "School", label: "Document request", prompt: "Prepare a document request template for the selected applicant" },
-    { group: "School", label: "Tenant export", prompt: "Export this school's visible CUAC records" },
+    { group: "School", label: "Tenant export", prompt: "Export this school's visible UCAC records" },
     { group: "Ops", label: "Agent audit", prompt: "Review denied Agent export requests" },
     { group: "Ops", label: "Routing health", prompt: "Summarize routing failures and payment mismatches" },
     { group: "Navigation", label: "Open documents", prompt: "Open my documents page" },
@@ -287,7 +287,7 @@
         type: "ops_audit",
         kicker: "Internal Ops",
         title: containsAny(text, ["routing", "payment"]) ? "Ops Agent can summarize operational risk, but changes are confirmed." : "Review denied Agent actions with audit context.",
-        summary: "CUAC Ops Agent context is internal and audited. It can summarize routing health, payment mismatches, support lookups, and Agent policy denials, but high-risk actions require confirmation before page state changes.",
+        summary: "UCAC Ops Agent context is internal and audited. It can summarize routing health, payment mismatches, support lookups, and Agent policy denials, but high-risk actions require confirmation before page state changes.",
         cards: [
           { title: "Agent denials", meta: "Policy review", body: "Denied export or cross-tenant requests should be reviewed with reason and audit trail.", tags: ["High risk", "Audited"] },
           { title: "Routing failures", meta: "Idempotency", body: "Retry actions should preserve idempotency and avoid duplicate school notifications.", tags: ["Ops"] },
@@ -310,7 +310,7 @@
         summary: "School staff Agent context is limited to the current tenant queue, visible filters, analytics, and document-request templates. It cannot see the student's other school choices or private long-term Agent memory.",
         cards: [
           { title: "Need first contact", meta: "Queue priority", body: "New and needs-review records should be contacted before waiting-document records.", tags: ["Tenant only", "Actionable"] },
-          { title: "Documents", meta: "School asks directly", body: "Request transcript, passport scan, language proof, and program-specific forms through the school process.", tags: ["No CUAC files"] },
+          { title: "Documents", meta: "School asks directly", body: "Request transcript, passport scan, language proof, and program-specific forms through the school process.", tags: ["No UCAC files"] },
           { title: "Analytics", meta: "Programs and countries", body: "Use the visible charts to summarize route demand and regional mix.", tags: ["School scope"] },
         ],
         actions: isSchoolSettingsPage
@@ -323,7 +323,7 @@
               { label: "Mark selected contacted", action: "school-bulk-contact" },
               { label: "Export tenant CSV", action: "school-export-csv" },
             ],
-        source: "School Agent mode uses tenant-scoped CUAC records only. Cross-school data and student private memory are blocked.",
+        source: "School Agent mode uses tenant-scoped UCAC records only. Cross-school data and student private memory are blocked.",
       };
     }
 
@@ -332,13 +332,13 @@
       return {
         type: "payment",
         kicker: "Submission fee",
-        title: isSubmitIntent ? "Submit only after you confirm the high-risk action." : "First school is included. Extra schools use a small CUAC routing fee.",
-        summary: "CUAC charges USD 20 for each additional school after the first. The fee is based on distinct schools, not programs. After sending, schools contact the student directly for documents and official next steps.",
+        title: isSubmitIntent ? "Submit only after you confirm the high-risk action." : "First school is included. Extra schools use a small UCAC routing fee.",
+        summary: "UCAC charges USD 20 for each additional school after the first. The fee is based on distinct schools, not programs. After sending, schools contact the student directly for documents and official next steps.",
         checklist: [
           ["Pricing unit", "School", "Two programs at the same university still count as one school"],
-          ["First school", "Included", "No CUAC fee is due when only one school is selected"],
+          ["First school", "Included", "No UCAC fee is due when only one school is selected"],
           ["Extra school", "USD 20", "Current routing fee for each additional school"],
-          ["After send", "School follows up", "CUAC does not collect documents in this flow"],
+          ["After send", "School follows up", "UCAC does not collect documents in this flow"],
         ],
         actions: [
           isSubmitIntent
@@ -361,7 +361,7 @@
           { label: "Find programs", href: "programs.html", tone: "primary" },
           { label: "Compare cities", href: "cities.html" },
         ],
-        source: "CUAC is using the current page context. The Agent may ask follow-up questions before ranking routes.",
+        source: "UCAC is using the current page context. The Agent may ask follow-up questions before ranking routes.",
       };
     }
 
@@ -370,7 +370,7 @@
         type: "risk",
         kicker: "Needs review",
         title: "I should not treat this as guaranteed.",
-        summary: "For admission, scholarship, deadline exceptions, visa/JW timing, or official policy certainty, the Agent should separate what CUAC knows from what still needs university or adviser confirmation.",
+        summary: "For admission, scholarship, deadline exceptions, visa/JW timing, or official policy certainty, the Agent should separate what UCAC knows from what still needs university or adviser confirmation.",
         cards: [
           { title: "What I can say now", meta: "Current page context", body: "The route may be realistic if the program is open, documents are ready, and key dates are current.", tags: ["Known"] },
           { title: "What needs checking", meta: "Official notice or adviser", body: "Final eligibility, exception approval, award result, visa/JW sequence, and submission validity.", tags: ["Do not promise"] },
@@ -379,7 +379,7 @@
           { label: "Open relevant guide", href: "guides.html", tone: "primary" },
           { label: "Save detail check", action: "save-checklist" },
         ],
-        source: "Planning boundary: CUAC can show caution and next steps, but cannot make official guarantees.",
+        source: "Planning boundary: UCAC can show caution and next steps, but cannot make official guarantees.",
       };
     }
 
@@ -392,7 +392,7 @@
         checklist: [
           ["Saved programs", "4 routes", "ZJU main route, Nanjing backup, UIBE funding-sensitive, Fudan stretch"],
           ["Documents", "3 missing", "Transcript translation, IELTS or waiver, study plan"],
-          ["Earliest deadline", "Oct 15", "ZJU Computer Science MSc in current CUAC data"],
+          ["Earliest deadline", "Oct 15", "ZJU Computer Science MSc in current UCAC data"],
           ["Budget fit", "Good", "Hangzhou and Nanjing stay below Shanghai cost"],
         ],
         actions: [
@@ -437,7 +437,7 @@
         type: "action",
         kicker: "Application action",
         title: "Add one concrete program as a choice.",
-        summary: "A valid application choice should be one university plus one specific program, intake, and language route. In the real flow these fields come from the CUAC program database.",
+        summary: "A valid application choice should be one university plus one specific program, intake, and language route. In the real flow these fields come from the UCAC program database.",
         cards: [
           { title: "Zhejiang University", meta: "Computer Science MSc", body: "Fall 2026 · English-taught · RMB 42k · Oct 15", tags: ["Main route", "Needs IELTS"] },
           { title: "Nanjing University", meta: "Software Engineering MSc", body: "Fall 2026 · English-taught · RMB 39k · Dec 20", tags: ["Backup", "Ready to compare"] },
@@ -446,7 +446,7 @@
           { label: "Open add choice modal", action: "open-choice-modal", tone: "primary" },
           { label: "Prefill choice", action: "prefill-choice" },
         ],
-        source: "Choice actions use the current page selector and CUAC program data.",
+        source: "Choice actions use the current page selector and UCAC program data.",
       };
     }
 
@@ -463,13 +463,13 @@
           ["Transcript", "Needs translation", "Use certified translation before submission"],
           ["IELTS or waiver evidence", "Needs review", "English-taught programs usually need proof"],
           ["Study plan", "Missing", "Required by scholarship-sensitive routes"],
-          ["Program deadline", "Check date", "ZJU route closes Oct 15 in current CUAC data"],
+          ["Program deadline", "Check date", "ZJU route closes Oct 15 in current UCAC data"],
         ],
         actions: [
           { label: "Open guide", href: "guides.html#documents", tone: "primary" },
           { label: "Save checklist to Hub", action: "save-checklist" },
         ],
-        source: "Based on CUAC guide context and selected route information.",
+        source: "Based on UCAC guide context and selected route information.",
       };
     }
 
@@ -478,7 +478,7 @@
         type: "calculation",
         kicker: "Cost estimate",
         title: "Hangzhou is the safer first budget fit than Shanghai.",
-        summary: "Using CUAC tuition and city estimates, Hangzhou keeps the annual total lower while still supporting strong English-taught computer science routes.",
+        summary: "Using UCAC tuition and city estimates, Hangzhou keeps the annual total lower while still supporting strong English-taught computer science routes.",
         calculation: {
           total: "RMB 85k - 95k / year",
           formula: "ZJU tuition RMB 42k + living estimate RMB 3.6k x 12 + setup buffer",
@@ -549,7 +549,7 @@
           { label: "Open language guide", href: "guides.html#language", tone: "primary" },
           { label: "Find English routes", href: "programs.html" },
         ],
-        source: "Answer based on CUAC guide context. Final checks should use official program pages.",
+        source: "Answer based on UCAC guide context. Final checks should use official program pages.",
       };
     }
 
@@ -588,7 +588,7 @@
           { label: "Compare these routes", action: "compare-routes" },
           { label: "Save to shortlist", action: "save-program-shortlist" },
         ],
-        source: "CUAC combines program, university, city, intake, and document signals.",
+        source: "UCAC combines program, university, city, intake, and document signals.",
       };
     }
 
@@ -603,7 +603,7 @@
         { label: "Open Hub", href: "hub-api.html" },
         { label: "Apply useful filters", action: "apply-smart-filters" },
       ],
-      source: "CUAC response from the current page context.",
+      source: "UCAC response from the current page context.",
     };
   }
 
@@ -672,7 +672,7 @@
   function brand() {
     const locale = window.CUACI18n?.locale;
     const href = shouldCarryLocale(locale) ? `home-v3.html?lang=${encodeURIComponent(locale)}` : "home-v3.html";
-    return `<a class="brand" href="${href}"><span class="logo">CU</span><span>CUAC</span></a>`;
+    return `<a class="brand" href="${href}"><span class="logo">UC</span><span>UCAC</span></a>`;
   }
 
   function shellText(key, fallback) {
@@ -768,7 +768,7 @@
     const userName = shellContext.role === "school_staff"
       ? "School staff account"
       : ["cuac_ops", "cuac_admin"].includes(shellContext.role)
-        ? "CUAC internal account"
+        ? "UCAC internal account"
         : shellText("studentAccount", "Student account");
     const initial = userName.charAt(0).toUpperCase();
     const accountEmail = shellContext.accountEmail || shellText("emailUnavailable", "Account email unavailable");
@@ -908,7 +908,7 @@
         </nav>
         <div class="nav-actions" aria-label="${localizedNav ? "账号操作" : escapeHTML(shellText("accountActions", "Account actions"))}">
           ${renderLanguageSelector()}
-          <a class="nav-icon" href="${localizedSearchHref()}" aria-label="${localizedNav ? "全站搜索" : escapeHTML(shellText("search", "Search CUAC"))}">${icons.search}</a>
+          <a class="nav-icon" href="${localizedSearchHref()}" aria-label="${localizedNav ? "全站搜索" : escapeHTML(shellText("search", "Search UCAC"))}">${icons.search}</a>
           ${showSavedShortcut ? renderSavedShortcut() : ""}
           ${renderAccountMenu(target)}
         </div>
@@ -923,7 +923,7 @@
     if (workspace) {
       target.outerHTML = `
         <footer class="footer footer-workspace">
-          <div>${brand()}<span>${workspace.kind === "student" ? escapeHTML(shellText("studentWorkspaceTagline", "Your China application workspace")) : workspace.kind === "school" ? "当前学校租户内的招生工作区" : "受控、可审计的 CUAC 运营工作区"}</span></div>
+          <div>${brand()}<span>${workspace.kind === "student" ? escapeHTML(shellText("studentWorkspaceTagline", "Your China application workspace")) : workspace.kind === "school" ? "当前学校租户内的招生工作区" : "受控、可审计的 UCAC 运营工作区"}</span></div>
           <div class="footer-legal">
             <a href="${localized ? "privacy.html?lang=zh-CN" : localizedPageHref("privacy.html")}">${localized ? "隐私与数据边界" : escapeHTML(shellText("privacyData", "Privacy and data use"))}</a>
             <a href="${localized ? "home-v3.html#cuac-hub" : localizedPageHref("home-v3.html#cuac-hub")}">${localized ? "获取支持" : escapeHTML(shellText("getSupport", "Get support"))}</a>
@@ -964,7 +964,7 @@
             .join("")}
         </div>
         <div class="footer-bottom">
-          <span>© CUAC 2026</span>
+          <span>© UCAC 2026</span>
           <div class="footer-legal">
             <a href="cookies.html${localized ? "?lang=zh-CN" : ""}">${localized ? "Cookie 说明" : `${escapeHTML(shellText("cookies", "Cookie notice"))}${englishOnly}`}</a>
             <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "数据与来源政策" : `${escapeHTML(shellText("dataPolicy", "Data and source policy"))}${englishOnly}`}</a>
@@ -982,9 +982,9 @@
   const protectedStudentRoutes = new Set(["onboarding-api.html", "hub-api.html", "favourites-api.html", "application.html", "billing-api.html", "notifications.html", "preferences-api.html"]);
   const authPageVersion = "20260929-email-verification-gate";
   const protectedRoleRoutes = {
-    "school-portal.html": { role: "school_staff", title: "Sign in to CUAC" },
-    "school-settings-api.html": { role: "school_staff", title: "Sign in to CUAC" },
-    "ops-admin-api.html": { role: "cuac_ops", title: "Sign in to CUAC" },
+    "school-portal.html": { role: "school_staff", title: "Sign in to UCAC" },
+    "school-settings-api.html": { role: "school_staff", title: "Sign in to UCAC" },
+    "ops-admin-api.html": { role: "cuac_ops", title: "Sign in to UCAC" },
   };
 
   function routeNameFromHref(href) {
@@ -1082,7 +1082,7 @@
     const navActions = header?.querySelector(".nav-actions");
     if (!header || !navActions) return;
     const shellContext = getShellContext();
-    navActions.innerHTML = `${renderLanguageSelector()}<a class="nav-icon" href="${localizedSearchHref()}" aria-label="${escapeHTML(shellText("search", "Search CUAC"))}">${icons.search}</a>${shouldShowSavedShortcut(shellContext) ? renderSavedShortcut() : ""}${renderAccountMenu({ dataset: {} })}`;
+    navActions.innerHTML = `${renderLanguageSelector()}<a class="nav-icon" href="${localizedSearchHref()}" aria-label="${escapeHTML(shellText("search", "Search UCAC"))}">${icons.search}</a>${shouldShowSavedShortcut(shellContext) ? renderSavedShortcut() : ""}${renderAccountMenu({ dataset: {} })}`;
     initAccountMenus();
     initLanguageSelectors();
   }
@@ -1378,7 +1378,7 @@
     const isOpsMode = agentMode === "ops";
     const panelCopy = isOpsMode
       ? {
-          body: "面向 CUAC 运营人员的内部、受审计工作流助手。",
+          body: "面向 UCAC 运营人员的内部、受审计工作流助手。",
           goal: "汇总运营风险并定位需要人工复核的队列",
           steps: [
             [icons.intent, "读取运营上下文", "仅使用当前管理员可见的队列摘要、隔离记录和审计状态。"],
@@ -1427,9 +1427,9 @@
       : isSchoolMode
         ? {
             body: "How this school tenant queue is being summarized and prepared for staff follow-up.",
-            goal: "Summarize this school's CUAC application queue",
+            goal: "Summarize this school's UCAC application queue",
             steps: [
-              [icons.intent, "Read tenant queue", "Use only this school's visible CUAC records, filters, status, owner, and priority fields."],
+              [icons.intent, "Read tenant queue", "Use only this school's visible UCAC records, filters, status, owner, and priority fields."],
               [icons.search, "Summarize analytics", "Look at program demand, source mix, funding signals, country mix, and pipeline status."],
               [icons.shield, "Protect scope", "Do not reveal other school choices, student private memory, or cross-tenant data."],
               [icons.account, "Prepare staff action", "Draft contact steps, copy request templates, or mark selected records after confirmation."],
@@ -1491,7 +1491,7 @@
           <div class="cuac-agent-panel-head">
             <div>
               <div class="cuac-agent-eyebrow">Agent workflow</div>
-              <h2>CUAC agent workspace</h2>
+              <h2>UCAC agent workspace</h2>
               <p>${panelCopy.body}</p>
             </div>
             <button class="cuac-agent-close" type="button" data-cuac-agent-close aria-label="Collapse agent panel">${icons.close}</button>
@@ -1633,7 +1633,7 @@
         results.innerHTML = `
           <div class="cuac-agent-working">
             <span></span>
-            <strong>Reading CUAC context...</strong>
+            <strong>Reading UCAC context...</strong>
           </div>
         `;
       }
@@ -1831,7 +1831,7 @@
         card.innerHTML = `
           <span>${escapeHTML((actionGuard.action.riskLevel || "high").toUpperCase())} risk action</span>
           <strong>${escapeHTML(label)}</strong>
-          <small>Confirm before CUAC changes school, application, payment, export, or internal audit state. Audit event: ${escapeHTML(actionGuard.action.auditEvent || actionGuard.action.actionKey)}.</small>
+          <small>Confirm before UCAC changes school, application, payment, export, or internal audit state. Audit event: ${escapeHTML(actionGuard.action.auditEvent || actionGuard.action.actionKey)}.</small>
           <div>
             <button class="cuac-agent-action primary" type="button" data-agent-action="${escapeHTML(actionId)}" data-agent-confirmed="true" data-agent-label="${escapeHTML(label)}">Confirm action</button>
             <button class="cuac-agent-confirm-cancel" type="button" data-agent-confirm-cancel>Cancel</button>

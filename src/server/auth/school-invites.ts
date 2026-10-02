@@ -178,7 +178,7 @@ export class SchoolStaffInviteService {
       throw forbidden(decision.reason);
     }
     if (!await this.repository.hasLiveCuacStaffAuthority(actor)) {
-      throw forbidden("Active CUAC staff access grant is required.");
+      throw forbidden("Active UCAC staff access grant is required.");
     }
 
     const school = await this.repository.findSchoolById(schoolId);
@@ -340,7 +340,7 @@ export class SchoolStaffInviteService {
     });
 
     if (!activated) {
-      throw conflict("This invitation cannot create a new account. If this email already has a CUAC account, sign in and accept the invitation from that account.");
+      throw conflict("This invitation cannot create a new account. If this email already has a UCAC account, sign in and accept the invitation from that account.");
     }
 
     await this.recordAudit(context, {
@@ -377,7 +377,7 @@ export class SchoolStaffInviteService {
       throw forbidden(decision.reason);
     }
     if (!await this.repository.hasLiveCuacStaffAuthority(actor)) {
-      throw forbidden("Active CUAC staff access grant is required.");
+      throw forbidden("Active UCAC staff access grant is required.");
     }
 
     const revokedAt = this.now();
@@ -432,7 +432,7 @@ function requireAuthenticatedActor(context: RequestContext): string {
 
 function requireCuacInviteManager(context: RequestContext): { actorUserId: string; activeRole: CuacInternalRole } {
   if (!context.actorUserId || (context.activeRole !== "cuac_ops" && context.activeRole !== "cuac_admin")) {
-    throw forbidden("CUAC internal role is required to manage school invites.");
+    throw forbidden("UCAC internal role is required to manage school invites.");
   }
 
   return { actorUserId: context.actorUserId, activeRole: context.activeRole };

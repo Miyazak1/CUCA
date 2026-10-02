@@ -3,7 +3,7 @@
   const i18n = window.CUACI18n;
   if (!i18n || i18n.locale === "en") return;
   const t = i18n.t;
-  document.title = `CUAC | ${t("home.title")}`;
+  document.title = `UCAC | ${t("home.title")}`;
   const main = document.querySelector("main");
   if (!main) return;
   const category = (href, title, body) => `<a class="cat" href="${href}" hreflang="en"><strong>${t(title)}</strong><span>${t(body)}</span></a>`;

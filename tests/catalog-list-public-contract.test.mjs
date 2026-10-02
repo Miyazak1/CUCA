@@ -158,7 +158,7 @@ test("program university routes send the school slug to the published API and re
     source("programs.css"),
   ]);
 
-  assert.match(html, /programs\.js\?v=20260929-list-states/);
+  assert.match(html, /programs\.js\?v=20261002-ucac-brand/);
   assert.match(script, /const focusedUniversity = routeParams\.get\("university"\)/);
   assert.match(script, /loadPage\("programs", \{[\s\S]*school: focusedUniversity,/);
   assert.doesNotMatch(script, /function programMatchesUniversity/);

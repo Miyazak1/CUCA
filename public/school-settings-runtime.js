@@ -47,8 +47,8 @@ const correctionReasons = [
 ];
 
 const correctionStatusLabels = {
-  submitted: "等待 CUAC 认领",
-  claimed: "CUAC 复核中",
+  submitted: "等待 UCAC 认领",
+  claimed: "UCAC 复核中",
   applied: "已发布，等待重新核验",
   rejected: "未采纳",
 };
@@ -110,7 +110,7 @@ function renderCorrectionWorkspace(corrections) {
   const firstField = Object.keys(correctionFields)[0];
   return `<section class="school-settings-corrections" aria-labelledby="school-corrections-title">
     <header class="school-settings-section-heading"><div><p class="school-settings-kicker">公开目录治理</p><h2 id="school-corrections-title">提交字段更正</h2></div>
-      <p>更正不会直接改动公开目录。CUAC 认领后，须由另一位管理员复核并发布。</p></header>
+      <p>更正不会直接改动公开目录。UCAC 认领后，须由另一位管理员复核并发布。</p></header>
     <div class="school-settings-correction-layout">
       <form class="school-settings-correction-form" data-school-correction-form>
         <label><span>需要更正的字段</span><select name="field" required>${fieldOptions}</select></label>

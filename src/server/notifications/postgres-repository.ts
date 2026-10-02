@@ -229,7 +229,7 @@ export async function assertLivePersona(client: TransactionalSqlClient, persona:
     const grants = await client.query(`select id from cuac_staff_access_grants where user_id = $1 and requested_role = $2
       and status = 'approved' and approved_at is not null and revoked_at is null and expires_at > clock_timestamp()
       for ${lock}`, [persona.userId, persona.role]);
-    if (!grants[0]) throw forbidden("Current CUAC staff notification grant is required.");
+    if (!grants[0]) throw forbidden("Current UCAC staff notification grant is required.");
   }
 }
 

@@ -655,7 +655,7 @@ function requireContext(context: RequestContext): Actor {
   if (!context.actorUserId || !["cuac_ops", "cuac_admin"].includes(context.activeRole)
     || context.selectedSurface !== "ops" || context.purpose !== "catalog_management"
     || context.tenantSchoolId !== null || !["session", "step_up"].includes(context.authStrength)) {
-    throw forbidden("Authenticated CUAC catalog-management context is required.");
+    throw forbidden("Authenticated UCAC catalog-management context is required.");
   }
   return { actorUserId: context.actorUserId, activeRole: context.activeRole as CatalogAdminRole };
 }
@@ -905,7 +905,7 @@ function canonicalFutureTimestamp(value: unknown): Date {
 }
 
 function requireAuthorized<T>(result: Authorized<T>): T {
-  if (!result.authorized) throw forbidden("Active CUAC staff access grant is required.");
+  if (!result.authorized) throw forbidden("Active UCAC staff access grant is required.");
   return result.value;
 }
 

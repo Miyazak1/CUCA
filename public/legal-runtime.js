@@ -12,16 +12,16 @@
   const localeSelect = root.querySelector("[data-legal-locale]");
   const pageCopy = {
     privacy_notice: {
-      en: ["Privacy", "Privacy Notice", "How CUAC handles personal information across student, school and operations workspaces."],
-      "zh-CN": ["隐私", "隐私声明", "CUAC 如何在学生、学校和运营工作区处理个人信息。"],
+      en: ["Privacy", "Privacy Notice", "How UCAC handles personal information across student, school and operations workspaces."],
+      "zh-CN": ["隐私", "隐私声明", "UCAC 如何在学生、学校和运营工作区处理个人信息。"],
     },
     terms_of_service: {
-      en: ["Terms", "Terms of Service", "The rules governing access to and use of CUAC services."],
-      "zh-CN": ["服务条款", "服务条款", "使用和访问 CUAC 服务所适用的规则。"],
+      en: ["Terms", "Terms of Service", "The rules governing access to and use of UCAC services."],
+      "zh-CN": ["服务条款", "服务条款", "使用和访问 UCAC 服务所适用的规则。"],
     },
     cookie_notice: {
-      en: ["Cookies", "Cookie Notice", "The essential browser storage CUAC uses and the controls available to you."],
-      "zh-CN": ["Cookie", "Cookie 说明", "CUAC 使用的必要浏览器存储以及你可以使用的控制方式。"],
+      en: ["Cookies", "Cookie Notice", "The essential browser storage UCAC uses and the controls available to you."],
+      "zh-CN": ["Cookie", "Cookie 说明", "UCAC 使用的必要浏览器存储以及你可以使用的控制方式。"],
     },
     admissions_data_policy: {
       en: ["Admissions data", "Admissions Data and Source Policy", "How university, program, intake and scholarship information is sourced, reviewed, corrected and retired."],
@@ -35,9 +35,9 @@
     setText(".legal-kicker", copy[0]);
     setText("[data-legal-title]", copy[1]);
     setText(".legal-heading > p", copy[2]);
-    document.title = `CUAC | ${copy[1]}`;
+    document.title = `UCAC | ${copy[1]}`;
     const topNote = document.querySelector(".top-note");
-    if (topNote) topNote.textContent = locale === "zh-CN" ? "CUAC 政策：经审核、版本化并正式发布" : "CUAC policies: reviewed, versioned and published";
+    if (topNote) topNote.textContent = locale === "zh-CN" ? "UCAC 政策：经审核、版本化并正式发布" : "UCAC policies: reviewed, versioned and published";
   }
   if (localeSelect) {
     localeSelect.value = locale;
@@ -58,8 +58,8 @@
       status.hidden = false;
       status.querySelector("strong").textContent = locale === "zh-CN" ? "该政策尚未正式发布" : "This policy has not been published";
       status.querySelector("p").textContent = locale === "zh-CN"
-        ? "CUAC 不会用草稿或占位文案替代经审核的正式政策。该页面发布前，生产上线检查将保持阻断。"
-        : "CUAC does not substitute draft or placeholder wording for an approved policy. Production release remains blocked until this page has a reviewed publication.";
+        ? "UCAC 不会用草稿或占位文案替代经审核的正式政策。该页面发布前，生产上线检查将保持阻断。"
+        : "UCAC does not substitute draft or placeholder wording for an approved policy. Production release remains blocked until this page has a reviewed publication.";
     }
     if (sections) sections.replaceChildren();
   }

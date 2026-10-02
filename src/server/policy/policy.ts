@@ -275,7 +275,7 @@ export function evaluatePolicy(context: RequestContext, action: PolicyAction, re
       && context.purpose === "catalog_correction_review" && context.tenantSchoolId === null
       && (context.authStrength === "session" || context.authStrength === "step_up")
       && (!resolving || (context.activeRole === "cuac_admin" && context.authStrength === "step_up"))
-      ? allow("CUAC staff may review catalog corrections; resolution requires step-up administrator authority and live grant revalidation.")
+      ? allow("UCAC staff may review catalog corrections; resolution requires step-up administrator authority and live grant revalidation.")
       : deny("Catalog correction review authority is required.");
   }
 
@@ -283,8 +283,8 @@ export function evaluatePolicy(context: RequestContext, action: PolicyAction, re
     return context.actorUserId && (context.activeRole === "cuac_ops" || context.activeRole === "cuac_admin")
       && context.selectedSurface === "ops" && context.purpose === "ops_monitoring"
       && context.tenantSchoolId === null && (context.authStrength === "session" || context.authStrength === "step_up")
-      ? allow("CUAC internal staff may read the fixed operations summary; live grant must be rechecked.")
-      : deny("Verified CUAC operations monitoring authority is required.");
+      ? allow("UCAC internal staff may read the fixed operations summary; live grant must be rechecked.")
+      : deny("Verified UCAC operations monitoring authority is required.");
   }
 
   if (resource.type === "ops_billing_review" && ["ops.read_billing_review", "ops.claim_billing_review",
@@ -351,14 +351,14 @@ export function evaluatePolicy(context: RequestContext, action: PolicyAction, re
     return context.actorUserId && (context.activeRole === "cuac_ops" || context.activeRole === "cuac_admin")
       && context.selectedSurface === "ops" && context.purpose === "ops_support"
       && context.tenantSchoolId === null && (context.authStrength === "session" || context.authStrength === "step_up")
-      ? allow("CUAC internal support may read the minimal application support projection; live grant must be rechecked.")
-      : deny("Verified CUAC application support authority is required.");
+      ? allow("UCAC internal support may read the minimal application support projection; live grant must be rechecked.")
+      : deny("Verified UCAC application support authority is required.");
   }
 
   if (action === "ops.manage_school_invites" && resource.type === "school_tenant") {
     return context.activeRole === "cuac_ops" || context.activeRole === "cuac_admin"
-      ? allow("CUAC internal role can manage school invites.")
-      : deny("CUAC internal role required.");
+      ? allow("UCAC internal role can manage school invites.")
+      : deny("UCAC internal role required.");
   }
 
   if (action === "audit.append") {

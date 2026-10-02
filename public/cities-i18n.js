@@ -2,7 +2,7 @@
   "use strict";
 
   const rows = [
-    ["CUAC | Cities", "CUAC | Thành phố", "CUAC | เมือง", "CUAC | Kota", "CUAC | Bandar", "CUAC | المدن"],
+    ["UCAC | Cities", "UCAC | Thành phố", "UCAC | เมือง", "UCAC | Kota", "UCAC | Bandar", "UCAC | المدن"],
     ["Cities", "Thành phố", "เมือง", "Kota", "Bandar", "المدن"],
     ["Find a China city that fits your study plan", "Tìm thành phố Trung Quốc phù hợp với kế hoạch học tập", "ค้นหาเมืองจีนที่เหมาะกับแผนการเรียน", "Temukan kota di Tiongkok yang sesuai dengan rencana studi", "Cari bandar di China yang sesuai dengan rancangan pengajian", "اعثر على مدينة صينية تناسب خطتك الدراسية"],
     ["Compare published living costs and catalog reference counts before choosing where to apply.", "So sánh chi phí sinh hoạt và số liệu danh mục đã công bố trước khi chọn nơi nộp hồ sơ.", "เปรียบเทียบค่าครองชีพและจำนวนข้อมูลอ้างอิงที่เผยแพร่ก่อนเลือกสมัคร", "Bandingkan biaya hidup dan jumlah referensi katalog yang diterbitkan sebelum memilih tempat mendaftar.", "Bandingkan kos sara hidup dan bilangan rujukan katalog sebelum memilih tempat memohon.", "قارن تكاليف المعيشة المنشورة وأعداد السجلات قبل اختيار مكان التقديم."],

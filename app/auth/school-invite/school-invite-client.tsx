@@ -27,7 +27,7 @@ export function SchoolInviteClient() {
     if (!isValidUuid(inviteId) || !isValidToken(inviteToken)) {
       queueMicrotask(() => {
         setState("invalid");
-        setMessage("This invitation is incomplete or invalid. Ask your CUAC administrator to send a new invitation.");
+        setMessage("This invitation is incomplete or invalid. Ask your UCAC administrator to send a new invitation.");
       });
       return;
     }
@@ -96,7 +96,7 @@ export function SchoolInviteClient() {
   return (
     <div className={styles.shell}>
       <header className={styles.header}>
-        <a className={styles.brand} href="/home-v3.html" aria-label="CUAC home"><span className={styles.mark}>CU</span><span>CUAC</span></a>
+        <a className={styles.brand} href="/home-v3.html" aria-label="UCAC home"><span className={styles.mark}>UC</span><span>UCAC</span></a>
         <a className={styles.signInLink} href="/auth.html?role=school">Sign in</a>
       </header>
       <main className={styles.main}>
@@ -122,7 +122,7 @@ export function SchoolInviteClient() {
           ) : null}
 
           {!signedIn && state !== "success" && (
-            <p className={styles.securityNote}>Already have a CUAC account for the invited email? Sign in first, then open the invitation link again to explicitly add the school workspace.</p>
+            <p className={styles.securityNote}>Already have a UCAC account for the invited email? Sign in first, then open the invitation link again to explicitly add the school workspace.</p>
           )}
           {(state === "success" || state === "invalid") && <a className={styles.secondary} href="/auth.html?role=school">Return to sign in</a>}
           <p className={styles.securityNote}>Invitation credentials are removed from the address bar and are never stored in this browser.</p>

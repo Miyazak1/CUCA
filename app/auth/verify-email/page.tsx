@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AuthActionClient } from "../action-client";
 
 export const metadata: Metadata = {
-  title: "Verify email | CUAC",
+  title: "Verify email | UCAC",
   robots: { index: false, follow: false },
 };
 

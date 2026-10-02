@@ -592,7 +592,7 @@ function applyHubAgentAction(action, detail = {}) {
     return true;
   }
   if (action === "save-program-shortlist" || action === "apply-smart-filters") {
-    showHubAgentNotice("Agent refreshed your saved-route workspace from current CUAC data.");
+    showHubAgentNotice("Agent refreshed your saved-route workspace from current UCAC data.");
     routes[0].compared = true;
     routes[2].compared = true;
     renderRoutes();

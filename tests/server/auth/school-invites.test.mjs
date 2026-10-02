@@ -65,7 +65,7 @@ function createRepository(account, invite) {
   };
 }
 
-test("school staff invite creation is limited to CUAC internal roles and returns no token", async () => {
+test("school staff invite creation is limited to UCAC internal roles and returns no token", async () => {
   const { calls, repository } = createRepository(null, null);
   const deliveries = [];
   const auditEvents = [];
@@ -107,14 +107,14 @@ test("school staff invite creation is limited to CUAC internal roles and returns
   assert.equal(JSON.stringify(auditEvents[0]).includes(deliveries[0].inviteToken), false);
 });
 
-test("school staff invite creation rejects non-CUAC roles and invalid school or role", async () => {
+test("school staff invite creation rejects non-UCAC roles and invalid school or role", async () => {
   await assert.rejects(
     () =>
       new SchoolStaffInviteService(createRepository(null, null).repository, { now }).createInvite(
         createRequestContext({ actorUserId: "student-1", activeRole: "student" }),
         { schoolId: "b1111111-b111-4111-8111-b11111111111", email: "teacher@example.edu", role: "viewer" },
       ),
-    /CUAC internal role/,
+    /UCAC internal role/,
   );
 
   await assert.rejects(
@@ -147,7 +147,7 @@ test("school staff invite creation rejects non-CUAC roles and invalid school or 
       createRequestContext({ actorUserId: "ops-1", activeRole: "cuac_ops", selectedSurface: "ops" }),
       { schoolId: "b1111111-b111-4111-8111-b11111111111", email: "teacher@example.edu", role: "viewer" },
     ),
-    /Active CUAC staff access grant/,
+    /Active UCAC staff access grant/,
   );
   assert.deepEqual(denied.calls.map(call => call.method), ["hasLiveCuacStaffAuthority"]);
 });
@@ -329,11 +329,11 @@ test("school staff invite activation rejects signed-in actors and existing-accou
       inviteToken: "BAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQ",
       password: "correct horse battery staple",
     }),
-    /already has a CUAC account/,
+    /already has a UCAC account/,
   );
 });
 
-test("school staff invite revocation is limited to CUAC internal roles", async () => {
+test("school staff invite revocation is limited to UCAC internal roles", async () => {
   const { calls, repository } = createRepository(null, null);
   const auditEvents = [];
   const service = new SchoolStaffInviteService(repository, {
@@ -362,6 +362,6 @@ test("school staff invite revocation is limited to CUAC internal roles", async (
         createRequestContext({ actorUserId: "teacher-1", activeRole: "school_staff", selectedSurface: "school" }),
         "a2222222-a222-4222-8222-a22222222222",
       ),
-    /CUAC internal role/,
+    /UCAC internal role/,
   );
 });

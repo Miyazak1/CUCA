@@ -224,7 +224,7 @@ function buildFeeQuote(userId: string, applicationSetId: string, choices: readon
   const cuacId = choices[0]?.cuacId;
   if (!cuacId || !/^CUAC-[0-9]{4}-[0-9]{6}$/.test(cuacId)
     || choices.some((choice) => choice.cuacId !== cuacId)) {
-    throw serviceUnavailable("Application choices do not have one valid CUAC application reference.");
+    throw serviceUnavailable("Application choices do not have one valid UCAC application reference.");
   }
   const applicationBasis = pricingBasisSha256("application_submission", feeSchedule.applicationFeeMinor, feeSchedule.currency);
   const applicationLines = choices.map<PersistedInvoiceLine>(choice => ({
@@ -247,7 +247,7 @@ function buildFeeQuote(userId: string, applicationSetId: string, choices: readon
     lineFormat: "cuac.invoice-line.v2",
     lineType: "service_fee",
     feeCode: "cuac_service",
-    description: "CUAC service fee",
+    description: "UCAC service fee",
     amountMinor: feeSchedule.serviceFeeMinor,
     currency: feeSchedule.currency,
     userId,

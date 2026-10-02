@@ -75,7 +75,7 @@ export function composeSchoolStaffInviteMessage(
     messageType: "auth.school_staff_invite",
     to: normalizeEmail(input.emailNormalized),
     from: normalizeEmail(config.from),
-    subject: "Activate your CUAC school account",
+    subject: "Activate your UCAC school account",
     locale: "en",
     templateData: {
       challengeId: input.inviteId,

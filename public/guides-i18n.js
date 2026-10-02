@@ -2,7 +2,7 @@
   "use strict";
 
   const rows = [
-    ["CUAC | Application guides", "CUAC | Hướng dẫn nộp hồ sơ", "CUAC | คู่มือการสมัคร", "CUAC | Panduan pendaftaran", "CUAC | Panduan permohonan", "CUAC | أدلة التقديم"],
+    ["UCAC | Application guides", "UCAC | Hướng dẫn nộp hồ sơ", "UCAC | คู่มือการสมัคร", "UCAC | Panduan pendaftaran", "UCAC | Panduan permohonan", "UCAC | أدلة التقديم"],
     ["Application guides", "Hướng dẫn nộp hồ sơ", "คู่มือการสมัคร", "Panduan pendaftaran", "Panduan permohonan", "أدلة التقديم"],
     ["Application guides:", "Hướng dẫn nộp hồ sơ:", "คู่มือการสมัคร:", "Panduan pendaftaran:", "Panduan permohonan:", "أدلة التقديم:"],
     ["reviewed routes and official sources", "lộ trình đã rà soát và nguồn chính thức", "เส้นทางที่ตรวจทานแล้วและแหล่งข้อมูลทางการ", "jalur yang ditinjau dan sumber resmi", "laluan yang disemak dan sumber rasmi", "مسارات مراجعة ومصادر رسمية"],
@@ -23,10 +23,10 @@
     ["Search the full site", "Tìm kiếm toàn trang", "ค้นหาทั้งเว็บไซต์", "Cari seluruh situs", "Cari seluruh laman", "البحث في الموقع بالكامل"],
     ["Loading published guides", "Đang tải hướng dẫn đã công bố", "กำลังโหลดคู่มือที่เผยแพร่", "Memuat panduan yang diterbitkan", "Memuatkan panduan yang diterbitkan", "جارٍ تحميل الأدلة المنشورة"],
     ["Reading reviewed guide records.", "Đang đọc hồ sơ hướng dẫn đã rà soát.", "กำลังอ่านระเบียนคู่มือที่ตรวจทานแล้ว", "Membaca catatan panduan yang ditinjau.", "Membaca rekod panduan yang disemak.", "جارٍ قراءة سجلات الأدلة المراجعة."],
-    ["How to use CUAC guides", "Cách sử dụng hướng dẫn CUAC", "วิธีใช้คู่มือ CUAC", "Cara menggunakan panduan CUAC", "Cara menggunakan panduan CUAC", "كيفية استخدام أدلة CUAC"],
+    ["How to use UCAC guides", "Cách sử dụng hướng dẫn UCAC", "วิธีใช้คู่มือ UCAC", "Cara menggunakan panduan UCAC", "Cara menggunakan panduan UCAC", "كيفية استخدام أدلة UCAC"],
     ["Use guides safely", "Sử dụng hướng dẫn an toàn", "ใช้คู่มืออย่างปลอดภัย", "Gunakan panduan dengan aman", "Gunakan panduan dengan selamat", "استخدم الأدلة بأمان"],
     ["Check the source before you act", "Kiểm tra nguồn trước khi hành động", "ตรวจสอบแหล่งข้อมูลก่อนดำเนินการ", "Periksa sumber sebelum bertindak", "Semak sumber sebelum bertindak", "تحقق من المصدر قبل اتخاذ إجراء"],
-    ["CUAC explains the route. The university or responsible authority remains the source for exact requirements and dates.", "CUAC giải thích lộ trình. Trường hoặc cơ quan có thẩm quyền vẫn là nguồn xác nhận yêu cầu và ngày chính xác.", "CUAC อธิบายเส้นทาง แต่มหาวิทยาลัยหรือหน่วยงานที่รับผิดชอบยังคงเป็นแหล่งข้อมูลสำหรับข้อกำหนดและวันที่ที่แน่นอน", "CUAC menjelaskan jalurnya. Universitas atau otoritas terkait tetap menjadi sumber persyaratan dan tanggal yang tepat.", "CUAC menerangkan laluannya. Universiti atau pihak berkuasa berkaitan kekal sebagai sumber syarat dan tarikh tepat.", "يشرح CUAC المسار، وتبقى الجامعة أو الجهة المسؤولة مصدر المتطلبات والمواعيد الدقيقة."],
+    ["UCAC explains the route. The university or responsible authority remains the source for exact requirements and dates.", "UCAC giải thích lộ trình. Trường hoặc cơ quan có thẩm quyền vẫn là nguồn xác nhận yêu cầu và ngày chính xác.", "UCAC อธิบายเส้นทาง แต่มหาวิทยาลัยหรือหน่วยงานที่รับผิดชอบยังคงเป็นแหล่งข้อมูลสำหรับข้อกำหนดและวันที่ที่แน่นอน", "UCAC menjelaskan jalurnya. Universitas atau otoritas terkait tetap menjadi sumber persyaratan dan tanggal yang tepat.", "UCAC menerangkan laluannya. Universiti atau pihak berkuasa berkaitan kekal sebagai sumber syarat dan tarikh tepat.", "يشرح UCAC المسار، وتبقى الجامعة أو الجهة المسؤولة مصدر المتطلبات والمواعيد الدقيقة."],
     ["Confirm deadlines", "Xác nhận hạn nộp", "ยืนยันกำหนดเวลา", "Konfirmasikan tenggat", "Sahkan tarikh akhir", "أكّد المواعيد النهائية"],
     ["Application and scholarship dates can change by school and intake.", "Ngày nộp hồ sơ và học bổng có thể thay đổi theo trường và kỳ nhập học.", "วันสมัครและวันทุนอาจแตกต่างตามมหาวิทยาลัยและรอบเข้าเรียน", "Tanggal pendaftaran dan beasiswa dapat berubah menurut universitas dan penerimaan.", "Tarikh permohonan dan biasiswa boleh berubah mengikut universiti dan pengambilan.", "قد تتغير مواعيد التقديم والمنح حسب الجامعة وموعد الالتحاق."],
     ["Use official sources", "Dùng nguồn chính thức", "ใช้แหล่งข้อมูลทางการ", "Gunakan sumber resmi", "Gunakan sumber rasmi", "استخدم المصادر الرسمية"],

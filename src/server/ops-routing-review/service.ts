@@ -179,7 +179,7 @@ function requireContext(context: RequestContext): Actor {
   if (!context.actorUserId || (context.activeRole !== "cuac_ops" && context.activeRole !== "cuac_admin")
     || context.selectedSurface !== "ops" || context.purpose !== "routing_review" || context.tenantSchoolId !== null
     || (context.authStrength !== "session" && context.authStrength !== "step_up")) {
-    throw forbidden("Authenticated CUAC routing review context is required.");
+    throw forbidden("Authenticated UCAC routing review context is required.");
   }
   return { actorUserId: context.actorUserId, activeRole: context.activeRole };
 }
@@ -197,7 +197,7 @@ function evidenceReference(value: unknown): string {
 }
 
 function requireAuthority<T extends { authorized: boolean }>(result: T): asserts result is T & { authorized: true } {
-  if (!result.authorized) throw forbidden("Active CUAC staff access grant is required.");
+  if (!result.authorized) throw forbidden("Active UCAC staff access grant is required.");
 }
 
 function requireReviewResult(result: Authorized<OpsRoutingReview | null>): OpsRoutingReview {

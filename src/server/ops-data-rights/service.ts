@@ -94,7 +94,7 @@ export class OpsDataRightsService {
   }
   async extend(context:RequestContext,requestIdValue:unknown,value:unknown){
     const actor=requireActor(context),decisionId=authorize(context,"ops.extend_data_rights_deadline");
-    if(actor.activeRole!=="cuac_admin"||context.authStrength!=="step_up")throw forbidden("Step-up CUAC administrator approval is required for an extension.");
+    if(actor.activeRole!=="cuac_admin"||context.authStrength!=="step_up")throw forbidden("Step-up UCAC administrator approval is required for an extension.");
     const requestId=inputUuid(requestIdValue,"Request id"),fields=inputRecord(value,
       ["extensionId","expectedRevision","expectedReviewRevision","reasonCode","caseReference","extendedDueAt"]);
     const extensionId=inputUuid(fields.extensionId,"Extension id");
@@ -123,7 +123,7 @@ export class OpsDataRightsService {
     const approvalMode=mode(outcomeCode);
     const action=approvalMode==="single_admin"?"ops.approve_data_rights_outcome":"ops.propose_data_rights_outcome";
     const decisionId=authorize(context,action);
-    if(approvalMode==="single_admin"&&(actor.activeRole!=="cuac_admin"||context.authStrength!=="step_up"))throw forbidden("Step-up CUAC administrator approval is required for an export.");
+    if(approvalMode==="single_admin"&&(actor.activeRole!=="cuac_admin"||context.authStrength!=="step_up"))throw forbidden("Step-up UCAC administrator approval is required for an export.");
     const proposalSha256=digest({requestId,expectedRevision,expectedReviewRevision,outcomeCode,reasonCode,caseReference});
     const result=await this.repository.propose({...actor,requestId,proposalId,expectedRevision,expectedReviewRevision,outcomeCode,reasonCode,caseReference,proposalSha256,approvalMode});
     requireAuthority(result);if(!result.value)throw changed();
@@ -133,7 +133,7 @@ export class OpsDataRightsService {
   }
   async approve(context:RequestContext,requestIdValue:unknown,value:unknown){
     const actor=requireActor(context),decisionId=authorize(context,"ops.approve_data_rights_outcome");
-    if(actor.activeRole!=="cuac_admin"||context.authStrength!=="step_up")throw forbidden("Step-up CUAC administrator approval is required.");
+    if(actor.activeRole!=="cuac_admin"||context.authStrength!=="step_up")throw forbidden("Step-up UCAC administrator approval is required.");
     const requestId=inputUuid(requestIdValue,"Request id"),fields=inputRecord(value,["expectedOutcomeRevision","expectedProposalSha256"]);
     const expectedOutcomeRevision=inputInteger(fields.expectedOutcomeRevision,"Expected outcome revision",1,1);
     const expectedProposalSha256=inputText(fields.expectedProposalSha256,"Expected proposal digest",71);
@@ -157,7 +157,7 @@ function authorize(context: RequestContext, action: "ops.read_data_rights_review
   if (!decision.allowed) throw forbidden(decision.reason); return decision.id;
 }
 function requireAuthority<T>(result: Authorized<T>): asserts result is { authorized: true; value: T } {
-  if (!result.authorized) throw forbidden("Active CUAC staff access grant is required.");
+  if (!result.authorized) throw forbidden("Active UCAC staff access grant is required.");
 }
 function project(row: OpsDataRightsQueueRow) { const {observedAt,notificationRecipientUserId,...safe}=row,effectiveDueAt=row.extendedDueAt??row.responseDueAt;
   void observedAt;void notificationRecipientUserId;return { ...safe,

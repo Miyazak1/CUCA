@@ -26,7 +26,7 @@ const defaultAgentMemoryState = preferenceSummary.defaultAgentMemoryState || {
 const sectionCopy = {
   preferences: ["Preferences", "Keep account settings separate from application details."],
   hub: ["Hub personalisation", "Tune the Hub without editing school-facing data."],
-  support: ["Study support", "Choose how CUAC nudges and explains next steps."],
+  support: ["Study support", "Choose how UCAC nudges and explains next steps."],
   language: ["Language and region", "Format explanations, dates, cost, and Agent tone."],
   notifications: ["Notifications", "Decide what deserves attention."],
   security: ["Password and security", "Protect sign-in, recovery, and sensitive actions."],
@@ -169,8 +169,8 @@ function setDirty(nextDirty) {
   saveState.classList.toggle("unsaved", dirty);
   saveState.classList.toggle("saved", !dirty);
   saveState.querySelector("p").innerHTML = dirty
-    ? "<strong>Unsaved changes.</strong> Save to apply these preferences across CUAC."
-    : "<strong>Preferences saved.</strong> These settings shape CUAC experience, not the school-facing application record.";
+    ? "<strong>Unsaved changes.</strong> Save to apply these preferences across UCAC."
+    : "<strong>Preferences saved.</strong> These settings shape UCAC experience, not the school-facing application record.";
 }
 
 function setActiveSection(section) {

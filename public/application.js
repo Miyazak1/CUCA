@@ -341,14 +341,14 @@ function getOverviewNextAction(state = getRequiredStepState()) {
     return {
       target: "fee",
       title: "Check fee",
-      detail: "Review CUAC sending fee before payment.",
+      detail: "Review UCAC sending fee before payment.",
       action: "Fee review",
     };
   }
   if (APPLICATION_PAYMENT_ENABLED && !state.payment.complete) {
     return {
       target: "payment",
-      title: "Pay CUAC fee",
+      title: "Pay UCAC fee",
       detail: "Payment unlocks final send.",
       action: "Payment",
     };
@@ -993,7 +993,7 @@ async function initializeApplicationRuntime() {
       currentMaterialChoiceId = "";
       materialChoiceStates.clear();
       applicationRuntimeState = "ready";
-      setApplicationRuntimeMessage("No application set yet", "Choose a published program and intake; CUAC will create the first draft when you add it.");
+      setApplicationRuntimeMessage("No application set yet", "Choose a published program and intake; UCAC will create the first draft when you add it.");
       renderMaterialChoiceTabs();
     }
     renderUniversityOptions(document.querySelector("[data-degree-select]")?.value || "Master");
@@ -2536,7 +2536,7 @@ function routeForFeeLine(line, routes) {
 }
 
 function renderFeeLines(feeInfo) {
-  if (billingRuntimeState === "loading") return '<div class="profile-record-empty"><strong>Calculating current fee</strong><span>CUAC is pricing the exact saved choices.</span></div>';
+  if (billingRuntimeState === "loading") return '<div class="profile-record-empty"><strong>Calculating current fee</strong><span>UCAC is pricing the exact saved choices.</span></div>';
   if (!feeInfo.quote) return `<div class="profile-record-empty"><strong>Fee quote unavailable</strong><span>${escapeHtml(billingErrorMessage || "Save at least one application choice to request a quote.")}</span></div>`;
   return feeInfo.quote.lines.map((line) => {
     const route = routeForFeeLine(line, feeInfo.routes);
@@ -2628,15 +2628,15 @@ function updateSubmissionSummary() {
 }
 
 function billingStatusCopy() {
-  if (billingRuntimeState === "checkout_creating") return ["Creating secure checkout", "CUAC is requesting a hosted payment session."];
+  if (billingRuntimeState === "checkout_creating") return ["Creating secure checkout", "UCAC is requesting a hosted payment session."];
   if (billingRuntimeState === "status_loading") return ["Checking provider status", "Final submission stays locked until the server confirms current billing entitlement."];
   if (checkoutStatusRecord?.status === "succeeded" && isBillingEntitlementReady()) return ["Payment confirmed", "The server confirms payment and current entitlement for every exact choice."];
-  if (checkoutStatusRecord?.status === "succeeded") return ["Payment settled", "CUAC is still confirming per-choice billing entitlement. Refresh status before submitting."];
+  if (checkoutStatusRecord?.status === "succeeded") return ["Payment settled", "UCAC is still confirming per-choice billing entitlement. Refresh status before submitting."];
   if (checkoutStatusRecord?.status === "canceled") return ["Checkout canceled", "Nothing was submitted. Your application choices remain saved."];
   if (checkoutStatusRecord?.status === "refunded") return ["Payment refunded", "Billing entitlement is no longer valid and submission remains locked."];
   if (checkoutStatusRecord?.status === "requires_payment") return ["Payment pending", "Complete the hosted checkout, then refresh this server status."];
   if (billingRuntimeState === "unavailable") return ["Checkout unavailable", billingErrorMessage || "Hosted checkout is not configured."];
-  return ["Hosted payment required", "CUAC never collects card or bank credentials on this page."];
+  return ["Hosted payment required", "UCAC never collects card or bank credentials on this page."];
 }
 
 function renderPaymentStatus(feeInfo) {
@@ -3100,7 +3100,7 @@ async function syncProgramFields() {
     selected.applicationRound || selected.intake,
     selected.applicationNote,
     selected.applicationUrl ? "School admissions page linked" : "",
-  ].filter(Boolean).join(" · ") || "School contacts the student after receiving the CUAC record";
+  ].filter(Boolean).join(" · ") || "School contacts the student after receiving the UCAC record";
   renderLockedChoiceField(form.elements.language, selected.language, "Teaching language");
   preview.innerHTML = `
     <strong>${selected.university} · ${selected.program}</strong>
@@ -3123,7 +3123,7 @@ async function syncProgramFields() {
     sourceMap.innerHTML = `
       <div class="choice-source-intro">
         <strong>What this school will receive</strong>
-        <p>CUAC sends a small non-document record for this exact program and intake choice. Each school only sees its own school, program, and published intake.</p>
+        <p>UCAC sends a small non-document record for this exact program and intake choice. Each school only sees its own school, program, and published intake.</p>
       </div>
       <article>
         <span>Your selected route</span>
@@ -3143,7 +3143,7 @@ async function syncProgramFields() {
       <article>
         <span>Application route</span>
         <strong>${escapeHtml(appRecordLabel(applicationSummary))}</strong>
-        <em>${escapeHtml(appRecordLabel(selected.sourceLabel || "CUAC catalog record"))} · ${escapeHtml(appUi("review exact materials separately before authorization"))}</em>
+        <em>${escapeHtml(appRecordLabel(selected.sourceLabel || "UCAC catalog record"))} · ${escapeHtml(appUi("review exact materials separately before authorization"))}</em>
       </article>
       <article>
         <span>Your contact profile</span>

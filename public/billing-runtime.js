@@ -163,7 +163,7 @@ function renderInvoice(invoice) {
           <dl class="billing-facts">
             <div class="billing-fact"><dt>Invoice ID</dt><dd class="is-id">${escapeHtml(invoice.invoiceId)}</dd></div>
             <div class="billing-fact"><dt>Application set</dt><dd class="is-id">${escapeHtml(invoice.applicationSetId)}</dd></div>
-            <div class="billing-fact"><dt>CUAC ID</dt><dd class="is-id">${escapeHtml(invoice.cuacId)}</dd></div>
+            <div class="billing-fact"><dt>UCAC ID</dt><dd class="is-id">${escapeHtml(invoice.cuacId)}</dd></div>
             <div class="billing-fact"><dt>Checkout session</dt><dd class="is-id">${escapeHtml(invoice.checkoutSessionId)}</dd></div>
             <div class="billing-fact"><dt>Invoice status</dt><dd>${escapeHtml(invoiceStatusLabel(invoice.invoiceStatus))}</dd></div>
             <div class="billing-fact"><dt>Payment status</dt><dd>${escapeHtml(presentation.label)}</dd></div>
@@ -183,7 +183,7 @@ function renderInvoice(invoice) {
         </section>
         <section class="billing-section billing-note" aria-label="Payment security note">
           <strong>Hosted payment only</strong>
-          <span>CUAC does not display or store card numbers, bank details, or provider credentials on this page.</span>
+          <span>UCAC does not display or store card numbers, bank details, or provider credentials on this page.</span>
         </section>
       </aside>
     </div>`;

@@ -193,7 +193,7 @@ function renderDataRights() {
       <label class="preferences-field"><span>Reply language</span><select name="preferredLocale"><option value="en">English</option><option value="zh-CN">简体中文</option></select></label>
       <label class="preferences-field" data-rights-password hidden><span>Confirm current password</span><input name="password" type="password" autocomplete="current-password" minlength="15" /><small>Required only for export and deletion.</small></label>
     </div>
-    <p class="preferences-form-note">Do not enter identity documents or sensitive details here. CUAC will provide the next verification step after receipt.</p>
+    <p class="preferences-form-note">Do not enter identity documents or sensitive details here. UCAC will provide the next verification step after receipt.</p>
     <div class="preferences-form-footer"><button type="submit">Submit privacy request</button></div>
   </form>
   <div class="data-rights-list">${currentDataRightsRequests.length ? currentDataRightsRequests.map(item => `<article>

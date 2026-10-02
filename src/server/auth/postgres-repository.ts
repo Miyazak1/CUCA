@@ -276,7 +276,7 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
     );
     const internal = await this.client.query<AvailableAuthWorkspace>(
       `select 'ops'::text as "selectedSurface", r.role as "activeRole",
-         null::uuid as "tenantSchoolId", 'CUAC staff workspace'::text as label
+         null::uuid as "tenantSchoolId", 'UCAC staff workspace'::text as label
        from user_roles r
        join cuac_staff_access_grants g on g.user_id = r.user_id and g.requested_role = r.role
          and g.requested_surface = 'cuac_internal' and g.status = 'approved'

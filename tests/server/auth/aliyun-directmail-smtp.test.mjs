@@ -21,7 +21,7 @@ function message(overrides = {}) {
     messageType: "auth.email_verification",
     to: "student@example.invalid",
     from: config.from,
-    subject: "Verify your CUAC email",
+    subject: "Verify your UCAC email",
     locale: "en",
     templateData: {
       challengeId: "challenge-1",
@@ -96,7 +96,7 @@ test("Aliyun SMTP provider builds a fixed message without injectable delivery fi
   assert.deepEqual(Object.keys(outgoing).sort(), ["attachDataUrls", "disableFileAccess", "disableUrlAccess", "from", "html", "messageId", "subject", "text", "to", "xMailer"]);
   assert.equal(outgoing.from, config.from);
   assert.equal(outgoing.to, "student@example.invalid");
-  assert.equal(outgoing.subject, "Verify your CUAC email");
+  assert.equal(outgoing.subject, "Verify your UCAC email");
   assert.match(outgoing.messageId, /^<cuac-auth-[a-f0-9]{64}@example\.invalid>$/);
   assert.equal(outgoing.messageId.includes("job-1"), false);
   assert.equal(outgoing.text.includes("PRIVATE_TOKEN"), true);
@@ -108,7 +108,7 @@ test("Aliyun SMTP provider accepts only the fixed school invitation template", a
   const f = fixture();
   const invite = message({
     messageType: "auth.school_staff_invite",
-    subject: "Activate your CUAC school account",
+    subject: "Activate your UCAC school account",
     locale: "en",
     to: "teacher@example.edu",
     templateData: {
@@ -119,7 +119,7 @@ test("Aliyun SMTP provider accepts only the fixed school invitation template", a
     },
   });
   assert.deepEqual(await f.provider.deliver(invite, { idempotencyKey: "auth-email:invite-job", signal: new AbortController().signal }), { status: "accepted" });
-  assert.equal(f.calls[0].subject, "Activate your CUAC school account");
+  assert.equal(f.calls[0].subject, "Activate your UCAC school account");
   assert.equal(f.calls[0].to, "teacher@example.edu");
 });
 
@@ -127,7 +127,7 @@ test("Aliyun SMTP provider accepts only the fixed guardian consent template", as
   const f = fixture();
   const guardian = message({
     messageType: "auth.guardian_consent",
-    subject: "Review a CUAC child account request",
+    subject: "Review a UCAC child account request",
     locale: "en",
     to: "guardian@example.invalid",
     templateData: {
@@ -136,7 +136,7 @@ test("Aliyun SMTP provider accepts only the fixed guardian consent template", as
     },
   });
   assert.deepEqual(await f.provider.deliver(guardian, { idempotencyKey: "auth-email:guardian-job", signal: new AbortController().signal }), { status: "accepted" });
-  assert.equal(f.calls[0].subject, "Review a CUAC child account request");
+  assert.equal(f.calls[0].subject, "Review a UCAC child account request");
   assert.equal(f.calls[0].to, "guardian@example.invalid");
 });
 
@@ -197,14 +197,14 @@ test("Aliyun SMTP provider renders Arabic student mail as RTL and accepts only i
   const f = fixture();
   const arabic = message({
     locale: "ar",
-    subject: "تحقق من بريدك الإلكتروني في CUAC",
+    subject: "تحقق من بريدك الإلكتروني في UCAC",
     templateData: {
       ...message().templateData,
       actionUrl: "https://cuac.example.invalid/auth/verify-email?lang=ar#challenge=challenge-1&token=PRIVATE_TOKEN",
     },
   });
   assert.deepEqual(await f.provider.deliver(arabic, { idempotencyKey: "auth-email:arabic", signal: new AbortController().signal }), { status: "accepted" });
-  assert.equal(f.calls[0].subject, "تحقق من بريدك الإلكتروني في CUAC");
+  assert.equal(f.calls[0].subject, "تحقق من بريدك الإلكتروني في UCAC");
   assert.match(f.calls[0].html, /<html lang="ar" dir="rtl">/);
   assert.match(f.calls[0].text, /تنتهي صلاحية/);
   const injected = { ...arabic, templateData: { ...arabic.templateData,

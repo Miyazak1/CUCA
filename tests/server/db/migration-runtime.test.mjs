@@ -216,7 +216,7 @@ test("checked execution uses one transaction and a private plan snapshot through
 
 test("a competing migration fails before reading history or executing DDL", async () => {
   const fixture = migrationClientFixture({ acquired: false });
-  await assert.rejects(runCheckedMigrationPlan(fixture.client, planFixture()), /Another CUAC migration job/);
+  await assert.rejects(runCheckedMigrationPlan(fixture.client, planFixture()), /Another UCAC migration job/);
   assert.equal(fixture.statements.length, 4);
   assert.deepEqual(fixture.statements.slice(-2), ["rollback", "release:false"]);
 });

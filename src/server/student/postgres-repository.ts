@@ -288,7 +288,7 @@ export class PostgresStudentCoreRepository implements StudentCoreRepository {
       [userId, input.name, input.targetIntake ?? null],
     );
 
-    if (!rows[0]) throw serviceUnavailable("The current CUAC application reference range is exhausted.");
+    if (!rows[0]) throw serviceUnavailable("The current UCAC application reference range is exhausted.");
     return toApplicationSetDto(rows[0], []);
   }
 

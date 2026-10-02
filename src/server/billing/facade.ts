@@ -233,7 +233,7 @@ function requireOwnBillingAuthority(context: RequestContext, ownerUserId: string
 export function rejectSensitivePaymentPayload(value: unknown): void {
   const sensitivePath = findSensitivePaymentPath(value);
   if (sensitivePath) {
-    throw forbidden(`Raw payment credential fields are not accepted by CUAC billing: ${sensitivePath}`);
+    throw forbidden(`Raw payment credential fields are not accepted by UCAC billing: ${sensitivePath}`);
   }
 }
 

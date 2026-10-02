@@ -33,11 +33,11 @@ function fallbackDetail(kind, value) {
     title,
     city: kind === "city" ? "China city profile" : "China route",
     image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=900&q=80",
-    summary: `Selected ${kind} profile from the CUAC catalog. This detail view keeps the route structured while the full catalog record is being prepared.`,
+    summary: `Selected ${kind} profile from the UCAC catalog. This detail view keeps the route structured while the full catalog record is being prepared.`,
     status: ["Detail ready", "Application review", "Route-ready layout"],
-    metrics: [["Open", "status"], ["Program", "route"], ["CUAC", "choice"], ["Next", "review"]],
+    metrics: [["Open", "status"], ["Program", "route"], ["UCAC", "choice"], ["Next", "review"]],
     facts: [["Profile type", titleFromSlug(kind)], ["Application info", "Review before applying"], ["Student action", "Review before adding"], ["School action", "Follow up directly"], ["Agent support", "Available"], ["Data state", "Catalog snapshot"]],
-    routes: [["Back to search", "Return to the relevant CUAC search surface.", returnPages[kind] || "home-v3.html"], ["Open application", "Use this once a concrete program is selected.", "application.html#add-choice"]],
+    routes: [["Back to search", "Return to the relevant UCAC search surface.", returnPages[kind] || "home-v3.html"], ["Open application", "Use this once a concrete program is selected.", "application.html#add-choice"]],
     checklist: ["Review the official application page", "Check deadline and intake", "Review cost and documents", "Save the route before continuing"],
     timeline: ["Open detail", "Review application page", "Connect to a concrete program", "Send school-scoped record after application submit"],
   };
@@ -259,7 +259,7 @@ function renderCityAggregateCards(cards = []) {
           <article>
             <span>${escapeHtml(card.label)}</span>
             <strong>${escapeHtml(String(card.actual ?? 0))}</strong>
-            <p>${escapeHtml(card.note || "matched CUAC records")}</p>
+            <p>${escapeHtml(card.note || "matched UCAC records")}</p>
             ${card.href ? `<a href="${escapeHtml(card.href)}">${escapeHtml(card.action || "Open options")}</a>` : ""}
           </article>
         `).join("")}
@@ -501,20 +501,20 @@ function renderCityRoutes(routes = []) {
       ${routes.map((route) => `
         <a href="${escapeHtml(route.href || "cities.html")}">
           <strong>${escapeHtml(route.label || "Open route")}</strong>
-          <span>${escapeHtml(route.body || "Continue in CUAC.")}</span>
+          <span>${escapeHtml(route.body || "Continue in UCAC.")}</span>
         </a>
       `).join("")}
     </div>
   `;
 }
 
-function renderCityRelatedList(items = [], emptyText = "Open the catalog to compare current CUAC options.") {
+function renderCityRelatedList(items = [], emptyText = "Open the catalog to compare current UCAC options.") {
   if (!items.length) return `<p class="city-related-empty">${escapeHtml(emptyText)}</p>`;
   return `
     <div class="city-related-list">
       ${items.slice(0, 4).map((item) => `
         <a href="${escapeHtml(item.href || "cities.html")}">
-          <strong>${escapeHtml(item.title || "CUAC option")}</strong>
+          <strong>${escapeHtml(item.title || "UCAC option")}</strong>
           ${item.meta ? `<span>${escapeHtml(item.meta)}</span>` : ""}
           ${item.body ? `<p>${escapeHtml(item.body)}</p>` : ""}
           ${Array.isArray(item.tags) && item.tags.length ? `<small>${item.tags.slice(0, 3).map((tag) => escapeHtml(tag)).join(" · ")}</small>` : ""}
@@ -1530,7 +1530,7 @@ function renderCompletionLoading() {
         <a class="back-link" href="${detailBackHref()}">Back</a>
         <span class="module-kicker">Loading</span>
         <h1>Loading route detail</h1>
-        <p>CUAC is preparing the ${escapeHtml(label)} view with catalog facts, application steps, and next actions.</p>
+        <p>UCAC is preparing the ${escapeHtml(label)} view with catalog facts, application steps, and next actions.</p>
         <div class="status-row"><span class="status-pill">Catalog facts</span><span class="status-pill warn">Preparing route detail</span><span class="status-pill">Agent ready soon</span></div>
       </div>
       <div class="state-card state-skeleton" aria-hidden="true">
@@ -1553,8 +1553,8 @@ function renderCompletionEmpty() {
       <div class="state-copy">
         <a class="back-link" href="${detailBackHref()}">Back</a>
         <span class="module-kicker">No detail found</span>
-        <h1>No matching CUAC detail record</h1>
-        <p>The catalog route opened correctly, but CUAC could not match the requested ${escapeHtml(titleFromSlug(mode))} record. Return to the catalog and choose from the current data set.</p>
+        <h1>No matching UCAC detail record</h1>
+        <p>The catalog route opened correctly, but UCAC could not match the requested ${escapeHtml(titleFromSlug(mode))} record. Return to the catalog and choose from the current data set.</p>
         <div class="state-actions">
           <a class="primary-action" href="${detailBackHref()}">Back to catalog</a>
         </div>
@@ -1562,7 +1562,7 @@ function renderCompletionEmpty() {
       <div class="state-card">
         <span class="module-kicker">Try next</span>
         <ul class="state-list">
-          <li>Use a school, program, scholarship, city, or guide link generated by CUAC.</li>
+          <li>Use a school, program, scholarship, city, or guide link generated by UCAC.</li>
           <li>Keep URL filters normalized when sharing detail links.</li>
           <li>Use the floating Agent input if you want help finding the closest matching route.</li>
         </ul>
@@ -1579,7 +1579,7 @@ function renderCompletionError() {
       <div class="state-copy">
         <a class="back-link" href="${detailBackHref()}">Back</a>
         <span class="module-kicker">Detail unavailable</span>
-        <h1>Could not load this CUAC detail</h1>
+        <h1>Could not load this UCAC detail</h1>
         <p>The page shell is available, but the detail data did not finish loading. You can retry, return to the catalog, or ask Agent to find a nearby route.</p>
         <div class="state-actions">
           <a class="primary-action" href="${escapeHtml(retryDetailHref())}">Retry</a>
@@ -1788,7 +1788,7 @@ function renderCityDetailPage(data) {
         ${renderCityNextSteps(guide.nextSteps || [])}
         <article class="timeline-card flow-card">
           <div class="side-panel-head">
-            <div><span class="module-kicker">CUAC handoff</span><h2>What happens next</h2></div>
+            <div><span class="module-kicker">UCAC handoff</span><h2>What happens next</h2></div>
           </div>
           <ol class="timeline-list">${renderTimelineItems(data.timeline || [])}</ol>
         </article>
@@ -2039,7 +2039,7 @@ function renderProgramDetailPage(data) {
           ${renderFundingCards(guide.timingCards || [], "program-card-grid compact")}
         </article>
         <article class="detail-card program-section-card program-handoff-card" id="program-handoff">
-          <div class="section-head"><div><span class="module-kicker">CUAC application handoff</span><h2>What happens after you add it</h2></div></div>
+          <div class="section-head"><div><span class="module-kicker">UCAC application handoff</span><h2>What happens after you add it</h2></div></div>
           <div class="program-handoff-grid">
             ${renderFundingCards(guide.readinessCards || [], "program-card-grid compact")}
             ${renderFundingCards(guide.nextCards || [], "program-step-grid")}
@@ -2083,7 +2083,7 @@ function renderProgramDetailPage(data) {
         </article>
         <article class="timeline-card flow-card">
           <div class="side-panel-head">
-            <div><span class="module-kicker">CUAC handoff</span><h2>What happens next</h2></div>
+            <div><span class="module-kicker">UCAC handoff</span><h2>What happens next</h2></div>
           </div>
           <ol class="timeline-list">${renderTimelineItems(data.timeline || [])}</ol>
         </article>
@@ -2165,7 +2165,7 @@ function renderScholarshipDetailPage(data) {
         ${renderScholarshipSideFacts(guide)}
         <article class="timeline-card flow-card scholarship-flow-card">
           <div class="side-panel-head">
-            <div><span class="module-kicker">Next</span><h2>CUAC handoff</h2></div>
+            <div><span class="module-kicker">Next</span><h2>UCAC handoff</h2></div>
           </div>
           <ol class="timeline-list">${renderTimelineItems(data.timeline || [])}</ol>
         </article>
@@ -2252,7 +2252,7 @@ function renderDetailPage(data) {
         </article>
         <article class="timeline-card flow-card">
           <div class="side-panel-head">
-            <div><span class="module-kicker">CUAC handoff</span><h2>What happens next</h2></div>
+            <div><span class="module-kicker">UCAC handoff</span><h2>What happens next</h2></div>
           </div>
           <ol class="timeline-list">${renderTimelineItems(data.timeline)}</ol>
         </article>
@@ -2316,9 +2316,9 @@ function buildSavedDetailItem() {
     sourceModel: sourceFieldLineage?.sourceModel || target?.dataset.detailSourceModel || "",
     schoolId: data.schoolId || "",
     programId: data.programId || "",
-    title: data.title || "Saved CUAC detail",
+    title: data.title || "Saved UCAC detail",
     meta: data.city || `${entityType} detail`,
-    body: data.summary || "Saved from a CUAC detail page.",
+    body: data.summary || "Saved from a UCAC detail page.",
     facts: facts.length ? facts.slice(0, 4) : ["Saved detail", "Source retained"],
     status,
     routeRole: mode === "program" ? "Saved detail route" : "",
@@ -2365,7 +2365,7 @@ function saveCurrentDetail() {
     severity: "done",
     group: "Today",
     title: `${item.title} saved to Favourites`,
-    body: "CUAC kept the detail link so Agent can reopen the same choice later.",
+    body: "UCAC kept the detail link so Agent can reopen the same choice later.",
     entity: item.title,
     entityType: item.entityType,
     entityId: item.entityId,
@@ -2373,7 +2373,7 @@ function saveCurrentDetail() {
     time: "Just now",
     action: "Open favourites",
     href: "favourites.html",
-    prompt: `Summarize my saved ${item.title} detail and explain the next CUAC action`,
+    prompt: `Summarize my saved ${item.title} detail and explain the next UCAC action`,
   });
   return item;
 }
@@ -2474,8 +2474,8 @@ function renderBillingPage() {
     : pendingLike
       ? "We are waiting for payment confirmation before sending school records."
       : previewLike
-        ? "Review the CUAC sending fee before payment. University application fees are separate."
-        : "CUAC has recorded this payment for the selected school-program routes.";
+        ? "Review the UCAC sending fee before payment. University application fees are separate."
+        : "UCAC has recorded this payment for the selected school-program routes.";
   const issuedLabel = (() => {
     const value = billing.paymentUpdatedAt || billing.submittedAt || "";
     if (!value) return paidLike ? "Recorded" : "Not issued";
@@ -2529,14 +2529,14 @@ function renderBillingPage() {
         <div class="main-stack">
           <article class="detail-card billing-card">
             <div class="section-head"><div><span class="module-kicker">Fee breakdown</span><h2>Selected schools</h2></div><span class="status-pill">${escapeHtml(String(schoolCount || 0))} schools</span></div>
-            <table class="data-table billing-table"><thead><tr><th>School</th><th>Program</th><th>CUAC fee</th></tr></thead><tbody>
+            <table class="data-table billing-table"><thead><tr><th>School</th><th>Program</th><th>UCAC fee</th></tr></thead><tbody>
               ${lines.map((line) => `<tr><td>${escapeHtml(line.school)}</td><td>${escapeHtml(line.programs)}</td><td>${escapeHtml(line.fee)}</td></tr>`).join("")}
             </tbody></table>
           </article>
 
           <article class="detail-card billing-card">
             <span class="module-kicker">Covers</span>
-            <h2>What CUAC fee covers</h2>
+            <h2>What UCAC fee covers</h2>
             <div class="billing-coverage-grid">
               <article><strong>Included</strong><span>School-scoped application record sending</span></article>
               <article><strong>Not included</strong><span>University application fee or official document fees</span></article>
@@ -2565,7 +2565,7 @@ function renderBillingPage() {
   `;
 }
 
-const defaultSchoolRequestTemplate = "你好 {{student_name}}，\n\n浙江大学已收到你通过 CUAC 提交的 {{program_name}} 意向记录。请直接回复本邮件，并按学校要求提交：成绩单、护照扫描件、语言证明、学习计划，以及项目要求的其他表格。\n\nCUAC 未收取你的申请材料。正式文件请直接按照学校确认的流程提交。";
+const defaultSchoolRequestTemplate = "你好 {{student_name}}，\n\n浙江大学已收到你通过 UCAC 提交的 {{program_name}} 意向记录。请直接回复本邮件，并按学校要求提交：成绩单、护照扫描件、语言证明、学习计划，以及项目要求的其他表格。\n\nCUAC 未收取你的申请材料。正式文件请直接按照学校确认的流程提交。";
 
 function readSchoolSettingsState() {
   try {
@@ -2614,7 +2614,7 @@ function renderSchoolSettingsPage() {
       <article class="metric-card"><strong>3</strong><span>有效老师席位</span></article>
       <article class="metric-card"><strong>2h</strong><span>首次联系目标</span></article>
       <article class="metric-card"><strong>4</strong><span>项目负责人规则</span></article>
-      <article class="metric-card"><strong>0</strong><span>CUAC 持有文件</span></article>
+      <article class="metric-card"><strong>0</strong><span>UCAC 持有文件</span></article>
     </section>
     <section class="content-grid reveal">
       <div class="main-stack">
@@ -2652,7 +2652,7 @@ function renderSchoolSettingsPage() {
         </article>
         <article class="detail-card">
           <div class="section-head"><div><span class="module-kicker">模板</span><h2>可编辑材料请求文案</h2></div><button class="secondary-action" data-school-template-copy type="button">复制模板</button></div>
-          <p>学校直接联系学生。模板应明确由学校索取文件，不暗示 CUAC 已收取材料。</p>
+          <p>学校直接联系学生。模板应明确由学校索取文件，不暗示 UCAC 已收取材料。</p>
           <textarea class="template-editor" data-school-template rows="8" aria-label="学校材料请求模板">${escapeHtml(templateCopy)}</textarea>
           <div class="template-tools">
             <span>变量：{{student_name}}, {{program_name}}, {{intake}}</span>
@@ -2669,7 +2669,7 @@ function renderSchoolSettingsPage() {
         <article class="detail-card">
           <span class="module-kicker">响应目标</span><h2>老师跟进 SLA</h2>
           <div class="response-grid">
-            <article><strong>2h</strong><span>新 CUAC 记录首次查看</span></article>
+            <article><strong>2h</strong><span>新 UCAC 记录首次查看</span></article>
             <article><strong>24h</strong><span>首次联系学生目标</span></article>
             <article><strong>3d</strong><span>材料提醒节奏</span></article>
           </div>
@@ -2772,7 +2772,7 @@ function readOpsDiscoveryRows(methodName) {
     const rows = dataClient?.[methodName]?.();
     return Array.isArray(rows) ? rows : [];
   } catch (error) {
-    console.error(`CUAC ops ${methodName} fallback failed`, error);
+    console.error(`UCAC ops ${methodName} fallback failed`, error);
     return [];
   }
 }
@@ -2903,7 +2903,7 @@ function defaultOpsSchoolRecords() {
       round1CloseDate: "Oct 15",
       round2OpenDate: "Nov 1",
       round2CloseDate: "Dec 20",
-      applicationSteps: "学生先在 CUAC 选择具体学校和项目；支付后学校老师只收到本校记录并联系学生准备材料。",
+      applicationSteps: "学生先在 UCAC 选择具体学校和项目；支付后学校老师只收到本校记录并联系学生准备材料。",
       scholarships: "校级奖学金、CSC 相关机会需按学校通知确认。",
       englishPrograms: "Computer Science MSc, Biomedical Engineering MSc",
       notablePrograms: "Computer Science, Biomedical Engineering, International Business",
@@ -2929,7 +2929,7 @@ function defaultOpsSchoolRecords() {
         { id: "zju-biomed-msc", nameZh: "生物医学工程硕士", nameEn: "Biomedical Engineering MSc", degreeLevel: "Master", durationYears: "2-3 years", fieldCategory: "Engineering", teachingLanguage: "English-taught", cscaSubjects: ["数学", "物理"], cscaRequirement: "CSCA：数学 + 物理，按项目确认。", hskRequirement: "英文授课通常不要求 HSK。", englishRequirement: "IELTS / TOEFL 或学校认可证明。", tuitionAmount: "39000", tuitionCurrency: "RMB", tuitionPeriod: "year", tuitionText: "RMB 39,000/年", scholarshipText: "School scholarship possible.", openDate: "Nov 1", deadlineDate: "2026-12-20", deadlineLabel: "Dec 20", applicationRound: "Fall 2026", applicationUrl: "https://isinfosys.zju.edu.cn", applicationNote: "按项目要求确认材料。", sourceUrl: "https://isinfosys.zju.edu.cn", sourceLabel: "ZJU admissions", lastVerifiedAt: "2026-08-14", sortOrder: 2, version: 1, status: "已发布" },
       ],
       cscaRules: [
-        { id: "zju-csca", title: "理工科项目学术背景复核", category: "program", scope: "工程与计算机相关项目", cscaSubjects: ["数学", "物理"], applicablePrograms: ["zju-cs-msc", "zju-biomed-msc"], languageCondition: "英文授课项目按英文要求准备；中文授课另看 HSK。", description: "申请人需要准备成绩单、课程背景和语言证明，CUAC 不代收文件。", importantNote: "具体 CSCA 科目以学校当年通知为准。", sourceUrl: "https://isinfosys.zju.edu.cn", sourceLabel: "学校招生页", lastVerifiedAt: "2026-08-14", sortOrder: 1, version: 1, status: "已发布", isVerified: true },
+        { id: "zju-csca", title: "理工科项目学术背景复核", category: "program", scope: "工程与计算机相关项目", cscaSubjects: ["数学", "物理"], applicablePrograms: ["zju-cs-msc", "zju-biomed-msc"], languageCondition: "英文授课项目按英文要求准备；中文授课另看 HSK。", description: "申请人需要准备成绩单、课程背景和语言证明，UCAC 不代收文件。", importantNote: "具体 CSCA 科目以学校当年通知为准。", sourceUrl: "https://isinfosys.zju.edu.cn", sourceLabel: "学校招生页", lastVerifiedAt: "2026-08-14", sortOrder: 1, version: 1, status: "已发布", isVerified: true },
       ],
       scholarshipsDetailed: [
         { id: "zju-scholarship", name: "浙江大学国际学生奖学金", type: "university", coverage: "部分学费减免或生活补助", applicableDegree: "Master / PhD", applicableProgram: "按项目通知确认", amountText: "以当年通知为准", requirementText: "学校联系学生后确认材料和评审要求", sourceUrl: "https://isinfosys.zju.edu.cn", sourceLabel: "学校奖学金通知", lastVerifiedAt: "2026-08-14", sortOrder: 1, version: 1, status: "已发布" },
@@ -3273,7 +3273,7 @@ function defaultOpsTimelineRecords() {
       id: "timeline-oct",
       month: "Oct",
       title: "Main application window",
-      applicationWindow: "Add concrete CUAC choices and review school-specific requirements before payment.",
+      applicationWindow: "Add concrete UCAC choices and review school-specific requirements before payment.",
       cscaWindow: "Prepare CSCA Math or subject-route planning if a chosen school requires it.",
       status: "published",
       sortOrder: 2,
@@ -3693,10 +3693,10 @@ const opsSchoolSelectOptions = {
   schoolType: [
     ["regular", "普通高校"],
     ["partner", "合作院校"],
-    ["985", "985 / 双一流（CUAC 标签）"],
-    ["211", "211 / 双一流（CUAC 标签）"],
-    ["language", "语言类院校（CUAC 标签）"],
-    ["medical", "医学类院校（CUAC 标签）"],
+    ["985", "985 / 双一流（UCAC 标签）"],
+    ["211", "211 / 双一流（UCAC 标签）"],
+    ["language", "语言类院校（UCAC 标签）"],
+    ["medical", "医学类院校（UCAC 标签）"],
   ],
   status: [
     ["published", "已发布"],
@@ -3749,7 +3749,7 @@ const opsSchoolFieldGroups = {
     { label: "联系地址 · School.contactAddress", key: "contactAddress", control: "textarea", wide: true },
     { label: "建校年份 · School.yearEstablished", key: "yearEstablished", type: "number" },
     { label: "学生规模 · School.studentCount", key: "studentCount" },
-    { label: "CUAC 服务学生数 · School.studentsServed", key: "studentsServed", type: "number" },
+    { label: "UCAC 服务学生数 · School.studentsServed", key: "studentsServed", type: "number" },
     { label: "未成年监护要求 · School.under18GuardianRequired", key: "under18GuardianRequired", control: "checkbox" },
     { label: "未成年监护备注 · School.under18RequirementNote", key: "under18RequirementNote", control: "textarea", wide: true },
   ],
@@ -4284,7 +4284,7 @@ function renderOpsSubrecordEditorSafe(kind, record, fields, title, subtitle, gro
     if (!isPlainRecord(record)) throw new Error("Invalid subrecord");
     return renderOpsSubrecordEditor(kind, record, fields, title, subtitle, groups);
   } catch (error) {
-    console.error(`CUAC ops ${kind} subrecord render failed`, error);
+    console.error(`UCAC ops ${kind} subrecord render failed`, error);
     return `
       <article class="ops-subrecord editable ops-error-state" data-ops-subrecord data-kind="${escapeHtml(kind)}" data-record-id="">
         <div class="ops-subrecord-head">
@@ -5336,7 +5336,7 @@ function syncOpsHashRoute(state = readOpsAdminState()) {
     history.replaceState(null, "", `${location.href.split("#")[0]}${nextHash}`);
     if (location.hash !== nextHash) location.replace(nextHash);
   } catch (error) {
-    console.warn("CUAC ops hash route sync skipped", error);
+    console.warn("UCAC ops hash route sync skipped", error);
   }
 }
 
@@ -5989,7 +5989,7 @@ function renderOpsScholarshipSchoolPicker(item) {
       </section>
     `;
   } catch (error) {
-    console.error("CUAC ops scholarship school picker render failed", error);
+    console.error("UCAC ops scholarship school picker render failed", error);
     return `
       <section class="ops-content-editor-section">
         <h3>关联学校</h3>
@@ -6033,7 +6033,7 @@ function renderOpsScholarshipProgramPicker(item) {
       </section>
     `;
   } catch (error) {
-    console.error("CUAC ops scholarship program picker render failed", error);
+    console.error("UCAC ops scholarship program picker render failed", error);
     return `
       <section class="ops-content-editor-section">
         <h3>关联项目</h3>
@@ -6451,7 +6451,7 @@ function renderOpsContentPanel(cityRows, scholarshipRows, timelineRows, opsState
       </section>
     `;
   } catch (error) {
-    console.error("CUAC ops content panel render failed", error);
+    console.error("UCAC ops content panel render failed", error);
     const activeType = activeOpsContentType(opsState);
     return `
       <section ${opsTabPanelAttrs("content", opsState)}>
@@ -6530,13 +6530,13 @@ function defaultOpsStudentRecords() {
       updatedAt: "2026-08-17 09:20",
       schoolsSent: 3,
       consent: "已确认",
-      documentPolicy: "CUAC 不收文件",
+      documentPolicy: "UCAC 不收文件",
       choices: [
         { school: "浙江大学", city: "杭州", program: "Computer Science MSc", major: "计算机", scholarship: "校级奖学金", fee: "Included", sent: "已发送", tenantStatus: "需首次联系" },
         { school: "南京大学", city: "南京", program: "Software Engineering MSc", major: "计算机", scholarship: "CSC 可能", fee: "USD 20", sent: "已发送", tenantStatus: "等待学校处理" },
         { school: "对外经济贸易大学", city: "北京", program: "International Trade MSc", major: "商科", scholarship: "待确认", fee: "USD 20", sent: "已发送", tenantStatus: "已接收" },
       ],
-      timeline: ["学生完成申请集", "支付成功", "CUAC 已向 3 所学校发送记录"],
+      timeline: ["学生完成申请集", "支付成功", "UCAC 已向 3 所学校发送记录"],
     },
     {
       id: "ahmed-khan",
@@ -6815,8 +6815,8 @@ function opsStudentRoleLabel(role) {
   return {
     student: "学生",
     school_staff: "学校老师",
-    cuac_ops: "CUAC 运营",
-    cuac_admin: "CUAC 管理员",
+    cuac_ops: "UCAC 运营",
+    cuac_admin: "UCAC 管理员",
   }[role] || role || "未设置";
 }
 
@@ -7512,7 +7512,7 @@ function renderOpsStudentEditor(student) {
           <h3>学生与申请编辑</h3>
           <p>维护学生资料、申请状态、账号状态和 Agent 上下文，保存后写入运营审计。</p>
         </div>
-        <span>CUAC 申请记录</span>
+        <span>UCAC 申请记录</span>
       </summary>
       <div class="ops-student-editor-body">
         ${opsStudentFieldGroups.map(([title, fields]) => `
@@ -7767,7 +7767,7 @@ function defaultOpsQueueRecords() {
       status: "待财务复核",
       priority: "高",
       owner: "财务运营",
-      detail: "一张 CUAC 多校提交费用发票与前端状态不一致，发送学校前必须确认。",
+      detail: "一张 UCAC 多校提交费用发票与前端状态不一致，发送学校前必须确认。",
       impact: "支付失败或未确认时不能触发学校发送。",
       runbook: ["打开支付记录", "核对发票编号和回调记录", "确认后恢复发送队列"],
     },
@@ -8138,7 +8138,7 @@ function normalizeOpsAuditEvent(event, index = 0) {
   return {
     id: item.id || `audit-${index + 1}`,
     occurredAt: item.occurredAt || item.createdAt || item.updatedAt || "2026-08-17T10:00:00.000Z",
-    actor: item.actor || "CUAC Ops",
+    actor: item.actor || "UCAC Ops",
     module: auditModule,
     resourceType: item.resourceType || ({
       agent: "agent_action",
@@ -8368,7 +8368,7 @@ function defaultOpsAccessRecords() {
     {
       id: "user-ops-admin",
       email: "ops@cuac.example",
-      name: "CUAC Ops",
+      name: "UCAC Ops",
       role: "cuac_ops",
       workspace: "运营管理后台",
       schoolTenant: "",
@@ -8393,7 +8393,7 @@ function readOpsAccessRecords(state = readOpsAdminState()) {
       email: item.email || "",
       name: item.name || item.displayName || "未命名账号",
       role: item.role || "student",
-      workspace: item.workspace || "CUAC",
+      workspace: item.workspace || "UCAC",
       schoolTenant: item.schoolTenant || "",
       grantStatus: item.grantStatus || "pending-review",
       status: item.status || "active",
@@ -8439,8 +8439,8 @@ function opsAccessRoleLabel(role) {
   return {
     student: "学生",
     school_staff: "学校老师",
-    cuac_ops: "CUAC 运营",
-    cuac_admin: "CUAC 管理员",
+    cuac_ops: "UCAC 运营",
+    cuac_admin: "UCAC 管理员",
   }[role] || role || "未知角色";
 }
 
@@ -8521,7 +8521,7 @@ function renderOpsAccessCard(item, selectedId = "") {
       </div>
       <div class="ops-access-row-meta">
         <span>${escapeHtml(opsAccessRoleLabel(item.role))}</span>
-        <span>${escapeHtml(item.schoolTenant ? `${item.schoolTenant} 租户` : "CUAC 租户")}</span>
+        <span>${escapeHtml(item.schoolTenant ? `${item.schoolTenant} 租户` : "UCAC 租户")}</span>
         <span>${escapeHtml(`Agent ${item.agentAccessStatus || "免费可用"}`)}</span>
         <span>${escapeHtml(item.status === "disabled" ? "账号停用" : "账号启用")}</span>
       </div>
@@ -8602,7 +8602,7 @@ function buildOpsAccessPortfolioStats(accessRows = []) {
     roleRows: opsCountRows(accessRows, (item) => opsAccessRoleLabel(item.role)),
     grantRows: opsCountRows(accessRows, (item) => opsAccessGrantLabel(item.grantStatus)),
     sourceRows: opsCountRows(accessRows, (item) => opsAccessSourceLabel(item.source)),
-    tenantRows: opsCountRows(accessRows, (item) => item.schoolTenant || "CUAC"),
+    tenantRows: opsCountRows(accessRows, (item) => item.schoolTenant || "UCAC"),
     flowRows: [
       { label: "账号记录", count: accessRows.length },
       { label: "邀请/注册", count: invitedRows.length + accessRows.filter((item) => item.source === "self_registered").length },
@@ -8729,7 +8729,7 @@ function renderOpsAccessPortfolioDashboard(accessRows = [], filteredRows = []) {
           ${renderOpsFunnelChart(stats.sourceRows, "账号来源")}
         </section>
         <section class="ops-chart-panel">
-          <div><h3>租户归属</h3><small>学校账号与 CUAC 内部</small></div>
+          <div><h3>租户归属</h3><small>学校账号与 UCAC 内部</small></div>
           ${renderOpsBubbleChart(stats.tenantRows, "账号租户归属", 5)}
         </section>
         <section class="ops-chart-panel emphasis">
@@ -8753,7 +8753,7 @@ function opsAccessDetailGateRows(item = {}) {
   const agentOk = item.agentAccessStatus === "免费可用";
   return [
     { label: "角色", value: opsAccessRoleLabel(item.role), tone: item.role ? "ok" : "warn", copy: item.workspace || "工作台待确认" },
-    { label: "租户绑定", value: tenantOk ? item.schoolTenant || "CUAC" : "待绑定", tone: tenantOk ? "ok" : "danger", copy: item.role === "school_staff" ? "学校老师必须绑定学校租户" : "内部或学生账号不需要学校租户" },
+    { label: "租户绑定", value: tenantOk ? item.schoolTenant || "UCAC" : "待绑定", tone: tenantOk ? "ok" : "danger", copy: item.role === "school_staff" ? "学校老师必须绑定学校租户" : "内部或学生账号不需要学校租户" },
     { label: "授权审批", value: opsAccessGrantLabel(item.grantStatus), tone: grantOk ? "ok" : item.grantStatus === "revoked" ? "danger" : "warn", copy: item.inviteCode || "无邀请码" },
     { label: "Agent", value: item.agentAccessStatus || "待确认", tone: agentOk ? "ok" : "warn", copy: item.lastAgentAccessReason || "申请辅助 Agent 免费开放，按账号权限审计" },
     { label: "账号状态", value: activeOk ? "可登录" : "已停用", tone: activeOk ? "ok" : "danger", copy: item.lastAction || "待处理" },
@@ -8790,7 +8790,7 @@ function renderOpsAccessDetail(item = {}) {
         ${gates.map((gate) => `<article class="tone-${escapeHtml(gate.tone)}"><span>${escapeHtml(gate.label)}</span><strong>${escapeHtml(gate.value)}</strong><small>${escapeHtml(gate.copy)}</small></article>`).join("")}
       </section>
       <div class="ops-access-detail-summary">
-        <article><span>进入工作台</span><strong>${escapeHtml(item.workspace)}</strong><small>${escapeHtml(item.schoolTenant || "CUAC / 学生侧")}</small></article>
+        <article><span>进入工作台</span><strong>${escapeHtml(item.workspace)}</strong><small>${escapeHtml(item.schoolTenant || "UCAC / 学生侧")}</small></article>
         <article><span>来源</span><strong>${escapeHtml(opsAccessSourceLabel(item.source))}</strong><small>${escapeHtml(item.inviteCode || "无邀请码")}</small></article>
         <article><span>最近动作</span><strong>${escapeHtml(item.lastAction || "待处理")}</strong><small>${escapeHtml(item.updatedAt || "更新时间待确认")}</small></article>
       </div>
@@ -8836,8 +8836,8 @@ function renderOpsAccessRoleMatrix() {
   const rows = [
     ["学生", "学生 Hub、申请中心、自己的 Agent 上下文", "不能进入学校工作台"],
     ["学校老师", "本校 schoolTenant、已发送给本校的申请记录", "不能看学生其他选择"],
-    ["CUAC 运营", "运营后台、目录、申请、支持查询", "高风险动作写审计"],
-    ["CUAC 管理员", "账号权限、审计、策略边界", "不能绕过后端租户校验"],
+    ["UCAC 运营", "运营后台、目录、申请、支持查询", "高风险动作写审计"],
+    ["UCAC 管理员", "账号权限、审计、策略边界", "不能绕过后端租户校验"],
   ];
   return `
     <section class="ops-access-role-matrix" aria-label="角色权限矩阵">
@@ -8873,7 +8873,7 @@ function renderOpsAccessPanel(accessRows, opsState) {
               <div class="ops-filter-bar" aria-label="账号权限筛选">
                 <label><span>搜索账号</span><input data-ops-access-search value="${escapeHtml(opsState.accessSearch || "")}" placeholder="邮箱、姓名、角色、学校租户或邀请码" /></label>
                 <label><span>账号状态</span><select data-ops-access-status-filter><option value="all">全部状态</option><option value="active" ${opsState.accessStatusFilter === "active" ? "selected" : ""}>启用</option><option value="disabled" ${opsState.accessStatusFilter === "disabled" ? "selected" : ""}>停用</option></select></label>
-                <label><span>角色</span><select data-ops-access-role-filter><option value="all">全部角色</option><option value="student" ${opsState.accessRoleFilter === "student" ? "selected" : ""}>学生</option><option value="school_staff" ${opsState.accessRoleFilter === "school_staff" ? "selected" : ""}>学校老师</option><option value="cuac_ops" ${opsState.accessRoleFilter === "cuac_ops" ? "selected" : ""}>CUAC 运营</option><option value="cuac_admin" ${opsState.accessRoleFilter === "cuac_admin" ? "selected" : ""}>CUAC 管理员</option></select></label>
+                <label><span>角色</span><select data-ops-access-role-filter><option value="all">全部角色</option><option value="student" ${opsState.accessRoleFilter === "student" ? "selected" : ""}>学生</option><option value="school_staff" ${opsState.accessRoleFilter === "school_staff" ? "selected" : ""}>学校老师</option><option value="cuac_ops" ${opsState.accessRoleFilter === "cuac_ops" ? "selected" : ""}>UCAC 运营</option><option value="cuac_admin" ${opsState.accessRoleFilter === "cuac_admin" ? "selected" : ""}>UCAC 管理员</option></select></label>
                 <label><span>授权状态</span><select data-ops-access-grant-filter><option value="all">全部授权</option><option value="approved-preview" ${opsState.accessGrantFilter === "approved-preview" ? "selected" : ""}>已授权</option><option value="pending-review" ${opsState.accessGrantFilter === "pending-review" ? "selected" : ""}>待审批</option><option value="revoked" ${opsState.accessGrantFilter === "revoked" ? "selected" : ""}>已撤销</option></select></label>
                 <button class="secondary-action" data-ops-access-apply-filter type="button">筛选账号</button>
               </div>
@@ -8900,7 +8900,7 @@ function renderOpsAccessPanel(accessRows, opsState) {
                     <label class="ops-form-field"><span>邮箱</span><input data-ops-access-invite-email value="${escapeHtml(opsState.accessInviteEmail || "new.staff@example.edu")}" /></label>
                     <label class="ops-form-field"><span>学校租户</span><input data-ops-access-invite-school value="${escapeHtml(opsState.accessInviteSchool || "浙江大学")}" /></label>
                     <label class="ops-form-field"><span>邀请码</span><input data-ops-access-invite-code value="${escapeHtml(opsState.accessInviteCode || "SCHOOL-2026-INVITE")}" /></label>
-                    <label class="ops-form-field"><span>角色</span><select data-ops-access-invite-role><option value="school_staff" ${(!opsState.accessInviteRole || opsState.accessInviteRole === "school_staff") ? "selected" : ""}>学校老师</option><option value="cuac_ops" ${opsState.accessInviteRole === "cuac_ops" ? "selected" : ""}>CUAC 运营</option><option value="student" ${opsState.accessInviteRole === "student" ? "selected" : ""}>学生</option></select></label>
+                    <label class="ops-form-field"><span>角色</span><select data-ops-access-invite-role><option value="school_staff" ${(!opsState.accessInviteRole || opsState.accessInviteRole === "school_staff") ? "selected" : ""}>学校老师</option><option value="cuac_ops" ${opsState.accessInviteRole === "cuac_ops" ? "selected" : ""}>UCAC 运营</option><option value="student" ${opsState.accessInviteRole === "student" ? "selected" : ""}>学生</option></select></label>
                   </div>
                   <div class="inline-actions"><button class="primary-action" data-ops-access-create-invite type="button">生成邀请草稿</button></div>
                 </div>
@@ -8949,7 +8949,7 @@ function renderOpsAccessPanel(accessRows, opsState) {
                   ${renderOpsAccessRoleMatrix()}
                   <div class="ops-access-boundary-list">
                     <label><input checked type="checkbox" /><span>学校老师只能访问自己的 schoolTenant</span></label>
-                    <label><input checked type="checkbox" /><span>CUAC Ops/Admin 由批准授权产生，不由注册表单直接产生</span></label>
+                    <label><input checked type="checkbox" /><span>UCAC Ops/Admin 由批准授权产生，不由注册表单直接产生</span></label>
                     <label><input checked type="checkbox" /><span>受保护动作登录后继续原动作和页面</span></label>
                     <label><input type="checkbox" /><span>真实后端需校验 continuation token、role、surface、tenantSchoolId</span></label>
                   </div>
@@ -10252,7 +10252,7 @@ function renderOpsPage() {
   target.innerHTML = `
     <section class="ops-admin-hero reveal">
       <div class="ops-admin-title">
-        <a class="back-link" href="home-v3.html">返回 CUAC</a>
+        <a class="back-link" href="home-v3.html">返回 UCAC</a>
         <span class="module-kicker">内部运营</span>
         <h1>运营管理后台</h1>
         <p>处理申请闭环、目录质量、账号权限和 Agent 审计。高风险动作必须留痕。</p>
@@ -10292,7 +10292,7 @@ function renderOpsPage() {
         <section class="ops-overview-section"><span class="module-kicker">管理门禁</span><h2>上线前检查</h2><div class="ops-gate-list"><label><input checked type="checkbox" /><span>租户隔离测试</span></label><label><input checked type="checkbox" /><span>支付幂等检查</span></label><label><input checked type="checkbox" /><span>Agent 操作注册表</span></label><label><input type="checkbox" /><span>退款和跨租户支持需要二次审批</span></label></div></section>
         <section class="ops-overview-section">
           <span class="module-kicker">数据归属</span><h2>对齐 CSCAlite</h2>
-          <p>学校、项目、奖学金和 CSCA 规则先按 CSCAlite 字段结构管理；CUAC 额外记录申请交接、支付、租户发送和 Agent 审计。</p>
+          <p>学校、项目、奖学金和 CSCA 规则先按 CSCAlite 字段结构管理；UCAC 额外记录申请交接、支付、租户发送和 Agent 审计。</p>
           <div class="ops-owner-list"><span>项目 ${overviewStats.programCount}</span><span>学校奖学金 ${overviewStats.scholarshipCount}</span><span>城市 ${cityRows.length}</span><span>公共奖学金 ${publicScholarshipRows.length}</span><span>时间窗 ${timelineRows.length}</span><span>账号权限 ${accessRows.length}</span><span>CSCA 规则 ${overviewStats.cscaRuleCount}</span></div>
         </section>
         <section class="ops-overview-section">
@@ -10396,7 +10396,7 @@ function renderOpsPage() {
         </div>
       </section>
     `;
-    console.error("CUAC ops admin render failed", error);
+    console.error("UCAC ops admin render failed", error);
   }
 }
 
@@ -10491,7 +10491,7 @@ function refreshOpsSchoolEditorOnly(state, schoolId, tab, message = "") {
     ensureOpsPageNotBlank("学校编辑器局部刷新后主区域为空");
     return true;
   } catch (error) {
-    console.error("CUAC ops school editor partial refresh failed", error);
+    console.error("UCAC ops school editor partial refresh failed", error);
     return false;
   }
 }
@@ -11238,7 +11238,7 @@ function setOpsSchoolEditorTab(tab) {
     try {
       editor.outerHTML = renderSchoolEditorPanel(selectedSchool, nextTab);
     } catch (error) {
-      console.error("CUAC ops school editor tab render failed", error);
+      console.error("UCAC ops school editor tab render failed", error);
       rerenderOpsSchoolSection("学校编辑器已自动恢复。");
     }
   } else {
@@ -11328,7 +11328,7 @@ function addOpsSchoolSubrecord(kind) {
     assertOpsSchoolSubrecordDraftVisible(kind, kind === "scholarship" ? "新奖学金草稿" : "");
     scheduleOpsSchoolEditorIntegrityCheck(kind, kind === "scholarship" ? "新奖学金草稿" : "", createdRecordId);
   } catch (error) {
-    console.error("CUAC ops school subrecord create failed", error);
+    console.error("UCAC ops school subrecord create failed", error);
     const schoolId = document.querySelector("[data-ops-school-editor]")?.dataset.schoolId || "";
     const state = readOpsAdminState();
     const records = readOpsSchoolRecords(state);
@@ -11756,7 +11756,7 @@ function createOpsContentDraft(forcedType = "") {
     scheduleOpsContentEditorIntegrityCheck("scholarships", draftId, "新公共奖学金草稿");
     return draftId;
   } catch (error) {
-    console.error("CUAC ops content draft create failed", error);
+    console.error("UCAC ops content draft create failed", error);
     if (requestedType === "cities") {
       const draftId = `city-${Date.now()}`;
       const now = new Date().toISOString();
@@ -12978,7 +12978,7 @@ function createOpsAccessInvite() {
     return;
   }
   if ((role === "school_staff" || role === "cuac_ops") && !inviteCode) {
-    fail(role === "school_staff" ? "学校老师邀请必须填写邀请码，供本人注册或登录后绑定。" : "CUAC 运营邀请必须填写团队邀请码。");
+    fail(role === "school_staff" ? "学校老师邀请必须填写邀请码，供本人注册或登录后绑定。" : "UCAC 运营邀请必须填写团队邀请码。");
     return;
   }
   const now = new Date().toISOString();
@@ -13041,7 +13041,7 @@ function recoverOpsPublicScholarshipDraftState(reason = "已从异常状态恢�
   try {
     existingRecords = readOpsScholarshipRecords(state).filter((item) => String(item.id) !== draftId);
   } catch (error) {
-    console.error("CUAC ops scholarship recovery could not read previous records", error);
+    console.error("UCAC ops scholarship recovery could not read previous records", error);
   }
   writeOpsAdminState({
     ...clearOpsContentFilters(state),
@@ -13123,7 +13123,7 @@ function renderOpsBlankRecoveryState(context = "") {
     showCompletionToast("页面空白状态已自动恢复，并打开公共奖学金草稿。");
     if (document.querySelector('[data-ops-content-editor][data-content-type="scholarships"]')) return;
   } catch (error) {
-    console.error("CUAC ops blank recovery auto draft failed", error);
+    console.error("UCAC ops blank recovery auto draft failed", error);
   }
   target.innerHTML = `
     <section class="ops-error-state" role="alert">
@@ -13161,7 +13161,7 @@ function ensureOpsPageNotBlank(context = "") {
     const repairedText = repairedPanel?.textContent?.trim() || "";
     if (repairedPanel && repairedText.length > 80) return;
   }
-  console.warn("CUAC ops admin blank state recovered", context);
+  console.warn("UCAC ops admin blank state recovered", context);
   renderOpsBlankRecoveryState(context);
 }
 
@@ -13170,17 +13170,17 @@ function safelyEnsureOpsPageNotBlank(context = "") {
   try {
     ensureOpsPageNotBlank(context);
   } catch (error) {
-    console.error("CUAC ops blank-state check failed", error);
+    console.error("UCAC ops blank-state check failed", error);
     try {
       renderOpsBlankRecoveryState(context || "后台页面恢复检查失败");
     } catch (recoveryError) {
-      console.error("CUAC ops blank-state recovery failed", recoveryError);
+      console.error("UCAC ops blank-state recovery failed", recoveryError);
     }
   }
 }
 
 function recoverFromCompletionClickError(error) {
-  console.error("CUAC completion click failed", error);
+  console.error("UCAC completion click failed", error);
   if (mode !== "ops") {
     showCompletionToast("操作没有完成，请刷新后重试。");
     return;
@@ -13215,7 +13215,7 @@ function recoverFromCompletionClickError(error) {
         </section>
       `;
     }
-    console.error("CUAC completion click recovery render failed", renderError);
+    console.error("UCAC completion click recovery render failed", renderError);
   }
 }
 
@@ -13665,7 +13665,7 @@ document.addEventListener("click", (event) => {
   if (templateCopy) {
     const template = document.querySelector("[data-school-template]")?.value || defaultSchoolRequestTemplate;
     navigator.clipboard?.writeText(template).catch(() => {});
-    showCompletionToast("材料请求模板已复制。CUAC 未收取文件。");
+    showCompletionToast("材料请求模板已复制。UCAC 未收取文件。");
     return;
   }
 
@@ -13732,7 +13732,7 @@ document.addEventListener("cuac:agent-action", (event) => {
   }
   if (mode !== "school-settings") return;
   if (action !== "school-copy-request-template") return;
-  showCompletionToast("材料请求模板已复制。CUAC 未收取文件。");
+  showCompletionToast("材料请求模板已复制。UCAC 未收取文件。");
   event.preventDefault();
 });
 
@@ -13803,7 +13803,7 @@ function bootCompletionPage() {
     else renderDetailPage(pickData());
   } catch (error) {
     if (mode === "ops") {
-      console.error("CUAC ops initial render failed", error);
+      console.error("UCAC ops initial render failed", error);
       renderOpsBlankRecoveryState("页面初始化渲染失败");
       return;
     }

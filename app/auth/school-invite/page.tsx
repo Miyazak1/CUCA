@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SchoolInviteClient } from "./school-invite-client";
 
 export const metadata: Metadata = {
-  title: "Activate school access | CUAC",
+  title: "Activate school access | UCAC",
   robots: { index: false, follow: false },
 };
 

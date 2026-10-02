@@ -9,7 +9,7 @@ const opsQueueLabels = {
 const opsQueueAvailability = {
   auth_email_delivery: { label: "运行中", tone: "active", copy: "账户邮件后台队列。" },
   notification_delivery: { label: "运行中", tone: "active", copy: "站内通知后台队列。" },
-  student_file_processing: { label: "当前版本未启用", tone: "inactive", copy: "学生暂不在 CUAC 提交申请材料。" },
+  student_file_processing: { label: "当前版本未启用", tone: "inactive", copy: "学生暂不在 UCAC 提交申请材料。" },
   official_submission_delivery: { label: "受控运行", tone: "controlled", copy: "仅对已隔离的学校投递记录开放人工复核。" },
   payment_reconciliation: { label: "接口保留", tone: "inactive", copy: "付款接口已保留，当前版本暂不启用。" },
 };
@@ -710,7 +710,7 @@ function renderCorrectionControls(item) {
   }
   if (item.status === "claimed" && item.revision === 2) {
     return `<div class="ops-record-actions">
-      <div class="ops-review-state">${statusBadge(item.status)}<span>修订 ${escapeHtml(item.revision)}</span><span>需不同 CUAC 管理员二次验证</span></div>
+      <div class="ops-review-state">${statusBadge(item.status)}<span>修订 ${escapeHtml(item.revision)}</span><span>需不同 UCAC 管理员二次验证</span></div>
       ${actionForm({ kind: "correction", target: item.id, action: "resolve", revision: item.revision,
         label: "记录复核结论", codes: opsActionCodes.correctionResolve, danger: true, privileged: true })}
     </div>`;
@@ -761,7 +761,7 @@ function renderSupportProjection() {
   const projection = opsState.supportProjection;
   const session = opsState.supportSession;
   if (!session || !projection) {
-    return '<div class="ops-support-result"><h3>未打开支持会话</h3><p class="ops-state">输入完整 CUAC ID 和固定原因后，系统会创建最长 15 分钟的审计会话。</p></div>';
+    return '<div class="ops-support-result"><h3>未打开支持会话</h3><p class="ops-state">输入完整 UCAC ID 和固定原因后，系统会创建最长 15 分钟的审计会话。</p></div>';
   }
   const set = projection.applicationSet || {};
   const submission = projection.submission;
@@ -777,7 +777,7 @@ function renderSupportProjection() {
     ["学校基础信息交接", schoolHandoff],
     ["正式材料投递", submission
       ? opsSubmissionLabels[submission.status] || cleanText(submission.status) || "状态未知"
-      : "未创建（当前版本不在 CUAC 提交材料）"],
+      : "未创建（当前版本不在 UCAC 提交材料）"],
     ["正式投递：待处理 / 已投递 / 已隔离", submission
       ? `${submission.pendingGroupCount} / ${submission.dispatchedGroupCount} / ${submission.quarantinedGroupCount}` : "不适用"],
   ];
@@ -827,8 +827,8 @@ function renderSupport() {
     <div class="ops-support">
       <form class="ops-support-form" data-open-support>
         <h3>打开支持会话</h3>
-        <p>使用完整 CUAC 编号和固定业务原因。新的查询会先结束当前会话。</p>
-        <label><span>CUAC 编号</span><input name="cuacId" placeholder="CUAC-2026-000001" pattern="CUAC-[0-9]{4}-[0-9]{6}" required /></label>
+        <p>使用完整 UCAC 编号和固定业务原因。新的查询会先结束当前会话。</p>
+        <label><span>UCAC 申请编号</span><input name="cuacId" placeholder="CUAC-2026-000001" pattern="CUAC-[0-9]{4}-[0-9]{6}" required /></label>
         <label><span>支持原因</span><select name="reasonCode" required>${supportReasonOptions()}</select></label>
         <button class="ops-button primary" type="submit">打开并读取申请</button>
       </form>
@@ -1090,7 +1090,7 @@ function renderCityEditor(detail) {
     </form>` : `<form data-city-lifecycle="restore" data-city-id="${escapeHtml(record.id)}" data-version="${record.version}">
       <button class="ops-button primary" type="submit"${lifecycleLocked ? ' disabled title="需要管理员二次验证"' : ""}>恢复为草稿</button>
     </form>`}
-    ${lifecycleLocked ? '<small>发布、归档和恢复需要 CUAC 管理员完成二次验证；不要求另一位管理员审批。</small>' : ""}
+    ${lifecycleLocked ? '<small>发布、归档和恢复需要 UCAC 管理员完成二次验证；不要求另一位管理员审批。</small>' : ""}
   </div>` : "";
   const revisions = detail?.revisions || [];
   return `<section class="ops-city-editor">
@@ -1178,7 +1178,7 @@ function renderSchoolEditor(detail, cities) {
       <button class="ops-button danger" type="submit"${lifecycleLocked ? ' disabled title="需要管理员二次验证"' : ""}>归档</button></form>`
       : `<form data-school-lifecycle="restore" data-school-id="${escapeHtml(record.id)}" data-version="${record.version}">
       <button class="ops-button primary" type="submit"${lifecycleLocked ? ' disabled title="需要管理员二次验证"' : ""}>恢复为草稿</button></form>`}
-    ${lifecycleLocked ? '<small>发布、归档和恢复需要 CUAC 管理员完成二次验证；学校存在活动项目、奖学金、员工或申请时不能归档。</small>' : ""}</div>` : "";
+    ${lifecycleLocked ? '<small>发布、归档和恢复需要 UCAC 管理员完成二次验证；学校存在活动项目、奖学金、员工或申请时不能归档。</small>' : ""}</div>` : "";
   const revisions = detail?.revisions || [];
   const cityOptions = (cities || []).filter(city => city.status !== "archived").map(city => `<option value="${escapeHtml(city.id)}"${school.cityId === city.id ? " selected" : ""}>
     ${escapeHtml(city.nameZh || city.nameEn)} · ${escapeHtml(city.status === "active" ? "已发布" : "草稿")}</option>`).join("");
@@ -1731,7 +1731,7 @@ async function openSupportSession(form) {
       body: JSON.stringify({ cuacId, reasonCode }),
     });
     if (session === null) {
-      showOpsToast("没有找到这个 CUAC 编号对应的 Application Set。");
+      showOpsToast("没有找到这个 UCAC 编号对应的 Application Set。");
       renderSupport();
       return;
     }
@@ -2092,7 +2092,7 @@ async function startOpsWorkspace() {
   opsState.role = auth.role;
   opsState.authStrength = auth.authStrength === "step_up" ? "step_up" : "session";
   const role = document.querySelector("[data-ops-role]");
-  if (role) role.textContent = auth.role === "cuac_admin" ? "CUAC 管理员" : "CUAC 运营";
+  if (role) role.textContent = auth.role === "cuac_admin" ? "UCAC 管理员" : "UCAC 运营";
   renderAuthCapability();
   await loadCurrentView();
 }

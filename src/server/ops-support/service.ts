@@ -129,7 +129,7 @@ export class OpsApplicationSupportService {
       ...actor, cuacId, reasonCode, ttlMs: OPS_SUPPORT_ACCESS_SESSION_TTL_MS,
     });
     if (!result.authorized) {
-      throw forbidden("Active CUAC staff access grant is required.");
+      throw forbidden("Active UCAC staff access grant is required.");
     }
     await this.auditSink.record(buildAuditEvent(context, {
       action: "ops.application_support_session.open",
@@ -161,7 +161,7 @@ export class OpsApplicationSupportService {
     if (!decision.allowed) throw forbidden(decision.reason);
 
     const resolved = await this.repository.resolveApplicationSupportSession({ ...actor, supportSessionId });
-    if (!resolved.authorized) throw forbidden("Active CUAC staff access grant is required.");
+    if (!resolved.authorized) throw forbidden("Active UCAC staff access grant is required.");
     if (!resolved.session) throw forbidden("Active application support session is required.");
     const result = await this.repository.findApplicationSupportByCuacId(resolved.session.cuacId);
     if (!result) throw forbidden("Active application support session is required.");
@@ -192,7 +192,7 @@ export class OpsApplicationSupportService {
     });
     if (!decision.allowed) throw forbidden(decision.reason);
     const result = await this.repository.closeApplicationSupportSession({ ...actor, supportSessionId });
-    if (!result.authorized) throw forbidden("Active CUAC staff access grant is required.");
+    if (!result.authorized) throw forbidden("Active UCAC staff access grant is required.");
     await this.auditSink.record(buildAuditEvent(context, {
       action: "ops.application_support_session.close",
       resourceType: "ops_support_access_session",
@@ -210,14 +210,14 @@ function requireOpsSupportContext(context: RequestContext): { actorUserId: strin
   if (!context.actorUserId || (context.activeRole !== "cuac_ops" && context.activeRole !== "cuac_admin")
     || context.selectedSurface !== "ops" || context.purpose !== "ops_support" || context.tenantSchoolId !== null
     || (context.authStrength !== "session" && context.authStrength !== "step_up")) {
-    throw forbidden("Authenticated CUAC support context is required.");
+    throw forbidden("Authenticated UCAC support context is required.");
   }
   return { actorUserId: context.actorUserId, activeRole: context.activeRole };
 }
 
 function parseCuacId(value: unknown): string {
   if (typeof value !== "string" || !/^CUAC-[0-9]{4}-[0-9]{6}$/.test(value)) {
-    throw badRequest("CUAC ID must use the CUAC-YYYY-NNNNNN format.");
+    throw badRequest("UCAC application ID must use the CUAC-YYYY-NNNNNN format.");
   }
   return value;
 }

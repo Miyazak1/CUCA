@@ -228,7 +228,7 @@ function renderHero(record, options) {
   const context = (options.context || []).filter(Boolean);
   const title = cleanText(options.title) || detailUi("Published catalog record");
   return `<section class="catalog-record-hero">
-    <div class="catalog-record-code" aria-hidden="true"><span>${escapeHtml(config.code)}</span><small>CUAC</small></div>
+    <div class="catalog-record-code" aria-hidden="true"><span>${escapeHtml(config.code)}</span><small>UCAC</small></div>
     <div class="catalog-record-title">
       <span class="catalog-record-type"><img src="${escapeHtml(config.icon)}" alt="" />${escapeHtml(config.typeLabel)}</span>
       <h1 class="${title.length > 46 ? "long-title" : ""}">${escapeHtml(title)}</h1>
@@ -360,7 +360,7 @@ function renderProgram(record, extras) {
       { label: "Add to application", href: choiceHref },
       { label: "Official application", href: applicationHref, external: true },
       { label: "View university", href: school ? `university-detail.html?university=${encodeURIComponent(school.id)}` : null },
-    ], "Choose an exact intake before relying on deadlines or requirements. CUAC does not infer eligibility from profile data on this page."))}`;
+    ], "Choose an exact intake before relying on deadlines or requirements. UCAC does not infer eligibility from profile data on this page."))}`;
 }
 
 function renderDeadlineItems(items) {
@@ -400,7 +400,7 @@ function renderSchool(record) {
       ["CSCA required", record.cscaRequired],
       ["CSCA detail", record.cscaRequirement],
     ])}${renderChips(record.cscaSubjects)}`, "Confirm program-level requirements because a university summary may cover several routes."),
-    renderSection("Catalog coverage", "Published routes in CUAC", renderDefinitions([
+    renderSection("Catalog coverage", "Published routes in UCAC", renderDefinitions([
       ["Programs", record.programCount],
       ["English-taught programs", record.englishProgramCount],
       ["Scholarships", record.scholarshipCount],
@@ -515,7 +515,7 @@ function renderScholarship(record) {
       ...actions,
       { label: "Find matching programs", href: record.program ? `program-detail.html?program=${encodeURIComponent(record.program.id)}` : "programs.html" },
       { label: "View related university", href: record.school ? `university-detail.html?university=${encodeURIComponent(record.school.id)}` : null },
-    ], "CUAC shows the award as published. Funding is never treated as guaranteed, and contact data is not exposed through this public page."))}`;
+    ], "UCAC shows the award as published. Funding is never treated as guaranteed, and contact data is not exposed through this public page."))}`;
 }
 
 function cityContentBlocks(content) {
@@ -624,7 +624,7 @@ function renderGuide(record) {
   return `${renderHero(evidenceRecord, { title, intro: summary || subtitle, context: [subtitle, `${detailUi("Version")} ${record.version}`].filter(Boolean) })}
     ${renderLayout(main, renderAside(record, "Use this guide", [
       { label: "Browse programs", href: "programs.html" },
-      { label: "Search CUAC", href: "search.html" },
+      { label: "Search UCAC", href: "search.html" },
     ], detailUi("Confirm current dates and requirements on each university's official source before applying.")))}`;
 }
 
@@ -702,7 +702,7 @@ async function loadDetail() {
     if (detailType === "guide") html = renderGuide(record);
     const guideTranslation = detailType === "guide" && detailLocale !== "en" ? record.content?.translations?.[detailLocale] : null;
     const name = guideTranslation?.title || record.nameEn || record.titleEn || record.title || record.slug;
-    document.title = `${name} | CUAC`;
+    document.title = `${name} | UCAC`;
     detailRoot.innerHTML = `<a class="catalog-back-link" href="${escapeHtml(detailHref(config.backHref))}"><span aria-hidden="true">&larr;</span>${escapeHtml(config.backLabel)}</a>${html}`;
   } catch (error) {
     renderError(error);

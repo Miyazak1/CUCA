@@ -87,7 +87,7 @@ test("email worker carries the prepared student locale into subject and action U
   }, { async deliver(message) { delivered = message; return { status: "accepted" }; } }, config);
   assert.deepEqual(result, { status: "accepted" });
   assert.equal(delivered.locale, "id");
-  assert.equal(delivered.subject, "Verifikasi email CUAC Anda");
+  assert.equal(delivered.subject, "Verifikasi email UCAC Anda");
   assert.equal(new URL(delivered.templateData.actionUrl).searchParams.get("lang"), "id");
 });
 

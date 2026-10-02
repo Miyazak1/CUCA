@@ -65,20 +65,20 @@ export type DataRightsReminderCode = typeof DATA_RIGHTS_REMINDER_CODES[number];
 
 const dataRightsDefinitions: Readonly<Record<"en"|"zh-CN",Readonly<Record<DataRightsEventType,BuiltinDefinition>>>>={
   en:{
-    data_rights_received:{topic:"privacy_requests",title:"Privacy request received",body:"CUAC recorded your request. You can track its status in Account settings."},
+    data_rights_received:{topic:"privacy_requests",title:"Privacy request received",body:"UCAC recorded your request. You can track its status in Account settings."},
     data_rights_identity_required:{topic:"privacy_requests",title:"Confirm your identity",body:"Re-enter your password in Account settings. Staff cannot claim or process this request until confirmation is complete."},
     data_rights_identity_confirmed:{topic:"privacy_requests",title:"Identity confirmed",body:"Your identity confirmation is complete and the request can enter the staff review queue."},
     data_rights_review_started:{topic:"privacy_requests",title:"Privacy request review started",body:"A staff member has claimed your request. You can track later status changes in Account settings."},
     data_rights_deadline_extended:{topic:"privacy_requests",title:"Privacy request deadline extended",body:"The response deadline is now {{extendedDueDate}}. Reason: {{extensionReason}}. Track the request in Account settings."},
-    data_rights_cancelled:{topic:"privacy_requests",title:"Privacy request cancelled",body:"You cancelled this request. CUAC will not continue processing it."},
+    data_rights_cancelled:{topic:"privacy_requests",title:"Privacy request cancelled",body:"You cancelled this request. UCAC will not continue processing it."},
   },
   "zh-CN":{
-    data_rights_received:{topic:"privacy_requests",title:"隐私请求已收到",body:"CUAC 已记录你的请求。你可以在账户设置中查看处理状态。"},
+    data_rights_received:{topic:"privacy_requests",title:"隐私请求已收到",body:"UCAC 已记录你的请求。你可以在账户设置中查看处理状态。"},
     data_rights_identity_required:{topic:"privacy_requests",title:"请确认身份",body:"请在账户设置中重新输入密码。完成身份确认前，工作人员不能认领或处理此请求。"},
     data_rights_identity_confirmed:{topic:"privacy_requests",title:"身份确认成功",body:"身份确认已经完成，你的请求现在可以进入人工处理队列。"},
     data_rights_review_started:{topic:"privacy_requests",title:"隐私请求已开始处理",body:"工作人员已经认领你的请求。你可以在账户设置中查看后续状态。"},
     data_rights_deadline_extended:{topic:"privacy_requests",title:"隐私请求答复期限已延长",body:"新的答复期限为 {{extendedDueDate}}。原因：{{extensionReason}}。请在账户设置中查看请求状态。"},
-    data_rights_cancelled:{topic:"privacy_requests",title:"隐私请求已取消",body:"你已取消此请求，CUAC 不会继续处理。"},
+    data_rights_cancelled:{topic:"privacy_requests",title:"隐私请求已取消",body:"你已取消此请求，UCAC 不会继续处理。"},
   },
 };
 
@@ -101,7 +101,7 @@ const dataRightsReminderDefinitions:Readonly<Record<"en"|"zh-CN",Readonly<Record
 
 const applicationSubmittedDefinition: BuiltinDefinition = {
   topic: "application_updates",
-  title: "CUAC accepted your application for delivery",
+  title: "UCAC accepted your application for delivery",
   body: "Your application package is locked and queued for delivery. This does not mean each school has received it yet.",
 };
 
@@ -109,7 +109,7 @@ const paymentDefinitions: Readonly<Record<"succeeded" | "canceled" | "refunded",
   succeeded: {
     topic: "billing_updates",
     title: "Payment confirmed",
-    body: "CUAC confirmed your payment. Review the invoice and application readiness in your account.",
+    body: "UCAC confirmed your payment. Review the invoice and application readiness in your account.",
   },
   canceled: {
     topic: "billing_updates",
@@ -119,7 +119,7 @@ const paymentDefinitions: Readonly<Record<"succeeded" | "canceled" | "refunded",
   refunded: {
     topic: "billing_updates",
     title: "Payment refunded",
-    body: "CUAC recorded the refund. Any application fee entitlement from this payment is no longer current.",
+    body: "UCAC recorded the refund. Any application fee entitlement from this payment is no longer current.",
   },
 };
 
@@ -127,16 +127,16 @@ const applicationDefinitions: Readonly<Record<string, BuiltinDefinition>> = {
   school_marked_contacted: {
     topic: "application_updates",
     title: "A school has contacted you",
-    body: "Review your messages and reply to the school directly when needed. CUAC routing updates are not an official admission decision.",
+    body: "Review your messages and reply to the school directly when needed. UCAC routing updates are not an official admission decision.",
   },
   school_waiting_documents: {
     topic: "application_updates",
     title: "A school is waiting for documents",
-    body: "Open your application record and confirm the next document step with the school. CUAC does not treat this routing update as an official decision.",
+    body: "Open your application record and confirm the next document step with the school. UCAC does not treat this routing update as an official decision.",
   },
   school_application_updated: {
     topic: "application_updates",
-    title: "Your CUAC school record was updated",
+    title: "Your UCAC school record was updated",
     body: "Open the application record for the latest routing status. Official document requests and decisions still come directly from the school.",
   },
 };
@@ -144,13 +144,13 @@ const applicationDefinitions: Readonly<Record<string, BuiltinDefinition>> = {
 const inactiveAccountWarningDefinitions: Readonly<Record<"en" | "zh-CN", BuiltinDefinition>> = {
   en: {
     topic: "account_security",
-    title: "Sign in to keep your CUAC account active",
-    body: "Your CUAC account has been inactive for nearly 24 months. Sign in before {{reviewDate}} to keep it active. CUAC will not delete the account automatically until the account-deletion and backup safeguards are enabled.",
+    title: "Sign in to keep your UCAC account active",
+    body: "Your UCAC account has been inactive for nearly 24 months. Sign in before {{reviewDate}} to keep it active. UCAC will not delete the account automatically until the account-deletion and backup safeguards are enabled.",
   },
   "zh-CN": {
     topic: "account_security",
-    title: "请登录以保持 CUAC 账户活跃",
-    body: "你的 CUAC 账户已接近 24 个月未使用。请在 {{reviewDate}} 前登录以保持账户活跃。在账户删除与备份保护机制正式启用前，CUAC 不会自动删除该账户。",
+    title: "请登录以保持 UCAC 账户活跃",
+    body: "你的 UCAC 账户已接近 24 个月未使用。请在 {{reviewDate}} 前登录以保持账户活跃。在账户删除与备份保护机制正式启用前，UCAC 不会自动删除该账户。",
   },
 };
 

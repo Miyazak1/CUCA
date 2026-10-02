@@ -204,7 +204,7 @@ function renderQueue() {
     <button class="school-queue-row ${item.id === schoolState.selectedId ? "active" : ""}" type="button" data-school-record="${escapeHtml(item.id)}" aria-pressed="${item.id === schoolState.selectedId ? "true" : "false"}">
       <span>
         <strong>${escapeHtml(programLabel(item.programId))}</strong>
-        <span class="school-record-id">${escapeHtml(item.cuacId || "CUAC 编号未提供")}</span>
+        <span class="school-record-id">${escapeHtml(item.cuacId || "UCAC 编号未提供")}</span>
         <small>${escapeHtml(applicantLabel(item))} · ${escapeHtml(formatDateTime(item.submittedAt))}</small>
       </span>
       <span class="school-status ${statusClass(item.status)}">${escapeHtml(statusLabel(item.status))}</span>
@@ -330,7 +330,7 @@ function renderDetail() {
   if (!root || !detail) return;
   root.innerHTML = `
     <header class="school-detail-header">
-      <div><span class="school-kicker">申请详情</span><h2>${escapeHtml(programLabel(detail.programId))}</h2><p>${escapeHtml(detail.cuacId || "CUAC 编号未提供")}</p></div>
+      <div><span class="school-kicker">申请详情</span><h2>${escapeHtml(programLabel(detail.programId))}</h2><p>${escapeHtml(detail.cuacId || "UCAC 编号未提供")}</p></div>
       <span class="school-status ${statusClass(detail.status)}">${escapeHtml(statusLabel(detail.status))}</span>
     </header>
     <div class="school-detail-grid">

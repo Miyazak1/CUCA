@@ -2,8 +2,8 @@
   "use strict";
 
   const rows = [
-    ["CUAC | Notifications", "CUAC | Thông báo", "CUAC | การแจ้งเตือน", "CUAC | Notifikasi", "CUAC | Pemberitahuan", "CUAC | الإشعارات"],
-    ["CUAC Notifications:", "Thông báo CUAC:", "การแจ้งเตือน CUAC:", "Notifikasi CUAC:", "Pemberitahuan CUAC:", "إشعارات CUAC:"],
+    ["UCAC | Notifications", "UCAC | Thông báo", "UCAC | การแจ้งเตือน", "UCAC | Notifikasi", "UCAC | Pemberitahuan", "UCAC | الإشعارات"],
+    ["UCAC Notifications:", "Thông báo UCAC:", "การแจ้งเตือน UCAC:", "Notifikasi UCAC:", "Pemberitahuan UCAC:", "إشعارات UCAC:"],
     ["act before deadlines become pressure", "xử lý trước khi hạn chót gây áp lực", "ดำเนินการก่อนกำหนดเวลาจะกดดัน", "bertindak sebelum tenggat menjadi tekanan", "bertindak sebelum tarikh akhir menjadi tekanan", "تصرّف قبل أن تتحول المواعيد إلى ضغط"],
     ["Notifications breadcrumb", "Điều hướng thông báo", "เส้นทางการแจ้งเตือน", "Navigasi notifikasi", "Navigasi pemberitahuan", "مسار الإشعارات"],
     ["Hub", "Hồ sơ", "พื้นที่ของฉัน", "Ruang saya", "Ruang saya", "مساحتي"],

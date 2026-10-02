@@ -96,7 +96,7 @@ function checkRuntimeOverrides(env: Record<string, string | undefined>): Product
     assertSafeApplicationProcessEnvironment(env);
     return item("pass", "deployment.runtime_overrides", "Node.js runtime override posture is safe.");
   } catch {
-    return item("fail", "deployment.runtime_overrides", "NODE_OPTIONS, NODE_PATH, and NODE_TLS_REJECT_UNAUTHORIZED=0 are forbidden for CUAC application startup.");
+    return item("fail", "deployment.runtime_overrides", "NODE_OPTIONS, NODE_PATH, and NODE_TLS_REJECT_UNAUTHORIZED=0 are forbidden for UCAC application startup.");
   }
 }
 

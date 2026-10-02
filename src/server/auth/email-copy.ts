@@ -17,28 +17,28 @@ const shared: Record<PublicUiLocale, SharedCopy> = {
 
 const purposes: Record<StudentEmailType, Record<PublicUiLocale, PurposeCopy>> = {
   "auth.email_verification": {
-    en: { subject: "Verify your CUAC email", action: "Verify email" },
-    vi: { subject: "Xác minh email CUAC của bạn", action: "Xác minh email" },
-    th: { subject: "ยืนยันอีเมล CUAC ของคุณ", action: "ยืนยันอีเมล" },
-    id: { subject: "Verifikasi email CUAC Anda", action: "Verifikasi email" },
-    ms: { subject: "Sahkan e-mel CUAC anda", action: "Sahkan e-mel" },
-    ar: { subject: "تحقق من بريدك الإلكتروني في CUAC", action: "تحقق من البريد الإلكتروني" },
+    en: { subject: "Verify your UCAC email", action: "Verify email" },
+    vi: { subject: "Xác minh email UCAC của bạn", action: "Xác minh email" },
+    th: { subject: "ยืนยันอีเมล UCAC ของคุณ", action: "ยืนยันอีเมล" },
+    id: { subject: "Verifikasi email UCAC Anda", action: "Verifikasi email" },
+    ms: { subject: "Sahkan e-mel UCAC anda", action: "Sahkan e-mel" },
+    ar: { subject: "تحقق من بريدك الإلكتروني في UCAC", action: "تحقق من البريد الإلكتروني" },
   },
   "auth.password_reset": {
-    en: { subject: "Reset your CUAC password", action: "Reset password" },
-    vi: { subject: "Đặt lại mật khẩu CUAC của bạn", action: "Đặt lại mật khẩu" },
-    th: { subject: "รีเซ็ตรหัสผ่าน CUAC ของคุณ", action: "รีเซ็ตรหัสผ่าน" },
-    id: { subject: "Atur ulang kata sandi CUAC Anda", action: "Atur ulang kata sandi" },
-    ms: { subject: "Tetapkan semula kata laluan CUAC anda", action: "Tetapkan semula kata laluan" },
-    ar: { subject: "إعادة تعيين كلمة مرور CUAC", action: "إعادة تعيين كلمة المرور" },
+    en: { subject: "Reset your UCAC password", action: "Reset password" },
+    vi: { subject: "Đặt lại mật khẩu UCAC của bạn", action: "Đặt lại mật khẩu" },
+    th: { subject: "รีเซ็ตรหัสผ่าน UCAC ของคุณ", action: "รีเซ็ตรหัสผ่าน" },
+    id: { subject: "Atur ulang kata sandi UCAC Anda", action: "Atur ulang kata sandi" },
+    ms: { subject: "Tetapkan semula kata laluan UCAC anda", action: "Tetapkan semula kata laluan" },
+    ar: { subject: "إعادة تعيين كلمة مرور UCAC", action: "إعادة تعيين كلمة المرور" },
   },
   "auth.guardian_consent": {
-    en: { subject: "Review a CUAC child account request", action: "Review child account request" },
-    vi: { subject: "Xem xét yêu cầu tài khoản trẻ em CUAC", action: "Xem xét yêu cầu tài khoản" },
-    th: { subject: "ตรวจสอบคำขอบัญชีเด็ก CUAC", action: "ตรวจสอบคำขอบัญชีเด็ก" },
-    id: { subject: "Tinjau permintaan akun anak CUAC", action: "Tinjau permintaan akun anak" },
-    ms: { subject: "Semak permintaan akaun kanak-kanak CUAC", action: "Semak permintaan akaun kanak-kanak" },
-    ar: { subject: "مراجعة طلب حساب طفل في CUAC", action: "مراجعة طلب حساب الطفل" },
+    en: { subject: "Review a UCAC child account request", action: "Review child account request" },
+    vi: { subject: "Xem xét yêu cầu tài khoản trẻ em UCAC", action: "Xem xét yêu cầu tài khoản" },
+    th: { subject: "ตรวจสอบคำขอบัญชีเด็ก UCAC", action: "ตรวจสอบคำขอบัญชีเด็ก" },
+    id: { subject: "Tinjau permintaan akun anak UCAC", action: "Tinjau permintaan akun anak" },
+    ms: { subject: "Semak permintaan akaun kanak-kanak UCAC", action: "Semak permintaan akaun kanak-kanak" },
+    ar: { subject: "مراجعة طلب حساب طفل في UCAC", action: "مراجعة طلب حساب الطفل" },
   },
 };
 
@@ -49,7 +49,7 @@ export function normalizeAuthEmailLocale(value: unknown): PublicUiLocale {
 
 export function authEmailCopy(messageType: AuthEmailMessageType, value: unknown) {
   if (messageType === "auth.school_staff_invite") {
-    return { locale: "en" as const, direction: "ltr" as const, subject: "Activate your CUAC school account",
+    return { locale: "en" as const, direction: "ltr" as const, subject: "Activate your UCAC school account",
       action: "Activate school account", ...shared.en };
   }
   const locale = normalizeAuthEmailLocale(value);

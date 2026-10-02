@@ -531,8 +531,8 @@ export function CuacApp({
     <div className="cuac-shell">
       <header className="top-nav">
         <button className="brand" onClick={() => navigate("/")}>
-          <span className="brand-mark">CU</span>
-          <span>CUAC</span>
+          <span className="brand-mark">UC</span>
+          <span>UCAC</span>
         </button>
         <nav aria-label="Primary navigation">
           <button onClick={() => navigate("/programs")}>Find Programs</button>
@@ -1214,7 +1214,7 @@ function ProgramDetailView({
           </InfoSection>
 
           <InfoSection title="Source and verification">
-            <p>{sourceLabel(program.sourceStatus, program.lastVerifiedAt)}. CUAC does not guarantee admission and does not replace official university portals.</p>
+            <p>{sourceLabel(program.sourceStatus, program.lastVerifiedAt)}. UCAC does not guarantee admission and does not replace official university portals.</p>
             {program.sourceUrl && <a href={program.sourceUrl} target="_blank" rel="noreferrer">Open source page</a>}
           </InfoSection>
         </div>
@@ -1558,7 +1558,7 @@ function AdviserPanel() {
   ] as const;
   return (
     <div className="adviser-panel">
-      <p><strong>Preview Adviser</strong> · CUAC Counselling Desk</p>
+      <p><strong>Preview Adviser</strong> · UCAC Counselling Desk</p>
       <p>Expires 31 Dec 2026. Permissions are specific and revocable.</p>
       {scopes.map(([label, enabled, highRisk]) => (
         <label className="permission-row" key={label}>

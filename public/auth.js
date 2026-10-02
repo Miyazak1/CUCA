@@ -17,9 +17,9 @@ const roleProfiles = {
   student: {
     requestSurface: "student",
     activeRole: "student",
-    eyebrow: "CUAC account · Student workspace",
+    eyebrow: "UCAC account · Student workspace",
     title: "Keep every China application step in one place",
-    lead: "Use one CUAC account to save programs, manage application records, prepare documents, and track deadlines.",
+    lead: "Use one UCAC account to save programs, manage application records, prepare documents, and track deadlines.",
     signinTitle: "Welcome back",
     signinCopy: "Continue your saved China study shortlist and application work.",
     signinButton: "Sign in to Hub",
@@ -33,8 +33,8 @@ const roleProfiles = {
   school: {
     requestSurface: "school_staff",
     activeRole: "school_staff",
-    eyebrow: "CUAC account · School workspace",
-    title: "Review your university's CUAC applicant queue",
+    eyebrow: "UCAC account · School workspace",
+    title: "Review your university's UCAC applicant queue",
     lead: "School access is checked against an active staff membership for the selected university. Staff can only enter their own tenant workspace.",
     signinTitle: "Sign in to the school workspace",
     signinCopy: "Choose your university and sign in with an account that has an active school staff membership.",
@@ -48,10 +48,10 @@ const roleProfiles = {
   ops: {
     requestSurface: "cuac_internal",
     activeRole: "cuac_ops",
-    eyebrow: "CUAC account · Internal workspace",
-    title: "Operate CUAC through governed internal access",
-    lead: "Internal roles are assigned by CUAC administrators. Authentication never grants cross-tenant access by itself.",
-    signinTitle: "Sign in to CUAC staff tools",
+    eyebrow: "UCAC account · Internal workspace",
+    title: "Operate UCAC through governed internal access",
+    lead: "Internal roles are assigned by UCAC administrators. Authentication never grants cross-tenant access by itself.",
+    signinTitle: "Sign in to UCAC staff tools",
     signinCopy: "Use an account with an active Ops or Admin access grant.",
     signinButton: "Sign in to staff tools",
     nextTitle: "Internal access boundary",
@@ -130,7 +130,7 @@ function setRole(role) {
   const profile = roleProfiles[currentRole];
   const hasContinuation = Boolean(pendingContinuation);
   setText("[data-next-title]", hasContinuation ? "Continue after sign in" : profile.nextTitle);
-  setText("[data-next-copy]", hasContinuation ? "CUAC will consume the server-verified saved navigation after this account and role are authorized." : profile.nextCopy);
+  setText("[data-next-copy]", hasContinuation ? "UCAC will consume the server-verified saved navigation after this account and role are authorized." : profile.nextCopy);
 
   const nextLink = document.querySelector("[data-next-link]");
   if (nextLink) {
@@ -279,7 +279,7 @@ function renderWorkspaceChoices(workspaces) {
     const detail = document.createElement("span");
     detail.textContent = authUi(workspace.selectedSurface === "student"
       ? "Student"
-      : workspace.selectedSurface === "school" ? "School staff" : "CUAC staff");
+      : workspace.selectedSurface === "school" ? "School staff" : "UCAC staff");
     button.append(title, detail);
     return button;
   }));

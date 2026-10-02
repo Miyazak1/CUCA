@@ -119,7 +119,7 @@ export function recoveryCodeHash(code: string, keyring: MfaKeyring): string {
 }
 
 export function buildTotpUri(input: { secret: string; email: string; issuer?: string }): string {
-  const issuer = input.issuer ?? "CUAC";
+  const issuer = input.issuer ?? "UCAC";
   const label = `${issuer}:${input.email}`;
   const query = new URLSearchParams({ secret: input.secret, issuer, algorithm: "SHA1", digits: "6", period: "30" });
   return `otpauth://totp/${encodeURIComponent(label)}?${query.toString()}`;

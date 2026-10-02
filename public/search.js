@@ -19,7 +19,7 @@
   let loadedGroups = [];
 
   function applyStaticCopy() {
-    document.title = t("pageTitle", "Search CUAC");
+    document.title = t("pageTitle", "Search UCAC");
     document.querySelectorAll("[data-search-copy]").forEach(target => {
       target.textContent = t(target.dataset.searchCopy, target.textContent);
     });
@@ -28,7 +28,7 @@
       target.textContent = key === "all" ? t("type.all", "All") : labels[key] || target.textContent;
     });
     input.placeholder = t("placeholder", input.placeholder);
-    input.setAttribute("aria-label", t("inputLabel", input.getAttribute("aria-label") || "Search published CUAC catalog"));
+    input.setAttribute("aria-label", t("inputLabel", input.getAttribute("aria-label") || "Search published UCAC catalog"));
     document.querySelector("[data-search-types]")?.setAttribute("aria-label", t("resultTypes", "Search result types"));
   }
 

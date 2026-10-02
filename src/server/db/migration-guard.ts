@@ -1,7 +1,7 @@
 import type { MigrationMeta } from "drizzle-orm/migrator";
 import type { TransactionalSqlClient } from "./postgres-client.ts";
 
-// Database-scoped, shared by every CUAC release regardless of checkout or host.
+// Database-scoped, shared by every UCAC release regardless of checkout or host.
 export const POSTGRES_MIGRATION_LOCK = [0x43554143, 1] as const;
 
 type LedgerRow = { id: unknown; hash: unknown; created_at: unknown };
@@ -55,7 +55,7 @@ export async function runCheckedMigrationPlan(client: TransactionalSqlClient, mi
   assertMigrationPlan(plan);
   return client.transaction(async tx => {
     const lock = await tx.query<{ acquired: boolean }>("select pg_catalog.pg_try_advisory_xact_lock($1::integer, $2::integer) as acquired", POSTGRES_MIGRATION_LOCK);
-    if (lock[0]?.acquired !== true) throw new Error("Another CUAC migration job holds the database lock. Inspect that job before retrying.");
+    if (lock[0]?.acquired !== true) throw new Error("Another UCAC migration job holds the database lock. Inspect that job before retrying.");
     await tx.query(`select pg_catalog.set_config('search_path', 'public, pg_temp', true),
       pg_catalog.set_config('statement_timeout', '60000', true), pg_catalog.set_config('lock_timeout', '5000', true),
       pg_catalog.set_config('idle_in_transaction_session_timeout', '60000', true)`, []);

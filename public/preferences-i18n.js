@@ -1,8 +1,8 @@
 (function initPreferencesI18n() {
   "use strict";
   const rows = [
-    ["CUAC | Preferences", "CUAC | Tùy chọn", "CUAC | การตั้งค่า", "CUAC | Preferensi", "CUAC | Pilihan", "CUAC | التفضيلات"],
-    ["CUAC Preferences:", "Tùy chọn CUAC:", "การตั้งค่า CUAC:", "Preferensi CUAC:", "Pilihan CUAC:", "تفضيلات CUAC:"],
+    ["UCAC | Preferences", "UCAC | Tùy chọn", "UCAC | การตั้งค่า", "UCAC | Preferensi", "UCAC | Pilihan", "UCAC | التفضيلات"],
+    ["UCAC Preferences:", "Tùy chọn UCAC:", "การตั้งค่า UCAC:", "Preferensi UCAC:", "Pilihan UCAC:", "تفضيلات UCAC:"],
     ["student research and notification settings", "cài đặt tìm hiểu và thông báo", "การตั้งค่าการค้นหาและการแจ้งเตือน", "pengaturan riset dan notifikasi pelajar", "tetapan kajian dan pemberitahuan pelajar", "إعدادات البحث والإشعارات للطالب"],
     ["Preferences breadcrumb", "Điều hướng tùy chọn", "เส้นทางการตั้งค่า", "Navigasi preferensi", "Navigasi pilihan", "مسار التفضيلات"],
     ["Preferences", "Tùy chọn", "การตั้งค่า", "Preferensi", "Pilihan", "التفضيلات"],
@@ -70,7 +70,7 @@
     ["Application records", "Hồ sơ đăng ký", "บันทึกการสมัคร", "Data pendaftaran", "Rekod permohonan", "سجلات التقديم"],
     ["Other structured account data", "Dữ liệu tài khoản có cấu trúc khác", "ข้อมูลบัญชีแบบมีโครงสร้างอื่น", "Data akun terstruktur lainnya", "Data akaun berstruktur lain", "بيانات حساب منظمة أخرى"],
     ["Required only for export and deletion.", "Chỉ bắt buộc khi xuất hoặc xóa.", "จำเป็นเฉพาะการส่งออกและลบ", "Hanya wajib untuk ekspor dan penghapusan.", "Wajib hanya untuk eksport dan pemadaman.", "مطلوبة فقط للتصدير والحذف."],
-    ["Do not enter identity documents or sensitive details here. CUAC will provide the next verification step after receipt.", "Không nhập giấy tờ tùy thân hoặc dữ liệu nhạy cảm tại đây. CUAC sẽ cung cấp bước xác minh tiếp theo.", "อย่ากรอกเอกสารประจำตัวหรือข้อมูลอ่อนไหว CUAC จะแจ้งขั้นตอนยืนยันถัดไป", "Jangan masukkan dokumen identitas atau data sensitif. CUAC akan memberikan langkah verifikasi berikutnya.", "Jangan masukkan dokumen identiti atau butiran sensitif. CUAC akan memberikan langkah pengesahan seterusnya.", "لا تُدخل وثائق هوية أو تفاصيل حساسة هنا. ستوفر CUAC خطوة التحقق التالية."],
+    ["Do not enter identity documents or sensitive details here. UCAC will provide the next verification step after receipt.", "Không nhập giấy tờ tùy thân hoặc dữ liệu nhạy cảm tại đây. UCAC sẽ cung cấp bước xác minh tiếp theo.", "อย่ากรอกเอกสารประจำตัวหรือข้อมูลอ่อนไหว UCAC จะแจ้งขั้นตอนยืนยันถัดไป", "Jangan masukkan dokumen identitas atau data sensitif. UCAC akan memberikan langkah verifikasi berikutnya.", "Jangan masukkan dokumen identiti atau butiran sensitif. UCAC akan memberikan langkah pengesahan seterusnya.", "لا تُدخل وثائق هوية أو تفاصيل حساسة هنا. ستوفر UCAC خطوة التحقق التالية."],
     ["Received {date} · {status}", "Đã nhận {date} · {status}", "ได้รับ {date} · {status}", "Diterima {date} · {status}", "Diterima {date} · {status}", "تم الاستلام {date} · {status}"],
     ["Received", "Đã nhận", "ได้รับแล้ว", "Diterima", "Diterima", "تم الاستلام"],
     ["Identity confirmed", "Đã xác nhận danh tính", "ยืนยันตัวตนแล้ว", "Identitas dikonfirmasi", "Identiti disahkan", "تم تأكيد الهوية"],

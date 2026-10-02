@@ -33,7 +33,7 @@ test("template rendering rejects extra, missing, control-character and oversized
   }
 });
 
-test("submission notification states CUAC acceptance without claiming school receipt", () => {
+test("submission notification states UCAC acceptance without claiming school receipt", () => {
   const event = materializeApplicationSubmittedNotification({
     recipientUserId: ids.user,
     applicationSubmissionId: ids.event,
@@ -43,7 +43,7 @@ test("submission notification states CUAC acceptance without claiming school rec
   assert.equal(event.topic, "application_updates");
   assert.equal(event.eventType, "application_submission_accepted");
   const rendered = renderNotificationTemplate(event.templates[0], event.variables);
-  assert.match(rendered.title, /CUAC accepted/i);
+  assert.match(rendered.title, /UCAC accepted/i);
   assert.match(rendered.body, /does not mean each school has received/i);
   assert.equal(rendered.actionPath, `/application.html?applicationSet=${ids.application}`);
   assert.doesNotMatch(JSON.stringify(rendered), /sent to selected schools|school received/i);
@@ -82,7 +82,7 @@ test("inactive-account warning is localized, mandatory and stable for one inacti
   const renderedChinese = renderNotificationTemplate(chinese.templates[0], chinese.variables);
   assert.match(renderedEnglish.body, /2026-09-20/);
   assert.match(renderedEnglish.body, /will not delete.*automatically/i);
-  assert.match(renderedChinese.title, /保持 CUAC 账户活跃/);
+  assert.match(renderedChinese.title, /保持 UCAC 账户活跃/);
   assert.doesNotMatch(JSON.stringify({ variables: english.variables, title: renderedEnglish.title,
     body: renderedEnglish.body }), /email address|display.?name|passport/i);
   assert.throws(() => materializeInactiveAccountWarning({ ...input, locale: "en",

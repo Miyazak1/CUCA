@@ -125,8 +125,8 @@ function buildMessage(config: ValidatedConfig, message: PreparedNotificationDeli
   const actionUrl = resolveActionUrl(config.publicAppUrl, message?.actionPath);
   if (message?.channel !== "email" || !recipient || !key || !title || !body || actionUrl === undefined) return undefined;
 
-  const actionText = actionUrl ? `\n\nOpen in CUAC:\n${actionUrl}` : "";
-  const actionHtml = actionUrl ? `<p><a href="${escapeHtml(actionUrl)}">Open in CUAC</a></p>` : "";
+  const actionText = actionUrl ? `\n\nOpen in UCAC:\n${actionUrl}` : "";
+  const actionHtml = actionUrl ? `<p><a href="${escapeHtml(actionUrl)}">Open in UCAC</a></p>` : "";
   return {
     from: config.from,
     to: recipient,

@@ -51,8 +51,8 @@ test("MFA keyring and authenticator URI fail closed around malformed secrets", (
   assert.throws(() => mfaKeyringFromEnv({}), /not configured/);
   assert.throws(() => mfaKeyringFromEnv({ CUAC_AUTH_MFA_ACTIVE_KEY_ID: "v1", CUAC_AUTH_MFA_KEYS_JSON: "{}" }), /unavailable/);
   const uri = buildTotpUri({ secret: "GEZDGNBVGY3TQOJQ", email: "staff+test@example.edu" });
-  assert.match(uri, /^otpauth:\/\/totp\/CUAC%3Astaff%2Btest%40example\.edu\?/);
-  assert.match(uri, /issuer=CUAC/);
+  assert.match(uri, /^otpauth:\/\/totp\/UCAC%3Astaff%2Btest%40example\.edu\?/);
+  assert.match(uri, /issuer=UCAC/);
   assert.match(uri, /digits=6/);
   assert.match(uri, /period=30/);
 });

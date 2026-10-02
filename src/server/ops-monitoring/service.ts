@@ -79,7 +79,7 @@ export class OpsOperationsMonitoringService {
     if (!decision.allowed) throw forbidden(decision.reason);
 
     const result = await this.repository.readOperationsSummary(actor);
-    if (!result.authorized) throw forbidden("Active CUAC staff access grant is required.");
+    if (!result.authorized) throw forbidden("Active UCAC staff access grant is required.");
     const summary = materializeSummary(result.rows);
     await this.auditSink.record(buildAuditEvent(context, {
       action: "ops.operations_summary.read",
@@ -150,7 +150,7 @@ function requireOpsMonitoringContext(context: RequestContext): { actorUserId: st
   if (!context.actorUserId || (context.activeRole !== "cuac_ops" && context.activeRole !== "cuac_admin")
     || context.selectedSurface !== "ops" || context.purpose !== "ops_monitoring" || context.tenantSchoolId !== null
     || (context.authStrength !== "session" && context.authStrength !== "step_up")) {
-    throw forbidden("Authenticated CUAC operations monitoring context is required.");
+    throw forbidden("Authenticated UCAC operations monitoring context is required.");
   }
   return { actorUserId: context.actorUserId, activeRole: context.activeRole };
 }

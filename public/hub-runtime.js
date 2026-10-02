@@ -144,7 +144,7 @@ function renderNextStep() {
   action.textContent = ui("Continue application");
   action.href = applicationSetHref(current);
   stage.textContent = localizedStatus(current.status);
-  attention.textContent = current.cuacId ? ui("Review required information") : ui("Complete setup for a CUAC reference");
+  attention.textContent = current.cuacId ? ui("Review required information") : ui("Complete setup for a UCAC reference");
 }
 
 function renderApplications() {
@@ -164,7 +164,7 @@ function renderApplications() {
       <div>
         <span class="hub-api-status">${escapeHtml(localizedStatus(set.status, "Unknown"))}</span>
         <h3>${escapeHtml(textOrFallback(set.name, "Unnamed application set"))}</h3>
-        <p>${escapeHtml(set.cuacId || "CUAC reference not issued")}</p>
+        <p>${escapeHtml(set.cuacId || "UCAC reference not issued")}</p>
       </div>
       <div class="hub-api-application-meta">
         <span>${escapeHtml(format(choices.length === 1 ? "{count} choice" : "{count} choices", { count: choices.length }))}</span>

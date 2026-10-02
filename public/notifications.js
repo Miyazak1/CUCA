@@ -76,13 +76,13 @@ function normalizeNotificationEvent(event) {
     type: event.type || "update",
     severity: event.severity || "action",
     group: event.group || "Today",
-    title: localized.title || event.title || "CUAC update",
-    body: localized.body || event.body || "A CUAC application event needs your attention.",
-    entity: event.entity || "CUAC",
+    title: localized.title || event.title || "UCAC update",
+    body: localized.body || event.body || "A UCAC application event needs your attention.",
+    entity: event.entity || "UCAC",
     time: event.time || "Just now",
     action: localized.action || event.action || "Open",
     href: event.href || "hub.html",
-    prompt: localized.prompt || event.prompt || "Summarize this CUAC notification and suggest my next action",
+    prompt: localized.prompt || event.prompt || "Summarize this UCAC notification and suggest my next action",
   };
 }
 
@@ -224,7 +224,7 @@ function renderPriority() {
       <div class="priority-copy">
         <span class="status-pill done">Clean</span>
         <h2>No urgent action right now.</h2>
-        <p>Keep browsing programs, scholarships, and city guides. CUAC will surface blockers here.</p>
+        <p>Keep browsing programs, scholarships, and city guides. UCAC will surface blockers here.</p>
       </div>
       <div class="priority-actions"><a href="programs.html">Browse programs</a></div>
     `;

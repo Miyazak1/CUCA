@@ -93,7 +93,7 @@ export const PUBLIC_AGENT_TOOL_DEFINITIONS = Object.freeze([
   publicCatalogTool("catalog.search_cities", "Search the published city catalog.", "cuac.agent.catalog-search.v1"),
   {
     toolKey: "navigation.open_route",
-    description: "Resolve a registered public CUAC route into a semantic navigation intent.",
+    description: "Resolve a registered public UCAC route into a semantic navigation intent.",
     ownerService: "navigation",
     allowedRoles: ["guest", "student"],
     allowedSurfaces: ["public", "student"],

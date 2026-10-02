@@ -5,7 +5,7 @@ const icons = {
 };
 
 const titles = [
-  "Welcome to CUAC",
+  "Welcome to UCAC",
   "Location and background",
   "Study goal",
   "Budget and scholarship",
@@ -141,7 +141,7 @@ form.addEventListener("submit", (event) => {
       readinessReadyCount: readinessCount(),
       readinessTotal: document.querySelectorAll(".readiness-list input[data-check]").length,
       savedAt: new Date().toISOString(),
-      source: "CUAC onboarding preview",
+      source: "UCAC onboarding preview",
     }));
     window.location.href = "hub.html";
     return;

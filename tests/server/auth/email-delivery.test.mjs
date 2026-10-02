@@ -46,7 +46,7 @@ test("Auth email composer builds password reset messages with HTTPS action URL",
   });
 
   assert.equal(message.messageType, "auth.password_reset");
-  assert.equal(message.subject, "Reset your CUAC password");
+  assert.equal(message.subject, "Reset your UCAC password");
   assert.match(message.templateData.actionUrl, /^https:\/\/cuac\.example\.com\/auth\/reset-password#challenge=reset-challenge-1&token=/);
   assert.match(message.templateData.actionUrl, /raw-reset-token/);
 });
@@ -61,7 +61,7 @@ test("Auth email composer builds school staff invite messages with an invite-bou
   });
 
   assert.equal(message.messageType, "auth.school_staff_invite");
-  assert.equal(message.subject, "Activate your CUAC school account");
+  assert.equal(message.subject, "Activate your UCAC school account");
   assert.equal(message.templateData.userId, "ops-1");
   assert.match(message.templateData.actionUrl, /^https:\/\/cuac\.example\.com\/auth\/school-invite#invite=invite-1&token=/);
 });
@@ -72,7 +72,7 @@ test("Auth email composer builds guardian consent with a request-bound fragment"
     consentToken: "raw-guardian-token", expiresAt: new Date("2026-08-31T00:00:00.000Z"),
   });
   assert.equal(message.messageType, "auth.guardian_consent");
-  assert.equal(message.subject, "Review a CUAC child account request");
+  assert.equal(message.subject, "Review a UCAC child account request");
   assert.match(message.templateData.actionUrl, /^https:\/\/cuac\.example\.com\/auth-guardian-consent\.html#request=request-1&token=/);
 });
 
@@ -93,12 +93,12 @@ test("Auth email composer localizes student messages and returns the locale thro
     verificationToken: "raw-email-token", expiresAt: new Date("2026-08-28T00:15:00.000Z"), locale: "ar-SA",
   });
   assert.equal(verification.locale, "ar");
-  assert.equal(verification.subject, "تحقق من بريدك الإلكتروني في CUAC");
+  assert.equal(verification.subject, "تحقق من بريدك الإلكتروني في UCAC");
   assert.match(verification.templateData.actionUrl, /\/auth\/verify-email\?lang=ar#challenge=/);
   const guardian = composeGuardianConsentMessage(config, {
     requestId: "request-vi", userId: "student-vi", emailNormalized: "guardian@example.com",
     consentToken: "raw-guardian-token", expiresAt: new Date("2026-08-31T00:00:00.000Z"), locale: "vi",
   });
-  assert.equal(guardian.subject, "Xem xét yêu cầu tài khoản trẻ em CUAC");
+  assert.equal(guardian.subject, "Xem xét yêu cầu tài khoản trẻ em UCAC");
   assert.match(guardian.templateData.actionUrl, /\?lang=vi#request=/);
 });

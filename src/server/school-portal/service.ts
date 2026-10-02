@@ -279,7 +279,7 @@ function boundedQueueInteger(value: number | undefined, field: string, fallback:
 
 function parseCuacId(value: unknown): string {
   if (typeof value !== "string" || !/^CUAC-[0-9]{4}-[0-9]{6}$/.test(value)) {
-    throw new CuacError("BAD_REQUEST", "CUAC ID must use the CUAC-YYYY-NNNNNN format.", 400);
+    throw new CuacError("BAD_REQUEST", "UCAC application ID must use the CUAC-YYYY-NNNNNN format.", 400);
   }
   return value;
 }

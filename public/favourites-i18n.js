@@ -2,8 +2,8 @@
   "use strict";
 
   const rows = [
-    ["CUAC | Saved items", "CUAC | Mục đã lưu", "CUAC | รายการที่บันทึก", "CUAC | Item tersimpan", "CUAC | Item disimpan", "CUAC | العناصر المحفوظة"],
-    ["CUAC Saved items:", "Mục đã lưu trên CUAC:", "รายการที่บันทึกใน CUAC:", "Item tersimpan CUAC:", "Item disimpan CUAC:", "عناصر CUAC المحفوظة:"],
+    ["UCAC | Saved items", "UCAC | Mục đã lưu", "UCAC | รายการที่บันทึก", "UCAC | Item tersimpan", "UCAC | Item disimpan", "UCAC | العناصر المحفوظة"],
+    ["UCAC Saved items:", "Mục đã lưu trên UCAC:", "รายการที่บันทึกใน UCAC:", "Item tersimpan UCAC:", "Item disimpan UCAC:", "عناصر UCAC المحفوظة:"],
     ["your current research list", "danh sách tìm hiểu hiện tại", "รายการค้นคว้าปัจจุบันของคุณ", "daftar riset Anda saat ini", "senarai kajian semasa anda", "قائمة بحثك الحالية"],
     ["Saved items breadcrumb", "Điều hướng mục đã lưu", "เส้นทางรายการที่บันทึก", "Navigasi item tersimpan", "Navigasi item disimpan", "مسار العناصر المحفوظة"],
     ["Hub", "Hồ sơ", "พื้นที่ของฉัน", "Ruang saya", "Ruang saya", "مساحتي"],

@@ -2,8 +2,8 @@
   "use strict";
 
   const rows = [
-    ["CUAC | Set up your account", "CUAC | Thiết lập tài khoản", "CUAC | ตั้งค่าบัญชี", "CUAC | Siapkan akun", "CUAC | Sediakan akaun", "CUAC | إعداد حسابك"],
-    ["CUAC Account setup:", "Thiết lập tài khoản CUAC:", "การตั้งค่าบัญชี CUAC:", "Penyiapan akun CUAC:", "Penyediaan akaun CUAC:", "إعداد حساب CUAC:"],
+    ["UCAC | Set up your account", "UCAC | Thiết lập tài khoản", "UCAC | ตั้งค่าบัญชี", "UCAC | Siapkan akun", "UCAC | Sediakan akaun", "UCAC | إعداد حسابك"],
+    ["UCAC Account setup:", "Thiết lập tài khoản UCAC:", "การตั้งค่าบัญชี UCAC:", "Penyiapan akun UCAC:", "Penyediaan akaun UCAC:", "إعداد حساب UCAC:"],
     ["student research preferences", "tùy chọn tìm hiểu của sinh viên", "ความต้องการค้นหาของนักศึกษา", "preferensi pencarian pelajar", "pilihan carian pelajar", "تفضيلات بحث الطالب"],
     ["Account setup scope", "Phạm vi thiết lập tài khoản", "ขอบเขตการตั้งค่าบัญชี", "Cakupan penyiapan akun", "Skop penyediaan akaun", "نطاق إعداد الحساب"],
     ["Student account", "Tài khoản sinh viên", "บัญชีนักศึกษา", "Akun pelajar", "Akaun pelajar", "حساب الطالب"],

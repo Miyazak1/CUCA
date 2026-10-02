@@ -110,8 +110,8 @@ test("public catalog lists share bounded launch locales and preserve language ac
   ]);
   for (const html of [universities, programs, scholarships]) {
     assert.match(html, /data-i18n-locales="en,vi,th,id,ms,ar"/);
-    assert.match(html, /i18n-runtime\.js\?v=20260921-public-locales/);
-    assert.match(html, /catalog-list-i18n\.js\?v=20260921-catalog-locales/);
+    assert.match(html, /i18n-runtime\.js\?v=20261002-ucac-brand/);
+    assert.match(html, /catalog-list-i18n\.js\?v=20261002-ucac-brand/);
     assert.match(html, /data-catalog-copy="common\.contentNotice"/);
   }
   assert.match(runtime, /document\.documentElement\.dir = metadata\[locale\]\.dir/);
