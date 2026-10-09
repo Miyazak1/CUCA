@@ -46,7 +46,10 @@ test("product-owner approval is bound to the exact four-guide candidate", async 
 });
 
 test("local GEO guide publisher is approval-bound, atomic and loopback-only", async () => {
-  const source = await readFile(new URL("../scripts/guide-geo-first-four-publish-local.ts", import.meta.url), "utf8");
+  const [source, dockerfile] = await Promise.all([
+    readFile(new URL("../scripts/guide-geo-first-four-publish-local.ts", import.meta.url), "utf8"),
+    readFile(new URL("../deploy/trial/Dockerfile", import.meta.url), "utf8"),
+  ]);
   assert.match(source, /publish-approved-geo-guides-to-cuac-local/);
   assert.match(source, /approval\.candidateSha256 !== candidateSha256/);
   assert.match(source, /localDatabaseUrl\(state\)/);
@@ -56,4 +59,6 @@ test("local GEO guide publisher is approval-bound, atomic and loopback-only", as
   assert.match(source, /governance\.approve/);
   assert.match(source, /governance\.publish/);
   assert.doesNotMatch(source, /DATABASE_URL|POSTGRES_URL|PG_DATABASE_URL/);
+  assert.match(dockerfile, /seeds\/guides\.geo-first-four\.draft\.json/);
+  assert.match(dockerfile, /seeds\/guides\.geo-first-four\.approval\.json/);
 });

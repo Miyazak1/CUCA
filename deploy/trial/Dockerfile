@@ -22,6 +22,8 @@ COPY --from=build --chown=0:0 /opt/cuac/src/server ./src/server
 COPY --from=build --chown=0:0 /opt/cuac/scripts ./scripts
 COPY --from=build --chown=0:0 /opt/cuac/drizzle/pg ./drizzle/pg
 COPY --from=build --chown=0:0 /opt/cuac/seeds/catalog.local.synthetic.json ./seeds/catalog.local.synthetic.json
+COPY --from=build --chown=0:0 /opt/cuac/seeds/guides.geo-first-four.draft.json ./seeds/guides.geo-first-four.draft.json
+COPY --from=build --chown=0:0 /opt/cuac/seeds/guides.geo-first-four.approval.json ./seeds/guides.geo-first-four.approval.json
 
 USER 1000:1000
 EXPOSE 3000
