@@ -32,16 +32,25 @@ test("insight content is dated, categorized, sourced, and distinct from guides",
   assert.doesNotMatch(content, /slug: "study-in-china-in-english-without-hsk"/);
 });
 
-test("sitemap and shared navigation expose insights", async () => {
-  const [sitemap, shell, guideShell] = await Promise.all([
+test("sitemap and the original public shell expose insights", async () => {
+  const [sitemap, shell, guideShell, insightShell, publicSiteShell] = await Promise.all([
     source("app/sitemap.ts"),
     source("public/shared-shell.js"),
     source("app/guides/guide-shell.tsx"),
+    source("app/insights/insight-shell.tsx"),
+    source("app/public-site-shell.tsx"),
   ]);
   assert.match(sitemap, /listInsights/);
   assert.match(sitemap, /insights\/category/);
   assert.match(shell, /href: "\/insights\/"/);
-  assert.match(guideShell, /href="\/insights\/"/);
+  assert.match(guideShell, /PublicSiteShell/);
+  assert.match(guideShell, /active="guides"/);
+  assert.match(insightShell, /PublicSiteShell/);
+  assert.match(insightShell, /active="insights"/);
+  assert.match(publicSiteShell, /data-cuac-header/);
+  assert.match(publicSiteShell, /data-cuac-footer/);
+  assert.match(publicSiteShell, /shared-shell\.css/);
+  assert.match(publicSiteShell, /shared-shell\.js/);
 });
 
 test("site search exposes insights as a first-class result type", async () => {

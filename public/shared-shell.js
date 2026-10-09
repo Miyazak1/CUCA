@@ -673,8 +673,8 @@
 
   function brand() {
     const locale = window.CUACI18n?.locale;
-    const href = shouldCarryLocale(locale) ? `home-v3.html?lang=${encodeURIComponent(locale)}` : "home-v3.html";
-    const aboutHref = shouldCarryLocale(locale) ? `about.html?lang=${encodeURIComponent(locale)}` : "about.html";
+    const href = localizedPageHref("home-v3.html");
+    const aboutHref = localizedPageHref("about.html");
     return `<span class="brand-lockup"><a class="brand" href="${href}" aria-label="UCAC home"><img class="brand-wordmark" src="/ucac-wordmark.png?v=20261009-holalobe-brand" width="128" height="40" alt="" aria-hidden="true" /></a><a class="brand-parent" href="${aboutHref}" aria-label="About UCAC and Holalobe"><span aria-hidden="true"></span>by Holalobe</a></span>`;
   }
 
@@ -707,8 +707,7 @@
   }
 
   function localizedSearchHref() {
-    const locale = window.CUACI18n?.locale;
-    return shouldCarryLocale(locale) ? `search.html?lang=${encodeURIComponent(locale)}` : "search.html";
+    return localizedPageHref("search.html");
   }
 
   function shouldCarryLocale(locale) {
@@ -717,11 +716,13 @@
 
   function localizedPageHref(rawHref) {
     const locale = window.CUACI18n?.locale;
-    if (!shouldCarryLocale(locale) || !rawHref) return rawHref;
-    const url = new URL(rawHref, window.location.href);
-    if (url.origin !== window.location.origin || !url.pathname.toLowerCase().endsWith(".html")) return rawHref;
-    url.searchParams.set("lang", locale);
-    return `${url.pathname.split("/").pop()}${url.search}${url.hash}`;
+    if (!rawHref) return rawHref;
+    const url = new URL(rawHref, `${window.location.origin}/`);
+    if (url.origin !== window.location.origin) return rawHref;
+    if (shouldCarryLocale(locale) && url.pathname.toLowerCase().endsWith(".html")) {
+      url.searchParams.set("lang", locale);
+    }
+    return `${url.pathname}${url.search}${url.hash}`;
   }
 
   let authNavigationPending = false;
@@ -961,7 +962,7 @@
             .map((group) => `
               <div class="footer-col">
                 <strong>${group.title}</strong>
-                ${group.links.map(([label, href]) => `<a href="${href}">${label}</a>`).join("")}
+                ${group.links.map(([label, href]) => `<a href="${localizedPageHref(href)}">${label}</a>`).join("")}
               </div>
             `)
             .join("")}

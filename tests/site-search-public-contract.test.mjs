@@ -14,7 +14,9 @@ test("released surfaces defer Agent UI and expose deterministic site search", as
   assert.match(shell, /isCapabilityEnabled\("agent"\)/);
   assert.match(shell, /agent:\s*false/);
   assert.match(shell, /function localizedSearchHref\(\)/);
-  assert.match(shell, /`search\.html\?lang=\$\{encodeURIComponent\(locale\)\}`/);
+  assert.match(shell, /return localizedPageHref\("search\.html"\)/);
+  assert.match(shell, /new URL\(rawHref, `\$\{window\.location\.origin\}\/`\)/);
+  assert.match(shell, /return `\$\{url\.pathname\}\$\{url\.search\}\$\{url\.hash\}`/);
   assert.match(homeHtml, /<body\b[^>]*\bdata-agent-mode="off"[^>]*>/);
   assert.match(homeHtml, /data-site-search-form/);
   assert.match(homeHtml, /<form class="site-search"[^>]*role="search"/);
