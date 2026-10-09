@@ -1,0 +1,106 @@
+.about-main {
+  max-width: var(--shell-page-width);
+  margin: 0 auto;
+  padding: 72px var(--shell-section-x) 0;
+}
+
+.about-hero {
+  max-width: 880px;
+  padding: 34px 0 76px;
+}
+
+.about-eyebrow {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.about-hero h1 {
+  max-width: 760px;
+  margin: 14px 0 20px;
+  color: var(--text);
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.about-hero p,
+.about-support p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.about-primary,
+.about-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-xs);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.about-primary { background: var(--accent); color: white; }
+.about-secondary { background: white; color: var(--accent-dark); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  padding: 0 0 72px;
+}
+
+.about-grid article,
+.about-principles,
+.about-support {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.about-grid article { padding: 30px; }
+.about-grid article > span { color: var(--accent); font-weight: 900; }
+.about-grid h2,
+.about-principles h2,
+.about-support h2 { margin: 14px 0 12px; color: var(--text); }
+.about-grid p,
+.about-principles li { color: var(--text-muted); line-height: 1.65; }
+
+.about-principles,
+.about-support {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 48px;
+  margin-bottom: 28px;
+  padding: 42px;
+}
+
+.about-principles ul { margin: 0; padding-left: 22px; }
+.about-principles li + li { margin-top: 12px; }
+.about-support { align-items: center; margin-bottom: 72px; background: #effaf8; }
+.about-support .about-actions { justify-content: flex-end; margin: 0; }
+
+@media (max-width: 760px) {
+  .about-main { padding-top: 36px; }
+  .about-hero { padding-bottom: 52px; }
+  .about-grid,
+  .about-principles,
+  .about-support { grid-template-columns: 1fr; }
+  .about-principles,
+  .about-support { gap: 22px; padding: 28px 22px; }
+  .about-support .about-actions { justify-content: flex-start; }
+}

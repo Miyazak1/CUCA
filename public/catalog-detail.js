@@ -79,6 +79,28 @@ function slugify(value) {
     .replace(/^-+|-+$/g, "");
 }
 
+function updateDetailMetadata(identifier, name) {
+  const canonical = new URL(window.location.pathname, "https://ucac.cn");
+  canonical.searchParams.set(config.queryKey, identifier);
+  if (detailLocale !== "en") canonical.searchParams.set("lang", detailLocale);
+
+  let canonicalLink = document.querySelector('link[rel="canonical"]');
+  if (!canonicalLink) {
+    canonicalLink = document.createElement("link");
+    canonicalLink.rel = "canonical";
+    document.head.appendChild(canonicalLink);
+  }
+  canonicalLink.href = canonical.href;
+
+  let description = document.querySelector('meta[name="description"]');
+  if (!description) {
+    description = document.createElement("meta");
+    description.name = "description";
+    document.head.appendChild(description);
+  }
+  description.content = `${name} on UCAC: published catalog details, current source status, and official references.`;
+}
+
 function isUuid(value) {
   return /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(String(value || ""));
 }
@@ -703,6 +725,7 @@ async function loadDetail() {
     const guideTranslation = detailType === "guide" && detailLocale !== "en" ? record.content?.translations?.[detailLocale] : null;
     const name = guideTranslation?.title || record.nameEn || record.titleEn || record.title || record.slug;
     document.title = `${name} | UCAC`;
+    updateDetailMetadata(identifier, name);
     detailRoot.innerHTML = `<a class="catalog-back-link" href="${escapeHtml(detailHref(config.backHref))}"><span aria-hidden="true">&larr;</span>${escapeHtml(config.backLabel)}</a>${html}`;
   } catch (error) {
     renderError(error);

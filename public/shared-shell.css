@@ -70,13 +70,43 @@ body {
   padding: 14px var(--shell-section-x);
 }
 
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  justify-self: start;
+}
+
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
   color: var(--accent-dark);
   font-weight: 900;
   text-decoration: none;
+}
+
+.brand-parent {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand-parent > span {
+  width: 1px;
+  height: 20px;
+  background: var(--line);
+}
+
+.brand-parent:hover,
+.brand-parent:focus-visible {
+  color: var(--accent-dark);
 }
 
 .nav a,
@@ -592,7 +622,7 @@ body {
 [dir="rtl"] .footer,
 [dir="rtl"] main { text-align: right; }
 [dir="rtl"] .nav-actions { justify-self: start; }
-[dir="rtl"] .brand { justify-self: end; }
+[dir="rtl"] .brand-lockup { justify-self: end; }
 
 .account-popover-head .account-email {
   display: block;
@@ -1899,7 +1929,7 @@ body.motion-off .result-enter {
     grid-template-columns: 1fr auto;
   }
 
-  .nav .brand {
+  .nav .brand-lockup {
     grid-column: 1;
     grid-row: 1;
   }
@@ -1948,6 +1978,13 @@ body.motion-off .result-enter {
     gap: 8px;
   }
 
+}
+
+@media (max-width: 480px) {
+  .brand-lockup { gap: 8px; }
+  .brand-wordmark { width: 104px; height: 34px; }
+  .brand-parent { gap: 8px; font-size: 11px; }
+  .brand-parent > span { height: 16px; }
 }
 
 @media (max-width: 560px) {

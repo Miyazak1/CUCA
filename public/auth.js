@@ -58,7 +58,7 @@ const roleProfiles = {
     nextCopy: "Internal actions remain permission checked and auditable.",
     nextHref: "ops-admin-api.html",
     nextLabel: "Open staff tools",
-    emailPlaceholder: "name@cuac.com",
+    emailPlaceholder: "name@example.com",
   },
 };
 

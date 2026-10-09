@@ -16,7 +16,7 @@
         <button type="submit" aria-label="${t("home.search")}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg><span>${t("home.search")}</span></button></form>
       <div class="chips" aria-label="${t("home.catalogTitle")}">
         <button type="button" data-search-chip="undergraduate">${t("home.chip.undergraduate")}</button><button type="button" data-search-chip="master">${t("home.chip.master")}</button>
-        <button type="button" data-search-chip="English taught">${t("home.chip.english")}</button><button type="button" data-search-chip="scholarship">${t("home.chip.scholarship")}</button><button type="button" data-search-chip="Fall 2026">${t("home.chip.fall")}</button>
+        <button type="button" data-search-chip="English taught">${t("home.chip.english")}</button><button type="button" data-search-chip="scholarship">${t("home.chip.scholarship")}</button><button type="button" data-search-chip="current intake">${t("home.chip.fall")}</button>
       </div><div class="planner-feedback" data-planner-feedback aria-live="polite"></div>
     </div></section>
     <section class="section reveal visible"><div class="section-head"><div><h2>${t("home.catalogTitle")}</h2><p>${t("home.destinationNotice")}</p></div></div>

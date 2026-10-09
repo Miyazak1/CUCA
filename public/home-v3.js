@@ -90,44 +90,80 @@
         if (target && html) target.innerHTML = html;
       }
 
-      function renderHomeSummary() {
-        const summary = window.CuacDataClient?.getHomeDiscoverySummary?.();
-        if (!summary) return;
+      function formatCatalogDate(value, fallback) {
+        const date = value ? new Date(value) : null;
+        if (!date || !Number.isFinite(date.valueOf())) return fallback || "Date not published";
+        return new Intl.DateTimeFormat(window.CUACI18n?.locale || "en", { year: "numeric", month: "short", day: "numeric" }).format(date);
+      }
 
-        setHomeHTML("[data-home-categories]", (summary.categories || []).map((category) => `
+      function renderHomeCategories(categories) {
+        setHomeHTML("[data-home-categories]", categories.map((category) => `
           <a class="cat" href="${escapeHomeHTML(category.href || "#")}">
             <span class="category-icon">${homeIcons[category.icon] || homeIcons.program}</span>
             <strong>${escapeHomeHTML(category.title)}</strong><span>${escapeHomeHTML(category.value)}</span>
           </a>
         `).join(""));
+      }
 
-        setHomeHTML("[data-home-question-routes]", (summary.questionRoutes || []).map((route) => `
-          <article class="path-card">
-            <span class="feature-icon">${homeIcons[route.icon] || homeIcons.program}</span>
-            <div><strong>${escapeHomeHTML(route.title)}</strong><p>${escapeHomeHTML(route.copy)}</p></div>
-            <div class="path-meta">${(route.meta || []).map((item) => `<span>${escapeHomeHTML(item)}</span>`).join("")}</div>
-          </article>
-        `).join(""));
-
-        setHomeHTML("[data-home-open-intakes]", (summary.openIntakes || []).map((program) => `
+      function renderCurrentIntakes(programs) {
+        if (!programs.length) return;
+        setHomeHTML("[data-home-open-intakes]", programs.map((program) => {
+          const term = [program.latestIntakeTerm, program.latestIntakeYear].filter(Boolean).join(" ");
+          const context = [program.university, program.citySlug, term].filter(Boolean).join(" · ");
+          const deadline = formatCatalogDate(program.latestIntakeDeadlineDate || program.deadlineDate, program.deadlineLabel);
+          return `
           <div class="program">
-            <div><strong>${escapeHomeHTML(program.title)}</strong><span>${escapeHomeHTML(program.meta)}</span></div>
-            <span class="pill">${escapeHomeHTML(program.deadline)}</span>
-          </div>
-        `).join(""));
+            <div><strong>${escapeHomeHTML(program.nameEn || program.name)}</strong><span>${escapeHomeHTML(context || "Published program route")}</span></div>
+            <span class="pill">${escapeHomeHTML(deadline)}</span>
+          </div>`;
+        }).join(""));
+      }
 
-        setHomeHTML("[data-home-city-snapshot]", (summary.citySnapshot || []).map((city) => `
-          <div class="city"><div><strong>${escapeHomeHTML(city.name)}</strong><span>${escapeHomeHTML(city.cost)}</span></div></div>
+      function renderCitySnapshot(cities) {
+        if (!cities.length) return;
+        setHomeHTML("[data-home-city-snapshot]", cities.map((city) => `
+          <div class="city"><div><strong>${escapeHomeHTML(city.nameEn || city.name)}</strong><span>${escapeHomeHTML(city.monthlyCost || "Cost not published")}</span></div></div>
         `).join(""));
+      }
 
-        setHomeHTML("[data-home-schools]", (summary.schools || []).map((school, index) => `
-          <a class="provider-card" href="${escapeHomeHTML(school.href || "universities.html")}">
-            <div class="provider-image"><img alt="${escapeHomeHTML(school.name)} campus" src="${escapeHomeHTML(school.image || schoolImageFallbacks[index % schoolImageFallbacks.length])}" /></div>
+      function renderSchools(schools) {
+        if (!schools.length) return;
+        setHomeHTML("[data-home-schools]", schools.map((school, index) => `
+          <a class="provider-card" href="university-detail.html?university=${encodeURIComponent(school.id)}">
+            <div class="provider-image"><img alt="${escapeHomeHTML(school.nameEn)} campus" src="${escapeHomeHTML(schoolImageFallbacks[index % schoolImageFallbacks.length])}" /></div>
             <span class="heart">♡</span>
-            <div class="provider-copy"><strong>${escapeHomeHTML(school.name)}</strong><span>${escapeHomeHTML(school.meta)}</span></div>
+            <div class="provider-copy"><strong>${escapeHomeHTML(school.nameEn)}</strong><span>${escapeHomeHTML([school.city, school.regionLabel, Number.isFinite(school.programCount) ? `${school.programCount} published programs` : ""].filter(Boolean).join(" · "))}</span></div>
           </a>
         `).join(""));
       }
 
-      if (!window.CUACI18n || window.CUACI18n.locale === "en") renderHomeSummary();
+      async function renderHomeSummary() {
+        const api = window.CuacCatalogList;
+        if (!api || (window.CUACI18n && window.CUACI18n.locale !== "en")) return;
+        try {
+          const [programPage, schoolPage, scholarshipPage, cityPage] = await Promise.all([
+            api.loadPage("programs", { limit: 6, deadline: "open", sort: "deadline" }),
+            api.loadPage("schools", { limit: 4 }),
+            api.loadPage("scholarships", { limit: 1 }),
+            api.loadPage("cities", { limit: 3 }),
+          ]);
+          const currentPrograms = programPage.records.filter((program) => ["open", "upcoming"].includes(program.intakeAvailability));
+          renderHomeCategories([
+            { title: "Programs", value: `${programPage.total} current routes`, href: "programs.html?deadline=open", icon: "program" },
+            { title: "Universities", value: `${schoolPage.total} published`, href: "universities.html", icon: "school" },
+            { title: "Scholarships", value: `${scholarshipPage.total} funding routes`, href: "scholarships.html", icon: "funding" },
+            { title: "Intakes", value: "Full dates", href: "programs.html?deadline=open", icon: "calendar" },
+            { title: "Cities & cost", value: `${cityPage.total} city guides`, href: "cities.html", icon: "city" },
+            { title: "English-taught", value: "Language filters", href: "programs.html?language=english", icon: "language" },
+            { title: "Documents", value: "Application guide", href: "guides.html#documents", icon: "documents" },
+          ]);
+          renderCurrentIntakes(currentPrograms.slice(0, 3));
+          renderCitySnapshot(cityPage.records);
+          renderSchools(schoolPage.records);
+        } catch (error) {
+          console.warn("Current homepage catalog summary is unavailable.", error);
+        }
+      }
+
+      void renderHomeSummary();
 

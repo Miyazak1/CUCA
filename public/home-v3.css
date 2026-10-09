@@ -772,6 +772,19 @@
         font-size: 16px;
       }
 
+      .holalobe-band {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        border: 1px solid rgba(0, 132, 122, 0.16);
+        border-radius: var(--radius-sm);
+        background: linear-gradient(120deg, #effaf8 0%, #ffffff 58%, #f5f8ff 100%);
+      }
+
+      .holalobe-band .fit-band-copy {
+        max-width: 820px;
+        padding: 44px 48px;
+      }
+
       .dark-button {
         display: inline-flex;
         align-items: center;

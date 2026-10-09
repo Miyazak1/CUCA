@@ -142,7 +142,7 @@
     {
       title: "UCAC",
       links: [
-        ["About us", "home-v3.html#cuac-hub"],
+        ["About UCAC and Holalobe", "about.html"],
         ["Accessibility", "home-v3.html#application-guides"],
         ["Privacy", "privacy.html"],
         ["Children's privacy", "children-privacy.html"],
@@ -182,7 +182,7 @@
     {
       title: "UCAC",
       links: [
-        ["关于我们", "home-v3.html#cuac-hub"],
+        ["关于 UCAC 与 Holalobe", "about.html?lang=zh-CN"],
         ["无障碍", "home-v3.html#application-guides"],
         ["隐私", "privacy.html?lang=zh-CN"],
         ["儿童隐私", "children-privacy.html?lang=zh-CN"],
@@ -672,7 +672,8 @@
   function brand() {
     const locale = window.CUACI18n?.locale;
     const href = shouldCarryLocale(locale) ? `home-v3.html?lang=${encodeURIComponent(locale)}` : "home-v3.html";
-    return `<a class="brand" href="${href}" aria-label="UCAC home"><img class="brand-wordmark" src="/ucac-wordmark.png?v=20261002-transparent-wordmark" width="128" height="40" alt="" aria-hidden="true" /></a>`;
+    const aboutHref = shouldCarryLocale(locale) ? `about.html?lang=${encodeURIComponent(locale)}` : "about.html";
+    return `<span class="brand-lockup"><a class="brand" href="${href}" aria-label="UCAC home"><img class="brand-wordmark" src="/ucac-wordmark.png?v=20261009-holalobe-brand" width="128" height="40" alt="" aria-hidden="true" /></a><a class="brand-parent" href="${aboutHref}" aria-label="About UCAC and Holalobe"><span aria-hidden="true"></span>by Holalobe</a></span>`;
   }
 
   function shellText(key, fallback) {
@@ -884,7 +885,7 @@
   function renderHeader(target) {
     const workspace = workspaceNavigation();
     const active = normalizeActiveNav(target.dataset.active || "home");
-    const note = window.CUACI18n ? shellText("note", target.dataset.note || "China admissions 2026:") : target.dataset.note || "China admissions 2026:";
+    const note = window.CUACI18n ? shellText("note", target.dataset.note || "China admissions:") : target.dataset.note || "China admissions:";
     const noteDetail = window.CUACI18n ? shellText("noteDetail", target.dataset.noteDetail || "") : target.dataset.noteDetail || "";
     const shellContext = getShellContext(target);
     const showSavedShortcut = shouldShowSavedShortcut(shellContext);
@@ -964,7 +965,7 @@
             .join("")}
         </div>
         <div class="footer-bottom">
-          <span>© UCAC 2026</span>
+          <span>© 2026 UCAC · by Holalobe. ${localized ? "保留所有权利。" : "All rights reserved."}</span>
           <div class="footer-legal">
             <a href="cookies.html${localized ? "?lang=zh-CN" : ""}">${localized ? "Cookie 说明" : `${escapeHTML(shellText("cookies", "Cookie notice"))}${englishOnly}`}</a>
             <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "数据与来源政策" : `${escapeHTML(shellText("dataPolicy", "Data and source policy"))}${englishOnly}`}</a>

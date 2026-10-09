@@ -168,9 +168,12 @@ export function AuthActionClient({ kind }: { kind: ActionKind }) {
   return (
     <div className={styles.shell} dir={localeMeta[locale].dir} lang={locale}>
       <header className={styles.header}>
-        <a className={styles.brand} href={localeHref(locale, "/home-v3.html")} aria-label={translate(locale, "UCAC home")}>
-          <img className={styles.mark} src="/ucac-wordmark.png?v=20261002-transparent-wordmark" width="120" height="38" alt="" aria-hidden="true" />
-        </a>
+        <div className={styles.brandLockup}>
+          <a className={styles.brand} href={localeHref(locale, "/home-v3.html")} aria-label={translate(locale, "UCAC home")}>
+            <img className={styles.mark} src="/ucac-wordmark.png?v=20261009-holalobe-brand" width="120" height="38" alt="" aria-hidden="true" />
+          </a>
+          <a className={styles.parentBrand} href={localeHref(locale, "/about.html")}><span aria-hidden="true" />by Holalobe</a>
+        </div>
         <a className={styles.signInLink} href={localeHref(locale, "/auth.html")}>{translate(locale, "Sign in")}</a>
       </header>
 

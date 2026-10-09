@@ -96,7 +96,10 @@ export function SchoolInviteClient() {
   return (
     <div className={styles.shell}>
       <header className={styles.header}>
-        <a className={styles.brand} href="/home-v3.html" aria-label="UCAC home"><img className={styles.mark} src="/ucac-wordmark.png?v=20261002-transparent-wordmark" width="120" height="38" alt="" aria-hidden="true" /></a>
+        <div className={styles.brandLockup}>
+          <a className={styles.brand} href="/home-v3.html" aria-label="UCAC home"><img className={styles.mark} src="/ucac-wordmark.png?v=20261009-holalobe-brand" width="120" height="38" alt="" aria-hidden="true" /></a>
+          <a className={styles.parentBrand} href="/about.html"><span aria-hidden="true" />by Holalobe</a>
+        </div>
         <a className={styles.signInLink} href="/auth.html?role=school">Sign in</a>
       </header>
       <main className={styles.main}>

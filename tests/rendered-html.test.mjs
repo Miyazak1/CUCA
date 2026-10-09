@@ -150,28 +150,28 @@ test("keeps official demo pages mounted on the shared shell", async () => {
     readFile(new URL("../public/FRONTEND_STAGE_ACCEPTANCE.md", import.meta.url), "utf8"),
   ]);
   const sharedShellPages = {
-    "application.html": "CUAC | Application basket",
-    "auth.html": "CUAC | Sign in or create account",
-    "billing.html": "CUAC | Billing and receipt",
-    "cities.html": "CUAC | Cities",
-    "city-detail.html": "CUAC | City details",
-    "favourites.html": "CUAC | Favourites",
-    "guide-detail.html": "CUAC | Guide",
-    "guides.html": "CUAC | Application guides",
-    "home-v3.html": "CUAC | Study in China",
-    "hub.html": "CUAC | Student Hub",
-    "notifications.html": "CUAC | Notifications",
-    "onboarding.html": "CUAC | Account setup",
-    "ops-admin.html": "CUAC | 运营管理后台",
-    "preferences.html": "CUAC | Preferences",
-    "program-detail.html": "CUAC | Program details",
-    "programs.html": "CUAC | Programs",
-    "scholarship-detail.html": "CUAC | Scholarship details",
-    "scholarships.html": "CUAC | Scholarships",
-    "school-settings.html": "CUAC | 学校设置",
-    "school-portal.html": "CUAC | 学校招生工作台",
-    "university-detail.html": "CUAC | University details",
-    "universities.html": "CUAC | Universities",
+    "application.html": "UCAC | My applications",
+    "auth.html": "UCAC | Sign in or create account",
+    "billing.html": "UCAC | Billing and receipt",
+    "cities.html": "UCAC | Cities",
+    "city-detail.html": "UCAC | City details",
+    "favourites.html": "UCAC | Favourites",
+    "guide-detail.html": "UCAC | Guide",
+    "guides.html": "UCAC | Application guides",
+    "home-v3.html": "UCAC | Study in China",
+    "hub.html": "UCAC | Student Hub",
+    "notifications.html": "UCAC | Notifications",
+    "onboarding.html": "UCAC | Account setup",
+    "ops-admin.html": "UCAC | 运营管理后台",
+    "preferences.html": "UCAC | Preferences",
+    "program-detail.html": "UCAC | Program details",
+    "programs.html": "UCAC | Programs",
+    "scholarship-detail.html": "UCAC | Scholarship details",
+    "scholarships.html": "UCAC | Scholarships",
+    "school-settings.html": "UCAC | 学校设置",
+    "school-portal.html": "UCAC | 学校招生工作台",
+    "university-detail.html": "UCAC | University details",
+    "universities.html": "UCAC | Universities",
   };
   const catalogListPages = new Set(["programs.html", "universities.html", "scholarships.html", "cities.html"]);
   const catalogDetailPages = new Set(["program-detail.html", "university-detail.html", "scholarship-detail.html", "city-detail.html"]);
@@ -3592,7 +3592,8 @@ test("keeps the CUAC app shell and static demo assets wired", async () => {
   assert.match(home, /data-home-open-intakes/);
   assert.match(home, /data-home-schools/);
   assert.match(home, /data-create-list/);
-  assert.match(homeJs, /getHomeDiscoverySummary/);
+  assert.match(homeJs, /window\.CuacCatalogList/);
+  assert.match(homeJs, /api\.loadPage/);
   assert.match(homeJs, /renderHomeSummary\(\)/);
   assert.match(homeJs, /window\.CUAC\?\.requireStudentSignedIn\?\.\("Create your student list"/);
   assert.match(homeJs, /selector: "\[data-create-list\]"/);

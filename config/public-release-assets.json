@@ -2,6 +2,8 @@
   "version": 1,
   "releaseScope": "school-handoff-v1",
   "files": [
+    "about.css",
+    "about.html",
     "admissions-data-policy.html",
     "application-i18n.js",
     "application-workspace-refresh.css",

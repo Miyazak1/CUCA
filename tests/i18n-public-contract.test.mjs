@@ -15,6 +15,28 @@ test("localized home advertises only complete launch locales and loads locale be
   assert.ok(scripts.indexOf("shared-shell.js") < scripts.indexOf("home-v3.js"));
 });
 
+test("public shell identifies UCAC as a Holalobe product without time-bound admissions claims", async () => {
+  const [home, homeScript, shell, about, manifest] = await Promise.all([
+    source("public/home-v3.html"),
+    source("public/home-v3.js"),
+    source("public/shared-shell.js"),
+    source("public/about.html"),
+    source("config/public-release-assets.json"),
+  ]);
+  assert.match(shell, /class="brand-parent"[\s\S]*by Holalobe/);
+  assert.match(shell, /About UCAC and Holalobe/);
+  assert.match(shell, /© 2026 UCAC · by Holalobe/);
+  assert.doesNotMatch(shell, /China admissions 2026:/);
+  assert.match(home, /UCAC by Holalobe/);
+  assert.match(home, /catalog-list-api\.js\?v=20261009-current-home/);
+  assert.doesNotMatch(home, /documents=light/);
+  assert.match(homeScript, /window\.CuacCatalogList/);
+  assert.match(homeScript, /api\.loadPage/);
+  assert.match(about, /Holalobe is the parent brand behind UCAC/);
+  assert.match(manifest, /"about\.html"/);
+  assert.match(manifest, /"about\.css"/);
+});
+
 test("browser locale runtime uses bounded URL state, native labels and Arabic RTL without durable browser identity", async () => {
   const runtime = await source("public/i18n-runtime.js");
   for (const locale of ["en", "vi", "th", "id", "ms", "ar"]) assert.match(runtime, new RegExp(`(?:^|\\W)${locale}: \\{ name:`));
