@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "candidatePath": "seeds/guides.geo-first-four.draft.json",
+  "candidateSha256": "5dcb3a0ddae46add822058bd56c2ce47a187c57a27653477a3863bf9adecae13",
+  "reviewReference": "product-owner-chat-approval-2026-10-09",
+  "approvalRecordedAt": "2026-10-09T07:21:52.210Z",
+  "approvedBy": "UCAC product owner",
+  "contentReviewed": true,
+  "sourcesVerified": true,
+  "publicContentConfirmed": true,
+  "publicationAuthorized": true,
+  "databaseWriteAuthorized": true,
+  "scope": {
+    "documentSlugs": [
+      "study-in-china-in-english-without-hsk",
+      "shortlist-chinese-universities-english-bachelors",
+      "compare-scholarships-china-coverage-costs",
+      "china-undergraduate-application-documents-checklist"
+    ],
+    "productionDeploymentAuthorized": false
+  },
+  "note": "The product owner explicitly approved the four-guide pack in the active Codex conversation. This authorizes governed database preparation, approval, and publication, but does not authorize an unreviewed code push or production deployment."
+}

@@ -97,7 +97,7 @@ function setHubCard(cardName, { title, meta, href } = {}) {
 function updateHubActionCards(state) {
   const missing = document.querySelector('[data-count="documents"]')?.textContent?.trim() || "3";
   if (!state) {
-    setHubCard("documents", { title: "Prepare documents", meta: countMeta("documents", missing, "items to check"), href: "guides.html#documents" });
+    setHubCard("documents", { title: "Prepare documents", meta: countMeta("documents", missing, "items to check"), href: "/guides/documents" });
     setHubCard("saved", { title: "Saved routes", meta: savedRouteMeta(), href: "favourites.html" });
     setHubCard("goal", { title: "Study goal", meta: "Intake · city · funding", href: "preferences.html" });
     return;
@@ -108,7 +108,7 @@ function updateHubActionCards(state) {
     setHubCard("goal", { title: "Preferences", meta: "Alerts · language · budget", href: "preferences.html" });
     return;
   }
-  setHubCard("documents", { title: "Check blockers", meta: countMeta("documents", missing, "documents left"), href: "guides.html#documents" });
+  setHubCard("documents", { title: "Check blockers", meta: countMeta("documents", missing, "documents left"), href: "/guides/documents" });
   setHubCard("saved", { title: "Review routes", meta: savedRouteMeta(), href: "favourites.html" });
   setHubCard("goal", { title: "Update plan", meta: "Budget · city · language", href: "preferences.html" });
 }

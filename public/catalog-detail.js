@@ -50,7 +50,7 @@ const DETAIL_CONFIG = {
   guide: {
     queryKey: "guide",
     collection: "guides",
-    backHref: "guides.html",
+    backHref: "/guides/",
     backLabel: detailUi("Back to guides"),
     typeLabel: detailUi("Application guide"),
     icon: "file.svg",

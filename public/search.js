@@ -8,9 +8,9 @@
   );
   const labels = {
     program: t("type.program", "Programs"), school: t("type.school", "Universities"),
-    scholarship: t("type.scholarship", "Scholarships"), city: t("type.city", "Cities"), guide: t("type.guide", "Guides"),
+    scholarship: t("type.scholarship", "Scholarships"), city: t("type.city", "Cities"), guide: t("type.guide", "Guides"), insight: t("type.insight", "Insights"),
   };
-  const icons = { program: "PR", school: "UN", scholarship: "SC", city: "CI", guide: "GU" };
+  const icons = { program: "PR", school: "UN", scholarship: "SC", city: "CI", guide: "GU", insight: "IN" };
   const form = document.querySelector("[data-site-search-form]");
   const input = document.querySelector("[data-site-search-input]");
   const results = document.querySelector("[data-search-results]");

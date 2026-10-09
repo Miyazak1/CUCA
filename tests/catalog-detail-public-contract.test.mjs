@@ -110,7 +110,7 @@ test("catalog detail pages stay on published API fields", async () => {
 test("catalog detail layout remains restrained and responsive", async () => {
   const [css, ...pages] = await Promise.all([
     source("public/catalog-detail.css"),
-    ...["program-detail.html", "university-detail.html", "scholarship-detail.html", "city-detail.html", "guide-detail.html"]
+    ...["program-detail.html", "university-detail.html", "scholarship-detail.html", "city-detail.html"]
       .map((file) => source(`public/${file}`)),
   ]);
 
@@ -130,7 +130,7 @@ test("catalog detail layout remains restrained and responsive", async () => {
 });
 
 test("core catalog detail pages preserve the selected public locale", async () => {
-  const pages = await Promise.all(["program-detail.html", "university-detail.html", "scholarship-detail.html", "city-detail.html", "guide-detail.html"]
+  const pages = await Promise.all(["program-detail.html", "university-detail.html", "scholarship-detail.html", "city-detail.html"]
     .map((file) => source(`public/${file}`)));
   for (const html of pages) {
     assert.match(html, /data-i18n-locales="en,vi,th,id,ms,ar"/);

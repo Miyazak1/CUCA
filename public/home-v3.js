@@ -155,7 +155,7 @@
             { title: "Intakes", value: "Full dates", href: "programs.html?deadline=open", icon: "calendar" },
             { title: "Cities & cost", value: `${cityPage.total} city guides`, href: "cities.html", icon: "city" },
             { title: "English-taught", value: "Language filters", href: "programs.html?language=english", icon: "language" },
-            { title: "Documents", value: "Application guide", href: "guides.html#documents", icon: "documents" },
+            { title: "Documents", value: "Application guide", href: "/guides/documents", icon: "documents" },
           ]);
           renderCurrentIntakes(currentPrograms.slice(0, 3));
           renderCitySnapshot(cityPage.records);

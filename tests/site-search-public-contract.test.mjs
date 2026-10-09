@@ -37,7 +37,7 @@ test("released surfaces defer Agent UI and expose deterministic site search", as
 
 test("all catalog and active workspace pages explicitly disable Agent mode", async () => {
   const pages = [
-    "home-v3.html", "programs.html", "universities.html", "scholarships.html", "cities.html", "guides.html",
+    "home-v3.html", "programs.html", "universities.html", "scholarships.html", "cities.html",
     "hub-api.html", "application.html", "favourites-api.html", "billing-api.html", "notifications.html",
     "preferences-api.html", "school-portal.html", "school-settings-api.html", "ops-admin-api.html", "search.html",
   ];
@@ -77,15 +77,15 @@ test("published guides have a governed searchable repository and share catalog r
 });
 
 test("guide discovery reads the published catalog API and has no Agent event behavior", async () => {
-  const [html, script, listRoute, detailRoute] = await Promise.all([
-    source("public/guides.html"), source("public/guides.js"),
+  const [indexPage, detailPage, helper, listRoute, detailRoute] = await Promise.all([
+    source("app/guides/page.tsx"), source("app/guides/[guideSlug]/page.tsx"),
+    source("src/server/catalog/public-guide-pages.ts"),
     source("app/api/v1/catalog/guides/route.ts"), source("app/api/v1/catalog/guides/[guideSlug]/route.ts"),
   ]);
-  assert.match(html, /data-guide-grid/);
-  assert.match(script, /new URL\("\/api\/v1\/catalog\/guides", location\.origin\)/);
-  assert.match(script, /api\.searchParams\.set\("limit", "100"\)/);
-  assert.doesNotMatch(html, /cuac-data\.js|data-application-timeline|timelineRail/);
-  assert.doesNotMatch(script, /getDiscoveryGuides|CuacDataClient|cuac:agent-action|applyGuideAgentAction|Agent highlighted/);
+  assert.match(indexPage, /listPublishedGuidePages/);
+  assert.match(detailPage, /getPublishedGuidePage/);
+  assert.match(helper, /PostgresCatalogRepository/);
+  for (const sourceText of [indexPage, detailPage, helper]) assert.doesNotMatch(sourceText, /getDiscoveryGuides|CuacDataClient|cuac:agent-action|applyGuideAgentAction|Agent highlighted/);
   assert.match(listRoute, /\.listGuides\(request\)/);
   assert.match(detailRoute, /\.getGuide\(request, params\.guideSlug\)/);
 });

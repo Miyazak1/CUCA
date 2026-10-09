@@ -144,3 +144,16 @@ test("PostgreSQL site search binds every query token and returns safe result car
   assert.equal(group.total, 1);
   assert.deepEqual(group.items[0].matchedFields, ["title"]);
 });
+
+test("site search includes versioned UCAC Insights without issuing catalog SQL", async () => {
+  let queries = 0;
+  const repository = new PostgresSiteSearchRepository({
+    async query() { queries += 1; return []; },
+  });
+  const [group] = await repository.search({ query: "scholarship timing", types: ["insight"], limit: 8, offset: 0 });
+  assert.equal(queries, 0);
+  assert.equal(group.type, "insight");
+  assert.equal(group.total, 1);
+  assert.equal(group.items[0].href, "/insights/2026-scholarship-announcements-coverage-and-timing");
+  assert.equal(group.items[0].verificationStatus, "source-reviewed");
+});

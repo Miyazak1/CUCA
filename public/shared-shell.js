@@ -80,7 +80,8 @@
     { id: "universities", label: "Universities", href: "universities.html" },
     { id: "scholarships", label: "Scholarships", href: "scholarships.html" },
     { id: "cities", label: "Cities", href: "cities.html" },
-    { id: "guides", label: "Guides", href: "guides.html" },
+    { id: "guides", label: "Guides", href: "/guides/" },
+    { id: "insights", label: "Insights", href: "/insights/" },
     { id: "hub", label: "Hub", href: "hub-api.html" },
   ];
 
@@ -90,7 +91,8 @@
     { id: "universities", label: "大学", href: "universities.html" },
     { id: "scholarships", label: "奖学金", href: "scholarships.html" },
     { id: "cities", label: "城市", href: "cities.html" },
-    { id: "guides", label: "指南", href: "guides.html" },
+    { id: "guides", label: "指南", href: "/guides/" },
+    { id: "insights", label: "动态", href: "/insights/" },
     { id: "hub", label: "工作台", href: "hub-api.html" },
   ];
 
@@ -124,10 +126,10 @@
     {
       title: "Apply to China",
       links: [
-        ["Documents", "guides.html#documents"],
-        ["HSK / IELTS", "guides.html#language"],
-        ["Visa and JW form", "guides.html#visa"],
-        ["Intake calendar", "guides.html#timeline"],
+        ["Documents", "/guides/documents"],
+        ["HSK / IELTS", "/guides/language"],
+        ["Visa and JW form", "/guides/visa-arrival"],
+        ["Intake calendar", "/guides/timeline"],
       ],
     },
     {
@@ -164,10 +166,10 @@
     {
       title: "申请中国",
       links: [
-        ["申请材料", "guides.html#documents"],
-        ["HSK / IELTS", "guides.html#language"],
-        ["签证和 JW 表", "guides.html#visa"],
-        ["入学日历", "guides.html#timeline"],
+        ["申请材料", "/guides/documents"],
+        ["HSK / IELTS", "/guides/language"],
+        ["签证和 JW 表", "/guides/visa-arrival"],
+        ["入学日历", "/guides/timeline"],
       ],
     },
     {
@@ -376,7 +378,7 @@
           { title: "What needs checking", meta: "Official notice or adviser", body: "Final eligibility, exception approval, award result, visa/JW sequence, and submission validity.", tags: ["Do not promise"] },
         ],
         actions: [
-          { label: "Open relevant guide", href: "guides.html", tone: "primary" },
+          { label: "Open relevant guide", href: "/guides/", tone: "primary" },
           { label: "Save detail check", action: "save-checklist" },
         ],
         source: "Planning boundary: UCAC can show caution and next steps, but cannot make official guarantees.",
@@ -406,7 +408,7 @@
 
     if (isNavigation) {
       const destination = isDocs
-        ? { label: "Open document guide", href: "guides.html#documents" }
+        ? { label: "Open document guide", href: "/guides/documents" }
         : isScholarship
           ? { label: "Open scholarships", href: "scholarships.html" }
           : isCity || isCost
@@ -466,7 +468,7 @@
           ["Program deadline", "Check date", "ZJU route closes Oct 15 in current UCAC data"],
         ],
         actions: [
-          { label: "Open guide", href: "guides.html#documents", tone: "primary" },
+          { label: "Open guide", href: "/guides/documents", tone: "primary" },
           { label: "Save checklist to Hub", action: "save-checklist" },
         ],
         source: "Based on UCAC guide context and selected route information.",
@@ -546,7 +548,7 @@
           { title: "Chinese-taught route", meta: "Higher language burden", body: "Use only if HSK level and timeline are realistic.", tags: ["HSK needed", "Longer prep"] },
         ],
         actions: [
-          { label: "Open language guide", href: "guides.html#language", tone: "primary" },
+          { label: "Open language guide", href: "/guides/language", tone: "primary" },
           { label: "Find English routes", href: "programs.html" },
         ],
         source: "Answer based on UCAC guide context. Final checks should use official program pages.",
@@ -1677,7 +1679,7 @@
         "confirm-choice-order": "application.html",
         "review-fee": "application.html",
         "submit-application": "application.html",
-        "save-checklist": "guides.html#documents",
+        "save-checklist": "/guides/documents",
         "compare-funding": "scholarships.html",
         "save-cost-estimate": "cities.html",
       };

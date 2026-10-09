@@ -146,7 +146,7 @@ assert(health.response.ok && record(health.body).status === "ok" && record(recor
 results.push({ area: "runtime", status: "passed", evidence: "application and PostgreSQL healthy" });
 
 const surfaces = ["/home-v3.html", "/programs.html", "/universities.html", "/scholarships.html", "/cities.html",
-  "/guides.html", "/search.html", "/auth.html", "/hub-api.html", "/application.html", "/school-portal.html", "/ops-admin-api.html"];
+  "/guides/", "/search.html", "/auth.html", "/hub-api.html", "/application.html", "/school-portal.html", "/ops-admin-api.html"];
 const deliveredSurfaces = await Promise.all(surfaces.map(path => request(path)));
 assert(deliveredSurfaces.every(result => result.response.ok && typeof result.body === "string" && /<!doctype html>/i.test(result.body)),
   "One or more released site surfaces could not be served as HTML.");

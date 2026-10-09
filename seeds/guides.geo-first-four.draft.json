@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "status": "unreviewed_draft",
+  "generatedAt": "2026-10-09T07:14:00.199Z",
+  "publicationAuthorized": false,
+  "databaseWriteAuthorized": false,
+  "evidenceManifest": {
+    "path": "work/catalog-official/2026-10-09T07-14-00-199Z/manifest.json",
+    "sha256": "f213c282bfa544fce53f4ffd60428e1c3e26a4c2b69570a627c305beadfc6c84",
+    "sourceCount": 7
+  },
+  "reviewNotes": [
+    "These drafts use only registered university-owned sources captured by the CUAC official-source workflow.",
+    "Examples are illustrative, not universal admissions rules. Applicants must confirm the current program-level notice before acting.",
+    "A separate qualified reviewer must verify the copy and every source before approval or publication."
+  ],
+  "documents": [
+    {
+      "schemaVersion": 1,
+      "slug": "study-in-china-in-english-without-hsk",
+      "titleEn": "Can You Study in China in English Without HSK?",
+      "titleZh": null,
+      "subtitleEn": "How to separate teaching language, admission evidence, CSCA subjects, and graduation rules",
+      "subtitleZh": null,
+      "summaryEn": "English-taught programs may not use HSK as their admission-language test, but that does not create a universal HSK exemption. Check the exact program, its accepted English evidence, any CSCA subjects, and any Chinese-language requirement that applies later.",
+      "summaryZh": null,
+      "href": "guide-detail.html?guide=study-in-china-in-english-without-hsk",
+      "searchTerms": [
+        "study in China without HSK",
+        "English-taught degree China",
+        "China university English requirement",
+        "HSK exemption",
+        "CSCA English"
+      ],
+      "sections": [
+        {
+          "key": "short-answer",
+          "headingEn": "The short answer",
+          "headingZh": null,
+          "bodyEn": "Sometimes, for a specific English-taught program. There is no safe country-wide yes or no. Universities publish requirements at program level, and the language used in class is only one part of the decision. An English-taught route may ask for IELTS, TOEFL, another recognized test, or evidence of prior English-medium study. It may also publish separate academic or CSCA requirements.",
+          "bodyZh": null
+        },
+        {
+          "key": "four-rules",
+          "headingEn": "Check four different rules",
+          "headingZh": null,
+          "bodyEn": "Keep these questions separate: What language is used for teaching? What language evidence is accepted for admission? Which CSCA examination language and subjects apply? Is Chinese proficiency required during study or before graduation? Treating these as one question is a common source of avoidable application errors.",
+          "bodyZh": null
+        },
+        {
+          "key": "official-examples",
+          "headingEn": "What official examples show",
+          "headingZh": null,
+          "bodyEn": "Zhejiang University's 2026 undergraduate notice separates Chinese-taught and English-taught language evidence, and its English-program catalog publishes program-specific English thresholds and CSCA subjects. UIBE's published English undergraduate materials also list accepted English evidence. These examples prove that applicants must read the exact route; they do not create a rule for every university.",
+          "bodyZh": null
+        },
+        {
+          "key": "evidence-checklist",
+          "headingEn": "Build an evidence checklist before applying",
+          "headingZh": null,
+          "bodyEn": "Record the official program URL, teaching language, accepted English tests, minimum component scores if stated, exemption wording, CSCA subjects, application deadline, and the date you checked the notice. Save the source page or PDF with your application notes because universities can revise requirements between admission cycles.",
+          "bodyZh": null
+        },
+        {
+          "key": "decision",
+          "headingEn": "How to make the final decision",
+          "headingZh": null,
+          "bodyEn": "Apply without HSK only when the current official program notice supports that conclusion and you meet every alternative language and academic condition. If the notice is incomplete or two official pages conflict, ask the university in writing and keep the response with your application record.",
+          "bodyZh": null
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://iczu.zju.edu.cn/admissionsen/2024/1030/c68988a2981659/page.htm",
+          "label": "Zhejiang University 2026 international undergraduate admissions",
+          "capturedAt": "2026-10-09T07:14:00.625Z"
+        },
+        {
+          "url": "https://iczu.zju.edu.cn/_upload/article/files/e7/8c/1be7b2df433fb9427df707571d84/f8f1cb33-05a5-4fec-a602-3eac6caf8e14.pdf",
+          "label": "Zhejiang University 2026 English-taught undergraduate program catalog",
+          "capturedAt": "2026-10-09T07:14:01.818Z"
+        },
+        {
+          "url": "https://sie.uibe.edu.cn/en/Prgr/BacDegPro/OfEn/index.htm",
+          "label": "UIBE international undergraduate programs offered in English",
+          "capturedAt": "2026-10-09T07:14:06.509Z"
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "slug": "shortlist-chinese-universities-english-bachelors",
+      "titleEn": "How to Shortlist Chinese Universities for an English-Taught Bachelor's Degree",
+      "titleZh": null,
+      "subtitleEn": "A repeatable process based on verified program-level evidence",
+      "subtitleZh": null,
+      "summaryEn": "Start with eligible programs, then compare academic fit, language evidence, total cost, deadlines, and source quality. A shorter verified list is more useful than a long list built from outdated summaries.",
+      "summaryZh": null,
+      "href": "guide-detail.html?guide=shortlist-chinese-universities-english-bachelors",
+      "searchTerms": [
+        "English bachelor China",
+        "Chinese university shortlist",
+        "international undergraduate China",
+        "compare China universities",
+        "English-taught programs China"
+      ],
+      "sections": [
+        {
+          "key": "eligibility-first",
+          "headingEn": "Filter for eligibility before ranking",
+          "headingZh": null,
+          "bodyEn": "Begin with the current official program catalog and admissions notice. Confirm that the route is open to international applicants, taught in English, available for the intended intake, and compatible with your previous subjects and qualifications. Remove a program from the working list if any mandatory condition is not met.",
+          "bodyZh": null
+        },
+        {
+          "key": "comparison-table",
+          "headingEn": "Use one comparison table",
+          "headingZh": null,
+          "bodyEn": "Create columns for program, university, city, duration, tuition, other compulsory costs, accepted language evidence, CSCA subjects, academic prerequisites, deadline, scholarship options, application channel, and official-source date. Keep unknown fields visibly unknown instead of guessing.",
+          "bodyZh": null
+        },
+        {
+          "key": "program-level",
+          "headingEn": "Compare at program level",
+          "headingZh": null,
+          "bodyEn": "Requirements can differ inside the same university. Zhejiang University's 2026 English undergraduate catalog, for example, publishes different program details in the same official document. UIBE likewise maintains English-program information alongside a route-specific admissions page. University reputation alone cannot answer whether a particular route fits you.",
+          "bodyZh": null
+        },
+        {
+          "key": "balanced-list",
+          "headingEn": "Build a balanced final list",
+          "headingZh": null,
+          "bodyEn": "Use evidence rather than labels such as safe or ambitious. A balanced list can include programs where your verified profile is comfortably above the published minimum, programs near the published threshold, and carefully chosen higher-competition options. Confirm affordability without assuming a scholarship will be awarded.",
+          "bodyZh": null
+        },
+        {
+          "key": "last-check",
+          "headingEn": "Run a final source check",
+          "headingZh": null,
+          "bodyEn": "Before paying a fee or submitting, reopen every official source. Check for a revised deadline, changed document list, updated language threshold, or a new application portal instruction. Record the final verification date for each choice.",
+          "bodyZh": null
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://iczu.zju.edu.cn/admissionsen/2024/1030/c68988a2981659/page.htm",
+          "label": "Zhejiang University 2026 international undergraduate admissions",
+          "capturedAt": "2026-10-09T07:14:00.625Z"
+        },
+        {
+          "url": "https://iczu.zju.edu.cn/_upload/article/files/e7/8c/1be7b2df433fb9427df707571d84/f8f1cb33-05a5-4fec-a602-3eac6caf8e14.pdf",
+          "label": "Zhejiang University 2026 English-taught undergraduate program catalog",
+          "capturedAt": "2026-10-09T07:14:01.818Z"
+        },
+        {
+          "url": "https://sie.uibe.edu.cn/en/Prgr/BacDegPro/OfEn/abc864a25c554202bf5c9acbf53d2729.htm",
+          "label": "UIBE 2026 international undergraduate program",
+          "capturedAt": "2026-10-09T07:14:05.375Z"
+        },
+        {
+          "url": "https://sie.uibe.edu.cn/en/Prgr/BacDegPro/OfEn/index.htm",
+          "label": "UIBE international undergraduate programs offered in English",
+          "capturedAt": "2026-10-09T07:14:06.509Z"
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "slug": "compare-scholarships-china-coverage-costs",
+      "titleEn": "Scholarships in China: How to Compare Coverage Before You Apply",
+      "titleZh": null,
+      "subtitleEn": "Compare funding components, eligibility, renewal, and application channels",
+      "subtitleZh": null,
+      "summaryEn": "The word scholarship does not describe one standard package. Compare tuition, accommodation, living support, insurance, duration, renewal conditions, and uncovered costs against the exact official notice.",
+      "summaryZh": null,
+      "href": "guide-detail.html?guide=compare-scholarships-china-coverage-costs",
+      "searchTerms": [
+        "China scholarship coverage",
+        "Chinese Government Scholarship",
+        "China university scholarship",
+        "scholarship tuition accommodation stipend",
+        "compare scholarships China"
+      ],
+      "sections": [
+        {
+          "key": "not-one-package",
+          "headingEn": "Do not compare names alone",
+          "headingZh": null,
+          "bodyEn": "Scholarships with similar names can differ by university, degree level, program, intake, and year. Compare the current notice for the exact route. A full label should not be treated as proof that every personal expense is covered.",
+          "bodyZh": null
+        },
+        {
+          "key": "coverage-grid",
+          "headingEn": "Build a coverage grid",
+          "headingZh": null,
+          "bodyEn": "Create separate rows for tuition, application fee, accommodation, living allowance, medical insurance, books, travel, visa and residence costs, deposits, and any program-specific charges. Mark each item as covered, partly covered, not covered, or not stated. Keep the currency, payment frequency, and duration exactly as published.",
+          "bodyZh": null
+        },
+        {
+          "key": "official-example",
+          "headingEn": "Use official examples carefully",
+          "headingZh": null,
+          "bodyEn": "UIBE's 2026 Silk Road Program notice states that its package includes tuition, accommodation, living expenses, and insurance. Nanjing University publishes separate official pages for Chinese Government and municipal scholarships. These sources illustrate why applicants must compare each named route rather than transfer one package's benefits to another.",
+          "bodyZh": null
+        },
+        {
+          "key": "eligibility-process",
+          "headingEn": "Compare eligibility and process",
+          "headingZh": null,
+          "bodyEn": "Record degree level, nationality or country scope if stated, age or academic conditions, language evidence, eligible majors, required portals, nomination requirements, document list, deadline, and whether a separate university application is required. Also record who makes the final award decision.",
+          "bodyZh": null
+        },
+        {
+          "key": "renewal-risk",
+          "headingEn": "Check renewal and remaining cost",
+          "headingZh": null,
+          "bodyEn": "Identify the funded period, annual review rules, academic or conduct conditions, and what happens if funding is suspended. Calculate a self-funded fallback budget for all items not explicitly covered. Do not commit to a program on the assumption that an award or renewal is guaranteed.",
+          "bodyZh": null
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://sie.uibe.edu.cn/en/Newsss/NotAnn/015d323bb31249e280505021cd4ca20c.htm",
+          "label": "UIBE 2026 Silk Road Program of Chinese Government Scholarship",
+          "capturedAt": "2026-10-09T07:14:07.608Z"
+        },
+        {
+          "url": "https://hwxy.nju.edu.cn/lxnd/zsxx/jxj/zgzfjxj/20231025/i252280.html",
+          "label": "Nanjing University 2026 Chinese Government Scholarship Type B high-level graduate program",
+          "capturedAt": "2026-10-09T07:14:03.055Z"
+        },
+        {
+          "url": "https://hwxy.nju.edu.cn/lxnd/zsxx/jxj/njszfjxj/index.html",
+          "label": "Nanjing University 2026 Nanjing Government Scholarship",
+          "capturedAt": "2026-10-09T07:14:04.122Z"
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "slug": "china-undergraduate-application-documents-checklist",
+      "titleEn": "China Undergraduate Application Documents: A Practical Checklist",
+      "titleZh": null,
+      "subtitleEn": "Organize identity, academic, language, and route-specific evidence before submission",
+      "subtitleZh": null,
+      "summaryEn": "Build a master document set, then reconcile it against every program's current official checklist. File quality, translation rules, validity dates, and route-specific additions matter as much as having the document name on a list.",
+      "summaryZh": null,
+      "href": "guide-detail.html?guide=china-undergraduate-application-documents-checklist",
+      "searchTerms": [
+        "China university application documents",
+        "undergraduate China document checklist",
+        "passport transcript diploma China application",
+        "international student application China",
+        "notarized translation China university"
+      ],
+      "sections": [
+        {
+          "key": "master-set",
+          "headingEn": "Start with a master set",
+          "headingZh": null,
+          "bodyEn": "Prepare a clear passport identity page, recent identification photo, high school diploma or expected-graduation evidence, complete transcripts, and the language evidence required by the selected route. Use the exact name and document format requested by the official application system.",
+          "bodyZh": null
+        },
+        {
+          "key": "route-specific",
+          "headingEn": "Add route-specific documents",
+          "headingZh": null,
+          "bodyEn": "Depending on the program and applicant, the university may request CSCA results, a personal statement, recommendation letters, financial evidence, guardian or guarantor documents, health records, prior Chinese visa pages, or other declarations. A master checklist is a starting point, not a substitute for the current program notice.",
+          "bodyZh": null
+        },
+        {
+          "key": "translation",
+          "headingEn": "Check language, translation, and certification rules",
+          "headingZh": null,
+          "bodyEn": "Confirm whether documents must be in Chinese or English and what form of notarized or certified translation is accepted. Zhejiang University's published notice says materials in other languages require notarized translations. Apply the wording of each university's own notice rather than assuming one institution's rule applies everywhere.",
+          "bodyZh": null
+        },
+        {
+          "key": "quality-control",
+          "headingEn": "Run file-level quality control",
+          "headingZh": null,
+          "bodyEn": "Open every uploaded file after export. Check that all pages are present, text is readable, stamps and signatures are visible, the orientation is correct, the filename is meaningful, and the file meets the portal's size and format limits. UIBE's scholarship notice explicitly warns that unclear or substandard files will not be reviewed.",
+          "bodyZh": null
+        },
+        {
+          "key": "final-reconciliation",
+          "headingEn": "Reconcile before submission",
+          "headingZh": null,
+          "bodyEn": "For each application, compare your upload list line by line with the current official notice and portal. Verify names, passport validity, dates, scores, translations, fee status, and submission deadline. Keep a copy of the final files and confirmation page, but never email or post documents unless the official instructions require it.",
+          "bodyZh": null
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://iczu.zju.edu.cn/admissionsen/2024/1030/c68988a2981659/page.htm",
+          "label": "Zhejiang University 2026 international undergraduate admissions",
+          "capturedAt": "2026-10-09T07:14:00.625Z"
+        },
+        {
+          "url": "https://sie.uibe.edu.cn/en/Prgr/BacDegPro/OfEn/abc864a25c554202bf5c9acbf53d2729.htm",
+          "label": "UIBE 2026 international undergraduate program",
+          "capturedAt": "2026-10-09T07:14:05.375Z"
+        },
+        {
+          "url": "https://sie.uibe.edu.cn/en/Prgr/BacDegPro/OfEn/index.htm",
+          "label": "UIBE international undergraduate programs offered in English",
+          "capturedAt": "2026-10-09T07:14:06.509Z"
+        },
+        {
+          "url": "https://sie.uibe.edu.cn/en/Newsss/NotAnn/015d323bb31249e280505021cd4ca20c.htm",
+          "label": "UIBE 2026 Silk Road Program of Chinese Government Scholarship",
+          "capturedAt": "2026-10-09T07:14:07.608Z"
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import type { RequestContext } from "../shared/request-context.ts";
 import { badRequest, serviceUnavailable } from "../shared/errors.ts";
 import { authorizePublicCatalogRead } from "../catalog/service.ts";
 
-export const SITE_SEARCH_TYPES = ["program", "school", "scholarship", "city", "guide"] as const;
+export const SITE_SEARCH_TYPES = ["program", "school", "scholarship", "city", "guide", "insight"] as const;
 
 export const SITE_SEARCH_SYNONYMS = Object.freeze({
   "ai": "artificial intelligence",

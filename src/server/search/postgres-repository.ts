@@ -1,6 +1,7 @@
 import type { SqlCatalogClient } from "../catalog/postgres-repository.ts";
 import { serviceUnavailable } from "../shared/errors.ts";
 import type { SiteSearchGroup, SiteSearchInput, SiteSearchItem, SiteSearchRepository, SiteSearchType } from "./service.ts";
+import { categoryFor, listInsights } from "../../content/insights.ts";
 
 type SearchRow = {
   type: SiteSearchType;
@@ -34,6 +35,7 @@ export class PostgresSiteSearchRepository implements SiteSearchRepository {
 
   async search(input: SiteSearchInput): Promise<SiteSearchGroup[]> {
     const groups = await Promise.all(input.types.map(async (type) => {
+      if (type === "insight") return searchInsights(input);
       const rows = await this.client.query<SearchRow>(buildSearchStatement(type, input.query), searchParams(input.query, input.limit, input.offset));
       return {
         type,
@@ -56,6 +58,34 @@ export class PostgresSiteSearchRepository implements SiteSearchRepository {
     }));
     return groups;
   }
+}
+
+function searchInsights(input: SiteSearchInput): SiteSearchGroup {
+  const tokens = input.query.toLocaleLowerCase().split(/\s+/).filter(Boolean);
+  const matches = listInsights().filter((post) => {
+    const category = categoryFor(post);
+    const text = [post.title, post.description, category.name, ...post.tags, ...post.sections.flatMap((section) => [section.heading, ...section.paragraphs])]
+      .join(" ").normalize("NFKC").toLocaleLowerCase();
+    return tokens.every((token) => text.includes(token));
+  });
+  return {
+    type: "insight",
+    total: matches.length,
+    nextCursor: null,
+    items: matches.slice(input.offset, input.offset + input.limit).map((post) => ({
+      type: "insight",
+      id: post.slug,
+      slug: post.slug,
+      title: post.title,
+      titleZh: null,
+      subtitle: categoryFor(post).name,
+      summary: post.description,
+      href: `/insights/${post.slug}`,
+      verificationStatus: "source-reviewed",
+      lastVerifiedAt: new Date(post.updatedAt),
+      matchedFields: post.title.toLocaleLowerCase().includes(input.query.toLocaleLowerCase()) ? ["title"] : ["catalog"],
+    })),
+  };
 }
 
 function titleMatches(row: Pick<SearchRow, "title" | "titleZh">, query: string): boolean {
