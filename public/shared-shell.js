@@ -72,6 +72,7 @@
     arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>',
     spark: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.7 5.1L19 10l-5.3 1.9L12 17l-1.7-5.1L5 10l5.3-1.9Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8Z"/></svg>',
     expand: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5H5v3"/><path d="M5 5l6 6"/><path d="M16 19h3v-3"/><path d="m19 19-6-6"/></svg>',
+    menu: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
   };
 
   const navItems = [
@@ -94,6 +95,27 @@
     { id: "guides", label: "指南", href: "/guides/" },
     { id: "insights", label: "动态", href: "/insights/" },
     { id: "hub", label: "工作台", href: "hub-api.html" },
+  ];
+
+  const navGroups = [
+    { id: "explore", itemIds: ["programs", "universities", "scholarships", "cities"] },
+    { id: "apply", itemIds: ["guides"] },
+  ];
+
+  const applyNavItems = [
+    { id: "guides", label: "Application guides", href: "/guides/" },
+    { id: "documents", label: "Documents", href: "/guides/documents" },
+    { id: "language", label: "Language requirements", href: "/guides/language" },
+    { id: "visa", label: "Visa and JW form", href: "/guides/visa-arrival" },
+    { id: "timeline", label: "Intake calendar", href: "/guides/timeline" },
+  ];
+
+  const applyNavItemsZh = [
+    { id: "guides", label: "申请指南", href: "/guides/" },
+    { id: "documents", label: "申请材料", href: "/guides/documents" },
+    { id: "language", label: "语言要求", href: "/guides/language" },
+    { id: "visa", label: "签证与 JW 表", href: "/guides/visa-arrival" },
+    { id: "timeline", label: "入学时间表", href: "/guides/timeline" },
   ];
 
   const studentWorkspaceNavItems = [
@@ -672,7 +694,6 @@
   }
 
   function brand() {
-    const locale = window.CUACI18n?.locale;
     const href = localizedPageHref("home-v3.html");
     const aboutHref = localizedPageHref("about.html");
     return `<span class="brand-lockup"><a class="brand" href="${href}" aria-label="UCAC home"><img class="brand-wordmark" src="/ucac-wordmark.png?v=20261009-holalobe-brand" width="128" height="40" alt="" aria-hidden="true" /></a><a class="brand-parent" href="${aboutHref}" aria-label="About UCAC and Holalobe"><span aria-hidden="true"></span>by Holalobe</a></span>`;
@@ -866,6 +887,69 @@
     return `<a class="nav-icon" data-nav-saved-shortcut href="${localizedPageHref("favourites-api.html")}" aria-label="${escapeHTML(shellText("savedList", "Saved list"))}">${icons.saved}</a>`;
   }
 
+  function workspaceHrefFor(shellContext) {
+    if (shellContext.role === "school_staff") return "school-portal.html";
+    if (["cuac_ops", "cuac_admin"].includes(shellContext.role)) return "ops-admin-api.html";
+    return "hub-api.html";
+  }
+
+  function renderWorkspaceShortcut(shellContext, localizedNav, mobile = false) {
+    if (shellContext.authState !== "signed-in") return "";
+    const label = localizedNav ? "我的 UCAC" : shellText("myUcac", "My UCAC");
+    const className = mobile ? "nav-mobile-workspace" : "my-ucac-link";
+    return `<a class="${className}" href="${localizedPageHref(workspaceHrefFor(shellContext))}">${escapeHTML(label)}${mobile ? icons.arrow : ""}</a>`;
+  }
+
+  function renderNavActions(shellContext, localizedNav, target = { dataset: {} }) {
+    return `
+      <button class="nav-menu-toggle" type="button" data-primary-nav-toggle aria-expanded="false" aria-controls="cuac-primary-nav" aria-label="${localizedNav ? "打开主导航" : escapeHTML(shellText("openMenu", "Open navigation"))}">${icons.menu}</button>
+      ${renderLanguageSelector()}
+      <a class="nav-icon" href="${localizedSearchHref()}" aria-label="${localizedNav ? "全站搜索" : escapeHTML(shellText("search", "Search UCAC"))}">${icons.search}</a>
+      ${shouldShowSavedShortcut(shellContext) ? renderSavedShortcut() : ""}
+      ${renderWorkspaceShortcut(shellContext, localizedNav)}
+      ${renderAccountMenu(target)}
+    `;
+  }
+
+  function renderPrimaryNavigation(headerNavItems, active, localizedNav, shellContext) {
+    const byId = new Map(headerNavItems.map((item) => [item.id, item]));
+    const exploreItems = navGroups[0].itemIds.map((id) => byId.get(id)).filter(Boolean);
+    const applyItems = (localizedNav ? applyNavItemsZh : applyNavItems).map((item) => ({
+      ...item,
+      href: localizedPageHref(item.href),
+    }));
+    const insights = byId.get("insights");
+    const groups = [
+      {
+        id: "explore",
+        label: localizedNav ? "探索" : shellText("nav.explore", "Explore"),
+        items: exploreItems,
+        active: exploreItems.some((item) => item.id === active),
+      },
+      {
+        id: "apply",
+        label: localizedNav ? "申请中国" : shellText("nav.apply", "Apply to China"),
+        items: applyItems,
+        active: active === "guides",
+      },
+    ];
+    return `
+      ${groups.map((group) => `<div class="nav-group${group.active ? " active" : ""}" data-primary-nav-group>
+        <button class="nav-group-trigger" type="button" data-primary-nav-trigger aria-haspopup="true" aria-expanded="false">
+          <span>${escapeHTML(group.label)}</span>${icons.chevron}
+        </button>
+        <div class="nav-dropdown nav-dropdown-${group.id}" data-primary-nav-dropdown hidden>
+          <span class="nav-dropdown-label">${escapeHTML(group.label)}</span>
+          <div class="nav-dropdown-links">
+            ${group.items.map((item) => `<a class="${item.id === active ? "active" : ""}" href="${item.href}"${item.id === active ? ' aria-current="page"' : ""}>${escapeHTML(item.label)}${icons.arrow}</a>`).join("")}
+          </div>
+        </div>
+      </div>`).join("")}
+      ${insights ? `<a class="nav-direct-link${insights.id === active ? " active" : ""}" href="${insights.href}"${insights.id === active ? ' aria-current="page"' : ""}>${escapeHTML(insights.label)}</a>` : ""}
+      ${renderWorkspaceShortcut(shellContext, localizedNav, true)}
+    `;
+  }
+
   function renderWorkspaceNavigation(workspace) {
     if (!workspace) return "";
     const localized = workspace.kind !== "student";
@@ -891,13 +975,8 @@
     const note = window.CUACI18n ? shellText("note", target.dataset.note || "China admissions:") : target.dataset.note || "China admissions:";
     const noteDetail = window.CUACI18n ? shellText("noteDetail", target.dataset.noteDetail || "") : target.dataset.noteDetail || "";
     const shellContext = getShellContext(target);
-    const showSavedShortcut = shouldShowSavedShortcut(shellContext);
     const localizedNav = ["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) || ["school", "ops"].includes(document.body.dataset.agentMode || "");
-    const workspaceHref = shellContext.role === "school_staff"
-      ? "school-portal.html"
-      : ["cuac_ops", "cuac_admin"].includes(shellContext.role)
-        ? "ops-admin-api.html"
-        : "hub-api.html";
+    const workspaceHref = workspaceHrefFor(shellContext);
     const headerNavItems = (localizedNav ? roleNavItems : navItems).map((item) => {
       if (localizedNav) return item.id === "hub" ? { ...item, href: workspaceHref } : item;
       const label = shellText(`nav.${item.id}`, item.label);
@@ -907,14 +986,11 @@
       <div class="top-note">${note}${noteDetail ? `<span>&nbsp;${noteDetail}</span>` : ""}</div>
       <header class="nav">
         ${brand()}
-        <nav class="nav-links" aria-label="${localizedNav ? "主导航" : escapeHTML(shellText("primaryNav", "Primary navigation"))}">
-          ${headerNavItems.map((item) => `<a class="${item.id === active ? "active" : ""}" href="${item.href}"${item.id === active ? ' aria-current="page"' : ""}>${item.label}</a>`).join("")}
+        <nav class="nav-links" id="cuac-primary-nav" aria-label="${localizedNav ? "主导航" : escapeHTML(shellText("primaryNav", "Primary navigation"))}">
+          ${renderPrimaryNavigation(headerNavItems, active, localizedNav, shellContext)}
         </nav>
         <div class="nav-actions" aria-label="${localizedNav ? "账号操作" : escapeHTML(shellText("accountActions", "Account actions"))}">
-          ${renderLanguageSelector()}
-          <a class="nav-icon" href="${localizedSearchHref()}" aria-label="${localizedNav ? "全站搜索" : escapeHTML(shellText("search", "Search UCAC"))}">${icons.search}</a>
-          ${showSavedShortcut ? renderSavedShortcut() : ""}
-          ${renderAccountMenu(target)}
+          ${renderNavActions(shellContext, localizedNav, target)}
         </div>
       </header>
       ${renderWorkspaceNavigation(workspace)}
@@ -1086,7 +1162,8 @@
     const navActions = header?.querySelector(".nav-actions");
     if (!header || !navActions) return;
     const shellContext = getShellContext();
-    navActions.innerHTML = `${renderLanguageSelector()}<a class="nav-icon" href="${localizedSearchHref()}" aria-label="${escapeHTML(shellText("search", "Search UCAC"))}">${icons.search}</a>${shouldShowSavedShortcut(shellContext) ? renderSavedShortcut() : ""}${renderAccountMenu({ dataset: {} })}`;
+    const localizedNav = ["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) || ["school", "ops"].includes(document.body.dataset.agentMode || "");
+    navActions.innerHTML = renderNavActions(shellContext, localizedNav);
     initAccountMenus();
     initLanguageSelectors();
   }
@@ -2001,6 +2078,92 @@
     });
   }
 
+  let primaryNavigationDismissBound = false;
+
+  function closePrimaryNavigation(header, options = {}) {
+    if (!header) return;
+    header.classList.remove("menu-open");
+    const menuToggle = header.querySelector("[data-primary-nav-toggle]");
+    if (menuToggle) {
+      menuToggle.setAttribute("aria-expanded", "false");
+      const localized = ["school", "ops"].includes(document.body.dataset.agentMode || "");
+      menuToggle.setAttribute("aria-label", localized ? "打开主导航" : shellText("openMenu", "Open navigation"));
+    }
+    header.querySelectorAll("[data-primary-nav-group]").forEach((group) => {
+      group.classList.remove("open");
+      const trigger = group.querySelector("[data-primary-nav-trigger]");
+      const dropdown = group.querySelector("[data-primary-nav-dropdown]");
+      if (trigger) trigger.setAttribute("aria-expanded", "false");
+      if (dropdown) dropdown.hidden = true;
+    });
+    if (options.focusToggle) menuToggle?.focus();
+  }
+
+  function initPrimaryNavigation() {
+    const header = document.querySelector("header.nav");
+    if (!header || header.dataset.primaryNavInitialized === "true") return;
+    header.dataset.primaryNavInitialized = "true";
+
+    header.addEventListener("click", (event) => {
+      const menuToggle = event.target.closest("[data-primary-nav-toggle]");
+      if (menuToggle) {
+        const open = !header.classList.contains("menu-open");
+        closePrimaryNavigation(header);
+        header.classList.toggle("menu-open", open);
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? shellText("closeMenu", "Close navigation") : shellText("openMenu", "Open navigation"));
+        return;
+      }
+
+      const trigger = event.target.closest("[data-primary-nav-trigger]");
+      if (!trigger) return;
+      const group = trigger.closest("[data-primary-nav-group]");
+      const dropdown = group?.querySelector("[data-primary-nav-dropdown]");
+      if (!group || !dropdown) return;
+      const open = trigger.getAttribute("aria-expanded") !== "true";
+      header.querySelectorAll("[data-primary-nav-group]").forEach((item) => {
+        if (item === group) return;
+        item.classList.remove("open");
+        item.querySelector("[data-primary-nav-trigger]")?.setAttribute("aria-expanded", "false");
+        const otherDropdown = item.querySelector("[data-primary-nav-dropdown]");
+        if (otherDropdown) otherDropdown.hidden = true;
+      });
+      group.classList.toggle("open", open);
+      trigger.setAttribute("aria-expanded", String(open));
+      dropdown.hidden = !open;
+    });
+
+    header.addEventListener("keydown", (event) => {
+      const trigger = event.target.closest("[data-primary-nav-trigger]");
+      if (trigger && event.key === "ArrowDown" && trigger.getAttribute("aria-expanded") !== "true") {
+        event.preventDefault();
+        trigger.click();
+        trigger.closest("[data-primary-nav-group]")?.querySelector(".nav-dropdown a")?.focus();
+        return;
+      }
+      if (event.key !== "Escape") return;
+      const openTrigger = header.querySelector('[data-primary-nav-trigger][aria-expanded="true"]');
+      const mobileOpen = header.classList.contains("menu-open");
+      if (!openTrigger && !mobileOpen) return;
+      event.preventDefault();
+      closePrimaryNavigation(header, { focusToggle: mobileOpen && !openTrigger });
+      if (!mobileOpen) openTrigger?.focus();
+    });
+
+    if (primaryNavigationDismissBound) return;
+    primaryNavigationDismissBound = true;
+    document.addEventListener("click", (event) => {
+      const currentHeader = document.querySelector("header.nav");
+      if (currentHeader && !currentHeader.contains(event.target)) closePrimaryNavigation(currentHeader);
+    });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1020) {
+        const currentHeader = document.querySelector("header.nav");
+        if (currentHeader?.classList.contains("menu-open")) closePrimaryNavigation(currentHeader);
+      }
+    });
+  }
+
   function initAccountMenus() {
     const menus = Array.from(document.querySelectorAll("[data-account-menu]"));
     if (!menus.length) return;
@@ -2162,6 +2325,7 @@
   window.CUAC = { ...(window.CUAC || {}), requireSignedIn, requireStudentSignedIn, requireStudentSignedInReady, showSignInRequired, dataAttributeSelector, isSignedIn: () => getShellContext().authState === "signed-in", isStudentSignedIn, isCapabilityEnabled, authReady: () => runtimeAuthReadyPromise, capabilitiesReady: () => runtimeCapabilitiesReadyPromise, releaseCapabilities: () => runtimeReleaseCapabilities };
   initProtectedStudentLinks();
   initAuthNavigationControls();
+  initPrimaryNavigation();
   initAccountMenus();
   initLanguageSelectors();
   const runtimeAuthReadyPromise = loadRuntimeAuthState();

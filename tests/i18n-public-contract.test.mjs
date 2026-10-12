@@ -53,14 +53,14 @@ test("shared student account navigation localizes labels and preserves the selec
     source("public/shared-shell.js"),
     source("public/shared-shell.css"),
   ]);
-  for (const key of ["accountChecking", "openAccountMenu", "savedList", "signOut", "studentWorkspaceTagline", "privacyData", "getSupport", "workspace.studentInfo", "workspace.notifications", "workspace.preferences"]) {
+  for (const key of ["accountChecking", "openAccountMenu", "savedList", "signOut", "myUcac", "openMenu", "closeMenu", "nav.explore", "nav.apply", "studentWorkspaceTagline", "privacyData", "getSupport", "workspace.studentInfo", "workspace.notifications", "workspace.preferences"]) {
     assert.match(shell, new RegExp(`shellText\\("${key.replaceAll(".", "\\.")}"`));
   }
   for (const locale of ["vi", "th", "id", "ms", "ar"]) {
     const localeStart = runtime.indexOf(`${locale}: {`);
     assert.notEqual(localeStart, -1);
     const localeCopy = runtime.slice(localeStart, runtime.indexOf("\n    },", localeStart));
-    for (const key of ["shell.savedList", "shell.openAccountMenu", "shell.signOut", "shell.workspace.studentInfo"]) {
+    for (const key of ["shell.savedList", "shell.openAccountMenu", "shell.signOut", "shell.myUcac", "shell.openMenu", "shell.closeMenu", "shell.nav.explore", "shell.nav.apply", "shell.nav.insights", "shell.workspace.studentInfo"]) {
       assert.ok(localeCopy.includes(`"${key}"`), `${locale} missing ${key}`);
     }
   }
@@ -75,7 +75,11 @@ test("shared student account navigation localizes labels and preserves the selec
   assert.match(shell, /class="workspace-nav-links"/);
   assert.doesNotMatch(shell, /workspace\?\.items \|\|/);
   assert.match(shellCss, /\.workspace-nav-shell/);
-  assert.match(shellCss, /\.nav \.nav-links[\s\S]*overflow-x: auto/);
+  assert.match(shell, /data-primary-nav-trigger/);
+  assert.match(shell, /data-primary-nav-toggle/);
+  assert.match(shell, /function initPrimaryNavigation\(\)/);
+  assert.match(shellCss, /\.nav\.menu-open \.nav-links/);
+  assert.match(shellCss, /\.nav-dropdown-links/);
   assert.match(shell, /class="language-selector-icon">\$\{icons\.globe\}/);
   assert.match(shell, /data-cuac-language/);
   assert.match(shell, /role="listbox"/);
