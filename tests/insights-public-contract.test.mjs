@@ -98,11 +98,14 @@ test("Insights CMS keeps drafts governed while published content feeds every pub
   assert.match(reader, /listStaticInsights/);
   assert.match(validator, /Insight table rows must match the header width/);
   assert.match(validator, /contentOrder/);
+  assert.match(validator, /paragraphs\.length > 200/);
   assert.match(opsHtml, /data-ops-tab="insights"/);
   assert.match(opsScript, /data-insight-draft/);
   assert.match(opsScript, /data-insight-publish/);
   assert.match(opsScript, /data-insight-withdraw/);
   assert.match(opsScript, /wordClipboardToInsightText/);
+  assert.match(opsScript, /MsoHeading/);
+  assert.match(opsScript, /mso-outline-level/);
   assert.match(opsScript, /data-insight-body/);
   assert.match(opsScript, /parseInsightTable/);
   assert.match(opsScript, /insightSlugFromTitle/);

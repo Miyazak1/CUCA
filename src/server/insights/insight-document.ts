@@ -38,8 +38,8 @@ export function parseInsightDocument(value: unknown): Omit<InsightPost, "status"
     const row = inputRecord(item, ["id", "heading", "paragraphs", "bullets", "tables", "contentOrder"]);
     const id = text(row.id, "Insight section id", 100);
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)) throw badRequest("Insight section ids must be URL-safe.");
-    if (!Array.isArray(row.paragraphs) || row.paragraphs.length > 30) throw badRequest("Insight section paragraphs must be a bounded list.");
-    if (row.bullets !== undefined && (!Array.isArray(row.bullets) || row.bullets.length > 30)) throw badRequest("Insight bullets must be a bounded list.");
+    if (!Array.isArray(row.paragraphs) || row.paragraphs.length > 200) throw badRequest("Insight section paragraphs must contain no more than 200 items.");
+    if (row.bullets !== undefined && (!Array.isArray(row.bullets) || row.bullets.length > 200)) throw badRequest("Insight bullets must contain no more than 200 items.");
     if (row.tables !== undefined && (!Array.isArray(row.tables) || row.tables.length > 12)) throw badRequest("Insight tables must be a bounded list.");
     const paragraphs = row.paragraphs.map(paragraph => text(paragraph, "Insight paragraph", 6000, true));
     const bullets = row.bullets === undefined ? undefined : row.bullets.map(bullet => text(bullet, "Insight bullet", 1200, true));

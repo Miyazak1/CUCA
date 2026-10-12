@@ -31,12 +31,17 @@ test("Insight documents are bounded structured content with optional sources and
   const withoutLinks = document(); withoutLinks.sources = []; withoutLinks.relatedGuides = [];
   assert.deepEqual(parseInsightDocument(withoutLinks).sources, []);
   assert.deepEqual(parseInsightDocument(withoutLinks).relatedGuides, []);
+  const longSection = document(); longSection.sections[0].paragraphs = Array.from({ length: 200 }, (_, index) => `Paragraph ${index + 1}`);
+  longSection.sections[0].bullets = []; longSection.sections[0].tables = [];
+  longSection.sections[0].contentOrder = longSection.sections[0].paragraphs.map((_, index) => `p:${index}`);
+  assert.equal(parseInsightDocument(longSection).sections[0].paragraphs.length, 200);
   for (const mutate of [
     value => { value.title = "<script>"; }, value => { value.sources[0].url = "http://example.edu"; },
     value => { value.sections[0].id = "Bad id"; }, value => { value.relatedGuides[0].href = "https://other.test"; }, value => { value.extra = true; },
     value => { value.sections[0].tables[0].rows[0] = ["Missing date"]; },
     value => { value.sections[0].tables[0].rows[0][0] = "<script>"; },
     value => { value.sections[0].contentOrder = ["p:0", "b"]; },
+    value => { value.sections[0].paragraphs = Array.from({ length: 201 }, (_, index) => `Paragraph ${index + 1}`); },
   ]) {
     const candidate = structuredClone(document()); mutate(candidate);
     assert.throws(() => parseInsightDocument(candidate), error => error.status === 400);

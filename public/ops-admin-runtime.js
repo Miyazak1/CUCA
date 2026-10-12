@@ -1075,7 +1075,9 @@ function wordTableToMarkdown(table) {
 
 function wordClipboardToInsightText(html) {
   const clipboard = new DOMParser().parseFromString(html, "text/html");
-  if (!clipboard.querySelector("table")) return null;
+  const isWord = /(?:class=(?:"|')?Mso|mso-|urn:schemas-microsoft-com:office:word|<w:WordDocument)/i.test(html);
+  const hasStructuredContent = clipboard.querySelector("table, h1, h2, h3, h4, h5, h6, [class*='MsoHeading'], [style*='mso-outline-level']");
+  if (!isWord && !hasStructuredContent) return null;
   const blocks = [];
   const visit = node => {
     if (node.nodeType !== Node.ELEMENT_NODE) return;
@@ -1087,7 +1089,11 @@ function wordClipboardToInsightText(html) {
       return;
     }
     if (["p", "h1", "h2", "h3", "h4", "h5", "h6"].includes(tag) && !node.querySelector("table")) {
-      const text = cleanText(node.textContent).replace(/\s+/g, " "); if (text) blocks.push(text); return;
+      const text = cleanText(node.textContent).replace(/\s+/g, " ");
+      const wordHeading = /(?:^|\s)MsoHeading\d*(?:\s|$)/i.test(node.getAttribute("class") || "")
+        || /mso-outline-level\s*:\s*[1-9]/i.test(node.getAttribute("style") || "");
+      if (text) blocks.push(/^h[1-6]$/.test(tag) || wordHeading ? `## ${text}` : text);
+      return;
     }
     [...node.children].forEach(visit);
   };
@@ -1157,7 +1163,7 @@ function renderInsights(posts, versions, editable) {
       ${posts.map(item => `<button type="button" data-insight-select="${escapeHtml(item.id)}" class="${item.id === selected?.id ? "active" : ""}"><strong>${escapeHtml(item.content?.title || item.slug)}</strong><span>${escapeHtml(item.status)} · 修订 ${escapeHtml(item.publicationRevision)}</span></button>`).join("")}
     </aside><div class="ops-guide-editor">
       <form class="ops-guide-draft" data-insight-draft data-post-id="${escapeHtml(selected?.id || "")}">
-        <div class="ops-guide-publication"><div><span class="ops-record-id">${selected ? "编辑新草稿版本" : "新文章"}</span><h3>${escapeHtml(content.title || "撰写 UCAC Insight")}</h3><p>正文格式：用 <code>## 小标题</code> 开始章节，空行分隔段落，<code>- </code> 开始项目符号。可以直接从 Word 粘贴表格，系统会转换为可编辑表格并保留行列内容。</p></div>${statusBadge(selected?.status || "draft")}</div>
+        <div class="ops-guide-publication"><div><span class="ops-record-id">${selected ? "编辑新草稿版本" : "新文章"}</span><h3>${escapeHtml(content.title || "撰写 UCAC Insight")}</h3><p>正文格式：用 <code>## 小标题</code> 开始章节，空行分隔段落，<code>- </code> 开始项目符号。从 Word 粘贴时会自动识别标题章节和表格，并转换为可继续编辑的正文格式。</p></div>${statusBadge(selected?.status || "draft")}</div>
         <div class="ops-guide-fields">
           <label><span>URL Slug</span><input name="slug" data-insight-slug maxlength="160" pattern="[a-z0-9]+(-[a-z0-9]+)*" value="${escapeHtml(selected?.slug || content.slug || "")}" ${selected ? "readonly" : ""} required /><small class="ops-field-help">新建文章时根据英文标题自动生成；手动修改后不再覆盖。发布后保持不变。</small></label>
           <label><span>栏目</span><select name="category" required><option value="admissions-updates">Admissions updates</option><option value="program-watch">Program watch</option><option value="scholarship-watch">Scholarship watch</option></select></label>

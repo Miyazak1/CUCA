@@ -60,6 +60,8 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   assert.match(script, /data-insight-withdraw/);
   assert.match(script, /data-insight-body/);
   assert.match(script, /wordClipboardToInsightText/);
+  assert.match(script, /MsoHeading/);
+  assert.match(script, /mso-outline-level/);
   assert.match(script, /getData\("text\/html"\)/);
   assert.match(script, /insightSlugFromTitle/);
   assert.match(script, /slug\.dataset\.manual/);
