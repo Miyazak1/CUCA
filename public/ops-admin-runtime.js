@@ -971,6 +971,12 @@ function insightSectionOrder(section) {
   ];
 }
 
+function insightSlugFromTitle(value) {
+  return cleanText(value).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+    .replace(/&/g, " and ").replace(/[’']/g, "").replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "").slice(0, 160).replace(/-+$/g, "");
+}
+
 function insightBodyFromSections(sections) {
   return (Array.isArray(sections) ? sections : []).map(section => {
     const blocks = insightSectionOrder(section).map(token => {
@@ -1153,9 +1159,9 @@ function renderInsights(posts, versions, editable) {
       <form class="ops-guide-draft" data-insight-draft data-post-id="${escapeHtml(selected?.id || "")}">
         <div class="ops-guide-publication"><div><span class="ops-record-id">${selected ? "编辑新草稿版本" : "新文章"}</span><h3>${escapeHtml(content.title || "撰写 UCAC Insight")}</h3><p>正文格式：用 <code>## 小标题</code> 开始章节，空行分隔段落，<code>- </code> 开始项目符号。可以直接从 Word 粘贴表格，系统会转换为可编辑表格并保留行列内容。</p></div>${statusBadge(selected?.status || "draft")}</div>
         <div class="ops-guide-fields">
-          <label><span>URL Slug</span><input name="slug" maxlength="160" pattern="[a-z0-9]+(-[a-z0-9]+)*" value="${escapeHtml(selected?.slug || content.slug || "")}" ${selected ? "readonly" : ""} required /></label>
+          <label><span>URL Slug</span><input name="slug" data-insight-slug maxlength="160" pattern="[a-z0-9]+(-[a-z0-9]+)*" value="${escapeHtml(selected?.slug || content.slug || "")}" ${selected ? "readonly" : ""} required /><small class="ops-field-help">新建文章时根据英文标题自动生成；手动修改后不再覆盖。发布后保持不变。</small></label>
           <label><span>栏目</span><select name="category" required><option value="admissions-updates">Admissions updates</option><option value="program-watch">Program watch</option><option value="scholarship-watch">Scholarship watch</option></select></label>
-          <label class="wide"><span>标题</span><input name="title" maxlength="240" value="${escapeHtml(content.title || "")}" required /></label>
+          <label class="wide"><span>标题</span><input name="title" data-insight-title maxlength="240" value="${escapeHtml(content.title || "")}" required /></label>
           <label class="wide"><span>摘要</span><textarea name="description" maxlength="800" required>${escapeHtml(content.description || "")}</textarea></label>
           <label><span>标签（逗号分隔）</span><input name="tags" maxlength="960" value="${escapeHtml((content.tags || []).join(", "))}" required /></label>
           <label><span>作者</span><input name="author" maxlength="120" value="${escapeHtml(content.author || "UCAC Editorial")}" required /></label>
@@ -2182,7 +2188,14 @@ function bindOpsEvents() {
   document.addEventListener("paste", pasteInsightBody);
   document.addEventListener("input", event => {
     const editor = event.target.closest?.("[data-insight-draft]");
-    if (editor) updateInsightPreview(editor);
+    if (editor) {
+      const slug = editor.querySelector("[data-insight-slug]");
+      if (!editor.dataset.postId && event.target.matches?.("[data-insight-title]") && slug?.dataset.manual !== "true") {
+        slug.value = insightSlugFromTitle(event.target.value);
+      }
+      if (event.target.matches?.("[data-insight-slug]")) slug.dataset.manual = "true";
+      updateInsightPreview(editor);
+    }
   });
   document.addEventListener("click", event => {
     const tab = event.target.closest("[data-ops-tab]");

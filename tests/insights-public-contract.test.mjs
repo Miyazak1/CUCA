@@ -103,5 +103,7 @@ test("Insights CMS keeps drafts governed while published content feeds every pub
   assert.match(opsScript, /wordClipboardToInsightText/);
   assert.match(opsScript, /data-insight-body/);
   assert.match(opsScript, /parseInsightTable/);
+  assert.match(opsScript, /insightSlugFromTitle/);
+  assert.match(opsScript, /data-insight-slug/);
   assert.doesNotMatch(opsScript, /data-insight-approve/);
 });
