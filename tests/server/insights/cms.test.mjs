@@ -9,7 +9,12 @@ const document = () => ({
   schemaVersion: 1, slug: "current-admissions-briefing", title: "Current admissions briefing",
   description: "A dated, source-linked briefing for international applicants.", category: "admissions-updates",
   tags: ["2026 intake"], author: "UCAC Editorial", readingMinutes: 5, featured: false,
-  sections: [{ id: "overview", heading: "What changed", paragraphs: ["The official notice now includes a current application date."], bullets: ["Recheck before submission"] }],
+  sections: [{
+    id: "overview", heading: "What changed", paragraphs: ["The official notice now includes a current application date."],
+    bullets: ["Recheck before submission"],
+    tables: [{ headers: ["Subject", "Date"], rows: [["Mathematics", "14 November"], ["Physics", "15 November"]] }],
+    contentOrder: ["p:0", "t:0", "b"],
+  }],
   sources: [{ url: "https://example.edu/admissions", label: "Official admissions notice", checkedAt: "2026-10-12T00:00:00.000Z" }],
   relatedGuides: [{ href: "/guides/application-documents", label: "Application documents" }],
 });
@@ -20,10 +25,15 @@ const context = (overrides = {}) => createRequestContext({ actorUserId: randomUU
 test("Insight documents are bounded, source-linked structured content", () => {
   const parsed = parseInsightDocument(document());
   assert.equal(parsed.slug, "current-admissions-briefing");
+  assert.deepEqual(parsed.sections[0].tables?.[0].rows[1], ["Physics", "15 November"]);
+  assert.deepEqual(parsed.sections[0].contentOrder, ["p:0", "t:0", "b"]);
   assert.match(insightDigest(parsed), /^[a-f0-9]{64}$/);
   for (const mutate of [
     value => { value.title = "<script>"; }, value => { value.sources = []; }, value => { value.sources[0].url = "http://example.edu"; },
     value => { value.sections[0].id = "Bad id"; }, value => { value.relatedGuides[0].href = "https://other.test"; }, value => { value.extra = true; },
+    value => { value.sections[0].tables[0].rows[0] = ["Missing date"]; },
+    value => { value.sections[0].tables[0].rows[0][0] = "<script>"; },
+    value => { value.sections[0].contentOrder = ["p:0", "b"]; },
   ]) {
     const candidate = structuredClone(document()); mutate(candidate);
     assert.throws(() => parseInsightDocument(candidate), error => error.status === 400);

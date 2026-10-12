@@ -955,24 +955,151 @@ async function submitGuideCommand(form) {
   } finally { opsState.busy = false; }
 }
 
+function insightTableMarkdown(table) {
+  const escapeCell = value => String(value ?? "").replaceAll("\\", "\\\\").replaceAll("|", "\\|").replace(/\s+/g, " ").trim();
+  const headers = (table?.headers || []).map(escapeCell);
+  if (!headers.length) return "";
+  const row = cells => `| ${headers.map((_, index) => escapeCell(cells?.[index])).join(" | ")} |`;
+  return [row(headers), `| ${headers.map(() => "---").join(" | ")} |`, ...(table.rows || []).map(row)].join("\n");
+}
+
+function insightSectionOrder(section) {
+  return Array.isArray(section?.contentOrder) ? section.contentOrder : [
+    ...(section?.paragraphs || []).map((_, index) => `p:${index}`),
+    ...((section?.bullets || []).length ? ["b"] : []),
+    ...(section?.tables || []).map((_, index) => `t:${index}`),
+  ];
+}
+
 function insightBodyFromSections(sections) {
-  return (Array.isArray(sections) ? sections : []).map(section => [`## ${section.heading}`,
-    ...(section.paragraphs || []), ...((section.bullets || []).map(item => `- ${item}`))].join("\n\n")).join("\n\n");
+  return (Array.isArray(sections) ? sections : []).map(section => {
+    const blocks = insightSectionOrder(section).map(token => {
+      if (token.startsWith("p:")) return section.paragraphs?.[Number(token.slice(2))] || "";
+      if (token === "b") return (section.bullets || []).map(item => `- ${item}`).join("\n");
+      if (token.startsWith("t:")) return insightTableMarkdown(section.tables?.[Number(token.slice(2))]);
+      return "";
+    }).filter(Boolean);
+    return [`## ${section.heading}`, ...blocks].join("\n\n");
+  }).join("\n\n");
+}
+
+function splitInsightTableRow(line) {
+  const source = line.trim().replace(/^\|/, "").replace(/\|$/, "");
+  const cells = []; let value = "", escaped = false;
+  for (const character of source) {
+    if (escaped) { value += character; escaped = false; continue; }
+    if (character === "\\") { escaped = true; continue; }
+    if (character === "|") { cells.push(value.trim()); value = ""; continue; }
+    value += character;
+  }
+  cells.push(value.trim());
+  return cells;
+}
+
+function parseInsightTable(block) {
+  const lines = block.split("\n").map(line => line.trim()).filter(Boolean);
+  if (lines.length < 3 || !lines.every(line => line.startsWith("|") && line.endsWith("|"))) return null;
+  const headers = splitInsightTableRow(lines[0]);
+  const separator = splitInsightTableRow(lines[1]);
+  if (separator.length !== headers.length || !separator.every(cell => /^:?-{3,}:?$/.test(cell))) return null;
+  const rows = lines.slice(2).map(splitInsightTableRow);
+  if (!rows.length || rows.some(row => row.length !== headers.length)) throw new Error("表格每一行必须与表头列数一致。");
+  return { headers, rows };
 }
 
 function parseInsightBody(value) {
   const sections = []; let current = null;
+  const ensureSection = () => {
+    if (!current) { current = { id: "overview", heading: "Overview", paragraphs: [], bullets: [], tables: [], contentOrder: [] }; sections.push(current); }
+    return current;
+  };
   for (const block of cleanText(value).split(/\n\s*\n/).map(item => item.trim()).filter(Boolean)) {
     if (block.startsWith("## ")) {
-      const heading = block.slice(3).trim(), id = heading.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || `section-${sections.length + 1}`;
-      current = { id, heading, paragraphs: [], bullets: [] }; sections.push(current); continue;
+      const heading = block.slice(3).trim(), baseId = heading.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || `section-${sections.length + 1}`;
+      let id = baseId, suffix = 2; while (sections.some(section => section.id === id)) id = `${baseId}-${suffix++}`;
+      current = { id, heading, paragraphs: [], bullets: [], tables: [], contentOrder: [] }; sections.push(current); continue;
     }
-    if (!current) { current = { id: "overview", heading: "Overview", paragraphs: [], bullets: [] }; sections.push(current); }
-    if (block.split("\n").every(line => line.trim().startsWith("- "))) current.bullets.push(...block.split("\n").map(line => line.trim().slice(2).trim()).filter(Boolean));
-    else current.paragraphs.push(block);
+    const section = ensureSection(), table = parseInsightTable(block);
+    if (table) { section.contentOrder.push(`t:${section.tables.length}`); section.tables.push(table); continue; }
+    if (block.split("\n").every(line => line.trim().startsWith("- "))) {
+      if (!section.contentOrder.includes("b")) section.contentOrder.push("b");
+      section.bullets.push(...block.split("\n").map(line => line.trim().slice(2).trim()).filter(Boolean));
+      continue;
+    }
+    section.contentOrder.push(`p:${section.paragraphs.length}`); section.paragraphs.push(block);
   }
-  for (const section of sections) if (!section.paragraphs.length) section.paragraphs.push("Details are listed below.");
-  return sections.map(section => ({ ...section, ...(section.bullets.length ? {} : { bullets: undefined }) }));
+  return sections.map(section => ({
+    id: section.id, heading: section.heading, paragraphs: section.paragraphs,
+    ...(section.bullets.length ? { bullets: section.bullets } : {}),
+    ...(section.tables.length ? { tables: section.tables } : {}), contentOrder: section.contentOrder,
+  }));
+}
+
+function wordTableToMarkdown(table) {
+  const occupied = new Map(), rows = [...table.rows].map((sourceRow, rowIndex) => {
+    const row = []; let column = 0;
+    const fillOccupied = () => {
+      while (occupied.has(`${rowIndex}:${column}`)) { row[column] = occupied.get(`${rowIndex}:${column}`); column += 1; }
+    };
+    for (const cell of sourceRow.cells) {
+      fillOccupied();
+      const value = cleanText(cell.textContent).replace(/\s+/g, " ");
+      const columnSpan = Math.max(1, Number(cell.colSpan) || 1), rowSpan = Math.max(1, Number(cell.rowSpan) || 1);
+      for (let down = 0; down < rowSpan; down += 1) {
+        for (let across = 0; across < columnSpan; across += 1) {
+          const expanded = down === 0 && across === 0 ? value : "";
+          if (down === 0) row[column + across] = expanded;
+          else occupied.set(`${rowIndex + down}:${column + across}`, expanded);
+        }
+      }
+      column += columnSpan;
+    }
+    fillOccupied();
+    for (const [key, value] of occupied) {
+      const [targetRow, targetColumn] = key.split(":").map(Number);
+      if (targetRow === rowIndex) row[targetColumn] = value;
+    }
+    return row;
+  }).filter(row => row.length);
+  if (!rows.length) return "";
+  const width = Math.max(...rows.map(row => row.length));
+  const normalized = rows.map(row => [...row, ...Array(Math.max(0, width - row.length)).fill("")]);
+  return insightTableMarkdown({ headers: normalized[0], rows: normalized.slice(1).length ? normalized.slice(1) : [Array(width).fill("")] });
+}
+
+function wordClipboardToInsightText(html) {
+  const clipboard = new DOMParser().parseFromString(html, "text/html");
+  if (!clipboard.querySelector("table")) return null;
+  const blocks = [];
+  const visit = node => {
+    if (node.nodeType !== Node.ELEMENT_NODE) return;
+    const tag = node.tagName.toLowerCase();
+    if (tag === "table") { const table = wordTableToMarkdown(node); if (table) blocks.push(table); return; }
+    if (["ul", "ol"].includes(tag)) {
+      const items = [...node.querySelectorAll(":scope > li")].map(item => cleanText(item.textContent).replace(/\s+/g, " ")).filter(Boolean);
+      if (items.length) blocks.push(items.map(item => `- ${item}`).join("\n"));
+      return;
+    }
+    if (["p", "h1", "h2", "h3", "h4", "h5", "h6"].includes(tag) && !node.querySelector("table")) {
+      const text = cleanText(node.textContent).replace(/\s+/g, " "); if (text) blocks.push(text); return;
+    }
+    [...node.children].forEach(visit);
+  };
+  [...clipboard.body.children].forEach(visit);
+  return blocks.join("\n\n");
+}
+
+function pasteInsightBody(event) {
+  const textarea = event.target.closest?.("[data-insight-body]");
+  if (!textarea) return;
+  const html = event.clipboardData?.getData("text/html") || "", converted = html ? wordClipboardToInsightText(html) : null;
+  if (!converted) return;
+  event.preventDefault();
+  const start = textarea.selectionStart, end = textarea.selectionEnd;
+  const before = textarea.value.slice(0, start), after = textarea.value.slice(end);
+  const insertion = `${before && !before.endsWith("\n\n") ? "\n\n" : ""}${converted}${after && !after.startsWith("\n\n") ? "\n\n" : ""}`;
+  textarea.setRangeText(insertion, start, end, "end");
+  textarea.dispatchEvent(new Event("input", { bubbles: true }));
 }
 
 function parseInsightLinks(value, kind) {
@@ -997,9 +1124,16 @@ function updateInsightPreview(form) {
   if (!preview) return;
   try {
     const document = insightDocumentFromForm(form);
+    const renderTable = table => `<div class="ops-insight-table-wrap"><table class="ops-insight-table"><thead><tr>${table.headers.map(header => `<th>${escapeHtml(header)}</th>`).join("")}</tr></thead><tbody>${table.rows.map(row => `<tr>${row.map(cell => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    const renderSection = section => insightSectionOrder(section).map(token => {
+      if (token.startsWith("p:")) return `<p>${escapeHtml(section.paragraphs[Number(token.slice(2))])}</p>`;
+      if (token === "b") return `<ul>${(section.bullets || []).map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+      if (token.startsWith("t:")) return renderTable(section.tables[Number(token.slice(2))]);
+      return "";
+    }).join("");
     preview.innerHTML = `<p class="ops-record-id">草稿预览 · ${escapeHtml(document.category)}</p><h2>${escapeHtml(document.title)}</h2><p>${escapeHtml(document.description)}</p>
       <div class="ops-state">${escapeHtml(document.author)} · ${escapeHtml(document.readingMinutes)} 分钟阅读 · ${escapeHtml(document.tags.join(" · "))}</div>
-      ${document.sections.map(section => `<section><h3>${escapeHtml(section.heading)}</h3>${section.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join("")}${(section.bullets || []).length ? `<ul>${section.bullets.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : ""}</section>`).join("")}`;
+      ${document.sections.map(section => `<section><h3>${escapeHtml(section.heading)}</h3>${renderSection(section)}</section>`).join("")}`;
   } catch (error) { preview.innerHTML = `<p class="ops-state">补齐标题、正文和至少一个官方来源后显示完整预览。${escapeHtml(error.message || "")}</p>`; }
 }
 
@@ -1017,7 +1151,7 @@ function renderInsights(posts, versions, editable) {
       ${posts.map(item => `<button type="button" data-insight-select="${escapeHtml(item.id)}" class="${item.id === selected?.id ? "active" : ""}"><strong>${escapeHtml(item.content?.title || item.slug)}</strong><span>${escapeHtml(item.status)} · 修订 ${escapeHtml(item.publicationRevision)}</span></button>`).join("")}
     </aside><div class="ops-guide-editor">
       <form class="ops-guide-draft" data-insight-draft data-post-id="${escapeHtml(selected?.id || "")}">
-        <div class="ops-guide-publication"><div><span class="ops-record-id">${selected ? "编辑新草稿版本" : "新文章"}</span><h3>${escapeHtml(content.title || "撰写 UCAC Insight")}</h3><p>正文格式：用 <code>## 小标题</code> 开始章节，空行分隔段落，<code>- </code> 开始项目符号。</p></div>${statusBadge(selected?.status || "draft")}</div>
+        <div class="ops-guide-publication"><div><span class="ops-record-id">${selected ? "编辑新草稿版本" : "新文章"}</span><h3>${escapeHtml(content.title || "撰写 UCAC Insight")}</h3><p>正文格式：用 <code>## 小标题</code> 开始章节，空行分隔段落，<code>- </code> 开始项目符号。可以直接从 Word 粘贴表格，系统会转换为可编辑表格并保留行列内容。</p></div>${statusBadge(selected?.status || "draft")}</div>
         <div class="ops-guide-fields">
           <label><span>URL Slug</span><input name="slug" maxlength="160" pattern="[a-z0-9]+(-[a-z0-9]+)*" value="${escapeHtml(selected?.slug || content.slug || "")}" ${selected ? "readonly" : ""} required /></label>
           <label><span>栏目</span><select name="category" required><option value="admissions-updates">Admissions updates</option><option value="program-watch">Program watch</option><option value="scholarship-watch">Scholarship watch</option></select></label>
@@ -1027,7 +1161,7 @@ function renderInsights(posts, versions, editable) {
           <label><span>作者</span><input name="author" maxlength="120" value="${escapeHtml(content.author || "UCAC Editorial")}" required /></label>
           <label><span>阅读分钟数</span><input name="readingMinutes" type="number" min="1" max="120" value="${escapeHtml(content.readingMinutes || 5)}" required /></label>
           <label><span><input name="featured" type="checkbox" ${content.featured ? "checked" : ""} /> 设为首页主推文章</span></label>
-          <label class="wide"><span>正文</span><textarea name="body" maxlength="180000" rows="18" required>${escapeHtml(insightBodyFromSections(content.sections))}</textarea></label>
+          <label class="wide"><span>正文</span><textarea name="body" data-insight-body maxlength="180000" rows="18" aria-describedby="insight-body-help" required>${escapeHtml(insightBodyFromSections(content.sections))}</textarea><small id="insight-body-help" class="ops-field-help">支持 Word 表格粘贴；粘贴后会显示为 Markdown 表格，可继续修改单元格文字。合并单元格会展开为普通单元格。</small></label>
           <label class="wide"><span>官方来源（每行：名称 | https://网址）</span><textarea name="sources" rows="5" required>${escapeHtml(lines(content.sources, "url"))}</textarea></label>
           <label class="wide"><span>关联指南（每行：名称 | /guides/路径，可留空）</span><textarea name="relatedGuides" rows="4">${escapeHtml(lines(content.relatedGuides, "href"))}</textarea></label>
         </div><button class="ops-button primary" type="submit">${selected ? "保存新草稿版本" : "创建文章草稿"}</button>
@@ -2045,6 +2179,7 @@ async function selectOpsView(view) {
 }
 
 function bindOpsEvents() {
+  document.addEventListener("paste", pasteInsightBody);
   document.addEventListener("input", event => {
     const editor = event.target.closest?.("[data-insight-draft]");
     if (editor) updateInsightPreview(editor);

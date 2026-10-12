@@ -10,11 +10,18 @@ export type InsightSource = {
   checkedAt: string;
 };
 
+export type InsightTable = {
+  headers: string[];
+  rows: string[][];
+};
+
 export type InsightSection = {
   id: string;
   heading: string;
   paragraphs: string[];
   bullets?: string[];
+  tables?: InsightTable[];
+  contentOrder?: string[];
 };
 
 export type InsightPost = {

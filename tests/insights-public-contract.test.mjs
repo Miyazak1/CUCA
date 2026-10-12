@@ -5,11 +5,12 @@ import test from "node:test";
 const source = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
 test("insights have native index, article, category, and RSS routes", async () => {
-  const [index, article, category, rss] = await Promise.all([
+  const [index, article, category, rss, styles] = await Promise.all([
     source("app/insights/page.tsx"),
     source("app/insights/[insightSlug]/page.tsx"),
     source("app/insights/category/[categorySlug]/page.tsx"),
     source("app/insights/rss.xml/route.ts"),
+    source("app/insights/insights.module.css"),
   ]);
   assert.match(index, /UCAC Insights/);
   assert.match(index, /"@type": "Blog"/);
@@ -19,6 +20,10 @@ test("insights have native index, article, category, and RSS routes", async () =
   assert.match(index, /Latest analysis/);
   assert.match(article, /"@type": "BlogPosting"/);
   assert.match(article, /Official sources checked for this article/);
+  assert.match(article, /section\.tables/);
+  assert.match(article, /contentOrder/);
+  assert.match(styles, /\.tableWrap/);
+  assert.match(styles, /\.articleTable/);
   assert.match(category, /listPublishedInsights/);
   assert.match(rss, /application\/rss\+xml/);
 });
@@ -71,9 +76,10 @@ test("site search exposes insights as a first-class result type", async () => {
 });
 
 test("Insights CMS keeps drafts governed while published content feeds every public surface", async () => {
-  const [schema, migration, policy, governance, reader, opsHtml, opsScript] = await Promise.all([
+  const [schema, migration, policy, governance, reader, validator, opsHtml, opsScript] = await Promise.all([
     source("src/server/db/schema.ts"), source("drizzle/pg/0079_insights_cms.sql"), source("src/server/policy/policy.ts"),
     source("src/server/insights/postgres-governance.ts"), source("src/server/insights/public-insights.ts"),
+    source("src/server/insights/insight-document.ts"),
     source("public/ops-admin-api.html"), source("public/ops-admin-runtime.js"),
   ]);
   assert.match(schema, /insightPosts/);
@@ -88,9 +94,14 @@ test("Insights CMS keeps drafts governed while published content feeds every pub
   assert.match(governance, /update catalog_publication_revisions set revision = revision \+ 1/);
   assert.match(reader, /current_version_id/);
   assert.match(reader, /listStaticInsights/);
+  assert.match(validator, /Insight table rows must match the header width/);
+  assert.match(validator, /contentOrder/);
   assert.match(opsHtml, /data-ops-tab="insights"/);
   assert.match(opsScript, /data-insight-draft/);
   assert.match(opsScript, /data-insight-publish/);
   assert.match(opsScript, /data-insight-withdraw/);
+  assert.match(opsScript, /wordClipboardToInsightText/);
+  assert.match(opsScript, /data-insight-body/);
+  assert.match(opsScript, /parseInsightTable/);
   assert.doesNotMatch(opsScript, /data-insight-approve/);
 });

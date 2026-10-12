@@ -212,6 +212,16 @@
 .related p { font-size: 17px; line-height: 1.8; }
 .section ul { padding-left: 24px; }
 .section li + li { margin-top: 8px; }
+.tableWrap { margin: 24px 0 28px; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: 0 8px 24px rgba(7, 63, 59, .05); }
+.tableWrap:focus-visible { outline: 3px solid rgba(0, 135, 125, .24); outline-offset: 3px; }
+.articleTable { width: 100%; min-width: 620px; border-collapse: collapse; color: var(--ink); font-size: 15px; line-height: 1.55; }
+.articleTable th,
+.articleTable td { padding: 13px 15px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.articleTable th:last-child,
+.articleTable td:last-child { border-right: 0; }
+.articleTable tbody tr:last-child td { border-bottom: 0; }
+.articleTable th { background: var(--mint); color: var(--deep); font-size: 13px; font-weight: 850; }
+.articleTable tbody tr:nth-child(even) { background: #f9fbfa; }
 .sourceBox,
 .related { margin-top: 34px; }
 .sourceList { margin: 0; padding-left: 22px; }

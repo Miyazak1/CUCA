@@ -3,13 +3,21 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { InsightShell } from "../insight-shell";
 import styles from "../insights.module.css";
-import { categoryFor } from "@/src/content/insights.ts";
+import { categoryFor, type InsightSection } from "@/src/content/insights.ts";
 import { getPublishedInsight } from "@/src/server/insights/public-insights.ts";
 
 type PageProps = { params: Promise<{ insightSlug: string }> };
 
 function date(value: string) {
   return new Intl.DateTimeFormat("en", { dateStyle: "long", timeZone: "UTC" }).format(new Date(value));
+}
+
+function sectionOrder(section: InsightSection) {
+  return section.contentOrder || [
+    ...section.paragraphs.map((_, index) => `p:${index}`),
+    ...(section.bullets?.length ? ["b"] : []),
+    ...(section.tables || []).map((_, index) => `t:${index}`),
+  ];
 }
 
 export const dynamic = "force-dynamic";
@@ -62,8 +70,24 @@ export default async function InsightPage({ params }: PageProps) {
           {post.sections.map((section) => (
             <section className={styles.section} id={section.id} key={section.id}>
               <h2>{section.heading}</h2>
-              {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-              {section.bullets?.length ? <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}
+              {sectionOrder(section).map((token) => {
+                if (token.startsWith("p:")) {
+                  const index = Number(token.slice(2));
+                  return <p key={token}>{section.paragraphs[index]}</p>;
+                }
+                if (token === "b") return section.bullets?.length
+                  ? <ul key={token}>{section.bullets.map((bullet, index) => <li key={`${index}-${bullet}`}>{bullet}</li>)}</ul>
+                  : null;
+                const index = Number(token.slice(2)), table = section.tables?.[index];
+                // The overflow region must be keyboard-focusable so wide tables can be scrolled without a pointer.
+                // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                return table ? <div className={styles.tableWrap} key={token} role="region" aria-label={`${section.heading} table`} tabIndex={0}>
+                  <table className={styles.articleTable}>
+                    <thead><tr>{table.headers.map((header, column) => <th scope="col" key={`${column}-${header}`}>{header}</th>)}</tr></thead>
+                    <tbody>{table.rows.map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, column) => <td key={column}>{cell}</td>)}</tr>)}</tbody>
+                  </table>
+                </div> : null;
+              })}
             </section>
           ))}
 

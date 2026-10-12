@@ -65,7 +65,12 @@ async function searchInsights(input: SiteSearchInput): Promise<SiteSearchGroup> 
   const tokens = input.query.toLocaleLowerCase().split(/\s+/).filter(Boolean);
   const matches = (await listPublishedInsights()).filter((post) => {
     const category = categoryFor(post);
-    const text = [post.title, post.description, category.name, ...post.tags, ...post.sections.flatMap((section) => [section.heading, ...section.paragraphs])]
+    const text = [post.title, post.description, category.name, ...post.tags, ...post.sections.flatMap((section) => [
+      section.heading,
+      ...section.paragraphs,
+      ...(section.bullets || []),
+      ...(section.tables || []).flatMap((table) => [...table.headers, ...table.rows.flat()]),
+    ])]
       .join(" ").normalize("NFKC").toLocaleLowerCase();
     return tokens.every((token) => text.includes(token));
   });

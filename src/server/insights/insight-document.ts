@@ -6,10 +6,10 @@ import type { InsightPost } from "../../content/insights.ts";
 export const INSIGHT_CATEGORIES = ["admissions-updates", "program-watch", "scholarship-watch"] as const;
 export const INSIGHT_WITHDRAWAL_REASONS = ["content_correction", "source_expired", "editorial_change", "article_superseded"] as const;
 
-function text(value: unknown, field: string, max: number, multiline = false): string {
+function text(value: unknown, field: string, max: number, multiline = false, allowEmpty = false): string {
   if (typeof value !== "string" || value.length > max) throw badRequest(`${field} must be bounded plain text.`);
   const normalized = value.replaceAll("\r\n", "\n").trim();
-  if (!normalized || /[<>]/u.test(normalized) || Array.from(normalized).some(char => {
+  if ((!allowEmpty && !normalized) || /[<>]/u.test(normalized) || Array.from(normalized).some(char => {
     const code = char.codePointAt(0)!;
     return (code < 32 && !(multiline && code === 10)) || (code >= 127 && code <= 159)
       || (code >= 0xd800 && code <= 0xdfff) || (code >= 0x202a && code <= 0x202e) || (code >= 0x2066 && code <= 0x2069);
@@ -35,14 +35,42 @@ export function parseInsightDocument(value: unknown): Omit<InsightPost, "status"
   if (typeof fields.featured !== "boolean") throw badRequest("Insight featured must be boolean.");
   if (!Array.isArray(fields.sections) || fields.sections.length < 1 || fields.sections.length > 30) throw badRequest("Insight sections are required.");
   const sections = fields.sections.map(item => {
-    const row = inputRecord(item, ["id", "heading", "paragraphs", "bullets"]);
+    const row = inputRecord(item, ["id", "heading", "paragraphs", "bullets", "tables", "contentOrder"]);
     const id = text(row.id, "Insight section id", 100);
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)) throw badRequest("Insight section ids must be URL-safe.");
-    if (!Array.isArray(row.paragraphs) || row.paragraphs.length < 1 || row.paragraphs.length > 30) throw badRequest("Insight section paragraphs are required.");
+    if (!Array.isArray(row.paragraphs) || row.paragraphs.length > 30) throw badRequest("Insight section paragraphs must be a bounded list.");
     if (row.bullets !== undefined && (!Array.isArray(row.bullets) || row.bullets.length > 30)) throw badRequest("Insight bullets must be a bounded list.");
-    return { id, heading: text(row.heading, "Insight section heading", 180),
-      paragraphs: row.paragraphs.map(paragraph => text(paragraph, "Insight paragraph", 6000, true)),
-      ...(row.bullets === undefined ? {} : { bullets: row.bullets.map(bullet => text(bullet, "Insight bullet", 1200, true)) }) };
+    if (row.tables !== undefined && (!Array.isArray(row.tables) || row.tables.length > 12)) throw badRequest("Insight tables must be a bounded list.");
+    const paragraphs = row.paragraphs.map(paragraph => text(paragraph, "Insight paragraph", 6000, true));
+    const bullets = row.bullets === undefined ? undefined : row.bullets.map(bullet => text(bullet, "Insight bullet", 1200, true));
+    const tables = row.tables === undefined ? undefined : row.tables.map((table, tableIndex) => {
+      const tableRow = inputRecord(table, ["headers", "rows"]);
+      if (!Array.isArray(tableRow.headers) || tableRow.headers.length < 1 || tableRow.headers.length > 20) throw badRequest("Insight table headers must contain 1 to 20 columns.");
+      if (!Array.isArray(tableRow.rows) || tableRow.rows.length < 1 || tableRow.rows.length > 200) throw badRequest("Insight table rows must contain 1 to 200 rows.");
+      const headers = tableRow.headers.map((cell, columnIndex) => text(cell, `Insight table ${tableIndex + 1} header ${columnIndex + 1}`, 500, false, true));
+      if (!headers.some(Boolean)) throw badRequest("Insight table must have at least one named column.");
+      const rows = tableRow.rows.map((cells, rowIndex) => {
+        if (!Array.isArray(cells) || cells.length !== headers.length) throw badRequest("Insight table rows must match the header width.");
+        return cells.map((cell, columnIndex) => text(cell, `Insight table ${tableIndex + 1} row ${rowIndex + 1} cell ${columnIndex + 1}`, 1200, false, true));
+      });
+      return { headers, rows };
+    });
+    if (!paragraphs.length && !bullets?.length && !tables?.length) throw badRequest("Insight section content is required.");
+    let contentOrder: string[] | undefined;
+    if (row.contentOrder !== undefined) {
+      if (!Array.isArray(row.contentOrder)) throw badRequest("Insight section content order must be a list.");
+      contentOrder = row.contentOrder.map((token, index) => text(token, `Insight section content order ${index + 1}`, 24));
+      const expected = [
+        ...paragraphs.map((_, index) => `p:${index}`),
+        ...(bullets?.length ? ["b"] : []),
+        ...(tables || []).map((_, index) => `t:${index}`),
+      ];
+      if (contentOrder.length !== expected.length || new Set(contentOrder).size !== contentOrder.length
+        || expected.some(token => !contentOrder.includes(token))) throw badRequest("Insight section content order must reference each content block exactly once.");
+    }
+    return { id, heading: text(row.heading, "Insight section heading", 180), paragraphs,
+      ...(bullets === undefined ? {} : { bullets }), ...(tables === undefined ? {} : { tables }),
+      ...(contentOrder === undefined ? {} : { contentOrder }) };
   });
   if (new Set(sections.map(section => section.id)).size !== sections.length) throw badRequest("Insight section ids must be unique.");
   if (!Array.isArray(fields.sources) || fields.sources.length < 1 || fields.sources.length > 30) throw badRequest("Insight official sources are required.");

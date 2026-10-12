@@ -58,6 +58,9 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   assert.match(script, /data-insight-draft/);
   assert.match(script, /data-insight-publish/);
   assert.match(script, /data-insight-withdraw/);
+  assert.match(script, /data-insight-body/);
+  assert.match(script, /wordClipboardToInsightText/);
+  assert.match(script, /getData\("text\/html"\)/);
   assert.match(script, /第三方来源，不能作为官方确认依据/);
   assert.match(script, /data-city-editor/);
   assert.match(script, /expectedVersion/);
@@ -147,6 +150,7 @@ test("Ops workspace stays restrained and responsive", async () => {
   assert.match(css, /ops-priority-grid/);
   assert.match(css, /ops-technical-summary/);
   assert.match(css, /ops-pagination/);
+  assert.match(css, /ops-insight-table/);
   assert.match(css, /button:focus-visible/);
   assert.match(css, /@media \(max-width: 760px\)/);
   assert.match(css, /@media \(max-width: 520px\)/);

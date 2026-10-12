@@ -651,6 +651,15 @@ a:focus-visible {
 .ops-guide-command input,
 .ops-guide-command select { width: 100%; min-height: 38px; padding: 8px 10px; border: 1px solid #bdc8c5; border-radius: 5px; background: #fff; color: var(--ops-ink); }
 .ops-guide-fields textarea { min-height: 88px; resize: vertical; }
+.ops-field-help { color: var(--ops-muted); font-size: 11px; font-weight: 500; line-height: 1.5; }
+.ops-insight-table-wrap { max-width: 100%; margin: 12px 0; overflow-x: auto; border: 1px solid var(--ops-line); border-radius: 6px; }
+.ops-insight-table { width: 100%; min-width: 560px; border-collapse: collapse; background: #fff; font-size: 12px; }
+.ops-insight-table th,
+.ops-insight-table td { padding: 9px 10px; border-right: 1px solid var(--ops-line); border-bottom: 1px solid var(--ops-line); text-align: left; vertical-align: top; }
+.ops-insight-table th { background: #eef4f2; color: var(--ops-green-dark); font-weight: 800; }
+.ops-insight-table tr:last-child td { border-bottom: 0; }
+.ops-insight-table th:last-child,
+.ops-insight-table td:last-child { border-right: 0; }
 .ops-guide-versions { display: grid; gap: 10px; }
 .ops-guide-versions article { padding: 11px 0; border-bottom: 1px solid var(--ops-line); }
 .ops-guide-versions article div { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
