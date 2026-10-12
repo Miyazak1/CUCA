@@ -57,6 +57,7 @@ test("sitemap and the original public shell expose insights", async () => {
   assert.match(shell, /function hydrateSharedShell\(\)/);
   assert.match(shell, /new MutationObserver/);
   assert.match(shell, /queueMicrotask\(hydrateSharedShell\)/);
+  assert.match(shell, /const localizedNav = usesInternalNavigation\(workspace\)/);
   assert.match(guideShell, /PublicSiteShell/);
   assert.match(guideShell, /active="guides"/);
   assert.match(insightShell, /PublicSiteShell/);

@@ -71,6 +71,8 @@ test("shared student account navigation localizes labels and preserves the selec
   assert.match(shell, /localizedUrl\.searchParams\.set\("lang", runtimeAuthState\.accountLocale\)/);
   assert.match(shell, /accountLinks\.map\(\(\[href, icon, label\]\) => `<a href="\$\{localizedPageHref\(href\)\}"/);
   assert.match(shell, /const headerNavItems = \(localizedNav \? roleNavItems : navItems\)/);
+  assert.match(shell, /function usesInternalNavigation\(workspace = workspaceNavigation\(\)\)/);
+  assert.match(shell, /const localizedNav = usesInternalNavigation\(workspace\)/);
   assert.match(shell, /renderWorkspaceNavigation\(workspace\)/);
   assert.doesNotMatch(shell, /\["school-settings-api\.html", icons\.(?:settings|intent),/);
   assert.doesNotMatch(shell, /\["ops-admin-api\.html", icons\.(?:shield|search),/);

@@ -842,6 +842,10 @@
     return null;
   }
 
+  function usesInternalNavigation(workspace = workspaceNavigation()) {
+    return ["school", "ops"].includes(workspace?.kind || "");
+  }
+
   function shouldShowSavedShortcut(shellContext) {
     return shellContext.authState === "signed-in" && shellContext.role === "student" && !["school-staff", "cuac-internal"].includes(shellContext.surface);
   }
@@ -923,7 +927,7 @@
     const note = window.CUACI18n ? shellText("note", target.dataset.note || "China admissions:") : target.dataset.note || "China admissions:";
     const noteDetail = window.CUACI18n ? shellText("noteDetail", target.dataset.noteDetail || "") : target.dataset.noteDetail || "";
     const shellContext = getShellContext(target);
-    const localizedNav = ["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) || ["school", "ops"].includes(document.body.dataset.agentMode || "");
+    const localizedNav = usesInternalNavigation(workspace);
     const headerNavItems = (localizedNav ? roleNavItems : navItems).map((item) => localizedNav
       ? item
       : { ...item, label: shellText(`nav.${item.id}`, item.label), href: localizedPageHref(item.href) });
@@ -1097,7 +1101,7 @@
     const navActions = header?.querySelector(".nav-actions");
     if (!header || !navActions) return;
     const shellContext = getShellContext();
-    const localizedNav = ["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) || ["school", "ops"].includes(document.body.dataset.agentMode || "");
+    const localizedNav = usesInternalNavigation();
     navActions.innerHTML = renderNavActions(shellContext, localizedNav);
     initAccountMenus();
     initLanguageSelectors();
