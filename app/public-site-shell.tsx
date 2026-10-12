@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const SHELL_RELEASE = "20261009-public-content-shell";
+const SHELL_RELEASE = "20261012-route-shell-rehydrate";
 
 export function PublicSiteShell({
   active,

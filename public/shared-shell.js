@@ -2099,6 +2099,8 @@
     });
   }
 
+  let accountMenuDismissBound = false;
+
   function initAccountMenus() {
     const menus = Array.from(document.querySelectorAll("[data-account-menu]"));
     if (!menus.length) return;
@@ -2113,6 +2115,8 @@
     }
 
     menus.forEach((menu) => {
+      if (menu.dataset.accountMenuInitialized === "true") return;
+      menu.dataset.accountMenuInitialized = "true";
       const trigger = menu.querySelector("[data-account-menu-trigger]");
       trigger?.addEventListener("click", (event) => {
         event.stopPropagation();
@@ -2142,15 +2146,17 @@
       });
     });
 
+    if (accountMenuDismissBound) return;
+    accountMenuDismissBound = true;
     document.addEventListener("click", (event) => {
-      menus.forEach((menu) => {
+      document.querySelectorAll("[data-account-menu]").forEach((menu) => {
         if (!menu.contains(event.target)) setMenu(menu, false);
       });
     });
 
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
-      menus.forEach((menu) => setMenu(menu, false));
+      document.querySelectorAll("[data-account-menu]").forEach((menu) => setMenu(menu, false));
     });
   }
 
@@ -2255,8 +2261,19 @@
     });
   }
 
-  document.querySelectorAll("[data-cuac-header]").forEach(renderHeader);
-  document.querySelectorAll("[data-cuac-footer]").forEach(renderFooter);
+  function hydrateSharedShell() {
+    const headers = [...document.querySelectorAll("[data-cuac-header]")];
+    const footers = [...document.querySelectorAll("[data-cuac-footer]")];
+    if (!headers.length && !footers.length) return;
+    headers.forEach(renderHeader);
+    footers.forEach(renderFooter);
+    initPrimaryNavigation();
+    initAccountMenus();
+    initLanguageSelectors();
+    initPageReveal();
+  }
+
+  hydrateSharedShell();
   window.CUAC = { ...(window.CUAC || {}), requireSignedIn, requireStudentSignedIn, requireStudentSignedInReady, showSignInRequired, dataAttributeSelector, isSignedIn: () => getShellContext().authState === "signed-in", isStudentSignedIn, isCapabilityEnabled, authReady: () => runtimeAuthReadyPromise, capabilitiesReady: () => runtimeCapabilitiesReadyPromise, releaseCapabilities: () => runtimeReleaseCapabilities };
   initProtectedStudentLinks();
   initAuthNavigationControls();
@@ -2268,4 +2285,12 @@
   void Promise.allSettled([runtimeAuthReadyPromise, runtimeCapabilitiesReadyPromise]).finally(initAgentShell);
   window.CUAC = { ...(window.CUAC || {}), reveal: initPageReveal };
   initPageReveal();
+  if (typeof MutationObserver === "function") {
+    const shellObserver = new MutationObserver((records) => {
+      const shellAdded = records.some((record) => [...record.addedNodes].some((node) => node.nodeType === 1
+        && (node.matches?.("[data-cuac-header], [data-cuac-footer]") || node.querySelector?.("[data-cuac-header], [data-cuac-footer]"))));
+      if (shellAdded) queueMicrotask(hydrateSharedShell);
+    });
+    shellObserver.observe(document.body, { childList: true, subtree: true });
+  }
 })();
