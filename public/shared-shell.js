@@ -76,31 +76,24 @@
   };
 
   const navItems = [
-    { id: "home", label: "Home", href: "home-v3.html" },
     { id: "programs", label: "Programs", href: "programs.html" },
     { id: "universities", label: "Universities", href: "universities.html" },
     { id: "scholarships", label: "Scholarships", href: "scholarships.html" },
     { id: "cities", label: "Cities", href: "cities.html" },
     { id: "guides", label: "Guides", href: "/guides/" },
     { id: "insights", label: "Insights", href: "/insights/" },
-    { id: "hub", label: "Hub", href: "hub-api.html" },
   ];
 
   const roleNavItems = [
-    { id: "home", label: "首页", href: "home-v3.html" },
     { id: "programs", label: "项目", href: "programs.html" },
     { id: "universities", label: "大学", href: "universities.html" },
     { id: "scholarships", label: "奖学金", href: "scholarships.html" },
     { id: "cities", label: "城市", href: "cities.html" },
     { id: "guides", label: "指南", href: "/guides/" },
     { id: "insights", label: "动态", href: "/insights/" },
-    { id: "hub", label: "工作台", href: "hub-api.html" },
   ];
 
-  const navGroups = [
-    { id: "explore", itemIds: ["programs", "universities", "scholarships", "cities"] },
-    { id: "apply", itemIds: ["guides"] },
-  ];
+  const exploreNavItemIds = ["programs", "universities", "scholarships", "cities"];
 
   const applyNavItems = [
     { id: "guides", label: "Application guides", href: "/guides/" },
@@ -131,10 +124,6 @@
     { id: "school-settings", label: "学校设置", href: "school-settings-api.html" },
   ];
 
-  const opsWorkspaceNavItems = [
-    { id: "ops-admin", label: "运营控制台", href: "ops-admin-api.html" },
-  ];
-
   const footerGroups = [
     {
       title: "Students",
@@ -155,19 +144,9 @@
       ],
     },
     {
-      title: "Partners",
-      links: [
-        ["Chinese universities", "universities.html"],
-        ["Advisers", "home-v3.html#cuac-hub"],
-        ["Scholarship teams", "scholarships.html"],
-        ["Student services", "home-v3.html#cuac-hub"],
-      ],
-    },
-    {
       title: "UCAC",
       links: [
         ["About UCAC and Holalobe", "about.html"],
-        ["Accessibility", "home-v3.html#application-guides"],
         ["Privacy", "privacy.html"],
         ["Children's privacy", "children-privacy.html"],
         ["Terms", "terms.html"],
@@ -195,19 +174,9 @@
       ],
     },
     {
-      title: "合作方",
-      links: [
-        ["中国高校", "universities.html"],
-        ["顾问", "home-v3.html#cuac-hub"],
-        ["奖学金团队", "scholarships.html"],
-        ["学生服务", "home-v3.html#cuac-hub"],
-      ],
-    },
-    {
       title: "UCAC",
       links: [
         ["关于 UCAC 与 Holalobe", "about.html?lang=zh-CN"],
-        ["无障碍", "home-v3.html#application-guides"],
         ["隐私", "privacy.html?lang=zh-CN"],
         ["儿童隐私", "children-privacy.html?lang=zh-CN"],
         ["条款", "terms.html?lang=zh-CN"],
@@ -797,6 +766,8 @@
         : shellText("studentAccount", "Student account");
     const initial = userName.charAt(0).toUpperCase();
     const accountEmail = shellContext.accountEmail || shellText("emailUnavailable", "Account email unavailable");
+    const isSchoolAccount = shellContext.role === "school_staff" || shellContext.surface === "school-staff";
+    const isOpsAccount = ["cuac_ops", "cuac_admin"].includes(shellContext.role) || shellContext.surface === "cuac-internal";
 
     if (authState === "signed-out") {
       const localized = ["school", "ops"].includes(document.body.dataset.agentMode || "");
@@ -808,23 +779,20 @@
       `;
     }
 
-    const profileHref = shellContext.role === "school_staff" || shellContext.surface === "school-staff" ? "school-settings-api.html" : ["cuac_ops", "cuac_admin"].includes(shellContext.role) || shellContext.surface === "cuac-internal" ? "ops-admin-api.html" : "application.html#info";
+    const profileLink = isOpsAccount
+      ? ""
+      : `<a href="${localizedPageHref(isSchoolAccount ? "school-settings-api.html" : "application.html#info")}">${isSchoolAccount ? "工作区信息" : escapeHTML(shellText("workspace.studentInfo", "Student info"))}</a>`;
     const accountLinks =
-      shellContext.role === "school_staff" || shellContext.surface === "school-staff"
+      isSchoolAccount
         ? [
             ["school-portal.html", icons.account, "学校工作台"],
-            ["school-settings-api.html", icons.settings, "租户设置"],
-            ["school-settings-api.html", icons.intent, "请求模板"],
           ]
-        : ["cuac_ops", "cuac_admin"].includes(shellContext.role) || shellContext.surface === "cuac-internal"
+        : isOpsAccount
           ? [
               ["ops-admin-api.html", icons.account, "运营后台"],
-              ["ops-admin-api.html", icons.shield, "访问审计"],
-              ["ops-admin-api.html", icons.search, "数据质量"],
             ]
           : [
               ["hub-api.html", icons.account, shellText("workspace.hub", "Hub")],
-              ["application.html#info", icons.shield, shellText("workspace.studentInfo", "Student info")],
               ["notifications.html", icons.bell, shellText("workspace.notifications", "Notifications")],
               ["favourites-api.html", icons.saved, shellText("workspace.favourites", "Favourites")],
               ["billing-api.html", icons.intent, shellText("workspace.billing", "Billing")],
@@ -842,7 +810,7 @@
             <div>
               <strong>${escapeHTML(userName)}</strong>
               <span class="account-email" title="${escapeHTML(accountEmail)}" aria-label="${escapeHTML(shellText("registeredEmail", "Registered account email"))}: ${escapeHTML(accountEmail)}">${escapeHTML(accountEmail)}</span>
-              <a href="${localizedPageHref(profileHref)}">${["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) ? "编辑账号" : escapeHTML(shellText("workspace.studentInfo", "Student info"))}</a>
+              ${profileLink}
             </div>
           </div>
           ${accountLinks.map(([href, icon, label]) => `<a href="${localizedPageHref(href)}">${icon}<span>${label}</span></a>`).join("")}
@@ -850,11 +818,6 @@
         </div>
       </div>
     `;
-  }
-
-  function normalizeActiveNav(active) {
-    if (["favourites", "notifications", "preferences", "auth"].includes(active)) return "hub";
-    return active;
   }
 
   function workspaceNavigation() {
@@ -874,7 +837,7 @@
       return { kind: "school", label: "学校工作区", active: route === "school-portal.html" ? "school-portal" : "school-settings", items: schoolWorkspaceNavItems };
     }
     if (route === "ops-admin-api.html") {
-      return { kind: "ops", label: "运营工作区", active: "ops-admin", items: opsWorkspaceNavItems };
+      return { kind: "ops", label: "运营工作区", active: "", items: [] };
     }
     return null;
   }
@@ -887,33 +850,19 @@
     return `<a class="nav-icon" data-nav-saved-shortcut href="${localizedPageHref("favourites-api.html")}" aria-label="${escapeHTML(shellText("savedList", "Saved list"))}">${icons.saved}</a>`;
   }
 
-  function workspaceHrefFor(shellContext) {
-    if (shellContext.role === "school_staff") return "school-portal.html";
-    if (["cuac_ops", "cuac_admin"].includes(shellContext.role)) return "ops-admin-api.html";
-    return "hub-api.html";
-  }
-
-  function renderWorkspaceShortcut(shellContext, localizedNav, mobile = false) {
-    if (shellContext.authState !== "signed-in") return "";
-    const label = localizedNav ? "我的 UCAC" : shellText("myUcac", "My UCAC");
-    const className = mobile ? "nav-mobile-workspace" : "my-ucac-link";
-    return `<a class="${className}" href="${localizedPageHref(workspaceHrefFor(shellContext))}">${escapeHTML(label)}${mobile ? icons.arrow : ""}</a>`;
-  }
-
   function renderNavActions(shellContext, localizedNav, target = { dataset: {} }) {
     return `
       <button class="nav-menu-toggle" type="button" data-primary-nav-toggle aria-expanded="false" aria-controls="cuac-primary-nav" aria-label="${localizedNav ? "打开主导航" : escapeHTML(shellText("openMenu", "Open navigation"))}">${icons.menu}</button>
       ${renderLanguageSelector()}
       <a class="nav-icon" href="${localizedSearchHref()}" aria-label="${localizedNav ? "全站搜索" : escapeHTML(shellText("search", "Search UCAC"))}">${icons.search}</a>
       ${shouldShowSavedShortcut(shellContext) ? renderSavedShortcut() : ""}
-      ${renderWorkspaceShortcut(shellContext, localizedNav)}
       ${renderAccountMenu(target)}
     `;
   }
 
-  function renderPrimaryNavigation(headerNavItems, active, localizedNav, shellContext) {
+  function renderPrimaryNavigation(headerNavItems, active, localizedNav) {
     const byId = new Map(headerNavItems.map((item) => [item.id, item]));
-    const exploreItems = navGroups[0].itemIds.map((id) => byId.get(id)).filter(Boolean);
+    const exploreItems = exploreNavItemIds.map((id) => byId.get(id)).filter(Boolean);
     const applyItems = (localizedNav ? applyNavItemsZh : applyNavItems).map((item) => ({
       ...item,
       href: localizedPageHref(item.href),
@@ -946,12 +895,11 @@
         </div>
       </div>`).join("")}
       ${insights ? `<a class="nav-direct-link${insights.id === active ? " active" : ""}" href="${insights.href}"${insights.id === active ? ' aria-current="page"' : ""}>${escapeHTML(insights.label)}</a>` : ""}
-      ${renderWorkspaceShortcut(shellContext, localizedNav, true)}
     `;
   }
 
   function renderWorkspaceNavigation(workspace) {
-    if (!workspace) return "";
+    if (!workspace || workspace.items.length === 0) return "";
     const localized = workspace.kind !== "student";
     const label = localized ? workspace.label : shellText("studentWorkspace", "Student workspace");
     const items = workspace.items.map(item => ({
@@ -971,23 +919,20 @@
 
   function renderHeader(target) {
     const workspace = workspaceNavigation();
-    const active = normalizeActiveNav(target.dataset.active || "home");
+    const active = target.dataset.active || "home";
     const note = window.CUACI18n ? shellText("note", target.dataset.note || "China admissions:") : target.dataset.note || "China admissions:";
     const noteDetail = window.CUACI18n ? shellText("noteDetail", target.dataset.noteDetail || "") : target.dataset.noteDetail || "";
     const shellContext = getShellContext(target);
     const localizedNav = ["school_staff", "cuac_ops", "cuac_admin"].includes(shellContext.role) || ["school", "ops"].includes(document.body.dataset.agentMode || "");
-    const workspaceHref = workspaceHrefFor(shellContext);
-    const headerNavItems = (localizedNav ? roleNavItems : navItems).map((item) => {
-      if (localizedNav) return item.id === "hub" ? { ...item, href: workspaceHref } : item;
-      const label = shellText(`nav.${item.id}`, item.label);
-      return { ...item, label, href: localizedPageHref(item.id === "hub" ? workspaceHref : item.href) };
-    });
+    const headerNavItems = (localizedNav ? roleNavItems : navItems).map((item) => localizedNav
+      ? item
+      : { ...item, label: shellText(`nav.${item.id}`, item.label), href: localizedPageHref(item.href) });
     target.outerHTML = `
       <div class="top-note">${note}${noteDetail ? `<span>&nbsp;${noteDetail}</span>` : ""}</div>
       <header class="nav">
         ${brand()}
         <nav class="nav-links" id="cuac-primary-nav" aria-label="${localizedNav ? "主导航" : escapeHTML(shellText("primaryNav", "Primary navigation"))}">
-          ${renderPrimaryNavigation(headerNavItems, active, localizedNav, shellContext)}
+          ${renderPrimaryNavigation(headerNavItems, active, localizedNav)}
         </nav>
         <div class="nav-actions" aria-label="${localizedNav ? "账号操作" : escapeHTML(shellText("accountActions", "Account actions"))}">
           ${renderNavActions(shellContext, localizedNav, target)}
@@ -1006,7 +951,7 @@
           <div>${brand()}<span>${workspace.kind === "student" ? escapeHTML(shellText("studentWorkspaceTagline", "Your China application workspace")) : workspace.kind === "school" ? "当前学校租户内的招生工作区" : "受控、可审计的 UCAC 运营工作区"}</span></div>
           <div class="footer-legal">
             <a href="${localized ? "privacy.html?lang=zh-CN" : localizedPageHref("privacy.html")}">${localized ? "隐私与数据边界" : escapeHTML(shellText("privacyData", "Privacy and data use"))}</a>
-            <a href="${localized ? "home-v3.html#cuac-hub" : localizedPageHref("home-v3.html#cuac-hub")}">${localized ? "获取支持" : escapeHTML(shellText("getSupport", "Get support"))}</a>
+            <a href="${localizedPageHref("/guides/")}">${localized ? "申请指南" : escapeHTML(shellText("nav.guides", "Application guides"))}</a>
           </div>
         </footer>
       `;
@@ -1022,16 +967,7 @@
             ${brand()}
             <p>${localized ? "面向国际学生申请中国高校的招生搜索与管理平台。" : escapeHTML(shellText("tagline", "China admissions search for international students applying to Chinese universities."))}</p>
             <div class="footer-actions">
-              <a href="home-v3.html#cuac-hub">${localized ? "联系我们" : escapeHTML(shellText("contact", "Contact us"))}</a>
-              <a href="home-v3.html#cuac-hub">${localized ? "需要帮助？" : escapeHTML(shellText("help", "Need help?"))}</a>
-            </div>
-            <div class="socials" aria-label="Social links">
-              <button type="button" aria-label="TikTok">${icons.tiktok}</button>
-              <button type="button" aria-label="Instagram">${icons.instagram}</button>
-              <button type="button" aria-label="Facebook">${icons.facebook}</button>
-              <button type="button" aria-label="YouTube">${icons.youtube}</button>
-              <button type="button" aria-label="LinkedIn">${icons.linkedin}</button>
-              <button type="button" aria-label="X">${icons.x}</button>
+              <a href="${localizedPageHref("/guides/")}">${localized ? "申请指南" : escapeHTML(shellText("help", "Need help?"))}</a>
             </div>
           </div>
           ${groups
@@ -1048,7 +984,6 @@
           <div class="footer-legal">
             <a href="cookies.html${localized ? "?lang=zh-CN" : ""}">${localized ? "Cookie 说明" : `${escapeHTML(shellText("cookies", "Cookie notice"))}${englishOnly}`}</a>
             <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "数据与来源政策" : `${escapeHTML(shellText("dataPolicy", "Data and source policy"))}${englishOnly}`}</a>
-            <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "招生透明政策" : `${escapeHTML(shellText("clarity", "Admissions clarity policy"))}${englishOnly}`}</a>
           </div>
         </div>
       </footer>

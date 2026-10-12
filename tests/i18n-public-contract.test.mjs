@@ -53,14 +53,14 @@ test("shared student account navigation localizes labels and preserves the selec
     source("public/shared-shell.js"),
     source("public/shared-shell.css"),
   ]);
-  for (const key of ["accountChecking", "openAccountMenu", "savedList", "signOut", "myUcac", "openMenu", "closeMenu", "nav.explore", "nav.apply", "studentWorkspaceTagline", "privacyData", "getSupport", "workspace.studentInfo", "workspace.notifications", "workspace.preferences"]) {
+  for (const key of ["accountChecking", "openAccountMenu", "savedList", "signOut", "openMenu", "closeMenu", "nav.explore", "nav.apply", "nav.guides", "studentWorkspaceTagline", "privacyData", "workspace.studentInfo", "workspace.notifications", "workspace.preferences"]) {
     assert.match(shell, new RegExp(`shellText\\("${key.replaceAll(".", "\\.")}"`));
   }
   for (const locale of ["vi", "th", "id", "ms", "ar"]) {
     const localeStart = runtime.indexOf(`${locale}: {`);
     assert.notEqual(localeStart, -1);
     const localeCopy = runtime.slice(localeStart, runtime.indexOf("\n    },", localeStart));
-    for (const key of ["shell.savedList", "shell.openAccountMenu", "shell.signOut", "shell.myUcac", "shell.openMenu", "shell.closeMenu", "shell.nav.explore", "shell.nav.apply", "shell.nav.insights", "shell.workspace.studentInfo"]) {
+    for (const key of ["shell.savedList", "shell.openAccountMenu", "shell.signOut", "shell.openMenu", "shell.closeMenu", "shell.nav.explore", "shell.nav.apply", "shell.nav.insights", "shell.workspace.studentInfo"]) {
       assert.ok(localeCopy.includes(`"${key}"`), `${locale} missing ${key}`);
     }
   }
@@ -72,6 +72,11 @@ test("shared student account navigation localizes labels and preserves the selec
   assert.match(shell, /accountLinks\.map\(\(\[href, icon, label\]\) => `<a href="\$\{localizedPageHref\(href\)\}"/);
   assert.match(shell, /const headerNavItems = \(localizedNav \? roleNavItems : navItems\)/);
   assert.match(shell, /renderWorkspaceNavigation\(workspace\)/);
+  assert.doesNotMatch(shell, /\["school-settings-api\.html", icons\.(?:settings|intent),/);
+  assert.doesNotMatch(shell, /\["ops-admin-api\.html", icons\.(?:shield|search),/);
+  assert.doesNotMatch(shell, /home-v3\.html#cuac-hub/);
+  assert.doesNotMatch(shell, /class="socials"/);
+  assert.doesNotMatch(shell, /Admissions clarity policy|招生透明政策/);
   assert.match(shell, /class="workspace-nav-links"/);
   assert.doesNotMatch(shell, /workspace\?\.items \|\|/);
   assert.match(shellCss, /\.workspace-nav-shell/);

@@ -1655,7 +1655,7 @@ test("keeps the frontend completion routes explicit and connected", async () => 
   assert.match(completionCss, /\.ops-editor-alert-stack \.ops-editor-note\.warn,\s*\n\.ops-editor-alert-stack \.ops-editor-note\.danger\s*\{[\s\S]*border-block: 1px solid/);
   assert.match(completionCss, /\.ops-editor-alert-stack \.ops-editor-note\.warn,\s*\n\.ops-editor-alert-stack \.ops-editor-note\.danger\s*\{[\s\S]*border-radius: 0/);
   assert.match(completionCss, /\.ops-editor-alert-stack \.ops-editor-note\.danger\s*\{[\s\S]*grid-template-columns: minmax\(138px, 0\.24fr\) minmax\(0, 1fr\) auto/);
-  assert.match(completionCss, /@media \(max-width: 620px\)[\s\S]*\.ops-editor-alert-stack \.ops-editor-note\.warn,\s*\n  \.ops-editor-alert-stack \.ops-editor-note\.danger\s*\{[\s\S]*grid-template-columns: 1fr/);
+  assert.match(completionCss, /@media \(max-width: 620px\)[\s\S]*\.ops-editor-alert-stack \.ops-editor-note\.warn,\s*\n {2}\.ops-editor-alert-stack \.ops-editor-note\.danger\s*\{[\s\S]*grid-template-columns: 1fr/);
   assert.match(completionCss, /\.ops-editor-tabs\s*\{[\s\S]*margin: 18px 20px 0/);
   assert.match(completionCss, /\.ops-school-editor-tabs\s*\{[\s\S]*margin: 12px 24px 0/);
   assert.match(completionCss, /body\[data-completion-page="ops"\] \.completion-main\s*\{[\s\S]*padding-bottom: 132px/);
@@ -4124,8 +4124,7 @@ test("keeps the CUAC app shell and static demo assets wired", async () => {
   assert.match(sharedJs, /function renderAccountMenu/);
   assert.match(authJs, /Action saved for after sign in/);
   assert.match(authJs, /function safeLocalUrl\(value\)/);
-  assert.match(sharedJs, /function normalizeActiveNav/);
-  assert.match(sharedJs, /\["favourites", "notifications", "preferences", "auth"\]\.includes\(active\)\) return "hub"/);
+  assert.doesNotMatch(sharedJs, /function normalizeActiveNav/);
   assert.match(sharedJs, /data-account-menu-trigger/);
   assert.match(sharedJs, /function shouldShowSavedShortcut\(shellContext\)/);
   assert.match(sharedJs, /shellContext\.authState === "signed-in" && shellContext\.role === "student"/);
@@ -4133,10 +4132,12 @@ test("keeps the CUAC app shell and static demo assets wired", async () => {
   assert.match(sharedJs, /data-nav-saved-shortcut/);
   assert.match(sharedJs, /shellContext\.surface === "school-staff"/);
   assert.match(sharedJs, /学校工作台/);
-  assert.match(sharedJs, /租户设置/);
-  assert.match(sharedJs, /请求模板/);
+  assert.match(sharedJs, /工作区信息/);
+  assert.doesNotMatch(sharedJs, /租户设置/);
+  assert.doesNotMatch(sharedJs, /请求模板/);
   assert.match(sharedJs, /shellContext\.surface === "cuac-internal"/);
   assert.match(sharedJs, /运营后台/);
+  assert.doesNotMatch(sharedJs, /访问审计/);
   assert.match(sharedJs, /Agent 审计/);
   assert.match(sharedJs, /showSavedShortcut = shouldShowSavedShortcut\(shellContext\)/);
   assert.match(sharedJs, /navActions\.innerHTML = `\$\{shouldShowSavedShortcut\(shellContext\)/);

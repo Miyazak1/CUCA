@@ -282,8 +282,7 @@ body {
   color: var(--accent-dark);
 }
 
-.nav-dropdown-links svg,
-.nav-mobile-workspace svg {
+.nav-dropdown-links svg {
   width: 16px;
   height: 16px;
   flex: 0 0 auto;
@@ -294,7 +293,6 @@ body {
   stroke-width: 1.9;
 }
 
-.nav-mobile-workspace,
 .nav-menu-toggle {
   display: none;
 }
@@ -302,9 +300,7 @@ body {
 .nav-group-trigger:focus-visible,
 .nav-direct-link:focus-visible,
 .nav-dropdown-links a:focus-visible,
-.nav-menu-toggle:focus-visible,
-.my-ucac-link:focus-visible,
-.nav-mobile-workspace:focus-visible {
+.nav-menu-toggle:focus-visible {
   outline: 3px solid rgb(var(--accent-rgb) / 0.28);
   outline-offset: 3px;
 }
@@ -314,28 +310,6 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.my-ucac-link,
-.my-ucac-link:visited,
-.my-ucac-link:any-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 38px;
-  padding: 0 14px;
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-pill);
-  color: var(--text);
-  font-size: 13px;
-  font-weight: 780;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.my-ucac-link:hover {
-  border-color: rgb(var(--accent-rgb) / 0.5);
-  background: var(--accent-soft);
-  color: var(--accent-dark);
 }
 
 .workspace-nav-shell {
@@ -858,7 +832,7 @@ body {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: minmax(280px, 1.1fr) repeat(4, minmax(140px, 0.7fr));
+  grid-template-columns: minmax(280px, 1.1fr) repeat(3, minmax(140px, 0.7fr));
   gap: 36px;
   padding-bottom: 34px;
   border-bottom: 1px solid rgb(var(--text-rgb) / 0.12);
@@ -870,7 +844,6 @@ body {
 }
 
 .footer-actions,
-.socials,
 .footer-legal {
   display: flex;
   flex-wrap: wrap;
@@ -893,45 +866,6 @@ body {
 
 .footer-actions a:visited {
   color: var(--text);
-}
-
-.socials {
-  gap: 8px;
-  margin-top: 18px;
-}
-
-.socials a,
-.socials button {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius-pill);
-  background: var(--text);
-  color: white;
-}
-
-.socials a:hover,
-.socials button:hover {
-  background: var(--accent);
-  transform: translateY(-1px);
-}
-
-.socials svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2;
-}
-
-.socials .brand-fill {
-  fill: currentColor;
-  stroke: none;
 }
 
 .footer-col {
@@ -976,8 +910,6 @@ body {
 
 .nav-icon,
 .account-pill,
-.socials a,
-.socials button,
 .footer-actions a {
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
 }
@@ -2137,8 +2069,7 @@ body.motion-off .result-enter {
   }
 
   .nav-group-trigger,
-  .nav-direct-link,
-  .nav-mobile-workspace {
+  .nav-direct-link {
     box-sizing: border-box;
     width: 100%;
     min-height: 48px;
@@ -2188,14 +2119,6 @@ body.motion-off .result-enter {
     background: white;
   }
 
-  .nav-mobile-workspace {
-    display: flex;
-    margin-top: 6px;
-    background: var(--accent-soft);
-    color: var(--accent-dark);
-    text-decoration: none;
-  }
-
   .nav-menu-toggle {
     display: grid;
     width: 40px;
@@ -2222,12 +2145,6 @@ body.motion-off .result-enter {
     stroke: currentColor;
     stroke-linecap: round;
     stroke-width: 1.9;
-  }
-
-  .nav-actions .my-ucac-link,
-  .nav-actions .my-ucac-link:visited,
-  .nav-actions .my-ucac-link:any-link {
-    display: none;
   }
 
   .workspace-nav-links::-webkit-scrollbar {
