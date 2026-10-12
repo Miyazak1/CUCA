@@ -22,14 +22,17 @@ const document = () => ({
 const context = (overrides = {}) => createRequestContext({ actorUserId: randomUUID(), activeRole: "cuac_admin", selectedSurface: "ops",
   purpose: "catalog_management", authStrength: "step_up", ...overrides });
 
-test("Insight documents are bounded, source-linked structured content", () => {
+test("Insight documents are bounded structured content with optional sources and guides", () => {
   const parsed = parseInsightDocument(document());
   assert.equal(parsed.slug, "current-admissions-briefing");
   assert.deepEqual(parsed.sections[0].tables?.[0].rows[1], ["Physics", "15 November"]);
   assert.deepEqual(parsed.sections[0].contentOrder, ["p:0", "t:0", "b"]);
   assert.match(insightDigest(parsed), /^[a-f0-9]{64}$/);
+  const withoutLinks = document(); withoutLinks.sources = []; withoutLinks.relatedGuides = [];
+  assert.deepEqual(parseInsightDocument(withoutLinks).sources, []);
+  assert.deepEqual(parseInsightDocument(withoutLinks).relatedGuides, []);
   for (const mutate of [
-    value => { value.title = "<script>"; }, value => { value.sources = []; }, value => { value.sources[0].url = "http://example.edu"; },
+    value => { value.title = "<script>"; }, value => { value.sources[0].url = "http://example.edu"; },
     value => { value.sections[0].id = "Bad id"; }, value => { value.relatedGuides[0].href = "https://other.test"; }, value => { value.extra = true; },
     value => { value.sections[0].tables[0].rows[0] = ["Missing date"]; },
     value => { value.sections[0].tables[0].rows[0][0] = "<script>"; },

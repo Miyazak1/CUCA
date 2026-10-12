@@ -6,7 +6,7 @@ export function InsightShell({ children }: Readonly<{ children: React.ReactNode 
     <PublicSiteShell
       active="insights"
       note="China admissions:"
-      noteDetail="current-cycle analysis with official sources"
+      noteDetail="current-cycle admissions analysis"
       pageClassName={styles.page}
     >
       {children}

@@ -7,7 +7,7 @@ import { listPublishedInsights } from "@/src/server/insights/public-insights.ts"
 
 export const metadata: Metadata = {
   title: "China admissions insights | UCAC",
-  description: "Dated UCAC analysis of current China university admissions notices, program lists, and scholarship announcements, with direct official sources.",
+  description: "Dated UCAC analysis of current China university admissions notices, program lists, and scholarship announcements.",
   alternates: { canonical: "https://ucac.cn/insights/", types: { "application/rss+xml": "https://ucac.cn/insights/rss.xml" } },
   openGraph: {
     title: "China admissions insights | UCAC",
@@ -54,11 +54,11 @@ export default async function InsightsPage() {
           <aside className={styles.editorialPromise} aria-label="UCAC editorial standard">
             <p className={styles.promiseLabel}>Our editorial standard</p>
             <strong>Current, traceable, useful.</strong>
-            <p>Every factual article is dated, reviewed against named official sources, and separated from evergreen application guidance.</p>
+            <p>Every article is dated, editorially reviewed, and separated from evergreen application guidance. Source links are included when the article relies on external evidence.</p>
             <dl>
               <div><dt>{posts.length}</dt><dd>Published analyses</dd></div>
               <div><dt>{insightCategories.length}</dt><dd>Editorial desks</dd></div>
-              <div><dt>100%</dt><dd>Source-linked</dd></div>
+              <div><dt>Clear</dt><dd>Evidence labels</dd></div>
             </dl>
           </aside>
         </section>
@@ -127,9 +127,9 @@ export default async function InsightsPage() {
         </section>
 
         <aside className={styles.methodBand} aria-label="UCAC publishing method">
-          <div><p className={styles.eyebrow}>How we publish</p><h2>Useful analysis without hiding the evidence</h2></div>
+          <div><p className={styles.eyebrow}>How we publish</p><h2>Useful analysis with clear evidence boundaries</h2></div>
           <ol>
-            <li><span>01</span><strong>Check</strong><p>We read the named university or government source.</p></li>
+            <li><span>01</span><strong>Check</strong><p>When an article relies on external facts, we review and name the relevant source.</p></li>
             <li><span>02</span><strong>Explain</strong><p>We separate confirmed facts from practical interpretation.</p></li>
             <li><span>03</span><strong>Date</strong><p>We show when the article and its sources were reviewed.</p></li>
           </ol>

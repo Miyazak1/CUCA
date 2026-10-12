@@ -73,7 +73,7 @@ export function parseInsightDocument(value: unknown): Omit<InsightPost, "status"
       ...(contentOrder === undefined ? {} : { contentOrder }) };
   });
   if (new Set(sections.map(section => section.id)).size !== sections.length) throw badRequest("Insight section ids must be unique.");
-  if (!Array.isArray(fields.sources) || fields.sources.length < 1 || fields.sources.length > 30) throw badRequest("Insight official sources are required.");
+  if (!Array.isArray(fields.sources) || fields.sources.length > 30) throw badRequest("Insight official sources must be a bounded list.");
   const sources = fields.sources.map(item => {
     const row = inputRecord(item, ["url", "label", "checkedAt"]), url = text(row.url, "Insight source URL", 2048);
     let parsed: URL; try { parsed = new URL(url); } catch { throw badRequest("Insight source URL is invalid."); }

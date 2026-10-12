@@ -20,6 +20,8 @@ test("insights have native index, article, category, and RSS routes", async () =
   assert.match(index, /Latest analysis/);
   assert.match(article, /"@type": "BlogPosting"/);
   assert.match(article, /Official sources checked for this article/);
+  assert.match(article, /post\.sources\.length \?/);
+  assert.match(article, /post\.relatedGuides\.length \?/);
   assert.match(article, /section\.tables/);
   assert.match(article, /contentOrder/);
   assert.match(styles, /\.tableWrap/);
@@ -28,7 +30,7 @@ test("insights have native index, article, category, and RSS routes", async () =
   assert.match(rss, /application\/rss\+xml/);
 });
 
-test("insight content is dated, categorized, sourced, and distinct from guides", async () => {
+test("insight content is dated, categorized, and distinct from guides", async () => {
   const content = await source("src/content/insights.ts");
   assert.match(content, /admissions-updates/);
   assert.match(content, /program-watch/);
@@ -37,7 +39,7 @@ test("insight content is dated, categorized, sourced, and distinct from guides",
   assert.match(content, /relatedGuides/);
   assert.match(content, /status: "draft" \| "published"/);
   assert.match(content, /post\.status === "published"/);
-  assert.match(content, /Published insights require sections and official sources/);
+  assert.match(content, /Published insights require sections\./);
   assert.doesNotMatch(content, /slug: "study-in-china-in-english-without-hsk"/);
 });
 

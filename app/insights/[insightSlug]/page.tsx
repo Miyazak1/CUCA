@@ -51,7 +51,7 @@ export default async function InsightPage({ params }: PageProps) {
     keywords: post.tags.join(", "),
     author: { "@type": "Organization", name: post.author },
     publisher: { "@type": "Organization", name: "UCAC", url: "https://ucac.cn/", parentOrganization: { "@type": "Organization", name: "Holalobe" } },
-    citation: post.sources.map((source) => source.url),
+    ...(post.sources.length ? { citation: post.sources.map((source) => source.url) } : {}),
   };
 
   return (
@@ -91,21 +91,21 @@ export default async function InsightPage({ params }: PageProps) {
             </section>
           ))}
 
-          <section className={styles.sourceBox}>
+          {post.sources.length ? <section className={styles.sourceBox}>
             <p className={styles.eyebrow}>Evidence</p>
             <h2>Official sources checked for this article</h2>
             <p>University requirements can change after publication. Open the source and confirm it still applies to your program and intake.</p>
             <ul className={styles.sourceList}>
               {post.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a> <span>· checked {date(source.checkedAt)}</span></li>)}
             </ul>
-          </section>
+          </section> : null}
 
-          <aside className={styles.related}>
+          {post.relatedGuides.length ? <aside className={styles.related}>
             <p className={styles.eyebrow}>Evergreen guidance</p>
             <h2>Use the related UCAC guide</h2>
             <p>Insights explain what is changing; Guides turn the evidence into a repeatable application process.</p>
             <div className={styles.relatedLinks}>{post.relatedGuides.map((guide) => <Link href={guide.href} key={guide.href}>{guide.label} →</Link>)}</div>
-          </aside>
+          </aside> : null}
         </article>
       </main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

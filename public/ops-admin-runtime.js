@@ -1140,7 +1140,7 @@ function updateInsightPreview(form) {
     preview.innerHTML = `<p class="ops-record-id">草稿预览 · ${escapeHtml(document.category)}</p><h2>${escapeHtml(document.title)}</h2><p>${escapeHtml(document.description)}</p>
       <div class="ops-state">${escapeHtml(document.author)} · ${escapeHtml(document.readingMinutes)} 分钟阅读 · ${escapeHtml(document.tags.join(" · "))}</div>
       ${document.sections.map(section => `<section><h3>${escapeHtml(section.heading)}</h3>${renderSection(section)}</section>`).join("")}`;
-  } catch (error) { preview.innerHTML = `<p class="ops-state">补齐标题、正文和至少一个官方来源后显示完整预览。${escapeHtml(error.message || "")}</p>`; }
+  } catch (error) { preview.innerHTML = `<p class="ops-state">补齐标题、摘要和正文后显示完整预览。${escapeHtml(error.message || "")}</p>`; }
 }
 
 function renderInsights(posts, versions, editable) {
@@ -1168,7 +1168,7 @@ function renderInsights(posts, versions, editable) {
           <label><span>阅读分钟数</span><input name="readingMinutes" type="number" min="1" max="120" value="${escapeHtml(content.readingMinutes || 5)}" required /></label>
           <label><span><input name="featured" type="checkbox" ${content.featured ? "checked" : ""} /> 设为首页主推文章</span></label>
           <label class="wide"><span>正文</span><textarea name="body" data-insight-body maxlength="180000" rows="18" aria-describedby="insight-body-help" required>${escapeHtml(insightBodyFromSections(content.sections))}</textarea><small id="insight-body-help" class="ops-field-help">支持 Word 表格粘贴；粘贴后会显示为 Markdown 表格，可继续修改单元格文字。合并单元格会展开为普通单元格。</small></label>
-          <label class="wide"><span>官方来源（每行：名称 | https://网址）</span><textarea name="sources" rows="5" required>${escapeHtml(lines(content.sources, "url"))}</textarea></label>
+          <label class="wide"><span>官方来源（可选；每行：名称 | https://网址）</span><textarea name="sources" rows="5">${escapeHtml(lines(content.sources, "url"))}</textarea><small class="ops-field-help">文章引用了学校、政府或其他外部事实时建议填写；不引用时可以留空。</small></label>
           <label class="wide"><span>关联指南（每行：名称 | /guides/路径，可留空）</span><textarea name="relatedGuides" rows="4">${escapeHtml(lines(content.relatedGuides, "href"))}</textarea></label>
         </div><button class="ops-button primary" type="submit">${selected ? "保存新草稿版本" : "创建文章草稿"}</button>
       </form>

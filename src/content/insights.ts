@@ -264,7 +264,7 @@ function assertContent() {
     if (!slugPattern.test(post.slug) || postSlugs.has(post.slug)) throw new Error("Invalid or duplicate insight slug.");
     if (!categorySlugs.has(post.category)) throw new Error("Insight category is not registered.");
     if (!Number.isSafeInteger(post.version) || post.version < 1) throw new Error("Insight versions must be positive integers.");
-    if (post.status === "published" && (!post.sections.length || !post.sources.length)) throw new Error("Published insights require sections and official sources.");
+    if (post.status === "published" && !post.sections.length) throw new Error("Published insights require sections.");
     for (const source of post.sources) {
       const url = new URL(source.url);
       if (url.protocol !== "https:") throw new Error("Insight sources must use HTTPS.");
