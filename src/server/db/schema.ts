@@ -626,6 +626,45 @@ export const guidePublications = pgTable("guide_publications", {
   statusCheck: check("guide_publication_status_check", sql`${table.status} in ('active','withdrawn')`),
 }));
 
+export const insightPosts = pgTable("insight_posts", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  slug: text("slug").notNull(),
+  status: text("status").notNull().default("draft"),
+  currentVersionId: uuid("current_version_id"),
+  publicationRevision: integer("publication_revision").notNull().default(0),
+  ...timestamps,
+}, table => ({
+  slugUnique: uniqueIndex("insight_posts_slug_unique").on(table.slug),
+  statusIdx: index("insight_posts_status_updated_idx").on(table.status, table.updatedAt),
+  statusCheck: check("insight_posts_status_check", sql`${table.status} in ('draft','published','archived')`),
+  revisionCheck: check("insight_posts_revision_check", sql`${table.publicationRevision} between 0 and 2147483647`),
+  slugCheck: check("insight_posts_slug_check", sql`${table.slug} ~ '^[a-z0-9]+(-[a-z0-9]+)*$'`),
+}));
+
+export const insightVersions = pgTable("insight_versions", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  postId: uuid("post_id").notNull(),
+  version: integer("version").notNull(),
+  contentJson: jsonb("content_json").notNull(),
+  contentSha256: text("content_sha256").notNull(),
+  preparedByUserId: uuid("prepared_by_user_id").notNull(),
+  publishedByUserId: uuid("published_by_user_id"),
+  publishedAt: timestamp("published_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, table => ({
+  postFk: foreignKey({ name: "insight_version_post_fk", columns: [table.postId], foreignColumns: [insightPosts.id] }).onDelete("restrict"),
+  preparerFk: foreignKey({ name: "insight_version_preparer_fk", columns: [table.preparedByUserId], foreignColumns: [users.id] }).onDelete("restrict"),
+  publisherFk: foreignKey({ name: "insight_version_publisher_fk", columns: [table.publishedByUserId], foreignColumns: [users.id] }).onDelete("restrict"),
+  versionUnique: uniqueIndex("insight_version_unique").on(table.postId, table.version),
+  idPostUnique: uniqueIndex("insight_version_id_post_unique").on(table.id, table.postId),
+  publishedIdx: index("insight_version_published_idx").on(table.publishedAt, table.createdAt),
+  versionCheck: check("insight_version_number_check", sql`${table.version} > 0`),
+  digestCheck: check("insight_version_digest_check", sql`${table.contentSha256} ~ '^[a-f0-9]{64}$'`),
+  contentCheck: check("insight_version_content_check", sql`jsonb_typeof(${table.contentJson}) = 'object' and octet_length(${table.contentJson}::text) <= 262144`),
+  publicationCheck: check("insight_version_publication_check", sql`(${table.publishedByUserId} is null and ${table.publishedAt} is null)
+    or (${table.publishedByUserId} is not null and ${table.publishedAt} is not null)`),
+}));
+
 export const schools = pgTable(
   "schools",
   {

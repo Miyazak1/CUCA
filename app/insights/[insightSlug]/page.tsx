@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { InsightShell } from "../insight-shell";
 import styles from "../insights.module.css";
-import { categoryFor, getInsight, listInsights } from "@/src/content/insights.ts";
+import { categoryFor } from "@/src/content/insights.ts";
+import { getPublishedInsight } from "@/src/server/insights/public-insights.ts";
 
 type PageProps = { params: Promise<{ insightSlug: string }> };
 
@@ -11,12 +12,10 @@ function date(value: string) {
   return new Intl.DateTimeFormat("en", { dateStyle: "long", timeZone: "UTC" }).format(new Date(value));
 }
 
-export function generateStaticParams() {
-  return listInsights().map((post) => ({ insightSlug: post.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const post = getInsight((await params).insightSlug);
+  const post = await getPublishedInsight((await params).insightSlug);
   if (!post) return { title: "Insight not found | UCAC", robots: { index: false, follow: false } };
   const canonical = `https://ucac.cn/insights/${post.slug}`;
   return {
@@ -28,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function InsightPage({ params }: PageProps) {
-  const post = getInsight((await params).insightSlug);
+  const post = await getPublishedInsight((await params).insightSlug);
   if (!post) notFound();
   const category = categoryFor(post);
   const canonical = `https://ucac.cn/insights/${post.slug}`;

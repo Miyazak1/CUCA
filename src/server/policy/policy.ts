@@ -18,6 +18,10 @@ export type PolicyAction =
   | "catalog.approve_guides"
   | "catalog.publish_guides"
   | "catalog.withdraw_guides"
+  | "catalog.read_insights_review"
+  | "catalog.prepare_insights"
+  | "catalog.publish_insights"
+  | "catalog.withdraw_insights"
   | "catalog.read_master_data"
   | "catalog.edit_master_data"
   | "catalog.publish_master_data"
@@ -156,6 +160,17 @@ export function evaluatePolicy(context: RequestContext, action: PolicyAction, re
       && (!privileged || (context.activeRole === "cuac_admin" && context.authStrength === "step_up"))
       ? allow("Explicit guide management context is allowed; live authority must be rechecked.")
       : deny("Guide management authority is required.");
+  }
+
+  if (resource.type === "catalog" && ["catalog.read_insights_review", "catalog.prepare_insights",
+    "catalog.publish_insights", "catalog.withdraw_insights"].includes(action)) {
+    const internal = context.activeRole === "cuac_ops" || context.activeRole === "cuac_admin";
+    const privileged = ["catalog.publish_insights", "catalog.withdraw_insights"].includes(action);
+    return context.actorUserId && internal && context.selectedSurface === "ops" && context.purpose === "catalog_management"
+      && context.tenantSchoolId === null && (context.authStrength === "session" || context.authStrength === "step_up")
+      && (!privileged || (context.activeRole === "cuac_admin" && context.authStrength === "step_up"))
+      ? allow("Explicit insight management context is allowed; live authority must be rechecked.")
+      : deny("Insight management authority is required.");
   }
 
   if (resource.type === "catalog" && ["catalog.read_master_data", "catalog.edit_master_data",

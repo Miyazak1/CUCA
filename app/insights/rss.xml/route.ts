@@ -1,13 +1,13 @@
-import { listInsights } from "@/src/content/insights.ts";
+import { listPublishedInsights } from "@/src/server/insights/public-insights.ts";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 function xml(value: string) {
   return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&apos;");
 }
 
-export function GET() {
-  const posts = listInsights();
+export async function GET() {
+  const posts = await listPublishedInsights();
   const items = posts.map((post) => {
     const url = `https://ucac.cn/insights/${post.slug}`;
     return `<item><title>${xml(post.title)}</title><link>${url}</link><guid isPermaLink="true">${url}</guid><description>${xml(post.description)}</description><pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate><category>${xml(post.category)}</category></item>`;

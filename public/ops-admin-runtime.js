@@ -44,6 +44,7 @@ const opsReviewLabels = {
   approved: "已批准",
   active: "已发布",
   withdrawn: "已撤回",
+  superseded: "历史已发布",
   legacy_published: "迁移前公开版本",
 };
 
@@ -149,6 +150,7 @@ const opsState = {
   selectedReleaseManifestId: null,
   releaseManifestStatus: "",
   selectedGuideId: null,
+  selectedInsightId: null,
 };
 
 const opsApplicationSetLabels = {
@@ -953,6 +955,141 @@ async function submitGuideCommand(form) {
   } finally { opsState.busy = false; }
 }
 
+function insightBodyFromSections(sections) {
+  return (Array.isArray(sections) ? sections : []).map(section => [`## ${section.heading}`,
+    ...(section.paragraphs || []), ...((section.bullets || []).map(item => `- ${item}`))].join("\n\n")).join("\n\n");
+}
+
+function parseInsightBody(value) {
+  const sections = []; let current = null;
+  for (const block of cleanText(value).split(/\n\s*\n/).map(item => item.trim()).filter(Boolean)) {
+    if (block.startsWith("## ")) {
+      const heading = block.slice(3).trim(), id = heading.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || `section-${sections.length + 1}`;
+      current = { id, heading, paragraphs: [], bullets: [] }; sections.push(current); continue;
+    }
+    if (!current) { current = { id: "overview", heading: "Overview", paragraphs: [], bullets: [] }; sections.push(current); }
+    if (block.split("\n").every(line => line.trim().startsWith("- "))) current.bullets.push(...block.split("\n").map(line => line.trim().slice(2).trim()).filter(Boolean));
+    else current.paragraphs.push(block);
+  }
+  for (const section of sections) if (!section.paragraphs.length) section.paragraphs.push("Details are listed below.");
+  return sections.map(section => ({ ...section, ...(section.bullets.length ? {} : { bullets: undefined }) }));
+}
+
+function parseInsightLinks(value, kind) {
+  return cleanText(value).split("\n").map(line => line.trim()).filter(Boolean).map(line => {
+    const split = line.lastIndexOf(" | ");
+    if (split < 1) throw new Error(kind === "source" ? "每个来源必须使用：来源名称 | https://网址" : "每个关联指南必须使用：名称 | /guides/路径");
+    const label = line.slice(0, split).trim(), target = line.slice(split + 3).trim();
+    return kind === "source" ? { label, url: target, checkedAt: new Date(Date.now() - 1000).toISOString() } : { label, href: target };
+  });
+}
+
+function insightDocumentFromForm(form) {
+  const values = new FormData(form), value = name => cleanText(values.get(name));
+  return { schemaVersion: 1, slug: value("slug"), title: value("title"), description: value("description"), category: value("category"),
+    tags: value("tags").split(",").map(item => item.trim()).filter(Boolean), author: value("author"), readingMinutes: Number(value("readingMinutes")),
+    featured: values.get("featured") === "on", sections: parseInsightBody(value("body")), sources: parseInsightLinks(value("sources"), "source"),
+    relatedGuides: value("relatedGuides") ? parseInsightLinks(value("relatedGuides"), "guide") : [] };
+}
+
+function updateInsightPreview(form) {
+  const preview = document.querySelector("[data-insight-preview]");
+  if (!preview) return;
+  try {
+    const document = insightDocumentFromForm(form);
+    preview.innerHTML = `<p class="ops-record-id">草稿预览 · ${escapeHtml(document.category)}</p><h2>${escapeHtml(document.title)}</h2><p>${escapeHtml(document.description)}</p>
+      <div class="ops-state">${escapeHtml(document.author)} · ${escapeHtml(document.readingMinutes)} 分钟阅读 · ${escapeHtml(document.tags.join(" · "))}</div>
+      ${document.sections.map(section => `<section><h3>${escapeHtml(section.heading)}</h3>${section.paragraphs.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join("")}${(section.bullets || []).length ? `<ul>${section.bullets.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : ""}</section>`).join("")}`;
+  } catch (error) { preview.innerHTML = `<p class="ops-state">补齐标题、正文和至少一个官方来源后显示完整预览。${escapeHtml(error.message || "")}</p>`; }
+}
+
+function renderInsights(posts, versions, editable) {
+  const root = document.querySelector("[data-ops-view]");
+  if (!root || !Array.isArray(posts) || !Array.isArray(versions)) throw new OpsRequestError("Insights 管理响应无效。", 503, "INVALID_RESPONSE");
+  const selected = posts.find(item => item.id === opsState.selectedInsightId) || posts[0] || null;
+  if (selected) opsState.selectedInsightId = selected.id;
+  const content = editable?.content || selected?.content || {};
+  const lines = (items, target) => (Array.isArray(items) ? items : []).map(item => `${item.label} | ${item[target]}`).join("\n");
+  const locked = !hasStepUpAdminAuthority(), currentId = selected?.currentVersionId;
+  root.innerHTML = `${sectionHeading("Insights 编辑", "运营人员可保存草稿；仅完成二次验证的 UCAC 管理员可直接发布或撤回。所有版本和操作均保留审计记录。")}
+    <div class="ops-guide-layout"><aside class="ops-guide-list" aria-label="文章列表">
+      <button type="button" data-insight-new class="${selected ? "" : "active"}"><strong>＋ 新建文章</strong><span>创建第一版草稿</span></button>
+      ${posts.map(item => `<button type="button" data-insight-select="${escapeHtml(item.id)}" class="${item.id === selected?.id ? "active" : ""}"><strong>${escapeHtml(item.content?.title || item.slug)}</strong><span>${escapeHtml(item.status)} · 修订 ${escapeHtml(item.publicationRevision)}</span></button>`).join("")}
+    </aside><div class="ops-guide-editor">
+      <form class="ops-guide-draft" data-insight-draft data-post-id="${escapeHtml(selected?.id || "")}">
+        <div class="ops-guide-publication"><div><span class="ops-record-id">${selected ? "编辑新草稿版本" : "新文章"}</span><h3>${escapeHtml(content.title || "撰写 UCAC Insight")}</h3><p>正文格式：用 <code>## 小标题</code> 开始章节，空行分隔段落，<code>- </code> 开始项目符号。</p></div>${statusBadge(selected?.status || "draft")}</div>
+        <div class="ops-guide-fields">
+          <label><span>URL Slug</span><input name="slug" maxlength="160" pattern="[a-z0-9]+(-[a-z0-9]+)*" value="${escapeHtml(selected?.slug || content.slug || "")}" ${selected ? "readonly" : ""} required /></label>
+          <label><span>栏目</span><select name="category" required><option value="admissions-updates">Admissions updates</option><option value="program-watch">Program watch</option><option value="scholarship-watch">Scholarship watch</option></select></label>
+          <label class="wide"><span>标题</span><input name="title" maxlength="240" value="${escapeHtml(content.title || "")}" required /></label>
+          <label class="wide"><span>摘要</span><textarea name="description" maxlength="800" required>${escapeHtml(content.description || "")}</textarea></label>
+          <label><span>标签（逗号分隔）</span><input name="tags" maxlength="960" value="${escapeHtml((content.tags || []).join(", "))}" required /></label>
+          <label><span>作者</span><input name="author" maxlength="120" value="${escapeHtml(content.author || "UCAC Editorial")}" required /></label>
+          <label><span>阅读分钟数</span><input name="readingMinutes" type="number" min="1" max="120" value="${escapeHtml(content.readingMinutes || 5)}" required /></label>
+          <label><span><input name="featured" type="checkbox" ${content.featured ? "checked" : ""} /> 设为首页主推文章</span></label>
+          <label class="wide"><span>正文</span><textarea name="body" maxlength="180000" rows="18" required>${escapeHtml(insightBodyFromSections(content.sections))}</textarea></label>
+          <label class="wide"><span>官方来源（每行：名称 | https://网址）</span><textarea name="sources" rows="5" required>${escapeHtml(lines(content.sources, "url"))}</textarea></label>
+          <label class="wide"><span>关联指南（每行：名称 | /guides/路径，可留空）</span><textarea name="relatedGuides" rows="4">${escapeHtml(lines(content.relatedGuides, "href"))}</textarea></label>
+        </div><button class="ops-button primary" type="submit">${selected ? "保存新草稿版本" : "创建文章草稿"}</button>
+      </form>
+      <section class="ops-guide-versions" data-insight-preview aria-live="polite"><p class="ops-state">正在准备草稿预览。</p></section>
+      <section class="ops-guide-versions"><h3>版本与发布</h3>${versions.length ? versions.map(item => `<article><div><strong>版本 ${escapeHtml(item.version)}</strong>${statusBadge(item.versionId === currentId ? "active" : item.publishedAt ? "superseded" : "draft")}<span>${escapeHtml(formatDateTime(item.createdAt))}</span><small>${escapeHtml(shortId(item.contentSha256))}</small>
+        ${item.versionId !== currentId ? `<form data-insight-publish data-post-id="${escapeHtml(selected.id)}" data-version-id="${escapeHtml(item.versionId)}" data-content-sha="${escapeHtml(item.contentSha256)}" data-revision="${escapeHtml(selected.publicationRevision)}"><button class="ops-button primary" type="submit"${locked ? ' disabled title="需要管理员二次验证"' : ""}>发布此版本${locked ? "（需二次验证）" : ""}</button></form>` : "<strong>当前公开版本</strong>"}</div></article>`).join("") : '<p class="ops-state">保存草稿后会在这里显示版本记录。</p>'}
+        ${selected?.status === "published" ? `<form data-insight-withdraw data-post-id="${escapeHtml(selected.id)}" data-revision="${escapeHtml(selected.publicationRevision)}" class="ops-guide-command"><label><span>撤回原因</span><select name="reason"><option value="content_correction">内容需要更正</option><option value="source_expired">来源已过期</option><option value="editorial_change">编辑策略调整</option><option value="article_superseded">文章已被替代</option></select></label><button class="ops-button danger" type="submit"${locked ? " disabled" : ""}>撤回文章</button></form>` : ""}
+      </section></div></div>`;
+  const category = root.querySelector('[name="category"]'); if (category && content.category) category.value = content.category;
+  const editor = root.querySelector("[data-insight-draft]"); if (editor) updateInsightPreview(editor);
+}
+
+async function loadInsightManagement() {
+  const posts = await requestJson("/api/v1/ops/insights");
+  if (!Array.isArray(posts)) throw new OpsRequestError("Insights 列表无效。", 503, "INVALID_RESPONSE");
+  const selected = posts.find(item => item.id === opsState.selectedInsightId) || posts[0];
+  let versions = [], editable = null;
+  if (selected) {
+    versions = await requestJson(`/api/v1/ops/insights/${encodeURIComponent(selected.id)}/versions`);
+    const latest = versions[0];
+    if (latest) editable = await requestJson(`/api/v1/ops/insights/${encodeURIComponent(selected.id)}/versions/${encodeURIComponent(latest.versionId)}`);
+  }
+  renderInsights(posts, versions, editable);
+}
+
+async function submitInsightDraft(form) {
+  if (opsState.busy) return;
+  opsState.busy = true;
+  try {
+    const document = insightDocumentFromForm(form), postId = form.dataset.postId, payload = { versionId: crypto.randomUUID(), document };
+    if (postId) await requestJson(`/api/v1/ops/insights/${encodeURIComponent(postId)}/versions`, { method: "POST", body: JSON.stringify(payload) });
+    else {
+      const newPostId = crypto.randomUUID();
+      await requestJson("/api/v1/ops/insights", { method: "POST", body: JSON.stringify({ postId: newPostId, ...payload }) });
+      opsState.selectedInsightId = newPostId;
+    }
+    showOpsToast("文章草稿版本已保存。"); await loadCurrentView();
+  } catch (error) { showOpsToast(error.message || "文章草稿保存失败。"); }
+  finally { opsState.busy = false; }
+}
+
+async function publishInsight(form) {
+  if (opsState.busy || !hasStepUpAdminAuthority()) return;
+  opsState.busy = true;
+  try {
+    await requestJson(`/api/v1/ops/insights/${encodeURIComponent(form.dataset.postId)}/versions/${encodeURIComponent(form.dataset.versionId)}/publication`, { method: "POST", body: JSON.stringify({ expectedContentSha256: form.dataset.contentSha, expectedPublicationRevision: Number(form.dataset.revision) }) });
+    showOpsToast("Insight 已发布，前台、RSS 与 sitemap 将读取新版本。"); await loadCurrentView();
+  } catch (error) { if (error?.status === 409) await loadCurrentView(); showOpsToast(error.message || "文章发布失败。"); }
+  finally { opsState.busy = false; }
+}
+
+async function withdrawInsight(form) {
+  if (opsState.busy || !hasStepUpAdminAuthority()) return;
+  opsState.busy = true;
+  try {
+    await requestJson(`/api/v1/ops/insights/${encodeURIComponent(form.dataset.postId)}/withdrawal`, { method: "POST", body: JSON.stringify({ expectedPublicationRevision: Number(form.dataset.revision), reason: cleanText(new FormData(form).get("reason")) }) });
+    showOpsToast("Insight 已从公开页面撤回，历史版本仍保留。"); await loadCurrentView();
+  } catch (error) { showOpsToast(error.message || "文章撤回失败。"); }
+  finally { opsState.busy = false; }
+}
+
 function renderDataRights(items) {
   const root=document.querySelector("[data-ops-view]");
   if(!Array.isArray(items)) throw new OpsRequestError("隐私请求队列响应无效。",503,"INVALID_RESPONSE");
@@ -1686,6 +1823,7 @@ async function loadCurrentView() {
     else if (opsState.view === "catalog") await loadCatalogManagement();
     else if (opsState.view === "corrections") renderCorrections(await requestJson("/api/v1/ops/catalog-corrections?limit=50"));
     else if (opsState.view === "guides") await loadGuideManagement();
+    else if (opsState.view === "insights") await loadInsightManagement();
     else if (opsState.view === "privacy") renderDataRights(await requestJson("/api/v1/ops/data-rights/requests?limit=100"));
     else if (opsState.view === "deletions") renderAccountDeletions(await requestJson("/api/v1/ops/account-deletions?limit=100"));
     else renderSupport();
@@ -1897,7 +2035,7 @@ async function stepUpAdminSession(form) {
 }
 
 async function selectOpsView(view) {
-  if (!["overview", "routing", "billing", "quality", "readiness", "release-plans", "catalog", "corrections", "guides", "support", "privacy", "deletions"].includes(view) || view === opsState.view) return;
+  if (!["overview", "routing", "billing", "quality", "readiness", "release-plans", "catalog", "corrections", "guides", "insights", "support", "privacy", "deletions"].includes(view) || view === opsState.view) return;
   if (opsState.view === "support") await closeSupportSession({ quiet: true });
   opsState.view = view;
   document.querySelectorAll("[data-ops-tab]").forEach(button => {
@@ -1907,6 +2045,10 @@ async function selectOpsView(view) {
 }
 
 function bindOpsEvents() {
+  document.addEventListener("input", event => {
+    const editor = event.target.closest?.("[data-insight-draft]");
+    if (editor) updateInsightPreview(editor);
+  });
   document.addEventListener("click", event => {
     const tab = event.target.closest("[data-ops-tab]");
     if (tab) void selectOpsView(tab.dataset.opsTab);
@@ -1930,6 +2072,9 @@ function bindOpsEvents() {
     if (manifest) { opsState.selectedReleaseManifestId=manifest.dataset.releaseManifestSelect; void loadCurrentView(); }
     const guide = event.target.closest("[data-guide-select]");
     if (guide) { opsState.selectedGuideId = guide.dataset.guideSelect; void loadCurrentView(); }
+    const insight = event.target.closest("[data-insight-select]");
+    if (insight) { opsState.selectedInsightId = insight.dataset.insightSelect; void loadCurrentView(); }
+    if (event.target.closest("[data-insight-new]")) { opsState.selectedInsightId = null; renderInsights([], [], null); }
     const city = event.target.closest("[data-city-select]");
     if (city) { opsState.selectedCityId = city.dataset.citySelect; void loadCurrentView(); }
     if (event.target.closest("[data-city-new]")) { opsState.selectedCityId = "__new__"; void loadCurrentView(); }
@@ -1970,6 +2115,9 @@ function bindOpsEvents() {
       event.preventDefault();
       void submitGuideCommand(event.target);
     }
+    if (event.target.matches("[data-insight-draft]")) { event.preventDefault(); void submitInsightDraft(event.target); }
+    if (event.target.matches("[data-insight-publish]")) { event.preventDefault(); void publishInsight(event.target); }
+    if (event.target.matches("[data-insight-withdraw]")) { event.preventDefault(); void withdrawInsight(event.target); }
     if (event.target.matches("[data-city-editor]")) {
       event.preventDefault();
       void submitCityEditor(event.target);

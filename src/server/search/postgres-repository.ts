@@ -1,7 +1,8 @@
 import type { SqlCatalogClient } from "../catalog/postgres-repository.ts";
 import { serviceUnavailable } from "../shared/errors.ts";
 import type { SiteSearchGroup, SiteSearchInput, SiteSearchItem, SiteSearchRepository, SiteSearchType } from "./service.ts";
-import { categoryFor, listInsights } from "../../content/insights.ts";
+import { categoryFor } from "../../content/insights.ts";
+import { listPublishedInsights } from "../insights/public-insights.ts";
 
 type SearchRow = {
   type: SiteSearchType;
@@ -60,9 +61,9 @@ export class PostgresSiteSearchRepository implements SiteSearchRepository {
   }
 }
 
-function searchInsights(input: SiteSearchInput): SiteSearchGroup {
+async function searchInsights(input: SiteSearchInput): Promise<SiteSearchGroup> {
   const tokens = input.query.toLocaleLowerCase().split(/\s+/).filter(Boolean);
-  const matches = listInsights().filter((post) => {
+  const matches = (await listPublishedInsights()).filter((post) => {
     const category = categoryFor(post);
     const text = [post.title, post.description, category.name, ...post.tags, ...post.sections.flatMap((section) => [section.heading, ...section.paragraphs])]
       .join(" ").normalize("NFKC").toLocaleLowerCase();

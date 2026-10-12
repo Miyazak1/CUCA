@@ -29,6 +29,7 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
     "/api/v1/ops/catalog/release-manifests",
     "/api/v1/ops/catalog-corrections?limit=50",
     "/api/v1/ops/catalog/guides",
+    "/api/v1/ops/insights",
     "/api/v1/ops/support-sessions",
     "/api/v1/ops/application-lookups",
     "/api/v1/ops/data-rights/requests?limit=100",
@@ -44,6 +45,7 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   assert.match(script, /\/api\/v1\/auth\/step-up/);
   assert.match(script, /authStrength === "step_up"/);
   assert.match(html, /data-ops-tab="guides"/);
+  assert.match(html, /data-ops-tab="insights"/);
   assert.match(html, /data-ops-tab="catalog"/);
   assert.match(html, /data-ops-tab="readiness"/);
   assert.match(html, /data-ops-tab="release-plans"/);
@@ -53,6 +55,9 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   assert.match(script, /data-guide-command="approve"/);
   assert.match(script, /expectedApprovalSha256/);
   assert.match(script, /publicContentConfirmed: true/);
+  assert.match(script, /data-insight-draft/);
+  assert.match(script, /data-insight-publish/);
+  assert.match(script, /data-insight-withdraw/);
   assert.match(script, /第三方来源，不能作为官方确认依据/);
   assert.match(script, /data-city-editor/);
   assert.match(script, /expectedVersion/);

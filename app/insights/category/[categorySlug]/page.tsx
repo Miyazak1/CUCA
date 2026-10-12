@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { InsightShell } from "../../insight-shell";
 import styles from "../../insights.module.css";
-import { getInsightCategory, insightCategories, listInsightsByCategory } from "@/src/content/insights.ts";
+import { getInsightCategory } from "@/src/content/insights.ts";
+import { listPublishedInsights } from "@/src/server/insights/public-insights.ts";
 
 type PageProps = { params: Promise<{ categorySlug: string }> };
 
@@ -11,9 +12,7 @@ function date(value: string) {
   return new Intl.DateTimeFormat("en", { dateStyle: "medium", timeZone: "UTC" }).format(new Date(value));
 }
 
-export function generateStaticParams() {
-  return insightCategories.map((category) => ({ categorySlug: category.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const category = getInsightCategory((await params).categorySlug);
@@ -25,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function InsightCategoryPage({ params }: PageProps) {
   const category = getInsightCategory((await params).categorySlug);
   if (!category) notFound();
-  const posts = listInsightsByCategory(category.slug);
+  const posts = (await listPublishedInsights()).filter(post => post.category === category.slug);
   return (
     <InsightShell>
       <main className={styles.main}>

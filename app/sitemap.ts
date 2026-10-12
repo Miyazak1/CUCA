@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { listPublishedGuidePages } from "@/src/server/catalog/public-guide-pages.ts";
-import { insightCategories, listInsights } from "@/src/content/insights.ts";
+import { insightCategories } from "@/src/content/insights.ts";
+import { listPublishedInsights } from "@/src/server/insights/public-insights.ts";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: path === "" ? "daily" : "weekly",
     priority: path === "" ? 1 : path === "guides/" || path === "insights/" ? 0.8 : 0.7,
   }));
-  entries.push(...listInsights().map((post) => ({
+  entries.push(...(await listPublishedInsights()).map((post) => ({
     url: `https://ucac.cn/insights/${post.slug}`,
     lastModified: new Date(post.updatedAt),
     changeFrequency: "weekly" as const,
