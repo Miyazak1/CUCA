@@ -109,6 +109,18 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
     return rows.map(toPublicSchoolDto);
   }
 
+  async countSchools(options: CatalogListOptions): Promise<number> {
+    const { whereSql, params } = buildPublicSearchWhere("s", [
+      "s.name_en", "s.name_zh", "s.slug", "s.city", "s.city_zh", "s.province", "s.school_type",
+      "s.region", "s.subject_tags::text", "s.language_tags::text",
+    ], options.query, ["s.verification_status in ('verified','stale')"]);
+    const rows = await this.client.query<{ total: number | string }>(
+      `select count(*)::int as total from schools s ${whereSql}`,
+      params,
+    );
+    return Number(rows[0]?.total ?? 0);
+  }
+
   async getProgramRequirements(programId: string, intakeId: string) {
     return getPublishedProgramRequirements(this.client, programId, intakeId);
   }
@@ -145,6 +157,23 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
     return rows.map(toPublicScholarshipDto);
   }
 
+  async countScholarships(options: CatalogListOptions): Promise<number> {
+    const { whereSql, params } = buildPublicSearchWhere("sch", [
+      "sch.title", "sch.name_zh", "sch.provider_name", "sch.provider_name_en", "sch.provider_location",
+      "sch.type", "sch.type_label", "sch.funding_level", "sch.coverage", "sch.applicable_degree",
+      "sch.applicable_program", "sch.summary", "sch.tags::text",
+    ], options.query);
+    const availabilitySql = options.availability === "open" ? " and sch.deadline_date > clock_timestamp()"
+      : options.availability === "closed" ? " and sch.deadline_date <= clock_timestamp()"
+        : options.availability === "unconfirmed" ? " and sch.deadline_date is null" : "";
+    const rows = await this.client.query<{ total: number | string }>(
+      `select count(*)::int as total from scholarships sch
+       ${whereSql} and sch.verification_status = 'verified'${availabilitySql}`,
+      params,
+    );
+    return Number(rows[0]?.total ?? 0);
+  }
+
   async getScholarship(scholarshipId: string): Promise<PublicScholarshipDetailDto | null> {
     const rows = await this.client.query<ScholarshipProjectionRow>(
       `${scholarshipSelectSql}
@@ -170,6 +199,18 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
     );
 
     return rows.map(toPublicCityDto);
+  }
+
+  async countCities(options: CatalogListOptions): Promise<number> {
+    const { whereSql, params } = buildPublicSearchWhere("c", [
+      "c.name_en", "c.name_zh", "c.slug", "c.province", "c.region", "c.tags::text",
+      "c.content_json->>'summary'", "c.content_json->>'overview'",
+    ], options.query, cityPublicClauses("c"));
+    const rows = await this.client.query<{ total: number | string }>(
+      `select count(*)::int as total from cities c ${whereSql}`,
+      params,
+    );
+    return Number(rows[0]?.total ?? 0);
   }
 
   async getCity(citySlug: string): Promise<PublicCityDetailDto | null> {

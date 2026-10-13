@@ -31,8 +31,11 @@ async function handleCatalogList(request: Request, service: CatalogService, name
 
   try {
     const options = parseListOptions(request);
-    if (name === "programs") {
-      const page = await service.listProgramsPage(context, options);
+    if (["programs", "schools", "scholarships", "cities"].includes(name)) {
+      const page = name === "programs" ? await service.listProgramsPage(context, options)
+        : name === "schools" ? await service.listSchoolsPage(context, options)
+          : name === "scholarships" ? await service.listScholarshipsPage(context, options)
+            : await service.listCitiesPage(context, options);
       return jsonResponse({ data: page.items, pagination: { total: page.total, limit: page.limit, offset: page.offset } });
     }
     const data = name === "programIntakes"

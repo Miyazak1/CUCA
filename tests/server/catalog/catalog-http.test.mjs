@@ -93,6 +93,32 @@ test("catalog HTTP detail handler passes the route identifier to service", async
   });
 });
 
+test("catalog HTTP list handlers return totals for homepage summary resources", async () => {
+  const service = new CatalogService({
+    async listSchools() { return [{ id: "school_1" }]; },
+    async countSchools() { return 12; },
+    async listScholarships() { return [{ id: "scholarship_1" }]; },
+    async countScholarships() { return 7; },
+    async listCities() { return [{ id: "city_1" }]; },
+    async countCities() { return 5; },
+  });
+  const handlers = createCatalogHttpHandlers(service);
+  const requests = [
+    [handlers.listSchools, "schools", 4, 12],
+    [handlers.listScholarships, "scholarships", 1, 7],
+    [handlers.listCities, "cities", 3, 5],
+  ];
+
+  for (const [handler, resource, limit, total] of requests) {
+    const response = await handler(new Request(`https://cuac.test/api/v1/catalog/${resource}?limit=${limit}`));
+    const body = await response.json();
+    assert.equal(body.pagination.total, total);
+    assert.equal(body.pagination.limit, limit);
+    assert.equal(body.pagination.offset, 0);
+    assert.equal(body.data.length, 1);
+  }
+});
+
 test("catalog HTTP detail handlers reject malformed public identifiers", async () => {
   const service = new CatalogService({
     async listPrograms() { return []; },

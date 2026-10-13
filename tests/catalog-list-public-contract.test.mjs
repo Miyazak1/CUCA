@@ -69,6 +69,7 @@ test("catalog list UI has unified loading, empty, and failure states", async () 
   assert.match(api, /No published \$\{noun\} are available yet/);
   assert.match(api, /escapeHtml/);
   assert.match(api, /async function loadAll/);
+  assert.match(api, /responseTotal == null \? payload\.data\.length/);
   assert.match(api, /page < 100/);
   assert.match(api, /Promise\.all\(Array\.from/);
   assert.match(api, /offset \+= pageSize \* pageCount/);

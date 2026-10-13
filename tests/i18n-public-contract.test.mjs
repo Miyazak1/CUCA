@@ -28,7 +28,7 @@ test("public shell identifies UCAC as a Holalobe product without time-bound admi
   assert.match(shell, /© 2026 UCAC · by Holalobe/);
   assert.doesNotMatch(shell, /China admissions 2026:/);
   assert.match(home, /UCAC by Holalobe/);
-  assert.match(home, /catalog-list-api\.js\?v=20261009-current-home/);
+  assert.match(home, /catalog-list-api\.js\?v=20261013-catalog-counts/);
   assert.doesNotMatch(home, /documents=light/);
   assert.match(homeScript, /window\.CuacCatalogList/);
   assert.match(homeScript, /api\.loadPage/);

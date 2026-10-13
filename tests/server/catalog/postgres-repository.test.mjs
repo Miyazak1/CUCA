@@ -117,6 +117,31 @@ test("PostgresCatalogRepository keeps school list SQL tenant-safe", async () => 
   assert.match(calls[0].statement, /p2\.verification_status in \('verified','stale'\)/);
 });
 
+test("PostgresCatalogRepository counts the same published homepage resources", async () => {
+  const calls = [];
+  const repository = new PostgresCatalogRepository({
+    async query(statement, params) {
+      calls.push({ statement, params });
+      return [{ total: 9 }];
+    },
+  });
+
+  assert.equal(await repository.countSchools({ query: "zhejiang" }), 9);
+  assert.equal(await repository.countScholarships({ availability: "open" }), 9);
+  assert.equal(await repository.countCities({ query: "hangzhou" }), 9);
+
+  assert.match(calls[0].statement, /from schools s where s\.status = 'active'/);
+  assert.match(calls[0].statement, /s\.verification_status in \('verified','stale'\)/);
+  assert.deepEqual(calls[0].params, ["%zhejiang%"]);
+  assert.match(calls[1].statement, /from scholarships sch/);
+  assert.match(calls[1].statement, /sch\.verification_status = 'verified'/);
+  assert.match(calls[1].statement, /sch\.deadline_date > clock_timestamp\(\)/);
+  assert.match(calls[2].statement, /from cities c/);
+  assert.match(calls[2].statement, /c\.verification_status in \('verified','stale'\)/);
+  assert.match(calls[2].statement, /exists \(select 1 from schools city_school/);
+  assert.deepEqual(calls[2].params, ["%hangzhou%"]);
+});
+
 test("PostgresCatalogRepository excludes scholarship contact data from public SQL", async () => {
   const calls = [];
   const repository = new PostgresCatalogRepository({

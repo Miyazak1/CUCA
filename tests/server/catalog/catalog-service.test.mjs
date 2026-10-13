@@ -79,6 +79,27 @@ test("program pages preserve normalized server-side filters and totals", async (
   assert.equal(normalizeProgramListOptions({ limit: 1000, offset: -1 }).limit, 100);
 });
 
+test("school, scholarship and city pages expose repository totals", async () => {
+  const service = new CatalogService({
+    async listSchools() { return [{ id: "school_1" }]; },
+    async countSchools() { return 12; },
+    async listScholarships() { return [{ id: "scholarship_1" }]; },
+    async countScholarships() { return 7; },
+    async listCities() { return [{ id: "city_1" }]; },
+    async countCities() { return 5; },
+  });
+
+  assert.deepEqual(await service.listSchoolsPage(createRequestContext(), { limit: 4 }), {
+    items: [{ id: "school_1" }], total: 12, limit: 4, offset: 0,
+  });
+  assert.deepEqual(await service.listScholarshipsPage(createRequestContext(), { limit: 1 }), {
+    items: [{ id: "scholarship_1" }], total: 7, limit: 1, offset: 0,
+  });
+  assert.deepEqual(await service.listCitiesPage(createRequestContext(), { limit: 3 }), {
+    items: [{ id: "city_1" }], total: 5, limit: 3, offset: 0,
+  });
+});
+
 test("CatalogService denies when public catalog data class is absent", async () => {
   const service = new CatalogService({
     async listPrograms() {

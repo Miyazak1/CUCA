@@ -25,10 +25,13 @@ export type PublicCatalogRepository = {
   listProgramIntakes(programId: string, options: CatalogListOptions): Promise<PublicProgramIntakeDto[]>;
   getProgramRequirements(programId: string, intakeId: string): Promise<PublicProgramRequirementsDto | null>;
   listSchools(options: CatalogListOptions): Promise<PublicSchoolDto[]>;
+  countSchools?(options: CatalogListOptions): Promise<number>;
   getSchool(schoolId: string): Promise<PublicSchoolDetailDto | null>;
   listScholarships(options: CatalogListOptions): Promise<PublicScholarshipDto[]>;
+  countScholarships?(options: CatalogListOptions): Promise<number>;
   getScholarship(scholarshipId: string): Promise<PublicScholarshipDetailDto | null>;
   listCities(options: CatalogListOptions): Promise<PublicCityDto[]>;
+  countCities?(options: CatalogListOptions): Promise<number>;
   getCity(citySlug: string): Promise<PublicCityDetailDto | null>;
   listGuides(options: CatalogListOptions): Promise<PublicGuideDto[]>;
   getGuide(guideSlug: string): Promise<PublicGuideDto | null>;
@@ -76,6 +79,16 @@ export class CatalogService {
     return this.repository.listSchools(normalizeListOptions(options));
   }
 
+  async listSchoolsPage(context: RequestContext, options: CatalogListOptions = {}) {
+    authorizePublicCatalogRead(context);
+    const normalized = normalizeListOptions(options);
+    const [items, total] = await Promise.all([
+      this.repository.listSchools(normalized),
+      this.repository.countSchools?.(normalized),
+    ]);
+    return { items, total: total ?? items.length, limit: normalized.limit, offset: normalized.offset };
+  }
+
   async getProgramRequirements(context: RequestContext, programId: string, intakeId: string) {
     authorizePublicCatalogRead(context);
     return this.repository.getProgramRequirements(inputUuid(programId, "programId"), inputUuid(intakeId, "intakeId"));
@@ -91,6 +104,16 @@ export class CatalogService {
     return this.repository.listScholarships(normalizeScholarshipListOptions(options));
   }
 
+  async listScholarshipsPage(context: RequestContext, options: CatalogListOptions = {}) {
+    authorizePublicCatalogRead(context);
+    const normalized = normalizeScholarshipListOptions(options);
+    const [items, total] = await Promise.all([
+      this.repository.listScholarships(normalized),
+      this.repository.countScholarships?.(normalized),
+    ]);
+    return { items, total: total ?? items.length, limit: normalized.limit, offset: normalized.offset };
+  }
+
   async getScholarship(context: RequestContext, scholarshipId: string) {
     authorizePublicCatalogRead(context);
     return this.repository.getScholarship(inputUuid(scholarshipId, "scholarshipId"));
@@ -99,6 +122,16 @@ export class CatalogService {
   async listCities(context: RequestContext, options: CatalogListOptions = {}) {
     authorizePublicCatalogRead(context);
     return this.repository.listCities(normalizeListOptions(options));
+  }
+
+  async listCitiesPage(context: RequestContext, options: CatalogListOptions = {}) {
+    authorizePublicCatalogRead(context);
+    const normalized = normalizeListOptions(options);
+    const [items, total] = await Promise.all([
+      this.repository.listCities(normalized),
+      this.repository.countCities?.(normalized),
+    ]);
+    return { items, total: total ?? items.length, limit: normalized.limit, offset: normalized.offset };
   }
 
   async getCity(context: RequestContext, citySlug: string) {

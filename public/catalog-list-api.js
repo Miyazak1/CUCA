@@ -61,9 +61,10 @@
       const payload = await response.json().catch(() => null);
       if (!response.ok) throw new Error(messageFromPayload(payload, `Could not load ${resource}.`));
       if (!Array.isArray(payload?.data)) throw new Error(`The ${resource} response was not a list.`);
+      const responseTotal = payload?.pagination?.total;
       const result = {
         records: payload.data,
-        total: Math.max(Number(payload?.pagination?.total) || 0, 0),
+        total: responseTotal == null ? payload.data.length : Math.max(Number(responseTotal) || 0, 0),
         limit: Math.max(Number(payload?.pagination?.limit) || Number(options.limit) || payload.data.length, 1),
         offset: Math.max(Number(payload?.pagination?.offset) || 0, 0),
       };
