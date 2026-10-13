@@ -2265,6 +2265,49 @@
     });
   }
 
+  function initBackToTop() {
+    let button = document.querySelector("[data-cuac-back-to-top]");
+    if (!button) {
+      button = document.createElement("button");
+      button.type = "button";
+      button.className = "cuac-back-to-top";
+      button.dataset.cuacBackToTop = "";
+      button.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/><path d="M12 8v11"/></svg>';
+      document.body.appendChild(button);
+    }
+
+    const label = usesInternalNavigation() ? "返回顶部" : shellText("backToTop", "Back to top");
+    button.setAttribute("aria-label", label);
+    button.title = label;
+
+    const updateVisibility = () => {
+      const visible = window.scrollY > Math.max(480, window.innerHeight * 0.7);
+      button.classList.toggle("visible", visible);
+      button.setAttribute("aria-hidden", String(!visible));
+      button.tabIndex = visible ? 0 : -1;
+    };
+    updateVisibility();
+    if (button.dataset.initialized === "true") return;
+    button.dataset.initialized = "true";
+
+    let updateScheduled = false;
+    const scheduleVisibilityUpdate = () => {
+      if (updateScheduled) return;
+      updateScheduled = true;
+      window.requestAnimationFrame(() => {
+        updateScheduled = false;
+        updateVisibility();
+      });
+    };
+    window.addEventListener("scroll", scheduleVisibilityUpdate, { passive: true });
+    window.addEventListener("resize", scheduleVisibilityUpdate);
+    button.addEventListener("click", () => {
+      const reducedMotion = document.body.classList.contains("motion-off")
+        || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+    });
+  }
+
   function hydrateSharedShell() {
     const headers = [...document.querySelectorAll("[data-cuac-header]")];
     const footers = [...document.querySelectorAll("[data-cuac-footer]")];
@@ -2274,6 +2317,7 @@
     initPrimaryNavigation();
     initAccountMenus();
     initLanguageSelectors();
+    initBackToTop();
     initPageReveal();
   }
 
@@ -2284,6 +2328,7 @@
   initPrimaryNavigation();
   initAccountMenus();
   initLanguageSelectors();
+  initBackToTop();
   const runtimeAuthReadyPromise = loadRuntimeAuthState();
   const runtimeCapabilitiesReadyPromise = loadRuntimeReleaseCapabilities();
   void Promise.allSettled([runtimeAuthReadyPromise, runtimeCapabilitiesReadyPromise]).finally(initAgentShell);

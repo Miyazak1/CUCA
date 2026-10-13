@@ -16,17 +16,19 @@ test("localized home advertises only complete launch locales and loads locale be
 });
 
 test("public shell identifies UCAC as a Holalobe product without time-bound admissions claims", async () => {
-  const [home, homeScript, homeCss, shell, about, manifest] = await Promise.all([
+  const [home, homeScript, homeCss, shell, shellCss, about, manifest] = await Promise.all([
     source("public/home-v3.html"),
     source("public/home-v3.js"),
     source("public/home-v3.css"),
     source("public/shared-shell.js"),
+    source("public/shared-shell.css"),
     source("public/about.html"),
     source("config/public-release-assets.json"),
   ]);
   assert.match(shell, /class="brand-parent"[\s\S]*by Holalobe/);
   assert.match(shell, /About UCAC and Holalobe/);
   assert.match(shell, /© 2026 UCAC · by Holalobe/);
+  assert.match(shellCss, /\.cuac-back-to-top\.visible\s*\{[^}]*opacity:\s*1/s);
   assert.doesNotMatch(shell, /China admissions 2026:/);
   assert.match(home, /UCAC by Holalobe/);
   assert.match(home, /catalog-list-api\.js\?v=20261013-catalog-counts/);
@@ -77,6 +79,9 @@ test("shared student account navigation localizes labels and preserves the selec
   assert.match(shell, /const headerNavItems = \(localizedNav \? roleNavItems : navItems\)/);
   assert.match(shell, /function usesInternalNavigation\(workspace = workspaceNavigation\(\)\)/);
   assert.match(shell, /const localizedNav = usesInternalNavigation\(workspace\)/);
+  assert.match(shell, /function initBackToTop\(\)/);
+  assert.match(shell, /window\.scrollTo\(\{ top: 0, behavior: reducedMotion \? "auto" : "smooth" \}\)/);
+  assert.match(shell, /button\.tabIndex = visible \? 0 : -1/);
   assert.match(shell, /renderWorkspaceNavigation\(workspace\)/);
   assert.doesNotMatch(shell, /\["school-settings-api\.html", icons\.(?:settings|intent),/);
   assert.doesNotMatch(shell, /\["ops-admin-api\.html", icons\.(?:shield|search),/);

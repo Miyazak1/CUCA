@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const SHELL_RELEASE = "20261012-public-nav-language";
+const SHELL_RELEASE = "20261013-back-to-top";
 
 export function PublicSiteShell({
   active,
