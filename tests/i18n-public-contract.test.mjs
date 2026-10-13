@@ -16,9 +16,10 @@ test("localized home advertises only complete launch locales and loads locale be
 });
 
 test("public shell identifies UCAC as a Holalobe product without time-bound admissions claims", async () => {
-  const [home, homeScript, shell, about, manifest] = await Promise.all([
+  const [home, homeScript, homeCss, shell, about, manifest] = await Promise.all([
     source("public/home-v3.html"),
     source("public/home-v3.js"),
+    source("public/home-v3.css"),
     source("public/shared-shell.js"),
     source("public/about.html"),
     source("config/public-release-assets.json"),
@@ -29,9 +30,12 @@ test("public shell identifies UCAC as a Holalobe product without time-bound admi
   assert.doesNotMatch(shell, /China admissions 2026:/);
   assert.match(home, /UCAC by Holalobe/);
   assert.match(home, /catalog-list-api\.js\?v=20261013-catalog-counts/);
+  assert.match(home, /home-v3\.css\?v=20261013-category-icons/);
   assert.doesNotMatch(home, /documents=light/);
   assert.match(homeScript, /window\.CuacCatalogList/);
   assert.match(homeScript, /api\.loadPage/);
+  assert.match(homeCss, /\.cat \.category-icon\s*\{[^}]*background:\s*linear-gradient/s);
+  assert.match(homeCss, /\.category-icon svg,[\s\S]*fill:\s*none;[\s\S]*stroke:\s*currentColor;/);
   assert.match(about, /Holalobe is the parent brand behind UCAC/);
   assert.match(manifest, /"about\.html"/);
   assert.match(manifest, /"about\.css"/);
