@@ -1,0 +1,1884 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-14T14:22:36.375Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located application-requirement extraction for later intake binding, review and publication."
+  },
+  "summary": {
+    "templateCount": 7,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 6,
+    "targetedProgramCount": 186,
+    "requirementItemCount": 90
+  },
+  "templates": [
+    {
+      "key": "ahu-undergraduate-current",
+      "schoolSlug": "anhui-university",
+      "cycle": "current-cycle-unresolved",
+      "targetProgramSlugs": [
+        "anhui-university-undergraduate-accounting-business",
+        "anhui-university-undergraduate-administrative-administration-management",
+        "anhui-university-undergraduate-applied-physics-physics-and-optical-engineering",
+        "anhui-university-undergraduate-applied-psychology-philosophy",
+        "anhui-university-undergraduate-archeology-history",
+        "anhui-university-undergraduate-archives-management",
+        "anhui-university-undergraduate-automation-electrical-engineering-and-automation",
+        "anhui-university-undergraduate-banking-economy",
+        "anhui-university-undergraduate-big-data-management-and-applications-big-data-and-statistics",
+        "anhui-university-undergraduate-bio-pharmacy-life-science",
+        "anhui-university-undergraduate-biological-engineering-life-science",
+        "anhui-university-undergraduate-biological-science-life-science",
+        "anhui-university-undergraduate-business-administration-business",
+        "anhui-university-undergraduate-chemical-engineering-and-technology-chemistry-and-chemical-engineering",
+        "anhui-university-undergraduate-chemistry-chemistry-and-chemical-engineering",
+        "anhui-university-undergraduate-chinese-language-and-literature-humanities",
+        "anhui-university-undergraduate-cid-36-cid-85-cid-87-cid-76-cid-191-cid-70-cid-76-cid-68-cid-79-cid-3-cid-44-cid-81-cid-87-cid-72-cid-79-cid-79-cid-76-cid-74-cid-72-cid-81-cid-70-cid-72-cid-36-cid-85-cid-87-cid-76-cid-191-cid-70-cid-76-cid-68-cid-79-cid-3-intelligence",
+        "anhui-university-undergraduate-communication-engineering-electronics-and-information-engineering",
+        "anhui-university-undergraduate-computer-science-and-technology-computer-science-and-technology",
+        "anhui-university-undergraduate-cyberspace-security-internet",
+        "anhui-university-undergraduate-data-science-and-big-data-technology-big-data-and-statistics",
+        "anhui-university-undergraduate-digital-economics-economy",
+        "anhui-university-undergraduate-ecology-resources-and-environmental-engineering",
+        "anhui-university-undergraduate-economic-statistics-big-data-and-statistics",
+        "anhui-university-undergraduate-editing-and-publication-journalism-and-communication",
+        "anhui-university-undergraduate-electrical-engineering-and-automation-electrical-engineering-and-automation",
+        "anhui-university-undergraduate-electronic-commerce-business",
+        "anhui-university-undergraduate-electronic-information-engineering-electronics-and-information-engineering",
+        "anhui-university-undergraduate-electronic-science-and-technology-electronics-and-information-engineering",
+        "anhui-university-undergraduate-electronics-packaging-technology-integrated-circuits",
+        "anhui-university-undergraduate-english-foreign-studies",
+        "anhui-university-undergraduate-environmental-science-resources-and-environmental-engineering",
+        "anhui-university-undergraduate-finance-economy",
+        "anhui-university-undergraduate-food-science-and-engineering-life-science",
+        "anhui-university-undergraduate-functional-material-material-science-and-engineering",
+        "anhui-university-undergraduate-geographic-information-science-resources-and-environmental-engineering",
+        "anhui-university-undergraduate-german-foreign-studies",
+        "anhui-university-undergraduate-history-history",
+        "anhui-university-undergraduate-human-resources-management-business",
+        "anhui-university-undergraduate-information-and-computing-science-mathematics-and-computing-science",
+        "anhui-university-undergraduate-information-management-and-information-system-management",
+        "anhui-university-undergraduate-information-security-computer-science-and-technology",
+        "anhui-university-undergraduate-integrated-circuits-design-and-integrated-system-integrated-circuits",
+        "anhui-university-undergraduate-intellectual-property-rights-law",
+        "anhui-university-undergraduate-intelligent-science-and-technology-internet",
+        "anhui-university-undergraduate-international-economy-and-trade-economy",
+        "anhui-university-undergraduate-internet-and-new-media-journalism-and-communication",
+        "anhui-university-undergraduate-internet-banking-internet",
+        "anhui-university-undergraduate-internet-of-things-engineering-internet",
+        "anhui-university-undergraduate-japanese-foreign-studies",
+        "anhui-university-undergraduate-journalism-journalism-and-communication",
+        "anhui-university-undergraduate-law-law",
+        "anhui-university-undergraduate-library-science-management",
+        "anhui-university-undergraduate-logistics-administration-business",
+        "anhui-university-undergraduate-machinery-design-manufacturing-and-automation-electrical-engineering-and-automation",
+        "anhui-university-undergraduate-marketing-business",
+        "anhui-university-undergraduate-material-chemistry-material-science-and-engineering",
+        "anhui-university-undergraduate-material-physics-material-science-and-engineering",
+        "anhui-university-undergraduate-mathematics-and-applied-mathematics-mathematics-and-computing-science",
+        "anhui-university-undergraduate-micro-electronic-science-and-technology-integrated-circuits",
+        "anhui-university-undergraduate-network-engineering-internet",
+        "anhui-university-undergraduate-new-energy-materials-and-devices-material-science-and-engineering",
+        "anhui-university-undergraduate-opto-electronic-information-science-and-engineering-physics-and-optical-engineering",
+        "anhui-university-undergraduate-philosophy-philosophy",
+        "anhui-university-undergraduate-political-and-administrative-science-sociology-and-politics",
+        "anhui-university-undergraduate-polymer-materials-and-engineering-chemistry-and-chemical-engineering",
+        "anhui-university-undergraduate-quantum-information-science-physics-and-optical-engineering",
+        "anhui-university-undergraduate-robotics-engineering-cid-36-cid-85-cid-87-cid-76-cid-191-cid-70-cid-76-cid-68-cid-79-cid-3-intelligence",
+        "anhui-university-undergraduate-russian-foreign-studies",
+        "anhui-university-undergraduate-social-work-sociology-and-politics",
+        "anhui-university-undergraduate-sociology-sociology-and-politics",
+        "anhui-university-undergraduate-software-engineering-computer-science-and-technology",
+        "anhui-university-undergraduate-spanish-foreign-studies",
+        "anhui-university-undergraduate-statistics-big-data-and-statistics",
+        "anhui-university-undergraduate-surveying-engineering-resources-and-environmental-engineering",
+        "anhui-university-undergraduate-surveying-technology-and-instruments-electrical-engineering-and-automation",
+        "anhui-university-undergraduate-teaching-chinese-as-a-second-foreign-humanities",
+        "anhui-university-undergraduate-tourism-administration-business",
+        "anhui-university-undergraduate-tv-and-broadcast-journalism-journalism-and-communication"
+      ],
+      "targetBindingStatus": "blocked_missing_intake",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "unresolved",
+        "targetPrograms": "derived",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "The brochure has a November 2025 last-modified date but does not state an admission year.",
+        "The existing AHU seed has no program-intake rows, so these requirements cannot yet be published through the intake-scoped requirements model."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "ahu_general",
+            "url": "https://sie.ahu.edu.cn/_upload/article/files/b4/e0/c137afce42859129fc0e68b094df/2fa37fb8-dd10-451b-a7c9-d1759a9bc289.pdf",
+            "title": "Anhui University international admissions fees and application brochure",
+            "capturedAt": "2026-10-14T03:17:34.999Z",
+            "contentSha256": "77e5a55b153c3764e84aebcae215c7ee13879479705c26181f76b82574cd8139"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Submit the Anhui University international student application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, undergraduate application-materials table, item 1"
+              }
+            ]
+          },
+          {
+            "key": "high_school_records",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Submit a notarized high-school diploma and academic transcript. Applicants who have not yet graduated may submit official expected-graduation proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, undergraduate application-materials table, diploma and transcript row"
+              }
+            ]
+          },
+          {
+            "key": "csca_score",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Submit a CSCA score report.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, undergraduate application-materials table, CSCA row"
+              }
+            ]
+          },
+          {
+            "key": "hsk4",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to Chinese-taught undergraduate programs",
+            "ruleText": "Provide HSK Level 4 with a score of at least 200. The brochure states that Malaysian Chinese independent high-school UEC holders may be exempt.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, undergraduate application-materials table, Chinese-language row"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Submit a copy of a valid passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, passport row"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, physical-examination row"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, non-criminal-record row"
+              }
+            ]
+          },
+          {
+            "key": "financial_proof",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Submit proof of sufficient financial support.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, financial-proof row"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Submit a recent two-inch electronic identification photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, photo row"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit notarized guardianship documentation and the China-based guardian's identification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 4, notes below application-materials tables, under-18 rule"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee and retain the requested payment proof. Bank-account details are intentionally excluded from this dataset.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, fee table and payment note"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ahu-master-current",
+      "schoolSlug": "anhui-university",
+      "cycle": "current-cycle-unresolved",
+      "targetProgramSlugs": [
+        "anhui-university-master-accounting-business-administration",
+        "anhui-university-master-aesthetics-philosophy",
+        "anhui-university-master-analytical-chemistry-chemistry-and-chemical-engineering",
+        "anhui-university-master-applied-chemistry-chemistry-and-chemical-engineering",
+        "anhui-university-master-archaeology-history",
+        "anhui-university-master-banking-economics",
+        "anhui-university-master-biology-life-science",
+        "anhui-university-master-business-administration-business-administration",
+        "anhui-university-master-chemical-engineering-chemistry-and-chemical-engineering",
+        "anhui-university-master-chemical-technology-chemistry-and-chemical-engineering",
+        "anhui-university-master-chinese-ancient-literature-humanities",
+        "anhui-university-master-chinese-contemporary-and-modern-literature-humanities",
+        "anhui-university-master-chinese-history-history",
+        "anhui-university-master-chinese-history-innovative-development-strategies",
+        "anhui-university-master-chinese-language-and-characters-studies-humanities",
+        "anhui-university-master-chinese-philosophy-philosophy",
+        "anhui-university-master-civil-law-and-commercial-law-law",
+        "anhui-university-master-classical-chinese-literature-humanities",
+        "anhui-university-master-communication-and-information-system-electrical-and-information-science",
+        "anhui-university-master-computer-science-and-technology-cid-36-cid-85-cid-87-cid-76-cid-191-cid-70-cid-76-cid-68-cid-79-cid-3-cid-44-cid-81-cid-87-cid-72-cid-79-cid-79-cid-76-cid-74-cid-72-cid-81-cid-70-cid-72",
+        "anhui-university-master-computer-science-and-technology-computer-science-and-technology",
+        "anhui-university-master-constitution-and-administrative-law-law",
+        "anhui-university-master-control-science-and-engineering-cid-36-cid-85-cid-87-cid-76-cid-191-cid-70-cid-76-cid-68-cid-79-cid-3-cid-44-cid-81-cid-87-cid-72-cid-79-cid-79-cid-76-cid-74-cid-72-cid-81-cid-70-cid-72",
+        "anhui-university-master-control-theory-and-control-engineering-electrical-engineering-and-automation",
+        "anhui-university-master-criminal-law-law",
+        "anhui-university-master-ecology-life-science",
+        "anhui-university-master-ecology-resources-and-environment-engineering",
+        "anhui-university-master-economic-law-law",
+        "anhui-university-master-electrical-engineering-electrical-engineering-and-automation",
+        "anhui-university-master-electronic-science-and-technology-electrical-and-information-science",
+        "anhui-university-master-english-language-and-literature-foreign-studies",
+        "anhui-university-master-environmental-and-resource-protection-law-law",
+        "anhui-university-master-environmental-engineering-resources-and-environment-engineering",
+        "anhui-university-master-environmental-science-resources-and-environment-engineering",
+        "anhui-university-master-finance-economics",
+        "anhui-university-master-foreign-linguistics-and-applied-linguistics-foreign-studies",
+        "anhui-university-master-foreign-philosophy-philosophy",
+        "anhui-university-master-higher-education-institute-of-higher-education-research",
+        "anhui-university-master-history-of-law-law",
+        "anhui-university-master-industrial-catalysis-chemistry-and-chemical-engineering",
+        "anhui-university-master-industrial-economics-economics",
+        "anhui-university-master-industrial-economics-innovative-development-strategies",
+        "anhui-university-master-information-resource-management-management",
+        "anhui-university-master-inorganic-chemistry-chemistry-and-chemical-engineering",
+        "anhui-university-master-integrated-circuit-science-and-engineering-integrated-circuits",
+        "anhui-university-master-intelligent-science-and-technology-cid-36-cid-85-cid-87-cid-76-cid-191-cid-70-cid-76-cid-68-cid-79-cid-3-cid-44-cid-81-cid-87-cid-72-cid-79-cid-79-cid-76-cid-74-cid-72-cid-81-cid-70-cid-72",
+        "anhui-university-master-international-chinese-language-education-humanities",
+        "anhui-university-master-international-law-law",
+        "anhui-university-master-international-trade-economics",
+        "anhui-university-master-japanese-language-and-literature-foreign-studies",
+        "anhui-university-master-journalism-journalism-and-communication",
+        "anhui-university-master-labor-economics-economics",
+        "anhui-university-master-linguistics-and-applied-linguistics-humanities",
+        "anhui-university-master-literature-and-art-humanities",
+        "anhui-university-master-logic-philosophy",
+        "anhui-university-master-marxist-philosophy-philosophy",
+        "anhui-university-master-marxist-theory-marxism",
+        "anhui-university-master-materials-science-and-engineering-materials-science-and-engineering",
+        "anhui-university-master-mathematics-mathematics-and-computing-science",
+        "anhui-university-master-microelectronics-and-solid-state-electronics-integrated-circuits",
+        "anhui-university-master-moral-philosophy-philosophy",
+        "anhui-university-master-optical-engineering-physics-and-material-science",
+        "anhui-university-master-organic-chemistry-chemistry-and-chemical-engineering",
+        "anhui-university-master-philosophy-of-science-and-technology-philosophy",
+        "anhui-university-master-physical-chemistry-chemistry-and-chemical-engineering",
+        "anhui-university-master-physics-physics-and-material-science",
+        "anhui-university-master-political-economics-economics",
+        "anhui-university-master-politics-innovative-development-strategies",
+        "anhui-university-master-politics-sociology-and-politics",
+        "anhui-university-master-polymer-chemistry-and-physics-chemistry-and-chemical-engineering",
+        "anhui-university-master-procedural-law-law",
+        "anhui-university-master-public-administration-management",
+        "anhui-university-master-public-finance-economics",
+        "anhui-university-master-quantitative-economics-economics",
+        "anhui-university-master-regional-economics-economics",
+        "anhui-university-master-regional-economics-innovative-development-strategies",
+        "anhui-university-master-religious-studies-philosophy",
+        "anhui-university-master-remote-sensing-science-and-technology-internet",
+        "anhui-university-master-resource-and-environmental-economics-economics",
+        "anhui-university-master-rural-economics-economics",
+        "anhui-university-master-rural-economics-innovative-development-strategies",
+        "anhui-university-master-russian-language-and-literature-foreign-studies",
+        "anhui-university-master-sociology-sociology-and-politics",
+        "anhui-university-master-software-engineering-computer-science-and-technology",
+        "anhui-university-master-statistics-big-data-and-statistics",
+        "anhui-university-master-technological-economy-and-management-business-administration",
+        "anhui-university-master-tourism-administration-business-administration",
+        "anhui-university-master-western-economics-economics",
+        "anhui-university-master-world-economy-economics"
+      ],
+      "targetBindingStatus": "blocked_missing_intake",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "unresolved",
+        "targetPrograms": "derived",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "The brochure does not state an admission year.",
+        "The existing AHU seed has no program-intake rows."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "ahu_general",
+            "url": "https://sie.ahu.edu.cn/_upload/article/files/b4/e0/c137afce42859129fc0e68b094df/2fa37fb8-dd10-451b-a7c9-d1759a9bc289.pdf",
+            "title": "Anhui University international admissions fees and application brochure",
+            "capturedAt": "2026-10-14T03:17:34.999Z",
+            "contentSha256": "77e5a55b153c3764e84aebcae215c7ee13879479705c26181f76b82574cd8139"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Submit the Anhui University international student application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, master's application-materials table, item 1"
+              }
+            ]
+          },
+          {
+            "key": "bachelor_records",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Submit a notarized bachelor's degree certificate and transcript. Expected graduates may submit official expected-graduation proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, master's application-materials table, diploma and transcript row"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Submit a study plan of at least 500 words in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, master's application-materials table, study-plan row"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, master's application-materials table, recommendation row"
+              }
+            ]
+          },
+          {
+            "key": "language_result",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "International master's applicants according to teaching language",
+            "ruleText": "For Chinese-taught study, provide HSK Level 5 with at least 180. For English-taught study, non-native English speakers must provide TOEFL 75, IELTS 6.0, or the stated equivalent route.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, master's application-materials table, language row"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Submit the Anhui University international student supervisor acceptance letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, master's application-materials table, supervisor-acceptance row"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Submit a copy of a valid passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, passport row"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, physical-examination row"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, non-criminal-record row"
+              }
+            ]
+          },
+          {
+            "key": "financial_proof",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Submit proof of sufficient financial support.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, financial-proof row"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Submit a recent two-inch electronic identification photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, photo row"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit notarized guardianship documentation and the China-based guardian's identification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 4, notes below application-materials tables, under-18 rule"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee and retain the requested payment proof. Bank-account details are intentionally excluded from this dataset.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, fee table and payment note"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ahu-doctoral-current",
+      "schoolSlug": "anhui-university",
+      "cycle": "current-cycle-unresolved",
+      "targetProgramSlugs": [],
+      "targetBindingStatus": "blocked_missing_intake",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "unresolved",
+        "targetPrograms": "unresolved",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "The brochure does not state an admission year.",
+        "No doctoral AHU program records exist in the current seed bundle."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "ahu_general",
+            "url": "https://sie.ahu.edu.cn/_upload/article/files/b4/e0/c137afce42859129fc0e68b094df/2fa37fb8-dd10-451b-a7c9-d1759a9bc289.pdf",
+            "title": "Anhui University international admissions fees and application brochure",
+            "capturedAt": "2026-10-14T03:17:34.999Z",
+            "contentSha256": "77e5a55b153c3764e84aebcae215c7ee13879479705c26181f76b82574cd8139"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Submit the Anhui University international student application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 4, doctoral application-materials table, item 1"
+              }
+            ]
+          },
+          {
+            "key": "master_records",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Submit a notarized master's degree certificate and transcript. Expected graduates may submit official expected-graduation proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 4, doctoral application-materials table, diploma and transcript row"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Submit a study plan of at least 800 words in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 4, doctoral application-materials table, study-plan row"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 4, doctoral application-materials table, recommendation row"
+              }
+            ]
+          },
+          {
+            "key": "language_result",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "International doctoral applicants according to teaching language",
+            "ruleText": "For Chinese-taught study, provide HSK Level 5 with at least 210. For English-taught study, provide TOEFL 75, IELTS 6.0, or the stated equivalent route.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 4, doctoral application-materials table, language row"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Submit the Anhui University international student supervisor acceptance letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 4, doctoral application-materials table, supervisor-acceptance row"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Submit a copy of a valid passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, passport row"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, physical-examination row"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, non-criminal-record row"
+              }
+            ]
+          },
+          {
+            "key": "financial_proof",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Submit proof of sufficient financial support.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, financial-proof row"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Submit a recent two-inch electronic identification photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3-4, application-materials table, photo row"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit notarized guardianship documentation and the China-based guardian's identification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 4, notes below application-materials tables, under-18 rule"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee and retain the requested payment proof. Bank-account details are intentionally excluded from this dataset.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_general",
+                "locator": "Page 3, fee table and payment note"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ahu-cgs-graduate-2026-2027",
+      "schoolSlug": "anhui-university",
+      "cycle": "2026-2027",
+      "targetProgramSlugs": [
+        "anhui-university-master-accounting-business-administration",
+        "anhui-university-master-aesthetics-philosophy",
+        "anhui-university-master-analytical-chemistry-chemistry-and-chemical-engineering",
+        "anhui-university-master-applied-chemistry-chemistry-and-chemical-engineering",
+        "anhui-university-master-archaeology-history",
+        "anhui-university-master-banking-economics",
+        "anhui-university-master-biology-life-science",
+        "anhui-university-master-business-administration-business-administration",
+        "anhui-university-master-chemical-engineering-chemistry-and-chemical-engineering",
+        "anhui-university-master-chemical-technology-chemistry-and-chemical-engineering",
+        "anhui-university-master-chinese-ancient-literature-humanities",
+        "anhui-university-master-chinese-contemporary-and-modern-literature-humanities",
+        "anhui-university-master-chinese-history-history",
+        "anhui-university-master-chinese-history-innovative-development-strategies",
+        "anhui-university-master-chinese-language-and-characters-studies-humanities",
+        "anhui-university-master-chinese-philosophy-philosophy",
+        "anhui-university-master-civil-law-and-commercial-law-law",
+        "anhui-university-master-classical-chinese-literature-humanities",
+        "anhui-university-master-communication-and-information-system-electrical-and-information-science",
+        "anhui-university-master-computer-science-and-technology-cid-36-cid-85-cid-87-cid-76-cid-191-cid-70-cid-76-cid-68-cid-79-cid-3-cid-44-cid-81-cid-87-cid-72-cid-79-cid-79-cid-76-cid-74-cid-72-cid-81-cid-70-cid-72",
+        "anhui-university-master-computer-science-and-technology-computer-science-and-technology",
+        "anhui-university-master-constitution-and-administrative-law-law",
+        "anhui-university-master-control-science-and-engineering-cid-36-cid-85-cid-87-cid-76-cid-191-cid-70-cid-76-cid-68-cid-79-cid-3-cid-44-cid-81-cid-87-cid-72-cid-79-cid-79-cid-76-cid-74-cid-72-cid-81-cid-70-cid-72",
+        "anhui-university-master-control-theory-and-control-engineering-electrical-engineering-and-automation",
+        "anhui-university-master-criminal-law-law",
+        "anhui-university-master-ecology-life-science",
+        "anhui-university-master-ecology-resources-and-environment-engineering",
+        "anhui-university-master-economic-law-law",
+        "anhui-university-master-electrical-engineering-electrical-engineering-and-automation",
+        "anhui-university-master-electronic-science-and-technology-electrical-and-information-science",
+        "anhui-university-master-english-language-and-literature-foreign-studies",
+        "anhui-university-master-environmental-and-resource-protection-law-law",
+        "anhui-university-master-environmental-engineering-resources-and-environment-engineering",
+        "anhui-university-master-environmental-science-resources-and-environment-engineering",
+        "anhui-university-master-finance-economics",
+        "anhui-university-master-foreign-linguistics-and-applied-linguistics-foreign-studies",
+        "anhui-university-master-foreign-philosophy-philosophy",
+        "anhui-university-master-higher-education-institute-of-higher-education-research",
+        "anhui-university-master-history-of-law-law",
+        "anhui-university-master-industrial-catalysis-chemistry-and-chemical-engineering",
+        "anhui-university-master-industrial-economics-economics",
+        "anhui-university-master-industrial-economics-innovative-development-strategies",
+        "anhui-university-master-information-resource-management-management",
+        "anhui-university-master-inorganic-chemistry-chemistry-and-chemical-engineering",
+        "anhui-university-master-integrated-circuit-science-and-engineering-integrated-circuits",
+        "anhui-university-master-intelligent-science-and-technology-cid-36-cid-85-cid-87-cid-76-cid-191-cid-70-cid-76-cid-68-cid-79-cid-3-cid-44-cid-81-cid-87-cid-72-cid-79-cid-79-cid-76-cid-74-cid-72-cid-81-cid-70-cid-72",
+        "anhui-university-master-international-chinese-language-education-humanities",
+        "anhui-university-master-international-law-law",
+        "anhui-university-master-international-trade-economics",
+        "anhui-university-master-japanese-language-and-literature-foreign-studies",
+        "anhui-university-master-journalism-journalism-and-communication",
+        "anhui-university-master-labor-economics-economics",
+        "anhui-university-master-linguistics-and-applied-linguistics-humanities",
+        "anhui-university-master-literature-and-art-humanities",
+        "anhui-university-master-logic-philosophy",
+        "anhui-university-master-marxist-philosophy-philosophy",
+        "anhui-university-master-marxist-theory-marxism",
+        "anhui-university-master-materials-science-and-engineering-materials-science-and-engineering",
+        "anhui-university-master-mathematics-mathematics-and-computing-science",
+        "anhui-university-master-microelectronics-and-solid-state-electronics-integrated-circuits",
+        "anhui-university-master-moral-philosophy-philosophy",
+        "anhui-university-master-optical-engineering-physics-and-material-science",
+        "anhui-university-master-organic-chemistry-chemistry-and-chemical-engineering",
+        "anhui-university-master-philosophy-of-science-and-technology-philosophy",
+        "anhui-university-master-physical-chemistry-chemistry-and-chemical-engineering",
+        "anhui-university-master-physics-physics-and-material-science",
+        "anhui-university-master-political-economics-economics",
+        "anhui-university-master-politics-innovative-development-strategies",
+        "anhui-university-master-politics-sociology-and-politics",
+        "anhui-university-master-polymer-chemistry-and-physics-chemistry-and-chemical-engineering",
+        "anhui-university-master-procedural-law-law",
+        "anhui-university-master-public-administration-management",
+        "anhui-university-master-public-finance-economics",
+        "anhui-university-master-quantitative-economics-economics",
+        "anhui-university-master-regional-economics-economics",
+        "anhui-university-master-regional-economics-innovative-development-strategies",
+        "anhui-university-master-religious-studies-philosophy",
+        "anhui-university-master-remote-sensing-science-and-technology-internet",
+        "anhui-university-master-resource-and-environmental-economics-economics",
+        "anhui-university-master-rural-economics-economics",
+        "anhui-university-master-rural-economics-innovative-development-strategies",
+        "anhui-university-master-russian-language-and-literature-foreign-studies",
+        "anhui-university-master-sociology-sociology-and-politics",
+        "anhui-university-master-software-engineering-computer-science-and-technology",
+        "anhui-university-master-statistics-big-data-and-statistics",
+        "anhui-university-master-technological-economy-and-management-business-administration",
+        "anhui-university-master-tourism-administration-business-administration",
+        "anhui-university-master-western-economics-economics",
+        "anhui-university-master-world-economy-economics"
+      ],
+      "targetBindingStatus": "blocked_missing_intake",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "derived",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "This template applies only to the Chinese Government Scholarship University Program, not to every self-funded graduate route.",
+        "The existing AHU seed has no 2026-2027 intake rows to bind."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "ahu_cgs",
+            "url": "https://sie.ahu.edu.cn/_upload/article/files/cf/ee/3543c52a4212b79315534aeeb995/98db637b-5d63-40a2-9d4b-1db3300f3701.pdf",
+            "title": "Anhui University 2026-2027 Chinese Government Scholarship University Program brochure",
+            "capturedAt": "2026-10-14T03:21:31.067Z",
+            "contentSha256": "e117a177d6140cee5df5e24dd21ee511cff583758ff67ea83affc76362724269"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026-2027 AHU Chinese Government Scholarship applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 7, Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age_degree_master",
+            "category": "education",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Master's scholarship applicants",
+            "ruleText": "Hold a bachelor's degree and be under 35 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 7, Eligibility, master's rule"
+              }
+            ]
+          },
+          {
+            "key": "age_degree_doctoral",
+            "category": "education",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Doctoral scholarship applicants",
+            "ruleText": "Hold a master's degree and be under 40 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 7, Eligibility, doctoral rule"
+              }
+            ]
+          },
+          {
+            "key": "language_result",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants according to teaching language",
+            "ruleText": "For Chinese-taught study, provide HSK Level 5 with at least 210. For English-taught study, provide TOEFL 75 or IELTS 6.0.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 7, Eligibility, language rule"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit a passport whose validity extends beyond September 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 8, Application Documents, passport row"
+              }
+            ]
+          },
+          {
+            "key": "highest_degree_records",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit the notarized highest diploma and academic transcripts; expected graduates may submit official expected-graduation proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 8, Application Documents, diploma and transcript rows"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_and_preadmission",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit both an Anhui University supervisor acceptance letter and the university pre-admission notice required by the brochure.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 8, Application Documents, acceptance and pre-admission rows"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit a study or research plan longer than 1,000 words; doctoral plans must be signed by the intended supervisor.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 8, Application Documents, study-plan row"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 8, Application Documents, recommendation row"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Form valid within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 8, Application Documents, physical-examination row"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit a certificate of no criminal record issued within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 8, Application Documents, non-criminal-record row"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026-2027 scholarship applicants",
+            "ruleText": "Submit between January 15, 2026 at 08:00 and March 15, 2026 at 17:00, as stated in the brochure.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ahu_cgs",
+                "locator": "Page 7, Application Window"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "uibe-english-undergraduate-current",
+      "schoolSlug": "university-of-international-business-and-economics",
+      "cycle": "recurring-current-page",
+      "targetProgramSlugs": [
+        "uibe-artificial-intelligence-bachelor",
+        "uibe-business-administration-bachelor",
+        "uibe-economics-bachelor",
+        "uibe-finance-bachelor",
+        "uibe-international-business-bachelor",
+        "uibe-international-economics-and-trade-bachelor",
+        "uibe-international-politics-bachelor",
+        "uibe-marketing-bachelor"
+      ],
+      "targetBindingStatus": "blocked_missing_intake",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "derived",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "The page states recurring annual application periods rather than a single intake year.",
+        "Only the joint 2+2 program currently has an intake row in the seed bundle."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "uibe_index",
+            "url": "https://sie.uibe.edu.cn/en/Prgr/BacDegPro/OfEn/index.htm",
+            "title": "UIBE international undergraduate programs offered in English",
+            "capturedAt": "2026-10-14T03:17:33.605Z",
+            "contentSha256": "b77856a6ce97b5493fba22f07a8faa2248cfb843ff2d01ad9081ee716eaee2f2"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "high_school_health",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants to UIBE English-taught undergraduate programs",
+            "ruleText": "Hold a high-school diploma and be in good health.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Requirements', item 1"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit the notarized guardianship certificate required by UIBE.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Requirements', item 2"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Complete the UIBE online application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Materials', item 1"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a copy of the high-school graduation certificate and transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Materials', item 2"
+              }
+            ]
+          },
+          {
+            "key": "guarantor_id",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a copy of the guarantor's passport or identity document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Materials', item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca_math",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the CSCA certificate for Mathematics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Materials', item 4"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a copy of the passport or other accepted identification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Materials', item 5"
+              }
+            ]
+          },
+          {
+            "key": "photos",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit two recent passport photographs with white background, frontal view and no hat.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Materials', item 6"
+              }
+            ]
+          },
+          {
+            "key": "english_result",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit TOEFL 86, IELTS 6.0, A Level BBC or above, an accepted equivalent result, or official proof that high-school instruction was fully in English.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Materials', item 7"
+              }
+            ]
+          },
+          {
+            "key": "asset_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants when requested",
+            "ruleText": "Submit an asset certificate showing funds sufficient to cover tuition.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Materials', item 8"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a certificate of no criminal conviction.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Materials', item 9"
+              }
+            ]
+          },
+          {
+            "key": "application_period",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Use the recurring application periods stated by UIBE: October 20 to December 31 for spring entry, and March 20 to June 30 for fall entry.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Heading 'Application Period'"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Pay the non-refundable RMB 660 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_index",
+                "locator": "Fee section, application-fee row"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "uibe-buct-joint-undergraduate-2026",
+      "schoolSlug": "university-of-international-business-and-economics",
+      "cycle": "2026",
+      "targetProgramSlugs": [
+        "uibe-international-economic-development-cooperation-polymer-materials-bachelor"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "Publication still requires the repository's requirement-review workflow; this draft does not authorize a database write."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "uibe_joint",
+            "url": "https://sie.uibe.edu.cn/en/Prgr/BacDegPro/OfEn/abc864a25c554202bf5c9acbf53d2729.htm",
+            "title": "UIBE 2026 international undergraduate program",
+            "capturedAt": "2026-10-14T03:17:33.607Z",
+            "contentSha256": "ba5b9827a856ad10df967b121ed510af186d7460d9b56291f84b0e27aa9aba06"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "high_school",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Be a high-school graduate or above and meet university admission qualifications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Eligibility Requirements', paragraph 1"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health, hold a valid private passport, and agree to follow Chinese law and university regulations.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Eligibility Requirements', paragraph 2"
+              }
+            ]
+          },
+          {
+            "key": "age_guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Applicants must be age 18-25; applicants under 18 must provide guardian documents for Beijing.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Eligibility Requirements', paragraph 3"
+              }
+            ]
+          },
+          {
+            "key": "chinese_origin_policy",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants of Chinese origin",
+            "ruleText": "Meet the Ministry of Education requirements referenced as Document No. 12 (2020).",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Eligibility Requirements', paragraph 4"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Submit either the UIBE or BUCT application form through the relevant official application portal.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application Documents', item 1"
+              }
+            ]
+          },
+          {
+            "key": "cv_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Submit a curriculum vitae and personal statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application Documents', item 2"
+              }
+            ]
+          },
+          {
+            "key": "passport_visas",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Submit the passport photo page and Chinese visa pages when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application Documents', item 3"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Submit a notarized high-school diploma and transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application Documents', item 4"
+              }
+            ]
+          },
+          {
+            "key": "english_result",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Submit IELTS 6.0, TOEFL 85, or an accepted equivalent result.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application Documents', item 5"
+              }
+            ]
+          },
+          {
+            "key": "csca_math_chemistry",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Submit CSCA results for Mathematics and Chemistry.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application Documents', item 6"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application Documents', item 7"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application Documents', item 8"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 joint-program applicants",
+            "ruleText": "Submit by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application & Admission Process', application-deadline line"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Pay the RMB 660 application fee. Payment account details are intentionally excluded from this dataset.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Fees', application-fee row"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "shupl-international-2026",
+      "schoolSlug": "shanghai-university-of-political-science-and-law",
+      "cycle": "2026",
+      "targetProgramSlugs": [
+        "shanghai-university-of-political-science-and-law-business-chinese",
+        "shanghai-university-of-political-science-and-law-economics-and-finance",
+        "shanghai-university-of-political-science-and-law-electronic-commerce-and-law-english",
+        "shanghai-university-of-political-science-and-law-international-economy-and-trade",
+        "shanghai-university-of-political-science-and-law-international-economy-and-trade-english",
+        "shanghai-university-of-political-science-and-law-international-politics",
+        "shanghai-university-of-political-science-and-law-international-politics-english",
+        "shanghai-university-of-political-science-and-law-law-international-law",
+        "shanghai-university-of-political-science-and-law-teaching-chinese-to-speakers-of-other-languages"
+      ],
+      "targetBindingStatus": "blocked_missing_intake",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "The official guide does not publish an exact general application deadline.",
+        "The SHUPL seed has no program-intake rows, so the requirements cannot yet be published through the intake-scoped model."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "shupl_2026",
+            "url": "https://iso.shupl.edu.cn/2025/1029/c3326a143594/page.htm",
+            "title": "Shanghai University of Political Science and Law 2026 international student admission guide",
+            "capturedAt": "2026-10-14T03:17:33.059Z",
+            "contentSha256": "c369cca864ccdda2b6d061ff6af5aaee360496aecf54bc9bf69604bd4d14eb0c"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "age_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "General international applicants",
+            "ruleText": "Be age 18-30 and have at least a high-school-level education. Scholarship routes may impose separate conditions.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '三、申请资格'"
+              }
+            ]
+          },
+          {
+            "key": "csca_undergraduate",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Submit a valid CSCA score report. The linked subject attachment must be checked for program-specific subjects.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', CSCA row; heading '七、报名流程', step 1"
+              }
+            ]
+          },
+          {
+            "key": "highest_degree",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the highest diploma; documents not in Chinese or English must be translated and notarized.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', highest-diploma row"
+              }
+            ]
+          },
+          {
+            "key": "transcript",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the transcript for the highest completed education; documents not in Chinese or English must be translated and notarized.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', transcript row"
+              }
+            ]
+          },
+          {
+            "key": "financial_proof",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a financial guarantee letter or personal bank-deposit certificate. If using a guarantor, include the guarantor's signature and passport identity page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', financial-guarantee row"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Form issued within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', physical-examination row"
+              }
+            ]
+          },
+          {
+            "key": "passport_photo",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a passport copy and passport-style photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', passport rows"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a certificate of no criminal record issued within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', non-criminal-record row"
+              }
+            ]
+          },
+          {
+            "key": "hsk_certificate",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to Chinese-taught degree programs",
+            "ruleText": "Submit the applicable HSK certificate. The general guide does not state a universal minimum score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', Chinese-language certificate row"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Undergraduate applicants when available and graduate applicants as required by route",
+            "ruleText": "Submit a study or research plan; the guide marks it optional for undergraduate applicants.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', study-plan row"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Master's applicants",
+            "ruleText": "Submit two recommendation letters in Chinese or English from professors or associate professors. Undergraduate applicants may provide them when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', recommendation row"
+              }
+            ]
+          },
+          {
+            "key": "china_status_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently working or studying in China",
+            "ruleText": "Submit current-study or departure proof and a copy of the temporary residence permit as applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', China-status rows"
+              }
+            ]
+          },
+          {
+            "key": "portrait_and_video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the specified electronic identification photograph and a one-minute self-introduction video in Chinese for Chinese-taught programs or English for English-taught programs.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '四、申请材料', photo and video rows"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Pay the RMB 400 application fee. Payment account details are intentionally excluded from this dataset.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shupl_2026",
+                "locator": "Heading '五、费用介绍', application-fee row"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

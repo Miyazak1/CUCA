@@ -1,0 +1,305 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-14T14:22:40.547Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete source-located Spring 2027 self-funded Chinese-language application requirements with an exact open intake binding."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 1,
+    "targetedIntakeCount": 1,
+    "requirementItemCount": 16
+  },
+  "templates": [
+    {
+      "key": "lnutcm-chinese-language-self-funded-spring-2027",
+      "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "liaoning-university-of-traditional-chinese-medicine-non-degree-chinese-language-self-funded-spring-2027"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit_from_visually_reviewed_images"
+      },
+      "unresolvedNotes": [
+        "The English requirement wording is an editorial translation of the official Chinese brochure and requires review before publication."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "lnutcm_eligibility",
+            "url": "https://gjhzjlc.lnutcm.edu.cn/__local/F/65/D8/0ED5E0339AD65704C53FDD50C97_68DABF37_71F9B.png",
+            "title": "LNUTCM 2026-2027 Chinese language program guide image 5",
+            "capturedAt": "2026-09-23T03:11:21.213Z",
+            "contentSha256": "0b81eb5160f3066f6dcf833eb4d649801cf58c7cea0bf33cfeb507536d245a0c"
+          },
+          {
+            "key": "lnutcm_application",
+            "url": "https://gjhzjlc.lnutcm.edu.cn/__local/5/10/1D/1D46D308D9DF6C0562E71ECA4E3_4BF129F0_92178.png",
+            "title": "LNUTCM 2026-2027 Chinese language program guide image 6",
+            "capturedAt": "2026-09-23T03:11:22.828Z",
+            "contentSha256": "ba5d1a094d82c000968b26f2b093f3b45ac73be780cb711addb8c27753a3f2df"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be a non-Chinese citizen in good health.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "lnutcm_eligibility",
+                "locator": "Image 5, Application Conditions"
+              }
+            ]
+          },
+          {
+            "key": "minimum_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be at least 18 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_eligibility",
+                "locator": "Image 5, Application Conditions"
+              }
+            ]
+          },
+          {
+            "key": "minimum_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Hold a high-school diploma or higher qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_eligibility",
+                "locator": "Image 5, Application Conditions"
+              }
+            ]
+          },
+          {
+            "key": "data_import_template",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Complete the self-funded-student information import template available from the university download area.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Complete the Liaoning University of Traditional Chinese Medicine international-student admission application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "passport_pages",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the passport photo page and inner pages. Applicants with prior China travel must also provide relevant visa pages; applicants currently in China must additionally provide the current visa and entry-stamp page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "highest_diploma",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the highest academic diploma or graduation certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "academic_transcript",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the transcript for the highest completed academic qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a no-criminal-record certificate or sign the university's no-criminal-record undertaking.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "integrity_undertaking",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Sign the applicant integrity undertaking provided by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants studying for more than half a year",
+            "ruleText": "Submit the Foreigner Physical Examination Form covering every listed item. The form must include the examining physician's signature, hospital stamp, and a stamped applicant photograph; results are valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants studying for more than half a year",
+            "ruleText": "Submit proof of funds covering at least one year of tuition and living expenses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "identification_photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a 3.5 cm by 4.9 cm identification photograph; the electronic file must be 100-500 KB.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "electronic_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the electronic application-material package to the university's official International Education College admissions office for filing and review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Application Process"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Spring 2027 applicants",
+            "ruleText": "Submit the application by December 25, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "lnutcm_eligibility",
+                "locator": "Image 5, Application Period, Spring 2027 intake"
+              }
+            ]
+          },
+          {
+            "key": "fees_at_enrollment",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted self-funded students",
+            "ruleText": "Pay the required tuition and accommodation charges at enrollment according to the admission notice. Registration, insurance and other applicable charges are separate.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "lnutcm_application",
+                "locator": "Image 6, Fees and payment timing"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

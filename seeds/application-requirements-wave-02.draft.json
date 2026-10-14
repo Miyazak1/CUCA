@@ -1,0 +1,2452 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-14T14:22:37.528Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located application requirements with verified Fall 2026 program-intake bindings."
+  },
+  "summary": {
+    "templateCount": 9,
+    "readyTemplateCount": 9,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 44,
+    "targetedIntakeCount": 44,
+    "requirementItemCount": 137
+  },
+  "templates": [
+    {
+      "key": "qdu-chinese-language-literature-2026",
+      "schoolSlug": "qingdao-university",
+      "cycle": "2026",
+      "targetProgramSlugs": [
+        "qingdao-university-chinese-language-and-literature"
+      ],
+      "unresolvedNotes": [
+        "Publication still requires the requirement-review workflow; this draft does not authorize a database write."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "qdu_undergraduate",
+            "url": "https://istudy.qdu.edu.cn/uploads/attached/file/20251118/FB18352611137066.pdf",
+            "title": "Qingdao University 2026 international undergraduate admission guide",
+            "capturedAt": "2026-10-14T03:28:19.847Z",
+            "contentSha256": "28277e2c56f520c788f90025d18b2dfcf372f889b15c9b4e66910220e221c581"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid ordinary passport. Applicants with specified Chinese-origin circumstances must provide the additional nationality and travel-history evidence described by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 2, Application Eligibility, item 1"
+              }
+            ]
+          },
+          {
+            "key": "health_conduct_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Be under age 25, physically and psychologically healthy, have no criminal record, be friendly to China, and comply with Chinese law and university rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 2, Application Eligibility, item 2"
+              }
+            ]
+          },
+          {
+            "key": "high_school",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Have graduated from high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, Application Eligibility, item 3"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Complete the Qingdao University online degree-student application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, Application Procedure, item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport_copy",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit the passport information page. The guide requires the passport to remain valid after December 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, Application Procedure, item 2"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit the notarized highest diploma. Prospective graduates may submit official expected-graduation or student-status proof and must provide the diploma after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, Application Procedure, item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit academic transcripts from high school through the most recent semester, issued and sealed by the responsible school office; notarized translation is required when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 4, Application Procedure, item 4"
+              }
+            ]
+          },
+          {
+            "key": "resume_commitment",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit a resume and the university's Commitment of Application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 4, Application Procedure, item 5"
+              }
+            ]
+          },
+          {
+            "key": "work_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who are employed",
+            "ruleText": "Submit a work certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 4, Application Procedure, item 6"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit the Financial Guarantee Statement and the sponsor's passport identity page or other accepted identity proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 4, Application Procedure, item 10"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form completed in English. The result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 4, Application Procedure, item 11"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit a certificate of no criminal record issued within six months before application submission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Pages 4-5, Application Procedure, item 12"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit the university's China-based guardian authorization and guarantee documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 5, Application Procedure, item 13"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit before May 31, 2026. Scholarship applicants must also follow the applicable scholarship deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, Application time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Pay the RMB 400 application fee after the university's initial review. Payment-account details are intentionally excluded.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 5, Fees Structure and page 6, Materials Review"
+              }
+            ]
+          },
+          {
+            "key": "hsk_hskk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese Language and Literature applicants",
+            "ruleText": "Provide HSK Level 4 with at least 210 and HSKK Intermediate with at least 60.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 1, Chinese Language and Literature program block"
+              }
+            ]
+          },
+          {
+            "key": "csca_math",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese Language and Literature applicants",
+            "ruleText": "Submit a valid CSCA Mathematics result.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 1, Chinese Language and Literature program block; page 4, application item 9"
+              }
+            ]
+          }
+        ]
+      },
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      }
+    },
+    {
+      "key": "qdu-chinese-dual-degree-2026",
+      "schoolSlug": "qingdao-university",
+      "cycle": "2026",
+      "targetProgramSlugs": [
+        "qingdao-university-dual-degree-in-chinese-language-and-business-administration",
+        "qingdao-university-dual-degree-in-chinese-language-and-international-politics"
+      ],
+      "unresolvedNotes": [
+        "Publication still requires the requirement-review workflow; this draft does not authorize a database write."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "qdu_undergraduate",
+            "url": "https://istudy.qdu.edu.cn/uploads/attached/file/20251118/FB18352611137066.pdf",
+            "title": "Qingdao University 2026 international undergraduate admission guide",
+            "capturedAt": "2026-10-14T03:28:19.847Z",
+            "contentSha256": "28277e2c56f520c788f90025d18b2dfcf372f889b15c9b4e66910220e221c581"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid ordinary passport. Applicants with specified Chinese-origin circumstances must provide the additional nationality and travel-history evidence described by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 2, Application Eligibility, item 1"
+              }
+            ]
+          },
+          {
+            "key": "health_conduct_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Be under age 25, physically and psychologically healthy, have no criminal record, be friendly to China, and comply with Chinese law and university rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 2, Application Eligibility, item 2"
+              }
+            ]
+          },
+          {
+            "key": "high_school",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Have graduated from high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, Application Eligibility, item 3"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Complete the Qingdao University online degree-student application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, Application Procedure, item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport_copy",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Submit the passport information page. The guide requires the passport to remain valid after December 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, Application Procedure, item 2"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Submit the notarized highest diploma. Prospective graduates may submit official expected-graduation or student-status proof and must provide the diploma after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, Application Procedure, item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Submit academic transcripts from high school through the most recent semester, issued and sealed by the responsible school office; notarized translation is required when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 4, Application Procedure, item 4"
+              }
+            ]
+          },
+          {
+            "key": "resume_commitment",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Submit a resume and the university's Commitment of Application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 4, Application Procedure, item 5"
+              }
+            ]
+          },
+          {
+            "key": "work_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who are employed",
+            "ruleText": "Submit a work certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 4, Application Procedure, item 6"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Submit the Financial Guarantee Statement and the sponsor's passport identity page or other accepted identity proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 4, Application Procedure, item 10"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form completed in English. The result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 4, Application Procedure, item 11"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Submit a certificate of no criminal record issued within six months before application submission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Pages 4-5, Application Procedure, item 12"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit the university's China-based guardian authorization and guarantee documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 5, Application Procedure, item 13"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Submit before May 31, 2026. Scholarship applicants must also follow the applicable scholarship deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, Application time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Pay the RMB 400 application fee after the university's initial review. Payment-account details are intentionally excluded.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 5, Fees Structure and page 6, Materials Review"
+              }
+            ]
+          },
+          {
+            "key": "hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language dual-degree applicants",
+            "ruleText": "Provide HSK Level 4 with at least 180.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Pages 1-2, dual-degree program block"
+              }
+            ]
+          },
+          {
+            "key": "csca_chinese_math",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language dual-degree applicants",
+            "ruleText": "Submit valid CSCA Chinese for Humanities and Mathematics results.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Pages 1-2, dual-degree program block; page 4, application item 9"
+              }
+            ]
+          }
+        ]
+      },
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      }
+    },
+    {
+      "key": "qdu-mbbs-2026",
+      "schoolSlug": "qingdao-university",
+      "cycle": "2026",
+      "targetProgramSlugs": [
+        "qingdao-university-mbbs-program-in-english"
+      ],
+      "unresolvedNotes": [
+        "The English guide does not state one universal numeric English-test threshold; school records or a standardized English certificate are accepted according to the published rule."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "qdu_mbbs",
+            "url": "https://istudy.qdu.edu.cn/uploads/attached/file/20260725/E725601154684175.pdf",
+            "title": "Qingdao University 2026 English-taught MBBS admission guide",
+            "capturedAt": "2026-10-14T03:28:19.550Z",
+            "contentSha256": "ebee719595a3f12a3ad005592f371434f1dd9bb7b9e3f802b72ea3809b62da6c"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Be a non-Chinese citizen age 18 or above with a valid passport. Applicants with specified Chinese-origin circumstances must provide the additional nationality evidence described by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 1, Application Eligibility, item 1"
+              }
+            ]
+          },
+          {
+            "key": "health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Be physically and psychologically healthy, have no criminal record, be friendly to China, and comply with Chinese law.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 2, Application Eligibility, item 2"
+              }
+            ]
+          },
+          {
+            "key": "school_results",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Have graduated from high school and provide official high-school and any higher-education transcripts. The average must exceed 75%, and every subject must exceed 60%.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 2, Application Eligibility, item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca_math_chemistry",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Submit valid CSCA Mathematics and Chemistry results.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 2, Application Eligibility, item 3; page 3, Application Procedure, item 5"
+              }
+            ]
+          },
+          {
+            "key": "english_result",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Applicants from non-English-speaking countries must submit English-learning records or a standardized English-proficiency certificate. Applicants educated fully in English may use the stated exemption but must submit official English-medium evidence.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 2, Application Eligibility, item 4; page 3, Application Procedure, item 6"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Complete the Qingdao University online degree-student application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 2, Application Procedure, item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Submit the ordinary-passport information page; the passport must remain valid after March 2027.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 2, Application Procedure, item 2"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcript",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Submit the original or notarized highest qualification and transcript in Chinese or English. Expected 2026 graduates may first submit graduation or attendance proof and must later provide final academic credentials.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 3, Application Procedure, items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Submit the Financial Guarantee Statement and the sponsor's passport identity page or accepted identity proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 3, Application Procedure, item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form completed in English. The result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 3, Application Procedure, item 8"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Submit a certificate of no criminal record issued within six months before application submission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 3, Application Procedure, item 9"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Submit before September 4, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 2, Application time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Pay the non-refundable RMB 800 registration fee after initial review. Payment-account details are intentionally excluded.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 3, Fee structure; page 4, Evaluation Admission"
+              }
+            ]
+          }
+        ]
+      },
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      }
+    },
+    {
+      "key": "sisu-chinese-literature-2026",
+      "schoolSlug": "sichuan-international-studies-university",
+      "cycle": "2026-2027",
+      "targetProgramSlugs": [
+        "sichuan-international-studies-university-chinese-language-and-literature"
+      ],
+      "unresolvedNotes": [
+        "The published HSK requirement is program-level and does not state one universal minimum score in this guide."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "sisu_undergraduate",
+            "url": "https://studyinsisu.sisu.edu.cn/zsxx/bks/295c30338d854df0adc33d38ff745fd4.htm",
+            "title": "Sichuan International Studies University 2026-2027 international undergraduate admission guide",
+            "capturedAt": "2026-10-14T03:28:20.015Z",
+            "contentSha256": "ef9fddfe6d355d2c4fc80826aad101006c4b990251ac94826ec8842ba9c827e6"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '一、招生对象及申请条件', item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Hold a high-school education or above, have strong academic results, and be age 18-45.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '一、招生对象及申请条件', item 2"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit the passport information page; the page states validity must extend beyond the expected September 2030 completion date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit a notarized highest diploma. Current students may submit official expected-graduation or enrollment proof; notarized Chinese or English translations are required for other languages.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit transcripts from high school through the most recent semester, issued and stamped by the school; notarized translation is required when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 3"
+              }
+            ]
+          },
+          {
+            "key": "hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit a valid HSK report meeting the selected Chinese-taught program's level requirement.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 4"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit a Chinese- or English-language study plan of more than 1,000 Chinese characters or words as applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 6"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit a Chinese- or English-language recommendation letter from the high school, including the recommender's institution, title, position and contact information.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 7"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit legal documents for a China-based guardian.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 8"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit a complete Foreigner Physical Examination Form. The result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 9"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit a recent bareheaded identification photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 10"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Submit a valid certificate of no criminal record, normally issued within six months before application; notarized translation is required when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 11"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "For self-funded Fall 2026 admission, apply from January 1 through May 31, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '五、申请流程', self-funded row in application-time table"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Pay the RMB 800 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '三、费用标准', item 2"
+              }
+            ]
+          },
+          {
+            "key": "csca_or_hsk_waiver",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese Language and Literature applicants",
+            "ruleText": "Submit CSCA Chinese for Humanities and Mathematics results. A valid HSK Level 4 report may waive the CSCA Chinese for Humanities subject, but not Mathematics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '一、招生对象及申请条件', CSCA subject rule; heading '六、申请材料', item 5"
+              }
+            ]
+          }
+        ]
+      },
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      }
+    },
+    {
+      "key": "sisu-undergraduate-general-2026",
+      "schoolSlug": "sichuan-international-studies-university",
+      "cycle": "2026-2027",
+      "targetProgramSlugs": [
+        "sichuan-international-studies-university-diplomacy",
+        "sichuan-international-studies-university-e-commerce",
+        "sichuan-international-studies-university-international-economics-and-trade",
+        "sichuan-international-studies-university-journalism",
+        "sichuan-international-studies-university-teaching-chinese-to-speakers-of-other-languages",
+        "sichuan-international-studies-university-tourism-management"
+      ],
+      "unresolvedNotes": [
+        "The published HSK requirement is program-level and does not state one universal minimum score in this guide."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "sisu_undergraduate",
+            "url": "https://studyinsisu.sisu.edu.cn/zsxx/bks/295c30338d854df0adc33d38ff745fd4.htm",
+            "title": "Sichuan International Studies University 2026-2027 international undergraduate admission guide",
+            "capturedAt": "2026-10-14T03:28:20.015Z",
+            "contentSha256": "ef9fddfe6d355d2c4fc80826aad101006c4b990251ac94826ec8842ba9c827e6"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '一、招生对象及申请条件', item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Hold a high-school education or above, have strong academic results, and be age 18-45.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '一、招生对象及申请条件', item 2"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Submit the passport information page; the page states validity must extend beyond the expected September 2030 completion date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Submit a notarized highest diploma. Current students may submit official expected-graduation or enrollment proof; notarized Chinese or English translations are required for other languages.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Submit transcripts from high school through the most recent semester, issued and stamped by the school; notarized translation is required when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 3"
+              }
+            ]
+          },
+          {
+            "key": "hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Submit a valid HSK report meeting the selected Chinese-taught program's level requirement.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 4"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Submit a Chinese- or English-language study plan of more than 1,000 Chinese characters or words as applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 6"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Submit a Chinese- or English-language recommendation letter from the high school, including the recommender's institution, title, position and contact information.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 7"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit legal documents for a China-based guardian.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 8"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Submit a complete Foreigner Physical Examination Form. The result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 9"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Submit a recent bareheaded identification photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 10"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Submit a valid certificate of no criminal record, normally issued within six months before application; notarized translation is required when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 11"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "For self-funded Fall 2026 admission, apply from January 1 through May 31, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '五、申请流程', self-funded row in application-time table"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Pay the RMB 800 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '三、费用标准', item 2"
+              }
+            ]
+          },
+          {
+            "key": "csca_chinese_math",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit valid CSCA Chinese for Humanities and Mathematics results before the application deadline.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '一、招生对象及申请条件', CSCA subject rule; heading '六、申请材料', item 5"
+              }
+            ]
+          }
+        ]
+      },
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      }
+    },
+    {
+      "key": "tjfsu-chinese-math-2026",
+      "schoolSlug": "tianjin-foreign-studies-university",
+      "cycle": "2026",
+      "targetProgramSlugs": [
+        "tianjin-foreign-studies-university-teaching-chinese-to-speakers-of-other-languages"
+      ],
+      "unresolvedNotes": [
+        "Publication still requires the requirement-review workflow; this draft does not authorize a database write."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "tjfsu_undergraduate",
+            "url": "https://isa.tjfsu.edu.cn/info/1066/1850.htm",
+            "title": "Tianjin Foreign Studies University 2026 international undergraduate admission guide",
+            "capturedAt": "2026-10-14T03:28:17.850Z",
+            "contentSha256": "5897ff767d97fb6df0452ba42c094be43817d0caf739b5ad01dfb1ba50bcb4c5"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Be a non-Chinese citizen age 18-35 and satisfy the Ministry of Education nationality rules referenced by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 1"
+              }
+            ]
+          },
+          {
+            "key": "health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Be of good conduct and physical and mental health, and comply with Chinese law and university rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 2"
+              }
+            ]
+          },
+          {
+            "key": "high_school",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Hold a high-school diploma or equivalent qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Submit the passport information page with validity after March 31, 2027. Applicants with the specified Chinese-origin circumstances must provide the additional nationality and travel-history evidence listed by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Submit the high-school diploma. Current graduating students may submit official enrollment proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Submit complete high-school transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 3"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Submit a scanned Foreigner Physical Examination Record completed in English. The result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 6"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Submit a certificate of no criminal record issued within six months before the application date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 7"
+              }
+            ]
+          },
+          {
+            "key": "deposit_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Submit a bank-issued deposit certificate showing at least RMB 40,000 in the applicant's or financial guarantor's name. No bank-account details are collected in this dataset.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 8"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants still under 18 on September 1, 2026",
+            "ruleText": "Submit legal documents for a Tianjin-based guardian.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 9"
+              }
+            ]
+          },
+          {
+            "key": "translations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Attach a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Notes below heading '六、申请材料', item 1"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Submit by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '三、申请截止时间'"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Pay the non-refundable RMB 500 application fee after the university's review process reaches the payment step.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', steps 2-5; heading '九、费用', item 1 and refund note"
+              }
+            ]
+          },
+          {
+            "key": "csca_subjects",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught Mathematics-only routes",
+            "ruleText": "Submit the CSCA Mathematics result using the Chinese-language test paper.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '四、招生专业及CSCA必考科目', applicable program row and notes"
+              }
+            ]
+          },
+          {
+            "key": "language_result",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught Mathematics-only routes",
+            "ruleText": "Provide HSK Level 4 with at least 180, issued within the two-year validity period.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 5"
+              }
+            ]
+          }
+        ]
+      },
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      }
+    },
+    {
+      "key": "tjfsu-english-math-2026",
+      "schoolSlug": "tianjin-foreign-studies-university",
+      "cycle": "2026",
+      "targetProgramSlugs": [
+        "tianjin-foreign-studies-university-business-english",
+        "tianjin-foreign-studies-university-english",
+        "tianjin-foreign-studies-university-translation"
+      ],
+      "unresolvedNotes": [
+        "Publication still requires the requirement-review workflow; this draft does not authorize a database write."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "tjfsu_undergraduate",
+            "url": "https://isa.tjfsu.edu.cn/info/1066/1850.htm",
+            "title": "Tianjin Foreign Studies University 2026 international undergraduate admission guide",
+            "capturedAt": "2026-10-14T03:28:17.850Z",
+            "contentSha256": "5897ff767d97fb6df0452ba42c094be43817d0caf739b5ad01dfb1ba50bcb4c5"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Be a non-Chinese citizen age 18-35 and satisfy the Ministry of Education nationality rules referenced by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 1"
+              }
+            ]
+          },
+          {
+            "key": "health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Be of good conduct and physical and mental health, and comply with Chinese law and university rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 2"
+              }
+            ]
+          },
+          {
+            "key": "high_school",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Hold a high-school diploma or equivalent qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Submit the passport information page with validity after March 31, 2027. Applicants with the specified Chinese-origin circumstances must provide the additional nationality and travel-history evidence listed by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Submit the high-school diploma. Current graduating students may submit official enrollment proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Submit complete high-school transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 3"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Submit a scanned Foreigner Physical Examination Record completed in English. The result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 6"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Submit a certificate of no criminal record issued within six months before the application date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 7"
+              }
+            ]
+          },
+          {
+            "key": "deposit_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Submit a bank-issued deposit certificate showing at least RMB 40,000 in the applicant's or financial guarantor's name. No bank-account details are collected in this dataset.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 8"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants still under 18 on September 1, 2026",
+            "ruleText": "Submit legal documents for a Tianjin-based guardian.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 9"
+              }
+            ]
+          },
+          {
+            "key": "translations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Attach a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Notes below heading '六、申请材料', item 1"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Submit by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '三、申请截止时间'"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Pay the non-refundable RMB 500 application fee after the university's review process reaches the payment step.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', steps 2-5; heading '九、费用', item 1 and refund note"
+              }
+            ]
+          },
+          {
+            "key": "csca_subjects",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught Mathematics-only routes",
+            "ruleText": "Submit the CSCA Mathematics result using the English-language test paper.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '四、招生专业及CSCA必考科目', applicable program row and notes"
+              }
+            ]
+          },
+          {
+            "key": "language_result",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught Mathematics-only routes",
+            "ruleText": "Provide IELTS 6.0, TOEFL 80, or an accepted equivalent English-proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 5"
+              }
+            ]
+          }
+        ]
+      },
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      }
+    },
+    {
+      "key": "tjfsu-chinese-humanities-math-2026",
+      "schoolSlug": "tianjin-foreign-studies-university",
+      "cycle": "2026",
+      "targetProgramSlugs": [
+        "tianjin-foreign-studies-university-advertising",
+        "tianjin-foreign-studies-university-animation",
+        "tianjin-foreign-studies-university-arabic",
+        "tianjin-foreign-studies-university-chinese-language-and-literature",
+        "tianjin-foreign-studies-university-communication",
+        "tianjin-foreign-studies-university-czech",
+        "tianjin-foreign-studies-university-digital-media-art",
+        "tianjin-foreign-studies-university-diplomacy",
+        "tianjin-foreign-studies-university-e-commerce-cross-border-e-commerce",
+        "tianjin-foreign-studies-university-educational-technology",
+        "tianjin-foreign-studies-university-french",
+        "tianjin-foreign-studies-university-german",
+        "tianjin-foreign-studies-university-hungarian",
+        "tianjin-foreign-studies-university-international-economics-and-trade",
+        "tianjin-foreign-studies-university-international-organizations-and-global-governance",
+        "tianjin-foreign-studies-university-international-politics",
+        "tianjin-foreign-studies-university-italian",
+        "tianjin-foreign-studies-university-japanese",
+        "tianjin-foreign-studies-university-journalism",
+        "tianjin-foreign-studies-university-korean",
+        "tianjin-foreign-studies-university-law",
+        "tianjin-foreign-studies-university-network-and-new-media",
+        "tianjin-foreign-studies-university-portuguese",
+        "tianjin-foreign-studies-university-romanian",
+        "tianjin-foreign-studies-university-russian",
+        "tianjin-foreign-studies-university-serbian",
+        "tianjin-foreign-studies-university-spanish",
+        "tianjin-foreign-studies-university-swahili"
+      ],
+      "unresolvedNotes": [
+        "Publication still requires the requirement-review workflow; this draft does not authorize a database write."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "tjfsu_undergraduate",
+            "url": "https://isa.tjfsu.edu.cn/info/1066/1850.htm",
+            "title": "Tianjin Foreign Studies University 2026 international undergraduate admission guide",
+            "capturedAt": "2026-10-14T03:28:17.850Z",
+            "contentSha256": "5897ff767d97fb6df0452ba42c094be43817d0caf739b5ad01dfb1ba50bcb4c5"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Be a non-Chinese citizen age 18-35 and satisfy the Ministry of Education nationality rules referenced by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 1"
+              }
+            ]
+          },
+          {
+            "key": "health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Be of good conduct and physical and mental health, and comply with Chinese law and university rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 2"
+              }
+            ]
+          },
+          {
+            "key": "high_school",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Hold a high-school diploma or equivalent qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Submit the passport information page with validity after March 31, 2027. Applicants with the specified Chinese-origin circumstances must provide the additional nationality and travel-history evidence listed by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Submit the high-school diploma. Current graduating students may submit official enrollment proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Submit complete high-school transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 3"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Submit a scanned Foreigner Physical Examination Record completed in English. The result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 6"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Submit a certificate of no criminal record issued within six months before the application date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 7"
+              }
+            ]
+          },
+          {
+            "key": "deposit_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Submit a bank-issued deposit certificate showing at least RMB 40,000 in the applicant's or financial guarantor's name. No bank-account details are collected in this dataset.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 8"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants still under 18 on September 1, 2026",
+            "ruleText": "Submit legal documents for a Tianjin-based guardian.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 9"
+              }
+            ]
+          },
+          {
+            "key": "translations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Attach a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Notes below heading '六、申请材料', item 1"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Submit by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '三、申请截止时间'"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Pay the non-refundable RMB 500 application fee after the university's review process reaches the payment step.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', steps 2-5; heading '九、费用', item 1 and refund note"
+              }
+            ]
+          },
+          {
+            "key": "csca_subjects",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Submit CSCA Chinese for Humanities and Mathematics results using Chinese-language test papers.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '四、招生专业及CSCA必考科目', applicable program row and notes"
+              }
+            ]
+          },
+          {
+            "key": "language_result",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Provide HSK Level 4 with at least 180, issued within the two-year validity period.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 5"
+              }
+            ]
+          }
+        ]
+      },
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      }
+    },
+    {
+      "key": "tjfsu-chinese-stem-2026",
+      "schoolSlug": "tianjin-foreign-studies-university",
+      "cycle": "2026",
+      "targetProgramSlugs": [
+        "tianjin-foreign-studies-university-digital-media-technology"
+      ],
+      "unresolvedNotes": [
+        "Publication still requires the requirement-review workflow; this draft does not authorize a database write."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "tjfsu_undergraduate",
+            "url": "https://isa.tjfsu.edu.cn/info/1066/1850.htm",
+            "title": "Tianjin Foreign Studies University 2026 international undergraduate admission guide",
+            "capturedAt": "2026-10-14T03:28:17.850Z",
+            "contentSha256": "5897ff767d97fb6df0452ba42c094be43817d0caf739b5ad01dfb1ba50bcb4c5"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Be a non-Chinese citizen age 18-35 and satisfy the Ministry of Education nationality rules referenced by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 1"
+              }
+            ]
+          },
+          {
+            "key": "health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Be of good conduct and physical and mental health, and comply with Chinese law and university rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 2"
+              }
+            ]
+          },
+          {
+            "key": "high_school",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Hold a high-school diploma or equivalent qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '二、申请资格', item 3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Submit the passport information page with validity after March 31, 2027. Applicants with the specified Chinese-origin circumstances must provide the additional nationality and travel-history evidence listed by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Submit the high-school diploma. Current graduating students may submit official enrollment proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Submit complete high-school transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 3"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Submit a scanned Foreigner Physical Examination Record completed in English. The result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 6"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Submit a certificate of no criminal record issued within six months before the application date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 7"
+              }
+            ]
+          },
+          {
+            "key": "deposit_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Submit a bank-issued deposit certificate showing at least RMB 40,000 in the applicant's or financial guarantor's name. No bank-account details are collected in this dataset.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 8"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants still under 18 on September 1, 2026",
+            "ruleText": "Submit legal documents for a Tianjin-based guardian.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 9"
+              }
+            ]
+          },
+          {
+            "key": "translations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Attach a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Notes below heading '六、申请材料', item 1"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Submit by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '三、申请截止时间'"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Pay the non-refundable RMB 500 application fee after the university's review process reaches the payment step.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', steps 2-5; heading '九、费用', item 1 and refund note"
+              }
+            ]
+          },
+          {
+            "key": "csca_subjects",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught STEM route",
+            "ruleText": "Submit CSCA Chinese for STEM, Mathematics and Physics results using Chinese-language test papers.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '四、招生专业及CSCA必考科目', applicable program row and notes"
+              }
+            ]
+          },
+          {
+            "key": "language_result",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught STEM route",
+            "ruleText": "Provide HSK Level 4 with at least 180, issued within the two-year validity period.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '六、申请材料', item 5"
+              }
+            ]
+          }
+        ]
+      },
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      }
+    }
+  ]
+}

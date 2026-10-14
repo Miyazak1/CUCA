@@ -5188,6 +5188,22 @@
   "schoolSlug": "south-china-university-of-technology"
 },
 {
+  "id": "scut-application-procedure-current",
+  "label": "South China University of Technology current international application procedure",
+  "url": "https://sie.scut.edu.cn/29035/list.htm",
+  "allowedHosts": ["sie.scut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "south-china-university-of-technology"
+},
+{
+  "id": "scut-fees-current",
+  "label": "South China University of Technology current international student fees",
+  "url": "https://sie.scut.edu.cn/29037/list.htm",
+  "allowedHosts": ["sie.scut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "south-china-university-of-technology"
+},
+{
   "id": "scut-prospectus-en-pdf-2026",
   "label": "South China University of Technology 2026 international prospectus English PDF",
   "url": "https://sie.scut.edu.cn/_upload/article/files/2b/8e/9cb43a4d4aa19f8b16f21a4ff7c8/0e51f148-a3bf-4d8f-9021-2aa94c4a2c64.pdf",
@@ -5689,6 +5705,14 @@
   "url": "https://www.gjxy.zjut.edu.cn/index.php/en/prospectivestudents/undergraduate",
   "allowedHosts": ["www.gjxy.zjut.edu.cn"],
   "sourceRole": "school-admissions",
+  "schoolSlug": "zhejiang-university-of-technology"
+},
+{
+  "id": "zjut-language-programs-current",
+  "label": "Zhejiang University of Technology current international language programs",
+  "url": "https://www.gjxy.zjut.edu.cn/index.php/en/prospectivestudents/language",
+  "allowedHosts": ["www.gjxy.zjut.edu.cn"],
+  "sourceRole": "program-catalog",
   "schoolSlug": "zhejiang-university-of-technology"
 },
 {

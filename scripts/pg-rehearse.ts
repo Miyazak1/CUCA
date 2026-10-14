@@ -31,6 +31,7 @@ const retentionOnly = process.argv.includes("--retention");
 const catalogDataPlanOnly = process.argv.includes("--catalog-data-plan");
 const catalogReleaseCandidateOnly = process.argv.includes("--catalog-release-candidate");
 const catalogCityReleaseCandidateOnly = process.argv.includes("--catalog-city-release-candidate");
+const catalogRequirementCandidateOnly = process.argv.includes("--catalog-requirement-candidate");
 const catalogSeedOptions = process.argv.slice(2).filter(arg => arg.startsWith("--catalog-seed="));
 const catalogSeedPath = catalogSeedOptions[0]
   ? resolve(projectDir, catalogSeedOptions[0].slice("--catalog-seed=".length))
@@ -54,17 +55,18 @@ async function docker(args: string[], env = process.env): Promise<string> {
 }
 
 try {
-  if (process.argv.slice(2).some(arg => !["--http", "--linux", "--routing-review", "--data-quality", "--retention", "--catalog-data-plan", "--catalog-release-candidate", "--catalog-city-release-candidate"].includes(arg)
+  if (process.argv.slice(2).some(arg => !["--http", "--linux", "--routing-review", "--data-quality", "--retention", "--catalog-data-plan", "--catalog-release-candidate", "--catalog-city-release-candidate", "--catalog-requirement-candidate"].includes(arg)
       && !/^--write-schema-baseline(?:=[1-9]\d*)?$/.test(arg) && !/^--catalog-seed=.+/.test(arg))
     || catalogSeedOptions.length > 1
     || withLinux && (withHttp || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly)
     || routingReviewOnly && (withHttp || writeSchemaBaseline || dataQualityOnly || retentionOnly)
     || dataQualityOnly && (withHttp || writeSchemaBaseline || retentionOnly)
     || retentionOnly && (withHttp || writeSchemaBaseline || catalogDataPlanOnly)
-    || catalogDataPlanOnly && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogReleaseCandidateOnly || catalogCityReleaseCandidateOnly || Boolean(catalogSeedPath))
-    || catalogReleaseCandidateOnly && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogDataPlanOnly || catalogCityReleaseCandidateOnly || Boolean(catalogSeedPath))
-    || catalogCityReleaseCandidateOnly && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogDataPlanOnly || catalogReleaseCandidateOnly || Boolean(catalogSeedPath))
-    || catalogSeedPath && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogDataPlanOnly || catalogReleaseCandidateOnly || catalogCityReleaseCandidateOnly)) throw new Error("Unknown or incompatible rehearsal options.");
+    || catalogDataPlanOnly && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogReleaseCandidateOnly || catalogCityReleaseCandidateOnly || catalogRequirementCandidateOnly || Boolean(catalogSeedPath))
+    || catalogReleaseCandidateOnly && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogDataPlanOnly || catalogCityReleaseCandidateOnly || catalogRequirementCandidateOnly || Boolean(catalogSeedPath))
+    || catalogCityReleaseCandidateOnly && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogDataPlanOnly || catalogReleaseCandidateOnly || catalogRequirementCandidateOnly || Boolean(catalogSeedPath))
+    || catalogRequirementCandidateOnly && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogDataPlanOnly || catalogReleaseCandidateOnly || catalogCityReleaseCandidateOnly || Boolean(catalogSeedPath))
+    || catalogSeedPath && (withHttp || withLinux || writeSchemaBaseline || routingReviewOnly || dataQualityOnly || retentionOnly || catalogDataPlanOnly || catalogReleaseCandidateOnly || catalogCityReleaseCandidateOnly || catalogRequirementCandidateOnly)) throw new Error("Unknown or incompatible rehearsal options.");
   if (catalogSeedPath) {
     stage = "catalog-bundle-validation";
     const bundle = JSON.parse(await readFile(catalogSeedPath, "utf8")) as unknown;
@@ -139,6 +141,7 @@ try {
       : catalogDataPlanOnly ? "tests/server/db/catalog-data-plan-rehearsal.mjs"
       : catalogReleaseCandidateOnly ? "tests/server/db/catalog-data-release-candidate-rehearsal.mjs"
       : catalogCityReleaseCandidateOnly ? "tests/server/db/catalog-city-release-candidate-rehearsal.mjs"
+      : catalogRequirementCandidateOnly ? "tests/server/db/catalog-requirement-release-candidate-rehearsal.mjs"
       : catalogSeedPath ? "tests/server/db/catalog-seed-migration-rehearsal.mjs"
       : "tests/server/db/postgres-integration.test.mjs";
     const child = spawn(process.execPath, ["--test", testFile], {
@@ -158,6 +161,7 @@ try {
         CUAC_PG_CATALOG_DATA_PLAN: catalogDataPlanOnly ? "1" : "0",
         CUAC_PG_CATALOG_RELEASE_CANDIDATE: catalogReleaseCandidateOnly ? "1" : "0",
         CUAC_PG_CATALOG_CITY_RELEASE_CANDIDATE: catalogCityReleaseCandidateOnly ? "1" : "0",
+        CUAC_PG_CATALOG_REQUIREMENT_CANDIDATE: catalogRequirementCandidateOnly ? "1" : "0",
         CUAC_PG_RELEASE_PATH: release.output,
         CUAC_PG_RELEASE_SHA256: release.manifestSha256,
         ...(linuxImage ? {
@@ -314,6 +318,40 @@ try {
       console.log(`Catalog city release-candidate rehearsal evidence written: ${resultPath}`);
     } catch {
       console.error("Catalog city release-candidate rehearsal evidence could not be written.");
+      process.exitCode = 1;
+    }
+  }
+  if (catalogRequirementCandidateOnly && !containerCreated && process.exitCode === 0 && migrationReleaseSha256) {
+    try {
+      const candidate = JSON.parse(await readFile(resolve(projectDir, "seeds/application-requirements-release-candidate.unreviewed.json"), "utf8"));
+      const resultPath = resolve(projectDir, "work/catalog-quality/application-requirements-release-candidate-rehearsal.json");
+      await writeFile(resultPath, `${JSON.stringify({
+        version: 1,
+        generatedAt: new Date().toISOString(),
+        status: "passed_non_authorizing_actual_schema_rehearsal",
+        executionAuthorized: false,
+        publicationAuthorized: false,
+        databaseWriteAuthorized: false,
+        migrationReleaseSha256,
+        hashes: candidate.hashes,
+        summary: candidate.summary,
+        result: {
+          ownedDisposablePostgres: true,
+          loopbackOnly: true,
+          memoryOnlyData: true,
+          actualRequirementSchema: true,
+          serializableTransaction: true,
+          firstPassDrafts: candidate.summary.operationCount,
+          secondPassDrafts: 0,
+          approvedVersions: 0,
+          publications: 0,
+          rollbackRemovedAllDrafts: true,
+          ownedContainerRemoved: true,
+        },
+      }, null, 2)}\n`, "utf8");
+      console.log(`Requirement candidate rehearsal evidence written: ${resultPath}`);
+    } catch {
+      console.error("Requirement candidate rehearsal evidence could not be written.");
       process.exitCode = 1;
     }
   }

@@ -1,0 +1,238 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-14T14:22:39.049Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located current Spring 2027 application requirements with an exact open program-intake binding."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 1,
+    "targetedIntakeCount": 1,
+    "requirementItemCount": 12
+  },
+  "templates": [
+    {
+      "key": "qdu-chinese-language-spring-2027",
+      "schoolSlug": "qingdao-university",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "qingdao-university-non-degree-chinese-language-spring-2027"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "Publication still requires the repository's requirement-review workflow; this draft does not authorize a database write."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "qdu_spring_2027",
+            "url": "https://istudy.qdu.edu.cn/uploads/attached/file/20260916/E916493127159720.pdf",
+            "title": "Qingdao University Spring 2027 Chinese language program guide",
+            "capturedAt": "2026-10-14T10:00:07.818Z",
+            "contentSha256": "8d1d53c41f45e9e4a56617b95250f6c743714cd118fceb41a1e85b4ecf1b99b1"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Spring 2027 Chinese Language Program applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Page 1, 'Entry requirements', first line"
+              }
+            ]
+          },
+          {
+            "key": "conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Have no criminal record and agree to comply with Chinese law, regulations and university discipline.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Page 1, 'Entry requirements', second line"
+              }
+            ]
+          },
+          {
+            "key": "health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Meet China's health-examination standard for international students.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Page 1, 'Entry requirements', health line"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be between 18 and 50 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Page 1, 'Entry requirements', age line"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Complete the online application form truthfully and choose the program according to the intended study plan.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Pages 1-2, 'Application Materials' item 1 and 'Online application process' step 1"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Complete the financial-guarantee information requested in the online form.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Page 1, Chinese 'Application Materials' item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport_copy",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Upload a clear scanned copy of the passport information page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Page 1, 'Application Materials' item 2"
+              }
+            ]
+          },
+          {
+            "key": "education_records",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Upload current-enrollment evidence or the highest diploma together with the academic transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Page 1, 'Application Materials' item 3"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Upload physical-examination evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Page 1, 'Application Materials' item 4"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Upload a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Page 1, 'Application Materials' item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee after pre-evaluation. Payment instructions are sent through the application system; payment-account details are intentionally excluded from this dataset.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Pages 1-2, 'Application Materials' item 6 and application-process step 2"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Spring 2027 applicants",
+            "ruleText": "Submit the application before December 11, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_spring_2027",
+                "locator": "Page 1, 'Application Duration'"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

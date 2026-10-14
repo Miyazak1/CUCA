@@ -1,0 +1,313 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-14T14:22:39.801Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located current Spring 2027 scholarship application requirements with an exact non-degree intake binding."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 1,
+    "targetedIntakeCount": 1,
+    "requirementItemCount": 17
+  },
+  "templates": [
+    {
+      "key": "zjut-iclts-one-semester-spring-2027",
+      "schoolSlug": "zhejiang-university-of-technology",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "zhejiang-university-of-technology-iclts-one-semester-chinese-language-spring-2027"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit_multi_source",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "The target is a dedicated non-degree scholarship route supported jointly by the official language-program page and the official Spring 2027 scholarship notice; publication still requires review."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "zjut_iclts_2027",
+            "url": "https://www.gjxy.zjut.edu.cn/index.php/en/scholarship/international-chinese-language-teachers-scholarship",
+            "title": "Zhejiang University of Technology 2027 spring International Chinese Language Teachers Scholarship",
+            "capturedAt": "2026-10-14T10:02:47.708Z",
+            "contentSha256": "cf418ebc0919a72dc86285ecfc6098d6b3b970d0ec2957cd71a51b5c2eeaa1a1"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Scholarship Eligibility', item 1"
+              }
+            ]
+          },
+          {
+            "key": "conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Be friendly to China, have no criminal record, and comply with Chinese law and university rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Scholarship Eligibility', item 2"
+              }
+            ]
+          },
+          {
+            "key": "health_academics",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Be in good physical and mental condition with good academic performance and conduct.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Scholarship Eligibility', item 3"
+              }
+            ]
+          },
+          {
+            "key": "career_intent",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Intend to work in Chinese-language education or related fields.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Scholarship Eligibility', item 4"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Be age 16-35 under the page's stated reference date; currently employed Chinese-language teachers may be up to age 45.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Scholarship Eligibility', item 5"
+              }
+            ]
+          },
+          {
+            "key": "language_chinese_education",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "One-semester International Chinese Education or Chinese Language and Literature applicants",
+            "ruleText": "Provide HSK Level 3 with at least 180 and an HSKK score report, both within their two-year validity period.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Scholarship Category', One-Semester Study Program, first bullet; heading 'Application Materials', item 2"
+              }
+            ]
+          },
+          {
+            "key": "language_taiji",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "One-semester Taiji Culture applicants",
+            "ruleText": "Provide an HSK score report; applicants who also provide HSKK receive priority.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Scholarship Category', One-Semester Study Program, second bullet"
+              }
+            ]
+          },
+          {
+            "key": "prior_scholarship",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "One-semester applicants",
+            "ruleText": "In principle, applicants who received a similar scholarship within the previous three years are not eligible.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Note below 'One-Semester Study Program'"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Upload a scanned copy of the passport photo page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Application Materials', item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_records",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit the highest diploma or expected-graduation proof and an official transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Application Materials', item 3"
+              }
+            ]
+          },
+          {
+            "key": "in_service_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "In-service Chinese-language teachers",
+            "ruleText": "Submit proof of employment and a reference letter from the employer.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Application Materials', item 5"
+              }
+            ]
+          },
+          {
+            "key": "guardian_under_18",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit certified designation documents signed by the entrusted legal guardian in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Application Materials', item 6"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit a physical-examination form issued within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Application Materials', item 7"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Application Materials', item 8"
+              }
+            ]
+          },
+          {
+            "key": "china_study_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with prior study experience in China",
+            "ruleText": "Submit an institution-stamped certificate of academic performance from the period of study in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Application Materials', item 9"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "March 2027 scholarship applicants",
+            "ruleText": "Complete the ZJUT application by October 20, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Application Deadline'"
+              }
+            ]
+          },
+          {
+            "key": "two_system_process",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "First submit materials in the ZJUT system. After ZJUT review and issuance of its recommendation letter, submit the materials and recommendation through the CIS scholarship platform before the deadline.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Application Procedure', steps 1-4"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
