@@ -16,7 +16,7 @@ test("application-requirement wave 02 has verified Fall 2026 target bindings", a
     blockedTemplateCount: 0,
     targetedProgramCount: 44,
     targetedIntakeCount: 44,
-    requirementItemCount: 137,
+    requirementItemCount: 172,
   });
 
   const templateKeys = new Set();
@@ -35,6 +35,18 @@ test("application-requirement wave 02 has verified Fall 2026 target bindings", a
     for (const item of template.document.requirements) assert.ok(item.references.length >= 1);
   }
   assert.equal(targets.size, 44);
+  const qduTemplates = draft.templates.filter((template) => template.schoolSlug === "qingdao-university");
+  assert.equal(qduTemplates.length, 3);
+  assert.ok(qduTemplates.every((template) => template.document.coverage === "complete"));
+  assert.deepEqual(qduTemplates.map((template) => template.document.requirements.length), [21, 21, 16]);
+  const sisuTemplates = draft.templates.filter((template) => template.schoolSlug === "sichuan-international-studies-university");
+  assert.equal(sisuTemplates.length, 2);
+  assert.ok(sisuTemplates.every((template) => template.document.coverage === "complete"));
+  assert.ok(sisuTemplates.every((template) => template.document.requirements.length === 19));
+  const tjfsuTemplates = draft.templates.filter((template) => template.schoolSlug === "tianjin-foreign-studies-university");
+  assert.equal(tjfsuTemplates.length, 4);
+  assert.ok(tjfsuTemplates.every((template) => template.document.coverage === "complete"));
+  assert.ok(tjfsuTemplates.every((template) => template.document.requirements.length === 19));
 });
 
 test("application-requirement wave 02 excludes payment-account and applicant data", async () => {

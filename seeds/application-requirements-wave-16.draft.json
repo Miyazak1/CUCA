@@ -1,0 +1,373 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T04:30:51.630Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located HUST Spring 2027 one-semester scholarship requirements with complete application materials, dual-system procedure and an exact non-degree intake binding."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 1,
+    "targetedIntakeCount": 1,
+    "requirementItemCount": 21
+  },
+  "templates": [
+    {
+      "key": "hust-iclts-one-semester-spring-2027",
+      "schoolSlug": "huazhong-university-of-science-and-technology",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "huazhong-university-of-science-and-technology-iclts-one-semester-study-spring-2027"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "The official page lists covered benefit categories but does not state their monetary amounts."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "hust_iclts",
+            "url": "https://iso.hust.edu.cn/info/1194/4957.htm",
+            "title": "HUST 2026 International Chinese Language Teachers Scholarship Guide",
+            "capturedAt": "2026-10-15T04:29:31.797Z",
+            "contentSha256": "5641c761f60666f4d3d3bec29b97d94e4622357b58ae6930dfc90dd8027ea789"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Eligibility item a"
+              }
+            ]
+          },
+          {
+            "key": "conduct_and_law",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be friendly to China, have no criminal record, and comply with Chinese laws, regulations, and HUST rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Eligibility item b"
+              }
+            ]
+          },
+          {
+            "key": "health_and_performance",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be in good physical and mental health and in good academic and behavioral standing.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Eligibility item c"
+              }
+            ]
+          },
+          {
+            "key": "career_interest",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be interested in Chinese-language education and related work.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Eligibility item d"
+              }
+            ]
+          },
+          {
+            "key": "age_range",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be 16 to 35 years old on September 1, 2026. The maximum age is 45 for in-service Chinese-language teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Eligibility item e"
+              }
+            ]
+          },
+          {
+            "key": "hsk_hskk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "One-semester applicants",
+            "ruleText": "Provide an HSK Level 3 score of at least 180 and an HSKK score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Scholarship Types and Qualifications, item E"
+              }
+            ]
+          },
+          {
+            "key": "scholarship_system_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Apply through the International Chinese Language Teachers Scholarship section of the CLEC website and select Huazhong University of Science and Technology.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Application Procedures item a"
+              }
+            ]
+          },
+          {
+            "key": "hust_system_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "After submitting the scholarship application, register and apply in the HUST international-student application system and upload the International Chinese Teachers Scholarship Application Form.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Application Procedures item b"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "March 2027 applicants",
+            "ruleText": "Complete the student application by October 31, 2026 Beijing Time.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Application Procedures, March 2027 deadline"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a scanned copy of the passport photo page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Application Documents item a"
+              }
+            ]
+          },
+          {
+            "key": "language_scores",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit scanned HSK and HSKK score reports within their two-year validity period.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Application Documents item b"
+              }
+            ]
+          },
+          {
+            "key": "recommending_institution_reference",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a reference letter from the head of the recommending institution.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Application Documents item c"
+              }
+            ]
+          },
+          {
+            "key": "highest_qualification_and_transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit certification of the highest education diploma or proof of expected graduation and an official transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Application Documents item d"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Application Documents item e"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a certificate from a police station or law-enforcement agency confirming no previous criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Application Documents item f"
+              }
+            ]
+          },
+          {
+            "key": "in_service_teacher_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "In-service Chinese-language teachers",
+            "ruleText": "Submit proof of employment and an employer reference letter. Eligible in-service teachers receive priority under equal conditions.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Application Documents item g and section 6(a)"
+              }
+            ]
+          },
+          {
+            "key": "guardian_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants younger than 18",
+            "ruleText": "Submit certified designation documents signed by the entrusted legal guardian in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Application Documents item h"
+              }
+            ]
+          },
+          {
+            "key": "chinese_bridge_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Chinese Bridge scholarship-certificate holders",
+            "ruleText": "Apply through the scholarship website and submit the International Chinese Language Teachers Scholarship certificate with the application to HUST.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Section 6(b), Chinese Bridge Winners"
+              }
+            ]
+          },
+          {
+            "key": "similar_scholarship_history",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "One-semester applicants",
+            "ruleText": "Generally, applicants who received a similar scholarship within the previous three years are not eligible.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Miscellaneous item A"
+              }
+            ]
+          },
+          {
+            "key": "materials_integrity",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Provide true, complete and effective application materials; otherwise HUST will disqualify the application.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Miscellaneous item B"
+              }
+            ]
+          },
+          {
+            "key": "enrollment_conditions",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Scholarship recipients",
+            "ruleText": "Pass the health assessment and do not withdraw or suspend studies; otherwise the scholarship will be revoked.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hust_iclts",
+                "locator": "Miscellaneous item C"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

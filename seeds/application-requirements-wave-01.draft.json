@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-14T14:22:36.375Z",
+  "generatedAt": "2026-10-15T06:04:07.235Z",
   "handoff": {
     "status": "unreviewed_draft",
     "databaseWriteAuthorized": false,
@@ -12,7 +12,7 @@
     "readyTemplateCount": 1,
     "blockedTemplateCount": 6,
     "targetedProgramCount": 186,
-    "requirementItemCount": 90
+    "requirementItemCount": 94
   },
   "templates": [
     {
@@ -1403,13 +1403,13 @@
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "uibe_joint",
             "url": "https://sie.uibe.edu.cn/en/Prgr/BacDegPro/OfEn/abc864a25c554202bf5c9acbf53d2729.htm",
             "title": "UIBE 2026 international undergraduate program",
-            "capturedAt": "2026-10-14T03:17:33.607Z",
+            "capturedAt": "2026-10-15T06:03:38.437Z",
             "contentSha256": "ba5b9827a856ad10df967b121ed510af186d7460d9b56291f84b0e27aa9aba06"
           }
         ],
@@ -1486,6 +1486,21 @@
               {
                 "sourceKey": "uibe_joint",
                 "locator": "Heading 'Application Documents', item 1"
+              }
+            ]
+          },
+          {
+            "key": "materials_language",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Submit all application materials in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application Documents', introductory sentence"
               }
             ]
           },
@@ -1621,6 +1636,51 @@
               {
                 "sourceKey": "uibe_joint",
                 "locator": "Heading 'Fees', application-fee row"
+              }
+            ]
+          },
+          {
+            "key": "comprehensive_interview",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Complete the comprehensive interview after online application, fee payment and the CSCA test.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application & Admission Process', steps 1-6"
+              }
+            ]
+          },
+          {
+            "key": "admission_documents",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants who pass the selection process",
+            "ruleText": "Receive the pre-admission notice followed by the official admission letter and JW201 or JW202 visa form.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application & Admission Process', steps 7-8"
+              }
+            ]
+          },
+          {
+            "key": "status_monitoring",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Joint-program applicants",
+            "ruleText": "Regularly check the registered email address and application portal for updates.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "uibe_joint",
+                "locator": "Heading 'Application & Admission Process', note after the application deadline"
               }
             ]
           }

@@ -1,0 +1,254 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T04:18:10.167Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located BNU Zhuhai-campus Spring 2027 one-semester scholarship requirements with unresolved host-specific materials and an exact non-degree intake binding."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 1,
+    "targetedIntakeCount": 1,
+    "requirementItemCount": 13
+  },
+  "templates": [
+    {
+      "key": "bnu-iclts-zhuhai-one-semester-spring-2027",
+      "schoolSlug": "beijing-normal-university",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "beijing-normal-university-iclts-international-chinese-language-education-zhuhai-spring-2027"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "partial_due_to_unlisted_host_materials"
+      },
+      "unresolvedNotes": [
+        "The official BNU page instructs applicants to follow BNU-specific material requirements but does not enumerate them.",
+        "The official BNU page does not state scholarship benefit categories or monetary amounts."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "partial",
+        "sources": [
+          {
+            "key": "bnu_iclts",
+            "url": "https://admission-is.bnu.edu.cn/jxj/kzxy/index.html",
+            "title": "Beijing Normal University 2026 International Chinese Language Teachers Scholarship",
+            "capturedAt": "2026-10-15T04:16:10.697Z",
+            "contentSha256": "6c0063849bde8b5e40acb0d04fe60b1ff0a436de332beaab038953f82e24adce"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section I, item 1"
+              }
+            ]
+          },
+          {
+            "key": "conduct_and_law",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be friendly to China, have no criminal record, and comply with Chinese laws, regulations, and university rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section I, item 2"
+              }
+            ]
+          },
+          {
+            "key": "health_and_performance",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be in good physical and mental health and in good academic and behavioral standing.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section I, item 3"
+              }
+            ]
+          },
+          {
+            "key": "career_interest",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Intend to work in Chinese-language education, teaching, or a related field.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section I, item 4"
+              }
+            ]
+          },
+          {
+            "key": "age_range",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be 16 to 35 years old on September 1, 2026. The maximum age is 45 for in-service Chinese-language teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section I, item 5"
+              }
+            ]
+          },
+          {
+            "key": "hsk_hskk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International Chinese Language Education one-semester applicants",
+            "ruleText": "Provide an HSK Level 4 score of at least 180 and an HSKK score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section II, item 5(1)"
+              }
+            ]
+          },
+          {
+            "key": "similar_scholarship_history",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "One-semester applicants",
+            "ruleText": "In principle, applicants who received the same type of scholarship within the previous three years are not eligible.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section VI, item 1"
+              }
+            ]
+          },
+          {
+            "key": "scholarship_system_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Apply online through the International Chinese Language Teachers Scholarship section of the CLEC website, submit the required materials, track the review, and confirm study-in-China procedures with BNU if selected.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section III, Application Process"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "March 2027 applicants",
+            "ruleText": "Complete the student application by October 31, 2026 Beijing Time. The recommending institution and host-institution review deadline is November 10, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section III, March 2027 deadline"
+              }
+            ]
+          },
+          {
+            "key": "in_service_teacher_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "In-service Chinese-language teachers",
+            "ruleText": "Provide proof of employment and an employer recommendation letter to receive priority under equal conditions.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section IV, item 1"
+              }
+            ]
+          },
+          {
+            "key": "chinese_bridge_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Chinese Bridge scholarship-certificate holders",
+            "ruleText": "Apply through the scholarship system using the International Chinese Language Teachers Scholarship certificate and submit the application to the target host institution.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section IV, item 2"
+              }
+            ]
+          },
+          {
+            "key": "host_specific_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Review BNU's specific admission conditions and deadline and submit application materials under the applicable BNU rules. The captured page does not enumerate those materials.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section VI, item 3"
+              }
+            ]
+          },
+          {
+            "key": "enrollment_conditions",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Scholarship recipients",
+            "ruleText": "Pass the enrollment medical examination and register on time without unauthorized withdrawal or suspension; otherwise the scholarship may be canceled.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section VI, items 5-6"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

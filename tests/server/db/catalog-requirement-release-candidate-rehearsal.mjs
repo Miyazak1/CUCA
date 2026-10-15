@@ -31,11 +31,15 @@ test("unreviewed requirement candidate creates only rollback-scoped drafts in di
     for (const schoolSlug of schools) {
       await connection.query("insert into schools(id,slug,name_en,status) values($1::uuid,$2,$2,'draft')", [stableRequirementVersionIdentity(`rehearsal-school:${schoolSlug}`), schoolSlug]);
     }
+    const programs = new Map(candidate.operations.map(operation => [operation.programSlug, operation.schoolSlug]));
+    for (const [programSlug, schoolSlug] of programs) {
+      const schoolId = stableRequirementVersionIdentity(`rehearsal-school:${schoolSlug}`);
+      const programId = stableRequirementVersionIdentity(`rehearsal-program:${programSlug}`);
+      await connection.query("insert into programs(id,school_id,slug,name_en,degree_level,status) values($1::uuid,$2::uuid,$3,$3,'Rehearsal','draft')", [programId, schoolId, programSlug]);
+    }
     for (const operation of candidate.operations) {
-      const schoolId = stableRequirementVersionIdentity(`rehearsal-school:${operation.schoolSlug}`);
       const programId = stableRequirementVersionIdentity(`rehearsal-program:${operation.programSlug}`);
       const intakeId = stableRequirementVersionIdentity(`rehearsal-intake:${operation.programSlug}:${operation.intakeTerm}:${operation.intakeYear}`);
-      await connection.query("insert into programs(id,school_id,slug,name_en,degree_level,status) values($1::uuid,$2::uuid,$3,$3,'Rehearsal','draft')", [programId, schoolId, operation.programSlug]);
       await connection.query("insert into program_intakes(id,program_id,intake_term,intake_year,status) values($1::uuid,$2::uuid,$3,$4,'closed')", [intakeId, programId, operation.intakeTerm, operation.intakeYear]);
     }
     const first = await applyRequirementCandidateForDisposableRehearsal(connection, candidate);

@@ -14,7 +14,7 @@ test("application-requirement wave 01 stays source-located and non-publishable",
   assert.equal(draft.summary.readyTemplateCount, 1);
   assert.equal(draft.summary.blockedTemplateCount, 6);
   assert.equal(draft.summary.targetedProgramCount, 186);
-  assert.equal(draft.summary.requirementItemCount, 90);
+  assert.equal(draft.summary.requirementItemCount, 94);
 
   const keys = new Set();
   for (const template of draft.templates) {
@@ -38,4 +38,6 @@ test("only the explicit 2026 UIBE joint route is ready for intake binding", asyn
   assert.deepEqual(ready.map((template) => template.key), ["uibe-buct-joint-undergraduate-2026"]);
   assert.deepEqual(ready[0].targetProgramSlugs, ["uibe-international-economic-development-cooperation-polymer-materials-bachelor"]);
   assert.deepEqual(ready[0].targetIntake, { term: "Fall", year: 2026 });
+  assert.equal(ready[0].document.coverage, "complete");
+  assert.equal(ready[0].document.requirements.length, 18);
 });

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-14T14:22:37.528Z",
+  "generatedAt": "2026-10-15T05:57:42.366Z",
   "handoff": {
     "status": "unreviewed_draft",
     "databaseWriteAuthorized": false,
@@ -13,7 +13,7 @@
     "blockedTemplateCount": 0,
     "targetedProgramCount": 44,
     "targetedIntakeCount": 44,
-    "requirementItemCount": 137
+    "requirementItemCount": 172
   },
   "templates": [
     {
@@ -29,13 +29,13 @@
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "qdu_undergraduate",
             "url": "https://istudy.qdu.edu.cn/uploads/attached/file/20251118/FB18352611137066.pdf",
             "title": "Qingdao University 2026 international undergraduate admission guide",
-            "capturedAt": "2026-10-14T03:28:19.847Z",
+            "capturedAt": "2026-10-15T05:57:10.017Z",
             "contentSha256": "28277e2c56f520c788f90025d18b2dfcf372f889b15c9b4e66910220e221c581"
           }
         ],
@@ -97,6 +97,21 @@
               {
                 "sourceKey": "qdu_undergraduate",
                 "locator": "Page 3, Application Procedure, item 1"
+              }
+            ]
+          },
+          {
+            "key": "scan_quality",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Upload color scans of the original or notarized application documents made with a scanner; mobile-phone or camera images are not accepted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, note before Application Procedure item 1"
               }
             ]
           },
@@ -262,6 +277,51 @@
               {
                 "sourceKey": "qdu_undergraduate",
                 "locator": "Page 5, Fees Structure and page 6, Materials Review"
+              }
+            ]
+          },
+          {
+            "key": "materials_review",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "After the university's initial review, follow the registered-email notice, pay the application fee and upload proof of payment before the application is transferred to the relevant school for review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 6, Materials Review"
+              }
+            ]
+          },
+          {
+            "key": "entrance_assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese Language and Literature applicants",
+            "ruleText": "Complete the standard entrance examination and interview when required by the university; applicants who pass receive the admission and visa-application documents.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 6, Admission"
+              }
+            ]
+          },
+          {
+            "key": "registration",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Admitted Fall 2026 applicants",
+            "ruleText": "Register at the International Students Office during the period stated in the admission notice, expected in late August or early September 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 6, Registration"
               }
             ]
           },
@@ -323,13 +383,13 @@
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "qdu_undergraduate",
             "url": "https://istudy.qdu.edu.cn/uploads/attached/file/20251118/FB18352611137066.pdf",
             "title": "Qingdao University 2026 international undergraduate admission guide",
-            "capturedAt": "2026-10-14T03:28:19.847Z",
+            "capturedAt": "2026-10-15T05:57:10.017Z",
             "contentSha256": "28277e2c56f520c788f90025d18b2dfcf372f889b15c9b4e66910220e221c581"
           }
         ],
@@ -391,6 +451,21 @@
               {
                 "sourceKey": "qdu_undergraduate",
                 "locator": "Page 3, Application Procedure, item 1"
+              }
+            ]
+          },
+          {
+            "key": "scan_quality",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Upload color scans of the original or notarized application documents made with a scanner; mobile-phone or camera images are not accepted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 3, note before Application Procedure item 1"
               }
             ]
           },
@@ -560,6 +635,51 @@
             ]
           },
           {
+            "key": "materials_review",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "After the university's initial review, follow the registered-email notice, pay the application fee and upload proof of payment before the application is transferred to the relevant school for review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 6, Materials Review"
+              }
+            ]
+          },
+          {
+            "key": "entrance_assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 Chinese-language dual-degree applicants",
+            "ruleText": "Complete the standard entrance examination and interview when required by the university; applicants who pass receive the admission and visa-application documents.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 6, Admission"
+              }
+            ]
+          },
+          {
+            "key": "registration",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Admitted Fall 2026 applicants",
+            "ruleText": "Register at the International Students Office during the period stated in the admission notice, expected in late August or early September 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "qdu_undergraduate",
+                "locator": "Page 6, Registration"
+              }
+            ]
+          },
+          {
             "key": "hsk",
             "category": "language",
             "stage": "submission",
@@ -616,13 +736,13 @@
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "qdu_mbbs",
             "url": "https://istudy.qdu.edu.cn/uploads/attached/file/20260725/E725601154684175.pdf",
             "title": "Qingdao University 2026 English-taught MBBS admission guide",
-            "capturedAt": "2026-10-14T03:28:19.550Z",
+            "capturedAt": "2026-10-15T05:57:10.684Z",
             "contentSha256": "ebee719595a3f12a3ad005592f371434f1dd9bb7b9e3f802b72ea3809b62da6c"
           }
         ],
@@ -714,6 +834,21 @@
               {
                 "sourceKey": "qdu_mbbs",
                 "locator": "Page 2, Application Procedure, item 1"
+              }
+            ]
+          },
+          {
+            "key": "scan_quality",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "Upload color scans of original or notarized application documents made with a scanner; mobile-phone or camera images are not accepted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 2, note before Application Procedure item 1"
               }
             ]
           },
@@ -821,6 +956,36 @@
                 "locator": "Page 3, Fee structure; page 4, Evaluation Admission"
               }
             ]
+          },
+          {
+            "key": "evaluation_admission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "2026 MBBS applicants",
+            "ruleText": "After the university approves the registration information, follow the registered-email payment instruction and upload proof of the application-fee payment. Applicants who pass evaluation receive the admission and visa-application documents.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 4, Evaluation Admission"
+              }
+            ]
+          },
+          {
+            "key": "registration",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Admitted 2026 MBBS applicants",
+            "ruleText": "Register at the International Students Office during the period stated in the admission notice, expected in October 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "qdu_mbbs",
+                "locator": "Page 4, Registration"
+              }
+            ]
           }
         ]
       },
@@ -849,13 +1014,13 @@
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "sisu_undergraduate",
             "url": "https://studyinsisu.sisu.edu.cn/zsxx/bks/295c30338d854df0adc33d38ff745fd4.htm",
             "title": "Sichuan International Studies University 2026-2027 international undergraduate admission guide",
-            "capturedAt": "2026-10-14T03:28:20.015Z",
+            "capturedAt": "2026-10-15T05:39:30.257Z",
             "contentSha256": "ef9fddfe6d355d2c4fc80826aad101006c4b990251ac94826ec8842ba9c827e6"
           }
         ],
@@ -887,6 +1052,36 @@
               {
                 "sourceKey": "sisu_undergraduate",
                 "locator": "Heading '一、招生对象及申请条件', item 2"
+              }
+            ]
+          },
+          {
+            "key": "additional_admission_requirements",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Meet the university's additional academic-ability and other applicable admission requirements.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '一、招生对象及申请条件', item 4"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Apply through the Sichuan International Studies University international-student service platform and upload the required materials online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '五、申请流程', item 1"
               }
             ]
           },
@@ -1041,6 +1236,21 @@
             ]
           },
           {
+            "key": "scholarship_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit any additional materials required by the selected scholarship.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 12"
+              }
+            ]
+          },
+          {
             "key": "deadline",
             "category": "application_policy",
             "stage": "submission",
@@ -1067,6 +1277,21 @@
               {
                 "sourceKey": "sisu_undergraduate",
                 "locator": "Heading '三、费用标准', item 2"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese Language and Literature applicants",
+            "ruleText": "Complete the university's material review and applicant assessment; the university then notifies applicants of the admission result.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '五、申请流程', items 3-4"
               }
             ]
           },
@@ -1117,13 +1342,13 @@
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "sisu_undergraduate",
             "url": "https://studyinsisu.sisu.edu.cn/zsxx/bks/295c30338d854df0adc33d38ff745fd4.htm",
             "title": "Sichuan International Studies University 2026-2027 international undergraduate admission guide",
-            "capturedAt": "2026-10-14T03:28:20.015Z",
+            "capturedAt": "2026-10-15T05:39:30.257Z",
             "contentSha256": "ef9fddfe6d355d2c4fc80826aad101006c4b990251ac94826ec8842ba9c827e6"
           }
         ],
@@ -1155,6 +1380,36 @@
               {
                 "sourceKey": "sisu_undergraduate",
                 "locator": "Heading '一、招生对象及申请条件', item 2"
+              }
+            ]
+          },
+          {
+            "key": "additional_admission_requirements",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Meet the university's additional academic-ability and other applicable admission requirements.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '一、招生对象及申请条件', item 4"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Apply through the Sichuan International Studies University international-student service platform and upload the required materials online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '五、申请流程', item 1"
               }
             ]
           },
@@ -1309,6 +1564,21 @@
             ]
           },
           {
+            "key": "scholarship_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Scholarship applicants",
+            "ruleText": "Submit any additional materials required by the selected scholarship.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '六、申请材料', item 12"
+              }
+            ]
+          },
+          {
             "key": "deadline",
             "category": "application_policy",
             "stage": "submission",
@@ -1335,6 +1605,21 @@
               {
                 "sourceKey": "sisu_undergraduate",
                 "locator": "Heading '三、费用标准', item 2"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 international undergraduate applicants",
+            "ruleText": "Complete the university's material review and applicant assessment; the university then notifies applicants of the admission result.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "sisu_undergraduate",
+                "locator": "Heading '五、申请流程', items 3-4"
               }
             ]
           },
@@ -1380,13 +1665,13 @@
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "tjfsu_undergraduate",
             "url": "https://isa.tjfsu.edu.cn/info/1066/1850.htm",
             "title": "Tianjin Foreign Studies University 2026 international undergraduate admission guide",
-            "capturedAt": "2026-10-14T03:28:17.850Z",
+            "capturedAt": "2026-10-15T05:49:35.275Z",
             "contentSha256": "5897ff767d97fb6df0452ba42c094be43817d0caf739b5ad01dfb1ba50bcb4c5"
           }
         ],
@@ -1433,6 +1718,21 @@
               {
                 "sourceKey": "tjfsu_undergraduate",
                 "locator": "Heading '二、申请资格', item 3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Complete the online application and information submission through the Tianjin Foreign Studies University international-student service platform.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', step 1"
               }
             ]
           },
@@ -1557,6 +1857,21 @@
             ]
           },
           {
+            "key": "upload_quality_authenticity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Upload clear, authentic and valid scans of all application materials; unclear or unreadable uploads may affect the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Notes below heading '六、申请材料', item 2"
+              }
+            ]
+          },
+          {
             "key": "deadline",
             "category": "application_policy",
             "stage": "submission",
@@ -1583,6 +1898,36 @@
               {
                 "sourceKey": "tjfsu_undergraduate",
                 "locator": "Heading '五、申请方式', steps 2-5; heading '九、费用', item 1 and refund note"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught Mathematics-only routes",
+            "ruleText": "Complete the university's material review and its written examination and interview. Applicants who pass then pay the required fees before admission and visa documents are issued.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', steps 2-5"
+              }
+            ]
+          },
+          {
+            "key": "registration_originals",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register by the date in the admission notice and bring the admission notice, visa-application form and all original application materials for enrollment-qualification review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '八、报到注册'"
               }
             ]
           },
@@ -1645,13 +1990,13 @@
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "tjfsu_undergraduate",
             "url": "https://isa.tjfsu.edu.cn/info/1066/1850.htm",
             "title": "Tianjin Foreign Studies University 2026 international undergraduate admission guide",
-            "capturedAt": "2026-10-14T03:28:17.850Z",
+            "capturedAt": "2026-10-15T05:49:35.275Z",
             "contentSha256": "5897ff767d97fb6df0452ba42c094be43817d0caf739b5ad01dfb1ba50bcb4c5"
           }
         ],
@@ -1698,6 +2043,21 @@
               {
                 "sourceKey": "tjfsu_undergraduate",
                 "locator": "Heading '二、申请资格', item 3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Complete the online application and information submission through the Tianjin Foreign Studies University international-student service platform.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', step 1"
               }
             ]
           },
@@ -1822,6 +2182,21 @@
             ]
           },
           {
+            "key": "upload_quality_authenticity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Upload clear, authentic and valid scans of all application materials; unclear or unreadable uploads may affect the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Notes below heading '六、申请材料', item 2"
+              }
+            ]
+          },
+          {
             "key": "deadline",
             "category": "application_policy",
             "stage": "submission",
@@ -1848,6 +2223,36 @@
               {
                 "sourceKey": "tjfsu_undergraduate",
                 "locator": "Heading '五、申请方式', steps 2-5; heading '九、费用', item 1 and refund note"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Mathematics-only routes",
+            "ruleText": "Complete the university's material review and its written examination and interview. Applicants who pass then pay the required fees before admission and visa documents are issued.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', steps 2-5"
+              }
+            ]
+          },
+          {
+            "key": "registration_originals",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register by the date in the admission notice and bring the admission notice, visa-application form and all original application materials for enrollment-qualification review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '八、报到注册'"
               }
             ]
           },
@@ -1935,13 +2340,13 @@
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "tjfsu_undergraduate",
             "url": "https://isa.tjfsu.edu.cn/info/1066/1850.htm",
             "title": "Tianjin Foreign Studies University 2026 international undergraduate admission guide",
-            "capturedAt": "2026-10-14T03:28:17.850Z",
+            "capturedAt": "2026-10-15T05:49:35.275Z",
             "contentSha256": "5897ff767d97fb6df0452ba42c094be43817d0caf739b5ad01dfb1ba50bcb4c5"
           }
         ],
@@ -1988,6 +2393,21 @@
               {
                 "sourceKey": "tjfsu_undergraduate",
                 "locator": "Heading '二、申请资格', item 3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Complete the online application and information submission through the Tianjin Foreign Studies University international-student service platform.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', step 1"
               }
             ]
           },
@@ -2112,6 +2532,21 @@
             ]
           },
           {
+            "key": "upload_quality_authenticity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Upload clear, authentic and valid scans of all application materials; unclear or unreadable uploads may affect the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Notes below heading '六、申请材料', item 2"
+              }
+            ]
+          },
+          {
             "key": "deadline",
             "category": "application_policy",
             "stage": "submission",
@@ -2138,6 +2573,36 @@
               {
                 "sourceKey": "tjfsu_undergraduate",
                 "locator": "Heading '五、申请方式', steps 2-5; heading '九、费用', item 1 and refund note"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught humanities and Mathematics routes",
+            "ruleText": "Complete the university's material review and its written examination and interview. Applicants who pass then pay the required fees before admission and visa documents are issued.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', steps 2-5"
+              }
+            ]
+          },
+          {
+            "key": "registration_originals",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register by the date in the admission notice and bring the admission notice, visa-application form and all original application materials for enrollment-qualification review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '八、报到注册'"
               }
             ]
           },
@@ -2198,13 +2663,13 @@
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "tjfsu_undergraduate",
             "url": "https://isa.tjfsu.edu.cn/info/1066/1850.htm",
             "title": "Tianjin Foreign Studies University 2026 international undergraduate admission guide",
-            "capturedAt": "2026-10-14T03:28:17.850Z",
+            "capturedAt": "2026-10-15T05:49:35.275Z",
             "contentSha256": "5897ff767d97fb6df0452ba42c094be43817d0caf739b5ad01dfb1ba50bcb4c5"
           }
         ],
@@ -2251,6 +2716,21 @@
               {
                 "sourceKey": "tjfsu_undergraduate",
                 "locator": "Heading '二、申请资格', item 3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Complete the online application and information submission through the Tianjin Foreign Studies University international-student service platform.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', step 1"
               }
             ]
           },
@@ -2375,6 +2855,21 @@
             ]
           },
           {
+            "key": "upload_quality_authenticity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Upload clear, authentic and valid scans of all application materials; unclear or unreadable uploads may affect the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Notes below heading '六、申请材料', item 2"
+              }
+            ]
+          },
+          {
             "key": "deadline",
             "category": "application_policy",
             "stage": "submission",
@@ -2401,6 +2896,36 @@
               {
                 "sourceKey": "tjfsu_undergraduate",
                 "locator": "Heading '五、申请方式', steps 2-5; heading '九、费用', item 1 and refund note"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught STEM route",
+            "ruleText": "Complete the university's material review and its written examination and interview. Applicants who pass then pay the required fees before admission and visa documents are issued.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '五、申请方式', steps 2-5"
+              }
+            ]
+          },
+          {
+            "key": "registration_originals",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register by the date in the admission notice and bring the admission notice, visa-application form and all original application materials for enrollment-qualification review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tjfsu_undergraduate",
+                "locator": "Heading '八、报到注册'"
               }
             ]
           },

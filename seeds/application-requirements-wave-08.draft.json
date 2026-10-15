@@ -1,0 +1,314 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T03:36:14.244Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete source-located Beihang Spring 2027 one-semester scholarship requirements with an exact non-degree intake binding."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 1,
+    "targetedIntakeCount": 1,
+    "requirementItemCount": 17
+  },
+  "templates": [
+    {
+      "key": "beihang-iclts-one-semester-spring-2027",
+      "schoolSlug": "beihang-university",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "beihang-university-iclts-one-semester-study-spring-2027"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit_with_derived_deadline_year",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "The official 2026 guide states October 31 for March 2027 admission without repeating the year; 2026 is retained as a derived value requiring review.",
+        "Scholarship coverage and monetary standards remain unresolved because the page directs applicants to Beihang for the current standard."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "beihang_iclts",
+            "url": "https://is.buaa.edu.cn/en/info/1040/1935.htm",
+            "title": "Beihang 2026 International Chinese Language Teachers Scholarship",
+            "capturedAt": "2026-10-15T03:34:13.370Z",
+            "contentSha256": "ae0b491171b41b28531f552b4f284f24cc7a50fb35f483d0eb9a32854826ac9e"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section I, Eligibility, item 1"
+              }
+            ]
+          },
+          {
+            "key": "conduct_and_law",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Maintain a friendly attitude toward China, have no criminal record, and comply with Chinese laws and regulations and the university's rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section I, Eligibility, item 2"
+              }
+            ]
+          },
+          {
+            "key": "health_and_performance",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be in good physical and mental health and demonstrate strong academic performance and conduct.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section I, Eligibility, item 3"
+              }
+            ]
+          },
+          {
+            "key": "career_commitment",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be committed to working in Chinese-language education, teaching, or a related field.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section I, Eligibility, item 4"
+              }
+            ]
+          },
+          {
+            "key": "age_range",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be 16 to 35 years old as of September 1, 2026. The upper age limit is 45 for in-service Chinese-language teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section I, Eligibility, item 5"
+              }
+            ]
+          },
+          {
+            "key": "hsk_hskk_language_tracks",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "International Chinese Language Education, Chinese Language and Literature, Chinese History, or Chinese Philosophy applicants",
+            "ruleText": "Provide an HSK Level 3 score of at least 180 and an HSKK score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section II, One-Semester Study Program, first track"
+              }
+            ]
+          },
+          {
+            "key": "hsk_tcm_taiji_tracks",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Traditional Chinese Medicine or Taiji Culture applicants",
+            "ruleText": "Provide an HSK score. Applicants who also provide an HSKK score receive priority.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section II, One-Semester Study Program, second track"
+              }
+            ]
+          },
+          {
+            "key": "scholarship_system_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Apply through the International Chinese Language Teachers Scholarship section of the CLEC website, select Beihang University as the host institution, submit the application materials online, and track the review and final result in the system.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section III, Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "March 2027 applicants",
+            "ruleText": "Submit the student application by October 31, 2026 Beijing Time.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section III, Deadlines, March 2027 admission"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a scanned copy of the passport photo page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section VI, List of Application Materials, item 1"
+              }
+            ]
+          },
+          {
+            "key": "hsk_hskk_reports",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit scanned HSK and HSKK score reports. The score reports are valid for two years.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section VI, List of Application Materials, item 2"
+              }
+            ]
+          },
+          {
+            "key": "recommending_institution_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a recommendation letter from the head of the recommending institution.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section VI, List of Application Materials, item 3"
+              }
+            ]
+          },
+          {
+            "key": "in_service_teacher_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "In-service Chinese-language teachers",
+            "ruleText": "Submit proof of employment and a recommendation letter issued by the employer.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section VI, List of Application Materials, item 4"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardianship",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit entrusted-guardianship documents signed by a guardian in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section VI, List of Application Materials, item 5"
+              }
+            ]
+          },
+          {
+            "key": "beihang_interview",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Attend the interview held by Beihang University and provide any additional proof materials it requires.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section VI, List of Application Materials, item 6"
+              }
+            ]
+          },
+          {
+            "key": "similar_scholarship_history",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "One-semester applicants",
+            "ruleText": "Normally, applicants who received a similar scholarship within the previous three years are not admitted to the one-semester program.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Section V, Miscellaneous, item 1"
+              }
+            ]
+          },
+          {
+            "key": "pre_enrollment_medical_and_registration",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Scholarship recipients",
+            "ruleText": "Pass the pre-enrollment medical examination, confirm enrollment with Beihang, and register by the date in the admission letter. Scholarship eligibility may be revoked for failing the examination, withdrawing early, registering late without permission, or suspending study.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "beihang_iclts",
+                "locator": "Sections III and V, enrollment and scholarship-revocation rules"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

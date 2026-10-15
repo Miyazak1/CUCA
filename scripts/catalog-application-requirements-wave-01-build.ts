@@ -50,7 +50,7 @@ const [ahuSource, ahuCgsSource, uibeJointSource, uibeIndexSource, shuplSource, a
     "e117a177d6140cee5df5e24dd21ee511cff583758ff67ea83affc76362724269",
   ),
   sourceFromManifest(
-    "work/catalog-official/refresh-20261014-uibe-undergraduate-2026/manifest.json",
+    "work/catalog-official/2026-10-15T06-03-38-163Z/manifest.json",
     "uibe-undergraduate-2026",
     "ba5b9827a856ad10df967b121ed510af186d7460d9b56291f84b0e27aa9aba06",
   ),
@@ -86,8 +86,8 @@ function source(sourceKey: string, row: ManifestSource) {
   return { key: sourceKey, url: row.url, title: row.label, capturedAt: row.fetchedAt, contentSha256: row.sha256 };
 }
 
-function document(sourceKey: string, row: ManifestSource, requirements: RequirementItem[]): RequirementDocument {
-  return parseRequirementDocument({ schemaVersion: 1, language: "en", coverage: "partial", sources: [source(sourceKey, row)], requirements });
+function document(sourceKey: string, row: ManifestSource, requirements: RequirementItem[], coverage: "partial" | "complete" = "partial"): RequirementDocument {
+  return parseRequirementDocument({ schemaVersion: 1, language: "en", coverage, sources: [source(sourceKey, row)], requirements });
 }
 
 const ahuPrograms = ahuSeed.programs as Program[];
@@ -228,6 +228,7 @@ const templates: DraftTemplate[] = [
       requirement("age_guardian", "identity", "conditional", "Joint-program applicants", "Applicants must be age 18-25; applicants under 18 must provide guardian documents for Beijing.", "document", "uibe_joint", "Heading 'Eligibility Requirements', paragraph 3"),
       requirement("chinese_origin_policy", "application_policy", "conditional", "Applicants of Chinese origin", "Meet the Ministry of Education requirements referenced as Document No. 12 (2020).", "school_review", "uibe_joint", "Heading 'Eligibility Requirements', paragraph 4"),
       requirement("application_form", "documents", "required", "Joint-program applicants", "Submit either the UIBE or BUCT application form through the relevant official application portal.", "document", "uibe_joint", "Heading 'Application Documents', item 1"),
+      requirement("materials_language", "documents", "required", "Joint-program applicants", "Submit all application materials in Chinese or English.", "document", "uibe_joint", "Heading 'Application Documents', introductory sentence"),
       requirement("cv_statement", "documents", "required", "Joint-program applicants", "Submit a curriculum vitae and personal statement.", "document", "uibe_joint", "Heading 'Application Documents', item 2"),
       requirement("passport_visas", "identity", "required", "Joint-program applicants", "Submit the passport photo page and Chinese visa pages when applicable.", "document", "uibe_joint", "Heading 'Application Documents', item 3"),
       requirement("school_records", "education", "required", "Joint-program applicants", "Submit a notarized high-school diploma and transcripts.", "document", "uibe_joint", "Heading 'Application Documents', item 4"),
@@ -237,7 +238,10 @@ const templates: DraftTemplate[] = [
       requirement("non_criminal_record", "documents", "required", "Joint-program applicants", "Submit a certificate of no criminal record.", "document", "uibe_joint", "Heading 'Application Documents', item 8"),
       requirement("deadline", "application_policy", "required", "2026 joint-program applicants", "Submit by June 30, 2026.", "document", "uibe_joint", "Heading 'Application & Admission Process', application-deadline line"),
       requirement("application_fee", "application_policy", "required", "Joint-program applicants", "Pay the RMB 660 application fee. Payment account details are intentionally excluded from this dataset.", "document", "uibe_joint", "Heading 'Fees', application-fee row"),
-    ]),
+      requirement("comprehensive_interview", "application_policy", "required", "Joint-program applicants", "Complete the comprehensive interview after online application, fee payment and the CSCA test.", "school_review", "uibe_joint", "Heading 'Application & Admission Process', steps 1-6"),
+      requirement("admission_documents", "application_policy", "required", "Applicants who pass the selection process", "Receive the pre-admission notice followed by the official admission letter and JW201 or JW202 visa form.", "school_review", "uibe_joint", "Heading 'Application & Admission Process', steps 7-8"),
+      requirement("status_monitoring", "application_policy", "required", "Joint-program applicants", "Regularly check the registered email address and application portal for updates.", "school_review", "uibe_joint", "Heading 'Application & Admission Process', note after the application deadline"),
+    ], "complete"),
   },
   {
     key: "shupl-international-2026",

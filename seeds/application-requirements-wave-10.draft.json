@@ -1,0 +1,495 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T03:52:21.843Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete source-located Chang'an Spring 2027 one-semester scholarship requirements with an exact non-degree intake binding."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 1,
+    "targetedIntakeCount": 1,
+    "requirementItemCount": 29
+  },
+  "templates": [
+    {
+      "key": "changan-iclts-one-semester-spring-2027",
+      "schoolSlug": "chang-an-university",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "chang-an-university-iclts-one-semester-study-spring-2027"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit_with_derived_deadline_year",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "The page title contains TFSU although the page is hosted by Chang'an University and the body names Chang'an University; the discrepancy requires editorial review.",
+        "The guide states October 31 for March 2027 entry without repeating the deadline year; 2026 is retained as a derived value requiring review.",
+        "The source's X1/X2 visa exclusion is preserved exactly in substance and requires policy review before publication."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "changan_iclts",
+            "url": "https://ies.chd.edu.cn/2026/0228/c8839a258742/page.htm",
+            "title": "关于申请2026年国际中文教师奖学金（TFSU）的通知",
+            "capturedAt": "2026-10-15T03:49:41.570Z",
+            "contentSha256": "44a976211332613aeb3f93c20d73e75d09247af5009779e4ac1cce4463d68728"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_and_performance",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be a non-Chinese citizen, be in good physical and mental health, and demonstrate good academic performance and conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section I, Eligibility, item 1"
+              }
+            ]
+          },
+          {
+            "key": "conduct_and_law",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Maintain a friendly attitude toward China, have no record of illegal or criminal conduct, and comply with Chinese laws, regulations, and university rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section I, Eligibility, item 2"
+              }
+            ]
+          },
+          {
+            "key": "career_commitment",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Intend to work in Chinese-language education, teaching, or a related field.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section I, Eligibility, item 3"
+              }
+            ]
+          },
+          {
+            "key": "age_range",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be 16 to 35 years old as of September 1, 2026. The upper age limit is 45 for in-service Chinese-language teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section I, Eligibility, item 4"
+              }
+            ]
+          },
+          {
+            "key": "education_or_enrollment_status",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Have graduated from the most recent level of study or provide proof that the current institution will retain the applicant's enrollment status.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section I, Eligibility, item 5"
+              }
+            ]
+          },
+          {
+            "key": "similar_scholarship_history",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Have not received a similar scholarship during the previous three years.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section I, Eligibility, item 6"
+              }
+            ]
+          },
+          {
+            "key": "hsk_level_3",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Spring 2027 one-semester applicants",
+            "ruleText": "Provide an HSK Level 3 score of at least 180.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section III, One-Semester Study Program, language requirement"
+              }
+            ]
+          },
+          {
+            "key": "hskk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Spring 2027 one-semester applicants",
+            "ruleText": "Provide an HSKK score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section III, One-Semester Study Program, language requirement"
+              }
+            ]
+          },
+          {
+            "key": "visa_restriction",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Spring 2027 one-semester applicants",
+            "ruleText": "The guide states that applicants whose passports contain an X1 or X2 visa will not be admitted to this route.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section III, One-Semester Study Program, other requirement"
+              }
+            ]
+          },
+          {
+            "key": "scholarship_system_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Apply online through the International Chinese Language Teachers Scholarship section of the CLEC website.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section IV, Application Process, item 1"
+              }
+            ]
+          },
+          {
+            "key": "university_system_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Also apply and upload the required materials in the Chang'an University international student application system.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section IV, Application Process, item 2"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Pay the CNY 600 program application fee. The fee is nonrefundable whether or not admission is granted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section IV, Application Process, item 3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a valid ordinary passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 1"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently in China",
+            "ruleText": "Submit a valid residence permit in addition to the passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 1"
+              }
+            ]
+          },
+          {
+            "key": "graduation_document",
+            "category": "education",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who are not currently enrolled",
+            "ruleText": "Submit the highest diploma or degree certificate. A graduating student may submit a pre-graduation certificate and must bring the paper graduation certificate when registering if required by the guide.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 2"
+              }
+            ]
+          },
+          {
+            "key": "retained_enrollment_document",
+            "category": "education",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Currently enrolled applicants",
+            "ruleText": "Submit proof from the current institution that the applicant's enrollment status will be retained.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 2"
+              }
+            ]
+          },
+          {
+            "key": "academic_transcript",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit an academic transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 3"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record issued within the previous six months, completed in Chinese or English. Missing pages, an unstamped photograph, a missing hospital seal, or a missing physician signature makes the record invalid.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 4"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants outside China",
+            "ruleText": "Submit a non-criminal record issued within the previous six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 5"
+              }
+            ]
+          },
+          {
+            "key": "conduct_record_in_china",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently studying in China",
+            "ruleText": "Instead of the general non-criminal record described for other applicants, submit a school-issued conduct or no-disciplinary-violation certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 5"
+              }
+            ]
+          },
+          {
+            "key": "language_score_report",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the HSK score report required for the route.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_motivation_or_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a motivation letter or study plan for study in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 7"
+              }
+            ]
+          },
+          {
+            "key": "scholarship_application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the International Chinese Language Teachers Scholarship application form downloaded after completing the scholarship-system application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 8"
+              }
+            ]
+          },
+          {
+            "key": "recommending_institution_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a recommendation letter issued by the recommending institution.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 9"
+              }
+            ]
+          },
+          {
+            "key": "minor_entrustment",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Minor applicants",
+            "ruleText": "Submit the minor entrustment document required by the guide.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, Application Materials, item 11"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Materials not in Chinese or English",
+            "ruleText": "Submit the original material together with a Chinese or English translation bearing the seal of a formal translation company.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section V, translation note"
+              }
+            ]
+          },
+          {
+            "key": "in_service_teacher_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "In-service Chinese-language teachers",
+            "ruleText": "An employment certificate and employer recommendation letter may be submitted; the guide states that eligible in-service teachers receive priority under equal conditions.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section VI, In-service Chinese-language teachers"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "March 2027 applicants",
+            "ruleText": "Complete the student application by October 31, 2026 Beijing Time.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section VIII, March 2027 entry deadline (year derived from guide context)"
+              }
+            ]
+          },
+          {
+            "key": "on_time_registration",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Scholarship recipients",
+            "ruleText": "Register by the time stated in the admission notice or scholarship eligibility will be cancelled.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "changan_iclts",
+                "locator": "Section II, scholarship administration note 1"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

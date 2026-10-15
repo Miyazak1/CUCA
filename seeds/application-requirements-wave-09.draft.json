@@ -1,0 +1,451 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T03:46:02.289Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete source-located CSU Spring 2027 one-semester scholarship requirements with an exact non-degree intake binding."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 1,
+    "targetedIntakeCount": 1,
+    "requirementItemCount": 26
+  },
+  "templates": [
+    {
+      "key": "csu-iclts-one-semester-chinese-language-spring-2027",
+      "schoolSlug": "central-south-university",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "central-south-university-iclts-one-semester-chinese-language-spring-2027"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit_with_derived_deadline_year",
+        "targetPrograms": "explicit",
+        "requirements": "explicit_with_source_wording_review"
+      },
+      "unresolvedNotes": [
+        "The registered source changed to a newly published 2027 Spring guide and requires editorial change review before publication.",
+        "The guide states October 31 without repeating the year; 2026 is retained as a derived value requiring review.",
+        "The application/evaluation fee amount is unresolved because the current page does not publish it.",
+        "The under-18 materials item unexpectedly says employment certificates; its exact source wording is retained as a review flag rather than silently corrected."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "csu_iclts",
+            "url": "https://intl.csu.edu.cn/English/Scholarship/International_Chinese_Language_Teachers_Scholars.htm",
+            "title": "Central South University 2026 International Chinese Language Teachers Scholarship",
+            "capturedAt": "2026-10-15T03:42:06.241Z",
+            "contentSha256": "7a48ccdd412b267f15145975ea8eb385a32f83aad7655d233acfaa1441883fb7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section I, Eligibility, item 1"
+              }
+            ]
+          },
+          {
+            "key": "conduct_and_law",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Maintain a friendly attitude toward China, have no criminal record, and comply with Chinese laws and regulations and the host institution's rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section I, Eligibility, item 2"
+              }
+            ]
+          },
+          {
+            "key": "health_and_performance",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be in good physical and mental health and demonstrate strong academic performance and conduct.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section I, Eligibility, item 3"
+              }
+            ]
+          },
+          {
+            "key": "career_commitment",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be committed to working in Chinese-language education, teaching, or a related field.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section I, Eligibility, item 4"
+              }
+            ]
+          },
+          {
+            "key": "age_range",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be 16 to 35 years old as of September 1, 2026. The upper age limit is 45 for in-service Chinese-language teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section I, Eligibility, item 5"
+              }
+            ]
+          },
+          {
+            "key": "hsk_level_3",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "One-semester Chinese Language Study applicants",
+            "ruleText": "Provide an HSK Level 3 score of at least 180.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section II, Scholarship Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "hskk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "One-semester Chinese Language Study applicants",
+            "ruleText": "Provide an HSKK test score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section II, Scholarship Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "similar_scholarship_history",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "One-semester applicants",
+            "ruleText": "In principle, applicants who received a similar scholarship within the previous three years are not eligible.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section II, Scholarship Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "csu_online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Register in the CSU China International Student Service System, choose the CSU Scholarship for International Chinese Language Teachers route, upload the application materials, and submit the application.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, Online Registration on CSU Application Website"
+              }
+            ]
+          },
+          {
+            "key": "document_language",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Provide materials in English or Chinese. Materials in another language must be notarized in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, application-material language rule"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a scanned copy of the passport photo page with more than one year of remaining validity.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, application materials, item 1"
+              }
+            ]
+          },
+          {
+            "key": "hsk_hskk_reports",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit scanned HSK and HSKK score reports that are within their two-year validity period.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, application materials, item 2"
+              }
+            ]
+          },
+          {
+            "key": "recommending_institution_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a reference letter from the head of the recommending institution.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, application materials, item 3"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit the certified identity and other certificates specified by the guide and a letter of guarantee from a guardian living in China. The guide's inclusion of an employment certificate in this minor-applicant item requires editorial clarification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, application materials, item 4"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a copy of the Physical Examination Record. An incomplete form is invalid, and the examination date must be after September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, application materials, item 5"
+              }
+            ]
+          },
+          {
+            "key": "graduation_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the highest graduation certificate; a current student must instead submit a pre-graduation certificate issued by the school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, application materials, item 6"
+              }
+            ]
+          },
+          {
+            "key": "academic_transcript",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the transcript for the highest diploma with an official stamp.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, application materials, item 7"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a non-criminal record with an official stamp, issued after September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, application materials, item 8"
+              }
+            ]
+          },
+          {
+            "key": "in_service_teacher_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "In-service Chinese-language teachers",
+            "ruleText": "Submit proof of employment and a recommendation letter from the employer.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, application materials, item 9"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants who pass CSU's online preliminary review",
+            "ruleText": "Pay the application fee after passing the online preliminary review; otherwise the application cannot continue. Applicants who do not pass the preliminary review do not pay. The amount is not stated on this page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, Pay the Application Fee"
+              }
+            ]
+          },
+          {
+            "key": "scholarship_system_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Also register in the International Chinese Language Teachers Scholarship application system, select Central South University as host institution, and upload the application materials.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, Online Registration on International Chinese Language Teachers Scholarship Application Website"
+              }
+            ]
+          },
+          {
+            "key": "application_reference_numbers",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Send the application reference numbers from both systems to CSU through the official channel specified in the guide. Do not place those personal reference numbers in the public catalog.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section V, Send Application Numbers"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "March 2027 applicants",
+            "ruleText": "Complete the student application by October 31, 2026 Beijing Time.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section IV, Application Deadlines (year derived from guide context)"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants selected by CSU",
+            "ruleText": "Complete an interview and provide additional supporting materials if CSU requests them.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section VI, Other requirements, item 3"
+              }
+            ]
+          },
+          {
+            "key": "registration_and_originals",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted scholarship recipients",
+            "ruleText": "Register on time, present original documents for review, pass the pre-enrollment medical examination, and follow the scholarship attendance rules. Fraud, inconsistency, failed medical examination, unauthorized no-show, early withdrawal, or suspension may cancel admission or scholarship eligibility.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section VI, Other requirements, items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "evaluation_fee_nonrefundable",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants who pay the evaluation fee",
+            "ruleText": "The evaluation fee is nonrefundable regardless of the admission result.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "csu_iclts",
+                "locator": "Section VI, Other requirements, item 4"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -98,6 +98,8 @@ test("catalog detail pages stay on published API fields", async () => {
   assert.match(script, /formatDate\(item\.deadlineDate, item\.deadlineLabel \|\| "Deadline not provided"\)/);
   assert.doesNotMatch(script, /deadlineLabel \|\| formatDate\([^)]*deadlineDate/);
   assert.doesNotMatch(script, /actualSchoolCount|actualProgramCount|contactInfo|qualityScore|missingFields|fitNotes|CuacDataClient|localStorage|sessionStorage/);
+  assert.doesNotMatch(script, /Verified source|Source-backed tags and highlights/);
+  assert.match(script, /class="catalog-source-link"/);
 
   assertAllowedMembers(functionBody(script, "renderIntakes", "renderRequirements"), "intake",
     new Set(topLevelTypeKeys(dto, "PublicProgramIntakeDto")), "program intake rendering");
@@ -124,7 +126,7 @@ test("catalog detail layout remains restrained and responsive", async () => {
   for (const html of pages) {
     assert.match(html, /<body data-agent-mode="off" data-catalog-detail-page=/);
     assert.match(html, /href="catalog-detail\.css"/);
-    assert.match(html, /src="catalog-detail\.js(?:\?[^\"]+)?"/);
+    assert.match(html, /src="catalog-detail\.js(?:\?[^"]+)?"/);
     assert.doesNotMatch(html, /cuac-data\.js|cuac-actions\.js|completion\.js|data-cuac-agent/);
   }
 });

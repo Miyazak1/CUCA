@@ -1,0 +1,403 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T04:04:02.528Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located Tianjin University Spring 2027 one-semester scholarship requirements with complete official application details and an exact non-degree intake binding."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 1,
+    "targetedIntakeCount": 1,
+    "requirementItemCount": 23
+  },
+  "templates": [
+    {
+      "key": "tju-iclts-one-semester-spring-2027",
+      "schoolSlug": "tianjin-university",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "tianjin-university-iclts-one-semester-study-spring-2027"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "The Chinese route title is a derived translation and requires editorial review before publication."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "tju_iclts",
+            "url": "https://sie.tju.edu.cn/en/jxj/ChineseLanguageTeachers/202602/t20260206_324551.html",
+            "title": "Tianjin University 2026 International Chinese Language Teachers Scholarship",
+            "capturedAt": "2026-10-15T04:01:02.767Z",
+            "contentSha256": "7b93f2d6dbd621f020a71bc865399ad453ec71cced9daabf1c15557b18aecd66"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section I, Eligibility, item a"
+              }
+            ]
+          },
+          {
+            "key": "conduct_and_law",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be friendly to China, have no criminal record, and comply with Chinese laws, regulations, and Tianjin University rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section I, Eligibility, item b"
+              }
+            ]
+          },
+          {
+            "key": "health_and_performance",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be in good physical and mental health and in good academic and behavioral standing.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section I, Eligibility, item c"
+              }
+            ]
+          },
+          {
+            "key": "career_interest",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be interested in Chinese-language education and related work.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section I, Eligibility, item d"
+              }
+            ]
+          },
+          {
+            "key": "age_range",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be 18 to 35 years old on September 1, 2026. The maximum age may be extended to 45 for in-service Chinese teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section I, Eligibility, item e"
+              }
+            ]
+          },
+          {
+            "key": "hsk_hskk_primary_tracks",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "International Chinese Language Education or Chinese Language and Literature applicants",
+            "ruleText": "Provide an HSK Level 3 score of at least 180 and an HSKK score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section II, One-Semester Study Program, item 3.1"
+              }
+            ]
+          },
+          {
+            "key": "hsk_taiji_track",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Taiji Culture applicants",
+            "ruleText": "Provide an HSK score. Applicants who also provide an HSKK score receive priority.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section II, One-Semester Study Program, item 3.2"
+              }
+            ]
+          },
+          {
+            "key": "similar_scholarship_history",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "One-semester applicants",
+            "ruleText": "Applicants who received the same scholarship within the previous three years are not eligible.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section II, Scholarship for One-Semester Study Program"
+              }
+            ]
+          },
+          {
+            "key": "dual_system_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Complete online applications in both the International Chinese Language Teachers Scholarship system and the Tianjin University International Student Service System, choosing Tianjin University as host institution.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section V, Application Procedures, item 1"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "March 2027 applicants",
+            "ruleText": "Apply from March 1 through October 31, 2026 Beijing Time.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section V, deadline table, One-Semester Spring Semester"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a scanned copy of the passport photo page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section VII.A, item 1"
+              }
+            ]
+          },
+          {
+            "key": "language_scores",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit scanned HSK and HSKK score reports within their two-year validity period.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section VII.A, item 2"
+              }
+            ]
+          },
+          {
+            "key": "recommending_institution_reference",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a reference letter from the head of the recommending institution.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section VII.A, item 3"
+              }
+            ]
+          },
+          {
+            "key": "diploma_and_transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the highest diploma or proof of expected graduation and an official transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section VII.A, item 4"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a certificate of non-criminal records, normally issued within six months before the application submission date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section VII.A, item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants studying for more than one year",
+            "ruleText": "Submit the Foreigner Physical Examination Form completed in Chinese or English. The examination must cover every listed item and the result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section VII.A, item 6"
+              }
+            ]
+          },
+          {
+            "key": "in_service_teacher_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "In-service Chinese-language teachers",
+            "ruleText": "Submit proof of employment and an employer reference letter. Eligible in-service teachers receive priority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Sections VI.1 and VII.C"
+              }
+            ]
+          },
+          {
+            "key": "translation_and_notarization",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not in Chinese or English",
+            "ruleText": "Provide notarized translations for documents that are not in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section VII, Note"
+              }
+            ]
+          },
+          {
+            "key": "zip_upload_instruction",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants submitting a non-criminal record certificate",
+            "ruleText": "Upload the non-criminal record certificate together with the passport scan as a ZIP file in the system's passport-page upload field.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section VII, Note"
+              }
+            ]
+          },
+          {
+            "key": "materials_integrity",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Incomplete, unqualified, fraudulent, or third-party-completed application materials may be rejected or cause disqualification.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section VIII, Disclaimer, items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "host_confirmation",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Successful applicants",
+            "ruleText": "Tianjin University confirms admission after review; scholarship winners must register according to the admission notice.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section V, Application Procedures, items 4-5"
+              }
+            ]
+          },
+          {
+            "key": "late_registration_notice",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Scholarship winners unable to register on time",
+            "ruleText": "Notify Tianjin University in writing at least 15 days before the admission date and explain the reason; otherwise the scholarship may be canceled.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section VIII, Disclaimer, item 3"
+              }
+            ]
+          },
+          {
+            "key": "medical_and_study_continuity",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Scholarship recipients",
+            "ruleText": "Pass the admission physical examination and remain enrolled without dropping out or suspending studies; otherwise the scholarship may be canceled.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "tju_iclts",
+                "locator": "Section VIII, Disclaimer, item 4"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

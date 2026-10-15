@@ -37,6 +37,18 @@ const drafts = await Promise.all([
   json<Draft>("seeds/application-requirements-wave-04.draft.json"),
   json<Draft>("seeds/application-requirements-wave-05.draft.json"),
   json<Draft>("seeds/application-requirements-wave-06.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-07.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-08.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-09.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-10.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-11.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-12.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-13.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-14.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-15.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-16.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-17.draft.json"),
+  json<Draft>("seeds/application-requirements-wave-18.draft.json"),
 ]);
 for (const draft of drafts) {
   if (draft.handoff.databaseWriteAuthorized || draft.handoff.publicationAuthorized) throw new Error("Source draft unexpectedly authorizes a write or publication.");
@@ -50,6 +62,17 @@ const seedBySchool = new Map<string, CatalogSeed>([
   ["south-china-university-of-technology", await json<CatalogSeed>("seeds/catalog.scut-undergraduate-batch-01.approved.local.json")],
   ["zhejiang-university-of-technology", await json<CatalogSeed>("seeds/catalog.zjut-language-spring-2027.draft.json")],
   ["liaoning-university-of-traditional-chinese-medicine", await json<CatalogSeed>("seeds/catalog.lnutcm-language-spring-2027.draft.json")],
+  ["beihang-university", await json<CatalogSeed>("seeds/catalog.beihang-language-spring-2027.draft.json")],
+  ["central-south-university", await json<CatalogSeed>("seeds/catalog.csu-language-spring-2027.draft.json")],
+  ["chang-an-university", await json<CatalogSeed>("seeds/catalog.changan-language-spring-2027.draft.json")],
+  ["jilin-university", await json<CatalogSeed>("seeds/catalog.jilin-language-spring-2027.draft.json")],
+  ["tianjin-university", await json<CatalogSeed>("seeds/catalog.tju-language-spring-2027.draft.json")],
+  ["beijing-language-and-culture-university", await json<CatalogSeed>("seeds/catalog.blcu-language-spring-2027.draft.json")],
+  ["beijing-normal-university", await json<CatalogSeed>("seeds/catalog.bnu-language-spring-2027.draft.json")],
+  ["shanghai-university", await json<CatalogSeed>("seeds/catalog.shu-language-spring-2027.draft.json")],
+  ["huazhong-university-of-science-and-technology", await json<CatalogSeed>("seeds/catalog.hust-language-spring-2027.draft.json")],
+  ["zhejiang-gongshang-university", await json<CatalogSeed>("seeds/catalog.zjsu-language-spring-2027.draft.json")],
+  ["zhejiang-university", await json<CatalogSeed>("seeds/catalog.zju-language-spring-2027.draft.json")],
 ]);
 
 const readyTemplates = drafts.flatMap((draft) => draft.templates).filter((template) => template.targetBindingStatus === "ready");

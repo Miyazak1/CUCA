@@ -1,0 +1,426 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T03:30:35.307Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete source-located SISU Chinese-language application requirements with exact March and May 2027 intake bindings."
+  },
+  "summary": {
+    "templateCount": 2,
+    "readyTemplateCount": 2,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 1,
+    "targetedIntakeCount": 2,
+    "requirementItemCount": 22
+  },
+  "templates": [
+    {
+      "key": "sisu-chinese-language-spring-2027",
+      "schoolSlug": "sichuan-international-studies-university",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "sichuan-international-studies-university-chinese-language-study-2026-2027"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "The English requirement wording is an editorial translation of the official Chinese guide and requires review before publication."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "sisu_language",
+            "url": "https://studyinsisu.sisu.edu.cn/zsxx/hyjx/6388c2417dce48858bfeabb1ee3f2f1f.htm",
+            "title": "Sichuan International Studies University 2026-2027 international Chinese language admission guide",
+            "capturedAt": "2026-10-15T03:28:43.466Z",
+            "contentSha256": "125e479ea88010d4dae90ecbb6b901725d7723bd0893379304f17d88d173b52c"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 1, 招生对象"
+              }
+            ]
+          },
+          {
+            "key": "health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be in good health.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 1, 招生对象"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record_eligibility",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Have no criminal record.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 1, 招生对象"
+              }
+            ]
+          },
+          {
+            "key": "age_range",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be between 16 and 60 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 1, 招生对象"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Apply online through the Sichuan International Studies University international-student service platform and submit the required application materials.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 4, 申请流程, item 1"
+              }
+            ]
+          },
+          {
+            "key": "school_assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Complete the university's application-material review and applicant assessment.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 4, 申请流程, item 2"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a scan of the passport information page. The passport must remain valid beyond the expected program completion date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 6, 申请材料, item 1"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a valid no-criminal-record certificate issued by the competent local public-security authority, normally within six months before the application date. Documents in languages other than Chinese or English require a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 6, 申请材料, item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form with every required examination item completed. A form is invalid if an item is missing, the applicant photograph is absent or lacks a cross-page stamp, or the physician and hospital signatures or stamps are absent. Examination results are valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 6, 申请材料, item 3"
+              }
+            ]
+          },
+          {
+            "key": "identification_photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a recent bareheaded identification photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 6, 申请材料, item 4"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "March 2027 applicants",
+            "ruleText": "Submit the application by December 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 5, 入学时间及申请截止日期, March 2027 intake"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "sisu-chinese-language-late-spring-2027",
+      "schoolSlug": "sichuan-international-studies-university",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "sichuan-international-studies-university-chinese-language-study-2026-2027"
+      ],
+      "targetIntake": {
+        "term": "Late Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "explicit"
+      },
+      "unresolvedNotes": [
+        "The English requirement wording is an editorial translation of the official Chinese guide and requires review before publication."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "sisu_language",
+            "url": "https://studyinsisu.sisu.edu.cn/zsxx/hyjx/6388c2417dce48858bfeabb1ee3f2f1f.htm",
+            "title": "Sichuan International Studies University 2026-2027 international Chinese language admission guide",
+            "capturedAt": "2026-10-15T03:28:43.466Z",
+            "contentSha256": "125e479ea88010d4dae90ecbb6b901725d7723bd0893379304f17d88d173b52c"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 1, 招生对象"
+              }
+            ]
+          },
+          {
+            "key": "health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be in good health.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 1, 招生对象"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record_eligibility",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Have no criminal record.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 1, 招生对象"
+              }
+            ]
+          },
+          {
+            "key": "age_range",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be between 16 and 60 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 1, 招生对象"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Apply online through the Sichuan International Studies University international-student service platform and submit the required application materials.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 4, 申请流程, item 1"
+              }
+            ]
+          },
+          {
+            "key": "school_assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Complete the university's application-material review and applicant assessment.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 4, 申请流程, item 2"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a scan of the passport information page. The passport must remain valid beyond the expected program completion date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 6, 申请材料, item 1"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a valid no-criminal-record certificate issued by the competent local public-security authority, normally within six months before the application date. Documents in languages other than Chinese or English require a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 6, 申请材料, item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form with every required examination item completed. A form is invalid if an item is missing, the applicant photograph is absent or lacks a cross-page stamp, or the physician and hospital signatures or stamps are absent. Examination results are valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 6, 申请材料, item 3"
+              }
+            ]
+          },
+          {
+            "key": "identification_photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a recent bareheaded identification photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 6, 申请材料, item 4"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "May 2027 applicants",
+            "ruleText": "Submit the application by March 30, 2027.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "sisu_language",
+                "locator": "Section 5, 入学时间及申请截止日期, May 2027 intake"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

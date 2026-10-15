@@ -183,23 +183,6 @@ function hasDisplayValue(value) {
   return typeof value === "boolean" || (value !== undefined && value !== null && cleanText(value) !== "");
 }
 
-function statusLabel(value) {
-  const labels = {
-    verified: "Verified source",
-    unverified: "Not yet verified",
-    stale: "Verification is stale",
-    disputed: "Source is disputed",
-    invalid: "Source is invalid",
-    draft: "Draft source record",
-    unknown: "Verification unknown",
-  };
-  return detailUi(labels[value] || labels.unknown);
-}
-
-function sourceClass(value) {
-  return `source-${String(value || "unknown").replace(/[^a-z]/g, "") || "unknown"}`;
-}
-
 function renderChips(items) {
   const values = textItems(items);
   if (!values.length) return "";
@@ -231,16 +214,10 @@ function renderSection(kicker, title, content, description = "") {
 }
 
 function renderSource(record) {
-  const status = record.sourceStatus || "unknown";
   const sourceHref = safeUrl(record.sourceUrl);
-  return `<aside class="catalog-evidence-rail ${sourceClass(status)}" aria-label="${escapeHtml(detailUi("Source status"))}">
-    <div class="catalog-evidence-heading">
-      <span class="catalog-evidence-dot" aria-hidden="true"></span>
-      <div><span class="catalog-evidence-label">${escapeHtml(detailUi("Source status"))}</span>
-      <strong>${escapeHtml(statusLabel(status))}</strong></div>
-    </div>
-    <p>${record.lastVerifiedAt ? `${escapeHtml(detailUi("Last verified"))} ${escapeHtml(formatDate(record.lastVerifiedAt))}.` : escapeHtml(detailUi("This published record has not yet completed source verification."))}</p>
-    ${sourceHref ? `<a class="catalog-source-link" href="${escapeHtml(sourceHref)}" target="_blank" rel="noopener noreferrer">${escapeHtml(record.sourceLabel || detailUi("Open source"))}</a>` : `<p>${escapeHtml(record.sourceLabel || detailUi("No public source link provided"))}</p>`}
+  if (!sourceHref) return "";
+  return `<aside class="catalog-source-rail" aria-label="${escapeHtml(detailUi("Open source"))}">
+    <a class="catalog-source-link" href="${escapeHtml(sourceHref)}" target="_blank" rel="noopener noreferrer">${escapeHtml(record.sourceLabel || detailUi("Open source"))}</a>
   </aside>`;
 }
 
@@ -402,7 +379,6 @@ function renderDeadlineItems(items) {
 function renderSchool(record) {
   const location = [record.cityZh || record.city, record.province, record.regionLabel || record.region].filter(Boolean).map(escapeHtml).join(", ");
   const cityLink = record.citySlug ? `<a href="${escapeHtml(detailHref(`city-detail.html?city=${encodeURIComponent(record.citySlug)}`))}">${escapeHtml(record.cityZh || record.city || "City record")}</a>` : "";
-  const campusLabels = [...(textItems(record.subjectTags)), ...(textItems(record.languageTags)), ...(textItems(record.campusHighlights))];
   const nextDeadline = Array.isArray(record.upcomingDeadlines) ? record.upcomingDeadlines[0] : null;
   const main = [
     renderSection("University profile", "Institution and study context", renderDefinitions([
@@ -431,7 +407,6 @@ function renderSchool(record) {
     Array.isArray(record.upcomingDeadlines) && record.upcomingDeadlines.length
       ? renderSection("Upcoming", "Published intake deadlines", renderDeadlineItems(record.upcomingDeadlines))
       : "",
-    campusLabels.length ? renderSection("Campus context", "Source-backed tags and highlights", renderChips(campusLabels)) : "",
   ].join("");
   return `${renderHero(record, { title: record.nameEn, localName: record.nameZh, context: [cityLink, escapeHtml(detailUi(titleCase(record.schoolType))), escapeHtml(location)] })}
     ${renderStrip([

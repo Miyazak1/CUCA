@@ -98,7 +98,7 @@ export function validateRequirementReleaseCandidate(value: unknown): Requirement
     if (intakeBindings.has(binding)) throw new Error(`Duplicate intake binding: ${binding}`);
     intakeBindings.add(binding);
     const isHistorical = operation.intakeYear === 2026 && operation.intakeTerm === "Fall" && operation.cycleState === "historical_2026";
-    const isCurrent = operation.intakeYear === 2027 && operation.intakeTerm === "Spring" && operation.cycleState === "current_2027";
+    const isCurrent = operation.intakeYear === 2027 && operation.cycleState === "current_2027";
     if (!isHistorical && !isCurrent) throw new Error(`Unsupported requirement candidate cycle binding: ${binding}`);
     if (operation.targetBindingStatus !== "verified" || operation.reviewStatus !== "unreviewed") {
       throw new Error(`Operation ${operation.operationKey} is not an unreviewed verified binding.`);

@@ -1,0 +1,373 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T04:24:13.246Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located Shanghai University Spring 2027 one-semester scholarship requirements with route-specific materials, benefit amounts and an exact non-degree intake binding."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 1,
+    "targetedIntakeCount": 1,
+    "requirementItemCount": 21
+  },
+  "templates": [
+    {
+      "key": "shu-iclts-international-chinese-language-education-spring-2027",
+      "schoolSlug": "shanghai-university",
+      "cycle": "spring-2027",
+      "targetProgramSlugs": [
+        "shanghai-university-iclts-international-chinese-language-education-spring-2027"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "The official guide says the passport must expire after March 1, 2026; this published date appears earlier than the March 2027 intake and is preserved without correction or inference."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "shu_iclts",
+            "url": "https://apply.shu.edu.cn/upload/shangda/2/c/0/2026%E5%B9%B4%E4%B8%8A%E6%B5%B7%E5%A4%A7%E5%AD%A6%E5%9B%BD%E9%99%85%E4%B8%AD%E6%96%87%E6%95%99%E5%B8%88%E5%A5%96%E5%AD%A6%E9%87%91%EF%BC%88%E5%AD%94%E5%AD%90%E5%AD%A6%E9%99%A2%E5%A5%96%E5%AD%A6%E9%87%91%EF%BC%89%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97.pdf",
+            "title": "Shanghai University 2026 International Chinese Language Teachers Scholarship Application Guide",
+            "capturedAt": "2026-10-15T04:21:10.882Z",
+            "contentSha256": "cb9703d6835e09db3391b4d8beedb5ab820a8484b9000a3277a48334731951c4"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid ordinary passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 2, Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "former_chinese_resident_nationality",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who emigrated from mainland China, Hong Kong, Macao or Taiwan",
+            "ruleText": "Hold a valid foreign passport or nationality document for at least four years and have lived abroad for at least two of the most recent four years by April 30, 2026, calculated under the guide's entry-and-exit rule.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 2, Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "conduct_and_law",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be friendly to China, have no criminal record, and comply with Chinese laws, regulations, and university rules.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Pages 2-3, Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "health_and_performance",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be in good physical and mental health and in good academic and behavioral standing.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 3, Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "career_interest",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Intend to work in Chinese-language education, teaching, or related fields.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 3, Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "age_range",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Be 16 to 35 years old on September 1, 2026. The maximum age is 45 for in-service Chinese-language teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 3, Eligibility item 5"
+              }
+            ]
+          },
+          {
+            "key": "hsk_hskk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International Chinese Language Education one-semester applicants",
+            "ruleText": "Provide an HSK Level 3 score of at least 180 and an HSKK score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Pages 3-4, Supporting Category item 4"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a clear scan of the ordinary-passport information page. Applicants outside their home country must also submit the visa page. The guide states that the passport must expire after March 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 4, application materials for all applicants, item 1"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a passport-size photo taken within the previous six months: bareheaded, full-face, blue background, 295 by 413 pixels, JPG and under 100 KB.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 4, application materials for all applicants, item 2"
+              }
+            ]
+          },
+          {
+            "key": "language_scores",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit scanned HSK and HSKK score reports within their two-year validity period. A web-result screenshot may be used at application, but the original certificate must be presented at registration.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 4, application materials for all applicants, item 3"
+              }
+            ]
+          },
+          {
+            "key": "recommending_institution_reference",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit a reference letter from the head of the recommending institution.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Pages 4-5, application materials for all applicants, item 4"
+              }
+            ]
+          },
+          {
+            "key": "in_service_teacher_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "In-service Chinese-language teachers",
+            "ruleText": "Submit proof of employment and an employer recommendation letter to receive priority under equal conditions.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 6, in-service Chinese-language teachers"
+              }
+            ]
+          },
+          {
+            "key": "chinese_bridge_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Chinese Bridge scholarship-certificate holders",
+            "ruleText": "Apply through the scholarship website using the International Chinese Language Teachers Scholarship certificate and submit the materials to Shanghai University.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Pages 6-7, Chinese Bridge winners"
+              }
+            ]
+          },
+          {
+            "key": "document_translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants submitting documents not in Chinese or English",
+            "ruleText": "Provide a notarized Chinese or English translation or a translation supplied by the issuing institution.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 6, Notes item 1"
+              }
+            ]
+          },
+          {
+            "key": "original_documents",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Scholarship recipients",
+            "ruleText": "Upload electronic copies at application and present the original documents for verification at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Pages 6 and 9, Notes and Other Matters"
+              }
+            ]
+          },
+          {
+            "key": "materials_integrity",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Upload clear, authentic and valid materials; false, unclear or unidentifiable materials may cause adverse consequences or disqualification.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Pages 6 and 9, Notes and Other Matters"
+              }
+            ]
+          },
+          {
+            "key": "scholarship_system_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Non-degree applicants",
+            "ruleText": "Apply online through the International Chinese Language Teachers Scholarship section of the CLEC website and submit the application materials there. A Shanghai University application-system submission is not required for this non-degree route.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 7, Application Procedures, Step 1 and note"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "March 2027 applicants",
+            "ruleText": "Complete the student application by October 31, 2026 Beijing Time. The recommending institution and host-institution review deadline is November 10, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 8, Application Deadlines item 4"
+              }
+            ]
+          },
+          {
+            "key": "similar_scholarship_history",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "One-semester applicants",
+            "ruleText": "In principle, applicants who received the same type of scholarship within the previous three years are not eligible.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Page 8, Other Matters item 1"
+              }
+            ]
+          },
+          {
+            "key": "direct_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Submit the scholarship application directly to Shanghai University and do not use an intermediary agency; agency submission causes disqualification.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Pages 8-9, Other Matters item 6"
+              }
+            ]
+          },
+          {
+            "key": "enrollment_conditions",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Scholarship recipients",
+            "ruleText": "Pass the enrollment medical examination, register on time, and do not withdraw or suspend studies without permission; otherwise the scholarship may be canceled.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "shu_iclts",
+                "locator": "Pages 8-9, Other Matters items 5 and 7"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
