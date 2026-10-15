@@ -1,0 +1,3147 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T09:27:39.642Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope USTB 2026 requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 8,
+    "readyTemplateCount": 8,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 156,
+    "targetedIntakeCount": 156,
+    "requirementItemCount": 176
+  },
+  "templates": [
+    {
+      "key": "ustb-bachelor-chinese-humanities-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-beijing",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-beijing-visual-communication-design",
+        "university-of-science-and-technology-beijing-accounting",
+        "university-of-science-and-technology-beijing-international-economics-and-trade",
+        "university-of-science-and-technology-beijing-financial-engineering",
+        "university-of-science-and-technology-beijing-big-data-management-and-application",
+        "university-of-science-and-technology-beijing-information-management-and-information-systems",
+        "university-of-science-and-technology-beijing-public-administration",
+        "university-of-science-and-technology-beijing-social-work",
+        "university-of-science-and-technology-beijing-law",
+        "university-of-science-and-technology-beijing-english",
+        "university-of-science-and-technology-beijing-japanese",
+        "university-of-science-and-technology-beijing-german"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "application",
+            "url": "https://isc.ustb.edu.cn/bmsq/5c4f92bb5a574295ae7bbcf0cb63c39f.htm",
+            "title": "University of Science and Technology Beijing Undergraduate Admission Guide 2026",
+            "capturedAt": "2026-09-13T11:13:25.222Z",
+            "contentSha256": "ec8df19853930920d7c1f670350bf96da1df61216696be63e5e103f554651d54"
+          },
+          {
+            "key": "csca",
+            "url": "https://isc.ustb.edu.cn/bmsq/24c2fa7600ad419cbdceb2bd72b5de89.htm",
+            "title": "University of Science and Technology Beijing CSCA Guide 2026",
+            "capturedAt": "2026-09-13T11:13:26.327Z",
+            "contentSha256": "da2c2f752b96e7db423ae3cff2994f872d7e9db886e7c1c0c4646f7ead246cae"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport, be physically and mentally healthy, and have good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Hold a senior-high-school diploma recognized by the Chinese Ministry of Education; provide qualification verification if requested.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-financed international bachelor applicants",
+            "ruleText": "Be no older than 35 at the application deadline; scholarship routes may impose different age limits.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught bachelor applicants",
+            "ruleText": "Submit HSK Level 4 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Apply from November 1, 2025 through June 15, 2026; the system closes after the deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(1) Application Period"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Register in the USTB international online application system, complete personal information, upload clear PDF/JPG materials, pay the fee and submit; no paper package is required.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(3) Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Complete truthful and complete personal information in the online application; submitted information cannot be modified.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the high-school diploma and complete official high-school transcript. Non-Chinese/English records require official translations and notarization.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the information page of a valid ordinary passport whose validity covers at least one year after expected enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit an HSK Level 4 or higher score certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the designated Foreigner Physical Examination Form issued by a regular medical institution and valid within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 6"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the USTB financial-guarantee form with guarantor identity and financial evidence sufficient for one academic year; the guide recommends at least RMB 50,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit an official no-criminal-record certificate in Chinese or English, or with official translation and notarization, valid within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 8"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Published humanities-list bachelor applicants",
+            "ruleText": "Submit CSCA Humanities Chinese and Mathematics score reports; Physics or Chemistry is not required for the published humanities-list majors.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "Section II USTB CSCA Requirements and Section VIII process"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants after submission",
+            "ruleText": "Undergo USTB's comprehensive review of application materials, CSCA scores, academic background and language ability; admission is competitive.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII - Admission and Enrollment"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Pay the non-refundable RMB 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2)-(3) Fees and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Pay annual tuition of RMB 23,300.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Purchase the required China medical insurance: RMB 800 per year or RMB 400 per semester; registration is not processed without it.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards and note 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students allocated on-campus accommodation",
+            "ruleText": "Pay RMB 1,500 per month per bed for a double room or RMB 750 per month per bed for a four-person room; students not allocated a room arrange off-campus housing themselves.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards and note 1"
+              }
+            ]
+          },
+          {
+            "key": "registration_original",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register at the time in the admission notice and official email and present the original high-school diploma for enrollment qualification review.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII - Enrollment"
+              }
+            ]
+          },
+          {
+            "key": "visa_residence",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the Admission Notice and JW201/JW202 to apply for an X1 visa and convert it to a study residence permit within 30 days after arrival.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII and visa guidance"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustb-bachelor-stem-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-beijing",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-beijing-safety-engineering",
+        "university-of-science-and-technology-beijing-mining-engineering",
+        "university-of-science-and-technology-beijing-mineral-processing-engineering",
+        "university-of-science-and-technology-beijing-engineering-mechanics",
+        "university-of-science-and-technology-beijing-occupational-health-engineering",
+        "university-of-science-and-technology-beijing-intelligent-mining-engineering",
+        "university-of-science-and-technology-beijing-intelligent-construction",
+        "university-of-science-and-technology-beijing-civil-engineering",
+        "university-of-science-and-technology-beijing-building-environment-and-energy-application-engineering",
+        "university-of-science-and-technology-beijing-engineering-management",
+        "university-of-science-and-technology-beijing-metallurgical-engineering",
+        "university-of-science-and-technology-beijing-energy-storage-science-and-engineering",
+        "university-of-science-and-technology-beijing-materials-science-and-engineering",
+        "university-of-science-and-technology-beijing-mechanical-engineering",
+        "university-of-science-and-technology-beijing-robotics-engineering",
+        "university-of-science-and-technology-beijing-vehicle-engineering",
+        "university-of-science-and-technology-beijing-logistics-engineering",
+        "university-of-science-and-technology-beijing-industrial-design",
+        "university-of-science-and-technology-beijing-energy-and-power-engineering",
+        "university-of-science-and-technology-beijing-new-energy-science-and-engineering",
+        "university-of-science-and-technology-beijing-environmental-engineering",
+        "university-of-science-and-technology-beijing-environmental-science",
+        "university-of-science-and-technology-beijing-automation",
+        "university-of-science-and-technology-beijing-measurement-and-control-technology-and-instruments",
+        "university-of-science-and-technology-beijing-intelligent-sensing-engineering",
+        "university-of-science-and-technology-beijing-artificial-intelligence",
+        "university-of-science-and-technology-beijing-computer-science-and-technology",
+        "university-of-science-and-technology-beijing-information-security",
+        "university-of-science-and-technology-beijing-internet-of-things-engineering",
+        "university-of-science-and-technology-beijing-communication-engineering",
+        "university-of-science-and-technology-beijing-mathematics-and-applied-mathematics",
+        "university-of-science-and-technology-beijing-information-and-computing-science",
+        "university-of-science-and-technology-beijing-applied-physics",
+        "university-of-science-and-technology-beijing-statistics",
+        "university-of-science-and-technology-beijing-applied-chemistry",
+        "university-of-science-and-technology-beijing-biotechnology",
+        "university-of-science-and-technology-beijing-business-administration-artificial-intelligence-dual-degree"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "application",
+            "url": "https://isc.ustb.edu.cn/bmsq/5c4f92bb5a574295ae7bbcf0cb63c39f.htm",
+            "title": "University of Science and Technology Beijing Undergraduate Admission Guide 2026",
+            "capturedAt": "2026-09-13T11:13:25.222Z",
+            "contentSha256": "ec8df19853930920d7c1f670350bf96da1df61216696be63e5e103f554651d54"
+          },
+          {
+            "key": "csca",
+            "url": "https://isc.ustb.edu.cn/bmsq/24c2fa7600ad419cbdceb2bd72b5de89.htm",
+            "title": "University of Science and Technology Beijing CSCA Guide 2026",
+            "capturedAt": "2026-09-13T11:13:26.327Z",
+            "contentSha256": "da2c2f752b96e7db423ae3cff2994f872d7e9db886e7c1c0c4646f7ead246cae"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport, be physically and mentally healthy, and have good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Hold a senior-high-school diploma recognized by the Chinese Ministry of Education; provide qualification verification if requested.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-financed international bachelor applicants",
+            "ruleText": "Be no older than 35 at the application deadline; scholarship routes may impose different age limits.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught bachelor applicants",
+            "ruleText": "Submit HSK Level 4 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Apply from November 1, 2025 through June 15, 2026; the system closes after the deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(1) Application Period"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Register in the USTB international online application system, complete personal information, upload clear PDF/JPG materials, pay the fee and submit; no paper package is required.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(3) Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Complete truthful and complete personal information in the online application; submitted information cannot be modified.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the high-school diploma and complete official high-school transcript. Non-Chinese/English records require official translations and notarization.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the information page of a valid ordinary passport whose validity covers at least one year after expected enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit an HSK Level 4 or higher score certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the designated Foreigner Physical Examination Form issued by a regular medical institution and valid within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 6"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the USTB financial-guarantee form with guarantor identity and financial evidence sufficient for one academic year; the guide recommends at least RMB 50,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit an official no-criminal-record certificate in Chinese or English, or with official translation and notarization, valid within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 8"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught science, engineering and agriculture bachelor applicants",
+            "ruleText": "Submit CSCA STEM Chinese, Mathematics, and either Physics or Chemistry score reports. Environment Engineering and Materials Science and Engineering take Mathematics in English; other Chinese-taught majors take Mathematics in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "Section II USTB CSCA Requirements and Section VIII process"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants after submission",
+            "ruleText": "Undergo USTB's comprehensive review of application materials, CSCA scores, academic background and language ability; admission is competitive.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII - Admission and Enrollment"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Pay the non-refundable RMB 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2)-(3) Fees and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Pay annual tuition of RMB 23,300.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Purchase the required China medical insurance: RMB 800 per year or RMB 400 per semester; registration is not processed without it.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards and note 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students allocated on-campus accommodation",
+            "ruleText": "Pay RMB 1,500 per month per bed for a double room or RMB 750 per month per bed for a four-person room; students not allocated a room arrange off-campus housing themselves.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards and note 1"
+              }
+            ]
+          },
+          {
+            "key": "registration_original",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register at the time in the admission notice and official email and present the original high-school diploma for enrollment qualification review.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII - Enrollment"
+              }
+            ]
+          },
+          {
+            "key": "visa_residence",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the Admission Notice and JW201/JW202 to apply for an X1 visa and convert it to a study residence permit within 30 days after arrival.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII and visa guidance"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustb-bachelor-english-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-beijing",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-beijing-materials-science-and-engineering-english",
+        "university-of-science-and-technology-beijing-environmental-engineering-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "application",
+            "url": "https://isc.ustb.edu.cn/bmsq/5c4f92bb5a574295ae7bbcf0cb63c39f.htm",
+            "title": "University of Science and Technology Beijing Undergraduate Admission Guide 2026",
+            "capturedAt": "2026-09-13T11:13:25.222Z",
+            "contentSha256": "ec8df19853930920d7c1f670350bf96da1df61216696be63e5e103f554651d54"
+          },
+          {
+            "key": "csca",
+            "url": "https://isc.ustb.edu.cn/bmsq/24c2fa7600ad419cbdceb2bd72b5de89.htm",
+            "title": "University of Science and Technology Beijing CSCA Guide 2026",
+            "capturedAt": "2026-09-13T11:13:26.327Z",
+            "contentSha256": "da2c2f752b96e7db423ae3cff2994f872d7e9db886e7c1c0c4646f7ead246cae"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport, be physically and mentally healthy, and have good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Hold a senior-high-school diploma recognized by the Chinese Ministry of Education; provide qualification verification if requested.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-financed international bachelor applicants",
+            "ruleText": "Be no older than 35 at the application deadline; scholarship routes may impose different age limits.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught bachelor applicants",
+            "ruleText": "Submit IELTS 5.5, TOEFL 70, or another official English-proficiency certificate when English is not an official language.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Apply from November 1, 2025 through June 15, 2026; the system closes after the deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(1) Application Period"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Register in the USTB international online application system, complete personal information, upload clear PDF/JPG materials, pay the fee and submit; no paper package is required.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(3) Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Complete truthful and complete personal information in the online application; submitted information cannot be modified.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the high-school diploma and complete official high-school transcript. Non-Chinese/English records require official translations and notarization.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the information page of a valid ordinary passport whose validity covers at least one year after expected enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit IELTS 5.5, TOEFL 70, or another official English-proficiency certificate when English is not an official language.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the designated Foreigner Physical Examination Form issued by a regular medical institution and valid within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 6"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the USTB financial-guarantee form with guarantor identity and financial evidence sufficient for one academic year; the guide recommends at least RMB 50,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit an official no-criminal-record certificate in Chinese or English, or with official translation and notarization, valid within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 8"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught bachelor applicants",
+            "ruleText": "Submit CSCA Mathematics in English and either Physics or Chemistry. No Professional Chinese score is required for an English-taught route.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "Section II USTB CSCA Requirements and Section VIII process"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants after submission",
+            "ruleText": "Undergo USTB's comprehensive review of application materials, CSCA scores, academic background and language ability; admission is competitive.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII - Admission and Enrollment"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Pay the non-refundable RMB 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2)-(3) Fees and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Pay annual tuition of RMB 23,300.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Purchase the required China medical insurance: RMB 800 per year or RMB 400 per semester; registration is not processed without it.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards and note 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students allocated on-campus accommodation",
+            "ruleText": "Pay RMB 1,500 per month per bed for a double room or RMB 750 per month per bed for a four-person room; students not allocated a room arrange off-campus housing themselves.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards and note 1"
+              }
+            ]
+          },
+          {
+            "key": "registration_original",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register at the time in the admission notice and official email and present the original high-school diploma for enrollment qualification review.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII - Enrollment"
+              }
+            ]
+          },
+          {
+            "key": "visa_residence",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the Admission Notice and JW201/JW202 to apply for an X1 visa and convert it to a study residence permit within 30 days after arrival.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII and visa guidance"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustb-bachelor-international-economics-1-plus-3-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-beijing",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-beijing-international-economics-and-trade-1-plus-3"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "application",
+            "url": "https://isc.ustb.edu.cn/bmsq/5c4f92bb5a574295ae7bbcf0cb63c39f.htm",
+            "title": "University of Science and Technology Beijing Undergraduate Admission Guide 2026",
+            "capturedAt": "2026-09-13T11:13:25.222Z",
+            "contentSha256": "ec8df19853930920d7c1f670350bf96da1df61216696be63e5e103f554651d54"
+          },
+          {
+            "key": "csca",
+            "url": "https://isc.ustb.edu.cn/bmsq/24c2fa7600ad419cbdceb2bd72b5de89.htm",
+            "title": "University of Science and Technology Beijing CSCA Guide 2026",
+            "capturedAt": "2026-09-13T11:13:26.327Z",
+            "contentSha256": "da2c2f752b96e7db423ae3cff2994f872d7e9db886e7c1c0c4646f7ead246cae"
+          },
+          {
+            "key": "special",
+            "url": "https://isc.ustb.edu.cn/bmsq/138ff3eff37e4f89aeb3f3cb7a403570.htm",
+            "title": "University of Science and Technology Beijing International Economics and Trade 1+3 Program 2026",
+            "capturedAt": "2026-09-13T11:13:24.095Z",
+            "contentSha256": "c6cad88d20bdea12f70b6a46f7d7ae7dec5e5b104176ea328905b8c7c8a66fba"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport, be physically and mentally healthy, and have good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Hold a senior-high-school diploma recognized by the Chinese Ministry of Education; provide qualification verification if requested.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-financed international bachelor applicants",
+            "ruleText": "Be no older than 35 at the application deadline; scholarship routes may impose different age limits.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section IV - Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International Economics and Trade (1+3) applicants",
+            "ruleText": "A separate HSK 4 certificate is not required at entry; the route requires sufficient Chinese for the first-year language/foundation stage and HSK 5 by graduation.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "1+3 project Eligibility and program description"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Apply from November 1, 2025 through June 15, 2026; the system closes after the deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(1) Application Period"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Register in the USTB international online application system, complete personal information, upload clear PDF/JPG materials, pay the fee and submit; no paper package is required.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(3) Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Complete truthful and complete personal information in the online application; submitted information cannot be modified.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the high-school diploma and complete official high-school transcript. Non-Chinese/English records require official translations and notarization.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the information page of a valid ordinary passport whose validity covers at least one year after expected enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the Chinese-proficiency evidence requested for the 1+3 route; no HSK 4 certificate is required at entry.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "1+3 project Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the designated Foreigner Physical Examination Form issued by a regular medical institution and valid within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 6"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit the USTB financial-guarantee form with guarantor identity and financial evidence sufficient for one academic year; the guide recommends at least RMB 50,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Submit an official no-criminal-record certificate in Chinese or English, or with official translation and notarization, valid within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(4) item 8"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Published humanities-list bachelor applicants",
+            "ruleText": "Submit CSCA Humanities Chinese and Mathematics score reports; Physics or Chemistry is not required for the published humanities-list majors.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "Section II USTB CSCA Requirements and Section VIII process"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants after submission",
+            "ruleText": "Undergo USTB's comprehensive review of application materials, CSCA scores, academic background and language ability; admission is competitive.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII - Admission and Enrollment"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Pay the non-refundable RMB 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2)-(3) Fees and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Pay annual tuition of RMB 23,300.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Purchase the required China medical insurance: RMB 800 per year or RMB 400 per semester; registration is not processed without it.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards and note 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students allocated on-campus accommodation",
+            "ruleText": "Pay RMB 1,500 per month per bed for a double room or RMB 750 per month per bed for a four-person room; students not allocated a room arrange off-campus housing themselves.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V(2) Fee Standards and note 1"
+              }
+            ]
+          },
+          {
+            "key": "registration_original",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register at the time in the admission notice and official email and present the original high-school diploma for enrollment qualification review.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII - Enrollment"
+              }
+            ]
+          },
+          {
+            "key": "visa_residence",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the Admission Notice and JW201/JW202 to apply for an X1 visa and convert it to a study residence permit within 30 days after arrival.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section VII and visa guidance"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustb-master-chinese-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-beijing",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-beijing-master-mining-engineering",
+        "university-of-science-and-technology-beijing-master-geology",
+        "university-of-science-and-technology-beijing-master-safety-science-and-engineering",
+        "university-of-science-and-technology-beijing-master-mineral-processing-engineering",
+        "university-of-science-and-technology-beijing-master-mechanics-engineering",
+        "university-of-science-and-technology-beijing-master-civil-engineering",
+        "university-of-science-and-technology-beijing-master-heating-gas-supply-ventilation-and-air-conditioning-engineering",
+        "university-of-science-and-technology-beijing-master-environmental-science-and-engineering",
+        "university-of-science-and-technology-beijing-master-power-engineering-and-engineering-thermophysics",
+        "university-of-science-and-technology-beijing-master-metallurgical-engineering",
+        "university-of-science-and-technology-beijing-master-materials-science-and-engineering",
+        "university-of-science-and-technology-beijing-master-mechanical-engineering",
+        "university-of-science-and-technology-beijing-master-design",
+        "university-of-science-and-technology-beijing-master-logistics-engineering",
+        "university-of-science-and-technology-beijing-master-control-science-and-engineering",
+        "university-of-science-and-technology-beijing-master-instrument-science-and-technology",
+        "university-of-science-and-technology-beijing-master-artificial-intelligence-science-and-engineering",
+        "university-of-science-and-technology-beijing-master-information-and-communication-engineering",
+        "university-of-science-and-technology-beijing-master-computer-science-and-technology",
+        "university-of-science-and-technology-beijing-master-mathematics",
+        "university-of-science-and-technology-beijing-master-physics",
+        "university-of-science-and-technology-beijing-master-statistics",
+        "university-of-science-and-technology-beijing-master-mechanics-science",
+        "university-of-science-and-technology-beijing-master-biology",
+        "university-of-science-and-technology-beijing-master-chemistry",
+        "university-of-science-and-technology-beijing-master-chemical-engineering-and-technology",
+        "university-of-science-and-technology-beijing-master-biotechnology-and-engineering",
+        "university-of-science-and-technology-beijing-master-business-management",
+        "university-of-science-and-technology-beijing-master-finance",
+        "university-of-science-and-technology-beijing-master-industrial-economics",
+        "university-of-science-and-technology-beijing-master-international-trade",
+        "university-of-science-and-technology-beijing-master-technical-economics-and-management",
+        "university-of-science-and-technology-beijing-master-management-science-and-engineering",
+        "university-of-science-and-technology-beijing-master-accounting",
+        "university-of-science-and-technology-beijing-master-public-administration-administrative-management",
+        "university-of-science-and-technology-beijing-master-public-administration-education-economics-and-management",
+        "university-of-science-and-technology-beijing-master-sociology",
+        "university-of-science-and-technology-beijing-master-law",
+        "university-of-science-and-technology-beijing-master-foreign-languages-and-literatures-english-language-and-literature",
+        "university-of-science-and-technology-beijing-master-foreign-languages-and-literatures-foreign-linguistics-and-applied-linguistics",
+        "university-of-science-and-technology-beijing-master-marxist-theory",
+        "university-of-science-and-technology-beijing-master-philosophy-of-science-and-technology",
+        "university-of-science-and-technology-beijing-master-history-of-science-and-technology",
+        "university-of-science-and-technology-beijing-master-crop-science"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "application",
+            "url": "https://isc.ustb.edu.cn/bmsq/04a1f5c14a474d95a6a6d780e6978e95.htm",
+            "title": "University of Science and Technology Beijing Graduate Application and Materials 2026",
+            "capturedAt": "2026-09-13T11:13:18.529Z",
+            "contentSha256": "cecddae874357b7019e40da7dc7485130ecd669a7b1de1f3b877d3092b32b27f"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport, be physically and mentally healthy, and have good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a qualification equivalent to a Chinese bachelor's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be generally no older than 40; scholarship routes may impose different age limits.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught master applicants",
+            "ruleText": "Pass HSK Level 5.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I Eligibility and Section V Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Apply from November 1, 2025 through June 15, 2026; scholarship deadlines follow the individual scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section II - Application Time"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Complete the online USTB application and pay the application fee; paper materials are not required.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Opening note and Section IV - Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Complete the application form in the USTB system and pay the application fee.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the bachelor's degree certificate and complete undergraduate transcript as notarized Chinese or English originals; expected graduates may use pre-graduation or enrollment proof but must supply the degree after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a Chinese- or English-language personal statement and research plan of at least 1,000 Chinese characters/words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors; at least one recommender must know the applicant's current field of study.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 5"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught master applicants",
+            "ruleText": "Pass HSK Level 5.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 6"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a copy of a valid ordinary passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the designated health/physical-examination certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the USTB financial-guarantee form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 9"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 10"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "A supervisor acceptance letter may be submitted when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 11"
+              }
+            ]
+          },
+          {
+            "key": "publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants with academic outputs",
+            "ruleText": "Optionally submit a list and abstracts of published articles and other original work.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 12"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the non-refundable RMB 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Sections III-IV"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled Chinese-taught master students",
+            "ruleText": "Pay annual tuition of RMB 31,600.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled graduate students",
+            "ruleText": "Purchase required China medical insurance at RMB 800 per year or RMB 400 per semester; registration is not processed without it.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table and note 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students allocated on-campus accommodation",
+            "ruleText": "Pay RMB 1,500 per month per bed for a double room or RMB 750 per month per bed for a four-person room; students not allocated a room arrange off-campus housing themselves.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table and note 1"
+              }
+            ]
+          },
+          {
+            "key": "registration_originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register at the time in the admission notice and official email and present original degree/graduation certificates for enrollment qualification review.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Sections VI-VII"
+              }
+            ]
+          },
+          {
+            "key": "visa_residence",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the Admission Notice and JW201/JW202 to apply for an X1 visa and convert it to a study residence permit within 30 days after arrival.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section X - Visa"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustb-master-english-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-beijing",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-beijing-master-safety-science-and-engineering-english",
+        "university-of-science-and-technology-beijing-master-environmental-science-and-engineering-english",
+        "university-of-science-and-technology-beijing-master-metallurgical-engineering-english",
+        "university-of-science-and-technology-beijing-master-information-and-communication-engineering-english",
+        "university-of-science-and-technology-beijing-master-business-management-english",
+        "university-of-science-and-technology-beijing-master-international-trade-english",
+        "university-of-science-and-technology-beijing-master-management-science-and-engineering-english",
+        "university-of-science-and-technology-beijing-master-public-administration-education-economics-and-management-english",
+        "university-of-science-and-technology-beijing-master-sociology-english",
+        "university-of-science-and-technology-beijing-master-business-administration-mba-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "application",
+            "url": "https://isc.ustb.edu.cn/bmsq/04a1f5c14a474d95a6a6d780e6978e95.htm",
+            "title": "University of Science and Technology Beijing Graduate Application and Materials 2026",
+            "capturedAt": "2026-09-13T11:13:18.529Z",
+            "contentSha256": "cecddae874357b7019e40da7dc7485130ecd669a7b1de1f3b877d3092b32b27f"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport, be physically and mentally healthy, and have good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a qualification equivalent to a Chinese bachelor's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be generally no older than 40; scholarship routes may impose different age limits.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught master applicants",
+            "ruleText": "Submit IELTS 6.0, TOEFL 80, or another official English-proficiency certificate when English is not an official language.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I Eligibility and Section V Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Apply from November 1, 2025 through June 15, 2026; scholarship deadlines follow the individual scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section II - Application Time"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Complete the online USTB application and pay the application fee; paper materials are not required.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Opening note and Section IV - Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Complete the application form in the USTB system and pay the application fee.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the bachelor's degree certificate and complete undergraduate transcript as notarized Chinese or English originals; expected graduates may use pre-graduation or enrollment proof but must supply the degree after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a Chinese- or English-language personal statement and research plan of at least 1,000 Chinese characters/words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors; at least one recommender must know the applicant's current field of study.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 5"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught master applicants",
+            "ruleText": "Submit IELTS 6.0, TOEFL 80, or another official English-proficiency certificate when English is not an official language.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 6"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a copy of a valid ordinary passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the designated health/physical-examination certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the USTB financial-guarantee form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 9"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 10"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "A supervisor acceptance letter may be submitted when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 11"
+              }
+            ]
+          },
+          {
+            "key": "publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants with academic outputs",
+            "ruleText": "Optionally submit a list and abstracts of published articles and other original work.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 12"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the non-refundable RMB 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Sections III-IV"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled English-taught master students",
+            "ruleText": "Pay annual tuition of RMB 37,600.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled graduate students",
+            "ruleText": "Purchase required China medical insurance at RMB 800 per year or RMB 400 per semester; registration is not processed without it.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table and note 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students allocated on-campus accommodation",
+            "ruleText": "Pay RMB 1,500 per month per bed for a double room or RMB 750 per month per bed for a four-person room; students not allocated a room arrange off-campus housing themselves.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table and note 1"
+              }
+            ]
+          },
+          {
+            "key": "registration_originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register at the time in the admission notice and official email and present original degree/graduation certificates for enrollment qualification review.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Sections VI-VII"
+              }
+            ]
+          },
+          {
+            "key": "visa_residence",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the Admission Notice and JW201/JW202 to apply for an X1 visa and convert it to a study residence permit within 30 days after arrival.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section X - Visa"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustb-doctoral-chinese-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-beijing",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-beijing-doctoral-safety-science-and-engineering",
+        "university-of-science-and-technology-beijing-doctoral-mining-engineering",
+        "university-of-science-and-technology-beijing-doctoral-mechanics-engineering",
+        "university-of-science-and-technology-beijing-doctoral-civil-engineering",
+        "university-of-science-and-technology-beijing-doctoral-environmental-science-and-engineering",
+        "university-of-science-and-technology-beijing-doctoral-power-engineering-and-engineering-thermophysics",
+        "university-of-science-and-technology-beijing-doctoral-metallurgical-engineering",
+        "university-of-science-and-technology-beijing-doctoral-energy-storage-chemistry-and-physics",
+        "university-of-science-and-technology-beijing-doctoral-materials-science-and-engineering",
+        "university-of-science-and-technology-beijing-doctoral-mechanical-engineering",
+        "university-of-science-and-technology-beijing-doctoral-logistics-engineering",
+        "university-of-science-and-technology-beijing-doctoral-control-science-and-engineering",
+        "university-of-science-and-technology-beijing-doctoral-instrument-science-and-technology",
+        "university-of-science-and-technology-beijing-doctoral-artificial-intelligence-science-and-engineering",
+        "university-of-science-and-technology-beijing-doctoral-computer-science-and-technology",
+        "university-of-science-and-technology-beijing-doctoral-information-and-communication-engineering",
+        "university-of-science-and-technology-beijing-doctoral-physics",
+        "university-of-science-and-technology-beijing-doctoral-applied-mathematics-and-engineering-science",
+        "university-of-science-and-technology-beijing-doctoral-mechanics-science",
+        "university-of-science-and-technology-beijing-doctoral-chemistry",
+        "university-of-science-and-technology-beijing-doctoral-business-administration",
+        "university-of-science-and-technology-beijing-doctoral-management-science-and-engineering",
+        "university-of-science-and-technology-beijing-doctoral-foreign-languages-and-literatures",
+        "university-of-science-and-technology-beijing-doctoral-marxist-theory",
+        "university-of-science-and-technology-beijing-doctoral-history-of-science-and-technology"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "application",
+            "url": "https://isc.ustb.edu.cn/bmsq/04a1f5c14a474d95a6a6d780e6978e95.htm",
+            "title": "University of Science and Technology Beijing Graduate Application and Materials 2026",
+            "capturedAt": "2026-09-13T11:13:18.529Z",
+            "contentSha256": "cecddae874357b7019e40da7dc7485130ecd669a7b1de1f3b877d3092b32b27f"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport, be physically and mentally healthy, and have good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a qualification equivalent to a Chinese master's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be generally no older than 45; scholarship routes may impose different age limits.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught doctoral applicants",
+            "ruleText": "Pass HSK Level 6.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I Eligibility and Section V Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 doctoral applicants",
+            "ruleText": "Apply from November 1, 2025 through June 15, 2026; scholarship deadlines follow the individual scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section II - Application Time"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 doctoral applicants",
+            "ruleText": "Complete the online USTB application and pay the application fee; paper materials are not required.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Opening note and Section IV - Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Complete the application form in the USTB system and pay the application fee.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit bachelor's and master's degree certificates and complete undergraduate and master's transcripts as notarized Chinese or English originals; expected graduates may use pre-graduation or enrollment proof but must supply the degree after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a Chinese- or English-language personal statement and research plan of at least 1,500 Chinese characters/words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors; at least one recommender must know the applicant's current field of study.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 5"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught doctoral applicants",
+            "ruleText": "Pass HSK Level 6.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 6"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a copy of a valid ordinary passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the designated health/physical-examination certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the USTB financial-guarantee form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 9"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 10"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "A supervisor acceptance letter may be submitted when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 11"
+              }
+            ]
+          },
+          {
+            "key": "publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants with academic outputs",
+            "ruleText": "Optionally submit a list and abstracts of published articles and other original work.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 12"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Pay the non-refundable RMB 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Sections III-IV"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled Chinese-taught doctoral students",
+            "ruleText": "Pay annual tuition of RMB 41,600.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled graduate students",
+            "ruleText": "Purchase required China medical insurance at RMB 800 per year or RMB 400 per semester; registration is not processed without it.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table and note 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students allocated on-campus accommodation",
+            "ruleText": "Pay RMB 1,500 per month per bed for a double room or RMB 750 per month per bed for a four-person room; students not allocated a room arrange off-campus housing themselves.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table and note 1"
+              }
+            ]
+          },
+          {
+            "key": "registration_originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register at the time in the admission notice and official email and present original degree/graduation certificates for enrollment qualification review.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Sections VI-VII"
+              }
+            ]
+          },
+          {
+            "key": "visa_residence",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the Admission Notice and JW201/JW202 to apply for an X1 visa and convert it to a study residence permit within 30 days after arrival.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section X - Visa"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustb-doctoral-english-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-beijing",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-beijing-doctoral-safety-science-and-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-mining-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-mechanics-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-civil-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-environmental-science-and-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-power-engineering-and-engineering-thermophysics-english",
+        "university-of-science-and-technology-beijing-doctoral-metallurgical-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-energy-storage-chemistry-and-physics-english",
+        "university-of-science-and-technology-beijing-doctoral-materials-science-and-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-mechanical-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-logistics-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-control-science-and-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-instrument-science-and-technology-english",
+        "university-of-science-and-technology-beijing-doctoral-artificial-intelligence-science-and-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-computer-science-and-technology-english",
+        "university-of-science-and-technology-beijing-doctoral-information-and-communication-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-physics-english",
+        "university-of-science-and-technology-beijing-doctoral-applied-mathematics-and-engineering-science-english",
+        "university-of-science-and-technology-beijing-doctoral-mechanics-science-english",
+        "university-of-science-and-technology-beijing-doctoral-chemistry-english",
+        "university-of-science-and-technology-beijing-doctoral-business-administration-english",
+        "university-of-science-and-technology-beijing-doctoral-management-science-and-engineering-english",
+        "university-of-science-and-technology-beijing-doctoral-foreign-languages-and-literatures-english",
+        "university-of-science-and-technology-beijing-doctoral-marxist-theory-english",
+        "university-of-science-and-technology-beijing-doctoral-history-of-science-and-technology-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "application",
+            "url": "https://isc.ustb.edu.cn/bmsq/04a1f5c14a474d95a6a6d780e6978e95.htm",
+            "title": "University of Science and Technology Beijing Graduate Application and Materials 2026",
+            "capturedAt": "2026-09-13T11:13:18.529Z",
+            "contentSha256": "cecddae874357b7019e40da7dc7485130ecd669a7b1de1f3b877d3092b32b27f"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport, be physically and mentally healthy, and have good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a qualification equivalent to a Chinese master's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be generally no older than 45; scholarship routes may impose different age limits.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I - Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught doctoral applicants",
+            "ruleText": "Submit IELTS 6.0, TOEFL 80, or another official English-proficiency certificate when English is not an official language.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section I Eligibility and Section V Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 doctoral applicants",
+            "ruleText": "Apply from November 1, 2025 through June 15, 2026; scholarship deadlines follow the individual scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section II - Application Time"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 doctoral applicants",
+            "ruleText": "Complete the online USTB application and pay the application fee; paper materials are not required.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Opening note and Section IV - Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Complete the application form in the USTB system and pay the application fee.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit bachelor's and master's degree certificates and complete undergraduate and master's transcripts as notarized Chinese or English originals; expected graduates may use pre-graduation or enrollment proof but must supply the degree after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a Chinese- or English-language personal statement and research plan of at least 1,500 Chinese characters/words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors; at least one recommender must know the applicant's current field of study.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 5"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught doctoral applicants",
+            "ruleText": "Submit IELTS 6.0, TOEFL 80, or another official English-proficiency certificate when English is not an official language.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 6"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a copy of a valid ordinary passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the designated health/physical-examination certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the USTB financial-guarantee form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 9"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 10"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "A supervisor acceptance letter may be submitted when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 11"
+              }
+            ]
+          },
+          {
+            "key": "publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants with academic outputs",
+            "ruleText": "Optionally submit a list and abstracts of published articles and other original work.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section V item 12"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Pay the non-refundable RMB 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Sections III-IV"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled English-taught doctoral students",
+            "ruleText": "Pay annual tuition of RMB 47,600.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled graduate students",
+            "ruleText": "Purchase required China medical insurance at RMB 800 per year or RMB 400 per semester; registration is not processed without it.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table and note 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students allocated on-campus accommodation",
+            "ruleText": "Pay RMB 1,500 per month per bed for a double room or RMB 750 per month per bed for a four-person room; students not allocated a room arrange off-campus housing themselves.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section III fee table and note 1"
+              }
+            ]
+          },
+          {
+            "key": "registration_originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register at the time in the admission notice and official email and present original degree/graduation certificates for enrollment qualification review.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Sections VI-VII"
+              }
+            ]
+          },
+          {
+            "key": "visa_residence",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the Admission Notice and JW201/JW202 to apply for an X1 visa and convert it to a study residence permit within 30 days after arrival.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "application",
+                "locator": "Section X - Visa"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

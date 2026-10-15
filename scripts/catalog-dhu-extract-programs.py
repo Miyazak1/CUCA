@@ -240,6 +240,85 @@ def field_category(name: str) -> str:
     return "Humanities and Social Sciences"
 
 
+def undergraduate_csca(name: str) -> str:
+    """Restore merged CSCA cells from the visually reviewed official table."""
+    humanities_math = {
+        "Fashion & Apparel Design", "Product Design", "Environmental Design",
+        "Visual Communication Design", "Digital Media Art", "Art & Technology",
+        "Administrative Management", "Public Relations", "Communication", "Law",
+        "English", "Japanese",
+    }
+    english_math = {
+        "Fashion & Accessory Design (Fashion Innovation)",
+        "Environmental Design (Fashion Interior Design)",
+    }
+    science_math_physics = {
+        "International Economy & Trade", "Business Administration", "Finance", "Marketing",
+        "Accounting", "Financial Management", "Information Management & Information System",
+        "Electronic Commerce", "Supply Chain Management", "Textile Engineering",
+        "Non-woven Materials & Engineering", "Mechanical Engineering", "Industrial Design",
+        "Intelligent Manufacturing Engineering", "Electronic Information Engineering",
+        "Communication Engineering", "Electrical Engineering & Automation", "Automation",
+        "Artificial Intelligence", "Computer Science & Technology", "Software Engineering",
+        "Information Security", "Data Science & Big Data Technology",
+        "Intelligence Science & Technology", "Civil Engineering (Green Construction)",
+        "Mathematics & Applied Mathematics", "Statistics (Financial Statistics and Risk Management)",
+        "Applied Physics (Integrated Circuits and New Energy)",
+        "Optoelectronic Information Science & Engineering",
+    }
+    science_math_chemistry = {
+        "Composite Materials & Engineering", "Polymer Materials & Engineering",
+        "Inorganic Non-metallic Materials Engineering", "Environmental Science",
+        "Environmental Engineering",
+    }
+    science_math_physics_chemistry = {
+        "Fashion Design & Engineering", "Functional Materials",
+        "Bioengineering (Biopharmaceuticals)", "Biomedical Engineering", "Applied Chemistry",
+        "Light Chemical Engineering", "Building Environment & Energy Application Engineering",
+        "Energy & Environmental Systems Engineering",
+    }
+    if name in humanities_math:
+        return "Chinese (Humanities), Mathematics (Chinese version)"
+    if name in english_math:
+        return "Mathematics (English version)"
+    if name in science_math_physics:
+        return "Chinese (Science), Mathematics, Physics (Chinese version)"
+    if name in science_math_chemistry:
+        return "Chinese (Science), Mathematics, Chemistry (Chinese version)"
+    if name in science_math_physics_chemistry:
+        return "Chinese (Science), Mathematics, Physics, Chemistry (Chinese version)"
+    raise ValueError(f"No visually reviewed undergraduate CSCA mapping for {name}")
+
+
+def undergraduate_other_requirement(name: str) -> str:
+    if name in {
+        "Fashion & Apparel Design", "Product Design", "Environmental Design",
+        "Visual Communication Design", "Digital Media Art", "Art & Technology",
+    }:
+        return "Original latest art works (refer to application guide)"
+    if name in {
+        "Fashion & Accessory Design (Fashion Innovation)",
+        "Environmental Design (Fashion Interior Design)",
+    }:
+        return "Personal Creative Design Portfolio (refer to application guide)"
+    return ""
+
+
+def master_supervision_intention_required(name: str) -> bool:
+    return name not in {
+        "Art Studies", "Non-woven Materials & Engineering",
+        "Textile Materials & Textiles Design", "Textile Engineering",
+    }
+
+
+def master_other_requirement(name: str) -> str:
+    return "Original latest art works (refer to application guide)" if name == "Design Studies" else ""
+
+
+def doctoral_other_requirement(name: str) -> str:
+    return "Original latest art design portfolio (refer to application guide for detailed information)" if name == "Design Studies" else ""
+
+
 def read_tokens(path: Path) -> list[dict[str, object]]:
     result = json.loads(path.read_text(encoding="utf-8"))[0]["res"]
     return [
@@ -296,14 +375,36 @@ def extract_page(key: str, config: dict[str, object]) -> list[dict[str, object]]
         ])
         numeric_amounts = [int(value) for value in amounts]
         tuition_items = [f"CNY {value:,}" for value in numeric_amounts]
+        degree = str(config["degree"])
+        other_requirement = " ".join(values["other"])
+        csca_requirement = " ".join(values["csca"])
+        supervision_intention_required = None
+        if degree == "Undergraduate":
+            csca_requirement = undergraduate_csca(name)
+            other_requirement = undergraduate_other_requirement(name)
+        elif degree == "Master":
+            # The master-table column OCR previously labelled as `other` is the
+            # checkmark-only Supervision Intention Letter column.  Restore it
+            # from the visually reviewed merged cells and keep the real Others
+            # column separate.
+            supervision_intention_required = master_supervision_intention_required(name)
+            other_requirement = master_other_requirement(name)
+            csca_requirement = ""
+        elif degree == "Doctoral":
+            # The doctoral guide requires the Supervision Intention Letter for
+            # every applicant.  The table uses merged checkmark cells, so row
+            # OCR is not a safe representation of that requirement.
+            supervision_intention_required = True
+            other_requirement = doctoral_other_requirement(name)
+            csca_requirement = ""
         rows.append({
             "page": key,
             "row": index + 1,
             "anchorY": anchor,
             "nameEn": name,
-            "degreeLevel": config["degree"],
-            "durationYears": 4 if config["degree"] in {"Undergraduate", "Doctoral"} else None,
-            "durationText": "2.5-3 years" if config["degree"] == "Master" else "4 years",
+            "degreeLevel": degree,
+            "durationYears": 4 if degree in {"Undergraduate", "Doctoral"} else None,
+            "durationText": "2.5-3 years" if degree == "Master" else "4 years",
             "fieldCategory": field_category(name),
             "teachingLanguage": language,
             "campus": ", ".join(values["campus"]),
@@ -311,8 +412,9 @@ def extract_page(key: str, config: dict[str, object]) -> list[dict[str, object]]
             "tuitionAmount": numeric_amounts[0] if len(numeric_amounts) == 1 else None,
             "tuitionText": " / ".join(tuition_items),
             "languageRequirement": " ".join(values["language_req"]),
-            "otherRequirement": " ".join(values["other"]),
-            "cscaRequirement": " ".join(values["csca"]),
+            "otherRequirement": other_requirement,
+            "cscaRequirement": csca_requirement,
+            "supervisionIntentionRequired": supervision_intention_required,
         })
     return rows
 

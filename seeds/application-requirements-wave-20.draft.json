@@ -1,0 +1,1023 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T08:08:32.034Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located CUFE Fall 2026 undergraduate requirements bound only to exact existing program-intake records."
+  },
+  "summary": {
+    "templateCount": 2,
+    "readyTemplateCount": 2,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 28,
+    "targetedIntakeCount": 28,
+    "requirementItemCount": 60
+  },
+  "templates": [
+    {
+      "key": "cufe-chinese-undergraduate-fall-2026",
+      "schoolSlug": "central-university-of-finance-and-economics",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "central-university-of-finance-and-economics-public-finance",
+        "central-university-of-finance-and-economics-finance",
+        "central-university-of-finance-and-economics-accounting",
+        "central-university-of-finance-and-economics-financial-management",
+        "central-university-of-finance-and-economics-insurance",
+        "central-university-of-finance-and-economics-actuarial-science",
+        "central-university-of-finance-and-economics-applied-statistics",
+        "central-university-of-finance-and-economics-mathematics-and-applied-mathematics",
+        "central-university-of-finance-and-economics-international-trade-and-economics",
+        "central-university-of-finance-and-economics-business-administration",
+        "central-university-of-finance-and-economics-human-resource-management",
+        "central-university-of-finance-and-economics-public-administration",
+        "central-university-of-finance-and-economics-public-service-administration",
+        "central-university-of-finance-and-economics-urban-management",
+        "central-university-of-finance-and-economics-sports-economics-and-management",
+        "central-university-of-finance-and-economics-sports-training",
+        "central-university-of-finance-and-economics-law",
+        "central-university-of-finance-and-economics-english",
+        "central-university-of-finance-and-economics-translation",
+        "central-university-of-finance-and-economics-economics",
+        "central-university-of-finance-and-economics-national-economics-management",
+        "central-university-of-finance-and-economics-sociology",
+        "central-university-of-finance-and-economics-applied-psychology",
+        "central-university-of-finance-and-economics-information-management-and-information-system",
+        "central-university-of-finance-and-economics-e-commerce",
+        "central-university-of-finance-and-economics-computer-science-and-technology",
+        "central-university-of-finance-and-economics-information-security"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "cufe_chinese_undergraduate",
+            "url": "https://sice.cufe.edu.cn/admissions/info/1045/3419.htm",
+            "title": "Central University of Finance and Economics 2026 international undergraduate admission guide Chinese",
+            "capturedAt": "2026-10-15T08:05:35.394Z",
+            "contentSha256": "0b43ff69c030582883414b168253923f6910a05609bcb67774311abfba5b9a3f"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Eligibility section, item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age_health",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or higher qualification, be physically and mentally healthy, and generally be under 25 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Eligibility section, item 2"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Provide notarized guardian materials for a guardian residing in Beijing.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Eligibility section, under-18 note"
+              }
+            ]
+          },
+          {
+            "key": "nationality_background",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants affected by Chinese-parentage, former Chinese citizenship or related nationality-background rules",
+            "ruleText": "Meet the requirements of Ministry of Education Document No. 12 (2020) and provide the supporting evidence requested by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Eligibility section, nationality-background note"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the application through the CUFE international-student online application system.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application procedure, online application"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 600 application fee online; the guide permits online payment including foreign credit cards and does not accept bank wire transfers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application procedure, application fee"
+              }
+            ]
+          },
+          {
+            "key": "signed_application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload the signed CUFE international-student application form generated by the application system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application materials, item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload the passport photo page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application materials, item 2"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload the high-school diploma; applicants who have not yet graduated may submit an official expected-graduation certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application materials, item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload complete high-school transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application materials, item 4"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a study plan of approximately 500 Chinese characters.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application materials, study-plan item"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit two recommendation letters.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application materials, recommendation-letter item"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application materials, physical-examination item"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application materials, no-criminal-record item"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Submit the university's affidavit of financial support and the requested financial-guarantee evidence after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application materials and admission follow-up"
+              }
+            ]
+          },
+          {
+            "key": "document_language",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Provide application documents in Chinese or English; documents in another language require a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application-material language note"
+              }
+            ]
+          },
+          {
+            "key": "authenticity",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Ensure all submitted information and documents are genuine; fraud or material inconsistency may result in withdrawal of admission or student status.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application declaration and registration review"
+              }
+            ]
+          },
+          {
+            "key": "online_interview",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing document review",
+            "ruleText": "Attend the university's online interview.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Assessment and admission section"
+              }
+            ]
+          },
+          {
+            "key": "admission_notification",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Monitor the registered email address for the admission decision and follow-up instructions.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Assessment and admission section"
+              }
+            ]
+          },
+          {
+            "key": "first_year_tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Pay the full first-year tuition within two weeks after admission notification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Admission follow-up section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_before_entry",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Purchase the required international-student insurance before entering China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Pre-entry notice"
+              }
+            ]
+          },
+          {
+            "key": "registration",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register on the date stated by the university for the September 2026 enrollment period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Registration section"
+              }
+            ]
+          },
+          {
+            "key": "registration_review",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Present original documents and undergo the university's qualification review at registration.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Registration review section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants using university accommodation",
+            "ruleText": "Budget for accommodation of CNY 40 to 80 per bed per day.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Fees section, accommodation"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants requiring a residence permit",
+            "ruleText": "Budget CNY 400 per year for the residence permit.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Fees section, residence permit"
+              }
+            ]
+          },
+          {
+            "key": "insurance_fee",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Budget CNY 800 per year for international-student insurance.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Fees section, insurance"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught applicants",
+            "ruleText": "Apply in either the first period from November 1, 2025 through March 25, 2026 or the second period from April 1 through June 25, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application period section"
+              }
+            ]
+          },
+          {
+            "key": "hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught applicants",
+            "ruleText": "Submit an HSK Level 5 score report with a score of at least 180.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application materials, language requirement"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-taught applicants",
+            "ruleText": "Submit CSCA results for Humanities Chinese and Mathematics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Application materials, CSCA requirement"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduates",
+            "ruleText": "Pay tuition of CNY 25,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_chinese_undergraduate",
+                "locator": "Fees section, tuition"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "cufe-finance-english-fall-2026",
+      "schoolSlug": "central-university-of-finance-and-economics",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "central-university-of-finance-and-economics-finance-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window.",
+        "The guide accepts several English-proficiency tests or other proof but does not publish a numeric minimum score."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "cufe_finance_english",
+            "url": "https://sice.cufe.edu.cn/admissions/info/1045/3451.htm",
+            "title": "Central University of Finance and Economics 2026 English-taught Finance undergraduate guide",
+            "capturedAt": "2026-10-15T08:05:39.674Z",
+            "contentSha256": "a0b979811d1206e78aae2613e7aada3a277407cdb8092b46a933e8e7fe1ad7af"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Eligibility section, item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age_health",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or higher qualification, be physically and mentally healthy, and generally be under 25 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Eligibility section, item 2"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Provide notarized guardian materials for a guardian residing in Beijing.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Eligibility section, under-18 note"
+              }
+            ]
+          },
+          {
+            "key": "nationality_background",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants affected by Chinese-parentage, former Chinese citizenship or related nationality-background rules",
+            "ruleText": "Meet the requirements of Ministry of Education Document No. 12 (2020) and provide the supporting evidence requested by the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Eligibility section, nationality-background note"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the application through the CUFE international-student online application system.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application procedure, online application"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 600 application fee online; the guide permits online payment including foreign credit cards and does not accept bank wire transfers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application procedure, application fee"
+              }
+            ]
+          },
+          {
+            "key": "signed_application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload the signed CUFE international-student application form generated by the application system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application materials, item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload the passport photo page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application materials, item 2"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload the high-school diploma; applicants who have not yet graduated may submit an official expected-graduation certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application materials, item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload complete high-school transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application materials, item 4"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a study plan of approximately 500 English words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application materials, study-plan item"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit two recommendation letters.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application materials, recommendation-letter item"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application materials, physical-examination item"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application materials, no-criminal-record item"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Submit the university's affidavit of financial support and the requested financial-guarantee evidence after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application materials and admission follow-up"
+              }
+            ]
+          },
+          {
+            "key": "document_language",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Provide application documents in Chinese or English; documents in another language require a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application-material language note"
+              }
+            ]
+          },
+          {
+            "key": "authenticity",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Ensure all submitted information and documents are genuine; fraud or material inconsistency may result in withdrawal of admission or student status.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application declaration and registration review"
+              }
+            ]
+          },
+          {
+            "key": "online_interview",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing document review",
+            "ruleText": "Attend the university's online interview.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Assessment and admission section"
+              }
+            ]
+          },
+          {
+            "key": "admission_notification",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Monitor the registered email address for the admission decision and follow-up instructions.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Assessment and admission section"
+              }
+            ]
+          },
+          {
+            "key": "first_year_tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Pay the full first-year tuition within two weeks after admission notification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Admission follow-up section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_before_entry",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Purchase the required international-student insurance before entering China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Pre-entry notice"
+              }
+            ]
+          },
+          {
+            "key": "registration",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register on the date stated by the university for the September 2026 enrollment period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Registration section"
+              }
+            ]
+          },
+          {
+            "key": "registration_review",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Present original documents and undergo the university's qualification review at registration.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Registration review section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants using university accommodation",
+            "ruleText": "Budget for accommodation of CNY 40 to 80 per bed per day.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Fees section, accommodation"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants requiring a residence permit",
+            "ruleText": "Budget CNY 400 per year for the residence permit.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Fees section, residence permit"
+              }
+            ]
+          },
+          {
+            "key": "insurance_fee",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Budget CNY 800 per year for international-student insurance.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Fees section, insurance"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Finance applicants",
+            "ruleText": "Apply from November 1, 2025 through June 25, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application period section"
+              }
+            ]
+          },
+          {
+            "key": "english_proficiency",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Finance applicants",
+            "ruleText": "Submit IELTS, TOEFL, Duolingo or another standardized English-proficiency result or accepted proof; the reviewed guide does not state a numeric minimum score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application materials, English-proficiency requirement"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 English-taught Finance applicants",
+            "ruleText": "Submit a CSCA Mathematics result.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Application materials, CSCA requirement"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "English-taught Finance undergraduates",
+            "ruleText": "Pay tuition of CNY 40,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "cufe_finance_english",
+                "locator": "Fees section, tuition"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

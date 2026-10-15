@@ -1,0 +1,3068 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T10:19:39.178Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope BUCT 2026 requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 10,
+    "readyTemplateCount": 10,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 108,
+    "targetedIntakeCount": 108,
+    "requirementItemCount": 170
+  },
+  "templates": [
+    {
+      "key": "buct-undergraduate-english-group-01-fall-2026",
+      "schoolSlug": "beijing-university-of-chemical-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-chemical-technology-undergraduate-chemical-engineering-and-technology-college-of-chemical-engineering-english",
+        "beijing-university-of-chemical-technology-undergraduate-polymer-materials-and-engineering-college-of-materials-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-undergraduate-chemistry-college-of-chemistry-english",
+        "beijing-university-of-chemical-technology-undergraduate-bioengineering-college-of-life-science-and-technology-english",
+        "beijing-university-of-chemical-technology-undergraduate-chemical-and-pharmaceutical-engineering-sino-french-elite-engineering-education-program-chimie-p-kin-paris-curie-engineer-school-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The French-medium master's page publishes the route and French B2 requirement but no separate self-funded tuition amount; the field remains explicitly unresolved rather than inferred.",
+        "Scholarship availability is represented by the three separately sourced 2026 BUCT scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "page",
+            "url": "https://apply.buct.edu.cn/14866/list.htm",
+            "title": "Beijing University of Chemical Technology 2026 international undergraduate programs",
+            "capturedAt": "2026-09-13T14:39:21.327Z",
+            "contentSha256": "8adec0c37f9f803ead3b3ddfaa8b6fb43a0311060a9098c6afd173832263afe7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid ordinary private passport and agree to observe Chinese laws and BUCT regulations.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a high-school graduate or above, qualified to apply to university, and normally age 18-25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with Chinese background",
+            "ruleText": "Meet the nationality and residence rules in Ministry of Education Document No. 12 [2020].",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants, Chinese-background rule"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Submit notarized guardianship records for a guardian holding Beijing residency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications and Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Complete the application by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure heading"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants to the exact programs bound to this template",
+            "ruleText": "Submit CSCA scores for the official route-table subjects: Mathematics, Chemistry. Chinese-medium applicants must also pass CSCA Professional Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Program table CSCA designated elective column and language table"
+              }
+            ]
+          },
+          {
+            "key": "cv_study_proposal",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the BUCT curriculum-vitae and study-proposal records using the application-system templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a copy of the valid passport photo page and any China visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcript_diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit certified or notarized high-school transcripts and diploma in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium undergraduate applicants",
+            "ruleText": "TOEFL 85 or IELTS 6.0, or recognized equivalent",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials language-proficiency table"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the CSCA designated elective-subject score report for the selected route.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials, CSCA score item"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form from the application platform.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_process_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Register in the BUCT system, upload all required records, pay the non-refundable CNY 500 fee after preliminary review, complete the online academic test and comprehensive interview, and monitor email/platform notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure and Fee Payment"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_residence",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Budget for CNY 800/year insurance and the CNY 400/year residence-permit charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published double-room accommodation is CNY 21,600/year per person at Chaoyang or Changping; the published Changping single room is CNY 25,200/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "buct-undergraduate-chinese-group-02-fall-2026",
+      "schoolSlug": "beijing-university-of-chemical-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-chemical-technology-undergraduate-chemical-engineering-and-technology-college-of-chemical-engineering-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-environmental-engineering-college-of-chemical-engineering-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-energy-chemical-engineering-college-of-chemical-engineering-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-hydrogen-energy-science-and-engineering-college-of-chemical-engineering-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-polymer-materials-and-engineering-college-of-materials-science-and-engineering-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-materials-science-and-engineering-college-of-materials-science-and-engineering-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-functional-materials-college-of-materials-science-and-engineering-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-applied-chemistry-college-of-chemistry-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-chemistry-college-of-chemistry-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-energy-chemistry-college-of-chemistry-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-resource-chemistry-college-of-chemistry-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-bioengineering-college-of-life-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-pharmaceutical-engineering-college-of-life-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-biomedical-engineering-college-of-life-science-and-technology-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The French-medium master's page publishes the route and French B2 requirement but no separate self-funded tuition amount; the field remains explicitly unresolved rather than inferred.",
+        "Scholarship availability is represented by the three separately sourced 2026 BUCT scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "page",
+            "url": "https://apply.buct.edu.cn/14866/list.htm",
+            "title": "Beijing University of Chemical Technology 2026 international undergraduate programs",
+            "capturedAt": "2026-09-13T14:39:21.327Z",
+            "contentSha256": "8adec0c37f9f803ead3b3ddfaa8b6fb43a0311060a9098c6afd173832263afe7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid ordinary private passport and agree to observe Chinese laws and BUCT regulations.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a high-school graduate or above, qualified to apply to university, and normally age 18-25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with Chinese background",
+            "ruleText": "Meet the nationality and residence rules in Ministry of Education Document No. 12 [2020].",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants, Chinese-background rule"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Submit notarized guardianship records for a guardian holding Beijing residency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications and Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Complete the application by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure heading"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants to the exact programs bound to this template",
+            "ruleText": "Submit CSCA scores for the official route-table subjects: Mathematics, Chemistry. Chinese-medium applicants must also pass CSCA Professional Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Program table CSCA designated elective column and language table"
+              }
+            ]
+          },
+          {
+            "key": "cv_study_proposal",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the BUCT curriculum-vitae and study-proposal records using the application-system templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a copy of the valid passport photo page and any China visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcript_diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit certified or notarized high-school transcripts and diploma in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium undergraduate applicants",
+            "ruleText": "HSK Level 4 score 180 or above and a passing grade in CSCA Professional Chinese",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials language-proficiency table"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the CSCA designated elective-subject score report for the selected route.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials, CSCA score item"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form from the application platform.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_process_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Register in the BUCT system, upload all required records, pay the non-refundable CNY 500 fee after preliminary review, complete the online academic test and comprehensive interview, and monitor email/platform notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure and Fee Payment"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_residence",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Budget for CNY 800/year insurance and the CNY 400/year residence-permit charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published double-room accommodation is CNY 21,600/year per person at Chaoyang or Changping; the published Changping single room is CNY 25,200/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "buct-undergraduate-chinese-group-03-fall-2026",
+      "schoolSlug": "beijing-university-of-chemical-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-chemical-technology-undergraduate-mechanical-design-manufacturing-and-automation-college-of-mechanical-and-electrical-engineering-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-safety-engineering-college-of-mechanical-and-electrical-engineering-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-robotics-engineering-college-of-mechanical-and-electrical-engineering-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-process-equipment-and-control-engineering-college-of-mechanical-and-electrical-engineering-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-digital-science-and-technology-college-of-math-and-physics-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-mathematics-and-applied-mathematics-college-of-math-and-physics-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-financial-mathematics-college-of-math-and-physics-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-electronic-science-and-technology-college-of-math-and-physics-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-applied-physics-college-of-math-and-physics-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The French-medium master's page publishes the route and French B2 requirement but no separate self-funded tuition amount; the field remains explicitly unresolved rather than inferred.",
+        "Scholarship availability is represented by the three separately sourced 2026 BUCT scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "page",
+            "url": "https://apply.buct.edu.cn/14866/list.htm",
+            "title": "Beijing University of Chemical Technology 2026 international undergraduate programs",
+            "capturedAt": "2026-09-13T14:39:21.327Z",
+            "contentSha256": "8adec0c37f9f803ead3b3ddfaa8b6fb43a0311060a9098c6afd173832263afe7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid ordinary private passport and agree to observe Chinese laws and BUCT regulations.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a high-school graduate or above, qualified to apply to university, and normally age 18-25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with Chinese background",
+            "ruleText": "Meet the nationality and residence rules in Ministry of Education Document No. 12 [2020].",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants, Chinese-background rule"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Submit notarized guardianship records for a guardian holding Beijing residency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications and Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Complete the application by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure heading"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants to the exact programs bound to this template",
+            "ruleText": "Submit CSCA scores for the official route-table subjects: Mathematics, Physics. Chinese-medium applicants must also pass CSCA Professional Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Program table CSCA designated elective column and language table"
+              }
+            ]
+          },
+          {
+            "key": "cv_study_proposal",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the BUCT curriculum-vitae and study-proposal records using the application-system templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a copy of the valid passport photo page and any China visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcript_diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit certified or notarized high-school transcripts and diploma in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium undergraduate applicants",
+            "ruleText": "HSK Level 4 score 180 or above and a passing grade in CSCA Professional Chinese",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials language-proficiency table"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the CSCA designated elective-subject score report for the selected route.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials, CSCA score item"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form from the application platform.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_process_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Register in the BUCT system, upload all required records, pay the non-refundable CNY 500 fee after preliminary review, complete the online academic test and comprehensive interview, and monitor email/platform notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure and Fee Payment"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_residence",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Budget for CNY 800/year insurance and the CNY 400/year residence-permit charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published double-room accommodation is CNY 21,600/year per person at Chaoyang or Changping; the published Changping single room is CNY 25,200/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "buct-undergraduate-chinese-group-04-fall-2026",
+      "schoolSlug": "beijing-university-of-chemical-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-chemical-technology-undergraduate-automation-college-of-information-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-testing-techniques-and-instruments-college-of-information-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-computer-science-and-technology-college-of-information-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-artificial-intelligence-college-of-information-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-data-science-and-cloud-data-technology-college-of-information-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-electronic-information-engineering-college-of-information-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-international-economy-and-trade-school-of-economics-and-management-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-business-administration-school-of-economics-and-management-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-accounting-school-of-economics-and-management-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-information-management-and-information-systems-school-of-economics-and-management-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-financial-management-school-of-economics-and-management-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-big-data-management-and-application-school-of-economics-and-management-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-public-utilities-management-college-of-humanities-and-law-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-law-college-of-humanities-and-law-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-administrative-management-college-of-humanities-and-law-chinese",
+        "beijing-university-of-chemical-technology-undergraduate-social-sports-guidance-and-management-college-of-humanities-and-law-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The French-medium master's page publishes the route and French B2 requirement but no separate self-funded tuition amount; the field remains explicitly unresolved rather than inferred.",
+        "Scholarship availability is represented by the three separately sourced 2026 BUCT scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "page",
+            "url": "https://apply.buct.edu.cn/14866/list.htm",
+            "title": "Beijing University of Chemical Technology 2026 international undergraduate programs",
+            "capturedAt": "2026-09-13T14:39:21.327Z",
+            "contentSha256": "8adec0c37f9f803ead3b3ddfaa8b6fb43a0311060a9098c6afd173832263afe7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid ordinary private passport and agree to observe Chinese laws and BUCT regulations.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a high-school graduate or above, qualified to apply to university, and normally age 18-25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with Chinese background",
+            "ruleText": "Meet the nationality and residence rules in Ministry of Education Document No. 12 [2020].",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants, Chinese-background rule"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Submit notarized guardianship records for a guardian holding Beijing residency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications and Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Complete the application by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure heading"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants to the exact programs bound to this template",
+            "ruleText": "Submit CSCA scores for the official route-table subjects: Mathematics. Chinese-medium applicants must also pass CSCA Professional Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Program table CSCA designated elective column and language table"
+              }
+            ]
+          },
+          {
+            "key": "cv_study_proposal",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the BUCT curriculum-vitae and study-proposal records using the application-system templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a copy of the valid passport photo page and any China visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcript_diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit certified or notarized high-school transcripts and diploma in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium undergraduate applicants",
+            "ruleText": "HSK Level 4 score 180 or above and a passing grade in CSCA Professional Chinese",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials language-proficiency table"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the CSCA designated elective-subject score report for the selected route.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials, CSCA score item"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form from the application platform.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_process_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Register in the BUCT system, upload all required records, pay the non-refundable CNY 500 fee after preliminary review, complete the online academic test and comprehensive interview, and monitor email/platform notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure and Fee Payment"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_residence",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Budget for CNY 800/year insurance and the CNY 400/year residence-permit charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published double-room accommodation is CNY 21,600/year per person at Chaoyang or Changping; the published Changping single room is CNY 25,200/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "buct-undergraduate-english-group-05-fall-2026",
+      "schoolSlug": "beijing-university-of-chemical-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-chemical-technology-undergraduate-computer-science-and-technology-college-of-information-science-and-technology-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The French-medium master's page publishes the route and French B2 requirement but no separate self-funded tuition amount; the field remains explicitly unresolved rather than inferred.",
+        "Scholarship availability is represented by the three separately sourced 2026 BUCT scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "page",
+            "url": "https://apply.buct.edu.cn/14866/list.htm",
+            "title": "Beijing University of Chemical Technology 2026 international undergraduate programs",
+            "capturedAt": "2026-09-13T14:39:21.327Z",
+            "contentSha256": "8adec0c37f9f803ead3b3ddfaa8b6fb43a0311060a9098c6afd173832263afe7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid ordinary private passport and agree to observe Chinese laws and BUCT regulations.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a high-school graduate or above, qualified to apply to university, and normally age 18-25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with Chinese background",
+            "ruleText": "Meet the nationality and residence rules in Ministry of Education Document No. 12 [2020].",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants, Chinese-background rule"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Submit notarized guardianship records for a guardian holding Beijing residency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications and Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Complete the application by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure heading"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants to the exact programs bound to this template",
+            "ruleText": "Submit CSCA scores for the official route-table subjects: Mathematics. Chinese-medium applicants must also pass CSCA Professional Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Program table CSCA designated elective column and language table"
+              }
+            ]
+          },
+          {
+            "key": "cv_study_proposal",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the BUCT curriculum-vitae and study-proposal records using the application-system templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a copy of the valid passport photo page and any China visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcript_diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit certified or notarized high-school transcripts and diploma in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium undergraduate applicants",
+            "ruleText": "TOEFL 85 or IELTS 6.0, or recognized equivalent",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials language-proficiency table"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the CSCA designated elective-subject score report for the selected route.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials, CSCA score item"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form from the application platform.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_process_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Register in the BUCT system, upload all required records, pay the non-refundable CNY 500 fee after preliminary review, complete the online academic test and comprehensive interview, and monitor email/platform notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure and Fee Payment"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_residence",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Budget for CNY 800/year insurance and the CNY 400/year residence-permit charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published double-room accommodation is CNY 21,600/year per person at Chaoyang or Changping; the published Changping single room is CNY 25,200/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "buct-undergraduate-french-group-06-fall-2026",
+      "schoolSlug": "beijing-university-of-chemical-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-chemical-technology-undergraduate-chemical-and-pharmaceutical-engineering-sino-french-elite-engineering-education-program-chimie-p-kin-paris-curie-engineer-school-french"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The French-medium master's page publishes the route and French B2 requirement but no separate self-funded tuition amount; the field remains explicitly unresolved rather than inferred.",
+        "Scholarship availability is represented by the three separately sourced 2026 BUCT scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "page",
+            "url": "https://apply.buct.edu.cn/14866/list.htm",
+            "title": "Beijing University of Chemical Technology 2026 international undergraduate programs",
+            "capturedAt": "2026-09-13T14:39:21.327Z",
+            "contentSha256": "8adec0c37f9f803ead3b3ddfaa8b6fb43a0311060a9098c6afd173832263afe7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid ordinary private passport and agree to observe Chinese laws and BUCT regulations.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a high-school graduate or above, qualified to apply to university, and normally age 18-25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with Chinese background",
+            "ruleText": "Meet the nationality and residence rules in Ministry of Education Document No. 12 [2020].",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants, Chinese-background rule"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Submit notarized guardianship records for a guardian holding Beijing residency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications and Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Complete the application by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure heading"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants to the exact programs bound to this template",
+            "ruleText": "Submit CSCA scores for the official route-table subjects: Mathematics, Chemistry. Chinese-medium applicants must also pass CSCA Professional Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Program table CSCA designated elective column and language table"
+              }
+            ]
+          },
+          {
+            "key": "cv_study_proposal",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the BUCT curriculum-vitae and study-proposal records using the application-system templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a copy of the valid passport photo page and any China visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcript_diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit certified or notarized high-school transcripts and diploma in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "French-medium undergraduate applicants",
+            "ruleText": "French B1 or a recognized equivalent for the French-medium component",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials language-proficiency table"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the CSCA designated elective-subject score report for the selected route.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials, CSCA score item"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form from the application platform.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_process_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Register in the BUCT system, upload all required records, pay the non-refundable CNY 500 fee after preliminary review, complete the online academic test and comprehensive interview, and monitor email/platform notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure and Fee Payment"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_residence",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Budget for CNY 800/year insurance and the CNY 400/year residence-permit charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published double-room accommodation is CNY 21,600/year per person at Chaoyang or Changping; the published Changping single room is CNY 25,200/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "buct-master-english-group-07-fall-2026",
+      "schoolSlug": "beijing-university-of-chemical-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-chemical-technology-master-chemical-engineering-and-technology-college-of-chemical-engineering-english",
+        "beijing-university-of-chemical-technology-master-materials-science-and-engineering-college-of-materials-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-master-chemistry-college-of-materials-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-master-computer-science-and-technology-college-of-information-science-and-technology-english",
+        "beijing-university-of-chemical-technology-master-business-management-school-of-economics-and-management-english",
+        "beijing-university-of-chemical-technology-master-chemistry-college-of-chemistry-english",
+        "beijing-university-of-chemical-technology-master-chemical-engineering-and-technology-college-of-chemistry-english",
+        "beijing-university-of-chemical-technology-master-bioengineering-college-of-life-science-and-technology-english",
+        "beijing-university-of-chemical-technology-master-chemical-engineering-and-technology-college-of-life-science-and-technology-english",
+        "beijing-university-of-chemical-technology-master-bioengineering-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-master-chemistry-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-master-materials-science-and-engineering-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-master-chemical-engineering-and-technology-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-master-materials-science-and-chemical-engineering-chimie-p-kin-paris-curie-engineer-school-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The French-medium master's page publishes the route and French B2 requirement but no separate self-funded tuition amount; the field remains explicitly unresolved rather than inferred.",
+        "Scholarship availability is represented by the three separately sourced 2026 BUCT scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "page",
+            "url": "https://apply.buct.edu.cn/14867/list.htm",
+            "title": "Beijing University of Chemical Technology 2026 international master's programs",
+            "capturedAt": "2026-09-13T14:39:22.398Z",
+            "contentSha256": "77cb3ffbb4c86626e3c04529604fa126293a7c84c3daefa02673dbed7d928f07"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid private passport and observe Chinese laws and BUCT regulations.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or equivalent with excellent academic standing and be under age 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with Chinese background",
+            "ruleText": "Meet the nationality and residence rules in Ministry of Education Document No. 12 [2020].",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants, Chinese-background rule"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Complete the application by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure heading"
+              }
+            ]
+          },
+          {
+            "key": "cv_statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a curriculum vitae, personal statement and study proposal using the BUCT system templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the passport photo page and any China visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit certified or notarized highest-degree credentials and complete academic transcripts in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Obtain and upload a BUCT supervisor acceptance letter; applicants without it are not considered candidates.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials and supervisor note"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium master applicants",
+            "ruleText": "TOEFL 85 or IELTS 6.0, or recognized equivalent",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Language Proficiency Requirement table"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "academic_achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit publications, patents or other academic achievements when available; the page states these receive priority consideration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_process_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Register in the BUCT system, upload all required records, pay the non-refundable CNY 500 fee after preliminary review, complete the comprehensive interview and monitor email/platform notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure and Fee Payment"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Pay the published tuition for this route: CNY 35,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_residence",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Budget for CNY 800/year insurance and the CNY 400/year residence-permit charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published double-room accommodation is CNY 21,600/year per person at Chaoyang or Changping; the published Changping single room is CNY 25,200/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "buct-master-chinese-group-08-fall-2026",
+      "schoolSlug": "beijing-university-of-chemical-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-chemical-technology-master-chemical-engineering-and-technology-college-of-chemical-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-environmental-science-and-engineering-college-of-chemical-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-materials-science-and-engineering-college-of-materials-science-and-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-chemistry-college-of-materials-science-and-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-engineering-mechanics-college-of-mechanical-and-electrical-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-mechanical-engineering-college-of-mechanical-and-electrical-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-power-engineering-and-engineering-thermophysics-college-of-mechanical-and-electrical-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-safety-science-and-engineering-college-of-mechanical-and-electrical-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-controlling-science-and-engineering-college-of-information-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-master-information-and-communication-engineering-college-of-information-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-master-computer-science-and-technology-college-of-information-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-master-management-science-and-engineering-school-of-economics-and-management-chinese",
+        "beijing-university-of-chemical-technology-master-accounting-school-of-economics-and-management-chinese",
+        "beijing-university-of-chemical-technology-master-business-management-school-of-economics-and-management-chinese",
+        "beijing-university-of-chemical-technology-master-technical-economy-and-management-school-of-economics-and-management-chinese",
+        "beijing-university-of-chemical-technology-master-chemistry-college-of-chemistry-chinese",
+        "beijing-university-of-chemical-technology-master-chemical-engineering-and-technology-college-of-chemistry-chinese",
+        "beijing-university-of-chemical-technology-master-physics-college-of-math-and-physics-chinese",
+        "beijing-university-of-chemical-technology-master-mathematics-college-of-math-and-physics-chinese",
+        "beijing-university-of-chemical-technology-master-electronic-science-and-technology-college-of-math-and-physics-chinese",
+        "beijing-university-of-chemical-technology-master-pharmacy-college-of-life-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-master-bioengineering-college-of-life-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-master-chemical-engineering-and-technology-college-of-life-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-master-biomedical-engineering-college-of-life-science-and-technology-chinese",
+        "beijing-university-of-chemical-technology-master-law-college-of-humanities-and-law-chinese",
+        "beijing-university-of-chemical-technology-master-public-administration-college-of-humanities-and-law-chinese",
+        "beijing-university-of-chemical-technology-master-bioengineering-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-environmental-science-and-engineering-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-chemistry-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-materials-science-and-engineering-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-chinese",
+        "beijing-university-of-chemical-technology-master-chemical-engineering-and-technology-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The French-medium master's page publishes the route and French B2 requirement but no separate self-funded tuition amount; the field remains explicitly unresolved rather than inferred.",
+        "Scholarship availability is represented by the three separately sourced 2026 BUCT scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "page",
+            "url": "https://apply.buct.edu.cn/14867/list.htm",
+            "title": "Beijing University of Chemical Technology 2026 international master's programs",
+            "capturedAt": "2026-09-13T14:39:22.398Z",
+            "contentSha256": "77cb3ffbb4c86626e3c04529604fa126293a7c84c3daefa02673dbed7d928f07"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid private passport and observe Chinese laws and BUCT regulations.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or equivalent with excellent academic standing and be under age 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with Chinese background",
+            "ruleText": "Meet the nationality and residence rules in Ministry of Education Document No. 12 [2020].",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants, Chinese-background rule"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Complete the application by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure heading"
+              }
+            ]
+          },
+          {
+            "key": "cv_statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a curriculum vitae, personal statement and study proposal using the BUCT system templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the passport photo page and any China visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit certified or notarized highest-degree credentials and complete academic transcripts in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Obtain and upload a BUCT supervisor acceptance letter; applicants without it are not considered candidates.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials and supervisor note"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium master applicants",
+            "ruleText": "HSK Level 4 score 180 or above",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Language Proficiency Requirement table"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "academic_achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit publications, patents or other academic achievements when available; the page states these receive priority consideration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_process_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Register in the BUCT system, upload all required records, pay the non-refundable CNY 500 fee after preliminary review, complete the comprehensive interview and monitor email/platform notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure and Fee Payment"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Pay the published tuition for this route: CNY 30,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_residence",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Budget for CNY 800/year insurance and the CNY 400/year residence-permit charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published double-room accommodation is CNY 21,600/year per person at Chaoyang or Changping; the published Changping single room is CNY 25,200/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "buct-master-french-group-09-fall-2026",
+      "schoolSlug": "beijing-university-of-chemical-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-chemical-technology-master-materials-science-and-chemical-engineering-chimie-p-kin-paris-curie-engineer-school-french"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The French-medium master's page publishes the route and French B2 requirement but no separate self-funded tuition amount; the field remains explicitly unresolved rather than inferred.",
+        "Scholarship availability is represented by the three separately sourced 2026 BUCT scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "page",
+            "url": "https://apply.buct.edu.cn/14867/list.htm",
+            "title": "Beijing University of Chemical Technology 2026 international master's programs",
+            "capturedAt": "2026-09-13T14:39:22.398Z",
+            "contentSha256": "77cb3ffbb4c86626e3c04529604fa126293a7c84c3daefa02673dbed7d928f07"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid private passport and observe Chinese laws and BUCT regulations.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or equivalent with excellent academic standing and be under age 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with Chinese background",
+            "ruleText": "Meet the nationality and residence rules in Ministry of Education Document No. 12 [2020].",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants, Chinese-background rule"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Complete the application by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure heading"
+              }
+            ]
+          },
+          {
+            "key": "cv_statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a curriculum vitae, personal statement and study proposal using the BUCT system templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the passport photo page and any China visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit certified or notarized highest-degree credentials and complete academic transcripts in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Obtain and upload a BUCT supervisor acceptance letter; applicants without it are not considered candidates.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials and supervisor note"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "French-medium master applicants",
+            "ruleText": "French B2 or a recognized equivalent for the French-medium component",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Language Proficiency Requirement table"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "academic_achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit publications, patents or other academic achievements when available; the page states these receive priority consideration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_process_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Register in the BUCT system, upload all required records, pay the non-refundable CNY 500 fee after preliminary review, complete the comprehensive interview and monitor email/platform notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure and Fee Payment"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "The official page does not publish a separate self-funded tuition amount for this French-medium master's route; obtain the applicable amount from BUCT before payment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_residence",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Budget for CNY 800/year insurance and the CNY 400/year residence-permit charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published double-room accommodation is CNY 21,600/year per person at Chaoyang or Changping; the published Changping single room is CNY 25,200/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "buct-doctoral-english-group-10-fall-2026",
+      "schoolSlug": "beijing-university-of-chemical-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-chemical-technology-doctoral-chemical-engineering-and-technology-college-of-chemical-engineering-english",
+        "beijing-university-of-chemical-technology-doctoral-environment-science-and-engineering-college-of-chemical-engineering-english",
+        "beijing-university-of-chemical-technology-doctoral-materials-science-and-engineering-college-of-materials-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-doctoral-chemistry-college-of-materials-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-doctoral-power-engineering-and-engineering-thermophysics-college-of-mechanical-and-electrical-engineering-english",
+        "beijing-university-of-chemical-technology-doctoral-controlling-science-and-engineering-college-of-information-science-and-technology-english",
+        "beijing-university-of-chemical-technology-doctoral-management-science-and-engineering-college-of-economics-and-management-english",
+        "beijing-university-of-chemical-technology-doctoral-chemistry-college-of-chemistry-english",
+        "beijing-university-of-chemical-technology-doctoral-chemical-engineering-and-technology-college-of-chemistry-english",
+        "beijing-university-of-chemical-technology-doctoral-bioengineering-college-of-life-science-and-technology-english",
+        "beijing-university-of-chemical-technology-doctoral-chemical-engineering-and-technology-college-of-life-science-and-technology-english",
+        "beijing-university-of-chemical-technology-doctoral-chemical-engineering-and-technology-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-doctoral-environment-science-and-engineering-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-doctoral-materials-science-and-engineering-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-doctoral-chemistry-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-english",
+        "beijing-university-of-chemical-technology-doctoral-bioengineering-beijing-advanced-innovation-center-for-soft-matter-science-and-engineering-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The French-medium master's page publishes the route and French B2 requirement but no separate self-funded tuition amount; the field remains explicitly unresolved rather than inferred.",
+        "Scholarship availability is represented by the three separately sourced 2026 BUCT scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "page",
+            "url": "https://apply.buct.edu.cn/14868/list.htm",
+            "title": "Beijing University of Chemical Technology 2026 international doctoral programs",
+            "capturedAt": "2026-09-13T14:39:23.477Z",
+            "contentSha256": "176cdcb0e9d0591917adf7040629c8702bd696fe3a7d04ff5eab8fe1436d9456"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid private passport and observe Chinese laws and BUCT regulations.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or equivalent with excellent academic standing and be under age 40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with Chinese background",
+            "ruleText": "Meet the nationality and residence rules in Ministry of Education Document No. 12 [2020].",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Qualifications of Applicants, Chinese-background rule"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 doctoral applicants",
+            "ruleText": "Complete the application by June 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure heading"
+              }
+            ]
+          },
+          {
+            "key": "cv_statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a curriculum vitae, personal statement and study proposal using the BUCT system templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the passport photo page and any China visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit certified or notarized highest-degree credentials and complete academic transcripts in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Obtain and upload a BUCT supervisor acceptance letter; applicants without it are not considered candidates.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials and supervisor note"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium doctoral applicants",
+            "ruleText": "TOEFL 90 or IELTS 6.5, or recognized equivalent",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Language Proficiency Requirement table"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a no-criminal-record certificate in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "academic_achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit publications, patents or other academic achievements when available; the page states these receive priority consideration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Admission Materials"
+              }
+            ]
+          },
+          {
+            "key": "application_process_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Register in the BUCT system, upload all required records, pay the non-refundable CNY 500 fee after preliminary review, complete the comprehensive interview and monitor email/platform notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Application Procedure and Fee Payment"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled doctoral students",
+            "ruleText": "Pay the published tuition for this route: CNY 35,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "insurance_residence",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled doctoral students",
+            "ruleText": "Budget for CNY 800/year insurance and the CNY 400/year residence-permit charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published double-room accommodation is CNY 21,600/year per person at Chaoyang or Changping; the published Changping single room is CNY 25,200/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "page",
+                "locator": "Fees, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

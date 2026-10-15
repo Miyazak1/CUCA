@@ -1,0 +1,3179 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T09:54:14.986Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope SCU 2026 requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 7,
+    "readyTemplateCount": 7,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 639,
+    "targetedIntakeCount": 639,
+    "requirementItemCount": 140
+  },
+  "templates": [
+    {
+      "key": "scu-bachelor-chinese-group-01-fall-2026",
+      "schoolSlug": "sichuan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-scu-bachelor-materials-science-and-engineering-mse-22baf1d4b844",
+        "official-2026-scu-bachelor-new-energy-materials-and-devices-6499e0aa2606",
+        "official-2026-scu-bachelor-electrical-engineering-and-automation-a68955e002c5",
+        "official-2026-scu-bachelor-automation-196db39c72e7",
+        "official-2026-scu-bachelor-electronic-and-information-engineering-9047d46dd7b9",
+        "official-2026-scu-bachelor-opto-electronics-information-science-and-engineering-a22118e8c5ce",
+        "official-2026-scu-bachelor-communications-engineering-b993ea575849",
+        "official-2026-scu-bachelor-law-d7c0e5e57c0a",
+        "official-2026-scu-bachelor-international-politics-335eb75bed66",
+        "official-2026-scu-bachelor-public-health-and-preventive-medicine-aa8e5ba843b0",
+        "official-2026-scu-bachelor-stomatology-b443d5815317",
+        "official-2026-scu-bachelor-nursing-6e87153764cc",
+        "official-2026-scu-bachelor-rehabilitation-therapy-90d1b9b1bd33",
+        "official-2026-scu-bachelor-clinical-medicine-35fb717369f8",
+        "official-2026-scu-bachelor-hearing-and-speech-rehabilitation-1f083285fd04",
+        "official-2026-scu-bachelor-eye-optometry-1d0e8b6b76fe",
+        "official-2026-scu-bachelor-medical-laboratory-technology-63e6101e3411",
+        "official-2026-scu-bachelor-medical-imaging-technology-7a3011e15787",
+        "official-2026-scu-bachelor-clinical-medicine-9796a718f8e9",
+        "official-2026-scu-bachelor-pharmacy-8e73ab83eabb",
+        "official-2026-scu-bachelor-process-equipment-and-control-engineering-7b873aad971d",
+        "official-2026-scu-bachelor-chemical-engineering-and-technology-d0921e67ff7f",
+        "official-2026-scu-bachelor-bioengineering-7d8543de09b5",
+        "official-2026-scu-bachelor-pharmaceutical-engineering-1f7db458b40c",
+        "official-2026-scu-bachelor-chemistry-f726c7bcd7ef",
+        "official-2026-scu-bachelor-engineering-mechanics-72903f02bf56",
+        "official-2026-scu-bachelor-environmental-engineering-b88d8fb26e12",
+        "official-2026-scu-bachelor-environmental-science-2d6b19fa290b",
+        "official-2026-scu-bachelor-architecture-4054fc7798da",
+        "official-2026-scu-bachelor-civil-engineering-48be4dcc4bc3",
+        "official-2026-scu-bachelor-public-finance-ed5db3822cd3",
+        "official-2026-scu-bachelor-international-economy-and-trade-0b1aa3b58007",
+        "official-2026-scu-bachelor-national-economic-management-98ec3c13b207",
+        "official-2026-scu-bachelor-finance-57bfd3d0ac1d",
+        "official-2026-scu-bachelor-economics-83d734e1e8ed",
+        "official-2026-scu-bachelor-archaeology-8d0822a7f5c8",
+        "official-2026-scu-bachelor-history-e914a125596b",
+        "official-2026-scu-bachelor-fashion-and-accessory-design-e31f33868417",
+        "official-2026-scu-bachelor-biomass-technology-and-engineering-002bb8171091",
+        "official-2026-scu-bachelor-bioengineering-aefdfdaa1656",
+        "official-2026-scu-bachelor-food-science-and-engineering-5d001e8a1809",
+        "official-2026-scu-bachelor-software-engineering-f56b575c1dbd",
+        "official-2026-scu-bachelor-computer-science-and-technology-2e4daa57ab54",
+        "official-2026-scu-bachelor-financial-management-3ac1abb169e8",
+        "official-2026-scu-bachelor-management-science-a99782baf1a7",
+        "official-2026-scu-bachelor-accounting-b4eaad2b0fe2",
+        "official-2026-scu-bachelor-human-resource-management-159978d60b47",
+        "official-2026-scu-bachelor-marketing-655d37d47ba3",
+        "official-2026-scu-bachelor-basic-science-of-mathematics-and-physics-539a1a9d25aa",
+        "official-2026-scu-bachelor-mathematics-and-applied-mathematics-e89cc1b739b2",
+        "official-2026-scu-bachelor-statistical-0a66520378b2",
+        "official-2026-scu-bachelor-information-and-computing-science-3fba75b36ada",
+        "official-2026-scu-bachelor-energy-and-power-engineering-b36217d88b22",
+        "official-2026-scu-bachelor-water-conservancy-science-and-engineering-7c3e827afd71",
+        "official-2026-scu-bachelor-russian-3b3e8aa1b153",
+        "official-2026-scu-bachelor-french-beac87e2e567",
+        "official-2026-scu-bachelor-japanese-03ff58ac8d0e",
+        "official-2026-scu-bachelor-spanish-f37c12a45531",
+        "official-2026-scu-bachelor-english-864ed67cb9c5",
+        "official-2026-scu-bachelor-advertising-b2913abc3080",
+        "official-2026-scu-bachelor-international-chinese-language-education-943bc84b3fc5",
+        "official-2026-scu-bachelor-chinese-language-and-literature-77f0779e3fae",
+        "official-2026-scu-bachelor-journalism-e5f31b85c363",
+        "official-2026-scu-bachelor-network-and-new-media-334cdd52aff3",
+        "official-2026-scu-bachelor-nuclear-engineering-and-technology-38c6cd54df24",
+        "official-2026-scu-bachelor-physics-b42da06c2b9e",
+        "official-2026-scu-bachelor-radio-and-television-editor-72e8f2a64402",
+        "official-2026-scu-bachelor-environmental-design-cafe9cc3202a",
+        "official-2026-scu-bachelor-painting-0533851ca0d7",
+        "official-2026-scu-bachelor-fine-arts-898a247aea4a",
+        "official-2026-scu-bachelor-visual-communication-design-5db130549a8a",
+        "official-2026-scu-bachelor-learn-calligraphy-6eb650773731",
+        "official-2026-scu-bachelor-dance-performance-9eebd2a1be06",
+        "official-2026-scu-bachelor-music-performance-ca5465778a50",
+        "official-2026-scu-bachelor-traditional-chinese-painting-190b411ad807",
+        "official-2026-scu-bachelor-philosophy-e0631dc697e9",
+        "official-2026-scu-bachelor-ecology-12ab0f8cc34e",
+        "official-2026-scu-bachelor-biology-b42b418ad139"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "SCU publishes tuition by degree and academic category rather than a row-level mapping; the verified official band is preserved without inferring a program price.",
+        "Undergraduate CSCA subjects follow SCU's published category-and-language matrix; no unverified discipline classification is added."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://global.scu.edu.cn/oso/article/index/1106?lang=en",
+            "title": "Sichuan University 2026 international admission guide",
+            "capturedAt": "2026-09-13T09:16:12.859Z",
+            "contentSha256": "da2aea26e45be3ad842bdd83e5c2630b883e092da86e8bce7b5dd8f537eab1da"
+          },
+          {
+            "key": "requirements",
+            "url": "https://global.scu.edu.cn/oso/article/index/1094?lang=en",
+            "title": "Sichuan University 2026 international undergraduate application requirements",
+            "capturedAt": "2026-09-13T09:31:16.470Z",
+            "contentSha256": "951df119a1f3272c2da325591ea5140dd108cd96298b01035a2cd7483cfd8b51"
+          },
+          {
+            "key": "catalog",
+            "url": "https://global.scu.edu.cn/oso/article/index/1096?lang=en",
+            "title": "Sichuan University 2026 international undergraduate program catalog",
+            "capturedAt": "2026-09-13T09:16:13.949Z",
+            "contentSha256": "a1d62a71ffe7ba0e8f24f2b1eacd04ab12f73d2f9320981401d6ae5c3c0d18b7"
+          },
+          {
+            "key": "tuition",
+            "url": "https://global.scu.edu.cn/oso/article/index/1095?lang=en",
+            "title": "Sichuan University 2026 international undergraduate tuition schedule",
+            "capturedAt": "2026-09-13T09:31:19.689Z",
+            "contentSha256": "98a6f4a87c7b350bc2aa752e5facccfe6b5603d21abb1866c0bc16e327fedb77"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health and hold a valid foreign passport under the Nationality Law of the PRC.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be at least 18 years old and, in principle, under age 25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "nationality_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants born abroad to one or two Chinese-citizen parents settled abroad",
+            "ruleText": "Meet Ministry of Education Notice JWH [2020] No. 12 and the published nationality-review conditions.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold at least a high-school degree and have good academic records.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK 5 score 180 or above, or an accepted equivalent; prior Chinese-medium education may qualify for the published exemption.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants to the exact programs bound to this template",
+            "ruleText": "Submit a CSCA report using SCU's published category-and-language matrix: liberal arts Chinese—Chinese Language and Mathematics; liberal arts English—Mathematics; science/engineering Chinese—Chinese Language, Mathematics and Physics; science/engineering English—Mathematics and Physics; medical Chinese—Chinese Language, Mathematics, Physics and Chemistry; medical English—Mathematics, Physics and Chemistry.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 11 and CSCA category matrix"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Submit the online application from January 1 through May 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - When to Apply"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Apply through the SCU Overseas Students Office online system within the published application period; sponsor-funded routes must also follow the sponsor system stated by the official guide.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the passport first page, valid for at least six months from application; applicants living in mainland China also submit the valid visa or residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the high-school graduation certificate or a school-sealed pre-graduation certificate stating the expected graduation date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "china_study_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants living in China or with prior study in China",
+            "ruleText": "Submit the previous Chinese school's document describing the applicant's performance at school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit school-sealed high-school academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a Chinese or English personal statement covering self-introduction, reasons for applying, understanding of the major and study plan; English-taught applicants must write it in English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK 5 score 180 or above, or an accepted equivalent; prior Chinese-medium education may qualify for the published exemption.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 6 and Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form with results no more than six months old at application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants without a full scholarship",
+            "ruleText": "Submit funding-source or guardian financial-guarantee evidence, such as a family bank deposit certificate and parent/guardian income certificate; SCU recommends at least USD 5,000. Full-scholarship applicants are exempt.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued by the local public-security authority no more than six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Optionally submit award certificates or other supporting documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "translations_authenticity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Upload authentic electronic records; documents in other languages require official Chinese or English translations. SCU does not process incomplete applications and may request additional records.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents - Notes 1-2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled Chinese-taught undergraduate students",
+            "ruleText": "Use the official annual category schedule for this route: Official category schedule: CNY 17,500-45,000/year; the exact amount depends on humanities/economics/management, science/engineering, medicine, stomatology, clinical medicine, arts/sports or archaeology classification. SCU publishes category bands rather than a row-level amount, so the applicable category must be confirmed without inferring a price.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tuition",
+                "locator": "Official 2026 undergraduate tuition category schedule"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "scu-bachelor-chinese-group-02-fall-2026",
+      "schoolSlug": "sichuan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-scu-bachelor-chinese-language-b938acb33b40"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "SCU publishes tuition by degree and academic category rather than a row-level mapping; the verified official band is preserved without inferring a program price.",
+        "Undergraduate CSCA subjects follow SCU's published category-and-language matrix; no unverified discipline classification is added."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://global.scu.edu.cn/oso/article/index/1106?lang=en",
+            "title": "Sichuan University 2026 international admission guide",
+            "capturedAt": "2026-09-13T09:16:12.859Z",
+            "contentSha256": "da2aea26e45be3ad842bdd83e5c2630b883e092da86e8bce7b5dd8f537eab1da"
+          },
+          {
+            "key": "requirements",
+            "url": "https://global.scu.edu.cn/oso/article/index/1094?lang=en",
+            "title": "Sichuan University 2026 international undergraduate application requirements",
+            "capturedAt": "2026-09-13T09:31:16.470Z",
+            "contentSha256": "951df119a1f3272c2da325591ea5140dd108cd96298b01035a2cd7483cfd8b51"
+          },
+          {
+            "key": "catalog",
+            "url": "https://global.scu.edu.cn/oso/article/index/1096?lang=en",
+            "title": "Sichuan University 2026 international undergraduate program catalog",
+            "capturedAt": "2026-09-13T09:16:13.949Z",
+            "contentSha256": "a1d62a71ffe7ba0e8f24f2b1eacd04ab12f73d2f9320981401d6ae5c3c0d18b7"
+          },
+          {
+            "key": "tuition",
+            "url": "https://global.scu.edu.cn/oso/article/index/1095?lang=en",
+            "title": "Sichuan University 2026 international undergraduate tuition schedule",
+            "capturedAt": "2026-09-13T09:31:19.689Z",
+            "contentSha256": "98a6f4a87c7b350bc2aa752e5facccfe6b5603d21abb1866c0bc16e327fedb77"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health and hold a valid foreign passport under the Nationality Law of the PRC.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be at least 18 years old and, in principle, under age 25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "nationality_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants born abroad to one or two Chinese-citizen parents settled abroad",
+            "ruleText": "Meet Ministry of Education Notice JWH [2020] No. 12 and the published nationality-review conditions.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold at least a high-school degree and have good academic records.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "The Chinese Language undergraduate program does not require an HSK certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants to the exact programs bound to this template",
+            "ruleText": "Submit a CSCA report using SCU's published category-and-language matrix: liberal arts Chinese—Chinese Language and Mathematics; liberal arts English—Mathematics; science/engineering Chinese—Chinese Language, Mathematics and Physics; science/engineering English—Mathematics and Physics; medical Chinese—Chinese Language, Mathematics, Physics and Chemistry; medical English—Mathematics, Physics and Chemistry.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 11 and CSCA category matrix"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Submit the online application from January 1 through May 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - When to Apply"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Apply through the SCU Overseas Students Office online system within the published application period; sponsor-funded routes must also follow the sponsor system stated by the official guide.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the passport first page, valid for at least six months from application; applicants living in mainland China also submit the valid visa or residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the high-school graduation certificate or a school-sealed pre-graduation certificate stating the expected graduation date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "china_study_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants living in China or with prior study in China",
+            "ruleText": "Submit the previous Chinese school's document describing the applicant's performance at school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit school-sealed high-school academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a Chinese or English personal statement covering self-introduction, reasons for applying, understanding of the major and study plan; English-taught applicants must write it in English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "The Chinese Language undergraduate program does not require an HSK certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 6 and Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form with results no more than six months old at application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants without a full scholarship",
+            "ruleText": "Submit funding-source or guardian financial-guarantee evidence, such as a family bank deposit certificate and parent/guardian income certificate; SCU recommends at least USD 5,000. Full-scholarship applicants are exempt.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued by the local public-security authority no more than six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Optionally submit award certificates or other supporting documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "translations_authenticity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Upload authentic electronic records; documents in other languages require official Chinese or English translations. SCU does not process incomplete applications and may request additional records.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents - Notes 1-2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled Chinese-taught undergraduate students",
+            "ruleText": "Use the official annual category schedule for this route: Official category schedule: CNY 17,500-45,000/year; the exact amount depends on humanities/economics/management, science/engineering, medicine, stomatology, clinical medicine, arts/sports or archaeology classification. SCU publishes category bands rather than a row-level amount, so the applicable category must be confirmed without inferring a price.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tuition",
+                "locator": "Official 2026 undergraduate tuition category schedule"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "scu-bachelor-english-group-03-fall-2026",
+      "schoolSlug": "sichuan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-scu-bachelor-stomatology-623445d3a6ca",
+        "official-2026-scu-bachelor-clinical-medicine-0a7767284d82",
+        "official-2026-scu-bachelor-civil-engineering-6ba4dfe79beb",
+        "official-2026-scu-bachelor-software-engineering-47a4037656c3",
+        "official-2026-scu-bachelor-business-management-bb555a0ca768"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "SCU publishes tuition by degree and academic category rather than a row-level mapping; the verified official band is preserved without inferring a program price.",
+        "Undergraduate CSCA subjects follow SCU's published category-and-language matrix; no unverified discipline classification is added."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://global.scu.edu.cn/oso/article/index/1106?lang=en",
+            "title": "Sichuan University 2026 international admission guide",
+            "capturedAt": "2026-09-13T09:16:12.859Z",
+            "contentSha256": "da2aea26e45be3ad842bdd83e5c2630b883e092da86e8bce7b5dd8f537eab1da"
+          },
+          {
+            "key": "requirements",
+            "url": "https://global.scu.edu.cn/oso/article/index/1094?lang=en",
+            "title": "Sichuan University 2026 international undergraduate application requirements",
+            "capturedAt": "2026-09-13T09:31:16.470Z",
+            "contentSha256": "951df119a1f3272c2da325591ea5140dd108cd96298b01035a2cd7483cfd8b51"
+          },
+          {
+            "key": "catalog",
+            "url": "https://global.scu.edu.cn/oso/article/index/1096?lang=en",
+            "title": "Sichuan University 2026 international undergraduate program catalog",
+            "capturedAt": "2026-09-13T09:16:13.949Z",
+            "contentSha256": "a1d62a71ffe7ba0e8f24f2b1eacd04ab12f73d2f9320981401d6ae5c3c0d18b7"
+          },
+          {
+            "key": "tuition",
+            "url": "https://global.scu.edu.cn/oso/article/index/1095?lang=en",
+            "title": "Sichuan University 2026 international undergraduate tuition schedule",
+            "capturedAt": "2026-09-13T09:31:19.689Z",
+            "contentSha256": "98a6f4a87c7b350bc2aa752e5facccfe6b5603d21abb1866c0bc16e327fedb77"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health and hold a valid foreign passport under the Nationality Law of the PRC.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be at least 18 years old and, in principle, under age 25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "nationality_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants born abroad to one or two Chinese-citizen parents settled abroad",
+            "ruleText": "Meet Ministry of Education Notice JWH [2020] No. 12 and the published nationality-review conditions.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold at least a high-school degree and have good academic records.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught undergraduate applicants",
+            "ruleText": "TOEFL 80 or above, IELTS 6.0 or above, or an accepted equivalent; native English speakers and applicants with prior English-medium education may qualify for the published exemption.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants to the exact programs bound to this template",
+            "ruleText": "Submit a CSCA report using SCU's published category-and-language matrix: liberal arts Chinese—Chinese Language and Mathematics; liberal arts English—Mathematics; science/engineering Chinese—Chinese Language, Mathematics and Physics; science/engineering English—Mathematics and Physics; medical Chinese—Chinese Language, Mathematics, Physics and Chemistry; medical English—Mathematics, Physics and Chemistry.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 11 and CSCA category matrix"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Submit the online application from January 1 through May 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - When to Apply"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Apply through the SCU Overseas Students Office online system within the published application period; sponsor-funded routes must also follow the sponsor system stated by the official guide.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the passport first page, valid for at least six months from application; applicants living in mainland China also submit the valid visa or residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the high-school graduation certificate or a school-sealed pre-graduation certificate stating the expected graduation date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "china_study_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants living in China or with prior study in China",
+            "ruleText": "Submit the previous Chinese school's document describing the applicant's performance at school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit school-sealed high-school academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a Chinese or English personal statement covering self-introduction, reasons for applying, understanding of the major and study plan; English-taught applicants must write it in English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught undergraduate applicants",
+            "ruleText": "TOEFL 80 or above, IELTS 6.0 or above, or an accepted equivalent; native English speakers and applicants with prior English-medium education may qualify for the published exemption.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 6 and Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form with results no more than six months old at application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants without a full scholarship",
+            "ruleText": "Submit funding-source or guardian financial-guarantee evidence, such as a family bank deposit certificate and parent/guardian income certificate; SCU recommends at least USD 5,000. Full-scholarship applicants are exempt.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued by the local public-security authority no more than six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Optionally submit award certificates or other supporting documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "translations_authenticity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Upload authentic electronic records; documents in other languages require official Chinese or English translations. SCU does not process incomplete applications and may request additional records.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents - Notes 1-2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled English-taught undergraduate students",
+            "ruleText": "Use the official annual category schedule for this route: Official category schedule: CNY 17,500-45,000/year; the exact amount depends on humanities/economics/management, science/engineering, medicine, stomatology, clinical medicine, arts/sports or archaeology classification. SCU publishes category bands rather than a row-level amount, so the applicable category must be confirmed without inferring a price.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tuition",
+                "locator": "Official 2026 undergraduate tuition category schedule"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "scu-master-chinese-group-04-fall-2026",
+      "schoolSlug": "sichuan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-scu-master-materials-science-and-engineering-36b69bda5dc5",
+        "official-2026-scu-master-materials-engineering-9b29ebd86894",
+        "official-2026-scu-master-religious-studies-9d392d1903ff",
+        "official-2026-scu-master-electric-engineering-49190d255c5d",
+        "official-2026-scu-master-electronic-information-dbedd541c598",
+        "official-2026-scu-master-control-science-and-engineering-e78317168e60",
+        "official-2026-scu-master-electromagnetic-field-and-microwave-technology-567e68fc9c33",
+        "official-2026-scu-master-electronic-circuit-and-system-18c64a8da89c",
+        "official-2026-scu-master-microelectronics-and-solid-state-electronics-6f98dfb731d6",
+        "official-2026-scu-master-communication-and-information-system-261c45f85153",
+        "official-2026-scu-master-signal-and-information-processing-4d391b87912e",
+        "official-2026-scu-master-intelligent-information-system-75362cb5a0ad",
+        "official-2026-scu-master-electronic-information-3b7c53bd6f9c",
+        "official-2026-scu-master-optoelectronic-technology-2502c941b04a",
+        "official-2026-scu-master-optical-communication-and-advanced-laser-technology-e4ea25175cb4",
+        "official-2026-scu-master-optical-information-processing-technology-8009a9307bd1",
+        "official-2026-scu-master-legal-history-e45805cadc95",
+        "official-2026-scu-master-jurisprudence-2a297c5a78e9",
+        "official-2026-scu-master-international-law-a7a1ecee72ae",
+        "official-2026-scu-master-law-science-of-environmental-protection-and-natural-re-bd9fbb12a2f1",
+        "official-2026-scu-master-economic-law-2e4cde251b21",
+        "official-2026-scu-master-civil-law-and-commercial-law-60e1565207dd",
+        "official-2026-scu-master-litigation-law-451960a35a6e",
+        "official-2026-scu-master-constitutional-law-and-administrative-law-7de2776a70d9",
+        "official-2026-scu-master-criminal-law-0efa56f850b9",
+        "official-2026-scu-master-public-policy-adbfa11d4497",
+        "official-2026-scu-master-social-insurance-c8a838d99185",
+        "official-2026-scu-master-sociology-a631f2ac8d3d",
+        "official-2026-scu-master-library-and-information-professional-master-s-degree-e00da88d34b0",
+        "official-2026-scu-master-information-resource-management-c264f442d93f",
+        "official-2026-scu-master-emergency-management-4eb093450454",
+        "official-2026-scu-master-land-resources-management-2dead2dca873",
+        "official-2026-scu-master-public-administration-75994a489195",
+        "official-2026-scu-master-applied-psychology-b2a9bf6f1b14",
+        "official-2026-scu-master-social-work-9b8398be036c",
+        "official-2026-scu-master-cadre-education-fc53d3228b6c",
+        "official-2026-scu-master-international-politics-27f99719123f",
+        "official-2026-scu-master-political-theory-3b1bafb9ffa3",
+        "official-2026-scu-master-international-relation-4a71f388aba2",
+        "official-2026-scu-master-diplomacy-4b1848e6e694",
+        "official-2026-scu-master-public-health-and-preventive-medicine-8cddd63efc1b",
+        "official-2026-scu-master-basic-science-of-stomatology-academic-master-s-degree-868a9d02089b",
+        "official-2026-scu-master-basic-science-of-stomatology-academic-master-s-degree-705cde0384e0",
+        "official-2026-scu-master-basic-science-of-stomatology-academic-master-s-degree-d55adeecefe0",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-ae8a0ebeff1e",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-8ee32215a744",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-b4d2cc26edc0",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-50c3eb69a979",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-bb9920d673f9",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-20ebc9dd500d",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-9edeab98ffbd",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-beaab3b3b4dc",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-46df76224680",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-1a2eedbb85e9",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-cebdbf1b3b58",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-a3d7d1537ef3",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-61decf15868d",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-be29bccc219b",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-7434376388e6",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-eab106020e43",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-2baf430b0e92",
+        "official-2026-scu-master-clinical-science-of-stomatology-academic-master-s-degr-0f414c65292f",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-operative-den-15187556b970",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-periodontolog-1ae2f5663158",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-oral-mucosal-1fb3ae45c80d",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-preventive-de-ed29d1d0c716",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-geriatric-den-bf806f4081cf",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-orthognathic-b28fb78a1c96",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-head-and-neck-627d38dd8d56",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-salivary-glan-bd62f4118e3f",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-oral-and-maxi-58e2f41cee0c",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-oral-and-maxi-b20b4c8ca084",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-alveolar-and-e4ea250681ea",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-imaging-diagn-7c49b7c3d502",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-molecular-pat-c1acd63a2ab1",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-prosthodontic-89bdfd31bed1",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-oral-implanto-2876e2a98c12",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-multidiscipli-26224fa327a7",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-orthodontic-t-0f855865baac",
+        "official-2026-scu-master-stomatology-professional-master-s-degree-pediatric-den-8e8a35766c57",
+        "official-2026-scu-master-pathology-and-pathophysiology-8b903a4fcd6d",
+        "official-2026-scu-master-pathogenic-biology-fff06df2cf5b",
+        "official-2026-scu-master-forensic-medicine-eff45e7f42c4",
+        "official-2026-scu-master-immunology-3d30137bc6e3",
+        "official-2026-scu-master-medical-bioengineering-863aa3dc1aef",
+        "official-2026-scu-master-clinical-pharmacy-24a08c63ea53",
+        "official-2026-scu-master-natural-medicine-chemistry-e160372b6ae2",
+        "official-2026-scu-master-pharmacy-f814651fd9ab",
+        "official-2026-scu-master-chemistry-65041eb523cb",
+        "official-2026-scu-master-mechanical-engineering-measurement-technology-and-inst-bc76c6c7ee22",
+        "official-2026-scu-master-mechanical-engineering-mechatronics-592b855e66ed",
+        "official-2026-scu-master-mechanical-engineering-mechanical-design-and-theory-ad8bfe259300",
+        "official-2026-scu-master-mechanical-engineering-mechanical-manufacture-and-auto-244d766117c0",
+        "official-2026-scu-master-mechanical-engineering-adavanced-materials-forming-tec-f88accec5dc2",
+        "official-2026-scu-master-computer-science-and-technology-e54fb4af7561",
+        "official-2026-scu-master-hydrodynamics-1ee54ed1c517",
+        "official-2026-scu-master-engineering-mechanics-bbfc4f57f9f7",
+        "official-2026-scu-master-solid-mechanics-9d8c929bd2b9",
+        "official-2026-scu-master-environmental-engineering-56c23a5ea60a",
+        "official-2026-scu-master-civil-engineering-e4fa8e62b150",
+        "official-2026-scu-master-safety-science-and-disaster-reduction-78a372d7d558",
+        "official-2026-scu-master-industrial-economics-24017a1beaef",
+        "official-2026-scu-master-finance-a557736e4fbd",
+        "official-2026-scu-master-archaeology-2fd185218edc",
+        "official-2026-scu-master-tourism-management-5cdf4138a3f9",
+        "official-2026-scu-master-world-history-284d20185408",
+        "official-2026-scu-master-chinese-history-71444eb6565b",
+        "official-2026-scu-master-the-light-industry-technology-and-engineering-2e9c05af6804",
+        "official-2026-scu-master-engineering-management-27e6a9cd3919",
+        "official-2026-scu-master-business-administration-aa261536abff",
+        "official-2026-scu-master-management-science-and-engineering-8fa1cd9f240f",
+        "official-2026-scu-master-accounting-cc894425cbfd",
+        "official-2026-scu-master-enterprise-management-1175b0a80c7a",
+        "official-2026-scu-master-ecology-449bba350876",
+        "official-2026-scu-master-biology-4bdd674eaabc",
+        "official-2026-scu-master-probability-and-mathematical-statistics-4031468fb9c9",
+        "official-2026-scu-master-fundamental-mathematics-362d3c16b297",
+        "official-2026-scu-master-computational-mathematics-4e137f0d6e5d",
+        "official-2026-scu-master-statistics-c600c0b82f3a",
+        "official-2026-scu-master-applied-mathematics-d5ee5dbc4646",
+        "official-2026-scu-master-operational-research-and-cybernetics-6d6746bbd9d4",
+        "official-2026-scu-master-water-conservancy-engineering-harbor-coastal-and-offsh-17c08ed32d82",
+        "official-2026-scu-master-water-conservancy-engineering-energy-engineering-and-p-e5f85917f53f",
+        "official-2026-scu-master-water-conservancy-engineering-hydraulic-structure-engi-93a61ac7e4a8",
+        "official-2026-scu-master-water-conservancy-engineering-hydraulics-and-river-dyn-72c9abcf7fe2",
+        "official-2026-scu-master-water-conservancy-engineering-water-resources-and-hydr-676e2ff9dc8c",
+        "official-2026-scu-master-water-conservancy-engineering-hydrology-and-water-reso-20ceaab7df94",
+        "official-2026-scu-master-ethnic-traditional-sports-dcccb3ee92e6",
+        "official-2026-scu-master-physical-education-30b3639db3d0",
+        "official-2026-scu-master-humane-and-sociological-science-of-sports-ba27dbe0c309",
+        "official-2026-scu-master-physical-education-and-sports-coaching-a6e10acf0ff7",
+        "official-2026-scu-master-human-movement-science-3c4cf89ef44e",
+        "official-2026-scu-master-russian-language-and-literature-6f2ca2d6f344",
+        "official-2026-scu-master-french-language-and-literature-eef182be561b",
+        "official-2026-scu-master-japanese-language-and-literature-a359295cc4d8",
+        "official-2026-scu-master-spanish-language-and-literature-d47a07ce7741",
+        "official-2026-scu-master-linguistics-and-applied-linguistics-in-foreign-languag-60fcafc38739",
+        "official-2026-scu-master-english-language-and-literature-27da9421743a",
+        "official-2026-scu-master-cyber-security-f8da37cefcc5",
+        "official-2026-scu-master-comparative-literature-and-world-literature-academic-m-d28f72e0aa49",
+        "official-2026-scu-master-publishing-academic-master-s-degree-d2294bdbde06",
+        "official-2026-scu-master-communication-academic-master-s-degree-71602914faff",
+        "official-2026-scu-master-radio-and-television-journalism-academic-master-s-degr-ecf6dcd4e63e",
+        "official-2026-scu-master-tcsol-professional-master-s-degree-2b0a96eeb9be",
+        "official-2026-scu-master-chinese-philology-academic-master-s-degree-51bb238371bf",
+        "official-2026-scu-master-literary-anthropology-academic-master-s-degree-75ebfd5c6311",
+        "official-2026-scu-master-journalism-and-communication-professional-master-s-deg-05afee4c0cb3",
+        "official-2026-scu-master-linguistics-and-applied-linguistics-academic-master-s-4c98e7b9c411",
+        "official-2026-scu-master-physics-1cdc3ce8347d",
+        "official-2026-scu-master-nuclear-science-and-technology-ae8fe8c70749",
+        "official-2026-scu-master-visual-communication-design-professional-master-s-degr-8d842e4fcafc",
+        "official-2026-scu-master-environmental-art-design-professional-master-s-degree-9b286c831a04",
+        "official-2026-scu-master-the-study-of-chinese-painting-creation-professional-ma-28c9718c0a0a",
+        "official-2026-scu-master-study-of-calligraphy-creation-professional-master-s-de-b576f3e9d84f",
+        "official-2026-scu-master-research-on-contemporary-art-creation-professional-mas-041b23ae1995",
+        "official-2026-scu-master-art-history-theory-criticism-9e1e043682b0",
+        "official-2026-scu-master-research-on-modern-contemporary-chinese-art-0fbe2e9fce02",
+        "official-2026-scu-master-design-theory-history-5e952532441a",
+        "official-2026-scu-master-research-on-the-art-of-southwest-china-5479229a2099",
+        "official-2026-scu-master-design-and-new-media-art-751ccf4894cb",
+        "official-2026-scu-master-studies-in-the-contemporary-transformation-of-southwes-11adcb1d0fd5",
+        "official-2026-scu-master-studies-in-public-art-and-environmental-landscape-desi-20e1844b043e",
+        "official-2026-scu-master-philosophy-of-science-and-technology-4d57bda851ef",
+        "official-2026-scu-master-ethics-411ae8cd4f59",
+        "official-2026-scu-master-logic-4967ca580cb5",
+        "official-2026-scu-master-marxist-philosophy-0e2d51c16e2b",
+        "official-2026-scu-master-foreign-philosophies-9d313b8cbcd7",
+        "official-2026-scu-master-chinese-philosophy-ff58e2174732",
+        "official-2026-scu-master-material-science-cde755fabffc",
+        "official-2026-scu-master-materials-processing-engineering-57ec9a33cbac",
+        "official-2026-scu-master-biomedical-engineering-f9e9483f87aa",
+        "official-2026-scu-master-materials-engineering-e13ac5c2938f",
+        "official-2026-scu-master-ultrasound-66c413cafb02",
+        "official-2026-scu-master-pediatrics-400f6543774c",
+        "official-2026-scu-master-pediatric-surgery-eb08051ba56f",
+        "official-2026-scu-master-otorhinolaryngology-389232a0861b",
+        "official-2026-scu-master-radiologic-imaging-473e0f806ade",
+        "official-2026-scu-master-radiation-oncology-84ee4879bb80",
+        "official-2026-scu-master-obstetrics-and-gynecology-4b2fab78aa36",
+        "official-2026-scu-master-orthopedics-surgery-775d9805f2bb",
+        "official-2026-scu-master-nuclear-medicine-a9773a960a5b",
+        "official-2026-scu-master-emergency-medicine-8839ef94e9fd",
+        "official-2026-scu-master-disease-related-molecular-and-translational-medicine-9bb296972046",
+        "official-2026-scu-master-psychiatry-and-mental-health-8e485a89daf8",
+        "official-2026-scu-master-rehabilitation-medicine-and-physical-therapy-c2868a35c45f",
+        "official-2026-scu-master-geriatrics-df5de24ce0a0",
+        "official-2026-scu-master-clinical-laboratory-diagnostics-2d11ae160e9a",
+        "official-2026-scu-master-anesthesiology-9dedff749437",
+        "official-2026-scu-master-maternal-and-child-medical-6ec62f2995ce",
+        "official-2026-scu-master-dermatology-and-venereology-93a04f25744c",
+        "official-2026-scu-master-general-medicine-b3c1944fe247",
+        "official-2026-scu-master-neurology-f58b023249ad",
+        "official-2026-scu-master-ophthalmology-abe97a6cdb10",
+        "official-2026-scu-master-medical-genetics-951ba9205746",
+        "official-2026-scu-master-imaging-and-nuclear-medicine-6dec6631fb1e",
+        "official-2026-scu-master-sports-medicine-bd88bcde90d3",
+        "official-2026-scu-master-integrated-traditional-chinese-and-western-medicine-22d5807699df",
+        "official-2026-scu-master-phymatology-aa60f005922b",
+        "official-2026-scu-master-critical-care-medicine-de9fc0c30c98",
+        "official-2026-scu-master-high-altitude-medicine-c14ec8e3a7dc",
+        "official-2026-scu-master-major-human-disease-biological-treatment-66de19410769",
+        "official-2026-scu-master-medical-laboratory-technology-7304f3bdb7e4",
+        "official-2026-scu-master-medical-laboratory-technology-d3b0a4b4ea39",
+        "official-2026-scu-master-medical-imaging-technology-be4eb2092bdd",
+        "official-2026-scu-master-medical-imaging-technology-d11b9d714662",
+        "official-2026-scu-master-medical-sonography-technology-f92a8d5544d2",
+        "official-2026-scu-master-radiotherapy-physics-and-technology-be8cbbe67680",
+        "official-2026-scu-master-optometry-and-vision-sciences-848623b8cd25",
+        "official-2026-scu-master-optometry-and-vision-sciences-45e2a4e0f137",
+        "official-2026-scu-master-rehabilitation-therapy-abf518e1952a",
+        "official-2026-scu-master-physical-therap-cec76f609a02",
+        "official-2026-scu-master-occupational-therapy-9bdfde3ef152",
+        "official-2026-scu-master-respiratory-care-6dd58c75d8ec",
+        "official-2026-scu-master-audiology-98d3d894ab5d",
+        "official-2026-scu-master-audiology-and-speech-sciences-58f832eefb77",
+        "official-2026-scu-master-clinical-nutrition-f91822ddacc8",
+        "official-2026-scu-master-pathological-technology-75bf0baab4bb",
+        "official-2026-scu-master-pathological-technology-6204d7a9e883",
+        "official-2026-scu-master-medical-engineering-technology-6d7e8855bb4f",
+        "official-2026-scu-master-innovation-and-clinical-evaluation-of-medical-equipmen-b899b9b60674",
+        "official-2026-scu-master-neuro-electrophysiological-technology-abbce4e514dd",
+        "official-2026-scu-master-respiratory-medicine-d40c7c114e94",
+        "official-2026-scu-master-cardiology-medicine-3d2b109995ca",
+        "official-2026-scu-master-gastroenterology-medicine-0c6400807641",
+        "official-2026-scu-master-nephrology-medicine-c343bbfdd7a9",
+        "official-2026-scu-master-endocrinology-and-metabolism-7104a63cbb2e",
+        "official-2026-scu-master-hematology-66030b185614",
+        "official-2026-scu-master-rheumatology-49b790c3401d",
+        "official-2026-scu-master-infectious-diseases-788866628531",
+        "official-2026-scu-master-burn-surgery-d80e8ccee71d",
+        "official-2026-scu-master-plastic-surgery-75d50ed976d1",
+        "official-2026-scu-master-thoracic-surgery-89981ce5987f",
+        "official-2026-scu-master-cardiovascular-surgery-6f44f6f446ef",
+        "official-2026-scu-master-neurosurgery-f3d07a877ad0",
+        "official-2026-scu-master-urology-84442a38cf74",
+        "official-2026-scu-master-general-surgery-aa99f807b9de",
+        "official-2026-scu-master-trauma-center-af6dbd117e25",
+        "official-2026-scu-master-medical-informatics-0cd0a8086b42",
+        "official-2026-scu-master-intelligence-science-and-technology-e02ee2358fc2",
+        "official-2026-scu-master-chronic-disease-and-geriatric-nursing-ee1ae06a5967",
+        "official-2026-scu-master-surgical-nursing-1856568c75c2",
+        "official-2026-scu-master-evidence-based-nursing-750e790eb7d5",
+        "official-2026-scu-master-maternity-and-child-nursing-8ccbb3f4312f",
+        "official-2026-scu-master-innovation-and-transformation-of-nursing-technology-81c17e9590c6",
+        "official-2026-scu-master-disaster-nursing-8ef244d2fc89",
+        "official-2026-scu-master-clinical-pharmacy-89064f681403",
+        "official-2026-scu-master-carbon-neutrality-technology-and-engineering-208541863a9c"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "SCU publishes tuition by degree and academic category rather than a row-level mapping; the verified official band is preserved without inferring a program price.",
+        "Undergraduate CSCA subjects follow SCU's published category-and-language matrix; no unverified discipline classification is added."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://global.scu.edu.cn/oso/article/index/1106?lang=en",
+            "title": "Sichuan University 2026 international admission guide",
+            "capturedAt": "2026-09-13T09:16:12.859Z",
+            "contentSha256": "da2aea26e45be3ad842bdd83e5c2630b883e092da86e8bce7b5dd8f537eab1da"
+          },
+          {
+            "key": "requirements",
+            "url": "https://global.scu.edu.cn/oso/article/index/1072?lang=en",
+            "title": "Sichuan University 2026 international master's application requirements",
+            "capturedAt": "2026-09-13T09:31:17.543Z",
+            "contentSha256": "84bd0567a022a1fe8b316209e0db697030563cf96aa9e8590d03672c60c8610b"
+          },
+          {
+            "key": "catalog",
+            "url": "https://global.scu.edu.cn/oso/article/index/1073?lang=en",
+            "title": "Sichuan University 2026 international master program catalog",
+            "capturedAt": "2026-09-13T09:16:15.114Z",
+            "contentSha256": "467edb07dab2ea7537e19cedf3aa91e3874500f6f7f443dea421810763692a4e"
+          },
+          {
+            "key": "tuition",
+            "url": "https://global.scu.edu.cn/oso/article/index/1099?lang=en",
+            "title": "Sichuan University 2026 international master's tuition schedule",
+            "capturedAt": "2026-09-13T09:31:20.762Z",
+            "contentSha256": "e7648f46ccd1dec8c1b54f3a320fcf366a8f06def38741654e4de7783c0d49e2"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health, hold a valid foreign passport, and be age 18-40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught master applicants",
+            "ruleText": "Humanities routes: HSK 5 score 180 or above; science, engineering, medicine and agriculture routes: HSK 4 score 180 or above; accepted equivalents and the published prior Chinese-medium education exemption may apply.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Submit the online application from November 1, 2025 through May 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - When to Apply"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Apply through the SCU Overseas Students Office online system; sponsor-funded routes must also follow the sponsor system stated by the official guide.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the passport first page, valid for at least six months from application; applicants living in mainland China also submit the valid visa or residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the bachelor's graduation/degree certificate or university-sealed pre-graduation certificate stating the expected graduation date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "china_study_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants living in China or with prior study in China",
+            "ruleText": "Submit the previous Chinese school's document describing the applicant's performance at school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit university-sealed undergraduate academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from professors, associate professors or equivalent experts in the intended major, including handwritten signature, title, affiliation, phone number and email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a Chinese or English study and research plan covering self-introduction, reasons for applying, understanding of the major and study plan; English-taught applicants must write it in English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "academic_papers",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "Optionally submit contents and abstracts of academic papers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught master applicants",
+            "ruleText": "Humanities routes: HSK 5 score 180 or above; science, engineering, medicine and agriculture routes: HSK 4 score 180 or above; accepted equivalents and the published prior Chinese-medium education exemption may apply.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 8 and Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form with results no more than six months old at application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants without a full scholarship",
+            "ruleText": "Submit funding-source or guardian financial-guarantee evidence, such as a family bank deposit certificate and parent/guardian income certificate; SCU recommends at least USD 5,000. Full-scholarship applicants are exempt.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "employment",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Master applicants with employment",
+            "ruleText": "Submit a certificate of employment when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued by the local public-security authority no more than six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "Optionally submit award certificates or other supporting documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translations_authenticity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Upload authentic electronic records; documents in other languages require official Chinese or English translations. SCU does not process incomplete applications and may request additional records.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents - Notes 1-2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled Chinese-taught master students",
+            "ruleText": "Use the official annual category schedule for this route: Official category schedule: CNY 22,000-50,000/year; the exact amount depends on discipline, including separate MBA and MEM rates. SCU publishes category bands rather than a row-level amount, so the applicable category must be confirmed without inferring a price.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tuition",
+                "locator": "Official 2026 master tuition category schedule"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "scu-master-english-group-05-fall-2026",
+      "schoolSlug": "sichuan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-scu-master-industrial-catalysis-4fa234223444",
+        "official-2026-scu-master-chemical-safety-engineering-and-technology-beb36178b98c",
+        "official-2026-scu-master-chemical-process-equipment-345afdabb815",
+        "official-2026-scu-master-chemical-engineering-187b288eff3e",
+        "official-2026-scu-master-chemical-technology-f560ddb645e9",
+        "official-2026-scu-master-chemical-metallurgy-and-materials-technology-dc6eded74130",
+        "official-2026-scu-master-biochemical-engineering-cc92cff6bf35",
+        "official-2026-scu-master-applied-chemistry-fcc992eac04d",
+        "official-2026-scu-master-mechanical-engineering-measurement-technology-and-inst-9eba9b24fb3d",
+        "official-2026-scu-master-mechanical-engineering-mechatronics-7c415921ce76",
+        "official-2026-scu-master-mechanical-engineering-mechanical-design-and-theory-44ef742956c5",
+        "official-2026-scu-master-mechanical-engineering-mechanical-manufacture-and-auto-896e98dff591",
+        "official-2026-scu-master-mechanical-engineering-adavanced-materials-forming-tec-caafb4350687",
+        "official-2026-scu-master-archaeology-e5d1009fd8cd",
+        "official-2026-scu-master-tourism-management-ba7f87e57c78",
+        "official-2026-scu-master-engineering-management-4310103ce895",
+        "official-2026-scu-master-business-administration-cbc9ef72b615",
+        "official-2026-scu-master-corporate-finance-a81adf4ec9c4",
+        "official-2026-scu-master-management-science-and-engineering-e9e4591bbfcd",
+        "official-2026-scu-master-accounting-d6383f7fc252",
+        "official-2026-scu-master-enterprise-management-36e3c99cb621",
+        "official-2026-scu-master-probability-and-mathematical-statistics-92d3845db404",
+        "official-2026-scu-master-fundamental-mathematics-2db572d165ef",
+        "official-2026-scu-master-computational-mathematics-3ee609f3d8f8",
+        "official-2026-scu-master-statistics-3f8f6a418656",
+        "official-2026-scu-master-applied-mathematics-e8d960d5e7e7",
+        "official-2026-scu-master-operational-research-and-cybernetics-754a2673bc4a",
+        "official-2026-scu-master-material-science-7d86ccff5d51"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "SCU publishes tuition by degree and academic category rather than a row-level mapping; the verified official band is preserved without inferring a program price.",
+        "Undergraduate CSCA subjects follow SCU's published category-and-language matrix; no unverified discipline classification is added."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://global.scu.edu.cn/oso/article/index/1106?lang=en",
+            "title": "Sichuan University 2026 international admission guide",
+            "capturedAt": "2026-09-13T09:16:12.859Z",
+            "contentSha256": "da2aea26e45be3ad842bdd83e5c2630b883e092da86e8bce7b5dd8f537eab1da"
+          },
+          {
+            "key": "requirements",
+            "url": "https://global.scu.edu.cn/oso/article/index/1072?lang=en",
+            "title": "Sichuan University 2026 international master's application requirements",
+            "capturedAt": "2026-09-13T09:31:17.543Z",
+            "contentSha256": "84bd0567a022a1fe8b316209e0db697030563cf96aa9e8590d03672c60c8610b"
+          },
+          {
+            "key": "catalog",
+            "url": "https://global.scu.edu.cn/oso/article/index/1073?lang=en",
+            "title": "Sichuan University 2026 international master program catalog",
+            "capturedAt": "2026-09-13T09:16:15.114Z",
+            "contentSha256": "467edb07dab2ea7537e19cedf3aa91e3874500f6f7f443dea421810763692a4e"
+          },
+          {
+            "key": "tuition",
+            "url": "https://global.scu.edu.cn/oso/article/index/1099?lang=en",
+            "title": "Sichuan University 2026 international master's tuition schedule",
+            "capturedAt": "2026-09-13T09:31:20.762Z",
+            "contentSha256": "e7648f46ccd1dec8c1b54f3a320fcf366a8f06def38741654e4de7783c0d49e2"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health, hold a valid foreign passport, and be age 18-40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught master applicants",
+            "ruleText": "TOEFL 80 or above, IELTS 6.0 or above, or an accepted equivalent; native English speakers and applicants with prior English-medium education may qualify for the published exemption.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Submit the online application from November 1, 2025 through May 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - When to Apply"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Apply through the SCU Overseas Students Office online system; sponsor-funded routes must also follow the sponsor system stated by the official guide.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the passport first page, valid for at least six months from application; applicants living in mainland China also submit the valid visa or residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the bachelor's graduation/degree certificate or university-sealed pre-graduation certificate stating the expected graduation date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "china_study_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants living in China or with prior study in China",
+            "ruleText": "Submit the previous Chinese school's document describing the applicant's performance at school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit university-sealed undergraduate academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from professors, associate professors or equivalent experts in the intended major, including handwritten signature, title, affiliation, phone number and email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a Chinese or English study and research plan covering self-introduction, reasons for applying, understanding of the major and study plan; English-taught applicants must write it in English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "academic_papers",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "Optionally submit contents and abstracts of academic papers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught master applicants",
+            "ruleText": "TOEFL 80 or above, IELTS 6.0 or above, or an accepted equivalent; native English speakers and applicants with prior English-medium education may qualify for the published exemption.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 8 and Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form with results no more than six months old at application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants without a full scholarship",
+            "ruleText": "Submit funding-source or guardian financial-guarantee evidence, such as a family bank deposit certificate and parent/guardian income certificate; SCU recommends at least USD 5,000. Full-scholarship applicants are exempt.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "employment",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Master applicants with employment",
+            "ruleText": "Submit a certificate of employment when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued by the local public-security authority no more than six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "Optionally submit award certificates or other supporting documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translations_authenticity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Upload authentic electronic records; documents in other languages require official Chinese or English translations. SCU does not process incomplete applications and may request additional records.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents - Notes 1-2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled English-taught master students",
+            "ruleText": "Use the official annual category schedule for this route: Official category schedule: CNY 22,000-50,000/year; the exact amount depends on discipline, including separate MBA and MEM rates. SCU publishes category bands rather than a row-level amount, so the applicable category must be confirmed without inferring a price.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tuition",
+                "locator": "Official 2026 master tuition category schedule"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "scu-doctoral-chinese-group-06-fall-2026",
+      "schoolSlug": "sichuan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-scu-doctoral-materials-science-and-engineering-fb6f3e2c11de",
+        "official-2026-scu-doctoral-materials-engineering-63dc0a056692",
+        "official-2026-scu-doctoral-religious-studies-0b7268e705a0",
+        "official-2026-scu-doctoral-electric-engineering-11adb3e8589e",
+        "official-2026-scu-doctoral-electronic-information-ceae77c544d9",
+        "official-2026-scu-doctoral-communication-and-information-system-e661c28b772e",
+        "official-2026-scu-doctoral-signal-and-information-processing-fdc602f5718c",
+        "official-2026-scu-doctoral-intelligent-information-system-b364d192a7a3",
+        "official-2026-scu-doctoral-electromagnetic-field-and-microwave-technology-2887dd2551a9",
+        "official-2026-scu-doctoral-electronic-circuit-and-system-70eec266a39e",
+        "official-2026-scu-doctoral-physical-electronics-4b8c9e908422",
+        "official-2026-scu-doctoral-microelectronics-and-solid-state-electronics-38aacd96eb77",
+        "official-2026-scu-doctoral-optoelectronic-technology-3ec77f77a5d6",
+        "official-2026-scu-doctoral-optical-communication-and-advanced-laser-technology-c290d3f2e21d",
+        "official-2026-scu-doctoral-optical-information-processing-technology-0e6d19696bb0",
+        "official-2026-scu-doctoral-new-generation-electronic-information-technology-654604af7cde",
+        "official-2026-scu-doctoral-communications-engineering-b47af4cfc893",
+        "official-2026-scu-doctoral-optoelectronic-information-engineering-f6f8dbfa0629",
+        "official-2026-scu-doctoral-artificial-intelligence-de139903d394",
+        "official-2026-scu-doctoral-legal-history-81f0f7f8aa1a",
+        "official-2026-scu-doctoral-jurisprudence-ef9e7d9f1dbd",
+        "official-2026-scu-doctoral-international-law-4a103f743d7a",
+        "official-2026-scu-doctoral-law-science-of-environmental-protection-and-natural-re-128defc7b480",
+        "official-2026-scu-doctoral-civil-law-and-commercial-law-dc2242e62e08",
+        "official-2026-scu-doctoral-litigation-law-402a1cb40932",
+        "official-2026-scu-doctoral-constitutional-law-and-administrative-law-c0620e600ad6",
+        "official-2026-scu-doctoral-criminal-law-c34d1092999e",
+        "official-2026-scu-doctoral-economic-law-a42557537e2b",
+        "official-2026-scu-doctoral-public-administration-a64880a7a1ec",
+        "official-2026-scu-doctoral-public-policy-31683bb41cda",
+        "official-2026-scu-doctoral-international-relations-a99b94baa2aa",
+        "official-2026-scu-doctoral-international-politics-fb0991b45d69",
+        "official-2026-scu-doctoral-political-theory-8b67824622b8",
+        "official-2026-scu-doctoral-basic-science-of-stomatology-oral-biology-296718cc8f5e",
+        "official-2026-scu-doctoral-basic-science-of-stomatology-oral-biomaterials-f3a442c33513",
+        "official-2026-scu-doctoral-basic-science-of-stomatology-oral-biomechanics-dental-ce9b04c0549f",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-operative-dentistry-an-ea86e86de657",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-periodontology-75afe8b7dc0b",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-oral-mucosal-diseases-18f81e476dc2",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-preventive-dentistry-75835f28363e",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-geriatric-dentistry-9bc4c933f9af",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-orthognathic-surgery-a-5d14357a4684",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-head-and-neck-oncology-0d1509e46790",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-salivary-gland-disease-02dde3addd2e",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-oral-and-maxillofacial-da2aa4299740",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-oral-and-maxillofacial-3d1d1e65e334",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-alveolar-and-maxillofa-740d1423357e",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-molecular-pathology-of-544dc697bda0",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-prosthodontics-3b6e43ae9815",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-oral-implantology-f54041a25e31",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-orthodontic-treatment-3b8213a5f902",
+        "official-2026-scu-doctoral-clinical-science-of-stomatology-pediatric-dentistry-e23bf8b7061d",
+        "official-2026-scu-doctoral-stomatology-operative-dentistry-and-endodontics-25c4ac517e18",
+        "official-2026-scu-doctoral-stomatology-periodontology-2e294a0ed50a",
+        "official-2026-scu-doctoral-stomatology-oral-mucosal-diseases-77e364cdb6b4",
+        "official-2026-scu-doctoral-stomatology-preventive-dentistry-f4ed486cdf1f",
+        "official-2026-scu-doctoral-stomatology-geriatric-dentistry-99beeb15d56f",
+        "official-2026-scu-doctoral-stomatology-orthognathic-surgery-and-facial-contouring-71855930943f",
+        "official-2026-scu-doctoral-stomatology-head-and-neck-oncology-prevention-and-trea-629252e71530",
+        "official-2026-scu-doctoral-stomatology-salivary-gland-diseases-prevention-and-tre-68b3559bfbe5",
+        "official-2026-scu-doctoral-stomatology-oral-and-maxillofacial-deformities-and-def-5b17bcb935ba",
+        "official-2026-scu-doctoral-stomatology-oral-and-maxillofacial-trauma-and-plastic-7efb1e7f8108",
+        "official-2026-scu-doctoral-stomatology-alveolar-and-maxillofacial-implant-surgery-dcb74f464515",
+        "official-2026-scu-doctoral-stomatology-molecular-pathology-of-oral-and-maxillofac-19fdea958f94",
+        "official-2026-scu-doctoral-stomatology-prosthodontics-2fc104d0a605",
+        "official-2026-scu-doctoral-stomatology-oral-implantology-84c39a356d64",
+        "official-2026-scu-doctoral-stomatology-orthodontic-treatment-and-mechanism-resear-a5c02c356738",
+        "official-2026-scu-doctoral-stomatology-pediatric-dentistry-2a6b34e150b2",
+        "official-2026-scu-doctoral-pathology-and-pathophysiology-7be973a974d9",
+        "official-2026-scu-doctoral-pathogen-biology-cf4907f0b95d",
+        "official-2026-scu-doctoral-forensic-medicine-a2e44d905488",
+        "official-2026-scu-doctoral-immunology-e4fa864dbcd0",
+        "official-2026-scu-doctoral-medical-bioengineering-9932fd9032c2",
+        "official-2026-scu-doctoral-clinical-pharmacy-3d7c70d34e30",
+        "official-2026-scu-doctoral-natural-medicine-chemistry-cea3c0b8d121",
+        "official-2026-scu-doctoral-pharmacy-f6e168182229",
+        "official-2026-scu-doctoral-biology-and-medicine-c8ada759d223",
+        "official-2026-scu-doctoral-chemistry-ca955866fb65",
+        "official-2026-scu-doctoral-mechanical-engineering-mechatronics-c487508fc144",
+        "official-2026-scu-doctoral-mechanical-engineering-mechanical-design-and-theory-3a9d17c003cf",
+        "official-2026-scu-doctoral-mechanical-engineering-mechanical-manufacture-and-auto-4f9b273dc0fe",
+        "official-2026-scu-doctoral-mechanical-engineering-adavanced-materials-forming-tec-8ed10bad8d67",
+        "official-2026-scu-doctoral-mechanical-engineering-measurement-technology-and-inst-fd607d31f0e1",
+        "official-2026-scu-doctoral-computer-science-and-technology-bec53f185354",
+        "official-2026-scu-doctoral-engineering-mechanics-2ea4f15e69bd",
+        "official-2026-scu-doctoral-solid-mechanics-77cc1e2108a6",
+        "official-2026-scu-doctoral-environmental-engineering-3319f4d5904f",
+        "official-2026-scu-doctoral-hydrodynamics-5703608d8b22",
+        "official-2026-scu-doctoral-civil-engineering-bc81c005d80d",
+        "official-2026-scu-doctoral-safety-science-and-disaster-reduction-6b5dddb9bd58",
+        "official-2026-scu-doctoral-finance-b2a3232eaa79",
+        "official-2026-scu-doctoral-archaeology-51f60f7855a9",
+        "official-2026-scu-doctoral-tourism-management-902ac1669f39",
+        "official-2026-scu-doctoral-world-history-ba7ee2f97ce5",
+        "official-2026-scu-doctoral-chinese-history-68e1fb1f4ac7",
+        "official-2026-scu-doctoral-the-light-industry-technology-and-engineering-f02450d4e85a",
+        "official-2026-scu-doctoral-management-science-and-engineering-d2316e4b6e15",
+        "official-2026-scu-doctoral-accounting-b1b623404d00",
+        "official-2026-scu-doctoral-enterprise-management-ffeb5e84e8c8",
+        "official-2026-scu-doctoral-ecology-f5b8ffa0c242",
+        "official-2026-scu-doctoral-biology-fcae1dd0e688",
+        "official-2026-scu-doctoral-probability-and-mathematical-statistics-3c4db1849761",
+        "official-2026-scu-doctoral-fundamental-mathematics-aef07d45999c",
+        "official-2026-scu-doctoral-computational-mathematics-650b6c85a7ac",
+        "official-2026-scu-doctoral-statistics-9914436cb614",
+        "official-2026-scu-doctoral-applied-mathematics-ca5c2bbf008e",
+        "official-2026-scu-doctoral-operational-research-and-cybernetics-7c04832d15e1",
+        "official-2026-scu-doctoral-water-conservancy-engineering-harbor-coastal-and-offsh-8ea5b52b718c",
+        "official-2026-scu-doctoral-water-conservancy-engineering-energy-engineering-and-p-98876d5b0d98",
+        "official-2026-scu-doctoral-water-conservancy-engineering-hydraulic-structure-engi-5f0ac6a9aa47",
+        "official-2026-scu-doctoral-water-conservancy-engineering-hydraulics-and-river-dyn-c577b898c434",
+        "official-2026-scu-doctoral-water-conservancy-engineering-water-resources-and-hydr-de75c8eb1faa",
+        "official-2026-scu-doctoral-water-conservancy-engineering-hydrology-and-water-reso-e7fc6c634d5d",
+        "official-2026-scu-doctoral-linguistics-and-applied-linguistics-in-foreign-languag-4bc0b2aace1d",
+        "official-2026-scu-doctoral-english-language-and-literature-cf50eec86d6d",
+        "official-2026-scu-doctoral-cyber-security-db8f196be9cf",
+        "official-2026-scu-doctoral-comparative-literature-and-world-literature-d854a2698464",
+        "official-2026-scu-doctoral-communication-c69ea9e501e2",
+        "official-2026-scu-doctoral-buddhism-literature-a81ebaae498b",
+        "official-2026-scu-doctoral-radio-and-television-journalism-d2be155a8f99",
+        "official-2026-scu-doctoral-tcsol-8b65a6607bad",
+        "official-2026-scu-doctoral-chinese-philology-685f09354228",
+        "official-2026-scu-doctoral-cross-cultural-communication-studies-d7ef9a056ee2",
+        "official-2026-scu-doctoral-literary-anthropology-62b73a3d1530",
+        "official-2026-scu-doctoral-theory-of-literature-and-art-80525fd3de02",
+        "official-2026-scu-doctoral-journalism-13447755d203",
+        "official-2026-scu-doctoral-linguistics-and-applied-linguistics-f4b154a6e18d",
+        "official-2026-scu-doctoral-ancient-chinese-literary-b8d07e5ef09c",
+        "official-2026-scu-doctoral-study-of-chinese-classical-text-8de84b2da0d5",
+        "official-2026-scu-doctoral-chinese-ethnic-language-and-literature-e9d304f16a55",
+        "official-2026-scu-doctoral-modern-and-contemporary-chinese-literature-a0b3da6c887c",
+        "official-2026-scu-doctoral-physics-3be2464354d3",
+        "official-2026-scu-doctoral-nuclear-science-and-technology-9f13424e97de",
+        "official-2026-scu-doctoral-art-history-theory-criticism-d9453d944f46",
+        "official-2026-scu-doctoral-research-on-modern-contemporary-chinese-art-ff6fc272e226",
+        "official-2026-scu-doctoral-design-theory-history-9e6db5f5ccbf",
+        "official-2026-scu-doctoral-research-on-the-art-of-southwest-china-1b26b88ee5aa",
+        "official-2026-scu-doctoral-design-and-new-media-art-d4d9f624f352",
+        "official-2026-scu-doctoral-studies-in-the-contemporary-transformation-of-southwes-a474db7a40e4",
+        "official-2026-scu-doctoral-studies-in-public-art-and-environmental-landscape-desi-7ec705ae6dcf",
+        "official-2026-scu-doctoral-chinese-philosophy-7d50988ea1ba",
+        "official-2026-scu-doctoral-foreign-philosophy-16af2b0197fe",
+        "official-2026-scu-doctoral-ethics-29fc48df3c4c",
+        "official-2026-scu-doctoral-material-science-908fb815e79a",
+        "official-2026-scu-doctoral-materials-processing-engineering-e358ba38e6ed",
+        "official-2026-scu-doctoral-biomedical-engineering-a7c205aa3077",
+        "official-2026-scu-doctoral-materials-engineering-622976f9d1cf",
+        "official-2026-scu-doctoral-ultrasound-271478db49ad",
+        "official-2026-scu-doctoral-pediatrics-71e548c30160",
+        "official-2026-scu-doctoral-pediatrics-cc6ed61f82d0",
+        "official-2026-scu-doctoral-pediatric-surgery-e39ed46b614c",
+        "official-2026-scu-doctoral-pediatric-surgery-1568d02f3d44",
+        "official-2026-scu-doctoral-otorhinolaryngology-572c096e40f5",
+        "official-2026-scu-doctoral-otorhinolaryngology-a5dae3036e07",
+        "official-2026-scu-doctoral-radiologic-imaging-df40aa770b3b",
+        "official-2026-scu-doctoral-radiation-oncology-3ca3d36e2654",
+        "official-2026-scu-doctoral-obstetrics-and-gynecology-b235e4369e93",
+        "official-2026-scu-doctoral-obstetrics-and-gynecology-9241f1138de1",
+        "official-2026-scu-doctoral-osteology-0913cba06f4e",
+        "official-2026-scu-doctoral-osteology-6fc3780c03f5",
+        "official-2026-scu-doctoral-nuclear-medicine-c32cb20e0452",
+        "official-2026-scu-doctoral-emergency-medicine-5f92052b89e4",
+        "official-2026-scu-doctoral-emergency-medicine-ac0f39cd6172",
+        "official-2026-scu-doctoral-disease-related-molecular-and-translational-medicine-3d934f0a5c22",
+        "official-2026-scu-doctoral-psychiatry-and-mental-health-246e20798426",
+        "official-2026-scu-doctoral-psychiatry-and-mental-health-7c8c14dbe9d2",
+        "official-2026-scu-doctoral-rehabilitation-medicine-and-physical-therapy-b31a2e770dfe",
+        "official-2026-scu-doctoral-rehabilitation-medicine-and-physical-therapy-07b911069263",
+        "official-2026-scu-doctoral-geriatrics-f3a615636f22",
+        "official-2026-scu-doctoral-geriatrics-5457669abfeb",
+        "official-2026-scu-doctoral-clinical-pathology-5e0141344811",
+        "official-2026-scu-doctoral-clinical-laboratory-diagnostics-6522d477e3d0",
+        "official-2026-scu-doctoral-clinical-laboratory-diagnostics-8a9f4926a174",
+        "official-2026-scu-doctoral-clinical-drug-and-device-evaluation-science-f7d41130d7ed",
+        "official-2026-scu-doctoral-anesthesiology-4cfb7c324116",
+        "official-2026-scu-doctoral-anesthesiology-5247be8a2370",
+        "official-2026-scu-doctoral-maternal-and-child-medical-da22de2ce42c",
+        "official-2026-scu-doctoral-dermatology-and-venereology-8c36838b8329",
+        "official-2026-scu-doctoral-dermatology-and-venereology-b02cdc83ad86",
+        "official-2026-scu-doctoral-general-medicine-0ea278046fc1",
+        "official-2026-scu-doctoral-neurology-36ce7235c345",
+        "official-2026-scu-doctoral-neurology-ade92d6a5b3b",
+        "official-2026-scu-doctoral-ophthalmology-360e1f69ddcc",
+        "official-2026-scu-doctoral-ophthalmology-a42cdf5f8baf",
+        "official-2026-scu-doctoral-imaging-and-nuclear-medicine-a88d8bb95e4a",
+        "official-2026-scu-doctoral-sports-medicine-1d61e2d31f64",
+        "official-2026-scu-doctoral-sports-medicine-93533a8a926f",
+        "official-2026-scu-doctoral-phymatology-eb928e284a56",
+        "official-2026-scu-doctoral-phymatology-cd8d31ed87e9",
+        "official-2026-scu-doctoral-critical-care-medicine-cc7827ac9ecb",
+        "official-2026-scu-doctoral-critical-care-medicine-0579294c7905",
+        "official-2026-scu-doctoral-integrated-traditional-chinese-and-western-medicine-cab6e4fee958",
+        "official-2026-scu-doctoral-high-altitude-medicine-35988190c087",
+        "official-2026-scu-doctoral-high-altitude-medicine-7a2e1e6e4204",
+        "official-2026-scu-doctoral-major-human-disease-biological-treatment-ae2fa67c6fd3",
+        "official-2026-scu-doctoral-medical-genetics-dc68918951f0",
+        "official-2026-scu-doctoral-medical-informatics-5b117c52d41a",
+        "official-2026-scu-doctoral-intelligence-science-and-technology-c15c0a0a4675",
+        "official-2026-scu-doctoral-medical-laboratory-technology-904b2b4dc46d",
+        "official-2026-scu-doctoral-medical-laboratory-technology-e6f40771245f",
+        "official-2026-scu-doctoral-medical-laboratory-technology-a86e22948c68",
+        "official-2026-scu-doctoral-medical-imaging-technology-ea34b89652e0",
+        "official-2026-scu-doctoral-radiotherapy-physics-and-technology-3c24787f6308",
+        "official-2026-scu-doctoral-optometry-and-vision-sciences-0d8762fea5df",
+        "official-2026-scu-doctoral-07-optometry-and-vision-sciences-05eb2d8f6a1e",
+        "official-2026-scu-doctoral-rehabilitation-therapy-c6e7f36f9c7b",
+        "official-2026-scu-doctoral-physical-therap-1b29ef44baff",
+        "official-2026-scu-doctoral-occupational-therapy-55bee022bba0",
+        "official-2026-scu-doctoral-respiratory-care-e3d2a4186f61",
+        "official-2026-scu-doctoral-respiratory-care-a50d19a7be4a",
+        "official-2026-scu-doctoral-audiology-bd53009f2c75",
+        "official-2026-scu-doctoral-audiology-and-speech-sciences-d155876775b0",
+        "official-2026-scu-doctoral-medical-engineering-technology-eb42f2e4734b",
+        "official-2026-scu-doctoral-innovation-and-clinical-evaluation-of-medical-equipmen-d06ef4339799",
+        "official-2026-scu-doctoral-respiratory-medicine-cb984b05277a",
+        "official-2026-scu-doctoral-respiratory-medicine-a54ad11842b2",
+        "official-2026-scu-doctoral-cardiology-medicine-93e2af32c608",
+        "official-2026-scu-doctoral-cardiology-medicine-01889a5ebe85",
+        "official-2026-scu-doctoral-gastroenterology-medicine-ee5400c09a15",
+        "official-2026-scu-doctoral-gastroenterology-medicine-08ee525b6733",
+        "official-2026-scu-doctoral-nephrology-medicine-1798955dfff2",
+        "official-2026-scu-doctoral-nephrology-medicine-6b5bc62b567c",
+        "official-2026-scu-doctoral-endocrinology-and-metabolism-b0083ac76e2d",
+        "official-2026-scu-doctoral-endocrinology-and-metabolism-881790c3e836",
+        "official-2026-scu-doctoral-hematology-f2a4c8262c7a",
+        "official-2026-scu-doctoral-hematology-0d7eab48dc66",
+        "official-2026-scu-doctoral-rheumatology-c842e3e85c17",
+        "official-2026-scu-doctoral-rheumatology-6917ae613656",
+        "official-2026-scu-doctoral-infectious-diseases-57c66daca566",
+        "official-2026-scu-doctoral-infectious-diseases-132941f673c5",
+        "official-2026-scu-doctoral-burn-surgery-9396dd0096a2",
+        "official-2026-scu-doctoral-burn-surgery-ec444fcbcdb8",
+        "official-2026-scu-doctoral-plastic-surgery-c700ff097e0a",
+        "official-2026-scu-doctoral-plastic-surgery-263a77cb750c",
+        "official-2026-scu-doctoral-thoracic-surgery-9275c9568f36",
+        "official-2026-scu-doctoral-thoracic-surgery-ed5b94812ca2",
+        "official-2026-scu-doctoral-cardiovascular-surgery-f89de2f288e9",
+        "official-2026-scu-doctoral-cardiovascular-surgery-0757f55bd684",
+        "official-2026-scu-doctoral-neurosurgery-bca4b967323b",
+        "official-2026-scu-doctoral-neurosurgery-9a3b58969c7f",
+        "official-2026-scu-doctoral-urology-6ed9a74e57ad",
+        "official-2026-scu-doctoral-urology-739205d395f8",
+        "official-2026-scu-doctoral-general-surgery-c9e42b7969e9",
+        "official-2026-scu-doctoral-general-surgery-7bfd30207d1f",
+        "official-2026-scu-doctoral-trauma-center-2ea73b024274",
+        "official-2026-scu-doctoral-trauma-center-560cbcd7c358",
+        "official-2026-scu-doctoral-chronic-disease-and-geriatric-nursing-a00e9f760e92",
+        "official-2026-scu-doctoral-surgical-nursing-3bcdf5b7f349",
+        "official-2026-scu-doctoral-evidence-based-nursing-9efbd48d0865",
+        "official-2026-scu-doctoral-maternity-and-child-nursing-cbb235bba282",
+        "official-2026-scu-doctoral-innovation-and-transformation-of-nursing-technology-b53e878cc1f8",
+        "official-2026-scu-doctoral-disaster-nursing-8a7ca3ce96a7",
+        "official-2026-scu-doctoral-clinical-pharmacy-87f917d75a69",
+        "official-2026-scu-doctoral-carbon-neutrality-technology-and-engineering-0091328e7d30"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "SCU publishes tuition by degree and academic category rather than a row-level mapping; the verified official band is preserved without inferring a program price.",
+        "Undergraduate CSCA subjects follow SCU's published category-and-language matrix; no unverified discipline classification is added."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://global.scu.edu.cn/oso/article/index/1106?lang=en",
+            "title": "Sichuan University 2026 international admission guide",
+            "capturedAt": "2026-09-13T09:16:12.859Z",
+            "contentSha256": "da2aea26e45be3ad842bdd83e5c2630b883e092da86e8bce7b5dd8f537eab1da"
+          },
+          {
+            "key": "requirements",
+            "url": "https://global.scu.edu.cn/oso/article/index/1070?lang=en",
+            "title": "Sichuan University 2026 international doctoral application requirements",
+            "capturedAt": "2026-09-13T09:31:18.613Z",
+            "contentSha256": "fd4c4c0b172d246e366f6846d5ddaded69a4fbfbd381f6266fb64d48b8c3745d"
+          },
+          {
+            "key": "catalog",
+            "url": "https://global.scu.edu.cn/oso/article/index/1071?lang=en",
+            "title": "Sichuan University 2026 international doctoral program catalog",
+            "capturedAt": "2026-09-13T09:16:16.388Z",
+            "contentSha256": "0b18cbb96b7c5c526b15bec3223867c08a94fd9422324935c399b6fc1df05cc2"
+          },
+          {
+            "key": "tuition",
+            "url": "https://global.scu.edu.cn/oso/article/index/1100?lang=en",
+            "title": "Sichuan University 2026 international doctoral tuition schedule",
+            "capturedAt": "2026-09-13T09:31:21.825Z",
+            "contentSha256": "9a43b051323334618e63ff1bb218deff41b11f7f07102bc606328d51e58c1767"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health, hold a valid foreign passport, and be age 18-45.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught doctoral applicants",
+            "ruleText": "Humanities routes: HSK 5 score 180 or above; science, engineering, medicine and agriculture routes: HSK 4 score 180 or above; accepted equivalents and the published prior Chinese-medium education exemption may apply.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 doctoral applicants",
+            "ruleText": "Submit the online application from November 1, 2025 through May 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - When to Apply"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Apply through the SCU Overseas Students Office online system; sponsor-funded routes must also follow the sponsor system stated by the official guide.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the passport first page, valid for at least six months from application; applicants living in mainland China also submit the valid visa or residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit undergraduate and postgraduate graduation/degree certificates, or a university-sealed pre-graduation certificate stating the expected graduation date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "china_study_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants living in China or with prior study in China",
+            "ruleText": "Submit the previous Chinese school's document describing the applicant's performance at school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit university-sealed undergraduate and postgraduate academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit two recommendation letters from professors, associate professors or equivalent experts in the intended major, including handwritten signature, title, affiliation, phone number and email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a Chinese or English study and research plan covering self-introduction, reasons for applying, understanding of the major and study plan; English-taught applicants must write it in English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "academic_papers",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Optionally submit contents and abstracts of academic papers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught doctoral applicants",
+            "ruleText": "Humanities routes: HSK 5 score 180 or above; science, engineering, medicine and agriculture routes: HSK 4 score 180 or above; accepted equivalents and the published prior Chinese-medium education exemption may apply.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 8 and Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form with results no more than six months old at application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants without a full scholarship",
+            "ruleText": "Submit funding-source or guardian financial-guarantee evidence, such as a family bank deposit certificate and parent/guardian income certificate; SCU recommends at least USD 5,000. Full-scholarship applicants are exempt.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "employment",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Doctoral applicants with employment",
+            "ruleText": "Submit a certificate of employment when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued by the local public-security authority no more than six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Optionally submit award certificates or other supporting documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translations_authenticity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Upload authentic electronic records; documents in other languages require official Chinese or English translations. SCU does not process incomplete applications and may request additional records.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents - Notes 1-2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled Chinese-taught doctoral students",
+            "ruleText": "Use the official annual category schedule for this route: Official category schedule: CNY 26,000-60,000/year; the exact amount depends on humanities/economics/management, science/engineering, medicine, stomatology, clinical medicine, arts/sports or archaeology classification. SCU publishes category bands rather than a row-level amount, so the applicable category must be confirmed without inferring a price.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tuition",
+                "locator": "Official 2026 doctoral tuition category schedule"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "scu-doctoral-english-group-07-fall-2026",
+      "schoolSlug": "sichuan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-scu-doctoral-industrial-catalysis-924aa375bd2f",
+        "official-2026-scu-doctoral-chemical-safety-engineering-and-technology-6c1004a5112a",
+        "official-2026-scu-doctoral-chemical-process-equipment-8f66ce1438f5",
+        "official-2026-scu-doctoral-chemical-engineering-76a4b3dcf82a",
+        "official-2026-scu-doctoral-chemical-technology-d48834877d76",
+        "official-2026-scu-doctoral-chemical-metallurgy-and-material-technology-4e22dfc443ac",
+        "official-2026-scu-doctoral-biochemical-engineering-600ba2e9ff86",
+        "official-2026-scu-doctoral-applied-chemistry-2d1777070a2d",
+        "official-2026-scu-doctoral-mechanical-engineering-mechatronics-4a0052e12628",
+        "official-2026-scu-doctoral-mechanical-engineering-mechanical-design-and-theory-f9f978b971f3",
+        "official-2026-scu-doctoral-mechanical-engineering-mechanical-manufacture-and-auto-b3974da67da3",
+        "official-2026-scu-doctoral-mechanical-engineering-adavanced-materials-forming-tec-6acbb38f35e2",
+        "official-2026-scu-doctoral-mechanical-engineering-measurement-technology-and-inst-5939fff88af8",
+        "official-2026-scu-doctoral-computer-science-and-technology-c1a31e0ec7bc",
+        "official-2026-scu-doctoral-archaeology-80b3b59ebf3d",
+        "official-2026-scu-doctoral-tourism-management-7b6b88fc4bda",
+        "official-2026-scu-doctoral-management-science-and-engineering-f21660297f99",
+        "official-2026-scu-doctoral-accounting-1dc32f9009dc",
+        "official-2026-scu-doctoral-enterprise-management-cd0ea5a3f909",
+        "official-2026-scu-doctoral-probability-and-mathematical-statistics-11db5eddf17c",
+        "official-2026-scu-doctoral-fundamental-mathematics-2b870f3fdf80",
+        "official-2026-scu-doctoral-computational-mathematics-c74a850ea060",
+        "official-2026-scu-doctoral-statistics-3c1c2f74c85a",
+        "official-2026-scu-doctoral-applied-mathematics-e173441c00ef",
+        "official-2026-scu-doctoral-operational-research-and-cybernetics-5a2367a200d3",
+        "official-2026-scu-doctoral-material-science-d41d6fba4dc2"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "SCU publishes tuition by degree and academic category rather than a row-level mapping; the verified official band is preserved without inferring a program price.",
+        "Undergraduate CSCA subjects follow SCU's published category-and-language matrix; no unverified discipline classification is added."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://global.scu.edu.cn/oso/article/index/1106?lang=en",
+            "title": "Sichuan University 2026 international admission guide",
+            "capturedAt": "2026-09-13T09:16:12.859Z",
+            "contentSha256": "da2aea26e45be3ad842bdd83e5c2630b883e092da86e8bce7b5dd8f537eab1da"
+          },
+          {
+            "key": "requirements",
+            "url": "https://global.scu.edu.cn/oso/article/index/1070?lang=en",
+            "title": "Sichuan University 2026 international doctoral application requirements",
+            "capturedAt": "2026-09-13T09:31:18.613Z",
+            "contentSha256": "fd4c4c0b172d246e366f6846d5ddaded69a4fbfbd381f6266fb64d48b8c3745d"
+          },
+          {
+            "key": "catalog",
+            "url": "https://global.scu.edu.cn/oso/article/index/1071?lang=en",
+            "title": "Sichuan University 2026 international doctoral program catalog",
+            "capturedAt": "2026-09-13T09:16:16.388Z",
+            "contentSha256": "0b18cbb96b7c5c526b15bec3223867c08a94fd9422324935c399b6fc1df05cc2"
+          },
+          {
+            "key": "tuition",
+            "url": "https://global.scu.edu.cn/oso/article/index/1100?lang=en",
+            "title": "Sichuan University 2026 international doctoral tuition schedule",
+            "capturedAt": "2026-09-13T09:31:21.825Z",
+            "contentSha256": "9a43b051323334618e63ff1bb218deff41b11f7f07102bc606328d51e58c1767"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health, hold a valid foreign passport, and be age 18-45.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught doctoral applicants",
+            "ruleText": "TOEFL 80 or above, IELTS 6.0 or above, or an accepted equivalent; native English speakers and applicants with prior English-medium education may qualify for the published exemption.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 doctoral applicants",
+            "ruleText": "Submit the online application from November 1, 2025 through May 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - When to Apply"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Apply through the SCU Overseas Students Office online system; sponsor-funded routes must also follow the sponsor system stated by the official guide.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Part 3 - How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the passport first page, valid for at least six months from application; applicants living in mainland China also submit the valid visa or residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit undergraduate and postgraduate graduation/degree certificates, or a university-sealed pre-graduation certificate stating the expected graduation date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "china_study_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants living in China or with prior study in China",
+            "ruleText": "Submit the previous Chinese school's document describing the applicant's performance at school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit university-sealed undergraduate and postgraduate academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit two recommendation letters from professors, associate professors or equivalent experts in the intended major, including handwritten signature, title, affiliation, phone number and email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a Chinese or English study and research plan covering self-introduction, reasons for applying, understanding of the major and study plan; English-taught applicants must write it in English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "academic_papers",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Optionally submit contents and abstracts of academic papers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught doctoral applicants",
+            "ruleText": "TOEFL 80 or above, IELTS 6.0 or above, or an accepted equivalent; native English speakers and applicants with prior English-medium education may qualify for the published exemption.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 8 and Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form with results no more than six months old at application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants without a full scholarship",
+            "ruleText": "Submit funding-source or guardian financial-guarantee evidence, such as a family bank deposit certificate and parent/guardian income certificate; SCU recommends at least USD 5,000. Full-scholarship applicants are exempt.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "employment",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Doctoral applicants with employment",
+            "ruleText": "Submit a certificate of employment when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued by the local public-security authority no more than six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Optionally submit award certificates or other supporting documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translations_authenticity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Upload authentic electronic records; documents in other languages require official Chinese or English translations. SCU does not process incomplete applications and may request additional records.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "requirements",
+                "locator": "Application Documents - Notes 1-2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled English-taught doctoral students",
+            "ruleText": "Use the official annual category schedule for this route: Official category schedule: CNY 26,000-60,000/year; the exact amount depends on humanities/economics/management, science/engineering, medicine, stomatology, clinical medicine, arts/sports or archaeology classification. SCU publishes category bands rather than a row-level amount, so the applicable category must be confirmed without inferring a price.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "tuition",
+                "locator": "Official 2026 doctoral tuition category schedule"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

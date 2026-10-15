@@ -1,0 +1,420 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T12:15:31.997Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete current official-source requirements for eight Tsinghua Zijing College Fall 2027 engineering routes."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 8,
+    "targetedIntakeCount": 8,
+    "excludedProgramCount": 0,
+    "requirementItemCount": 23
+  },
+  "templates": [
+    {
+      "key": "tsinghua-zijing-global-talents-engineering-fall-2027",
+      "schoolSlug": "tsinghua-university",
+      "cycle": "fall-2027",
+      "targetProgramSlugs": [
+        "tsinghua-university-undergraduate-zijing-college-interdisciplinary-engineering-english",
+        "tsinghua-university-undergraduate-zijing-college-electrical-engineering-and-automation-english",
+        "tsinghua-university-undergraduate-zijing-college-electronic-information-science-and-technology-english",
+        "tsinghua-university-undergraduate-zijing-college-mechanical-engineering-english",
+        "tsinghua-university-undergraduate-zijing-college-measurement-control-technology-and-instruments-english",
+        "tsinghua-university-undergraduate-zijing-college-vehicle-engineering-english",
+        "tsinghua-university-undergraduate-zijing-college-civil-engineering-and-systems-english",
+        "tsinghua-university-undergraduate-zijing-college-traffic-engineering-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2027
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "The guide names these eight engineering directions and gives a single program-level fee and requirements set; it does not publish route-specific CSCA subject combinations or score thresholds.",
+        "The current Fall 2027 candidate remains unreviewed and non-public.",
+        "Scholarship support is described at program level but remains outside this route-requirement binding."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://international.join-tsinghua.edu.cn/info/1082/1185.htm",
+            "title": "Tsinghua University Zijing College 2027 Global Talents in Science and Engineering admission guide",
+            "capturedAt": "2026-10-15T12:11:35.108Z",
+            "contentSha256": "8fa2cbe5148d5f22bb2824a088ee26312409cea1ef7c8bca6407a70f53036473"
+          },
+          {
+            "key": "documents",
+            "url": "https://international.join-tsinghua.edu.cn/List.pdf",
+            "title": "Tsinghua University 2027 international undergraduate application document list",
+            "capturedAt": "2026-10-15T12:12:45.591Z",
+            "contentSha256": "eea757838c711069c937b720331fa102eb947c6f57329110901c0a8a2aeb22b5"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "nationality",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Be a foreign national who does not hold Chinese nationality and hold a valid foreign passport or other valid proof of foreign nationality under the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility section 2.1"
+              }
+            ]
+          },
+          {
+            "key": "health_and_conduct",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Be in good physical and mental health and demonstrate goodwill toward China.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility section 2.2"
+              }
+            ]
+          },
+          {
+            "key": "high_school_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold or be completing a high-school graduation certificate obtained through full-time, in-person education.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility section 2.2"
+              }
+            ]
+          },
+          {
+            "key": "academic_performance",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide evidence of outstanding academic performance through transcripts and the applicable graduation, matriculation or international standardized-test results and supporting materials.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Academic performance section 2.3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Create an account in the online application system, complete the form, upload the required documents, pay the application fee and submit during the application period.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Online Application section 3.1"
+              }
+            ]
+          },
+          {
+            "key": "nationality_documents",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload every nationality-status document required by Tsinghua's 2027 nationality documentation rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list item 1"
+              }
+            ]
+          },
+          {
+            "key": "graduation_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicable original high-school diploma, pre-graduation certificate stating the expected graduation time, or university enrollment certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list item 2"
+              }
+            ]
+          },
+          {
+            "key": "cv_and_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese- or English-language CV and the applicable original high-school and university transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "english_language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants whose native language is not English",
+            "ruleText": "Provide a valid English-language test report such as TOEFL or IELTS. The guide publishes no universal numeric minimum.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Language proficiency section 2.3"
+              }
+            ]
+          },
+          {
+            "key": "standardized_tests",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicable national or regional graduation or matriculation examination certificate and/or available international standardized-test results such as CSCA, SAT, ACT, A-Level, AP or IB.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list item 6"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Arrange two recommendation letters through the online system; its template is sent directly to each recommender's email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list item 8"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a personal statement in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_sponsor",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the Financial Sponsor form and the sponsor's employment or income certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list item 10"
+              }
+            ]
+          },
+          {
+            "key": "self_introduction_video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese-and-English self-introduction video no longer than three minutes and smaller than 20 MB in an accepted file format.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list item 12"
+              }
+            ]
+          },
+          {
+            "key": "other_supporting_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants with awards or other supporting evidence",
+            "ruleText": "Upload relevant supporting materials such as awards or admission letters from other universities when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list item 14"
+              }
+            ]
+          },
+          {
+            "key": "translation_and_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit original Chinese- or English-language materials; for originals in another language, also submit a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list note 1"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2027",
+            "ruleText": "Provide a certificate identifying a legal guardian in China who currently lives in Beijing and has a source of income.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list note 4"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2027 applicants",
+            "ruleText": "Submit by the applicable round deadline: November 20, 2026 at 17:00 Beijing time for round one, or February 28, 2027 at 17:00 Beijing time for round two.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Schedule sections 4.1-4.2"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable RMB 800 online application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Online Application section 3.1.4 and Fees section 5.1"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who pass document screening",
+            "ruleText": "Participate in Tsinghua's comprehensive assessment when invited; its method and schedule will be communicated separately.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Comprehensive Evaluation section 3.2"
+              }
+            ]
+          },
+          {
+            "key": "hardcopy_verification",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who pass the comprehensive assessment",
+            "ruleText": "Provide the specified hard-copy nationality documents, signed application form, transcripts and other required materials for verification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Document list note 3"
+              }
+            ]
+          },
+          {
+            "key": "tuition_and_insurance",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay RMB 100,000 tuition per year and RMB 800 medical insurance per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees section 5.1"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students seeking on-campus housing",
+            "ruleText": "Reserve a designated Zijing College room online within the announced period; room availability and accommodation charges are controlled by the booking system and International Student and Scholar Center.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Accommodation section 5.2"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

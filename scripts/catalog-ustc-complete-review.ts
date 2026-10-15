@@ -9,7 +9,7 @@ import {
 } from "../src/server/catalog/seed-contract.ts";
 
 const root = process.cwd();
-const runDir = resolve(root, process.env.CUAC_USTC_MANIFEST_DIR || "work/catalog-official/ustc-current-complete-20260914-v2");
+const runDir = resolve(root, process.env.CUAC_USTC_MANIFEST_DIR || "work/catalog-official/2026-10-15T08-46-24-262Z");
 const parsedPath = resolve(root, "work/catalog-official/ustc-complete-batch-01/parsed-routes.json");
 const candidatePath = resolve(root, "seeds/catalog.ustc-complete-batch-01.draft.json");
 const validationPath = resolve(root, "seeds/catalog.ustc-complete-batch-01.validation.json");
@@ -19,21 +19,21 @@ const schoolSlug = "university-of-science-and-technology-of-china";
 const applicationUrl = "https://isa.ustc.edu.cn/xs/login_scho.asp";
 
 const expected: Record<string, string> = {
-  "ustc-admissions-overview-2026": "87725e44822d4c5009e40b789f20082a083fa07b547aa99ff32c8fb97f4bcf52",
-  "ustc-undergraduate-programs-2026": "5c948a9946309e9c8fe1a9094f4f7ea609c16c0ebaad4abe129bae2fc4f88470",
-  "ustc-undergraduate-guide-2026": "afa122b41b39ab485e42ab1137a6842699e02c19a259a953135929085fbb507e",
-  "ustc-postgraduate-programs-2026": "d6a54a349f94fa7b549f696d8718ac7f2482a8b660f2db554bd3bfef02c1bff2",
+  "ustc-admissions-overview-2026": "bd8310da81a1a6170388146b3423c1112fc25a6f3beed2d1b58cd5fffc89bbfe",
+  "ustc-undergraduate-programs-2026": "e2f12ea09bdbf6e47b2ee8f77608ad8a98a69e6b31344f87b682483be71fb774",
+  "ustc-undergraduate-guide-2026": "e21f1188ddeb07d08f41de8da8edc92c697f13d56ee232fff0c9c9c387884869",
+  "ustc-postgraduate-programs-2026": "136f94f82997e4be5ef1b0f7e165ba21aceba2822f9bf3979616888e9506de2b",
   "ustc-doctoral-programs-english-2026": "5923918ba5ac92366e8df8ea31a1d387c39ca064dfe6c08e46cbb781f9fd2870",
   "ustc-doctoral-programs-chinese-2026": "e4583dc3e11ede99be96b81d4eb2314123718c22e37bfb5f5222aa4212ffcfa0",
   "ustc-master-programs-english-2026": "5a0427dd322caa2d094603e7208397d4cfa770a07391e125cd7c2313399c456b",
   "ustc-master-programs-chinese-2026": "59db76f72f302d5933ceeb759e952aea7d3dc7abc38ec2b5ed5b5dcacc690e6d",
-  "ustc-postgraduate-guide-2026": "d6ac8f5c025dd162f5c8df2da6dd2989ca9d4f59af24b0c24f4ea9b4db731890",
-  "ustc-undergraduate-fellowship-2026": "ea6c892acec6c01147ed81270f435e4d8053b051086176848b963dfbafbcf7e6",
-  "ustc-master-fellowship-2026": "1710bcbbc62dbb54bd2d96c1e5ce2535dd6570b1f8ee88a28b22069ab7bc4653",
-  "ustc-doctoral-fellowship-2026": "a3f761d3bf84ab934729f0aee369e0e2e49a7a93d6ddca6d89574fe55e974d56",
-  "ustc-youth-of-excellence-2026": "11c14a883e3dfd936f5e8f97b04f94df79f2d0cd498c2524a036bac7ba6648df",
-  "ustc-cas-anso-scholarship-2026": "fe215812690e2bf9bb48ea421cd72d9fa3b3dd035510b063e7bc837dbe83420f",
-  "ustc-international-home-current": "957a8ef54782041336fc6109bb9b26174d7f83d1650206917a43fc1750af986c",
+  "ustc-postgraduate-guide-2026": "891c8f2247b17909182a26362a3e98eb9d2b2a6e6c3edbc65727bdf2869ee0d2",
+  "ustc-undergraduate-fellowship-2026": "d633c5fa148994d30a39b32f8708d831f70fedef833008e2341d81498f3e2b34",
+  "ustc-master-fellowship-2026": "ea04c133c08e82b05fd32084e6469eddc34f39cf2fab9d0f469b50442552022d",
+  "ustc-doctoral-fellowship-2026": "1e83444944ec3196e08268733805e125bcf81a3e3ccf263184a4d6ca02e608ef",
+  "ustc-youth-of-excellence-2026": "cde5dd79dc51d61078db35d63e887601d91b14142a77089b07779065d7c5ed1b",
+  "ustc-cas-anso-scholarship-2026": "ff27df5442057632b394759cb1ad3c383753ce2351e99565bea74483f52084e5",
+  "ustc-international-home-current": "dd3b2248c54943fb154b5136bc6a2459c1ffc3fe1967b2e7cb5f1f86d0d31a5c",
 };
 
 const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8"));
@@ -240,6 +240,7 @@ const reviewBase = {
   ],
   sensitiveDataCheck: { result: "pass", scope: "candidate bundle and official evidence snapshots", note: "Only public institutional, program, admissions and scholarship information is included. Public staff contact details appearing in source pages are not copied into catalog records. No applicant, account, passport, payment or private-contact data is present." },
   reviewNotes: [
+    "The October 15, 2026 refresh preserved identical normalized admissions, program, fee and scholarship text; the overview only removed a Learn More label and the international-homepage hash changed with its rotating news feed.",
     "The candidate contains 287 program-language routes: 35 undergraduate, 91 master's and 161 doctoral.",
     "Five scholarships are represented as independent structured awards; USTC Fellowship degree levels are not collapsed into one vague overview.",
     "Three prior third-party scholarship placeholders are proposed for archival and replacement by the five official 2026 records.",

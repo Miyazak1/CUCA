@@ -1,0 +1,2428 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T10:38:06.282Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope XJTU 2026 undergraduate requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 9,
+    "readyTemplateCount": 9,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 49,
+    "targetedIntakeCount": 49,
+    "requirementItemCount": 126
+  },
+  "templates": [
+    {
+      "key": "xjtu-undergraduate-group-01-fall-2026",
+      "schoolSlug": "xi-an-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xi-an-jiaotong-university-materials-science-and-engineering",
+        "xi-an-jiaotong-university-chemistry",
+        "xi-an-jiaotong-university-applied-chemistry",
+        "xi-an-jiaotong-university-human-settlements-earth-and-environment-sciences",
+        "xi-an-jiaotong-university-biomedical-engineering",
+        "xi-an-jiaotong-university-biotechnology",
+        "xi-an-jiaotong-university-chemical-engineering-and-technology",
+        "xi-an-jiaotong-university-process-equipment-and-control-engineering"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Scholarship records remain separate unreviewed catalog drafts; no award is implied for an individual route."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://sie.xjtu.edu.cn/en/bke.pdf",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Admission Guide",
+            "capturedAt": "2026-09-22T13:49:32.779Z",
+            "contentSha256": "746ca59861829b899a623abfd565e9022c7221754740d202ce985620eeedb418"
+          },
+          {
+            "key": "programs",
+            "url": "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Bachelor_Program.htm",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Programs",
+            "capturedAt": "2026-09-22T13:49:33.837Z",
+            "contentSha256": "936c805a0738099c2c020dd5ea7829b6697cc5d1d2da2be775c0d33e54bb7e80"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.xjtu.edu.cn/CS2026.xlsx",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Program List and CSCA Subjects",
+            "capturedAt": "2026-09-22T13:54:08.616Z",
+            "contentSha256": "460683227698ccbe508d70d80e42da876ee9db4adde773764a4fa3b109e82539"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be under age 25, in good health, and provide a Guardian Authorization Letter if under age 18.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold and submit a valid foreign ordinary passport; the submitted passport must remain valid at least six months beyond the intended enrollment date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility and Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized Chinese- or English-language senior high-school graduation evidence; final-year students may apply with an expected-graduation certificate but must provide the official diploma before September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility item 3 and Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized high-school academic transcripts with courses, scores, and grading-system explanation, plus the applicable home-country or international standardized-examination transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants",
+            "ruleText": "HSK Level 4 or equivalent. Some named Chinese-language routes may exempt the CSCA Chinese subject with a valid HSK Level 4 report.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Language and Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Submit CSCA results for STEM Chinese, Mathematics, Chemistry.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 program and CSCA subject table"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit one recommendation letter from a high-school headmaster or teacher, including the recommender's email, phone number, and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan in English or Chinese of at least 600 characters or words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the official Physical Examination Record for Foreigner, fully completed and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record within its validity period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply online from November 1, 2025 through June 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published non-refundable application fee: CNY 500 for self-sponsored applications or CNY 800 for scholarship applications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 22,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Fee Standard"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation ranges from CNY 8,000 to CNY 19,000 per year and is arranged under the university's current annual policy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Accommodation fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xjtu-undergraduate-group-02-fall-2026",
+      "schoolSlug": "xi-an-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xi-an-jiaotong-university-materials-science-and-engineering-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Scholarship records remain separate unreviewed catalog drafts; no award is implied for an individual route."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://sie.xjtu.edu.cn/en/bke.pdf",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Admission Guide",
+            "capturedAt": "2026-09-22T13:49:32.779Z",
+            "contentSha256": "746ca59861829b899a623abfd565e9022c7221754740d202ce985620eeedb418"
+          },
+          {
+            "key": "programs",
+            "url": "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Bachelor_Program.htm",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Programs",
+            "capturedAt": "2026-09-22T13:49:33.837Z",
+            "contentSha256": "936c805a0738099c2c020dd5ea7829b6697cc5d1d2da2be775c0d33e54bb7e80"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.xjtu.edu.cn/CS2026.xlsx",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Program List and CSCA Subjects",
+            "capturedAt": "2026-09-22T13:54:08.616Z",
+            "contentSha256": "460683227698ccbe508d70d80e42da876ee9db4adde773764a4fa3b109e82539"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be under age 25, in good health, and provide a Guardian Authorization Letter if under age 18.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold and submit a valid foreign ordinary passport; the submitted passport must remain valid at least six months beyond the intended enrollment date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility and Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized Chinese- or English-language senior high-school graduation evidence; final-year students may apply with an expected-graduation certificate but must provide the official diploma before September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility item 3 and Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized high-school academic transcripts with courses, scores, and grading-system explanation, plus the applicable home-country or international standardized-examination transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught applicants",
+            "ruleText": "IELTS 6.0, TOEFL 80 or another English certificate accepted by XJTU.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Language and Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Submit CSCA results for Mathematics, Chemistry.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 program and CSCA subject table"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit one recommendation letter from a high-school headmaster or teacher, including the recommender's email, phone number, and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan in English or Chinese of at least 600 characters or words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the official Physical Examination Record for Foreigner, fully completed and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record within its validity period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply online from November 1, 2025 through June 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published non-refundable application fee: CNY 500 for self-sponsored applications or CNY 800 for scholarship applications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 180,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Fee Standard"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation ranges from CNY 8,000 to CNY 19,000 per year and is arranged under the university's current annual policy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Accommodation fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xjtu-undergraduate-group-03-fall-2026",
+      "schoolSlug": "xi-an-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xi-an-jiaotong-university-electrical-engineering-and-automation",
+        "xi-an-jiaotong-university-energy-internet-engineering",
+        "xi-an-jiaotong-university-computer-science-and-technology",
+        "xi-an-jiaotong-university-electronic-science-and-technology",
+        "xi-an-jiaotong-university-software-engineering",
+        "xi-an-jiaotong-university-mechanical-engineering",
+        "xi-an-jiaotong-university-new-energy-science-and-engineering",
+        "xi-an-jiaotong-university-energy-and-power-engineering",
+        "xi-an-jiaotong-university-environmental-engineering",
+        "xi-an-jiaotong-university-nuclear-engineering-and-technology",
+        "xi-an-jiaotong-university-energy-storage-science-and-engineering",
+        "xi-an-jiaotong-university-human-settlements-big-data-and-smart-city",
+        "xi-an-jiaotong-university-human-settlements-structure-and-geotechnique-engineering",
+        "xi-an-jiaotong-university-human-settlements-built-environment-and-energy",
+        "xi-an-jiaotong-university-measurement-and-control-technology-and-instrument",
+        "xi-an-jiaotong-university-measurement-and-control-technology-and-instrument-intelligent-sensing"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Scholarship records remain separate unreviewed catalog drafts; no award is implied for an individual route."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://sie.xjtu.edu.cn/en/bke.pdf",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Admission Guide",
+            "capturedAt": "2026-09-22T13:49:32.779Z",
+            "contentSha256": "746ca59861829b899a623abfd565e9022c7221754740d202ce985620eeedb418"
+          },
+          {
+            "key": "programs",
+            "url": "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Bachelor_Program.htm",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Programs",
+            "capturedAt": "2026-09-22T13:49:33.837Z",
+            "contentSha256": "936c805a0738099c2c020dd5ea7829b6697cc5d1d2da2be775c0d33e54bb7e80"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.xjtu.edu.cn/CS2026.xlsx",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Program List and CSCA Subjects",
+            "capturedAt": "2026-09-22T13:54:08.616Z",
+            "contentSha256": "460683227698ccbe508d70d80e42da876ee9db4adde773764a4fa3b109e82539"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be under age 25, in good health, and provide a Guardian Authorization Letter if under age 18.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold and submit a valid foreign ordinary passport; the submitted passport must remain valid at least six months beyond the intended enrollment date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility and Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized Chinese- or English-language senior high-school graduation evidence; final-year students may apply with an expected-graduation certificate but must provide the official diploma before September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility item 3 and Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized high-school academic transcripts with courses, scores, and grading-system explanation, plus the applicable home-country or international standardized-examination transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants",
+            "ruleText": "HSK Level 4 or equivalent. Some named Chinese-language routes may exempt the CSCA Chinese subject with a valid HSK Level 4 report.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Language and Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Submit CSCA results for STEM Chinese, Mathematics, Physics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 program and CSCA subject table"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit one recommendation letter from a high-school headmaster or teacher, including the recommender's email, phone number, and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan in English or Chinese of at least 600 characters or words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the official Physical Examination Record for Foreigner, fully completed and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record within its validity period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply online from November 1, 2025 through June 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published non-refundable application fee: CNY 500 for self-sponsored applications or CNY 800 for scholarship applications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 22,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Fee Standard"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation ranges from CNY 8,000 to CNY 19,000 per year and is arranged under the university's current annual policy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Accommodation fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xjtu-undergraduate-group-04-fall-2026",
+      "schoolSlug": "xi-an-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xi-an-jiaotong-university-electrical-engineering-and-automation-english",
+        "xi-an-jiaotong-university-intelligent-manufacturing-engineering-english",
+        "xi-an-jiaotong-university-energy-and-power-engineering-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Scholarship records remain separate unreviewed catalog drafts; no award is implied for an individual route."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://sie.xjtu.edu.cn/en/bke.pdf",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Admission Guide",
+            "capturedAt": "2026-09-22T13:49:32.779Z",
+            "contentSha256": "746ca59861829b899a623abfd565e9022c7221754740d202ce985620eeedb418"
+          },
+          {
+            "key": "programs",
+            "url": "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Bachelor_Program.htm",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Programs",
+            "capturedAt": "2026-09-22T13:49:33.837Z",
+            "contentSha256": "936c805a0738099c2c020dd5ea7829b6697cc5d1d2da2be775c0d33e54bb7e80"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.xjtu.edu.cn/CS2026.xlsx",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Program List and CSCA Subjects",
+            "capturedAt": "2026-09-22T13:54:08.616Z",
+            "contentSha256": "460683227698ccbe508d70d80e42da876ee9db4adde773764a4fa3b109e82539"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be under age 25, in good health, and provide a Guardian Authorization Letter if under age 18.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold and submit a valid foreign ordinary passport; the submitted passport must remain valid at least six months beyond the intended enrollment date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility and Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized Chinese- or English-language senior high-school graduation evidence; final-year students may apply with an expected-graduation certificate but must provide the official diploma before September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility item 3 and Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized high-school academic transcripts with courses, scores, and grading-system explanation, plus the applicable home-country or international standardized-examination transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught applicants",
+            "ruleText": "IELTS 6.0, TOEFL 80 or another English certificate accepted by XJTU.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Language and Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Submit CSCA results for Mathematics, Physics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 program and CSCA subject table"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit one recommendation letter from a high-school headmaster or teacher, including the recommender's email, phone number, and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan in English or Chinese of at least 600 characters or words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the official Physical Examination Record for Foreigner, fully completed and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record within its validity period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply online from November 1, 2025 through June 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published non-refundable application fee: CNY 500 for self-sponsored applications or CNY 800 for scholarship applications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 180,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Fee Standard"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation ranges from CNY 8,000 to CNY 19,000 per year and is arranged under the university's current annual policy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Accommodation fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xjtu-undergraduate-group-05-fall-2026",
+      "schoolSlug": "xi-an-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xi-an-jiaotong-university-law",
+        "xi-an-jiaotong-university-public-administration",
+        "xi-an-jiaotong-university-chinese-language-business-chinese",
+        "xi-an-jiaotong-university-philosophy",
+        "xi-an-jiaotong-university-sociology",
+        "xi-an-jiaotong-university-chinese-language-and-literature",
+        "xi-an-jiaotong-university-english",
+        "xi-an-jiaotong-university-japanese",
+        "xi-an-jiaotong-university-french",
+        "xi-an-jiaotong-university-network-and-new-media"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Scholarship records remain separate unreviewed catalog drafts; no award is implied for an individual route."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://sie.xjtu.edu.cn/en/bke.pdf",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Admission Guide",
+            "capturedAt": "2026-09-22T13:49:32.779Z",
+            "contentSha256": "746ca59861829b899a623abfd565e9022c7221754740d202ce985620eeedb418"
+          },
+          {
+            "key": "programs",
+            "url": "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Bachelor_Program.htm",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Programs",
+            "capturedAt": "2026-09-22T13:49:33.837Z",
+            "contentSha256": "936c805a0738099c2c020dd5ea7829b6697cc5d1d2da2be775c0d33e54bb7e80"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.xjtu.edu.cn/CS2026.xlsx",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Program List and CSCA Subjects",
+            "capturedAt": "2026-09-22T13:54:08.616Z",
+            "contentSha256": "460683227698ccbe508d70d80e42da876ee9db4adde773764a4fa3b109e82539"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be under age 25, in good health, and provide a Guardian Authorization Letter if under age 18.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold and submit a valid foreign ordinary passport; the submitted passport must remain valid at least six months beyond the intended enrollment date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility and Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized Chinese- or English-language senior high-school graduation evidence; final-year students may apply with an expected-graduation certificate but must provide the official diploma before September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility item 3 and Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized high-school academic transcripts with courses, scores, and grading-system explanation, plus the applicable home-country or international standardized-examination transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants",
+            "ruleText": "HSK Level 4 or equivalent. Some named Chinese-language routes may exempt the CSCA Chinese subject with a valid HSK Level 4 report.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Language and Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Submit CSCA results for Humanities Chinese, Mathematics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 program and CSCA subject table"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit one recommendation letter from a high-school headmaster or teacher, including the recommender's email, phone number, and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan in English or Chinese of at least 600 characters or words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the official Physical Examination Record for Foreigner, fully completed and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record within its validity period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply online from November 1, 2025 through June 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published non-refundable application fee: CNY 500 for self-sponsored applications or CNY 800 for scholarship applications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Fee Standard"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation ranges from CNY 8,000 to CNY 19,000 per year and is arranged under the university's current annual policy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Accommodation fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xjtu-undergraduate-group-06-fall-2026",
+      "schoolSlug": "xi-an-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xi-an-jiaotong-university-big-data-management-and-application",
+        "xi-an-jiaotong-university-business-administration"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Scholarship records remain separate unreviewed catalog drafts; no award is implied for an individual route."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://sie.xjtu.edu.cn/en/bke.pdf",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Admission Guide",
+            "capturedAt": "2026-09-22T13:49:32.779Z",
+            "contentSha256": "746ca59861829b899a623abfd565e9022c7221754740d202ce985620eeedb418"
+          },
+          {
+            "key": "programs",
+            "url": "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Bachelor_Program.htm",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Programs",
+            "capturedAt": "2026-09-22T13:49:33.837Z",
+            "contentSha256": "936c805a0738099c2c020dd5ea7829b6697cc5d1d2da2be775c0d33e54bb7e80"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.xjtu.edu.cn/CS2026.xlsx",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Program List and CSCA Subjects",
+            "capturedAt": "2026-09-22T13:54:08.616Z",
+            "contentSha256": "460683227698ccbe508d70d80e42da876ee9db4adde773764a4fa3b109e82539"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be under age 25, in good health, and provide a Guardian Authorization Letter if under age 18.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold and submit a valid foreign ordinary passport; the submitted passport must remain valid at least six months beyond the intended enrollment date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility and Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized Chinese- or English-language senior high-school graduation evidence; final-year students may apply with an expected-graduation certificate but must provide the official diploma before September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility item 3 and Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized high-school academic transcripts with courses, scores, and grading-system explanation, plus the applicable home-country or international standardized-examination transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants",
+            "ruleText": "HSK Level 4 or equivalent. Some named Chinese-language routes may exempt the CSCA Chinese subject with a valid HSK Level 4 report.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Language and Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Submit CSCA results for STEM Chinese, Mathematics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 program and CSCA subject table"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit one recommendation letter from a high-school headmaster or teacher, including the recommender's email, phone number, and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan in English or Chinese of at least 600 characters or words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the official Physical Examination Record for Foreigner, fully completed and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record within its validity period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply online from November 1, 2025 through June 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published non-refundable application fee: CNY 500 for self-sponsored applications or CNY 800 for scholarship applications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Fee Standard"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation ranges from CNY 8,000 to CNY 19,000 per year and is arranged under the university's current annual policy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Accommodation fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xjtu-undergraduate-group-07-fall-2026",
+      "schoolSlug": "xi-an-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xi-an-jiaotong-university-international-economics-and-trade",
+        "xi-an-jiaotong-university-trade-economics",
+        "xi-an-jiaotong-university-electronic-business",
+        "xi-an-jiaotong-university-economics",
+        "xi-an-jiaotong-university-finance",
+        "xi-an-jiaotong-university-public-finance"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Scholarship records remain separate unreviewed catalog drafts; no award is implied for an individual route."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://sie.xjtu.edu.cn/en/bke.pdf",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Admission Guide",
+            "capturedAt": "2026-09-22T13:49:32.779Z",
+            "contentSha256": "746ca59861829b899a623abfd565e9022c7221754740d202ce985620eeedb418"
+          },
+          {
+            "key": "programs",
+            "url": "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Bachelor_Program.htm",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Programs",
+            "capturedAt": "2026-09-22T13:49:33.837Z",
+            "contentSha256": "936c805a0738099c2c020dd5ea7829b6697cc5d1d2da2be775c0d33e54bb7e80"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.xjtu.edu.cn/CS2026.xlsx",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Program List and CSCA Subjects",
+            "capturedAt": "2026-09-22T13:54:08.616Z",
+            "contentSha256": "460683227698ccbe508d70d80e42da876ee9db4adde773764a4fa3b109e82539"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be under age 25, in good health, and provide a Guardian Authorization Letter if under age 18.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold and submit a valid foreign ordinary passport; the submitted passport must remain valid at least six months beyond the intended enrollment date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility and Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized Chinese- or English-language senior high-school graduation evidence; final-year students may apply with an expected-graduation certificate but must provide the official diploma before September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility item 3 and Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized high-school academic transcripts with courses, scores, and grading-system explanation, plus the applicable home-country or international standardized-examination transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants",
+            "ruleText": "HSK Level 4 or equivalent. Some named Chinese-language routes may exempt the CSCA Chinese subject with a valid HSK Level 4 report.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Language and Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Submit CSCA results for Humanities Chinese or STEM Chinese, Mathematics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 program and CSCA subject table"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit one recommendation letter from a high-school headmaster or teacher, including the recommender's email, phone number, and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan in English or Chinese of at least 600 characters or words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the official Physical Examination Record for Foreigner, fully completed and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record within its validity period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply online from November 1, 2025 through June 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published non-refundable application fee: CNY 500 for self-sponsored applications or CNY 800 for scholarship applications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Fee Standard"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation ranges from CNY 8,000 to CNY 19,000 per year and is arranged under the university's current annual policy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Accommodation fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xjtu-undergraduate-group-08-fall-2026",
+      "schoolSlug": "xi-an-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xi-an-jiaotong-university-environmental-design",
+        "xi-an-jiaotong-university-calligraphy"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Scholarship records remain separate unreviewed catalog drafts; no award is implied for an individual route."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://sie.xjtu.edu.cn/en/bke.pdf",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Admission Guide",
+            "capturedAt": "2026-09-22T13:49:32.779Z",
+            "contentSha256": "746ca59861829b899a623abfd565e9022c7221754740d202ce985620eeedb418"
+          },
+          {
+            "key": "programs",
+            "url": "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Bachelor_Program.htm",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Programs",
+            "capturedAt": "2026-09-22T13:49:33.837Z",
+            "contentSha256": "936c805a0738099c2c020dd5ea7829b6697cc5d1d2da2be775c0d33e54bb7e80"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.xjtu.edu.cn/CS2026.xlsx",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Program List and CSCA Subjects",
+            "capturedAt": "2026-09-22T13:54:08.616Z",
+            "contentSha256": "460683227698ccbe508d70d80e42da876ee9db4adde773764a4fa3b109e82539"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be under age 25, in good health, and provide a Guardian Authorization Letter if under age 18.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold and submit a valid foreign ordinary passport; the submitted passport must remain valid at least six months beyond the intended enrollment date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility and Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized Chinese- or English-language senior high-school graduation evidence; final-year students may apply with an expected-graduation certificate but must provide the official diploma before September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Eligibility item 3 and Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized high-school academic transcripts with courses, scores, and grading-system explanation, plus the applicable home-country or international standardized-examination transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants",
+            "ruleText": "HSK Level 4 or equivalent. Some named Chinese-language routes may exempt the CSCA Chinese subject with a valid HSK Level 4 report.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Language and Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Submit CSCA results for Humanities Chinese, Mathematics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 program and CSCA subject table"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit one recommendation letter from a high-school headmaster or teacher, including the recommender's email, phone number, and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan in English or Chinese of at least 600 characters or words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the official Physical Examination Record for Foreigner, fully completed and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record within its validity period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply online from November 1, 2025 through June 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published non-refundable application fee: CNY 500 for self-sponsored applications or CNY 800 for scholarship applications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Application fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 40,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Fee Standard"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation ranges from CNY 8,000 to CNY 19,000 per year and is arranged under the university's current annual policy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "page 2, Accommodation fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xjtu-undergraduate-group-09-fall-2026",
+      "schoolSlug": "xi-an-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xi-an-jiaotong-university-clinical-medicine-mbbs-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Scholarship records remain separate unreviewed catalog drafts; no award is implied for an individual route.",
+        "The reviewed MBBS guide accepts TOEFL, IELTS and Duolingo evidence but does not publish one universal numeric threshold."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "medical",
+            "url": "https://sie.xjtu.edu.cn/YXBK.pdf",
+            "title": "Xi'an Jiaotong University 2026 Medical Education for International Undergraduate Students",
+            "capturedAt": "2026-09-22T13:54:10.646Z",
+            "contentSha256": "35543637d348c71e0e453ee2b5c24a7acc721b7f782f8c24ac11102cbef7c7ff"
+          },
+          {
+            "key": "programs",
+            "url": "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Bachelor_Program.htm",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Programs",
+            "capturedAt": "2026-09-22T13:49:33.837Z",
+            "contentSha256": "936c805a0738099c2c020dd5ea7829b6697cc5d1d2da2be775c0d33e54bb7e80"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.xjtu.edu.cn/CS2026.xlsx",
+            "title": "Xi'an Jiaotong University 2026 International Undergraduate Program List and CSCA Subjects",
+            "capturedAt": "2026-09-22T13:54:08.616Z",
+            "contentSha256": "460683227698ccbe508d70d80e42da876ee9db4adde773764a4fa3b109e82539"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be under age 25, in good health, and provide a Guardian Authorization Letter if under age 18.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 5, Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold and submit a valid foreign ordinary passport; the submitted passport must remain valid at least six months beyond the intended enrollment date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 5, Eligibility and Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized Chinese- or English-language senior high-school graduation evidence; final-year students may apply with an expected-graduation certificate but must provide the official diploma before September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 5, Eligibility item 3 and Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized high-school academic transcripts with courses, scores, and grading-system explanation, plus the applicable home-country or international standardized-examination transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 5, Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught applicants",
+            "ruleText": "Submit accepted English proficiency evidence such as TOEFL, IELTS or Duolingo; the reviewed MBBS guide does not publish one universal numeric threshold.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 5, Language and Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Submit CSCA results for Mathematics, Chemistry.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 program and CSCA subject table"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit one recommendation letter from a high-school headmaster or teacher, including the recommender's email, phone number, and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 5, Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan in English or Chinese of at least 600 characters or words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 5, Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the official Physical Examination Record for Foreigner, fully completed and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 5, Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record within its validity period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 5, Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply online from November 1, 2025 through June 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 5, Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published non-refundable CNY 500 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 6, Other School Fees"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 40,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 4, International Undergraduate Programs"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation ranges from CNY 8,000 to CNY 19,000 per year and is arranged under the university's current annual policy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "medical",
+                "locator": "page 6, Other School Fees"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -7,7 +7,7 @@ const path = new URL("../../../seeds/application-requirements-wave-14.draft.json
 test("BNU Zhuhai Spring 2027 scholarship requirements are partial, exact and non-public", async () => {
   const draft = JSON.parse(await readFile(path, "utf8"));
   assert.deepEqual(draft.summary, { templateCount: 1, readyTemplateCount: 1, blockedTemplateCount: 0,
-    targetedProgramCount: 1, targetedIntakeCount: 1, requirementItemCount: 13 });
+    targetedProgramCount: 1, targetedIntakeCount: 1, requirementItemCount: 17 });
   assert.deepEqual(draft.templates[0].targetProgramSlugs, ["beijing-normal-university-iclts-international-chinese-language-education-zhuhai-spring-2027"]);
   assert.deepEqual(draft.templates[0].targetIntake, { term: "Spring", year: 2027 });
   assert.equal(draft.templates[0].document.coverage, "partial");

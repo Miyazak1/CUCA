@@ -50,7 +50,11 @@ def extract_catalog(path, source_id, degree):
             name = program_name(raw_name)
             if not name or name.lower() == "name":
                 continue
-            is_english = "*" in raw_name or bool(re.search(r"english[ -]?taught", raw_name, re.I))
+            # Use the normalized program name as well as the raw table cell.
+            # The official catalog contains both the typo "Enligh Taught" and
+            # the separate marker "(in English)"; both denote English-medium
+            # routes and must not be assigned a Chinese HSK requirement.
+            is_english = "*" in raw_name or bool(re.search(r"english[ -]?taught|\(in english\)", name, re.I))
             hsk_level = next((level for mark, level in CIRCLED.items() if mark in raw_name), None)
             score_match = re.search(r"[④⑤⑥]\s*(\d{3})", raw_name)
             duration_match = re.search(r"(\d+(?:\.\d+)?)", values[3])

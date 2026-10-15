@@ -15,11 +15,16 @@ export type RequirementCandidateOperation = {
   reviewStatus: "unreviewed";
   versionIdentity: string;
   documentSha256: string;
+};
+
+export type RequirementCandidateTemplate = {
+  templateKey: string;
+  documentSha256: string;
   document: RequirementDocument;
 };
 
 export type RequirementReleaseCandidate = {
-  version: 1;
+  version: 2;
   generatedAt: string;
   status: "unreviewed_non_public_requirement_candidate";
   authorization: {
@@ -38,8 +43,9 @@ export type RequirementReleaseCandidate = {
     historicalOperationCount: number;
     currentOperationCount: number;
   };
+  templates: RequirementCandidateTemplate[];
   operations: RequirementCandidateOperation[];
-  hashes: { operationsSha256: string };
+  hashes: { templatesSha256: string; operationsSha256: string };
 };
 
 function sha256(value: string): string {
@@ -58,6 +64,10 @@ export function requirementCandidateOperationsSha256(operations: RequirementCand
   return sha256(JSON.stringify(operations));
 }
 
+export function requirementCandidateTemplatesSha256(templates: RequirementCandidateTemplate[]): string {
+  return sha256(JSON.stringify(templates));
+}
+
 function assertText(value: unknown, name: string): asserts value is string {
   if (typeof value !== "string" || !value.trim()) throw new Error(`${name} must be a non-empty string.`);
 }
@@ -65,7 +75,7 @@ function assertText(value: unknown, name: string): asserts value is string {
 export function validateRequirementReleaseCandidate(value: unknown): RequirementReleaseCandidate {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error("Requirement candidate must be an object.");
   const candidate = value as RequirementReleaseCandidate;
-  if (candidate.version !== 1 || candidate.status !== "unreviewed_non_public_requirement_candidate") throw new Error("Unsupported requirement candidate.");
+  if (candidate.version !== 2 || candidate.status !== "unreviewed_non_public_requirement_candidate") throw new Error("Unsupported requirement candidate.");
   const timestamp = new Date(candidate.generatedAt);
   if (!Number.isFinite(timestamp.valueOf()) || timestamp.toISOString() !== candidate.generatedAt) throw new Error("generatedAt must be canonical UTC.");
   if (candidate.authorization?.candidatePreparationAuthorized !== true
@@ -75,7 +85,21 @@ export function validateRequirementReleaseCandidate(value: unknown): Requirement
     || candidate.decision?.humanReviewCompleted !== false) {
     throw new Error("Unreviewed requirement candidates cannot authorize execution, database writes, review, or publication.");
   }
+  if (!Array.isArray(candidate.templates) || candidate.templates.length < 1) throw new Error("Requirement candidate must contain templates.");
   if (!Array.isArray(candidate.operations) || candidate.operations.length < 1) throw new Error("Requirement candidate must contain operations.");
+
+  const templateDocuments = new Map<string, RequirementCandidateTemplate>();
+  for (const template of candidate.templates) {
+    assertText(template.templateKey, "templateKey");
+    assertText(template.documentSha256, "documentSha256");
+    if (templateDocuments.has(template.templateKey)) throw new Error(`Duplicate requirement template: ${template.templateKey}`);
+    const document = parseRequirementDocument(template.document);
+    if (requirementDigest(document) !== template.documentSha256) throw new Error(`Requirement template digest mismatch: ${template.templateKey}`);
+    templateDocuments.set(template.templateKey, template);
+  }
+  if (candidate.hashes?.templatesSha256 !== requirementCandidateTemplatesSha256(candidate.templates)) {
+    throw new Error("Requirement candidate template hash mismatch.");
+  }
 
   const operationKeys = new Set<string>();
   const intakeBindings = new Set<string>();
@@ -97,14 +121,14 @@ export function validateRequirementReleaseCandidate(value: unknown): Requirement
     const binding = `${operation.programSlug}:${operation.intakeTerm}:${operation.intakeYear}`;
     if (intakeBindings.has(binding)) throw new Error(`Duplicate intake binding: ${binding}`);
     intakeBindings.add(binding);
-    const isHistorical = operation.intakeYear === 2026 && operation.intakeTerm === "Fall" && operation.cycleState === "historical_2026";
+    const isHistorical = operation.intakeYear === 2026 && operation.cycleState === "historical_2026";
     const isCurrent = operation.intakeYear === 2027 && operation.cycleState === "current_2027";
     if (!isHistorical && !isCurrent) throw new Error(`Unsupported requirement candidate cycle binding: ${binding}`);
     if (operation.targetBindingStatus !== "verified" || operation.reviewStatus !== "unreviewed") {
       throw new Error(`Operation ${operation.operationKey} is not an unreviewed verified binding.`);
     }
-    const document = parseRequirementDocument(operation.document);
-    if (requirementDigest(document) !== operation.documentSha256) throw new Error(`Requirement digest mismatch: ${operation.operationKey}`);
+    const template = templateDocuments.get(operation.templateKey);
+    if (!template || template.documentSha256 !== operation.documentSha256) throw new Error(`Requirement template binding mismatch: ${operation.operationKey}`);
     const expectedIdentity = stableRequirementVersionIdentity(`${binding}:${operation.documentSha256}`);
     if (operation.versionIdentity !== expectedIdentity) throw new Error(`Version identity mismatch: ${operation.operationKey}`);
     programs.add(operation.programSlug);
@@ -113,7 +137,7 @@ export function validateRequirementReleaseCandidate(value: unknown): Requirement
   }
 
   const expectedSummary = {
-    templateCount: templates.size,
+    templateCount: templateDocuments.size,
     operationCount: candidate.operations.length,
     schoolCount: schools.size,
     programCount: programs.size,
@@ -121,6 +145,7 @@ export function validateRequirementReleaseCandidate(value: unknown): Requirement
     historicalOperationCount: candidate.operations.filter((operation) => operation.cycleState === "historical_2026").length,
     currentOperationCount: candidate.operations.filter((operation) => operation.cycleState === "current_2027").length,
   };
+  if (templates.size !== templateDocuments.size) throw new Error("Requirement candidate contains an unreferenced template.");
   if (JSON.stringify(candidate.summary) !== JSON.stringify(expectedSummary)) throw new Error("Requirement candidate summary mismatch.");
   if (candidate.hashes?.operationsSha256 !== requirementCandidateOperationsSha256(candidate.operations)) throw new Error("Requirement candidate operations hash mismatch.");
   return candidate;
@@ -128,13 +153,14 @@ export function validateRequirementReleaseCandidate(value: unknown): Requirement
 
 export async function applyRequirementCandidateForDisposableRehearsal(client: SqlClient, value: unknown) {
   const candidate = validateRequirementReleaseCandidate(value);
+  const documents = new Map(candidate.templates.map((template) => [template.templateKey, template.document]));
   const payload = candidate.operations.map((operation) => ({
     program_slug: operation.programSlug,
     intake_term: operation.intakeTerm,
     intake_year: operation.intakeYear,
     version_identity: operation.versionIdentity,
     content_sha256: operation.documentSha256,
-    content_json: operation.document,
+    content_json: documents.get(operation.templateKey),
   }));
   const resolved = await client.query(`select count(*)::integer count
     from jsonb_to_recordset($1::jsonb) x(program_slug text,intake_term text,intake_year integer)

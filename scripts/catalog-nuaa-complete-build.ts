@@ -5,7 +5,7 @@ import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type Ca
 
 const root = process.cwd();
 const paths = {
-  manifest: resolve(root, "work/catalog-official/nuaa-complete-batch-01/manifest.json"),
+  manifest: resolve(root, "work/catalog-official/2026-10-15T08-36-21-628Z/manifest.json"),
   parsed: resolve(root, "work/catalog-official/nuaa-complete-batch-01/parsed-programs.json"),
   base: resolve(root, "seeds/catalog.nju-complete-batch-02.approved.local.json"),
   draft: resolve(root, "seeds/catalog.nuaa-complete-batch-01.draft.json"),
@@ -16,10 +16,10 @@ const [manifestText, parsedText, baseText] = await Promise.all([readFile(paths.m
 const manifest = JSON.parse(manifestText), parsed = JSON.parse(parsedText), base = JSON.parse(baseText) as CatalogSeedBundle;
 const expected: Record<string, string> = {
   "nuaa-undergraduate-admissions-2026": "05bebd7b3991fbd2e0297660b2bc0f4efd625a5107e05af3332cb318b1f411bc",
-  "nuaa-postgraduate-admissions-2026": "d10e565e0e5e47498e21d20eb966901e906d46f36c39ff1b7e070e9a43262fab",
-  "nuaa-csc-university-scholarship-2026": "ce20dae99d4005c92e4bba3ac29e010d2020c7aa0be3cdecdc467bea44b1986c",
-  "nuaa-csc-silk-road-scholarship-2026": "18e106b66e66e299272fc9352cfade77be3735059528f728b1d2c3bbaab165d2",
-  "nuaa-fly-high-scholarship-2026": "000b66ae0ca7d04acb5013082c39157254fdbbeb80dc48ec4b56a044be64ffba",
+  "nuaa-postgraduate-admissions-2026": "24a064d4cee016e0a156ea6b70961f663a8cabcedce8e99446b16f06c6ac643a",
+  "nuaa-csc-university-scholarship-2026": "e0c0c9ce4dadd8eb6f7a7c6bef3b13b4a8c733861d3874fcf3d850555d148b5d",
+  "nuaa-csc-silk-road-scholarship-2026": "60c783bd9fac70b70d250a18249c53a7d40016135702cd94cdd6509585571241",
+  "nuaa-fly-high-scholarship-2026": "440a9b4b9e43ff9667359b868f0685102935e9e85d90baf2238bf09fc51d46fa",
 };
 const evidence = new Map<string, any>();
 for (const row of manifest.sources ?? []) if (row.status === 200 && expected[row.id] === row.sha256) evidence.set(row.id, row);

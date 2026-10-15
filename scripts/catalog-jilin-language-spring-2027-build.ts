@@ -9,7 +9,7 @@ import {
 } from "../src/server/catalog/seed-contract.ts";
 
 const root = process.cwd();
-const run = "work/catalog-official/2026-10-15T03-54-04-632Z";
+const run = "work/catalog-official/2026-10-15T07-16-59-018Z";
 const candidatePath = resolve(root, "seeds/catalog.jilin-language-spring-2027.draft.json");
 const validationPath = resolve(root, "seeds/catalog.jilin-language-spring-2027.validation.json");
 const programSlug = "jilin-university-iclts-one-semester-study-spring-2027";

@@ -1,0 +1,940 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T08:15:16.467Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located HRBUST Fall 2026 undergraduate requirements bound only to exact existing program-intake records."
+  },
+  "summary": {
+    "templateCount": 2,
+    "readyTemplateCount": 2,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 6,
+    "targetedIntakeCount": 6,
+    "requirementItemCount": 56
+  },
+  "templates": [
+    {
+      "key": "hrbust-chinese-education-fall-2026",
+      "schoolSlug": "harbin-university-of-science-and-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-university-of-science-and-technology-chinese-language-education"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "hrbust_undergraduate",
+            "url": "https://gjhz.hrbust.edu.cn/2026/0423/c513a104539/page.htm",
+            "title": "Harbin University of Science and Technology 2026 international undergraduate admission guide",
+            "capturedAt": "2026-10-15T08:13:27.222Z",
+            "contentSha256": "8e4bc248eaaeec322074a5f6240995993cd9ff1dd03edb66a9de7688fb2626d3"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "academic_and_conduct",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Have good academic results and conduct and demonstrate respect for Chinese culture.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_education_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a foreign citizen with an education equivalent to Chinese high-school graduation and generally be no older than 25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Meet the Chinese-government health standards for international students.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "financial_capacity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Demonstrate the ability to pay the costs of study and living in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "former_chinese_citizen",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who formerly held Chinese citizenship",
+            "ruleText": "Hold a valid foreign passport or nationality certificate for at least four years and show at least two years of actual residence abroad during the most recent four-year period ending April 30 of the enrollment year; nine months abroad in a year counts as one year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Eligibility item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the completed HRBUST international-student admission application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 1"
+              }
+            ]
+          },
+          {
+            "key": "graduation_evidence",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the high-school diploma; current graduates may submit an English expected-graduation certificate and must bring the original diploma at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit an English high-school transcript issued by the graduating school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 4"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a recent two-inch, white-background, bareheaded digital identification photograph meeting the published file-format and image requirements.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 6"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport photograph page and, when applicable, the visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form completed in English within six months, with all required items, photograph, signatures and hospital stamps.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 8 and explanatory note 5"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate or the university's no-criminal-record undertaking form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 9"
+              }
+            ]
+          },
+          {
+            "key": "current_university_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently enrolled at a university",
+            "ruleText": "Also submit an English transcript and proof of current enrollment from the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 11"
+              }
+            ]
+          },
+          {
+            "key": "transfer_consent",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants transferring from a university in China",
+            "ruleText": "Also submit the current Chinese university's consent to transfer.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 12"
+              }
+            ]
+          },
+          {
+            "key": "nationality_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who formerly held Chinese citizenship",
+            "ruleText": "Also submit naturalization evidence, proof of cancellation of the former Chinese household registration, passport entry and exit stamp pages for the most recent four years, and evidence of the most recent two years of study abroad.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, items 13-17"
+              }
+            ]
+          },
+          {
+            "key": "original_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit electronic copies and retain or provide originals where the material table requires them for verification.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, format and original columns"
+              }
+            ]
+          },
+          {
+            "key": "submission_route",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the electronic application materials through the university's published application channel and provide required originals to the International Cooperation and Exchange office.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Process items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit application materials from March 1 through June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application-material submission period"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pass the preliminary application review, the academic-school review and assessment, and the university's final review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Assessment and Admission item 1"
+              }
+            ]
+          },
+          {
+            "key": "admission_notification",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants proposed for admission",
+            "ruleText": "Monitor the email address supplied in the application for the proposed-admission result, Admission Notice and JW202 materials.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Assessment and Admission items 1-2 and notes"
+              }
+            ]
+          },
+          {
+            "key": "visa",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the ordinary passport, Admission Notice and JW202 materials to apply for an X1 visa before travel.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Visa and Registration item 1"
+              }
+            ]
+          },
+          {
+            "key": "registration",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register on the date stated in the Admission Notice for the late-August enrollment period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Visa and Registration item 2 and Start Date"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Enter China with an ordinary passport and X1 visa and apply for a residence permit within 30 days after entry.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Visa and Registration item 3"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "International undergraduates",
+            "ruleText": "Pay tuition of CNY 15,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "International undergraduates using university accommodation",
+            "ruleText": "Budget CNY 30 per person per day for a single room, CNY 25 for the single room in a three-person two-room unit, or CNY 20 for the double room in that unit; rooms are arranged by registration order and requested room type.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Fees and Accommodation sections"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Registered international undergraduates",
+            "ruleText": "Purchase accident and inpatient medical insurance after registration at a published cost of CNY 800 per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Insurance section"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Chinese Language Education applicants",
+            "ruleText": "No prior Chinese proficiency or HSK certificate is required for the dedicated Chinese Language Education cohort.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Program Classification and Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese Language Education applicants",
+            "ruleText": "Submit a CSCA Mathematics result taken in Chinese or English.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "CSCA section"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "hrbust-ordinary-undergraduate-fall-2026",
+      "schoolSlug": "harbin-university-of-science-and-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-university-of-science-and-technology-accounting",
+        "harbin-university-of-science-and-technology-automation",
+        "harbin-university-of-science-and-technology-international-economy-and-trade",
+        "harbin-university-of-science-and-technology-marketing",
+        "harbin-university-of-science-and-technology-mechanical-design-manufacture-and-its-automation"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "hrbust_undergraduate",
+            "url": "https://gjhz.hrbust.edu.cn/2026/0423/c513a104539/page.htm",
+            "title": "Harbin University of Science and Technology 2026 international undergraduate admission guide",
+            "capturedAt": "2026-10-15T08:13:27.222Z",
+            "contentSha256": "8e4bc248eaaeec322074a5f6240995993cd9ff1dd03edb66a9de7688fb2626d3"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "academic_and_conduct",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Have good academic results and conduct and demonstrate respect for Chinese culture.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_education_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a foreign citizen with an education equivalent to Chinese high-school graduation and generally be no older than 25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Meet the Chinese-government health standards for international students.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "financial_capacity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Demonstrate the ability to pay the costs of study and living in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "former_chinese_citizen",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who formerly held Chinese citizenship",
+            "ruleText": "Hold a valid foreign passport or nationality certificate for at least four years and show at least two years of actual residence abroad during the most recent four-year period ending April 30 of the enrollment year; nine months abroad in a year counts as one year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Eligibility item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the completed HRBUST international-student admission application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 1"
+              }
+            ]
+          },
+          {
+            "key": "graduation_evidence",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the high-school diploma; current graduates may submit an English expected-graduation certificate and must bring the original diploma at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit an English high-school transcript issued by the graduating school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 4"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a recent two-inch, white-background, bareheaded digital identification photograph meeting the published file-format and image requirements.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 6"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport photograph page and, when applicable, the visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form completed in English within six months, with all required items, photograph, signatures and hospital stamps.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 8 and explanatory note 5"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate or the university's no-criminal-record undertaking form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 9"
+              }
+            ]
+          },
+          {
+            "key": "current_university_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently enrolled at a university",
+            "ruleText": "Also submit an English transcript and proof of current enrollment from the university.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 11"
+              }
+            ]
+          },
+          {
+            "key": "transfer_consent",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants transferring from a university in China",
+            "ruleText": "Also submit the current Chinese university's consent to transfer.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, item 12"
+              }
+            ]
+          },
+          {
+            "key": "nationality_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who formerly held Chinese citizenship",
+            "ruleText": "Also submit naturalization evidence, proof of cancellation of the former Chinese household registration, passport entry and exit stamp pages for the most recent four years, and evidence of the most recent two years of study abroad.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, items 13-17"
+              }
+            ]
+          },
+          {
+            "key": "original_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit electronic copies and retain or provide originals where the material table requires them for verification.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Materials table, format and original columns"
+              }
+            ]
+          },
+          {
+            "key": "submission_route",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the electronic application materials through the university's published application channel and provide required originals to the International Cooperation and Exchange office.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application Process items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit application materials from March 1 through June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Application-material submission period"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pass the preliminary application review, the academic-school review and assessment, and the university's final review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Assessment and Admission item 1"
+              }
+            ]
+          },
+          {
+            "key": "admission_notification",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants proposed for admission",
+            "ruleText": "Monitor the email address supplied in the application for the proposed-admission result, Admission Notice and JW202 materials.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Assessment and Admission items 1-2 and notes"
+              }
+            ]
+          },
+          {
+            "key": "visa",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the ordinary passport, Admission Notice and JW202 materials to apply for an X1 visa before travel.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Visa and Registration item 1"
+              }
+            ]
+          },
+          {
+            "key": "registration",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Register on the date stated in the Admission Notice for the late-August enrollment period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Visa and Registration item 2 and Start Date"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Enter China with an ordinary passport and X1 visa and apply for a residence permit within 30 days after entry.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Visa and Registration item 3"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "International undergraduates",
+            "ruleText": "Pay tuition of CNY 15,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "International undergraduates using university accommodation",
+            "ruleText": "Budget CNY 30 per person per day for a single room, CNY 25 for the single room in a three-person two-room unit, or CNY 20 for the double room in that unit; rooms are arranged by registration order and requested room type.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Fees and Accommodation sections"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Registered international undergraduates",
+            "ruleText": "Purchase accident and inpatient medical insurance after registration at a published cost of CNY 800 per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Insurance section"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Ordinary undergraduate applicants",
+            "ruleText": "Submit a valid HSK Level 4 or higher certificate; the guide states that the certificate is valid for two years.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "Program Classification and Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Ordinary undergraduate applicants",
+            "ruleText": "Submit CSCA STEM Chinese and Mathematics results, with Mathematics taken in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hrbust_undergraduate",
+                "locator": "CSCA section"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

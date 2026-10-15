@@ -9,7 +9,7 @@ import {
 } from "../src/server/catalog/seed-contract.ts";
 
 const root = process.cwd();
-const run = "work/catalog-official/2026-10-15T04-16-10-349Z";
+const run = "work/catalog-official/2026-10-15T07-22-20-665Z";
 const candidatePath = resolve(root, "seeds/catalog.bnu-language-spring-2027.draft.json");
 const validationPath = resolve(root, "seeds/catalog.bnu-language-spring-2027.validation.json");
 const programSlug = "beijing-normal-university-iclts-international-chinese-language-education-zhuhai-spring-2027";

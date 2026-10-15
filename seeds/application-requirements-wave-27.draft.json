@@ -1,0 +1,2636 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T08:51:06.664Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope USTC 2026 requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 6,
+    "readyTemplateCount": 6,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 287,
+    "targetedIntakeCount": 287,
+    "requirementItemCount": 138
+  },
+  "templates": [
+    {
+      "key": "ustc-undergraduate-chinese-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-of-china",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-of-china-undergraduate-pure-and-applied-mathematics-mathematics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-information-and-computing-sciences-mathematics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-applied-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-photoelectric-information-science-and-engineering-physics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-astronomy-physics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-quantum-information-science-physics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-materials-physics-materials-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-materials-chemistry-materials-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-polymer-materials-and-engineering-materials-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-chemistry-chemistry-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-bioscience-life-sciences-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-biotechnology-life-sciences-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-theory-and-applied-mechanics-engineering-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-mechanical-design-manufacture-and-automation-engineering-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-energy-and-power-engineering-engineering-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-safety-engineering-engineering-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-electronic-information-engineering-electronic-information-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-automation-electronic-information-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-artificial-intelligence-electronic-information-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-computer-science-and-technology-computer-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-geophysics-geophysics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-space-science-and-technology-geophysics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-geochemistry-geophysics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-planetary-science-geophysics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-management-science-management-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-statistics-management-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-finance-management-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-business-administration-management-science-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-engineering-physics-nuclear-engineering-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-nuclear-engineering-and-nuclear-technology-nuclear-engineering-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-information-security-cybersecurity-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-cybersecurity-cybersecurity-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-electronic-science-and-technology-electronic-information-microelectronics-chinese",
+        "university-of-science-and-technology-of-china-undergraduate-environmental-science-and-engineering-environmental-science-and-engineering-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "undergraduate",
+            "url": "https://ic.ustc.edu.cn/?abroad=4801",
+            "title": "USTC 2026 International Undergraduate Application Guideline",
+            "capturedAt": "2026-10-15T08:46:29.500Z",
+            "contentSha256": "e21f1188ddeb07d08f41de8da8edc92c697f13d56ee232fff0c9c9c387884869"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_passport_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid passport and be in good physical and mental health.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a senior-high graduation certificate equivalent to a Chinese high-school diploma by July 2026; a 2026 graduate may apply with a pre-graduation certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Eligibility items 1 and 6"
+              }
+            ]
+          },
+          {
+            "key": "hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "Pass New HSK Level 5 or above; a native Chinese speaker or applicant with proof of Chinese-medium high-school study may request the published exemption.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "nationality_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who emigrated from mainland China, Hong Kong, Macao or Taiwan",
+            "ruleText": "Have obtained current foreign citizenship and renounced Chinese nationality before April 30, 2022, and have lived abroad for at least two years between April 30, 2022 and April 30, 2026 under the published nine-month rule.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "chinese_parentage",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants born abroad with one or two Chinese-citizen parents",
+            "ruleText": "Provide qualifying proof of the Chinese parent's foreign permanent residence at the applicant's birth, proof that the applicant renounced Chinese nationality, or the applicant's PRC Foreign Permanent Resident ID Card.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "moe_rule",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Meet Ministry of Education Document No. 12 (2020).",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Eligibility item 5 and Annex I"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Submit valid CSCA results with the online application: Professional Chinese (STEM) and Mathematics are compulsory, and either Physics or Chemistry must be selected.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Procedures item 1"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Complete the online application from November 14, 2025 through March 31, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Procedures schedule"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Submit the USTC Application Form for International Students (Undergraduate Program).",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Submit a passport copy, including Chinese visa or residence-permit pages when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Submit notarized senior-high graduation certificate and transcripts; a prospective July 2026 graduate may submit a school-issued pre-graduation certificate and must present originals at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Submit New HSK Level 5 certificate and score report, or qualifying proof of Chinese-medium high-school study; admitted applicants must present the original language records at registration.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Submit an original Chinese- or English-language recommendation letter from the senior high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants younger than 18 on September 1, 2026",
+            "ruleText": "Submit the USTC Guardian Statement; the guardian must stay in Hefei during study and have a stable source of living.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "immigration_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who emigrated from mainland China, Hong Kong, Macao or Taiwan",
+            "ruleText": "Submit the immigration certificate, proof of cancellation of original Chinese citizenship, passport entry/exit-stamp pages and proof of living abroad for the published April 2022-April 2026 period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "parentage_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants born abroad with one or two Chinese-citizen parents",
+            "ruleText": "Submit one of the three published nationality-status documents supporting eligibility.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "external_test_scores",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants with SAT, IB, GCE A-Level, ACT or AST results",
+            "ruleText": "Optionally submit the score report; it is accepted only within two years of the examination date.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "university_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing document review",
+            "ruleText": "Complete any further test or interview requested after USTC evaluates the CSCA results and application materials.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "University Assessment"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Pay tuition of CNY 26,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Fees & Scholarships item 1"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Pay the published CNY 800 annual insurance fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Fees & Scholarships item 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using on-campus accommodation",
+            "ruleText": "Budget CNY 500-1,000 per month according to room type and size.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Fees & Scholarships item 3"
+              }
+            ]
+          },
+          {
+            "key": "visa_registration",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the ordinary passport, Admission Notice, JW202 and original physical-examination records to obtain an X1 visa and register on the dates stated in the Admission Notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Admission"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustc-master-chinese-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-of-china",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-of-china-master-astrophysics-astronomy-chinese",
+        "university-of-science-and-technology-of-china-master-atmosphere-physics-and-environment-atmospheric-science-chinese",
+        "university-of-science-and-technology-of-china-master-climatology-and-global-change-atmospheric-science-chinese",
+        "university-of-science-and-technology-of-china-master-biochemistry-and-molecule-biology-biology-chinese",
+        "university-of-science-and-technology-of-china-master-bioinformatics-biology-chinese",
+        "university-of-science-and-technology-of-china-master-biophysics-biology-chinese",
+        "university-of-science-and-technology-of-china-master-cell-biology-biology-chinese",
+        "university-of-science-and-technology-of-china-master-genetics-biology-chinese",
+        "university-of-science-and-technology-of-china-master-microbiology-biology-chinese",
+        "university-of-science-and-technology-of-china-master-neurobiology-biology-chinese",
+        "university-of-science-and-technology-of-china-master-structural-biology-biology-chinese",
+        "university-of-science-and-technology-of-china-master-analytical-chemistry-chemistry-chinese",
+        "university-of-science-and-technology-of-china-master-chemical-biology-chemistry-chinese",
+        "university-of-science-and-technology-of-china-master-energy-chemistry-chemistry-chinese",
+        "university-of-science-and-technology-of-china-master-inorganic-chemistry-chemistry-chinese",
+        "university-of-science-and-technology-of-china-master-macromolecule-chemistry-and-physics-chemistry-chinese",
+        "university-of-science-and-technology-of-china-master-organic-chemistry-chemistry-chinese",
+        "university-of-science-and-technology-of-china-master-physical-chemistry-chemistry-chinese",
+        "university-of-science-and-technology-of-china-master-computer-application-technology-computer-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-computer-software-and-theory-computer-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-computer-system-structure-computer-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-information-safety-computer-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-control-science-and-engineering-control-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-master-cultural-heritage-cultural-heritage-chinese",
+        "university-of-science-and-technology-of-china-master-cyberspace-security-cyberspace-security-chinese",
+        "university-of-science-and-technology-of-china-master-circuits-and-systems-electronic-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-electronic-science-and-technology-electronic-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-microelectronics-and-solid-state-electronics-electronic-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-environmental-science-and-engineering-environmental-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-master-geochemistry-geology-chinese",
+        "university-of-science-and-technology-of-china-master-mineralogy-petrology-mineral-deposit-geology-geology-chinese",
+        "university-of-science-and-technology-of-china-master-tectonics-geology-geology-chinese",
+        "university-of-science-and-technology-of-china-master-solid-geophysics-geophysics-chinese",
+        "university-of-science-and-technology-of-china-master-space-physics-geophysics-chinese",
+        "university-of-science-and-technology-of-china-master-history-of-science-and-technology-history-of-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-information-and-communication-engineering-information-and-communication-engineering-chinese",
+        "university-of-science-and-technology-of-china-master-measuring-and-testing-technologies-and-instruments-instrument-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-precision-instrument-and-machinery-instrument-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-integrated-circuit-design-and-micro-nano-systems-integrated-circuit-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-master-integrated-circuit-devices-processes-and-manufacturing-integrated-circuit-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-master-journalism-and-communication-journalism-and-communication-chinese",
+        "university-of-science-and-technology-of-china-master-intellectual-property-law-chinese",
+        "university-of-science-and-technology-of-china-master-materials-physics-and-chemistry-materials-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-master-materials-processing-engineering-materials-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-master-materials-science-materials-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-master-applied-mathematics-mathematics-chinese",
+        "university-of-science-and-technology-of-china-master-computing-mathematics-mathematics-chinese",
+        "university-of-science-and-technology-of-china-master-fundamental-mathematics-mathematics-chinese",
+        "university-of-science-and-technology-of-china-master-operational-research-and-cybernetics-mathematics-chinese",
+        "university-of-science-and-technology-of-china-master-probability-and-statistics-mathematics-chinese",
+        "university-of-science-and-technology-of-china-master-mechanical-engineering-mechanical-chinese",
+        "university-of-science-and-technology-of-china-master-biomechanics-mechanics-chinese",
+        "university-of-science-and-technology-of-china-master-dynamics-and-control-mechanics-chinese",
+        "university-of-science-and-technology-of-china-master-engineering-mechanics-mechanics-chinese",
+        "university-of-science-and-technology-of-china-master-hydrodynamics-mechanics-chinese",
+        "university-of-science-and-technology-of-china-master-material-mechanics-and-design-mechanics-chinese",
+        "university-of-science-and-technology-of-china-master-solid-mechanics-mechanics-chinese",
+        "university-of-science-and-technology-of-china-master-nuclear-energy-science-and-engineering-nuclear-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-nuclear-fuel-cycle-and-materials-nuclear-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-nuclear-technology-and-applications-nuclear-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-radiation-proof-and-environment-protection-nuclear-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-synchrotron-radiation-and-application-nuclear-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-master-optics-engineering-optics-engineering-chinese",
+        "university-of-science-and-technology-of-china-master-atom-and-molecule-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-master-condensed-matter-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-master-optics-physics-chinese",
+        "university-of-science-and-technology-of-china-master-particle-physics-and-nuclear-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-master-plasma-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-master-quantum-information-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-master-theoretical-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-master-engineering-thermophysics-power-engineering-and-engineering-thermophysics-chinese",
+        "university-of-science-and-technology-of-china-master-refrigeration-and-microtherm-engineering-power-engineering-and-engineering-thermophysics-chinese",
+        "university-of-science-and-technology-of-china-master-thermal-power-engineering-power-engineering-and-engineering-thermophysics-chinese",
+        "university-of-science-and-technology-of-china-master-public-administration-public-administration-chinese",
+        "university-of-science-and-technology-of-china-master-public-management-public-administration-chinese",
+        "university-of-science-and-technology-of-china-master-safety-science-and-engineering-safety-science-and-engineering-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "postgraduate",
+            "url": "https://ic.ustc.edu.cn/?abroad=4791",
+            "title": "USTC 2026 International Postgraduate Application Guideline",
+            "capturedAt": "2026-10-15T08:46:44.434Z",
+            "contentSha256": "891c8f2247b17909182a26362a3e98eb9d2b2a6e6c3edbc65727bdf2869ee0d2"
+          },
+          {
+            "key": "postgraduate_fees",
+            "url": "https://ic.ustc.edu.cn/?abroad=75",
+            "title": "USTC 2026 International Postgraduate Programs Index",
+            "capturedAt": "2026-10-15T08:46:31.500Z",
+            "contentSha256": "136f94f82997e4be5ef1b0f7e165ba21aceba2822f9bf3979616888e9506de2b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_passport_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid passport and be mentally and physically healthy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree equivalent to a Chinese bachelor's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "pregraduation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Master applicants who have not yet received the qualifying degree",
+            "ruleText": "Submit a pre-graduation certificate proving that the required degree will be completed by July 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 2 note"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be younger than 40 on September 1, 2026; individual scholarships may impose a lower age limit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught master applicants",
+            "ruleText": "Pass New HSK Level 4 or above; a native Chinese speaker or applicant with proof of Chinese-medium high-school or university study may request the published exemption.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 4 and Application materials"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master Fall 2026 applicants",
+            "ruleText": "Complete the online application from October 16, 2025 through January 31, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Procedures schedule"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_status",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "A host supervisor does not need to be found before online application; complete applications are forwarded to the relevant schools and departments for review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Procedures item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit an ordinary-passport copy with at least one year of validity.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "proposal",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a study or research proposal of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "cv",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a curriculum vitae.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from full or associate professors, including telephone number and email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit degree certificate and academic transcripts for the bachelor's and, where applicable, master's stages, notarized by the national Ministry of Education or equivalent authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "student_status",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently enrolled at a university",
+            "ruleText": "Submit official student-status evidence stating exactly when the qualifying degree certificate will be obtained.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "delayed_degree",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Graduates who have not yet received the degree certificate",
+            "ruleText": "Submit an official explanation stating why the certificate has not been issued and when it will be obtained.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "employment_release",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who are employed",
+            "ruleText": "Submit official evidence of on-post employment status and permission of release.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Attach a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "materials_return",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Understand that application materials are not returned regardless of the result.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "online_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Shortlisted applicants",
+            "ruleText": "Complete the school or department online assessment; all schools require an online interview and some also require an online entrance examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Online Assessment"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled postgraduate students",
+            "ruleText": "Pay the published CNY 800 annual insurance fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using on-campus accommodation",
+            "ruleText": "Budget CNY 500-1,000 per month according to room type and size.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 3"
+              }
+            ]
+          },
+          {
+            "key": "visa_registration",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the ordinary passport, Admission Notice, JW201/JW202 and original physical-examination records to obtain an X1 visa and register on the dates stated in the Admission Notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Admission"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Pay tuition of CNY 30,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustc-master-english-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-of-china",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-of-china-master-astrophysics-astronomy-english",
+        "university-of-science-and-technology-of-china-master-atmosphere-physics-and-environment-atmospheric-science-english",
+        "university-of-science-and-technology-of-china-master-software-engineering-electronic-information-english",
+        "university-of-science-and-technology-of-china-master-mineralogy-petrology-mineral-deposit-geology-geology-english",
+        "university-of-science-and-technology-of-china-master-solid-geophysics-geophysics-english",
+        "university-of-science-and-technology-of-china-master-space-physics-geophysics-english",
+        "university-of-science-and-technology-of-china-master-optics-engineering-optics-engineering-english",
+        "university-of-science-and-technology-of-china-master-atom-and-molecule-physics-physics-english",
+        "university-of-science-and-technology-of-china-master-condensed-matter-physics-physics-english",
+        "university-of-science-and-technology-of-china-master-optics-physics-english",
+        "university-of-science-and-technology-of-china-master-particle-physics-and-nuclear-physics-physics-english",
+        "university-of-science-and-technology-of-china-master-plasma-physics-physics-english",
+        "university-of-science-and-technology-of-china-master-quantum-information-physics-physics-english",
+        "university-of-science-and-technology-of-china-master-theoretical-physics-physics-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The official guide requires English-proficiency proof but publishes no universal numeric IELTS or TOEFL threshold."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "postgraduate",
+            "url": "https://ic.ustc.edu.cn/?abroad=4791",
+            "title": "USTC 2026 International Postgraduate Application Guideline",
+            "capturedAt": "2026-10-15T08:46:44.434Z",
+            "contentSha256": "891c8f2247b17909182a26362a3e98eb9d2b2a6e6c3edbc65727bdf2869ee0d2"
+          },
+          {
+            "key": "postgraduate_fees",
+            "url": "https://ic.ustc.edu.cn/?abroad=75",
+            "title": "USTC 2026 International Postgraduate Programs Index",
+            "capturedAt": "2026-10-15T08:46:31.500Z",
+            "contentSha256": "136f94f82997e4be5ef1b0f7e165ba21aceba2822f9bf3979616888e9506de2b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_passport_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid passport and be mentally and physically healthy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree equivalent to a Chinese bachelor's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "pregraduation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Master applicants who have not yet received the qualifying degree",
+            "ruleText": "Submit a pre-graduation certificate proving that the required degree will be completed by July 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 2 note"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be younger than 40 on September 1, 2026; individual scholarships may impose a lower age limit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught master applicants",
+            "ruleText": "Provide proof of English proficiency; applicants whose mother tongue is English are exempt from the document requirement, and the guide publishes no universal minimum IELTS or TOEFL score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 4 and Application materials"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master Fall 2026 applicants",
+            "ruleText": "Complete the online application from October 16, 2025 through January 31, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Procedures schedule"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_status",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "A host supervisor does not need to be found before online application; complete applications are forwarded to the relevant schools and departments for review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Procedures item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit an ordinary-passport copy with at least one year of validity.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "proposal",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a study or research proposal of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "cv",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a curriculum vitae.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from full or associate professors, including telephone number and email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit degree certificate and academic transcripts for the bachelor's and, where applicable, master's stages, notarized by the national Ministry of Education or equivalent authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "student_status",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently enrolled at a university",
+            "ruleText": "Submit official student-status evidence stating exactly when the qualifying degree certificate will be obtained.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "delayed_degree",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Graduates who have not yet received the degree certificate",
+            "ruleText": "Submit an official explanation stating why the certificate has not been issued and when it will be obtained.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "employment_release",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who are employed",
+            "ruleText": "Submit official evidence of on-post employment status and permission of release.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Attach a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "materials_return",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Understand that application materials are not returned regardless of the result.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "online_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Shortlisted applicants",
+            "ruleText": "Complete the school or department online assessment; all schools require an online interview and some also require an online entrance examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Online Assessment"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled postgraduate students",
+            "ruleText": "Pay the published CNY 800 annual insurance fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using on-campus accommodation",
+            "ruleText": "Budget CNY 500-1,000 per month according to room type and size.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 3"
+              }
+            ]
+          },
+          {
+            "key": "visa_registration",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the ordinary passport, Admission Notice, JW201/JW202 and original physical-examination records to obtain an X1 visa and register on the dates stated in the Admission Notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Admission"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Pay tuition of CNY 30,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustc-master-mba-english-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-of-china",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-of-china-master-master-of-business-administration-master-of-business-administration-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "postgraduate",
+            "url": "https://ic.ustc.edu.cn/?abroad=4791",
+            "title": "USTC 2026 International Postgraduate Application Guideline",
+            "capturedAt": "2026-10-15T08:46:44.434Z",
+            "contentSha256": "891c8f2247b17909182a26362a3e98eb9d2b2a6e6c3edbc65727bdf2869ee0d2"
+          },
+          {
+            "key": "postgraduate_fees",
+            "url": "https://ic.ustc.edu.cn/?abroad=75",
+            "title": "USTC 2026 International Postgraduate Programs Index",
+            "capturedAt": "2026-10-15T08:46:31.500Z",
+            "contentSha256": "136f94f82997e4be5ef1b0f7e165ba21aceba2822f9bf3979616888e9506de2b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_passport_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid passport and be mentally and physically healthy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree equivalent to a Chinese bachelor's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "pregraduation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Master applicants who have not yet received the qualifying degree",
+            "ruleText": "Submit a pre-graduation certificate proving that the required degree will be completed by July 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 2 note"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be younger than 40 on September 1, 2026; individual scholarships may impose a lower age limit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught master applicants",
+            "ruleText": "Provide proof of English proficiency; applicants whose mother tongue is English are exempt from the document requirement, and the guide publishes no universal minimum IELTS or TOEFL score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 4 and Application materials"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master Fall 2026 applicants",
+            "ruleText": "Complete the online application from October 16, 2025 through January 31, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Procedures schedule"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_status",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "A host supervisor does not need to be found before online application; complete applications are forwarded to the relevant schools and departments for review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Procedures item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit an ordinary-passport copy with at least one year of validity.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "proposal",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a study or research proposal of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "cv",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a curriculum vitae.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from full or associate professors, including telephone number and email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit degree certificate and academic transcripts for the bachelor's and, where applicable, master's stages, notarized by the national Ministry of Education or equivalent authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "student_status",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently enrolled at a university",
+            "ruleText": "Submit official student-status evidence stating exactly when the qualifying degree certificate will be obtained.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "delayed_degree",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Graduates who have not yet received the degree certificate",
+            "ruleText": "Submit an official explanation stating why the certificate has not been issued and when it will be obtained.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "employment_release",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who are employed",
+            "ruleText": "Submit official evidence of on-post employment status and permission of release.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Attach a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "materials_return",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Understand that application materials are not returned regardless of the result.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "online_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Shortlisted applicants",
+            "ruleText": "Complete the school or department online assessment; all schools require an online interview and some also require an online entrance examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Online Assessment"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled postgraduate students",
+            "ruleText": "Pay the published CNY 800 annual insurance fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using on-campus accommodation",
+            "ruleText": "Budget CNY 500-1,000 per month according to room type and size.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 3"
+              }
+            ]
+          },
+          {
+            "key": "visa_registration",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the ordinary passport, Admission Notice, JW201/JW202 and original physical-examination records to obtain an X1 visa and register on the dates stated in the Admission Notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Admission"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "MBA students",
+            "ruleText": "Pay the published MBA tuition of CNY 150,000 per student.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustc-doctoral-chinese-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-of-china",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-of-china-doctoral-astrometry-and-celestial-mechanics-astronomy-chinese",
+        "university-of-science-and-technology-of-china-doctoral-astrophysics-astronomy-chinese",
+        "university-of-science-and-technology-of-china-doctoral-biochemistry-and-molecule-biology-biology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-bioinformatics-biology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-bio-material-biology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-biophysics-biology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-genetics-biology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-microbiology-biology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-neurobiology-biology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-cell-biology-biology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-structural-biology-biology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-biomedical-engineering-biomedical-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-business-administration-business-administration-chinese",
+        "university-of-science-and-technology-of-china-doctoral-analytical-chemistry-chemistry-chinese",
+        "university-of-science-and-technology-of-china-doctoral-chemical-biology-chemistry-chinese",
+        "university-of-science-and-technology-of-china-doctoral-energy-chemistry-chemistry-chinese",
+        "university-of-science-and-technology-of-china-doctoral-inorganic-chemistry-chemistry-chinese",
+        "university-of-science-and-technology-of-china-doctoral-macromolecule-chemistry-and-physics-chemistry-chinese",
+        "university-of-science-and-technology-of-china-doctoral-organic-chemistry-chemistry-chinese",
+        "university-of-science-and-technology-of-china-doctoral-physical-chemistry-chemistry-chinese",
+        "university-of-science-and-technology-of-china-doctoral-computer-and-application-technology-computer-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-computer-software-and-theory-computer-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-computer-system-structure-computer-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-information-safety-computer-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-control-theory-and-control-engineering-control-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-information-capture-and-control-control-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-internet-communication-system-and-control-control-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-model-identification-and-intelligent-systems-control-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-navigation-guide-and-control-control-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-systems-engineering-control-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-cyberspace-security-cyberspace-security-chinese",
+        "university-of-science-and-technology-of-china-doctoral-biomedical-engineering-electronic-information-chinese",
+        "university-of-science-and-technology-of-china-doctoral-computer-technology-electronic-information-chinese",
+        "university-of-science-and-technology-of-china-doctoral-instrumentation-engineering-electronic-information-chinese",
+        "university-of-science-and-technology-of-china-doctoral-circuits-and-systems-electronic-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-electromagnetism-field-and-microwave-technology-electronic-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-microelectronics-and-solid-state-electronics-electronic-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-energy-and-power-energy-and-power-chinese",
+        "university-of-science-and-technology-of-china-doctoral-environmental-science-and-engineering-environmental-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-geochemistry-geology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-mineralogy-petrology-mineral-deposit-geology-geology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-stratigraphic-paleontology-geology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-tectonics-geology-geology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-solid-geophysics-geophysics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-space-physics-geophysics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-history-of-science-and-technology-history-of-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-communication-and-information-system-information-and-communication-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-signal-and-information-processing-information-and-communication-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-measuring-and-testing-technologies-and-instruments-instrument-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-precision-instrument-and-machinery-instrument-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-integrated-circuit-science-and-engineering-integrated-circuit-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-management-science-and-engineering-management-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-corrosion-science-and-protection-materials-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-materials-physics-and-chemistry-materials-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-materials-processing-engineering-materials-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-materials-science-materials-science-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-applied-mathematics-mathematics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-computing-mathematics-mathematics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-fundamental-mathematics-mathematics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-operational-research-and-cybernetics-mathematics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-probability-and-statistics-mathematics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-mechanical-engineering-mechanical-chinese",
+        "university-of-science-and-technology-of-china-doctoral-biomechanics-mechanics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-dynamics-and-control-mechanics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-engineering-mechanics-mechanics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-hydrodynamics-mechanics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-solid-mechanics-mechanics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-nanoscience-and-engineering-nanoscience-and-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-nuclear-energy-science-and-engineering-nuclear-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-nuclear-fuel-cycle-and-materials-nuclear-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-nuclear-technology-and-applications-nuclear-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-radiation-proof-and-environment-protection-nuclear-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-synchrotron-radiation-and-application-nuclear-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-optics-engineering-optics-engineering-chinese",
+        "university-of-science-and-technology-of-china-doctoral-philosophy-of-science-and-technology-philosophy-chinese",
+        "university-of-science-and-technology-of-china-doctoral-atom-and-molecule-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-condensed-matter-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-optics-physics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-particle-physics-and-nuclear-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-plasma-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-quantum-information-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-theoretical-physics-physics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-planetary-science-and-exploration-technology-planetary-science-and-exploration-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-engineering-thermophysics-power-engineering-and-engineering-thermophysics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-fluid-machinery-and-engineering-power-engineering-and-engineering-thermophysics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-refrigeration-and-microtherm-engineering-power-engineering-and-engineering-thermophysics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-thermal-power-engineering-power-engineering-and-engineering-thermophysics-chinese",
+        "university-of-science-and-technology-of-china-doctoral-quantum-science-and-technology-quantum-science-and-technology-chinese",
+        "university-of-science-and-technology-of-china-doctoral-safety-science-and-engineering-safety-science-and-engineering-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "postgraduate",
+            "url": "https://ic.ustc.edu.cn/?abroad=4791",
+            "title": "USTC 2026 International Postgraduate Application Guideline",
+            "capturedAt": "2026-10-15T08:46:44.434Z",
+            "contentSha256": "891c8f2247b17909182a26362a3e98eb9d2b2a6e6c3edbc65727bdf2869ee0d2"
+          },
+          {
+            "key": "postgraduate_fees",
+            "url": "https://ic.ustc.edu.cn/?abroad=75",
+            "title": "USTC 2026 International Postgraduate Programs Index",
+            "capturedAt": "2026-10-15T08:46:31.500Z",
+            "contentSha256": "136f94f82997e4be5ef1b0f7e165ba21aceba2822f9bf3979616888e9506de2b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_passport_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid passport and be mentally and physically healthy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree equivalent to a Chinese master's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "pregraduation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Doctoral applicants who have not yet received the qualifying degree",
+            "ruleText": "Submit a pre-graduation certificate proving that the required degree will be completed by July 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 2 note"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be younger than 45 on September 1, 2026; individual scholarships may impose a lower age limit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught doctoral applicants",
+            "ruleText": "Pass New HSK Level 4 or above; a native Chinese speaker or applicant with proof of Chinese-medium high-school or university study may request the published exemption.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 4 and Application materials"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral Fall 2026 applicants",
+            "ruleText": "Complete the online application from October 16, 2025 through January 31, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Procedures schedule"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_status",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "A host supervisor does not need to be found before online application; complete applications are forwarded to the relevant schools and departments for review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Procedures item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit an ordinary-passport copy with at least one year of validity.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "proposal",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a study or research proposal of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "cv",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a curriculum vitae.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit two recommendation letters from full or associate professors, including telephone number and email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit degree certificate and academic transcripts for the bachelor's and, where applicable, master's stages, notarized by the national Ministry of Education or equivalent authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "student_status",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently enrolled at a university",
+            "ruleText": "Submit official student-status evidence stating exactly when the qualifying degree certificate will be obtained.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "delayed_degree",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Graduates who have not yet received the degree certificate",
+            "ruleText": "Submit an official explanation stating why the certificate has not been issued and when it will be obtained.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "employment_release",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who are employed",
+            "ruleText": "Submit official evidence of on-post employment status and permission of release.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Attach a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "materials_return",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Understand that application materials are not returned regardless of the result.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "online_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Shortlisted applicants",
+            "ruleText": "Complete the school or department online assessment; all schools require an online interview and some also require an online entrance examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Online Assessment"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled postgraduate students",
+            "ruleText": "Pay the published CNY 800 annual insurance fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using on-campus accommodation",
+            "ruleText": "Budget CNY 500-1,000 per month according to room type and size.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 3"
+              }
+            ]
+          },
+          {
+            "key": "visa_registration",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the ordinary passport, Admission Notice, JW201/JW202 and original physical-examination records to obtain an X1 visa and register on the dates stated in the Admission Notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Admission"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled doctoral students",
+            "ruleText": "Pay tuition of CNY 35,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 1"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ustc-doctoral-english-fall-2026",
+      "schoolSlug": "university-of-science-and-technology-of-china",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-science-and-technology-of-china-doctoral-astrometry-and-celestial-mechanics-astronomy-english",
+        "university-of-science-and-technology-of-china-doctoral-astrophysics-astronomy-english",
+        "university-of-science-and-technology-of-china-doctoral-biochemistry-and-molecule-biology-biology-english",
+        "university-of-science-and-technology-of-china-doctoral-bioinformatics-biology-english",
+        "university-of-science-and-technology-of-china-doctoral-bio-material-biology-english",
+        "university-of-science-and-technology-of-china-doctoral-biophysics-biology-english",
+        "university-of-science-and-technology-of-china-doctoral-cell-biology-biology-english",
+        "university-of-science-and-technology-of-china-doctoral-genetics-biology-english",
+        "university-of-science-and-technology-of-china-doctoral-microbiology-biology-english",
+        "university-of-science-and-technology-of-china-doctoral-neurobiology-biology-english",
+        "university-of-science-and-technology-of-china-doctoral-structural-biology-biology-english",
+        "university-of-science-and-technology-of-china-doctoral-business-administration-business-administration-english",
+        "university-of-science-and-technology-of-china-doctoral-analytical-chemistry-chemistry-english",
+        "university-of-science-and-technology-of-china-doctoral-chemical-biology-chemistry-english",
+        "university-of-science-and-technology-of-china-doctoral-energy-chemistry-chemistry-english",
+        "university-of-science-and-technology-of-china-doctoral-inorganic-chemistry-chemistry-english",
+        "university-of-science-and-technology-of-china-doctoral-macromolecule-chemistry-and-physics-chemistry-english",
+        "university-of-science-and-technology-of-china-doctoral-organic-chemistry-chemistry-english",
+        "university-of-science-and-technology-of-china-doctoral-physical-chemistry-chemistry-english",
+        "university-of-science-and-technology-of-china-doctoral-computer-and-application-technology-computer-science-and-technology-english",
+        "university-of-science-and-technology-of-china-doctoral-computer-software-and-theory-computer-science-and-technology-english",
+        "university-of-science-and-technology-of-china-doctoral-computer-system-structure-computer-science-and-technology-english",
+        "university-of-science-and-technology-of-china-doctoral-information-safety-computer-science-and-technology-english",
+        "university-of-science-and-technology-of-china-doctoral-control-theory-and-control-engineering-control-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-information-capture-and-control-control-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-internet-communication-system-and-control-control-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-model-identification-and-intelligent-systems-control-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-navigation-guide-and-control-control-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-systems-engineering-control-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-cyberspace-security-cyberspace-security-english",
+        "university-of-science-and-technology-of-china-doctoral-circuits-and-systems-electronic-science-and-technology-english",
+        "university-of-science-and-technology-of-china-doctoral-electromagnetic-field-and-microwave-technology-electronic-science-and-technology-english",
+        "university-of-science-and-technology-of-china-doctoral-microelectronics-and-solid-state-electronics-electronic-science-and-technology-english",
+        "university-of-science-and-technology-of-china-doctoral-mineralogy-petrology-mineral-deposit-geology-geology-english",
+        "university-of-science-and-technology-of-china-doctoral-solid-geophysics-geophysics-english",
+        "university-of-science-and-technology-of-china-doctoral-space-physics-geophysics-english",
+        "university-of-science-and-technology-of-china-doctoral-history-of-science-and-technology-history-of-science-and-technology-english",
+        "university-of-science-and-technology-of-china-doctoral-communication-and-information-system-information-and-communication-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-signal-and-information-processing-information-and-communication-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-measuring-and-testing-technologies-and-instruments-instrument-science-and-technology-english",
+        "university-of-science-and-technology-of-china-doctoral-precision-instrument-and-machinery-instrument-science-and-technology-english",
+        "university-of-science-and-technology-of-china-doctoral-integrated-circuit-science-and-engineering-integrated-circuit-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-management-science-and-engineering-management-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-corrosion-science-and-protection-materials-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-materials-processing-engineering-materials-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-materials-science-materials-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-materials-physics-and-chemistry-materials-science-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-applied-mathematics-mathematics-english",
+        "university-of-science-and-technology-of-china-doctoral-computing-mathematics-mathematics-english",
+        "university-of-science-and-technology-of-china-doctoral-fundamental-mathematics-mathematics-english",
+        "university-of-science-and-technology-of-china-doctoral-operational-research-and-cybernetics-mathematics-english",
+        "university-of-science-and-technology-of-china-doctoral-probability-and-statistics-mathematics-english",
+        "university-of-science-and-technology-of-china-doctoral-biomechanics-mechanics-english",
+        "university-of-science-and-technology-of-china-doctoral-dynamics-and-control-mechanics-english",
+        "university-of-science-and-technology-of-china-doctoral-engineering-mechanics-mechanics-english",
+        "university-of-science-and-technology-of-china-doctoral-hydrodynamics-mechanics-english",
+        "university-of-science-and-technology-of-china-doctoral-solid-mechanics-mechanics-english",
+        "university-of-science-and-technology-of-china-doctoral-nanoscience-and-engineering-nanoscience-and-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-optics-engineering-optics-engineering-english",
+        "university-of-science-and-technology-of-china-doctoral-atom-and-molecule-physics-physics-english",
+        "university-of-science-and-technology-of-china-doctoral-condensed-matter-physics-physics-english",
+        "university-of-science-and-technology-of-china-doctoral-optics-physics-english",
+        "university-of-science-and-technology-of-china-doctoral-particle-physics-and-nuclear-physics-physics-english",
+        "university-of-science-and-technology-of-china-doctoral-plasma-physics-physics-english",
+        "university-of-science-and-technology-of-china-doctoral-quantum-information-physics-physics-english",
+        "university-of-science-and-technology-of-china-doctoral-theoretical-physics-physics-english",
+        "university-of-science-and-technology-of-china-doctoral-engineering-thermophysics-power-engineering-and-engineering-thermophysics-english",
+        "university-of-science-and-technology-of-china-doctoral-fluid-machinery-and-engineering-power-engineering-and-engineering-thermophysics-english",
+        "university-of-science-and-technology-of-china-doctoral-refrigeration-and-microtherm-engineering-power-engineering-and-engineering-thermophysics-english",
+        "university-of-science-and-technology-of-china-doctoral-thermal-power-engineering-power-engineering-and-engineering-thermophysics-english",
+        "university-of-science-and-technology-of-china-doctoral-quantum-science-and-technology-quantum-science-and-technology-english",
+        "university-of-science-and-technology-of-china-doctoral-safety-science-and-engineering-safety-science-and-engineering-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The official guide requires English-proficiency proof but publishes no universal numeric IELTS or TOEFL threshold."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "postgraduate",
+            "url": "https://ic.ustc.edu.cn/?abroad=4791",
+            "title": "USTC 2026 International Postgraduate Application Guideline",
+            "capturedAt": "2026-10-15T08:46:44.434Z",
+            "contentSha256": "891c8f2247b17909182a26362a3e98eb9d2b2a6e6c3edbc65727bdf2869ee0d2"
+          },
+          {
+            "key": "postgraduate_fees",
+            "url": "https://ic.ustc.edu.cn/?abroad=75",
+            "title": "USTC 2026 International Postgraduate Programs Index",
+            "capturedAt": "2026-10-15T08:46:31.500Z",
+            "contentSha256": "136f94f82997e4be5ef1b0f7e165ba21aceba2822f9bf3979616888e9506de2b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_passport_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid passport and be mentally and physically healthy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree equivalent to a Chinese master's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "pregraduation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Doctoral applicants who have not yet received the qualifying degree",
+            "ruleText": "Submit a pre-graduation certificate proving that the required degree will be completed by July 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 2 note"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be younger than 45 on September 1, 2026; individual scholarships may impose a lower age limit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught doctoral applicants",
+            "ruleText": "Provide proof of English proficiency; applicants whose mother tongue is English are exempt from the document requirement, and the guide publishes no universal minimum IELTS or TOEFL score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Eligibility item 4 and Application materials"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral Fall 2026 applicants",
+            "ruleText": "Complete the online application from October 16, 2025 through January 31, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Procedures schedule"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_status",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "A host supervisor does not need to be found before online application; complete applications are forwarded to the relevant schools and departments for review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Procedures item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit an ordinary-passport copy with at least one year of validity.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "proposal",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a study or research proposal of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "cv",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a curriculum vitae.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit two recommendation letters from full or associate professors, including telephone number and email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit degree certificate and academic transcripts for the bachelor's and, where applicable, master's stages, notarized by the national Ministry of Education or equivalent authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials"
+              }
+            ]
+          },
+          {
+            "key": "student_status",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently enrolled at a university",
+            "ruleText": "Submit official student-status evidence stating exactly when the qualifying degree certificate will be obtained.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "delayed_degree",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Graduates who have not yet received the degree certificate",
+            "ruleText": "Submit an official explanation stating why the certificate has not been issued and when it will be obtained.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "employment_release",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who are employed",
+            "ruleText": "Submit official evidence of on-post employment status and permission of release.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Attach a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "materials_return",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Understand that application materials are not returned regardless of the result.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application materials note"
+              }
+            ]
+          },
+          {
+            "key": "online_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Shortlisted applicants",
+            "ruleText": "Complete the school or department online assessment; all schools require an online interview and some also require an online entrance examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Online Assessment"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled postgraduate students",
+            "ruleText": "Pay the published CNY 800 annual insurance fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using on-campus accommodation",
+            "ruleText": "Budget CNY 500-1,000 per month according to room type and size.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 3"
+              }
+            ]
+          },
+          {
+            "key": "visa_registration",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Use the ordinary passport, Admission Notice, JW201/JW202 and original physical-examination records to obtain an X1 visa and register on the dates stated in the Admission Notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Admission"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled doctoral students",
+            "ruleText": "Pay tuition of CNY 35,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate_fees",
+                "locator": "Fees & Scholarships item 1"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

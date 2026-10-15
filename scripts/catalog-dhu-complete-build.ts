@@ -40,6 +40,7 @@ type ExtractedRow = {
   durationYears: number | null; durationText: string; fieldCategory: string; teachingLanguage: string;
   campus: string; scholarshipAvailable: boolean; tuitionAmount: number | null; tuitionText: string;
   languageRequirement: string; otherRequirement: string; cscaRequirement: string;
+  supervisionIntentionRequired: boolean | null;
 };
 const rows = JSON.parse(rowsText) as ExtractedRow[];
 if (rows.length !== 131 || new Set(rows.map((row) => `${row.page}:${row.row}`)).size !== 131) throw new Error("DHU extracted program rows changed.");
@@ -78,7 +79,7 @@ const programs: CatalogSeedProgram[] = rows.map((row) => {
     tuitionText: `${row.tuitionText} per academic year`,
     scholarshipText: row.scholarshipAvailable ? `Entrance-scholarship route available. ${deadline}` : "No entrance-scholarship route is marked available for this program in the official 2026 table.",
     applicationUrl: "https://admissions.dhu.edu.cn/",
-    applicationNote: `September 2026 intake; ${row.durationText}; ${row.campus}. ${deadline}${row.otherRequirement ? ` Additional published requirement: ${row.otherRequirement}` : ""}`,
+    applicationNote: `September 2026 intake; ${row.durationText}; ${row.campus}. ${deadline}${!undergraduate && row.supervisionIntentionRequired ? " Supervision Intention Letter required." : ""}${row.otherRequirement ? ` Additional published requirement: ${row.otherRequirement}` : ""}`,
     hasScholarship: row.scholarshipAvailable,
     badgeText: `${row.degreeLevel} · ${row.teachingLanguage}`,
     displayTuition: `${row.tuitionText}/year`,
@@ -95,9 +96,10 @@ const programs: CatalogSeedProgram[] = rows.map((row) => {
       degreeLevel: "official PDF table title",
       durationYears: "official PDF table heading",
       teachingLanguage: `${row.page}, language column, row ${row.row}`,
+      cscaRequirement: undergraduate ? `${row.page}, CSCA Test Subjects column, visually reviewed row or merged school group containing row ${row.row}` : "graduate route; no CSCA column in the official table",
       tuitionText: `${row.page}, tuition column, row ${row.row}`,
       scholarshipText: `${row.page}, entrance-scholarship availability and deadline columns, row ${row.row}`,
-      applicationNote: `${row.page}, campus and requirements columns, row ${row.row}`,
+      applicationNote: `${row.page}, campus, supervision-intention and Other Requirements columns, visually reviewed row or merged school group containing row ${row.row}`,
     },
   };
 });

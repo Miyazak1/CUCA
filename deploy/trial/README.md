@@ -86,3 +86,15 @@ docker compose up -d --build
 ```
 
 `docker compose down` preserves the PostgreSQL and Caddy volumes. `docker compose down -v` permanently deletes trial data and must only be used intentionally.
+
+## Preflight the official application-requirement candidate
+
+After rebuilding the image, compare the hash-locked 52-school requirement candidate with the persistent single-host catalog before preparing any reviewed import. This command opens a repeatable-read, read-only transaction and never creates a requirement version or publication:
+
+```bash
+docker compose run --rm --no-deps \
+  -e CUAC_REQUIREMENT_PREFLIGHT_TARGET=single_host_read_only \
+  app node scripts/catalog-application-requirements-single-host-preflight.ts
+```
+
+Save the JSON result in the protected deployment record. `ready_for_reviewed_import` means every school, program and intake binding exists and no version-one conflict was found; it does not approve or publish the unreviewed candidate. A blocked result includes at most 25 non-sensitive binding examples for reconciliation. Never use `docker compose down -v` to make a preflight pass.

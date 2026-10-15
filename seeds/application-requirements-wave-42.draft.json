@@ -1,0 +1,888 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T10:43:08.997Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope SDNU 2026 undergraduate requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 3,
+    "readyTemplateCount": 3,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 10,
+    "targetedIntakeCount": 10,
+    "requirementItemCount": 48
+  },
+  "templates": [
+    {
+      "key": "sdnu-undergraduate-tuition-group-01-fall-2026",
+      "schoolSlug": "shandong-normal-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "shandong-normal-university-business-administration",
+        "shandong-normal-university-chemical-engineering-and-technics",
+        "shandong-normal-university-logistics-management",
+        "shandong-normal-university-tourism-management"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The official guide requires CSCA but does not publish a program-specific subject combination; no subjects are inferred.",
+        "The reviewed Shandong Government Scholarship applies to master's and doctoral applicants, not these undergraduate routes; it remains a separate unreviewed catalog record."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "brochure",
+            "url": "https://cie.sdnu.edu.cn/__local/6/83/2D/9035CBBC4F944A4E15FD1C9F1F0_44FB66E1_6FAA5.pdf",
+            "title": "Shandong Normal University international admission brochure PDF 2026",
+            "capturedAt": "2026-09-22T12:21:24.786Z",
+            "contentSha256": "9febf6b225bc994d0d0fa8f00eac106b3e479c97f44334968cd51f5cf812f0e4"
+          },
+          {
+            "key": "catalog",
+            "url": "https://cie.sdnu.edu.cn/__local/7/78/FE/A77662A56B124EE6AA92725CF85_7E55AEAA_3AD1A0.jpg",
+            "title": "Shandong Normal University international program catalog image 2 2026-2027",
+            "capturedAt": "2026-09-22T12:21:22.386Z",
+            "contentSha256": "0ba7ae25dfe2015268cf0dd431e81aad3b6d31ddb9f3ec6cae9b1525d928a021"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school qualification or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 1, Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "age_guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Applicants should generally be at least 18; applicants under 18 must provide parental authorization and a guardian commitment, with a China-resident guardian when the parents are outside China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 1 and 3, Eligibility item 3 and Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport personal-information page and any Chinese visa pages; passport validity must cover the whole study period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the high-school graduation certificate, with notarized Chinese or English translation where needed; graduating students may submit impending-graduation proof but must graduate before August 31 and provide the final certificate at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a complete high-school transcript, with notarized Chinese or English translation where needed.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "current_study_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently studying in China",
+            "ruleText": "Submit current-school academic-performance or attendance evidence and the current-school transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 2-3, Application Materials item 4 note"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Applicants must take CSCA and submit the result. The reviewed official guide does not publish a program-specific subject combination.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Eligibility item 4 and Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK Level 4 score 180 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 1 and 3, Eligibility item 2 and Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Form valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid police-issued non-criminal record, normally issued within six months before application, with notarized Chinese or English translation where needed.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit proof of financial guarantee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from April 1 through May 31, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Time and Commencing Time"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published CNY 415 registration fee after the initial document review.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3-4, Fees and Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 16,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Fees; official program-catalog attachment"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation is CNY 10,000 per person per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Fees"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international students",
+            "ruleText": "Purchase mandatory China-based medical insurance at CNY 400 per half-year or CNY 800 per year; registration is not completed without it.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3 and 5, Fees and Warm Tips"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "sdnu-undergraduate-tuition-group-02-fall-2026",
+      "schoolSlug": "shandong-normal-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "shandong-normal-university-calligraphy",
+        "shandong-normal-university-environmental-design",
+        "shandong-normal-university-fine-arts",
+        "shandong-normal-university-martial-arts-and-traditional-ethnic-sports"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The official guide requires CSCA but does not publish a program-specific subject combination; no subjects are inferred.",
+        "The reviewed Shandong Government Scholarship applies to master's and doctoral applicants, not these undergraduate routes; it remains a separate unreviewed catalog record."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "brochure",
+            "url": "https://cie.sdnu.edu.cn/__local/6/83/2D/9035CBBC4F944A4E15FD1C9F1F0_44FB66E1_6FAA5.pdf",
+            "title": "Shandong Normal University international admission brochure PDF 2026",
+            "capturedAt": "2026-09-22T12:21:24.786Z",
+            "contentSha256": "9febf6b225bc994d0d0fa8f00eac106b3e479c97f44334968cd51f5cf812f0e4"
+          },
+          {
+            "key": "catalog",
+            "url": "https://cie.sdnu.edu.cn/__local/7/78/FE/A77662A56B124EE6AA92725CF85_7E55AEAA_3AD1A0.jpg",
+            "title": "Shandong Normal University international program catalog image 2 2026-2027",
+            "capturedAt": "2026-09-22T12:21:22.386Z",
+            "contentSha256": "0ba7ae25dfe2015268cf0dd431e81aad3b6d31ddb9f3ec6cae9b1525d928a021"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school qualification or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 1, Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "age_guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Applicants should generally be at least 18; applicants under 18 must provide parental authorization and a guardian commitment, with a China-resident guardian when the parents are outside China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 1 and 3, Eligibility item 3 and Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport personal-information page and any Chinese visa pages; passport validity must cover the whole study period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the high-school graduation certificate, with notarized Chinese or English translation where needed; graduating students may submit impending-graduation proof but must graduate before August 31 and provide the final certificate at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a complete high-school transcript, with notarized Chinese or English translation where needed.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "current_study_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently studying in China",
+            "ruleText": "Submit current-school academic-performance or attendance evidence and the current-school transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 2-3, Application Materials item 4 note"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Applicants must take CSCA and submit the result. The reviewed official guide does not publish a program-specific subject combination.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Eligibility item 4 and Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK Level 4 score 180 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 1 and 3, Eligibility item 2 and Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Form valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid police-issued non-criminal record, normally issued within six months before application, with notarized Chinese or English translation where needed.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit proof of financial guarantee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from April 1 through May 31, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Time and Commencing Time"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published CNY 415 registration fee after the initial document review.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3-4, Fees and Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 18,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Fees; official program-catalog attachment"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation is CNY 10,000 per person per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Fees"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international students",
+            "ruleText": "Purchase mandatory China-based medical insurance at CNY 400 per half-year or CNY 800 per year; registration is not completed without it.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3 and 5, Fees and Warm Tips"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "sdnu-undergraduate-tuition-group-03-fall-2026",
+      "schoolSlug": "shandong-normal-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "shandong-normal-university-chinese-language",
+        "shandong-normal-university-teaching-chinese-to-speakers-of-other-languages"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The official guide requires CSCA but does not publish a program-specific subject combination; no subjects are inferred.",
+        "The reviewed Shandong Government Scholarship applies to master's and doctoral applicants, not these undergraduate routes; it remains a separate unreviewed catalog record."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "brochure",
+            "url": "https://cie.sdnu.edu.cn/__local/6/83/2D/9035CBBC4F944A4E15FD1C9F1F0_44FB66E1_6FAA5.pdf",
+            "title": "Shandong Normal University international admission brochure PDF 2026",
+            "capturedAt": "2026-09-22T12:21:24.786Z",
+            "contentSha256": "9febf6b225bc994d0d0fa8f00eac106b3e479c97f44334968cd51f5cf812f0e4"
+          },
+          {
+            "key": "catalog",
+            "url": "https://cie.sdnu.edu.cn/__local/7/78/FE/A77662A56B124EE6AA92725CF85_7E55AEAA_3AD1A0.jpg",
+            "title": "Shandong Normal University international program catalog image 2 2026-2027",
+            "capturedAt": "2026-09-22T12:21:22.386Z",
+            "contentSha256": "0ba7ae25dfe2015268cf0dd431e81aad3b6d31ddb9f3ec6cae9b1525d928a021"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school qualification or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 1, Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "age_guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Applicants should generally be at least 18; applicants under 18 must provide parental authorization and a guardian commitment, with a China-resident guardian when the parents are outside China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 1 and 3, Eligibility item 3 and Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport personal-information page and any Chinese visa pages; passport validity must cover the whole study period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the high-school graduation certificate, with notarized Chinese or English translation where needed; graduating students may submit impending-graduation proof but must graduate before August 31 and provide the final certificate at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a complete high-school transcript, with notarized Chinese or English translation where needed.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "current_study_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently studying in China",
+            "ruleText": "Submit current-school academic-performance or attendance evidence and the current-school transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 2-3, Application Materials item 4 note"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "Applicants must take CSCA and submit the result. The reviewed official guide does not publish a program-specific subject combination.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Eligibility item 4 and Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK Level 4 score 180 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 1 and 3, Eligibility item 2 and Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Form valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid police-issued non-criminal record, normally issued within six months before application, with notarized Chinese or English translation where needed.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit proof of financial guarantee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from April 1 through May 31, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 2, Application Time and Commencing Time"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published CNY 415 registration fee after the initial document review.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3-4, Fees and Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 14,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Fees; official program-catalog attachment"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Published accommodation is CNY 10,000 per person per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Fees"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international students",
+            "ruleText": "Purchase mandatory China-based medical insurance at CNY 400 per half-year or CNY 800 per year; registration is not completed without it.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3 and 5, Fees and Warm Tips"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

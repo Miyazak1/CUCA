@@ -1,0 +1,1899 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T12:15:31.992Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete requirements for Tsinghua's 83 Fall 2026 undergraduate routes with explicit official tuition."
+  },
+  "summary": {
+    "templateCount": 5,
+    "readyTemplateCount": 5,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 83,
+    "targetedIntakeCount": 83,
+    "excludedProgramCount": 8,
+    "requirementItemCount": 95
+  },
+  "templates": [
+    {
+      "key": "tsinghua-undergraduate-explicit-fee-group-01-fall-2026",
+      "schoolSlug": "tsinghua-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "tsinghua-university-undergraduate-school-of-architecture-architecture-chinese-and-english",
+        "tsinghua-university-undergraduate-school-of-architecture-urban-and-rural-planning-chinese-and-english",
+        "tsinghua-university-undergraduate-school-of-architecture-landscape-architecture-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-mechanical-engineering-mechanical-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-mechanical-engineering-mechanical-engineering-elite-program-chinese-and-english",
+        "tsinghua-university-undergraduate-school-of-vehicle-and-mobility-vehicle-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-electronic-engineering-electronic-information-science-and-technology-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-computer-science-and-technology-computer-science-and-technology-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-automation-automation-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-mathematical-sciences-pure-and-applied-mathematics-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-physics-physics-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-physics-fundamental-sciences-mathematics-and-physics-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-statistics-and-data-science-statistics-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-chemistry-chemistry-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-chemistry-chemical-biology-chinese-and-english",
+        "tsinghua-university-undergraduate-school-of-life-sciences-biological-science-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-chemical-engineering-polymer-materials-and-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-department-of-chemical-engineering-chemical-engineering-and-industrial-biological-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-weixian-college-materials-science-and-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-weixian-college-measurement-control-technology-and-instruments-chinese-and-english",
+        "tsinghua-university-undergraduate-weixian-college-biomedical-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-weixian-college-interdisciplinary-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-weixian-college-information-technology-chinese-and-english",
+        "tsinghua-university-undergraduate-weixian-college-smart-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-weixian-college-low-carbon-energy-chinese-and-english",
+        "tsinghua-university-undergraduate-weixian-college-life-sciences-and-health-chinese-and-english",
+        "tsinghua-university-undergraduate-xiuzhong-college-interdisciplinary-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-xiuzhong-college-resources-energy-and-climate-change-chinese-and-english",
+        "tsinghua-university-undergraduate-xiuzhong-college-environmental-systems-and-information-technology-chinese-and-english",
+        "tsinghua-university-undergraduate-xiuzhong-college-sustainable-cities-and-ecological-spaces-chinese-and-english",
+        "tsinghua-university-undergraduate-xiuzhong-college-green-economy-and-global-governance-chinese-and-english",
+        "tsinghua-university-undergraduate-dushi-college-software-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-dushi-college-industrial-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-dushi-college-aerospace-engineering-engineering-mechanics-aeronautical-and-astronautical-engineering-energy-and-power-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-dushi-college-interdisciplinary-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-wuqiong-college-artificial-intelligence-chinese-and-english",
+        "tsinghua-university-undergraduate-ziqiang-college-interdisciplinary-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-ziqiang-college-smart-grid-chinese-and-english",
+        "tsinghua-university-undergraduate-ziqiang-college-intelligent-power-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-ziqiang-college-energy-materials-chinese-and-english",
+        "tsinghua-university-undergraduate-ziqiang-college-power-semiconductor-devices-and-technology-chinese-and-english",
+        "tsinghua-university-undergraduate-ziqiang-college-energy-storage-and-hydrogen-energy-chinese-and-english",
+        "tsinghua-university-undergraduate-ziqiang-college-carbon-neutrality-and-new-energy-chinese-and-english",
+        "tsinghua-university-undergraduate-ziqiang-college-electrical-engineering-and-automation-chinese-and-english",
+        "tsinghua-university-undergraduate-ziqiang-college-energy-and-power-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-ziqiang-college-vehicle-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-ziqiang-college-building-environment-and-energy-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-shuimu-college-interdisciplinary-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-shuimu-college-electronic-information-science-and-technology-chinese-and-english",
+        "tsinghua-university-undergraduate-shuimu-college-software-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-shuimu-college-industrial-engineering-chinese-and-english",
+        "tsinghua-university-undergraduate-shuimu-college-civil-engineering-and-systems-chinese-and-english",
+        "tsinghua-university-undergraduate-shuimu-college-transportation-engineering-chinese-and-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains the 83 historical Fall 2026 undergraduate routes whose exact tuition is supported by the locked 2026 fee schedule. The eight Zijing College routes are handled separately under their current Fall 2027 official guide.",
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The four scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "catalog",
+            "url": "https://international.join-tsinghua.edu.cn/Divisions1.htm",
+            "title": "Tsinghua University 2026 international undergraduate divisions and colleges",
+            "capturedAt": "2026-09-13T04:28:54.295Z",
+            "contentSha256": "6a4281c15e754f284d0ee60ff2446f83f4950455bdcbd49f4b7371e7e2a5671b"
+          },
+          {
+            "key": "schedule",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Schedule.htm",
+            "title": "Tsinghua University 2026 international undergraduate application schedule",
+            "capturedAt": "2026-09-13T04:28:59.160Z",
+            "contentSha256": "0a12432a35493923f0c74cc0ba80d83bb5727bbd6baaf9bd1397a5be6b1b3f38"
+          },
+          {
+            "key": "fees",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Fees.htm",
+            "title": "Tsinghua University 2026 international undergraduate fees",
+            "capturedAt": "2026-09-13T04:29:03.617Z",
+            "contentSha256": "2a616665e6074024a47024e6bf543c7c9475cb2e32317456b847b525aed753c5"
+          },
+          {
+            "key": "faq",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/FAQ.htm",
+            "title": "Tsinghua University 2026 international undergraduate eligibility and scholarship FAQ",
+            "capturedAt": "2026-09-13T04:29:08.355Z",
+            "contentSha256": "72487490675d1b145faa4d40f20a71768f669b35165324a68997583cd3a37d20"
+          },
+          {
+            "key": "procedure",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Application_Procedures.htm",
+            "title": "Tsinghua University 2026 international undergraduate application procedures",
+            "capturedAt": "2026-09-13T04:29:18.063Z",
+            "contentSha256": "1460bcaf1e459a8a584c628b6d2d187a867b7e3a331beec474e60cade25c05d9"
+          },
+          {
+            "key": "documents",
+            "url": "https://international.join-tsinghua.edu.cn/List-of-Uploading-Documents-in-the-Online-Application-System.pdf",
+            "title": "Tsinghua University 2026 international undergraduate application document list",
+            "capturedAt": "2026-09-13T04:29:27.537Z",
+            "contentSha256": "6d93ddb8c9edda80d0cff0e4f28b592ae7a22e72786a4e5aa2d05061458809ed"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a foreign citizen in good physical and mental health, be friendly to China, and hold or be completing a high-school graduation certificate under the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "faq",
+                "locator": "FAQ eligibility items 1.1-1.3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Create an account, complete the online form, upload every required document, pay the fee and submit within the designated application round.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Online Application 1.1-1.4"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_visa",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicant's and parents' passport information pages and, when applicable, the applicant's visa and passport pages with China entry stamps. The applicant passport must expire after October 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "graduation_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicable original high-school diploma, official pre-graduation certificate with expected graduation date, or university enrollment certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "cv_and_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese- or English-language CV and the applicable original high-school and university transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese and English route applicants",
+            "ruleText": "HSK 5 with every subscore above 60, or HSK 4 with every subscore above 60 and HSK 5 achieved by the end of the first academic year. A published waiver may apply to native Chinese speakers or applicants educated in Chinese at high school.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents items 5, 7 and 12"
+              }
+            ]
+          },
+          {
+            "key": "academic_tests",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the national or regional graduation or matriculation examination certificate and/or available international standardized-test results such as SAT, ACT, A-Level, AP, IB or CSCA.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "CSCA is not mandatory for the 2026 intake; optional scores are recommended to include mathematics and physics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "faq",
+                "locator": "2026 CSCA FAQ"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Arrange two recommendation letters through the online system; the system sends its template directly to each recommender's email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a personal statement in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_sponsor",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the Financial Sponsor form and the sponsor's employment or income certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with current or former Chinese citizenship or covered parentage/residence circumstances",
+            "ruleText": "Submit the published immigration, citizenship cancellation, birth, nationality, parent nationality and overseas residence evidence applicable to the applicant.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "introduction_video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese-and-English self-introduction video no longer than three minutes and smaller than 20 MB in an accepted format.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "portfolio",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Arts Division or Architecture Division applicants",
+            "ruleText": "Upload the required portfolio and, for architecture, the form confirming the applicant independently completed the portfolio.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 14"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Provide a certificate identifying a legal guardian who currently lives in Beijing and has a source of income.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents note 4"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable RMB 800 online application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Online Application 1.4"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Meet the applicable round deadline; the final general undergraduate deadline was February 28, 2026 at 17:00 Beijing time. Arts Design and Fine Arts routes were open only in the first round.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "schedule",
+                "locator": "2026 first- and second-round schedule"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who pass document screening",
+            "ruleText": "Participate in Tsinghua's comprehensive assessment when invited. Arts and Architecture applicants also undergo portfolio review, with Arts arrangements notified separately.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Comprehensive Evaluation 2.1-2.2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: RMB 30,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "fees",
+                "locator": "2026 undergraduate fee table"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "tsinghua-undergraduate-explicit-fee-group-02-fall-2026",
+      "schoolSlug": "tsinghua-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "tsinghua-university-undergraduate-school-of-economics-and-management-information-management-and-information-systems-chinese-and-english",
+        "tsinghua-university-undergraduate-school-of-economics-and-management-economics-and-finance-international-program-chinese-and-english",
+        "tsinghua-university-undergraduate-school-of-economics-and-management-information-management-and-information-systems-chinese-and-english-21",
+        "tsinghua-university-undergraduate-school-of-law-law-chinese-and-english",
+        "tsinghua-university-undergraduate-xinya-college-any-undergraduate-major-available-university-wide-chinese-and-english",
+        "tsinghua-university-undergraduate-xinya-college-mind-brain-and-machine-chinese-and-english",
+        "tsinghua-university-undergraduate-xinya-college-philosophy-politics-and-economics-chinese-and-english",
+        "tsinghua-university-undergraduate-rixin-college-chinese-language-and-literature-chinese-and-english",
+        "tsinghua-university-undergraduate-rixin-college-history-chinese-and-english",
+        "tsinghua-university-undergraduate-rixin-college-philosophy-chinese-and-english",
+        "tsinghua-university-undergraduate-rixin-college-english-language-class-of-world-literatures-and-cultures-chinese-and-english",
+        "tsinghua-university-undergraduate-rixin-college-japanese-language-chinese-and-english",
+        "tsinghua-university-undergraduate-zhishan-college-sociology-chinese-and-english",
+        "tsinghua-university-undergraduate-zhishan-college-economics-chinese-and-english",
+        "tsinghua-university-undergraduate-zhishan-college-international-politics-chinese-and-english",
+        "tsinghua-university-undergraduate-zhishan-college-politics-and-public-administration-chinese-and-english",
+        "tsinghua-university-undergraduate-zhishan-college-statistics-chinese-and-english",
+        "tsinghua-university-undergraduate-shuimu-college-engineering-management-chinese-and-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains the 83 historical Fall 2026 undergraduate routes whose exact tuition is supported by the locked 2026 fee schedule. The eight Zijing College routes are handled separately under their current Fall 2027 official guide.",
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The four scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "catalog",
+            "url": "https://international.join-tsinghua.edu.cn/Divisions1.htm",
+            "title": "Tsinghua University 2026 international undergraduate divisions and colleges",
+            "capturedAt": "2026-09-13T04:28:54.295Z",
+            "contentSha256": "6a4281c15e754f284d0ee60ff2446f83f4950455bdcbd49f4b7371e7e2a5671b"
+          },
+          {
+            "key": "schedule",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Schedule.htm",
+            "title": "Tsinghua University 2026 international undergraduate application schedule",
+            "capturedAt": "2026-09-13T04:28:59.160Z",
+            "contentSha256": "0a12432a35493923f0c74cc0ba80d83bb5727bbd6baaf9bd1397a5be6b1b3f38"
+          },
+          {
+            "key": "fees",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Fees.htm",
+            "title": "Tsinghua University 2026 international undergraduate fees",
+            "capturedAt": "2026-09-13T04:29:03.617Z",
+            "contentSha256": "2a616665e6074024a47024e6bf543c7c9475cb2e32317456b847b525aed753c5"
+          },
+          {
+            "key": "faq",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/FAQ.htm",
+            "title": "Tsinghua University 2026 international undergraduate eligibility and scholarship FAQ",
+            "capturedAt": "2026-09-13T04:29:08.355Z",
+            "contentSha256": "72487490675d1b145faa4d40f20a71768f669b35165324a68997583cd3a37d20"
+          },
+          {
+            "key": "procedure",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Application_Procedures.htm",
+            "title": "Tsinghua University 2026 international undergraduate application procedures",
+            "capturedAt": "2026-09-13T04:29:18.063Z",
+            "contentSha256": "1460bcaf1e459a8a584c628b6d2d187a867b7e3a331beec474e60cade25c05d9"
+          },
+          {
+            "key": "documents",
+            "url": "https://international.join-tsinghua.edu.cn/List-of-Uploading-Documents-in-the-Online-Application-System.pdf",
+            "title": "Tsinghua University 2026 international undergraduate application document list",
+            "capturedAt": "2026-09-13T04:29:27.537Z",
+            "contentSha256": "6d93ddb8c9edda80d0cff0e4f28b592ae7a22e72786a4e5aa2d05061458809ed"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a foreign citizen in good physical and mental health, be friendly to China, and hold or be completing a high-school graduation certificate under the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "faq",
+                "locator": "FAQ eligibility items 1.1-1.3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Create an account, complete the online form, upload every required document, pay the fee and submit within the designated application round.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Online Application 1.1-1.4"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_visa",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicant's and parents' passport information pages and, when applicable, the applicant's visa and passport pages with China entry stamps. The applicant passport must expire after October 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "graduation_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicable original high-school diploma, official pre-graduation certificate with expected graduation date, or university enrollment certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "cv_and_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese- or English-language CV and the applicable original high-school and university transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese and English route applicants",
+            "ruleText": "HSK 5 with every subscore above 60, or HSK 4 with every subscore above 60 and HSK 5 achieved by the end of the first academic year. A published waiver may apply to native Chinese speakers or applicants educated in Chinese at high school.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents items 5, 7 and 12"
+              }
+            ]
+          },
+          {
+            "key": "academic_tests",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the national or regional graduation or matriculation examination certificate and/or available international standardized-test results such as SAT, ACT, A-Level, AP, IB or CSCA.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "CSCA is not mandatory for the 2026 intake; optional scores are recommended to include mathematics and physics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "faq",
+                "locator": "2026 CSCA FAQ"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Arrange two recommendation letters through the online system; the system sends its template directly to each recommender's email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a personal statement in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_sponsor",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the Financial Sponsor form and the sponsor's employment or income certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with current or former Chinese citizenship or covered parentage/residence circumstances",
+            "ruleText": "Submit the published immigration, citizenship cancellation, birth, nationality, parent nationality and overseas residence evidence applicable to the applicant.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "introduction_video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese-and-English self-introduction video no longer than three minutes and smaller than 20 MB in an accepted format.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "portfolio",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Arts Division or Architecture Division applicants",
+            "ruleText": "Upload the required portfolio and, for architecture, the form confirming the applicant independently completed the portfolio.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 14"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Provide a certificate identifying a legal guardian who currently lives in Beijing and has a source of income.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents note 4"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable RMB 800 online application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Online Application 1.4"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Meet the applicable round deadline; the final general undergraduate deadline was February 28, 2026 at 17:00 Beijing time. Arts Design and Fine Arts routes were open only in the first round.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "schedule",
+                "locator": "2026 first- and second-round schedule"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who pass document screening",
+            "ruleText": "Participate in Tsinghua's comprehensive assessment when invited. Arts and Architecture applicants also undergo portfolio review, with Arts arrangements notified separately.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Comprehensive Evaluation 2.1-2.2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: RMB 26,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "fees",
+                "locator": "2026 undergraduate fee table"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "tsinghua-undergraduate-explicit-fee-group-03-fall-2026",
+      "schoolSlug": "tsinghua-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "tsinghua-university-undergraduate-academy-of-arts-and-design-design-chinese-and-english",
+        "tsinghua-university-undergraduate-academy-of-arts-and-design-fine-arts-chinese-and-english",
+        "tsinghua-university-undergraduate-academy-of-arts-and-design-art-history-chinese-and-english",
+        "tsinghua-university-undergraduate-xinya-college-creative-design-and-intelligent-engineering-chinese-and-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains the 83 historical Fall 2026 undergraduate routes whose exact tuition is supported by the locked 2026 fee schedule. The eight Zijing College routes are handled separately under their current Fall 2027 official guide.",
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The four scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "catalog",
+            "url": "https://international.join-tsinghua.edu.cn/Divisions1.htm",
+            "title": "Tsinghua University 2026 international undergraduate divisions and colleges",
+            "capturedAt": "2026-09-13T04:28:54.295Z",
+            "contentSha256": "6a4281c15e754f284d0ee60ff2446f83f4950455bdcbd49f4b7371e7e2a5671b"
+          },
+          {
+            "key": "schedule",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Schedule.htm",
+            "title": "Tsinghua University 2026 international undergraduate application schedule",
+            "capturedAt": "2026-09-13T04:28:59.160Z",
+            "contentSha256": "0a12432a35493923f0c74cc0ba80d83bb5727bbd6baaf9bd1397a5be6b1b3f38"
+          },
+          {
+            "key": "fees",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Fees.htm",
+            "title": "Tsinghua University 2026 international undergraduate fees",
+            "capturedAt": "2026-09-13T04:29:03.617Z",
+            "contentSha256": "2a616665e6074024a47024e6bf543c7c9475cb2e32317456b847b525aed753c5"
+          },
+          {
+            "key": "faq",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/FAQ.htm",
+            "title": "Tsinghua University 2026 international undergraduate eligibility and scholarship FAQ",
+            "capturedAt": "2026-09-13T04:29:08.355Z",
+            "contentSha256": "72487490675d1b145faa4d40f20a71768f669b35165324a68997583cd3a37d20"
+          },
+          {
+            "key": "procedure",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Application_Procedures.htm",
+            "title": "Tsinghua University 2026 international undergraduate application procedures",
+            "capturedAt": "2026-09-13T04:29:18.063Z",
+            "contentSha256": "1460bcaf1e459a8a584c628b6d2d187a867b7e3a331beec474e60cade25c05d9"
+          },
+          {
+            "key": "documents",
+            "url": "https://international.join-tsinghua.edu.cn/List-of-Uploading-Documents-in-the-Online-Application-System.pdf",
+            "title": "Tsinghua University 2026 international undergraduate application document list",
+            "capturedAt": "2026-09-13T04:29:27.537Z",
+            "contentSha256": "6d93ddb8c9edda80d0cff0e4f28b592ae7a22e72786a4e5aa2d05061458809ed"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a foreign citizen in good physical and mental health, be friendly to China, and hold or be completing a high-school graduation certificate under the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "faq",
+                "locator": "FAQ eligibility items 1.1-1.3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Create an account, complete the online form, upload every required document, pay the fee and submit within the designated application round.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Online Application 1.1-1.4"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_visa",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicant's and parents' passport information pages and, when applicable, the applicant's visa and passport pages with China entry stamps. The applicant passport must expire after October 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "graduation_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicable original high-school diploma, official pre-graduation certificate with expected graduation date, or university enrollment certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "cv_and_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese- or English-language CV and the applicable original high-school and university transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese and English route applicants",
+            "ruleText": "HSK 5 with every subscore above 60, or HSK 4 with every subscore above 60 and HSK 5 achieved by the end of the first academic year. A published waiver may apply to native Chinese speakers or applicants educated in Chinese at high school.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents items 5, 7 and 12"
+              }
+            ]
+          },
+          {
+            "key": "academic_tests",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the national or regional graduation or matriculation examination certificate and/or available international standardized-test results such as SAT, ACT, A-Level, AP, IB or CSCA.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "CSCA is not mandatory for the 2026 intake; optional scores are recommended to include mathematics and physics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "faq",
+                "locator": "2026 CSCA FAQ"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Arrange two recommendation letters through the online system; the system sends its template directly to each recommender's email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a personal statement in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_sponsor",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the Financial Sponsor form and the sponsor's employment or income certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with current or former Chinese citizenship or covered parentage/residence circumstances",
+            "ruleText": "Submit the published immigration, citizenship cancellation, birth, nationality, parent nationality and overseas residence evidence applicable to the applicant.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "introduction_video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese-and-English self-introduction video no longer than three minutes and smaller than 20 MB in an accepted format.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "portfolio",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Arts Division or Architecture Division applicants",
+            "ruleText": "Upload the required portfolio and, for architecture, the form confirming the applicant independently completed the portfolio.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 14"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Provide a certificate identifying a legal guardian who currently lives in Beijing and has a source of income.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents note 4"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable RMB 800 online application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Online Application 1.4"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Meet the applicable round deadline; the final general undergraduate deadline was February 28, 2026 at 17:00 Beijing time. Arts Design and Fine Arts routes were open only in the first round.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "schedule",
+                "locator": "2026 first- and second-round schedule"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who pass document screening",
+            "ruleText": "Participate in Tsinghua's comprehensive assessment when invited. Arts and Architecture applicants also undergo portfolio review, with Arts arrangements notified separately.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Comprehensive Evaluation 2.1-2.2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: RMB 40,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "fees",
+                "locator": "2026 undergraduate fee table"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "tsinghua-undergraduate-explicit-fee-group-04-fall-2026",
+      "schoolSlug": "tsinghua-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "tsinghua-university-undergraduate-school-of-medicine-clinical-medicine-outstanding-physician-scientist-program-chinese-and-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains the 83 historical Fall 2026 undergraduate routes whose exact tuition is supported by the locked 2026 fee schedule. The eight Zijing College routes are handled separately under their current Fall 2027 official guide.",
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The four scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "catalog",
+            "url": "https://international.join-tsinghua.edu.cn/Divisions1.htm",
+            "title": "Tsinghua University 2026 international undergraduate divisions and colleges",
+            "capturedAt": "2026-09-13T04:28:54.295Z",
+            "contentSha256": "6a4281c15e754f284d0ee60ff2446f83f4950455bdcbd49f4b7371e7e2a5671b"
+          },
+          {
+            "key": "schedule",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Schedule.htm",
+            "title": "Tsinghua University 2026 international undergraduate application schedule",
+            "capturedAt": "2026-09-13T04:28:59.160Z",
+            "contentSha256": "0a12432a35493923f0c74cc0ba80d83bb5727bbd6baaf9bd1397a5be6b1b3f38"
+          },
+          {
+            "key": "fees",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Fees.htm",
+            "title": "Tsinghua University 2026 international undergraduate fees",
+            "capturedAt": "2026-09-13T04:29:03.617Z",
+            "contentSha256": "2a616665e6074024a47024e6bf543c7c9475cb2e32317456b847b525aed753c5"
+          },
+          {
+            "key": "faq",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/FAQ.htm",
+            "title": "Tsinghua University 2026 international undergraduate eligibility and scholarship FAQ",
+            "capturedAt": "2026-09-13T04:29:08.355Z",
+            "contentSha256": "72487490675d1b145faa4d40f20a71768f669b35165324a68997583cd3a37d20"
+          },
+          {
+            "key": "procedure",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Application_Procedures.htm",
+            "title": "Tsinghua University 2026 international undergraduate application procedures",
+            "capturedAt": "2026-09-13T04:29:18.063Z",
+            "contentSha256": "1460bcaf1e459a8a584c628b6d2d187a867b7e3a331beec474e60cade25c05d9"
+          },
+          {
+            "key": "documents",
+            "url": "https://international.join-tsinghua.edu.cn/List-of-Uploading-Documents-in-the-Online-Application-System.pdf",
+            "title": "Tsinghua University 2026 international undergraduate application document list",
+            "capturedAt": "2026-09-13T04:29:27.537Z",
+            "contentSha256": "6d93ddb8c9edda80d0cff0e4f28b592ae7a22e72786a4e5aa2d05061458809ed"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a foreign citizen in good physical and mental health, be friendly to China, and hold or be completing a high-school graduation certificate under the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "faq",
+                "locator": "FAQ eligibility items 1.1-1.3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Create an account, complete the online form, upload every required document, pay the fee and submit within the designated application round.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Online Application 1.1-1.4"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_visa",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicant's and parents' passport information pages and, when applicable, the applicant's visa and passport pages with China entry stamps. The applicant passport must expire after October 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "graduation_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicable original high-school diploma, official pre-graduation certificate with expected graduation date, or university enrollment certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "cv_and_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese- or English-language CV and the applicable original high-school and university transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese and English route applicants",
+            "ruleText": "HSK 5 with every subscore above 60, or HSK 4 with every subscore above 60 and HSK 5 achieved by the end of the first academic year. A published waiver may apply to native Chinese speakers or applicants educated in Chinese at high school.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents items 5, 7 and 12"
+              }
+            ]
+          },
+          {
+            "key": "academic_tests",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the national or regional graduation or matriculation examination certificate and/or available international standardized-test results such as SAT, ACT, A-Level, AP, IB or CSCA.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "CSCA is not mandatory for the 2026 intake; optional scores are recommended to include mathematics and physics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "faq",
+                "locator": "2026 CSCA FAQ"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Arrange two recommendation letters through the online system; the system sends its template directly to each recommender's email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a personal statement in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_sponsor",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the Financial Sponsor form and the sponsor's employment or income certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with current or former Chinese citizenship or covered parentage/residence circumstances",
+            "ruleText": "Submit the published immigration, citizenship cancellation, birth, nationality, parent nationality and overseas residence evidence applicable to the applicant.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "introduction_video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese-and-English self-introduction video no longer than three minutes and smaller than 20 MB in an accepted format.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "portfolio",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Arts Division or Architecture Division applicants",
+            "ruleText": "Upload the required portfolio and, for architecture, the form confirming the applicant independently completed the portfolio.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 14"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Provide a certificate identifying a legal guardian who currently lives in Beijing and has a source of income.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents note 4"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable RMB 800 online application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Online Application 1.4"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Meet the applicable round deadline; the final general undergraduate deadline was February 28, 2026 at 17:00 Beijing time. Arts Design and Fine Arts routes were open only in the first round.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "schedule",
+                "locator": "2026 first- and second-round schedule"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who pass document screening",
+            "ruleText": "Participate in Tsinghua's comprehensive assessment when invited. Arts and Architecture applicants also undergo portfolio review, with Arts arrangements notified separately.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Comprehensive Evaluation 2.1-2.2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: RMB 40,000/year foundation stage; RMB 60,000/year research stage; RMB 70,000/year clinical stage.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "fees",
+                "locator": "2026 undergraduate fee table"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "tsinghua-undergraduate-explicit-fee-group-05-fall-2026",
+      "schoolSlug": "tsinghua-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "tsinghua-university-undergraduate-zijing-college-architecture-english",
+        "tsinghua-university-undergraduate-zijing-college-urban-planning-english",
+        "tsinghua-university-undergraduate-zijing-college-landscape-architecture-english",
+        "tsinghua-university-undergraduate-political-science-political-science-english",
+        "tsinghua-university-undergraduate-economics-economics-english",
+        "tsinghua-university-undergraduate-sociology-sociology-english",
+        "tsinghua-university-undergraduate-international-relations-international-relations-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains the 83 historical Fall 2026 undergraduate routes whose exact tuition is supported by the locked 2026 fee schedule. The eight Zijing College routes are handled separately under their current Fall 2027 official guide.",
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The four scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "catalog",
+            "url": "https://international.join-tsinghua.edu.cn/Divisions1.htm",
+            "title": "Tsinghua University 2026 international undergraduate divisions and colleges",
+            "capturedAt": "2026-09-13T04:28:54.295Z",
+            "contentSha256": "6a4281c15e754f284d0ee60ff2446f83f4950455bdcbd49f4b7371e7e2a5671b"
+          },
+          {
+            "key": "schedule",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Schedule.htm",
+            "title": "Tsinghua University 2026 international undergraduate application schedule",
+            "capturedAt": "2026-09-13T04:28:59.160Z",
+            "contentSha256": "0a12432a35493923f0c74cc0ba80d83bb5727bbd6baaf9bd1397a5be6b1b3f38"
+          },
+          {
+            "key": "fees",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Fees.htm",
+            "title": "Tsinghua University 2026 international undergraduate fees",
+            "capturedAt": "2026-09-13T04:29:03.617Z",
+            "contentSha256": "2a616665e6074024a47024e6bf543c7c9475cb2e32317456b847b525aed753c5"
+          },
+          {
+            "key": "faq",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/FAQ.htm",
+            "title": "Tsinghua University 2026 international undergraduate eligibility and scholarship FAQ",
+            "capturedAt": "2026-09-13T04:29:08.355Z",
+            "contentSha256": "72487490675d1b145faa4d40f20a71768f669b35165324a68997583cd3a37d20"
+          },
+          {
+            "key": "procedure",
+            "url": "https://international.join-tsinghua.edu.cn/Admission1/Application_Procedures.htm",
+            "title": "Tsinghua University 2026 international undergraduate application procedures",
+            "capturedAt": "2026-09-13T04:29:18.063Z",
+            "contentSha256": "1460bcaf1e459a8a584c628b6d2d187a867b7e3a331beec474e60cade25c05d9"
+          },
+          {
+            "key": "documents",
+            "url": "https://international.join-tsinghua.edu.cn/List-of-Uploading-Documents-in-the-Online-Application-System.pdf",
+            "title": "Tsinghua University 2026 international undergraduate application document list",
+            "capturedAt": "2026-09-13T04:29:27.537Z",
+            "contentSha256": "6d93ddb8c9edda80d0cff0e4f28b592ae7a22e72786a4e5aa2d05061458809ed"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a foreign citizen in good physical and mental health, be friendly to China, and hold or be completing a high-school graduation certificate under the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "faq",
+                "locator": "FAQ eligibility items 1.1-1.3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Create an account, complete the online form, upload every required document, pay the fee and submit within the designated application round.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Online Application 1.1-1.4"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_visa",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicant's and parents' passport information pages and, when applicable, the applicant's visa and passport pages with China entry stamps. The applicant passport must expire after October 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "graduation_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the applicable original high-school diploma, official pre-graduation certificate with expected graduation date, or university enrollment certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "cv_and_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese- or English-language CV and the applicable original high-school and university transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English route applicants",
+            "ruleText": "High English proficiency is required; TOEFL or IELTS evidence is accepted, with the program-specific guide controlling.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents items 5, 7 and 12"
+              }
+            ]
+          },
+          {
+            "key": "academic_tests",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the national or regional graduation or matriculation examination certificate and/or available international standardized-test results such as SAT, ACT, A-Level, AP, IB or CSCA.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "CSCA is not mandatory for the 2026 intake; optional scores are recommended to include mathematics and physics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "faq",
+                "locator": "2026 CSCA FAQ"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Arrange two recommendation letters through the online system; the system sends its template directly to each recommender's email address.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a personal statement in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_sponsor",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the Financial Sponsor form and the sponsor's employment or income certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with current or former Chinese citizenship or covered parentage/residence circumstances",
+            "ruleText": "Submit the published immigration, citizenship cancellation, birth, nationality, parent nationality and overseas residence evidence applicable to the applicant.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "introduction_video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a Chinese-and-English self-introduction video no longer than three minutes and smaller than 20 MB in an accepted format.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "portfolio",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Arts Division or Architecture Division applicants",
+            "ruleText": "Upload the required portfolio and, for architecture, the form confirming the applicant independently completed the portfolio.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents item 14"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Provide a certificate identifying a legal guardian who currently lives in Beijing and has a source of income.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "documents",
+                "locator": "Uploading Documents note 4"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable RMB 800 online application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Online Application 1.4"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Meet the applicable round deadline; the final general undergraduate deadline was February 28, 2026 at 17:00 Beijing time. Arts Design and Fine Arts routes were open only in the first round.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "schedule",
+                "locator": "2026 first- and second-round schedule"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who pass document screening",
+            "ruleText": "Participate in Tsinghua's comprehensive assessment when invited. Arts and Architecture applicants also undergo portfolio review, with Arts arrangements notified separately.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "procedure",
+                "locator": "Comprehensive Evaluation 2.1-2.2"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: RMB 40,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "fees",
+                "locator": "2026 undergraduate fee table"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

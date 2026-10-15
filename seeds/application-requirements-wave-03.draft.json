@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-14T14:22:38.265Z",
+  "generatedAt": "2026-10-15T07:44:55.162Z",
   "handoff": {
     "status": "unreviewed_draft",
     "databaseWriteAuthorized": false,
@@ -13,7 +13,7 @@
     "blockedTemplateCount": 2,
     "targetedProgramCount": 99,
     "targetedIntakeCount": 99,
-    "requirementItemCount": 39
+    "requirementItemCount": 51
   },
   "templates": [
     {
@@ -145,7 +145,7 @@
             "key": "scut_undergraduate",
             "url": "https://www.scut.edu.cn/en/2025/1127/c606a58695/page.htm",
             "title": "South China University of Technology current international undergraduate programs",
-            "capturedAt": "2026-10-14T03:41:10.379Z",
+            "capturedAt": "2026-10-15T07:36:25.295Z",
             "contentSha256": "1fb35db69bbaf7aabc8eab632c93ad58d4973fcac706bcf0288a8f2a7297c76c"
           }
         ],
@@ -201,12 +201,42 @@
             "stage": "submission",
             "level": "required",
             "appliesTo": "International undergraduate applicants",
-            "ruleText": "Submit a high-school graduation certificate or equivalent and transcripts showing a good record. Applicants awaiting graduation may submit official expected-graduation evidence and must provide final certificates and transcripts before enrollment.",
+            "ruleText": "Submit a high-school graduation certificate or equivalent and transcripts showing a good record. Applicants awaiting graduation may submit official pre-graduation or expected-graduation evidence.",
             "evidenceType": "document",
             "references": [
               {
                 "sourceKey": "scut_undergraduate",
                 "locator": "Heading 'ADMISSION REQUIREMENTS', item 4"
+              }
+            ]
+          },
+          {
+            "key": "final_high_school_records",
+            "category": "education",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Applicants who applied before completing high school",
+            "ruleText": "Provide the official graduation certificate and final transcripts before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "scut_undergraduate",
+                "locator": "Heading 'ADMISSION REQUIREMENTS', item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate_validity",
+            "category": "language",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Applicants submitting a language-proficiency certificate",
+            "ruleText": "Ensure the language-proficiency certificate is no more than two years old and remains valid at enrollment.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "scut_undergraduate",
+                "locator": "Heading 'ADMISSION REQUIREMENTS', language-proficiency introduction"
               }
             ]
           },
@@ -372,7 +402,7 @@
             "key": "scut_master",
             "url": "https://www.scut.edu.cn/en/2025/1127/c606a58696/page.htm",
             "title": "South China University of Technology current international master programs",
-            "capturedAt": "2026-10-14T03:41:11.508Z",
+            "capturedAt": "2026-10-15T07:43:45.018Z",
             "contentSha256": "9b1b436aa09b999144bb3e681930686ebf763aad01a983bd9dbf3aa5dc43a134"
           }
         ],
@@ -413,7 +443,22 @@
             "stage": "submission",
             "level": "required",
             "appliesTo": "International master's applicants",
-            "ruleText": "Submit a bachelor's diploma and transcripts with a good record. Applicants awaiting graduation may submit official expected-graduation evidence and must provide final records before enrollment.",
+            "ruleText": "Submit a bachelor's diploma and transcripts with a good record. Applicants awaiting graduation may submit official pre-graduation or expected-graduation evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "scut_master",
+                "locator": "Heading 'APPLICATION REQUIREMENTS', item 3"
+              }
+            ]
+          },
+          {
+            "key": "final_bachelor_records",
+            "category": "education",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Applicants who applied before completing the bachelor's degree",
+            "ruleText": "Provide the official bachelor's degree certificate and final transcripts before enrollment.",
             "evidenceType": "document",
             "references": [
               {
@@ -434,6 +479,21 @@
               {
                 "sourceKey": "scut_master",
                 "locator": "Heading 'APPLICATION REQUIREMENTS', item 4(1)-(3)"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate_validity",
+            "category": "language",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Applicants submitting a language-proficiency certificate",
+            "ruleText": "Ensure the language-proficiency certificate is no more than two years old and remains valid at enrollment.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "scut_master",
+                "locator": "Heading 'APPLICATION REQUIREMENTS', item 4 introduction"
               }
             ]
           },
@@ -558,6 +618,51 @@
             ]
           },
           {
+            "key": "application_portal",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Create an account in SCUT's application system, complete personal information and upload scanned supporting documents.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "scut_master",
+                "locator": "Heading 'APPLICATION PROCEDURE'"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Pay the application fee online. The captured page does not publish the amount.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "scut_master",
+                "locator": "Heading 'APPLICATION PROCEDURE'"
+              }
+            ]
+          },
+          {
+            "key": "electronic_admission_letter",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Accepted applicants",
+            "ruleText": "Receive an electronic Admission Letter from SCUT after acceptance.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "scut_master",
+                "locator": "Heading 'APPLICATION PROCEDURE'"
+              }
+            ]
+          },
+          {
             "key": "translations",
             "category": "documents",
             "stage": "submission",
@@ -599,7 +704,7 @@
             "key": "scut_doctoral",
             "url": "https://www.scut.edu.cn/en/2025/1202/c606a58736/page.htm",
             "title": "South China University of Technology current international doctoral programs",
-            "capturedAt": "2026-10-14T03:41:12.616Z",
+            "capturedAt": "2026-10-15T07:43:47.056Z",
             "contentSha256": "4372600dad572786a2d55042fcd00c0a27c093ec6d41cd2ed6ceab9b6e498e04"
           }
         ],
@@ -640,7 +745,22 @@
             "stage": "submission",
             "level": "required",
             "appliesTo": "International doctoral applicants",
-            "ruleText": "Submit a master's diploma and transcripts with a good record. Applicants awaiting graduation may submit official expected-graduation evidence and must provide final records before enrollment.",
+            "ruleText": "Submit a master's diploma and transcripts with a good record. Applicants awaiting graduation may submit official pre-graduation or expected-graduation evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "scut_doctoral",
+                "locator": "Heading 'APPLICATION REQUIREMENTS', item 3"
+              }
+            ]
+          },
+          {
+            "key": "final_master_records",
+            "category": "education",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Applicants who applied before completing the master's degree",
+            "ruleText": "Provide the official master's degree certificate and final transcripts before enrollment.",
             "evidenceType": "document",
             "references": [
               {
@@ -661,6 +781,21 @@
               {
                 "sourceKey": "scut_doctoral",
                 "locator": "Heading 'APPLICATION REQUIREMENTS', item 4(1)-(3)"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate_validity",
+            "category": "language",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Applicants submitting a language-proficiency certificate",
+            "ruleText": "Ensure the language-proficiency certificate is no more than two years old and remains valid at enrollment.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "scut_doctoral",
+                "locator": "Heading 'APPLICATION REQUIREMENTS', item 4 introduction"
               }
             ]
           },
@@ -781,6 +916,51 @@
               {
                 "sourceKey": "scut_doctoral",
                 "locator": "Heading 'APPLICATION DEADLINE'"
+              }
+            ]
+          },
+          {
+            "key": "application_portal",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Create an account in SCUT's application system, complete personal information and upload scanned supporting documents.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "scut_doctoral",
+                "locator": "Heading 'APPLICATION PROCEDURE'"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International doctoral applicants",
+            "ruleText": "Pay the application fee online. The captured page does not publish the amount.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "scut_doctoral",
+                "locator": "Heading 'APPLICATION PROCEDURE'"
+              }
+            ]
+          },
+          {
+            "key": "electronic_admission_letter",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Accepted applicants",
+            "ruleText": "Receive an electronic Admission Letter from SCUT after acceptance.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "scut_doctoral",
+                "locator": "Heading 'APPLICATION PROCEDURE'"
               }
             ]
           },

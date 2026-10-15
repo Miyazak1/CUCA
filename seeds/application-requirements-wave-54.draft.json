@@ -1,0 +1,744 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T12:32:23.678Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete official-source LNUTCM Fall 2026 undergraduate and master's requirements bound to exact catalog routes."
+  },
+  "summary": {
+    "templateCount": 2,
+    "readyTemplateCount": 2,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 35,
+    "targetedIntakeCount": 35,
+    "requirementItemCount": 41
+  },
+  "templates": [
+    {
+      "key": "lnutcm-undergraduate-tcm-fall-2026",
+      "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "liaoning-university-of-traditional-chinese-medicine-undergraduate-traditional-chinese-medicine"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be shown as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "undergraduate_guide",
+            "url": "https://gjhzjlc.lnutcm.edu.cn/info/1223/3832.htm",
+            "title": "Liaoning University of Traditional Chinese Medicine 2026 self-funded international undergraduate admission guide",
+            "capturedAt": "2026-09-22T10:45:12.126Z",
+            "contentSha256": "c21656d991347673388a8b5600feba61e7fec54125a4e775bb423744c2dbc885"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen in good health.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section III, item 1"
+              }
+            ]
+          },
+          {
+            "key": "nationality_background",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants born abroad to one or two Chinese-citizen parents, or former Chinese citizens",
+            "ruleText": "Meet the published four-year foreign-nationality and two-year overseas-residence rules measured through April 30, 2026 and submit the corresponding evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section III, nationality-background paragraphs"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or a higher qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section III, item 2"
+              }
+            ]
+          },
+          {
+            "key": "hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "Submit a New HSK Level 4 score of at least 180; the score report is valid for two years.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section III, item 3 and Section IV.2, item 9"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Traditional Chinese Medicine undergraduate applicants",
+            "ruleText": "Submit CSCA Chinese for STEM and Mathematics results taken in Chinese by June 30, 2026.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section III, item 4 and Section IV.2, item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Submit the application from January 1 through June 30, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.1"
+              }
+            ]
+          },
+          {
+            "key": "application_forms",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Submit the self-funded student information import template and the LNUTCM international-student admission application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.2, items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Submit the passport photo page, inner blank page and, when applicable, the Chinese visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.2, item 3"
+              }
+            ]
+          },
+          {
+            "key": "in_china_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants already in China",
+            "ruleText": "Also submit the passport visa and entry-stamp pages with continuous status and the Temporary Residence Registration Form for Foreigners.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.2, item 3 note"
+              }
+            ]
+          },
+          {
+            "key": "photos",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Provide eight 3.5 cm by 4.9 cm ID photographs and an electronic copy between 100 KB and 500 KB.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.2, item 4"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Submit notarized high-school-or-higher diploma evidence and transcripts with Chinese translations.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.2, item 5"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Submit a no-criminal-record certificate or the signed no-criminal-record commitment form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.2, item 6"
+              }
+            ]
+          },
+          {
+            "key": "financial_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Submit a deposit certificate covering at least one year of tuition and living expenses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.2, item 7"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Submit a complete Foreigner Physical Examination Form whose results are no more than six months old and include the required photograph, seal and physician or hospital signatures.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.2, item 8"
+              }
+            ]
+          },
+          {
+            "key": "commitment",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Submit the applicant integrity commitment form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.2, item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_delivery",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Send the electronic application materials to the International Education College admissions email for review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.4"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Pay the CNY 800 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.3, item 1"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled Traditional Chinese Medicine undergraduates",
+            "ruleText": "Pay tuition of CNY 22,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.3, item 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 to 18,000 per academic year depending on room type; the university notes that actual standards may be adjusted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.3, item 3"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Self-funded enrolled students",
+            "ruleText": "Purchase the required insurance at CNY 800 per person per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate_guide",
+                "locator": "Section IV.3, item 4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "lnutcm-master-chinese-fall-2026",
+      "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "liaoning-university-of-traditional-chinese-medicine-master-100501-basic-theory-of-traditional-chinese-medicine",
+        "liaoning-university-of-traditional-chinese-medicine-master-100502-clinical-foundations-of-traditional-chinese-medicine",
+        "liaoning-university-of-traditional-chinese-medicine-master-100504-chinese-medicine-formula-science",
+        "liaoning-university-of-traditional-chinese-medicine-master-1005z1-traditional-chinese-medicine-standardization",
+        "liaoning-university-of-traditional-chinese-medicine-master-1005z2-traditional-chinese-medicine-artificial-intelligence-science-and-technology",
+        "liaoning-university-of-traditional-chinese-medicine-master-100601-basic-theory-of-integrated-chinese-and-western-medicine",
+        "liaoning-university-of-traditional-chinese-medicine-master-100506-traditional-chinese-medicine-internal-medicine",
+        "liaoning-university-of-traditional-chinese-medicine-master-100507-traditional-chinese-medicine-surgery",
+        "liaoning-university-of-traditional-chinese-medicine-master-100508-traditional-chinese-medicine-orthopedics-and-traumatology",
+        "liaoning-university-of-traditional-chinese-medicine-master-100509-traditional-chinese-medicine-gynecology",
+        "liaoning-university-of-traditional-chinese-medicine-master-100510-traditional-chinese-medicine-pediatrics",
+        "liaoning-university-of-traditional-chinese-medicine-master-100512-acupuncture-and-tuina",
+        "liaoning-university-of-traditional-chinese-medicine-master-100602-clinical-integrated-chinese-and-western-medicine",
+        "liaoning-university-of-traditional-chinese-medicine-master-100701-medicinal-chemistry",
+        "liaoning-university-of-traditional-chinese-medicine-master-100702-pharmaceutics",
+        "liaoning-university-of-traditional-chinese-medicine-master-100703-pharmacognosy",
+        "liaoning-university-of-traditional-chinese-medicine-master-100704-pharmaceutical-analysis",
+        "liaoning-university-of-traditional-chinese-medicine-master-100706-pharmacology",
+        "liaoning-university-of-traditional-chinese-medicine-master-100800-chinese-materia-medica",
+        "liaoning-university-of-traditional-chinese-medicine-master-1005z3-traditional-chinese-medicine-rehabilitation",
+        "liaoning-university-of-traditional-chinese-medicine-master-100503-history-and-literature-of-chinese-medicine",
+        "liaoning-university-of-traditional-chinese-medicine-master-030505-ideological-and-political-education",
+        "liaoning-university-of-traditional-chinese-medicine-master-1006z1-integrated-chinese-and-western-medicine-nursing",
+        "liaoning-university-of-traditional-chinese-medicine-master-105701-professional-master-in-traditional-chinese-medicine-internal-medicine",
+        "liaoning-university-of-traditional-chinese-medicine-master-105702-professional-master-in-traditional-chinese-medicine-surgery",
+        "liaoning-university-of-traditional-chinese-medicine-master-105703-professional-master-in-traditional-chinese-medicine-orthopedics-and-traumatology",
+        "liaoning-university-of-traditional-chinese-medicine-master-105704-professional-master-in-traditional-chinese-medicine-gynecology",
+        "liaoning-university-of-traditional-chinese-medicine-master-105705-professional-master-in-traditional-chinese-medicine-pediatrics",
+        "liaoning-university-of-traditional-chinese-medicine-master-105706-professional-master-in-traditional-chinese-medicine-otorhinolaryngology",
+        "liaoning-university-of-traditional-chinese-medicine-master-105709-professional-master-in-clinical-integrated-chinese-and-western-medicine",
+        "liaoning-university-of-traditional-chinese-medicine-master-105900-professional-master-in-acupuncture",
+        "liaoning-university-of-traditional-chinese-medicine-master-105500-professional-master-in-pharmacy",
+        "liaoning-university-of-traditional-chinese-medicine-master-105600-professional-master-in-chinese-materia-medica",
+        "liaoning-university-of-traditional-chinese-medicine-master-105400-professional-master-in-nursing"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be shown as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "master_guide",
+            "url": "https://gjhzjlc.lnutcm.edu.cn/info/1223/3822.htm",
+            "title": "Liaoning University of Traditional Chinese Medicine 2026 self-funded international master admission guide",
+            "capturedAt": "2026-09-22T10:45:13.288Z",
+            "contentSha256": "40b168c139b24341f1bbbfd426d68666da68ce12cfdf0670adc3c675548a7b79"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Be a non-Chinese citizen in good health.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section III, item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International master's applicants",
+            "ruleText": "Hold a bachelor's degree or a higher qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section III, item 2"
+              }
+            ]
+          },
+          {
+            "key": "hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught master's applicants",
+            "ruleText": "Submit a New HSK Level 4 score of at least 180; the score report is valid for two years.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section III and Section IV.2, item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Submit the application from January 1 through June 30, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.1"
+              }
+            ]
+          },
+          {
+            "key": "application_forms",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Submit the self-funded student information import template and the LNUTCM international-student admission application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Submit the passport photo page, inner blank page and, when applicable, the Chinese visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, item 3"
+              }
+            ]
+          },
+          {
+            "key": "in_china_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants already in China",
+            "ruleText": "Also submit the passport visa and entry-stamp pages with continuous status and the Temporary Residence Registration Form for Foreigners.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, item 3 note"
+              }
+            ]
+          },
+          {
+            "key": "photos",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Provide eight 3.5 cm by 4.9 cm ID photographs and an electronic copy between 100 KB and 500 KB.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, item 4"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Submit notarized bachelor's-or-higher degree evidence and complete undergraduate transcripts with Chinese translations; expected graduates may use an official pre-graduation certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, item 5"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Submit a no-criminal-record certificate or the signed no-criminal-record commitment form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, item 6"
+              }
+            ]
+          },
+          {
+            "key": "financial_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Submit a deposit certificate covering at least one year of tuition and living expenses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, item 7"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Submit a Chinese- or English-language study and research plan of at least 800 words covering the intended major or research direction.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, item 8"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Submit two Chinese- or English-language recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, item 9"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Submit a complete Foreigner Physical Examination Form whose results are no more than six months old and include the required photograph, seal and physician or hospital signatures.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, item 10"
+              }
+            ]
+          },
+          {
+            "key": "commitment",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Submit the applicant commitment letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, item 12"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Contact an LNUTCM master's supervisor, obtain agreement before applying, and submit the hand-signed supervisor acceptance-of-intent form.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.2, item 13"
+              }
+            ]
+          },
+          {
+            "key": "application_delivery",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Send the electronic application materials to the International Education College admissions office for review.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.5"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded master's applicants",
+            "ruleText": "Pay the CNY 800 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.4, item 1"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master's students",
+            "ruleText": "Pay tuition of CNY 28,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.4, item 2"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 to 18,000 per academic year depending on room type.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.4, item 3"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Self-funded enrolled students",
+            "ruleText": "Purchase the required insurance at CNY 800 per person per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "master_guide",
+                "locator": "Section IV.4, item 3"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

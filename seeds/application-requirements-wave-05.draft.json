@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-14T14:22:39.801Z",
+  "generatedAt": "2026-10-15T07:13:18.209Z",
   "handoff": {
     "status": "unreviewed_draft",
     "databaseWriteAuthorized": false,
@@ -13,7 +13,7 @@
     "blockedTemplateCount": 0,
     "targetedProgramCount": 1,
     "targetedIntakeCount": 1,
-    "requirementItemCount": 17
+    "requirementItemCount": 24
   },
   "templates": [
     {
@@ -40,14 +40,14 @@
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "zjut_iclts_2027",
             "url": "https://www.gjxy.zjut.edu.cn/index.php/en/scholarship/international-chinese-language-teachers-scholarship",
             "title": "Zhejiang University of Technology 2027 spring International Chinese Language Teachers Scholarship",
-            "capturedAt": "2026-10-14T10:02:47.708Z",
-            "contentSha256": "cf418ebc0919a72dc86285ecfc6098d6b3b970d0ec2957cd71a51b5c2eeaa1a1"
+            "capturedAt": "2026-10-15T07:11:22.404Z",
+            "contentSha256": "f791ea59d259c7b31634789605755e24dcbd94b87a426c5f2f23dd1e60bdd454"
           }
         ],
         "requirements": [
@@ -207,12 +207,12 @@
             "stage": "submission",
             "level": "conditional",
             "appliesTo": "In-service Chinese-language teachers",
-            "ruleText": "Submit proof of employment and a reference letter from the employer.",
+            "ruleText": "Submit proof of employment and a reference letter from the employer; under equal conditions, applicants providing both receive admission priority.",
             "evidenceType": "document",
             "references": [
               {
                 "sourceKey": "zjut_iclts_2027",
-                "locator": "Heading 'Application Materials', item 5"
+                "locator": "Heading 'Application Materials', item 5; heading 'Others', item 1"
               }
             ]
           },
@@ -277,17 +277,17 @@
             ]
           },
           {
-            "key": "deadline",
+            "key": "application_window",
             "category": "application_policy",
             "stage": "submission",
             "level": "required",
             "appliesTo": "March 2027 scholarship applicants",
-            "ruleText": "Complete the ZJUT application by October 20, 2026.",
+            "ruleText": "Apply in the ZJUT system from September 1, 2026 and complete the ZJUT application by October 20, 2026.",
             "evidenceType": "document",
             "references": [
               {
                 "sourceKey": "zjut_iclts_2027",
-                "locator": "Heading 'Application Deadline'"
+                "locator": "Heading 'Application Procedure', step 1; heading 'Application Deadline'"
               }
             ]
           },
@@ -297,12 +297,117 @@
             "stage": "submission",
             "level": "required",
             "appliesTo": "Scholarship applicants",
-            "ruleText": "First submit materials in the ZJUT system. After ZJUT review and issuance of its recommendation letter, submit the materials and recommendation through the CIS scholarship platform before the deadline.",
+            "ruleText": "Select the International Chinese Language Teacher Scholarship Program category in the ZJUT system. After ZJUT review and issuance of its recommendation letter, submit the materials and recommendation through the CIS scholarship platform before the deadline.",
             "evidenceType": "school_review",
             "references": [
               {
                 "sourceKey": "zjut_iclts_2027",
-                "locator": "Heading 'Application Procedure', steps 1-4"
+                "locator": "Heading 'Application Procedure', steps 1-3"
+              }
+            ]
+          },
+          {
+            "key": "application_tracking",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants who completed both submissions",
+            "ruleText": "Use the CIS application website to follow application progress, review comments and scholarship evaluation results.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Application Procedure', step 4"
+              }
+            ]
+          },
+          {
+            "key": "admission_result",
+            "category": "application_policy",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Monitor the submitted email address for the final admission result.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Application Procedure', step 5"
+              }
+            ]
+          },
+          {
+            "key": "chinese_bridge_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants holding an International Chinese Language Teachers Scholarship Certificate from a Chinese Bridge competition",
+            "ruleText": "Submit the application documents together with the scholarship certificate directly to the host institution through the scholarship website.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Others', item 2"
+              }
+            ]
+          },
+          {
+            "key": "material_authenticity",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Ensure all application materials are authentic and valid; otherwise admission will be cancelled.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Others', item 4"
+              }
+            ]
+          },
+          {
+            "key": "scholarship_continuation",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted scholarship recipients",
+            "ruleText": "Pass the pre-enrollment physical examination, register at the university as required, do not withdraw before completing study, and do not take unauthorized leave; otherwise scholarship eligibility is cancelled.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Others', item 3"
+              }
+            ]
+          },
+          {
+            "key": "off_campus_accommodation",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Scholarship recipients requesting off-campus accommodation",
+            "ruleText": "Obtain university approval before living off campus; approved students receive the published RMB 700 monthly accommodation allowance.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Coverage and Standard', accommodation bullet"
+              }
+            ]
+          },
+          {
+            "key": "insurance_reimbursement",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Scholarship recipients",
+            "ruleText": "Purchase the required comprehensive medical insurance first; the premium is refunded to the student's bank card after registration and check-in are completed.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "zjut_iclts_2027",
+                "locator": "Heading 'Coverage and Standard', insurance bullet"
               }
             ]
           }

@@ -1,0 +1,1829 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T12:55:31.710Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete official-source BLCU Fall 2026 requirements for exact, conflict-free undergraduate routes."
+  },
+  "summary": {
+    "templateCount": 4,
+    "readyTemplateCount": 4,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 14,
+    "targetedIntakeCount": 14,
+    "excludedProgramCount": 82,
+    "requirementItemCount": 80
+  },
+  "exclusions": {
+    "undergraduate": [
+      {
+        "programSlug": "beijing-language-and-culture-university-chinese-language-blcu-university-of-manchester-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-translation-blcu-university-of-manchester-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-english-literature-blcu-university-of-manchester-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-linguistics-blcu-university-of-manchester-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-linguistics-and-sociology-blcu-university-of-manchester-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-art-history-blcu-university-of-manchester-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-film-studies-blcu-university-of-manchester-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-english-literature-and-film-studies-blcu-university-of-manchester-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-film-studies-and-linguistics-blcu-university-of-manchester-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-east-asian-studies-blcu-university-of-manchester-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-hearing-and-speech-rehabilitation-blcu-northeastern-illinois-university-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-chinese-language-blcu-national-academy-of-chinese-theatre-arts-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-arts-management-blcu-national-academy-of-chinese-theatre-arts-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-cultural-industry-management-blcu-national-academy-of-chinese-theatre-arts-dual-degree-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-translation-ai-assisted-translation-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-psychology-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-chinese-language-language-and-culture-associate-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-chinese-language-chinese-english-bilingual-associate-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-chinese-language-economics-and-trade-chinese-associate-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-applied-chinese-technology-associate-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-applied-chinese-business-associate-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-applied-chinese-tourism-associate-2026",
+        "reason": "The reviewed current entry-requirement table does not provide an exact, unambiguous row match for this catalog route, so teaching language, tuition or route-specific requirements remain unresolved."
+      }
+    ],
+    "graduate": [
+      {
+        "programSlug": "beijing-language-and-culture-university-master-international-chinese-language-education-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-english-written-translation-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-japanese-written-translation-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-korean-written-translation-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-russian-written-translation-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-arabic-written-translation-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-linguistics-and-applied-linguistics-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-world-sinology-and-china-studies-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-english-language-and-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-foreign-linguistics-and-applied-linguistics-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-international-language-services-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-russian-language-and-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-french-language-and-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-german-language-and-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-japanese-language-and-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-spanish-language-and-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-arabic-language-and-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-european-languages-and-literatures-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-asian-and-african-languages-and-literatures-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-area-and-country-studies-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-political-science-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-principles-of-education-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-journalism-and-communication-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-computer-science-and-technology-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-language-intelligence-and-technology-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-psychology-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-language-cognitive-science-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-language-policy-and-planning-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-language-resource-studies-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-language-and-brain-science-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-finance-english-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-international-business-english-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-doctoral-international-chinese-language-education-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-doctoral-english-language-and-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-doctoral-literary-theory-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-doctoral-chinese-classical-philology-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-doctoral-modern-and-contemporary-chinese-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-doctoral-comparative-literature-and-world-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-doctoral-language-intelligence-and-technology-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-doctoral-psycholinguistics-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-teacher-education-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-curriculum-and-instruction-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-education-evaluation-and-governance-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-chinese-classical-philology-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-ancient-chinese-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-modern-and-contemporary-chinese-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-comparative-literature-and-world-literature-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-documentary-linguistics-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-chinese-history-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-international-affairs-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-library-and-information-science-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-digital-economy-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-accounting-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-fine-arts-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-music-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-psycholinguistics-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-industrial-economics-industrial-opening-and-multinational-enterprises-english-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-international-trade-english-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-master-translation-localization-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      },
+      {
+        "programSlug": "beijing-language-and-culture-university-doctoral-world-sinology-and-china-studies-chinese-2026",
+        "reason": "Official 2026 graduate sources conflict on the application deadline: the program catalog states July 30, while the later degree-specific admissions guide states July 6 for master's or June 30 for doctoral applications. No deadline was selected automatically."
+      }
+    ]
+  },
+  "templates": [
+    {
+      "key": "blcu-undergraduate-applied-chinese-fall-2026",
+      "schoolSlug": "beijing-language-and-culture-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-language-and-culture-university-applied-chinese-technology-2026",
+        "beijing-language-and-culture-university-applied-chinese-business-2026",
+        "beijing-language-and-culture-university-applied-chinese-tourism-2026"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "catalog",
+            "url": "https://admission.blcu.edu.cn/_upload/article/files/08/38/54682e4d44f1bfde5d72fd8e7794/099ae31d-24ae-4a78-a88e-a25225ac47d3.pdf",
+            "title": "BLCU 2026 international undergraduate program catalog PDF",
+            "capturedAt": "2026-09-14T07:36:18.860Z",
+            "contentSha256": "9afce0ef7a651d54a67be6b62a0f1783cc3e2c6bac080def5a22c9b9d58ab954"
+          },
+          {
+            "key": "entry",
+            "url": "https://admission.blcu.edu.cn/46/list.htm",
+            "title": "BLCU current international undergraduate entry requirements",
+            "capturedAt": "2026-10-15T12:51:43.668Z",
+            "contentSha256": "11b21f64ff65f086c274da91b010981809b6da92d1a0a91c70fcc05fa4b55a43"
+          },
+          {
+            "key": "process",
+            "url": "https://admission.blcu.edu.cn/47/list.htm",
+            "title": "BLCU current international undergraduate application process",
+            "capturedAt": "2026-10-15T12:51:54.818Z",
+            "contentSha256": "36b44509142687aedc50cb99a7ddacc76005d9db134925aac30b2fc72809b8f7"
+          },
+          {
+            "key": "csca",
+            "url": "https://admission.blcu.edu.cn/en/2025/1212/c1587a3032/page.htm",
+            "title": "Beijing Language and Culture University 2026 CSCA instructions and teaching-language table",
+            "capturedAt": "2026-09-23T03:23:06.061Z",
+            "contentSha256": "34341f59ccb7b8f7aa43004897f14d02951f038cb4a7fe35391703e680c67124"
+          },
+          {
+            "key": "scholarship",
+            "url": "https://admission.blcu.edu.cn/2023/1219/c1333a2679/page.htm",
+            "title": "BLCU Beijing Government Scholarship for September 2026 and March 2027 intakes",
+            "capturedAt": "2026-09-14T07:24:34.471Z",
+            "contentSha256": "4a3953ab0f67ead9647aad45d71eb8ca25fcf22dded77a852bac8a61047874c9"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or an equivalent or higher qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 1"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 18 to 55 years old; applicants under 18 require university approval and notarized guardian documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 2"
+              }
+            ]
+          },
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding an ordinary foreign passport and meet the applicable nationality and overseas-residence rules for applicants with Chinese-parent or former Chinese-resident connections.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 3 and nationality notes"
+              }
+            ]
+          },
+          {
+            "key": "application_deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the application by June 30, 2026. This is a closed historical intake.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 2, Fall 2026 application deadline"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the high-school diploma and complete transcripts for every semester; expected graduates may submit a pre-graduation certificate but must provide the formal diploma before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 2"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the applicable HSK certificate and any program-specific foreign-language evidence.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 3 and Section 4 program table"
+              }
+            ]
+          },
+          {
+            "key": "csca_result",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid CSCA score report for the exact subjects assigned to the program.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a recommendation letter in Chinese or English, signed by the recommender and carrying valid contact details.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 800 application fee through the online application system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 6"
+              }
+            ]
+          },
+          {
+            "key": "guarantor",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the guarantor's valid identity document; a foreign guarantor in China must also provide a valid Chinese visa.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 7"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a personal identification photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 9"
+              }
+            ]
+          },
+          {
+            "key": "other_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to programs requesting additional evidence",
+            "ruleText": "Submit any other material required by the selected program.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 10"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply through the BLCU international-student application system, upload the electronic materials, monitor telephone and email contact, and provide an accurate admission-document delivery address.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "process",
+                "locator": "Application process, steps 1-3"
+              }
+            ]
+          },
+          {
+            "key": "beijing_government_scholarship",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Eligible self-funded Fall 2026 degree applicants",
+            "ruleText": "The BLCU Beijing Government Scholarship may cover first-year tuition for approved bachelor, master or doctoral applicants; the published Fall 2026 scholarship deadline is July 15, 2026 and selection is separate from admission.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "scholarship",
+                "locator": "Sections 2-5"
+              }
+            ]
+          },
+          {
+            "key": "program_language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants in this program group",
+            "ruleText": "Submit HSK Level 4 with a total score of at least 180.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 4.3, Program for International Students (Separate Classes), Applied Chinese rows"
+              }
+            ]
+          },
+          {
+            "key": "csca_subjects",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Take CSCA Humanities Chinese and Mathematics in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "BLCU Program list and CSCA Exam Subject, matching program rows"
+              }
+            ]
+          },
+          {
+            "key": "route_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Follow the applied-Chinese campus assignment and major-direction arrangement published by BLCU.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 4.3, Program for International Students (Separate Classes), Applied Chinese rows"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students in this exact program group",
+            "ruleText": "Published annual tuition is CNY 25,800 for the Beijing campus or CNY 22,000 for the Hainan campus, according to the assigned campus.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 undergraduate catalog PDF, matching program rows"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "blcu-undergraduate-joint-class-humanities-fall-2026",
+      "schoolSlug": "beijing-language-and-culture-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-language-and-culture-university-international-politics-2026",
+        "beijing-language-and-culture-university-international-affairs-and-international-relations-2026",
+        "beijing-language-and-culture-university-network-and-new-media-2026",
+        "beijing-language-and-culture-university-journalism-2026"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "catalog",
+            "url": "https://admission.blcu.edu.cn/_upload/article/files/08/38/54682e4d44f1bfde5d72fd8e7794/099ae31d-24ae-4a78-a88e-a25225ac47d3.pdf",
+            "title": "BLCU 2026 international undergraduate program catalog PDF",
+            "capturedAt": "2026-09-14T07:36:18.860Z",
+            "contentSha256": "9afce0ef7a651d54a67be6b62a0f1783cc3e2c6bac080def5a22c9b9d58ab954"
+          },
+          {
+            "key": "entry",
+            "url": "https://admission.blcu.edu.cn/46/list.htm",
+            "title": "BLCU current international undergraduate entry requirements",
+            "capturedAt": "2026-10-15T12:51:43.668Z",
+            "contentSha256": "11b21f64ff65f086c274da91b010981809b6da92d1a0a91c70fcc05fa4b55a43"
+          },
+          {
+            "key": "process",
+            "url": "https://admission.blcu.edu.cn/47/list.htm",
+            "title": "BLCU current international undergraduate application process",
+            "capturedAt": "2026-10-15T12:51:54.818Z",
+            "contentSha256": "36b44509142687aedc50cb99a7ddacc76005d9db134925aac30b2fc72809b8f7"
+          },
+          {
+            "key": "csca",
+            "url": "https://admission.blcu.edu.cn/en/2025/1212/c1587a3032/page.htm",
+            "title": "Beijing Language and Culture University 2026 CSCA instructions and teaching-language table",
+            "capturedAt": "2026-09-23T03:23:06.061Z",
+            "contentSha256": "34341f59ccb7b8f7aa43004897f14d02951f038cb4a7fe35391703e680c67124"
+          },
+          {
+            "key": "scholarship",
+            "url": "https://admission.blcu.edu.cn/2023/1219/c1333a2679/page.htm",
+            "title": "BLCU Beijing Government Scholarship for September 2026 and March 2027 intakes",
+            "capturedAt": "2026-09-14T07:24:34.471Z",
+            "contentSha256": "4a3953ab0f67ead9647aad45d71eb8ca25fcf22dded77a852bac8a61047874c9"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or an equivalent or higher qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 1"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 18 to 55 years old; applicants under 18 require university approval and notarized guardian documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 2"
+              }
+            ]
+          },
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding an ordinary foreign passport and meet the applicable nationality and overseas-residence rules for applicants with Chinese-parent or former Chinese-resident connections.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 3 and nationality notes"
+              }
+            ]
+          },
+          {
+            "key": "application_deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the application by June 30, 2026. This is a closed historical intake.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 2, Fall 2026 application deadline"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the high-school diploma and complete transcripts for every semester; expected graduates may submit a pre-graduation certificate but must provide the formal diploma before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 2"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the applicable HSK certificate and any program-specific foreign-language evidence.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 3 and Section 4 program table"
+              }
+            ]
+          },
+          {
+            "key": "csca_result",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid CSCA score report for the exact subjects assigned to the program.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a recommendation letter in Chinese or English, signed by the recommender and carrying valid contact details.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 800 application fee through the online application system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 6"
+              }
+            ]
+          },
+          {
+            "key": "guarantor",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the guarantor's valid identity document; a foreign guarantor in China must also provide a valid Chinese visa.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 7"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a personal identification photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 9"
+              }
+            ]
+          },
+          {
+            "key": "other_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to programs requesting additional evidence",
+            "ruleText": "Submit any other material required by the selected program.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 10"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply through the BLCU international-student application system, upload the electronic materials, monitor telephone and email contact, and provide an accurate admission-document delivery address.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "process",
+                "locator": "Application process, steps 1-3"
+              }
+            ]
+          },
+          {
+            "key": "beijing_government_scholarship",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Eligible self-funded Fall 2026 degree applicants",
+            "ruleText": "The BLCU Beijing Government Scholarship may cover first-year tuition for approved bachelor, master or doctoral applicants; the published Fall 2026 scholarship deadline is July 15, 2026 and selection is separate from admission.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "scholarship",
+                "locator": "Sections 2-5"
+              }
+            ]
+          },
+          {
+            "key": "program_language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants in this program group",
+            "ruleText": "Submit HSK Level 5 with a total score of at least 200 and at least 60 in every section.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 4.4, International Politics and Communication rows"
+              }
+            ]
+          },
+          {
+            "key": "csca_subjects",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Take CSCA Humanities Chinese and Mathematics in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "BLCU Program list and CSCA Exam Subject, matching program rows"
+              }
+            ]
+          },
+          {
+            "key": "route_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Pass the program interview covering comprehensive Chinese and professional foundations.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 4.4, International Politics and Communication rows"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students in this exact program group",
+            "ruleText": "Pay annual tuition of CNY 25,800.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 undergraduate catalog PDF, matching program rows"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "blcu-undergraduate-joint-class-computing-fall-2026",
+      "schoolSlug": "beijing-language-and-culture-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-language-and-culture-university-computer-science-and-technology-2026",
+        "beijing-language-and-culture-university-artificial-intelligence-2026",
+        "beijing-language-and-culture-university-data-science-and-big-data-technology-2026",
+        "beijing-language-and-culture-university-digital-media-technology-2026"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "catalog",
+            "url": "https://admission.blcu.edu.cn/_upload/article/files/08/38/54682e4d44f1bfde5d72fd8e7794/099ae31d-24ae-4a78-a88e-a25225ac47d3.pdf",
+            "title": "BLCU 2026 international undergraduate program catalog PDF",
+            "capturedAt": "2026-09-14T07:36:18.860Z",
+            "contentSha256": "9afce0ef7a651d54a67be6b62a0f1783cc3e2c6bac080def5a22c9b9d58ab954"
+          },
+          {
+            "key": "entry",
+            "url": "https://admission.blcu.edu.cn/46/list.htm",
+            "title": "BLCU current international undergraduate entry requirements",
+            "capturedAt": "2026-10-15T12:51:43.668Z",
+            "contentSha256": "11b21f64ff65f086c274da91b010981809b6da92d1a0a91c70fcc05fa4b55a43"
+          },
+          {
+            "key": "process",
+            "url": "https://admission.blcu.edu.cn/47/list.htm",
+            "title": "BLCU current international undergraduate application process",
+            "capturedAt": "2026-10-15T12:51:54.818Z",
+            "contentSha256": "36b44509142687aedc50cb99a7ddacc76005d9db134925aac30b2fc72809b8f7"
+          },
+          {
+            "key": "csca",
+            "url": "https://admission.blcu.edu.cn/en/2025/1212/c1587a3032/page.htm",
+            "title": "Beijing Language and Culture University 2026 CSCA instructions and teaching-language table",
+            "capturedAt": "2026-09-23T03:23:06.061Z",
+            "contentSha256": "34341f59ccb7b8f7aa43004897f14d02951f038cb4a7fe35391703e680c67124"
+          },
+          {
+            "key": "scholarship",
+            "url": "https://admission.blcu.edu.cn/2023/1219/c1333a2679/page.htm",
+            "title": "BLCU Beijing Government Scholarship for September 2026 and March 2027 intakes",
+            "capturedAt": "2026-09-14T07:24:34.471Z",
+            "contentSha256": "4a3953ab0f67ead9647aad45d71eb8ca25fcf22dded77a852bac8a61047874c9"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or an equivalent or higher qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 1"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 18 to 55 years old; applicants under 18 require university approval and notarized guardian documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 2"
+              }
+            ]
+          },
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding an ordinary foreign passport and meet the applicable nationality and overseas-residence rules for applicants with Chinese-parent or former Chinese-resident connections.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 3 and nationality notes"
+              }
+            ]
+          },
+          {
+            "key": "application_deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the application by June 30, 2026. This is a closed historical intake.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 2, Fall 2026 application deadline"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the high-school diploma and complete transcripts for every semester; expected graduates may submit a pre-graduation certificate but must provide the formal diploma before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 2"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the applicable HSK certificate and any program-specific foreign-language evidence.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 3 and Section 4 program table"
+              }
+            ]
+          },
+          {
+            "key": "csca_result",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid CSCA score report for the exact subjects assigned to the program.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a recommendation letter in Chinese or English, signed by the recommender and carrying valid contact details.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 800 application fee through the online application system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 6"
+              }
+            ]
+          },
+          {
+            "key": "guarantor",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the guarantor's valid identity document; a foreign guarantor in China must also provide a valid Chinese visa.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 7"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a personal identification photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 9"
+              }
+            ]
+          },
+          {
+            "key": "other_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to programs requesting additional evidence",
+            "ruleText": "Submit any other material required by the selected program.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 10"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply through the BLCU international-student application system, upload the electronic materials, monitor telephone and email contact, and provide an accurate admission-document delivery address.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "process",
+                "locator": "Application process, steps 1-3"
+              }
+            ]
+          },
+          {
+            "key": "beijing_government_scholarship",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Eligible self-funded Fall 2026 degree applicants",
+            "ruleText": "The BLCU Beijing Government Scholarship may cover first-year tuition for approved bachelor, master or doctoral applicants; the published Fall 2026 scholarship deadline is July 15, 2026 and selection is separate from admission.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "scholarship",
+                "locator": "Sections 2-5"
+              }
+            ]
+          },
+          {
+            "key": "program_language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants in this program group",
+            "ruleText": "Submit HSK Level 5 with a total score of at least 180.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 4.4, School of Information Science rows"
+              }
+            ]
+          },
+          {
+            "key": "csca_subjects",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Take CSCA Science Chinese and Mathematics in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "BLCU Program list and CSCA Exam Subject, matching program rows"
+              }
+            ]
+          },
+          {
+            "key": "route_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Pass the program written examination in mathematics and logic and the interview covering mathematics, logic and information-technology ability.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 4.4, School of Information Science rows"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students in this exact program group",
+            "ruleText": "Pay annual tuition of CNY 25,800.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 undergraduate catalog PDF, matching program rows"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "blcu-undergraduate-joint-class-english-majors-fall-2026",
+      "schoolSlug": "beijing-language-and-culture-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-language-and-culture-university-english-2026",
+        "beijing-language-and-culture-university-english-english-spanish-bilingual-2026",
+        "beijing-language-and-culture-university-business-english-2026"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "catalog",
+            "url": "https://admission.blcu.edu.cn/_upload/article/files/08/38/54682e4d44f1bfde5d72fd8e7794/099ae31d-24ae-4a78-a88e-a25225ac47d3.pdf",
+            "title": "BLCU 2026 international undergraduate program catalog PDF",
+            "capturedAt": "2026-09-14T07:36:18.860Z",
+            "contentSha256": "9afce0ef7a651d54a67be6b62a0f1783cc3e2c6bac080def5a22c9b9d58ab954"
+          },
+          {
+            "key": "entry",
+            "url": "https://admission.blcu.edu.cn/46/list.htm",
+            "title": "BLCU current international undergraduate entry requirements",
+            "capturedAt": "2026-10-15T12:51:43.668Z",
+            "contentSha256": "11b21f64ff65f086c274da91b010981809b6da92d1a0a91c70fcc05fa4b55a43"
+          },
+          {
+            "key": "process",
+            "url": "https://admission.blcu.edu.cn/47/list.htm",
+            "title": "BLCU current international undergraduate application process",
+            "capturedAt": "2026-10-15T12:51:54.818Z",
+            "contentSha256": "36b44509142687aedc50cb99a7ddacc76005d9db134925aac30b2fc72809b8f7"
+          },
+          {
+            "key": "csca",
+            "url": "https://admission.blcu.edu.cn/en/2025/1212/c1587a3032/page.htm",
+            "title": "Beijing Language and Culture University 2026 CSCA instructions and teaching-language table",
+            "capturedAt": "2026-09-23T03:23:06.061Z",
+            "contentSha256": "34341f59ccb7b8f7aa43004897f14d02951f038cb4a7fe35391703e680c67124"
+          },
+          {
+            "key": "scholarship",
+            "url": "https://admission.blcu.edu.cn/2023/1219/c1333a2679/page.htm",
+            "title": "BLCU Beijing Government Scholarship for September 2026 and March 2027 intakes",
+            "capturedAt": "2026-09-14T07:24:34.471Z",
+            "contentSha256": "4a3953ab0f67ead9647aad45d71eb8ca25fcf22dded77a852bac8a61047874c9"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or an equivalent or higher qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 1"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 18 to 55 years old; applicants under 18 require university approval and notarized guardian documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 2"
+              }
+            ]
+          },
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding an ordinary foreign passport and meet the applicable nationality and overseas-residence rules for applicants with Chinese-parent or former Chinese-resident connections.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 1, item 3 and nationality notes"
+              }
+            ]
+          },
+          {
+            "key": "application_deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the application by June 30, 2026. This is a closed historical intake.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 2, Fall 2026 application deadline"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the high-school diploma and complete transcripts for every semester; expected graduates may submit a pre-graduation certificate but must provide the formal diploma before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 2"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the applicable HSK certificate and any program-specific foreign-language evidence.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 3 and Section 4 program table"
+              }
+            ]
+          },
+          {
+            "key": "csca_result",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid CSCA score report for the exact subjects assigned to the program.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 4"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a recommendation letter in Chinese or English, signed by the recommender and carrying valid contact details.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 800 application fee through the online application system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 6"
+              }
+            ]
+          },
+          {
+            "key": "guarantor",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the guarantor's valid identity document; a foreign guarantor in China must also provide a valid Chinese visa.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 7"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a personal identification photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 9"
+              }
+            ]
+          },
+          {
+            "key": "other_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to programs requesting additional evidence",
+            "ruleText": "Submit any other material required by the selected program.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 3, item 10"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply through the BLCU international-student application system, upload the electronic materials, monitor telephone and email contact, and provide an accurate admission-document delivery address.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "process",
+                "locator": "Application process, steps 1-3"
+              }
+            ]
+          },
+          {
+            "key": "beijing_government_scholarship",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Eligible self-funded Fall 2026 degree applicants",
+            "ruleText": "The BLCU Beijing Government Scholarship may cover first-year tuition for approved bachelor, master or doctoral applicants; the published Fall 2026 scholarship deadline is July 15, 2026 and selection is separate from admission.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "scholarship",
+                "locator": "Sections 2-5"
+              }
+            ]
+          },
+          {
+            "key": "program_language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants in this program group",
+            "ruleText": "Submit HSK Level 5 with a total score of at least 180 and either IELTS 6.5 or TOEFL 90 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 4.4, School of English and Advanced Translation rows"
+              }
+            ]
+          },
+          {
+            "key": "csca_subjects",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Take CSCA Humanities Chinese and Mathematics in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "BLCU Program list and CSCA Exam Subject, matching program rows"
+              }
+            ]
+          },
+          {
+            "key": "route_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Meet both the published Chinese and English proficiency thresholds for the English-major group.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "entry",
+                "locator": "Section 4.4, School of English and Advanced Translation rows"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students in this exact program group",
+            "ruleText": "Pay annual tuition of CNY 27,600.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 undergraduate catalog PDF, matching program rows"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

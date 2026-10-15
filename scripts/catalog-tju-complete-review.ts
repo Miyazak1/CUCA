@@ -10,38 +10,40 @@ import {
 
 const root = process.cwd();
 const schoolSlug = "tianjin-university";
+type SourceRow = { id: string; url: string; label: string; sha256: string; fetchedAt: string; status: number; contentType: string };
+type ParsedProgram = { catalogId: string; name: string; school: string; degreeLevel: "Undergraduate" | "Master" | "Doctoral"; durationYears: number; teachingLanguage: "Chinese" | "English"; tuitionCnyPerYear: number; tuitionSourceText: string; sourceId: string; sourceLocator: string };
 const paths = {
-  parsed: resolve(root, "work/catalog-official/tju-complete-batch-01/parsed-programs.json"),
-  manifest: resolve(root, process.env.CUAC_TJU_MANIFEST ?? "work/catalog-official/tju-complete-batch-01/manifest.json"),
-  cscaManifest: resolve(root, process.env.CUAC_TJU_CSCA_MANIFEST ?? "work/catalog-official/tju-csca-batch-01/manifest.json"),
+  parsed: resolve(root, "work/catalog-official/2026-10-15T08-56-20-492Z/parsed-programs.json"),
+  manifest: resolve(root, process.env.CUAC_TJU_MANIFEST ?? "work/catalog-official/2026-10-15T08-56-20-492Z/manifest.json"),
+  scholarshipManifest: resolve(root, "work/catalog-official/tju-complete-batch-01/manifest.json"),
   draft: resolve(root, "seeds/catalog.tju-complete-batch-01.draft.json"),
   validation: resolve(root, "seeds/catalog.tju-complete-batch-01.validation.json"),
   review: resolve(root, "seeds/catalog.tju-complete-batch-01.review.json"),
 };
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
-const expectedParsedSha256 = "83180c69458fed2d065932df404b6f21c1a902b5b3f4f66be5bec22a1431997b";
+const expectedParsedSha256 = "f3ebcac4f96e0850e450d23941af9300637a79e5915731f75ede295fc8da8d14";
 const parsedText = await readFile(paths.parsed, "utf8");
 if (sha(parsedText) !== expectedParsedSha256) throw new Error("Parsed TJU catalog changed after structural review.");
-const parsed = JSON.parse(parsedText);
-if (parsed.programCount !== 296 || JSON.stringify(parsed.counts) !== JSON.stringify({ Undergraduate: 67, Master: 104, Doctoral: 125 })) throw new Error("TJU parsed counts mismatch.");
+const parsed = JSON.parse(parsedText) as { programCount: number; counts: Record<string, number>; programs: ParsedProgram[] };
+if (parsed.programCount !== 324 || JSON.stringify(parsed.counts) !== JSON.stringify({ Undergraduate: 80, Master: 119, Doctoral: 125 })) throw new Error("TJU parsed counts mismatch.");
 
 const expected: Record<string, string> = {
   "tju-silk-road-scholarship-2026": "a2f7f4a8761d60858f5e5cc40637236e2517411634721ce38e3530e761feb5d4",
-  "tju-undergraduate-admissions-2026": "8a0343df49df872aaf74df49c7b0305305d1934f9b94315312aa1198e02311f7",
-  "tju-undergraduate-program-catalog-2026": "211f67744de40e59a0e4bbec24d74e54514ac98d0f2ec3dc5e981c628cae6732",
-  "tju-undergraduate-csca-subjects-2026": "a4da424599e74ebe9be6f1299fd767557381029f281c8ec508adc18929aa840d",
-  "tju-master-admissions-2026": "89c23aa37db57a3543a9fce7dfed7bea72cd2556a558f0452c846309fd11e214",
-  "tju-master-program-catalog-2026": "ef637e5117b8ec8719a675da399cdbab149e758519d18a8ab6648a1518b11a2e",
-  "tju-doctoral-admissions-2026": "960cf23d53a6d429200327f74f5805790c18a050b8010629a225e2b95fce4765",
-  "tju-doctoral-program-catalog-2026": "f5c3c75f30fa2ce03e25e1d87b4296966ba59a83e46ad908d4a66f5c17bc6dd0",
+  "tju-undergraduate-admissions-2027": "1e55d46672aa6efc0957cd9f37c590bfef5234c070d77e192e2b89566455ece8",
+  "tju-undergraduate-program-catalog-2027": "b39a8f16ea41b70d77566735caec737410391f45b4ebe8c6c37fea1c9bead684",
+  "tju-undergraduate-csca-subjects-2027": "3cb0ab9ccff78ab2a9f6bc4b9eda9f32322d4b6b07a1be6a59512d0e561a28b2",
+  "tju-master-admissions-2027": "902b7df52f9e034bf3a5f47bef8d3d10145ee6202abf982faf0cb3c9aa291557",
+  "tju-master-program-catalog-2027": "abac819bc46e9388cd61def72ab4d6715322ac6383b6f89879688c525381958e",
+  "tju-doctoral-admissions-2027": "d7681ada3a16460072fce6c51b55439da5602848dd7b0395cc6878bc5324622b",
+  "tju-doctoral-program-catalog-2027": "38494b6a56f62af2f5ad32db182cf35fc92277aca977003759ced51fd631d3cc",
   "tju-cgs-high-level-postgraduate-2026": "5dacae8edc6d9133f8e6f9aa71da25eec57ff6c09a261ab96298cbf3e83774f3",
   "tju-youth-of-excellence-2026": "887b1cadac2d1238e6898ce15fa242309df776c6e541dc8990bea222c4156201",
   "tju-peiyang-future-scholar-2026": "4ea4bceb26ec244d88324f384be64442aa33fea8ff1941250ce072759d51af89",
   "tju-international-chinese-language-teachers-2026": "7b93f2d6dbd621f020a71bc865399ad453ec71cced9daabf1c15557b18aecd66",
   "tju-growth-steel-indonesia-2026": "320cabaab1b3b20eaf65a0aed518eac455d106fdaa993252c2f34f1e5862524c",
 };
-const manifests = [JSON.parse(await readFile(paths.manifest, "utf8")), JSON.parse(await readFile(paths.cscaManifest, "utf8"))];
-const evidence = new Map<string, any>();
+const manifests = [JSON.parse(await readFile(paths.manifest, "utf8")), JSON.parse(await readFile(paths.scholarshipManifest, "utf8"))];
+const evidence = new Map<string, SourceRow>();
 for (const manifest of manifests) for (const row of manifest.sources ?? []) if (expected[row.id] === row.sha256 && row.status === 200) evidence.set(row.id, row);
 const missing = Object.keys(expected).filter((id) => !evidence.has(id));
 if (missing.length) throw new Error(`Missing locked TJU evidence: ${missing.join(", ")}`);
@@ -50,15 +52,14 @@ const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").re
 const cscaBySchool: Record<string, string[]> = {
   "School of Mechanical Engineering": ["Chinese for Science", "Mathematics", "Physics"],
   "School of Microelectronics": ["Chinese for Science", "Mathematics", "Physics"],
-  "School of Architecture": ["Chinese for Arts", "Mathematics"],
+  "School of Architecture": ["Chinese for Arts or Science", "Mathematics"],
   "School of Chemical Engineering and Technology": ["Chinese for Science", "Mathematics", "Chemistry"],
   "School of Materials Science and Engineering": ["Chinese for Science", "Mathematics", "Physics"],
   "College of Management and Economics": ["Chinese for Arts", "Mathematics"],
   "School of Mathematics": ["Chinese for Science", "Mathematics"],
   "School of Education": ["Chinese for Arts", "Mathematics"],
-  "School of Environmental Science and Engineering": ["Chinese for Science", "Mathematics", "Chemistry"],
   "School of Life Sciences": ["Chinese for Science", "Mathematics", "Chemistry"],
-  "School of Marine Science and Technology": ["Chinese for Science", "Mathematics", "Physics"],
+  "School of Marine Science and Technology": ["Chinese for Science", "Mathematics", "Physics or Chemistry"],
   "School of International Education": ["Chinese for Arts", "Mathematics"],
   "Law School": ["Chinese for Arts", "Mathematics"],
   "School of Precision Instrument and Opto-electronics Engineering": ["Chinese for Science", "Mathematics", "Physics"],
@@ -66,31 +67,44 @@ const cscaBySchool: Record<string, string[]> = {
   "School of Pharmaceutical Science and Technology": ["Mathematics", "Chemistry"],
   "School of Civil Engineering": ["Chinese for Science", "Mathematics", "Physics"],
   "School of Earth System Science": ["Chinese for Science", "Mathematics", "Physics", "Chemistry"],
-  "College of Intelligence and Computing": ["Chinese for Science", "Mathematics", "Physics"],
-  "Medical School of Tianjin University": ["Chinese for Science", "Mathematics", "Physics"],
-  "Medical School": ["Chinese for Science", "Mathematics", "Physics"],
+  "School of Computer Science and Technology": ["Chinese for Science", "Mathematics", "Physics"],
+  "School of Artificial Intelligence": ["Chinese for Science", "Mathematics", "Physics"],
+  "School of Computer Software": ["Chinese for Science", "Mathematics", "Physics"],
+  "Medical School": ["Chinese for Science", "Mathematics", "Physics", "Chemistry"],
   "School of Humanities and Arts": ["Chinese for Arts", "Mathematics"],
-  "School of Synthetic Biology and Biomanufacturing": ["Chinese for Science", "Mathematics", "Physics"],
+  "School of Foreign Languages": ["Chinese for Arts", "Mathematics"],
+  "The International Joint Institute of Tianjin University, Fuzhou": ["Chinese for Science", "Mathematics", "Physics", "Chemistry"],
+  "Shenzhen International Institute of Tianjin University": ["Chinese for Science", "Mathematics", "Physics"],
+  "Hainan International Institute": ["Mathematics"],
 };
-function cscaSubjects(row: any): string[] | undefined {
+function cscaSubjects(row: ParsedProgram): string[] | undefined {
   if (row.degreeLevel !== "Undergraduate") return undefined;
   let values = row.school === "School of Science"
-    ? ["Chinese for Science", "Mathematics", ...(row.name === "Applied Physics" ? ["Physics"] : row.name === "Applied Chemistry" ? ["Chemistry"] : [])]
-    : [...(cscaBySchool[row.school] ?? [])];
+    ? ["Chinese for Science", "Mathematics", row.name === "Applied Physics" ? "Physics" : "Chemistry"]
+    : row.school === "School of Environmental Science and Engineering"
+      ? ["Chinese for Science", "Mathematics", row.name === "Building Environment & Energy Application Engineering" ? "Physics" : "Chemistry"]
+      : row.school === "School of Synthetic Biology and Biomanufacturing"
+        ? ["Chinese for Science", "Mathematics", row.name === "Food Science and Engineering" ? "Physics or Chemistry" : "Chemistry"]
+        : [...(cscaBySchool[row.school] ?? [])];
   if (!values.length) throw new Error(`Missing CSCA mapping for ${row.school}`);
   if (row.teachingLanguage === "English") values = values.filter((value) => !value.startsWith("Chinese for "));
   return values;
 }
-const admissionsByDegree: Record<string, any> = {
-  Undergraduate: evidence.get("tju-undergraduate-admissions-2026"),
-  Master: evidence.get("tju-master-admissions-2026"),
-  Doctoral: evidence.get("tju-doctoral-admissions-2026"),
+const admissionsByDegree: Record<string, SourceRow> = {
+  Undergraduate: evidence.get("tju-undergraduate-admissions-2027")!,
+  Master: evidence.get("tju-master-admissions-2027")!,
+  Doctoral: evidence.get("tju-doctoral-admissions-2027")!,
 };
-const programs: CatalogSeedProgram[] = parsed.programs.map((row: any) => {
-  const source = evidence.get(row.sourceId);
+function tuitionLabel(row: ParsedProgram): string {
+  if (row.tuitionSourceText === "276000RMB/3 year") return "RMB 276,000 total for 3 years (RMB 92,000/year equivalent)";
+  if (String(row.tuitionSourceText).startsWith("150000 RMB/year for Year 1")) return "RMB 150,000 in Year 1; RMB 30,000/year in Years 2-3";
+  return `RMB ${Number(row.tuitionCnyPerYear).toLocaleString("en-US")}/year`;
+}
+const programs: CatalogSeedProgram[] = parsed.programs.map((row) => {
+  const source = evidence.get(row.sourceId)!;
   const subjects = cscaSubjects(row);
   const languageRequirement = row.teachingLanguage === "English"
-    ? { englishRequirement: "IELTS 6.0 or TOEFL 80; native English speakers and applicants whose preceding degree was taught in English may use the stated exemption. English-taught MBA requires IELTS 6.5 or TOEFL 85, GPA above 3.2/4.0 and at least one year of relevant work experience." }
+    ? { englishRequirement: `${row.degreeLevel === "Master" ? "IELTS 6.0, TOEFL 80 or Duolingo 110" : "IELTS 6.0 or TOEFL 80"}; native English speakers and applicants whose preceding degree was taught in English may use the stated exemption. English-taught MBA requires IELTS 6.5 or TOEFL 85, GPA above 3.2/4.0 and at least one year of relevant work experience.` }
     : { hskRequirement: row.degreeLevel === "Undergraduate" ? "HSK Level 5 score 180; School of International Education undergraduate routes accept HSK Level 4 score 180." : "HSK Level 5 score 180, with stated exemptions for prior Chinese-medium study or native Chinese speakers." };
   return {
     slug: `${schoolSlug}-${row.degreeLevel.toLowerCase()}-${slugify(row.name)}-${slugify(row.teachingLanguage)}-${slugify(String(row.catalogId))}`,
@@ -103,13 +117,13 @@ const programs: CatalogSeedProgram[] = parsed.programs.map((row: any) => {
     subjectArea: row.school,
     teachingLanguage: row.teachingLanguage,
     ...languageRequirement,
-    ...(subjects ? { cscaSubjects: subjects, displaySubjects: subjects, cscaRequirement: `Required 2026 CSCA subjects: ${subjects.join(", ")}. Test-paper language must match the program teaching language; the official exemption notes remain applicable.` } : { cscaRequirement: "No CSCA requirement is published for this graduate route." }),
+    ...(subjects ? { cscaSubjects: subjects, displaySubjects: subjects, cscaRequirement: `Required 2027 CSCA subjects: ${subjects.join(", ")}. Test-paper language must match the program teaching language; the official exemption notes remain applicable.` } : { cscaRequirement: "No CSCA requirement is published for this graduate route." }),
     tuitionAmount: row.tuitionCnyPerYear,
     tuitionCurrency: "RMB",
     tuitionPeriod: "year",
-    tuitionText: `RMB ${Number(row.tuitionCnyPerYear).toLocaleString("en-US")}/year`,
-    displayTuition: `RMB ${Number(row.tuitionCnyPerYear).toLocaleString("en-US")}/year`,
-    scholarshipText: "Tianjin University's verified 2026 government, university and special scholarship routes are reviewed separately.",
+    tuitionText: tuitionLabel(row),
+    displayTuition: tuitionLabel(row),
+    scholarshipText: "Tianjin University's current 2027 admissions pages and separately verified scholarship notices are reviewed together; route-specific scholarship dates remain authoritative.",
     applicationUrl: "https://tju.at0086.cn/student",
     applicationNote: `${row.school}; official catalog ID ${row.catalogId}; ${row.sourceLocator}. The official workbook's Chinese-text cells are corrupt, so this record uses the parallel English columns without inferred Chinese names.`,
     hasScholarship: true,
@@ -129,11 +143,11 @@ const programs: CatalogSeedProgram[] = parsed.programs.map((row: any) => {
       durationYears: `${row.sourceLocator}, duration column`,
       tuitionAmount: `${row.sourceLocator}, tuition column`,
       applicationNote: `${row.sourceLocator}, catalog ID and school columns`,
-      ...(subjects ? { cscaSubjects: "official 2026 CSCA PDF, school-level subject table and exemption notes" } : {}),
+      ...(subjects ? { cscaSubjects: "official 2027 CSCA PDF, school/program-level subject table and exemption notes" } : {}),
     },
   };
 });
-if (programs.length !== 296 || new Set(programs.map((row) => row.slug)).size !== 296) throw new Error("TJU program routes/slugs mismatch.");
+if (programs.length !== 324 || new Set(programs.map((row) => row.slug)).size !== 324) throw new Error("TJU program routes/slugs mismatch.");
 
 const info = (label: string, value?: string) => ({ label, ...(value ? { value } : {}) });
 const benefit = (label: string) => ({ label, included: true });
@@ -164,17 +178,17 @@ const scholarships: CatalogSeedScholarship[] = [
   scholarship("tju-growth-steel-indonesia-2026", { slug: "official-2026-tju-growth-steel-indonesia", title: "Tianjin University 2026 Growth Steel Group Indonesia Scholarship", nameZh: "天津大学2026年 Growth Steel Group 印尼奖学金", type: "other", typeLabel: "Growth Steel Group Indonesia Scholarship", providerName: "Growth Steel Group / 天津大学", providerNameEn: "Growth Steel Group / Tianjin University", fundingLevel: "Partial", coverage: "One-year tiered tuition subsidies; top undergraduate and master's tiers also include published living allowances, and the master's first prize includes medical insurance", applicableDegree: "Bachelor, Master", applicableProgram: "Eligible Tianjin University bachelor's and master's programs for Indonesian citizens", amountText: "Bachelor tiers: CNY 20,000 tuition plus CNY 1,400/month for 10 months, or tuition subsidies of CNY 20,000/10,000/6,000. Master's first prize: CNY 30,000 tuition, CNY 1,700/month for 10 months and CNY 800 insurance; second prize: CNY 30,000 tuition.", deadlineDate: "2026-05-31", deadlineLabel: "May 31, 2026", applicationRound: "2026 Growth Steel Group Indonesia Scholarship", targetCountries: ["Indonesia"], benefitItems: [benefit("Tiered tuition subsidy"), benefit("Living allowance for top published tiers"), benefit("CNY 800 medical insurance for master's first prize")], eligibilityItems: [info("Nationality", "Citizen of Indonesia with a valid passport"), info("Bachelor", "High-school diploma and under 25"), info("Master", "Bachelor's diploma and under 35"), info("Language", "Chinese route HSK 5/180, with HSK 4/180 for School of International Education undergraduate routes; English route IELTS 6.0 or TOEFL 80, subject to stated exemptions"), info("CSCA", "Required for undergraduate applicants")], applicationMaterials: [...commonMaterials, info("CSCA transcript for undergraduate applicants"), info("Financial evidence and route-specific attachments")], applicationSteps: [info("Step 1", "Apply through the TJU system"), info("Step 2", "Upload all admission and scholarship materials"), info("Step 3", "Await the tier and award stated in the admission notice")], summary: "A one-year tiered 2026 scholarship for eligible Indonesian bachelor and master applicants at TJU.", sortOrder: 60 }),
 ];
 
-const schoolSource = evidence.get("tju-undergraduate-admissions-2026");
+const schoolSource = evidence.get("tju-undergraduate-admissions-2027");
 const candidate: CatalogSeedBundle = {
   version: 1,
   generatedAt: manifests[0].generatedAt,
   cities: [{ slug: "tianjin", nameEn: "Tianjin", nameZh: "天津", region: "North China", status: "draft", sourceUrl: schoolSource.url, sourceLabel: schoolSource.label, sourceSha256: schoolSource.sha256, capturedAt: schoolSource.fetchedAt, sourceFieldLineage: { nameEn: "official TJU admissions contact address", nameZh: "normalized Chinese city name", region: "normalized geographic region from official Tianjin address" } }],
-  schools: [{ slug: schoolSlug, nameEn: "Tianjin University", nameZh: "天津大学", citySlug: "tianjin", schoolType: "public", region: "Tianjin, North China", applicationLevel: "Undergraduate, Master, Doctoral", languageOfInstruction: "Chinese and English depending on route", languageRequirement: "Chinese-taught routes require HSK; English-taught routes require IELTS, TOEFL or a stated exemption. Route-specific standards apply.", hskRequirement: "Undergraduate: HSK Level 5 score 180, or HSK Level 4 score 180 for School of International Education. Graduate: HSK Level 5 score 180, subject to stated exemptions.", englishRequirement: "IELTS 6.0 or TOEFL 80; English MBA requires IELTS 6.5 or TOEFL 85, GPA above 3.2/4.0 and one year of relevant experience.", deadlineSummary: "2026 undergraduate applications: October 15, 2025-April 15, 2026, with scholarship applicants requested by April 1. Master's: October 15, 2025-May 31, 2026. Doctoral: October 1, 2025-May 31, 2026.", tuitionSummary: "Official 2026 annual tuition: undergraduate RMB 16,600-26,000; master RMB 24,900-39,000; doctoral RMB 33,200 generally and RMB 39,000 for architecture.", applicationFee: "RMB 420", websiteUrl: "https://www.tju.edu.cn/english/index.htm", admissionsUrl: "https://sie.tju.edu.cn/en/", cscaRequired: true, cscaRequirement: "All 2026 international undergraduate applicants must submit CSCA results in school-specific subjects. Test-paper language must match the teaching language; three named English-taught programs are exempt from Professional Chinese.", cscaSubjects: ["Chinese for Arts or Science where applicable", "Mathematics", "Physics and/or Chemistry by school/program"], subjectTags: [...new Set(programs.map((row) => row.fieldCategory).filter(Boolean))] as string[], languageTags: ["Chinese", "English"], tuitionBandLabel: "RMB 16,600-39,000/year", campusHighlights: ["296 official 2026 international degree routes", "67 undergraduate, 104 master's and 125 doctoral routes", "84 English-taught routes", "School-specific CSCA mapping", "Six independently verified 2026 scholarship records"], status: "draft", sourceUrl: schoolSource.url, sourceLabel: schoolSource.label, sourceSha256: schoolSource.sha256, capturedAt: schoolSource.fetchedAt, sourceFieldLineage: { nameEn: "official 2026 admissions pages", citySlug: "official contact address", applicationLevel: "three official 2026 degree guides", languageRequirement: "official qualification sections", deadlineSummary: "official application schedules", tuitionSummary: "official program catalogs and fee sections", applicationFee: "official fee sections", cscaRequirement: "official 2026 undergraduate guide and CSCA PDF" } }],
+  schools: [{ slug: schoolSlug, nameEn: "Tianjin University", nameZh: "天津大学", citySlug: "tianjin", schoolType: "public", region: "Tianjin, North China", applicationLevel: "Undergraduate, Master, Doctoral", languageOfInstruction: "Chinese and English depending on route", languageRequirement: "Chinese-taught routes require HSK; English-taught routes require IELTS, TOEFL or a stated exemption. Route-specific standards apply.", hskRequirement: "Undergraduate: HSK Level 5 score 180, or HSK Level 4 score 180 for School of International Education. Graduate: HSK Level 5 score 180, subject to stated exemptions.", englishRequirement: "IELTS 6.0 or TOEFL 80; 2027 master's routes also accept Duolingo 110. English MBA requires IELTS 6.5 or TOEFL 85, GPA above 3.2/4.0 and one year of relevant experience.", deadlineSummary: "2027 undergraduate, master's and doctoral applications close May 31, 2027; undergraduate scholarship applicants are requested to apply by April 1, 2027.", tuitionSummary: "Official 2027 tuition varies by route: undergraduate RMB 20,000-130,000/year; master's general and architecture routes RMB 30,000-39,000/year, with separately published Fuzhou, Hainan and Shenzhen schedules up to RMB 150,000/year; doctoral RMB 38,000 generally and RMB 39,000 for architecture.", applicationFee: "RMB 500", websiteUrl: "https://www.tju.edu.cn/english/index.htm", admissionsUrl: "https://sie.tju.edu.cn/en/", cscaRequired: true, cscaRequirement: "All 2027 international undergraduate applicants must submit CSCA results in school- or program-specific subjects. Test-paper language must match the teaching language; English-taught routes do not take Professional Chinese and the published HSK exemption remains applicable.", cscaSubjects: ["Chinese for Arts or Science where applicable", "Mathematics", "Physics and/or Chemistry by school/program"], subjectTags: [...new Set(programs.map((row) => row.fieldCategory).filter(Boolean))] as string[], languageTags: ["Chinese", "English"], tuitionBandLabel: "RMB 20,000-150,000/year, with route-specific multi-year schedules", campusHighlights: ["324 official 2027 international degree routes", "80 undergraduate, 119 master's and 125 doctoral routes", "105 English-taught routes", "School- and program-specific CSCA mapping", "Current admissions plus independently verified scholarship records"], status: "draft", sourceUrl: schoolSource.url, sourceLabel: schoolSource.label, sourceSha256: schoolSource.sha256, capturedAt: schoolSource.fetchedAt, sourceFieldLineage: { nameEn: "official 2027 admissions pages", citySlug: "official contact address", applicationLevel: "three official 2027 degree guides", languageRequirement: "official qualification sections", deadlineSummary: "official 2027 application schedules", tuitionSummary: "official 2027 program catalogs and fee sections", applicationFee: "official 2027 fee sections", cscaRequirement: "official 2027 undergraduate guide and CSCA PDF" } }],
   programs,
   programIntakes: programs.map((program) => {
     const source = admissionsByDegree[program.degreeLevel!];
-    const deadline = program.degreeLevel === "Undergraduate" ? "2026-04-15T00:00:00.000Z" : "2026-05-31T00:00:00.000Z";
-    return { programSlug: program.slug, intakeTerm: "Fall", intakeYear: 2026, deadlineDate: deadline, deadlineLabel: program.degreeLevel === "Undergraduate" ? "Application deadline: April 15, 2026" : "Application deadline: May 31, 2026", applicationRound: "2026 international degree intake", status: "closed" as const, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt, sourceFieldLineage: { deadlineDate: "official 2026 degree guide application schedule; date-only value normalized to ISO UTC" } };
+    const deadline = "2027-05-31T00:00:00.000Z";
+    return { programSlug: program.slug, intakeTerm: "Fall", intakeYear: 2027, deadlineDate: deadline, deadlineLabel: "Application deadline: May 31, 2027", applicationRound: "2027 international degree intake", status: "open" as const, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt, sourceFieldLineage: { deadlineDate: "official 2027 degree guide application schedule; date-only value normalized to ISO UTC" } };
   }),
   scholarships,
 };
@@ -184,20 +198,20 @@ if (!validation.ok) throw new Error(`TJU candidate validation failed:\n${validat
 const candidateSha256 = sha(candidateText);
 const legacyProgramSlugs = ["tianjin-university-biological-engineering", "tianjin-university-biomedical-engineering", "tianjin-university-chemical-engineering-and-technology", "tianjin-university-chemical-engineering-and-technology-english", "tianjin-university-chinese-language-and-literature", "tianjin-university-environmental-engineering-english", "tianjin-university-fine-chemical-engineering", "tianjin-university-food-science-and-engineering", "tianjin-university-intelligent-medical-engineering", "tianjin-university-pharmaceutical-engineering", "tianjin-university-pharmaceutical-science-english", "tianjin-university-process-equipment-and-control-engineering", "tianjin-university-synthetic-biology"];
 const legacyScholarshipSlugs = ["tianjin-university", "tianjin-university-54", "tianjin-university-55", "tianjin-university-56"];
-const reviewBase: any = {
+const reviewBase = {
   version: 1,
   status: "awaiting_user_approval",
   generatedAt: candidate.generatedAt,
-  scope: { schoolSlug, cityOverwriteCount: 1, schoolOverwriteCount: 1, programRouteCount: 296, undergraduateRouteCount: 67, masterRouteCount: 104, doctoralRouteCount: 125, programIntakeCount: 296, scholarshipCount: 6, newScholarshipCount: 5, stableScholarshipUpdateCount: 1, archiveProgramAliasCount: 13, archiveScholarshipAliasCount: 4 },
+  scope: { schoolSlug, cityOverwriteCount: 1, schoolOverwriteCount: 1, programRouteCount: 324, undergraduateRouteCount: 80, masterRouteCount: 119, doctoralRouteCount: 125, programIntakeCount: 324, scholarshipCount: 6, newScholarshipCount: 5, stableScholarshipUpdateCount: 1, archiveProgramAliasCount: 13, archiveScholarshipAliasCount: 4 },
   candidateSha256,
   candidateBundleSha256: validation.bundleSha256,
   operationPlanSha256: validation.operationPlanSha256,
   evidence: [...evidence.values()].sort((a, b) => a.id.localeCompare(b.id)).map((row) => ({ sourceId: row.id, sourceUrl: row.url, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType })),
-  sourceReview: { result: "pass", workbookRowsReviewed: 296, workbookStructure: "pass", cscaPdfPagesReviewed: 3, note: "All three official workbooks were read without modification; sheet dimensions, required columns, every row and published counts were checked. All three CSCA PDF pages were rendered and visually reviewed." },
+  sourceReview: { result: "pass", workbookRowsReviewed: 324, workbookStructure: "pass", cscaPdfPagesReviewed: 3, note: "All three official 2027 workbooks were read without modification; sheet dimensions, required columns, every row and published counts were checked. All three 2027 CSCA PDF pages were rendered and visually reviewed." },
   reconciliation: { destructiveDeletion: false, cityOverwrite: { slug: "tianjin", previousSource: "unverified third-party source", replacementSource: "verified TJU official source" }, schoolOverwrite: { slug: schoolSlug, previousSource: "unverified third-party source", replacementSource: "verified TJU official source" }, stableScholarshipUpdateSlugs: ["official-2026-tju-silk-road-scholarship"], legacyProgramAliasesToArchive: legacyProgramSlugs, legacyScholarshipAliasesToArchive: legacyScholarshipSlugs },
-  sourceQualityNotes: [{ field: "Chinese labels in official XLS workbooks", finding: "The source workbooks contain corrupt Chinese-text cells while the parallel English columns are intact.", decision: "Use only the official English columns and official IDs; do not infer Chinese program names." }, { field: "Silk Road eligible majors", finding: "The official notice presents the program catalogue as an image and says final majors remain subject to confirmation.", decision: "Publish the degree/category scope without inventing a definitive major list." }],
+  sourceQualityNotes: [{ field: "Chinese labels in official XLS workbooks", finding: "The source workbooks contain corrupt Chinese-text cells while the parallel English columns are intact.", decision: "Use only the official English columns and official IDs; do not infer Chinese program names." }, { field: "Multi-year tuition cells", finding: "Two Fuzhou master's routes publish RMB 150,000 for Year 1 and RMB 30,000 for Years 2-3; one Hainan route publishes RMB 276,000 for three years.", decision: "Preserve the full official schedule in tuitionText; use RMB 150,000 as the first-year amount and RMB 92,000 as the stated three-year total's annual equivalent for filtering." }, { field: "Silk Road eligible majors", finding: "The official 2026 notice presents the program catalogue as an image and says final majors remain subject to confirmation.", decision: "Retain the scholarship's degree/category scope without inventing a definitive major list." }],
   sensitiveDataCheck: { result: "pass", scope: "candidate bundle only", note: "Only public institutional, program, admissions and scholarship information is included. Applicant records, private files, personal contact details, account data and payment data are absent." },
-  reviewNotes: ["The 13 legacy programs and four third-party scholarship aliases are proposed for archival, not deletion.", "The existing verified Silk Road slug is updated in place from the current English official notice.", "The batch replaces the unverified third-party Tianjin city and Tianjin University source metadata.", "Standing default publication does not cover these reconciliations; exact approval is required."],
+  reviewNotes: ["The official site replaced the withdrawn 2026 degree pages with current 2027 admissions and program catalogs; the draft therefore keeps 2026 scholarship notices but upgrades all degree routes and intakes to 2027.", "The 13 legacy programs and four third-party scholarship aliases are proposed for archival, not deletion.", "The existing verified Silk Road slug is updated in place from the reviewed 2026 English official notice.", "The batch replaces the unverified third-party Tianjin city and Tianjin University source metadata.", "Standing default publication does not cover these reconciliations; exact approval is required."],
 };
 const reviewHash = sha(JSON.stringify(reviewBase));
 const review = { ...reviewBase, reviewHash, publicationReference: `product-owner-approved-tju-complete-batch-01-${reviewHash}` };

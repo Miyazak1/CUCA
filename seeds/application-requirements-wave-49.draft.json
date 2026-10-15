@@ -1,0 +1,1454 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T11:19:25.621Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete official-source requirements for XTU's 76 Fall 2026 master and doctoral routes; exclude unresolved undergraduate CSCA bindings."
+  },
+  "summary": {
+    "templateCount": 4,
+    "readyTemplateCount": 4,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 76,
+    "targetedIntakeCount": 76,
+    "excludedProgramCount": 20,
+    "scholarshipCount": 1,
+    "requirementItemCount": 76
+  },
+  "templates": [
+    {
+      "key": "xtu-graduate-group-01-fall-2026",
+      "schoolSlug": "xiangtan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiangtan-university-master-chinese-international-law-law-school",
+        "xiangtan-university-master-chinese-civil-law-and-commercial-law-law-school",
+        "xiangtan-university-master-chinese-constitutional-law-and-administrative-law-law-school",
+        "xiangtan-university-master-chinese-computational-mathematics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-master-chinese-applied-mathematics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-master-chinese-statistics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-master-chinese-control-science-and-engineering-school-of-automation-and-electronic-information",
+        "xiangtan-university-master-chinese-information-and-communication-engineering-school-of-automation-and-electronic-information",
+        "xiangtan-university-master-chinese-electrical-engineering-school-of-automation-and-electronic-information",
+        "xiangtan-university-master-chinese-physics-school-of-physics-and-optoelectronics",
+        "xiangtan-university-master-chinese-electronics-science-and-technology-school-of-physics-and-optoelectronics",
+        "xiangtan-university-master-chinese-optical-engineering-school-of-physics-and-optoelectronics",
+        "xiangtan-university-master-chinese-integrated-circuit-engineering-school-of-physics-and-optoelectronics",
+        "xiangtan-university-master-chinese-instrument-and-meter-engineering-school-of-physics-and-optoelectronics",
+        "xiangtan-university-master-chinese-linguistics-and-applied-linguistics-college-of-literature-and-journalism",
+        "xiangtan-university-master-chinese-journalism-and-communication-college-of-literature-and-journalism",
+        "xiangtan-university-master-chinese-philosophy-biquan-academy",
+        "xiangtan-university-master-chinese-chinese-history-biquan-academy",
+        "xiangtan-university-master-chinese-theoretical-economics-business-school",
+        "xiangtan-university-master-chinese-business-administration-business-school",
+        "xiangtan-university-master-chinese-statistics-business-school",
+        "xiangtan-university-master-chinese-applied-economics-business-school",
+        "xiangtan-university-master-chinese-management-science-and-engineering-business-school",
+        "xiangtan-university-master-chinese-administration-school-of-public-administration",
+        "xiangtan-university-master-chinese-library-science-school-of-public-administration",
+        "xiangtan-university-master-chinese-information-science-school-of-public-administration",
+        "xiangtan-university-master-chinese-archival-science-school-of-public-administration",
+        "xiangtan-university-master-chinese-materials-science-and-engineering-school-of-materials-science-and-engineering",
+        "xiangtan-university-master-chinese-materials-and-chemical-engineering-school-of-materials-science-and-engineering",
+        "xiangtan-university-master-chinese-computer-science-and-technology-school-of-computer-science-and-school-of-cyberspace-science",
+        "xiangtan-university-master-chinese-civil-engineering-college-of-civil-engineering-and-mechanics",
+        "xiangtan-university-master-chinese-environmental-science-and-engineering-school-of-environment-and-resources",
+        "xiangtan-university-master-chinese-chemistry-college-of-chemistry"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains all 76 official master and doctoral routes in the acquired XTU catalog.",
+        "Twenty undergraduate routes are excluded because the route-specific CSCA subject attachment is protected by a download captcha and its exact subject bindings could not be independently acquired.",
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The scholarship record remains independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://en.xtu.edu.cn/__local/A/F8/5D/0E7C1904B0D18BD0DF55E8FF443_D1F8E08C_30B1B.pdf",
+            "title": "Xiangtan University 2026 international student admission brochure PDF",
+            "capturedAt": "2026-10-15T11:17:21.607Z",
+            "contentSha256": "677a02dabd412977334a82ad73b59cd90ecf4e271e7b7fcb5266601fa5add7f5"
+          },
+          {
+            "key": "master_catalog",
+            "url": "https://en.xtu.edu.cn/Admissions/International_Programs/Master_Programs.htm",
+            "title": "Xiangtan University official international master program table",
+            "capturedAt": "2026-09-14T06:46:31.993Z",
+            "contentSha256": "be07fb3db746f4d8f219b6a85b890f63675896252bdcfd0192f15bf9d5066317"
+          },
+          {
+            "key": "doctoral_catalog",
+            "url": "https://en.xtu.edu.cn/Admissions/International_Programs/Doctoral_Programs.htm",
+            "title": "Xiangtan University official international doctoral program table",
+            "capturedAt": "2026-09-14T06:46:33.135Z",
+            "contentSha256": "b5973d1add4f032ffe951be38cab3e3a2b6c044eb549fe02b59cda7ce22178ed"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_and_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Be a non-Chinese citizen age 18 or above, physically and mentally healthy, able to perform academically, compliant with Chinese laws and university rules, and respectful of Chinese culture. Applicants covered by the published former-Chinese-citizen rule must also satisfy its passport and overseas-residence conditions.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 1-2, page 2"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree and be under age 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 3, page 2"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register in the Xiangtan University International Students Service Platform, complete the online form and submit the application.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Procedure item 1, page 4"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a copy of the passport home page and renew the passport first if it does not satisfy the published validity requirement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 1, page 4"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a notarized highest diploma; prospective graduates submit official student-status proof. Add notarized Chinese or English translations when required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 2, page 4"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit sealed academic transcripts covering all applicable study stages, with notarized English translations for documents in other languages.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 3, page 4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught route applicants",
+            "ruleText": "HSK Level 4 or above; the published native/official-language or prior Chinese-medium education exemption may apply.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 4 and Application Documents item 4, pages 2 and 4-5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a Chinese- or English-language study plan explaining educational background, understanding of China and the chosen major, and study goals.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 5, page 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form in English with the blood-test report, completed after October 1, 2025 and satisfying the published signature, stamp and photograph rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6, page 5"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid non-criminal-record certificate issued by the local public security authority after October 1, 2025.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7, page 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Submit two Chinese- or English-language recommendations from professors or associate professors, each with the recommender's contact information and dated after October 1, 2025.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 8, page 5"
+              }
+            ]
+          },
+          {
+            "key": "self_introduction_video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a self-introduction video covering educational and professional background and research potential; the file must be under 50 MB.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 9, page 5"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Submit a bank-deposit certificate sufficient to cover at least one year of study and living costs in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 10, page 5"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who have an XTU supervisor recommendation",
+            "ruleText": "Submit the XTU Supervisor's Recommendation Form when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 11, page 6"
+              }
+            ]
+          },
+          {
+            "key": "academic_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with publications or other academic evidence",
+            "ruleText": "Submit published papers and other academic supporting materials when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 12, page 6"
+              }
+            ]
+          },
+          {
+            "key": "document_integrity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide notarized Chinese or English translations for materials in other languages and ensure every document is authentic and complete.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents reminders 1-2, page 6"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded degree applicants",
+            "ruleText": "Submit the self-funded degree-program application by April 30, 2026. Scholarship deadlines are controlled by their corresponding notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Procedure item 3, page 4"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 18,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Study Cost, page 6"
+              }
+            ]
+          },
+          {
+            "key": "insurance_and_accommodation",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for insurance at CNY 400 per semester or CNY 800 per year. Published on-campus accommodation is CNY 600 per month for a double room or CNY 900 per month for a single room, excluding gas, water and electricity.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Study Cost, page 6"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xtu-graduate-group-02-fall-2026",
+      "schoolSlug": "xiangtan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiangtan-university-master-english-international-law-law-school",
+        "xiangtan-university-master-english-civil-law-and-commercial-law-law-school",
+        "xiangtan-university-master-english-constitutional-law-and-administrative-law-law-school",
+        "xiangtan-university-master-english-computational-mathematics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-master-english-applied-mathematics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-master-english-statistics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-master-english-control-science-and-engineering-school-of-automation-and-electronic-information",
+        "xiangtan-university-master-english-information-and-communication-engineering-school-of-automation-and-electronic-information",
+        "xiangtan-university-master-english-electrical-engineering-school-of-automation-and-electronic-information",
+        "xiangtan-university-master-english-physics-school-of-physics-and-optoelectronics",
+        "xiangtan-university-master-english-electronics-science-and-technology-school-of-physics-and-optoelectronics",
+        "xiangtan-university-master-english-optical-engineering-school-of-physics-and-optoelectronics",
+        "xiangtan-university-master-english-integrated-circuit-engineering-school-of-physics-and-optoelectronics",
+        "xiangtan-university-master-english-instrument-and-meter-engineering-school-of-physics-and-optoelectronics"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains all 76 official master and doctoral routes in the acquired XTU catalog.",
+        "Twenty undergraduate routes are excluded because the route-specific CSCA subject attachment is protected by a download captcha and its exact subject bindings could not be independently acquired.",
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The scholarship record remains independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://en.xtu.edu.cn/__local/A/F8/5D/0E7C1904B0D18BD0DF55E8FF443_D1F8E08C_30B1B.pdf",
+            "title": "Xiangtan University 2026 international student admission brochure PDF",
+            "capturedAt": "2026-10-15T11:17:21.607Z",
+            "contentSha256": "677a02dabd412977334a82ad73b59cd90ecf4e271e7b7fcb5266601fa5add7f5"
+          },
+          {
+            "key": "master_catalog",
+            "url": "https://en.xtu.edu.cn/Admissions/International_Programs/Master_Programs.htm",
+            "title": "Xiangtan University official international master program table",
+            "capturedAt": "2026-09-14T06:46:31.993Z",
+            "contentSha256": "be07fb3db746f4d8f219b6a85b890f63675896252bdcfd0192f15bf9d5066317"
+          },
+          {
+            "key": "doctoral_catalog",
+            "url": "https://en.xtu.edu.cn/Admissions/International_Programs/Doctoral_Programs.htm",
+            "title": "Xiangtan University official international doctoral program table",
+            "capturedAt": "2026-09-14T06:46:33.135Z",
+            "contentSha256": "b5973d1add4f032ffe951be38cab3e3a2b6c044eb549fe02b59cda7ce22178ed"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_and_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Be a non-Chinese citizen age 18 or above, physically and mentally healthy, able to perform academically, compliant with Chinese laws and university rules, and respectful of Chinese culture. Applicants covered by the published former-Chinese-citizen rule must also satisfy its passport and overseas-residence conditions.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 1-2, page 2"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree and be under age 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 3, page 2"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register in the Xiangtan University International Students Service Platform, complete the online form and submit the application.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Procedure item 1, page 4"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a copy of the passport home page and renew the passport first if it does not satisfy the published validity requirement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 1, page 4"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a notarized highest diploma; prospective graduates submit official student-status proof. Add notarized Chinese or English translations when required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 2, page 4"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit sealed academic transcripts covering all applicable study stages, with notarized English translations for documents in other languages.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 3, page 4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught route applicants",
+            "ruleText": "IELTS 6.0 or TOEFL 80 or above; the published native/official-language or prior English-medium education exemption may apply.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 4 and Application Documents item 4, pages 2 and 4-5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a Chinese- or English-language study plan explaining educational background, understanding of China and the chosen major, and study goals.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 5, page 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form in English with the blood-test report, completed after October 1, 2025 and satisfying the published signature, stamp and photograph rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6, page 5"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid non-criminal-record certificate issued by the local public security authority after October 1, 2025.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7, page 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Submit two Chinese- or English-language recommendations from professors or associate professors, each with the recommender's contact information and dated after October 1, 2025.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 8, page 5"
+              }
+            ]
+          },
+          {
+            "key": "self_introduction_video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a self-introduction video covering educational and professional background and research potential; the file must be under 50 MB.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 9, page 5"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Submit a bank-deposit certificate sufficient to cover at least one year of study and living costs in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 10, page 5"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who have an XTU supervisor recommendation",
+            "ruleText": "Submit the XTU Supervisor's Recommendation Form when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 11, page 6"
+              }
+            ]
+          },
+          {
+            "key": "academic_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with publications or other academic evidence",
+            "ruleText": "Submit published papers and other academic supporting materials when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 12, page 6"
+              }
+            ]
+          },
+          {
+            "key": "document_integrity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide notarized Chinese or English translations for materials in other languages and ensure every document is authentic and complete.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents reminders 1-2, page 6"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded degree applicants",
+            "ruleText": "Submit the self-funded degree-program application by April 30, 2026. Scholarship deadlines are controlled by their corresponding notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Procedure item 3, page 4"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 18,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Study Cost, page 6"
+              }
+            ]
+          },
+          {
+            "key": "insurance_and_accommodation",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for insurance at CNY 400 per semester or CNY 800 per year. Published on-campus accommodation is CNY 600 per month for a double room or CNY 900 per month for a single room, excluding gas, water and electricity.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Study Cost, page 6"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xtu-graduate-group-03-fall-2026",
+      "schoolSlug": "xiangtan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiangtan-university-doctoral-chinese-law-law-school",
+        "xiangtan-university-doctoral-chinese-civil-law-and-commercial-law-law-school",
+        "xiangtan-university-doctoral-chinese-constitutional-law-and-administrative-law-law-school",
+        "xiangtan-university-doctoral-chinese-computational-mathematics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-doctoral-chinese-applied-mathematics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-doctoral-chinese-statistics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-doctoral-chinese-physics-school-of-physics-and-optoelectronics",
+        "xiangtan-university-doctoral-chinese-theoretical-economics-business-school",
+        "xiangtan-university-doctoral-chinese-statistics-business-school",
+        "xiangtan-university-doctoral-chinese-administration-school-of-public-administration",
+        "xiangtan-university-doctoral-chinese-library-science-school-of-public-administration",
+        "xiangtan-university-doctoral-chinese-informationscience-school-of-public-administration",
+        "xiangtan-university-doctoral-chinese-archival-science-school-of-public-administration",
+        "xiangtan-university-doctoral-chinese-materials-science-and-engineering-school-of-materials-science-and-engineering",
+        "xiangtan-university-doctoral-chinese-materials-and-chemical-engineering-school-of-materials-science-and-engineering",
+        "xiangtan-university-doctoral-chinese-chemical-engineering-and-technology-college-of-chemical-engineering",
+        "xiangtan-university-doctoral-chinese-chemistry-college-of-chemistry",
+        "xiangtan-university-doctoral-chinese-sung-ming-neo-confucianism-biquan-academy",
+        "xiangtan-university-doctoral-chinese-east-asian-buddhism-biquan-academy",
+        "xiangtan-university-doctoral-chinese-computer-science-and-technology-school-of-computer-science-and-school-of-cyberspace-science",
+        "xiangtan-university-doctoral-chinese-civil-engineering-college-of-civil-engineering-and-mechanics",
+        "xiangtan-university-doctoral-chinese-environmental-science-and-engineering-school-of-environment-and-resources"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains all 76 official master and doctoral routes in the acquired XTU catalog.",
+        "Twenty undergraduate routes are excluded because the route-specific CSCA subject attachment is protected by a download captcha and its exact subject bindings could not be independently acquired.",
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The scholarship record remains independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://en.xtu.edu.cn/__local/A/F8/5D/0E7C1904B0D18BD0DF55E8FF443_D1F8E08C_30B1B.pdf",
+            "title": "Xiangtan University 2026 international student admission brochure PDF",
+            "capturedAt": "2026-10-15T11:17:21.607Z",
+            "contentSha256": "677a02dabd412977334a82ad73b59cd90ecf4e271e7b7fcb5266601fa5add7f5"
+          },
+          {
+            "key": "master_catalog",
+            "url": "https://en.xtu.edu.cn/Admissions/International_Programs/Master_Programs.htm",
+            "title": "Xiangtan University official international master program table",
+            "capturedAt": "2026-09-14T06:46:31.993Z",
+            "contentSha256": "be07fb3db746f4d8f219b6a85b890f63675896252bdcfd0192f15bf9d5066317"
+          },
+          {
+            "key": "doctoral_catalog",
+            "url": "https://en.xtu.edu.cn/Admissions/International_Programs/Doctoral_Programs.htm",
+            "title": "Xiangtan University official international doctoral program table",
+            "capturedAt": "2026-09-14T06:46:33.135Z",
+            "contentSha256": "b5973d1add4f032ffe951be38cab3e3a2b6c044eb549fe02b59cda7ce22178ed"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_and_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Be a non-Chinese citizen age 18 or above, physically and mentally healthy, able to perform academically, compliant with Chinese laws and university rules, and respectful of Chinese culture. Applicants covered by the published former-Chinese-citizen rule must also satisfy its passport and overseas-residence conditions.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 1-2, page 2"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree and be under age 40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 3, page 2"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register in the Xiangtan University International Students Service Platform, complete the online form and submit the application.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Procedure item 1, page 4"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a copy of the passport home page and renew the passport first if it does not satisfy the published validity requirement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 1, page 4"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a notarized highest diploma; prospective graduates submit official student-status proof. Add notarized Chinese or English translations when required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 2, page 4"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit sealed academic transcripts covering all applicable study stages, with notarized English translations for documents in other languages.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 3, page 4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught route applicants",
+            "ruleText": "HSK Level 4 or above; the published native/official-language or prior Chinese-medium education exemption may apply.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 4 and Application Documents item 4, pages 2 and 4-5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a Chinese- or English-language study plan explaining educational background, understanding of China and the chosen major, and study goals.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 5, page 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form in English with the blood-test report, completed after October 1, 2025 and satisfying the published signature, stamp and photograph rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6, page 5"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid non-criminal-record certificate issued by the local public security authority after October 1, 2025.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7, page 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Submit two Chinese- or English-language recommendations from professors or associate professors, each with the recommender's contact information and dated after October 1, 2025.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 8, page 5"
+              }
+            ]
+          },
+          {
+            "key": "self_introduction_video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a self-introduction video covering educational and professional background and research potential; the file must be under 50 MB.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 9, page 5"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Submit a bank-deposit certificate sufficient to cover at least one year of study and living costs in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 10, page 5"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who have an XTU supervisor recommendation",
+            "ruleText": "Submit the XTU Supervisor's Recommendation Form when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 11, page 6"
+              }
+            ]
+          },
+          {
+            "key": "academic_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with publications or other academic evidence",
+            "ruleText": "Submit published papers and other academic supporting materials when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 12, page 6"
+              }
+            ]
+          },
+          {
+            "key": "document_integrity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide notarized Chinese or English translations for materials in other languages and ensure every document is authentic and complete.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents reminders 1-2, page 6"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded degree applicants",
+            "ruleText": "Submit the self-funded degree-program application by April 30, 2026. Scholarship deadlines are controlled by their corresponding notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Procedure item 3, page 4"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 23,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Study Cost, page 6"
+              }
+            ]
+          },
+          {
+            "key": "insurance_and_accommodation",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for insurance at CNY 400 per semester or CNY 800 per year. Published on-campus accommodation is CNY 600 per month for a double room or CNY 900 per month for a single room, excluding gas, water and electricity.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Study Cost, page 6"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xtu-graduate-group-04-fall-2026",
+      "schoolSlug": "xiangtan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiangtan-university-doctoral-english-law-law-school",
+        "xiangtan-university-doctoral-english-civil-law-and-commercial-law-law-school",
+        "xiangtan-university-doctoral-english-constitutional-law-and-administrative-law-law-school",
+        "xiangtan-university-doctoral-english-computational-mathematics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-doctoral-english-applied-mathematics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-doctoral-english-statistics-school-of-mathematics-and-computational-science",
+        "xiangtan-university-doctoral-english-physics-school-of-physics-and-optoelectronics"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains all 76 official master and doctoral routes in the acquired XTU catalog.",
+        "Twenty undergraduate routes are excluded because the route-specific CSCA subject attachment is protected by a download captcha and its exact subject bindings could not be independently acquired.",
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The scholarship record remains independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://en.xtu.edu.cn/__local/A/F8/5D/0E7C1904B0D18BD0DF55E8FF443_D1F8E08C_30B1B.pdf",
+            "title": "Xiangtan University 2026 international student admission brochure PDF",
+            "capturedAt": "2026-10-15T11:17:21.607Z",
+            "contentSha256": "677a02dabd412977334a82ad73b59cd90ecf4e271e7b7fcb5266601fa5add7f5"
+          },
+          {
+            "key": "master_catalog",
+            "url": "https://en.xtu.edu.cn/Admissions/International_Programs/Master_Programs.htm",
+            "title": "Xiangtan University official international master program table",
+            "capturedAt": "2026-09-14T06:46:31.993Z",
+            "contentSha256": "be07fb3db746f4d8f219b6a85b890f63675896252bdcfd0192f15bf9d5066317"
+          },
+          {
+            "key": "doctoral_catalog",
+            "url": "https://en.xtu.edu.cn/Admissions/International_Programs/Doctoral_Programs.htm",
+            "title": "Xiangtan University official international doctoral program table",
+            "capturedAt": "2026-09-14T06:46:33.135Z",
+            "contentSha256": "b5973d1add4f032ffe951be38cab3e3a2b6c044eb549fe02b59cda7ce22178ed"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_and_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Be a non-Chinese citizen age 18 or above, physically and mentally healthy, able to perform academically, compliant with Chinese laws and university rules, and respectful of Chinese culture. Applicants covered by the published former-Chinese-citizen rule must also satisfy its passport and overseas-residence conditions.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 1-2, page 2"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree and be under age 40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 3, page 2"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register in the Xiangtan University International Students Service Platform, complete the online form and submit the application.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Procedure item 1, page 4"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a copy of the passport home page and renew the passport first if it does not satisfy the published validity requirement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 1, page 4"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a notarized highest diploma; prospective graduates submit official student-status proof. Add notarized Chinese or English translations when required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 2, page 4"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit sealed academic transcripts covering all applicable study stages, with notarized English translations for documents in other languages.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 3, page 4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught route applicants",
+            "ruleText": "IELTS 6.0 or TOEFL 80 or above; the published native/official-language or prior English-medium education exemption may apply.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 4 and Application Documents item 4, pages 2 and 4-5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a Chinese- or English-language study plan explaining educational background, understanding of China and the chosen major, and study goals.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 5, page 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form in English with the blood-test report, completed after October 1, 2025 and satisfying the published signature, stamp and photograph rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6, page 5"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid non-criminal-record certificate issued by the local public security authority after October 1, 2025.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7, page 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Submit two Chinese- or English-language recommendations from professors or associate professors, each with the recommender's contact information and dated after October 1, 2025.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 8, page 5"
+              }
+            ]
+          },
+          {
+            "key": "self_introduction_video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a self-introduction video covering educational and professional background and research potential; the file must be under 50 MB.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 9, page 5"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Submit a bank-deposit certificate sufficient to cover at least one year of study and living costs in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 10, page 5"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who have an XTU supervisor recommendation",
+            "ruleText": "Submit the XTU Supervisor's Recommendation Form when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 11, page 6"
+              }
+            ]
+          },
+          {
+            "key": "academic_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with publications or other academic evidence",
+            "ruleText": "Submit published papers and other academic supporting materials when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 12, page 6"
+              }
+            ]
+          },
+          {
+            "key": "document_integrity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide notarized Chinese or English translations for materials in other languages and ensure every document is authentic and complete.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents reminders 1-2, page 6"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded degree applicants",
+            "ruleText": "Submit the self-funded degree-program application by April 30, 2026. Scholarship deadlines are controlled by their corresponding notices.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Procedure item 3, page 4"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 23,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Study Cost, page 6"
+              }
+            ]
+          },
+          {
+            "key": "insurance_and_accommodation",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for insurance at CNY 400 per semester or CNY 800 per year. Published on-campus accommodation is CNY 600 per month for a double room or CNY 900 per month for a single room, excluding gas, water and electricity.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Study Cost, page 6"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

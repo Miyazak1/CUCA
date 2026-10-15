@@ -1,0 +1,1710 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T10:30:44.199Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope BUPT 2026 requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 8,
+    "readyTemplateCount": 8,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 58,
+    "targetedIntakeCount": 58,
+    "requirementItemCount": 88
+  },
+  "templates": [
+    {
+      "key": "bupt-undergraduate-chinese-group-01-fall-2026",
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-posts-and-telecommunications-undergraduate-communication-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-computer-science-and-technology-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-cyberspace-security-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-information-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-artificial-intelligence-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-mechanical-engineering-digital-intelligence-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-robot-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-automation-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-e-commerce-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-mathematics-and-applied-mathematics-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-information-and-computing-science-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-applied-physics-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-law-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-english-chinese",
+        "beijing-university-of-posts-and-telecommunications-undergraduate-network-and-new-media-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The brochure publishes only a general two-or-three-year duration for Chinese-taught master's routes, so no route-level duration is inferred.",
+        "The reviewed 2026 brochure publishes no current-cycle scholarship detail; no older scholarship page is represented as a 2026 award."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "brochure",
+            "url": "https://xxgk.bupt.edu.cn/__local/4/9D/6D/1EB441EB8B730D5E91D1635D888_A9DEF37C_2D5B4.pdf",
+            "title": "Beijing University of Posts and Telecommunications 2026 international student admission brochure",
+            "capturedAt": "2026-09-13T13:58:28.251Z",
+            "contentSha256": "60c223830d1e46ab8625daa3060584544ad699bf3c7925a33ce59cc0d32d56a8"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma and be no older than 30.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 7, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK Level 5",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 7-9, Entrance Requirements and Application Materials"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "All undergraduate applicants must take CSCA before applying; Mathematics and Physics scores are key admission criteria.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Additional explanation"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed BUPT Admission Application Form for Overseas Students.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest completed academic certificate and diploma plus high-school or college transcripts, with notarized English translations where applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed Physical Examination Record for Foreigners.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 9, Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online BUPT application by April 20, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 9-10, Application Procedure and application period"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 500 application fee when submitting the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Pay the published tuition for this route: CNY 24,600/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3 and 6, tuition tables"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international students",
+            "ruleText": "Purchase mandatory health insurance at the published CNY 800/year rate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 4, Insurance"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using BUPT accommodation",
+            "ruleText": "Published accommodation is CNY 50 per bed per day.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3-4, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bupt-undergraduate-chinese-group-02-fall-2026",
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-posts-and-telecommunications-undergraduate-chinese-language-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The brochure publishes only a general two-or-three-year duration for Chinese-taught master's routes, so no route-level duration is inferred.",
+        "The reviewed 2026 brochure publishes no current-cycle scholarship detail; no older scholarship page is represented as a 2026 award."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "brochure",
+            "url": "https://xxgk.bupt.edu.cn/__local/4/9D/6D/1EB441EB8B730D5E91D1635D888_A9DEF37C_2D5B4.pdf",
+            "title": "Beijing University of Posts and Telecommunications 2026 international student admission brochure",
+            "capturedAt": "2026-09-13T13:58:28.251Z",
+            "contentSha256": "60c223830d1e46ab8625daa3060584544ad699bf3c7925a33ce59cc0d32d56a8"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma and be no older than 30.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 7, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK Level 4",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 7-9, Entrance Requirements and Application Materials"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "All undergraduate applicants must take CSCA before applying; Mathematics and Physics scores are key admission criteria.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Additional explanation"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed BUPT Admission Application Form for Overseas Students.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest completed academic certificate and diploma plus high-school or college transcripts, with notarized English translations where applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed Physical Examination Record for Foreigners.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 9, Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online BUPT application by April 20, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 9-10, Application Procedure and application period"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 500 application fee when submitting the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3 and 6, tuition tables"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international students",
+            "ruleText": "Purchase mandatory health insurance at the published CNY 800/year rate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 4, Insurance"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using BUPT accommodation",
+            "ruleText": "Published accommodation is CNY 50 per bed per day.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3-4, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bupt-undergraduate-english-group-03-fall-2026",
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-posts-and-telecommunications-undergraduate-computer-science-and-technology-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The brochure publishes only a general two-or-three-year duration for Chinese-taught master's routes, so no route-level duration is inferred.",
+        "The reviewed 2026 brochure publishes no current-cycle scholarship detail; no older scholarship page is represented as a 2026 award."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "brochure",
+            "url": "https://xxgk.bupt.edu.cn/__local/4/9D/6D/1EB441EB8B730D5E91D1635D888_A9DEF37C_2D5B4.pdf",
+            "title": "Beijing University of Posts and Telecommunications 2026 international student admission brochure",
+            "capturedAt": "2026-09-13T13:58:28.251Z",
+            "contentSha256": "60c223830d1e46ab8625daa3060584544ad699bf3c7925a33ce59cc0d32d56a8"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma and be no older than 30.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 7, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught undergraduate applicants",
+            "ruleText": "TOEFL 80 or IELTS 6.0",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 7-9, Entrance Requirements and Application Materials"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "All undergraduate applicants must take CSCA before applying; Mathematics and Physics scores are key admission criteria.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Additional explanation"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed BUPT Admission Application Form for Overseas Students.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest completed academic certificate and diploma plus high-school or college transcripts, with notarized English translations where applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed Physical Examination Record for Foreigners.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 9, Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online BUPT application by April 20, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 9-10, Application Procedure and application period"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 500 application fee when submitting the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Pay the published tuition for this route: CNY 24,600/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3 and 6, tuition tables"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international students",
+            "ruleText": "Purchase mandatory health insurance at the published CNY 800/year rate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 4, Insurance"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using BUPT accommodation",
+            "ruleText": "Published accommodation is CNY 50 per bed per day.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3-4, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bupt-master-chinese-group-04-fall-2026",
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-posts-and-telecommunications-master-information-and-communication-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-electronic-science-and-technology-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-optical-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-computer-science-and-technology-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-software-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-cyberspace-security-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-intelligent-science-and-technology-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-electronic-information-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-mechanical-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-logistics-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-control-science-and-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-electronic-information-control-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-integrated-circuit-science-and-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-mathematics-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-system-science-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-physics-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The brochure publishes only a general two-or-three-year duration for Chinese-taught master's routes, so no route-level duration is inferred.",
+        "The reviewed 2026 brochure publishes no current-cycle scholarship detail; no older scholarship page is represented as a 2026 award."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "brochure",
+            "url": "https://xxgk.bupt.edu.cn/__local/4/9D/6D/1EB441EB8B730D5E91D1635D888_A9DEF37C_2D5B4.pdf",
+            "title": "Beijing University of Posts and Telecommunications 2026 international student admission brochure",
+            "capturedAt": "2026-09-13T13:58:28.251Z",
+            "contentSha256": "60c223830d1e46ab8625daa3060584544ad699bf3c7925a33ce59cc0d32d56a8"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree and be no older than 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 7, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught master applicants",
+            "ruleText": "HSK Level 5",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 7-8, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit at least two recommendation letters from experts holding associate-professor rank or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, graduate recommendations"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed BUPT Admission Application Form for Overseas Students.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest completed academic certificate and diploma plus high-school or college transcripts, with notarized English translations where applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed Physical Examination Record for Foreigners.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 9, Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online BUPT application by April 20, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 9-10, Application Procedure and application period"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 500 application fee when submitting the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Pay the published tuition for this route: CNY 32,800/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3 and 6, tuition tables"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international students",
+            "ruleText": "Purchase mandatory health insurance at the published CNY 800/year rate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 4, Insurance"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using BUPT accommodation",
+            "ruleText": "Published accommodation is CNY 50 per bed per day.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3-4, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bupt-master-chinese-group-05-fall-2026",
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-posts-and-telecommunications-master-international-chinese-language-education-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-law-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-foreign-language-and-literature-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-education-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-educational-technology-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-translation-and-interpreting-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-juris-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-design-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-journalism-chinese",
+        "beijing-university-of-posts-and-telecommunications-master-journalism-and-communication-studies-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The brochure publishes only a general two-or-three-year duration for Chinese-taught master's routes, so no route-level duration is inferred.",
+        "The reviewed 2026 brochure publishes no current-cycle scholarship detail; no older scholarship page is represented as a 2026 award."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "brochure",
+            "url": "https://xxgk.bupt.edu.cn/__local/4/9D/6D/1EB441EB8B730D5E91D1635D888_A9DEF37C_2D5B4.pdf",
+            "title": "Beijing University of Posts and Telecommunications 2026 international student admission brochure",
+            "capturedAt": "2026-09-13T13:58:28.251Z",
+            "contentSha256": "60c223830d1e46ab8625daa3060584544ad699bf3c7925a33ce59cc0d32d56a8"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree and be no older than 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 7, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught master applicants",
+            "ruleText": "HSK Level 5",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 7-8, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit at least two recommendation letters from experts holding associate-professor rank or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, graduate recommendations"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed BUPT Admission Application Form for Overseas Students.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest completed academic certificate and diploma plus high-school or college transcripts, with notarized English translations where applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed Physical Examination Record for Foreigners.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 9, Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online BUPT application by April 20, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 9-10, Application Procedure and application period"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 500 application fee when submitting the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Pay the published tuition for this route: CNY 30,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3 and 6, tuition tables"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international students",
+            "ruleText": "Purchase mandatory health insurance at the published CNY 800/year rate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 4, Insurance"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using BUPT accommodation",
+            "ruleText": "Published accommodation is CNY 50 per bed per day.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3-4, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bupt-master-english-group-06-fall-2026",
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-posts-and-telecommunications-master-computer-technology-english",
+        "beijing-university-of-posts-and-telecommunications-master-international-business-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The brochure publishes only a general two-or-three-year duration for Chinese-taught master's routes, so no route-level duration is inferred.",
+        "The reviewed 2026 brochure publishes no current-cycle scholarship detail; no older scholarship page is represented as a 2026 award."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "brochure",
+            "url": "https://xxgk.bupt.edu.cn/__local/4/9D/6D/1EB441EB8B730D5E91D1635D888_A9DEF37C_2D5B4.pdf",
+            "title": "Beijing University of Posts and Telecommunications 2026 international student admission brochure",
+            "capturedAt": "2026-09-13T13:58:28.251Z",
+            "contentSha256": "60c223830d1e46ab8625daa3060584544ad699bf3c7925a33ce59cc0d32d56a8"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree and be no older than 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 7, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught master applicants",
+            "ruleText": "TOEFL 80 or IELTS 6.0",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 7-8, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit at least two recommendation letters from experts holding associate-professor rank or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, graduate recommendations"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed BUPT Admission Application Form for Overseas Students.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest completed academic certificate and diploma plus high-school or college transcripts, with notarized English translations where applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed Physical Examination Record for Foreigners.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 9, Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online BUPT application by April 20, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 9-10, Application Procedure and application period"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 500 application fee when submitting the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Pay the published tuition for this route: CNY 32,800/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3 and 6, tuition tables"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international students",
+            "ruleText": "Purchase mandatory health insurance at the published CNY 800/year rate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 4, Insurance"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using BUPT accommodation",
+            "ruleText": "Published accommodation is CNY 50 per bed per day.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3-4, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bupt-doctoral-chinese-group-07-fall-2026",
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-posts-and-telecommunications-doctoral-information-and-communication-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-doctoral-computer-science-and-technology-chinese",
+        "beijing-university-of-posts-and-telecommunications-doctoral-software-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-doctoral-cyberspace-security-chinese",
+        "beijing-university-of-posts-and-telecommunications-doctoral-electronic-information-chinese",
+        "beijing-university-of-posts-and-telecommunications-doctoral-intelligent-science-and-technology-chinese",
+        "beijing-university-of-posts-and-telecommunications-doctoral-control-science-and-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-doctoral-mechanical-engineering-chinese",
+        "beijing-university-of-posts-and-telecommunications-doctoral-integrated-circuit-science-and-engineering-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The brochure publishes only a general two-or-three-year duration for Chinese-taught master's routes, so no route-level duration is inferred.",
+        "The reviewed 2026 brochure publishes no current-cycle scholarship detail; no older scholarship page is represented as a 2026 award."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "brochure",
+            "url": "https://xxgk.bupt.edu.cn/__local/4/9D/6D/1EB441EB8B730D5E91D1635D888_A9DEF37C_2D5B4.pdf",
+            "title": "Beijing University of Posts and Telecommunications 2026 international student admission brochure",
+            "capturedAt": "2026-09-13T13:58:28.251Z",
+            "contentSha256": "60c223830d1e46ab8625daa3060584544ad699bf3c7925a33ce59cc0d32d56a8"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree and be no older than 40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 7, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught doctoral applicants",
+            "ruleText": "HSK Level 5",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 7-8, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit at least two recommendations from professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, graduate recommendations"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed BUPT Admission Application Form for Overseas Students.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest completed academic certificate and diploma plus high-school or college transcripts, with notarized English translations where applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed Physical Examination Record for Foreigners.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 9, Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online BUPT application by April 20, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 9-10, Application Procedure and application period"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 500 application fee when submitting the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled doctoral students",
+            "ruleText": "Pay the published tuition for this route: CNY 41,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3 and 6, tuition tables"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international students",
+            "ruleText": "Purchase mandatory health insurance at the published CNY 800/year rate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 4, Insurance"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using BUPT accommodation",
+            "ruleText": "Published accommodation is CNY 50 per bed per day.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3-4, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bupt-doctoral-english-group-08-fall-2026",
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-university-of-posts-and-telecommunications-doctoral-information-and-communication-engineering-english",
+        "beijing-university-of-posts-and-telecommunications-doctoral-computer-science-and-technology-english",
+        "beijing-university-of-posts-and-telecommunications-doctoral-electronic-science-and-technology-english",
+        "beijing-university-of-posts-and-telecommunications-doctoral-optical-engineering-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The brochure publishes only a general two-or-three-year duration for Chinese-taught master's routes, so no route-level duration is inferred.",
+        "The reviewed 2026 brochure publishes no current-cycle scholarship detail; no older scholarship page is represented as a 2026 award."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "brochure",
+            "url": "https://xxgk.bupt.edu.cn/__local/4/9D/6D/1EB441EB8B730D5E91D1635D888_A9DEF37C_2D5B4.pdf",
+            "title": "Beijing University of Posts and Telecommunications 2026 international student admission brochure",
+            "capturedAt": "2026-09-13T13:58:28.251Z",
+            "contentSha256": "60c223830d1e46ab8625daa3060584544ad699bf3c7925a33ce59cc0d32d56a8"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree and be no older than 40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 7, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught doctoral applicants",
+            "ruleText": "TOEFL 80 or IELTS 6.0",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 7-8, Entrance Requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit at least two recommendations from professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, graduate recommendations"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed BUPT Admission Application Form for Overseas Students.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest completed academic certificate and diploma plus high-school or college transcripts, with notarized English translations where applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 8, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed Physical Examination Record for Foreigners.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 9, Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online BUPT application by April 20, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 9-10, Application Procedure and application period"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 500 application fee when submitting the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 3, Application Fee"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled doctoral students",
+            "ruleText": "Pay the published tuition for this route: CNY 41,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3 and 6, tuition tables"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international students",
+            "ruleText": "Purchase mandatory health insurance at the published CNY 800/year rate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "page 4, Insurance"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using BUPT accommodation",
+            "ruleText": "Published accommodation is CNY 50 per bed per day.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "brochure",
+                "locator": "pages 3-4, Accommodation"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

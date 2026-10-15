@@ -1,0 +1,3211 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T11:41:00.707Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Replace partial-school release-candidate coverage with three complete official-source school scopes."
+  },
+  "summary": {
+    "templateCount": 11,
+    "readyTemplateCount": 11,
+    "blockedTemplateCount": 0,
+    "schoolCount": 3,
+    "targetedProgramCount": 139,
+    "targetedIntakeCount": 139,
+    "excludedProgramCount": 4,
+    "requirementItemCount": 171
+  },
+  "templates": [
+    {
+      "key": "cau-group-01-fall-2026",
+      "schoolSlug": "china-agricultural-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "china-agricultural-university-undergraduate-agronomy-agronomy-and-biotechnology-chinese",
+        "china-agricultural-university-undergraduate-seed-science-and-engineering-agronomy-and-biotechnology-chinese",
+        "china-agricultural-university-undergraduate-horticultural-science-horticulture-chinese",
+        "china-agricultural-university-undergraduate-landscape-architecture-horticulture-chinese",
+        "china-agricultural-university-undergraduate-biological-sciences-biological-sciences-chinese",
+        "china-agricultural-university-undergraduate-biotechnology-biological-sciences-chinese",
+        "china-agricultural-university-undergraduate-resource-and-environmental-science-resources-and-environmental-sciences-chinese",
+        "china-agricultural-university-undergraduate-applied-meteorology-resources-and-environmental-sciences-chinese",
+        "china-agricultural-university-undergraduate-ecology-resources-and-environmental-sciences-chinese",
+        "china-agricultural-university-undergraduate-environmental-engineering-resources-and-environmental-sciences-chinese",
+        "china-agricultural-university-undergraduate-food-science-and-engineering-food-science-and-nutritional-engineering-chinese",
+        "china-agricultural-university-undergraduate-food-quality-and-safety-food-science-and-nutritional-engineering-chinese",
+        "china-agricultural-university-undergraduate-viticulture-and-oenology-food-science-and-nutritional-engineering-chinese",
+        "china-agricultural-university-undergraduate-food-nutrition-and-health-food-science-and-nutritional-engineering-chinese",
+        "china-agricultural-university-undergraduate-electronic-information-engineering-catalog-row-19-chinese",
+        "china-agricultural-university-undergraduate-artificial-intelligence-catalog-row-20-chinese",
+        "china-agricultural-university-undergraduate-computer-science-and-technology-catalog-row-21-chinese",
+        "china-agricultural-university-undergraduate-aquaculture-science-yantai-institute-chinese",
+        "china-agricultural-university-undergraduate-facility-agriculture-science-and-engineering-yantai-institute-chinese",
+        "china-agricultural-university-undergraduate-viticulture-and-enology-yantai-institute-chinese",
+        "china-agricultural-university-undergraduate-bioengineering-yantai-institute-chinese",
+        "china-agricultural-university-undergraduate-biomass-science-and-engineering-yantai-institute-chinese",
+        "china-agricultural-university-undergraduate-animal-science-yantai-institute-chinese",
+        "china-agricultural-university-undergraduate-winemaking-engineering-yantai-institute-chinese",
+        "china-agricultural-university-undergraduate-turfgrass-science-and-engineering-yantai-institute-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "All 127 official Fall 2026 degree routes are included with exact intake, language, tuition and route-specific CSCA data where applicable.",
+        "This historical cycle is closed and remains unreviewed and non-public.",
+        "Scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ug_guide",
+            "url": "https://admissions.cau.edu.cn/art/2025/10/11/art_48600_1084208.html",
+            "title": "China Agricultural University 2026 international undergraduate admissions",
+            "capturedAt": "2026-09-13T13:05:32.556Z",
+            "contentSha256": "859f5a2482629f56437d364ba30b7ae07996c7197c44d955ef436241b7ace812"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=5ea283f399ff4e65b3c7aebfe03dafcc.xlsx",
+            "title": "China Agricultural University 2026 international undergraduate program catalog",
+            "capturedAt": "2026-09-13T13:06:57.520Z",
+            "contentSha256": "b6ab609458480bf3fd6f8cc12368e9d9162769fa5690df4479bdb9cc1647164d"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be at least 18, hold or be completing a senior-high-school qualification, have a good academic record, be a non-Chinese citizen with a valid ordinary passport, and be physically and mentally healthy with good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements items 1-4"
+              }
+            ]
+          },
+          {
+            "key": "nationality_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with current or former Chinese nationality or covered parentage",
+            "ruleText": "Meet the published four-year foreign-nationality and overseas-residence rule and submit the applicable naturalization, household-registration cancellation, passport-entry and overseas-study evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements items 5-6"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK Level 4 or above; Veterinary Medicine requires HSK Level 5 with 250 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements item 7"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "CSCA: Chinese, Math, Physics, Chemistry",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "Official program workbook, Required Examination Subjects"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the passport information page; the passport must expire after December 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the senior-high-school graduation certificate and transcript; pending graduates submit prospective-graduation evidence and the final certificate after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two recommendation letters from subject teachers at the applicant's senior high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "china_visa_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with China travel or residence history",
+            "ruleText": "Submit Chinese visa information and China border entry and exit records.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a no-criminal-record report issued by the public-security authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the original financial guarantee letter and a copy of the guarantor's identification document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "translations_and_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide originals or notarized Chinese or English copies and notarized translations when needed; present originals for verification at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials notes"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the complete online application by June 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Period"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants selected after document review",
+            "ruleText": "Participate in CAU's re-examination or interview when invited.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Review and Admission"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Fees section"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "cau-group-02-fall-2026",
+      "schoolSlug": "china-agricultural-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "china-agricultural-university-undergraduate-animal-science-animal-science-and-technology-chinese",
+        "china-agricultural-university-undergraduate-veterinary-medicine-veterinary-medicine-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "All 127 official Fall 2026 degree routes are included with exact intake, language, tuition and route-specific CSCA data where applicable.",
+        "This historical cycle is closed and remains unreviewed and non-public.",
+        "Scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ug_guide",
+            "url": "https://admissions.cau.edu.cn/art/2025/10/11/art_48600_1084208.html",
+            "title": "China Agricultural University 2026 international undergraduate admissions",
+            "capturedAt": "2026-09-13T13:05:32.556Z",
+            "contentSha256": "859f5a2482629f56437d364ba30b7ae07996c7197c44d955ef436241b7ace812"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=5ea283f399ff4e65b3c7aebfe03dafcc.xlsx",
+            "title": "China Agricultural University 2026 international undergraduate program catalog",
+            "capturedAt": "2026-09-13T13:06:57.520Z",
+            "contentSha256": "b6ab609458480bf3fd6f8cc12368e9d9162769fa5690df4479bdb9cc1647164d"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be at least 18, hold or be completing a senior-high-school qualification, have a good academic record, be a non-Chinese citizen with a valid ordinary passport, and be physically and mentally healthy with good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements items 1-4"
+              }
+            ]
+          },
+          {
+            "key": "nationality_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with current or former Chinese nationality or covered parentage",
+            "ruleText": "Meet the published four-year foreign-nationality and overseas-residence rule and submit the applicable naturalization, household-registration cancellation, passport-entry and overseas-study evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements items 5-6"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK Level 4 or above; Veterinary Medicine requires HSK Level 5 with 250 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements item 7"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "CSCA: Chinese, Math, Chemistry",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "Official program workbook, Required Examination Subjects"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the passport information page; the passport must expire after December 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the senior-high-school graduation certificate and transcript; pending graduates submit prospective-graduation evidence and the final certificate after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two recommendation letters from subject teachers at the applicant's senior high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "china_visa_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with China travel or residence history",
+            "ruleText": "Submit Chinese visa information and China border entry and exit records.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a no-criminal-record report issued by the public-security authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the original financial guarantee letter and a copy of the guarantor's identification document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "translations_and_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide originals or notarized Chinese or English copies and notarized translations when needed; present originals for verification at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials notes"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the complete online application by June 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Period"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants selected after document review",
+            "ruleText": "Participate in CAU's re-examination or interview when invited.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Review and Admission"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Fees section"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "cau-group-03-fall-2026",
+      "schoolSlug": "china-agricultural-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "china-agricultural-university-undergraduate-urban-and-rural-planning-yantai-institute-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "All 127 official Fall 2026 degree routes are included with exact intake, language, tuition and route-specific CSCA data where applicable.",
+        "This historical cycle is closed and remains unreviewed and non-public.",
+        "Scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ug_guide",
+            "url": "https://admissions.cau.edu.cn/art/2025/10/11/art_48600_1084208.html",
+            "title": "China Agricultural University 2026 international undergraduate admissions",
+            "capturedAt": "2026-09-13T13:05:32.556Z",
+            "contentSha256": "859f5a2482629f56437d364ba30b7ae07996c7197c44d955ef436241b7ace812"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=5ea283f399ff4e65b3c7aebfe03dafcc.xlsx",
+            "title": "China Agricultural University 2026 international undergraduate program catalog",
+            "capturedAt": "2026-09-13T13:06:57.520Z",
+            "contentSha256": "b6ab609458480bf3fd6f8cc12368e9d9162769fa5690df4479bdb9cc1647164d"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be at least 18, hold or be completing a senior-high-school qualification, have a good academic record, be a non-Chinese citizen with a valid ordinary passport, and be physically and mentally healthy with good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements items 1-4"
+              }
+            ]
+          },
+          {
+            "key": "nationality_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with current or former Chinese nationality or covered parentage",
+            "ruleText": "Meet the published four-year foreign-nationality and overseas-residence rule and submit the applicable naturalization, household-registration cancellation, passport-entry and overseas-study evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements items 5-6"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK Level 4 or above; Veterinary Medicine requires HSK Level 5 with 250 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements item 7"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "CSCA: Chinese, Math, Physics",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "Official program workbook, Required Examination Subjects"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the passport information page; the passport must expire after December 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the senior-high-school graduation certificate and transcript; pending graduates submit prospective-graduation evidence and the final certificate after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two recommendation letters from subject teachers at the applicant's senior high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "china_visa_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with China travel or residence history",
+            "ruleText": "Submit Chinese visa information and China border entry and exit records.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a no-criminal-record report issued by the public-security authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the original financial guarantee letter and a copy of the guarantor's identification document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "translations_and_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide originals or notarized Chinese or English copies and notarized translations when needed; present originals for verification at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials notes"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the complete online application by June 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Period"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants selected after document review",
+            "ruleText": "Participate in CAU's re-examination or interview when invited.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Review and Admission"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Fees section"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "cau-group-04-fall-2026",
+      "schoolSlug": "china-agricultural-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "china-agricultural-university-undergraduate-marketing-yantai-institute-chinese",
+        "china-agricultural-university-undergraduate-public-affairs-management-yantai-institute-chinese",
+        "china-agricultural-university-undergraduate-electronic-business-yantai-institute-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "All 127 official Fall 2026 degree routes are included with exact intake, language, tuition and route-specific CSCA data where applicable.",
+        "This historical cycle is closed and remains unreviewed and non-public.",
+        "Scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ug_guide",
+            "url": "https://admissions.cau.edu.cn/art/2025/10/11/art_48600_1084208.html",
+            "title": "China Agricultural University 2026 international undergraduate admissions",
+            "capturedAt": "2026-09-13T13:05:32.556Z",
+            "contentSha256": "859f5a2482629f56437d364ba30b7ae07996c7197c44d955ef436241b7ace812"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=5ea283f399ff4e65b3c7aebfe03dafcc.xlsx",
+            "title": "China Agricultural University 2026 international undergraduate program catalog",
+            "capturedAt": "2026-09-13T13:06:57.520Z",
+            "contentSha256": "b6ab609458480bf3fd6f8cc12368e9d9162769fa5690df4479bdb9cc1647164d"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be at least 18, hold or be completing a senior-high-school qualification, have a good academic record, be a non-Chinese citizen with a valid ordinary passport, and be physically and mentally healthy with good conduct.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements items 1-4"
+              }
+            ]
+          },
+          {
+            "key": "nationality_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with current or former Chinese nationality or covered parentage",
+            "ruleText": "Meet the published four-year foreign-nationality and overseas-residence rule and submit the applicable naturalization, household-registration cancellation, passport-entry and overseas-study evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements items 5-6"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK Level 4 or above; Veterinary Medicine requires HSK Level 5 with 250 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Eligibility and Requirements item 7"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "CSCA: Chinese, Math",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "Official program workbook, Required Examination Subjects"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the passport information page; the passport must expire after December 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the senior-high-school graduation certificate and transcript; pending graduates submit prospective-graduation evidence and the final certificate after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two recommendation letters from subject teachers at the applicant's senior high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "china_visa_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with China travel or residence history",
+            "ruleText": "Submit Chinese visa information and China border entry and exit records.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a no-criminal-record report issued by the public-security authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the original financial guarantee letter and a copy of the guarantor's identification document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "translations_and_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide originals or notarized Chinese or English copies and notarized translations when needed; present originals for verification at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Materials notes"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Fees section"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the complete online application by June 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Application Period"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants selected after document review",
+            "ruleText": "Participate in CAU's re-examination or interview when invited.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Review and Admission"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ug_guide",
+                "locator": "Fees section"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "cau-group-05-fall-2026",
+      "schoolSlug": "china-agricultural-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "china-agricultural-university-master-crop-cultivation-and-farming-system-agronomy-and-biotechnology-english",
+        "china-agricultural-university-master-crop-genetics-and-breeding-agronomy-and-biotechnology-english",
+        "china-agricultural-university-master-seed-science-and-technology-agronomy-and-biotechnology-english",
+        "china-agricultural-university-master-crop-physiology-agronomy-and-biotechnology-english",
+        "china-agricultural-university-master-olericulture-horticulture-english",
+        "china-agricultural-university-master-pomology-horticulture-english",
+        "china-agricultural-university-master-ornamental-horticulture-horticulture-english",
+        "china-agricultural-university-master-agricultural-entomology-and-pest-control-plant-protection-english",
+        "china-agricultural-university-master-plant-pathology-plant-protection-english",
+        "china-agricultural-university-master-plant-quarantine-and-agricultural-ecological-health-plant-protection-english",
+        "china-agricultural-university-master-resource-and-environmental-science-and-plant-protection-resources-and-environmental-sciences-english",
+        "china-agricultural-university-master-food-science-and-engineering-food-science-and-nutritional-engineering-english",
+        "china-agricultural-university-master-agricultural-engineering-engineering-english",
+        "china-agricultural-university-master-agricultural-electrification-and-automation-information-and-electrical-engineering-english",
+        "china-agricultural-university-master-hydraulic-engineering-water-resources-and-civil-engineering-english",
+        "china-agricultural-university-master-agricultural-economics-and-management-economics-and-management-english",
+        "china-agricultural-university-master-social-management-and-social-policy-humanities-and-development-studies-english",
+        "china-agricultural-university-master-grass-science-grassland-science-and-technology-english",
+        "china-agricultural-university-master-mba-sanya-institute-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "All 127 official Fall 2026 degree routes are included with exact intake, language, tuition and route-specific CSCA data where applicable.",
+        "This historical cycle is closed and remains unreviewed and non-public.",
+        "Scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "graduate_guide",
+            "url": "https://admissions.cau.edu.cn/art/2025/9/29/art_48604_1107314.html",
+            "title": "China Agricultural University 2026 international graduate admissions",
+            "capturedAt": "2026-09-13T13:05:33.707Z",
+            "contentSha256": "763e3e0414a16eb32639953c03d7f177fba7f5f4d00339e589104b1233b5aea1"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=95ca2edab49c4c7fb7326ff1af924c3b.xlsx",
+            "title": "China Agricultural University 2026 international master and doctoral program catalog",
+            "capturedAt": "2026-09-13T13:06:58.774Z",
+            "contentSha256": "956ca71ee803367da5a0b193b0ce060645957edc68731ffdd0933e8b5fd39c87"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid ordinary passport, be physically and mentally healthy, have no criminal or disciplinary record, comply with Chinese law and university rules, and respect Chinese customs.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's-equivalent qualification and be under age 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught applicants",
+            "ruleText": "IELTS 6.0 or TOEFL iBT 90, or prior degree taught in English, for reviewed graduate routes.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility item 5"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the passport information page; the passport must expire after December 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the notarized highest degree certificate or official student-status and expected-graduation evidence for pending graduates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit complete official transcripts from undergraduate study onward, issued and sealed by the responsible university office; the guide states GPA above 3.0.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two signed recommendation letters from associate professors or scholars with higher academic titles.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "cv",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit study and work experience updated to the application date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a Chinese- or English-language study or research plan of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "visa",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently in China",
+            "ruleText": "Submit current China visa information.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a no-criminal-record report issued by the public-security authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "academic_achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants with research achievements",
+            "ruleText": "Submit published papers, patents or other academic achievements.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee in the CAU system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Procedure item 1"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the complete application by March-May 2026; final date follows the official website notice.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants selected after review",
+            "ruleText": "Participate in any college or department examination or interview when invited.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Review and Examination"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 26,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Cost section"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "cau-group-06-fall-2026",
+      "schoolSlug": "china-agricultural-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "china-agricultural-university-master-crop-cultivation-and-farming-system-agronomy-and-biotechnology-chinese",
+        "china-agricultural-university-master-crop-genetics-and-breeding-agronomy-and-biotechnology-chinese",
+        "china-agricultural-university-master-seed-science-and-technology-agronomy-and-biotechnology-chinese",
+        "china-agricultural-university-master-crop-physiology-agronomy-and-biotechnology-chinese",
+        "china-agricultural-university-master-olericulture-horticulture-chinese",
+        "china-agricultural-university-master-pomology-horticulture-chinese",
+        "china-agricultural-university-master-ornamental-horticulture-horticulture-chinese",
+        "china-agricultural-university-master-agricultural-entomology-and-pest-control-plant-protection-chinese",
+        "china-agricultural-university-master-plant-pathology-plant-protection-chinese",
+        "china-agricultural-university-master-plant-quarantine-and-agricultural-ecological-health-plant-protection-chinese",
+        "china-agricultural-university-master-microbiology-biological-sciences-chinese",
+        "china-agricultural-university-master-phytology-biological-sciences-chinese",
+        "china-agricultural-university-master-physiology-biological-sciences-chinese",
+        "china-agricultural-university-master-resource-and-environmental-science-and-plant-protection-resources-and-environmental-sciences-chinese",
+        "china-agricultural-university-master-animal-reproduction-animal-science-and-technology-chinese",
+        "china-agricultural-university-master-animal-husbandry-bioengineering-animal-science-and-technology-chinese",
+        "china-agricultural-university-master-basic-veterinary-medicine-veterinary-medicine-chinese",
+        "china-agricultural-university-master-preventive-veterinary-medicine-veterinary-medicine-chinese",
+        "china-agricultural-university-master-clinical-veterinary-medicine-veterinary-medicine-chinese",
+        "china-agricultural-university-master-food-science-and-engineering-food-science-and-nutritional-engineering-chinese",
+        "china-agricultural-university-master-agricultural-engineering-engineering-chinese",
+        "china-agricultural-university-master-mechanical-engineering-engineering-chinese",
+        "china-agricultural-university-master-agricultural-electrification-and-automation-information-and-electrical-engineering-chinese",
+        "china-agricultural-university-master-hydraulic-engineering-water-resources-and-civil-engineering-chinese",
+        "china-agricultural-university-master-agricultural-soil-and-water-engineering-water-resources-and-civil-engineering-chinese",
+        "china-agricultural-university-master-agricultural-biological-environmental-and-energy-engineering-water-resources-and-civil-engineering-chinese",
+        "china-agricultural-university-master-agricultural-economics-and-management-economics-and-management-chinese",
+        "china-agricultural-university-master-social-management-and-social-policy-humanities-and-development-studies-chinese",
+        "china-agricultural-university-master-grass-science-grassland-science-and-technology-chinese",
+        "china-agricultural-university-master-mba-sanya-institute-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "All 127 official Fall 2026 degree routes are included with exact intake, language, tuition and route-specific CSCA data where applicable.",
+        "This historical cycle is closed and remains unreviewed and non-public.",
+        "Scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "graduate_guide",
+            "url": "https://admissions.cau.edu.cn/art/2025/9/29/art_48604_1107314.html",
+            "title": "China Agricultural University 2026 international graduate admissions",
+            "capturedAt": "2026-09-13T13:05:33.707Z",
+            "contentSha256": "763e3e0414a16eb32639953c03d7f177fba7f5f4d00339e589104b1233b5aea1"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=95ca2edab49c4c7fb7326ff1af924c3b.xlsx",
+            "title": "China Agricultural University 2026 international master and doctoral program catalog",
+            "capturedAt": "2026-09-13T13:06:58.774Z",
+            "contentSha256": "956ca71ee803367da5a0b193b0ce060645957edc68731ffdd0933e8b5fd39c87"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid ordinary passport, be physically and mentally healthy, have no criminal or disciplinary record, comply with Chinese law and university rules, and respect Chinese customs.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's-equivalent qualification and be under age 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants",
+            "ruleText": "HSK Level 4 certificate within its validity period.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility item 5"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the passport information page; the passport must expire after December 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the notarized highest degree certificate or official student-status and expected-graduation evidence for pending graduates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit complete official transcripts from undergraduate study onward, issued and sealed by the responsible university office; the guide states GPA above 3.0.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two signed recommendation letters from associate professors or scholars with higher academic titles.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "cv",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit study and work experience updated to the application date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a Chinese- or English-language study or research plan of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "visa",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently in China",
+            "ruleText": "Submit current China visa information.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a no-criminal-record report issued by the public-security authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "academic_achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants with research achievements",
+            "ruleText": "Submit published papers, patents or other academic achievements.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee in the CAU system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Procedure item 1"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the complete application by March-May 2026; final date follows the official website notice.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants selected after review",
+            "ruleText": "Participate in any college or department examination or interview when invited.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Review and Examination"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 26,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Cost section"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "cau-group-07-fall-2026",
+      "schoolSlug": "china-agricultural-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "china-agricultural-university-doctoral-crop-cultivation-and-farming-system-agronomy-and-biotechnology-english",
+        "china-agricultural-university-doctoral-crop-genetics-and-breeding-agronomy-and-biotechnology-english",
+        "china-agricultural-university-doctoral-seed-science-and-technology-agronomy-and-biotechnology-english",
+        "china-agricultural-university-doctoral-crop-physiology-agronomy-and-biotechnology-english",
+        "china-agricultural-university-doctoral-olericulture-horticulture-english",
+        "china-agricultural-university-doctoral-pomology-horticulture-english",
+        "china-agricultural-university-doctoral-ornamental-horticulture-horticulture-english",
+        "china-agricultural-university-doctoral-agricultural-entomology-and-pest-control-plant-protection-english",
+        "china-agricultural-university-doctoral-plant-pathology-plant-protection-english",
+        "china-agricultural-university-doctoral-plant-quarantine-and-agricultural-ecological-health-plant-protection-english",
+        "china-agricultural-university-doctoral-plant-nutrition-resources-and-environmental-sciences-english",
+        "china-agricultural-university-doctoral-animal-genetics-breeding-and-reproduction-animal-science-and-technology-english",
+        "china-agricultural-university-doctoral-animal-nutrition-and-feed-science-animal-science-and-technology-english",
+        "china-agricultural-university-doctoral-food-science-and-engineering-food-science-and-nutritional-engineering-english",
+        "china-agricultural-university-doctoral-agricultural-engineering-engineering-english",
+        "china-agricultural-university-doctoral-agricultural-electrification-and-automation-information-and-electrical-engineering-english",
+        "china-agricultural-university-doctoral-hydraulic-engineering-water-resources-and-civil-engineering-english",
+        "china-agricultural-university-doctoral-development-studies-humanities-and-development-studies-english",
+        "china-agricultural-university-doctoral-grass-science-grassland-science-and-technology-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "All 127 official Fall 2026 degree routes are included with exact intake, language, tuition and route-specific CSCA data where applicable.",
+        "This historical cycle is closed and remains unreviewed and non-public.",
+        "Scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "graduate_guide",
+            "url": "https://admissions.cau.edu.cn/art/2025/9/29/art_48604_1107314.html",
+            "title": "China Agricultural University 2026 international graduate admissions",
+            "capturedAt": "2026-09-13T13:05:33.707Z",
+            "contentSha256": "763e3e0414a16eb32639953c03d7f177fba7f5f4d00339e589104b1233b5aea1"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=95ca2edab49c4c7fb7326ff1af924c3b.xlsx",
+            "title": "China Agricultural University 2026 international master and doctoral program catalog",
+            "capturedAt": "2026-09-13T13:06:58.774Z",
+            "contentSha256": "956ca71ee803367da5a0b193b0ce060645957edc68731ffdd0933e8b5fd39c87"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid ordinary passport, be physically and mentally healthy, have no criminal or disciplinary record, comply with Chinese law and university rules, and respect Chinese customs.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's-equivalent qualification and be under age 40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught applicants",
+            "ruleText": "IELTS 6.0 or TOEFL iBT 90, or prior degree taught in English, for reviewed graduate routes.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility item 5"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the passport information page; the passport must expire after December 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the notarized highest degree certificate or official student-status and expected-graduation evidence for pending graduates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit complete official transcripts from undergraduate study onward, issued and sealed by the responsible university office; the guide states GPA above 3.0.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two signed recommendation letters from associate professors or scholars with higher academic titles.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "cv",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit study and work experience updated to the application date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a Chinese- or English-language study or research plan of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "visa",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently in China",
+            "ruleText": "Submit current China visa information.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a no-criminal-record report issued by the public-security authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "academic_achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants with research achievements",
+            "ruleText": "Submit published papers, patents or other academic achievements.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee in the CAU system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Procedure item 1"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the complete application by March-May 2026; final date follows the official website notice.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants selected after review",
+            "ruleText": "Participate in any college or department examination or interview when invited.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Review and Examination"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 30,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Cost section"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "cau-group-08-fall-2026",
+      "schoolSlug": "china-agricultural-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "china-agricultural-university-doctoral-crop-cultivation-and-farming-system-agronomy-and-biotechnology-chinese",
+        "china-agricultural-university-doctoral-crop-genetics-and-breeding-agronomy-and-biotechnology-chinese",
+        "china-agricultural-university-doctoral-seed-science-and-technology-agronomy-and-biotechnology-chinese",
+        "china-agricultural-university-doctoral-crop-physiology-agronomy-and-biotechnology-chinese",
+        "china-agricultural-university-doctoral-olericulture-horticulture-chinese",
+        "china-agricultural-university-doctoral-pomology-horticulture-chinese",
+        "china-agricultural-university-doctoral-ornamental-horticulture-horticulture-chinese",
+        "china-agricultural-university-doctoral-agricultural-entomology-and-pest-control-plant-protection-chinese",
+        "china-agricultural-university-doctoral-plant-pathology-plant-protection-chinese",
+        "china-agricultural-university-doctoral-plant-quarantine-and-agricultural-ecological-health-plant-protection-chinese",
+        "china-agricultural-university-doctoral-microbiology-biological-sciences-chinese",
+        "china-agricultural-university-doctoral-phytology-biological-sciences-chinese",
+        "china-agricultural-university-doctoral-physiology-biological-sciences-chinese",
+        "china-agricultural-university-doctoral-plant-nutrition-resources-and-environmental-sciences-chinese",
+        "china-agricultural-university-doctoral-animal-genetics-breeding-and-reproduction-animal-science-and-technology-chinese",
+        "china-agricultural-university-doctoral-animal-nutrition-and-feed-science-animal-science-and-technology-chinese",
+        "china-agricultural-university-doctoral-basic-veterinary-medicine-veterinary-medicine-chinese",
+        "china-agricultural-university-doctoral-preventive-veterinary-medicine-veterinary-medicine-chinese",
+        "china-agricultural-university-doctoral-clinical-veterinary-medicine-veterinary-medicine-chinese",
+        "china-agricultural-university-doctoral-food-science-and-engineering-food-science-and-nutritional-engineering-chinese",
+        "china-agricultural-university-doctoral-agricultural-engineering-engineering-chinese",
+        "china-agricultural-university-doctoral-mechanical-engineering-engineering-chinese",
+        "china-agricultural-university-doctoral-agricultural-electrification-and-automation-information-and-electrical-engineering-chinese",
+        "china-agricultural-university-doctoral-hydraulic-engineering-water-resources-and-civil-engineering-chinese",
+        "china-agricultural-university-doctoral-agricultural-soil-and-water-engineering-water-resources-and-civil-engineering-chinese",
+        "china-agricultural-university-doctoral-agricultural-biological-environmental-and-energy-engineering-water-resources-and-civil-engineering-chinese",
+        "china-agricultural-university-doctoral-development-studies-humanities-and-development-studies-chinese",
+        "china-agricultural-university-doctoral-grass-science-grassland-science-and-technology-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "All 127 official Fall 2026 degree routes are included with exact intake, language, tuition and route-specific CSCA data where applicable.",
+        "This historical cycle is closed and remains unreviewed and non-public.",
+        "Scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "graduate_guide",
+            "url": "https://admissions.cau.edu.cn/art/2025/9/29/art_48604_1107314.html",
+            "title": "China Agricultural University 2026 international graduate admissions",
+            "capturedAt": "2026-09-13T13:05:33.707Z",
+            "contentSha256": "763e3e0414a16eb32639953c03d7f177fba7f5f4d00339e589104b1233b5aea1"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=95ca2edab49c4c7fb7326ff1af924c3b.xlsx",
+            "title": "China Agricultural University 2026 international master and doctoral program catalog",
+            "capturedAt": "2026-09-13T13:06:58.774Z",
+            "contentSha256": "956ca71ee803367da5a0b193b0ce060645957edc68731ffdd0933e8b5fd39c87"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid ordinary passport, be physically and mentally healthy, have no criminal or disciplinary record, comply with Chinese law and university rules, and respect Chinese customs.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's-equivalent qualification and be under age 40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants",
+            "ruleText": "HSK Level 4 certificate within its validity period.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Eligibility item 5"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload the passport information page; the passport must expire after December 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the notarized highest degree certificate or official student-status and expected-graduation evidence for pending graduates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit complete official transcripts from undergraduate study onward, issued and sealed by the responsible university office; the guide states GPA above 3.0.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two signed recommendation letters from associate professors or scholars with higher academic titles.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "cv",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit study and work experience updated to the application date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a Chinese- or English-language study or research plan of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "visa",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants currently in China",
+            "ruleText": "Submit current China visa information.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a no-criminal-record report issued by the public-security authority.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "academic_achievements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants with research achievements",
+            "ruleText": "Submit published papers, patents or other academic achievements.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Materials item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee in the CAU system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Procedure item 1"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the complete application by March-May 2026; final date follows the official website notice.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants selected after review",
+            "ruleText": "Participate in any college or department examination or interview when invited.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Review and Examination"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 30,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "graduate_guide",
+                "locator": "Cost section"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "gdufs-english-undergraduate-group-01-fall-2026",
+      "schoolSlug": "guangdong-university-of-foreign-studies",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "guangdong-university-of-foreign-studies-international-business",
+        "guangdong-university-of-foreign-studies-international-economics-and-trade-english-taught",
+        "guangdong-university-of-foreign-studies-marketing-english-taught"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains the three English-taught undergraduate routes with exact published tuition.",
+        "Two Chinese-taught routes are excluded because the current normalized seed lacks exact route tuition.",
+        "This historical cycle is closed and remains unreviewed and non-public."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://iie.gdufs.edu.cn/info/1099/5488.htm",
+            "title": "Guangdong University of Foreign Studies Fall 2026 international degree admissions notice",
+            "capturedAt": "2026-09-22T11:48:34.864Z",
+            "contentSha256": "e56545a3662b45f750bf2a299b2f33cabc7cd49bc8741e11dcce97a8573a4b17"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a foreign passport, meet the applicable nationality rules, be physically and mentally healthy, be friendly to China, obey laws and university rules, have good academic standing and conduct, and normally be no older than 30.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Conditions items 1-6"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit scanned high-school graduation and transcript documents, with notarized Chinese or English versions when the originals are in another language.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Undergraduate online application materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "CSCA Mathematics is required; English-taught applicants do not take the CSCA Chinese subject.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Undergraduate CSCA requirement"
+              }
+            ]
+          },
+          {
+            "key": "english",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught undergraduate applicants",
+            "ruleText": "TOEFL 70 or IELTS 5.5 or above; applicants without either may take the university's entrance assessment, and applicants from countries where English is an official language may be exempt from the written English test but still require an interview.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "English-taught undergraduate requirements item 4"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught undergraduate applicants",
+            "ruleText": "Complete the required entrance assessment, normally a written test and interview or an interview under the published language-exemption rule.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "English-taught undergraduate requirements item 4"
+              }
+            ]
+          },
+          {
+            "key": "passport_visa_photo",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport information page, current China visa page when applicable, and a one-inch color identification photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Undergraduate online application materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_exam",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a physical examination report that remains valid.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Undergraduate online application materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "supplementary_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants notified by GDUFS",
+            "ruleText": "Submit additional documents requested by the university, which may include recommendation letters or a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Undergraduate online application materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register and submit the online application, then confirm the application with the admissions office by telephone or email.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Method"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit by June 20, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application period"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 33,800/year; the program page separately lists a CNY 500 application fee and CNY 800/year insurance..",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Official Fall 2026 degree tuition table"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "shisu-undergraduate-group-01-fall-2026",
+      "schoolSlug": "shanghai-international-studies-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "shanghai-international-studies-university-accounting",
+        "shanghai-international-studies-university-business-administration-business-administration-marketing-management-financial-management-and-public-relations",
+        "shanghai-international-studies-university-finance-370",
+        "shanghai-international-studies-university-international-economics-and-trade",
+        "shanghai-international-studies-university-international-economics-and-trade-japanese",
+        "shanghai-international-studies-university-international-politics-songjiang-campus",
+        "shanghai-international-studies-university-law",
+        "shanghai-international-studies-university-political-science-and-administration"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains the nine normalized Fall 2026 undergraduate routes with exact tuition and intake binding.",
+        "Two English-taught master's routes remain outside this wave and are not claimed here.",
+        "This historical cycle is closed and remains unreviewed and non-public."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://www.oisa.shisu.edu.cn/index.php/Index/lxxm/cid/87",
+            "title": "Shanghai International Studies University 2026 international undergraduate admissions",
+            "capturedAt": "2026-09-22T12:03:08.562Z",
+            "contentSha256": "e1467035e6e1569fc92d6299e2b3c999e0e8b58a6d1eb76b9e99e3e5925579b2"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education_age_health_finance",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold at least a high-school qualification, be age 18 to 35, be healthy, and have reliable financial support and a guardian where applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Qualifications items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "nationality_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants covered by Chinese-parentage or former-Chinese-citizenship rules",
+            "ruleText": "Meet the published four-year foreign-passport or nationality-document rule and two-year overseas-residence rule.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Qualifications item 3"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Submit the guardian guarantee form; the guardian must be an adult living in mainland China with a source of income.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Qualifications item 1"
+              }
+            ]
+          },
+          {
+            "key": "conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants with prior study or residence in China",
+            "ruleText": "Have no record of legal or disciplinary violations during prior study or residence in China.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Qualifications item 5"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK Level 5 or equivalent Chinese proficiency.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Requirements and Entrance Examination"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "All Songjiang-campus applicants submit CSCA Chinese for Humanities and Mathematics; only the separately named technology, actuarial and data-science routes add Physics or Chemistry.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "CSCA and entrance-examination section"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the graduation certificate and transcript as originals or notarized Chinese or English copies; pending graduates may submit expected-graduation evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "language_and_csca_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the applicable HSK or Chinese-proficiency certificate and the CSCA score report.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport copy; applicants graduating from a high school in China must also provide their parents' passport copies.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials items 4-5"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 750 application fee or USD 125 overseas-remittance equivalent and upload the payment receipt.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials, fee item"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the application by April 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Registration and Duration"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Complete the applicable entrance examination or interview published for the route and campus.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Requirements and Entrance Examination"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 24,800/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fee Standard"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "shisu-undergraduate-group-02-fall-2026",
+      "schoolSlug": "shanghai-international-studies-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "shanghai-international-studies-university-international-economics-and-trade-hongkou-campus"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope contains the nine normalized Fall 2026 undergraduate routes with exact tuition and intake binding.",
+        "Two English-taught master's routes remain outside this wave and are not claimed here.",
+        "This historical cycle is closed and remains unreviewed and non-public."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://www.oisa.shisu.edu.cn/index.php/Index/lxxm/cid/87",
+            "title": "Shanghai International Studies University 2026 international undergraduate admissions",
+            "capturedAt": "2026-09-22T12:03:08.562Z",
+            "contentSha256": "e1467035e6e1569fc92d6299e2b3c999e0e8b58a6d1eb76b9e99e3e5925579b2"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "education_age_health_finance",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold at least a high-school qualification, be age 18 to 35, be healthy, and have reliable financial support and a guardian where applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Qualifications items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "nationality_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants covered by Chinese-parentage or former-Chinese-citizenship rules",
+            "ruleText": "Meet the published four-year foreign-passport or nationality-document rule and two-year overseas-residence rule.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Qualifications item 3"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Submit the guardian guarantee form; the guardian must be an adult living in mainland China with a source of income.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Qualifications item 1"
+              }
+            ]
+          },
+          {
+            "key": "conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants with prior study or residence in China",
+            "ruleText": "Have no record of legal or disciplinary violations during prior study or residence in China.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Qualifications item 5"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "HSK Level 4 score 180 or above for first-year entry. Higher thresholds apply to transfer entry.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Requirements and Entrance Examination"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Applicants submit CSCA Chinese for Humanities and Mathematics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "CSCA and entrance-examination section"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the graduation certificate and transcript as originals or notarized Chinese or English copies; pending graduates may submit expected-graduation evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "language_and_csca_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the applicable HSK or Chinese-proficiency certificate and the CSCA score report.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport copy; applicants graduating from a high school in China must also provide their parents' passport copies.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials items 4-5"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 500 application fee or USD 75 overseas-remittance equivalent and upload the payment receipt.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials, fee item"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the application by July 20, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Registration and Duration"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Complete the applicable entrance examination or interview published for the route and campus.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Requirements and Entrance Examination"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 24,800/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fee Standard"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

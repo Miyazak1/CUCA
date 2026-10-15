@@ -1,0 +1,3093 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T08:41:49.149Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope NUAA 2026 requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 8,
+    "readyTemplateCount": 8,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 77,
+    "targetedIntakeCount": 77,
+    "requirementItemCount": 180
+  },
+  "templates": [
+    {
+      "key": "nuaa-undergraduate-chinese-business-fall-2026",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-international-business-international-business-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "undergraduate",
+            "url": "https://cie.nuaa.edu.cn/_t1029/2025/1121/c16499a388281/page.htm",
+            "title": "Nanjing University of Aeronautics and Astronautics 2026 international undergraduate admission brochure",
+            "capturedAt": "2026-10-15T08:36:21.889Z",
+            "contentSha256": "05bebd7b3991fbd2e0297660b2bc0f4efd625a5107e05af3332cb318b1f411bc"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 17 to 25 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants younger than 18",
+            "ruleText": "Provide a guardian certificate for a guardian who has Nanjing residency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a senior-high graduate or hold a higher qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Create an account in the NUAA admission system, upload every required document, pay the application fee and monitor the portal for status changes.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply: Upload documents and pay the application fee"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page and the current Chinese visa if already in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the senior-high diploma or a notarized copy; a 2026 graduate may submit a pre-graduation letter but must present the original diploma at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit original or notarized transcripts for all senior-high courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit two signed recommendation letters from high-school teachers, including their contact details.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a personal statement of no more than 800 words covering personal introduction, reasons for applying and individual strengths.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a financial-guarantee letter or bank statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Provide a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants registering on campus",
+            "ruleText": "Upload clear scans for review and bring every original for on-campus verification; enrollment is refused when originals are not provided.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from November 15, 2025 through May 30, 2026; May 30 is the final application deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget the published CNY 400 residence-permit charge; the guide says the amount is an average and subject to change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using NUAA accommodation",
+            "ruleText": "Budget CNY 8,000 per year for a small single room, CNY 14,000 for a large single room, CNY 4,000 for a small double-room place, or CNY 7,000 for a large double-room place; published figures are averages and may change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International Business applicants",
+            "ruleText": "Take the CSCA Mathematics paper in English and submit the official result by May 30, 2026.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply and Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "Submit HSK Level 4 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents: Language proficiency certificate"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "International Business students",
+            "ruleText": "Pay tuition of CNY 22,900 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "nuaa-undergraduate-english-business-fall-2026",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-international-business-international-business-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "undergraduate",
+            "url": "https://cie.nuaa.edu.cn/_t1029/2025/1121/c16499a388281/page.htm",
+            "title": "Nanjing University of Aeronautics and Astronautics 2026 international undergraduate admission brochure",
+            "capturedAt": "2026-10-15T08:36:21.889Z",
+            "contentSha256": "05bebd7b3991fbd2e0297660b2bc0f4efd625a5107e05af3332cb318b1f411bc"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 17 to 25 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants younger than 18",
+            "ruleText": "Provide a guardian certificate for a guardian who has Nanjing residency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a senior-high graduate or hold a higher qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Create an account in the NUAA admission system, upload every required document, pay the application fee and monitor the portal for status changes.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply: Upload documents and pay the application fee"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page and the current Chinese visa if already in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the senior-high diploma or a notarized copy; a 2026 graduate may submit a pre-graduation letter but must present the original diploma at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit original or notarized transcripts for all senior-high courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit two signed recommendation letters from high-school teachers, including their contact details.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a personal statement of no more than 800 words covering personal introduction, reasons for applying and individual strengths.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a financial-guarantee letter or bank statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Provide a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants registering on campus",
+            "ruleText": "Upload clear scans for review and bring every original for on-campus verification; enrollment is refused when originals are not provided.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from November 15, 2025 through May 30, 2026; May 30 is the final application deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget the published CNY 400 residence-permit charge; the guide says the amount is an average and subject to change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using NUAA accommodation",
+            "ruleText": "Budget CNY 8,000 per year for a small single room, CNY 14,000 for a large single room, CNY 4,000 for a small double-room place, or CNY 7,000 for a large double-room place; published figures are averages and may change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International Business applicants",
+            "ruleText": "Take the CSCA Mathematics paper in English and submit the official result by May 30, 2026.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply and Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught undergraduate applicants",
+            "ruleText": "Submit IELTS 6.0 or above, TOEFL 80 or above, or an equivalent English-proficiency letter.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents: Language proficiency certificate"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "International Business students",
+            "ruleText": "Pay tuition of CNY 22,900 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "nuaa-undergraduate-chinese-engineering-fall-2026",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-aeronautical-engineering-aircraft-design-and-engineering-chinese",
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-artificial-intelligence-computer-science-and-technology-chinese",
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-mechanical-engineering-mechanical-engineering-chinese",
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-electrical-and-electronic-engineering-electrical-engineering-and-automation-chinese",
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-civil-engineering-civil-engineering-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "undergraduate",
+            "url": "https://cie.nuaa.edu.cn/_t1029/2025/1121/c16499a388281/page.htm",
+            "title": "Nanjing University of Aeronautics and Astronautics 2026 international undergraduate admission brochure",
+            "capturedAt": "2026-10-15T08:36:21.889Z",
+            "contentSha256": "05bebd7b3991fbd2e0297660b2bc0f4efd625a5107e05af3332cb318b1f411bc"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 17 to 25 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants younger than 18",
+            "ruleText": "Provide a guardian certificate for a guardian who has Nanjing residency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a senior-high graduate or hold a higher qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Create an account in the NUAA admission system, upload every required document, pay the application fee and monitor the portal for status changes.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply: Upload documents and pay the application fee"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page and the current Chinese visa if already in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the senior-high diploma or a notarized copy; a 2026 graduate may submit a pre-graduation letter but must present the original diploma at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit original or notarized transcripts for all senior-high courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit two signed recommendation letters from high-school teachers, including their contact details.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a personal statement of no more than 800 words covering personal introduction, reasons for applying and individual strengths.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a financial-guarantee letter or bank statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Provide a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants registering on campus",
+            "ruleText": "Upload clear scans for review and bring every original for on-campus verification; enrollment is refused when originals are not provided.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from November 15, 2025 through May 30, 2026; May 30 is the final application deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget the published CNY 400 residence-permit charge; the guide says the amount is an average and subject to change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using NUAA accommodation",
+            "ruleText": "Budget CNY 8,000 per year for a small single room, CNY 14,000 for a large single room, CNY 4,000 for a small double-room place, or CNY 7,000 for a large double-room place; published figures are averages and may change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Engineering applicants",
+            "ruleText": "Take the CSCA Mathematics and Physics papers in English and submit both official results by May 30, 2026.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply and Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "Submit HSK Level 4 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents: Language proficiency certificate"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Engineering students",
+            "ruleText": "Pay tuition of CNY 23,900 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "nuaa-undergraduate-english-engineering-fall-2026",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-aeronautical-engineering-aircraft-design-and-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-artificial-intelligence-computer-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-mechanical-engineering-mechanical-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-electrical-and-electronic-engineering-electrical-engineering-and-automation-english",
+        "nanjing-university-of-aeronautics-and-astronautics-undergraduate-civil-engineering-civil-engineering-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "undergraduate",
+            "url": "https://cie.nuaa.edu.cn/_t1029/2025/1121/c16499a388281/page.htm",
+            "title": "Nanjing University of Aeronautics and Astronautics 2026 international undergraduate admission brochure",
+            "capturedAt": "2026-10-15T08:36:21.889Z",
+            "contentSha256": "05bebd7b3991fbd2e0297660b2bc0f4efd625a5107e05af3332cb318b1f411bc"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 17 to 25 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants younger than 18",
+            "ruleText": "Provide a guardian certificate for a guardian who has Nanjing residency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a senior-high graduate or hold a higher qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Create an account in the NUAA admission system, upload every required document, pay the application fee and monitor the portal for status changes.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply: Upload documents and pay the application fee"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page and the current Chinese visa if already in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the senior-high diploma or a notarized copy; a 2026 graduate may submit a pre-graduation letter but must present the original diploma at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit original or notarized transcripts for all senior-high courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit two signed recommendation letters from high-school teachers, including their contact details.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a personal statement of no more than 800 words covering personal introduction, reasons for applying and individual strengths.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a financial-guarantee letter or bank statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Provide a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants registering on campus",
+            "ruleText": "Upload clear scans for review and bring every original for on-campus verification; enrollment is refused when originals are not provided.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from November 15, 2025 through May 30, 2026; May 30 is the final application deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget the published CNY 400 residence-permit charge; the guide says the amount is an average and subject to change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using NUAA accommodation",
+            "ruleText": "Budget CNY 8,000 per year for a small single room, CNY 14,000 for a large single room, CNY 4,000 for a small double-room place, or CNY 7,000 for a large double-room place; published figures are averages and may change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Engineering applicants",
+            "ruleText": "Take the CSCA Mathematics and Physics papers in English and submit both official results by May 30, 2026.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "How to Apply and Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught undergraduate applicants",
+            "ruleText": "Submit IELTS 6.0 or above, TOEFL 80 or above, or an equivalent English-proficiency letter.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Application Documents: Language proficiency certificate"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Engineering students",
+            "ruleText": "Pay tuition of CNY 23,900 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "undergraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "nuaa-master-business-management-fall-2026",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "nanjing-university-of-aeronautics-and-astronautics-master-applied-economics-009-college-of-economics-and-management-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-management-science-and-engineering-009-college-of-economics-and-management-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-accounting-009-college-of-economics-and-management-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-corporate-management-009-college-of-economics-and-management-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "postgraduate",
+            "url": "https://cie.nuaa.edu.cn/2025/1121/c16500a388279/page.htm",
+            "title": "Nanjing University of Aeronautics and Astronautics 2026 international postgraduate admission guide",
+            "capturedAt": "2026-10-15T08:36:22.986Z",
+            "contentSha256": "24a064d4cee016e0a156ea6b70961f663a8cabcedce8e99446b16f06c6ac643a"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health and have no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be younger than 35 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "academic_profile",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Demonstrate a strong academic background and research and innovation ability.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit IELTS 6.0 or above, TOEFL 70 or above, or an equivalent English-proficiency letter.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Complete the NUAA online application using accurate identity and contact details, pay the application fee and submit the application.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a scanned copy of the passport information page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the notarized bachelor's degree certificate in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a notarized copy of the highest academic transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit an NUAA Supervisor Acceptance Letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a study plan signed by an NUAA supervisor or professor.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a recommendation letter from a professor or associate professor.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record with blood-test report, issued within the preceding six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within the preceding six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a financial-guarantee letter or bank statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "csc_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Chinese Government Scholarship applicants",
+            "ruleText": "Submit the CSC application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Provide a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants registering on campus",
+            "ruleText": "Upload clear scans for review and bring every original for on-campus verification; enrollment is refused when originals are not provided.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master Fall 2026 applicants",
+            "ruleText": "Applications opened November 15, 2025; May 30, 2026 was the recommended period end and June 15, 2026 was the published final deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget the published CNY 400 annual residence-permit charge; the guide says the amount is an average and subject to change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using NUAA accommodation",
+            "ruleText": "Budget CNY 8,000 per year for a small single room, CNY 14,000 for a large single room, CNY 4,000 for a small double-room place, or CNY 7,000 for a large double-room place; published figures are averages and may change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Business and management master students",
+            "ruleText": "Pay tuition of CNY 30,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "nuaa-master-engineering-fall-2026",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "nanjing-university-of-aeronautics-and-astronautics-master-mechanics-001-college-of-aerospace-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-mechanical-engineering-001-college-of-aerospace-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-instrument-science-and-technology-001-college-of-aerospace-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-power-engineering-and-engineering-thermophysics-001-college-of-aerospace-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-aerospace-science-and-technology-001-college-of-aerospace-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-power-engineering-and-engineering-thermophysics-002-college-of-energy-and-power-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-aerospace-science-and-technology-002-college-of-energy-and-power-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-instrument-science-and-technology-003-college-of-automation-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-electrical-engineering-003-college-of-automation-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-control-science-and-engineering-003-college-of-automation-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-electronics-science-and-technology-004-college-of-electronic-information-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-information-and-communication-engineering-004-college-of-electronic-information-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-mechanical-engineering-005-college-of-mechanical-and-electrical-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-aerospace-science-and-technology-005-college-of-mechanical-and-electrical-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-chemistry-006-college-of-materials-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-materials-science-and-engineering-006-college-of-materials-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-nuclear-science-and-technology-006-college-of-materials-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-civil-engineering-007-college-of-civil-aviation-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-transportation-engineering-007-college-of-civil-aviation-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-physics-008-college-of-physics-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-optical-engineering-015-college-of-astronautics-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-control-science-and-engineering-015-college-of-astronautics-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-aerospace-science-and-technology-015-college-of-astronautics-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-computer-science-and-technology-016-college-of-computer-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-cyberspace-safety-016-college-of-computer-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-software-engineering-016-college-of-computer-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-maths-021-college-of-mathematics-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-intergrated-circuits-science-and-engineering-022-college-of-intergrated-circuits-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-computer-science-and-technology-024-college-of-artifical-intelligence-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-software-engineering-024-college-of-artifical-intelligence-english",
+        "nanjing-university-of-aeronautics-and-astronautics-master-aerospace-science-and-technology-042-national-key-laboratory-of-helicopter-aeromechanics-helicopter-research-institute-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "postgraduate",
+            "url": "https://cie.nuaa.edu.cn/2025/1121/c16500a388279/page.htm",
+            "title": "Nanjing University of Aeronautics and Astronautics 2026 international postgraduate admission guide",
+            "capturedAt": "2026-10-15T08:36:22.986Z",
+            "contentSha256": "24a064d4cee016e0a156ea6b70961f663a8cabcedce8e99446b16f06c6ac643a"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health and have no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be younger than 35 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "academic_profile",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Demonstrate a strong academic background and research and innovation ability.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit IELTS 6.0 or above, TOEFL 70 or above, or an equivalent English-proficiency letter.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Complete the NUAA online application using accurate identity and contact details, pay the application fee and submit the application.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a scanned copy of the passport information page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the notarized bachelor's degree certificate in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a notarized copy of the highest academic transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit an NUAA Supervisor Acceptance Letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a study plan signed by an NUAA supervisor or professor.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a recommendation letter from a professor or associate professor.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record with blood-test report, issued within the preceding six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within the preceding six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a financial-guarantee letter or bank statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "csc_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Chinese Government Scholarship applicants",
+            "ruleText": "Submit the CSC application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Provide a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants registering on campus",
+            "ruleText": "Upload clear scans for review and bring every original for on-campus verification; enrollment is refused when originals are not provided.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master Fall 2026 applicants",
+            "ruleText": "Applications opened November 15, 2025; May 30, 2026 was the recommended period end and June 15, 2026 was the published final deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget the published CNY 400 annual residence-permit charge; the guide says the amount is an average and subject to change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using NUAA accommodation",
+            "ruleText": "Budget CNY 8,000 per year for a small single room, CNY 14,000 for a large single room, CNY 4,000 for a small double-room place, or CNY 7,000 for a large double-room place; published figures are averages and may change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Engineering master students",
+            "ruleText": "Pay tuition of CNY 33,600 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "nuaa-doctoral-business-management-fall-2026",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-management-science-and-engineering-009-college-of-economics-and-management-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "postgraduate",
+            "url": "https://cie.nuaa.edu.cn/2025/1121/c16500a388279/page.htm",
+            "title": "Nanjing University of Aeronautics and Astronautics 2026 international postgraduate admission guide",
+            "capturedAt": "2026-10-15T08:36:22.986Z",
+            "contentSha256": "24a064d4cee016e0a156ea6b70961f663a8cabcedce8e99446b16f06c6ac643a"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health and have no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be younger than 40 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "academic_profile",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Demonstrate a strong academic background and research and innovation ability.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit IELTS 6.0 or above, TOEFL 70 or above, or an equivalent English-proficiency letter.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Complete the NUAA online application using accurate identity and contact details, pay the application fee and submit the application.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a scanned copy of the passport information page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the notarized master's degree certificate in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a notarized copy of the highest academic transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit an NUAA Supervisor Acceptance Letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a study plan signed by an NUAA supervisor or professor.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a recommendation letter from a professor or associate professor.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record with blood-test report, issued within the preceding six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within the preceding six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a financial-guarantee letter or bank statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "csc_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Chinese Government Scholarship applicants",
+            "ruleText": "Submit the CSC application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Provide a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants registering on campus",
+            "ruleText": "Upload clear scans for review and bring every original for on-campus verification; enrollment is refused when originals are not provided.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral Fall 2026 applicants",
+            "ruleText": "Applications opened November 15, 2025; May 30, 2026 was the recommended period end and June 15, 2026 was the published final deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget the published CNY 400 annual residence-permit charge; the guide says the amount is an average and subject to change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using NUAA accommodation",
+            "ruleText": "Budget CNY 8,000 per year for a small single room, CNY 14,000 for a large single room, CNY 4,000 for a small double-room place, or CNY 7,000 for a large double-room place; published figures are averages and may change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Business and management doctoral students",
+            "ruleText": "Pay tuition of CNY 34,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "nuaa-doctoral-engineering-fall-2026",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-mechanics-001-college-of-aerospace-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-mechanical-engineering-001-college-of-aerospace-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-instrument-science-and-technology-001-college-of-aerospace-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-aerospace-science-and-technology-001-college-of-aerospace-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-power-engineering-and-engineering-thermophysics-002-college-of-energy-and-power-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-aerospace-science-and-technology-002-college-of-energy-and-power-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-instrument-science-and-technology-003-college-of-automation-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-electrical-engineering-003-college-of-automation-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-control-science-and-engineering-003-college-of-automation-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-electronics-science-and-technology-004-college-of-electronic-information-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-information-and-communication-engineering-004-college-of-electronic-information-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-mechanical-engineering-005-college-of-mechanical-and-electrical-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-aerospace-science-and-technology-005-college-of-mechanical-and-electrical-engineering-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-materials-science-and-engineering-006-college-of-materials-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-nuclear-science-and-technology-006-college-of-materials-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-civil-engineering-007-college-of-civil-aviation-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-transportation-engineering-007-college-of-civil-aviation-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-physics-008-college-of-physics-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-optical-engineering-015-college-of-astronautics-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-control-science-and-engineering-015-college-of-astronautics-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-aerospace-science-and-technology-015-college-of-astronautics-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-computer-science-and-technology-016-college-of-computer-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-cyberspace-safety-016-college-of-computer-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-software-engineering-016-college-of-computer-science-and-technology-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-maths-021-college-of-mathematics-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-intergrated-circuits-science-and-engineering-022-college-of-intergrated-circuits-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-computer-science-and-technology-024-college-of-artifical-intelligence-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-software-engineering-024-college-of-artifical-intelligence-english",
+        "nanjing-university-of-aeronautics-and-astronautics-doctoral-aerospace-science-and-technology-042-national-key-laboratory-of-helicopter-aeromechanics-helicopter-research-institute-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "postgraduate",
+            "url": "https://cie.nuaa.edu.cn/2025/1121/c16500a388279/page.htm",
+            "title": "Nanjing University of Aeronautics and Astronautics 2026 international postgraduate admission guide",
+            "capturedAt": "2026-10-15T08:36:22.986Z",
+            "contentSha256": "24a064d4cee016e0a156ea6b70961f663a8cabcedce8e99446b16f06c6ac643a"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health_conduct",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health and have no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be younger than 40 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "academic_profile",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Demonstrate a strong academic background and research and innovation ability.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit IELTS 6.0 or above, TOEFL 70 or above, or an equivalent English-proficiency letter.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Eligibility"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Complete the NUAA online application using accurate identity and contact details, pay the application fee and submit the application.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "How to Apply"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a scanned copy of the passport information page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the notarized master's degree certificate in Chinese or English.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a notarized copy of the highest academic transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit an NUAA Supervisor Acceptance Letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a study plan signed by an NUAA supervisor or professor.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a recommendation letter from a professor or associate professor.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Record with blood-test report, issued within the preceding six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within the preceding six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a financial-guarantee letter or bank statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "csc_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Chinese Government Scholarship applicants",
+            "ruleText": "Submit the CSC application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents"
+              }
+            ]
+          },
+          {
+            "key": "translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Documents not issued in Chinese or English",
+            "ruleText": "Provide a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "originals",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants registering on campus",
+            "ruleText": "Upload clear scans for review and bring every original for on-campus verification; enrollment is refused when originals are not provided.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Documents note"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral Fall 2026 applicants",
+            "ruleText": "Applications opened November 15, 2025; May 30, 2026 was the recommended period end and June 15, 2026 was the published final deadline.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "residence_permit",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget the published CNY 400 annual residence-permit charge; the guide says the amount is an average and subject to change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using NUAA accommodation",
+            "ruleText": "Budget CNY 8,000 per year for a small single room, CNY 14,000 for a large single room, CNY 4,000 for a small double-room place, or CNY 7,000 for a large double-room place; published figures are averages and may change.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Engineering doctoral students",
+            "ruleText": "Pay tuition of CNY 37,800 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "postgraduate",
+                "locator": "Tuition & Fees"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

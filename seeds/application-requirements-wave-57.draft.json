@@ -1,0 +1,2661 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T13:05:05.980Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete official-source BNU Fall 2026 requirements for every published undergraduate catalog row."
+  },
+  "summary": {
+    "templateCount": 6,
+    "readyTemplateCount": 6,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 33,
+    "targetedIntakeCount": 33,
+    "excludedProgramCount": 0,
+    "requirementItemCount": 156
+  },
+  "exclusions": {
+    "undergraduate": []
+  },
+  "templates": [
+    {
+      "key": "bnu-undergraduate-group-01-fall-2026",
+      "schoolSlug": "beijing-normal-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-normal-university-teaching-chinese-to-speakers-of-other-languages"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/admissionbrochure/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate admission brochure",
+            "capturedAt": "2026-10-15T11:34:25.235Z",
+            "contentSha256": "ac577f79869863eddb3fec145b7a5e59c542386bea1f61a2ca50906ee78c14e3"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/majorcatalog/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate major catalog",
+            "capturedAt": "2026-10-15T11:34:26.329Z",
+            "contentSha256": "b345b4b959d0ecd71329d690ad442959e4d9ef02f307b5b954f198fbcede797b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "conduct_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Observe Chinese laws and BNU rules, respect Chinese customs, demonstrate good moral character, have no criminal record, and be healthy enough to study and live independently in China.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 1"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport and be 18 to 40 years old under the published 2026 date rule; applicants under 18 on September 1, 2026 must have a guardian in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 2"
+              }
+            ]
+          },
+          {
+            "key": "nationality_residence",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with a Chinese parent or former mainland, Hong Kong, Macao or Taiwan residence",
+            "ruleText": "Meet the published foreign-nationality holding period and overseas-residence rules and provide the related entry-exit, naturalization, renunciation and household-registration records when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 3 and Section V, item 10"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a qualification equivalent to a Chinese high-school graduation certificate or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online application from November 15, 2025 through March 15, 2026, China Standard Time. This is a closed historical intake.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 1"
+              }
+            ]
+          },
+          {
+            "key": "paper_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants who pass initial review",
+            "ruleText": "Mail the required paper application records promptly using one of BNU's published delivery services; late paper materials terminate review and admission processing.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 2"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Register in BNU's international-student online application system, select Undergraduate Student, complete the form and upload all required materials. Up to two majors may be selected.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 1"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 500 online application fee; applications are not processed before payment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 2"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original BNU International Undergraduate Students Application Form generated by the online system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original notarized or authenticated high-school graduation certificate; expected graduates may submit the original expected-graduation certificate and must present the formal graduation certificate at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit original, notarized or authenticated transcripts for every year and course of high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid CSCA report for the exact subjects assigned to the selected major.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 4 and Section VI"
+              }
+            ]
+          },
+          {
+            "key": "hsk_report",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the program-specific HSK certificate and transcript; the test date must be no earlier than November 1, 2023.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a signed recommendation letter from a high-school teacher, head teacher or school leader.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 6"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Use BNU's personal-statement form, print it and complete it by hand in Chinese; a typed statement is not accepted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 7"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page; the passport must remain valid beyond March 31, 2027. Also provide the most recent Chinese visa and, when currently in China, the valid residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate or the published commitment letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 9"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Submit the original notarized guardian certificate for the province or municipality of the teaching campus.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 11"
+              }
+            ]
+          },
+          {
+            "key": "translations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants with records not in Chinese or English",
+            "ruleText": "Attach an original notarized Chinese or English translation to each non-Chinese and non-English document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, notes"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Attend the BNU interview for every selected major after notice through the application system and email.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VI, item 2"
+              }
+            ]
+          },
+          {
+            "key": "duration_language",
+            "category": "education",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Study full time for four years in Chinese.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VIII"
+              }
+            ]
+          },
+          {
+            "key": "scholarships",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants seeking funding",
+            "ruleText": "Review the separately administered BNU New International Students Scholarship, Silk Road Muduo Scholarship, Beijing Government Scholarship, Chinese Government Scholarship and International Chinese Language Teachers Scholarship; scholarship selection does not replace admission requirements.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IX"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students seeking university accommodation",
+            "ruleText": "Follow the campus-specific accommodation process. Beijing-campus applicants book after receiving the electronic admission notice during the published July 1 to August 15, 2026 window; Zhuhai-campus dormitories are assigned by Phoenix School and carry a published annual fee of CNY 7,500.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section X"
+              }
+            ]
+          },
+          {
+            "key": "program_hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit HSK Level 4, score 180 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "program_csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit results for Chinese (Liberal Arts), Mathematics; take the subjects in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students in this exact program group",
+            "ruleText": "Pay RMB 24,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bnu-undergraduate-group-02-fall-2026",
+      "schoolSlug": "beijing-normal-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-normal-university-chinese-language"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/admissionbrochure/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate admission brochure",
+            "capturedAt": "2026-10-15T11:34:25.235Z",
+            "contentSha256": "ac577f79869863eddb3fec145b7a5e59c542386bea1f61a2ca50906ee78c14e3"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/majorcatalog/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate major catalog",
+            "capturedAt": "2026-10-15T11:34:26.329Z",
+            "contentSha256": "b345b4b959d0ecd71329d690ad442959e4d9ef02f307b5b954f198fbcede797b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "conduct_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Observe Chinese laws and BNU rules, respect Chinese customs, demonstrate good moral character, have no criminal record, and be healthy enough to study and live independently in China.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 1"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport and be 18 to 40 years old under the published 2026 date rule; applicants under 18 on September 1, 2026 must have a guardian in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 2"
+              }
+            ]
+          },
+          {
+            "key": "nationality_residence",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with a Chinese parent or former mainland, Hong Kong, Macao or Taiwan residence",
+            "ruleText": "Meet the published foreign-nationality holding period and overseas-residence rules and provide the related entry-exit, naturalization, renunciation and household-registration records when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 3 and Section V, item 10"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a qualification equivalent to a Chinese high-school graduation certificate or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online application from November 15, 2025 through March 15, 2026, China Standard Time. This is a closed historical intake.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 1"
+              }
+            ]
+          },
+          {
+            "key": "paper_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants who pass initial review",
+            "ruleText": "Mail the required paper application records promptly using one of BNU's published delivery services; late paper materials terminate review and admission processing.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 2"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Register in BNU's international-student online application system, select Undergraduate Student, complete the form and upload all required materials. Up to two majors may be selected.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 1"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 500 online application fee; applications are not processed before payment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 2"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original BNU International Undergraduate Students Application Form generated by the online system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original notarized or authenticated high-school graduation certificate; expected graduates may submit the original expected-graduation certificate and must present the formal graduation certificate at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit original, notarized or authenticated transcripts for every year and course of high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid CSCA report for the exact subjects assigned to the selected major.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 4 and Section VI"
+              }
+            ]
+          },
+          {
+            "key": "hsk_report",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the program-specific HSK certificate and transcript; the test date must be no earlier than November 1, 2023.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a signed recommendation letter from a high-school teacher, head teacher or school leader.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 6"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Use BNU's personal-statement form, print it and complete it by hand in Chinese; a typed statement is not accepted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 7"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page; the passport must remain valid beyond March 31, 2027. Also provide the most recent Chinese visa and, when currently in China, the valid residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate or the published commitment letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 9"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Submit the original notarized guardian certificate for the province or municipality of the teaching campus.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 11"
+              }
+            ]
+          },
+          {
+            "key": "translations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants with records not in Chinese or English",
+            "ruleText": "Attach an original notarized Chinese or English translation to each non-Chinese and non-English document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, notes"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Attend the BNU interview for every selected major after notice through the application system and email.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VI, item 2"
+              }
+            ]
+          },
+          {
+            "key": "duration_language",
+            "category": "education",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Study full time for four years in Chinese.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VIII"
+              }
+            ]
+          },
+          {
+            "key": "scholarships",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants seeking funding",
+            "ruleText": "Review the separately administered BNU New International Students Scholarship, Silk Road Muduo Scholarship, Beijing Government Scholarship, Chinese Government Scholarship and International Chinese Language Teachers Scholarship; scholarship selection does not replace admission requirements.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IX"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students seeking university accommodation",
+            "ruleText": "Follow the campus-specific accommodation process. Beijing-campus applicants book after receiving the electronic admission notice during the published July 1 to August 15, 2026 window; Zhuhai-campus dormitories are assigned by Phoenix School and carry a published annual fee of CNY 7,500.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section X"
+              }
+            ]
+          },
+          {
+            "key": "program_hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit HSK Level 4, score 180 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "program_csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit results for Mathematics; take the subjects in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students in this exact program group",
+            "ruleText": "Pay RMB 24,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bnu-undergraduate-group-03-fall-2026",
+      "schoolSlug": "beijing-normal-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-normal-university-communication",
+        "beijing-normal-university-philosophy",
+        "beijing-normal-university-history",
+        "beijing-normal-university-education",
+        "beijing-normal-university-english",
+        "beijing-normal-university-japanese",
+        "beijing-normal-university-russian",
+        "beijing-normal-university-law",
+        "beijing-normal-university-sociology",
+        "beijing-normal-university-international-economics-and-trade",
+        "beijing-normal-university-business-administration",
+        "beijing-normal-university-physical-education"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/admissionbrochure/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate admission brochure",
+            "capturedAt": "2026-10-15T11:34:25.235Z",
+            "contentSha256": "ac577f79869863eddb3fec145b7a5e59c542386bea1f61a2ca50906ee78c14e3"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/majorcatalog/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate major catalog",
+            "capturedAt": "2026-10-15T11:34:26.329Z",
+            "contentSha256": "b345b4b959d0ecd71329d690ad442959e4d9ef02f307b5b954f198fbcede797b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "conduct_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Observe Chinese laws and BNU rules, respect Chinese customs, demonstrate good moral character, have no criminal record, and be healthy enough to study and live independently in China.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 1"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport and be 18 to 40 years old under the published 2026 date rule; applicants under 18 on September 1, 2026 must have a guardian in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 2"
+              }
+            ]
+          },
+          {
+            "key": "nationality_residence",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with a Chinese parent or former mainland, Hong Kong, Macao or Taiwan residence",
+            "ruleText": "Meet the published foreign-nationality holding period and overseas-residence rules and provide the related entry-exit, naturalization, renunciation and household-registration records when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 3 and Section V, item 10"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a qualification equivalent to a Chinese high-school graduation certificate or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online application from November 15, 2025 through March 15, 2026, China Standard Time. This is a closed historical intake.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 1"
+              }
+            ]
+          },
+          {
+            "key": "paper_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants who pass initial review",
+            "ruleText": "Mail the required paper application records promptly using one of BNU's published delivery services; late paper materials terminate review and admission processing.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 2"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Register in BNU's international-student online application system, select Undergraduate Student, complete the form and upload all required materials. Up to two majors may be selected.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 1"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 500 online application fee; applications are not processed before payment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 2"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original BNU International Undergraduate Students Application Form generated by the online system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original notarized or authenticated high-school graduation certificate; expected graduates may submit the original expected-graduation certificate and must present the formal graduation certificate at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit original, notarized or authenticated transcripts for every year and course of high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid CSCA report for the exact subjects assigned to the selected major.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 4 and Section VI"
+              }
+            ]
+          },
+          {
+            "key": "hsk_report",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the program-specific HSK certificate and transcript; the test date must be no earlier than November 1, 2023.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a signed recommendation letter from a high-school teacher, head teacher or school leader.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 6"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Use BNU's personal-statement form, print it and complete it by hand in Chinese; a typed statement is not accepted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 7"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page; the passport must remain valid beyond March 31, 2027. Also provide the most recent Chinese visa and, when currently in China, the valid residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate or the published commitment letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 9"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Submit the original notarized guardian certificate for the province or municipality of the teaching campus.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 11"
+              }
+            ]
+          },
+          {
+            "key": "translations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants with records not in Chinese or English",
+            "ruleText": "Attach an original notarized Chinese or English translation to each non-Chinese and non-English document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, notes"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Attend the BNU interview for every selected major after notice through the application system and email.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VI, item 2"
+              }
+            ]
+          },
+          {
+            "key": "duration_language",
+            "category": "education",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Study full time for four years in Chinese.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VIII"
+              }
+            ]
+          },
+          {
+            "key": "scholarships",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants seeking funding",
+            "ruleText": "Review the separately administered BNU New International Students Scholarship, Silk Road Muduo Scholarship, Beijing Government Scholarship, Chinese Government Scholarship and International Chinese Language Teachers Scholarship; scholarship selection does not replace admission requirements.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IX"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students seeking university accommodation",
+            "ruleText": "Follow the campus-specific accommodation process. Beijing-campus applicants book after receiving the electronic admission notice during the published July 1 to August 15, 2026 window; Zhuhai-campus dormitories are assigned by Phoenix School and carry a published annual fee of CNY 7,500.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section X"
+              }
+            ]
+          },
+          {
+            "key": "program_hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit HSK Level 5, score 180 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "program_csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit results for Chinese (Liberal Arts), Mathematics; take the subjects in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students in this exact program group",
+            "ruleText": "Pay RMB 24,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bnu-undergraduate-group-04-fall-2026",
+      "schoolSlug": "beijing-normal-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-normal-university-theatre-film-and-television-literature",
+        "beijing-normal-university-digital-media-arts",
+        "beijing-normal-university-calligraphy",
+        "beijing-normal-university-fine-arts",
+        "beijing-normal-university-design",
+        "beijing-normal-university-musicology",
+        "beijing-normal-university-dance"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/admissionbrochure/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate admission brochure",
+            "capturedAt": "2026-10-15T11:34:25.235Z",
+            "contentSha256": "ac577f79869863eddb3fec145b7a5e59c542386bea1f61a2ca50906ee78c14e3"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/majorcatalog/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate major catalog",
+            "capturedAt": "2026-10-15T11:34:26.329Z",
+            "contentSha256": "b345b4b959d0ecd71329d690ad442959e4d9ef02f307b5b954f198fbcede797b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "conduct_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Observe Chinese laws and BNU rules, respect Chinese customs, demonstrate good moral character, have no criminal record, and be healthy enough to study and live independently in China.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 1"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport and be 18 to 40 years old under the published 2026 date rule; applicants under 18 on September 1, 2026 must have a guardian in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 2"
+              }
+            ]
+          },
+          {
+            "key": "nationality_residence",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with a Chinese parent or former mainland, Hong Kong, Macao or Taiwan residence",
+            "ruleText": "Meet the published foreign-nationality holding period and overseas-residence rules and provide the related entry-exit, naturalization, renunciation and household-registration records when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 3 and Section V, item 10"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a qualification equivalent to a Chinese high-school graduation certificate or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online application from November 15, 2025 through March 15, 2026, China Standard Time. This is a closed historical intake.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 1"
+              }
+            ]
+          },
+          {
+            "key": "paper_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants who pass initial review",
+            "ruleText": "Mail the required paper application records promptly using one of BNU's published delivery services; late paper materials terminate review and admission processing.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 2"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Register in BNU's international-student online application system, select Undergraduate Student, complete the form and upload all required materials. Up to two majors may be selected.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 1"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 500 online application fee; applications are not processed before payment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 2"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original BNU International Undergraduate Students Application Form generated by the online system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original notarized or authenticated high-school graduation certificate; expected graduates may submit the original expected-graduation certificate and must present the formal graduation certificate at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit original, notarized or authenticated transcripts for every year and course of high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid CSCA report for the exact subjects assigned to the selected major.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 4 and Section VI"
+              }
+            ]
+          },
+          {
+            "key": "hsk_report",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the program-specific HSK certificate and transcript; the test date must be no earlier than November 1, 2023.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a signed recommendation letter from a high-school teacher, head teacher or school leader.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 6"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Use BNU's personal-statement form, print it and complete it by hand in Chinese; a typed statement is not accepted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 7"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page; the passport must remain valid beyond March 31, 2027. Also provide the most recent Chinese visa and, when currently in China, the valid residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate or the published commitment letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 9"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Submit the original notarized guardian certificate for the province or municipality of the teaching campus.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 11"
+              }
+            ]
+          },
+          {
+            "key": "translations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants with records not in Chinese or English",
+            "ruleText": "Attach an original notarized Chinese or English translation to each non-Chinese and non-English document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, notes"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Attend the BNU interview for every selected major after notice through the application system and email.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VI, item 2"
+              }
+            ]
+          },
+          {
+            "key": "duration_language",
+            "category": "education",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Study full time for four years in Chinese.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VIII"
+              }
+            ]
+          },
+          {
+            "key": "scholarships",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants seeking funding",
+            "ruleText": "Review the separately administered BNU New International Students Scholarship, Silk Road Muduo Scholarship, Beijing Government Scholarship, Chinese Government Scholarship and International Chinese Language Teachers Scholarship; scholarship selection does not replace admission requirements.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IX"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students seeking university accommodation",
+            "ruleText": "Follow the campus-specific accommodation process. Beijing-campus applicants book after receiving the electronic admission notice during the published July 1 to August 15, 2026 window; Zhuhai-campus dormitories are assigned by Phoenix School and carry a published annual fee of CNY 7,500.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section X"
+              }
+            ]
+          },
+          {
+            "key": "program_hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit HSK Level 5, score 180 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "program_csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit results for Chinese (Liberal Arts), Mathematics; take the subjects in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students in this exact program group",
+            "ruleText": "Pay RMB 27,700 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bnu-undergraduate-group-05-fall-2026",
+      "schoolSlug": "beijing-normal-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-normal-university-psychology",
+        "beijing-normal-university-computer-science-and-technology",
+        "beijing-normal-university-artificial-intelligence",
+        "beijing-normal-university-mathematics-and-applied-mathematics",
+        "beijing-normal-university-statistics",
+        "beijing-normal-university-physics",
+        "beijing-normal-university-astronomy",
+        "beijing-normal-university-geographical-science",
+        "beijing-normal-university-chemistry",
+        "beijing-normal-university-environmental-science-and-engineering",
+        "beijing-normal-university-environmental-engineering-double-bachelors"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/admissionbrochure/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate admission brochure",
+            "capturedAt": "2026-10-15T11:34:25.235Z",
+            "contentSha256": "ac577f79869863eddb3fec145b7a5e59c542386bea1f61a2ca50906ee78c14e3"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/majorcatalog/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate major catalog",
+            "capturedAt": "2026-10-15T11:34:26.329Z",
+            "contentSha256": "b345b4b959d0ecd71329d690ad442959e4d9ef02f307b5b954f198fbcede797b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "conduct_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Observe Chinese laws and BNU rules, respect Chinese customs, demonstrate good moral character, have no criminal record, and be healthy enough to study and live independently in China.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 1"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport and be 18 to 40 years old under the published 2026 date rule; applicants under 18 on September 1, 2026 must have a guardian in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 2"
+              }
+            ]
+          },
+          {
+            "key": "nationality_residence",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with a Chinese parent or former mainland, Hong Kong, Macao or Taiwan residence",
+            "ruleText": "Meet the published foreign-nationality holding period and overseas-residence rules and provide the related entry-exit, naturalization, renunciation and household-registration records when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 3 and Section V, item 10"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a qualification equivalent to a Chinese high-school graduation certificate or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online application from November 15, 2025 through March 15, 2026, China Standard Time. This is a closed historical intake.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 1"
+              }
+            ]
+          },
+          {
+            "key": "paper_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants who pass initial review",
+            "ruleText": "Mail the required paper application records promptly using one of BNU's published delivery services; late paper materials terminate review and admission processing.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 2"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Register in BNU's international-student online application system, select Undergraduate Student, complete the form and upload all required materials. Up to two majors may be selected.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 1"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 500 online application fee; applications are not processed before payment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 2"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original BNU International Undergraduate Students Application Form generated by the online system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original notarized or authenticated high-school graduation certificate; expected graduates may submit the original expected-graduation certificate and must present the formal graduation certificate at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit original, notarized or authenticated transcripts for every year and course of high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid CSCA report for the exact subjects assigned to the selected major.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 4 and Section VI"
+              }
+            ]
+          },
+          {
+            "key": "hsk_report",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the program-specific HSK certificate and transcript; the test date must be no earlier than November 1, 2023.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a signed recommendation letter from a high-school teacher, head teacher or school leader.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 6"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Use BNU's personal-statement form, print it and complete it by hand in Chinese; a typed statement is not accepted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 7"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page; the passport must remain valid beyond March 31, 2027. Also provide the most recent Chinese visa and, when currently in China, the valid residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate or the published commitment letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 9"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Submit the original notarized guardian certificate for the province or municipality of the teaching campus.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 11"
+              }
+            ]
+          },
+          {
+            "key": "translations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants with records not in Chinese or English",
+            "ruleText": "Attach an original notarized Chinese or English translation to each non-Chinese and non-English document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, notes"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Attend the BNU interview for every selected major after notice through the application system and email.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VI, item 2"
+              }
+            ]
+          },
+          {
+            "key": "duration_language",
+            "category": "education",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Study full time for four years in Chinese.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VIII"
+              }
+            ]
+          },
+          {
+            "key": "scholarships",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants seeking funding",
+            "ruleText": "Review the separately administered BNU New International Students Scholarship, Silk Road Muduo Scholarship, Beijing Government Scholarship, Chinese Government Scholarship and International Chinese Language Teachers Scholarship; scholarship selection does not replace admission requirements.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IX"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students seeking university accommodation",
+            "ruleText": "Follow the campus-specific accommodation process. Beijing-campus applicants book after receiving the electronic admission notice during the published July 1 to August 15, 2026 window; Zhuhai-campus dormitories are assigned by Phoenix School and carry a published annual fee of CNY 7,500.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section X"
+              }
+            ]
+          },
+          {
+            "key": "program_hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit HSK Level 5, score 180 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "program_csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit results for Chinese (STEM), Mathematics; take the subjects in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students in this exact program group",
+            "ruleText": "Pay RMB 27,700 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bnu-undergraduate-group-06-fall-2026",
+      "schoolSlug": "beijing-normal-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-normal-university-chinese-language-and-literature"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/admissionbrochure/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate admission brochure",
+            "capturedAt": "2026-10-15T11:34:25.235Z",
+            "contentSha256": "ac577f79869863eddb3fec145b7a5e59c542386bea1f61a2ca50906ee78c14e3"
+          },
+          {
+            "key": "catalog",
+            "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/majorcatalog/index.html",
+            "title": "Beijing Normal University 2026 international undergraduate major catalog",
+            "capturedAt": "2026-10-15T11:34:26.329Z",
+            "contentSha256": "b345b4b959d0ecd71329d690ad442959e4d9ef02f307b5b954f198fbcede797b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "conduct_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Observe Chinese laws and BNU rules, respect Chinese customs, demonstrate good moral character, have no criminal record, and be healthy enough to study and live independently in China.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 1"
+              }
+            ]
+          },
+          {
+            "key": "citizenship_age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a valid foreign passport and be 18 to 40 years old under the published 2026 date rule; applicants under 18 on September 1, 2026 must have a guardian in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 2"
+              }
+            ]
+          },
+          {
+            "key": "nationality_residence",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with a Chinese parent or former mainland, Hong Kong, Macao or Taiwan residence",
+            "ruleText": "Meet the published foreign-nationality holding period and overseas-residence rules and provide the related entry-exit, naturalization, renunciation and household-registration records when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 3 and Section V, item 10"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a qualification equivalent to a Chinese high-school graduation certificate or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section II, item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete the online application from November 15, 2025 through March 15, 2026, China Standard Time. This is a closed historical intake.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 1"
+              }
+            ]
+          },
+          {
+            "key": "paper_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants who pass initial review",
+            "ruleText": "Mail the required paper application records promptly using one of BNU's published delivery services; late paper materials terminate review and admission processing.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section III, item 2"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Register in BNU's international-student online application system, select Undergraduate Student, complete the form and upload all required materials. Up to two majors may be selected.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 1"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable CNY 500 online application fee; applications are not processed before payment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IV, item 2"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original BNU International Undergraduate Students Application Form generated by the online system.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the original notarized or authenticated high-school graduation certificate; expected graduates may submit the original expected-graduation certificate and must present the formal graduation certificate at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit original, notarized or authenticated transcripts for every year and course of high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca_report",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a valid CSCA report for the exact subjects assigned to the selected major.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 4 and Section VI"
+              }
+            ]
+          },
+          {
+            "key": "hsk_report",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the program-specific HSK certificate and transcript; the test date must be no earlier than November 1, 2023.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a signed recommendation letter from a high-school teacher, head teacher or school leader.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 6"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Use BNU's personal-statement form, print it and complete it by hand in Chinese; a typed statement is not accepted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 7"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the passport information page; the passport must remain valid beyond March 31, 2027. Also provide the most recent Chinese visa and, when currently in China, the valid residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 8"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate or the published commitment letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 9"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 on September 1, 2026",
+            "ruleText": "Submit the original notarized guardian certificate for the province or municipality of the teaching campus.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, item 11"
+              }
+            ]
+          },
+          {
+            "key": "translations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants with records not in Chinese or English",
+            "ruleText": "Attach an original notarized Chinese or English translation to each non-Chinese and non-English document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section V, notes"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Attend the BNU interview for every selected major after notice through the application system and email.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VI, item 2"
+              }
+            ]
+          },
+          {
+            "key": "duration_language",
+            "category": "education",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Study full time for four years in Chinese.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section VIII"
+              }
+            ]
+          },
+          {
+            "key": "scholarships",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Applicants seeking funding",
+            "ruleText": "Review the separately administered BNU New International Students Scholarship, Silk Road Muduo Scholarship, Beijing Government Scholarship, Chinese Government Scholarship and International Chinese Language Teachers Scholarship; scholarship selection does not replace admission requirements.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section IX"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students seeking university accommodation",
+            "ruleText": "Follow the campus-specific accommodation process. Beijing-campus applicants book after receiving the electronic admission notice during the published July 1 to August 15, 2026 window; Zhuhai-campus dormitories are assigned by Phoenix School and carry a published annual fee of CNY 7,500.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Section X"
+              }
+            ]
+          },
+          {
+            "key": "program_hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit HSK Level 5, score 180 or above.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "program_csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants in this exact program group",
+            "ruleText": "Submit results for Mathematics; take the subjects in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students in this exact program group",
+            "ruleText": "Pay RMB 24,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "2026 major catalog, matching rows"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

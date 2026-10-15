@@ -1,0 +1,1092 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T08:12:31.798Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located HITSZ Fall 2026 undergraduate requirements bound only to exact existing program-intake records."
+  },
+  "summary": {
+    "templateCount": 2,
+    "readyTemplateCount": 2,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 8,
+    "targetedIntakeCount": 8,
+    "requirementItemCount": 66
+  },
+  "templates": [
+    {
+      "key": "hitsz-engineering-undergraduate-fall-2026",
+      "schoolSlug": "harbin-institute-of-technology-shenzhen",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-institute-of-technology-shenzhen-computer-science-and-technology",
+        "harbin-institute-of-technology-shenzhen-optoelectronic-information-science-and-engineering",
+        "harbin-institute-of-technology-shenzhen-mechanical-design-manufacturing-and-automation",
+        "harbin-institute-of-technology-shenzhen-energy-and-power-engineering",
+        "harbin-institute-of-technology-shenzhen-civil-engineering"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "hitsz_undergraduate",
+            "url": "https://global.hitsz.edu.cn/__local/3/28/34/93FAE9A2DB2126960BCB9567033_D6038EC1_2636E.pdf",
+            "title": "Harbin Institute of Technology Shenzhen 2026 international undergraduate prospectus PDF",
+            "capturedAt": "2026-10-15T08:10:35.504Z",
+            "contentSha256": "b611b98782b8717c854fc9b29d9ecee71ef0f7741d30621cfab2cedbb13effc5"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen and satisfy the Ministry of Education rules governing international-student enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "nationality_determination",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose nationality status is reviewed by Chinese authorities",
+            "ruleText": "Remain eligible under the applicable nationality determination; a finding of Chinese nationality annuls international-applicant eligibility.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Eligibility item 1 note"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be under 25 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from December 30, 2025 through May 20, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Application Period"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload the passport information page; the passport must remain valid for at least two additional years.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload the high-school graduation certificate; prospective graduates may submit a school-issued pre-graduation certificate and must present the original diploma at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload official transcripts covering the full duration of high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "english_proficiency",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants who are not exempt",
+            "ruleText": "Submit TOEFL 80, IELTS 6.0 with no sub-test below 5.5, or Duolingo English Test 115; an English-medium prior qualification certificate may substitute, and applicants whose first language is English are exempt.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "curriculum_vitae",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a CV covering education and practical experience continuously from junior high school through the application date, with no unexplained gap longer than six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Form completed within six months before application, with every required item, photograph, signature and hospital stamp present.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate valid within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_capacity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a bank statement showing at least CNY 20,000 or equivalent in the applicant's or legal guardian's account.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who will be under 18 on September 1, 2026",
+            "ruleText": "Submit a guarantee letter from an adult guardian in China who is a Chinese citizen or holds a Chinese permanent-residence permit or work visa; documents issued abroad require Chinese consular notarization or an Apostille.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_fee_proof",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload proof that the application fee was paid.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 11"
+              }
+            ]
+          },
+          {
+            "key": "achievement_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Applicants may submit evidence of exceptional achievements in academics, sports, arts or public service.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 12"
+              }
+            ]
+          },
+          {
+            "key": "document_language",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit documents in Chinese or English; other-language documents require a Chinese or English translation for whose completeness and accuracy the applicant is responsible.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Important Notes item 1"
+              }
+            ]
+          },
+          {
+            "key": "online_upload",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload every application document to the HITSZ online application system and submit the completed application online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF pages 4-5, Important Notes item 2 and Online Application Procedure"
+              }
+            ]
+          },
+          {
+            "key": "submission_lock",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Review the application before final submission because submitted materials generally cannot be changed unless the university requests a supplement.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Important Notes item 3"
+              }
+            ]
+          },
+          {
+            "key": "authenticity",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide genuine personal information and application materials; false information or documents result in disqualification.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Important Notes item 4"
+              }
+            ]
+          },
+          {
+            "key": "additional_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants contacted by the university",
+            "ruleText": "Provide additional supporting materials when requested; submitted electronic and hard-copy materials are non-returnable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Important Notes item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable application fee of CNY 400 or USD 60.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "online_entrance_exam",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing preliminary review",
+            "ruleText": "Take the university's online entrance examination in English at the time communicated through the application system and email.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Admission Process items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "admission_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Admission is based on the entrance-examination result and CSCA result; an applicant awaiting CSCA may receive only a preliminary decision until the CSCA report is submitted within the designated period.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Admission Process item 3"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted undergraduates",
+            "ruleText": "Pay tuition of CNY 30,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "other_fees",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted undergraduates",
+            "ruleText": "Budget CNY 800 per year for insurance, CNY 500 for the medical check-up and CNY 400 per year for the residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "first_year_tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted undergraduates",
+            "ruleText": "Pay the full first-year tuition within 15 calendar days after receiving the Admission Notice; the published tuition payment is non-refundable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 6, Tuition Payment Instructions item 1"
+              }
+            ]
+          },
+          {
+            "key": "entrance_scholarship",
+            "category": "other",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submitting the admission application automatically enters the applicant for HITSZ Entrance Scholarship consideration; no separate scholarship action is required and later-year eligibility is reassessed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 7, Scholarship Policy remarks 2-3"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "First-year undergraduates seeking university accommodation",
+            "ruleText": "Apply when dormitory reservations open; rooms are allocated first come, first served and are not guaranteed, and accommodation after the first year is subject to availability.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 7, Accommodation Arrangements"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Engineering applicants",
+            "ruleText": "Submit CSCA Mathematics (English) and Physics (English) results.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF pages 2-3, Programs Offered table and Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "program_preferences",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "List two program preferences within the Mathematics-and-Physics examination category; a second choice in a different examination category is not considered.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Programs Offered note 2"
+              }
+            ]
+          },
+          {
+            "key": "entrance_exam_subjects",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Engineering applicants",
+            "ruleText": "Take the English-language HITSZ Mathematics and Physics entrance examination, which lasts 60 minutes.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Programs Offered table and note 4"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "hitsz-mathematics-undergraduate-fall-2026",
+      "schoolSlug": "harbin-institute-of-technology-shenzhen",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-institute-of-technology-shenzhen-business-administration",
+        "harbin-institute-of-technology-shenzhen-economics",
+        "harbin-institute-of-technology-shenzhen-architecture"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "hitsz_undergraduate",
+            "url": "https://global.hitsz.edu.cn/__local/3/28/34/93FAE9A2DB2126960BCB9567033_D6038EC1_2636E.pdf",
+            "title": "Harbin Institute of Technology Shenzhen 2026 international undergraduate prospectus PDF",
+            "capturedAt": "2026-10-15T08:10:35.504Z",
+            "contentSha256": "b611b98782b8717c854fc9b29d9ecee71ef0f7741d30621cfab2cedbb13effc5"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen and satisfy the Ministry of Education rules governing international-student enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "nationality_determination",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose nationality status is reviewed by Chinese authorities",
+            "ruleText": "Remain eligible under the applicable nationality determination; a finding of Chinese nationality annuls international-applicant eligibility.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Eligibility item 1 note"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be under 25 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from December 30, 2025 through May 20, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Application Period"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload the passport information page; the passport must remain valid for at least two additional years.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload the high-school graduation certificate; prospective graduates may submit a school-issued pre-graduation certificate and must present the original diploma at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload official transcripts covering the full duration of high school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "english_proficiency",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants who are not exempt",
+            "ruleText": "Submit TOEFL 80, IELTS 6.0 with no sub-test below 5.5, or Duolingo English Test 115; an English-medium prior qualification certificate may substitute, and applicants whose first language is English are exempt.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "curriculum_vitae",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a CV covering education and practical experience continuously from junior high school through the application date, with no unexplained gap longer than six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Form completed within six months before application, with every required item, photograph, signature and hospital stamp present.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a no-criminal-record certificate valid within six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_capacity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a bank statement showing at least CNY 20,000 or equivalent in the applicant's or legal guardian's account.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who will be under 18 on September 1, 2026",
+            "ruleText": "Submit a guarantee letter from an adult guardian in China who is a Chinese citizen or holds a Chinese permanent-residence permit or work visa; documents issued abroad require Chinese consular notarization or an Apostille.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_fee_proof",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload proof that the application fee was paid.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 11"
+              }
+            ]
+          },
+          {
+            "key": "achievement_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Applicants may submit evidence of exceptional achievements in academics, sports, arts or public service.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Application Materials item 12"
+              }
+            ]
+          },
+          {
+            "key": "document_language",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit documents in Chinese or English; other-language documents require a Chinese or English translation for whose completeness and accuracy the applicant is responsible.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Important Notes item 1"
+              }
+            ]
+          },
+          {
+            "key": "online_upload",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Upload every application document to the HITSZ online application system and submit the completed application online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF pages 4-5, Important Notes item 2 and Online Application Procedure"
+              }
+            ]
+          },
+          {
+            "key": "submission_lock",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Review the application before final submission because submitted materials generally cannot be changed unless the university requests a supplement.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 4, Important Notes item 3"
+              }
+            ]
+          },
+          {
+            "key": "authenticity",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide genuine personal information and application materials; false information or documents result in disqualification.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Important Notes item 4"
+              }
+            ]
+          },
+          {
+            "key": "additional_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants contacted by the university",
+            "ruleText": "Provide additional supporting materials when requested; submitted electronic and hard-copy materials are non-returnable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Important Notes item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the non-refundable application fee of CNY 400 or USD 60.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "online_entrance_exam",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing preliminary review",
+            "ruleText": "Take the university's online entrance examination in English at the time communicated through the application system and email.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Admission Process items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "admission_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Admission is based on the entrance-examination result and CSCA result; an applicant awaiting CSCA may receive only a preliminary decision until the CSCA report is submitted within the designated period.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Admission Process item 3"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted undergraduates",
+            "ruleText": "Pay tuition of CNY 30,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "other_fees",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted undergraduates",
+            "ruleText": "Budget CNY 800 per year for insurance, CNY 500 for the medical check-up and CNY 400 per year for the residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 5, Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "first_year_tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted undergraduates",
+            "ruleText": "Pay the full first-year tuition within 15 calendar days after receiving the Admission Notice; the published tuition payment is non-refundable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 6, Tuition Payment Instructions item 1"
+              }
+            ]
+          },
+          {
+            "key": "entrance_scholarship",
+            "category": "other",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submitting the admission application automatically enters the applicant for HITSZ Entrance Scholarship consideration; no separate scholarship action is required and later-year eligibility is reassessed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 7, Scholarship Policy remarks 2-3"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "First-year undergraduates seeking university accommodation",
+            "ruleText": "Apply when dormitory reservations open; rooms are allocated first come, first served and are not guaranteed, and accommodation after the first year is subject to availability.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 7, Accommodation Arrangements"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Business Administration, Economics and Architecture applicants",
+            "ruleText": "Submit a CSCA Mathematics (English) result.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF pages 2-3, Programs Offered table and Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "program_preferences",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "List two program preferences within the Mathematics-only examination category; a second choice in a different examination category is not considered.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Programs Offered note 2"
+              }
+            ]
+          },
+          {
+            "key": "entrance_exam_subjects",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Business Administration, Economics and Architecture applicants",
+            "ruleText": "Take the English-language HITSZ Mathematics entrance examination, which lasts 45 minutes.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "hitsz_undergraduate",
+                "locator": "PDF page 3, Programs Offered table and note 4"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

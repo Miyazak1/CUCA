@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-15T04:18:10.167Z",
+  "generatedAt": "2026-10-15T07:23:03.973Z",
   "handoff": {
     "status": "unreviewed_draft",
     "databaseWriteAuthorized": false,
@@ -13,7 +13,7 @@
     "blockedTemplateCount": 0,
     "targetedProgramCount": 1,
     "targetedIntakeCount": 1,
-    "requirementItemCount": 13
+    "requirementItemCount": 17
   },
   "templates": [
     {
@@ -47,7 +47,7 @@
             "key": "bnu_iclts",
             "url": "https://admission-is.bnu.edu.cn/jxj/kzxy/index.html",
             "title": "Beijing Normal University 2026 International Chinese Language Teachers Scholarship",
-            "capturedAt": "2026-10-15T04:16:10.697Z",
+            "capturedAt": "2026-10-15T07:22:20.893Z",
             "contentSha256": "6c0063849bde8b5e40acb0d04fe60b1ff0a436de332beaab038953f82e24adce"
           }
         ],
@@ -158,6 +158,21 @@
             ]
           },
           {
+            "key": "application_opening",
+            "category": "application_policy",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Use the International Chinese Language Teachers Scholarship section of the CLEC website after online applications open on March 1, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section III, Application Process, opening date"
+              }
+            ]
+          },
+          {
             "key": "scholarship_system_application",
             "category": "application_policy",
             "stage": "submission",
@@ -184,6 +199,36 @@
               {
                 "sourceKey": "bnu_iclts",
                 "locator": "Section III, March 2027 deadline"
+              }
+            ]
+          },
+          {
+            "key": "evaluation_basis",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "The CLEC expert panel reviews applications using HSK and HSKK levels and scores while also considering country distribution and other factors.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section III, paragraph after application deadlines"
+              }
+            ]
+          },
+          {
+            "key": "result_timing",
+            "category": "application_policy",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Scholarship review is expected to finish and results to be published about three months before enrollment.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section III, paragraph after application deadlines"
               }
             ]
           },
@@ -229,6 +274,21 @@
               {
                 "sourceKey": "bnu_iclts",
                 "locator": "Section VI, item 3"
+              }
+            ]
+          },
+          {
+            "key": "host_enrollment_contact",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "recommended",
+            "appliesTo": "Approved applicants",
+            "ruleText": "Contact BNU promptly about enrollment and other arrival procedures.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bnu_iclts",
+                "locator": "Section VI, item 5"
               }
             ]
           },

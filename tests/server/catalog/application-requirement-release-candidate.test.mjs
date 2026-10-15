@@ -15,16 +15,17 @@ test("requirement release candidate binds every ready template without authorizi
   });
   assert.deepEqual(candidate.decision, { humanReviewCompleted: false });
   assert.deepEqual(candidate.summary, {
-    templateCount: 27,
-    operationCount: 160,
-    schoolCount: 18,
-    programCount: 159,
-    intakeBindingCount: 160,
-    historicalOperationCount: 144,
-    currentOperationCount: 16,
+    templateCount: 397,
+    operationCount: 6144,
+    schoolCount: 52,
+    programCount: 6142,
+    intakeBindingCount: 6144,
+    historicalOperationCount: 5797,
+    currentOperationCount: 347,
   });
   assert.ok(candidate.operations.every((operation) => operation.reviewStatus === "unreviewed"));
-  assert.equal(candidate.operations.filter((operation) => operation.cycleState === "current_2027").length, 16);
+  assert.ok(candidate.templates.every((template) => template.document.coverage === "complete"));
+  assert.equal(candidate.operations.filter((operation) => operation.cycleState === "current_2027").length, 347);
 });
 
 test("candidate validation rejects an attempted publication authorization", async () => {

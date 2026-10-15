@@ -1,0 +1,2631 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T10:25:47.488Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope HEU 2026 requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 10,
+    "readyTemplateCount": 10,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 91,
+    "targetedIntakeCount": 91,
+    "requirementItemCount": 142
+  },
+  "templates": [
+    {
+      "key": "heu-bachelor-chinese-group-01-fall-2026",
+      "schoolSlug": "harbin-engineering-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-engineering-university-naval-architecture-and-ocean-engineering",
+        "harbin-engineering-university-civil-engineering",
+        "harbin-engineering-university-energy-and-power-engineering",
+        "harbin-engineering-university-marine-engineering",
+        "harbin-engineering-university-artificial-intelligence",
+        "harbin-engineering-university-electrical-engineering-and-automation",
+        "harbin-engineering-university-measurement-control-technology-and-instruments",
+        "harbin-engineering-university-automation",
+        "harbin-engineering-university-robotics-engineering",
+        "harbin-engineering-university-underwater-acoustics-engineering",
+        "harbin-engineering-university-electronic-information-engineering-underwater-acoustics",
+        "harbin-engineering-university-marine-information-engineering",
+        "harbin-engineering-university-computer-science-and-technology",
+        "harbin-engineering-university-information-security",
+        "harbin-engineering-university-software-engineering",
+        "harbin-engineering-university-mechanical-design-manufacturing-and-their-automation",
+        "harbin-engineering-university-industrial-design",
+        "harbin-engineering-university-intelligent-manufacturing-engineering",
+        "harbin-engineering-university-electronic-information-engineering",
+        "harbin-engineering-university-communications-engineering",
+        "harbin-engineering-university-materials-science-and-engineering",
+        "harbin-engineering-university-chemical-engineering-and-technology",
+        "harbin-engineering-university-new-energy-materials-and-devices",
+        "harbin-engineering-university-mathematics-and-applied-mathematics",
+        "harbin-engineering-university-applied-physics",
+        "harbin-engineering-university-opto-electronics-information-science-and-technology",
+        "harbin-engineering-university-nuclear-energy-engineering-and-technology",
+        "harbin-engineering-university-nuclear-chemical-and-fuel-engineering"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Three English-taught bachelor routes have no separately published tuition amount; the source limitation is preserved rather than inferred.",
+        "Scholarship eligibility is represented by separately sourced HEU scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://studyheu.hrbeu.edu.cn/en/info/1026/1323.htm",
+            "title": "Harbin Engineering University international undergraduate admission guide 2026",
+            "capturedAt": "2026-09-13T11:42:11.124Z",
+            "contentSha256": "882d3961f75990f9859ebdaa84dd78a8f3ae3522821df2fb2fcb62b2e7db5952"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Hold a high-school graduation certificate, be age 18-25, and have an average grade of at least 75/100.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Provide guardian documents for a guardian in Harbin, China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 2 and Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught bachelor applicants",
+            "ruleText": "HSK 4; Chinese Language Program applicants may use HSK 3 as published.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants to the exact routes bound to this template",
+            "ruleText": "2026 CSCA: Mathematics and Physics for science and engineering routes.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 3 and About CSCA"
+              }
+            ]
+          },
+          {
+            "key": "application_form_passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the HEU online application form and passport home page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit notarized high-school graduation certificate and transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 4-5"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the applicable language proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit a study plan of at least 800 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "health_finance_conduct",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the physical examination form, financial support document and no-criminal-record report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 8-10"
+              }
+            ]
+          },
+          {
+            "key": "application_process",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Apply in the HEU system, complete qualification review and interview, and monitor the system and email. The final published batch closed May 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Procedures, Application Batches and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Pay the published non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Pay the published tuition for this route: CNY 17,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "living_costs",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for published living expenses of RMB 1,500-2,500/month, insurance of RMB 800/year, and residence-permit and physical-examination charges.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using HEU accommodation",
+            "ruleText": "Published accommodation tiers range from RMB 400 to RMB 2,600 per month by room type.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Accommodation Fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "heu-bachelor-english-group-02-fall-2026",
+      "schoolSlug": "harbin-engineering-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-engineering-university-civil-engineering-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Three English-taught bachelor routes have no separately published tuition amount; the source limitation is preserved rather than inferred.",
+        "Scholarship eligibility is represented by separately sourced HEU scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://studyheu.hrbeu.edu.cn/en/info/1026/1323.htm",
+            "title": "Harbin Engineering University international undergraduate admission guide 2026",
+            "capturedAt": "2026-09-13T11:42:11.124Z",
+            "contentSha256": "882d3961f75990f9859ebdaa84dd78a8f3ae3522821df2fb2fcb62b2e7db5952"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Hold a high-school graduation certificate, be age 18-25, and have an average grade of at least 75/100.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Provide guardian documents for a guardian in Harbin, China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 2 and Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught bachelor applicants",
+            "ruleText": "TOEFL 90 or IELTS 6.0 or above; the official guide also recognizes qualifying prior English-medium education.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants to the exact routes bound to this template",
+            "ruleText": "2026 CSCA: Mathematics and Physics for science and engineering routes.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 3 and About CSCA"
+              }
+            ]
+          },
+          {
+            "key": "application_form_passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the HEU online application form and passport home page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit notarized high-school graduation certificate and transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 4-5"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the applicable language proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit a study plan of at least 800 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "health_finance_conduct",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the physical examination form, financial support document and no-criminal-record report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 8-10"
+              }
+            ]
+          },
+          {
+            "key": "application_process",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Apply in the HEU system, complete qualification review and interview, and monitor the system and email. The final published batch closed May 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Procedures, Application Batches and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Pay the published non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Pay the published tuition for this route: CNY 45,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "living_costs",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for published living expenses of RMB 1,500-2,500/month, insurance of RMB 800/year, and residence-permit and physical-examination charges.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using HEU accommodation",
+            "ruleText": "Published accommodation tiers range from RMB 400 to RMB 2,600 per month by room type.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Accommodation Fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "heu-bachelor-english-group-03-fall-2026",
+      "schoolSlug": "harbin-engineering-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-engineering-university-artificial-intelligence-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Three English-taught bachelor routes have no separately published tuition amount; the source limitation is preserved rather than inferred.",
+        "Scholarship eligibility is represented by separately sourced HEU scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://studyheu.hrbeu.edu.cn/en/info/1026/1323.htm",
+            "title": "Harbin Engineering University international undergraduate admission guide 2026",
+            "capturedAt": "2026-09-13T11:42:11.124Z",
+            "contentSha256": "882d3961f75990f9859ebdaa84dd78a8f3ae3522821df2fb2fcb62b2e7db5952"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Hold a high-school graduation certificate, be age 18-25, and have an average grade of at least 75/100.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Provide guardian documents for a guardian in Harbin, China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 2 and Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught bachelor applicants",
+            "ruleText": "TOEFL 90 or IELTS 6.0 or above; the official guide also recognizes qualifying prior English-medium education.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants to the exact routes bound to this template",
+            "ruleText": "2026 CSCA: Mathematics and Physics for science and engineering routes.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 3 and About CSCA"
+              }
+            ]
+          },
+          {
+            "key": "application_form_passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the HEU online application form and passport home page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit notarized high-school graduation certificate and transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 4-5"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the applicable language proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit a study plan of at least 800 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "health_finance_conduct",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the physical examination form, financial support document and no-criminal-record report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 8-10"
+              }
+            ]
+          },
+          {
+            "key": "application_process",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Apply in the HEU system, complete qualification review and interview, and monitor the system and email. The final published batch closed May 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Procedures, Application Batches and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Pay the published non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Pay the published tuition for this route: CNY 22,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "living_costs",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for published living expenses of RMB 1,500-2,500/month, insurance of RMB 800/year, and residence-permit and physical-examination charges.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using HEU accommodation",
+            "ruleText": "Published accommodation tiers range from RMB 400 to RMB 2,600 per month by room type.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Accommodation Fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "heu-bachelor-english-group-04-fall-2026",
+      "schoolSlug": "harbin-engineering-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-engineering-university-robotics-engineering-english",
+        "harbin-engineering-university-computer-science-and-technology-english",
+        "harbin-engineering-university-electronic-information-engineering-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Three English-taught bachelor routes have no separately published tuition amount; the source limitation is preserved rather than inferred.",
+        "Scholarship eligibility is represented by separately sourced HEU scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://studyheu.hrbeu.edu.cn/en/info/1026/1323.htm",
+            "title": "Harbin Engineering University international undergraduate admission guide 2026",
+            "capturedAt": "2026-09-13T11:42:11.124Z",
+            "contentSha256": "882d3961f75990f9859ebdaa84dd78a8f3ae3522821df2fb2fcb62b2e7db5952"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Hold a high-school graduation certificate, be age 18-25, and have an average grade of at least 75/100.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Provide guardian documents for a guardian in Harbin, China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 2 and Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught bachelor applicants",
+            "ruleText": "TOEFL 90 or IELTS 6.0 or above; the official guide also recognizes qualifying prior English-medium education.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants to the exact routes bound to this template",
+            "ruleText": "2026 CSCA: Mathematics and Physics for science and engineering routes.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 3 and About CSCA"
+              }
+            ]
+          },
+          {
+            "key": "application_form_passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the HEU online application form and passport home page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit notarized high-school graduation certificate and transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 4-5"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the applicable language proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit a study plan of at least 800 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "health_finance_conduct",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the physical examination form, financial support document and no-criminal-record report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 8-10"
+              }
+            ]
+          },
+          {
+            "key": "application_process",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Apply in the HEU system, complete qualification review and interview, and monitor the system and email. The final published batch closed May 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Procedures, Application Batches and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Pay the published non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "The official 2026 handbook does not publish a separate tuition amount for this English-taught bachelor route.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "living_costs",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for published living expenses of RMB 1,500-2,500/month, insurance of RMB 800/year, and residence-permit and physical-examination charges.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using HEU accommodation",
+            "ruleText": "Published accommodation tiers range from RMB 400 to RMB 2,600 per month by room type.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Accommodation Fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "heu-bachelor-chinese-group-05-fall-2026",
+      "schoolSlug": "harbin-engineering-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-engineering-university-business-administration",
+        "harbin-engineering-university-big-data-management-and-application",
+        "harbin-engineering-university-english",
+        "harbin-engineering-university-law",
+        "harbin-engineering-university-sociology",
+        "harbin-engineering-university-ideological-and-political-education"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Three English-taught bachelor routes have no separately published tuition amount; the source limitation is preserved rather than inferred.",
+        "Scholarship eligibility is represented by separately sourced HEU scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://studyheu.hrbeu.edu.cn/en/info/1026/1323.htm",
+            "title": "Harbin Engineering University international undergraduate admission guide 2026",
+            "capturedAt": "2026-09-13T11:42:11.124Z",
+            "contentSha256": "882d3961f75990f9859ebdaa84dd78a8f3ae3522821df2fb2fcb62b2e7db5952"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Hold a high-school graduation certificate, be age 18-25, and have an average grade of at least 75/100.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Provide guardian documents for a guardian in Harbin, China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 2 and Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught bachelor applicants",
+            "ruleText": "HSK 4; Chinese Language Program applicants may use HSK 3 as published.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants to the exact routes bound to this template",
+            "ruleText": "2026 CSCA: Professional Chinese (Humanities) and Mathematics for arts/management routes.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 3 and About CSCA"
+              }
+            ]
+          },
+          {
+            "key": "application_form_passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the HEU online application form and passport home page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit notarized high-school graduation certificate and transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 4-5"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the applicable language proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit a study plan of at least 800 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "health_finance_conduct",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the physical examination form, financial support document and no-criminal-record report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 8-10"
+              }
+            ]
+          },
+          {
+            "key": "application_process",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Apply in the HEU system, complete qualification review and interview, and monitor the system and email. The final published batch closed May 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Procedures, Application Batches and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Pay the published non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Pay the published tuition for this route: CNY 17,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "living_costs",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for published living expenses of RMB 1,500-2,500/month, insurance of RMB 800/year, and residence-permit and physical-examination charges.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using HEU accommodation",
+            "ruleText": "Published accommodation tiers range from RMB 400 to RMB 2,600 per month by room type.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Accommodation Fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "heu-bachelor-chinese-group-06-fall-2026",
+      "schoolSlug": "harbin-engineering-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-engineering-university-chinese-language-and-literature"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Three English-taught bachelor routes have no separately published tuition amount; the source limitation is preserved rather than inferred.",
+        "Scholarship eligibility is represented by separately sourced HEU scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://studyheu.hrbeu.edu.cn/en/info/1026/1323.htm",
+            "title": "Harbin Engineering University international undergraduate admission guide 2026",
+            "capturedAt": "2026-09-13T11:42:11.124Z",
+            "contentSha256": "882d3961f75990f9859ebdaa84dd78a8f3ae3522821df2fb2fcb62b2e7db5952"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International bachelor applicants",
+            "ruleText": "Hold a high-school graduation certificate, be age 18-25, and have an average grade of at least 75/100.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Provide guardian documents for a guardian in Harbin, China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 2 and Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught bachelor applicants",
+            "ruleText": "HSK 4; Chinese Language Program applicants may use HSK 3 as published.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants to the exact routes bound to this template",
+            "ruleText": "2026 CSCA: Professional Chinese (Humanities) and Mathematics for arts/management routes.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 3 and About CSCA"
+              }
+            ]
+          },
+          {
+            "key": "application_form_passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the HEU online application form and passport home page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "school_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit notarized high-school graduation certificate and transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 4-5"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the applicable language proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit a study plan of at least 800 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "health_finance_conduct",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Submit the physical examination form, financial support document and no-criminal-record report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 8-10"
+              }
+            ]
+          },
+          {
+            "key": "application_process",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 bachelor applicants",
+            "ruleText": "Apply in the HEU system, complete qualification review and interview, and monitor the system and email. The final published batch closed May 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Procedures, Application Batches and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Pay the published non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled bachelor students",
+            "ruleText": "Pay the published tuition for this route: CNY 16,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "living_costs",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for published living expenses of RMB 1,500-2,500/month, insurance of RMB 800/year, and residence-permit and physical-examination charges.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using HEU accommodation",
+            "ruleText": "Published accommodation tiers range from RMB 400 to RMB 2,600 per month by room type.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Accommodation Fee"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "heu-master-english-group-07-fall-2026",
+      "schoolSlug": "harbin-engineering-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-engineering-university-master-design-and-construction-of-naval-architecture-and-ocean-structure-english",
+        "harbin-engineering-university-master-mechanics-english",
+        "harbin-engineering-university-master-civil-engineering-english",
+        "harbin-engineering-university-master-mechanics-english-college-of-aerospace-and-civil-engineering",
+        "harbin-engineering-university-master-power-engineering-and-engineering-thermophysics-english",
+        "harbin-engineering-university-master-marine-engine-engineering-english",
+        "harbin-engineering-university-master-control-science-and-engineering-english",
+        "harbin-engineering-university-master-intelligent-science-and-technology-english",
+        "harbin-engineering-university-master-underwater-acoustics-engineering-english",
+        "harbin-engineering-university-master-information-and-communication-engineering-english",
+        "harbin-engineering-university-master-mechanical-engineering-english",
+        "harbin-engineering-university-master-information-and-communication-engineering-english-college-of-information-and-communication-engineering",
+        "harbin-engineering-university-master-chemical-engineering-and-technology-english",
+        "harbin-engineering-university-master-materials-science-and-engineering-english",
+        "harbin-engineering-university-master-mathematics-english",
+        "harbin-engineering-university-master-optical-engineering-english",
+        "harbin-engineering-university-master-energy-and-power-nuclear-energy-engineering-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Three English-taught bachelor routes have no separately published tuition amount; the source limitation is preserved rather than inferred.",
+        "Scholarship eligibility is represented by separately sourced HEU scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://studyheu.hrbeu.edu.cn/info/1026/1383.htm",
+            "title": "Harbin Engineering University international graduate admission guide 2026",
+            "capturedAt": "2026-09-13T11:42:12.272Z",
+            "contentSha256": "5a80e875accf5694b24311379eb7546be6ff8139d3901cdadb05c6376cee0691"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or equivalent, be under age 35, and have an average grade of at least 75/100.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 2-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught master applicants",
+            "ruleText": "TOEFL 90 or IELTS 6.0 or above; the official guide also recognizes qualifying prior English-medium education.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_form_passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the HEU online application form and passport home page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit notarized highest diploma and academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the applicable language proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a study plan of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit recommendation letters.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "health_finance_conduct",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the physical examination form, financial support document and no-criminal-record report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 8-10"
+              }
+            ]
+          },
+          {
+            "key": "application_process",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Apply in the HEU system, complete qualification review and interview, and monitor the system and email. The final published batch closed April 30, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Procedures, Application Batches and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the published non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Pay the published tuition for this route: CNY 33,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "living_costs",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for published living expenses of RMB 1,500-2,500/month, insurance of RMB 800/year, and residence-permit and physical-examination charges.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "heu-doctoral-english-group-08-fall-2026",
+      "schoolSlug": "harbin-engineering-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-engineering-university-doctoral-design-and-construction-of-naval-architecture-and-ocean-structure-english",
+        "harbin-engineering-university-doctoral-mechanics-english",
+        "harbin-engineering-university-doctoral-mechanics-english-college-of-aerospace-and-civil-engineering",
+        "harbin-engineering-university-doctoral-power-engineering-and-engineering-thermophysics-english",
+        "harbin-engineering-university-doctoral-marine-engine-engineering-english",
+        "harbin-engineering-university-doctoral-control-science-and-engineering-english",
+        "harbin-engineering-university-doctoral-intelligent-science-and-technology-english",
+        "harbin-engineering-university-doctoral-underwater-acoustics-engineering-english",
+        "harbin-engineering-university-doctoral-information-and-communication-engineering-english",
+        "harbin-engineering-university-doctoral-computer-science-and-technology-english",
+        "harbin-engineering-university-doctoral-mechanical-engineering-english",
+        "harbin-engineering-university-doctoral-information-and-communication-engineering-english-college-of-information-and-communication-engineering",
+        "harbin-engineering-university-doctoral-materials-science-and-engineering-english",
+        "harbin-engineering-university-doctoral-mathematics-english",
+        "harbin-engineering-university-doctoral-optical-engineering-english",
+        "harbin-engineering-university-doctoral-nuclear-science-and-technology-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Three English-taught bachelor routes have no separately published tuition amount; the source limitation is preserved rather than inferred.",
+        "Scholarship eligibility is represented by separately sourced HEU scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://studyheu.hrbeu.edu.cn/info/1026/1383.htm",
+            "title": "Harbin Engineering University international graduate admission guide 2026",
+            "capturedAt": "2026-09-13T11:42:12.272Z",
+            "contentSha256": "5a80e875accf5694b24311379eb7546be6ff8139d3901cdadb05c6376cee0691"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or equivalent, be under age 40, and have an average grade of at least 75/100.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 2-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught doctoral applicants",
+            "ruleText": "TOEFL 90 or IELTS 6.0 or above; the official guide also recognizes qualifying prior English-medium education.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_form_passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the HEU online application form and passport home page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit notarized highest diploma and academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the applicable language proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a study plan of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit recommendation letters.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "health_finance_conduct",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the physical examination form, financial support document and no-criminal-record report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 8-10"
+              }
+            ]
+          },
+          {
+            "key": "application_process",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 doctoral applicants",
+            "ruleText": "Apply in the HEU system, complete qualification review and interview, and monitor the system and email. The final published batch closed April 30, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Procedures, Application Batches and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Pay the published non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled doctoral students",
+            "ruleText": "Pay the published tuition for this route: CNY 42,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "living_costs",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for published living expenses of RMB 1,500-2,500/month, insurance of RMB 800/year, and residence-permit and physical-examination charges.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "heu-master-chinese-group-09-fall-2026",
+      "schoolSlug": "harbin-engineering-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-engineering-university-master-electrical-engineering",
+        "harbin-engineering-university-master-computer-science-and-technology",
+        "harbin-engineering-university-master-design-science",
+        "harbin-engineering-university-master-electronic-science-and-technology",
+        "harbin-engineering-university-master-management-science-and-engineering",
+        "harbin-engineering-university-master-applied-economics",
+        "harbin-engineering-university-master-business-administration",
+        "harbin-engineering-university-master-physics",
+        "harbin-engineering-university-master-foreign-language-and-literature",
+        "harbin-engineering-university-master-english-translation",
+        "harbin-engineering-university-master-law",
+        "harbin-engineering-university-master-sociology",
+        "harbin-engineering-university-master-applied-psychology",
+        "harbin-engineering-university-master-international-chinese-education",
+        "harbin-engineering-university-master-marxist-theory",
+        "harbin-engineering-university-master-physical-education-and-training"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Three English-taught bachelor routes have no separately published tuition amount; the source limitation is preserved rather than inferred.",
+        "Scholarship eligibility is represented by separately sourced HEU scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://studyheu.hrbeu.edu.cn/info/1026/1383.htm",
+            "title": "Harbin Engineering University international graduate admission guide 2026",
+            "capturedAt": "2026-09-13T11:42:12.272Z",
+            "contentSha256": "5a80e875accf5694b24311379eb7546be6ff8139d3901cdadb05c6376cee0691"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or equivalent, be under age 35, and have an average grade of at least 75/100.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 2-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught master applicants",
+            "ruleText": "HSK 5.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_form_passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the HEU online application form and passport home page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit notarized highest diploma and academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the applicable language proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a study plan of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit recommendation letters.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "health_finance_conduct",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the physical examination form, financial support document and no-criminal-record report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 8-10"
+              }
+            ]
+          },
+          {
+            "key": "application_process",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Apply in the HEU system, complete qualification review and interview, and monitor the system and email. The final published batch closed April 30, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Procedures, Application Batches and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the published non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Pay the published tuition for this route: CNY 27,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "living_costs",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for published living expenses of RMB 1,500-2,500/month, insurance of RMB 800/year, and residence-permit and physical-examination charges.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "heu-doctoral-chinese-group-10-fall-2026",
+      "schoolSlug": "harbin-engineering-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "harbin-engineering-university-doctoral-management-science-and-engineering",
+        "harbin-engineering-university-doctoral-marxist-theory"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Three English-taught bachelor routes have no separately published tuition amount; the source limitation is preserved rather than inferred.",
+        "Scholarship eligibility is represented by separately sourced HEU scholarship records and is not guaranteed for any program."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://studyheu.hrbeu.edu.cn/info/1026/1383.htm",
+            "title": "Harbin Engineering University international graduate admission guide 2026",
+            "capturedAt": "2026-09-13T11:42:12.272Z",
+            "contentSha256": "5a80e875accf5694b24311379eb7546be6ff8139d3901cdadb05c6376cee0691"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen in good physical and mental health.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or equivalent, be under age 40, and have an average grade of at least 75/100.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 2-4"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught doctoral applicants",
+            "ruleText": "HSK 5.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_form_passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the HEU online application form and passport home page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "degree_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit notarized highest diploma and academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the applicable language proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a study plan of at least 1,000 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit recommendation letters.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "health_finance_conduct",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the physical examination form, financial support document and no-criminal-record report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Documents items 8-10"
+              }
+            ]
+          },
+          {
+            "key": "application_process",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 doctoral applicants",
+            "ruleText": "Apply in the HEU system, complete qualification review and interview, and monitor the system and email. The final published batch closed April 30, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Procedures, Application Batches and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Pay the published non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled doctoral students",
+            "ruleText": "Pay the published tuition for this route: CNY 35,000/year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          },
+          {
+            "key": "living_costs",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for published living expenses of RMB 1,500-2,500/month, insurance of RMB 800/year, and residence-permit and physical-examination charges.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Cost"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

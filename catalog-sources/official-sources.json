@@ -2,6 +2,15 @@
   "version": 1,
   "sources": [
     {
+      "id": "clec-international-chinese-language-teachers-scholarship-guidelines-2026",
+      "label": "CLEC 2026 International Chinese Language Teachers Scholarship application guidelines and material list",
+      "url": "https://pmplatform.chinese.cn/tmp/2026/2/6/94005b2e-f2e9-438e-85e7-12212f0e9968.pdf",
+      "allowedHosts": [
+        "pmplatform.chinese.cn"
+      ],
+      "sourceRole": "scholarship"
+    },
+    {
       "id": "zhejiang-university-undergraduate-2026",
       "label": "Zhejiang University 2026 international undergraduate admissions",
       "url": "https://iczu.zju.edu.cn/admissionsen/2024/1030/c68988a2981659/page.htm",
@@ -1694,6 +1703,30 @@
       "schoolSlug": "tianjin-university"
     },
     {
+      "id": "tju-undergraduate-admissions-2027",
+      "label": "Tianjin University 2027 International Undergraduate Admissions",
+      "url": "https://sie.tju.edu.cn/en/xwxm/UNDERGRADUATE/202609/t20260930_324729.html",
+      "allowedHosts": ["sie.tju.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tianjin-university"
+    },
+    {
+      "id": "tju-undergraduate-program-catalog-2027",
+      "label": "Tianjin University 2027 Undergraduate Program Catalog",
+      "url": "https://sie.tju.edu.cn/en/xwxm/UNDERGRADUATE/202609/W020260930599325301070.xls",
+      "allowedHosts": ["sie.tju.edu.cn"],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "tianjin-university"
+    },
+    {
+      "id": "tju-undergraduate-csca-subjects-2027",
+      "label": "Tianjin University 2027 CSCA Test Subjects for International Undergraduate Students",
+      "url": "https://sie.tju.edu.cn/en/xwxm/UNDERGRADUATE/202609/W020260930599325310575.pdf",
+      "allowedHosts": ["sie.tju.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tianjin-university"
+    },
+    {
       "id": "tju-undergraduate-program-catalog-2026",
       "label": "Tianjin University 2026 Undergraduate Program Catalog",
       "url": "https://sie.tju.edu.cn/en/xwxm/UNDERGRADUATE/202510/W020260105589871486184.xls",
@@ -1718,6 +1751,22 @@
       "schoolSlug": "tianjin-university"
     },
     {
+      "id": "tju-master-admissions-2027",
+      "label": "Tianjin University 2027 International Master Admissions",
+      "url": "https://sie.tju.edu.cn/en/xwxm/MASTERPROGRAMS/202609/t20260930_324731.html",
+      "allowedHosts": ["sie.tju.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tianjin-university"
+    },
+    {
+      "id": "tju-master-program-catalog-2027",
+      "label": "Tianjin University 2027 Master Program Catalog",
+      "url": "https://sie.tju.edu.cn/en/xwxm/MASTERPROGRAMS/202609/W020260930605748450206.xlsx",
+      "allowedHosts": ["sie.tju.edu.cn"],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "tianjin-university"
+    },
+    {
       "id": "tju-master-program-catalog-2026",
       "label": "Tianjin University 2026 Master Program Catalog",
       "url": "https://sie.tju.edu.cn/en/xwxm/MASTERPROGRAMS/202510/W020251013367528410002.xlsx",
@@ -1731,6 +1780,22 @@
       "url": "https://sie.tju.edu.cn/en/xwxm/DOCTORALPROGRAMS/202510/t20251013_324449.html",
       "allowedHosts": ["sie.tju.edu.cn"],
       "sourceRole": "school-admissions",
+      "schoolSlug": "tianjin-university"
+    },
+    {
+      "id": "tju-doctoral-admissions-2027",
+      "label": "Tianjin University 2027 International Doctoral Admissions",
+      "url": "https://sie.tju.edu.cn/en/xwxm/DOCTORALPROGRAMS/202609/t20260930_324733.html",
+      "allowedHosts": ["sie.tju.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tianjin-university"
+    },
+    {
+      "id": "tju-doctoral-program-catalog-2027",
+      "label": "Tianjin University 2027 Doctoral Program Catalog",
+      "url": "https://sie.tju.edu.cn/en/xwxm/DOCTORALPROGRAMS/202609/W020260930610307876089.xls",
+      "allowedHosts": ["sie.tju.edu.cn"],
+      "sourceRole": "program-catalog",
       "schoolSlug": "tianjin-university"
     },
     {
@@ -3509,6 +3574,36 @@
         "international.join-tsinghua.edu.cn"
       ],
       "sourceRole": "program-catalog",
+      "schoolSlug": "tsinghua-university"
+    },
+    {
+      "id": "tsinghua-zijing-global-talents-engineering-2026",
+      "label": "Tsinghua University Zijing College 2026 Global Talents in Science and Engineering admission guide",
+      "url": "https://international.join-tsinghua.edu.cn/info/1082/1151.htm",
+      "allowedHosts": [
+        "international.join-tsinghua.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "tsinghua-university"
+    },
+    {
+      "id": "tsinghua-zijing-global-talents-engineering-2027",
+      "label": "Tsinghua University Zijing College 2027 Global Talents in Science and Engineering admission guide",
+      "url": "https://international.join-tsinghua.edu.cn/info/1082/1185.htm",
+      "allowedHosts": [
+        "international.join-tsinghua.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "tsinghua-university"
+    },
+    {
+      "id": "tsinghua-international-undergraduate-upload-documents-2027",
+      "label": "Tsinghua University 2027 international undergraduate application document list",
+      "url": "https://international.join-tsinghua.edu.cn/List.pdf",
+      "allowedHosts": [
+        "international.join-tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
       "schoolSlug": "tsinghua-university"
     },
     {
@@ -5516,6 +5611,22 @@
   "schoolSlug": "xiangtan-university"
 },
 {
+  "id": "xtu-international-admission-guide-pdf-2026",
+  "label": "Xiangtan University 2026 international student admission brochure PDF",
+  "url": "https://en.xtu.edu.cn/__local/A/F8/5D/0E7C1904B0D18BD0DF55E8FF443_D1F8E08C_30B1B.pdf",
+  "allowedHosts": ["en.xtu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "xiangtan-university"
+},
+{
+  "id": "xtu-undergraduate-programs-pdf-2026",
+  "label": "Xiangtan University 2026 undergraduate programs and CSCA subjects PDF",
+  "url": "https://en.xtu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1672317910&wbfileid=14896313",
+  "allowedHosts": ["en.xtu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "xiangtan-university"
+},
+{
   "id": "xtu-undergraduate-programs-current",
   "label": "Xiangtan University official international undergraduate program table",
   "url": "https://en.xtu.edu.cn/Admissions/International_Programs/Bachelor_Programs.htm",
@@ -5601,6 +5712,22 @@
   "url": "https://admission.blcu.edu.cn/2026/0303/c1572a3045/page.htm",
   "allowedHosts": ["admission.blcu.edu.cn"],
   "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-language-and-culture-university"
+},
+{
+  "id": "blcu-undergraduate-entry-requirements-current",
+  "label": "BLCU current international undergraduate entry requirements",
+  "url": "https://admission.blcu.edu.cn/46/list.htm",
+  "allowedHosts": ["admission.blcu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "beijing-language-and-culture-university"
+},
+{
+  "id": "blcu-undergraduate-application-process-current",
+  "label": "BLCU current international undergraduate application process",
+  "url": "https://admission.blcu.edu.cn/47/list.htm",
+  "allowedHosts": ["admission.blcu.edu.cn"],
+  "sourceRole": "school-admissions",
   "schoolSlug": "beijing-language-and-culture-university"
 },
 {
@@ -5951,6 +6078,30 @@
   "id": "dhu-degree-application-timeline-2026",
   "label": "Donghua University 2026 degree application and admission timeline",
   "url": "https://english.dhu.edu.cn/2025/1110/c5218a368646/page.htm",
+  "allowedHosts": ["english.dhu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "donghua-university"
+},
+{
+  "id": "dhu-undergraduate-application-guide-2026",
+  "label": "Donghua University 2026 bachelor's degree application guide",
+  "url": "https://english.dhu.edu.cn/2025/1121/c5218a369002/page.psp",
+  "allowedHosts": ["english.dhu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "donghua-university"
+},
+{
+  "id": "dhu-master-application-guide-2026",
+  "label": "Donghua University 2026 master's degree application guide",
+  "url": "https://english.dhu.edu.cn/2021/0823/c5219a285015/page.psp",
+  "allowedHosts": ["english.dhu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "donghua-university"
+},
+{
+  "id": "dhu-doctoral-application-guide-2026",
+  "label": "Donghua University 2026 doctoral degree application guide",
+  "url": "https://english.dhu.edu.cn/2025/1112/c20557a368744/page.htm",
   "allowedHosts": ["english.dhu.edu.cn"],
   "sourceRole": "school-admissions",
   "schoolSlug": "donghua-university"

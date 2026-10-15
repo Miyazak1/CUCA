@@ -1,0 +1,942 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T08:22:14.020Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located GMU Fall 2026 undergraduate requirements bound only to exact existing closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 2,
+    "readyTemplateCount": 2,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 2,
+    "targetedIntakeCount": 2,
+    "requirementItemCount": 56
+  },
+  "templates": [
+    {
+      "key": "gmcu-clinical-medicine-fall-2026",
+      "schoolSlug": "guizhou-medical-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "guizhou-medical-university-clinical-medicine"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window.",
+        "The reviewed 2026 brochure does not publish a CSCA requirement; no CSCA rule has been inferred.",
+        "The brochure conflicts internally on IELTS: its language panel states 6.5 in each component, while its academic panel states IELTS overall 6.0. The conflict is retained for editorial resolution.",
+        "The brochure mentions interviews in June, July and September and results around late July or early August while accepting applications through September 30; the timeline is not silently harmonized."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "gmcu_undergraduate",
+            "url": "https://soe.gmc.edu.cn/__local/3/FC/52/1F9D6DB546BAA1A51B10844BA6E_E1AEE628_91911C.pdf",
+            "title": "Guizhou Medical University 2026 international undergraduate admission guide PDF",
+            "capturedAt": "2026-10-15T08:17:50.671Z",
+            "contentSha256": "63ce26468c55164de9ecf534322a3972910fba4cba035e886067c143247cc798"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements item 4"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 18 to 25 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a senior-high-school diploma or an equivalent qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements item 2"
+              }
+            ]
+          },
+          {
+            "key": "health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be physically and mentally healthy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements item 3"
+              }
+            ]
+          },
+          {
+            "key": "conduct",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Have no discipline violations, public-security punishment or criminal conduct, and comply with Chinese laws, regulations and customs.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements items 6-7"
+              }
+            ]
+          },
+          {
+            "key": "chinese_origin_nationality",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who emigrated from Mainland China, Hong Kong, Macao or Taiwan",
+            "ruleText": "Hold a foreign passport or nationality certificate for more than four years, inclusive, and have resided abroad for more than two years by April 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements item 5"
+              }
+            ]
+          },
+          {
+            "key": "academic_average",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Achieve an overall high-school academic score of at least 70 percent.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Academic Requirements"
+              }
+            ]
+          },
+          {
+            "key": "science_scores",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Achieve scores of at least 70 percent in Biology, Chemistry and Mathematics.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Academic Requirements"
+              }
+            ]
+          },
+          {
+            "key": "pakistan_hssc",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants from Pakistan presenting HSSC pre-medical results",
+            "ruleText": "Achieve at least 750 out of 1100 or 800 out of 1200 in HSSC pre-medical study.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Academic Requirements"
+              }
+            ]
+          },
+          {
+            "key": "english_evidence",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants whose first or official language is not English",
+            "ruleText": "Submit recognized English-language evidence. The brochure contains two conflicting IELTS statements—6.5 in each component in its language panel and overall 6.0 in its academic panel—while both panels state TOEFL 80; editorial resolution is required before publication.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Language Requirements and Academic Requirements"
+              }
+            ]
+          },
+          {
+            "key": "english_medium_results",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose first or official language is English",
+            "ruleText": "Provide prior-stage academic results showing an English score of at least 75 percent.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Language Requirements"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a passport valid for at least six months after the planned entry date; applicants already in China also submit the visa or residence-permit page and latest entry stamp.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit official transcripts covering all courses from senior high school or the preceding academic stage.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the senior-high-school diploma or equivalent qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants subject to a language-certification requirement",
+            "ruleText": "Submit the applicable language-proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Form that remains within its six-month validity period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "bank_statements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit bank statements covering at least the previous six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "certification_and_translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Provide originals or notarized copies bearing an official seal and an official Chinese or English translation for material issued in another language.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, document-certification note"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the application through the university's online application route by September 30, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Time and Application Procedure"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing initial review",
+            "ruleText": "Complete the university interview at the confirmed time; the brochure states the interview schedule is fixed after confirmation.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure pages 6-7, Application Procedure and Interview"
+              }
+            ]
+          },
+          {
+            "key": "admission_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Admission is based on academic performance and interview assessment.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 7, Admission"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee_and_tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Pay the CNY 650 registration fee and first-year tuition online after admission to reserve the place; late or missing payment is treated as giving up the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "signed_application_form",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Applicants whose materials pass review",
+            "ruleText": "Download and sign the application form after the one-to-two-week review and present it at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, review and registration note"
+              }
+            ]
+          },
+          {
+            "key": "registration",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Complete online registration according to the Admission Notice; failure to register and pay cancels the admission qualification and JW202 reservation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 7, Registration"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget the published accommodation charge of CNY 4,000 for a double room or CNY 8,000 for a single room; the brochure does not explicitly state the billing period in the table.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 8, Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "other_costs",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Enrolled international undergraduates",
+            "ruleText": "Budget approximately CNY 800 for insurance, CNY 351 for the physical check and CNY 400 for residence-permit updating, as listed in the brochure.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 8, Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "duration_and_delivery",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Clinical Medicine applicants",
+            "ruleText": "Complete one preparatory year followed by five years of Clinical Medicine; the preparatory year includes Chinese, general China and medical-foundation study, followed by a closing examination and HSK Level 4 before progression.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 3, Clinical Medicine"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Clinical Medicine students",
+            "ruleText": "Pay CNY 15,000 for the first preparatory year and CNY 25,000 per year for years two through six.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 8, Fee Structure"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "gmcu-bds-fall-2026",
+      "schoolSlug": "guizhou-medical-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-gmcu-bachelor-dental-surgery-bds"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window.",
+        "The reviewed 2026 brochure does not publish a CSCA requirement; no CSCA rule has been inferred.",
+        "The brochure conflicts internally on IELTS: its language panel states 6.5 in each component, while its academic panel states IELTS overall 6.0. The conflict is retained for editorial resolution.",
+        "The brochure mentions interviews in June, July and September and results around late July or early August while accepting applications through September 30; the timeline is not silently harmonized."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "gmcu_undergraduate",
+            "url": "https://soe.gmc.edu.cn/__local/3/FC/52/1F9D6DB546BAA1A51B10844BA6E_E1AEE628_91911C.pdf",
+            "title": "Guizhou Medical University 2026 international undergraduate admission guide PDF",
+            "capturedAt": "2026-10-15T08:17:50.671Z",
+            "contentSha256": "63ce26468c55164de9ecf534322a3972910fba4cba035e886067c143247cc798"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements item 4"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 18 to 25 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements item 1"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a senior-high-school diploma or an equivalent qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements item 2"
+              }
+            ]
+          },
+          {
+            "key": "health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be physically and mentally healthy.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements item 3"
+              }
+            ]
+          },
+          {
+            "key": "conduct",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Have no discipline violations, public-security punishment or criminal conduct, and comply with Chinese laws, regulations and customs.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements items 6-7"
+              }
+            ]
+          },
+          {
+            "key": "chinese_origin_nationality",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who emigrated from Mainland China, Hong Kong, Macao or Taiwan",
+            "ruleText": "Hold a foreign passport or nationality certificate for more than four years, inclusive, and have resided abroad for more than two years by April 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Application Requirements item 5"
+              }
+            ]
+          },
+          {
+            "key": "academic_average",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Achieve an overall high-school academic score of at least 70 percent.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Academic Requirements"
+              }
+            ]
+          },
+          {
+            "key": "science_scores",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Achieve scores of at least 70 percent in Biology, Chemistry and Mathematics.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Academic Requirements"
+              }
+            ]
+          },
+          {
+            "key": "pakistan_hssc",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants from Pakistan presenting HSSC pre-medical results",
+            "ruleText": "Achieve at least 750 out of 1100 or 800 out of 1200 in HSSC pre-medical study.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Academic Requirements"
+              }
+            ]
+          },
+          {
+            "key": "english_evidence",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants whose first or official language is not English",
+            "ruleText": "Submit recognized English-language evidence. The brochure contains two conflicting IELTS statements—6.5 in each component in its language panel and overall 6.0 in its academic panel—while both panels state TOEFL 80; editorial resolution is required before publication.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Language Requirements and Academic Requirements"
+              }
+            ]
+          },
+          {
+            "key": "english_medium_results",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose first or official language is English",
+            "ruleText": "Provide prior-stage academic results showing an English score of at least 75 percent.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 5, Language Requirements"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a passport valid for at least six months after the planned entry date; applicants already in China also submit the visa or residence-permit page and latest entry stamp.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit official transcripts covering all courses from senior high school or the preceding academic stage.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the senior-high-school diploma or equivalent qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants subject to a language-certification requirement",
+            "ruleText": "Submit the applicable language-proficiency certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Form that remains within its six-month validity period.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "bank_statements",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit bank statements covering at least the previous six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "certification_and_translation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Provide originals or notarized copies bearing an official seal and an official Chinese or English translation for material issued in another language.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, document-certification note"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the application through the university's online application route by September 30, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Time and Application Procedure"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing initial review",
+            "ruleText": "Complete the university interview at the confirmed time; the brochure states the interview schedule is fixed after confirmation.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure pages 6-7, Application Procedure and Interview"
+              }
+            ]
+          },
+          {
+            "key": "admission_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Admission is based on academic performance and interview assessment.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 7, Admission"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee_and_tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Pay the CNY 650 registration fee and first-year tuition online after admission to reserve the place; late or missing payment is treated as giving up the application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "signed_application_form",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Applicants whose materials pass review",
+            "ruleText": "Download and sign the application form after the one-to-two-week review and present it at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 6, review and registration note"
+              }
+            ]
+          },
+          {
+            "key": "registration",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Complete online registration according to the Admission Notice; failure to register and pay cancels the admission qualification and JW202 reservation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 7, Registration"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget the published accommodation charge of CNY 4,000 for a double room or CNY 8,000 for a single room; the brochure does not explicitly state the billing period in the table.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 8, Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "other_costs",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Enrolled international undergraduates",
+            "ruleText": "Budget approximately CNY 800 for insurance, CNY 351 for the physical check and CNY 400 for residence-permit updating, as listed in the brochure.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 8, Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "duration_and_delivery",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor of Dental Surgery applicants",
+            "ruleText": "Complete the five-year Bachelor of Dental Surgery program through offline teaching.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 4, Bachelor of Dental Surgery"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Bachelor of Dental Surgery students",
+            "ruleText": "Pay CNY 20,000 per year for each of the five years.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gmcu_undergraduate",
+                "locator": "brochure page 8, Fee Structure"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

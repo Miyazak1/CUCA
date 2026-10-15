@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-15T03:57:26.040Z",
+  "generatedAt": "2026-10-15T12:20:13.949Z",
   "handoff": {
     "status": "unreviewed_draft",
     "databaseWriteAuthorized": false,
     "publicationAuthorized": false,
-    "purpose": "Source-located Jilin Spring 2027 one-semester scholarship requirements with unresolved protected attachments and an exact non-degree intake binding."
+    "purpose": "Complete Jilin Spring 2027 one-semester scholarship requirements with an exact non-degree intake binding and official CLEC appendix evidence."
   },
   "summary": {
     "templateCount": 1,
@@ -13,7 +13,7 @@
     "blockedTemplateCount": 0,
     "targetedProgramCount": 1,
     "targetedIntakeCount": 1,
-    "requirementItemCount": 14
+    "requirementItemCount": 27
   },
   "templates": [
     {
@@ -32,23 +32,30 @@
       "fieldAssessment": {
         "cycle": "explicit_with_derived_deadline_year",
         "targetPrograms": "explicit",
-        "requirements": "partial_due_to_protected_attachments"
+        "requirements": "complete"
       },
       "unresolvedNotes": [
         "The guide states October 31 for March 2027 entry without repeating the deadline year; 2026 is retained as a derived value requiring review.",
-        "The official coverage and application-material PDFs return a captcha page. Access controls were not bypassed, so the complete material list and monetary coverage remain unresolved."
+        "Jilin's mirrored appendix downloads are captcha-protected; the same 2026 coverage and materials are instead bound to the directly accessible official CLEC guidelines PDF."
       ],
       "document": {
         "schemaVersion": 1,
         "language": "en",
-        "coverage": "partial",
+        "coverage": "complete",
         "sources": [
           {
             "key": "jilin_iclts",
             "url": "https://cie.jlu.edu.cn/info/1079/3666.htm",
             "title": "Application Guidelines for Jilin University International Chinese Language Teachers Scholarship 2026",
-            "capturedAt": "2026-10-15T03:54:05.093Z",
+            "capturedAt": "2026-10-15T07:16:59.386Z",
             "contentSha256": "52d85413ac3fd139dd8a3ac90e9fa950ef7dd247755344738a5876824788a692"
+          },
+          {
+            "key": "clec_iclts",
+            "url": "https://pmplatform.chinese.cn/tmp/2026/2/6/94005b2e-f2e9-438e-85e7-12212f0e9968.pdf",
+            "title": "CLEC 2026 International Chinese Language Teachers Scholarship application guidelines and material list",
+            "capturedAt": "2026-10-15T12:18:59.358Z",
+            "contentSha256": "0157c7fb5962657cc5f58be63cfc8a0898c4279ea8f87e15c40302fe90f981d7"
           }
         ],
         "requirements": [
@@ -158,6 +165,21 @@
             ]
           },
           {
+            "key": "application_opening",
+            "category": "application_policy",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Use the International Chinese Language Teachers Scholarship website after online registration opens on March 1, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "jilin_iclts",
+                "locator": "Section III, Application Procedures, opening date"
+              }
+            ]
+          },
+          {
             "key": "scholarship_system_application",
             "category": "application_policy",
             "stage": "submission",
@@ -184,6 +206,36 @@
               {
                 "sourceKey": "jilin_iclts",
                 "locator": "Section III, March 2027 application deadline (year derived from guide context)"
+              }
+            ]
+          },
+          {
+            "key": "evaluation_basis",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "The CLEC expert panel reviews applications using HSK and HSKK levels and scores, geographical distribution, and other factors.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "jilin_iclts",
+                "locator": "Section III, paragraph after application deadlines"
+              }
+            ]
+          },
+          {
+            "key": "result_timing",
+            "category": "application_policy",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Applicants",
+            "ruleText": "Scholarship results are expected to be published about three months before the program starts.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "jilin_iclts",
+                "locator": "Section III, paragraph after application deadlines"
               }
             ]
           },
@@ -218,6 +270,141 @@
             ]
           },
           {
+            "key": "passport_copy",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a scanned copy of the passport photo page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "clec_iclts",
+                "locator": "Appendix 2, section I, item 1"
+              }
+            ]
+          },
+          {
+            "key": "language_score_reports",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload scanned HSK and HSKK score reports that remain within their two-year validity period.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "clec_iclts",
+                "locator": "Appendix 2, section I, item 2"
+              }
+            ]
+          },
+          {
+            "key": "recommending_institution_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Upload a reference letter from the head of the recommending institution.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "clec_iclts",
+                "locator": "Appendix 2, section I, item 3"
+              }
+            ]
+          },
+          {
+            "key": "guardian_delegation",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Submit certified delegation documents signed by the entrusted legal guardian in China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "clec_iclts",
+                "locator": "Appendix 2, section IV"
+              }
+            ]
+          },
+          {
+            "key": "additional_host_documents",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants asked by Jilin University for additional evidence",
+            "ruleText": "Provide any additional supporting documents requested by the host institution.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "clec_iclts",
+                "locator": "Appendix 2, section V"
+              }
+            ]
+          },
+          {
+            "key": "scholarship_coverage",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Scholarship recipients",
+            "ruleText": "The scholarship covers tuition, on-campus accommodation, a living allowance and comprehensive medical insurance.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "clec_iclts",
+                "locator": "Appendix 1, opening coverage statement"
+              }
+            ]
+          },
+          {
+            "key": "living_allowance",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "One-semester scholarship recipients",
+            "ruleText": "The published living allowance is RMB 2,500 per month.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "clec_iclts",
+                "locator": "Appendix 1, item 3"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Scholarship recipients",
+            "ruleText": "The host institution normally provides a double room. A non-degree recipient permitted to live off campus receives an accommodation subsidy of RMB 700 per month under the published rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "clec_iclts",
+                "locator": "Appendix 1, item 2"
+              }
+            ]
+          },
+          {
+            "key": "medical_insurance",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "One-semester scholarship recipients",
+            "ruleText": "The scholarship includes comprehensive medical insurance at the published one-semester standard of RMB 400 per person.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "clec_iclts",
+                "locator": "Appendix 1, item 4"
+              }
+            ]
+          },
+          {
             "key": "similar_scholarship_history",
             "category": "application_policy",
             "stage": "submission",
@@ -229,6 +416,21 @@
               {
                 "sourceKey": "jilin_iclts",
                 "locator": "Section V, Others, item 1"
+              }
+            ]
+          },
+          {
+            "key": "admission_documents",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Approved applicants",
+            "ruleText": "After review and approval, receive the Admission Notice, the Visa Application for Study in China form, and other admission documents from Jilin University; follow the admission guide and related materials for registration details.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "jilin_iclts",
+                "locator": "Section V, Others, item 4"
               }
             ]
           },

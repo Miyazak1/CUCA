@@ -1,0 +1,511 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T07:55:57.111Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located PKUHSC Fall 2026 medical undergraduate requirements bound only to exact existing program-intake records."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 2,
+    "targetedIntakeCount": 2,
+    "requirementItemCount": 30
+  },
+  "templates": [
+    {
+      "key": "pkuhsc-undergraduate-fall-2026",
+      "schoolSlug": "peking-university-health-science-center",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "peking-university-health-science-center-clinical-medicine",
+        "peking-university-health-science-center-oral-medicine"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window.",
+        "The guide refers Chinese Government Scholarship applicants to Chinese embassies or consulates but does not publish a university-managed scholarship application route in this source.",
+        "The source publishes HSK levels but does not state a minimum numeric HSK score."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "pkuhsc_undergraduate",
+            "url": "https://oic.bjmu.edu.cn/lxby/zsjz/b722ea27933042248caf4884c1f1a50f.htm",
+            "title": "Peking University Health Science Center 2026 international undergraduate admissions Chinese",
+            "capturedAt": "2026-10-15T07:50:25.693Z",
+            "contentSha256": "13450df25f70871a250857002b68b56079ab87f087cdfbb857dd00e7f97e75dd"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a valid foreign passport and be a non-Chinese citizen.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section II, eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "foreign_residence_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants born abroad to one or two Chinese-citizen parents settled abroad",
+            "ruleText": "Have held a valid foreign passport or nationality certificate since before April 30, 2022 and have actually resided abroad for at least two years between April 30, 2022 and April 30, 2026; nine months abroad in a year counts as one year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section II, eligibility item 1(1)"
+              }
+            ]
+          },
+          {
+            "key": "former_chinese_resident_history",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Former residents of mainland China, Hong Kong, Macao or Taiwan who later acquired foreign nationality",
+            "ruleText": "Have held a valid foreign passport or nationality certificate since before April 30, 2022, provide proof that Chinese nationality was cancelled, and have actually resided abroad for at least two years between April 30, 2022 and April 30, 2026; nine months abroad in a year counts as one year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section II, eligibility item 1(2)"
+              }
+            ]
+          },
+          {
+            "key": "age_and_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 17 to 30 years old and hold at least a high-school graduation qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section II, eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be in good health and meet the admission conditions for the chosen medical program.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section II, eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 applicants",
+            "ruleText": "Apply online in either the first batch from December 12, 2025 through February 28, 2026 or the second batch from March 30 through April 30, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), online application periods"
+              }
+            ]
+          },
+          {
+            "key": "csca_accepted_sessions",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 applicants",
+            "ruleText": "First-batch applicants must submit a CSCA result from December 2025 or January 2026; second-batch applicants must submit a result from March or April 2026.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), accepted CSCA sessions"
+              }
+            ]
+          },
+          {
+            "key": "csca_subjects",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 applicants",
+            "ruleText": "Submit CSCA results for STEM Chinese, Mathematics in Chinese, Physics in Chinese and Chemistry in Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), CSCA subject list"
+              }
+            ]
+          },
+          {
+            "key": "profile_photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Upload a recent standard identification photograph as the system profile image.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), material item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_visa",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Upload the passport photo page and, when applicable, the current Chinese visa page.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), material item 2"
+              }
+            ]
+          },
+          {
+            "key": "prior_diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Upload a notarized diploma for the preceding stage of education.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), material item 3"
+              }
+            ]
+          },
+          {
+            "key": "transcripts_and_csca",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Upload notarized transcripts for the preceding stage of education together with the CSCA score report.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), material item 4"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Upload physical-examination results covering the basic examination items and a liver-function laboratory test.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), material item 5"
+              }
+            ]
+          },
+          {
+            "key": "clinical_medicine_hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Clinical Medicine applicants",
+            "ruleText": "Upload an HSK Level 5 certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), material item 6"
+              }
+            ]
+          },
+          {
+            "key": "oral_medicine_hsk",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Oral Medicine applicants",
+            "ruleText": "Upload an HSK Level 6 certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), material item 6"
+              }
+            ]
+          },
+          {
+            "key": "financial_capacity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Provide a bank balance certificate showing more than CNY 400,000; other forms of financial evidence are not accepted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), material item 7"
+              }
+            ]
+          },
+          {
+            "key": "guardian_identity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18",
+            "ruleText": "Provide the guardian's identity document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), material item 8"
+              }
+            ]
+          },
+          {
+            "key": "supporting_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Applicants may provide other documents demonstrating learning ability or overall qualifications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), material item 8"
+              }
+            ]
+          },
+          {
+            "key": "pdf_upload_format",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Prepare each of materials 3 through 8 as a separate, clear and readable PDF before upload.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), online-submission note 1"
+              }
+            ]
+          },
+          {
+            "key": "graduating_applicants",
+            "category": "education",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Applicants who have not yet completed the preceding qualification",
+            "ruleText": "Upload official expected-graduation evidence and, if admitted, present the original graduation certificate at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), online-submission note 2"
+              }
+            ]
+          },
+          {
+            "key": "material_completion_deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants notified that materials are incomplete",
+            "ruleText": "Complete missing materials by March 5, 2026 for the first batch or May 11, 2026 for the second batch; late supplements are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(1), online-submission note 3"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants selected for interview",
+            "ruleText": "Pay the non-refundable CNY 800 application fee before the interview; applicants who do not pay on time cannot take the examination.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(2), application fee"
+              }
+            ]
+          },
+          {
+            "key": "interview_selection",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded applicants",
+            "ruleText": "Undergo the university's screening of prior academic results and CSCA results to determine whether the applicant advances to interview.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(3), interview selection"
+              }
+            ]
+          },
+          {
+            "key": "online_interview",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants selected for interview",
+            "ruleText": "Attend an online interview conducted in Chinese; the interview assesses language expression, logical thinking, practical ability, communication, psychological quality and professional interest.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(3), interview format and content"
+              }
+            ]
+          },
+          {
+            "key": "admission_assessment",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Interviewed applicants",
+            "ruleText": "Admission is determined through a comprehensive review of prior-stage grades, CSCA results and interview performance.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(4), admission"
+              }
+            ]
+          },
+          {
+            "key": "registration",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Obtain the required visa or residence permission and register in late August or early September 2026 on the date stated in the admission notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section III.2(5), enrollment and registration"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Self-funded undergraduates",
+            "ruleText": "Pay tuition of CNY 45,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section IV, fee item 1"
+              }
+            ]
+          },
+          {
+            "key": "off_campus_accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Self-funded undergraduates",
+            "ruleText": "Arrange off-campus accommodation because university dormitory accommodation is not provided to self-funded undergraduates; the university states that it will provide appropriate assistance.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section IV, fee and notice item 2"
+              }
+            ]
+          },
+          {
+            "key": "medical_insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "All international students",
+            "ruleText": "Pay CNY 800 per year for comprehensive international-student insurance; insurance is required before student-status registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section IV, fee item 3"
+              }
+            ]
+          },
+          {
+            "key": "other_costs",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Self-funded undergraduates",
+            "ruleText": "Pay textbook, medical, transportation and meal expenses separately.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "pkuhsc_undergraduate",
+                "locator": "Section IV, fee item 4"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

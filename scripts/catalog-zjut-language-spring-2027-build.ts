@@ -10,7 +10,7 @@ import {
 
 const root = process.cwd();
 const languageRun = "work/catalog-official/refresh-20261014-zjut-language-programs";
-const scholarshipRun = "work/catalog-official/refresh-20261014-zjut-iclts-spring-2027";
+const scholarshipRun = "work/catalog-official/2026-10-15T07-11-22-013Z";
 const candidatePath = resolve(root, "seeds/catalog.zjut-language-spring-2027.draft.json");
 const validationPath = resolve(root, "seeds/catalog.zjut-language-spring-2027.validation.json");
 const programSlug = "zhejiang-university-of-technology-iclts-one-semester-chinese-language-spring-2027";
@@ -50,7 +50,7 @@ const languageSource = lockedSource(
 const scholarshipSource = lockedSource(
   scholarshipManifest,
   "zjut-international-chinese-language-teachers-scholarship-2027-spring",
-  "cf418ebc0919a72dc86285ecfc6098d6b3b970d0ec2957cd71a51b5c2eeaa1a1",
+  "f791ea59d259c7b31634789605755e24dcbd94b87a426c5f2f23dd1e60bdd454",
 );
 
 function visibleText(html: string): string {
@@ -189,6 +189,12 @@ const validationArtifact = {
   sourceReview: {
     status: "unreviewed_draft",
     evidenceModel: "program identity and self-funded reference from the official program page; Spring 2027 availability, scholarship scope and deadline from the official scholarship notice",
+    changeReview: {
+      priorSha256: "cf418ebc0919a72dc86285ecfc6098d6b3b970d0ec2957cd71a51b5c2eeaa1a1",
+      currentSha256: scholarshipSource.sha256,
+      visibleAdmissionsTextChanged: false,
+      disposition: "The official page HTML changed, but normalized visible admissions text is unchanged from the prior snapshot.",
+    },
     unresolved: ["The Chinese route title is an editorial translation and must be reviewed before publication."],
   },
   databaseWriteAuthorized: false,

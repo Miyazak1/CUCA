@@ -9,7 +9,7 @@ test("SCUT wave binds only the existing undergraduate intake set", async () => {
   assert.equal(draft.handoff.databaseWriteAuthorized, false);
   assert.equal(draft.handoff.publicationAuthorized, false);
   assert.deepEqual(draft.summary, { templateCount: 3, readyTemplateCount: 1, blockedTemplateCount: 2,
-    targetedProgramCount: 99, targetedIntakeCount: 99, requirementItemCount: 39 });
+    targetedProgramCount: 99, targetedIntakeCount: 99, requirementItemCount: 51 });
   const ready = draft.templates.filter(template => template.targetBindingStatus === "ready");
   assert.deepEqual(ready.map(template => template.key), ["scut-undergraduate-2026"]);
   assert.equal(ready[0].targetProgramSlugs.length, 99);

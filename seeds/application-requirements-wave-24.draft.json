@@ -1,0 +1,901 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T08:26:10.716Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located GXMU Fall 2026 undergraduate requirements bound only to exact existing closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 2,
+    "readyTemplateCount": 2,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 25,
+    "targetedIntakeCount": 25,
+    "requirementItemCount": 52
+  },
+  "templates": [
+    {
+      "key": "gxmu-mbbs-fall-2026",
+      "schoolSlug": "guangxi-medical-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "guangxi-medical-university-mbbs"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window.",
+        "The reviewed guide requires an admission deposit but does not publish its amount; it is not conflated with the separately published accommodation deposit."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "gxmu_undergraduate",
+            "url": "https://gjy.gxmu.edu.cn/en/NN/Notice/t224270.html",
+            "title": "Guangxi Medical University 2026 international undergraduate admission guide",
+            "capturedAt": "2026-10-15T08:24:05.007Z",
+            "contentSha256": "8fe09f32b70210fee64ab4f0c9bc982803914adcbd00a31a42ed4136e3b9c138"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 16 to 30 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "General Requirements item 1"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardianship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 at application time",
+            "ruleText": "Provide legal-guardian information and a guardianship authorization signed by all three parties.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "General Requirements item 1"
+              }
+            ]
+          },
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a foreign passport and satisfy the applicable Chinese nationality and Ministry of Education rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "General Requirements item 2"
+              }
+            ]
+          },
+          {
+            "key": "health_conduct",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be in good health, be friendly toward China and have no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "General Requirements item 3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Register through the GXMU international-student portal, complete the application and upload every required material online; no paper mailing is required.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure and Application Materials note"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the application fee when submitting the online documents; the reviewed guide does not state its amount and says rejected applicants are not refunded.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the fall application from January 1 through August 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Opens"
+              }
+            ]
+          },
+          {
+            "key": "admission_review",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pass the admissions committee's review of academic performance, language proficiency and CSCA results.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure and Important Notes"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Shortlisted applicants",
+            "ruleText": "Complete the online or telephone interview and obtain a provisional admission notice.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "admission_deposit",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Provisionally admitted applicants",
+            "ruleText": "Pay the admission deposit by the deadline in the provisional notice; the amount is not stated, nonpayment withdraws admission, and a personal withdrawal or failed registration makes it non-refundable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure items 4 and Important Notes item 2"
+              }
+            ]
+          },
+          {
+            "key": "final_documents",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Provisionally admitted applicants completing all steps",
+            "ruleText": "Receive the official admission letter, JW202 form and orientation guide after completing the required steps and paying the deposit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure item 5"
+              }
+            ]
+          },
+          {
+            "key": "visa_and_arrival",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Apply for the visa independently and report to campus by the designated date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure item 6"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a genuine high-school graduation certificate or an equivalent qualification recognized by GXMU, such as A-Level or GED evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit all secondary-stage transcripts for grades 7 through 12, or transcripts for the equivalent qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "translation_notarization",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose diploma or transcripts are not in Chinese or English",
+            "ruleText": "Provide Chinese or English translations and notarization for the affected diploma or transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a study plan longer than 500 words, focused on the intended major and written in that major's teaching language.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a three-minute video recorded in the intended major's teaching language and follow the portal's material-page specifications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "supporting_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Optionally submit other evidence of comprehensive qualities, such as publications or competition participation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "registration_charge",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international undergraduates",
+            "ruleText": "Pay the published CNY 800 registration charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international undergraduates",
+            "ruleText": "Purchase the published student insurance at CNY 800 per year per person.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using GXMU accommodation",
+            "ruleText": "Pay CNY 6,000 per person per year for a double room and a CNY 1,000 accommodation deposit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "registration_payment",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants registering at GXMU",
+            "ruleText": "At registration, pay full tuition, accommodation charges, the accommodation deposit and student insurance; other government-collected charges may apply.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Fee Structure note"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught MBBS applicants",
+            "ruleText": "Submit CSCA Mathematics and Chemistry results using the English papers; no Chinese-subject score is required.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca_deadline",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 applicants",
+            "ruleText": "Submit the required CSCA results by July 30, 2026.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 3(4)"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught MBBS applicants",
+            "ruleText": "Submit IELTS above 5.5 overall with every component above 5, TOEFL iBT at least 70, TOEFL ITP at least 450, Duolingo above 90, or another English score recognized by GXMU.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "English-taught MBBS students",
+            "ruleText": "Pay tuition of CNY 35,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Fee Structure"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "gxmu-chinese-undergraduate-fall-2026",
+      "schoolSlug": "guangxi-medical-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-gxmu-clinical-medicine-chinese",
+        "official-2026-gxmu-pediatrics",
+        "official-2026-gxmu-anesthesiology",
+        "official-2026-gxmu-medical-imaging",
+        "guangxi-medical-university-stomatology",
+        "official-2026-gxmu-preventive-medicine",
+        "official-2026-gxmu-maternal-child-health-medicine",
+        "official-2026-gxmu-medical-laboratory-science",
+        "official-2026-gxmu-therapeutic-recreation",
+        "official-2026-gxmu-medical-experimental-technology",
+        "official-2026-gxmu-exercise-rehabilitation",
+        "guangxi-medical-university-nursing",
+        "official-2026-gxmu-sanitary-inspection-quarantine",
+        "guangxi-medical-university-pharmacology",
+        "official-2026-gxmu-traditional-chinese-pharmacy",
+        "official-2026-gxmu-biotechnology",
+        "official-2026-gxmu-medical-insurance",
+        "official-2026-gxmu-intelligent-medical-engineering",
+        "guangxi-medical-university-biomedical-engineering",
+        "official-2026-gxmu-medical-information-engineering",
+        "official-2026-gxmu-information-management-system",
+        "guangxi-medical-university-public-affairs-administration-direction-of-public-health-management",
+        "official-2026-gxmu-health-services-management",
+        "official-2026-gxmu-elderly-care-service-management"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window.",
+        "The reviewed guide requires an admission deposit but does not publish its amount; it is not conflated with the separately published accommodation deposit."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "gxmu_undergraduate",
+            "url": "https://gjy.gxmu.edu.cn/en/NN/Notice/t224270.html",
+            "title": "Guangxi Medical University 2026 international undergraduate admission guide",
+            "capturedAt": "2026-10-15T08:24:05.007Z",
+            "contentSha256": "8fe09f32b70210fee64ab4f0c9bc982803914adcbd00a31a42ed4136e3b9c138"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be 16 to 30 years old.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "General Requirements item 1"
+              }
+            ]
+          },
+          {
+            "key": "minor_guardianship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under 18 at application time",
+            "ruleText": "Provide legal-guardian information and a guardianship authorization signed by all three parties.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "General Requirements item 1"
+              }
+            ]
+          },
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen holding a foreign passport and satisfy the applicable Chinese nationality and Ministry of Education rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "General Requirements item 2"
+              }
+            ]
+          },
+          {
+            "key": "health_conduct",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be in good health, be friendly toward China and have no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "General Requirements item 3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Register through the GXMU international-student portal, complete the application and upload every required material online; no paper mailing is required.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure and Application Materials note"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pay the application fee when submitting the online documents; the reviewed guide does not state its amount and says rejected applicants are not refunded.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the fall application from January 1 through August 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Opens"
+              }
+            ]
+          },
+          {
+            "key": "admission_review",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Pass the admissions committee's review of academic performance, language proficiency and CSCA results.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure and Important Notes"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Shortlisted applicants",
+            "ruleText": "Complete the online or telephone interview and obtain a provisional admission notice.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "admission_deposit",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Provisionally admitted applicants",
+            "ruleText": "Pay the admission deposit by the deadline in the provisional notice; the amount is not stated, nonpayment withdraws admission, and a personal withdrawal or failed registration makes it non-refundable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure items 4 and Important Notes item 2"
+              }
+            ]
+          },
+          {
+            "key": "final_documents",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Provisionally admitted applicants completing all steps",
+            "ruleText": "Receive the official admission letter, JW202 form and orientation guide after completing the required steps and paying the deposit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure item 5"
+              }
+            ]
+          },
+          {
+            "key": "visa_and_arrival",
+            "category": "documents",
+            "stage": "preparation",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Apply for the visa independently and report to campus by the designated date.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Procedure item 6"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a genuine high-school graduation certificate or an equivalent qualification recognized by GXMU, such as A-Level or GED evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit all secondary-stage transcripts for grades 7 through 12, or transcripts for the equivalent qualification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "translation_notarization",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose diploma or transcripts are not in Chinese or English",
+            "ruleText": "Provide Chinese or English translations and notarization for the affected diploma or transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a study plan longer than 500 words, focused on the intended major and written in that major's teaching language.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit a three-minute video recorded in the intended major's teaching language and follow the portal's material-page specifications.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "supporting_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Optionally submit other evidence of comprehensive qualities, such as publications or competition participation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "registration_charge",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international undergraduates",
+            "ruleText": "Pay the published CNY 800 registration charge.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled international undergraduates",
+            "ruleText": "Purchase the published student insurance at CNY 800 per year per person.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Students using GXMU accommodation",
+            "ruleText": "Pay CNY 6,000 per person per year for a double room and a CNY 1,000 accommodation deposit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "registration_payment",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants registering at GXMU",
+            "ruleText": "At registration, pay full tuition, accommodation charges, the accommodation deposit and student insurance; other government-collected charges may apply.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Fee Structure note"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "Submit CSCA Mathematics and Chemistry using the Chinese papers and also submit STEM Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca_deadline",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 applicants",
+            "ruleText": "Submit the required CSCA results by July 30, 2026.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 3(4)"
+              }
+            ]
+          },
+          {
+            "key": "language_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate applicants",
+            "ruleText": "Submit a valid HSK Level 4 certificate issued within two years, with total score above 200 and every component above 60.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Application Materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Chinese-taught undergraduate students",
+            "ruleText": "Pay tuition of CNY 28,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "gxmu_undergraduate",
+                "locator": "Fee Structure"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

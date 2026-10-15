@@ -1,0 +1,1451 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T11:14:14.011Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete official-source requirements for OUC's ten published Fall 2026 English-taught international routes."
+  },
+  "summary": {
+    "templateCount": 5,
+    "readyTemplateCount": 5,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 10,
+    "targetedIntakeCount": 10,
+    "scholarshipCount": 3,
+    "requirementItemCount": 77
+  },
+  "templates": [
+    {
+      "key": "ouc-international-group-01-fall-2026",
+      "schoolSlug": "ocean-university-of-china",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-ouc-bachelor-oceanography"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The Oceanography guide title does not exactly match the Marine Sciences title in the CSCA optional-subject table; Mathematics is explicit, while no optional-subject equivalence is inferred.",
+        "The three scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide_page",
+            "url": "https://sie.ouc.edu.cn/english/2025/1212/c18028a513110/page.htm",
+            "title": "Ocean University of China Application Guide for International Students 2026 page",
+            "capturedAt": "2026-09-14T04:12:21.894Z",
+            "contentSha256": "a8ca0e325bfac1744eaad41ef477490bd4e082d50c386bf18e047f7bba8ed96e"
+          },
+          {
+            "key": "program_guide",
+            "url": "https://sie.ouc.edu.cn/_upload/article/files/a7/da/72db8e33490b84bac80917be7bfe/b2ec1d11-e594-4030-bd25-df5fac653724.pdf",
+            "title": "Ocean University of China International Programs 2026 PDF",
+            "capturedAt": "2026-09-14T04:12:29.584Z",
+            "contentSha256": "48adb9bb99468bbd88092ba5cb39c9ec83d33b90f7beb23af6fd456b79b85589"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.ouc.edu.cn/_upload/article/files/d7/0f/2f495d67442c9806fc36e18b4b41/13f7b7de-b253-43ae-a780-895511af0a82.pdf",
+            "title": "Ocean University of China CSCA Test Subjects 2026 PDF",
+            "capturedAt": "2026-09-14T04:12:33.385Z",
+            "contentSha256": "a964550fb416b0b0a55b3a84421688ca767fd59e81612c31132f3bf1e129b9a7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen in good health, hold a high-school diploma, and be age 16-30.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Qualification table, page 5"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Sign in to OUC's International Students Service System, complete the online application and submit it before the deadline.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "How to apply, page 6"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_photo",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a scan of the passport information page and a two-inch photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 2, page 5"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a notarized copy of the highest education degree and diploma.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 3, page 5"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 4, page 5"
+              }
+            ]
+          },
+          {
+            "key": "resume",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a personal resume.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 7, page 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 8, page 5"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record certificate or relevant certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 9, page 5"
+              }
+            ]
+          },
+          {
+            "key": "financial_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a financial statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 10, page 5"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants from non-English-speaking countries",
+            "ruleText": "Applicants from non-English-speaking countries: IELTS 5.5, TOEFL 80, equivalent English proof, an English-medium prior degree certificate, or at least one year of study in an English-speaking country.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Qualification table, page 5"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit CSCA Mathematics. The acquired subject table lists Marine Sciences with Physics but does not use the English guide's Oceanography title, so no optional-subject equivalence is inferred; confirm the route-specific optional subject with OUC.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "English-taught Undergraduate Programs and Programs List"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview, page 2"
+              }
+            ]
+          },
+          {
+            "key": "minimum_enrollment",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Admitted students",
+            "ruleText": "The program opens only when enrollment exceeds 15 students.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview note, page 2"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete and submit the application before June 10, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "How to apply, page 6"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 23,000/year. The guide separately lists accommodation at CNY 5,500 per semester and insurance at CNY 800.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview, page 2"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ouc-international-group-02-fall-2026",
+      "schoolSlug": "ocean-university-of-china",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-ouc-bachelor-tourism-management",
+        "ocean-university-of-china-international-economics-and-trade"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The Oceanography guide title does not exactly match the Marine Sciences title in the CSCA optional-subject table; Mathematics is explicit, while no optional-subject equivalence is inferred.",
+        "The three scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide_page",
+            "url": "https://sie.ouc.edu.cn/english/2025/1212/c18028a513110/page.htm",
+            "title": "Ocean University of China Application Guide for International Students 2026 page",
+            "capturedAt": "2026-09-14T04:12:21.894Z",
+            "contentSha256": "a8ca0e325bfac1744eaad41ef477490bd4e082d50c386bf18e047f7bba8ed96e"
+          },
+          {
+            "key": "program_guide",
+            "url": "https://sie.ouc.edu.cn/_upload/article/files/a7/da/72db8e33490b84bac80917be7bfe/b2ec1d11-e594-4030-bd25-df5fac653724.pdf",
+            "title": "Ocean University of China International Programs 2026 PDF",
+            "capturedAt": "2026-09-14T04:12:29.584Z",
+            "contentSha256": "48adb9bb99468bbd88092ba5cb39c9ec83d33b90f7beb23af6fd456b79b85589"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.ouc.edu.cn/_upload/article/files/d7/0f/2f495d67442c9806fc36e18b4b41/13f7b7de-b253-43ae-a780-895511af0a82.pdf",
+            "title": "Ocean University of China CSCA Test Subjects 2026 PDF",
+            "capturedAt": "2026-09-14T04:12:33.385Z",
+            "contentSha256": "a964550fb416b0b0a55b3a84421688ca767fd59e81612c31132f3bf1e129b9a7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen in good health, hold a high-school diploma, and be age 16-30.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Qualification table, page 5"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Sign in to OUC's International Students Service System, complete the online application and submit it before the deadline.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "How to apply, page 6"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_photo",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a scan of the passport information page and a two-inch photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 2, page 5"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a notarized copy of the highest education degree and diploma.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 3, page 5"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 4, page 5"
+              }
+            ]
+          },
+          {
+            "key": "resume",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a personal resume.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 7, page 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 8, page 5"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record certificate or relevant certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 9, page 5"
+              }
+            ]
+          },
+          {
+            "key": "financial_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a financial statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 10, page 5"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants from non-English-speaking countries",
+            "ruleText": "Applicants from non-English-speaking countries: IELTS 5.5, TOEFL 80, equivalent English proof, an English-medium prior degree certificate, or at least one year of study in an English-speaking country.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Qualification table, page 5"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit CSCA Mathematics. The official table marks no optional Physics or Chemistry subject for this program.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "English-taught Undergraduate Programs and Programs List"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview, page 2"
+              }
+            ]
+          },
+          {
+            "key": "minimum_enrollment",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Admitted students",
+            "ruleText": "The program opens only when enrollment exceeds 15 students.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview note, page 2"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete and submit the application before June 10, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "How to apply, page 6"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 8,000/year. The guide separately lists accommodation at CNY 5,500 per semester and insurance at CNY 800.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview, page 2"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ouc-international-group-03-fall-2026",
+      "schoolSlug": "ocean-university-of-china",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "ocean-university-of-china-computer-science-and-technology"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The Oceanography guide title does not exactly match the Marine Sciences title in the CSCA optional-subject table; Mathematics is explicit, while no optional-subject equivalence is inferred.",
+        "The three scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide_page",
+            "url": "https://sie.ouc.edu.cn/english/2025/1212/c18028a513110/page.htm",
+            "title": "Ocean University of China Application Guide for International Students 2026 page",
+            "capturedAt": "2026-09-14T04:12:21.894Z",
+            "contentSha256": "a8ca0e325bfac1744eaad41ef477490bd4e082d50c386bf18e047f7bba8ed96e"
+          },
+          {
+            "key": "program_guide",
+            "url": "https://sie.ouc.edu.cn/_upload/article/files/a7/da/72db8e33490b84bac80917be7bfe/b2ec1d11-e594-4030-bd25-df5fac653724.pdf",
+            "title": "Ocean University of China International Programs 2026 PDF",
+            "capturedAt": "2026-09-14T04:12:29.584Z",
+            "contentSha256": "48adb9bb99468bbd88092ba5cb39c9ec83d33b90f7beb23af6fd456b79b85589"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.ouc.edu.cn/_upload/article/files/d7/0f/2f495d67442c9806fc36e18b4b41/13f7b7de-b253-43ae-a780-895511af0a82.pdf",
+            "title": "Ocean University of China CSCA Test Subjects 2026 PDF",
+            "capturedAt": "2026-09-14T04:12:33.385Z",
+            "contentSha256": "a964550fb416b0b0a55b3a84421688ca767fd59e81612c31132f3bf1e129b9a7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Bachelor applicants",
+            "ruleText": "Be a non-Chinese citizen in good health, hold a high-school diploma, and be age 16-30.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Qualification table, page 5"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Sign in to OUC's International Students Service System, complete the online application and submit it before the deadline.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "How to apply, page 6"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_photo",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a scan of the passport information page and a two-inch photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 2, page 5"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a notarized copy of the highest education degree and diploma.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 3, page 5"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 4, page 5"
+              }
+            ]
+          },
+          {
+            "key": "resume",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a personal resume.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 7, page 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 8, page 5"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record certificate or relevant certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 9, page 5"
+              }
+            ]
+          },
+          {
+            "key": "financial_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a financial statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 10, page 5"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants from non-English-speaking countries",
+            "ruleText": "Applicants from non-English-speaking countries: IELTS 5.5, TOEFL 80, equivalent English proof, an English-medium prior degree certificate, or at least one year of study in an English-speaking country.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Qualification table, page 5"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit CSCA Mathematics and Physics results.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "English-taught Undergraduate Programs and Programs List"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview, page 2"
+              }
+            ]
+          },
+          {
+            "key": "minimum_enrollment",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Admitted students",
+            "ruleText": "The program opens only when enrollment exceeds 15 students.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview note, page 2"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete and submit the application before June 10, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "How to apply, page 6"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 8,000/year. The guide separately lists accommodation at CNY 5,500 per semester and insurance at CNY 800.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview, page 2"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ouc-international-group-04-fall-2026",
+      "schoolSlug": "ocean-university-of-china",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-ouc-master-international-business",
+        "official-2026-ouc-master-food-science-and-engineering",
+        "official-2026-ouc-master-aquaculture",
+        "official-2026-ouc-master-pharmacy",
+        "official-2026-ouc-master-computer-technology"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The Oceanography guide title does not exactly match the Marine Sciences title in the CSCA optional-subject table; Mathematics is explicit, while no optional-subject equivalence is inferred.",
+        "The three scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide_page",
+            "url": "https://sie.ouc.edu.cn/english/2025/1212/c18028a513110/page.htm",
+            "title": "Ocean University of China Application Guide for International Students 2026 page",
+            "capturedAt": "2026-09-14T04:12:21.894Z",
+            "contentSha256": "a8ca0e325bfac1744eaad41ef477490bd4e082d50c386bf18e047f7bba8ed96e"
+          },
+          {
+            "key": "program_guide",
+            "url": "https://sie.ouc.edu.cn/_upload/article/files/a7/da/72db8e33490b84bac80917be7bfe/b2ec1d11-e594-4030-bd25-df5fac653724.pdf",
+            "title": "Ocean University of China International Programs 2026 PDF",
+            "capturedAt": "2026-09-14T04:12:29.584Z",
+            "contentSha256": "48adb9bb99468bbd88092ba5cb39c9ec83d33b90f7beb23af6fd456b79b85589"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.ouc.edu.cn/_upload/article/files/d7/0f/2f495d67442c9806fc36e18b4b41/13f7b7de-b253-43ae-a780-895511af0a82.pdf",
+            "title": "Ocean University of China CSCA Test Subjects 2026 PDF",
+            "capturedAt": "2026-09-14T04:12:33.385Z",
+            "contentSha256": "a964550fb416b0b0a55b3a84421688ca767fd59e81612c31132f3bf1e129b9a7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen in good health, hold a bachelor's degree or equivalent, and be age 18-50.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Qualification table, page 5"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Sign in to OUC's International Students Service System, complete the online application and submit it before the deadline.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "How to apply, page 6"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_photo",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a scan of the passport information page and a two-inch photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 2, page 5"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a notarized copy of the highest education degree and diploma.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 3, page 5"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 4, page 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Postgraduate applicants",
+            "ruleText": "Submit two recommendation letters from professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 5, page 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Postgraduate applicants",
+            "ruleText": "Submit a study plan.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 6, page 5"
+              }
+            ]
+          },
+          {
+            "key": "resume",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a personal resume.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 7, page 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 8, page 5"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record certificate or relevant certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 9, page 5"
+              }
+            ]
+          },
+          {
+            "key": "financial_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a financial statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 10, page 5"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants from non-English-speaking countries",
+            "ruleText": "Applicants from non-English-speaking countries: IELTS 5.5, TOEFL 80, equivalent English proof, an English-medium prior degree certificate, or at least one year of study in an English-speaking country.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Qualification table, page 5"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview, page 2"
+              }
+            ]
+          },
+          {
+            "key": "minimum_enrollment",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Admitted students",
+            "ruleText": "The program opens only when enrollment exceeds 15 students.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview note, page 2"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete and submit the application before June 10, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "How to apply, page 6"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 25,000/year. The guide separately lists accommodation at CNY 5,500 per semester and insurance at CNY 800.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview, page 2"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ouc-international-group-05-fall-2026",
+      "schoolSlug": "ocean-university-of-china",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-ouc-master-china-studies"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This historical Fall 2026 cycle is closed and must not be shown as current.",
+        "The Oceanography guide title does not exactly match the Marine Sciences title in the CSCA optional-subject table; Mathematics is explicit, while no optional-subject equivalence is inferred.",
+        "The three scholarship records remain independent; no route-level entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide_page",
+            "url": "https://sie.ouc.edu.cn/english/2025/1212/c18028a513110/page.htm",
+            "title": "Ocean University of China Application Guide for International Students 2026 page",
+            "capturedAt": "2026-09-14T04:12:21.894Z",
+            "contentSha256": "a8ca0e325bfac1744eaad41ef477490bd4e082d50c386bf18e047f7bba8ed96e"
+          },
+          {
+            "key": "program_guide",
+            "url": "https://sie.ouc.edu.cn/_upload/article/files/a7/da/72db8e33490b84bac80917be7bfe/b2ec1d11-e594-4030-bd25-df5fac653724.pdf",
+            "title": "Ocean University of China International Programs 2026 PDF",
+            "capturedAt": "2026-09-14T04:12:29.584Z",
+            "contentSha256": "48adb9bb99468bbd88092ba5cb39c9ec83d33b90f7beb23af6fd456b79b85589"
+          },
+          {
+            "key": "csca",
+            "url": "https://sie.ouc.edu.cn/_upload/article/files/d7/0f/2f495d67442c9806fc36e18b4b41/13f7b7de-b253-43ae-a780-895511af0a82.pdf",
+            "title": "Ocean University of China CSCA Test Subjects 2026 PDF",
+            "capturedAt": "2026-09-14T04:12:33.385Z",
+            "contentSha256": "a964550fb416b0b0a55b3a84421688ca767fd59e81612c31132f3bf1e129b9a7"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen in good health, hold a bachelor's degree or equivalent, and be age 18-50.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Qualification table, page 5"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Sign in to OUC's International Students Service System, complete the online application and submit it before the deadline.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "How to apply, page 6"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_photo",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a scan of the passport information page and a two-inch photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 2, page 5"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a notarized copy of the highest education degree and diploma.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 3, page 5"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit notarized academic transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 4, page 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Postgraduate applicants",
+            "ruleText": "Submit two recommendation letters from professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 5, page 5"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Postgraduate applicants",
+            "ruleText": "Submit a study plan.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 6, page 5"
+              }
+            ]
+          },
+          {
+            "key": "resume",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a personal resume.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 7, page 5"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Physical Examination Form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 8, page 5"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal record certificate or relevant certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 9, page 5"
+              }
+            ]
+          },
+          {
+            "key": "financial_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a financial statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Documents item 10, page 5"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants from non-English-speaking countries",
+            "ruleText": "Applicants from non-English-speaking countries: IELTS 5.5, TOEFL 80, equivalent English proof, an English-medium prior degree certificate, or at least one year of study in an English-speaking country.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Qualification table, page 5"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the published CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview, page 2"
+              }
+            ]
+          },
+          {
+            "key": "minimum_enrollment",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Admitted students",
+            "ruleText": "The program opens only when enrollment exceeds 15 students.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview note, page 2"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Complete and submit the application before June 10, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "How to apply, page 6"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 20,500/year. The guide separately lists accommodation at CNY 5,500 per semester and insurance at CNY 800.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "program_guide",
+                "locator": "Programs Overview, page 2"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

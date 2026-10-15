@@ -1,0 +1,866 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T10:47:36.298Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope ECUPL 2026 undergraduate requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 3,
+    "readyTemplateCount": 3,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 15,
+    "targetedIntakeCount": 15,
+    "requirementItemCount": 45
+  },
+  "templates": [
+    {
+      "key": "ecupl-undergraduate-group-01-fall-2026",
+      "schoolSlug": "east-china-university-of-political-science-and-law",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-university-of-political-science-and-law-law",
+        "east-china-university-of-political-science-and-law-intellectual-property",
+        "east-china-university-of-political-science-and-law-economic-crime-investigation",
+        "east-china-university-of-political-science-and-law-criminal-investigation",
+        "east-china-university-of-political-science-and-law-political-science-and-public-administration",
+        "east-china-university-of-political-science-and-law-public-administration",
+        "east-china-university-of-political-science-and-law-labor-and-social-security",
+        "east-china-university-of-political-science-and-law-sociology",
+        "east-china-university-of-political-science-and-law-social-policy",
+        "east-china-university-of-political-science-and-law-social-work",
+        "east-china-university-of-political-science-and-law-journalism",
+        "east-china-university-of-political-science-and-law-cultural-industry-management",
+        "east-china-university-of-political-science-and-law-network-and-new-media"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The guide links generic government-scholarship portals but does not publish complete route-specific award terms; no scholarship record or entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://study.ecupl.edu.cn/2025/1202/c10735a223431/page.htm",
+            "title": "East China University of Political Science and Law 2026 international undergraduate admission guide",
+            "capturedAt": "2026-09-22T12:55:07.015Z",
+            "contentSha256": "830ad26e35089e6adfa212e328b09726184f0554dabdb6cbc7dea0e0cdb6ec84"
+          },
+          {
+            "key": "catalog",
+            "url": "https://study.ecupl.edu.cn/_upload/article/files/80/dd/509280b84dcba4237777658d0329/4dd6ac12-463c-4939-9085-b94c81738b92.xls",
+            "title": "East China University of Political Science and Law 2026 international undergraduate program catalog XLS",
+            "capturedAt": "2026-09-22T12:55:08.223Z",
+            "contentSha256": "7eeb1e3c8dd1abafb5321f3fee0d1ac021c54a65c3903b38047582b1797244f6"
+          },
+          {
+            "key": "csca",
+            "url": "https://study.ecupl.edu.cn/_upload/article/files/80/dd/509280b84dcba4237777658d0329/e144e0ba-5795-4154-84e5-2bb64860b92b.docx",
+            "title": "East China University of Political Science and Law 2026 undergraduate CSCA subjects DOCX",
+            "capturedAt": "2026-09-22T12:55:09.352Z",
+            "contentSha256": "95c79f83c33489afa6f5e49d486eabae5cd634c14cf4694d144ac3a0080a4cf3"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a mentally and physically healthy non-Chinese citizen holding a foreign ordinary passport and an education equivalent to Chinese senior high school or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed ECUPL admission application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport_photo",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a passport scan and personal photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a copy of the high-school graduation certificate; current graduates may initially provide expected-graduation proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "All undergraduate applicants must take CSCA Mathematics; Chinese-taught applicants must also take Liberal Arts Chinese.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 CSCA subject attachment"
+              }
+            ]
+          },
+          {
+            "key": "transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit copies of transcripts for all completed courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants",
+            "ruleText": "HSK Level 4 is required; applicants educated in Chinese at secondary-school level generally do not need a separate HSK certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility language requirements and Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two expert recommendation letters.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan of at least 500 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit proof of financial guarantee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a physical-examination report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Apply from May 1 through September 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Tuition and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 24,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "official 2026 program catalog and guide tuition section"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecupl-undergraduate-group-02-fall-2026",
+      "schoolSlug": "east-china-university-of-political-science-and-law",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-university-of-political-science-and-law-business-chinese-communication"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The guide links generic government-scholarship portals but does not publish complete route-specific award terms; no scholarship record or entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://study.ecupl.edu.cn/2025/1202/c10735a223431/page.htm",
+            "title": "East China University of Political Science and Law 2026 international undergraduate admission guide",
+            "capturedAt": "2026-09-22T12:55:07.015Z",
+            "contentSha256": "830ad26e35089e6adfa212e328b09726184f0554dabdb6cbc7dea0e0cdb6ec84"
+          },
+          {
+            "key": "catalog",
+            "url": "https://study.ecupl.edu.cn/_upload/article/files/80/dd/509280b84dcba4237777658d0329/4dd6ac12-463c-4939-9085-b94c81738b92.xls",
+            "title": "East China University of Political Science and Law 2026 international undergraduate program catalog XLS",
+            "capturedAt": "2026-09-22T12:55:08.223Z",
+            "contentSha256": "7eeb1e3c8dd1abafb5321f3fee0d1ac021c54a65c3903b38047582b1797244f6"
+          },
+          {
+            "key": "csca",
+            "url": "https://study.ecupl.edu.cn/_upload/article/files/80/dd/509280b84dcba4237777658d0329/e144e0ba-5795-4154-84e5-2bb64860b92b.docx",
+            "title": "East China University of Political Science and Law 2026 undergraduate CSCA subjects DOCX",
+            "capturedAt": "2026-09-22T12:55:09.352Z",
+            "contentSha256": "95c79f83c33489afa6f5e49d486eabae5cd634c14cf4694d144ac3a0080a4cf3"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a mentally and physically healthy non-Chinese citizen holding a foreign ordinary passport and an education equivalent to Chinese senior high school or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed ECUPL admission application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport_photo",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a passport scan and personal photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a copy of the high-school graduation certificate; current graduates may initially provide expected-graduation proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "All undergraduate applicants must take CSCA Mathematics. The Chinese-taught route also requires Liberal Arts Chinese, except that a valid HSK Level 4 score exempts the Business Chinese applicant from that subject.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 CSCA subject attachment"
+              }
+            ]
+          },
+          {
+            "key": "transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit copies of transcripts for all completed courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught applicants",
+            "ruleText": "HSK Level 3 is required for admission. An applicant with a valid HSK Level 4 score may be exempt from the CSCA Liberal Arts Chinese subject.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility language requirements and Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two expert recommendation letters.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan of at least 500 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit proof of financial guarantee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a physical-examination report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Apply from May 1 through September 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Tuition and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 22,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "official 2026 program catalog and guide tuition section"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecupl-undergraduate-group-03-fall-2026",
+      "schoolSlug": "east-china-university-of-political-science-and-law",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-university-of-political-science-and-law-international-business-law"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "The guide links generic government-scholarship portals but does not publish complete route-specific award terms; no scholarship record or entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://study.ecupl.edu.cn/2025/1202/c10735a223431/page.htm",
+            "title": "East China University of Political Science and Law 2026 international undergraduate admission guide",
+            "capturedAt": "2026-09-22T12:55:07.015Z",
+            "contentSha256": "830ad26e35089e6adfa212e328b09726184f0554dabdb6cbc7dea0e0cdb6ec84"
+          },
+          {
+            "key": "catalog",
+            "url": "https://study.ecupl.edu.cn/_upload/article/files/80/dd/509280b84dcba4237777658d0329/4dd6ac12-463c-4939-9085-b94c81738b92.xls",
+            "title": "East China University of Political Science and Law 2026 international undergraduate program catalog XLS",
+            "capturedAt": "2026-09-22T12:55:08.223Z",
+            "contentSha256": "7eeb1e3c8dd1abafb5321f3fee0d1ac021c54a65c3903b38047582b1797244f6"
+          },
+          {
+            "key": "csca",
+            "url": "https://study.ecupl.edu.cn/_upload/article/files/80/dd/509280b84dcba4237777658d0329/e144e0ba-5795-4154-84e5-2bb64860b92b.docx",
+            "title": "East China University of Political Science and Law 2026 undergraduate CSCA subjects DOCX",
+            "capturedAt": "2026-09-22T12:55:09.352Z",
+            "contentSha256": "95c79f83c33489afa6f5e49d486eabae5cd634c14cf4694d144ac3a0080a4cf3"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a mentally and physically healthy non-Chinese citizen holding a foreign ordinary passport and an education equivalent to Chinese senior high school or above.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "application_form",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the completed ECUPL admission application form.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "passport_photo",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a passport scan and personal photograph.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "diploma",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a copy of the high-school graduation certificate; current graduates may initially provide expected-graduation proof.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All undergraduate applicants",
+            "ruleText": "All undergraduate applicants must take CSCA Mathematics. The English-taught route does not require a Professional Chinese subject.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "csca",
+                "locator": "official 2026 CSCA subject attachment"
+              }
+            ]
+          },
+          {
+            "key": "transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit copies of transcripts for all completed courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught applicants",
+            "ruleText": "Pass the university's English telephone interview; applicants educated in English at secondary-school level generally do not need a separate English certificate.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility language requirements and Application Materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two expert recommendation letters.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan of at least 500 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "non_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit proof of financial guarantee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a physical-examination report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-funded applicants",
+            "ruleText": "Apply from May 1 through September 30, 2026; this historical cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Time"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Tuition and Application Method"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Pay the published tuition for this route: CNY 30,000/academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "catalog",
+                "locator": "official 2026 program catalog and guide tuition section"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

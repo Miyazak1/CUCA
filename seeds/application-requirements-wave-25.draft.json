@@ -1,0 +1,4345 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T08:34:09.319Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope Yanshan 2026 requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 13,
+    "readyTemplateCount": 13,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 63,
+    "targetedIntakeCount": 64,
+    "requirementItemCount": 252
+  },
+  "templates": [
+    {
+      "key": "yanshan-undergraduate-group-1-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "yanshan-university-electronic-science-and-technology"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be at least 18 and no older than 25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_rules",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Satisfy the nationality-status rules issued by China's Ministry of Education.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or equivalent with good academic performance and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the applicable academic transcripts and student-status certificate or graduation certificate; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "english_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants selecting English-taught study whose country's official mother tongue is not English",
+            "ruleText": "Submit Academic IELTS 6.0 overall with every band at least 5.5, TOEFL 85 overall with every band at least 20, GRE 300, Duolingo 95, equivalent proof, or evidence that the highest qualification was taught in English.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit recommendation letters from two course teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Pay the CNY 600 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "awards_and_publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Optionally submit awards, publications and other evidence of learning ability and comprehensive quality.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Undergraduate applicants",
+            "ruleText": "Submit the degree-program application by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Undergraduate students",
+            "ruleText": "Pay undergraduate tuition of CNY 15,700 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Undergraduate students",
+            "ruleText": "Purchase 12-month insurance under the published CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 for a ten-month shared bed, CNY 10,600 per academic year per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit CSCA results before the program deadline for: Mathematics, Physics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 program and CSCA tables"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-undergraduate-group-2-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "yanshan-university-economics-and-finance",
+        "yanshan-university-business-administration",
+        "yanshan-university-accounting",
+        "yanshan-university-tourism-management",
+        "yanshan-university-e-commerce",
+        "yanshan-university-japanese",
+        "yanshan-university-law",
+        "yanshan-university-chinese-language-and-literature",
+        "yanshan-university-teaching-chinese-to-speakers-of-other-languages"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be at least 18 and no older than 25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_rules",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Satisfy the nationality-status rules issued by China's Ministry of Education.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or equivalent with good academic performance and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the applicable academic transcripts and student-status certificate or graduation certificate; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "chinese_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants selecting Chinese-taught study",
+            "ruleText": "Submit HSK Level 4.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit recommendation letters from two course teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Pay the CNY 600 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "awards_and_publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Optionally submit awards, publications and other evidence of learning ability and comprehensive quality.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Undergraduate applicants",
+            "ruleText": "Submit the degree-program application by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Undergraduate students",
+            "ruleText": "Pay undergraduate tuition of CNY 15,700 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Undergraduate students",
+            "ruleText": "Purchase 12-month insurance under the published CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 for a ten-month shared bed, CNY 10,600 per academic year per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit CSCA results before the program deadline for: Chinese (Humanities), Mathematics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 program and CSCA tables"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-undergraduate-group-3-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "yanshan-university-industrial-engineering"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be at least 18 and no older than 25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_rules",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Satisfy the nationality-status rules issued by China's Ministry of Education.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or equivalent with good academic performance and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the applicable academic transcripts and student-status certificate or graduation certificate; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "chinese_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants selecting Chinese-taught study",
+            "ruleText": "Submit HSK Level 4.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit recommendation letters from two course teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Pay the CNY 600 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "awards_and_publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Optionally submit awards, publications and other evidence of learning ability and comprehensive quality.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Undergraduate applicants",
+            "ruleText": "Submit the degree-program application by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Undergraduate students",
+            "ruleText": "Pay undergraduate tuition of CNY 15,700 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Undergraduate students",
+            "ruleText": "Purchase 12-month insurance under the published CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 for a ten-month shared bed, CNY 10,600 per academic year per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit CSCA results before the program deadline for: Chinese (Humanities), Mathematics, Physics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 program and CSCA tables"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-undergraduate-group-4-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-yanshan-chemical-engineering-and-technology"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be at least 18 and no older than 25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_rules",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Satisfy the nationality-status rules issued by China's Ministry of Education.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or equivalent with good academic performance and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the applicable academic transcripts and student-status certificate or graduation certificate; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "chinese_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants selecting Chinese-taught study",
+            "ruleText": "Submit HSK Level 4.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit recommendation letters from two course teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Pay the CNY 600 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "awards_and_publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Optionally submit awards, publications and other evidence of learning ability and comprehensive quality.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Undergraduate applicants",
+            "ruleText": "Submit the degree-program application by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Undergraduate students",
+            "ruleText": "Pay undergraduate tuition of CNY 15,700 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Undergraduate students",
+            "ruleText": "Purchase 12-month insurance under the published CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 for a ten-month shared bed, CNY 10,600 per academic year per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit CSCA results before the program deadline for: Chinese (STEM), Mathematics.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 program and CSCA tables"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-undergraduate-group-5-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-yanshan-petroleum-engineering"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be at least 18 and no older than 25.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_rules",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Satisfy the nationality-status rules issued by China's Ministry of Education.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or equivalent with good academic performance and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the applicable academic transcripts and student-status certificate or graduation certificate; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "chinese_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants selecting Chinese-taught study",
+            "ruleText": "Submit HSK Level 4.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Undergraduate application requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit recommendation letters from two course teachers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Pay the CNY 600 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "awards_and_publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Optionally submit awards, publications and other evidence of learning ability and comprehensive quality.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Undergraduate applicants",
+            "ruleText": "Submit the degree-program application by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Undergraduate students",
+            "ruleText": "Pay undergraduate tuition of CNY 15,700 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Undergraduate students",
+            "ruleText": "Purchase 12-month insurance under the published CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 for a ten-month shared bed, CNY 10,600 per academic year per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit CSCA results before the program deadline for: Chinese (STEM), Mathematics, Physics, Chemistry.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 3 program and CSCA tables"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-master-chinese-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-yanshan-master-applied-economics",
+        "official-2026-yanshan-master-management-science-and-engineering",
+        "official-2026-yanshan-master-business-administration-enterprise-management",
+        "official-2026-yanshan-master-business-administration-accounting",
+        "official-2026-yanshan-master-business-administration-tourism-management",
+        "official-2026-yanshan-master-master-of-laws",
+        "official-2026-yanshan-master-juris-master-non-law",
+        "official-2026-yanshan-master-juris-master-law",
+        "official-2026-yanshan-master-international-chinese-language-education",
+        "official-2026-yanshan-master-public-management",
+        "official-2026-yanshan-master-chemical-engineering-and-technology",
+        "official-2026-yanshan-master-environmental-science-and-engineering",
+        "official-2026-yanshan-master-music",
+        "official-2026-yanshan-master-dance",
+        "official-2026-yanshan-master-petroleum-and-gas-engineering",
+        "official-2026-yanshan-master-physical-education-teaching",
+        "official-2026-yanshan-master-athletic-training"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be at least 18 and no older than 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_rules",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Satisfy the nationality-status rules issued by China's Ministry of Education.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or equivalent with good academic performance and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the applicable academic transcripts and student-status certificate or graduation certificate; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "chinese_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants selecting Chinese-taught study",
+            "ruleText": "Submit HSK Level 4.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit recommendation letters from two professors holding at least associate-professor rank.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the CNY 800 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "awards_and_publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "Optionally submit awards, publications and other evidence of learning ability and comprehensive quality.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Master applicants",
+            "ruleText": "Submit the degree-program application by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Master students",
+            "ruleText": "Pay master's tuition of CNY 19,800 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Master students",
+            "ruleText": "Purchase 12-month insurance under the published CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 for a ten-month shared bed, CNY 10,600 per academic year per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Contact a master supervisor independently and submit the resulting acceptance letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-master-english-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-yanshan-master-mba"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be at least 18 and no older than 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_rules",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Satisfy the nationality-status rules issued by China's Ministry of Education.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or equivalent with good academic performance and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the applicable academic transcripts and student-status certificate or graduation certificate; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "english_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants selecting English-taught study whose country's official mother tongue is not English",
+            "ruleText": "Submit Academic IELTS 6.0 overall with every band at least 5.5, TOEFL 85 overall with every band at least 20, GRE 300, Duolingo 95, equivalent proof, or evidence that the highest qualification was taught in English.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit recommendation letters from two professors holding at least associate-professor rank.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the CNY 800 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "awards_and_publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "Optionally submit awards, publications and other evidence of learning ability and comprehensive quality.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Master applicants",
+            "ruleText": "Submit the degree-program application by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Master students",
+            "ruleText": "Pay master's tuition of CNY 24,800 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Master students",
+            "ruleText": "Purchase 12-month insurance under the published CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 for a ten-month shared bed, CNY 10,600 per academic year per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Contact a master supervisor independently and submit the resulting acceptance letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-master-chinese-english-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-yanshan-master-mechanical-engineering",
+        "official-2026-yanshan-master-materials-physics-and-chemistry",
+        "official-2026-yanshan-master-materials-science",
+        "official-2026-yanshan-master-control-science-and-engineering",
+        "official-2026-yanshan-master-electrical-engineering",
+        "official-2026-yanshan-master-instrument-science-and-technology",
+        "official-2026-yanshan-master-electronic-science-and-technology",
+        "official-2026-yanshan-master-information-and-communication-engineering",
+        "official-2026-yanshan-master-computer-science-and-technology",
+        "official-2026-yanshan-master-english-language-and-literature",
+        "official-2026-yanshan-master-linguistics-and-applied-linguistics",
+        "official-2026-yanshan-master-civil-engineering",
+        "official-2026-yanshan-master-mechanics",
+        "official-2026-yanshan-master-physics",
+        "official-2026-yanshan-master-design",
+        "official-2026-yanshan-master-vehicle-engineering"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be at least 18 and no older than 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_rules",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Satisfy the nationality-status rules issued by China's Ministry of Education.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or equivalent with good academic performance and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the applicable academic transcripts and student-status certificate or graduation certificate; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "chinese_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Master applicants selecting Chinese-taught study",
+            "ruleText": "Submit HSK Level 4.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "english_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Master applicants selecting English-taught study whose country's official mother tongue is not English",
+            "ruleText": "Submit Academic IELTS 6.0 overall with every band at least 5.5, TOEFL 85 overall with every band at least 20, GRE 300, Duolingo 95, equivalent proof, or evidence that the highest qualification was taught in English.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Master application requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit recommendation letters from two professors holding at least associate-professor rank.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the CNY 800 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "awards_and_publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "Optionally submit awards, publications and other evidence of learning ability and comprehensive quality.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Master applicants",
+            "ruleText": "Submit the degree-program application by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Master students",
+            "ruleText": "Pay master's tuition of CNY 19,800 per academic year for Chinese-taught study or CNY 24,800 for English-taught study.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Master students",
+            "ruleText": "Purchase 12-month insurance under the published CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 for a ten-month shared bed, CNY 10,600 per academic year per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Contact a master supervisor independently and submit the resulting acceptance letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 4 application checklist"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-doctoral-chinese-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-yanshan-doctoral-public-management",
+        "official-2026-yanshan-doctoral-chemical-engineering-and-technology"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be at least 18 and no older than 40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_rules",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Satisfy the nationality-status rules issued by China's Ministry of Education.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or equivalent with good academic performance and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the applicable academic transcripts and student-status certificate or graduation certificate; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "chinese_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants selecting Chinese-taught study",
+            "ruleText": "Submit HSK Level 4.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit recommendation letters from two professors holding at least associate-professor rank.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Pay the CNY 800 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "awards_and_publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Optionally submit awards, publications and other evidence of learning ability and comprehensive quality.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Doctoral applicants",
+            "ruleText": "Submit the degree-program application by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Doctoral students",
+            "ruleText": "Pay doctoral tuition of CNY 23,100 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Doctoral students",
+            "ruleText": "Purchase 12-month insurance under the published CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 for a ten-month shared bed, CNY 10,600 per academic year per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Contact a doctoral supervisor independently and submit the resulting acceptance letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-doctoral-english-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-yanshan-doctoral-management-science-and-engineering",
+        "official-2026-yanshan-doctoral-business-administration"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be at least 18 and no older than 40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_rules",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Satisfy the nationality-status rules issued by China's Ministry of Education.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or equivalent with good academic performance and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the applicable academic transcripts and student-status certificate or graduation certificate; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "english_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants selecting English-taught study whose country's official mother tongue is not English",
+            "ruleText": "Submit Academic IELTS 6.0 overall with every band at least 5.5, TOEFL 85 overall with every band at least 20, GRE 300, Duolingo 95, equivalent proof, or evidence that the highest qualification was taught in English.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit recommendation letters from two professors holding at least associate-professor rank.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Pay the CNY 800 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "awards_and_publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Optionally submit awards, publications and other evidence of learning ability and comprehensive quality.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Doctoral applicants",
+            "ruleText": "Submit the degree-program application by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Doctoral students",
+            "ruleText": "Pay doctoral tuition of CNY 28,100 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Doctoral students",
+            "ruleText": "Purchase 12-month insurance under the published CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 for a ten-month shared bed, CNY 10,600 per academic year per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Contact a doctoral supervisor independently and submit the resulting acceptance letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-doctoral-chinese-english-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-yanshan-doctoral-mechanical-engineering",
+        "official-2026-yanshan-doctoral-materials-physics-and-chemistry",
+        "official-2026-yanshan-doctoral-materials-science",
+        "official-2026-yanshan-doctoral-control-science-and-engineering",
+        "official-2026-yanshan-doctoral-electrical-engineering",
+        "official-2026-yanshan-doctoral-electronic-science-and-technology",
+        "official-2026-yanshan-doctoral-information-and-communication-engineering",
+        "official-2026-yanshan-doctoral-computer-science-and-technology",
+        "official-2026-yanshan-doctoral-mechanics",
+        "official-2026-yanshan-doctoral-physics",
+        "official-2026-yanshan-doctoral-vehicle-engineering"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be at least 18 and no older than 40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_rules",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Satisfy the nationality-status rules issued by China's Ministry of Education.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or equivalent with good academic performance and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the applicable academic transcripts and student-status certificate or graduation certificate; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "chinese_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Doctoral applicants selecting Chinese-taught study",
+            "ruleText": "Submit HSK Level 4.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "english_requirement",
+            "category": "language",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Doctoral applicants selecting English-taught study whose country's official mother tongue is not English",
+            "ruleText": "Submit Academic IELTS 6.0 overall with every band at least 5.5, TOEFL 85 overall with every band at least 20, GRE 300, Duolingo 95, equivalent proof, or evidence that the highest qualification was taught in English.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure Doctoral application requirements"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit recommendation letters from two professors holding at least associate-professor rank.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Pay the CNY 800 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "awards_and_publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Optionally submit awards, publications and other evidence of learning ability and comprehensive quality.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Doctoral applicants",
+            "ruleText": "Submit the degree-program application by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Doctoral students",
+            "ruleText": "Pay doctoral tuition of CNY 23,100 per academic year for Chinese-taught study or CNY 28,100 for English-taught study.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Doctoral students",
+            "ruleText": "Purchase 12-month insurance under the published CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Students using university accommodation",
+            "ruleText": "Budget CNY 9,600 for a ten-month shared bed, CNY 10,600 per academic year per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Contact a doctoral supervisor independently and submit the resulting acceptance letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 5 application checklist"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-chinese-language-spring-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "spring-2026",
+      "targetProgramSlugs": [
+        "official-2026-yanshan-chinese-language-and-literature-nondegree"
+      ],
+      "targetIntake": {
+        "term": "Spring",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "derived_from_guide_context",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "The December 15, 2025 deadline is derived from the 2026 guide's Spring Semester row and requires editorial confirmation before publication."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Be at least 18 and no older than 45.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Hold a high-school diploma or equivalent and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit highest-stage transcripts and student-status or graduation evidence; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Pay the CNY 400 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Spring 2026 Chinese-language applicants",
+            "ruleText": "Submit by December 15, 2025, derived from the 2026 guide's Spring Semester December 15 row.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Chinese-language students",
+            "ruleText": "Pay CNY 7,000 per semester or CNY 14,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Chinese-language students",
+            "ruleText": "Purchase six-month insurance under the published CNY 500 or CNY 600 option, or 12-month insurance under the CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Chinese-language students using university accommodation",
+            "ruleText": "Budget CNY 4,800 per semester per bed, CNY 9,600 for ten months per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "yanshan-chinese-language-fall-2026",
+      "schoolSlug": "yanshan-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "official-2026-yanshan-chinese-language-and-literature-nondegree"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current 2027 application window."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "yanshan_guide",
+            "url": "https://ies.ysu.edu.cn/__local/9/FC/8B/08DC16E03C9604856804CC89E85_AADD68DD_5BC1FE.pdf",
+            "title": "Yanshan University 2026 international student admission guide PDF 2",
+            "capturedAt": "2026-10-15T08:28:35.805Z",
+            "contentSha256": "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Be a physically healthy non-Chinese citizen holding a valid foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 requirements"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Be at least 18 and no older than 45.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 requirements"
+              }
+            ]
+          },
+          {
+            "key": "education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Hold a high-school diploma or equivalent and provide the formal graduation certificate before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 requirements"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit a white-background two-inch ID photo, 30-80 KB, showing the applicant above the shoulders without accessories.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit the passport information page; passport validity must extend to March 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "academic_records",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit highest-stage transcripts and student-status or graduation evidence; documents not in Chinese or English require a notarized translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit a personal bank statement showing financial support above USD 5,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "no_criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit a certificate of no criminal record.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Submit a Foreigner Physical Examination Record valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "registration_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-language applicants",
+            "ruleText": "Pay the CNY 400 registration fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 6 checklist"
+              }
+            ]
+          },
+          {
+            "key": "online_submission",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All 2026 applicants",
+            "ruleText": "Apply through the Yanshan international admission system and upload high-definition scans of every required document; mobile-phone or camera images and ordinary copies are not accepted.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure pages 3-6, online-submission note"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 Chinese-language applicants",
+            "ruleText": "Submit by June 15, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 10 deadline table"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Chinese-language students",
+            "ruleText": "Pay CNY 7,000 per semester or CNY 14,000 per academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Chinese-language students",
+            "ruleText": "Purchase six-month insurance under the published CNY 500 or CNY 600 option, or 12-month insurance under the CNY 1,000 or CNY 1,200 option.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          },
+          {
+            "key": "accommodation",
+            "category": "other",
+            "stage": "preparation",
+            "level": "conditional",
+            "appliesTo": "Chinese-language students using university accommodation",
+            "ruleText": "Budget CNY 4,800 per semester per bed, CNY 9,600 for ten months per bed, or CNY 21,200 per year for a single independent room.",
+            "evidenceType": "self_report",
+            "references": [
+              {
+                "sourceKey": "yanshan_guide",
+                "locator": "brochure page 7 fee table"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

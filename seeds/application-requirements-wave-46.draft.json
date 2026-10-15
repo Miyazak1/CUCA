@@ -1,0 +1,495 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T11:01:54.590Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete-scope requirements for UCAS's 174 officially indexed English-instructed master's routes."
+  },
+  "summary": {
+    "templateCount": 1,
+    "readyTemplateCount": 1,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 174,
+    "targetedIntakeCount": 174,
+    "requirementItemCount": 17
+  },
+  "templates": [
+    {
+      "key": "ucas-english-master-fall-2026",
+      "schoolSlug": "university-of-chinese-academy-of-sciences",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "university-of-chinese-academy-of-sciences-master-010104-logic-english",
+        "university-of-chinese-academy-of-sciences-master-010105-ethics-english",
+        "university-of-chinese-academy-of-sciences-master-010108-philosophy-of-science-and-technology-english",
+        "university-of-chinese-academy-of-sciences-master-020106-population-resources-and-environmental-economics-english",
+        "university-of-chinese-academy-of-sciences-master-020202-regional-economics-english",
+        "university-of-chinese-academy-of-sciences-master-020204-finance-english",
+        "university-of-chinese-academy-of-sciences-master-020205-industrial-economics-english",
+        "university-of-chinese-academy-of-sciences-master-020209-quantitative-economics-english",
+        "university-of-chinese-academy-of-sciences-master-027000-statistics-english",
+        "university-of-chinese-academy-of-sciences-master-040200-psychology-english",
+        "university-of-chinese-academy-of-sciences-master-040201-basic-psychology-english",
+        "university-of-chinese-academy-of-sciences-master-040202-developmental-and-educational-psychology-english",
+        "university-of-chinese-academy-of-sciences-master-040203-applied-psychology-english",
+        "university-of-chinese-academy-of-sciences-master-0402z1-health-psychology-english",
+        "university-of-chinese-academy-of-sciences-master-0402z2-cognitive-neuroscience-english",
+        "university-of-chinese-academy-of-sciences-master-050302-communication-english",
+        "university-of-chinese-academy-of-sciences-master-060100-archaeology-english",
+        "university-of-chinese-academy-of-sciences-master-070102-computational-mathematics-english",
+        "university-of-chinese-academy-of-sciences-master-070103-probability-and-mathematical-statistics-english",
+        "university-of-chinese-academy-of-sciences-master-070104-applied-mathematics-english",
+        "university-of-chinese-academy-of-sciences-master-070105-operational-research-and-cybernetics-english",
+        "university-of-chinese-academy-of-sciences-master-070116-molecular-biology-english",
+        "university-of-chinese-academy-of-sciences-master-070200-physics-english",
+        "university-of-chinese-academy-of-sciences-master-070201-theoretical-physics-english",
+        "university-of-chinese-academy-of-sciences-master-070206-acoustics-english",
+        "university-of-chinese-academy-of-sciences-master-070207-optics-english",
+        "university-of-chinese-academy-of-sciences-master-070208-radio-physics-english",
+        "university-of-chinese-academy-of-sciences-master-070303-organic-chemistry-english",
+        "university-of-chinese-academy-of-sciences-master-0703z2-bioinorganic-chemistry-english",
+        "university-of-chinese-academy-of-sciences-master-070404-biotechnology-english",
+        "university-of-chinese-academy-of-sciences-master-070502-human-geography-english",
+        "university-of-chinese-academy-of-sciences-master-070520-natural-resources-english",
+        "university-of-chinese-academy-of-sciences-master-070601-meteorology-english",
+        "university-of-chinese-academy-of-sciences-master-0706z1-geophysical-fluid-dynamics-english",
+        "university-of-chinese-academy-of-sciences-master-070701-physical-oceanography-english",
+        "university-of-chinese-academy-of-sciences-master-070702-marine-chemistry-english",
+        "university-of-chinese-academy-of-sciences-master-070704-marine-geology-english",
+        "university-of-chinese-academy-of-sciences-master-070721-marine-pharmacology-english",
+        "university-of-chinese-academy-of-sciences-master-0707z1-marine-ecology-english",
+        "university-of-chinese-academy-of-sciences-master-0707z2-marine-corrosion-and-protection-english",
+        "university-of-chinese-academy-of-sciences-master-070802-space-physics-english",
+        "university-of-chinese-academy-of-sciences-master-0708z1-geodynamics-english",
+        "university-of-chinese-academy-of-sciences-master-0708z2-earth-and-space-detection-technology-english",
+        "university-of-chinese-academy-of-sciences-master-070902-geochemistry-english",
+        "university-of-chinese-academy-of-sciences-master-070903-paleontology-and-stratigraphy-english",
+        "university-of-chinese-academy-of-sciences-master-070904-structural-geology-english",
+        "university-of-chinese-academy-of-sciences-master-070905-quaternary-geology-english",
+        "university-of-chinese-academy-of-sciences-master-0709z1-geobiology-english",
+        "university-of-chinese-academy-of-sciences-master-071002-zoology-english",
+        "university-of-chinese-academy-of-sciences-master-071004-hydrobiology-english",
+        "university-of-chinese-academy-of-sciences-master-071006-neurobiology-english",
+        "university-of-chinese-academy-of-sciences-master-071008-developmental-biology-english",
+        "university-of-chinese-academy-of-sciences-master-071009-cell-biology-english",
+        "university-of-chinese-academy-of-sciences-master-071018-environmental-biology-english",
+        "university-of-chinese-academy-of-sciences-master-071022-genomics-english",
+        "university-of-chinese-academy-of-sciences-master-0710z1-genomics-english",
+        "university-of-chinese-academy-of-sciences-master-0710z2-computational-biology-english",
+        "university-of-chinese-academy-of-sciences-master-071101-systems-science-english",
+        "university-of-chinese-academy-of-sciences-master-0712z1-history-of-science-english",
+        "university-of-chinese-academy-of-sciences-master-0712z2-history-of-technology-english",
+        "university-of-chinese-academy-of-sciences-master-071300-ecology-english",
+        "university-of-chinese-academy-of-sciences-master-077121-cognitive-neuroscience-english",
+        "university-of-chinese-academy-of-sciences-master-0771z1-medical-psychology-english",
+        "university-of-chinese-academy-of-sciences-master-0771z2-cognitive-neuroscience-english",
+        "university-of-chinese-academy-of-sciences-master-077601-environmental-science-english",
+        "university-of-chinese-academy-of-sciences-master-077803-pathologic-organisms-english",
+        "university-of-chinese-academy-of-sciences-master-078001-medicinal-chemistry-english",
+        "university-of-chinese-academy-of-sciences-master-078002-pharmaceutics-english",
+        "university-of-chinese-academy-of-sciences-master-078006-pharmacology-english",
+        "university-of-chinese-academy-of-sciences-master-079901-planetary-science-english",
+        "university-of-chinese-academy-of-sciences-master-080042-nanoscience-and-technology-english",
+        "university-of-chinese-academy-of-sciences-master-080101-general-and-fundamental-mechanics-english",
+        "university-of-chinese-academy-of-sciences-master-080103-fluid-mechanics-english",
+        "university-of-chinese-academy-of-sciences-master-080119-zoology-english",
+        "university-of-chinese-academy-of-sciences-master-080124-microbiology-english",
+        "university-of-chinese-academy-of-sciences-master-080181-environmental-science-english",
+        "university-of-chinese-academy-of-sciences-master-080185-environmental-science-english",
+        "university-of-chinese-academy-of-sciences-master-080201-mechanical-manufacture-and-automation-english",
+        "university-of-chinese-academy-of-sciences-master-080202-mechatronic-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-080300-optical-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-080401-precision-instrument-and-machinery-english",
+        "university-of-chinese-academy-of-sciences-master-080402-measuring-and-testing-technologies-and-instruments-english",
+        "university-of-chinese-academy-of-sciences-master-080500-material-science-and-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-080503-materials-processing-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-0805j1-nanoscience-and-technology-english",
+        "university-of-chinese-academy-of-sciences-master-0805z1-corrosion-science-and-protection-english",
+        "university-of-chinese-academy-of-sciences-master-0805z2-semiconductor-materials-and-devices-english",
+        "university-of-chinese-academy-of-sciences-master-080703-power-machinery-and-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-080704-fluid-machinery-and-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-080705-refrigeration-and-cryogenic-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-080722-computer-science-and-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-080801-electric-machines-and-electric-apparatus-english",
+        "university-of-chinese-academy-of-sciences-master-080802-power-system-and-its-automation-english",
+        "university-of-chinese-academy-of-sciences-master-080803-high-voltage-and-insulation-technology-english",
+        "university-of-chinese-academy-of-sciences-master-080804-power-electronics-and-power-drives-english",
+        "university-of-chinese-academy-of-sciences-master-080805-theory-and-new-technology-of-electrical-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-0808z1-bioelectrics-english",
+        "university-of-chinese-academy-of-sciences-master-0808z2-new-materials-and-devices-of-energy-and-electrical-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-080901-physical-electronics-english",
+        "university-of-chinese-academy-of-sciences-master-080902-circuits-and-systems-english",
+        "university-of-chinese-academy-of-sciences-master-080903-microelectronics-and-solid-state-electronics-english",
+        "university-of-chinese-academy-of-sciences-master-080904-electromagnetic-field-and-microwave-technology-english",
+        "university-of-chinese-academy-of-sciences-master-081002-signal-and-information-processing-english",
+        "university-of-chinese-academy-of-sciences-master-081100-control-science-and-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-081102-measurement-technique-and-automation-equipment-english",
+        "university-of-chinese-academy-of-sciences-master-081201-computer-systems-organization-english",
+        "university-of-chinese-academy-of-sciences-master-081202-computer-software-and-theory-english",
+        "university-of-chinese-academy-of-sciences-master-081220-information-security-english",
+        "university-of-chinese-academy-of-sciences-master-0812z1-information-security-english",
+        "university-of-chinese-academy-of-sciences-master-081400-civil-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-081405-disaster-prevention-and-reduction-engineering-and-protective-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-081601-geodesy-and-survey-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-081704-applied-chemistry-english",
+        "university-of-chinese-academy-of-sciences-master-081705-industrial-catalysis-english",
+        "university-of-chinese-academy-of-sciences-master-081801-mineral-resources-and-geological-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-081803-geological-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-082701-nuclear-energy-science-and-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-082703-nuclear-technology-and-applications-english",
+        "university-of-chinese-academy-of-sciences-master-082704-radiation-and-environmental-protection-english",
+        "university-of-chinese-academy-of-sciences-master-083000-environmental-science-and-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-083002-environmental-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-0830j5-food-safety-and-health-english",
+        "university-of-chinese-academy-of-sciences-master-0830z1-environmental-economy-and-environment-management-english",
+        "university-of-chinese-academy-of-sciences-master-083100-biomedical-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-083500-software-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-085212-software-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-085400-electronic-information-english",
+        "university-of-chinese-academy-of-sciences-master-085600-materials-and-chemical-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-085601-materials-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-086000-biological-and-pharmaceutical-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-090102-crop-genetics-and-breeding-english",
+        "university-of-chinese-academy-of-sciences-master-090301-soil-science-english",
+        "university-of-chinese-academy-of-sciences-master-090302-plant-nutrition-english",
+        "university-of-chinese-academy-of-sciences-master-0903z1-resouces-environment-and-remote-sensing-information-english",
+        "university-of-chinese-academy-of-sciences-master-090502-animal-nutrition-and-feed-science-english",
+        "university-of-chinese-academy-of-sciences-master-090601-agricultural-economic-management-english",
+        "university-of-chinese-academy-of-sciences-master-090702-silviculture-english",
+        "university-of-chinese-academy-of-sciences-master-090704-forest-management-english",
+        "university-of-chinese-academy-of-sciences-master-090705-wildlife-conservation-and-utilization-english",
+        "university-of-chinese-academy-of-sciences-master-090706-ornamental-plants-and-horticulture-english",
+        "university-of-chinese-academy-of-sciences-master-090801-aquaculture-science-english",
+        "university-of-chinese-academy-of-sciences-master-100101-human-anatomy-histology-and-embryology-english",
+        "university-of-chinese-academy-of-sciences-master-100102-immunology-english",
+        "university-of-chinese-academy-of-sciences-master-100103-pathologic-organisms-english",
+        "university-of-chinese-academy-of-sciences-master-100104-pathology-and-pathophysiology-english",
+        "university-of-chinese-academy-of-sciences-master-100701-medicinal-chemistry-english",
+        "university-of-chinese-academy-of-sciences-master-100702-pharmaceutics-english",
+        "university-of-chinese-academy-of-sciences-master-100704-pharmaceutical-analysis-english",
+        "university-of-chinese-academy-of-sciences-master-100705-microbial-and-biochemical-pharmacy-english",
+        "university-of-chinese-academy-of-sciences-master-100706-pharmacology-english",
+        "university-of-chinese-academy-of-sciences-master-1007z1-drug-design-english",
+        "university-of-chinese-academy-of-sciences-master-100800-chinese-materia-medica-english",
+        "university-of-chinese-academy-of-sciences-master-120100-management-science-and-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-120121-innovation-management-english",
+        "university-of-chinese-academy-of-sciences-master-1201j4-economic-computation-and-simulation-english",
+        "university-of-chinese-academy-of-sciences-master-1201z1-management-operational-research-english",
+        "university-of-chinese-academy-of-sciences-master-1201z2-innovation-management-english",
+        "university-of-chinese-academy-of-sciences-master-120202-corporate-management-english",
+        "university-of-chinese-academy-of-sciences-master-120204-technology-economy-and-management-english",
+        "university-of-chinese-academy-of-sciences-master-120401-public-administration-english",
+        "university-of-chinese-academy-of-sciences-master-120502-information-science-english",
+        "university-of-chinese-academy-of-sciences-master-125100-mba-english",
+        "university-of-chinese-academy-of-sciences-master-140100-integrated-circuit-science-and-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-140400-remote-sensing-science-and-technology-english",
+        "university-of-chinese-academy-of-sciences-master-70201-theoretical-physics-english",
+        "university-of-chinese-academy-of-sciences-master-70702-marine-chemistry-english",
+        "university-of-chinese-academy-of-sciences-master-80132-computer-systems-organization-english",
+        "university-of-chinese-academy-of-sciences-master-80143-condensed-matter-physics-english",
+        "university-of-chinese-academy-of-sciences-master-80149-power-engineering-and-engineering-thermophysics-english",
+        "university-of-chinese-academy-of-sciences-master-80185-environmental-science-english",
+        "university-of-chinese-academy-of-sciences-master-80212-materials-science-and-engineering-english",
+        "university-of-chinese-academy-of-sciences-master-80903-microelectronics-and-solid-state-electronics-english",
+        "university-of-chinese-academy-of-sciences-master-81001-communication-and-information-system-english",
+        "university-of-chinese-academy-of-sciences-master-81702-chemical-technology-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Scope is exactly the 174 English-instructed master's majors exposed by the official international-major index; it does not claim to cover Chinese-instructed or doctoral routes.",
+        "This is a closed historical Fall 2026 cycle and must not be presented as open.",
+        "Scholarship eligibility remains governed by the three independent official award records; no entitlement is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://english.ucas.ac.cn/index.php/admission/international-students/notice/6654-call-for-2026-master-s-doctoral-degree-programs-for-international-students",
+            "title": "University of Chinese Academy of Sciences 2026 international graduate admission",
+            "capturedAt": "2026-09-13T14:53:20.507Z",
+            "contentSha256": "becc112bc169655952fa8a41172e6fdc60162744489a265527a8838521fbb45c"
+          },
+          {
+            "key": "catalog",
+            "url": "https://english.ucas.ac.cn/index.php/admission/international-students/major",
+            "title": "University of Chinese Academy of Sciences international major index",
+            "capturedAt": "2026-09-13T14:53:22.004Z",
+            "contentSha256": "f99b9c7944a3ebb77a7d4a849985e442d86d6f1696907871beb63ad5456b2366"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "eligibility",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-instructed master's applicants",
+            "ruleText": "Be a non-Chinese citizen, comply with Chinese laws and UCAS rules, and be of good character and health without a condition that prevents normal study.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "General Conditions (1)-(2)"
+              }
+            ]
+          },
+          {
+            "key": "degree",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master's applicants",
+            "ruleText": "Hold a degree or academic qualification equivalent to a Chinese bachelor's degree; country-specific degree provisions apply where published.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "General Conditions (3) and Attachment 1"
+              }
+            ]
+          },
+          {
+            "key": "english",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-instructed applicants",
+            "ruleText": "Submit a valid IELTS or TOEFL result or other proof of English proficiency; this is not required when English is the applicant's mother tongue. The call does not publish a numeric threshold.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "General Conditions (4) and Application Materials: proficiency certificates"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit one complete application through the UCAS international online application system within the application period; duplicate accounts or multiple applications are disqualifying.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Online Application"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_photo",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the ordinary-passport information page, with at least one year validity, and a recent two-inch bareheaded photo matching the passport photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials: passport and photo"
+              }
+            ]
+          },
+          {
+            "key": "cv",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a complete CV covering all education and research experience from university onward; currently employed applicants must attach employment certification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials: complete CV"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master's applicants",
+            "ruleText": "Submit the bachelor's degree certificate; an applicant graduating before September 2026 may submit official expected-graduation proof and must provide the final certificate before registration if admitted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials: degree certificates"
+              }
+            ]
+          },
+          {
+            "key": "transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master's applicants",
+            "ruleText": "Submit the complete original undergraduate transcript; a current student may submit the official transcript to date and must provide the final complete transcript before registration if admitted.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials: academic transcripts"
+              }
+            ]
+          },
+          {
+            "key": "publications",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants with published academic papers",
+            "ruleText": "Optionally submit the first page and abstract of up to five representative published papers; do not submit unpublished papers.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials: published academic papers"
+              }
+            ]
+          },
+          {
+            "key": "motivation_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a motivation letter covering the purpose of studying in China, academic background, reasons for applying, study plan and career goals.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials: motivation letter"
+              }
+            ]
+          },
+          {
+            "key": "references",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit two reference letters from professors or associate professors who know the applicant's academic background, are not the prospective UCAS supervisor, and use signed and dated institutional letterhead.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials: two reference letters"
+              }
+            ]
+          },
+          {
+            "key": "supervisor_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who already have supervisor acceptance",
+            "ruleText": "Upload the UCAS Supervisor's Acceptance Form when available; obtaining it before application is encouraged but not mandatory.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials: supervisor acceptance form"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Self-funded or externally funded applicants",
+            "ruleText": "Provide the applicable funding proof. Self-funded applicants submit a sponsor guarantee letter and an original or notarized bank statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials: financial support"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants without an eligible fee-waiver scholarship",
+            "ruleText": "Pay the non-refundable RMB 600 application fee and submit its bank receipt. The three named UCAS-administered scholarship categories are exempt under the call.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Materials: bank receipt; Fees (1)"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 degree applicants",
+            "ruleText": "Apply between October 15, 2025 and April 15, 2026; this historical cycle is closed. Scholarship applicants must meet the earlier scholarship-specific deadline.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Deadline"
+              }
+            ]
+          },
+          {
+            "key": "assessment",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants who pass document review",
+            "ruleText": "Complete the admission examination determined by the selected college or institute, mainly an interview and potentially a written test; final selection is merit-based.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Evaluation and Admission"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled English-instructed master's students",
+            "ruleText": "Pay RMB 30,000 per year unless an awarded scholarship waives tuition.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fees and Scholarships: tuition"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

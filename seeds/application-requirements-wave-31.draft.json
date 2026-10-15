@@ -1,0 +1,3619 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-15T09:33:19.818Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Source-located complete-scope XMU 2026 requirements bound only to exact closed program-intake records."
+  },
+  "summary": {
+    "templateCount": 8,
+    "readyTemplateCount": 8,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 535,
+    "targetedIntakeCount": 535,
+    "requirementItemCount": 184
+  },
+  "templates": [
+    {
+      "key": "xmu-undergraduate-chinese-fall-2026",
+      "schoolSlug": "xiamen-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiamen-university-undergraduate-materials-science-and-engineering-chinese-table-1-1",
+        "xiamen-university-undergraduate-theater-film-and-television-literature-chinese-table-2-2",
+        "xiamen-university-undergraduate-electronic-information-engineering-chinese-table-3-3",
+        "xiamen-university-undergraduate-electronic-information-science-and-technology-chinese-table-4-4",
+        "xiamen-university-undergraduate-integrated-circuit-design-and-integrated-system-chinese-table-5-5",
+        "xiamen-university-undergraduate-microelectronic-science-and-technology-chinese-table-6-6",
+        "xiamen-university-undergraduate-law-chinese-table-7-7",
+        "xiamen-university-undergraduate-administration-management-chinese-table-8-8",
+        "xiamen-university-undergraduate-politics-and-administration-chinese-table-9-9",
+        "xiamen-university-undergraduate-medical-laboratory-technology-chinese-table-10-10",
+        "xiamen-university-undergraduate-preventive-medicine-chinese-table-11-11",
+        "xiamen-university-undergraduate-financial-management-chinese-table-12-12",
+        "xiamen-university-undergraduate-electronic-commerce-chinese-table-13-13",
+        "xiamen-university-undergraduate-management-science-chinese-table-14-14",
+        "xiamen-university-undergraduate-accounting-chinese-table-15-15",
+        "xiamen-university-undergraduate-auditing-chinese-table-16-16",
+        "xiamen-university-undergraduate-tourism-management-chinese-table-17-17",
+        "xiamen-university-undergraduate-business-administration-chinese-table-18-18",
+        "xiamen-university-undergraduate-human-resource-management-chinese-table-19-19",
+        "xiamen-university-undergraduate-marketing-chinese-table-20-20",
+        "xiamen-university-undergraduate-international-politics-chinese-table-21-21",
+        "xiamen-university-undergraduate-chinese-language-education-chinese-table-22-22",
+        "xiamen-university-undergraduate-chinese-language-trade-chinese-table-23-23",
+        "xiamen-university-undergraduate-chinese-language-culture-chinese-table-24-24",
+        "xiamen-university-undergraduate-marine-science-chinese-table-25-25",
+        "xiamen-university-undergraduate-marine-science-chinese-table-26-26",
+        "xiamen-university-undergraduate-marine-technology-chinese-table-27-27",
+        "xiamen-university-undergraduate-marine-science-chinese-table-28-28",
+        "xiamen-university-undergraduate-marine-science-chinese-table-29-29",
+        "xiamen-university-undergraduate-marine-technology-chinese-table-30-30",
+        "xiamen-university-undergraduate-aircraft-power-engineering-chinese-table-31-31",
+        "xiamen-university-undergraduate-aircraft-design-and-engineering-chinese-table-32-32",
+        "xiamen-university-undergraduate-mechanical-design-and-manufacturing-and-automation-chinese-table-33-33",
+        "xiamen-university-undergraduate-measuring-and-control-technology-and-instruments-chinese-table-34-34",
+        "xiamen-university-undergraduate-automation-chinese-table-35-35",
+        "xiamen-university-undergraduate-chemical-engineering-and-technology-chinese-table-36-36",
+        "xiamen-university-undergraduate-chemical-biology-chinese-table-37-37",
+        "xiamen-university-undergraduate-chemistry-chinese-table-38-38",
+        "xiamen-university-undergraduate-chemistry-metrology-and-technology-chinese-table-39-39",
+        "xiamen-university-undergraduate-energy-chemistry-chinese-table-40-40",
+        "xiamen-university-undergraduate-environmental-science-chinese-table-41-41",
+        "xiamen-university-undergraduate-ecology-chinese-table-42-42",
+        "xiamen-university-undergraduate-urban-and-rural-planning-chinese-table-43-43",
+        "xiamen-university-undergraduate-architecture-chinese-table-44-44",
+        "xiamen-university-undergraduate-civil-engineering-chinese-table-45-45",
+        "xiamen-university-undergraduate-public-finance-chinese-table-46-46",
+        "xiamen-university-undergraduate-taxation-chinese-table-47-47",
+        "xiamen-university-undergraduate-international-economics-and-trade-chinese-table-48-48",
+        "xiamen-university-undergraduate-financial-engineering-chinese-table-49-49",
+        "xiamen-university-undergraduate-finance-chinese-table-50-50",
+        "xiamen-university-undergraduate-economics-chinese-table-51-51",
+        "xiamen-university-undergraduate-archaeology-chinese-table-52-52",
+        "xiamen-university-undergraduate-history-chinese-table-53-53",
+        "xiamen-university-undergraduate-energy-storage-science-and-engineering-chinese-table-54-54",
+        "xiamen-university-undergraduate-new-energy-science-and-engineering-chinese-table-55-55",
+        "xiamen-university-undergraduate-anthropology-chinese-table-56-56",
+        "xiamen-university-undergraduate-sociology-chinese-table-57-57",
+        "xiamen-university-undergraduate-biotechnology-chinese-table-58-58",
+        "xiamen-university-undergraduate-biological-science-chinese-table-59-59",
+        "xiamen-university-undergraduate-statistics-chinese-table-60-60",
+        "xiamen-university-undergraduate-mathematics-and-applied-mathematics-chinese-table-61-61",
+        "xiamen-university-undergraduate-information-and-computational-science-chinese-table-62-62",
+        "xiamen-university-undergraduate-french-chinese-table-63-63",
+        "xiamen-university-undergraduate-russian-chinese-table-64-64",
+        "xiamen-university-undergraduate-spanish-chinese-table-65-65",
+        "xiamen-university-undergraduate-japanese-chinese-table-66-66",
+        "xiamen-university-undergraduate-english-chinese-table-67-67",
+        "xiamen-university-undergraduate-astronomy-chinese-table-68-68",
+        "xiamen-university-undergraduate-physics-chinese-table-69-69",
+        "xiamen-university-undergraduate-communication-chinese-table-70-70",
+        "xiamen-university-undergraduate-advertising-chinese-table-71-71",
+        "xiamen-university-undergraduate-international-journalism-and-communication-chinese-table-72-72",
+        "xiamen-university-undergraduate-journalism-chinese-table-73-73",
+        "xiamen-university-undergraduate-computer-science-and-technology-chinese-table-74-74",
+        "xiamen-university-undergraduate-artificial-intelligent-chinese-table-75-75",
+        "xiamen-university-undergraduate-software-engineering-chinese-table-76-76",
+        "xiamen-university-undergraduate-communication-engineering-chinese-table-77-77",
+        "xiamen-university-undergraduate-pharmacy-chinese-table-78-78",
+        "xiamen-university-undergraduate-art-chinese-table-79-79",
+        "xiamen-university-undergraduate-music-performance-chinese-table-80-80",
+        "xiamen-university-undergraduate-musicology-chinese-table-81-81",
+        "xiamen-university-undergraduate-philosophy-chinese-table-82-82",
+        "xiamen-university-undergraduate-chinese-language-chinese-table-83-83",
+        "xiamen-university-undergraduate-chinese-language-and-literature-chinese-table-84-84"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Where the official guide publishes a tuition range by discipline rather than a program-level fee, the range is retained and no amount is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admissions.xmu.edu.cn/Admissions/Undergraduate_Students.htm",
+            "title": "Xiamen University 2026 International Undergraduate Admission Guide",
+            "capturedAt": "2026-09-13T07:30:04.135Z",
+            "contentSha256": "700a45c5f482eec8f2ebde02a86bd208d709f29e0f97e641fe0e095fbaf9b569"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen, physically and mentally healthy, friendly to China, and hold a valid regular foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or above and be 18 to 30 years old by September 1, 2026. Applicants under 18 must provide the required guardian documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants formerly holding Chinese nationality or born abroad to Chinese parents",
+            "ruleText": "Meet the guide's nationality-document and overseas-residence rules, including the applicable four-year foreign-passport period and two years of actual overseas residence during the preceding four years.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Nationality requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium undergraduate applicants",
+            "ruleText": "For Chinese-medium study, humanities, economics, management, law and arts generally require HSK 5 with 210; science, engineering, medicine and physical education generally require HSK 4 with 210. A qualifying prior Chinese-medium education certificate may replace the HSK evidence under the guide.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Language proficiency"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 undergraduate applicants",
+            "ruleText": "Apply online from December 1, 2025 through May 10, 2026. Scholarship application deadlines are earlier and follow the corresponding scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "II. Application Timeline"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Register in the XMU international student application system, complete the application, upload the required records and pay the application fee online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "III. Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport_identity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the passport information page valid through at least October 31, 2026, birth certificate, and identity documents of both parents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the high-school diploma and complete high-school transcripts. Current students may submit expected-graduation proof but must present the final original diploma at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium undergraduate applicants",
+            "ruleText": "For Chinese-medium study, humanities, economics, management, law and arts generally require HSK 5 with 210; science, engineering, medicine and physical education generally require HSK 4 with 210. A qualifying prior Chinese-medium education certificate may replace the HSK evidence under the guide.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium undergraduate applicants",
+            "ruleText": "Submit CSCA Mathematics and Professional Chinese; the guide exempts the Chinese-language major when HSK 4 or above is supplied. Applicants to science, engineering, agriculture and medicine also submit Physics and/or Chemistry. The test language follows the program medium.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 6 - CSCA"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit one recommendation letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a personal statement of at least 800 words in the language of instruction.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "pre_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "A pre-acceptance letter from an XMU academic unit may be submitted when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form and its attachments, completed as required and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants, including scholarship applicants",
+            "ruleText": "Submit the financial guarantee statement and supporting financial records. Applying for a scholarship does not waive this document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "portfolio",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to art-related programs",
+            "ruleText": "Submit the portfolio required by the relevant program; other applicants may submit supporting awards or achievement evidence when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translation_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose records are not in Chinese or English",
+            "ruleText": "Provide notarized Chinese or English translations. XMU may request original or supplementary records and materials are not returned.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents - Notes"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing document review",
+            "ruleText": "Undergo XMU's comprehensive qualification review and the admitting unit's assessment, which may include a remote interview or written examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VI. Admission and Selection"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled Chinese-medium undergraduate students in this route",
+            "ruleText": "Pay annual tuition of RMB 24,000 or 26,000 according to discipline category.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Purchase comprehensive medical insurance at RMB 800 per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "accommodation_living",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for campus-dependent accommodation and living costs: published accommodation ranges include RMB 35-65/day at Siming, RMB 1,600-4,000/year at Xiang'an, and RMB 1,100-1,200/year at Zhangzhou; the guide estimates food at RMB 1,000-1,500/month.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xmu-undergraduate-english-arts-fall-2026",
+      "schoolSlug": "xiamen-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiamen-university-undergraduate-environmental-design-english-table-1-1",
+        "xiamen-university-undergraduate-visual-communication-design-english-table-2-2",
+        "xiamen-university-undergraduate-digital-media-art-english-table-3-3"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Where the official guide publishes a tuition range by discipline rather than a program-level fee, the range is retained and no amount is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admissions.xmu.edu.cn/Admissions/Undergraduate_Students.htm",
+            "title": "Xiamen University 2026 International Undergraduate Admission Guide",
+            "capturedAt": "2026-09-13T07:30:04.135Z",
+            "contentSha256": "700a45c5f482eec8f2ebde02a86bd208d709f29e0f97e641fe0e095fbaf9b569"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen, physically and mentally healthy, friendly to China, and hold a valid regular foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or above and be 18 to 30 years old by September 1, 2026. Applicants under 18 must provide the required guardian documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants formerly holding Chinese nationality or born abroad to Chinese parents",
+            "ruleText": "Meet the guide's nationality-document and overseas-residence rules, including the applicable four-year foreign-passport period and two years of actual overseas residence during the preceding four years.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Nationality requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium undergraduate applicants",
+            "ruleText": "Submit TOEFL iBT 80, IELTS Academic 6.0, qualifying prior English-medium study evidence, or another XMU-recognized equivalent; applicants from countries where English is an official language are exempt.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Language proficiency"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 undergraduate applicants",
+            "ruleText": "Apply online from December 1, 2025 through May 10, 2026. Scholarship application deadlines are earlier and follow the corresponding scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "II. Application Timeline"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Register in the XMU international student application system, complete the application, upload the required records and pay the application fee online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "III. Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport_identity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the passport information page valid through at least October 31, 2026, birth certificate, and identity documents of both parents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the high-school diploma and complete high-school transcripts. Current students may submit expected-graduation proof but must present the final original diploma at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium undergraduate applicants",
+            "ruleText": "Submit TOEFL iBT 80, IELTS Academic 6.0, qualifying prior English-medium study evidence, or another XMU-recognized equivalent; applicants from countries where English is an official language are exempt.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium undergraduate applicants",
+            "ruleText": "Submit CSCA Mathematics in English. Physics and/or Chemistry apply only to science, engineering, agriculture and medicine, so they are not listed as required for these English-medium arts routes.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 6 - CSCA"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit one recommendation letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a personal statement of at least 800 words in the language of instruction.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "pre_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "A pre-acceptance letter from an XMU academic unit may be submitted when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form and its attachments, completed as required and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants, including scholarship applicants",
+            "ruleText": "Submit the financial guarantee statement and supporting financial records. Applying for a scholarship does not waive this document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "portfolio",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to art-related programs",
+            "ruleText": "Submit the portfolio required by the relevant program; other applicants may submit supporting awards or achievement evidence when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translation_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose records are not in Chinese or English",
+            "ruleText": "Provide notarized Chinese or English translations. XMU may request original or supplementary records and materials are not returned.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents - Notes"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing document review",
+            "ruleText": "Undergo XMU's comprehensive qualification review and the admitting unit's assessment, which may include a remote interview or written examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VI. Admission and Selection"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled English-medium undergraduate students in this route",
+            "ruleText": "Pay annual tuition of RMB 90,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Purchase comprehensive medical insurance at RMB 800 per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "accommodation_living",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for campus-dependent accommodation and living costs: published accommodation ranges include RMB 35-65/day at Siming, RMB 1,600-4,000/year at Xiang'an, and RMB 1,100-1,200/year at Zhangzhou; the guide estimates food at RMB 1,000-1,500/month.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xmu-undergraduate-english-mbbs-fall-2026",
+      "schoolSlug": "xiamen-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiamen-university-undergraduate-clinical-medicine-mbbs-english-table-4-4"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Where the official guide publishes a tuition range by discipline rather than a program-level fee, the range is retained and no amount is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admissions.xmu.edu.cn/Admissions/Undergraduate_Students.htm",
+            "title": "Xiamen University 2026 International Undergraduate Admission Guide",
+            "capturedAt": "2026-09-13T07:30:04.135Z",
+            "contentSha256": "700a45c5f482eec8f2ebde02a86bd208d709f29e0f97e641fe0e095fbaf9b569"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Be a non-Chinese citizen, physically and mentally healthy, friendly to China, and hold a valid regular foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "International undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or above and be 18 to 30 years old by September 1, 2026. Applicants under 18 must provide the required guardian documents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants formerly holding Chinese nationality or born abroad to Chinese parents",
+            "ruleText": "Meet the guide's nationality-document and overseas-residence rules, including the applicable four-year foreign-passport period and two years of actual overseas residence during the preceding four years.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Nationality requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium undergraduate applicants",
+            "ruleText": "Submit TOEFL iBT 80, IELTS Academic 6.0, qualifying prior English-medium study evidence, or another XMU-recognized equivalent; applicants from countries where English is an official language are exempt.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Language proficiency"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 undergraduate applicants",
+            "ruleText": "Apply online from December 1, 2025 through May 10, 2026. Scholarship application deadlines are earlier and follow the corresponding scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "II. Application Timeline"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 undergraduate applicants",
+            "ruleText": "Register in the XMU international student application system, complete the application, upload the required records and pay the application fee online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "III. Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport_identity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the passport information page valid through at least October 31, 2026, birth certificate, and identity documents of both parents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "diploma_transcript",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the high-school diploma and complete high-school transcripts. Current students may submit expected-graduation proof but must present the final original diploma at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium undergraduate applicants",
+            "ruleText": "Submit TOEFL iBT 80, IELTS Academic 6.0, qualifying prior English-medium study evidence, or another XMU-recognized equivalent; applicants from countries where English is an official language are exempt.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium undergraduate applicants",
+            "ruleText": "Submit CSCA Mathematics plus Physics and/or Chemistry in English; Professional Chinese is not required for this English-medium route.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 6 - CSCA"
+              }
+            ]
+          },
+          {
+            "key": "recommendation",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit one recommendation letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a personal statement of at least 800 words in the language of instruction.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "pre_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "A pre-acceptance letter from an XMU academic unit may be submitted when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form and its attachments, completed as required and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants, including scholarship applicants",
+            "ruleText": "Submit the financial guarantee statement and supporting financial records. Applying for a scholarship does not waive this document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "portfolio",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to art-related programs",
+            "ruleText": "Submit the portfolio required by the relevant program; other applicants may submit supporting awards or achievement evidence when available.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translation_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose records are not in Chinese or English",
+            "ruleText": "Provide notarized Chinese or English translations. XMU may request original or supplementary records and materials are not returned.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents - Notes"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing document review",
+            "ruleText": "Undergo XMU's comprehensive qualification review and the admitting unit's assessment, which may include a remote interview or written examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VI. Admission and Selection"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled English-medium undergraduate students in this route",
+            "ruleText": "Pay annual tuition of RMB 38,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled undergraduate students",
+            "ruleText": "Purchase comprehensive medical insurance at RMB 800 per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "accommodation_living",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for campus-dependent accommodation and living costs: published accommodation ranges include RMB 35-65/day at Siming, RMB 1,600-4,000/year at Xiang'an, and RMB 1,100-1,200/year at Zhangzhou; the guide estimates food at RMB 1,000-1,500/month.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xmu-master-chinese-general-fall-2026",
+      "schoolSlug": "xiamen-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiamen-university-master-material-engineering-chinese-085601-1",
+        "xiamen-university-master-materials-science-and-engineering-chinese-080500-2",
+        "xiamen-university-master-computer-science-and-technology-chinese-081200-3",
+        "xiamen-university-master-software-engineering-chinese-085405-4",
+        "xiamen-university-master-drama-film-and-television-chinese-135400-5",
+        "xiamen-university-master-art-studies-chinese-130100-6",
+        "xiamen-university-master-electromagnetic-field-and-microwave-technology-chinese-080904-7",
+        "xiamen-university-master-integrated-circuit-engineering-chinese-085403-8",
+        "xiamen-university-master-integrated-circuit-science-and-engineering-chinese-140100-9",
+        "xiamen-university-master-new-generation-electronic-information-technology-chinese-085401-10",
+        "xiamen-university-master-circuits-and-systems-chinese-080902-11",
+        "xiamen-university-master-opto-electronic-engineering-chinese-0809z2-12",
+        "xiamen-university-master-opto-electronic-information-engineering-chinese-085408-13",
+        "xiamen-university-master-new-generation-electronic-information-technology-chinese-085401-14",
+        "xiamen-university-master-integrated-circuit-science-and-engineering-chinese-140100-15",
+        "xiamen-university-master-artificial-intelligent-chinese-085410-16",
+        "xiamen-university-master-physics-electronics-chinese-080901-17",
+        "xiamen-university-master-new-generation-electronic-information-technology-chinese-085401-18",
+        "xiamen-university-master-opto-electronic-information-engineering-chinese-085408-19",
+        "xiamen-university-master-integrated-circuit-engineering-chinese-085403-20",
+        "xiamen-university-master-opto-electronic-information-engineering-chinese-085408-21",
+        "xiamen-university-master-integrated-circuit-engineering-chinese-085403-22",
+        "xiamen-university-master-integrated-circuit-science-and-engineering-chinese-140100-23",
+        "xiamen-university-master-microelectronics-and-solid-electronics-chinese-080903-24",
+        "xiamen-university-master-fiscal-and-tax-law-chinese-0301z2-25",
+        "xiamen-university-master-juris-master-for-b-law-students-chinese-035102-26",
+        "xiamen-university-master-juris-master-for-non-b-law-students-chinese-035101-27",
+        "xiamen-university-master-legal-history-chinese-030102-28",
+        "xiamen-university-master-jurisprudence-chinese-030101-29",
+        "xiamen-university-master-international-law-chinese-030109-30",
+        "xiamen-university-master-law-of-the-sea-chinese-0301z3-31",
+        "xiamen-university-master-environment-and-resources-protection-law-chinese-030108-32",
+        "xiamen-university-master-economic-law-chinese-030107-33",
+        "xiamen-university-master-civil-and-commercial-law-chinese-030105-34",
+        "xiamen-university-master-procedural-law-chinese-030106-35",
+        "xiamen-university-master-constitutional-law-and-administrative-law-chinese-030103-36",
+        "xiamen-university-master-criminal-law-chinese-030104-37",
+        "xiamen-university-master-public-administration-chinese-125200-38",
+        "xiamen-university-master-public-administration-chinese-120400-39",
+        "xiamen-university-master-political-science-chinese-030200-40",
+        "xiamen-university-master-public-health-chinese-105300-41",
+        "xiamen-university-master-public-health-and-preventive-medicine-chinese-100400-42",
+        "xiamen-university-master-clinical-laboratory-diagnostics-chinese-100208-43",
+        "xiamen-university-master-social-medicine-and-health-management-chinese-107401-44",
+        "xiamen-university-master-biological-and-pharmaceutical-engineering-chinese-086000-45",
+        "xiamen-university-master-intelligent-instrument-and-equipment-chinese-0802j1-46",
+        "xiamen-university-master-translational-medicine-chinese-0710j6-47",
+        "xiamen-university-master-translational-medicine-chinese-0802j6-48",
+        "xiamen-university-master-translational-medicine-chinese-0812j6-49",
+        "xiamen-university-master-translational-medicine-chinese-1002j6-50",
+        "xiamen-university-master-translational-medicine-chinese-1004j6-51",
+        "xiamen-university-master-public-administration-chinese-120400-52",
+        "xiamen-university-master-finance-degree-of-management-chinese-1202z1-53",
+        "xiamen-university-master-management-science-and-engineering-chinese-120100-54",
+        "xiamen-university-master-technology-economics-and-management-chinese-120204-55",
+        "xiamen-university-master-logistics-engineering-and-management-chinese-125604-56",
+        "xiamen-university-master-accounting-chinese-125300-57",
+        "xiamen-university-master-accounting-chinese-120201-58",
+        "xiamen-university-master-auditing-chinese-125700-59",
+        "xiamen-university-master-tourism-management-chinese-120203-60",
+        "xiamen-university-master-entrepreneurship-chinese-1202z3-61",
+        "xiamen-university-master-corporate-management-chinese-120202-62",
+        "xiamen-university-master-marketing-chinese-1202z2-63",
+        "xiamen-university-master-technology-economics-and-management-chinese-120204-64",
+        "xiamen-university-master-linguistics-and-applied-linguistics-chinese-050102-66",
+        "xiamen-university-master-marine-geology-chinese-070704-67",
+        "xiamen-university-master-marine-chemistry-chinese-070702-68",
+        "xiamen-university-master-marine-biotechnology-chinese-0707z2-69",
+        "xiamen-university-master-marine-biology-chinese-070703-70",
+        "xiamen-university-master-marine-physics-chinese-0707z1-71",
+        "xiamen-university-master-environmental-engineering-chinese-085701-72",
+        "xiamen-university-master-response-to-climate-change-chinese-0707z3-73",
+        "xiamen-university-master-physical-oceanography-chinese-070701-74",
+        "xiamen-university-master-aeronautical-and-astronautical-science-and-technology-chinese-082500-75",
+        "xiamen-university-master-material-engineering-chinese-085601-76",
+        "xiamen-university-master-chemical-engineering-chinese-085602-77",
+        "xiamen-university-master-analytical-chemistry-chinese-070302-78",
+        "xiamen-university-master-chemistry-and-physics-of-polymers-chinese-070305-79",
+        "xiamen-university-master-chemical-biology-chinese-0703z2-80",
+        "xiamen-university-master-inorganic-chemistry-chinese-070301-81",
+        "xiamen-university-master-physical-chemistry-chinese-070304-82",
+        "xiamen-university-master-applied-chemistry-chinese-081704-83",
+        "xiamen-university-master-organic-chemistry-chinese-070303-84",
+        "xiamen-university-master-intelligent-instrument-and-equipment-chinese-0703j1-85",
+        "xiamen-university-master-environmental-engineering-chinese-083002-86",
+        "xiamen-university-master-environmental-engineering-chinese-085701-87",
+        "xiamen-university-master-environmental-management-chinese-0830z1-88",
+        "xiamen-university-master-environmental-science-chinese-083001-89",
+        "xiamen-university-master-ecology-chinese-071300-90",
+        "xiamen-university-master-urban-and-regional-planning-chinese-0813z1-91",
+        "xiamen-university-master-architecture-chinese-085100-92",
+        "xiamen-university-master-architecture-chinese-081300-93",
+        "xiamen-university-master-marine-engineering-chinese-085903-94",
+        "xiamen-university-master-civil-engineering-chinese-081400-95",
+        "xiamen-university-master-civil-engineering-chinese-085901-96",
+        "xiamen-university-master-comparative-education-chinese-040104-97",
+        "xiamen-university-master-higher-education-chinese-040106-98",
+        "xiamen-university-master-educational-development-and-governance-chinese-0401z4-99",
+        "xiamen-university-master-history-of-education-chinese-040103-100",
+        "xiamen-university-master-educational-psychology-chinese-0401z3-101",
+        "xiamen-university-master-curriculum-and-teaching-methodology-chinese-040102-102",
+        "xiamen-university-master-archaeology-chinese-060100-103",
+        "xiamen-university-master-world-history-chinese-060300-104",
+        "xiamen-university-master-study-of-cultural-relics-chinese-145100-105",
+        "xiamen-university-master-chinese-history-chinese-060200-106",
+        "xiamen-university-master-theory-of-marxism-chinese-030500-107",
+        "xiamen-university-master-area-studies-chinese-140700-108",
+        "xiamen-university-master-energy-storage-chinese-085808-109",
+        "xiamen-university-master-nuclear-engineering-chinese-085803-110",
+        "xiamen-university-master-clean-energy-technology-chinese-085807-111",
+        "xiamen-university-master-advanced-energy-chinese-089901-112",
+        "xiamen-university-master-material-engineering-chinese-085601-113",
+        "xiamen-university-master-materials-science-chinese-080502-114",
+        "xiamen-university-master-opto-electronic-engineering-chinese-0809z2-115",
+        "xiamen-university-master-applied-chemistry-chinese-081704-116",
+        "xiamen-university-master-mechanical-engineering-meng-chinese-085500-117",
+        "xiamen-university-master-mechanical-engineering-chinese-080200-118",
+        "xiamen-university-master-control-engineering-chinese-085406-119",
+        "xiamen-university-master-instrument-and-meter-engineering-chinese-085407-120",
+        "xiamen-university-master-intelligent-instrument-and-equipment-chinese-0802j1-121",
+        "xiamen-university-master-ethnology-chinese-030400-122",
+        "xiamen-university-master-anthropology-chinese-030303-123",
+        "xiamen-university-master-social-work-chinese-035200-124",
+        "xiamen-university-master-demography-chinese-030302-125",
+        "xiamen-university-master-sociology-chinese-030301-126",
+        "xiamen-university-master-biology-chinese-071000-127",
+        "xiamen-university-master-mathematics-chinese-070100-128",
+        "xiamen-university-master-statistics-chinese-071400-129",
+        "xiamen-university-master-physical-education-chinese-045200-130",
+        "xiamen-university-master-french-language-and-literature-chinese-050203-131",
+        "xiamen-university-master-german-language-and-literature-chinese-050204-132",
+        "xiamen-university-master-chinese-russian-translation-chinese-055103-133",
+        "xiamen-university-master-russian-language-and-literature-chinese-050202-134",
+        "xiamen-university-master-chinese-japanese-translation-chinese-055105-135",
+        "xiamen-university-master-chinese-japanese-interpretation-chinese-055106-136",
+        "xiamen-university-master-japanese-language-and-literature-chinese-050205-137",
+        "xiamen-university-master-foreign-linguistics-and-applied-linguistics-chinese-050211-138",
+        "xiamen-university-master-chinese-english-translation-chinese-055101-139",
+        "xiamen-university-master-chinese-english-interpretation-chinese-055102-140",
+        "xiamen-university-master-english-language-and-literature-chinese-050201-141",
+        "xiamen-university-master-astronomy-chinese-070400-142",
+        "xiamen-university-master-material-engineering-chinese-085601-143",
+        "xiamen-university-master-opto-electronic-information-engineering-chinese-085408-144",
+        "xiamen-university-master-clean-energy-technology-chinese-085807-145",
+        "xiamen-university-master-microelectronics-and-solid-electronics-chinese-080903-146",
+        "xiamen-university-master-physics-chinese-070200-147",
+        "xiamen-university-master-journalism-and-communication-academic-degree-chinese-050300-148",
+        "xiamen-university-master-journalism-and-communication-professional-degree-chinese-055200-149",
+        "xiamen-university-master-computer-technology-chinese-085404-150",
+        "xiamen-university-master-computer-science-and-technology-chinese-081200-151",
+        "xiamen-university-master-computer-science-and-technology-chinese-081200-152",
+        "xiamen-university-master-artificial-intelligent-chinese-085410-153",
+        "xiamen-university-master-cognitive-science-and-technology-chinese-0812z1-154",
+        "xiamen-university-master-computer-science-and-technology-chinese-081200-155",
+        "xiamen-university-master-software-engineering-chinese-085405-156",
+        "xiamen-university-master-communication-engineering-chinese-085402-157",
+        "xiamen-university-master-informatics-and-communication-engineering-chinese-081000-158",
+        "xiamen-university-master-pharmacy-chinese-100700-159",
+        "xiamen-university-master-pharmacy-chinese-105500-160",
+        "xiamen-university-master-basic-medicine-chinese-100100-161",
+        "xiamen-university-master-data-science-in-health-and-intellectual-medicine-chinese-0702j4-162",
+        "xiamen-university-master-data-science-in-health-and-intellectual-medicine-chinese-0710j4-163",
+        "xiamen-university-master-data-science-in-health-and-intellectual-medicine-chinese-0812j4-164",
+        "xiamen-university-master-data-science-in-health-and-intellectual-medicine-chinese-1002j4-165",
+        "xiamen-university-master-data-science-in-health-and-intellectual-medicine-chinese-1201j4-166",
+        "xiamen-university-master-clinical-nursing-chinese-1002z1-167",
+        "xiamen-university-master-clinical-medicine-chinese-100200-168",
+        "xiamen-university-master-clinical-medicine-chinese-105100-169",
+        "xiamen-university-master-neurosciences-chinese-1001z1-170",
+        "xiamen-university-master-physiology-chinese-071003-171",
+        "xiamen-university-master-microbiology-chinese-071005-172",
+        "xiamen-university-master-pharmacology-chinese-100706-173",
+        "xiamen-university-master-integrated-traditional-chinese-medicine-and-western-medicine-chinese-1002z2-174",
+        "xiamen-university-master-fine-art-and-calligraphy-chinese-135600-175",
+        "xiamen-university-master-art-studies-chinese-130100-176",
+        "xiamen-university-master-design-chinese-135700-177",
+        "xiamen-university-master-art-studies-chinese-130100-178",
+        "xiamen-university-master-music-chinese-135200-179",
+        "xiamen-university-master-philosophy-of-science-and-technology-chinese-010108-180",
+        "xiamen-university-master-ethics-chinese-010105-181",
+        "xiamen-university-master-logic-chinese-010104-182",
+        "xiamen-university-master-philosophy-of-marxism-chinese-010101-183",
+        "xiamen-university-master-foreign-philosophy-chinese-010103-184",
+        "xiamen-university-master-chinese-philosophy-chinese-010102-185",
+        "xiamen-university-master-science-of-religion-chinese-010107-186",
+        "xiamen-university-master-intellectual-property-chinese-035400-187",
+        "xiamen-university-master-intellectual-property-law-chinese-0301z1-188",
+        "xiamen-university-master-comparative-literature-and-world-literature-chinese-050108-189",
+        "xiamen-university-master-chinese-philology-chinese-050103-190",
+        "xiamen-university-master-theory-of-literature-and-art-chinese-050101-191",
+        "xiamen-university-master-linguistics-and-applied-linguistics-chinese-050102-192",
+        "xiamen-university-master-ancient-chinese-literature-chinese-050105-193",
+        "xiamen-university-master-study-of-chinese-classical-text-chinese-050104-194",
+        "xiamen-university-master-chinese-modern-contemporary-literature-chinese-050106-195"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Where the official guide publishes a tuition range by discipline rather than a program-level fee, the range is retained and no amount is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admissions.xmu.edu.cn/Admissions/Master_s_Students.htm",
+            "title": "Xiamen University 2026 International Master Admission Guide",
+            "capturedAt": "2026-09-13T07:30:05.297Z",
+            "contentSha256": "751f4548404c9a93f22d3566fd7b2c2e243793cd22240037447459e09c216b6e"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen, physically and mentally healthy, friendly to China, and hold a valid regular foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or above and generally be under 45 years old by September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants formerly holding Chinese nationality or born abroad to Chinese parents",
+            "ruleText": "Meet the guide's nationality-document and overseas-residence rules, including the applicable four-year foreign-passport period and two years of actual overseas residence during the preceding four years.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Nationality requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium master applicants",
+            "ruleText": "For Chinese-medium study, humanities, economics, management, law and arts generally require HSK 5 with 210; science, engineering, medicine and physical education generally require HSK 4 with 210. A qualifying prior Chinese-medium education certificate may replace HSK evidence under the guide.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Language proficiency"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 master applicants",
+            "ruleText": "Apply online from December 1, 2025 through May 10, 2026. Scholarship application deadlines are earlier and follow the corresponding scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "II. Application Timeline"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Register in the XMU international student application system, complete the application, upload the required records and pay the application fee online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "III. Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport_identity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the passport information page valid through at least October 31, 2026, birth certificate, and identity documents of both parents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "degrees_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the bachelor's degree certificate and complete undergraduate transcripts; expected graduates may use official expected-graduation proof but must present the final original degree at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium master applicants",
+            "ruleText": "For Chinese-medium study, humanities, economics, management, law and arts generally require HSK 5 with 210; science, engineering, medicine and physical education generally require HSK 4 with 210. A qualifying prior Chinese-medium education certificate may replace HSK evidence under the guide.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a personal statement and study/research plan of at least 1,000 words in the program's language of instruction.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "curriculum_vitae",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a curriculum vitae.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "pre_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "A pre-acceptance letter from the proposed XMU academic unit or supervisor is recommended and receives priority consideration where the guide states.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form and attachments, completed as required and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants, including scholarship applicants",
+            "ruleText": "Submit the financial guarantee statement and supporting financial records. Applying for a scholarship does not waive this document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "portfolio_outputs",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to art programs or applicants with academic outputs",
+            "ruleText": "Art applicants submit the required portfolio; applicants may also submit publications, awards and other supporting academic evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translation_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose records are not in Chinese or English",
+            "ruleText": "Provide notarized Chinese or English translations. XMU may request original or supplementary records and materials are not returned.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents - Notes"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing document review",
+            "ruleText": "Undergo XMU's comprehensive qualification review and the admitting unit's academic assessment, which may include a remote interview or written examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VI. Admission and Selection"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled Chinese-medium master students in this route",
+            "ruleText": "Pay annual tuition of RMB 26,000 or 30,000 according to discipline category.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Purchase comprehensive medical insurance at RMB 800 per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "accommodation_living",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for campus-dependent accommodation and living costs: published accommodation ranges include RMB 35-65/day at Siming, RMB 1,600-4,000/year at Xiang'an, and RMB 1,100-1,200/year at Zhangzhou; the guide estimates food at RMB 1,000-1,500/month.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xmu-master-chinese-special-fall-2026",
+      "schoolSlug": "xiamen-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiamen-university-master-international-chinese-language-education-chinese-045300-65"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Where the official guide publishes a tuition range by discipline rather than a program-level fee, the range is retained and no amount is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admissions.xmu.edu.cn/Admissions/Master_s_Students.htm",
+            "title": "Xiamen University 2026 International Master Admission Guide",
+            "capturedAt": "2026-09-13T07:30:05.297Z",
+            "contentSha256": "751f4548404c9a93f22d3566fd7b2c2e243793cd22240037447459e09c216b6e"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen, physically and mentally healthy, friendly to China, and hold a valid regular foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or above and generally be under 45 years old by September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants formerly holding Chinese nationality or born abroad to Chinese parents",
+            "ruleText": "Meet the guide's nationality-document and overseas-residence rules, including the applicable four-year foreign-passport period and two years of actual overseas residence during the preceding four years.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Nationality requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium master applicants",
+            "ruleText": "For Chinese-medium study, humanities, economics, management, law and arts generally require HSK 5 with 210; science, engineering, medicine and physical education generally require HSK 4 with 210. A qualifying prior Chinese-medium education certificate may replace HSK evidence under the guide.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Language proficiency"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 master applicants",
+            "ruleText": "Apply online from December 1, 2025 through May 10, 2026. Scholarship application deadlines are earlier and follow the corresponding scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "II. Application Timeline"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Register in the XMU international student application system, complete the application, upload the required records and pay the application fee online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "III. Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport_identity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the passport information page valid through at least October 31, 2026, birth certificate, and identity documents of both parents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "degrees_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the bachelor's degree certificate and complete undergraduate transcripts; expected graduates may use official expected-graduation proof but must present the final original degree at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium master applicants",
+            "ruleText": "For Chinese-medium study, humanities, economics, management, law and arts generally require HSK 5 with 210; science, engineering, medicine and physical education generally require HSK 4 with 210. A qualifying prior Chinese-medium education certificate may replace HSK evidence under the guide.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a personal statement and study/research plan of at least 1,000 words in the program's language of instruction.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "curriculum_vitae",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a curriculum vitae.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "pre_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "A pre-acceptance letter from the proposed XMU academic unit or supervisor is recommended and receives priority consideration where the guide states.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form and attachments, completed as required and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants, including scholarship applicants",
+            "ruleText": "Submit the financial guarantee statement and supporting financial records. Applying for a scholarship does not waive this document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "portfolio_outputs",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to art programs or applicants with academic outputs",
+            "ruleText": "Art applicants submit the required portfolio; applicants may also submit publications, awards and other supporting academic evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translation_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose records are not in Chinese or English",
+            "ruleText": "Provide notarized Chinese or English translations. XMU may request original or supplementary records and materials are not returned.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents - Notes"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing document review",
+            "ruleText": "Undergo XMU's comprehensive qualification review and the admitting unit's academic assessment, which may include a remote interview or written examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VI. Admission and Selection"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled Chinese-medium master students in this route",
+            "ruleText": "Pay annual tuition of RMB 30,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Purchase comprehensive medical insurance at RMB 800 per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "accommodation_living",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for campus-dependent accommodation and living costs: published accommodation ranges include RMB 35-65/day at Siming, RMB 1,600-4,000/year at Xiang'an, and RMB 1,100-1,200/year at Zhangzhou; the guide estimates food at RMB 1,000-1,500/month.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xmu-master-english-fall-2026",
+      "schoolSlug": "xiamen-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiamen-university-master-finance-degree-of-management-english-1202z1-1",
+        "xiamen-university-master-accounting-english-120201-2",
+        "xiamen-university-master-fiscal-and-tax-law-english-0301z2-3",
+        "xiamen-university-master-international-law-english-030109-4",
+        "xiamen-university-master-civil-and-commercial-law-english-030105-5",
+        "xiamen-university-master-marine-affairs-english-0707j3-6",
+        "xiamen-university-master-marine-affairs-english-0830j3-7",
+        "xiamen-university-master-chemical-engineering-and-technology-english-081700-8",
+        "xiamen-university-master-analytical-chemistry-english-070302-9",
+        "xiamen-university-master-chemistry-and-physics-of-polymers-english-070305-10",
+        "xiamen-university-master-chemical-biology-english-0703z2-11",
+        "xiamen-university-master-inorganic-chemistry-english-070301-12",
+        "xiamen-university-master-physical-chemistry-english-070304-13",
+        "xiamen-university-master-organic-chemistry-english-070303-14",
+        "xiamen-university-master-environmental-management-english-0830z1-15",
+        "xiamen-university-master-urban-and-regional-planning-english-0813z1-16",
+        "xiamen-university-master-theoretical-economics-english-020100-17",
+        "xiamen-university-master-international-relations-english-030207-18",
+        "xiamen-university-master-biology-english-071000-19",
+        "xiamen-university-master-applied-economics-english-020200-20"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Where the official guide publishes a tuition range by discipline rather than a program-level fee, the range is retained and no amount is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admissions.xmu.edu.cn/Admissions/Master_s_Students.htm",
+            "title": "Xiamen University 2026 International Master Admission Guide",
+            "capturedAt": "2026-09-13T07:30:05.297Z",
+            "contentSha256": "751f4548404c9a93f22d3566fd7b2c2e243793cd22240037447459e09c216b6e"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Be a non-Chinese citizen, physically and mentally healthy, friendly to China, and hold a valid regular foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or above and generally be under 45 years old by September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants formerly holding Chinese nationality or born abroad to Chinese parents",
+            "ruleText": "Meet the guide's nationality-document and overseas-residence rules, including the applicable four-year foreign-passport period and two years of actual overseas residence during the preceding four years.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Nationality requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium master applicants",
+            "ruleText": "Submit TOEFL iBT 80, IELTS Academic 6.0, qualifying prior English-medium study evidence, or another XMU-recognized equivalent; applicants from countries where English is an official language are exempt.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Language proficiency"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 master applicants",
+            "ruleText": "Apply online from December 1, 2025 through May 10, 2026. Scholarship application deadlines are earlier and follow the corresponding scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "II. Application Timeline"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 master applicants",
+            "ruleText": "Register in the XMU international student application system, complete the application, upload the required records and pay the application fee online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "III. Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport_identity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the passport information page valid through at least October 31, 2026, birth certificate, and identity documents of both parents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "degrees_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the bachelor's degree certificate and complete undergraduate transcripts; expected graduates may use official expected-graduation proof but must present the final original degree at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium master applicants",
+            "ruleText": "Submit TOEFL iBT 80, IELTS Academic 6.0, qualifying prior English-medium study evidence, or another XMU-recognized equivalent; applicants from countries where English is an official language are exempt.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a personal statement and study/research plan of at least 1,000 words in the program's language of instruction.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "curriculum_vitae",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a curriculum vitae.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "pre_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Master applicants",
+            "ruleText": "A pre-acceptance letter from the proposed XMU academic unit or supervisor is recommended and receives priority consideration where the guide states.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form and attachments, completed as required and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants, including scholarship applicants",
+            "ruleText": "Submit the financial guarantee statement and supporting financial records. Applying for a scholarship does not waive this document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "portfolio_outputs",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to art programs or applicants with academic outputs",
+            "ruleText": "Art applicants submit the required portfolio; applicants may also submit publications, awards and other supporting academic evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translation_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose records are not in Chinese or English",
+            "ruleText": "Provide notarized Chinese or English translations. XMU may request original or supplementary records and materials are not returned.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents - Notes"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing document review",
+            "ruleText": "Undergo XMU's comprehensive qualification review and the admitting unit's academic assessment, which may include a remote interview or written examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VI. Admission and Selection"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled English-medium master students in this route",
+            "ruleText": "Pay annual tuition of RMB 39,000 or 45,000 according to discipline category.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled master students",
+            "ruleText": "Purchase comprehensive medical insurance at RMB 800 per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "accommodation_living",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for campus-dependent accommodation and living costs: published accommodation ranges include RMB 35-65/day at Siming, RMB 1,600-4,000/year at Xiang'an, and RMB 1,100-1,200/year at Zhangzhou; the guide estimates food at RMB 1,000-1,500/month.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xmu-doctoral-chinese-fall-2026",
+      "schoolSlug": "xiamen-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiamen-university-doctoral-material-engineering-chinese-085601-1",
+        "xiamen-university-doctoral-materials-science-and-engineering-chinese-080500-2",
+        "xiamen-university-doctoral-computer-science-and-technology-chinese-081200-3",
+        "xiamen-university-doctoral-drama-film-and-television-chinese-135400-4",
+        "xiamen-university-doctoral-art-studies-chinese-130100-5",
+        "xiamen-university-doctoral-electronics-science-and-technology-chinese-080900-6",
+        "xiamen-university-doctoral-opto-electronic-information-engineering-chinese-085408-7",
+        "xiamen-university-doctoral-integrated-circuit-science-and-engineering-chinese-140100-8",
+        "xiamen-university-doctoral-electronics-science-and-technology-chinese-080900-9",
+        "xiamen-university-doctoral-opto-electronic-information-engineering-chinese-085408-10",
+        "xiamen-university-doctoral-integrated-circuit-science-and-engineering-chinese-140100-11",
+        "xiamen-university-doctoral-electronics-science-and-technology-chinese-080900-12",
+        "xiamen-university-doctoral-opto-electronic-information-engineering-chinese-085408-13",
+        "xiamen-university-doctoral-integrated-circuit-science-and-engineering-chinese-140100-14",
+        "xiamen-university-doctoral-circuits-and-systems-chinese-080902-15",
+        "xiamen-university-doctoral-electronics-science-and-technology-chinese-080900-16",
+        "xiamen-university-doctoral-opto-electronic-information-engineering-chinese-085408-17",
+        "xiamen-university-doctoral-integrated-circuit-science-and-engineering-chinese-140100-18",
+        "xiamen-university-doctoral-fiscal-and-tax-law-chinese-0301z2-19",
+        "xiamen-university-doctoral-legal-history-chinese-030102-20",
+        "xiamen-university-doctoral-jurisprudence-chinese-030101-21",
+        "xiamen-university-doctoral-international-law-chinese-030109-22",
+        "xiamen-university-doctoral-environment-and-resources-protection-law-chinese-030108-23",
+        "xiamen-university-doctoral-economic-law-chinese-030107-24",
+        "xiamen-university-doctoral-civil-and-commercial-law-chinese-030105-25",
+        "xiamen-university-doctoral-procedural-law-chinese-030106-26",
+        "xiamen-university-doctoral-constitutional-law-and-administrative-law-chinese-030103-27",
+        "xiamen-university-doctoral-criminal-law-chinese-030104-28",
+        "xiamen-university-doctoral-social-security-chinese-120404-29",
+        "xiamen-university-doctoral-land-resource-management-chinese-120405-30",
+        "xiamen-university-doctoral-administration-management-chinese-120401-31",
+        "xiamen-university-doctoral-emergency-management-chinese-1204z3-32",
+        "xiamen-university-doctoral-political-theory-chinese-030201-33",
+        "xiamen-university-doctoral-maternal-child-and-adolescent-health-chinese-100404-34",
+        "xiamen-university-doctoral-public-health-chinese-105300-35",
+        "xiamen-university-doctoral-occupational-and-environmental-health-chinese-100402-36",
+        "xiamen-university-doctoral-clinical-laboratory-diagnostics-chinese-100208-37",
+        "xiamen-university-doctoral-epidemiology-and-health-statistics-chinese-100401-38",
+        "xiamen-university-doctoral-biochemistry-and-molecular-biology-chinese-071010-39",
+        "xiamen-university-doctoral-biological-and-pharmaceutical-engineering-chinese-086000-40",
+        "xiamen-university-doctoral-hygiene-toxicology-chinese-100405-41",
+        "xiamen-university-doctoral-intelligent-instrument-and-equipment-chinese-0802j1-42",
+        "xiamen-university-doctoral-translational-medicine-chinese-0710j6-43",
+        "xiamen-university-doctoral-translational-medicine-chinese-0802j6-44",
+        "xiamen-university-doctoral-translational-medicine-chinese-0812j6-45",
+        "xiamen-university-doctoral-translational-medicine-chinese-1002j6-46",
+        "xiamen-university-doctoral-translational-medicine-chinese-1004j6-47",
+        "xiamen-university-doctoral-public-policy-chinese-1204z1-48",
+        "xiamen-university-doctoral-cognition-and-public-service-chinese-1204z2-49",
+        "xiamen-university-doctoral-finance-degree-of-management-chinese-1202z1-50",
+        "xiamen-university-doctoral-management-science-and-engineering-chinese-120100-51",
+        "xiamen-university-doctoral-technology-economics-and-management-chinese-120204-52",
+        "xiamen-university-doctoral-accounting-chinese-120201-53",
+        "xiamen-university-doctoral-tourism-management-chinese-120203-54",
+        "xiamen-university-doctoral-entrepreneurship-chinese-1202z3-55",
+        "xiamen-university-doctoral-corporate-management-chinese-120202-56",
+        "xiamen-university-doctoral-marketing-chinese-1202z2-57",
+        "xiamen-university-doctoral-technology-economics-and-management-chinese-120204-58",
+        "xiamen-university-doctoral-marine-geology-chinese-070704-59",
+        "xiamen-university-doctoral-marine-chemistry-chinese-070702-60",
+        "xiamen-university-doctoral-marine-biotechnology-chinese-0707z2-61",
+        "xiamen-university-doctoral-marine-biology-chinese-070703-62",
+        "xiamen-university-doctoral-marine-physics-chinese-0707z1-63",
+        "xiamen-university-doctoral-response-to-climate-change-chinese-0707z3-64",
+        "xiamen-university-doctoral-physical-oceanography-chinese-070701-65",
+        "xiamen-university-doctoral-aeronautical-and-astronautical-science-and-technology-chinese-082500-66",
+        "xiamen-university-doctoral-material-engineering-chinese-085601-67",
+        "xiamen-university-doctoral-chemical-engineering-chinese-085602-68",
+        "xiamen-university-doctoral-analytical-chemistry-chinese-070302-69",
+        "xiamen-university-doctoral-chemistry-and-physics-of-polymers-chinese-070305-70",
+        "xiamen-university-doctoral-chemical-biology-chinese-0703z2-71",
+        "xiamen-university-doctoral-nano-materials-chemistry-chinese-0703z1-72",
+        "xiamen-university-doctoral-energy-chemistry-chinese-0703z3-73",
+        "xiamen-university-doctoral-inorganic-chemistry-chinese-070301-74",
+        "xiamen-university-doctoral-physical-chemistry-chinese-070304-75",
+        "xiamen-university-doctoral-applied-chemistry-chinese-081704-76",
+        "xiamen-university-doctoral-organic-chemistry-chinese-070303-77",
+        "xiamen-university-doctoral-intelligent-instrument-and-equipment-chinese-0703j1-78",
+        "xiamen-university-doctoral-environmental-engineering-chinese-083002-79",
+        "xiamen-university-doctoral-environmental-management-chinese-0830z1-80",
+        "xiamen-university-doctoral-environmental-science-chinese-083001-81",
+        "xiamen-university-doctoral-ecology-chinese-071300-82",
+        "xiamen-university-doctoral-architecture-chinese-081300-83",
+        "xiamen-university-doctoral-structural-engineering-and-disaster-mitigation-chinese-0813z2-84",
+        "xiamen-university-doctoral-comparative-education-chinese-040104-85",
+        "xiamen-university-doctoral-higher-education-chinese-040106-86",
+        "xiamen-university-doctoral-educational-development-and-governance-chinese-0401z4-87",
+        "xiamen-university-doctoral-history-of-education-chinese-040103-88",
+        "xiamen-university-doctoral-curriculum-and-teaching-methodology-chinese-040102-89",
+        "xiamen-university-doctoral-archaeology-chinese-060100-90",
+        "xiamen-university-doctoral-world-history-chinese-060300-91",
+        "xiamen-university-doctoral-chinese-history-chinese-060200-92",
+        "xiamen-university-doctoral-international-studies-of-marxism-chinese-030504-93",
+        "xiamen-university-doctoral-basic-principles-of-marxism-chinese-030501-94",
+        "xiamen-university-doctoral-research-on-the-sinicization-of-marxism-chinese-030503-95",
+        "xiamen-university-doctoral-education-in-ideology-and-politics-chinese-030505-96",
+        "xiamen-university-doctoral-research-on-basic-issues-in-chinese-modern-history-chinese-030506-97",
+        "xiamen-university-doctoral-area-studies-chinese-140700-98",
+        "xiamen-university-doctoral-energy-storage-chinese-085808-99",
+        "xiamen-university-doctoral-nuclear-engineering-chinese-085803-100",
+        "xiamen-university-doctoral-clean-energy-technology-chinese-085807-101",
+        "xiamen-university-doctoral-advanced-energy-chinese-089901-102",
+        "xiamen-university-doctoral-material-engineering-chinese-085601-103",
+        "xiamen-university-doctoral-materials-physics-and-chemistry-chinese-080501-104",
+        "xiamen-university-doctoral-materials-science-chinese-080502-105",
+        "xiamen-university-doctoral-applied-chemistry-chinese-081704-106",
+        "xiamen-university-doctoral-vehicle-engineering-chinese-080204-107",
+        "xiamen-university-doctoral-mechanical-design-and-theory-chinese-080203-108",
+        "xiamen-university-doctoral-mechanical-manufacture-and-automation-chinese-080201-109",
+        "xiamen-university-doctoral-control-engineering-chinese-085406-110",
+        "xiamen-university-doctoral-intelligent-instrument-and-equipment-chinese-0802j1-111",
+        "xiamen-university-doctoral-anthropology-chinese-030303-112",
+        "xiamen-university-doctoral-demography-chinese-030302-113",
+        "xiamen-university-doctoral-sociology-chinese-030301-114",
+        "xiamen-university-doctoral-zoology-chinese-071002-115",
+        "xiamen-university-doctoral-developmental-biology-chinese-071008-116",
+        "xiamen-university-doctoral-physiology-chinese-071003-117",
+        "xiamen-university-doctoral-biochemistry-and-molecular-biology-chinese-071010-118",
+        "xiamen-university-doctoral-hydrobiology-chinese-071004-119",
+        "xiamen-university-doctoral-microbiology-chinese-071005-120",
+        "xiamen-university-doctoral-cell-biology-chinese-071009-121",
+        "xiamen-university-doctoral-genetics-chinese-071007-122",
+        "xiamen-university-doctoral-botany-chinese-071001-123",
+        "xiamen-university-doctoral-probability-theory-and-mathematical-statistics-chinese-070103-124",
+        "xiamen-university-doctoral-fundamental-mathematics-chinese-070101-125",
+        "xiamen-university-doctoral-computational-mathematics-chinese-070102-126",
+        "xiamen-university-doctoral-statistics-chinese-071400-127",
+        "xiamen-university-doctoral-applied-mathematics-chinese-070104-128",
+        "xiamen-university-doctoral-french-language-and-literature-chinese-050203-129",
+        "xiamen-university-doctoral-german-language-and-literature-chinese-050204-130",
+        "xiamen-university-doctoral-foreign-linguistics-and-applied-linguistics-chinese-050211-131",
+        "xiamen-university-doctoral-english-language-and-literature-chinese-050201-132",
+        "xiamen-university-doctoral-astrophysics-and-cosmology-chinese-0702z2-133",
+        "xiamen-university-doctoral-opto-electronic-information-engineering-chinese-085408-134",
+        "xiamen-university-doctoral-optics-chinese-070207-135",
+        "xiamen-university-doctoral-theoretical-physics-chinese-070201-136",
+        "xiamen-university-doctoral-quantum-science-and-technology-chinese-0702z3-137",
+        "xiamen-university-doctoral-condensed-matter-physics-chinese-070205-138",
+        "xiamen-university-doctoral-biophysics-and-soft-condensed-matter-chinese-0702z1-139",
+        "xiamen-university-doctoral-microelectronics-and-solid-electronics-chinese-080903-140",
+        "xiamen-university-doctoral-communication-chinese-050302-141",
+        "xiamen-university-doctoral-advertising-chinese-0503z1-142",
+        "xiamen-university-doctoral-journalism-chinese-050301-143",
+        "xiamen-university-doctoral-computer-technology-chinese-085404-144",
+        "xiamen-university-doctoral-computer-science-and-technology-chinese-081200-145",
+        "xiamen-university-doctoral-computer-science-and-technology-chinese-081200-146",
+        "xiamen-university-doctoral-artificial-intelligent-chinese-085410-147",
+        "xiamen-university-doctoral-cognitive-science-and-technology-chinese-0812z1-148",
+        "xiamen-university-doctoral-computer-technology-chinese-085404-149",
+        "xiamen-university-doctoral-computer-science-and-technology-chinese-081200-150",
+        "xiamen-university-doctoral-artificial-intelligent-chinese-085410-151",
+        "xiamen-university-doctoral-communication-engineering-chinese-085402-152",
+        "xiamen-university-doctoral-informatics-and-communication-engineering-chinese-081000-153",
+        "xiamen-university-doctoral-pharmacy-chinese-100700-154",
+        "xiamen-university-doctoral-pediatrics-chinese-105102-155",
+        "xiamen-university-doctoral-otorhinolaryngology-chinese-100213-156",
+        "xiamen-university-doctoral-otorhinolaryngology-chinese-105117-157",
+        "xiamen-university-doctoral-gynecology-chinese-100211-158",
+        "xiamen-university-doctoral-gynecology-chinese-105115-159",
+        "xiamen-university-doctoral-basic-medicine-chinese-100100-160",
+        "xiamen-university-doctoral-data-science-in-health-and-intellectual-medicine-chinese-0702j4-161",
+        "xiamen-university-doctoral-data-science-in-health-and-intellectual-medicine-chinese-0710j4-162",
+        "xiamen-university-doctoral-data-science-in-health-and-intellectual-medicine-chinese-0812j4-163",
+        "xiamen-university-doctoral-data-science-in-health-and-intellectual-medicine-chinese-1002j4-164",
+        "xiamen-university-doctoral-data-science-in-health-and-intellectual-medicine-chinese-1201j4-165",
+        "xiamen-university-doctoral-clinical-laboratory-diagnostics-chinese-100208-166",
+        "xiamen-university-doctoral-internal-medicine-chinese-100201-167",
+        "xiamen-university-doctoral-internal-medicine-chinese-105101-168",
+        "xiamen-university-doctoral-neurology-chinese-100204-169",
+        "xiamen-university-doctoral-neurology-chinese-105104-170",
+        "xiamen-university-doctoral-surgery-chinese-100210-171",
+        "xiamen-university-doctoral-surgery-chinese-105111-172",
+        "xiamen-university-doctoral-ophthalmology-chinese-100212-173",
+        "xiamen-university-doctoral-ophthalmology-chinese-105116-174",
+        "xiamen-university-doctoral-imagining-and-nuclear-medicine-chinese-100207-175",
+        "xiamen-university-doctoral-sports-medicine-chinese-100216-176",
+        "xiamen-university-doctoral-oncology-chinese-100214-177",
+        "xiamen-university-doctoral-oncology-chinese-105121-178",
+        "xiamen-university-doctoral-philosophy-of-science-and-technology-chinese-010108-179",
+        "xiamen-university-doctoral-ethics-chinese-010105-180",
+        "xiamen-university-doctoral-logic-chinese-010104-181",
+        "xiamen-university-doctoral-philosophy-of-marxism-chinese-010101-182",
+        "xiamen-university-doctoral-foreign-philosophy-chinese-010103-183",
+        "xiamen-university-doctoral-chinese-philosophy-chinese-010102-184",
+        "xiamen-university-doctoral-science-of-religion-chinese-010107-185",
+        "xiamen-university-doctoral-intellectual-property-law-chinese-0301z1-186",
+        "xiamen-university-doctoral-comparative-literature-and-world-literature-chinese-050108-187",
+        "xiamen-university-doctoral-chinese-philology-chinese-050103-188",
+        "xiamen-university-doctoral-theory-of-literature-and-art-chinese-050101-189",
+        "xiamen-university-doctoral-linguistics-and-applied-linguistics-chinese-050102-190",
+        "xiamen-university-doctoral-ancient-chinese-literature-chinese-050105-191",
+        "xiamen-university-doctoral-chinese-modern-contemporary-literature-chinese-050106-192"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Where the official guide publishes a tuition range by discipline rather than a program-level fee, the range is retained and no amount is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admissions.xmu.edu.cn/Admissions/Doctoral_students.htm",
+            "title": "Xiamen University 2026 International Doctoral Admission Guide",
+            "capturedAt": "2026-09-13T07:30:06.430Z",
+            "contentSha256": "ff4fb7dd0ac06b0cb0870528f7f65f01482ee642edb5f09e2092c0a9aabf9dcb"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen, physically and mentally healthy, friendly to China, and hold a valid regular foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or above and generally be under 50 years old by September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants formerly holding Chinese nationality or born abroad to Chinese parents",
+            "ruleText": "Meet the guide's nationality-document and overseas-residence rules, including the applicable four-year foreign-passport period and two years of actual overseas residence during the preceding four years.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Nationality requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium doctoral applicants",
+            "ruleText": "For Chinese-medium study, humanities, economics, management, law and arts generally require HSK 5 with 210; science, engineering, medicine and physical education generally require HSK 4 with 210. A qualifying prior Chinese-medium education certificate may replace HSK evidence under the guide.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Language proficiency"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 doctoral applicants",
+            "ruleText": "Apply online from December 1, 2025 through May 10, 2026. Scholarship application deadlines are earlier and follow the corresponding scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "II. Application Timeline"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 doctoral applicants",
+            "ruleText": "Register in the XMU international student application system, complete the application, upload the required records and pay the application fee online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "III. Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport_identity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the passport information page valid through at least October 31, 2026, birth certificate, and identity documents of both parents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "degrees_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit bachelor's and master's degree certificates and complete undergraduate and master's transcripts; expected graduates may use official expected-graduation proof but must present the final original master's degree at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-medium doctoral applicants",
+            "ruleText": "For Chinese-medium study, humanities, economics, management, law and arts generally require HSK 5 with 210; science, engineering, medicine and physical education generally require HSK 4 with 210. A qualifying prior Chinese-medium education certificate may replace HSK evidence under the guide.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a personal statement and study/research plan of at least 1,000 words in the program's language of instruction.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "curriculum_vitae",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a curriculum vitae.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "pre_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "A pre-acceptance letter from the proposed XMU academic unit or supervisor is recommended and receives priority consideration where the guide states.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form and attachments, completed as required and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants, including scholarship applicants",
+            "ruleText": "Submit the financial guarantee statement and supporting financial records. Applying for a scholarship does not waive this document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "portfolio_outputs",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to art programs or applicants with academic outputs",
+            "ruleText": "Art applicants submit the required portfolio; applicants may also submit publications, awards and other supporting academic evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translation_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose records are not in Chinese or English",
+            "ruleText": "Provide notarized Chinese or English translations. XMU may request original or supplementary records and materials are not returned.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents - Notes"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing document review",
+            "ruleText": "Undergo XMU's comprehensive qualification review and the admitting unit's academic assessment, which may include a remote interview or written examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VI. Admission and Selection"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled Chinese-medium doctoral students in this route",
+            "ruleText": "Pay annual tuition of RMB 30,000 or 34,000 according to discipline category. The published guide waives tuition for the fourth academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled doctoral students",
+            "ruleText": "Purchase comprehensive medical insurance at RMB 800 per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "accommodation_living",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for campus-dependent accommodation and living costs: published accommodation ranges include RMB 35-65/day at Siming, RMB 1,600-4,000/year at Xiang'an, and RMB 1,100-1,200/year at Zhangzhou; the guide estimates food at RMB 1,000-1,500/month.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "xmu-doctoral-english-fall-2026",
+      "schoolSlug": "xiamen-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "xiamen-university-doctoral-finance-degree-of-management-english-1202z1-1",
+        "xiamen-university-doctoral-accounting-english-120201-2",
+        "xiamen-university-doctoral-electronics-science-and-technology-english-080900-3",
+        "xiamen-university-doctoral-electronics-science-and-technology-english-080900-4",
+        "xiamen-university-doctoral-electronics-science-and-technology-english-080900-5",
+        "xiamen-university-doctoral-electronics-science-and-technology-english-080900-6",
+        "xiamen-university-doctoral-international-law-english-030109-7",
+        "xiamen-university-doctoral-technology-economics-and-management-english-120204-8",
+        "xiamen-university-doctoral-marine-geology-english-070704-9",
+        "xiamen-university-doctoral-marine-chemistry-english-070702-10",
+        "xiamen-university-doctoral-marine-biotechnology-english-0707z2-11",
+        "xiamen-university-doctoral-marine-biology-english-070703-12",
+        "xiamen-university-doctoral-marine-physics-english-0707z1-13",
+        "xiamen-university-doctoral-response-to-climate-change-english-0707z3-14",
+        "xiamen-university-doctoral-physical-oceanography-english-070701-15",
+        "xiamen-university-doctoral-marine-affairs-english-0707j3-16",
+        "xiamen-university-doctoral-marine-affairs-english-0830j3-17",
+        "xiamen-university-doctoral-chemical-engineering-and-technology-english-081700-18",
+        "xiamen-university-doctoral-physical-chemistry-english-070304-19",
+        "xiamen-university-doctoral-environmental-engineering-english-083002-20",
+        "xiamen-university-doctoral-environmental-management-english-0830z1-21",
+        "xiamen-university-doctoral-environmental-science-english-083001-22",
+        "xiamen-university-doctoral-ecology-english-071300-23",
+        "xiamen-university-doctoral-higher-education-english-040106-24",
+        "xiamen-university-doctoral-theoretical-economics-english-020100-25",
+        "xiamen-university-doctoral-mechatronic-engineering-english-080202-26",
+        "xiamen-university-doctoral-zoology-english-071002-27",
+        "xiamen-university-doctoral-biochemistry-and-molecular-biology-english-071010-28",
+        "xiamen-university-doctoral-hydrobiology-english-071004-29",
+        "xiamen-university-doctoral-cell-biology-english-071009-30",
+        "xiamen-university-doctoral-genetics-english-071007-31",
+        "xiamen-university-doctoral-probability-theory-and-mathematical-statistics-english-070103-32",
+        "xiamen-university-doctoral-fundamental-mathematics-english-070101-33",
+        "xiamen-university-doctoral-computational-mathematics-english-070102-34",
+        "xiamen-university-doctoral-statistics-english-071400-35",
+        "xiamen-university-doctoral-applied-mathematics-english-070104-36",
+        "xiamen-university-doctoral-foreign-linguistics-and-applied-linguistics-english-050211-37",
+        "xiamen-university-doctoral-english-language-and-literature-english-050201-38",
+        "xiamen-university-doctoral-applied-economics-english-020200-39",
+        "xiamen-university-doctoral-intellectual-property-law-english-0301z1-40"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "This is a closed historical Fall 2026 route and must not be presented as a current application window.",
+        "Where the official guide publishes a tuition range by discipline rather than a program-level fee, the range is retained and no amount is inferred."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://admissions.xmu.edu.cn/Admissions/Doctoral_students.htm",
+            "title": "Xiamen University 2026 International Doctoral Admission Guide",
+            "capturedAt": "2026-09-13T07:30:06.430Z",
+            "contentSha256": "ff4fb7dd0ac06b0cb0870528f7f65f01482ee642edb5f09e2092c0a9aabf9dcb"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Be a non-Chinese citizen, physically and mentally healthy, friendly to China, and hold a valid regular foreign passport.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "education_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or above and generally be under 50 years old by September 1, 2026.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - General Requirements"
+              }
+            ]
+          },
+          {
+            "key": "nationality_review",
+            "category": "identity",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants formerly holding Chinese nationality or born abroad to Chinese parents",
+            "ruleText": "Meet the guide's nationality-document and overseas-residence rules, including the applicable four-year foreign-passport period and two years of actual overseas residence during the preceding four years.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Nationality requirements"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium doctoral applicants",
+            "ruleText": "Submit TOEFL iBT 80, IELTS Academic 6.0, qualifying prior English-medium study evidence, or another XMU-recognized equivalent; applicants from countries where English is an official language are exempt.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "I. Eligibility - Language proficiency"
+              }
+            ]
+          },
+          {
+            "key": "application_window",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Self-funded Fall 2026 doctoral applicants",
+            "ruleText": "Apply online from December 1, 2025 through May 10, 2026. Scholarship application deadlines are earlier and follow the corresponding scholarship notice.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "II. Application Timeline"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 doctoral applicants",
+            "ruleText": "Register in the XMU international student application system, complete the application, upload the required records and pay the application fee online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "III. Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport_identity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the passport information page valid through at least October 31, 2026, birth certificate, and identity documents of both parents.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents items 1-3"
+              }
+            ]
+          },
+          {
+            "key": "degrees_transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit bachelor's and master's degree certificates and complete undergraduate and master's transcripts; expected graduates may use official expected-graduation proof but must present the final original master's degree at registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "language_evidence",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-medium doctoral applicants",
+            "ruleText": "Submit TOEFL iBT 80, IELTS Academic 6.0, qualifying prior English-medium study evidence, or another XMU-recognized equivalent; applicants from countries where English is an official language are exempt.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit two recommendation letters from professors or associate professors.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "statement_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a personal statement and study/research plan of at least 1,000 words in the program's language of instruction.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "curriculum_vitae",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a curriculum vitae.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "pre_acceptance",
+            "category": "documents",
+            "stage": "submission",
+            "level": "recommended",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "A pre-acceptance letter from the proposed XMU academic unit or supervisor is recommended and receives priority consideration where the guide states.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form and attachments, completed as required and valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 10"
+              }
+            ]
+          },
+          {
+            "key": "financial_guarantee",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants, including scholarship applicants",
+            "ruleText": "Submit the financial guarantee statement and supporting financial records. Applying for a scholarship does not waive this document.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 11"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a no-criminal-record certificate issued within six months before application.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 12"
+              }
+            ]
+          },
+          {
+            "key": "portfolio_outputs",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants to art programs or applicants with academic outputs",
+            "ruleText": "Art applicants submit the required portfolio; applicants may also submit publications, awards and other supporting academic evidence.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents item 13"
+              }
+            ]
+          },
+          {
+            "key": "translation_originals",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose records are not in Chinese or English",
+            "ruleText": "Provide notarized Chinese or English translations. XMU may request original or supplementary records and materials are not returned.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "IV. Application Documents - Notes"
+              }
+            ]
+          },
+          {
+            "key": "selection",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Applicants passing document review",
+            "ruleText": "Undergo XMU's comprehensive qualification review and the admitting unit's academic assessment, which may include a remote interview or written examination.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VI. Admission and Selection"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Pay the non-refundable RMB 400 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "tuition",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled English-medium doctoral students in this route",
+            "ruleText": "Pay annual tuition of RMB 42,000 or 55,000 according to discipline category. The published guide waives tuition for the fourth academic year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "insurance",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Enrolled doctoral students",
+            "ruleText": "Purchase comprehensive medical insurance at RMB 800 per year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          },
+          {
+            "key": "accommodation_living",
+            "category": "other",
+            "stage": "enrollment",
+            "level": "conditional",
+            "appliesTo": "Enrolled students",
+            "ruleText": "Budget for campus-dependent accommodation and living costs: published accommodation ranges include RMB 35-65/day at Siming, RMB 1,600-4,000/year at Xiang'an, and RMB 1,100-1,200/year at Zhangzhou; the guide estimates food at RMB 1,000-1,500/month.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "VIII. Study Costs"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

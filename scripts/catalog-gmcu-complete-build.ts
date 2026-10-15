@@ -5,18 +5,22 @@ import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "
 
 const root = process.cwd();
 const identityPath = resolve(root, "seeds/catalog.school-identity-replacements-batch-01.draft.json");
-const manifestPath = resolve(root, "work/catalog-official/gmcu-complete-batch-01-pdf/manifest.json");
+const manifestPath = resolve(root, "work/catalog-official/2026-10-15T08-17-48-480Z/manifest.json");
 const candidatePath = resolve(root, "seeds/catalog.gmcu-complete-batch-01.draft.json");
 const validationPath = resolve(root, "seeds/catalog.gmcu-complete-batch-01.validation.json");
 const [identityText, manifestText] = await Promise.all([readFile(identityPath, "utf8"), readFile(manifestPath, "utf8")]);
 const identity = JSON.parse(identityText) as CatalogSeedBundle;
-const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { id: string; label: string; url: string; sha256: string; status: number }[] };
+const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { id: string; label: string; url: string; sha256: string; status: number; fetchedAt: string }[] };
 const city = identity.cities.find((row) => row.slug === "guiyang");
 const school = identity.schools.find((row) => row.slug === "guizhou-medical-university");
 if (!city || !school) throw new Error("Missing Guiyang/Guizhou Medical University identity dependencies");
 const source = manifest.sources.find((row) => row.id === "guiyang-gmcu-undergraduate-admission-pdf-2026" && row.status === 200);
-if (!source) throw new Error("Missing successful Guizhou Medical University brochure evidence");
-const sourceBase = { status: "draft", sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: manifest.generatedAt };
+const page = manifest.sources.find((row) => row.id === "guiyang-gmcu-undergraduate-admission-2026" && row.status === 200);
+if (!source || source.sha256 !== "63ce26468c55164de9ecf534322a3972910fba4cba035e886067c143247cc798"
+  || !page || page.sha256 !== "6d11acc0cf35e4afb7f2132d0d694b0b5ef95b3a404c1baee2f00c713b5401bb") {
+  throw new Error("Missing or changed Guizhou Medical University brochure evidence");
+}
+const sourceBase = { status: "draft", sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
 const programs = [
   {
     slug: "guizhou-medical-university-clinical-medicine",
@@ -98,12 +102,12 @@ const programIntakes = programs.map((program) => ({
   deadlineDate: "2026-09-30T00:00:00.000Z",
   deadlineLabel: "September 30, 2026",
   applicationRound: "Guizhou Medical University 2026 international undergraduate admission",
-  status: "open",
+  status: "closed",
   sourceUrl: source.url,
   sourceLabel: source.label,
   sourceSha256: source.sha256,
-  capturedAt: manifest.generatedAt,
-  sourceFieldLineage: { intakeTerm: "explicit: Fall semester", intakeYear: "explicit: 2026 brochure", deadlineDate: "brochure page 5 application time", deadlineLabel: "brochure page 5 application time", applicationRound: "explicit brochure context", status: "derived: deadline remains in the future at evidence capture" },
+  capturedAt: source.fetchedAt,
+  sourceFieldLineage: { intakeTerm: "explicit: Fall semester", intakeYear: "explicit: 2026 brochure", deadlineDate: "brochure page 5 application time", deadlineLabel: "brochure page 5 application time", applicationRound: "explicit brochure context", status: "derived: September 30, 2026 deadline is past at the October 15, 2026 evidence refresh" },
 }));
 const scholarshipBase = { schoolSlug: school.slug, ...sourceBase, providerLocation: "China", targetCountries: [], targetRegions: [], actionLinks: [{ label: source.label, url: source.url, kind: "official-source" }] };
 const scholarshipLineage = { title: "brochure page 6 scholarship list", fundingLevel: "brochure identifies the award but does not publish a fixed level", coverage: "unpublished in the reviewed brochure", applicableDegree: "brochure undergraduate context", applicableProgram: "brochure undergraduate context", eligibilityItems: "brochure describes awards for outstanding students", applicationSteps: "no separate application procedure published in the reviewed brochure" };
@@ -158,7 +162,14 @@ const scholarships = [
   },
 ];
 
-const candidate: CatalogSeedBundle = { version: 1, generatedAt: manifest.generatedAt, cities: [city], schools: [school], programs, programIntakes, scholarships };
+const refreshedSchool = {
+  ...school,
+  sourceUrl: page.url,
+  sourceLabel: page.label,
+  sourceSha256: page.sha256,
+  capturedAt: page.fetchedAt,
+};
+const candidate: CatalogSeedBundle = { version: 1, generatedAt: manifest.generatedAt, cities: [city], schools: [refreshedSchool], programs, programIntakes, scholarships };
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
 const validation = createCatalogMigrationValidationReport(JSON.parse(candidateText));
 if (!validation.ok || validation.summary.programs !== 2 || validation.summary.programIntakes !== 2 || validation.summary.scholarships !== 2) throw new Error(`GMU bundle invalid:\n${validation.errors.join("\n")}`);
@@ -172,7 +183,8 @@ const validationArtifact = {
     notes: [
       "The image-only official brochure was rendered and visually checked across all six pages.",
       "Only Clinical Medicine and Bachelor of Dental Surgery are published as 2026 international undergraduate programs; legacy Nursing, Pharmacy and Pharmacy Administration remain quarantined.",
-      "Both Fall 2026 routes remain open at the September 22 evidence date and close September 30, 2026.",
+      "Both Fall 2026 routes closed September 30, 2026; the October 15 refresh corrects their earlier evidence-date open status.",
+      "The official wrapper page changed on October 14, 2026, while the six-page admissions PDF remained byte-identical and was rendered and visually rechecked on all pages.",
       "Scholarship records retain only the two top-level awards named in the brochure; unpublished amounts, deadlines and application steps are not invented.",
       "Teaching-language values are evidence-backed editorial derivations and explicitly flagged for later review.",
       "This draft does not authorize publication or database writes.",
