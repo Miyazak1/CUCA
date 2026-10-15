@@ -664,8 +664,7 @@
 
   function brand() {
     const href = localizedPageHref("home-v3.html");
-    const aboutHref = localizedPageHref("about.html");
-    return `<span class="brand-lockup"><a class="brand" href="${href}" aria-label="UCAC home"><img class="brand-wordmark" src="/ucac-wordmark.png?v=20261009-holalobe-brand" width="128" height="40" alt="" aria-hidden="true" /></a><a class="brand-parent" href="${aboutHref}" aria-label="About UCAC and Holalobe"><span aria-hidden="true"></span>by Holalobe</a></span>`;
+    return `<span class="brand-lockup"><a class="brand" href="${href}" aria-label="UCAC home"><img class="brand-wordmark" src="/ucac-study-in-china.png?v=20261015" width="360" height="60" alt="UCAC — University & College Application Center — Study in China" /></a></span>`;
   }
 
   function shellText(key, fallback) {
@@ -984,7 +983,7 @@
             .join("")}
         </div>
         <div class="footer-bottom">
-          <span>© 2026 UCAC · by Holalobe. ${localized ? "保留所有权利。" : "All rights reserved."}</span>
+          <span>© 2026 UCAC. ${localized ? "保留所有权利。" : "All rights reserved."}</span>
           <div class="footer-legal">
             <a href="cookies.html${localized ? "?lang=zh-CN" : ""}">${localized ? "Cookie 说明" : `${escapeHTML(shellText("cookies", "Cookie notice"))}${englishOnly}`}</a>
             <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "数据与来源政策" : `${escapeHTML(shellText("dataPolicy", "Data and source policy"))}${englishOnly}`}</a>

@@ -60,7 +60,7 @@ body {
 
 .nav {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 24px;
   box-sizing: content-box;
@@ -75,38 +75,17 @@ body {
   align-items: center;
   gap: 14px;
   min-width: 0;
+  max-width: 100%;
   justify-self: start;
 }
 
 .brand {
   display: flex;
   align-items: center;
+  max-width: 100%;
   color: var(--accent-dark);
   font-weight: 900;
   text-decoration: none;
-}
-
-.brand-parent {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-muted);
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 1;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.brand-parent > span {
-  width: 1px;
-  height: 20px;
-  background: var(--line);
-}
-
-.brand-parent:hover,
-.brand-parent:focus-visible {
-  color: var(--accent-dark);
 }
 
 .nav a,
@@ -124,15 +103,19 @@ body {
 
 .brand-wordmark {
   display: block;
-  width: 128px;
-  height: 40px;
-  flex: 0 0 auto;
-  object-fit: contain;
+  width: 360px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 6 / 1;
+  /* Frame the approved PNG's transparent margins without altering the artwork. */
+  object-fit: cover;
+  object-position: 50% 44%;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 24px;
   align-self: stretch;
 }
@@ -827,8 +810,7 @@ body {
 }
 
 .footer-workspace .brand .brand-wordmark {
-  width: 113px;
-  height: 34px;
+  width: 320px;
 }
 
 .footer-grid {
@@ -2089,10 +2071,6 @@ body.motion-off .result-enter {
     grid-row: 1;
   }
 
-  .nav .brand-parent {
-    display: none;
-  }
-
   .nav .nav-actions {
     grid-column: 2;
     grid-row: 1;
@@ -2219,11 +2197,21 @@ body.motion-off .result-enter {
 
 }
 
-@media (max-width: 480px) {
-  .brand-lockup { gap: 8px; }
-  .brand-wordmark { width: 104px; height: 34px; }
-  .brand-parent { gap: 8px; font-size: 11px; }
-  .brand-parent > span { height: 16px; }
+@media (max-width: 700px) {
+  .nav .brand-lockup {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  .nav .nav-actions {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: end;
+  }
+
+  .nav .nav-links {
+    grid-row: 3;
+  }
 }
 
 @media (max-width: 560px) {

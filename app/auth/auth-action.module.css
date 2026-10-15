@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   min-height: 72px;
   padding: 0 32px;
   border-bottom: 1px solid #d8e4ea;
@@ -17,6 +18,7 @@
 .brand {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
   gap: 10px;
   color: #10242d;
   font-weight: 850;
@@ -25,37 +27,18 @@
 .brandLockup {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-}
-
-.parentBrand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: #526a75;
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.parentBrand span {
-  width: 1px;
-  height: 20px;
-  background: #d8e4ea;
-}
-
-.parentBrand:hover,
-.parentBrand:focus-visible {
-  color: #005e5a;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .mark {
   display: block;
-  width: 120px;
-  height: 38px;
-  flex: 0 0 auto;
-  object-fit: contain;
+  width: 360px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 6 / 1;
+  object-fit: cover;
+  object-position: 50% 44%;
 }
 
 .signInLink {
@@ -219,7 +202,17 @@
 @media (max-width: 560px) {
   .header {
     min-height: 64px;
-    padding: 0 16px;
+    padding: 12px 16px;
+    flex-wrap: wrap;
+  }
+
+  .brandLockup {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+
+  .signInLink {
+    margin-inline-start: auto;
   }
 
   .main {

@@ -532,9 +532,8 @@ export function CuacApp({
       <header className="top-nav">
         <div className="brand-lockup">
           <button className="brand" aria-label="UCAC home" onClick={() => navigate("/")}>
-            <img className="brand-mark" src="/ucac-wordmark.png?v=20261009-holalobe-brand" width="120" height="38" alt="" aria-hidden="true" />
+            <img className="brand-mark" src="/ucac-study-in-china.png?v=20261015" width="360" height="60" alt="UCAC — University & College Application Center — Study in China" />
           </button>
-          <a className="brand-parent" href="/about.html"><span aria-hidden="true" />by Holalobe</a>
         </div>
         <nav aria-label="Primary navigation">
           <button onClick={() => navigate("/programs")}>Find Programs</button>

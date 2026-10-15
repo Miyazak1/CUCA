@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const SHELL_RELEASE = "20261013-back-to-top";
+const SHELL_RELEASE = "20261015-study-in-china";
 
 export function PublicSiteShell({
   active,

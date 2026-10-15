@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://ucac.cn/insights/", types: { "application/rss+xml": "https://ucac.cn/insights/rss.xml" } },
   openGraph: {
     title: "China admissions insights | UCAC",
-    description: "Current-cycle admissions, program, and scholarship analysis from UCAC by Holalobe.",
+    description: "Current-cycle admissions, program, and scholarship analysis from UCAC.",
     url: "https://ucac.cn/insights/",
     siteName: "UCAC",
     type: "website",

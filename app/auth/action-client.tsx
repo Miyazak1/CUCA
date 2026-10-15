@@ -170,9 +170,8 @@ export function AuthActionClient({ kind }: { kind: ActionKind }) {
       <header className={styles.header}>
         <div className={styles.brandLockup}>
           <a className={styles.brand} href={localeHref(locale, "/home-v3.html")} aria-label={translate(locale, "UCAC home")}>
-            <img className={styles.mark} src="/ucac-wordmark.png?v=20261009-holalobe-brand" width="120" height="38" alt="" aria-hidden="true" />
+            <img className={styles.mark} src="/ucac-study-in-china.png?v=20261015" width="360" height="60" alt="UCAC — University & College Application Center — Study in China" />
           </a>
-          <a className={styles.parentBrand} href={localeHref(locale, "/about.html")}><span aria-hidden="true" />by Holalobe</a>
         </div>
         <a className={styles.signInLink} href={localeHref(locale, "/auth.html")}>{translate(locale, "Sign in")}</a>
       </header>
