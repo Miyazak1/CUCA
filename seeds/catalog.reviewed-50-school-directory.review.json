@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "status": "human_review_completed",
+  "reviewReference": "project-owner-chat-review-2026-10-16",
+  "reviewedAt": "2026-10-16T02:46:15.987Z",
+  "publicationBundleSha256": "58bb1eae0fff6312bf649698a3d65fc1381e2ae8036d4de4380e84aa9d2e76f0",
+  "operationPlanSha256": "685e659850506e6a9bce9c1545f926ad1248cb36353a4b92480cf60925e10641",
+  "scope": {
+    "cities": 22,
+    "schools": 50,
+    "programs": 0,
+    "programIntakes": 0,
+    "scholarships": 0
+  },
+  "excludedSchoolSlugs": [
+    "guangxi-medical-university",
+    "xi-an-jiaotong-university"
+  ],
+  "confirmations": {
+    "contentReviewed": true,
+    "officialSourcesReviewed": true,
+    "publicContentConfirmed": true,
+    "prohibitedDataConfirmedExcluded": true,
+    "missingDataMayRemainEmpty": true,
+    "existingRecordsMustBePreserved": true
+  }
+}

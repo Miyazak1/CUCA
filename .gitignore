@@ -54,3 +54,5 @@ yarn-error.log*
 # catalog-sources/local-artifact-manifest.json before uploading them to the
 # protected release artifact store.
 /seeds/catalog.*.json
+!/seeds/catalog.reviewed-50-school-directory.json
+!/seeds/catalog.reviewed-50-school-directory.review.json

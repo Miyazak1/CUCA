@@ -26,6 +26,8 @@ COPY --from=build --chown=0:0 /opt/cuac/seeds/application-requirements-release-c
 COPY --from=build --chown=0:0 /opt/cuac/seeds/application-requirements-release-candidate.review.json ./seeds/application-requirements-release-candidate.review.json
 COPY --from=build --chown=0:0 /opt/cuac/seeds/catalog.current-2027-prerequisites.reviewed.json ./seeds/catalog.current-2027-prerequisites.reviewed.json
 COPY --from=build --chown=0:0 /opt/cuac/seeds/catalog.current-2027-prerequisites.review.json ./seeds/catalog.current-2027-prerequisites.review.json
+COPY --from=build --chown=0:0 /opt/cuac/seeds/catalog.reviewed-50-school-directory.json ./seeds/catalog.reviewed-50-school-directory.json
+COPY --from=build --chown=0:0 /opt/cuac/seeds/catalog.reviewed-50-school-directory.review.json ./seeds/catalog.reviewed-50-school-directory.review.json
 COPY --from=build --chown=0:0 /opt/cuac/seeds/guides.geo-first-four.draft.json ./seeds/guides.geo-first-four.draft.json
 COPY --from=build --chown=0:0 /opt/cuac/seeds/guides.geo-first-four.approval.json ./seeds/guides.geo-first-four.approval.json
 

@@ -1,0 +1,1456 @@
+{
+  "version": 2,
+  "generatedAt": "2026-10-16T02:46:15.987Z",
+  "cities": [
+    {
+      "slug": "beijing",
+      "nameEn": "Beijing",
+      "nameZh": "北京",
+      "region": "North China",
+      "province": "Beijing",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/admissionbrochure/index.html",
+      "sourceLabel": "BNU 2026 undergraduate admission brochure",
+      "sourceSha256": "ac577f79869863eddb3fec145b7a5e59c542386bea1f61a2ca50906ee78c14e3",
+      "capturedAt": "2026-09-11T08:33:37.696Z",
+      "sourceFieldLineage": {
+        "nameEn": "institution and Beijing Campus address",
+        "nameZh": "reviewed canonical city identity",
+        "region": "reviewed CUAC geographic taxonomy",
+        "province": "Beijing Campus address"
+      }
+    },
+    {
+      "slug": "changchun",
+      "nameEn": "Changchun",
+      "nameZh": "长春",
+      "region": "Northeast China",
+      "province": "Jilin",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://cie.jlu.edu.cn/info/1079/3656.htm",
+      "sourceLabel": "Jilin University 2026/2027 International Graduate Admissions",
+      "sourceSha256": "3ebbed029297a6af0f56f1ef9624d54d78287ee1bc2aedd0f182562ba4d65100",
+      "capturedAt": "2026-09-13T07:39:51.722Z",
+      "sourceFieldLineage": {
+        "nameEn": "CUAC identity normalization draft",
+        "nameZh": "CUAC identity normalization draft",
+        "region": "CUAC geographic taxonomy; pending review",
+        "province": "CUAC identity normalization draft; pending review"
+      }
+    },
+    {
+      "slug": "changsha",
+      "nameEn": "Changsha",
+      "nameZh": "长沙",
+      "region": "Central China",
+      "province": "Hunan",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://intl.csu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1667182464&wbfileid=16612865",
+      "sourceLabel": "Central South University 2026 Chinese-taught Undergraduate Charging Standards",
+      "sourceSha256": "07307135734f6163d8ef0632322d22fa37fa0a27b9e3f29094c4988b4609679e",
+      "capturedAt": "2026-09-11T14:22:25.719Z",
+      "sourceFieldLineage": {
+        "nameEn": "CUAC identity normalization draft",
+        "nameZh": "CUAC identity normalization draft",
+        "region": "CUAC geographic taxonomy; pending review",
+        "province": "CUAC identity normalization draft; pending review"
+      }
+    },
+    {
+      "slug": "chengdu",
+      "nameEn": "Chengdu",
+      "nameZh": "成都",
+      "region": "Southwest China",
+      "province": "Sichuan",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://www.chengdurail.com/info/1151/51732.htm",
+      "sourceLabel": "Chengdu Rail official Line 19 phase two network update",
+      "sourceSha256": "e4e21afd989265e5b53cf65877282fe023ddc0e7fa0acd09e801dd76728baaf7",
+      "capturedAt": "2026-09-22T08:42:19.664Z",
+      "sourceFieldLineage": {
+        "nameEn": "registered official Chengdu transport source",
+        "nameZh": "registered official Chengdu transport source",
+        "region": "CUAC geographic taxonomy; pending review",
+        "province": "official municipal scope"
+      }
+    },
+    {
+      "slug": "chongqing",
+      "nameEn": "Chongqing",
+      "nameZh": "重庆",
+      "region": "Southwest China",
+      "province": "Chongqing",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://tjj.cq.gov.cn/zwgk_233/fdzdgknr/tjxx/sjjd_55469/202603/t20260326_15568538.html",
+      "sourceLabel": "Chongqing 2025 national economic and social development statistical communique",
+      "sourceSha256": "4a96dc3323ca08f49b77a25ede07d35e58adbe9d308dd9a4fbb5a19529819d59",
+      "capturedAt": "2026-09-22T09:32:07.388Z",
+      "sourceFieldLineage": {
+        "nameEn": "official municipal scope",
+        "nameZh": "official municipal scope",
+        "region": "CUAC geographic taxonomy; pending review",
+        "province": "municipality status"
+      }
+    },
+    {
+      "slug": "guangzhou",
+      "nameEn": "Guangzhou",
+      "nameZh": "广州",
+      "region": "South China",
+      "province": "Guangdong",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://www.scut.edu.cn/en/2025/1127/c606a58695/page.htm",
+      "sourceLabel": "South China University of Technology current international undergraduate programs",
+      "sourceSha256": "1fb35db69bbaf7aabc8eab632c93ad58d4973fcac706bcf0288a8f2a7297c76c",
+      "capturedAt": "2026-09-14T04:29:45.914Z",
+      "sourceFieldLineage": {
+        "nameEn": "official SCUT campus addresses",
+        "nameZh": "official Chinese university identity",
+        "region": "CUAC normalized geographic region",
+        "province": "official SCUT campus addresses"
+      }
+    },
+    {
+      "slug": "guiyang",
+      "nameEn": "Guiyang",
+      "nameZh": "贵阳",
+      "region": "Southwest China",
+      "province": "Guizhou",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://soe.gmc.edu.cn/info/1008/1702.htm",
+      "sourceLabel": "Guizhou Medical University 2026 international undergraduate admission guide",
+      "sourceSha256": "7f75ab0de84fc5286db1c48ef69766a5529f21e4dfba0ac8bf9daad25a623422",
+      "capturedAt": "2026-09-22T09:54:33.695Z",
+      "sourceFieldLineage": {
+        "nameEn": "CUAC identity normalization draft",
+        "nameZh": "CUAC identity normalization draft",
+        "region": "CUAC geographic taxonomy; pending review",
+        "province": "CUAC identity normalization draft; pending review"
+      }
+    },
+    {
+      "slug": "hangzhou",
+      "nameEn": "Hangzhou",
+      "nameZh": "杭州",
+      "region": "East China",
+      "province": "Zhejiang",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://tjj.hangzhou.gov.cn/art/2025/7/22/art_1229279240_4380768.html",
+      "sourceLabel": "Hangzhou Statistics Bureau 2025 first-half economic update",
+      "sourceSha256": "6d2a8f17cab495d45dd21ca4c00652e383d16f89eea0fd38eb064b4fb84b0182",
+      "capturedAt": "2026-09-22T09:15:14.561Z",
+      "sourceFieldLineage": {
+        "nameEn": "Hangzhou official statistical and international portals",
+        "nameZh": "Hangzhou official statistical portal",
+        "region": "CUAC geographic taxonomy; pending review",
+        "province": "official municipal scope"
+      }
+    },
+    {
+      "slug": "harbin",
+      "nameEn": "Harbin",
+      "nameZh": "哈尔滨",
+      "region": "Northeast China",
+      "province": "Heilongjiang",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://studyathit.hit.edu.cn/18338/list.htm",
+      "sourceLabel": "Harbin Institute of Technology 2026 international bachelor's admission guide",
+      "sourceSha256": "2979f544e17bafb474d10e6c4cf0a1af07a928b3dc702f6c0e893c39fc28f3ea",
+      "capturedAt": "2026-09-13T03:39:07.341Z",
+      "sourceFieldLineage": {
+        "nameEn": "official university address",
+        "nameZh": "reviewed canonical city identity",
+        "region": "reviewed CUAC geographic taxonomy",
+        "province": "official university address"
+      }
+    },
+    {
+      "slug": "hefei",
+      "nameEn": "Hefei",
+      "nameZh": "合肥",
+      "region": "East China",
+      "province": "Anhui",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://www.sheto.gov.hk/filemanager/content/pdf/sc/SHETO-Hefei-Guide.pdf",
+      "sourceLabel": "Hong Kong SAR Government mainland living guide for Hefei",
+      "sourceSha256": "0ff27f39a9bc3d7dcd26f88c7362d921150fd93df317dcc713d129879b6d326a",
+      "capturedAt": "2026-09-22T09:07:16.110Z",
+      "sourceFieldLineage": {
+        "nameEn": "hefei-hksar-mainland-living-guide-2025: city scope",
+        "nameZh": "guide title and city scope",
+        "region": "CUAC geographic taxonomy; pending review",
+        "province": "official guide scope"
+      }
+    },
+    {
+      "slug": "jinan",
+      "nameEn": "Jinan",
+      "nameZh": "济南",
+      "region": "华北",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://www.istudy.sdu.edu.cn/__local/6/C5/F2/F8E29B0FAACE34490F6BBEF8A9D_703CFFD0_C8B4B.jpg",
+      "sourceLabel": "Shandong University 2026 undergraduate guide image 2",
+      "sourceSha256": "081e84897e7c51e81e93e691568d95d3703dd016de896162f5852cd6654f23e2",
+      "capturedAt": "2026-09-13T04:53:25.487Z",
+      "sourceFieldLineage": {
+        "nameEn": "official SDU campus and admissions address",
+        "nameZh": "normalized existing CUAC city name",
+        "region": "existing CUAC city classification retained"
+      }
+    },
+    {
+      "slug": "nanjing",
+      "nameEn": "Nanjing",
+      "nameZh": "南京",
+      "region": "East China",
+      "province": "Jiangsu",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://hwxy.nju.edu.cn/English/StudyatNJU/Admissions/BachelorsPrograms/index.html",
+      "sourceLabel": "Nanjing University Bachelor’s Programs",
+      "sourceSha256": "aef8f2b6536b3e3f2daf916d725328f6b858a49c0ea1472a537b8ede69638625",
+      "capturedAt": "2026-09-11T06:39:38.300Z",
+      "sourceFieldLineage": {
+        "nameEn": "institution name and contact address",
+        "nameZh": "reviewed canonical city identity",
+        "region": "reviewed CUAC geographic taxonomy",
+        "province": "institution name and contact address"
+      }
+    },
+    {
+      "slug": "qingdao",
+      "nameEn": "Qingdao",
+      "nameZh": "青岛",
+      "region": "East China",
+      "province": "Shandong",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://sie.ouc.edu.cn/english/_t3176/2025/1212/c18028a513109/page.htm",
+      "sourceLabel": "Ocean University of China CSCA Test Subjects 2026 page",
+      "sourceSha256": "371b32aee27f7918642be52d42af3db1e26b999c505911330209938b73051065",
+      "capturedAt": "2026-09-14T04:12:31.937Z",
+      "sourceFieldLineage": {
+        "nameEn": "CUAC identity normalization draft",
+        "nameZh": "CUAC identity normalization draft",
+        "region": "CUAC geographic taxonomy; pending review",
+        "province": "CUAC identity normalization draft; pending review"
+      }
+    },
+    {
+      "slug": "qinhuangdao",
+      "nameEn": "Qinhuangdao",
+      "nameZh": "秦皇岛",
+      "region": "North China",
+      "province": "Hebei",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://ies.ysu.edu.cn/info/1167/8510.htm",
+      "sourceLabel": "Yanshan University 2026 international student admission guide",
+      "sourceSha256": "31a32974b3a76ec61d3314104319ec6d4b5ea9da49df220a571b1aaaa505449d",
+      "capturedAt": "2026-09-22T09:40:13.318Z",
+      "sourceFieldLineage": {
+        "nameEn": "CUAC identity normalization draft",
+        "nameZh": "CUAC identity normalization draft",
+        "region": "CUAC geographic taxonomy; pending review",
+        "province": "CUAC identity normalization draft; pending review"
+      }
+    },
+    {
+      "slug": "shanghai",
+      "nameEn": "Shanghai",
+      "nameZh": "上海",
+      "region": "East China",
+      "province": "Shanghai",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://study.tongji.edu.cn/__local/6/AE/A6/66E0A7D71A250672DFF40ED4048_3682FBF2_3762E.pdf",
+      "sourceLabel": "Tongji University Undergraduate Enrollment Guide for International Students in 2026",
+      "sourceSha256": "7cf8162c041e744b929a97d54bdac41930426147a948120f42acb093f77244e6",
+      "capturedAt": "2026-09-11T06:58:30.326Z",
+      "sourceFieldLineage": {
+        "nameEn": "contact address on page 8",
+        "nameZh": "reviewed canonical city identity",
+        "region": "reviewed CUAC geographic taxonomy",
+        "province": "contact address on page 8"
+      }
+    },
+    {
+      "slug": "shenyang",
+      "nameEn": "Shenyang",
+      "nameZh": "沈阳",
+      "region": "Northeast China",
+      "province": "Liaoning",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://gjhzjlc.lnutcm.edu.cn/info/1223/3832.htm",
+      "sourceLabel": "Liaoning University of Traditional Chinese Medicine 2026 self-funded international undergraduate admission guide",
+      "sourceSha256": "c21656d991347673388a8b5600feba61e7fec54125a4e775bb423744c2dbc885",
+      "capturedAt": "2026-09-22T10:45:12.126Z",
+      "sourceFieldLineage": {
+        "nameEn": "official school guide address",
+        "nameZh": "editorial identity; requires review",
+        "region": "CUAC geographic taxonomy; requires review",
+        "province": "official school guide address"
+      }
+    },
+    {
+      "slug": "shenzhen",
+      "nameEn": "Shenzhen",
+      "nameZh": "深圳",
+      "region": "South China",
+      "province": "Guangdong",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://iso.sysu.edu.cn/en/application/guide/1420575.htm",
+      "sourceLabel": "Sun Yat-sen University 2026 international undergraduate admission guide",
+      "sourceSha256": "e34c17821f3c6c4d19668199e0b3081b7f68cb836c6792a0bb234147f1c3b1a9",
+      "capturedAt": "2026-09-13T03:08:57.947Z",
+      "sourceFieldLineage": {
+        "nameEn": "official campus descriptions",
+        "nameZh": "reviewed canonical city identity",
+        "region": "reviewed CUAC geographic taxonomy",
+        "province": "official university location"
+      }
+    },
+    {
+      "slug": "tianjin",
+      "nameEn": "Tianjin",
+      "nameZh": "天津",
+      "region": "North China",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://sie.tju.edu.cn/en/xwxm/UNDERGRADUATE/202510/t20251013_324445.html",
+      "sourceLabel": "Tianjin University 2026 International Undergraduate Admissions",
+      "sourceSha256": "8a0343df49df872aaf74df49c7b0305305d1934f9b94315312aa1198e02311f7",
+      "capturedAt": "2026-09-14T03:07:55.292Z",
+      "sourceFieldLineage": {
+        "nameEn": "official TJU admissions contact address",
+        "nameZh": "normalized Chinese city name",
+        "region": "normalized geographic region from official Tianjin address"
+      }
+    },
+    {
+      "slug": "wuhan",
+      "nameEn": "Wuhan",
+      "nameZh": "武汉",
+      "region": "Central China",
+      "province": "Hubei",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://admission.whu.edu.cn/info/1121/5802.htm",
+      "sourceLabel": "Wuhan University 2026 international undergraduate admissions guide",
+      "sourceSha256": "a5922203ef423a934b1c72cdf55290dc7fe1d351d2da8c04a43679e461f10de1",
+      "capturedAt": "2026-09-13T02:50:33.250Z",
+      "sourceFieldLineage": {
+        "nameEn": "official WHU admissions-office address",
+        "nameZh": "reviewed canonical city identity",
+        "region": "reviewed CUAC geographic taxonomy",
+        "province": "official WHU admissions-office address"
+      }
+    },
+    {
+      "slug": "xiamen",
+      "nameEn": "Xiamen",
+      "nameZh": "厦门",
+      "region": "East China",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://admissions.xmu.edu.cn/Admissions/Undergraduate_Students.htm",
+      "sourceLabel": "Xiamen University 2026 International Undergraduate Admission Guide",
+      "sourceSha256": "700a45c5f482eec8f2ebde02a86bd208d709f29e0f97e641fe0e095fbaf9b569",
+      "capturedAt": "2026-09-14T03:06:29.672Z",
+      "sourceFieldLineage": {
+        "nameEn": "official XMU admissions address",
+        "nameZh": "normalized Chinese city name",
+        "region": "normalized geographic region from the official Fujian address"
+      }
+    },
+    {
+      "slug": "xian",
+      "nameEn": "Xi'an",
+      "nameZh": "西安",
+      "region": "Northwest China",
+      "province": "Shaanxi",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://ies.chd.edu.cn/en/2026/0408/c8889a259925/page.htm",
+      "sourceLabel": "Chang'an University Admissions Brochure 2026 page",
+      "sourceSha256": "b8f084b55690e3b0e86e789c0d9fe8a8fd0471293c221daf6788039a6cf2ba8e",
+      "capturedAt": "2026-09-14T04:41:40.562Z",
+      "sourceFieldLineage": {
+        "nameEn": "CUAC identity normalization draft",
+        "nameZh": "CUAC identity normalization draft",
+        "region": "CUAC geographic taxonomy; pending review",
+        "province": "CUAC identity normalization draft; pending review"
+      }
+    },
+    {
+      "slug": "xiangtan",
+      "nameEn": "Xiangtan",
+      "nameZh": "湘潭",
+      "region": "Central China",
+      "province": "Hunan",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://en.xtu.edu.cn/info/1121/1974.htm",
+      "sourceLabel": "Xiangtan University 2026 international student admission brochure",
+      "sourceSha256": "39bb57848e29a3e26267373e072a96f05d78f0e68b5abbfdce043883df1e562c",
+      "capturedAt": "2026-09-14T06:46:29.736Z",
+      "sourceFieldLineage": {
+        "nameEn": "CUAC identity normalization draft",
+        "nameZh": "CUAC identity normalization draft",
+        "region": "CUAC geographic taxonomy; pending review",
+        "province": "CUAC identity normalization draft; pending review"
+      }
+    }
+  ],
+  "schools": [
+    {
+      "slug": "beihang-university",
+      "nameEn": "Beihang University",
+      "nameZh": "北京航空航天大学",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://is.buaa.edu.cn/lxsq/bks1.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://is.buaa.edu.cn/lxsq/bks1.htm",
+      "sourceLabel": "Beihang University 2026 International Undergraduate Admission Guide",
+      "sourceSha256": "e10c61e03f764a1f19215cc2803473f863e379ae31d6f0afed0b281959d81b56",
+      "capturedAt": "2026-09-11T08:53:09.328Z",
+      "sourceFieldLineage": {
+        "nameEn": "official guide title",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official guide contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "beijing-language-and-culture-university",
+      "nameEn": "Beijing Language and Culture University",
+      "nameZh": "北京语言大学",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://admission.blcu.edu.cn/_upload/article/files/08/38/54682e4d44f1bfde5d72fd8e7794/099ae31d-24ae-4a78-a88e-a25225ac47d3.pdf",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://admission.blcu.edu.cn/_upload/article/files/08/38/54682e4d44f1bfde5d72fd8e7794/099ae31d-24ae-4a78-a88e-a25225ac47d3.pdf",
+      "sourceLabel": "BLCU 2026 international undergraduate program catalog PDF",
+      "sourceSha256": "9afce0ef7a651d54a67be6b62a0f1783cc3e2c6bac080def5a22c9b9d58ab954",
+      "capturedAt": "2026-09-14T07:36:18.860Z",
+      "sourceFieldLineage": {
+        "nameEn": "official university identity shown on PDF pages 1-2",
+        "nameZh": "official university name and logo on PDF page 1",
+        "citySlug": "PDF cultivation-campus columns",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "beijing-normal-university",
+      "nameEn": "Beijing Normal University",
+      "nameZh": "北京师范大学",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/admissionbrochure/index.html",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/admissionbrochure/index.html",
+      "sourceLabel": "Beijing Normal University 2026 international undergraduate admission brochure",
+      "sourceSha256": "ac577f79869863eddb3fec145b7a5e59c542386bea1f61a2ca50906ee78c14e3",
+      "capturedAt": "2026-09-11T08:33:37.696Z",
+      "sourceFieldLineage": {
+        "nameEn": "page title and institution introduction",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "Beijing Campus address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "beijing-university-of-chemical-technology",
+      "nameEn": "Beijing University of Chemical Technology",
+      "nameZh": "北京化工大学",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://apply.buct.edu.cn/14708/list.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://apply.buct.edu.cn/14708/list.htm",
+      "sourceLabel": "Beijing University of Chemical Technology international overview",
+      "sourceSha256": "ae12abfd870ebbe1a02e549d60df96ca5d2313f292030509ca027e52f3ee5eac",
+      "capturedAt": "2026-09-13T14:39:20.259Z",
+      "sourceFieldLineage": {
+        "nameEn": "official overview identity",
+        "nameZh": "official institution identity",
+        "citySlug": "official contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "beijing-university-of-posts-and-telecommunications",
+      "nameEn": "Beijing University of Posts and Telecommunications",
+      "nameZh": "北京邮电大学",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://xxgk.bupt.edu.cn/__local/4/9D/6D/1EB441EB8B730D5E91D1635D888_A9DEF37C_2D5B4.pdf",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://xxgk.bupt.edu.cn/__local/4/9D/6D/1EB441EB8B730D5E91D1635D888_A9DEF37C_2D5B4.pdf",
+      "sourceLabel": "Beijing University of Posts and Telecommunications 2026 international student admission brochure",
+      "sourceSha256": "60c223830d1e46ab8625daa3060584544ad699bf3c7925a33ce59cc0d32d56a8",
+      "capturedAt": "2026-09-13T13:58:28.251Z",
+      "sourceFieldLineage": {
+        "nameEn": "official brochure cover and profile",
+        "nameZh": "official institution identity",
+        "citySlug": "official brochure contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "central-south-university",
+      "nameEn": "Central South University",
+      "nameZh": "中南大学",
+      "citySlug": "changsha",
+      "admissionsUrl": "https://intl.csu.edu.cn/info/1140/3776.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://intl.csu.edu.cn/info/1140/3776.htm",
+      "sourceLabel": "Central South University 2026 International Graduate Program Guide",
+      "sourceSha256": "477105520eda6c206b73ee3e926647796c8b8ce0913ee3aab9dc0438bf469ea7",
+      "capturedAt": "2026-09-11T14:19:48.875Z",
+      "sourceFieldLineage": {
+        "nameEn": "official CSU admissions pages",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official CSU location",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "central-university-of-finance-and-economics",
+      "nameEn": "Central University of Finance and Economics",
+      "nameZh": "中央财经大学",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://sice.cufe.edu.cn/admissions/info/1045/3419.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://sice.cufe.edu.cn/admissions/info/1045/3419.htm",
+      "sourceLabel": "Central University of Finance and Economics 2026 international undergraduate admission guide Chinese",
+      "sourceSha256": "0b43ff69c030582883414b168253923f6910a05609bcb67774311abfba5b9a3f",
+      "capturedAt": "2026-09-22T13:24:39.391Z",
+      "sourceFieldLineage": {
+        "nameEn": "official English admissions and catalog pages",
+        "nameZh": "official Chinese admissions page title",
+        "citySlug": "official contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "chang-an-university",
+      "nameEn": "Chang'an University",
+      "nameZh": "长安大学",
+      "citySlug": "xian",
+      "admissionsUrl": "https://ies.chd.edu.cn/en/2026/0408/c8889a259925/page.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://ies.chd.edu.cn/en/2026/0408/c8889a259925/page.htm",
+      "sourceLabel": "Chang'an University Admissions Brochure 2026 page",
+      "sourceSha256": "b8f084b55690e3b0e86e789c0d9fe8a8fd0471293c221daf6788039a6cf2ba8e",
+      "capturedAt": "2026-09-13T11:27:16.333Z",
+      "sourceFieldLineage": {
+        "nameEn": "official university identity",
+        "nameZh": "official university identity",
+        "citySlug": "official address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "china-agricultural-university",
+      "nameEn": "China Agricultural University",
+      "nameZh": "中国农业大学",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://admissions.cau.edu.cn/art/2025/10/11/art_48600_1084208.html",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://admissions.cau.edu.cn/art/2025/10/11/art_48600_1084208.html",
+      "sourceLabel": "China Agricultural University 2026 international undergraduate admissions",
+      "sourceSha256": "859f5a2482629f56437d364ba30b7ae07996c7197c44d955ef436241b7ace812",
+      "capturedAt": "2026-09-13T13:05:32.556Z",
+      "sourceFieldLineage": {
+        "nameEn": "official admissions guide identity",
+        "nameZh": "official institution identity",
+        "citySlug": "official campus address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "donghua-university",
+      "nameEn": "Donghua University",
+      "nameZh": "东华大学",
+      "citySlug": "shanghai",
+      "admissionsUrl": "https://english.dhu.edu.cn/2025/1110/c5218a368646/page.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://english.dhu.edu.cn/2025/1110/c5218a368646/page.htm",
+      "sourceLabel": "Donghua University 2026 degree application and admission timeline",
+      "sourceSha256": "8205b2e6606dab584a048bbf70795d2edff25a696394f2b466a152594188adeb",
+      "capturedAt": "2026-09-14T09:26:59.237Z",
+      "sourceFieldLineage": {
+        "nameEn": "registered official school page identity",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "registered official school page location",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "east-china-normal-university",
+      "nameEn": "East China Normal University",
+      "nameZh": "华东师范大学",
+      "citySlug": "shanghai",
+      "admissionsUrl": "https://lxs.ecnu.edu.cn/_s916/en_admission_degree_programs_undergraduate_program/list.psp",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://lxs.ecnu.edu.cn/_s916/en_admission_degree_programs_undergraduate_program/list.psp",
+      "sourceLabel": "ECNU 2026 international undergraduate admissions guide",
+      "sourceSha256": "19d1e0a1a5e3e324f27885618bb066598151e9dacdcc3dc5610d2061407cfbad",
+      "capturedAt": "2026-09-13T08:02:10.720Z",
+      "sourceFieldLineage": {
+        "nameEn": "official admissions site identity",
+        "nameZh": "official institution identity",
+        "citySlug": "official university identity and Shanghai campus context",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "east-china-university-of-political-science-and-law",
+      "nameEn": "East China University of Political Science and Law",
+      "nameZh": "华东政法大学",
+      "citySlug": "shanghai",
+      "admissionsUrl": "https://study.ecupl.edu.cn/2025/1202/c10735a223431/page.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://study.ecupl.edu.cn/2025/1202/c10735a223431/page.htm",
+      "sourceLabel": "East China University of Political Science and Law 2026 international undergraduate admission guide",
+      "sourceSha256": "830ad26e35089e6adfa212e328b09726184f0554dabdb6cbc7dea0e0cdb6ec84",
+      "capturedAt": "2026-09-22T12:55:07.015Z",
+      "sourceFieldLineage": {
+        "nameEn": "official page identity",
+        "nameZh": "official admission-guide title",
+        "citySlug": "official contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "guangdong-university-of-foreign-studies",
+      "nameEn": "Guangdong University of Foreign Studies",
+      "nameZh": "广东外语外贸大学",
+      "citySlug": "guangzhou",
+      "admissionsUrl": "https://iie.gdufs.edu.cn/info/1099/5488.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://iie.gdufs.edu.cn/info/1099/5488.htm",
+      "sourceLabel": "Guangdong University of Foreign Studies Fall 2026 international degree admissions notice",
+      "sourceSha256": "e56545a3662b45f750bf2a299b2f33cabc7cd49bc8741e11dcce97a8573a4b17",
+      "capturedAt": "2026-09-22T11:48:34.864Z",
+      "sourceFieldLineage": {
+        "nameEn": "official university identity",
+        "nameZh": "2026 admissions notice title and footer",
+        "citySlug": "official contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "guizhou-medical-university",
+      "nameEn": "Guizhou Medical University",
+      "nameZh": "贵州医科大学",
+      "citySlug": "guiyang",
+      "admissionsUrl": "https://soe.gmc.edu.cn/info/1008/1702.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://soe.gmc.edu.cn/info/1008/1702.htm",
+      "sourceLabel": "Guizhou Medical University 2026 international undergraduate admission guide",
+      "sourceSha256": "6d11acc0cf35e4afb7f2132d0d694b0b5ef95b3a404c1baee2f00c713b5401bb",
+      "capturedAt": "2026-10-15T08:17:48.679Z",
+      "sourceFieldLineage": {
+        "nameEn": "guiyang-gmcu-undergraduate-admission-2026: official page or document identity",
+        "nameZh": "guiyang-gmcu-undergraduate-admission-2026: official page or document identity",
+        "citySlug": "guiyang-gmcu-undergraduate-admission-2026: official institution or contact location",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "harbin-engineering-university",
+      "nameEn": "Harbin Engineering University",
+      "nameZh": "哈尔滨工程大学",
+      "citySlug": "harbin",
+      "admissionsUrl": "https://studyheu.hrbeu.edu.cn/__local/D/7D/A7/AE467F82346DBE3359636A4A015_AC089759_1854F58.pdf",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://studyheu.hrbeu.edu.cn/__local/D/7D/A7/AE467F82346DBE3359636A4A015_AC089759_1854F58.pdf",
+      "sourceLabel": "Harbin Engineering University international admission handbook 2026 PDF",
+      "sourceSha256": "64f1f5ca5c052178b5ccf17ec32066f6534feb04bfa792a9638de69e3b5684b6",
+      "capturedAt": "2026-09-13T11:45:11.099Z",
+      "sourceFieldLineage": {
+        "nameEn": "official handbook identity",
+        "nameZh": "official handbook identity",
+        "citySlug": "official address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "harbin-institute-of-technology",
+      "nameEn": "Harbin Institute of Technology",
+      "nameZh": "哈尔滨工业大学",
+      "citySlug": "harbin",
+      "admissionsUrl": "https://studyathit.hit.edu.cn/18338/list.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://studyathit.hit.edu.cn/18338/list.htm",
+      "sourceLabel": "Harbin Institute of Technology 2026 international bachelor's admission guide",
+      "sourceSha256": "2979f544e17bafb474d10e6c4cf0a1af07a928b3dc702f6c0e893c39fc28f3ea",
+      "capturedAt": "2026-09-13T03:39:07.341Z",
+      "sourceFieldLineage": {
+        "nameEn": "official admission guide",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "harbin-institute-of-technology-shenzhen",
+      "nameEn": "Harbin Institute of Technology, Shenzhen",
+      "nameZh": "哈尔滨工业大学（深圳）",
+      "citySlug": "shenzhen",
+      "admissionsUrl": "https://global.hitsz.edu.cn/__local/3/28/34/93FAE9A2DB2126960BCB9567033_D6038EC1_2636E.pdf",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://global.hitsz.edu.cn/__local/3/28/34/93FAE9A2DB2126960BCB9567033_D6038EC1_2636E.pdf",
+      "sourceLabel": "Harbin Institute of Technology Shenzhen 2026 international undergraduate prospectus PDF",
+      "sourceSha256": "b611b98782b8717c854fc9b29d9ecee71ef0f7741d30621cfab2cedbb13effc5",
+      "capturedAt": "2026-09-22T12:39:08.082Z",
+      "sourceFieldLineage": {
+        "nameEn": "official 2026 prospectus title",
+        "nameZh": "official institution identity",
+        "citySlug": "official prospectus contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "harbin-university-of-science-and-technology",
+      "nameEn": "Harbin University of Science and Technology",
+      "nameZh": "哈尔滨理工大学",
+      "citySlug": "harbin",
+      "admissionsUrl": "https://gjhz.hrbust.edu.cn/2026/0423/c513a104539/page.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://gjhz.hrbust.edu.cn/2026/0423/c513a104539/page.htm",
+      "sourceLabel": "Harbin University of Science and Technology 2026 international undergraduate admission guide",
+      "sourceSha256": "8e4bc248eaaeec322074a5f6240995993cd9ff1dd03edb66a9de7688fb2626d3",
+      "capturedAt": "2026-09-22T13:17:11.911Z",
+      "sourceFieldLineage": {
+        "nameEn": "official institution identity",
+        "nameZh": "official 2026 guide title",
+        "citySlug": "official contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "huazhong-university-of-science-and-technology",
+      "nameEn": "Huazhong University of Science and Technology",
+      "nameZh": "华中科技大学",
+      "citySlug": "wuhan",
+      "admissionsUrl": "https://iso.hust.edu.cn/info/1194/4638.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://iso.hust.edu.cn/info/1194/4638.htm",
+      "sourceLabel": "HUST 2026 International Undergraduate Application Guide",
+      "sourceSha256": "1cec0171dd9acff5c8bd79ef8f3132d818c2e0a16d2e22464bc08df670c16181",
+      "capturedAt": "2026-09-13T01:54:57.482Z",
+      "sourceFieldLineage": {
+        "nameEn": "official HUST admissions pages",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official HUST address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "jilin-university",
+      "nameEn": "Jilin University",
+      "nameZh": "吉林大学",
+      "citySlug": "changchun",
+      "admissionsUrl": "https://cie.jlu.edu.cn/info/1079/3656.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://cie.jlu.edu.cn/info/1079/3656.htm",
+      "sourceLabel": "Jilin University 2026/2027 International Graduate Admissions",
+      "sourceSha256": "3ebbed029297a6af0f56f1ef9624d54d78287ee1bc2aedd0f182562ba4d65100",
+      "capturedAt": "2026-09-13T07:39:51.722Z",
+      "sourceFieldLineage": {
+        "nameEn": "official admissions guide identity",
+        "nameZh": "official institution identity",
+        "citySlug": "official university identity and Changchun campus context",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "liaoning-university-of-traditional-chinese-medicine",
+      "nameEn": "Liaoning University of Traditional Chinese Medicine",
+      "nameZh": "辽宁中医药大学",
+      "citySlug": "shenyang",
+      "admissionsUrl": "https://gjhzjlc.lnutcm.edu.cn/info/1223/3832.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://gjhzjlc.lnutcm.edu.cn/info/1223/3832.htm",
+      "sourceLabel": "Liaoning University of Traditional Chinese Medicine 2026 self-funded international undergraduate admission guide",
+      "sourceSha256": "c21656d991347673388a8b5600feba61e7fec54125a4e775bb423744c2dbc885",
+      "capturedAt": "2026-09-22T10:45:12.126Z",
+      "sourceFieldLineage": {
+        "nameEn": "official guide identity",
+        "nameZh": "official guide title",
+        "citySlug": "official guide address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "nanjing-university-of-aeronautics-and-astronautics",
+      "nameEn": "Nanjing University of Aeronautics and Astronautics",
+      "nameZh": "南京航空航天大学",
+      "citySlug": "nanjing",
+      "admissionsUrl": "https://cie.nuaa.edu.cn/_t1029/2025/1121/c16499a388281/page.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://cie.nuaa.edu.cn/_t1029/2025/1121/c16499a388281/page.htm",
+      "sourceLabel": "Nanjing University of Aeronautics and Astronautics 2026 international undergraduate admission brochure",
+      "sourceSha256": "05bebd7b3991fbd2e0297660b2bc0f4efd625a5107e05af3332cb318b1f411bc",
+      "capturedAt": "2026-09-13T14:06:55.904Z",
+      "sourceFieldLineage": {
+        "nameEn": "official 2026 brochure identity",
+        "nameZh": "official institution identity",
+        "citySlug": "official contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "nankai-university",
+      "nameEn": "Nankai University",
+      "nameZh": "南开大学",
+      "citySlug": "tianjin",
+      "admissionsUrl": "https://ensie.nankai.edu.cn/info/1089/1167.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://ensie.nankai.edu.cn/info/1089/1167.htm",
+      "sourceLabel": "Nankai University 2026 international undergraduate admissions guide",
+      "sourceSha256": "807f7bf793268f7e60874649e186b1ba99bcd185003e8988e67aa653e09a7ce3",
+      "capturedAt": "2026-09-13T06:48:27.356Z",
+      "sourceFieldLineage": {
+        "nameEn": "official 2026 admission guide title",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official campus/contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "northwestern-polytechnical-university",
+      "nameEn": "Northwestern Polytechnical University",
+      "nameZh": "西北工业大学",
+      "citySlug": "xian",
+      "admissionsUrl": "https://studyat.nwpu.edu.cn/Degree_Program.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://studyat.nwpu.edu.cn/Degree_Program.htm",
+      "sourceLabel": "Northwestern Polytechnical University 2026 Degree Program Overview",
+      "sourceSha256": "ecbe04732ae0522be4fa609fe4694f7d0bc5ecad81702c449b15b7ea63f9601b",
+      "capturedAt": "2026-09-11T12:30:27.673Z",
+      "sourceFieldLineage": {
+        "nameEn": "official degree-program overview",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official campus location",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "ocean-university-of-china",
+      "nameEn": "Ocean University of China",
+      "nameZh": "中国海洋大学",
+      "citySlug": "qingdao",
+      "admissionsUrl": "https://sie.ouc.edu.cn/_upload/article/files/a7/da/72db8e33490b84bac80917be7bfe/b2ec1d11-e594-4030-bd25-df5fac653724.pdf",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://sie.ouc.edu.cn/_upload/article/files/a7/da/72db8e33490b84bac80917be7bfe/b2ec1d11-e594-4030-bd25-df5fac653724.pdf",
+      "sourceLabel": "Ocean University of China International Programs 2026 PDF",
+      "sourceSha256": "48adb9bb99468bbd88092ba5cb39c9ec83d33b90f7beb23af6fd456b79b85589",
+      "capturedAt": "2026-09-13T10:59:24.466Z",
+      "sourceFieldLineage": {
+        "nameEn": "official title and Introduction to OUC",
+        "nameZh": "official institution identity",
+        "citySlug": "Qingdao, China and official address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "peking-university-health-science-center",
+      "nameEn": "Peking University Health Science Center",
+      "nameZh": "北京大学医学部",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://oic.bjmu.edu.cn/lxby/zsjz/b722ea27933042248caf4884c1f1a50f.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://oic.bjmu.edu.cn/lxby/zsjz/b722ea27933042248caf4884c1f1a50f.htm",
+      "sourceLabel": "Peking University Health Science Center 2026 international undergraduate admissions Chinese",
+      "sourceSha256": "13450df25f70871a250857002b68b56079ab87f087cdfbb857dd00e7f97e75dd",
+      "capturedAt": "2026-09-22T12:34:41.553Z",
+      "sourceFieldLineage": {
+        "nameEn": "official English guide cf89bf997f91f61caaabee5f197c6cc9d1d5691a16f0fd38cc0a3c3a1342db35",
+        "nameZh": "official Chinese guide identity",
+        "citySlug": "official guide contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "qingdao-university",
+      "nameEn": "Qingdao University",
+      "nameZh": "青岛大学",
+      "citySlug": "qingdao",
+      "admissionsUrl": "https://istudy.qdu.edu.cn/uploads/attached/file/20251118/FB18352611137066.pdf",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://istudy.qdu.edu.cn/uploads/attached/file/20251118/FB18352611137066.pdf",
+      "sourceLabel": "Qingdao University 2026 international undergraduate admission guide",
+      "sourceSha256": "28277e2c56f520c788f90025d18b2dfcf372f889b15c9b4e66910220e221c581",
+      "capturedAt": "2026-09-22T11:29:20.359Z",
+      "sourceFieldLineage": {
+        "nameEn": "official English guide title",
+        "nameZh": "official Chinese guide title",
+        "citySlug": "official contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "shandong-normal-university",
+      "nameEn": "Shandong Normal University",
+      "nameZh": "山东师范大学",
+      "citySlug": "jinan",
+      "admissionsUrl": "https://cie.sdnu.edu.cn/__local/6/83/2D/9035CBBC4F944A4E15FD1C9F1F0_44FB66E1_6FAA5.pdf",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://cie.sdnu.edu.cn/__local/6/83/2D/9035CBBC4F944A4E15FD1C9F1F0_44FB66E1_6FAA5.pdf",
+      "sourceLabel": "Shandong Normal University international admission brochure PDF 2026",
+      "sourceSha256": "9febf6b225bc994d0d0fa8f00eac106b3e479c97f44334968cd51f5cf812f0e4",
+      "capturedAt": "2026-09-22T12:21:24.786Z",
+      "sourceFieldLineage": {
+        "nameEn": "official 2026 brochure title",
+        "nameZh": "official 2026 brochure title",
+        "citySlug": "official brochure contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "shandong-university",
+      "nameEn": "Shandong University",
+      "nameZh": "山东大学",
+      "citySlug": "jinan",
+      "admissionsUrl": "https://www.istudy.sdu.edu.cn/__local/6/C5/F2/F8E29B0FAACE34490F6BBEF8A9D_703CFFD0_C8B4B.jpg",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://www.istudy.sdu.edu.cn/__local/6/C5/F2/F8E29B0FAACE34490F6BBEF8A9D_703CFFD0_C8B4B.jpg",
+      "sourceLabel": "Shandong University 2026 undergraduate guide image 2",
+      "sourceSha256": "081e84897e7c51e81e93e691568d95d3703dd016de896162f5852cd6654f23e2",
+      "capturedAt": "2026-09-13T04:53:25.487Z",
+      "sourceFieldLineage": {
+        "nameEn": "2026 official admissions guide title",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official campus/address references",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "shanghai-international-studies-university",
+      "nameEn": "Shanghai International Studies University",
+      "nameZh": "上海外国语大学",
+      "citySlug": "shanghai",
+      "admissionsUrl": "https://www.oisa.shisu.edu.cn/index.php/Index/lxxm/cid/87",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://www.oisa.shisu.edu.cn/index.php/Index/lxxm/cid/87",
+      "sourceLabel": "Shanghai International Studies University 2026 international undergraduate admissions",
+      "sourceSha256": "e1467035e6e1569fc92d6299e2b3c999e0e8b58a6d1eb76b9e99e3e5925579b2",
+      "capturedAt": "2026-09-22T12:03:08.562Z",
+      "sourceFieldLineage": {
+        "nameEn": "official university identity",
+        "nameZh": "official admissions site identity",
+        "citySlug": "official contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "shanghai-university",
+      "nameEn": "Shanghai University",
+      "nameZh": "上海大学",
+      "citySlug": "shanghai",
+      "admissionsUrl": "https://apply.shu.edu.cn/application/index?language=en&type=apply_here",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://apply.shu.edu.cn/application/index?language=en&type=apply_here",
+      "sourceLabel": "Shanghai University 2026-2027 international application overview",
+      "sourceSha256": "b4552634c743f69849c1e401652002b6f4d8a58f713bfe60e98cbff96716d310",
+      "capturedAt": "2026-09-14T02:32:45.031Z",
+      "sourceFieldLineage": {
+        "nameEn": "official international application identity",
+        "nameZh": "official international application identity",
+        "citySlug": "official institutional address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "sichuan-international-studies-university",
+      "nameEn": "Sichuan International Studies University",
+      "nameZh": "四川外国语大学",
+      "citySlug": "chongqing",
+      "admissionsUrl": "https://studyinsisu.sisu.edu.cn/zsxx/bks/295c30338d854df0adc33d38ff745fd4.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://studyinsisu.sisu.edu.cn/zsxx/bks/295c30338d854df0adc33d38ff745fd4.htm",
+      "sourceLabel": "Sichuan International Studies University 2026-2027 international undergraduate admission guide",
+      "sourceSha256": "ef9fddfe6d355d2c4fc80826aad101006c4b990251ac94826ec8842ba9c827e6",
+      "capturedAt": "2026-09-22T11:39:12.084Z",
+      "sourceFieldLineage": {
+        "nameEn": "official English university identity",
+        "nameZh": "official guide title",
+        "citySlug": "official contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "sichuan-university",
+      "nameEn": "Sichuan University",
+      "nameZh": "四川大学",
+      "citySlug": "chengdu",
+      "admissionsUrl": "https://global.scu.edu.cn/oso/article/index/1106?lang=en",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://global.scu.edu.cn/oso/article/index/1106?lang=en",
+      "sourceLabel": "Sichuan University 2026 international admission guide",
+      "sourceSha256": "da2aea26e45be3ad842bdd83e5c2630b883e092da86e8bce7b5dd8f537eab1da",
+      "capturedAt": "2026-09-13T09:16:12.859Z",
+      "sourceFieldLineage": {
+        "nameEn": "Part 1, About SCU",
+        "nameZh": "official institution identity",
+        "citySlug": "Part 1 and official address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "southeast-university",
+      "nameEn": "Southeast University",
+      "nameZh": "东南大学",
+      "citySlug": "nanjing",
+      "admissionsUrl": "https://www.seu.edu.cn/2023/0519/c47217a446087/page.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://www.seu.edu.cn/2023/0519/c47217a446087/page.htm",
+      "sourceLabel": "Southeast University official profile",
+      "sourceSha256": "7c5b541c493a7ba6d48998930e64778c61ae804d42e69f4b27e2493cbf2d1f84",
+      "capturedAt": "2026-09-13T03:57:59.430Z",
+      "sourceFieldLineage": {
+        "nameEn": "official university profile",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "sun-yat-sen-university",
+      "nameEn": "Sun Yat-sen University",
+      "nameZh": "中山大学",
+      "citySlug": "guangzhou",
+      "admissionsUrl": "https://iso.sysu.edu.cn/en/application/guide/1420575.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://iso.sysu.edu.cn/en/application/guide/1420575.htm",
+      "sourceLabel": "Sun Yat-sen University 2026 international undergraduate admission guide",
+      "sourceSha256": "e34c17821f3c6c4d19668199e0b3081b7f68cb836c6792a0bb234147f1c3b1a9",
+      "capturedAt": "2026-09-13T03:08:57.947Z",
+      "sourceFieldLineage": {
+        "nameEn": "official 2026 admissions guide",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official campus description",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "tianjin-foreign-studies-university",
+      "nameEn": "Tianjin Foreign Studies University",
+      "nameZh": "天津外国语大学",
+      "citySlug": "tianjin",
+      "admissionsUrl": "https://isa.tjfsu.edu.cn/info/1066/1850.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://isa.tjfsu.edu.cn/info/1066/1850.htm",
+      "sourceLabel": "Tianjin Foreign Studies University 2026 international undergraduate admission guide",
+      "sourceSha256": "5897ff767d97fb6df0452ba42c094be43817d0caf739b5ad01dfb1ba50bcb4c5",
+      "capturedAt": "2026-09-22T11:18:46.979Z",
+      "sourceFieldLineage": {
+        "nameEn": "official university identity",
+        "nameZh": "official guide title",
+        "citySlug": "official admissions-office address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "tianjin-university",
+      "nameEn": "Tianjin University",
+      "nameZh": "天津大学",
+      "citySlug": "tianjin",
+      "admissionsUrl": "https://sie.tju.edu.cn/en/xwxm/UNDERGRADUATE/202510/t20251013_324445.html",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://sie.tju.edu.cn/en/xwxm/UNDERGRADUATE/202510/t20251013_324445.html",
+      "sourceLabel": "Tianjin University 2026 International Undergraduate Admissions",
+      "sourceSha256": "8a0343df49df872aaf74df49c7b0305305d1934f9b94315312aa1198e02311f7",
+      "capturedAt": "2026-09-14T03:07:55.292Z",
+      "sourceFieldLineage": {
+        "nameEn": "official 2026 admissions pages",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "tianjin-university-of-finance-and-economics",
+      "nameEn": "Tianjin University of Finance and Economics",
+      "nameZh": "天津财经大学",
+      "citySlug": "tianjin",
+      "admissionsUrl": "https://inter.tjufe.edu.cn/info/1065/1663.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://inter.tjufe.edu.cn/info/1065/1663.htm",
+      "sourceLabel": "Tianjin University of Finance and Economics 2026 international undergraduate admission guide Chinese",
+      "sourceSha256": "ab8a8fecfa41070755aa2698957ca6b79edf19dbd0ae524cf4bb642394be70e8",
+      "capturedAt": "2026-09-22T13:10:15.308Z",
+      "sourceFieldLineage": {
+        "nameEn": "official English guide identity",
+        "nameZh": "official Chinese guide identity",
+        "citySlug": "official contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "tsinghua-university",
+      "nameEn": "Tsinghua University",
+      "nameZh": "清华大学",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://international.join-tsinghua.edu.cn/",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://international.join-tsinghua.edu.cn/",
+      "sourceLabel": "Tsinghua University international undergraduate admissions 2026 home",
+      "sourceSha256": "736a425b89752432d97af07fca203c69fabb996a607e1bb1bad9fa91515dce0e",
+      "capturedAt": "2026-09-13T04:28:49.307Z",
+      "sourceFieldLineage": {
+        "nameEn": "official international undergraduate home",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official university location",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "university-of-chinese-academy-of-sciences",
+      "nameEn": "University of Chinese Academy of Sciences",
+      "nameZh": "中国科学院大学",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://english.ucas.ac.cn/index.php/admission/international-students/470-admission-aid",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://english.ucas.ac.cn/index.php/admission/international-students/470-admission-aid",
+      "sourceLabel": "University of Chinese Academy of Sciences international admission overview",
+      "sourceSha256": "e9bc1213c289722a0afb902900bd96ced0db20bf6f6ee53bbd0d622e0689e511",
+      "capturedAt": "2026-09-13T14:53:23.326Z",
+      "sourceFieldLineage": {
+        "nameEn": "official international admission identity",
+        "nameZh": "official institution identity",
+        "citySlug": "official institutional address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "university-of-international-business-and-economics",
+      "nameEn": "University of International Business and Economics",
+      "nameZh": "对外经济贸易大学",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://sie.uibe.edu.cn/en/Prgr/BacDegPro/OfEn/index.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://sie.uibe.edu.cn/en/Prgr/BacDegPro/OfEn/index.htm",
+      "sourceLabel": "UIBE International Undergraduate Programs (IUP), 4 academic years, offered in English",
+      "sourceSha256": "b77856a6ce97b5493fba22f07a8faa2248cfb843ff2d01ad9081ee716eaee2f2",
+      "capturedAt": "2026-09-11T05:18:46.307Z",
+      "sourceFieldLineage": {
+        "nameEn": "explicit: official identity",
+        "nameZh": "derived: official Chinese university name",
+        "citySlug": "derived: location in Beijing",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "university-of-science-and-technology-beijing",
+      "nameEn": "University of Science and Technology Beijing",
+      "nameZh": "北京科技大学",
+      "citySlug": "beijing",
+      "admissionsUrl": "https://isc.ustb.edu.cn/xw/5760e983a93e4a76ae0e72536cf2d843.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://isc.ustb.edu.cn/xw/5760e983a93e4a76ae0e72536cf2d843.htm",
+      "sourceLabel": "University of Science and Technology Beijing International Student Admission Guide 2026",
+      "sourceSha256": "38dc1da8f5c71fe6ec677633dcde96ea0915ff6f2784ee01e24ef44b9c388b1a",
+      "capturedAt": "2026-09-13T11:13:16.326Z",
+      "sourceFieldLineage": {
+        "nameEn": "official university identity",
+        "nameZh": "official university identity",
+        "citySlug": "official address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "university-of-science-and-technology-of-china",
+      "nameEn": "University of Science and Technology of China",
+      "nameZh": "中国科学技术大学",
+      "citySlug": "hefei",
+      "admissionsUrl": "https://ic.ustc.edu.cn/?abroad=4801",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://ic.ustc.edu.cn/?abroad=4801",
+      "sourceLabel": "USTC 2026 International Undergraduate Application Guideline",
+      "sourceSha256": "afa122b41b39ab485e42ab1137a6842699e02c19a259a953135929085fbb507e",
+      "capturedAt": "2026-09-14T03:30:25.047Z",
+      "sourceFieldLineage": {
+        "nameEn": "official USTC admissions site",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official USTC address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "wuhan-university",
+      "nameEn": "Wuhan University",
+      "nameZh": "武汉大学",
+      "citySlug": "wuhan",
+      "admissionsUrl": "https://admission.whu.edu.cn/info/1121/5802.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://admission.whu.edu.cn/info/1121/5802.htm",
+      "sourceLabel": "Wuhan University 2026 international undergraduate admissions guide",
+      "sourceSha256": "a5922203ef423a934b1c72cdf55290dc7fe1d351d2da8c04a43679e461f10de1",
+      "capturedAt": "2026-09-13T02:50:33.250Z",
+      "sourceFieldLineage": {
+        "nameEn": "official 2026 admissions-guide title and institution name",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official admissions-office address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "xiamen-university",
+      "nameEn": "Xiamen University",
+      "nameZh": "厦门大学",
+      "citySlug": "xiamen",
+      "admissionsUrl": "https://admissions.xmu.edu.cn/Admissions/Undergraduate_Students.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://admissions.xmu.edu.cn/Admissions/Undergraduate_Students.htm",
+      "sourceLabel": "Xiamen University 2026 International Undergraduate Admission Guide",
+      "sourceSha256": "700a45c5f482eec8f2ebde02a86bd208d709f29e0f97e641fe0e095fbaf9b569",
+      "capturedAt": "2026-09-14T03:06:29.672Z",
+      "sourceFieldLineage": {
+        "nameEn": "official 2026 admission guide title",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "official admissions address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "xiangtan-university",
+      "nameEn": "Xiangtan University",
+      "nameZh": "湘潭大学",
+      "citySlug": "xiangtan",
+      "admissionsUrl": "https://en.xtu.edu.cn/info/1121/1974.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://en.xtu.edu.cn/info/1121/1974.htm",
+      "sourceLabel": "Xiangtan University 2026 international student admission brochure",
+      "sourceSha256": "39bb57848e29a3e26267373e072a96f05d78f0e68b5abbfdce043883df1e562c",
+      "capturedAt": "2026-09-14T06:46:29.736Z",
+      "sourceFieldLineage": {
+        "nameEn": "official page heading",
+        "nameZh": "official university identity",
+        "citySlug": "official university identity",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "yanshan-university",
+      "nameEn": "Yanshan University",
+      "nameZh": "燕山大学",
+      "citySlug": "qinhuangdao",
+      "admissionsUrl": "https://ies.ysu.edu.cn/info/1167/8510.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://ies.ysu.edu.cn/info/1167/8510.htm",
+      "sourceLabel": "Yanshan University 2026 international student admission guide",
+      "sourceSha256": "31a32974b3a76ec61d3314104319ec6d4b5ea9da49df220a571b1aaaa505449d",
+      "capturedAt": "2026-10-15T08:28:31.225Z",
+      "sourceFieldLineage": {
+        "nameEn": "qinhuangdao-ysu-international-admission-guide-2026: official page or document identity",
+        "nameZh": "qinhuangdao-ysu-international-admission-guide-2026: official page or document identity",
+        "citySlug": "qinhuangdao-ysu-international-admission-guide-2026: official institution or contact location",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "zhejiang-gongshang-university",
+      "nameEn": "Zhejiang Gongshang University",
+      "nameZh": "浙江工商大学",
+      "citySlug": "hangzhou",
+      "admissionsUrl": "https://sie.zjgsu.edu.cn/gjen/_t75/2128/listm.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://sie.zjgsu.edu.cn/gjen/_t75/2128/listm.htm",
+      "sourceLabel": "Zhejiang Gongshang University 2026 international undergraduate admissions guide",
+      "sourceSha256": "3b520372be31475bcd3f48e1877086d74d4bc4c5cbbc8ce05c345dc48284b0d4",
+      "capturedAt": "2026-09-14T08:56:22.251Z",
+      "sourceFieldLineage": {
+        "nameEn": "official admissions-page identity",
+        "nameZh": "official admissions-page identity",
+        "citySlug": "official university identity/location",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "zhejiang-university",
+      "nameEn": "Zhejiang University",
+      "nameZh": "浙江大学",
+      "citySlug": "hangzhou",
+      "admissionsUrl": "https://iczu.zju.edu.cn/admissionsen/2024/1030/c68988a2981659/page.htm",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://iczu.zju.edu.cn/admissionsen/2024/1030/c68988a2981659/page.htm",
+      "sourceLabel": "Zhejiang University Application Guide for Undergraduate Programs 2026",
+      "sourceSha256": "453aad6734876d0b16ddc5141ab2496412867929e6a8c62d420619de0e6ff3f8",
+      "capturedAt": "2026-09-11T06:21:27.012Z",
+      "sourceFieldLineage": {
+        "nameEn": "page introduction",
+        "nameZh": "reviewed canonical school identity",
+        "citySlug": "contact address",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    },
+    {
+      "slug": "zhejiang-university-of-technology",
+      "nameEn": "Zhejiang University of Technology",
+      "nameZh": "浙江工业大学",
+      "citySlug": "hangzhou",
+      "admissionsUrl": "https://www.gjxy.zjut.edu.cn/ueditor/upload/file/20251125/1764050265176062.pdf",
+      "status": "active",
+      "verificationStatus": "verified",
+      "lastVerifiedAt": "2026-10-16T02:46:15.987Z",
+      "sourceUrl": "https://www.gjxy.zjut.edu.cn/ueditor/upload/file/20251125/1764050265176062.pdf",
+      "sourceLabel": "Zhejiang University of Technology 2026 international undergraduate application guide PDF",
+      "sourceSha256": "1b59188e03b8c3f97877f7d4bac0a77ec529ff7fe82af30585ccf072174cba79",
+      "capturedAt": "2026-09-14T08:25:35.508Z",
+      "sourceFieldLineage": {
+        "nameEn": "undergraduate PDF title",
+        "nameZh": "official university identity",
+        "citySlug": "official university location",
+        "admissionsUrl": "registered official school admissions or program page"
+      }
+    }
+  ],
+  "programs": [],
+  "programIntakes": [],
+  "scholarships": [],
+  "handoff": {
+    "sourceSystem": "CUAC reviewed official-source 50-school directory",
+    "cleanedExportName": "catalog.reviewed-50-school-directory.json",
+    "cleanedExportSha256": "cca4647ce3872432ba44f55efa036fd9fe5f50a22237a513d3737a5b214dbf22",
+    "sourceSchemaSha256": "3e159aba86deb83e913ade9e10620ce20e95e070c36e7700eb97ccbed223f8e4",
+    "reviewReference": "project-owner-chat-review-2026-10-16",
+    "prohibitedDataReviewReference": "project-owner-chat-review-2026-10-16",
+    "approvalRecordedAt": "2026-10-16T02:46:15.987Z",
+    "sourceReadOnly": true,
+    "prohibitedDataConfirmedExcluded": true
+  }
+}
