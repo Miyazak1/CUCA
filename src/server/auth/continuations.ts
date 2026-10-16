@@ -70,6 +70,11 @@ export type ConsumedSignInContinuation = {
 const defaultContinuationTtlMs = 15 * 60 * 1000;
 const validRoles = new Set<SignInContinuationRole>(["student", "school_staff", "cuac_ops", "cuac_admin"]);
 const previewReferenceKeys = new Set(["schoolId", "programId", "scholarshipId", "cityId"]);
+const opsWorkspaceRoutes = new Set([
+  "/ops-admin-api.html",
+  ...["overview", "routing", "billing", "quality", "readiness", "release-plans", "catalog", "corrections", "guides", "insights", "support", "privacy", "deletions"]
+    .map(section => `/ops-admin-api.html#${section}`),
+]);
 const registeredNavigations = new Map<string, { requiredRole: SignInContinuationRole; routes: ReadonlySet<string> }>([
   ["application.add_choice", {
     requiredRole: "student",
@@ -97,7 +102,7 @@ const registeredNavigations = new Map<string, { requiredRole: SignInContinuation
   }],
   ["navigation.open_ops_workspace", {
     requiredRole: "cuac_ops",
-    routes: new Set(["/ops-admin-api.html"]),
+    routes: opsWorkspaceRoutes,
   }],
 ]);
 const sensitivePreviewKeys = new Set([

@@ -79,6 +79,7 @@ test("sign-in continuation admits only role-bound protected workspace routes", a
     ["/hub-api.html", "navigation.open_student_workspace", "student"],
     ["/school-portal.html", "navigation.open_school_workspace", "school_staff"],
     ["/ops-admin-api.html", "navigation.open_ops_workspace", "cuac_ops"],
+    ["/ops-admin-api.html#privacy", "navigation.open_ops_workspace", "cuac_ops"],
     ["/programs.html", "catalog.save_program", "student", { programId: "c1111111-c111-4111-8111-c11111111111" }],
     ["/universities.html", "catalog.save_school", "student", { schoolId: "b1111111-b111-4111-8111-b11111111111" }],
     ["/scholarships.html", "catalog.save_scholarship", "student", { scholarshipId: "d1111111-d111-4111-8111-d11111111111" }],
@@ -95,6 +96,7 @@ test("sign-in continuation admits only role-bound protected workspace routes", a
     { targetRoute: "/ops-admin-api.html", actionKey: "navigation.open_student_workspace", requiredRole: "student" },
     { targetRoute: "/school-portal.html", actionKey: "navigation.open_school_workspace", requiredRole: "student" },
     { targetRoute: "/hub-api.html", actionKey: "navigation.open_ops_workspace", requiredRole: "cuac_ops" },
+    { targetRoute: "/ops-admin-api.html#unknown", actionKey: "navigation.open_ops_workspace", requiredRole: "cuac_ops" },
   ]) {
     await assert.rejects(new SignInContinuationService(createRepository().repository, { now }).createGuestContinuation(guest, input), /not registered/);
   }

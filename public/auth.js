@@ -176,6 +176,7 @@ function validateConsumedContinuation(value, role) {
   const requiredRole = value?.requiredRole;
   const normalizedRole = normalizeAuthRole(role);
   const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  const opsRouteAllowed = /^\/ops-admin-api\.html(?:#(?:overview|routing|billing|quality|readiness|release-plans|catalog|corrections|guides|insights|support|privacy|deletions))?$/.test(targetRoute || "");
   const roleAllowed = requiredRole === "student"
     ? normalizedRole === "student"
     : requiredRole === "school_staff"
@@ -192,7 +193,7 @@ function validateConsumedContinuation(value, role) {
     || (actionKey === "catalog.save_scholarship" && targetRoute === "/scholarships.html" && uuidPattern.test(value?.payloadPreview?.scholarshipId || ""))
     || (actionKey === "navigation.open_student_workspace" && ["/onboarding-api.html", "/hub-api.html", "/favourites-api.html", "/application.html", "/billing-api.html", "/notifications.html", "/preferences-api.html"].includes(targetRoute))
     || (actionKey === "navigation.open_school_workspace" && ["/school-portal.html", "/school-settings-api.html"].includes(targetRoute))
-    || (actionKey === "navigation.open_ops_workspace" && targetRoute === "/ops-admin-api.html")
+    || (actionKey === "navigation.open_ops_workspace" && opsRouteAllowed)
   );
   return roleAllowed && routeAllowed ? { targetRoute, actionKey, payloadPreview: value.payloadPreview || {} } : null;
 }

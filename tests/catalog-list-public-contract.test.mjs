@@ -95,7 +95,9 @@ test("program catalog uses server-side pagination and filters", async () => {
   assert.match(script, /degree: state\.filters\.degree/);
   assert.match(script, /programTotal = page\.total/);
   assert.match(api, /\["scholarship", "applicationReady", "upcomingDeadline"\]/);
+  assert.match(home, /loadPage\("programs", \{ limit: 1 \}\)/);
   assert.match(home, /loadPage\("programs", \{ limit: 6, applicationReady: true, sort: "deadline" \}\)/);
+  assert.match(home, /formatCatalogCount\(programCatalogPage\.total\).*formatCatalogCount\(currentProgramPage\.total\).*currently available/);
   assert.match(home, /programs\.html\?applicationReady=true/);
   assert.match(script, /applicationReady: state\.filters\.applicationReady/);
   assert.match(script, /routeParams\.get\("applicationReady"\)/);

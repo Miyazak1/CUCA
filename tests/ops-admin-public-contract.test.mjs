@@ -51,6 +51,27 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   assert.match(html, /data-ops-tab="release-plans"/);
   assert.match(html, /data-ops-tab="privacy"/);
   assert.match(html, /data-ops-tab="deletions"/);
+  assert.match(html, /data-ops-dirty hidden/);
+  assert.match(html, /aria-controls="ops-view"/);
+  assert.match(html, /role="tabpanel" aria-labelledby="ops-tab-overview"/);
+  assert.match(html, /class="ops-workspace-layout"/);
+  assert.match(html, />内容与目录</);
+  assert.match(html, />风险与治理</);
+  assert.match(script, /const opsViewKeys = \[/);
+  assert.match(script, /viewFromHash\(\)/);
+  assert.match(script, /returnUrl: `ops-admin-api\.html#\$\{opsState\.view\}`/);
+  assert.match(script, /addEventListener\("hashchange"/);
+  assert.match(script, /addEventListener\("beforeunload"/);
+  assert.match(script, /ArrowUp/);
+  assert.match(script, /syncTabOrientation/);
+  assert.match(script, /showOpsProblem/);
+  assert.match(script, /仅状态监控，无人工操作入口/);
+  assert.match(script, /confirmDiscardChanges\(\)/);
+  assert.match(script, /confirmHighImpactAction\(event\.target\)/);
+  assert.match(script, /data-catalog-page="previous"/);
+  assert.match(script, /offset: String\(opsState\.catalogPageIndex \* opsCatalogPageSize\)/);
+  assert.match(script, /loadSequence !== opsState\.loadSequence/);
+  assert.match(script, /data-ops-retry/);
   assert.match(script, /data-guide-draft/);
   assert.match(script, /data-guide-command="approve"/);
   assert.match(script, /expectedApprovalSha256/);
@@ -93,6 +114,17 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
   assert.match(script, /等待学生向学校直交材料/);
   assert.match(script, /尚未找到已发送给学校的项目记录/);
   assert.doesNotMatch(script, /localStorage|sessionStorage|CuacDataClient|DemoState|Sample record/);
+});
+
+test("legacy Ops entry redirects production users to the authenticated workspace", async () => {
+  const [html, redirect] = await Promise.all([
+    source("public/ops-admin.html"),
+    source("public/ops-admin-legacy-redirect.js"),
+  ]);
+  assert.match(html, /src="ops-admin-legacy-redirect\.js\?v=/);
+  assert.match(redirect, /new URL\("ops-admin-api\.html"/);
+  assert.match(redirect, /target\.hash = window\.location\.hash/);
+  assert.match(redirect, /window\.location\.replace\(target\.href\)/);
 });
 
 test("Ops write controls preserve backend revision and evidence boundaries", async () => {
@@ -148,7 +180,7 @@ test("Ops workspace stays restrained and responsive", async () => {
   ]);
 
   assert.match(html, /role="tablist"/);
-  assert.match(html, /data-ops-view aria-live="polite"/);
+  assert.match(html, /data-ops-view role="tabpanel"/);
   assert.match(html, /data-ops-capability/);
   assert.match(html, /支付复核（接口保留）/);
   assert.match(css, /ops-priority-grid/);
@@ -157,6 +189,8 @@ test("Ops workspace stays restrained and responsive", async () => {
   assert.match(css, /ops-insight-table/);
   assert.match(css, /button:focus-visible/);
   assert.match(css, /@media \(max-width: 760px\)/);
+  assert.match(css, /\.ops-toast\[data-tone="error"\]/);
+  assert.match(css, /\.ops-city-form > \.ops-button\[type="submit"\]/);
   assert.match(css, /@media \(max-width: 520px\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.doesNotMatch(css, /linear-gradient|radial-gradient|border-radius:\s*(?:1[5-9]|[2-9][0-9]|[1-9][0-9][0-9])px/);

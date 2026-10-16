@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>UCAC | 运营控制台</title>
     <link rel="stylesheet" href="shared-shell.css?v=20261015-study-in-china" />
-    <link rel="stylesheet" href="ops-workspace.css?v=20261012-insight-tables" />
+    <link rel="stylesheet" href="ops-workspace.css?v=20261016-admin-workspace-v2" />
   </head>
   <body data-agent-mode="off" data-completion-page="ops">
     <div class="page ops-page">
@@ -21,34 +21,47 @@
             <span>当前权限</span>
             <strong data-ops-role>正在验证</strong>
             <div class="ops-capability" data-ops-capability aria-live="polite"></div>
+            <span class="ops-dirty-state" data-ops-dirty hidden>有未保存的修改</span>
             <button type="button" data-ops-refresh>刷新当前视图</button>
           </div>
         </header>
 
-        <nav class="ops-tabs" aria-label="运营模块" role="tablist">
-          <button type="button" role="tab" aria-selected="true" data-ops-tab="overview">运行概览</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="routing">投递复核</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="billing">支付复核（接口保留）</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="quality">数据质量</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="readiness">发布预检</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="release-plans">发布计划</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="catalog">目录管理</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="corrections">学校更正</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="guides">指南管理</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="insights">Insights 编辑</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="support">申请支持</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="privacy">隐私请求</button>
-          <button type="button" role="tab" aria-selected="false" data-ops-tab="deletions">删除执行</button>
-        </nav>
+        <div class="ops-workspace-layout">
+          <nav class="ops-tabs" aria-label="运营模块" aria-orientation="vertical" role="tablist">
+            <div class="ops-tab-group" role="presentation"><span aria-hidden="true">概览</span>
+              <button id="ops-tab-overview" type="button" role="tab" aria-controls="ops-view" aria-selected="true" tabindex="0" data-ops-tab="overview">运行概览</button>
+            </div>
+            <div class="ops-tab-group" role="presentation"><span aria-hidden="true">内容与目录</span>
+              <button id="ops-tab-catalog" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="catalog">目录管理</button>
+              <button id="ops-tab-guides" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="guides">指南管理</button>
+              <button id="ops-tab-insights" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="insights">Insights 编辑</button>
+              <button id="ops-tab-readiness" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="readiness">发布预检</button>
+              <button id="ops-tab-release-plans" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="release-plans">发布计划</button>
+            </div>
+            <div class="ops-tab-group" role="presentation"><span aria-hidden="true">申请运营</span>
+              <button id="ops-tab-support" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="support">申请支持</button>
+              <button id="ops-tab-routing" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="routing">投递复核</button>
+              <button id="ops-tab-corrections" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="corrections">学校更正</button>
+            </div>
+            <div class="ops-tab-group" role="presentation"><span aria-hidden="true">风险与治理</span>
+              <button id="ops-tab-quality" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="quality">数据质量</button>
+              <button id="ops-tab-privacy" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="privacy">隐私请求</button>
+              <button id="ops-tab-deletions" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="deletions">删除执行</button>
+            </div>
+            <div class="ops-tab-group" role="presentation"><span aria-hidden="true">暂未启用</span>
+              <button id="ops-tab-billing" type="button" role="tab" aria-controls="ops-view" aria-selected="false" tabindex="-1" data-ops-tab="billing">支付复核（接口保留）</button>
+            </div>
+          </nav>
 
-        <section class="ops-view" data-ops-view aria-live="polite">
-          <p class="ops-state" aria-busy="true">正在读取运营数据。</p>
-        </section>
+          <section class="ops-view" id="ops-view" data-ops-view role="tabpanel" aria-labelledby="ops-tab-overview" tabindex="-1">
+            <p class="ops-state" aria-busy="true">正在读取运营数据。</p>
+          </section>
+        </div>
       </main>
       <div data-cuac-footer></div>
       <div class="ops-toast" data-ops-toast hidden role="status" aria-live="polite"></div>
     </div>
     <script src="shared-shell.js?v=20261015-study-in-china"></script>
-    <script src="ops-admin-runtime.js?v=20261012-word-headings"></script>
+    <script src="ops-admin-runtime.js?v=20261016-admin-workspace-v2"></script>
   </body>
 </html>

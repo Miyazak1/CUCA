@@ -96,6 +96,11 @@
         return new Intl.DateTimeFormat(window.CUACI18n?.locale || "en", { year: "numeric", month: "short", day: "numeric" }).format(date);
       }
 
+      function formatCatalogCount(value) {
+        const count = Number(value);
+        return Number.isFinite(count) ? new Intl.NumberFormat("en-US").format(count) : "0";
+      }
+
       function renderHomeCategories(categories) {
         setHomeHTML("[data-home-categories]", categories.map((category) => `
           <a class="cat" href="${escapeHomeHTML(category.href || "#")}">
@@ -141,15 +146,16 @@
         const api = window.CuacCatalogList;
         if (!api || (window.CUACI18n && window.CUACI18n.locale !== "en")) return;
         try {
-          const [programPage, schoolPage, scholarshipPage, cityPage] = await Promise.all([
+          const [programCatalogPage, currentProgramPage, schoolPage, scholarshipPage, cityPage] = await Promise.all([
+            api.loadPage("programs", { limit: 1 }),
             api.loadPage("programs", { limit: 6, applicationReady: true, sort: "deadline" }),
             api.loadPage("schools", { limit: 4 }),
             api.loadPage("scholarships", { limit: 1 }),
             api.loadPage("cities", { limit: 3 }),
           ]);
-          const currentPrograms = programPage.records.filter((program) => ["open", "upcoming"].includes(program.intakeAvailability));
+          const currentPrograms = currentProgramPage.records.filter((program) => ["open", "upcoming"].includes(program.intakeAvailability));
           renderHomeCategories([
-            { title: "Programs", value: `${programPage.total} current routes`, href: "programs.html?applicationReady=true", icon: "program" },
+            { title: "Programs", value: `${formatCatalogCount(programCatalogPage.total)} programs · ${formatCatalogCount(currentProgramPage.total)} currently available`, href: "programs.html?applicationReady=true", icon: "program" },
             { title: "Universities", value: `${schoolPage.total} published`, href: "universities.html", icon: "school" },
             { title: "Scholarships", value: `${scholarshipPage.total} funding routes`, href: "scholarships.html", icon: "funding" },
             { title: "Intakes", value: "Full dates", href: "programs.html?applicationReady=true", icon: "calendar" },

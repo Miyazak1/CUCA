@@ -17,6 +17,14 @@ const opsQueueAvailability = {
 const opsQualityEndpoint = "/api/v1/ops/data-quality/catalog?limit=50";
 const opsReadinessEndpoint = "/api/v1/ops/catalog/readiness";
 const opsReleaseManifestEndpoint = "/api/v1/ops/catalog/release-manifests";
+const opsViewKeys = ["overview", "routing", "billing", "quality", "readiness", "release-plans", "catalog", "corrections", "guides", "insights", "support", "privacy", "deletions"];
+const opsViewLabels = {
+  overview: "运行概览", catalog: "目录管理", guides: "指南管理", insights: "Insights 编辑",
+  readiness: "发布预检", "release-plans": "发布计划", support: "申请支持", routing: "投递复核",
+  corrections: "学校更正", quality: "数据质量", privacy: "隐私请求", deletions: "删除执行",
+  billing: "支付复核",
+};
+const opsCatalogPageSize = 50;
 
 const opsIssueLabels = {
   missing_source_evidence: "缺少来源证据",
@@ -151,6 +159,9 @@ const opsState = {
   releaseManifestStatus: "",
   selectedGuideId: null,
   selectedInsightId: null,
+  catalogPageIndex: 0,
+  dirty: false,
+  loadSequence: 0,
 };
 
 const opsApplicationSetLabels = {
@@ -195,6 +206,64 @@ function escapeHtml(value) {
 
 function cleanText(value) {
   return typeof value === "string" ? value.trim() : "";
+}
+
+function viewFromHash() {
+  const view = cleanText(window.location.hash).replace(/^#/, "");
+  return opsViewKeys.includes(view) ? view : "overview";
+}
+
+function setDirtyState(dirty) {
+  opsState.dirty = Boolean(dirty);
+  const indicator = document.querySelector("[data-ops-dirty]");
+  if (indicator) indicator.hidden = !opsState.dirty;
+}
+
+function confirmDiscardChanges() {
+  if (!opsState.dirty) return true;
+  if (!window.confirm("当前页面还有未保存的修改。离开后这些修改会丢失，是否继续？")) return false;
+  setDirtyState(false);
+  return true;
+}
+
+function syncOpsTabs({ focus = false } = {}) {
+  document.querySelectorAll("[data-ops-tab]").forEach(button => {
+    const active = button.dataset.opsTab === opsState.view;
+    button.setAttribute("aria-selected", String(active));
+    button.setAttribute("tabindex", active ? "0" : "-1");
+    if (active && focus) button.focus();
+  });
+  const panel = document.querySelector("[data-ops-view]");
+  if (panel) panel.setAttribute("aria-labelledby", `ops-tab-${opsState.view}`);
+  document.title = `UCAC | ${opsViewLabels[opsState.view] || "运营控制台"}`;
+}
+
+function syncTabOrientation() {
+  const tablist = document.querySelector(".ops-tabs");
+  if (tablist) tablist.setAttribute("aria-orientation", window.matchMedia("(max-width: 760px)").matches ? "horizontal" : "vertical");
+}
+
+function updateViewHash(view, { replace = false } = {}) {
+  const next = `#${view}`;
+  if (window.location.hash === next) return;
+  window.history[replace ? "replaceState" : "pushState"](null, "", next);
+}
+
+function confirmHighImpactAction(form) {
+  const lifecycle = form.dataset.cityLifecycle || form.dataset.schoolLifecycle
+    || form.dataset.programLifecycle || form.dataset.scholarshipLifecycle;
+  let action = lifecycle || form.dataset.guideCommand || "";
+  if (form.matches("[data-insight-publish]")) action = "publish";
+  if (form.matches("[data-insight-withdraw]")) action = "withdraw";
+  if (form.matches("[data-release-manifest-supersede]")) action = "supersede";
+  const messages = {
+    publish: "确认发布当前版本？发布后公开页面会立即读取这份内容。",
+    archive: "确认归档当前记录？归档后它将不再作为公开目录记录使用。",
+    restore: "确认将当前记录恢复为草稿？恢复后仍需重新发布才会公开。",
+    withdraw: "确认撤回当前公开内容？前台将不再展示该版本。",
+    supersede: "确认作废这份发布计划？该操作不会修改目录记录，但计划将不能继续使用。",
+  };
+  return !messages[action] || window.confirm(messages[action]);
 }
 
 function isRecord(value) {
@@ -252,13 +321,19 @@ async function requestJson(path, options = {}) {
 }
 
 let opsToastTimer;
-function showOpsToast(message) {
+function showOpsToast(message, tone = "success") {
   const root = document.querySelector("[data-ops-toast]");
   if (!root) return;
   root.textContent = message;
+  root.dataset.tone = tone;
+  root.setAttribute("role", tone === "error" ? "alert" : "status");
   root.hidden = false;
   clearTimeout(opsToastTimer);
   opsToastTimer = setTimeout(() => { root.hidden = true; }, 4200);
+}
+
+function showOpsProblem(message) {
+  showOpsToast(message, "error");
 }
 
 function showOpsError(error) {
@@ -267,7 +342,7 @@ function showOpsError(error) {
   const message = error?.status === 403
     ? "当前员工授权、角色或二次验证不满足这项操作。"
     : cleanText(error?.message) || "当前模块暂时不可用。";
-  root.innerHTML = `<div class="ops-error"><span class="ops-kicker">读取失败</span><h2>无法打开当前运营模块</h2><p>${escapeHtml(message)}</p></div>`;
+  root.innerHTML = `<div class="ops-error"><span class="ops-kicker">读取失败</span><h2>无法打开当前运营模块</h2><p>${escapeHtml(message)}</p><button class="ops-button" type="button" data-ops-retry>重新读取</button></div>`;
 }
 
 function sectionHeading(title, copy, generatedAt = null) {
@@ -277,7 +352,10 @@ function sectionHeading(title, copy, generatedAt = null) {
 
 function renderLoading() {
   const root = document.querySelector("[data-ops-view]");
-  if (root) root.innerHTML = '<p class="ops-state" aria-busy="true">正在读取当前模块。</p>';
+  if (root) root.innerHTML = `<div class="ops-loading" aria-busy="true" aria-label="正在读取当前模块">
+    <span class="ops-loading-line is-short"></span><span class="ops-loading-line"></span>
+    <div class="ops-loading-grid"><span></span><span></span><span></span></div>
+  </div>`;
 }
 
 function hasStepUpAdminAuthority() {
@@ -348,7 +426,7 @@ function renderOverview(summary) {
           <span class="ops-availability is-${escapeHtml(availability.tone)}">${escapeHtml(availability.label)}</span>
           <p>${escapeHtml(risk)} · ${escapeHtml(availability.copy)}</p></div>
           <dl><div><dt>到期</dt><dd>${escapeHtml(row.dueCount)}</dd></div><div><dt>异常</dt><dd>${escapeHtml(row.exceptionsLast24Hours)}</dd></div></dl>
-          ${view ? `<button class="ops-button primary" type="button" data-ops-open-view="${view}">进入复核</button>` : '<button class="ops-button" type="button" data-ops-refresh>刷新状态</button>'}
+          ${view ? `<button class="ops-button primary" type="button" data-ops-open-view="${view}">进入复核</button>` : '<span class="ops-monitor-note">仅状态监控，无人工操作入口</span>'}
         </article>`;
       }).join("")}</div>
     </section>
@@ -494,6 +572,19 @@ function renderQualityPagination(queue) {
     <div>
       <button class="ops-button" type="button" data-quality-page="previous"${page === 1 ? " disabled" : ""}>上一页</button>
       <button class="ops-button" type="button" data-quality-page="next"${queue.nextCursor ? "" : " disabled"}>下一页</button>
+    </div>
+  </nav>`;
+}
+
+function renderCatalogPagination(data) {
+  const total = Number(data?.total || 0);
+  const pageCount = Math.max(1, Math.ceil(total / opsCatalogPageSize));
+  const page = Math.min(opsState.catalogPageIndex + 1, pageCount);
+  return `<nav class="ops-pagination ops-catalog-pagination" aria-label="目录记录分页">
+    <span>第 ${escapeHtml(page)} / ${escapeHtml(pageCount)} 页 · 共 ${escapeHtml(total)} 条</span>
+    <div>
+      <button class="ops-button" type="button" data-catalog-page="previous"${page <= 1 ? " disabled" : ""}>上一页</button>
+      <button class="ops-button" type="button" data-catalog-page="next"${page >= pageCount ? " disabled" : ""}>下一页</button>
     </div>
   </nav>`;
 }
@@ -644,13 +735,15 @@ function renderReleasePlans(data, detail) {
     </aside>${detailHtml}</div>`;
 }
 
-async function loadReleasePlans() {
+async function loadReleasePlans(loadSequence = opsState.loadSequence) {
   const params = new URLSearchParams({ limit: "100" });
   if (opsState.releaseManifestStatus) params.set("status",opsState.releaseManifestStatus);
   const data = await requestJson(`${opsReleaseManifestEndpoint}?${params}`);
+  if (loadSequence !== opsState.loadSequence) return;
   if (!opsState.selectedReleaseManifestId && data.items?.length) opsState.selectedReleaseManifestId = data.items[0].id;
   const detail = opsState.selectedReleaseManifestId
     ? await requestJson(`${opsReleaseManifestEndpoint}/${encodeURIComponent(opsState.selectedReleaseManifestId)}`) : null;
+  if (loadSequence !== opsState.loadSequence) return;
   renderReleasePlans(data,detail);
 }
 
@@ -668,7 +761,7 @@ async function submitReleaseManifest(form) {
     await selectOpsView("release-plans");
   } catch (error) {
     if (error?.status === 409) await loadCurrentView();
-    showOpsToast(error?.status===409 ? "所选记录已变化或不再通过预检，请重新选择。" : error.message||"发布计划创建失败。");
+    showOpsProblem(error?.status===409 ? "所选记录已变化或不再通过预检，请重新选择。" : error.message||"发布计划创建失败。");
   } finally { opsState.busy=false; }
 }
 
@@ -682,7 +775,7 @@ async function supersedeReleaseManifest(form) {
     await loadCurrentView();
   } catch(error) {
     if(error?.status===409) await loadCurrentView();
-    showOpsToast(error.message||"发布计划作废失败。");
+    showOpsProblem(error.message||"发布计划作废失败。");
   } finally { opsState.busy=false; }
 }
 
@@ -903,12 +996,14 @@ function renderGuides(guides, versions) {
     </div>`;
 }
 
-async function loadGuideManagement() {
+async function loadGuideManagement(loadSequence = opsState.loadSequence) {
   const guides = await requestJson("/api/v1/ops/catalog/guides");
+  if (loadSequence !== opsState.loadSequence) return;
   if (!Array.isArray(guides)) throw new OpsRequestError("公开指南列表无效。", 503, "INVALID_RESPONSE");
   if (!opsState.selectedGuideId) opsState.selectedGuideId = guides[0]?.id || null;
   const selected = guides.find(item => item.id === opsState.selectedGuideId) || guides[0];
   const versions = selected ? await requestJson(`/api/v1/ops/catalog/guides/${encodeURIComponent(selected.id)}/versions?limit=20`) : { items: [], publication: null };
+  if (loadSequence !== opsState.loadSequence) return;
   renderGuides(guides, versions);
 }
 
@@ -927,7 +1022,7 @@ async function submitGuideDraft(form) {
     await requestJson(`/api/v1/ops/catalog/guides/${encodeURIComponent(guideId)}/versions`, { method: "POST",
       body: JSON.stringify({ versionId: crypto.randomUUID(), document }) });
     showOpsToast("指南草稿已保存，需由另一位管理员独立审核。"); await loadCurrentView();
-  } catch (error) { showOpsToast(error.message || "指南草稿保存失败。"); }
+  } catch (error) { showOpsProblem(error.message || "指南草稿保存失败。"); }
   finally { opsState.busy = false; }
 }
 
@@ -951,7 +1046,7 @@ async function submitGuideCommand(form) {
     await loadCurrentView();
   } catch (error) {
     if (error?.status === 409) await loadCurrentView();
-    showOpsToast(error?.status === 403 ? "需要独立管理员身份和有效二次验证。" : error.message || "指南操作失败。");
+    showOpsProblem(error?.status === 403 ? "需要独立管理员身份和有效二次验证。" : error.message || "指南操作失败。");
   } finally { opsState.busy = false; }
 }
 
@@ -1187,16 +1282,19 @@ function renderInsights(posts, versions, editable) {
   const editor = root.querySelector("[data-insight-draft]"); if (editor) updateInsightPreview(editor);
 }
 
-async function loadInsightManagement() {
+async function loadInsightManagement(loadSequence = opsState.loadSequence) {
   const posts = await requestJson("/api/v1/ops/insights");
+  if (loadSequence !== opsState.loadSequence) return;
   if (!Array.isArray(posts)) throw new OpsRequestError("Insights 列表无效。", 503, "INVALID_RESPONSE");
   const selected = posts.find(item => item.id === opsState.selectedInsightId) || posts[0];
   let versions = [], editable = null;
   if (selected) {
     versions = await requestJson(`/api/v1/ops/insights/${encodeURIComponent(selected.id)}/versions`);
+    if (loadSequence !== opsState.loadSequence) return;
     const latest = versions[0];
     if (latest) editable = await requestJson(`/api/v1/ops/insights/${encodeURIComponent(selected.id)}/versions/${encodeURIComponent(latest.versionId)}`);
   }
+  if (loadSequence !== opsState.loadSequence) return;
   renderInsights(posts, versions, editable);
 }
 
@@ -1212,7 +1310,7 @@ async function submitInsightDraft(form) {
       opsState.selectedInsightId = newPostId;
     }
     showOpsToast("文章草稿版本已保存。"); await loadCurrentView();
-  } catch (error) { showOpsToast(error.message || "文章草稿保存失败。"); }
+  } catch (error) { showOpsProblem(error.message || "文章草稿保存失败。"); }
   finally { opsState.busy = false; }
 }
 
@@ -1222,7 +1320,7 @@ async function publishInsight(form) {
   try {
     await requestJson(`/api/v1/ops/insights/${encodeURIComponent(form.dataset.postId)}/versions/${encodeURIComponent(form.dataset.versionId)}/publication`, { method: "POST", body: JSON.stringify({ expectedContentSha256: form.dataset.contentSha, expectedPublicationRevision: Number(form.dataset.revision) }) });
     showOpsToast("Insight 已发布，前台、RSS 与 sitemap 将读取新版本。"); await loadCurrentView();
-  } catch (error) { if (error?.status === 409) await loadCurrentView(); showOpsToast(error.message || "文章发布失败。"); }
+  } catch (error) { if (error?.status === 409) await loadCurrentView(); showOpsProblem(error.message || "文章发布失败。"); }
   finally { opsState.busy = false; }
 }
 
@@ -1232,7 +1330,7 @@ async function withdrawInsight(form) {
   try {
     await requestJson(`/api/v1/ops/insights/${encodeURIComponent(form.dataset.postId)}/withdrawal`, { method: "POST", body: JSON.stringify({ expectedPublicationRevision: Number(form.dataset.revision), reason: cleanText(new FormData(form).get("reason")) }) });
     showOpsToast("Insight 已从公开页面撤回，历史版本仍保留。"); await loadCurrentView();
-  } catch (error) { showOpsToast(error.message || "文章撤回失败。"); }
+  } catch (error) { showOpsProblem(error.message || "文章撤回失败。"); }
   finally { opsState.busy = false; }
 }
 
@@ -1428,7 +1526,7 @@ function renderCatalogManagement(data, detail) {
       <p><strong>${escapeHtml(data.total)}</strong> 条记录</p>${data.items.length ? data.items.map(city => `<button type="button" data-city-select="${escapeHtml(city.id)}" class="${selected === city.id ? "active" : ""}">
         <span><strong>${escapeHtml(city.nameZh || city.nameEn)}</strong><small>${escapeHtml(city.nameEn)} · ${escapeHtml(city.province || "地区未填写")}</small></span>
         <span>${escapeHtml(cityStatusLabel(city.status))}<small>v${escapeHtml(city.version)}</small></span></button>`).join("") : '<p class="ops-state compact">没有符合条件的城市。</p>'}
-    </aside>${renderCityEditor(detail)}</div>`;
+    </aside>${renderCityEditor(detail)}</div>${renderCatalogPagination(data)}`;
 }
 
 function renderCatalogScope(active) {
@@ -1520,7 +1618,7 @@ function renderSchoolCatalogManagement(data, detail, cities) {
       ${data.items.length ? data.items.map(school => `<button type="button" data-school-select="${escapeHtml(school.id)}" class="${selected === school.id ? "active" : ""}">
         <span><strong>${escapeHtml(school.nameZh || school.nameEn)}</strong><small>${escapeHtml(school.nameEn)} · ${escapeHtml(school.city || school.province || "城市未关联")}</small></span>
         <span>${escapeHtml(cityStatusLabel(school.status))}<small>v${escapeHtml(school.version)}</small></span></button>`).join("") : '<p class="ops-state compact">没有符合条件的学校。</p>'}
-    </aside>${renderSchoolEditor(detail, cities)}</div>`;
+    </aside>${renderSchoolEditor(detail, cities)}</div>${renderCatalogPagination(data)}`;
 }
 
 function renderProgramEditor(detail, schools, cities) {
@@ -1585,7 +1683,7 @@ function renderProgramCatalogManagement(data, detail, schools, cities) {
     <div class="ops-catalog-toolbar"><form data-program-filter><label>查找项目<input name="query" value="${escapeHtml(opsState.catalogQuery)}" placeholder="名称、slug、学位或专业方向"></label>
     <label>状态<select name="status"><option value="">全部</option>${[["active","已发布"],["draft","草稿"],["archived","已归档"]].map(([value,label]) => `<option value="${value}"${opsState.catalogStatus === value ? " selected" : ""}>${label}</option>`).join("")}</select></label>
     <button class="ops-button" type="submit">筛选</button></form><button class="ops-button primary" type="button" data-program-new>新建项目</button></div>
-    <div class="ops-catalog-layout"><aside class="ops-city-list" aria-label="项目记录"><p><strong>${escapeHtml(data.total)}</strong> 条记录</p>${data.items.length ? data.items.map(program => `<button type="button" data-program-select="${escapeHtml(program.id)}" class="${opsState.selectedProgramId === program.id ? "active" : ""}"><span><strong>${escapeHtml(program.nameZh || program.nameEn)}</strong><small>${escapeHtml(program.nameEn)} · ${escapeHtml(program.degreeLevel)}</small></span><span>${escapeHtml(cityStatusLabel(program.status))}<small>v${escapeHtml(program.version)}</small></span></button>`).join("") : '<p class="ops-state compact">没有符合条件的项目。</p>'}</aside>${renderProgramEditor(detail, schools, cities)}</div>`;
+    <div class="ops-catalog-layout"><aside class="ops-city-list" aria-label="项目记录"><p><strong>${escapeHtml(data.total)}</strong> 条记录</p>${data.items.length ? data.items.map(program => `<button type="button" data-program-select="${escapeHtml(program.id)}" class="${opsState.selectedProgramId === program.id ? "active" : ""}"><span><strong>${escapeHtml(program.nameZh || program.nameEn)}</strong><small>${escapeHtml(program.nameEn)} · ${escapeHtml(program.degreeLevel)}</small></span><span>${escapeHtml(cityStatusLabel(program.status))}<small>v${escapeHtml(program.version)}</small></span></button>`).join("") : '<p class="ops-state compact">没有符合条件的项目。</p>'}</aside>${renderProgramEditor(detail, schools, cities)}</div>${renderCatalogPagination(data)}`;
 }
 
 function renderScholarshipEditor(detail, schools, linkedProgram) {
@@ -1650,17 +1748,31 @@ function renderScholarshipCatalogManagement(data, detail, schools, linkedProgram
     <div class="ops-catalog-toolbar"><form data-scholarship-filter><label>查找奖学金<input name="query" value="${escapeHtml(opsState.catalogQuery)}" placeholder="名称、slug、资助方或资助层级"></label>
     <label>状态<select name="status"><option value="">全部</option>${[["active","已发布"],["draft","草稿"],["archived","已归档"]].map(([value,label]) => `<option value="${value}"${opsState.catalogStatus === value ? " selected" : ""}>${label}</option>`).join("")}</select></label>
     <button class="ops-button" type="submit">筛选</button></form><button class="ops-button primary" type="button" data-scholarship-new>新建奖学金</button></div>
-    <div class="ops-catalog-layout"><aside class="ops-city-list" aria-label="奖学金记录"><p><strong>${escapeHtml(data.total)}</strong> 条记录</p>${data.items.length ? data.items.map(item => `<button type="button" data-scholarship-select="${escapeHtml(item.id)}" class="${opsState.selectedScholarshipId === item.id ? "active" : ""}"><span><strong>${escapeHtml(item.nameZh || item.title)}</strong><small>${escapeHtml(item.providerName || item.providerNameEn || "资助方未填写")} · ${escapeHtml(item.fundingLevel || "层级未填写")}</small></span><span>${escapeHtml(cityStatusLabel(item.status))}<small>v${escapeHtml(item.version)}</small></span></button>`).join("") : '<p class="ops-state compact">没有符合条件的奖学金。</p>'}</aside>${renderScholarshipEditor(detail, schools, linkedProgram)}</div>`;
+    <div class="ops-catalog-layout"><aside class="ops-city-list" aria-label="奖学金记录"><p><strong>${escapeHtml(data.total)}</strong> 条记录</p>${data.items.length ? data.items.map(item => `<button type="button" data-scholarship-select="${escapeHtml(item.id)}" class="${opsState.selectedScholarshipId === item.id ? "active" : ""}"><span><strong>${escapeHtml(item.nameZh || item.title)}</strong><small>${escapeHtml(item.providerName || item.providerNameEn || "资助方未填写")} · ${escapeHtml(item.fundingLevel || "层级未填写")}</small></span><span>${escapeHtml(cityStatusLabel(item.status))}<small>v${escapeHtml(item.version)}</small></span></button>`).join("") : '<p class="ops-state compact">没有符合条件的奖学金。</p>'}</aside>${renderScholarshipEditor(detail, schools, linkedProgram)}</div>${renderCatalogPagination(data)}`;
 }
 
-async function loadCatalogManagement() {
-  const params = new URLSearchParams({ limit: "100" });
+async function loadAllCatalogOptions(path) {
+  const first = await requestJson(`${path}?limit=100&offset=0`);
+  const items = [...first.items];
+  for (let offset = 100; offset < first.total; offset += 100) {
+    const page = await requestJson(`${path}?limit=100&offset=${offset}`);
+    items.push(...page.items);
+  }
+  return items;
+}
+
+async function loadCatalogManagement(loadSequence = opsState.loadSequence) {
+  const params = new URLSearchParams({
+    limit: String(opsCatalogPageSize),
+    offset: String(opsState.catalogPageIndex * opsCatalogPageSize),
+  });
   if (opsState.catalogQuery) params.set("query", opsState.catalogQuery);
   if (opsState.catalogStatus) params.set("status", opsState.catalogStatus);
   if (opsState.catalogEntity === "scholarship") {
-    const [data, schoolData] = await Promise.all([
-      requestJson(`/api/v1/ops/catalog/scholarships?${params}`), requestJson("/api/v1/ops/catalog/schools?limit=100"),
+    const [data, schools] = await Promise.all([
+      requestJson(`/api/v1/ops/catalog/scholarships?${params}`), loadAllCatalogOptions("/api/v1/ops/catalog/schools"),
     ]);
+    if (loadSequence !== opsState.loadSequence) return;
     if (opsState.selectedScholarshipId !== "__new__" && !data.items.some(item => item.id === opsState.selectedScholarshipId)) {
       opsState.selectedScholarshipId = data.items[0]?.id || "__new__";
     }
@@ -1668,40 +1780,47 @@ async function loadCatalogManagement() {
       ? await requestJson(`/api/v1/ops/catalog/scholarships/${encodeURIComponent(opsState.selectedScholarshipId)}`) : null;
     const linkedProgramDetail = detail?.scholarship?.programId
       ? await requestJson(`/api/v1/ops/catalog/programs/${encodeURIComponent(detail.scholarship.programId)}`) : null;
-    renderScholarshipCatalogManagement(data, detail, schoolData.items, linkedProgramDetail?.program || null);
+    if (loadSequence !== opsState.loadSequence) return;
+    renderScholarshipCatalogManagement(data, detail, schools, linkedProgramDetail?.program || null);
     return;
   }
   if (opsState.catalogEntity === "program") {
-    const [data, schoolData, cityData] = await Promise.all([
-      requestJson(`/api/v1/ops/catalog/programs?${params}`), requestJson("/api/v1/ops/catalog/schools?limit=100"),
-      requestJson("/api/v1/ops/catalog/cities?limit=100"),
+    const [data, schools, cities] = await Promise.all([
+      requestJson(`/api/v1/ops/catalog/programs?${params}`), loadAllCatalogOptions("/api/v1/ops/catalog/schools"),
+      loadAllCatalogOptions("/api/v1/ops/catalog/cities"),
     ]);
+    if (loadSequence !== opsState.loadSequence) return;
     if (opsState.selectedProgramId !== "__new__" && !data.items.some(item => item.id === opsState.selectedProgramId)) {
       opsState.selectedProgramId = data.items[0]?.id || "__new__";
     }
     const detail = opsState.selectedProgramId && opsState.selectedProgramId !== "__new__"
       ? await requestJson(`/api/v1/ops/catalog/programs/${encodeURIComponent(opsState.selectedProgramId)}`) : null;
-    renderProgramCatalogManagement(data, detail, schoolData.items, cityData.items);
+    if (loadSequence !== opsState.loadSequence) return;
+    renderProgramCatalogManagement(data, detail, schools, cities);
     return;
   }
   if (opsState.catalogEntity === "school") {
-    const [data, cityData] = await Promise.all([
-      requestJson(`/api/v1/ops/catalog/schools?${params}`), requestJson("/api/v1/ops/catalog/cities?limit=100"),
+    const [data, cities] = await Promise.all([
+      requestJson(`/api/v1/ops/catalog/schools?${params}`), loadAllCatalogOptions("/api/v1/ops/catalog/cities"),
     ]);
+    if (loadSequence !== opsState.loadSequence) return;
     if (opsState.selectedSchoolId !== "__new__" && !data.items.some(item => item.id === opsState.selectedSchoolId)) {
       opsState.selectedSchoolId = data.items[0]?.id || "__new__";
     }
     const detail = opsState.selectedSchoolId && opsState.selectedSchoolId !== "__new__"
       ? await requestJson(`/api/v1/ops/catalog/schools/${encodeURIComponent(opsState.selectedSchoolId)}`) : null;
-    renderSchoolCatalogManagement(data, detail, cityData.items);
+    if (loadSequence !== opsState.loadSequence) return;
+    renderSchoolCatalogManagement(data, detail, cities);
     return;
   }
   const data = await requestJson(`/api/v1/ops/catalog/cities?${params}`);
+  if (loadSequence !== opsState.loadSequence) return;
   if (opsState.selectedCityId !== "__new__" && !data.items.some(item => item.id === opsState.selectedCityId)) {
     opsState.selectedCityId = data.items[0]?.id || "__new__";
   }
   const detail = opsState.selectedCityId && opsState.selectedCityId !== "__new__"
     ? await requestJson(`/api/v1/ops/catalog/cities/${encodeURIComponent(opsState.selectedCityId)}`) : null;
+  if (loadSequence !== opsState.loadSequence) return;
   renderCatalogManagement(data, detail);
 }
 
@@ -1742,7 +1861,7 @@ async function submitSchoolEditor(form) {
     await loadCurrentView();
   } catch (error) {
     if (error?.status === 409) await loadCurrentView();
-    showOpsToast(error?.status === 409 ? "记录或城市关系已变化，请基于最新版本继续编辑。" : error.message || "学校记录保存失败。");
+    showOpsProblem(error?.status === 409 ? "记录或城市关系已变化，请基于最新版本继续编辑。" : error.message || "学校记录保存失败。");
   } finally { opsState.busy = false; if (button && document.contains(button)) button.disabled = false; }
 }
 
@@ -1761,7 +1880,7 @@ async function submitSchoolLifecycle(form) {
   } catch (error) {
     if (error?.status === 409) await loadCurrentView();
     if (error?.status === 403) { opsState.authStrength = "session"; renderAuthCapability(); }
-    showOpsToast(error?.status === 409 ? "学校状态已变化或仍有活动依赖，请检查后重试。" : error.message || "学校状态操作失败。");
+    showOpsProblem(error?.status === 409 ? "学校状态已变化或仍有活动依赖，请检查后重试。" : error.message || "学校状态操作失败。");
   } finally { opsState.busy = false; }
 }
 
@@ -1799,7 +1918,7 @@ async function submitProgramEditor(form) {
     await loadCurrentView();
   } catch (error) {
     if (error?.status === 409) await loadCurrentView();
-    showOpsToast(error?.status === 409 ? "记录或学校、城市关系已变化，请基于最新版本继续编辑。" : error.message || "项目记录保存失败。");
+    showOpsProblem(error?.status === 409 ? "记录或学校、城市关系已变化，请基于最新版本继续编辑。" : error.message || "项目记录保存失败。");
   } finally { opsState.busy = false; if (button && document.contains(button)) button.disabled = false; }
 }
 
@@ -1818,7 +1937,7 @@ async function submitProgramLifecycle(form) {
   } catch (error) {
     if (error?.status === 409) await loadCurrentView();
     if (error?.status === 403) { opsState.authStrength = "session"; renderAuthCapability(); }
-    showOpsToast(error?.status === 409 ? "项目状态已变化或仍有活动依赖，请检查后重试。" : error.message || "项目状态操作失败。");
+    showOpsProblem(error?.status === 409 ? "项目状态已变化或仍有活动依赖，请检查后重试。" : error.message || "项目状态操作失败。");
   } finally { opsState.busy = false; }
 }
 
@@ -1862,7 +1981,7 @@ async function submitScholarshipEditor(form) {
     await loadCurrentView();
   } catch (error) {
     if (error?.status === 409) await loadCurrentView();
-    showOpsToast(error?.status === 409 ? "记录或学校、项目关系已变化，请基于最新版本继续编辑。" : error.message || "奖学金记录保存失败。");
+    showOpsProblem(error?.status === 409 ? "记录或学校、项目关系已变化，请基于最新版本继续编辑。" : error.message || "奖学金记录保存失败。");
   } finally { opsState.busy = false; if (button && document.contains(button)) button.disabled = false; }
 }
 
@@ -1881,7 +2000,7 @@ async function submitScholarshipLifecycle(form) {
   } catch (error) {
     if (error?.status === 409) await loadCurrentView();
     if (error?.status === 403) { opsState.authStrength = "session"; renderAuthCapability(); }
-    showOpsToast(error?.status === 409 ? "奖学金状态已变化或仍有当前申请依赖，请检查后重试。" : error.message || "奖学金状态操作失败。");
+    showOpsProblem(error?.status === 409 ? "奖学金状态已变化或仍有当前申请依赖，请检查后重试。" : error.message || "奖学金状态操作失败。");
   } finally { opsState.busy = false; }
 }
 
@@ -1934,7 +2053,7 @@ async function submitCityEditor(form) {
     await loadCurrentView();
   } catch (error) {
     if (error?.status === 409) await loadCurrentView();
-    showOpsToast(error?.status === 409 ? "记录已被其他管理员更新，请基于最新版本继续编辑。" : error.message || "城市记录保存失败。");
+    showOpsProblem(error?.status === 409 ? "记录已被其他管理员更新，请基于最新版本继续编辑。" : error.message || "城市记录保存失败。");
   } finally { opsState.busy = false; if (button && document.contains(button)) button.disabled = false; }
 }
 
@@ -1953,31 +2072,45 @@ async function submitCityLifecycle(form) {
   } catch (error) {
     if (error?.status === 409) await loadCurrentView();
     if (error?.status === 403) { opsState.authStrength = "session"; renderAuthCapability(); }
-    showOpsToast(error?.status === 409 ? "城市状态已变化，请基于最新版本重试。" : error.message || "城市状态操作失败。");
+    showOpsProblem(error?.status === 409 ? "城市状态已变化，请基于最新版本重试。" : error.message || "城市状态操作失败。");
   } finally { opsState.busy = false; }
 }
 
 async function loadCurrentView() {
+  const loadSequence = ++opsState.loadSequence;
+  const view = opsState.view;
+  setDirtyState(false);
   renderLoading();
   try {
-    if (opsState.view === "overview") renderOverview(await requestJson("/api/v1/ops/operations/summary"));
-    else if (opsState.view === "routing") renderRouting(await requestJson("/api/v1/ops/routing/submissions?limit=50"));
-    else if (opsState.view === "billing") renderBilling(await requestJson("/api/v1/ops/billing/provider-events?limit=50"));
-    else if (opsState.view === "quality") renderQuality(await requestJson(qualityRequestPath()));
-    else if (opsState.view === "readiness") renderReadiness(await requestJson(readinessRequestPath()));
-    else if (opsState.view === "release-plans") await loadReleasePlans();
-    else if (opsState.view === "catalog") await loadCatalogManagement();
-    else if (opsState.view === "corrections") renderCorrections(await requestJson("/api/v1/ops/catalog-corrections?limit=50"));
-    else if (opsState.view === "guides") await loadGuideManagement();
-    else if (opsState.view === "insights") await loadInsightManagement();
-    else if (opsState.view === "privacy") renderDataRights(await requestJson("/api/v1/ops/data-rights/requests?limit=100"));
-    else if (opsState.view === "deletions") renderAccountDeletions(await requestJson("/api/v1/ops/account-deletions?limit=100"));
-    else renderSupport();
+    if (view === "release-plans") await loadReleasePlans(loadSequence);
+    else if (view === "catalog") await loadCatalogManagement(loadSequence);
+    else if (view === "guides") await loadGuideManagement(loadSequence);
+    else if (view === "insights") await loadInsightManagement(loadSequence);
+    else if (view === "support") {
+      if (loadSequence === opsState.loadSequence) renderSupport();
+    } else {
+      const paths = {
+        overview: "/api/v1/ops/operations/summary",
+        routing: "/api/v1/ops/routing/submissions?limit=50",
+        billing: "/api/v1/ops/billing/provider-events?limit=50",
+        quality: qualityRequestPath(),
+        readiness: readinessRequestPath(),
+        corrections: "/api/v1/ops/catalog-corrections?limit=50",
+        privacy: "/api/v1/ops/data-rights/requests?limit=100",
+        deletions: "/api/v1/ops/account-deletions?limit=100",
+      };
+      const renderers = { overview: renderOverview, routing: renderRouting, billing: renderBilling, quality: renderQuality,
+        readiness: renderReadiness, corrections: renderCorrections, privacy: renderDataRights, deletions: renderAccountDeletions };
+      const data = await requestJson(paths[view]);
+      if (loadSequence !== opsState.loadSequence) return;
+      renderers[view](data);
+    }
   } catch (error) {
+    if (loadSequence !== opsState.loadSequence) return;
     if (error?.status === 401) {
       window.CUAC?.requireSignedIn?.("打开运营控制台", {
         requiredRole: "cuac_ops",
-        resumeAction: { type: "navigate", href: "ops-admin-api.html" },
+        returnUrl: `ops-admin-api.html#${opsState.view}`,
       });
       return;
     }
@@ -1997,7 +2130,7 @@ async function closeSupportSession({ quiet = false, keepalive = false } = {}) {
     });
     if (!quiet) showOpsToast("支持会话已结束。");
   } catch (error) {
-    if (!quiet) showOpsToast(error.message || "支持会话关闭请求未完成。");
+    if (!quiet) showOpsProblem(error.message || "支持会话关闭请求未完成。");
   }
 }
 
@@ -2035,7 +2168,7 @@ async function openSupportSession(form) {
     showOpsToast("限时支持会话已打开。");
   } catch (error) {
     await closeSupportSession({ quiet: true });
-    showOpsToast(error?.status === 403 ? "当前授权不允许打开这项支持查询。" : error.message || "申请支持查询失败。");
+    showOpsProblem(error?.status === 403 ? "当前授权不允许打开这项支持查询。" : error.message || "申请支持查询失败。");
     renderSupport();
   } finally {
     opsState.busy = false;
@@ -2142,7 +2275,7 @@ async function submitOpsAction(form) {
       opsState.authStrength = "session";
       renderAuthCapability();
     }
-    showOpsToast(error?.status === 403
+    showOpsProblem(error?.status === 403
       ? "当前授权、认领关系或二次验证不允许这项操作。"
       : error.message || "复核操作失败。");
   } finally {
@@ -2173,24 +2306,25 @@ async function stepUpAdminSession(form) {
     await loadCurrentView();
   } catch (error) {
     form.reset();
-    showOpsToast(error?.status === 401 || error?.status === 403 ? "密码或动态验证码验证失败，最终操作仍保持锁定。" : error.message || "二次验证未完成。");
+    showOpsProblem(error?.status === 401 || error?.status === 403 ? "密码或动态验证码验证失败，最终操作仍保持锁定。" : error.message || "二次验证未完成。");
   } finally {
     opsState.busy = false;
     if (button && document.contains(button)) button.disabled = false;
   }
 }
 
-async function selectOpsView(view) {
-  if (!["overview", "routing", "billing", "quality", "readiness", "release-plans", "catalog", "corrections", "guides", "insights", "support", "privacy", "deletions"].includes(view) || view === opsState.view) return;
+async function selectOpsView(view, { updateHash = true, focusTab = false } = {}) {
+  if (!opsViewKeys.includes(view) || view === opsState.view) return;
+  if (!confirmDiscardChanges()) return;
   if (opsState.view === "support") await closeSupportSession({ quiet: true });
   opsState.view = view;
-  document.querySelectorAll("[data-ops-tab]").forEach(button => {
-    button.setAttribute("aria-selected", String(button.dataset.opsTab === view));
-  });
+  syncOpsTabs({ focus: focusTab });
+  if (updateHash) updateViewHash(view);
   await loadCurrentView();
 }
 
 function bindOpsEvents() {
+  syncTabOrientation();
   document.addEventListener("paste", pasteInsightBody);
   document.addEventListener("input", event => {
     const editor = event.target.closest?.("[data-insight-draft]");
@@ -2202,16 +2336,25 @@ function bindOpsEvents() {
       if (event.target.matches?.("[data-insight-slug]")) slug.dataset.manual = "true";
       updateInsightPreview(editor);
     }
+    if (event.target.closest?.("[data-city-editor], [data-school-editor], [data-program-editor], [data-scholarship-editor], [data-guide-draft], [data-insight-draft]")) {
+      setDirtyState(true);
+    }
   });
   document.addEventListener("click", event => {
     const tab = event.target.closest("[data-ops-tab]");
     if (tab) void selectOpsView(tab.dataset.opsTab);
     const priorityView = event.target.closest("[data-ops-open-view]");
     if (priorityView) void selectOpsView(priorityView.dataset.opsOpenView);
-    if (event.target.closest("[data-ops-refresh]")) void loadCurrentView();
+    if (event.target.closest("[data-ops-refresh]") && confirmDiscardChanges()) void loadCurrentView();
+    if (event.target.closest("[data-ops-retry]")) void loadCurrentView();
     if (event.target.closest("[data-close-support]")) void closeSupportSession().then(renderSupport);
     const qualityPage = event.target.closest("[data-quality-page]");
     if (qualityPage) void changeQualityPage(qualityPage.dataset.qualityPage);
+    const catalogPage = event.target.closest("[data-catalog-page]");
+    if (catalogPage && confirmDiscardChanges()) {
+      opsState.catalogPageIndex = Math.max(0, opsState.catalogPageIndex + (catalogPage.dataset.catalogPage === "next" ? 1 : -1));
+      void loadCurrentView();
+    }
     const readinessRecord = event.target.closest("[data-readiness-open]");
     if (readinessRecord) {
       const type = readinessRecord.dataset.readinessOpen, id = readinessRecord.dataset.readinessId;
@@ -2223,32 +2366,36 @@ function bindOpsEvents() {
       void selectOpsView("catalog");
     }
     const manifest = event.target.closest("[data-release-manifest-select]");
-    if (manifest) { opsState.selectedReleaseManifestId=manifest.dataset.releaseManifestSelect; void loadCurrentView(); }
+    if (manifest && confirmDiscardChanges()) { opsState.selectedReleaseManifestId=manifest.dataset.releaseManifestSelect; void loadCurrentView(); }
     const guide = event.target.closest("[data-guide-select]");
-    if (guide) { opsState.selectedGuideId = guide.dataset.guideSelect; void loadCurrentView(); }
+    if (guide && confirmDiscardChanges()) { opsState.selectedGuideId = guide.dataset.guideSelect; void loadCurrentView(); }
     const insight = event.target.closest("[data-insight-select]");
-    if (insight) { opsState.selectedInsightId = insight.dataset.insightSelect; void loadCurrentView(); }
-    if (event.target.closest("[data-insight-new]")) { opsState.selectedInsightId = null; renderInsights([], [], null); }
+    if (insight && confirmDiscardChanges()) { opsState.selectedInsightId = insight.dataset.insightSelect; void loadCurrentView(); }
+    if (event.target.closest("[data-insight-new]") && confirmDiscardChanges()) { opsState.selectedInsightId = null; renderInsights([], [], null); }
     const city = event.target.closest("[data-city-select]");
-    if (city) { opsState.selectedCityId = city.dataset.citySelect; void loadCurrentView(); }
-    if (event.target.closest("[data-city-new]")) { opsState.selectedCityId = "__new__"; void loadCurrentView(); }
+    if (city && confirmDiscardChanges()) { opsState.selectedCityId = city.dataset.citySelect; void loadCurrentView(); }
+    if (event.target.closest("[data-city-new]") && confirmDiscardChanges()) { opsState.selectedCityId = "__new__"; void loadCurrentView(); }
     const school = event.target.closest("[data-school-select]");
-    if (school) { opsState.selectedSchoolId = school.dataset.schoolSelect; void loadCurrentView(); }
-    if (event.target.closest("[data-school-new]")) { opsState.selectedSchoolId = "__new__"; void loadCurrentView(); }
+    if (school && confirmDiscardChanges()) { opsState.selectedSchoolId = school.dataset.schoolSelect; void loadCurrentView(); }
+    if (event.target.closest("[data-school-new]") && confirmDiscardChanges()) { opsState.selectedSchoolId = "__new__"; void loadCurrentView(); }
     const program = event.target.closest("[data-program-select]");
-    if (program) { opsState.selectedProgramId = program.dataset.programSelect; void loadCurrentView(); }
-    if (event.target.closest("[data-program-new]")) { opsState.selectedProgramId = "__new__"; void loadCurrentView(); }
+    if (program && confirmDiscardChanges()) { opsState.selectedProgramId = program.dataset.programSelect; void loadCurrentView(); }
+    if (event.target.closest("[data-program-new]") && confirmDiscardChanges()) { opsState.selectedProgramId = "__new__"; void loadCurrentView(); }
     const scholarship = event.target.closest("[data-scholarship-select]");
-    if (scholarship) { opsState.selectedScholarshipId = scholarship.dataset.scholarshipSelect; void loadCurrentView(); }
-    if (event.target.closest("[data-scholarship-new]")) { opsState.selectedScholarshipId = "__new__"; void loadCurrentView(); }
+    if (scholarship && confirmDiscardChanges()) { opsState.selectedScholarshipId = scholarship.dataset.scholarshipSelect; void loadCurrentView(); }
+    if (event.target.closest("[data-scholarship-new]") && confirmDiscardChanges()) { opsState.selectedScholarshipId = "__new__"; void loadCurrentView(); }
     const catalogEntity = event.target.closest("[data-catalog-entity]");
-    if (catalogEntity && catalogEntity.dataset.catalogEntity !== opsState.catalogEntity) {
+    if (catalogEntity && catalogEntity.dataset.catalogEntity !== opsState.catalogEntity && confirmDiscardChanges()) {
       opsState.catalogEntity = catalogEntity.dataset.catalogEntity;
-      opsState.catalogQuery = ""; opsState.catalogStatus = "";
+      opsState.catalogQuery = ""; opsState.catalogStatus = ""; opsState.catalogPageIndex = 0;
       void loadCurrentView();
     }
   });
   document.addEventListener("submit", event => {
+    if (!confirmHighImpactAction(event.target)) {
+      event.preventDefault();
+      return;
+    }
     if (event.target.matches("[data-open-support]")) {
       event.preventDefault();
       void openSupportSession(event.target);
@@ -2326,33 +2473,41 @@ function bindOpsEvents() {
     }
     if (event.target.matches("[data-city-filter]")) {
       event.preventDefault();
+      if (!confirmDiscardChanges()) return;
       const values = new FormData(event.target);
       opsState.catalogQuery = cleanText(values.get("query"));
       opsState.catalogStatus = cleanText(values.get("status"));
+      opsState.catalogPageIndex = 0;
       opsState.selectedCityId = null;
       void loadCurrentView();
     }
     if (event.target.matches("[data-school-filter]")) {
       event.preventDefault();
+      if (!confirmDiscardChanges()) return;
       const values = new FormData(event.target);
       opsState.catalogQuery = cleanText(values.get("query"));
       opsState.catalogStatus = cleanText(values.get("status"));
+      opsState.catalogPageIndex = 0;
       opsState.selectedSchoolId = null;
       void loadCurrentView();
     }
     if (event.target.matches("[data-program-filter]")) {
       event.preventDefault();
+      if (!confirmDiscardChanges()) return;
       const values = new FormData(event.target);
       opsState.catalogQuery = cleanText(values.get("query"));
       opsState.catalogStatus = cleanText(values.get("status"));
+      opsState.catalogPageIndex = 0;
       opsState.selectedProgramId = null;
       void loadCurrentView();
     }
     if (event.target.matches("[data-scholarship-filter]")) {
       event.preventDefault();
+      if (!confirmDiscardChanges()) return;
       const values = new FormData(event.target);
       opsState.catalogQuery = cleanText(values.get("query"));
       opsState.catalogStatus = cleanText(values.get("status"));
+      opsState.catalogPageIndex = 0;
       opsState.selectedScholarshipId = null;
       void loadCurrentView();
     }
@@ -2361,6 +2516,9 @@ function bindOpsEvents() {
     if (event.target.matches("[data-scholarship-program-search]")) scheduleScholarshipProgramSearch(event.target);
   });
   document.addEventListener("change", event => {
+    if (event.target.closest?.("[data-city-editor], [data-school-editor], [data-program-editor], [data-scholarship-editor], [data-guide-draft], [data-insight-draft]")) {
+      setDirtyState(true);
+    }
     if (event.target.matches("[data-release-select]")) {
       const key=event.target.dataset.releaseSelect;
       if(event.target.checked) opsState.releaseSelection.set(key,{ entityType:event.target.dataset.entityType,
@@ -2378,16 +2536,44 @@ function bindOpsEvents() {
     if (!opsState.supportSession?.supportSessionId) return;
     void closeSupportSession({ quiet: true, keepalive: true });
   });
+  window.addEventListener("beforeunload", event => {
+    if (!opsState.dirty) return;
+    event.preventDefault();
+    event.returnValue = "";
+  });
+  window.addEventListener("hashchange", () => {
+    const view = viewFromHash();
+    if (view === opsState.view) return;
+    if (!confirmDiscardChanges()) {
+      updateViewHash(opsState.view, { replace: true });
+      return;
+    }
+    void selectOpsView(view, { updateHash: false });
+  });
+  document.querySelector(".ops-tabs")?.addEventListener("keydown", event => {
+    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"].includes(event.key)) return;
+    const tabs = [...document.querySelectorAll("[data-ops-tab]")];
+    const current = tabs.indexOf(event.target.closest("[data-ops-tab]"));
+    if (current < 0) return;
+    event.preventDefault();
+    const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1
+      : (current + (["ArrowRight", "ArrowDown"].includes(event.key) ? 1 : -1) + tabs.length) % tabs.length;
+    void selectOpsView(tabs[next].dataset.opsTab, { focusTab: true });
+  });
+  window.matchMedia("(max-width: 760px)").addEventListener?.("change", syncTabOrientation);
 }
 
 async function startOpsWorkspace() {
   bindOpsEvents();
+  opsState.view = viewFromHash();
+  syncOpsTabs();
+  updateViewHash(opsState.view, { replace: true });
   const auth = await window.CUAC?.authReady?.();
   if (!auth || auth.authState !== "signed-in" || !["cuac_ops", "cuac_admin"].includes(auth.role)) {
     if (!auth || auth.authState !== "signed-out") return;
     window.CUAC?.requireSignedIn?.("打开运营控制台", {
       requiredRole: "cuac_ops",
-      resumeAction: { type: "navigate", href: "ops-admin-api.html" },
+      returnUrl: `ops-admin-api.html#${opsState.view}`,
     });
     return;
   }
