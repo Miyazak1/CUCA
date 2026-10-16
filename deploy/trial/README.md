@@ -87,6 +87,34 @@ docker compose up -d --build
 
 `docker compose down` preserves the PostgreSQL and Caddy volumes. `docker compose down -v` permanently deletes trial data and must only be used intentionally.
 
+## Publish the reviewed 100-school official catalog
+
+Rebuild the application image after pulling the release branch, then run the
+reviewed catalog publisher separately. Building or restarting the application
+does not import the catalog. The publisher is transactional, preserves records
+outside the reviewed target set, performs no deletion, and stops unless all 100
+target schools and their reviewed official-source records pass the post-write
+checks.
+
+```bash
+docker compose build app
+docker compose run --rm --no-deps \
+  --entrypoint node \
+  -e CUAC_REVIEWED_100_PUBLISH_CONFIRMATION=publish-reviewed-100-official-catalog-to-cuac-single-host \
+  app scripts/catalog-reviewed-100-official-release-single-host-publish.ts
+docker compose up -d --no-deps app proxy
+```
+
+The successful publisher report must contain `target_schools: 100` and
+`target_programs: 11441`. It also reports the actual public totals after the
+transaction; intake and scholarship totals may be higher when the database
+already contains additional valid records. Check the public API after restart:
+
+```bash
+curl -fsS 'http://127.0.0.1:3000/api/v1/catalog/schools?page=1&pageSize=1'
+curl -fsS 'http://127.0.0.1:3000/api/v1/catalog/programs?page=1&pageSize=1'
+```
+
 ## Preflight the official application-requirement candidate
 
 After rebuilding the image, compare the hash-locked 52-school requirement candidate with the persistent single-host catalog before preparing any reviewed import. This command opens a repeatable-read, read-only transaction and never creates a requirement version or publication:
