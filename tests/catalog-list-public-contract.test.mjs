@@ -85,11 +85,20 @@ test("catalog list UI has unified loading, empty, and failure states", async () 
 });
 
 test("program catalog uses server-side pagination and filters", async () => {
-  const script = await source("programs.js");
+  const [api, home, script] = await Promise.all([
+    source("catalog-list-api.js"),
+    source("home-v3.js"),
+    source("programs.js"),
+  ]);
   assert.match(script, /CuacCatalogList\.loadPage\("programs", \{/);
   assert.match(script, /offset: \(state\.page - 1\) \* state\.pageSize/);
   assert.match(script, /degree: state\.filters\.degree/);
   assert.match(script, /programTotal = page\.total/);
+  assert.match(api, /\["scholarship", "applicationReady", "upcomingDeadline"\]/);
+  assert.match(home, /loadPage\("programs", \{ limit: 6, applicationReady: true, sort: "deadline" \}\)/);
+  assert.match(home, /programs\.html\?applicationReady=true/);
+  assert.match(script, /applicationReady: state\.filters\.applicationReady/);
+  assert.match(script, /routeParams\.get\("applicationReady"\)/);
   assert.doesNotMatch(script, /remainingPrograms|loadAll\("programs"/);
   assert.match(script, /catalogLoadingComplete = true/);
 });
@@ -159,7 +168,7 @@ test("program university routes send the school slug to the published API and re
     source("programs.css"),
   ]);
 
-  assert.match(html, /programs\.js\?v=20261002-ucac-brand/);
+  assert.match(html, /programs\.js\?v=20261016-current-routes/);
   assert.match(script, /const focusedUniversity = routeParams\.get\("university"\)/);
   assert.match(script, /loadPage\("programs", \{[\s\S]*school: focusedUniversity,/);
   assert.doesNotMatch(script, /function programMatchesUniversity/);

@@ -26,6 +26,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
           deadline: "",
           tuition: "",
           scholarship: false,
+          applicationReady: false,
           upcomingDeadline: false,
           langReq: "",
           documents: "",
@@ -53,6 +54,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       if (teachingLanguageParam) state.filters.language = normalizeLanguageParam(teachingLanguageParam);
       if (subjectParam) state.filters.subject = subjectParam;
       if (truthyParam(routeParams.get("hasScholarship")) || (scholarshipParam && !["false", "0", "no"].includes(scholarshipParam))) state.filters.scholarship = true;
+      if (truthyParam(routeParams.get("applicationReady"))) state.filters.applicationReady = true;
       if (truthyParam(routeParams.get("hasUpcomingDeadline"))) state.filters.upcomingDeadline = true;
 
       const filterGroups = [
@@ -441,6 +443,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
           deadline: "",
           tuition: "",
           scholarship: false,
+          applicationReady: false,
           upcomingDeadline: false,
           langReq: "",
           documents: "",
@@ -461,6 +464,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
         if (f.deadline) entries.push(["deadline", f.deadline.replace("-", " ")]);
         if (f.tuition) entries.push(["tuition", document.querySelector(`[data-filter-key="tuition"] option[value="${f.tuition}"]`)?.textContent || f.tuition]);
         if (f.scholarship) entries.push(["scholarship", catalogUi("Scholarship")]);
+        if (f.applicationReady) entries.push(["applicationReady", catalogUi("Current intake")]);
         if (f.upcomingDeadline) entries.push(["upcomingDeadline", catalogUi("Upcoming deadlines")]);
         if (f.langReq) entries.push(["langReq", document.querySelector(`[data-filter-key="langReq"] option[value="${f.langReq}"]`)?.textContent || f.langReq]);
         if (f.documents) entries.push(["documents", labelDocuments(f.documents)]);
@@ -777,6 +781,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
             deadline: state.filters.deadline,
             tuition: state.filters.tuition,
             scholarship: state.filters.scholarship,
+            applicationReady: state.filters.applicationReady,
             upcomingDeadline: state.filters.upcomingDeadline,
             languageRequirement: state.filters.langReq,
             sort: sortSelect.value,
@@ -822,7 +827,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
         const remove = event.target.closest("[data-remove-filter]");
         if (remove) {
           const key = remove.dataset.removeFilter;
-          state.filters[key] = key === "scholarship" ? false : "";
+          state.filters[key] = ["scholarship", "applicationReady", "upcomingDeadline"].includes(key) ? false : "";
           state.page = 1;
           loadPrograms();
           return;

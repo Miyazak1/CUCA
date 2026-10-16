@@ -142,17 +142,17 @@
         if (!api || (window.CUACI18n && window.CUACI18n.locale !== "en")) return;
         try {
           const [programPage, schoolPage, scholarshipPage, cityPage] = await Promise.all([
-            api.loadPage("programs", { limit: 6, deadline: "open", sort: "deadline" }),
+            api.loadPage("programs", { limit: 6, applicationReady: true, sort: "deadline" }),
             api.loadPage("schools", { limit: 4 }),
             api.loadPage("scholarships", { limit: 1 }),
             api.loadPage("cities", { limit: 3 }),
           ]);
           const currentPrograms = programPage.records.filter((program) => ["open", "upcoming"].includes(program.intakeAvailability));
           renderHomeCategories([
-            { title: "Programs", value: `${programPage.total} current routes`, href: "programs.html?deadline=open", icon: "program" },
+            { title: "Programs", value: `${programPage.total} current routes`, href: "programs.html?applicationReady=true", icon: "program" },
             { title: "Universities", value: `${schoolPage.total} published`, href: "universities.html", icon: "school" },
             { title: "Scholarships", value: `${scholarshipPage.total} funding routes`, href: "scholarships.html", icon: "funding" },
-            { title: "Intakes", value: "Full dates", href: "programs.html?deadline=open", icon: "calendar" },
+            { title: "Intakes", value: "Full dates", href: "programs.html?applicationReady=true", icon: "calendar" },
             { title: "Cities & cost", value: `${cityPage.total} city guides`, href: "cities.html", icon: "city" },
             { title: "English-taught", value: "Language filters", href: "programs.html?language=english", icon: "language" },
             { title: "Documents", value: "Application guide", href: "/guides/documents", icon: "documents" },

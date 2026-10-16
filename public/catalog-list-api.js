@@ -50,7 +50,7 @@
     optionNames.forEach((name) => {
       if (options[name] != null && options[name] !== "") params.set(name, String(options[name]));
     });
-    ["scholarship", "upcomingDeadline"].forEach((name) => {
+    ["scholarship", "applicationReady", "upcomingDeadline"].forEach((name) => {
       if (options[name]) params.set(name, "true");
     });
     const requestUrl = `/api/v1/catalog/${resource}?${params.toString()}`;

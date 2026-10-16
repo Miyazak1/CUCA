@@ -189,11 +189,17 @@ test("PostgresCatalogRepository applies program page filters to list and count q
 
 test("PostgresCatalogRepository can restrict application selectors to currently open intakes", async () => {
   const calls = [];
-  const repo = new PostgresCatalogRepository({ async query(statement, params) { calls.push({ statement, params }); return []; } });
+  const repo = new PostgresCatalogRepository({ async query(statement, params) {
+    calls.push({ statement, params });
+    return statement.startsWith("select count") ? [{ total: 346 }] : [];
+  } });
   await repo.listPrograms({ applicationReady: true, limit: 100, offset: 0 });
-  assert.match(calls[0].statement, /next_intake\.id is not null/);
-  assert.match(calls[0].statement, /open_date <= clock_timestamp\(\)/);
-  assert.match(calls[0].statement, /deadline_date > clock_timestamp\(\)/);
+  assert.equal(await repo.countPrograms({ applicationReady: true, limit: 100, offset: 0 }), 346);
+  for (const call of calls) {
+    assert.match(call.statement, /next_intake\.id is not null/);
+    assert.match(call.statement, /open_date <= clock_timestamp\(\)/);
+    assert.match(call.statement, /deadline_date > clock_timestamp\(\)/);
+  }
 });
 
 test("PostgresCatalogRepository publishes guide cards without editorial search terms", async () => {
