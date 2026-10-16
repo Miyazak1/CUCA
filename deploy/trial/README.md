@@ -103,6 +103,17 @@ Save the JSON result in the protected deployment record. `ready_for_reviewed_imp
 
 After the project owner completes the content/source/prohibited-data review recorded by the hash-bound review artifact, publish only bindings that resolve to an active school, active program and currently open intake. Missing programs, missing intakes and unavailable intakes are intentionally left empty. Use two distinct existing staff accounts: an Ops/Admin preparer and an Admin reviewer.
 
+First publish the exact reviewed 2027 program/intake prerequisites. The bundle preserves all existing school and city rows, performs no deletion and contains only the 346 programs and 347 intake bindings required by the current requirement candidate:
+
+```bash
+docker compose run --rm --no-deps \
+  --entrypoint node \
+  -e CUAC_CURRENT_2027_PUBLISH_CONFIRMATION=publish-reviewed-current-2027-prerequisites-to-cuac-single-host \
+  app scripts/catalog-current-2027-prerequisites-single-host-publish.ts
+```
+
+Then publish the reviewed application requirements:
+
 ```bash
 docker compose run --rm --no-deps \
   --entrypoint node \

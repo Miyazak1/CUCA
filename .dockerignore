@@ -21,3 +21,5 @@ work
 *.pem
 seeds/catalog.*.json
 !seeds/catalog.local.synthetic.json
+!seeds/catalog.current-2027-prerequisites.reviewed.json
+!seeds/catalog.current-2027-prerequisites.review.json

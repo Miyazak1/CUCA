@@ -200,6 +200,8 @@
     "catalog:requirements:release-candidate": "node scripts/catalog-application-requirements-release-candidate.ts",
     "catalog:requirements:single-host-preflight": "node scripts/catalog-application-requirements-single-host-preflight.ts",
     "catalog:requirements:single-host-publish": "node scripts/catalog-application-requirements-single-host-publish.ts",
+    "catalog:current-2027-prerequisites:build": "node scripts/catalog-current-2027-prerequisites-build.ts",
+    "catalog:current-2027-prerequisites:single-host-publish": "node scripts/catalog-current-2027-prerequisites-single-host-publish.ts",
     "catalog:requirements:release-candidate-rehearse": "node scripts/pg-rehearse.ts --catalog-requirement-candidate",
     "catalog:lnutcm:complete-draft": "node scripts/catalog-lnutcm-complete-build.ts",
     "catalog:jnu:complete-draft": "node scripts/catalog-jnu-complete-build.ts",
