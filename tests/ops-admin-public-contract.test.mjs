@@ -38,6 +38,7 @@ test("Ops API workspace uses only authenticated server capabilities", async () =
     assert.ok(script.includes(endpoint), `missing real Ops endpoint: ${endpoint}`);
   }
   assert.match(script, /\["cuac_ops", "cuac_admin"\]\.includes\(auth\.role\)/);
+  assert.match(script, /当前登录账号没有运营后台权限/);
   assert.match(script, /credentials: "same-origin"/);
   assert.match(script, /qualityRequestPath\(\)/);
   assert.match(script, /cursorType=/);
@@ -174,9 +175,10 @@ test("Ops write controls preserve backend revision and evidence boundaries", asy
 });
 
 test("Ops workspace stays restrained and responsive", async () => {
-  const [html, css] = await Promise.all([
+  const [html, css, script] = await Promise.all([
     source("public/ops-admin-api.html"),
     source("public/ops-workspace.css"),
+    source("public/ops-admin-runtime.js"),
   ]);
 
   assert.match(html, /role="tablist"/);
@@ -191,6 +193,9 @@ test("Ops workspace stays restrained and responsive", async () => {
   assert.match(css, /@media \(max-width: 760px\)/);
   assert.match(css, /\.ops-toast\[data-tone="error"\]/);
   assert.match(css, /\.ops-city-form > \.ops-button\[type="submit"\]/);
+  assert.match(css, /\.ops-step-up\s*\{/);
+  assert.match(script, /<details class="ops-step-up">/);
+  assert.match(script, /按当前模块的审批规则执行/);
   assert.match(css, /@media \(max-width: 520px\)/);
   assert.match(css, /prefers-reduced-motion: reduce/);
   assert.doesNotMatch(css, /linear-gradient|radial-gradient|border-radius:\s*(?:1[5-9]|[2-9][0-9]|[1-9][0-9][0-9])px/);

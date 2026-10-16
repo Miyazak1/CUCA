@@ -49,7 +49,7 @@ a:focus-visible {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
   gap: 64px;
-  align-items: end;
+  align-items: start;
   padding: 28px 0 24px;
 }
 
@@ -81,7 +81,7 @@ a:focus-visible {
 .ops-heading-status {
   display: grid;
   gap: 8px;
-  align-content: end;
+  align-content: start;
   padding-left: 22px;
   border-left: 3px solid var(--ops-green);
 }
@@ -134,7 +134,23 @@ a:focus-visible {
 .ops-capability-badge.is-warning { border-color: #ead0a0; background: #fff9ee; color: var(--ops-amber); }
 .ops-availability.is-controlled { border-color: #b9cce0; background: #f4f8fc; color: var(--ops-blue); }
 
-.ops-step-up-form { display: grid; gap: 7px; }
+.ops-step-up {
+  margin-top: 2px;
+  border: 1px solid var(--ops-line);
+  border-radius: 6px;
+  background: var(--ops-paper);
+}
+
+.ops-step-up summary {
+  padding: 9px 11px;
+  color: var(--ops-green-dark);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ops-step-up[open] summary { border-bottom: 1px solid var(--ops-line); }
+.ops-step-up-form { display: grid; gap: 7px; padding: 11px; }
 .ops-step-up-form label { display: grid; gap: 4px; color: var(--ops-muted); font-size: 11px; }
 .ops-step-up-form input { width: 100%; min-height: 36px; padding: 7px 9px; border: 1px solid #bdc8c5; border-radius: 5px; }
 

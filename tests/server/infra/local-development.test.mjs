@@ -146,6 +146,7 @@ test("local command grammar and repository wiring remain explicit", async () => 
   assert.match(seed, /cuac_staff_access_grants/);
   assert.match(seed, /CUAC_LOCAL_ADMIN_EMAIL/);
   assert.match(seed, /'cuac_admin', 'approved'/);
+  assert.match(seed, /set email_verified_at = coalesce\(email_verified_at, clock_timestamp\(\)\)/);
   assert.match(seed, /school_applications/);
   assert.match(seed, /c\.program_intake_id, 'new', clock_timestamp\(\), clock_timestamp\(\)/);
   assert.match(seed, /status in \('submitted', 'under_review'\)/);

@@ -366,20 +366,23 @@ function renderAuthCapability() {
   const root = document.querySelector("[data-ops-capability]");
   if (!root) return;
   if (hasStepUpAdminAuthority()) {
-    root.innerHTML = '<span class="ops-capability-badge is-ready">已完成二次验证</span><small>可在满足双人复核条件时提交最终结论。</small>';
+    root.innerHTML = '<span class="ops-capability-badge is-ready">已完成二次验证</span><small>已解锁敏感操作；后续仍按当前模块自身的审批规则执行。</small>';
     return;
   }
   if (opsState.role !== "cuac_admin") {
     root.innerHTML = '<span class="ops-capability-badge">运营复核权限</span><small>可以读取、认领和升级；最终结论需由完成二次验证的管理员提交。</small>';
     return;
   }
-  root.innerHTML = `<span class="ops-capability-badge is-warning">最终操作已锁定</span>
-    <small>读取、认领和升级可继续；提交最终结论前需要验证管理员密码和身份验证器。</small>
-    <form class="ops-step-up-form" data-ops-step-up>
-      <label><span>管理员密码</span><input name="password" type="password" autocomplete="current-password" required /></label>
-      <label><span>6 位动态验证码</span><input name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required /></label>
-      <button class="ops-button" type="submit">完成二次验证</button>
-    </form>`;
+  root.innerHTML = `<span class="ops-capability-badge is-warning">敏感操作已锁定</span>
+    <small>读取与普通编辑可继续；发布、归档或最终结论等操作需要二次验证。</small>
+    <details class="ops-step-up">
+      <summary>完成二次验证</summary>
+      <form class="ops-step-up-form" data-ops-step-up>
+        <label><span>管理员密码</span><input name="password" type="password" autocomplete="current-password" required /></label>
+        <label><span>6 位动态验证码</span><input name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required /></label>
+        <button class="ops-button" type="submit">验证并解锁</button>
+      </form>
+    </details>`;
 }
 
 function validatePagedQueue(data, key) {
@@ -2302,7 +2305,7 @@ async function stepUpAdminSession(form) {
     }
     opsState.authStrength = "step_up";
     renderAuthCapability();
-    showOpsToast("二次验证已完成，最终操作会继续受双人复核规则约束。");
+    showOpsToast("二次验证已完成；后续操作将按当前模块的审批规则执行。");
     await loadCurrentView();
   } catch (error) {
     form.reset();
@@ -2570,6 +2573,12 @@ async function startOpsWorkspace() {
   updateViewHash(opsState.view, { replace: true });
   const auth = await window.CUAC?.authReady?.();
   if (!auth || auth.authState !== "signed-in" || !["cuac_ops", "cuac_admin"].includes(auth.role)) {
+    if (auth?.authState === "signed-in") {
+      showOpsError(new OpsRequestError("当前登录账号没有运营后台权限。请先从右上角账号菜单退出，再使用已授权的 UCAC 员工账号登录。", 403, "ROLE_MISMATCH"));
+      const role = document.querySelector("[data-ops-role]");
+      if (role) role.textContent = "无后台权限";
+      return;
+    }
     if (!auth || auth.authState !== "signed-out") return;
     window.CUAC?.requireSignedIn?.("打开运营控制台", {
       requiredRole: "cuac_ops",

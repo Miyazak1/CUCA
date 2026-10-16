@@ -252,6 +252,13 @@ try {
       [[schoolIdentity.userId, opsIdentity.userId, adminIdentity.userId]],
     );
     await tx.query(
+      `update users
+       set email_verified_at = coalesce(email_verified_at, clock_timestamp()),
+           updated_at = clock_timestamp()
+       where id = any($1::uuid[])`,
+      [[schoolIdentity.userId, opsIdentity.userId, adminIdentity.userId]],
+    );
+    await tx.query(
       `insert into school_staff_memberships (school_id, user_id, role, status)
        values ($1, $2, 'admissions', 'active')
        on conflict (school_id, user_id) where removed_at is null do update
