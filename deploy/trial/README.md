@@ -98,3 +98,19 @@ docker compose run --rm --no-deps \
 ```
 
 Save the JSON result in the protected deployment record. `ready_for_reviewed_import` means every school, program and intake binding exists and no version-one conflict was found; it does not approve or publish the unreviewed candidate. A blocked result includes at most 25 non-sensitive binding examples for reconciliation. Never use `docker compose down -v` to make a preflight pass.
+
+## Publish the reviewed application requirements
+
+After the project owner completes the content/source/prohibited-data review recorded by the hash-bound review artifact, publish only bindings that resolve to an active school, active program and currently open intake. Missing programs, missing intakes and unavailable intakes are intentionally left empty. Use two distinct existing staff accounts: an Ops/Admin preparer and an Admin reviewer.
+
+```bash
+docker compose run --rm --no-deps \
+  --entrypoint node \
+  -e CUAC_REQUIREMENT_PUBLISH_CONFIRMATION=publish-reviewed-requirements-to-cuac-single-host \
+  -e CUAC_REQUIREMENT_PREPARER_EMAIL='YOUR_OPS_EMAIL' \
+  -e CUAC_REQUIREMENT_REVIEWER_EMAIL='YOUR_ADMIN_EMAIL' \
+  -e CUAC_REQUIREMENT_REVIEW_REFERENCE=project-owner-chat-review-2026-10-16 \
+  app scripts/catalog-application-requirements-single-host-publish.ts
+```
+
+The command uses the governed prepare/approve/publish service and writes an audit event for each actual state change. It is resumable: already-published exact versions are counted without creating another version. Preserve the final JSON report with the deployment record.

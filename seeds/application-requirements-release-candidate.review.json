@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "status": "human_review_completed",
+  "reviewReference": "project-owner-chat-review-2026-10-16",
+  "reviewedAt": "2026-10-16T02:46:15.987Z",
+  "reviewDueAt": "2027-10-16T02:46:15.987Z",
+  "candidateFile": "seeds/application-requirements-release-candidate.unreviewed.json",
+  "candidateFileSha256": "24f2d3efed64be915b83a406c11e72fc2ffc266016f7f5fceccb56edcfdea180",
+  "templatesSha256": "2186ff60f5bdbda4f5620d34a6f2e1e9e6cd3fe0f99251af42c10dc2bbdf8891",
+  "operationsSha256": "c32973458facdcbce4a16ad7999281d0f32720f43622841ca75d40f8e76eaeff",
+  "scope": {
+    "schoolCount": 52,
+    "programCount": 6142,
+    "operationCount": 6144,
+    "publishResolvableOnly": true,
+    "leaveUnavailableDataEmpty": true
+  },
+  "confirmations": {
+    "contentReviewed": true,
+    "officialSourcesReviewed": true,
+    "publicContentConfirmed": true,
+    "prohibitedDataConfirmedExcluded": true
+  }
+}
