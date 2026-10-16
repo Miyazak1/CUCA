@@ -24,6 +24,9 @@ test("single-host publisher preserves existing directory records", async () => {
   const source = await readFile("scripts/catalog-reviewed-school-directory-single-host-publish.ts", "utf8");
   assert.match(source, /preserveExistingSchoolSlugs: preservedSchoolSlugs/);
   assert.match(source, /preserveExistingCitySlugs: preservedCitySlugs/);
+  assert.match(source, /update schools set status='active', verification_status='verified'/);
+  assert.match(source, /insert into catalog_source_evidence/);
+  assert.doesNotMatch(source, /update schools set[\s\S]*name_en\s*=/);
   assert.match(source, /publicTargetSchools/);
   assert.match(source, /target_count !== 50/);
 });

@@ -123,7 +123,8 @@ await writeFile(resolve(root, `seeds/${reviewFile}`), `${JSON.stringify({
   scope: { cities: 22, schools: 50, programs: 0, programIntakes: 0, scholarships: 0 },
   excludedSchoolSlugs,
   confirmations: { contentReviewed: true, officialSourcesReviewed: true, publicContentConfirmed: true,
-    prohibitedDataConfirmedExcluded: true, missingDataMayRemainEmpty: true, existingRecordsMustBePreserved: true },
+    prohibitedDataConfirmedExcluded: true, missingDataMayRemainEmpty: true, existingDetailFieldsMustBePreserved: true,
+    reviewedPublicationMetadataMayBeRefreshed: true },
 }, null, 2)}\n`);
 console.log(JSON.stringify({ ok: true, summary: report.summary, excludedSchoolSlugs,
   bundleSha256: report.bundleSha256, operationPlanSha256: report.operationPlanSha256 }, null, 2));

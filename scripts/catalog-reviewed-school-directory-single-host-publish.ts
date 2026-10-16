@@ -21,7 +21,9 @@ if (!report.ok || bundle.version !== 2 || review.status !== "human_review_comple
   || bundle.handoff?.reviewReference !== review.reviewReference || bundle.handoff.prohibitedDataReviewReference !== review.reviewReference
   || review.publicationBundleSha256 !== report.bundleSha256 || review.operationPlanSha256 !== report.operationPlanSha256
   || review.confirmations?.officialSourcesReviewed !== true || review.confirmations?.prohibitedDataConfirmedExcluded !== true
-  || review.confirmations?.existingRecordsMustBePreserved !== true || report.summary.schools !== 50 || report.summary.cities !== 22) {
+  || review.confirmations?.existingDetailFieldsMustBePreserved !== true
+  || review.confirmations?.reviewedPublicationMetadataMayBeRefreshed !== true
+  || report.summary.schools !== 50 || report.summary.cities !== 22) {
   throw new Error(`Reviewed school directory validation failed: ${report.errors.join(" ")}`);
 }
 
@@ -29,7 +31,9 @@ const schoolSlugs = bundle.schools!.map(row => row.slug), citySlugs = bundle.cit
 const pool = createPostgresPool({ databaseUrl: rawUrl, max: 1, applicationName: "cuac:reviewed-school-directory-publish", statementTimeoutMillis: 120_000 });
 try {
   const result = await createTransactionalSqlClient(pool).transaction(async tx => {
-    const existingSchools = await tx.query<{ slug: string }>("select slug from schools where slug=any($1::text[])", [schoolSlugs]);
+    const existingSchools = await tx.query<{ id: string; slug: string; status: string; verification_status: string }>(
+      "select id,slug,status,verification_status from schools where slug=any($1::text[])", [schoolSlugs],
+    );
     const existingCities = await tx.query<{ slug: string }>("select slug from cities where slug=any($1::text[])", [citySlugs]);
     const preservedSchoolSlugs = existingSchools.map(row => row.slug), preservedCitySlugs = existingCities.map(row => row.slug);
     const written = await new CatalogSeedWriter(tx).writeBundle(bundle, {
@@ -37,6 +41,29 @@ try {
       preserveExistingCitySlugs: preservedCitySlugs,
     });
     if (!written.ok) throw new Error(`Reviewed school directory write failed: ${written.errors.join(" ")}`);
+    const schoolsBySlug = new Map(bundle.schools!.map(school => [school.slug, school]));
+    for (const existing of existingSchools) {
+      const school = schoolsBySlug.get(existing.slug);
+      if (!school) throw new Error(`Reviewed school directory is missing preserved school ${existing.slug}.`);
+      await tx.query(
+        `update schools set status='active', verification_status='verified', last_verified_at=$2::timestamptz,
+           source_url=$3, source_label=$4, source_field_lineage_json=$5::jsonb, updated_at=now()
+         where id=$1`,
+        [existing.id, school.lastVerifiedAt, school.sourceUrl, school.sourceLabel, JSON.stringify(school.sourceFieldLineage ?? {})],
+      );
+      await tx.query(
+        `insert into catalog_source_evidence (
+           entity_type, entity_id, source_url, source_label, captured_at, checksum, source_field_lineage_json, metadata_json
+         ) select 'school', $1, $2, $3, $4::timestamptz, $5, $6::jsonb, $7::jsonb
+         where not exists (
+           select 1 from catalog_source_evidence
+           where entity_type='school' and entity_id=$1 and source_url is not distinct from $2
+             and source_label is not distinct from $3 and checksum is not distinct from $5
+         )`,
+        [existing.id, school.sourceUrl, school.sourceLabel, school.capturedAt, school.sourceSha256,
+          JSON.stringify(school.sourceFieldLineage ?? {}), JSON.stringify({ importSource: "reviewed_50_school_directory" })],
+      );
+    }
     const verified = await tx.query<{ target_count: number; public_count: number }>(`select
       (select count(*)::int from schools where slug=any($1::text[]) and status='active' and verification_status in ('verified','stale')) target_count,
       (select count(*)::int from schools where status='active' and verification_status in ('verified','stale')) public_count`, [schoolSlugs]);
@@ -44,6 +71,8 @@ try {
     return {
       dependencies: {
         preservedSchools: preservedSchoolSlugs.length, addedSchools: schoolSlugs.length - preservedSchoolSlugs.length,
+        activatedExistingSchools: existingSchools.filter(row => row.status !== "active"
+          || !["verified", "stale"].includes(row.verification_status)).length,
         preservedCities: preservedCitySlugs.length, addedCities: citySlugs.length - preservedCitySlugs.length,
       },
       written: written.summary, publicTargetSchools: verified[0].target_count, publicSchoolCount: verified[0].public_count,

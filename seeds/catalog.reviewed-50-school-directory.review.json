@@ -22,6 +22,7 @@
     "publicContentConfirmed": true,
     "prohibitedDataConfirmedExcluded": true,
     "missingDataMayRemainEmpty": true,
-    "existingRecordsMustBePreserved": true
+    "existingDetailFieldsMustBePreserved": true,
+    "reviewedPublicationMetadataMayBeRefreshed": true
   }
 }
