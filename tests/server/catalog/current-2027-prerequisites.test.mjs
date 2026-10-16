@@ -23,3 +23,12 @@ test("reviewed current 2027 prerequisite bundle covers every current requirement
     .map(row => `${row.programSlug}:${row.intakeTerm}:${row.intakeYear}`));
   assert.deepEqual(publishedTargets, requiredTargets);
 });
+
+test("single-host publisher preserves existing dependencies and creates reviewed missing dependencies", async () => {
+  const source = await readFile("scripts/catalog-current-2027-prerequisites-single-host-publish.ts", "utf8");
+  assert.match(source, /select slug from schools where slug=any/);
+  assert.match(source, /select slug from cities where slug=any/);
+  assert.match(source, /preserveExistingSchoolSlugs: preservedSchoolSlugs/);
+  assert.match(source, /preserveExistingCitySlugs: preservedCitySlugs/);
+  assert.doesNotMatch(source, /A required existing school or city is missing/);
+});

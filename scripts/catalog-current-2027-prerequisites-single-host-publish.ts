@@ -30,15 +30,18 @@ const schoolSlugs = bundle.schools!.map(row => row.slug), citySlugs = bundle.cit
 const pool = createPostgresPool({ databaseUrl: rawUrl, max: 1, applicationName: "cuac:current-2027-prerequisites-publish", statementTimeoutMillis: 120_000 });
 try {
   const result = await createTransactionalSqlClient(pool).transaction(async tx => {
-    const dependencies = await tx.query<{ schools: number; cities: number }>(`select
-        (select count(*)::int from schools where slug=any($1::text[])) schools,
-        (select count(*)::int from cities where slug=any($2::text[])) cities`, [schoolSlugs, citySlugs]);
-    if (dependencies[0]?.schools !== schoolSlugs.length || dependencies[0]?.cities !== citySlugs.length) throw new Error("A required existing school or city is missing.");
+    const existingSchools = await tx.query<{ slug: string }>("select slug from schools where slug=any($1::text[])", [schoolSlugs]);
+    const existingCities = await tx.query<{ slug: string }>("select slug from cities where slug=any($1::text[])", [citySlugs]);
+    const preservedSchoolSlugs = existingSchools.map(row => row.slug);
+    const preservedCitySlugs = existingCities.map(row => row.slug);
     const conflicts = await tx.query<{ slug: string }>(`select p.slug from programs p join schools s on s.id=p.school_id
       join jsonb_to_recordset($1::jsonb) x(slug text,school_slug text) on x.slug=p.slug
       where s.slug<>x.school_slug limit 1`, [JSON.stringify(bundle.programs!.map(row => ({ slug: row.slug, school_slug: row.schoolSlug })))]);
     if (conflicts.length) throw new Error("An existing program slug belongs to a different school.");
-    const written = await new CatalogSeedWriter(tx).writeBundle(bundle, { preserveExistingCitySlugs: citySlugs, preserveExistingSchoolSlugs: schoolSlugs });
+    const written = await new CatalogSeedWriter(tx).writeBundle(bundle, {
+      preserveExistingCitySlugs: preservedCitySlugs,
+      preserveExistingSchoolSlugs: preservedSchoolSlugs,
+    });
     if (!written.ok) throw new Error(`Current 2027 catalog write failed: ${written.errors.join(" ")}`);
     const verified = await tx.query<{ count: number }>(`select count(*)::int count from program_intakes i join programs p on p.id=i.program_id
       join jsonb_to_recordset($1::jsonb) x(program_slug text,intake_term text,intake_year integer)
@@ -46,7 +49,16 @@ try {
       where p.status='active' and i.status='open' and (i.deadline_date is null or i.deadline_date>clock_timestamp())`,
     [JSON.stringify(bundle.programIntakes!.map(row => ({ program_slug: row.programSlug, intake_term: row.intakeTerm, intake_year: row.intakeYear })))]);
     if (verified[0]?.count !== 347) throw new Error(`Current 2027 post-check found ${verified[0]?.count ?? 0}/347 open intakes.`);
-    return { written: written.summary, verifiedOpenIntakes: verified[0].count };
+    return {
+      dependencies: {
+        preservedSchools: preservedSchoolSlugs.length,
+        addedSchools: schoolSlugs.length - preservedSchoolSlugs.length,
+        preservedCities: preservedCitySlugs.length,
+        addedCities: citySlugs.length - preservedCitySlugs.length,
+      },
+      written: written.summary,
+      verifiedOpenIntakes: verified[0].count,
+    };
   });
   console.log(JSON.stringify({ ok: true, reviewReference: review.reviewReference, bundleSha256: report.bundleSha256,
     target: { kind: "single_host_loopback", databaseName: "cuac_local" }, ...result }, null, 2));
