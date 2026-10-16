@@ -1,3 +1,3 @@
 export function GET(request: Request): Response {
-  return Response.redirect(new URL("/ucac-icon.png?v=20261009-holalobe-brand", request.url), 308);
+  return Response.redirect(new URL("/ucac-favicon.ico?v=20261016", request.url), 307);
 }
