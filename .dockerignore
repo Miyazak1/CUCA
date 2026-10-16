@@ -25,3 +25,5 @@ seeds/catalog.*.json
 !seeds/catalog.current-2027-prerequisites.review.json
 !seeds/catalog.reviewed-50-school-directory.json
 !seeds/catalog.reviewed-50-school-directory.review.json
+!seeds/catalog.reviewed-100-official-release.json
+!seeds/catalog.reviewed-100-official-release.review.json
