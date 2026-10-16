@@ -35,3 +35,16 @@ test("100-school single-host publisher is fail-closed and verifies online counts
   assert.match(source, /target_intakes < report\.summary\.programIntakes/);
   assert.match(source, /public_schools < 100/);
 });
+
+test("trial publication command builds, publishes, restarts and checks every public catalog total", async () => {
+  const source = await readFile("deploy/trial/publish-reviewed-100.sh", "utf8");
+  assert.match(source, /set -euo pipefail/);
+  assert.match(source, /docker compose build app/);
+  assert.match(source, /publish-reviewed-100-official-catalog-to-cuac-single-host/);
+  assert.match(source, /docker compose up -d --no-deps app proxy/);
+  assert.match(source, /schools: 100/);
+  assert.match(source, /programs: 11_441/);
+  assert.match(source, /scholarships: 325/);
+  assert.match(source, /cities: 34/);
+  assert.match(source, /total < minimum/);
+});

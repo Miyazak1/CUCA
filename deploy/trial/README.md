@@ -96,6 +96,16 @@ outside the reviewed target set, performs no deletion, and stops unless all 100
 target schools and their reviewed official-source records pass the post-write
 checks.
 
+The recommended path runs the build, publication, restart and public API checks
+as one fail-closed command:
+
+```bash
+git pull --ff-only origin codex/release-baseline
+bash publish-reviewed-100.sh
+```
+
+The equivalent manual commands are:
+
 ```bash
 docker compose build app
 docker compose run --rm --no-deps \
