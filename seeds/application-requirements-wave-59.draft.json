@@ -1,0 +1,1474 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-16T06:11:48.414Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Official-source application requirements for the captured closed Fall 2026 ECJTU, WUT and TJUT routes."
+  },
+  "summary": {
+    "templateCount": 7,
+    "readyTemplateCount": 7,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 56,
+    "targetedIntakeCount": 56,
+    "requirementItemCount": 75
+  },
+  "templates": [
+    {
+      "key": "ecjtu-doctoral-fall-2026",
+      "schoolSlug": "east-china-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-jiaotong-university-doctoral-civil-engineering",
+        "east-china-jiaotong-university-doctoral-control-science-and-engineering",
+        "east-china-jiaotong-university-doctoral-transportation-engineering-logistics-system-optimization",
+        "east-china-jiaotong-university-doctoral-mechanical-engineering",
+        "east-china-jiaotong-university-doctoral-electronic-information"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed.",
+        "No application fee or CSCA rule is published in the reviewed page.",
+        "Personal contact and payment details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://gjc.ecjtu.edu.cn/lhlx/zszc.htm",
+            "title": "East China Jiaotong University 2026 international English-taught program admissions brochure",
+            "capturedAt": "2026-10-16T06:03:09.953Z",
+            "contentSha256": "49c8d0b3b44971931760a4a84140e49aa3363e3824c5a163355fbd930cf21cd1"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "nationality_and_residency",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid foreign passport or nationality certificate for at least four years and document more than two years of actual residence abroad during the preceding four years up to April 30 of the admission year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Entrance Condition item 1"
+              }
+            ]
+          },
+          {
+            "key": "english_proficiency",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide TOEFL 80, IELTS 5.5, proof of prior education delivered entirely in English, or evidence that English is an official language.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Language Proficiency Requirement"
+              }
+            ]
+          },
+          {
+            "key": "financial_capacity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a bank-issued asset certificate for at least CNY 30,000 or equivalent foreign currency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Economic Capacity Requirement and Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit scans of the passport information page and the visa or residence-permit page when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_transcript",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest diploma certificate and academic transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid medical examination report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_form_and_photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the ECJTU application form and an electronic two-inch identification photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents items 7-8"
+              }
+            ]
+          },
+          {
+            "key": "cv_and_study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a CV covering academic background and research output plus a study plan of at least 600 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register in the official international-student application portal and submit the application materials online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application procedure"
+              }
+            ]
+          },
+          {
+            "key": "online_interview",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Attend the required online interview; schedule and format are announced in the application system.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application procedure reminder"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "The reviewed brochure states June 2026; the cycle is closed and no exact day is inferred.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "English-taught majors table"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecjtu-master-fall-2026",
+      "schoolSlug": "east-china-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-jiaotong-university-master-business-administration",
+        "east-china-jiaotong-university-master-international-chinese-language-education"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed.",
+        "No application fee or CSCA rule is published in the reviewed page.",
+        "Personal contact and payment details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://gjc.ecjtu.edu.cn/lhlx/zszc.htm",
+            "title": "East China Jiaotong University 2026 international English-taught program admissions brochure",
+            "capturedAt": "2026-10-16T06:03:09.953Z",
+            "contentSha256": "49c8d0b3b44971931760a4a84140e49aa3363e3824c5a163355fbd930cf21cd1"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "nationality_and_residency",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid foreign passport or nationality certificate for at least four years and document more than two years of actual residence abroad during the preceding four years up to April 30 of the admission year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Entrance Condition item 1"
+              }
+            ]
+          },
+          {
+            "key": "english_proficiency",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide TOEFL 80, IELTS 5.5, proof of prior education delivered entirely in English, or evidence that English is an official language.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Language Proficiency Requirement"
+              }
+            ]
+          },
+          {
+            "key": "financial_capacity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a bank-issued asset certificate for at least CNY 30,000 or equivalent foreign currency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Economic Capacity Requirement and Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit scans of the passport information page and the visa or residence-permit page when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_transcript",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest diploma certificate and academic transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid medical examination report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_form_and_photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the ECJTU application form and an electronic two-inch identification photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents items 7-8"
+              }
+            ]
+          },
+          {
+            "key": "cv_and_study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a CV covering academic background and research output plus a study plan of at least 600 words.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register in the official international-student application portal and submit the application materials online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application procedure"
+              }
+            ]
+          },
+          {
+            "key": "online_interview",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Attend the required online interview; schedule and format are announced in the application system.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application procedure reminder"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "The reviewed brochure states June 2026; the cycle is closed and no exact day is inferred.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "English-taught majors table"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecjtu-undergraduate-fall-2026",
+      "schoolSlug": "east-china-jiaotong-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-jiaotong-university-undergraduate-civil-engineering",
+        "east-china-jiaotong-university-undergraduate-electrical-engineering-and-automation",
+        "east-china-jiaotong-university-undergraduate-transportation-engineering",
+        "east-china-jiaotong-university-undergraduate-international-economics-and-trade",
+        "east-china-jiaotong-university-undergraduate-chinese-language-and-literature"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed.",
+        "No application fee or CSCA rule is published in the reviewed page.",
+        "Personal contact and payment details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://gjc.ecjtu.edu.cn/lhlx/zszc.htm",
+            "title": "East China Jiaotong University 2026 international English-taught program admissions brochure",
+            "capturedAt": "2026-10-16T06:03:09.953Z",
+            "contentSha256": "49c8d0b3b44971931760a4a84140e49aa3363e3824c5a163355fbd930cf21cd1"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "nationality_and_residency",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid foreign passport or nationality certificate for at least four years and document more than two years of actual residence abroad during the preceding four years up to April 30 of the admission year.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Entrance Condition item 1"
+              }
+            ]
+          },
+          {
+            "key": "age",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Be under age 25; applicants under 18 must submit the published legal-guardian documents for China.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Entrance Condition item 2"
+              }
+            ]
+          },
+          {
+            "key": "english_proficiency",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Provide TOEFL 80, IELTS 5.5, proof of prior education delivered entirely in English, or evidence that English is an official language.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Language Proficiency Requirement"
+              }
+            ]
+          },
+          {
+            "key": "financial_capacity",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a bank-issued asset certificate for at least CNY 30,000 or equivalent foreign currency.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Economic Capacity Requirement and Documents item 3"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit scans of the passport information page and the visa or residence-permit page when applicable.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_transcript",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest diploma certificate and academic transcript.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid medical examination report.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "application_form_and_photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the ECJTU application form and an electronic two-inch identification photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Documents items 7-8"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register in the official international-student application portal and submit the application materials online.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application procedure"
+              }
+            ]
+          },
+          {
+            "key": "online_interview",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Attend the required online interview; schedule and format are announced in the application system.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application procedure reminder"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "The reviewed brochure states June 2026; the cycle is closed and no exact day is inferred.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "English-taught majors table"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "wut-undergraduate-fall-2026",
+      "schoolSlug": "wuchang-university-of-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "wuchang-university-of-technology-undergraduate-computer-science-and-technology",
+        "wuchang-university-of-technology-undergraduate-intelligent-science-and-technology",
+        "wuchang-university-of-technology-undergraduate-data-science-and-big-data-technology",
+        "wuchang-university-of-technology-undergraduate-international-economics-and-trade",
+        "wuchang-university-of-technology-undergraduate-business-administration",
+        "wuchang-university-of-technology-undergraduate-intelligent-construction"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed.",
+        "The source does not publish a minimum language score, deadline or CSCA rule.",
+        "Personal contact, bank-remittance and applicant data are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://en.wut.edu.cn/admissions",
+            "title": "Wuchang University of Technology 2026 international undergraduate admission guide",
+            "capturedAt": "2026-10-16T06:05:39.747Z",
+            "contentSha256": "d1b74100cd3a0231d5c50353c4e2208dbf90bde4216276fae9e9e759df338f47"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Be a non-Chinese citizen with a valid foreign passport, be at least 18, in good health and conduct, and comply with Chinese law and university rules; applicants under 18 by August 31 must provide the required power of attorney.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility Requirements"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or higher; current final-year students may submit an expected-graduation certificate and must obtain the diploma before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Eligibility Requirements item 2"
+              }
+            ]
+          },
+          {
+            "key": "passport_and_status",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport information page and, when currently studying or working in China, the valid visa or residence permit.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application materials items 1-2"
+              }
+            ]
+          },
+          {
+            "key": "degree_and_transcripts",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest academic certificate and complete high-school transcript; applicants with university study also submit completed university transcripts.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application materials items 3-4"
+              }
+            ]
+          },
+          {
+            "key": "photo",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a recent electronic passport-style photo.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "language_certificate",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a relevant language certificate such as TOEFL, IELTS or HSK; the reviewed guide does not publish a minimum score.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a physical-examination report issued by a recognized hospital.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate issued by a public-security authority or the applicant's school.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a bank deposit certificate under the applicant's or parents' name showing at least USD 4,000.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application materials item 9"
+              }
+            ]
+          },
+          {
+            "key": "guardian",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants under age 18",
+            "ruleText": "Submit the guardian guarantee letter.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application materials item 10"
+              }
+            ]
+          },
+          {
+            "key": "video",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a one-to-three-minute English video containing a self-introduction and study plan.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application materials item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the CNY 500 application fee; the reviewed guide states its refund and tuition-offset conditions.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Fee Structure"
+              }
+            ]
+          },
+          {
+            "key": "tuition_prepayment",
+            "category": "application_policy",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Pay the CNY 3,500 tuition prepayment before the JW202 form is released.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission Procedures item 3"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "The reviewed 2026 guide does not state an application deadline; confirm it in the official application system.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "No deadline published in reviewed guide"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "tjut-doctoral-fall-2026",
+      "schoolSlug": "tianjin-university-of-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "tianjin-university-of-technology-doctoral-school-of-materials-science-and-engineering-materials-science-and-engineering"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed.",
+        "The reviewed brochure does not enumerate the ordinary online-application upload checklist, so no undocumented list is invented.",
+        "Scholarship-specific deadlines and exact partial-award amounts are not stated."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://chinese.tjut.edu.cn/english/info/1053/1076.htm",
+            "title": "Tianjin University of Technology 2026-2027 international student admission brochure",
+            "capturedAt": "2026-10-16T06:09:38.959Z",
+            "contentSha256": "5f1c66cdd222755a3243519ee8c777a8329213131cf4a2ddde3f9ce80b84f894"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_and_conduct",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Be a non-Chinese citizen who complies with the published nationality rules, has good conduct and health, and will follow Chinese law and university rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Eligibility items 1 and 4"
+              }
+            ]
+          },
+          {
+            "key": "prior_education_and_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree and be under age 40.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "chinese_proficiency",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All reviewed degree applicants",
+            "ruleText": "Submit a valid HSK Level 4 score report with at least 180.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Complete the official online application and upload the requested materials within the application period.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "How to Apply item 1"
+              }
+            ]
+          },
+          {
+            "key": "application_period",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from November 20, 2025 through May 31, 2026; the reviewed cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "How to Apply item 3"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Admitted non-scholarship recipients",
+            "ruleText": "Pay the non-refundable CNY 400 application fee within the university-specified time after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "How to Apply item 4"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Participate in the university's comprehensive review of application materials and interview.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission and Enrollment item 1"
+              }
+            ]
+          },
+          {
+            "key": "original_documents",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Bring the original highest academic credential, physical-examination record, blood-test report, HSK certificate and other original application materials for enrollment verification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission and Enrollment item 5"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "tjut-master-fall-2026",
+      "schoolSlug": "tianjin-university-of-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "tianjin-university-of-technology-master-school-of-management-business-administration",
+        "tianjin-university-of-technology-master-school-of-computer-science-and-engineering-electronic-information-computer-technology",
+        "tianjin-university-of-technology-master-school-of-mechanical-engineering-mechanical-engineering",
+        "tianjin-university-of-technology-master-school-of-environmental-science-and-engineering-environmental-engineering",
+        "tianjin-university-of-technology-master-school-of-languages-and-culture-teaching-chinese-to-speakers-of-other-languages",
+        "tianjin-university-of-technology-master-school-of-languages-and-culture-english-language-and-literature",
+        "tianjin-university-of-technology-master-school-of-languages-and-culture-japanese-language-and-literature",
+        "tianjin-university-of-technology-master-school-of-languages-and-culture-english-translation",
+        "tianjin-university-of-technology-master-college-of-science-applied-mathematics",
+        "tianjin-university-of-technology-master-college-of-science-applied-physics",
+        "tianjin-university-of-technology-master-school-of-materials-science-and-engineering-materials-science-and-engineering",
+        "tianjin-university-of-technology-master-maritime-college-electronic-information-engineering",
+        "tianjin-university-of-technology-master-school-of-chemistry-and-chemical-engineering-chemical-engineering",
+        "tianjin-university-of-technology-master-school-of-chemistry-and-chemical-engineering-chemical-engineering-and-process-technology",
+        "tianjin-university-of-technology-master-school-of-chemistry-and-chemical-engineering-pharmaceutical-engineering-and-technology",
+        "tianjin-university-of-technology-master-school-of-chemistry-and-chemical-engineering-chemistry"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed.",
+        "The reviewed brochure does not enumerate the ordinary online-application upload checklist, so no undocumented list is invented.",
+        "Scholarship-specific deadlines and exact partial-award amounts are not stated."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://chinese.tjut.edu.cn/english/info/1053/1076.htm",
+            "title": "Tianjin University of Technology 2026-2027 international student admission brochure",
+            "capturedAt": "2026-10-16T06:09:38.959Z",
+            "contentSha256": "5f1c66cdd222755a3243519ee8c777a8329213131cf4a2ddde3f9ce80b84f894"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_and_conduct",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Be a non-Chinese citizen who complies with the published nationality rules, has good conduct and health, and will follow Chinese law and university rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Eligibility items 1 and 4"
+              }
+            ]
+          },
+          {
+            "key": "prior_education_and_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree and be under age 35.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "chinese_proficiency",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All reviewed degree applicants",
+            "ruleText": "Submit a valid HSK Level 4 score report with at least 180.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Complete the official online application and upload the requested materials within the application period.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "How to Apply item 1"
+              }
+            ]
+          },
+          {
+            "key": "application_period",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from November 20, 2025 through May 31, 2026; the reviewed cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "How to Apply item 3"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Admitted non-scholarship recipients",
+            "ruleText": "Pay the non-refundable CNY 400 application fee within the university-specified time after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "How to Apply item 4"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Participate in the university's comprehensive review of application materials and interview.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission and Enrollment item 1"
+              }
+            ]
+          },
+          {
+            "key": "original_documents",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Bring the original highest academic credential, physical-examination record, blood-test report, HSK certificate and other original application materials for enrollment verification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission and Enrollment item 5"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "tjut-undergraduate-fall-2026",
+      "schoolSlug": "tianjin-university-of-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "tianjin-university-of-technology-undergraduate-school-of-management-business-administration",
+        "tianjin-university-of-technology-undergraduate-school-of-management-industrial-engineering",
+        "tianjin-university-of-technology-undergraduate-school-of-management-accounting",
+        "tianjin-university-of-technology-undergraduate-school-of-computer-science-and-engineering-computer-science-and-technology",
+        "tianjin-university-of-technology-undergraduate-school-of-computer-science-and-engineering-information-security",
+        "tianjin-university-of-technology-undergraduate-school-of-computer-science-and-engineering-internet-of-things-engineering",
+        "tianjin-university-of-technology-undergraduate-school-of-computer-science-and-engineering-data-science-and-big-data-technology",
+        "tianjin-university-of-technology-undergraduate-school-of-mechanical-engineering-mechanical-engineering",
+        "tianjin-university-of-technology-undergraduate-school-of-environmental-science-and-engineering-environmental-science",
+        "tianjin-university-of-technology-undergraduate-school-of-languages-and-cultures-chinese-language-and-literature",
+        "tianjin-university-of-technology-undergraduate-school-of-languages-and-cultures-english",
+        "tianjin-university-of-technology-undergraduate-school-of-languages-and-cultures-japanese",
+        "tianjin-university-of-technology-undergraduate-college-of-science-applied-mathematics",
+        "tianjin-university-of-technology-undergraduate-college-of-science-applied-physics",
+        "tianjin-university-of-technology-undergraduate-tut-maritime-college-navigation-technology",
+        "tianjin-university-of-technology-undergraduate-tut-maritime-college-marine-engineering",
+        "tianjin-university-of-technology-undergraduate-tut-maritime-college-marine-electrical-and-electronic-engineering",
+        "tianjin-university-of-technology-undergraduate-school-of-chemistry-and-chemical-engineering-chemical-engineering-and-process-technology",
+        "tianjin-university-of-technology-undergraduate-school-of-chemistry-and-chemical-engineering-pharmaceutical-engineering",
+        "tianjin-university-of-technology-undergraduate-school-of-fine-arts-visual-communication-design",
+        "tianjin-university-of-technology-undergraduate-school-of-fine-arts-environmental-design"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed.",
+        "The reviewed brochure does not enumerate the ordinary online-application upload checklist, so no undocumented list is invented.",
+        "Scholarship-specific deadlines and exact partial-award amounts are not stated."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "guide",
+            "url": "https://chinese.tjut.edu.cn/english/info/1053/1076.htm",
+            "title": "Tianjin University of Technology 2026-2027 international student admission brochure",
+            "capturedAt": "2026-10-16T06:09:38.959Z",
+            "contentSha256": "5f1c66cdd222755a3243519ee8c777a8329213131cf4a2ddde3f9ce80b84f894"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_and_conduct",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Be a non-Chinese citizen who complies with the published nationality rules, has good conduct and health, and will follow Chinese law and university rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Eligibility items 1 and 4"
+              }
+            ]
+          },
+          {
+            "key": "prior_education_and_age",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma and be under age 25; a current final-year student may submit a pre-graduation certificate but must provide the diploma before enrollment.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Eligibility item 2"
+              }
+            ]
+          },
+          {
+            "key": "chinese_proficiency",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All reviewed degree applicants",
+            "ruleText": "Submit a valid HSK Level 4 score report with at least 180.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Application Eligibility item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Take and submit results for the exact CSCA subjects published for the selected program.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Majors table and How to Apply item 2"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Complete the official online application and upload the requested materials within the application period.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "How to Apply item 1"
+              }
+            ]
+          },
+          {
+            "key": "application_period",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Apply from November 20, 2025 through May 31, 2026; the reviewed cycle is closed.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "How to Apply item 3"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Admitted non-scholarship recipients",
+            "ruleText": "Pay the non-refundable CNY 400 application fee within the university-specified time after admission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "How to Apply item 4"
+              }
+            ]
+          },
+          {
+            "key": "interview",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Participate in the university's comprehensive review of application materials and interview.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission and Enrollment item 1"
+              }
+            ]
+          },
+          {
+            "key": "original_documents",
+            "category": "documents",
+            "stage": "enrollment",
+            "level": "required",
+            "appliesTo": "Admitted applicants",
+            "ruleText": "Bring the original highest academic credential, physical-examination record, blood-test report, HSK certificate and other original application materials for enrollment verification.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "guide",
+                "locator": "Admission and Enrollment item 5"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

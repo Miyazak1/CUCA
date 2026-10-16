@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "status": "human_review_completed",
+  "reviewReference": "project-owner-approved-official-catalog-direct-publish-2026-10-16",
+  "reviewedAt": "2026-10-16T07:30:00.000Z",
+  "publicationBundleSha256": "63c1015d4a1516714c81d96dda5e6f8ad2e0f8046efed6293b9562bd0b9f2435",
+  "operationPlanSha256": "15a22e8bc20240ecbf5ed3cb4e016009750dff4497ed1ca0e09565c33cd23e64",
+  "scope": {
+    "cities": 34,
+    "schools": 100,
+    "programs": 11441,
+    "programIntakes": 11020,
+    "scholarships": 325
+  },
+  "confirmations": {
+    "projectOwnerApprovedDirectPublication": true,
+    "contentReviewed": true,
+    "officialSourcesReviewed": true,
+    "publicContentConfirmed": true,
+    "prohibitedDataConfirmedExcluded": true,
+    "missingDataMayRemainEmpty": true
+  }
+}

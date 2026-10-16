@@ -1,0 +1,3217 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-16T05:56:12.119Z",
+  "handoff": {
+    "status": "unreviewed_draft",
+    "databaseWriteAuthorized": false,
+    "publicationAuthorized": false,
+    "purpose": "Complete official-source application requirements for the captured closed Fall 2026 BFSU and ECUST degree routes."
+  },
+  "summary": {
+    "templateCount": 11,
+    "readyTemplateCount": 11,
+    "blockedTemplateCount": 0,
+    "targetedProgramCount": 288,
+    "targetedIntakeCount": 288,
+    "requirementItemCount": 163
+  },
+  "templates": [
+    {
+      "key": "bfsu-undergraduate-fall-2026",
+      "schoolSlug": "beijing-foreign-studies-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-foreign-studies-university-undergraduate-diplomacy-chinese",
+        "beijing-foreign-studies-university-undergraduate-computer-science-and-technology-language-intelligence-chinese",
+        "beijing-foreign-studies-university-undergraduate-e-commerce-chinese",
+        "beijing-foreign-studies-university-undergraduate-business-administration-international-marketing-chinese",
+        "beijing-foreign-studies-university-undergraduate-business-administration-chinese-business-studies-chinese",
+        "beijing-foreign-studies-university-undergraduate-international-business-chinese",
+        "beijing-foreign-studies-university-undergraduate-accounting-chinese",
+        "beijing-foreign-studies-university-undergraduate-information-management-and-information-system-big-data-and-business-analysis-chinese",
+        "beijing-foreign-studies-university-undergraduate-finance-financial-technology-chinese",
+        "beijing-foreign-studies-university-undergraduate-international-economics-and-trade-chinese",
+        "beijing-foreign-studies-university-undergraduate-arabic-chinese",
+        "beijing-foreign-studies-university-undergraduate-german-chinese",
+        "beijing-foreign-studies-university-undergraduate-russian-chinese",
+        "beijing-foreign-studies-university-undergraduate-zulu-chinese",
+        "beijing-foreign-studies-university-undergraduate-swahili-chinese",
+        "beijing-foreign-studies-university-undergraduate-italian-chinese",
+        "beijing-foreign-studies-university-undergraduate-communication-studies-chinese",
+        "beijing-foreign-studies-university-undergraduate-journalism-chinese",
+        "beijing-foreign-studies-university-undergraduate-teaching-chinese-to-speakers-of-other-languages-chinese",
+        "beijing-foreign-studies-university-undergraduate-chinese-chinese",
+        "beijing-foreign-studies-university-undergraduate-chinese-chinese-foreign-language-translation-chinese",
+        "beijing-foreign-studies-university-undergraduate-e-commerce-english",
+        "beijing-foreign-studies-university-undergraduate-business-administration-international-marketing-english",
+        "beijing-foreign-studies-university-undergraduate-business-administration-chinese-business-studies-english",
+        "beijing-foreign-studies-university-undergraduate-international-business-english",
+        "beijing-foreign-studies-university-undergraduate-finance-international-finance-english",
+        "beijing-foreign-studies-university-undergraduate-international-economics-and-trade-english",
+        "beijing-foreign-studies-university-undergraduate-english-linguistics-and-applied-linguistics-english-literature-social-and-cultural-studies-english",
+        "beijing-foreign-studies-university-undergraduate-english-country-and-area-studies-english",
+        "beijing-foreign-studies-university-undergraduate-english-foreign-language-education-english",
+        "beijing-foreign-studies-university-undergraduate-translation-and-interpreting-advanced-translation-and-interpreting-in-diplomacy-and-foreign-affairs-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed and must not be displayed as a current intake.",
+        "Program-specific language scores are not stated in the captured BFSU catalogs and remain unfilled.",
+        "Personal supervisor contact details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "bfsu_ug",
+            "url": "https://osao.bfsu.edu.cn/info/2612/7182.htm",
+            "title": "Beijing Foreign Studies University 2026 international undergraduate admissions prospectus",
+            "capturedAt": "2026-10-16T05:38:08.860Z",
+            "contentSha256": "2077792799a8271076340e715dc50be8835cb60a0b03e714492aa25733ad0329"
+          },
+          {
+            "key": "programs",
+            "url": "https://osao.bfsu.edu.cn/__local/3/D2/06/FC5C2F3988B0E85DB81496D4C82_3B839AEF_1584D.pdf",
+            "title": "Beijing Foreign Studies University 2026 international undergraduate program catalog",
+            "capturedAt": "2026-10-16T05:38:06.862Z",
+            "contentSha256": "8468397309cbc8615abde48cfd4dde37949be55bf46d3bac48c5452fa533861b"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid ordinary foreign passport and qualify as a non-Chinese citizen under the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Eligibility item 1"
+              }
+            ]
+          },
+          {
+            "key": "health_and_conduct",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Meet the published physical and mental health standard, have no criminal record or public-security penalty, comply with Chinese law and university rules, and be able to complete on-campus study.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Eligibility items 2-3"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Complete senior high school education; applicants under 18 must also satisfy the published guardian-document rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Eligibility item 4"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Complete the BFSU online application with truthful, accurate, complete and valid information.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the senior high-school graduation certificate; current students may use an enrollment certificate and must provide the original diploma before registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Required documents item 1"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit official academic transcripts in Chinese or English, adding a notarized Chinese or English translation when required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Required documents item 2"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit the official CSCA result with the exact subjects published for the selected program.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "programs",
+                "locator": "CSCA Test Subjects column"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid Chinese or English language certificate that meets the selected school's and program's published requirement; the captured sources do not publish one universal score threshold.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Required documents item 4"
+              }
+            ]
+          },
+          {
+            "key": "personal_statement",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit a personal statement of at least 500 words in the selected program's teaching language.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Required documents item 5"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a clear scan of the ordinary passport biographical page and the additional residence/entry or nationality records required by the applicant's circumstances.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Required documents item 6"
+              }
+            ]
+          },
+          {
+            "key": "declarations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the applicant-signed admission commitment and the sponsor-signed guarantee using the official templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Required documents item 7"
+              }
+            ]
+          },
+          {
+            "key": "employment_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who are employed",
+            "ruleText": "Submit the employer's consent-to-study letter or proof that the employment relationship has ended.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Required documents item 8"
+              }
+            ]
+          },
+          {
+            "key": "additional_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose school, scholarship or academic background requires them",
+            "ruleText": "Submit the additional school or scholarship documents and any published academic output requested by BFSU.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Required documents item 9"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 800 online application fee in RMB.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Application Fee"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the autumn application by June 15, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bfsu_ug",
+                "locator": "Application Opening Periods"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bfsu-master-fall-2026",
+      "schoolSlug": "beijing-foreign-studies-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-foreign-studies-university-master-international-law-030109-english",
+        "beijing-foreign-studies-university-master-international-relations-030207-english",
+        "beijing-foreign-studies-university-master-comparative-education-040104-english",
+        "beijing-foreign-studies-university-master-higher-education-040106-english",
+        "beijing-foreign-studies-university-master-technology-enhanced-education-040110-english",
+        "beijing-foreign-studies-university-master-curriculum-and-pedagogy-040102-english",
+        "beijing-foreign-studies-university-master-journalism-and-communication-055200-english",
+        "beijing-foreign-studies-university-master-international-business-english",
+        "beijing-foreign-studies-university-master-jurisprudence-030101-chinese",
+        "beijing-foreign-studies-university-master-international-law-030109-chinese",
+        "beijing-foreign-studies-university-master-civil-and-commercial-law-030105-chinese",
+        "beijing-foreign-studies-university-master-constitutional-law-and-administrative-law-030103-chinese",
+        "beijing-foreign-studies-university-master-criminal-law-030104-chinese",
+        "beijing-foreign-studies-university-master-intellectual-property-law-0301z1-chinese",
+        "beijing-foreign-studies-university-master-international-relations-030207-chinese",
+        "beijing-foreign-studies-university-master-comparative-education-040104-chinese",
+        "beijing-foreign-studies-university-master-higher-education-040106-chinese",
+        "beijing-foreign-studies-university-master-technology-enhanced-education-040110-chinese",
+        "beijing-foreign-studies-university-master-curriculum-and-pedagogy-040102-chinese",
+        "beijing-foreign-studies-university-master-world-history-060300-chinese",
+        "beijing-foreign-studies-university-master-arabic-language-and-literature-050208-chinese-arabic",
+        "beijing-foreign-studies-university-master-german-language-and-literature-050204-chinese-german",
+        "beijing-foreign-studies-university-master-german-language-and-literature-050204-chinese-german-2",
+        "beijing-foreign-studies-university-master-russian-language-and-literature-050202-chinese-russian",
+        "beijing-foreign-studies-university-master-european-languages-and-literatures-050209-chinese-foreign-language-relevant-to-the-major",
+        "beijing-foreign-studies-university-master-japanese-language-and-literature-050205-chinese-japanese",
+        "beijing-foreign-studies-university-master-english-language-and-literature-050201-english",
+        "beijing-foreign-studies-university-master-asian-and-african-languages-and-literatures-050210-chinese-english-foreign-language-relevant-to-the-major",
+        "beijing-foreign-studies-university-master-asian-and-african-languages-and-literatures-050210-chinese-english-foreign-language-relevant-to-the-major-2",
+        "beijing-foreign-studies-university-master-asian-and-african-area-studies-99j2-chinese",
+        "beijing-foreign-studies-university-master-asian-and-african-area-studies-99j2-chinese-2",
+        "beijing-foreign-studies-university-master-foreign-linguistics-and-applied-linguistics-050211-chinese-english",
+        "beijing-foreign-studies-university-master-country-and-area-studies-1407-chinese-english",
+        "beijing-foreign-studies-university-master-comparative-literature-and-intercultural-studies-0502z1-chinese-english",
+        "beijing-foreign-studies-university-master-comparative-literature-and-world-literature-050108-chinese",
+        "beijing-foreign-studies-university-master-chinese-philology-050103-chinese",
+        "beijing-foreign-studies-university-master-theory-of-literature-and-art-050101-chinese",
+        "beijing-foreign-studies-university-master-linguistics-and-applied-linguistics-050102-chinese",
+        "beijing-foreign-studies-university-master-ancient-chinese-literature-050105-chinese",
+        "beijing-foreign-studies-university-master-modern-and-contemporary-chinese-literature-050106-chinese",
+        "beijing-foreign-studies-university-master-international-affairs-chinese",
+        "beijing-foreign-studies-university-master-international-business-english-2",
+        "beijing-foreign-studies-university-master-finance-chinese",
+        "beijing-foreign-studies-university-master-international-chinese-language-education-045300-chinese",
+        "beijing-foreign-studies-university-master-arabic-translation-055115-chinese-arabic",
+        "beijing-foreign-studies-university-master-arabic-interpreting-055116-chinese-arabic",
+        "beijing-foreign-studies-university-master-korean-interpreting-055112-chinese-korean",
+        "beijing-foreign-studies-university-master-german-translation-055109-chinese-german",
+        "beijing-foreign-studies-university-master-german-interpreting-055110-chinese-german",
+        "beijing-foreign-studies-university-master-russian-translation-055103-chinese-russian",
+        "beijing-foreign-studies-university-master-russian-interpreting-055104-chinese-russian",
+        "beijing-foreign-studies-university-master-translation-studies-0502z2-english",
+        "beijing-foreign-studies-university-master-japanese-interpreting-055106-chinese-japanese",
+        "beijing-foreign-studies-university-master-thai-translation-055117-chinese-thai",
+        "beijing-foreign-studies-university-master-thai-interpreting-055118-chinese-thai",
+        "beijing-foreign-studies-university-master-spanish-translation-055113-chinese-spanish",
+        "beijing-foreign-studies-university-master-spanish-interpreting-055114-chinese-spanish",
+        "beijing-foreign-studies-university-master-italian-interpreting-055120-chinese-italian",
+        "beijing-foreign-studies-university-master-english-translation-055101-chinese-english",
+        "beijing-foreign-studies-university-master-english-translation-055101-chinese-english-2",
+        "beijing-foreign-studies-university-master-english-interpreting-055102-chinese-english",
+        "beijing-foreign-studies-university-master-english-interpreting-055102-chinese-english-2",
+        "beijing-foreign-studies-university-master-english-interpreting-trilingual-chinese-english-foreign-language-relevant-to-the-major"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed and must not be displayed as a current intake.",
+        "Program-specific language scores are not stated in the captured BFSU catalogs and remain unfilled.",
+        "Personal supervisor contact details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "bfsu_grad",
+            "url": "https://lb.bfsu.edu.cn/__local/E/B0/09/3C82CCA4B0AFEEB207DA3CA78F6_BD0C67B5_CF0B0.pdf",
+            "title": "Beijing Foreign Studies University 2026 international graduate admissions prospectus PDF",
+            "capturedAt": "2026-10-16T05:49:01.211Z",
+            "contentSha256": "2045bbd4480e1a2cf5bb3ad72bca573acbee4d52cf0b9bb65ed2003629f2ca89"
+          },
+          {
+            "key": "programs",
+            "url": "https://osao.bfsu.edu.cn/__local/B/3E/51/CB4E16E36725F65DEFD38A91759_5E5A2207_2B56F.pdf",
+            "title": "Beijing Foreign Studies University 2026 international master's program catalog",
+            "capturedAt": "2026-10-16T05:38:20.149Z",
+            "contentSha256": "2615a263880c8dccf89522a8fea6401a52cbe02e5df4abbdec5fca78ff62591e"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid ordinary foreign passport and qualify as a non-Chinese citizen under the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus pages 1-2, application condition 1"
+              }
+            ]
+          },
+          {
+            "key": "health_and_conduct",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Meet the published physical and mental health standard, have no criminal record or public-security penalty, comply with Chinese law and university rules, and be able to complete on-campus study.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 2, application conditions 2-3"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or higher recognized by the Chinese Ministry of Education.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 2, application condition 4"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Complete the BFSU online application with truthful, accurate, complete and valid information.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus pages 2-3, application method"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the degree certificate in Chinese or English; if the application language differs, add a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit official academic transcripts in Chinese or English, adding a notarized Chinese or English translation when required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid Chinese or English language certificate that meets the selected school's and program's published requirement; the captured sources do not publish one universal score threshold.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "cv_and_research_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit a CV and a research plan of at least 1,500 Chinese characters in the program's teaching language.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Submit two signed recommendation letters in Chinese or English from professors, associate professors or experts with equivalent professional titles in the relevant field.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a clear scan of the ordinary passport biographical page and the additional residence/entry or nationality records required by the applicant's circumstances.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 4, materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "declarations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the applicant-signed admission commitment and the sponsor-signed guarantee using the official templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 4, materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "employment_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who are employed",
+            "ruleText": "Submit the employer's consent-to-study letter or proof that the employment relationship has ended.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 4, materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "additional_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose school, scholarship or academic background requires them",
+            "ruleText": "Submit the additional school or scholarship documents and any published academic output requested by BFSU.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 4, materials items 9-10"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 800 online application fee in RMB.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 4, application fee"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the graduate application by May 31, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, system opening period"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "bfsu-doctoral-fall-2026",
+      "schoolSlug": "beijing-foreign-studies-university",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "beijing-foreign-studies-university-doctoral-comparative-education-040104-chinese-english",
+        "beijing-foreign-studies-university-doctoral-comparative-education-040104-chinese-english-2",
+        "beijing-foreign-studies-university-doctoral-technology-enhanced-education-040110-chinese-english",
+        "beijing-foreign-studies-university-doctoral-curriculum-and-pedagogy-040102-chinese-english",
+        "beijing-foreign-studies-university-doctoral-translation-and-interpreting-055100-chinese-english",
+        "beijing-foreign-studies-university-doctoral-translation-and-interpreting-055100-chinese-english-2",
+        "beijing-foreign-studies-university-doctoral-translation-and-interpreting-055100-chinese-english-3",
+        "beijing-foreign-studies-university-doctoral-translation-and-interpreting-055100-chinese-english-4",
+        "beijing-foreign-studies-university-doctoral-theory-of-literature-and-art-050101-chinese",
+        "beijing-foreign-studies-university-doctoral-linguistics-and-applied-linguistics-050102-chinese",
+        "beijing-foreign-studies-university-doctoral-linguistics-and-applied-linguistics-050102-chinese-2",
+        "beijing-foreign-studies-university-doctoral-modern-and-contemporary-chinese-literature-050106-chinese",
+        "beijing-foreign-studies-university-doctoral-comparative-literature-and-world-literature-050108-chinese",
+        "beijing-foreign-studies-university-doctoral-arabic-language-and-literature-050208-chinese-arabic",
+        "beijing-foreign-studies-university-doctoral-arabic-language-and-literature-050208-chinese-arabic-2",
+        "beijing-foreign-studies-university-doctoral-russian-language-and-literature-050202-chinese-russian",
+        "beijing-foreign-studies-university-doctoral-russian-language-and-literature-050202-chinese-russian-2",
+        "beijing-foreign-studies-university-doctoral-russian-language-and-literature-050202-chinese-russian-3",
+        "beijing-foreign-studies-university-doctoral-french-language-and-literature-050203-chinese",
+        "beijing-foreign-studies-university-doctoral-german-language-and-literature-050204-chinese-german",
+        "beijing-foreign-studies-university-doctoral-asian-and-african-languages-and-literatures-050210-chinese-korean",
+        "beijing-foreign-studies-university-doctoral-asian-and-african-languages-and-literatures-050210-chinese",
+        "beijing-foreign-studies-university-doctoral-european-languages-and-literatures-050209-chinese-english",
+        "beijing-foreign-studies-university-doctoral-japanese-language-and-literature-050205-chinese-japanese",
+        "beijing-foreign-studies-university-doctoral-foreign-linguistics-and-applied-linguistics-050211-chinese-english",
+        "beijing-foreign-studies-university-doctoral-foreign-linguistics-and-applied-linguistics-050211-chinese-english-2",
+        "beijing-foreign-studies-university-doctoral-language-policy-and-planning-studies-0502z3-chinese-english",
+        "beijing-foreign-studies-university-doctoral-foreign-language-education-studies-0502z9-chinese-english",
+        "beijing-foreign-studies-university-doctoral-english-language-and-literature-050201-english",
+        "beijing-foreign-studies-university-doctoral-english-language-and-literature-050201-english-2",
+        "beijing-foreign-studies-university-doctoral-english-language-and-literature-050201-english-3",
+        "beijing-foreign-studies-university-doctoral-english-language-and-literature-050201-english-4",
+        "beijing-foreign-studies-university-doctoral-english-language-and-literature-050201-english-5",
+        "beijing-foreign-studies-university-doctoral-english-language-and-literature-050201-english-6",
+        "beijing-foreign-studies-university-doctoral-english-language-and-literature-050201-english-7",
+        "beijing-foreign-studies-university-doctoral-english-language-and-literature-050201-english-8",
+        "beijing-foreign-studies-university-doctoral-comparative-literature-and-intercultural-studies-0502z1-chinese",
+        "beijing-foreign-studies-university-doctoral-comparative-literature-and-intercultural-studies-0502z1-chinese-2",
+        "beijing-foreign-studies-university-doctoral-international-relations-and-regional-studies-0502z7-chinese",
+        "beijing-foreign-studies-university-doctoral-international-communication-0502z8-chinese-english",
+        "beijing-foreign-studies-university-doctoral-international-communication-0502z8-chinese-english-2",
+        "beijing-foreign-studies-university-doctoral-international-communication-0502z8-chinese-english-3",
+        "beijing-foreign-studies-university-doctoral-international-communication-0502z8-chinese-english-4",
+        "beijing-foreign-studies-university-doctoral-international-communication-0502z8-chinese-english-5",
+        "beijing-foreign-studies-university-doctoral-international-communication-0502z8-chinese-english-6",
+        "beijing-foreign-studies-university-doctoral-international-communication-0502z8-chinese-english-7",
+        "beijing-foreign-studies-university-doctoral-international-communication-0502z8-chinese-english-8",
+        "beijing-foreign-studies-university-doctoral-international-communication-0502z8-chinese-english-9",
+        "beijing-foreign-studies-university-doctoral-international-communication-0502z8-chinese-english-10",
+        "beijing-foreign-studies-university-doctoral-country-and-area-studies-140700-chinese",
+        "beijing-foreign-studies-university-doctoral-country-and-area-studies-140700-chinese-2",
+        "beijing-foreign-studies-university-doctoral-country-and-area-studies-140700-chinese-3",
+        "beijing-foreign-studies-university-doctoral-country-and-area-studies-140700-chinese-4",
+        "beijing-foreign-studies-university-doctoral-country-and-area-studies-140700-chinese-5",
+        "beijing-foreign-studies-university-doctoral-country-and-area-studies-140700-chinese-6",
+        "beijing-foreign-studies-university-doctoral-country-and-area-studies-140700-chinese-7",
+        "beijing-foreign-studies-university-doctoral-country-and-area-studies-140700-chinese-8"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed and must not be displayed as a current intake.",
+        "Program-specific language scores are not stated in the captured BFSU catalogs and remain unfilled.",
+        "Personal supervisor contact details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "bfsu_grad",
+            "url": "https://lb.bfsu.edu.cn/__local/E/B0/09/3C82CCA4B0AFEEB207DA3CA78F6_BD0C67B5_CF0B0.pdf",
+            "title": "Beijing Foreign Studies University 2026 international graduate admissions prospectus PDF",
+            "capturedAt": "2026-10-16T05:49:01.211Z",
+            "contentSha256": "2045bbd4480e1a2cf5bb3ad72bca573acbee4d52cf0b9bb65ed2003629f2ca89"
+          },
+          {
+            "key": "programs",
+            "url": "https://osao.bfsu.edu.cn/__local/C/B8/51/B4870A16E785C5E75BE4CC9D562_7647A1F1_2FE0D.pdf",
+            "title": "Beijing Foreign Studies University 2026 international doctoral program catalog",
+            "capturedAt": "2026-10-16T05:38:21.831Z",
+            "contentSha256": "e2ee28d2840d89b1ce2d670f9228b2ee7ec203532acd590d8f4e10d426e1aa44"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid ordinary foreign passport and qualify as a non-Chinese citizen under the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus pages 1-2, application condition 1"
+              }
+            ]
+          },
+          {
+            "key": "health_and_conduct",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Meet the published physical and mental health standard, have no criminal record or public-security penalty, comply with Chinese law and university rules, and be able to complete on-campus study.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 2, application conditions 2-3"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or higher recognized by the Chinese Ministry of Education.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 2, application condition 4"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Complete the BFSU online application with truthful, accurate, complete and valid information.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus pages 2-3, application method"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the degree certificate in Chinese or English; if the application language differs, add a notarized Chinese or English translation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, materials item 1"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit official academic transcripts in Chinese or English, adding a notarized Chinese or English translation when required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, materials item 2"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a valid Chinese or English language certificate that meets the selected school's and program's published requirement; the captured sources do not publish one universal score threshold.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, materials item 5"
+              }
+            ]
+          },
+          {
+            "key": "cv_and_research_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit a CV and a research plan of at least 3,000 Chinese characters in the program's teaching language, and obtain confirmation from a prospective supervisor before submission.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, materials item 3"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Submit two signed recommendation letters in Chinese or English from professors, associate professors or experts with equivalent professional titles in the relevant field.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, materials item 4"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a clear scan of the ordinary passport biographical page and the additional residence/entry or nationality records required by the applicant's circumstances.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 4, materials item 6"
+              }
+            ]
+          },
+          {
+            "key": "declarations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the applicant-signed admission commitment and the sponsor-signed guarantee using the official templates.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 4, materials item 7"
+              }
+            ]
+          },
+          {
+            "key": "employment_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants who are employed",
+            "ruleText": "Submit the employer's consent-to-study letter or proof that the employment relationship has ended.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 4, materials item 8"
+              }
+            ]
+          },
+          {
+            "key": "additional_materials",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Applicants whose school, scholarship or academic background requires them",
+            "ruleText": "Submit the additional school or scholarship documents and any published academic output requested by BFSU.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 4, materials items 9-10"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 800 online application fee in RMB.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 4, application fee"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 applicants",
+            "ruleText": "Submit the graduate application by May 31, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "bfsu_grad",
+                "locator": "Prospectus page 3, system opening period"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecust-undergraduate-english-fall-2026",
+      "schoolSlug": "east-china-university-of-science-and-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-university-of-science-and-technology-undergraduate-chemical-engineering-and-technology-english",
+        "east-china-university-of-science-and-technology-undergraduate-bioengineering-biomedicine-english",
+        "east-china-university-of-science-and-technology-undergraduate-intelligent-manufacturing-engineering-english",
+        "east-china-university-of-science-and-technology-undergraduate-artificial-intelligence-english",
+        "east-china-university-of-science-and-technology-undergraduate-international-economics-and-trade-english",
+        "east-china-university-of-science-and-technology-undergraduate-visual-communication-design-digital-design-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed and must not be displayed as a current intake.",
+        "Where ECUST publishes bilingual teaching or different tuition by teaching language, no unconfirmed language selection is inferred.",
+        "Bank account, remittance, personal-contact and passport-reminder details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ecust_ug",
+            "url": "https://cie.ecust.edu.cn/notices/514.html",
+            "title": "East China University of Science and Technology 2026 international undergraduate admissions",
+            "capturedAt": "2026-10-16T05:38:09.355Z",
+            "contentSha256": "3257d2cc6575acfa62ef1c7d5839e32c715ab345376c07a7af84b15dde61bf87"
+          },
+          {
+            "key": "programs",
+            "url": "https://cie.ecust.edu.cn/notices/515.html",
+            "title": "East China University of Science and Technology 2026 international undergraduate program catalog",
+            "capturedAt": "2026-10-16T05:38:09.598Z",
+            "contentSha256": "bad3b7d0b2778675a4f326338ba67ded3defaa97fdaf29b6e28453ea853588e8"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid foreign passport, be in good health and comply with the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or higher and be over age 16; applicants under 18 before August 31 must submit the official guarantee statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught route applicants",
+            "ruleText": "Submit TOEFL 80, IELTS 6.0 or Duolingo 105, unless a published native-English or prior English-medium-degree exemption applies.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Qualifications, language requirements"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register once in the ECUST online application system and submit the required documents according to the system prompts.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport photo page, valid through September 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the high-school diploma or equivalent; prospective graduates submit current study status and expected graduation date, then the diploma before registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit all high-school transcripts or published international standardized-test results.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit CSCA results for the exact subjects listed for the selected program.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "programs",
+                "locator": "CSCA subject-requirement column"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan of at least 800 words covering the applicant, family, reasons for choosing ECUST and the major.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate or the published alternative applicable to the applicant's situation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Statement of Financial Support.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 9"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form or the published in-China residence-document substitute; the examination result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Procedures and Study Term and Fees"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-sponsored applicants",
+            "ruleText": "Submit by July 10, 2026; the scholarship-program deadline is April 30, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Deadline"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecust-undergraduate-chinese-fall-2026",
+      "schoolSlug": "east-china-university-of-science-and-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-university-of-science-and-technology-undergraduate-computer-science-and-technology-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-business-administration-business-analytics-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-chemical-engineering-and-technology-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-resource-recycling-science-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-light-chemical-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-oil-and-gas-storage-and-transportation-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-applied-chemistry-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-chemistry-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-materials-chemistry-green-and-energy-catalysis-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-fine-chemicals-optoelectronic-information-materials-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-bioengineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-biotechnology-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-biological-sciences-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-food-science-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-food-quality-and-safety-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-pharmacy-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-polymer-materials-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-inorganic-non-metallic-materials-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-composite-materials-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-new-energy-materials-and-devices-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-electronic-information-materials-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-environmental-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-energy-and-power-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-energy-storage-science-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-artificial-intelligence-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-robotics-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-automation-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-electrical-engineering-and-automation-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-information-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-software-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-intelligent-manufacturing-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-process-equipment-and-control-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-mechanical-design-manufacturing-and-automation-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-mathematics-and-applied-mathematics-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-information-and-computing-science-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-applied-physics-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-optoelectronic-information-science-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-economics-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-finance-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-information-management-and-information-systems-data-intelligence-and-smart-management-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-logistics-management-supply-chain-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-accounting-big-data-accounting-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-financial-management-intelligent-finance-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-marketing-big-data-marketing-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-public-administration-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-social-work-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-public-service-administration-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-sociology-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-industrial-design-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-landscape-architecture-future-human-settlements-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-visual-communication-design-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-environmental-design-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-digital-media-art-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-english-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-japanese-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-german-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-law-chinese",
+        "east-china-university-of-science-and-technology-undergraduate-sports-training-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed and must not be displayed as a current intake.",
+        "Where ECUST publishes bilingual teaching or different tuition by teaching language, no unconfirmed language selection is inferred.",
+        "Bank account, remittance, personal-contact and passport-reminder details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ecust_ug",
+            "url": "https://cie.ecust.edu.cn/notices/514.html",
+            "title": "East China University of Science and Technology 2026 international undergraduate admissions",
+            "capturedAt": "2026-10-16T05:38:09.355Z",
+            "contentSha256": "3257d2cc6575acfa62ef1c7d5839e32c715ab345376c07a7af84b15dde61bf87"
+          },
+          {
+            "key": "programs",
+            "url": "https://cie.ecust.edu.cn/notices/515.html",
+            "title": "East China University of Science and Technology 2026 international undergraduate program catalog",
+            "capturedAt": "2026-10-16T05:38:09.598Z",
+            "contentSha256": "bad3b7d0b2778675a4f326338ba67ded3defaa97fdaf29b6e28453ea853588e8"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid foreign passport, be in good health and comply with the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Hold a high-school diploma or higher and be over age 16; applicants under 18 before August 31 must submit the official guarantee statement.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught route applicants",
+            "ruleText": "Submit HSK 4 with at least 190 for science/engineering or 210 for humanities/business, including at least 60 in writing, unless the published prior Chinese-medium-degree exemption applies.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Qualifications, language requirements"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register once in the ECUST online application system and submit the required documents according to the system prompts.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport photo page, valid through September 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the high-school diploma or equivalent; prospective graduates submit current study status and expected graduation date, then the diploma before registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit all high-school transcripts or published international standardized-test results.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 3"
+              }
+            ]
+          },
+          {
+            "key": "csca",
+            "category": "academic_results",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Undergraduate applicants",
+            "ruleText": "Submit CSCA results for the exact subjects listed for the selected program.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "programs",
+                "locator": "CSCA subject-requirement column"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan of at least 800 words covering the applicant, family, reasons for choosing ECUST and the major.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate or the published alternative applicable to the applicant's situation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 8"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Statement of Financial Support.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 9"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form or the published in-China residence-document substitute; the examination result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Checklist item 10"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Procedures and Study Term and Fees"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-sponsored applicants",
+            "ruleText": "Submit by July 10, 2026; the scholarship-program deadline is April 30, 2026.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_ug",
+                "locator": "Application Deadline"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecust-master-english-fall-2026",
+      "schoolSlug": "east-china-university-of-science-and-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-university-of-science-and-technology-master-materials-and-chemical-engineering-english",
+        "east-china-university-of-science-and-technology-master-inorganic-chemistry-english",
+        "east-china-university-of-science-and-technology-master-analytic-chemistry-english",
+        "east-china-university-of-science-and-technology-master-organic-chemistry-english",
+        "east-china-university-of-science-and-technology-master-physical-chemistry-english",
+        "east-china-university-of-science-and-technology-master-fine-synthetic-chemistry-and-molecular-engineering-english",
+        "east-china-university-of-science-and-technology-master-biochemistry-english",
+        "east-china-university-of-science-and-technology-master-applied-chemistry-english",
+        "east-china-university-of-science-and-technology-master-industrial-catalysis-english",
+        "east-china-university-of-science-and-technology-master-computer-technology-english",
+        "east-china-university-of-science-and-technology-master-international-business-english",
+        "east-china-university-of-science-and-technology-master-international-development-social-work-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed and must not be displayed as a current intake.",
+        "Where ECUST publishes bilingual teaching or different tuition by teaching language, no unconfirmed language selection is inferred.",
+        "Bank account, remittance, personal-contact and passport-reminder details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ecust_grad",
+            "url": "https://cie.ecust.edu.cn/notices/513.html",
+            "title": "East China University of Science and Technology 2026 international graduate admissions",
+            "capturedAt": "2026-10-16T05:38:23.871Z",
+            "contentSha256": "9cba7dc3947a9fdad21895a307e2977c9125ab343106a5bafaba60e6fe63180d"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid foreign passport, be in good health and comply with the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or higher.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught route applicants",
+            "ruleText": "Submit TOEFL 80, IELTS 6.0 or Duolingo 105, unless a published native-English or prior English-medium-degree exemption applies.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications, language requirements"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register once in the ECUST online application system and submit the required documents according to the system prompts.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport photo page, valid through September 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest graduation and degree certificates; prospective graduates submit current status and expected graduation date, then the certificates before registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit transcripts of all undergraduate courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 3"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Upload an acceptance letter when the selected school/program table marks it as required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 5 and program table"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Submit two recommendation letters in Chinese or English from a professor or associate professor, issued after September 1, 2025 and containing the referee's required professional details and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan of at least 800 words and a detailed research proposal if prepared.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate or the published alternative applicable to the applicant's situation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Statement of Financial Support.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 10"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form or the published in-China residence-document substitute; the examination result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures and Study Term and Fees"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-sponsored applicants",
+            "ruleText": "Submit by June 15, 2026; Chinese Government Scholarship and Shanghai Government Scholarship deadlines were February 15 and April 15, 2026 respectively.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Deadline"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecust-master-chinese-or-english-fall-2026",
+      "schoolSlug": "east-china-university-of-science-and-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-university-of-science-and-technology-master-chemical-engineering-and-technology-chinese-or-english",
+        "east-china-university-of-science-and-technology-master-biotechnology-andbioengineering-chinese-or-english",
+        "east-china-university-of-science-and-technology-master-biology-chinese-or-english",
+        "east-china-university-of-science-and-technology-master-materials-science-and-engineering-chinese-or-english",
+        "east-china-university-of-science-and-technology-master-environmental-science-and-engineering-chinese-or-english",
+        "east-china-university-of-science-and-technology-master-science-of-business-administration-chinese-or-english",
+        "east-china-university-of-science-and-technology-master-english-language-and-literature-chinese-or-english",
+        "east-china-university-of-science-and-technology-master-foreign-linguistics-and-applied-linguistics-chinese-or-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed and must not be displayed as a current intake.",
+        "Where ECUST publishes bilingual teaching or different tuition by teaching language, no unconfirmed language selection is inferred.",
+        "Bank account, remittance, personal-contact and passport-reminder details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ecust_grad",
+            "url": "https://cie.ecust.edu.cn/notices/513.html",
+            "title": "East China University of Science and Technology 2026 international graduate admissions",
+            "capturedAt": "2026-10-16T05:38:23.871Z",
+            "contentSha256": "9cba7dc3947a9fdad21895a307e2977c9125ab343106a5bafaba60e6fe63180d"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid foreign passport, be in good health and comply with the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or higher.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese or English-taught route applicants",
+            "ruleText": "For a bilingual route, satisfy the language requirement corresponding to the actual teaching language: the published Chinese threshold and/or TOEFL 80, IELTS 6.0 or Duolingo 105. Confirm the route language with ECUST before applying.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications, language requirements"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register once in the ECUST online application system and submit the required documents according to the system prompts.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport photo page, valid through September 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest graduation and degree certificates; prospective graduates submit current status and expected graduation date, then the certificates before registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit transcripts of all undergraduate courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 3"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Upload an acceptance letter when the selected school/program table marks it as required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 5 and program table"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Submit two recommendation letters in Chinese or English from a professor or associate professor, issued after September 1, 2025 and containing the referee's required professional details and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan of at least 800 words and a detailed research proposal if prepared.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate or the published alternative applicable to the applicant's situation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Statement of Financial Support.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 10"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form or the published in-China residence-document substitute; the examination result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures and Study Term and Fees"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-sponsored applicants",
+            "ruleText": "Submit by June 15, 2026; Chinese Government Scholarship and Shanghai Government Scholarship deadlines were February 15 and April 15, 2026 respectively.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Deadline"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecust-master-chinese-fall-2026",
+      "schoolSlug": "east-china-university-of-science-and-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-university-of-science-and-technology-master-oil-and-natural-gas-engineering-chinese",
+        "east-china-university-of-science-and-technology-master-food-science-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-master-biochemical-engineering-chinese",
+        "east-china-university-of-science-and-technology-master-mechanical-engineering-chinese",
+        "east-china-university-of-science-and-technology-master-power-engineering-andengineering-thermal-physics-chinese",
+        "east-china-university-of-science-and-technology-master-safety-science-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-master-computer-science-and-technology-chinese",
+        "east-china-university-of-science-and-technology-master-control-science-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-master-thermal-energyengineering-chinese",
+        "east-china-university-of-science-and-technology-master-mathematics-chinese",
+        "east-china-university-of-science-and-technology-master-applied-economics-chinese",
+        "east-china-university-of-science-and-technology-master-management-science-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-master-sociology-chinese",
+        "east-china-university-of-science-and-technology-master-public-management-chinese",
+        "east-china-university-of-science-and-technology-master-social-work-chinese",
+        "east-china-university-of-science-and-technology-master-design-chinese",
+        "east-china-university-of-science-and-technology-master-landscape-architecture-chinese",
+        "east-china-university-of-science-and-technology-master-science-of-law-chinese",
+        "east-china-university-of-science-and-technology-master-philosophy-chinese",
+        "east-china-university-of-science-and-technology-master-marxist-theory-chinese",
+        "east-china-university-of-science-and-technology-master-sports-humanities-and-sociology-chinese",
+        "east-china-university-of-science-and-technology-master-sports-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed and must not be displayed as a current intake.",
+        "Where ECUST publishes bilingual teaching or different tuition by teaching language, no unconfirmed language selection is inferred.",
+        "Bank account, remittance, personal-contact and passport-reminder details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ecust_grad",
+            "url": "https://cie.ecust.edu.cn/notices/513.html",
+            "title": "East China University of Science and Technology 2026 international graduate admissions",
+            "capturedAt": "2026-10-16T05:38:23.871Z",
+            "contentSha256": "9cba7dc3947a9fdad21895a307e2977c9125ab343106a5bafaba60e6fe63180d"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid foreign passport, be in good health and comply with the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Master applicants",
+            "ruleText": "Hold a bachelor's degree or higher.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught route applicants",
+            "ruleText": "Submit HSK 5 with 210 or HSK 6 with 180, unless the published prior Chinese-medium-degree exemption applies.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications, language requirements"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register once in the ECUST online application system and submit the required documents according to the system prompts.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport photo page, valid through September 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest graduation and degree certificates; prospective graduates submit current status and expected graduation date, then the certificates before registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit transcripts of all undergraduate courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 3"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Upload an acceptance letter when the selected school/program table marks it as required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 5 and program table"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Submit two recommendation letters in Chinese or English from a professor or associate professor, issued after September 1, 2025 and containing the referee's required professional details and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan of at least 800 words and a detailed research proposal if prepared.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate or the published alternative applicable to the applicant's situation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Statement of Financial Support.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 10"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form or the published in-China residence-document substitute; the examination result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures and Study Term and Fees"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-sponsored applicants",
+            "ruleText": "Submit by June 15, 2026; Chinese Government Scholarship and Shanghai Government Scholarship deadlines were February 15 and April 15, 2026 respectively.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Deadline"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecust-doctoral-chinese-or-english-fall-2026",
+      "schoolSlug": "east-china-university-of-science-and-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-university-of-science-and-technology-doctoral-chemical-engineering-and-technology-chinese-or-english",
+        "east-china-university-of-science-and-technology-doctoral-biotechnology-andbioengineering-chinese-or-english",
+        "east-china-university-of-science-and-technology-doctoral-biology-chinese-or-english",
+        "east-china-university-of-science-and-technology-doctoral-materials-science-and-engineering-chinese-or-english",
+        "east-china-university-of-science-and-technology-doctoral-thermal-energyengineering-chinese-or-english",
+        "east-china-university-of-science-and-technology-doctoral-environmental-science-and-engineering-chinese-or-english",
+        "east-china-university-of-science-and-technology-doctoral-sociology-chinese-or-english",
+        "east-china-university-of-science-and-technology-doctoral-science-of-social-work-chinese-or-english",
+        "east-china-university-of-science-and-technology-doctoral-social-governance-and-social-policy-chinese-or-english",
+        "east-china-university-of-science-and-technology-doctoral-social-work-chinese-or-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed and must not be displayed as a current intake.",
+        "Where ECUST publishes bilingual teaching or different tuition by teaching language, no unconfirmed language selection is inferred.",
+        "Bank account, remittance, personal-contact and passport-reminder details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ecust_grad",
+            "url": "https://cie.ecust.edu.cn/notices/513.html",
+            "title": "East China University of Science and Technology 2026 international graduate admissions",
+            "capturedAt": "2026-10-16T05:38:23.871Z",
+            "contentSha256": "9cba7dc3947a9fdad21895a307e2977c9125ab343106a5bafaba60e6fe63180d"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid foreign passport, be in good health and comply with the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or higher.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese or English-taught route applicants",
+            "ruleText": "For a bilingual route, satisfy the language requirement corresponding to the actual teaching language: the published Chinese threshold and/or TOEFL 80, IELTS 6.0 or Duolingo 105. Confirm the route language with ECUST before applying.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications, language requirements"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register once in the ECUST online application system and submit the required documents according to the system prompts.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport photo page, valid through September 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest graduation and degree certificates; prospective graduates submit current status and expected graduation date, then the certificates before registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit transcripts of all undergraduate courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 3"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Upload an acceptance letter when the selected school/program table marks it as required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 5 and program table"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Submit two recommendation letters in Chinese or English from a professor or associate professor, issued after September 1, 2025 and containing the referee's required professional details and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan of at least 800 words and a detailed research proposal if prepared.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate or the published alternative applicable to the applicant's situation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Statement of Financial Support.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 10"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form or the published in-China residence-document substitute; the examination result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures and Study Term and Fees"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-sponsored applicants",
+            "ruleText": "Submit by June 15, 2026; Chinese Government Scholarship and Shanghai Government Scholarship deadlines were February 15 and April 15, 2026 respectively.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Deadline"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecust-doctoral-english-fall-2026",
+      "schoolSlug": "east-china-university-of-science-and-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-university-of-science-and-technology-doctoral-inorganic-chemistry-english",
+        "east-china-university-of-science-and-technology-doctoral-analytic-chemistry-english",
+        "east-china-university-of-science-and-technology-doctoral-organic-chemistry-english",
+        "east-china-university-of-science-and-technology-doctoral-physical-chemistry-english",
+        "east-china-university-of-science-and-technology-doctoral-fine-syntheticchemistry-and-molecularengineering-english",
+        "east-china-university-of-science-and-technology-doctoral-biochemistry-english",
+        "east-china-university-of-science-and-technology-doctoral-applied-chemistry-english",
+        "east-china-university-of-science-and-technology-doctoral-industrial-catalysis-english"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed and must not be displayed as a current intake.",
+        "Where ECUST publishes bilingual teaching or different tuition by teaching language, no unconfirmed language selection is inferred.",
+        "Bank account, remittance, personal-contact and passport-reminder details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ecust_grad",
+            "url": "https://cie.ecust.edu.cn/notices/513.html",
+            "title": "East China University of Science and Technology 2026 international graduate admissions",
+            "capturedAt": "2026-10-16T05:38:23.871Z",
+            "contentSha256": "9cba7dc3947a9fdad21895a307e2977c9125ab343106a5bafaba60e6fe63180d"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid foreign passport, be in good health and comply with the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or higher.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "English-taught route applicants",
+            "ruleText": "Submit TOEFL 80, IELTS 6.0 or Duolingo 105, unless a published native-English or prior English-medium-degree exemption applies.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications, language requirements"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register once in the ECUST online application system and submit the required documents according to the system prompts.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport photo page, valid through September 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest graduation and degree certificates; prospective graduates submit current status and expected graduation date, then the certificates before registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit transcripts of all undergraduate courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 3"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Upload an acceptance letter when the selected school/program table marks it as required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 5 and program table"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Submit two recommendation letters in Chinese or English from a professor or associate professor, issued after September 1, 2025 and containing the referee's required professional details and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan of at least 800 words and a detailed research proposal if prepared.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate or the published alternative applicable to the applicant's situation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Statement of Financial Support.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 10"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form or the published in-China residence-document substitute; the examination result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures and Study Term and Fees"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-sponsored applicants",
+            "ruleText": "Submit by June 15, 2026; Chinese Government Scholarship and Shanghai Government Scholarship deadlines were February 15 and April 15, 2026 respectively.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Deadline"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "key": "ecust-doctoral-chinese-fall-2026",
+      "schoolSlug": "east-china-university-of-science-and-technology",
+      "cycle": "fall-2026",
+      "targetProgramSlugs": [
+        "east-china-university-of-science-and-technology-doctoral-biochemical-engineering-chinese",
+        "east-china-university-of-science-and-technology-doctoral-mechanical-engineering-chinese",
+        "east-china-university-of-science-and-technology-doctoral-power-engineering-andengineering-thermalphysics-chinese",
+        "east-china-university-of-science-and-technology-doctoral-computer-science-and-technology-chinese",
+        "east-china-university-of-science-and-technology-doctoral-control-science-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-doctoral-pharmaceutical-sciences-chinese",
+        "east-china-university-of-science-and-technology-doctoral-plant-protection-chinese",
+        "east-china-university-of-science-and-technology-doctoral-pharmaceuticalengineering-andtechnology-chinese",
+        "east-china-university-of-science-and-technology-doctoral-industrial-design-chinese",
+        "east-china-university-of-science-and-technology-doctoral-applied-economics-chinese",
+        "east-china-university-of-science-and-technology-doctoral-managementscience-and-engineering-chinese",
+        "east-china-university-of-science-and-technology-doctoral-science-of-businessadministration-chinese",
+        "east-china-university-of-science-and-technology-doctoral-study-of-the-chinizationof-marxism-chinese"
+      ],
+      "targetIntake": {
+        "term": "Fall",
+        "year": 2026
+      },
+      "targetBindingStatus": "ready",
+      "reviewStatus": "unreviewed",
+      "fieldAssessment": {
+        "cycle": "explicit",
+        "targetPrograms": "explicit",
+        "requirements": "complete"
+      },
+      "unresolvedNotes": [
+        "Fall 2026 is closed and must not be displayed as a current intake.",
+        "Where ECUST publishes bilingual teaching or different tuition by teaching language, no unconfirmed language selection is inferred.",
+        "Bank account, remittance, personal-contact and passport-reminder details are intentionally excluded."
+      ],
+      "document": {
+        "schemaVersion": 1,
+        "language": "en",
+        "coverage": "complete",
+        "sources": [
+          {
+            "key": "ecust_grad",
+            "url": "https://cie.ecust.edu.cn/notices/513.html",
+            "title": "East China University of Science and Technology 2026 international graduate admissions",
+            "capturedAt": "2026-10-16T05:38:23.871Z",
+            "contentSha256": "9cba7dc3947a9fdad21895a307e2977c9125ab343106a5bafaba60e6fe63180d"
+          }
+        ],
+        "requirements": [
+          {
+            "key": "citizenship_health",
+            "category": "other",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Hold a valid foreign passport, be in good health and comply with the published nationality rules.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "prior_education",
+            "category": "education",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Doctoral applicants",
+            "ruleText": "Hold a master's degree or higher.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications"
+              }
+            ]
+          },
+          {
+            "key": "language",
+            "category": "language",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Chinese-taught route applicants",
+            "ruleText": "Submit HSK 5 with 210 or HSK 6 with 180, unless the published prior Chinese-medium-degree exemption applies.",
+            "evidenceType": "official_result",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Qualifications, language requirements"
+              }
+            ]
+          },
+          {
+            "key": "online_application",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Register once in the ECUST online application system and submit the required documents according to the system prompts.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures"
+              }
+            ]
+          },
+          {
+            "key": "passport",
+            "category": "identity",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the passport photo page, valid through September 1, 2027 or later.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 1"
+              }
+            ]
+          },
+          {
+            "key": "degree_certificate",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the highest graduation and degree certificates; prospective graduates submit current status and expected graduation date, then the certificates before registration.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 2"
+              }
+            ]
+          },
+          {
+            "key": "transcripts",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit transcripts of all undergraduate courses.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 3"
+              }
+            ]
+          },
+          {
+            "key": "acceptance_letter",
+            "category": "documents",
+            "stage": "submission",
+            "level": "conditional",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Upload an acceptance letter when the selected school/program table marks it as required.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 5 and program table"
+              }
+            ]
+          },
+          {
+            "key": "recommendations",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Graduate applicants",
+            "ruleText": "Submit two recommendation letters in Chinese or English from a professor or associate professor, issued after September 1, 2025 and containing the referee's required professional details and signature.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 6"
+              }
+            ]
+          },
+          {
+            "key": "study_plan",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a study plan of at least 800 words and a detailed research proposal if prepared.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 7"
+              }
+            ]
+          },
+          {
+            "key": "criminal_record",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit a non-criminal-record certificate or the published alternative applicable to the applicant's situation.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 9"
+              }
+            ]
+          },
+          {
+            "key": "financial_support",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Statement of Financial Support.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 10"
+              }
+            ]
+          },
+          {
+            "key": "physical_examination",
+            "category": "documents",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Submit the Foreigner Physical Examination Form or the published in-China residence-document substitute; the examination result is valid for six months.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Checklist item 11"
+              }
+            ]
+          },
+          {
+            "key": "application_fee",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "All applicants",
+            "ruleText": "Pay the non-refundable CNY 600 application fee.",
+            "evidenceType": "document",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Procedures and Study Term and Fees"
+              }
+            ]
+          },
+          {
+            "key": "deadline",
+            "category": "application_policy",
+            "stage": "submission",
+            "level": "required",
+            "appliesTo": "Fall 2026 self-sponsored applicants",
+            "ruleText": "Submit by June 15, 2026; Chinese Government Scholarship and Shanghai Government Scholarship deadlines were February 15 and April 15, 2026 respectively.",
+            "evidenceType": "school_review",
+            "references": [
+              {
+                "sourceKey": "ecust_grad",
+                "locator": "Application Deadline"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

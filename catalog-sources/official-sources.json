@@ -7517,6 +7517,492 @@
   "sourceRole": "school-admissions",
   "schoolSlug": "beijing-language-and-culture-university",
   "citySlug": "beijing"
+},
+{
+  "id": "bfsu-international-undergraduate-admissions-en-2026",
+  "label": "Beijing Foreign Studies University 2026 international undergraduate admissions prospectus",
+  "url": "https://osao.bfsu.edu.cn/info/2612/7182.htm",
+  "allowedHosts": ["osao.bfsu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "beijing-foreign-studies-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "bfsu-international-graduate-admissions-zh-2026",
+  "label": "Beijing Foreign Studies University 2026 international graduate admissions guide",
+  "url": "https://lb.bfsu.edu.cn/info/2612/4301.htm",
+  "allowedHosts": ["lb.bfsu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "beijing-foreign-studies-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "bfsu-international-graduate-admissions-pdf-zh-2026",
+  "label": "Beijing Foreign Studies University 2026 international graduate admissions prospectus PDF",
+  "url": "https://lb.bfsu.edu.cn/__local/E/B0/09/3C82CCA4B0AFEEB207DA3CA78F6_BD0C67B5_CF0B0.pdf",
+  "allowedHosts": ["lb.bfsu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "beijing-foreign-studies-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "bfsu-international-undergraduate-program-catalog-en-2026",
+  "label": "Beijing Foreign Studies University 2026 international undergraduate program catalog",
+  "url": "https://osao.bfsu.edu.cn/__local/3/D2/06/FC5C2F3988B0E85DB81496D4C82_3B839AEF_1584D.pdf",
+  "allowedHosts": ["osao.bfsu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-foreign-studies-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "bfsu-international-master-program-catalog-en-2026",
+  "label": "Beijing Foreign Studies University 2026 international master's program catalog",
+  "url": "https://osao.bfsu.edu.cn/__local/B/3E/51/CB4E16E36725F65DEFD38A91759_5E5A2207_2B56F.pdf",
+  "allowedHosts": ["osao.bfsu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-foreign-studies-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "bfsu-international-doctoral-program-catalog-en-2026",
+  "label": "Beijing Foreign Studies University 2026 international doctoral program catalog",
+  "url": "https://osao.bfsu.edu.cn/__local/C/B8/51/B4870A16E785C5E75BE4CC9D562_7647A1F1_2FE0D.pdf",
+  "allowedHosts": ["osao.bfsu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-foreign-studies-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "ecust-international-undergraduate-admissions-en-2026",
+  "label": "East China University of Science and Technology 2026 international undergraduate admissions",
+  "url": "https://cie.ecust.edu.cn/notices/514.html",
+  "allowedHosts": ["cie.ecust.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "east-china-university-of-science-and-technology",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecust-international-graduate-admissions-en-2026",
+  "label": "East China University of Science and Technology 2026 international graduate admissions",
+  "url": "https://cie.ecust.edu.cn/notices/513.html",
+  "allowedHosts": ["cie.ecust.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "east-china-university-of-science-and-technology",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecust-international-undergraduate-program-catalog-2026",
+  "label": "East China University of Science and Technology 2026 international undergraduate program catalog",
+  "url": "https://cie.ecust.edu.cn/notices/515.html",
+  "allowedHosts": ["cie.ecust.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "east-china-university-of-science-and-technology",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecust-international-master-program-catalog-en-2026",
+  "label": "East China University of Science and Technology 2026 international master's program catalog",
+  "url": "https://cie.ecust.edu.cn/notices/519.html",
+  "allowedHosts": ["cie.ecust.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "east-china-university-of-science-and-technology",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecust-international-doctoral-program-catalog-en-2026",
+  "label": "East China University of Science and Technology 2026 international doctoral program catalog",
+  "url": "https://cie.ecust.edu.cn/notices/521.html",
+  "allowedHosts": ["cie.ecust.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "east-china-university-of-science-and-technology",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecjtu-international-english-program-admissions-2026",
+  "label": "East China Jiaotong University 2026 international English-taught program admissions brochure",
+  "url": "https://gjc.ecjtu.edu.cn/lhlx/zszc.htm",
+  "allowedHosts": ["gjc.ecjtu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "east-china-jiaotong-university",
+  "citySlug": "nanchang"
+},
+{
+  "id": "wut-international-undergraduate-admissions-2026",
+  "label": "Wuchang University of Technology 2026 international undergraduate admission guide",
+  "url": "https://en.wut.edu.cn/admissions",
+  "allowedHosts": ["en.wut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "wuchang-university-of-technology",
+  "citySlug": "wuhan"
+},
+{
+  "id": "tjut-international-student-admission-brochure-2026-2027",
+  "label": "Tianjin University of Technology 2026-2027 international student admission brochure",
+  "url": "https://chinese.tjut.edu.cn/english/info/1053/1076.htm",
+  "allowedHosts": ["chinese.tjut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tianjin-university-of-technology",
+  "citySlug": "tianjin"
+},
+{
+  "id": "sdufe-international-undergraduate-admissions-2026",
+  "label": "Shandong University of Finance and Economics 2026 international undergraduate admissions brochure",
+  "url": "https://sie.sdufe.edu.cn/info/1209/79501.htm",
+  "allowedHosts": ["sie.sdufe.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "shandong-university-of-finance-and-economics",
+  "citySlug": "jinan"
+},
+{
+  "id": "sdufe-international-student-scholarships-2026",
+  "label": "Shandong University of Finance and Economics international student scholarships 2026",
+  "url": "https://sie.sdufe.edu.cn/info/1209/79461.htm",
+  "allowedHosts": ["sie.sdufe.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "shandong-university-of-finance-and-economics",
+  "citySlug": "jinan"
+},
+{
+  "id": "aqnu-international-student-admission-brochure-2026",
+  "label": "Anqing Normal University 2026 international students admission brochure",
+  "url": "https://gjjl.aqnu.edu.cn/__local/8/0B/E9/3558B02FB72DB519A8BBD7C98B5_D2232055_6D245B.pdf",
+  "allowedHosts": ["gjjl.aqnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "anqing-normal-university",
+  "citySlug": "anqing"
+},
+{
+  "id": "tru-international-student-admission-brochure-2026",
+  "label": "Tongren University 2026 international student admission brochure",
+  "url": "https://gztrc.edu.cn/gjhzyjlc/info/1195/8571.htm",
+  "allowedHosts": ["gztrc.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tongren-university",
+  "citySlug": "tongren"
+},
+{
+  "id": "sdufe-international-postgraduate-admissions-2026",
+  "label": "Shandong University of Finance and Economics 2026 international postgraduate admissions brochure",
+  "url": "https://sie.sdufe.edu.cn/info/1209/79521.htm",
+  "allowedHosts": ["sie.sdufe.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "shandong-university-of-finance-and-economics",
+  "citySlug": "jinan"
+},
+{
+  "id": "changsha-university-international-student-prospectus-2026",
+  "label": "Changsha University 2026 prospectus for international students",
+  "url": "https://gjc.ccsu.cn/info/1601/6341.htm",
+  "allowedHosts": ["gjc.ccsu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "changsha-university",
+  "citySlug": "changsha"
+},
+{
+  "id": "changsha-university-international-program-table-image-2026",
+  "label": "Changsha University 2026 international student program table image",
+  "url": "https://gjc.ccsu.cn/_vsl/70AB730072D5F2EA2ED039E1C22D75BA/B94AF39A/92BE",
+  "allowedHosts": ["gjc.ccsu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "changsha-university",
+  "citySlug": "changsha"
+},
+{
+  "id": "hutb-international-student-enrollment-guide-2026",
+  "label": "Hunan University of Technology and Business 2026 international student enrollment guide",
+  "url": "https://iec.hutb.edu.cn/xwzx/tzgg/content_90133",
+  "allowedHosts": ["iec.hutb.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "hunan-university-of-technology-and-business",
+  "citySlug": "changsha"
+},
+{
+  "id": "jsut-international-student-admissions-2026",
+  "label": "Jiangsu University of Technology 2026 international student admissions brochure",
+  "url": "https://lxszs.jsut.edu.cn/2026/0430/c6101a211792/page.htm",
+  "allowedHosts": ["lxszs.jsut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "jiangsu-university-of-technology",
+  "citySlug": "changzhou"
+},
+{
+  "id": "tianfu-college-international-student-admissions-2026",
+  "label": "Southwestern University of Finance and Economics Tianfu College 2026 international student admissions brochure",
+  "url": "https://int.tfswufe.edu.cn/info/1003/2985.htm",
+  "allowedHosts": ["int.tfswufe.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "southwestern-university-of-finance-and-economics-tianfu-college",
+  "citySlug": "chengdu"
+},
+{
+  "id": "chengdu-university-international-student-admissions-2026",
+  "label": "Chengdu University 2026 international student admissions announcement",
+  "url": "https://oice.cdu.edu.cn/info/1050/3839.htm",
+  "allowedHosts": ["oice.cdu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "chengdu-university",
+  "citySlug": "chengdu"
+},
+{
+  "id": "xjau-international-student-admissions-2026",
+  "label": "Xinjiang Agricultural University 2026 international student admissions brochure",
+  "url": "https://cie.xjau.edu.cn/2026/0319/c6442a113905/page.htm",
+  "allowedHosts": ["cie.xjau.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "xinjiang-agricultural-university",
+  "citySlug": "urumqi"
+},
+{
+  "id": "xjau-international-program-catalog-pdf-2026",
+  "label": "Xinjiang Agricultural University 2026 international student program catalog PDF",
+  "url": "https://cie.xjau.edu.cn/_upload/article/files/e2/47/c83903324c58b0906f3fdf6b4caa/57311611-14bb-4339-ad62-fb264298c9ee.pdf",
+  "allowedHosts": ["cie.xjau.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "xinjiang-agricultural-university",
+  "citySlug": "urumqi"
+},
+{
+  "id": "fuzhou-university-international-graduate-admissions-2026",
+  "label": "Fuzhou University 2026 international master and doctoral admissions brochure",
+  "url": "https://oce.fzu.edu.cn/info/1025/7986.htm",
+  "allowedHosts": ["oce.fzu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "fuzhou-university",
+  "citySlug": "fuzhou"
+},
+{
+  "id": "caa-chinese-taught-undergraduate-admissions-2026",
+  "label": "China Academy of Art 2026 Chinese-taught undergraduate international admissions guide",
+  "url": "https://admission.caa.edu.cn/en/Admissions/CAA_2026_Admission_Guide_for_International_Stude.htm",
+  "allowedHosts": ["admission.caa.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "china-academy-of-art",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "caa-chinese-taught-undergraduate-programs-pdf-2026",
+  "label": "China Academy of Art 2026 Chinese-taught undergraduate program catalog PDF",
+  "url": "https://aitecaa.oss-cn-beijing.aliyuncs.com/UploadFile/caa/20260112/upload/file/202601/6390383308591411888703843.pdf",
+  "allowedHosts": ["aitecaa.oss-cn-beijing.aliyuncs.com"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "china-academy-of-art",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "hfnu-international-student-admissions-pdf-2026",
+  "label": "Hefei Normal University 2026 international student admissions brochure PDF",
+  "url": "https://gjjlc.hfnu.edu.cn/__local/B/94/DA/EBF6FD9FC4735C2537183B6E020_886FD3B5_543EA.pdf",
+  "allowedHosts": ["gjjlc.hfnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "hefei-normal-university",
+  "citySlug": "hefei"
+},
+{
+  "id": "btbu-international-undergraduate-admissions-pdf-2026",
+  "label": "Beijing Technology and Business University 2026 international undergraduate admissions brochure PDF",
+  "url": "https://gjjy.btbu.edu.cn/docs/2026-03/026a6d668e884a8cbcc80f409ae0a7ac.pdf",
+  "allowedHosts": ["gjjy.btbu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "beijing-technology-and-business-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "kunming-university-international-student-admissions-pdf-2026",
+  "label": "Kunming University 2026 international student admissions brochure PDF",
+  "url": "https://gjxy.kmu.edu.cn/__local/4/38/11/7C49AA3344FD0B21144CB54CDA7_3A9DA747_5ACB4.pdf",
+  "allowedHosts": ["gjxy.kmu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "kunming-university",
+  "citySlug": "kunming"
+},
+{
+  "id": "tjnu-international-student-admissions-pdf-2026",
+  "label": "Tianjin Normal University 2026 international student admissions brochure PDF",
+  "url": "https://gjjl.tjnu.edu.cn/__local/E/BB/91/83AC41F27969C557066C1691D81_E8495980_37BE8.pdf",
+  "allowedHosts": ["gjjl.tjnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tianjin-normal-university",
+  "citySlug": "tianjin"
+},
+{
+  "id": "cqnu-international-undergraduate-admissions-2026",
+  "label": "Chongqing Normal University 2026 international undergraduate admissions brochure",
+  "url": "https://international.cqnu.edu.cn/ywb/info/1374/1304.htm",
+  "allowedHosts": ["international.cqnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "chongqing-normal-university",
+  "citySlug": "chongqing"
+},
+{
+  "id": "cqnu-international-graduate-admissions-2026",
+  "label": "Chongqing Normal University 2026 international master and doctoral admissions brochure",
+  "url": "https://international.cqnu.edu.cn/ywb/info/1375/1301.htm",
+  "allowedHosts": ["international.cqnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "chongqing-normal-university",
+  "citySlug": "chongqing"
+},
+{
+  "id": "just-international-student-enrollment-guideline-2026",
+  "label": "Jiangsu University of Science and Technology 2026 international student enrollment guideline",
+  "url": "https://admission.just.edu.cn/admissionen/2026/0409/c10152a372095/page.htm",
+  "allowedHosts": ["admission.just.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "jiangsu-university-of-science-and-technology",
+  "citySlug": "zhenjiang"
+},
+{
+  "id": "sanya-university-international-admissions-2026-2027",
+  "label": "University of Sanya 2026-2027 international undergraduate and graduate admissions guide",
+  "url": "https://www.sanyau.edu.cn/en/2026/0313/c921a412009/page.htm",
+  "allowedHosts": ["www.sanyau.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "university-of-sanya",
+  "citySlug": "sanya"
+},
+{
+  "id": "bpu-international-student-admissions-2026",
+  "label": "Beijing Polytechnic University 2026 international student admissions brochure",
+  "url": "https://www.bpu.edu.cn/wwwz/info/1045/1364.htm",
+  "allowedHosts": ["www.bpu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "beijing-polytechnic-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "ahau-international-student-application-guide-pdf-2026",
+  "label": "Anhui Agricultural University 2026 international student application guide PDF",
+  "url": "https://gjjy.ahau.edu.cn/__local/0/0B/25/8E45C0C702BD0CCAEFB6AA58FBC_25BB2109_3626D.pdf",
+  "allowedHosts": ["gjjy.ahau.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "anhui-agricultural-university",
+  "citySlug": "hefei"
+},
+{
+  "id": "hdu-international-student-admissions-2026",
+  "label": "Hangzhou Dianzi University 2026 international student admissions brochure",
+  "url": "https://intedu.hdu.edu.cn/2026/0323/c12669a290539/page.htm",
+  "allowedHosts": ["intedu.hdu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "hangzhou-dianzi-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "jmsu-international-student-admissions-2026-2027",
+  "label": "Jiamusi University 2026-2027 international student admissions brochure",
+  "url": "https://iec.jmsu.edu.cn/info/1038/3837.htm",
+  "allowedHosts": ["iec.jmsu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "jiamusi-university",
+  "citySlug": "jiamusi"
+},
+{
+  "id": "uestc-international-admission-brochure-pdf-2026",
+  "label": "University of Electronic Science and Technology of China 2026 international admission brochure PDF",
+  "url": "https://en.uestc.edu.cn/UESTC_Admission_Brochure-CN.pdf",
+  "allowedHosts": ["en.uestc.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "university-of-electronic-science-and-technology-of-china",
+  "citySlug": "chengdu"
+},
+{
+  "id": "wzu-international-student-admission-guide-pdf-2026",
+  "label": "Wenzhou University 2026 international student admission guide PDF",
+  "url": "https://cic.wzu.edu.cn/wendaguojixueyuanzhaosheng20262.pdf",
+  "allowedHosts": ["cic.wzu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "wenzhou-university",
+  "citySlug": "wenzhou"
+},
+{
+  "id": "cust-international-student-admission-guide-pdf-2026-spring",
+  "label": "Changchun University of Science and Technology 2026 spring international student admission guide PDF",
+  "url": "https://sie.cust.edu.cn/pub/gjjlxy2019/docs/2025-11/cb0787718ef04f2cb4ddb551ccaae0c5.pdf",
+  "allowedHosts": ["sie.cust.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "changchun-university-of-science-and-technology",
+  "citySlug": "changchun"
+},
+{
+  "id": "scnu-international-undergraduate-admissions-2026",
+  "label": "South China Normal University 2026 international undergraduate admissions brochure",
+  "url": "https://english.scnu.edu.cn/a/20260508/1633.html",
+  "allowedHosts": ["english.scnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "south-china-normal-university",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "heu-international-admissions-index-2026",
+  "label": "Harbin Engineering University 2026 international admissions guides and program catalogs",
+  "url": "https://studyheu.hrbeu.edu.cn/en/",
+  "allowedHosts": ["studyheu.hrbeu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "harbin-engineering-university",
+  "citySlug": "harbin"
+},
+{
+  "id": "shnu-international-student-admission-brochure-pdf-2026",
+  "label": "Shanghai Normal University 2026 spring international bachelor admission guide PDF",
+  "url": "https://iccs.shnu.edu.cn/_upload/article/files/78/2e/0bc4c2194c28bba6ac7c2d3e8dc9/9d6a01d4-7f8a-484e-9585-0f6dcf4c9291.pdf",
+  "allowedHosts": ["iccs.shnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "shanghai-normal-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "kmmu-international-student-admission-brochure-pdf-2026",
+  "label": "Kunming Medical University 2026 international student admission brochure PDF",
+  "url": "https://www.kmmu.edu.cn/upload/20251209/2025120909062641.pdf",
+  "allowedHosts": ["www.kmmu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "kunming-medical-university",
+  "citySlug": "kunming"
+},
+{
+  "id": "xzmu-international-bachelor-admission-brochure-pdf-2026",
+  "label": "Xuzhou Medical University 2026 international bachelor admission brochure PDF",
+  "url": "https://gjjyen.xzhmu.edu.cn/__local/5/8F/F9/B69499FDB9350B58433206146EA_34258512_44F1D.pdf",
+  "allowedHosts": ["gjjyen.xzhmu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "xuzhou-medical-university",
+  "citySlug": "xuzhou"
+},
+{
+  "id": "suep-english-undergraduate-admission-brochure-pdf-2026",
+  "label": "Shanghai University of Electric Power 2026 English-taught undergraduate admission brochure PDF",
+  "url": "https://fao.shiep.edu.cn/_upload/article/files/67/41/7b5bfc5e4921a871b7d9eb8436f8/09ef3727-9064-4d57-a038-3b3ec006fe6b.pdf",
+  "allowedHosts": ["fao.shiep.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "shanghai-university-of-electric-power",
+  "citySlug": "shanghai"
+},
+{
+  "id": "luzhou-vocational-chinese-language-admissions-2026",
+  "label": "Luzhou Vocational and Technical College 2026 Chinese language international admissions brochure",
+  "url": "https://wyx.lzy.edu.cn/info/1084/4314.htm",
+  "allowedHosts": ["wyx.lzy.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "luzhou-vocational-and-technical-college",
+  "citySlug": "luzhou"
+},
+{
+  "id": "szu-international-undergraduate-admissions-2026",
+  "label": "Shenzhen University 2026 international undergraduate admissions brochure",
+  "url": "https://en.szu.edu.cn/info/1023/1903.htm",
+  "allowedHosts": ["en.szu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "shenzhen-university",
+  "citySlug": "shenzhen"
+},
+{
+  "id": "westlake-engineering-international-doctoral-admissions-2026",
+  "label": "Westlake University School of Engineering 2026 international doctoral admissions guide",
+  "url": "https://en-soe.westlake.edu.cn/Admission/GraduateProgram/",
+  "allowedHosts": ["en-soe.westlake.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "westlake-university",
+  "citySlug": "hangzhou"
 }
 ]
 }
