@@ -27,3 +27,5 @@ seeds/catalog.*.json
 !seeds/catalog.reviewed-50-school-directory.review.json
 !seeds/catalog.reviewed-100-official-release.json
 !seeds/catalog.reviewed-100-official-release.review.json
+!seeds/catalog.2027-release.reviewed.json
+!seeds/catalog.2027-release.review.json
