@@ -30,6 +30,8 @@ COPY --from=build --chown=0:0 /opt/cuac/seeds/catalog.reviewed-50-school-directo
 COPY --from=build --chown=0:0 /opt/cuac/seeds/catalog.reviewed-50-school-directory.review.json ./seeds/catalog.reviewed-50-school-directory.review.json
 COPY --from=build --chown=0:0 /opt/cuac/seeds/catalog.reviewed-100-official-release.json ./seeds/catalog.reviewed-100-official-release.json
 COPY --from=build --chown=0:0 /opt/cuac/seeds/catalog.reviewed-100-official-release.review.json ./seeds/catalog.reviewed-100-official-release.review.json
+COPY --from=build --chown=0:0 /opt/cuac/seeds/catalog.2027-release.reviewed.json ./seeds/catalog.2027-release.reviewed.json
+COPY --from=build --chown=0:0 /opt/cuac/seeds/catalog.2027-release.review.json ./seeds/catalog.2027-release.review.json
 COPY --from=build --chown=0:0 /opt/cuac/seeds/guides.geo-first-four.draft.json ./seeds/guides.geo-first-four.draft.json
 COPY --from=build --chown=0:0 /opt/cuac/seeds/guides.geo-first-four.approval.json ./seeds/guides.geo-first-four.approval.json
 

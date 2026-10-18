@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "status": "human_review_completed",
+  "reviewReference": "project-owner-chat-review-2026-10-18",
+  "reviewedAt": "2026-10-18T06:04:41.848Z",
+  "approvedCandidateFileSha256": "910864c0bfdd6d287fc2d10c95ac5dbfaab262bc8c421e204d42c1fbe011158f",
+  "approvedCandidateBundleSha256": "2604b1cbbc9a7d121e614560ed260d0310b491d698a71444f922dc26a4a69626",
+  "publicationBundleSha256": "9ae315ef92e92aa51990605b285410e84b9caf7bcdbf720cbfd35439ccba11fe",
+  "operationPlanSha256": "0ed1317895701bf1ebb68504f347613ded4e53cbec91f1f44526f6d9e8b45483",
+  "scope": {
+    "cities": 6,
+    "schools": 9,
+    "programs": 769,
+    "programIntakes": 761,
+    "scholarships": 1
+  },
+  "targetSchoolCoverage": 10,
+  "updatedSchoolCount": 9,
+  "alreadyCurrentSchoolSlugs": [
+    "tianjin-university"
+  ],
+  "confirmations": {
+    "projectOwnerApprovedDirectPublication": true,
+    "contentReviewed": true,
+    "officialSourcesReviewed": true,
+    "publicContentConfirmed": true,
+    "prohibitedDataConfirmedExcluded": true,
+    "missingDataMayRemainEmpty": true,
+    "unresolvedDatesWereNotInferred": true,
+    "existingSchoolAndCityProfilesMustBePreserved": true
+  }
+}

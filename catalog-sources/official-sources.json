@@ -595,8 +595,8 @@
       "schoolSlug": "shanghai-jiao-tong-university"
     },
     {
-      "id": "sjtu-english-engineering-cluster-2026",
-      "label": "Shanghai Jiao Tong University 2026 English Engineering Cluster admissions",
+      "id": "sjtu-english-engineering-cluster-2027",
+      "label": "Shanghai Jiao Tong University 2027 English Engineering Cluster admissions",
       "url": "https://global.sjtu.edu.cn/en/study-sjtu/prospective/degree-programs/278",
       "allowedHosts": ["global.sjtu.edu.cn"],
       "sourceRole": "school-admissions",
@@ -5051,6 +5051,22 @@
   "schoolSlug": "china-agricultural-university"
 },
 {
+  "id": "cau-undergraduate-admissions-2027",
+  "label": "China Agricultural University 2027 international undergraduate admissions",
+  "url": "https://admissions.cau.edu.cn/art/2026/9/3/art_48600_1135194.html",
+  "allowedHosts": ["admissions.cau.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "china-agricultural-university"
+},
+{
+  "id": "cau-undergraduate-program-catalog-2027",
+  "label": "China Agricultural University 2027 international undergraduate program catalog",
+  "url": "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=5b2a32d6768d4b5da557db4c967344b9.xlsx",
+  "allowedHosts": ["admissions.cau.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "china-agricultural-university"
+},
+{
   "id": "cau-graduate-admissions-2026",
   "label": "China Agricultural University 2026 international graduate admissions",
   "url": "https://admissions.cau.edu.cn/art/2025/9/29/art_48604_1107314.html",
@@ -8001,6 +8017,429 @@
   "url": "https://en-soe.westlake.edu.cn/Admission/GraduateProgram/",
   "allowedHosts": ["en-soe.westlake.edu.cn"],
   "sourceRole": "school-admissions",
+  "schoolSlug": "westlake-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "cug-wuhan-degree-program-index-2026",
+  "label": "China University of Geosciences Wuhan 2026 international degree program index",
+  "url": "https://eniec.cug.edu.cn/gjjyen/Admissions/Degree_programs.htm",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "cug-wuhan-program-catalog-page-2026",
+  "label": "China University of Geosciences Wuhan 2026 international program catalog page",
+  "url": "https://eniec.cug.edu.cn/gjjyen/info/1023/3933.htm",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "cug-wuhan-undergraduate-admissions-2026",
+  "label": "China University of Geosciences Wuhan 2026 international undergraduate admission guide",
+  "url": "https://eniec.cug.edu.cn/gjjyen/info/1023/3903.htm",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "cug-wuhan-master-admissions-2026",
+  "label": "China University of Geosciences Wuhan 2026 international master admission guide",
+  "url": "https://eniec.cug.edu.cn/gjjyen/info/1023/3913.htm",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "cug-wuhan-doctoral-admissions-2026",
+  "label": "China University of Geosciences Wuhan 2026 international doctoral admission guide",
+  "url": "https://eniec.cug.edu.cn/gjjyen/info/1023/3923.htm",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "cug-wuhan-president-scholarship-current",
+  "label": "China University of Geosciences Wuhan president scholarship",
+  "url": "https://eniec.cug.edu.cn/Scholarships/CUG_President_Scholarship.htm",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "cug-wuhan-high-level-postgraduate-scholarship-2026",
+  "label": "China University of Geosciences Wuhan 2026 Chinese Government Scholarship high-level postgraduate program",
+  "url": "https://eniec.cug.edu.cn/Scholarships/Chinese_Government_Scholarships/High_Level_Postgraduate_Program.htm",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "cug-wuhan-program-catalog-pdf-2026",
+  "label": "China University of Geosciences Wuhan 2026 international program catalog PDF",
+  "url": "https://eniec.cug.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1687700965&wbfileid=DB416094CEF6E766DCCE281EC38C5289",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "cug-wuhan-undergraduate-admissions-pdf-2026",
+  "label": "China University of Geosciences Wuhan 2026 international undergraduate admission guide PDF",
+  "url": "https://eniec.cug.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1687700965&wbfileid=FD3CC25FCC2E3DE67BF14658468AADF6",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "cug-wuhan-master-admissions-pdf-2026",
+  "label": "China University of Geosciences Wuhan 2026 international master admission guide PDF",
+  "url": "https://eniec.cug.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1687700965&wbfileid=18A94B4BB9CCF4873404DA48E6BE1EE5",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "cug-wuhan-doctoral-admissions-pdf-2026",
+  "label": "China University of Geosciences Wuhan 2026 international doctoral admission guide PDF",
+  "url": "https://eniec.cug.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1687700965&wbfileid=44B56D5E99AFE2E7811667BDE64B7188",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "cug-wuhan-high-level-postgraduate-scholarship-pdf-2027",
+  "label": "China University of Geosciences Wuhan 2027 Chinese Government Scholarship high-level postgraduate program PDF",
+  "url": "https://eniec.cug.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=2089394557&wbfileid=9DF87FF1937CF001235206118E315F2D",
+  "allowedHosts": ["eniec.cug.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "china-university-of-geosciences-wuhan",
+  "citySlug": "wuhan"
+},
+{
+  "id": "jsut-international-student-admissions-mobile-2026",
+  "label": "Jiangsu University of Technology 2026 international student enrollment guide mobile page",
+  "url": "https://lxszs.jsut.edu.cn/2026/0509/c6101a212137/pagem.htm",
+  "allowedHosts": ["lxszs.jsut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "jiangsu-university-of-technology",
+  "citySlug": "changzhou"
+},
+{
+  "id": "usst-international-application-qualification-current",
+  "label": "University of Shanghai for Science and Technology international application qualifications",
+  "url": "https://isoe.usst.edu.cn/9783/list.htm",
+  "allowedHosts": ["isoe.usst.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "university-of-shanghai-for-science-and-technology",
+  "citySlug": "shanghai"
+},
+{
+  "id": "usst-international-application-procedure-2026",
+  "label": "University of Shanghai for Science and Technology 2026 international application procedure",
+  "url": "https://isoe.usst.edu.cn/9784/list.htm",
+  "allowedHosts": ["isoe.usst.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "university-of-shanghai-for-science-and-technology",
+  "citySlug": "shanghai"
+},
+{
+  "id": "usst-international-major-list-page-2026",
+  "label": "University of Shanghai for Science and Technology 2026 international major list",
+  "url": "https://isoe.usst.edu.cn/9785/list.htm",
+  "allowedHosts": ["isoe.usst.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "university-of-shanghai-for-science-and-technology",
+  "citySlug": "shanghai"
+},
+{
+  "id": "usst-international-major-list-xlsx-2026",
+  "label": "University of Shanghai for Science and Technology 2026 degree program majors and disciplines XLSX",
+  "url": "https://isoe.usst.edu.cn/_upload/article/files/0b/3a/7b51066a45e580b444720a89cc7b/4d17c0d8-12bd-4565-b75e-f31b3159c723.xlsx",
+  "allowedHosts": ["isoe.usst.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "university-of-shanghai-for-science-and-technology",
+  "citySlug": "shanghai"
+},
+{
+  "id": "tsinghua-undergraduate-schedule-2027",
+  "label": "Tsinghua University 2027 international undergraduate application schedule",
+  "url": "https://international.join-tsinghua.edu.cn/Admission1/Schedule.htm",
+  "allowedHosts": ["international.join-tsinghua.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tsinghua-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "tsinghua-undergraduate-eligibility-2027",
+  "label": "Tsinghua University 2027 international undergraduate eligibility requirements",
+  "url": "https://international.join-tsinghua.edu.cn/Admission1/Eligibility.htm",
+  "allowedHosts": ["international.join-tsinghua.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tsinghua-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "tsinghua-undergraduate-divisions-2027",
+  "label": "Tsinghua University 2027 international undergraduate divisions and programs",
+  "url": "https://international.join-tsinghua.edu.cn/Divisions1.htm",
+  "allowedHosts": ["international.join-tsinghua.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "tsinghua-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "tsinghua-undergraduate-fees-2027",
+  "label": "Tsinghua University 2027 international undergraduate tuition and application fees",
+  "url": "https://international.join-tsinghua.edu.cn/Admission1/Fees.htm",
+  "allowedHosts": ["international.join-tsinghua.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tsinghua-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "tsinghua-undergraduate-application-procedure-2027",
+  "label": "Tsinghua University 2027 international undergraduate application procedure",
+  "url": "https://international.join-tsinghua.edu.cn/info/1025/1022.htm",
+  "allowedHosts": ["international.join-tsinghua.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tsinghua-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "nju-undergraduate-admissions-2027",
+  "label": "Nanjing University 2027 international undergraduate application guide",
+  "url": "https://hwxy.nju.edu.cn/lxnd/zsxx/bkxm/sbzn/index.html",
+  "allowedHosts": ["hwxy.nju.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "nanjing-university",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nju-undergraduate-program-catalog-2027",
+  "label": "Nanjing University 2027 international undergraduate program catalog",
+  "url": "https://hwxy.nju.edu.cn/lxnd/zsxx/bkxm/zyml/index.html",
+  "allowedHosts": ["hwxy.nju.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nju-undergraduate-program-catalog-pdf-2027",
+  "label": "Nanjing University 2027 international undergraduate program catalog PDF",
+  "url": "https://hwxy.nju.edu.cn/DFS//file/2026/09/16/20260916100252482kuny5s.pdf",
+  "allowedHosts": ["hwxy.nju.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nju-master-admissions-2027",
+  "label": "Nanjing University 2027 international master application guide",
+  "url": "https://hwxy.nju.edu.cn/lxnd/zsxx/ssxm/sbzn/index.html",
+  "allowedHosts": ["hwxy.nju.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "nanjing-university",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nju-master-program-catalog-2027",
+  "label": "Nanjing University 2027 international master program catalog",
+  "url": "https://hwxy.nju.edu.cn/lxnd/zsxx/ssxm/zyml/index.html",
+  "allowedHosts": ["hwxy.nju.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nju-master-program-catalog-pdf-2027",
+  "label": "Nanjing University 2027 international master program catalog PDF",
+  "url": "https://hwxy.nju.edu.cn/DFS//file/2026/09/14/202609141630322931phdvc.pdf",
+  "allowedHosts": ["hwxy.nju.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nju-doctoral-admissions-2027",
+  "label": "Nanjing University 2027 international doctoral application guide",
+  "url": "https://hwxy.nju.edu.cn/lxnd/zsxx/bsxm/sbzn/index.html",
+  "allowedHosts": ["hwxy.nju.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "nanjing-university",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nju-doctoral-program-catalog-2027",
+  "label": "Nanjing University 2027 international doctoral program catalog",
+  "url": "https://hwxy.nju.edu.cn/lxnd/zsxx/bsxm/zyml/index.html",
+  "allowedHosts": ["hwxy.nju.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nju-doctoral-program-catalog-pdf-2027",
+  "label": "Nanjing University 2027 international doctoral program catalog PDF",
+  "url": "https://hwxy.nju.edu.cn/DFS//file/2026/09/14/20260914144754575wxcnys.pdf",
+  "allowedHosts": ["hwxy.nju.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nju-cgs-high-level-postgraduate-2027",
+  "label": "Nanjing University 2027 Chinese Government Scholarship high-level postgraduate program",
+  "url": "https://hwxy.nju.edu.cn/lxnd/zsxx/jxj/zgzfjxj/20231025/i252280.html",
+  "allowedHosts": ["hwxy.nju.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "nanjing-university",
+  "citySlug": "nanjing"
+},
+{
+  "id": "xmu-undergraduate-admissions-2027",
+  "label": "Xiamen University 2027 international undergraduate admission guide",
+  "url": "https://admissions.xmu.edu.cn/cn/info/1063/10733.htm",
+  "allowedHosts": ["admissions.xmu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "xiamen-university",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xmu-master-admissions-2027",
+  "label": "Xiamen University 2027 international master admission guide",
+  "url": "https://admissions.xmu.edu.cn/cn/info/1063/10743.htm",
+  "allowedHosts": ["admissions.xmu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "xiamen-university",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xmu-doctoral-admissions-2027",
+  "label": "Xiamen University 2027 international doctoral admission guide",
+  "url": "https://admissions.xmu.edu.cn/cn/info/1063/10753.htm",
+  "allowedHosts": ["admissions.xmu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "xiamen-university",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xmu-undergraduate-programs-chinese-2027",
+  "label": "Xiamen University 2027 Chinese-taught international undergraduate programs",
+  "url": "https://admissions.xmu.edu.cn/cn/Majors/CN_BA.htm",
+  "allowedHosts": ["admissions.xmu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "xiamen-university",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xmu-undergraduate-programs-english-2027",
+  "label": "Xiamen University 2027 English-taught international undergraduate programs",
+  "url": "https://admissions.xmu.edu.cn/cn/Majors/EN_BA.htm",
+  "allowedHosts": ["admissions.xmu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "xiamen-university",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xmu-master-programs-chinese-2027",
+  "label": "Xiamen University 2027 Chinese-taught international master programs",
+  "url": "https://admissions.xmu.edu.cn/cn/Majors/CN_MA.htm",
+  "allowedHosts": ["admissions.xmu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "xiamen-university",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xmu-master-programs-english-2027",
+  "label": "Xiamen University 2027 English-taught international master programs",
+  "url": "https://admissions.xmu.edu.cn/cn/Majors/EN_MA.htm",
+  "allowedHosts": ["admissions.xmu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "xiamen-university",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xmu-doctoral-programs-chinese-2027",
+  "label": "Xiamen University 2027 Chinese-taught international doctoral programs",
+  "url": "https://admissions.xmu.edu.cn/cn/Majors/CN_DR.htm",
+  "allowedHosts": ["admissions.xmu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "xiamen-university",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xmu-doctoral-programs-english-2027",
+  "label": "Xiamen University 2027 English-taught international doctoral programs",
+  "url": "https://admissions.xmu.edu.cn/cn/Majors/EN_DR.htm",
+  "allowedHosts": ["admissions.xmu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "xiamen-university",
+  "citySlug": "xiamen"
+},
+{
+  "id": "xmu-new-international-student-scholarship-2027",
+  "label": "Xiamen University 2027 New International Students Scholarship",
+  "url": "https://admissions.xmu.edu.cn/cn/info/1063/8993.htm",
+  "allowedHosts": ["admissions.xmu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "xiamen-university",
+  "citySlug": "xiamen"
+},
+{
+  "id": "szu-doctoral-admissions-spring-2027",
+  "label": "Shenzhen University Spring 2027 international doctoral admission guide",
+  "url": "https://lxs.szu.edu.cn/info/1168/8627.htm",
+  "allowedHosts": ["lxs.szu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "shenzhen-university",
+  "citySlug": "shenzhen"
+},
+{
+  "id": "szu-doctoral-program-catalog-spring-2027",
+  "label": "Shenzhen University Spring 2027 international doctoral program catalog",
+  "url": "https://lxs.szu.edu.cn/info/1279/8597.htm",
+  "allowedHosts": ["lxs.szu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "shenzhen-university",
+  "citySlug": "shenzhen"
+},
+{
+  "id": "fudan-management-international-masters-2027",
+  "label": "Fudan School of Management 2027 international master's admissions",
+  "url": "https://www.fdsm.fudan.edu.cn/upec/2026/0904/c2660a37229/page.htm",
+  "allowedHosts": ["www.fdsm.fudan.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "fudan-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "pku-phbs-master-economics-2027",
+  "label": "Peking University HSBC Business School Master of Economics 2027 admissions",
+  "url": "https://english.phbs.pku.edu.cn/Academics/Master/Master_of_Economics.htm",
+  "allowedHosts": ["english.phbs.pku.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "peking-university",
+  "citySlug": "shenzhen"
+},
+{
+  "id": "westlake-international-phd-admissions-2027",
+  "label": "Westlake University Fall 2027 international PhD admissions",
+  "url": "https://en.westlake.edu.cn/admissions/graduate/",
+  "allowedHosts": ["en.westlake.edu.cn"],
+  "sourceRole": "program-catalog",
   "schoolSlug": "westlake-university",
   "citySlug": "hangzhou"
 }
