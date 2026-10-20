@@ -27,12 +27,21 @@ button,
 input,
 select { font: inherit; }
 
-.catalog-detail-main { min-height: 68vh; }
+.catalog-detail-main {
+  display: flex;
+  min-height: 68vh;
+  flex-direction: column;
+}
+
+.catalog-detail-main > [data-cuac-footer] {
+  margin-top: auto;
+  border-top: 1px solid var(--detail-line);
+}
 
 .catalog-detail-shell {
   width: var(--detail-width);
   margin: 0 auto;
-  padding: 26px 0 76px;
+  padding: 26px 0 44px;
 }
 
 .catalog-back-link {
@@ -662,7 +671,7 @@ body[data-catalog-detail-page] .cuac-agent-rail { display: none !important; }
 @media (max-width: 560px) {
   :root { --detail-width: 100%; }
 
-  .catalog-detail-shell { padding: 16px 16px 56px; }
+  .catalog-detail-shell { padding: 16px 16px 36px; }
 
   .catalog-record-hero {
     grid-template-columns: 1fr;

@@ -125,7 +125,7 @@ test("catalog detail layout remains restrained and responsive", async () => {
 
   for (const html of pages) {
     assert.match(html, /<body data-agent-mode="off" data-catalog-detail-page=/);
-    assert.match(html, /href="catalog-detail\.css"/);
+    assert.match(html, /href="catalog-detail\.css(?:\?[^"]+)?"/);
     assert.match(html, /src="catalog-detail\.js(?:\?[^"]+)?"/);
     assert.doesNotMatch(html, /cuac-data\.js|cuac-actions\.js|completion\.js|data-cuac-agent/);
   }
