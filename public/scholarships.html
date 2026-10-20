@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="shared-shell.css?v=20261015-study-in-china" />
   <link rel="stylesheet" href="catalog-list-api.css?v=20260929-list-states" />
   <link rel="stylesheet" href="scholarships.css?v=20260918-equal-card-actions" />
+  <link rel="stylesheet" href="catalog-search.css?v=20261020-unified-search" />
   </head>
   <body data-agent-mode="off" data-catalog-list-page="scholarships" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page">
@@ -104,14 +105,33 @@
           </section>
 
           <section class="section reveal" id="scholarship-browser" aria-label="Scholarship browser">
-            <div class="browser-tools">
+            <div class="catalog-search" aria-label="Scholarship search and filters">
+              <div class="catalog-search__query">
+                <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+                <input id="scholarshipSearchInput" aria-label="Search scholarships" placeholder="Search scholarships or providers" />
+                <button class="primary" id="scholarshipSearchButton" type="button" data-catalog-copy="common.search">Search</button>
+              </div>
+              <div class="catalog-search__filters">
+                <div class="catalog-filter-chips" aria-label="Suggested scholarship filters">
+                  <button class="catalog-filter-chip" type="button" data-route-filter="full" data-catalog-ui>Full funding</button>
+                  <button class="catalog-filter-chip" type="button" data-route-filter="government" data-catalog-ui>CSC / Government</button>
+                  <button class="catalog-filter-chip" type="button" data-route-filter="deadline" data-catalog-ui>Deadline soon</button>
+                </div>
+                <div class="catalog-filter-actions">
+                  <label class="catalog-select-field">
+                    <span data-catalog-ui>Study level</span>
+                    <select class="select" data-filter-key="degree" data-study-level-filter aria-label="Filter scholarships by eligible study level"></select>
+                  </label>
+                  <button class="secondary" id="openFilters" type="button" data-catalog-copy="common.allFilters">All filters</button>
+                </div>
+              </div>
+            </div>
+            <div class="browser-tools catalog-results-toolbar">
               <div>
                 <h2><span id="resultCount">-</span> <span data-catalog-copy="scholarships.resultNoun">scholarships</span></h2>
                 <p id="resultContext" data-catalog-copy="common.reading">Reading the current published catalog.</p>
               </div>
               <div class="controls">
-                <button class="secondary" id="openFilters" type="button" data-catalog-copy="common.allFilters">All filters</button>
-                <select class="select" data-filter-key="degree" data-study-level-filter aria-label="Filter scholarships by eligible study level"></select>
                 <select class="select" id="sortSelect" aria-label="Sort scholarships">
                   <option value="relevance" data-catalog-ui>Sort: Relevance</option>
                   <option value="deadline" data-catalog-ui>Deadline soonest</option>
@@ -191,6 +211,6 @@
     <script src="shared-shell.js?v=20261015-study-in-china"></script>
   <script src="catalog-list-api.js?v=20261002-ucac-brand"></script>
   <script src="study-levels.js?v=20261020-study-levels"></script>
-  <script src="scholarships.js?v=20261020-study-levels"></script>
+  <script src="scholarships.js?v=20261020-unified-search"></script>
   </body>
 </html>

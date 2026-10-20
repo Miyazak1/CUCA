@@ -186,13 +186,37 @@ test("program university routes send the school slug to the published API and re
     source("programs.css"),
   ]);
 
-  assert.match(html, /programs\.js\?v=20261020-study-levels/);
+  assert.match(html, /programs\.js\?v=20261020-unified-search/);
   assert.match(script, /const focusedUniversity = routeParams\.get\("university"\)/);
   assert.match(script, /loadPage\("programs", \{[\s\S]*school: focusedUniversity,/);
   assert.doesNotMatch(script, /function programMatchesUniversity/);
   assert.doesNotMatch(script, /escapeProgramHtml/);
   assert.match(script, /pagination-ellipsis/);
   assert.match(css, /\.pagination-ellipsis/);
+});
+
+test("catalog discovery pages share one coherent search and filter toolbar", async () => {
+  const [programs, universities, scholarships, scholarshipScript, sharedCss] = await Promise.all([
+    source("programs.html"),
+    source("universities.html"),
+    source("scholarships.html"),
+    source("scholarships.js"),
+    source("catalog-search.css"),
+  ]);
+
+  for (const html of [programs, universities, scholarships]) {
+    assert.match(html, /catalog-search\.css\?v=20261020-unified-search/);
+    assert.match(html, /class="[^"]*catalog-search[^"]*"/);
+    assert.match(html, /class="catalog-search__query"|class="search-row catalog-search__query"/);
+    assert.match(html, /class="catalog-search__filters"/);
+    assert.match(html, /class="[^"]*catalog-results-toolbar[^"]*"/);
+  }
+
+  assert.equal((universities.match(/data-filter="Application ready"/g) || []).length, 1);
+  assert.match(scholarships, /id="scholarshipSearchInput"/);
+  assert.match(scholarshipScript, /function applyScholarshipSearch\(\)/);
+  assert.match(sharedCss, /\.catalog-search__filters/);
+  assert.match(sharedCss, /@media \(max-width: 620px\)/);
 });
 
 test("all public catalog pages use the shared empty-state renderer", async () => {

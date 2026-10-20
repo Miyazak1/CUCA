@@ -39,6 +39,7 @@ const pageSize = 8;
 const saved = new Set();
 let focusedScholarshipId = null;
 let routeCityFocus = "";
+const scholarshipSearchInput = document.querySelector("#scholarshipSearchInput");
 
 const filterConfig = [
   ["Funding level", [["funding", "Funding", [["all", "Any funding"], ["full", "Full funding"], ["partial", "Partial funding"]]]]],
@@ -538,6 +539,13 @@ function syncFilters() {
     if (control.type === "checkbox") control.checked = Boolean(filters[key]);
     else control.value = filters[key];
   });
+  if (scholarshipSearchInput) scholarshipSearchInput.value = filters.keyword;
+}
+
+function applyScholarshipSearch() {
+  filters.keyword = scholarshipSearchInput?.value.trim() || "";
+  page = 1;
+  renderCards();
 }
 
 function openDrawer(open) {
@@ -766,6 +774,12 @@ function resetScholarshipFilters() {
   renderCards();
 }
 document.querySelector("#resetFilters").addEventListener("click", resetScholarshipFilters);
+document.querySelector("#scholarshipSearchButton").addEventListener("click", applyScholarshipSearch);
+scholarshipSearchInput.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter") return;
+  event.preventDefault();
+  applyScholarshipSearch();
+});
 document.querySelector("#sortSelect").addEventListener("change", (event) => {
   sort = event.target.value;
   page = 1;

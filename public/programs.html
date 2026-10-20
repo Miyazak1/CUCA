@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="shared-shell.css?v=20261015-study-in-china" />
     <link rel="stylesheet" href="catalog-list-api.css?v=20260929-list-states" />
     <link rel="stylesheet" href="programs.css?v=20260929-list-states" />
+    <link rel="stylesheet" href="catalog-search.css?v=20261020-unified-search" />
   </head>
   <body data-agent-mode="off" data-catalog-list-page="programs" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page">
@@ -32,28 +33,35 @@
             </div>
           </section>
 
-          <section class="search-panel reveal" aria-label="Program search">
-            <div class="search-row">
+          <section class="search-panel catalog-search reveal" aria-label="Program search">
+            <div class="search-row catalog-search__query">
               <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
               <input id="searchInput" aria-label="Search programs" placeholder='Try "English-taught computer science"' />
               <button class="primary" id="searchButton" type="button" data-catalog-copy="common.search">Search</button>
             </div>
-            <div class="suggestions" aria-label="Suggested program filters">
-              <button class="chip" type="button" data-quick="degree:master" data-catalog-ui>English-taught master</button>
-              <button class="chip" type="button" data-quick="scholarship:true" data-catalog-ui>Scholarship available</button>
+            <div class="catalog-search__filters">
+              <div class="catalog-filter-chips" aria-label="Suggested program filters">
+                <button class="catalog-filter-chip" type="button" data-quick="degree:master" data-catalog-ui>English-taught master</button>
+                <button class="catalog-filter-chip" type="button" data-quick="scholarship:true" data-catalog-ui>Scholarship available</button>
+              </div>
+              <div class="catalog-filter-actions">
+                <label class="catalog-select-field">
+                  <span data-catalog-ui>Study level</span>
+                  <select class="select" data-filter-key="degree" data-study-level-filter aria-label="Filter programs by study level"></select>
+                </label>
+                <button class="secondary mobile-filter" id="openFilters" type="button" data-catalog-copy="common.allFilters">All filters</button>
+              </div>
             </div>
           </section>
 
           <section class="program-focus" id="programFocus" aria-label="Selected program overview"></section>
 
-          <section class="toolbar reveal" aria-label="Result controls">
+          <section class="toolbar catalog-results-toolbar reveal" aria-label="Result controls">
             <div class="result-copy">
               <strong id="resultCount" data-catalog-copy="programs.loading">Loading programs</strong>
               <span id="resultContext" data-catalog-copy="common.reading">Reading the current published catalog.</span>
             </div>
             <div class="controls">
-              <button class="secondary mobile-filter" id="openFilters" type="button" data-catalog-copy="common.allFilters">All filters</button>
-              <select class="select" data-filter-key="degree" data-study-level-filter aria-label="Filter programs by study level"></select>
               <select class="select" id="sortSelect" aria-label="Sort programs">
                 <option value="relevance" data-catalog-ui>Sort: Relevance</option>
                 <option value="deadline" data-catalog-ui>Deadline soonest</option>
@@ -111,7 +119,7 @@
     <script src="shared-shell.js?v=20261015-study-in-china"></script>
     <script src="catalog-list-api.js?v=20261016-current-routes"></script>
     <script src="study-levels.js?v=20261020-study-levels"></script>
-    <script src="programs.js?v=20261020-study-levels"></script>
+    <script src="programs.js?v=20261020-unified-search"></script>
 </body>
 </html>
 

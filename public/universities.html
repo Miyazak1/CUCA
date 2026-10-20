@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="shared-shell.css?v=20261015-study-in-china" />
     <link rel="stylesheet" href="catalog-list-api.css?v=20260929-list-states" />
     <link rel="stylesheet" href="universities.css?v=20260929-list-states" />
+    <link rel="stylesheet" href="catalog-search.css?v=20261020-unified-search" />
   </head>
   <body data-agent-mode="off" data-catalog-list-page="universities" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page">
@@ -33,26 +34,29 @@
             </div>
           </section>
 
-          <section class="search-panel reveal" aria-label="University search">
-            <div class="search-row">
+          <section class="search-panel catalog-search reveal" aria-label="University search">
+            <div class="search-row catalog-search__query">
               <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
               <input id="searchInput" aria-label="Search universities, cities, or subjects" value="" placeholder="Search universities or cities" />
               <button class="primary" id="searchButton" type="button" data-catalog-copy="common.search">Search</button>
             </div>
-            <div class="chips" aria-label="Suggested filters">
-              <button class="chip" type="button" data-chip="English routes" data-catalog-ui>English-taught routes</button>
-              <button class="chip" type="button" data-chip="Scholarship" data-catalog-ui>Scholarship options</button>
-            </div>
-            <div class="advanced-filters" aria-label="Program fit filters">
-              <div><strong data-catalog-ui>Program fit</strong><span data-catalog-ui>Show universities that publish at least one matching program.</span></div>
-              <label>
-                <span data-catalog-ui>Study level</span>
-                <select class="select" id="schoolStudyLevelFilter" data-criteria-field="degreeLevel" aria-label="Filter universities by study level"></select>
-              </label>
+            <div class="catalog-search__filters">
+              <div class="catalog-filter-chips" aria-label="University filters">
+                <button class="catalog-filter-chip" type="button" data-filter="Application ready" data-catalog-ui>Application ready</button>
+                <button class="catalog-filter-chip" type="button" data-filter="English routes" data-catalog-ui>English routes</button>
+                <button class="catalog-filter-chip" type="button" data-filter="Scholarship" data-catalog-ui>Scholarship</button>
+                <button class="catalog-filter-chip" type="button" data-filter="Upcoming deadlines" data-catalog-ui>Upcoming deadlines</button>
+              </div>
+              <div class="catalog-filter-actions">
+                <label class="catalog-select-field">
+                  <span data-catalog-ui>Study level</span>
+                  <select class="select" id="schoolStudyLevelFilter" data-criteria-field="degreeLevel" aria-label="Filter universities by study level"></select>
+                </label>
+              </div>
             </div>
           </section>
 
-          <section class="toolbar reveal" aria-label="Result controls">
+          <section class="toolbar catalog-results-toolbar reveal" aria-label="Result controls">
             <div class="result-copy">
               <strong id="resultCount" data-catalog-copy="universities.loading">Loading universities</strong>
               <span id="resultContext" data-catalog-copy="common.reading">Reading the current published catalog.</span>
@@ -70,13 +74,6 @@
                 <button type="button" data-view="list" data-catalog-copy="common.list">List</button>
               </div>
             </div>
-          </section>
-
-          <section class="filters reveal" aria-label="University filters">
-            <button class="filter-button" type="button" data-filter="Application ready" data-catalog-ui>Application ready</button>
-            <button class="filter-button" type="button" data-filter="English routes" data-catalog-ui>English routes</button>
-            <button class="filter-button" type="button" data-filter="Scholarship" data-catalog-ui>Scholarship</button>
-            <button class="filter-button" type="button" data-filter="Upcoming deadlines" data-catalog-ui>Upcoming deadlines</button>
           </section>
 
           <div class="active-filters reveal" id="activeFilters" aria-live="polite"></div>
@@ -98,7 +95,7 @@
     <script src="shared-shell.js?v=20261015-study-in-china"></script>
     <script src="catalog-list-api.js?v=20261002-ucac-brand"></script>
     <script src="study-levels.js?v=20261020-study-levels"></script>
-    <script src="universities.js?v=20261020-study-levels"></script>
+    <script src="universities.js?v=20261020-unified-search"></script>
 </body>
 </html>
 
