@@ -169,12 +169,15 @@ export function authorizePublicCatalogRead(context: RequestContext): void {
   }
 }
 
-export function normalizeListOptions(options: CatalogListOptions): Pick<CatalogListOptions, "query"> & { limit: number; offset: number } {
-  return {
+export function normalizeListOptions(options: CatalogListOptions): Pick<CatalogListOptions, "query" | "degree"> & { limit: number; offset: number } {
+  const normalized: Pick<CatalogListOptions, "query" | "degree"> & { limit: number; offset: number } = {
     limit: Math.min(Math.max(options.limit ?? 20, 1), 100),
     offset: Math.max(options.offset ?? 0, 0),
     query: options.query?.trim() || undefined,
   };
+  const degree = options.degree?.trim().slice(0, 80);
+  if (degree) normalized.degree = degree;
+  return normalized;
 }
 
 export function normalizeScholarshipListOptions(options: CatalogListOptions): CatalogListOptions & { limit: number; offset: number } {

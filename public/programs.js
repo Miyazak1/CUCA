@@ -9,6 +9,10 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       let searchTimer = null;
       const knownPrograms = new Map();
       const escapeCatalogHtml = window.CuacCatalogList.escapeHtml;
+      const studyLevelOptions = window.CuacStudyLevels.definitions.map(({ value, label }) => [value, label]);
+      document.querySelectorAll("[data-study-level-filter]").forEach((control) => {
+        control.innerHTML = studyLevelOptions.map(([value, label]) => `<option value="${value}">${escapeCatalogHtml(catalogUi(label))}</option>`).join("");
+      });
 
       const state = {
         page: 1,
@@ -61,7 +65,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
         {
           label: "Study goal",
           fields: [
-            ["degree", "Degree level", [["", "All levels"], ["undergraduate", "Undergraduate"], ["master", "Master"], ["phd", "PhD"], ["non-degree", "Non-degree / Language"]]],
+            ["degree", "Study level", studyLevelOptions],
             ["subject", "Subject", [["", "Any subject"], ["Computer Science", "Computer Science"], ["Engineering", "Engineering"], ["Business", "Business"], ["Economics", "Economics"], ["Medicine", "Medicine"], ["Chinese Language", "Chinese Language"], ["International Relations", "International Relations"]]],
             ["language", "Teaching language", [["", "Any language"], ["english", "English-taught"], ["chinese", "Chinese-taught"], ["bilingual", "Bilingual"]]],
           ],
@@ -104,12 +108,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       }
 
       function labelDegree(value) {
-        return catalogUi({
-          undergraduate: "Undergraduate",
-          master: "Master",
-          phd: "PhD",
-          "non-degree": "Non-degree",
-        }[value] || value);
+        return catalogUi(window.CuacStudyLevels.label(value));
       }
 
       function labelLanguage(value) {
@@ -141,12 +140,11 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       }
 
       function programDegreeValue(program = {}) {
-        const value = String(program.degree || program.degreeLevel || "").trim().toLowerCase();
-        if (value.includes("under") || value.includes("bachelor")) return "undergraduate";
-        if (value.includes("master")) return "master";
-        if (value.includes("phd") || value.includes("doctor")) return "phd";
-        if (value.includes("non") || value.includes("language")) return "non-degree";
-        return value;
+        const value = String(program.degree || program.degreeLevel || "").trim();
+        const published = Array.isArray(program.studyLevelCategories) ? program.studyLevelCategories : [];
+        const categories = published.length ? published : window.CuacStudyLevels.categoriesFromText(value);
+        return ["foundation", "language", "visiting", "associate", "undergraduate", "master", "doctoral", "other-non-degree", "non-degree"]
+          .find((level) => categories.includes(level)) || window.CuacStudyLevels.normalize(value, value.toLowerCase());
       }
 
       function compactList(value, fallback = "Confirm") {
@@ -318,17 +316,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       }
 
       function normalizeDegreeParam(value) {
-        const routeSlug = slugifyRouteParam(value);
-        return {
-          undergraduate: "undergraduate",
-          bachelor: "undergraduate",
-          master: "master",
-          phd: "phd",
-          doctoral: "phd",
-          "non-degree": "non-degree",
-          nondegree: "non-degree",
-          language: "non-degree",
-        }[routeSlug] || value;
+        return window.CuacStudyLevels.normalize(value, value);
       }
 
       function normalizeLanguageParam(value) {

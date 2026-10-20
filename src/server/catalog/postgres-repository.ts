@@ -25,6 +25,7 @@ import {
 import type { PublicCatalogRepository } from "./service.ts";
 import { getPublishedProgramRequirements } from "./postgres-requirements.ts";
 import { currentIntakeWindowSql, upcomingIntakeWindowSql } from "./intake-window.ts";
+import { studyLevelCountsSql, studyLevelSqlPredicate } from "./study-level.ts";
 
 export type SqlCatalogClient = {
   query<T extends Record<string, unknown>>(statement: string, params: readonly unknown[]): Promise<T[]>;
@@ -94,10 +95,7 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
   }
 
   async listSchools(options: CatalogListOptions): Promise<PublicSchoolDto[]> {
-    const { whereSql, params } = buildPublicSearchWhere("s", [
-      "s.name_en", "s.name_zh", "s.slug", "s.city", "s.city_zh", "s.province", "s.school_type",
-      "s.region", "s.subject_tags::text", "s.language_tags::text",
-    ], options.query, ["s.verification_status in ('verified','stale')"]);
+    const { whereSql, params } = buildSchoolListQuery(options);
     const rows = await this.client.query<SchoolProjectionRow>(
       `${schoolSelectSql}
        ${whereSql}
@@ -110,10 +108,7 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
   }
 
   async countSchools(options: CatalogListOptions): Promise<number> {
-    const { whereSql, params } = buildPublicSearchWhere("s", [
-      "s.name_en", "s.name_zh", "s.slug", "s.city", "s.city_zh", "s.province", "s.school_type",
-      "s.region", "s.subject_tags::text", "s.language_tags::text",
-    ], options.query, ["s.verification_status in ('verified','stale')"]);
+    const { whereSql, params } = buildSchoolListQuery(options);
     const rows = await this.client.query<{ total: number | string }>(
       `select count(*)::int as total from schools s ${whereSql}`,
       params,
@@ -146,9 +141,10 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
     const availabilitySql = options.availability === "open" ? " and sch.deadline_date > clock_timestamp()"
       : options.availability === "closed" ? " and sch.deadline_date <= clock_timestamp()"
         : options.availability === "unconfirmed" ? " and sch.deadline_date is null" : "";
+    const studyLevelSql = studyLevelSqlPredicate("sch.applicable_degree", options.degree);
     const rows = await this.client.query<ScholarshipProjectionRow>(
       `${scholarshipSelectSql}
-       ${whereSql} and sch.verification_status = 'verified'${availabilitySql}
+       ${whereSql} and sch.verification_status = 'verified'${availabilitySql}${studyLevelSql ? ` and ${studyLevelSql}` : ""}
        order by sch.sort_order asc, sch.title asc, sch.slug asc
        limit $${params.length + 1} offset $${params.length + 2}`,
       [...params, options.limit ?? 20, options.offset ?? 0],
@@ -166,9 +162,10 @@ export class PostgresCatalogRepository implements PublicCatalogRepository {
     const availabilitySql = options.availability === "open" ? " and sch.deadline_date > clock_timestamp()"
       : options.availability === "closed" ? " and sch.deadline_date <= clock_timestamp()"
         : options.availability === "unconfirmed" ? " and sch.deadline_date is null" : "";
+    const studyLevelSql = studyLevelSqlPredicate("sch.applicable_degree", options.degree);
     const rows = await this.client.query<{ total: number | string }>(
       `select count(*)::int as total from scholarships sch
-       ${whereSql} and sch.verification_status = 'verified'${availabilitySql}`,
+       ${whereSql} and sch.verification_status = 'verified'${availabilitySql}${studyLevelSql ? ` and ${studyLevelSql}` : ""}`,
       params,
     );
     return Number(rows[0]?.total ?? 0);
@@ -282,6 +279,24 @@ function buildPublicSearchWhere(alias: string, columns: readonly string[], query
   };
 }
 
+function buildSchoolListQuery(options: CatalogListOptions) {
+  const extraClauses = ["s.verification_status in ('verified','stale')"];
+  const studyLevelSql = studyLevelSqlPredicate("school_program.degree_level", options.degree);
+  if (studyLevelSql) {
+    extraClauses.push(`exists (
+      select 1 from programs school_program
+      where school_program.school_id = s.id
+        and school_program.status = 'active'
+        and school_program.verification_status in ('verified','stale')
+        and ${studyLevelSql}
+    )`);
+  }
+  return buildPublicSearchWhere("s", [
+    "s.name_en", "s.name_zh", "s.slug", "s.city", "s.city_zh", "s.province", "s.school_type",
+    "s.region", "s.subject_tags::text", "s.language_tags::text",
+  ], options.query, extraClauses);
+}
+
 function cityPublicClauses(alias: string): string[] {
   return [
     `${alias}.verification_status in ('verified','stale')`,
@@ -310,14 +325,8 @@ function buildProgramListQuery(options: CatalogListOptions) {
       || coalesce(lower(p.hsk_requirement), '')) like ${ref}
       or s.name_en ilike ${ref} or s.name_zh ilike ${ref} or c.name_en ilike ${ref} or c.name_zh ilike ${ref})`);
   }
-  if (options.degree) {
-    const degree = options.degree.toLowerCase();
-    const accepted = degree === "undergraduate" ? ["undergraduate", "bachelor"]
-      : degree === "phd" ? ["phd", "doctoral", "doctorate"]
-      : degree === "non-degree" ? ["non-degree", "non degree", "language"]
-      : [degree];
-    clauses.push(`lower(trim(p.degree_level)) = any(${add(accepted)}::text[])`);
-  }
+  const studyLevelSql = studyLevelSqlPredicate("p.degree_level", options.degree);
+  if (studyLevelSql) clauses.push(studyLevelSql);
   if (options.subject) {
     const ref = add(`%${options.subject}%`);
     clauses.push(`(p.field_category ilike ${ref} or p.subject_area ilike ${ref} or p.name_en ilike ${ref})`);
@@ -499,6 +508,7 @@ select
   s.updated_at as "updatedAt",
   coalesce(program_stats.program_count, 0)::int as "programCount",
   coalesce(program_stats.english_program_count, 0)::int as "englishProgramCount",
+  coalesce(program_stats.study_level_counts, '{}'::jsonb) as "studyLevelCounts",
   coalesce(scholarship_stats.scholarship_count, 0)::int as "scholarshipCount",
   coalesce((
     select jsonb_agg(jsonb_build_object(
@@ -527,7 +537,8 @@ from schools s
 left join lateral (
   select
     count(*)::int as program_count,
-    count(*) filter (where lower(trim(p.teaching_language)) in ('english', 'english-taught', '英文授课'))::int as english_program_count
+    count(*) filter (where lower(trim(p.teaching_language)) in ('english', 'english-taught', '英文授课'))::int as english_program_count,
+    ${studyLevelCountsSql("p.degree_level")} as study_level_counts
   from programs p
   where p.school_id = s.id and p.status = 'active'
     and p.verification_status in ('verified','stale')

@@ -11,13 +11,23 @@
     return payload?.error?.message || payload?.message || fallback;
   }
 
+  function catalogParams(options = {}, defaultLimit = 100) {
+    const params = new URLSearchParams();
+    const optionNames = ["limit", "offset", "query", "degree", "subject", "language", "city", "school", "intake", "deadline", "tuition", "languageRequirement", "sort"];
+    params.set("limit", String(options.limit || defaultLimit));
+    optionNames.filter((name) => name !== "limit").forEach((name) => {
+      if (options[name] != null && options[name] !== "") params.set(name, String(options[name]));
+    });
+    ["scholarship", "applicationReady", "upcomingDeadline"].forEach((name) => {
+      if (options[name]) params.set(name, "true");
+    });
+    return params;
+  }
+
   async function load(resource, options = {}) {
     if (!resources.has(resource)) throw new Error("Unsupported catalog resource.");
 
-    const params = new URLSearchParams();
-    params.set("limit", String(options.limit || 100));
-    if (options.offset) params.set("offset", String(options.offset));
-    if (options.query) params.set("query", String(options.query));
+    const params = catalogParams(options);
 
     const requestUrl = `/api/v1/catalog/${resource}?${params.toString()}`;
     if (completedRequests.has(requestUrl)) return completedRequests.get(requestUrl);
@@ -45,14 +55,7 @@
 
   async function loadPage(resource, options = {}) {
     if (!resources.has(resource)) throw new Error("Unsupported catalog resource.");
-    const params = new URLSearchParams();
-    const optionNames = ["limit", "offset", "query", "degree", "subject", "language", "city", "school", "intake", "deadline", "tuition", "languageRequirement", "sort"];
-    optionNames.forEach((name) => {
-      if (options[name] != null && options[name] !== "") params.set(name, String(options[name]));
-    });
-    ["scholarship", "applicationReady", "upcomingDeadline"].forEach((name) => {
-      if (options[name]) params.set(name, "true");
-    });
+    const params = catalogParams(options);
     const requestUrl = `/api/v1/catalog/${resource}?${params.toString()}`;
     if (completedPages.has(requestUrl)) return completedPages.get(requestUrl);
     if (pendingPages.has(requestUrl)) return pendingPages.get(requestUrl);

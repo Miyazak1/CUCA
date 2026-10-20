@@ -115,6 +115,21 @@
   uiEnglish.push(...statusUiEnglish);
   Object.entries(statusUiTranslations).forEach(([locale, translations]) => uiTranslations[locale].push(...translations));
 
+  const studyLevelUiEnglish = [
+    "Study level", "All study levels", "Undergraduate / Bachelor", "Doctoral / PhD", "Foundation / Preparatory",
+    "Chinese language", "Visiting / Exchange", "Associate / Diploma", "All non-degree", "Other non-degree",
+    "Program fit", "Show universities that publish at least one matching program.", "Eligible study level",
+  ];
+  const studyLevelUiTranslations = {
+    vi: ["Bậc học", "Tất cả bậc học", "Đại học / Cử nhân", "Tiến sĩ / PhD", "Dự bị đại học", "Tiếng Trung", "Thăm học / Trao đổi", "Cao đẳng / Văn bằng", "Tất cả chương trình không cấp bằng", "Chương trình không cấp bằng khác", "Mức độ phù hợp của chương trình", "Hiển thị trường có ít nhất một chương trình phù hợp đã công bố.", "Bậc học đủ điều kiện"],
+    th: ["ระดับการศึกษา", "ทุกระดับการศึกษา", "ปริญญาตรี", "ปริญญาเอก / PhD", "หลักสูตรเตรียมความพร้อม", "ภาษาจีน", "เยี่ยมศึกษา / แลกเปลี่ยน", "อนุปริญญา / ประกาศนียบัตร", "หลักสูตรไม่รับปริญญาทั้งหมด", "หลักสูตรไม่รับปริญญาอื่น", "ความเหมาะสมของหลักสูตร", "แสดงมหาวิทยาลัยที่เผยแพร่อย่างน้อยหนึ่งหลักสูตรที่ตรงกัน", "ระดับการศึกษาที่มีสิทธิ์"],
+    id: ["Jenjang studi", "Semua jenjang studi", "Sarjana / Bachelor", "Doktor / PhD", "Fondasi / Persiapan", "Bahasa Mandarin", "Kunjungan / Pertukaran", "Ahli madya / Diploma", "Semua program non-gelar", "Program non-gelar lainnya", "Kecocokan program", "Tampilkan universitas dengan setidaknya satu program terbit yang cocok.", "Jenjang studi yang memenuhi syarat"],
+    ms: ["Tahap pengajian", "Semua tahap pengajian", "Sarjana muda / Bachelor", "Kedoktoran / PhD", "Asasi / Persediaan", "Bahasa Cina", "Pelawat / Pertukaran", "Bersekutu / Diploma", "Semua program bukan ijazah", "Program bukan ijazah lain", "Kesesuaian program", "Tunjukkan universiti yang menerbitkan sekurang-kurangnya satu program sepadan.", "Tahap pengajian yang layak"],
+    ar: ["مستوى الدراسة", "جميع مستويات الدراسة", "بكالوريوس", "دكتوراه / PhD", "تأسيسي / تحضيري", "اللغة الصينية", "زائر / تبادل", "دبلوم متوسط / دبلوم", "جميع البرامج غير المؤهلة لدرجة", "برامج أخرى غير مؤهلة لدرجة", "ملاءمة البرنامج", "اعرض الجامعات التي تنشر برنامجًا واحدًا مطابقًا على الأقل.", "مستوى الدراسة المؤهل"],
+  };
+  uiEnglish.push(...studyLevelUiEnglish);
+  Object.entries(studyLevelUiTranslations).forEach(([locale, translations]) => uiTranslations[locale].push(...translations));
+
   window.CUACI18n?.register(messages);
   const i18n = window.CUACI18n;
   const format = (template, values = {}) => Object.entries(values).reduce(

@@ -105,6 +105,22 @@ test("program catalog uses server-side pagination and filters", async () => {
   assert.match(script, /catalogLoadingComplete = true/);
 });
 
+test("catalog discovery pages share one visible study-level taxonomy", async () => {
+  const [taxonomy, programsHtml, programs, universitiesHtml, universities, scholarshipsHtml, scholarships] = await Promise.all([
+    source("study-levels.js"), source("programs.html"), source("programs.js"),
+    source("universities.html"), source("universities.js"), source("scholarships.html"), source("scholarships.js"),
+  ]);
+  for (const html of [programsHtml, universitiesHtml, scholarshipsHtml]) assert.match(html, /study-levels\.js/);
+  for (const value of ["undergraduate", "master", "doctoral", "foundation", "language", "visiting", "associate", "other-non-degree"]) {
+    assert.match(taxonomy, new RegExp(`value: "${value}"`));
+  }
+  assert.match(programs, /studyLevelOptions/);
+  assert.match(universitiesHtml, /data-criteria-field="degreeLevel"/);
+  assert.match(universities, /item\.studyLevelCounts/);
+  assert.match(scholarships, /Eligible study level/);
+  assert.match(scholarships, /CuacStudyLevels\.matches/);
+});
+
 test("catalog save actions use authenticated student saved-item APIs", async () => {
   const [api, programs, universities, scholarships, savedPage] = await Promise.all([
     source("catalog-list-api.js"),
@@ -170,7 +186,7 @@ test("program university routes send the school slug to the published API and re
     source("programs.css"),
   ]);
 
-  assert.match(html, /programs\.js\?v=20261016-current-routes/);
+  assert.match(html, /programs\.js\?v=20261020-study-levels/);
   assert.match(script, /const focusedUniversity = routeParams\.get\("university"\)/);
   assert.match(script, /loadPage\("programs", \{[\s\S]*school: focusedUniversity,/);
   assert.doesNotMatch(script, /function programMatchesUniversity/);

@@ -356,7 +356,7 @@
 
       .advanced-filters {
         display: grid;
-        grid-template-columns: minmax(220px, 0.9fr) repeat(4, minmax(145px, 1fr));
+        grid-template-columns: minmax(220px, 1fr) minmax(240px, 0.55fr);
         gap: 10px;
         align-items: end;
         padding: 12px;

@@ -43,6 +43,13 @@
               <button class="chip" type="button" data-chip="English routes" data-catalog-ui>English-taught routes</button>
               <button class="chip" type="button" data-chip="Scholarship" data-catalog-ui>Scholarship options</button>
             </div>
+            <div class="advanced-filters" aria-label="Program fit filters">
+              <div><strong data-catalog-ui>Program fit</strong><span data-catalog-ui>Show universities that publish at least one matching program.</span></div>
+              <label>
+                <span data-catalog-ui>Study level</span>
+                <select class="select" id="schoolStudyLevelFilter" data-criteria-field="degreeLevel" aria-label="Filter universities by study level"></select>
+              </label>
+            </div>
           </section>
 
           <section class="toolbar reveal" aria-label="Result controls">
@@ -87,10 +94,11 @@
     </div>
 
     <script src="i18n-runtime.js?v=20261002-ucac-brand"></script>
-    <script src="catalog-list-i18n.js?v=20261002-ucac-brand"></script>
+    <script src="catalog-list-i18n.js?v=20261020-study-levels"></script>
     <script src="shared-shell.js?v=20261015-study-in-china"></script>
     <script src="catalog-list-api.js?v=20261002-ucac-brand"></script>
-    <script src="universities.js?v=20261002-ucac-brand"></script>
+    <script src="study-levels.js?v=20261020-study-levels"></script>
+    <script src="universities.js?v=20261020-study-levels"></script>
 </body>
 </html>
 

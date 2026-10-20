@@ -4,6 +4,12 @@ const universityArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path 
 const escapeCatalogHtml = window.CuacCatalogList.escapeHtml;
 const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallback, values) || fallback;
 const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
+const schoolStudyLevelFilter = document.querySelector("#schoolStudyLevelFilter");
+if (schoolStudyLevelFilter) {
+  schoolStudyLevelFilter.innerHTML = window.CuacStudyLevels.definitions
+    .map(({ value, label }) => `<option value="${value}">${catalogUi(label)}</option>`)
+    .join("");
+}
 
 const state = {
         query: "",
@@ -138,6 +144,13 @@ const state = {
         return schoolPrograms(item).filter((program) => normalizedIncludes([program.teachingLanguage, program.language, program.languageOfInstruction], "english")).length;
       }
 
+      function schoolHasStudyLevel(item = {}, value = "") {
+        const level = window.CuacStudyLevels.normalize(value, value);
+        if (!level) return true;
+        if (Number(item.studyLevelCounts?.[level] || 0) > 0) return true;
+        return window.CuacStudyLevels.matches(item, level, item.applicationLevel || item.admissionLevel);
+      }
+
       function schoolHasTuition(item = {}) {
         return Boolean(item.tuitionSummary || item.tuitionByCategory || item.tuitionBandLabel || item.tuition) || matchesAnyProgram(item, (program) => Boolean(program.tuitionAmount || program.tuitionText || program.displayTuition));
       }
@@ -233,6 +246,9 @@ const state = {
         const value = routeParams.get(key);
         if (value) state.criteria[key] = value;
       });
+      const requestedStudyLevel = routeParams.get("degreeLevel") || routeParams.get("applicationLevel") || routeParams.get("degree");
+      if (requestedStudyLevel) state.criteria.degreeLevel = window.CuacStudyLevels.normalize(requestedStudyLevel, requestedStudyLevel);
+      delete state.criteria.applicationLevel;
       routeParams.getAll("filter").forEach((filter) => {
         if (filter) state.filters.add(filter);
       });
@@ -308,7 +324,7 @@ const state = {
         if (truthyParam(criteria.hasTuition) && !schoolHasTuition(item)) return false;
         if (truthyParam(criteria.hasScholarship) && !schoolScholarship(item)) return false;
         if (truthyParam(criteria.hasEnglishPrograms) && !(schoolEnglishRouteCount(item) > 0 || normalizedIncludes([item.languageOfInstruction, item.languageTags, schoolPrograms(item).map((program) => program.teachingLanguage)], "english"))) return false;
-        if (criteria.degreeLevel && !matchesAnyProgram(item, (program) => normalizedIncludes([program.degreeLevel, program.degree, program.applicationLevel], criteria.degreeLevel))) return false;
+        if (criteria.degreeLevel && !schoolHasStudyLevel(item, criteria.degreeLevel)) return false;
         if (criteria.teachingLanguage && !matchesAnyProgram(item, (program) => normalizedIncludes([program.teachingLanguage, program.language, program.languageOfInstruction], criteria.teachingLanguage))) return false;
         if (criteria.programSubject && !normalizedIncludes([schoolSubjects(item), schoolPrograms(item).map((program) => [program.fieldCategory, program.nameEn, program.nameZh, program.displaySubjects])], criteria.programSubject)) return false;
         if (criteria.fieldCategory && !matchesAnyProgram(item, (program) => normalizedIncludes([program.fieldCategory, program.displayGroupLabel, program.displaySubjects], criteria.fieldCategory))) return false;
@@ -385,7 +401,7 @@ const state = {
           hasTuition: "Tuition available",
           hasScholarship: "Scholarship options",
           hasEnglishPrograms: "English-taught programs",
-          degreeLevel: "Degree level",
+          degreeLevel: "Study level",
           teachingLanguage: "Teaching language",
           programSubject: "Program subject",
           fieldCategory: "Field",
@@ -396,7 +412,8 @@ const state = {
           hasDetailedScholarship: "Detailed scholarships",
         };
         if (String(value).toLowerCase() === "true") return catalogUi(labels[key] || key);
-        return `${catalogUi(labels[key] || key)}: ${catalogUi(value)}`;
+        const displayValue = key === "degreeLevel" ? window.CuacStudyLevels.label(value) : value;
+        return `${catalogUi(labels[key] || key)}: ${catalogUi(displayValue)}`;
       }
 
       function renderPagination(total) {

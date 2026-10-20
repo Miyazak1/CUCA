@@ -1,3 +1,5 @@
+import type { StudyLevelSlug } from "./study-level.ts";
+
 export type SourceStatus = "verified" | "unverified" | "stale" | "disputed" | "invalid" | "draft" | "unknown";
 
 export type SourceFieldLineage = Record<string, unknown>;
@@ -34,6 +36,7 @@ export type PublicProgramDto = {
   nameZh: string | null;
   nameEn: string;
   degreeLevel: string;
+  studyLevelCategories: StudyLevelSlug[];
   durationYears: number | null;
   durationMonths: number | null;
   fieldCategory: string | null;
@@ -133,6 +136,7 @@ export type PublicSchoolDto = {
   sourceFieldLineage: SourceFieldLineage;
   programCount: number | null;
   englishProgramCount: number | null;
+  studyLevelCounts: Record<StudyLevelSlug, number>;
   scholarshipCount: number | null;
   upcomingDeadlines: PublicSchoolUpcomingDeadlineDto[];
   updatedAt: Date;
@@ -180,6 +184,7 @@ export type PublicScholarshipDto = {
   programId: string | null;
   coverage: string | null;
   applicableDegree: string | null;
+  studyLevelCategories: StudyLevelSlug[];
   applicableProgram: string | null;
   amountText: string | null;
   requirementText: string | null;

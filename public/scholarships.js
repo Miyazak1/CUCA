@@ -43,9 +43,14 @@ let routeCityFocus = "";
 const filterConfig = [
   ["Funding level", [["funding", "Funding", [["all", "Any funding"], ["full", "Full funding"], ["partial", "Partial funding"]]]]],
   ["Route type", [["type", "Type", [["all", "Any route"], ["government", "CSC / government"], ["university", "University award"], ["province", "Province / city"], ["partner", "Partner or subject"]]]]],
+  ["Study level", [["degree", "Eligible study level", () => [["all", "All study levels"], ...window.CuacStudyLevels.definitions.filter(({ value }) => value).map(({ value, label }) => [value, label])]]]],
   ["Country scope", [["country", "Country / region", scholarshipCountryOptions]]],
   ["Application timing", [["deadline", "Deadline", [["all", "Any status"], ["soon", "Deadline soon"], ["open", "Open or later"], ["rolling", "Rolling"]]]]],
 ];
+document.querySelectorAll("[data-study-level-filter]").forEach((control) => {
+  control.innerHTML = [["all", "All study levels"], ...window.CuacStudyLevels.definitions.filter(({ value }) => value).map(({ value, label }) => [value, label])]
+    .map(([value, label]) => `<option value="${value}">${escapeCatalogHtml(catalogUi(label))}</option>`).join("");
+});
 
 function scholarshipKey(item = {}) {
   return String(item.slug || item.id || slugifyRouteParam(item.title || "scholarship"));
@@ -219,7 +224,7 @@ function matches(item) {
   }
   if (filters.funding !== "all" && scholarshipFundingLevel(item) !== filters.funding) return false;
   if (filters.type !== "all" && scholarshipType(item) !== filters.type) return false;
-  if (filters.degree !== "all" && !scholarshipDegree(item).includes(filters.degree)) return false;
+  if (filters.degree !== "all" && !window.CuacStudyLevels.matches(item, filters.degree, scholarshipDegree(item))) return false;
   if (filters.country !== "all") {
     const selected = String(filters.country || "").toLowerCase();
     const countries = scholarshipCountryScope(item).map((value) => value.toLowerCase());
@@ -328,17 +333,7 @@ function normalizeScholarshipFundingParam(value) {
 }
 
 function normalizeScholarshipDegreeParam(value) {
-  const slug = slugifyRouteParam(value);
-  return {
-    undergraduate: "Undergraduate",
-    bachelor: "Undergraduate",
-    bachelors: "Undergraduate",
-    master: "Master",
-    masters: "Master",
-    phd: "PhD",
-    doctoral: "PhD",
-    doctor: "PhD",
-  }[slug] || value || "all";
+  return window.CuacStudyLevels.normalize(value, value || "all");
 }
 
 function normalizeCityParam(value) {
@@ -390,7 +385,7 @@ function matchingProgramsHref(item = {}) {
   const degree = scholarshipDegree(item);
   if (type) params.set("route", type);
   if (funding && funding !== "unknown") params.set("funding", funding);
-  if (degree && degree !== "All levels") params.set("degree", degree.includes("Master") ? "master" : degree.includes("Undergraduate") ? "undergraduate" : "");
+  if (degree && degree !== "All levels") params.set("degree", window.CuacStudyLevels.normalize(degree, ""));
   if (!params.get("degree")) params.delete("degree");
   return `programs.html?${params.toString()}`;
 }
@@ -513,7 +508,7 @@ function renderActiveChips() {
   if (routeCityFocus) chips.push(["city", `${routeCityFocus} related`]);
   if (filters.funding !== "all") chips.push(["funding", catalogUi(filters.funding === "full" ? "Full funding" : "Partial funding")]);
   if (filters.type !== "all") chips.push(["type", catalogUi({ government: "CSC / government", university: "University award", province: "Province / city", partner: "Partner or subject" }[filters.type] || filters.type)]);
-  if (filters.degree !== "all") chips.push(["degree", filters.degree]);
+  if (filters.degree !== "all") chips.push(["degree", catalogUi(window.CuacStudyLevels.label(filters.degree))]);
   if (filters.country !== "all") chips.push(["country", filters.country]);
   if (filters.deadline !== "all") chips.push(["deadline", catalogUi(filters.deadline === "soon" ? "Deadline soon" : filters.deadline === "open" ? "Open or later" : filters.deadline === "rolling" ? "Rolling" : filters.deadline)]);
   if (filters.coverage) chips.push(["coverage", catalogUi("Includes living stipend")]);
@@ -637,7 +632,7 @@ function restoreScholarshipState(snapshot) {
 function applyScholarshipAgentAction(action, detail = {}) {
   const before = captureScholarshipState();
   if (action === "apply-smart-filters" || action === "compare-funding") {
-    Object.assign(filters, { funding: "full", type: "all", degree: "Master", country: "all", deadline: "all", coverage: true });
+    Object.assign(filters, { funding: "full", type: "all", degree: "master", country: "all", deadline: "all", coverage: true });
     sort = "full";
     page = 1;
     syncFilters();

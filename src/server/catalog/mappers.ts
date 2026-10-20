@@ -22,6 +22,7 @@ import type {
   SourceFieldLineage,
   SourceStatus,
 } from "./dto.ts";
+import { classifyStudyLevels, STUDY_LEVEL_SLUGS, type StudyLevelSlug } from "./study-level.ts";
 
 export type ProgramRow = InferSelectModel<typeof programs>;
 export type SchoolRow = InferSelectModel<typeof schools>;
@@ -70,6 +71,7 @@ export type ScholarshipProjectionRow = ScholarshipRow & {
 export type SchoolProjectionRow = SchoolRow & {
   programCount?: number | null;
   englishProgramCount?: number | null;
+  studyLevelCounts?: unknown;
   scholarshipCount?: number | null;
   upcomingDeadlines?: unknown;
 };
@@ -80,6 +82,11 @@ function asLineage(value: unknown): SourceFieldLineage {
 
 function asArray(value: unknown): unknown[] {
   return Array.isArray(value) ? value : [];
+}
+
+function asStudyLevelCounts(value: unknown): Record<StudyLevelSlug, number> {
+  const record = value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
+  return Object.fromEntries(STUDY_LEVEL_SLUGS.map(level => [level, Math.max(Number(record[level]) || 0, 0)])) as Record<StudyLevelSlug, number>;
 }
 
 function asSchoolUpcomingDeadlines(value: unknown): PublicSchoolUpcomingDeadlineDto[] {
@@ -323,6 +330,7 @@ export function toPublicProgramDto(row: ProgramProjectionRow): PublicProgramDto 
     nameZh: row.nameZh,
     nameEn: row.nameEn,
     degreeLevel: row.degreeLevel,
+    studyLevelCategories: classifyStudyLevels(row.degreeLevel),
     durationYears: row.durationYears,
     durationMonths: row.durationMonths,
     fieldCategory: row.fieldCategory,
@@ -410,6 +418,7 @@ export function toPublicSchoolDto(row: SchoolProjectionRow): PublicSchoolDto {
     sourceFieldLineage: asLineage(row.sourceFieldLineageJson),
     programCount: row.programCount ?? null,
     englishProgramCount: row.englishProgramCount ?? null,
+    studyLevelCounts: asStudyLevelCounts(row.studyLevelCounts),
     scholarshipCount: row.scholarshipCount ?? null,
     upcomingDeadlines: asSchoolUpcomingDeadlines(row.upcomingDeadlines),
     updatedAt: row.updatedAt,
@@ -455,6 +464,7 @@ export function toPublicScholarshipDto(row: ScholarshipProjectionRow): PublicSch
     programId: row.programId,
     coverage: row.coverage,
     applicableDegree: row.applicableDegree,
+    studyLevelCategories: classifyStudyLevels(row.applicableDegree),
     applicableProgram: row.applicableProgram,
     amountText: row.amountText,
     requirementText: row.requirementText,

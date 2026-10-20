@@ -180,11 +180,29 @@ test("PostgresCatalogRepository applies program page filters to list and count q
   assert.equal(await repository.countPrograms(options), 42);
   assert.match(calls[0].statement, /p\.has_scholarship = true/);
   assert.match(calls[0].statement, /p\.tuition_amount between 25000 and 40000/);
-  assert.match(calls[0].statement, /lower\(trim\(p\.degree_level\)\) = any/);
+  assert.match(calls[0].statement, /lower\(coalesce\(p\.degree_level, ''\)\) ~/);
   assert.match(calls[0].statement, /order by next_intake\.deadline_date asc nulls last/);
   assert.match(calls[1].statement, /select count\(\*\)::int as total/);
   assert.deepEqual(calls[0].params.slice(0, -2), calls[1].params);
   assert.deepEqual(calls[0].params.slice(-2), [8, 8]);
+});
+
+test("PostgresCatalogRepository applies canonical study-level filters across public resources", async () => {
+  const calls = [];
+  const repository = new PostgresCatalogRepository({ async query(statement, params) {
+    calls.push({ statement, params });
+    return statement.startsWith("select count") ? [{ total: 2 }] : [];
+  } });
+
+  await repository.listSchools({ degree: "foundation", limit: 20, offset: 0 });
+  await repository.countSchools({ degree: "foundation" });
+  await repository.listScholarships({ degree: "PhD", limit: 20, offset: 0 });
+  await repository.countScholarships({ degree: "PhD" });
+
+  assert.match(calls[0].statement, /exists \([\s\S]*school_program\.degree_level[\s\S]*foundation/);
+  assert.match(calls[1].statement, /exists \([\s\S]*school_program\.degree_level[\s\S]*foundation/);
+  assert.match(calls[2].statement, /sch\.applicable_degree[\s\S]*doctoral\|doctorate\|ph/);
+  assert.match(calls[3].statement, /sch\.applicable_degree[\s\S]*doctoral\|doctorate\|ph/);
 });
 
 test("PostgresCatalogRepository can restrict application selectors to currently open intakes", async () => {
