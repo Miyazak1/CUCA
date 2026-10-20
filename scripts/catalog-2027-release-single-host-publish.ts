@@ -33,6 +33,8 @@ const schoolSlugs = bundle.schools!.map((row) => row.slug);
 const citySlugs = bundle.cities!.map((row) => row.slug);
 const programSlugs = bundle.programs!.map((row) => row.slug);
 const intakeKeys = bundle.programIntakes!.map((row) => ({ program_slug: row.programSlug, intake_term: row.intakeTerm, intake_year: row.intakeYear, status: row.status }));
+const expectedOpenIntakes = bundle.programIntakes!.filter((row) => row.status === "open").length;
+const expectedClosedIntakes = bundle.programIntakes!.filter((row) => (row.status ?? "closed") === "closed").length;
 const scholarshipSlugs = bundle.scholarships!.map((row) => row.slug);
 const pool = createPostgresPool({ databaseUrl: rawUrl, max: 1, applicationName: "cuac:reviewed-2027-release-publish", statementTimeoutMillis: 180_000 });
 try {
@@ -67,7 +69,8 @@ try {
       (select count(*)::int from scholarships where slug=any($3::text[]) and status='active' and verification_status='verified') scholarships`,
     [programSlugs, JSON.stringify(intakeKeys), scholarshipSlugs]);
     const row = verified[0];
-    if (!row || row.programs !== 2031 || row.intakes !== 1958 || row.open_intakes !== 1798 || row.closed_intakes !== 7 || row.scholarships !== 95) {
+    if (!row || row.programs !== 2031 || row.intakes !== 1958 || row.open_intakes !== expectedOpenIntakes
+      || row.closed_intakes !== expectedClosedIntakes || row.scholarships !== 95) {
       throw new Error(`2027 release post-check failed: ${JSON.stringify(row)}`);
     }
     return {
