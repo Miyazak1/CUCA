@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const SHELL_RELEASE = "20261015-study-in-china";
+const SHELL_RELEASE = "20261020-nav-width";
 
 export function PublicSiteShell({
   active,

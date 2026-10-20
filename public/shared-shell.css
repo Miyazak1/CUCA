@@ -64,6 +64,7 @@ body {
   align-items: center;
   gap: 24px;
   box-sizing: content-box;
+  width: var(--shell-page-width);
   max-width: var(--shell-page-width);
   margin: 0 auto;
   min-height: 76px;

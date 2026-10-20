@@ -5,9 +5,11 @@ import test from "node:test";
 const source = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
 test("public editorial pages use one bounded vertical rhythm and a separated footer", async () => {
-  const [guides, insights] = await Promise.all([
+  const [guides, insights, sharedShell, publicSiteShell] = await Promise.all([
     source("app/guides/guides.module.css"),
     source("app/insights/insights.module.css"),
+    source("public/shared-shell.css"),
+    source("app/public-site-shell.tsx"),
   ]);
 
   for (const css of [guides, insights]) {
@@ -18,6 +20,9 @@ test("public editorial pages use one bounded vertical rhythm and a separated foo
     assert.match(css, /\.page :global\(\.footer\)[^{]*\{[^}]*border-top:/s);
     assert.doesNotMatch(css, /padding:\s*72px 0 96px|padding:\s*64px 0 80px/);
   }
+
+  assert.match(sharedShell, /\.nav\s*\{[^}]*width:\s*var\(--shell-page-width\);[^}]*max-width:\s*var\(--shell-page-width\);/s);
+  assert.match(publicSiteShell, /SHELL_RELEASE\s*=\s*"20261020-nav-width"/);
 });
 
 test("catalog detail pages do not stack a large page gap above the shared footer", async () => {
