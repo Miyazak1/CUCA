@@ -6,6 +6,7 @@ import {
   type CatalogSeedBundle,
   type CatalogSeedProgram,
   type CatalogSeedProgramIntake,
+  type CatalogSeedSchool,
 } from "../src/server/catalog/seed-contract.ts";
 
 type ManifestSource = {
@@ -29,6 +30,7 @@ const expected: Record<string, string> = {
   "sjtu-english-engineering-cluster-2027": "fc43c9f6e140b7186cdf7bf5bbeb98f186b65ea9283093fd948bf97b86fb625d",
   "cau-undergraduate-admissions-2027": "7d6dd2f2c0462394c951cd7edabc12cea2e8cc8b95a9148760fced12be12855d",
   "cau-undergraduate-program-catalog-2027": "f76aad50dd8fa5697dc0f1522145ef369a9b7c3d6286f73dbe085de3aea9e285",
+  "cau-undergraduate-duration-policy-2026": "eb4c31f7e7addd7aad0fe8b1a39bac31581a6147111e897be298ca377dfca769",
   "szu-doctoral-admissions-spring-2027": "dbdd01131f51aca29bc0f21971cf22f37c6be0ea074c12ea22b7464ea02809a8",
   "szu-doctoral-program-catalog-spring-2027": "64fb6abe2e9311d84390864fe1050ffdc25b75e0ca906905e6d0d9fda9995610",
 };
@@ -114,6 +116,7 @@ for (const source of evidence.values()) {
 const release = JSON.parse(await readFile(releasePath, "utf8")) as CatalogSeedBundle;
 const cauCatalogSource = evidence.get("cau-undergraduate-program-catalog-2027")!;
 const cauGuideSource = evidence.get("cau-undergraduate-admissions-2027")!;
+const cauDurationSource = evidence.get("cau-undergraduate-duration-policy-2026")!;
 const sjtuSource = evidence.get("sjtu-english-engineering-cluster-2027")!;
 const szuGuideSource = evidence.get("szu-doctoral-admissions-spring-2027")!;
 const szuCatalogSource = evidence.get("szu-doctoral-program-catalog-spring-2027")!;
@@ -125,25 +128,33 @@ if (cauPrograms.length !== 31 || Object.keys(cauProgramRows).length !== 31) {
 const existingCauUndergraduate = allPrograms.filter((program) => program.schoolSlug === "china-agricultural-university" && program.degreeLevel === "Undergraduate");
 if (existingCauUndergraduate.length !== 31) throw new Error(`CAU undergraduate catalog drift: expected 31 existing rows, found ${existingCauUndergraduate.length}.`);
 
-const refreshedCauPrograms: CatalogSeedProgram[] = cauPrograms.map((program) => ({
-  ...program,
-  tuitionAmount: 20000,
-  tuitionCurrency: "RMB",
-  tuitionPeriod: "year",
-  tuitionText: "RMB 20,000 per academic year",
-  sourceUrl: cauCatalogSource.finalUrl ?? cauCatalogSource.url,
-  sourceLabel: cauCatalogSource.label,
-  sourceSha256: cauCatalogSource.sha256,
-  capturedAt: cauCatalogSource.fetchedAt,
-  sourceFieldLineage: {
-    ...(program.sourceFieldLineage ?? {}),
-    nameEn: `2027 undergraduate program catalog, worksheet row ${cauProgramRows[program.slug]}`,
-    cscaSubjects: `2027 undergraduate program catalog, worksheet row ${cauProgramRows[program.slug]}, CSCA Required Examination Subjects`,
-    tuitionAmount: "2027 undergraduate admission guide, section 10 Fees",
-  },
-  verificationStatus: "verified",
-  lastVerifiedAt: cauGuideSource.fetchedAt,
-}));
+const cauVeterinaryMedicineSlug = "china-agricultural-university-undergraduate-veterinary-medicine-veterinary-medicine-chinese";
+const refreshedCauPrograms: CatalogSeedProgram[] = cauPrograms.map((program) => {
+  const hasPublishedFiveYearDuration = program.slug === cauVeterinaryMedicineSlug;
+  return {
+    ...program,
+    durationYears: hasPublishedFiveYearDuration ? 5 : 4,
+    tuitionAmount: 20000,
+    tuitionCurrency: "RMB",
+    tuitionPeriod: "year",
+    tuitionText: "RMB 20,000 per academic year",
+    sourceUrl: cauCatalogSource.finalUrl ?? cauCatalogSource.url,
+    sourceLabel: cauCatalogSource.label,
+    sourceSha256: cauCatalogSource.sha256,
+    capturedAt: cauCatalogSource.fetchedAt,
+    sourceFieldLineage: {
+      ...(program.sourceFieldLineage ?? {}),
+      nameEn: `2027 undergraduate program catalog, worksheet row ${cauProgramRows[program.slug]}`,
+      durationYears: hasPublishedFiveYearDuration
+        ? "2027 undergraduate program catalog, worksheet row 14, major introduction explicitly states a five-year duration; 2026 university undergraduate admissions charter, Article 10"
+        : "2026 university undergraduate admissions charter, Article 10: all undergraduate majors other than the Veterinary Medicine category have a four-year standard duration",
+      cscaSubjects: `2027 undergraduate program catalog, worksheet row ${cauProgramRows[program.slug]}, CSCA Required Examination Subjects`,
+      tuitionAmount: "2027 undergraduate admission guide, section 10 Fees",
+    },
+    verificationStatus: "verified",
+    lastVerifiedAt: cauDurationSource.fetchedAt,
+  };
+});
 
 const cauIntakes: CatalogSeedProgramIntake[] = refreshedCauPrograms.map((program) => ({
   programSlug: program.slug,
@@ -213,42 +224,55 @@ const sjtuIntake: CatalogSeedProgramIntake = {
   },
 };
 
-const szuPrograms: CatalogSeedProgram[] = szuProgramRows.map((row) => ({
-  slug: row.slug,
-  schoolSlug: "shenzhen-university",
-  citySlug: "shenzhen",
-  nameEn: row.nameEn,
-  nameZh: row.nameZh,
-  degreeLevel: "Doctoral",
-  durationYears: row.durationYears,
-  fieldCategory: row.fieldCategory,
-  subjectArea: row.nameEn,
-  teachingLanguage: row.teachingLanguage,
-  hskRequirement: row.teachingLanguage === "Chinese" ? "HSK 5 with a minimum score of 180" : undefined,
-  englishRequirement: row.teachingLanguage === "English" ? "English proficiency certificate; native English speakers may be exempt after university review" : undefined,
-  scholarshipText: "Eligible applicants may be considered for Guangdong Government, Shenzhen Universiade, or Liyuan International scholarships under the published 2027 guide.",
-  hasScholarship: true,
-  applicationUrl: "https://status.szu.edu.cn/szulxs/html/vue/stuBm.html?fxq=2027-03&lxslbm=10",
-  applicationNote: `Official program code ${row.code}; ${row.faculty}; March 2027 intake. Applicants must first contact a potential supervisor and obtain the required recommendation letter.`,
-  status: "active",
-  sourceUrl: szuCatalogSource.finalUrl ?? szuCatalogSource.url,
-  sourceLabel: szuCatalogSource.label,
-  sourceSha256: szuCatalogSource.sha256,
-  capturedAt: szuCatalogSource.fetchedAt,
-  sourceFieldLineage: {
-    nameEn: `official Spring 2027 doctoral program table, code ${row.code}, ${row.faculty}`,
-    nameZh: `official Spring 2027 doctoral program table, code ${row.code}, ${row.faculty}`,
-    degreeLevel: "official page title and degree section",
-    durationYears: `official program table, code ${row.code}, ${row.faculty}`,
-    teachingLanguage: "official catalog note: starred programs are Chinese-taught; all other programs are English-taught",
-    ...(row.teachingLanguage === "Chinese" ? { hskRequirement: "admission guide, Eligibility section 3" } : {}),
-    ...(row.teachingLanguage === "English" ? { englishRequirement: "admission guide, Eligibility section 3" } : {}),
-    scholarshipText: "admission guide, Available Scholarship Grants section",
-    applicationNote: "admission guide, Application Procedure; official catalog faculty and code columns",
-  },
-  verificationStatus: "verified",
-  lastVerifiedAt: szuGuideSource.fetchedAt,
-}));
+const szuLiberalArtsCategories = new Set(["Education", "Social Sciences", "Management"]);
+const szuPrograms: CatalogSeedProgram[] = szuProgramRows.map((row) => {
+  const tuitionAmount = szuLiberalArtsCategories.has(row.fieldCategory) ? 34000 : 40000;
+  const tuitionCategory = szuLiberalArtsCategories.has(row.fieldCategory) ? "liberal arts" : "science and engineering";
+  return {
+    slug: row.slug,
+    schoolSlug: "shenzhen-university",
+    citySlug: "shenzhen",
+    nameEn: row.nameEn,
+    nameZh: row.nameZh,
+    degreeLevel: "Doctoral",
+    durationYears: row.durationYears,
+    fieldCategory: row.fieldCategory,
+    subjectArea: row.nameEn,
+    teachingLanguage: row.teachingLanguage,
+    hskRequirement: row.teachingLanguage === "Chinese" ? "HSK 5 with a minimum score of 180" : undefined,
+    englishRequirement: row.teachingLanguage === "English" ? "English proficiency certificate; native English speakers may be exempt after university review" : undefined,
+    tuitionAmount,
+    tuitionCurrency: "CNY",
+    tuitionPeriod: "year",
+    tuitionText: `CNY ${tuitionAmount.toLocaleString("en-US")}/year (${tuitionCategory} fee category).`,
+    scholarshipText: "Eligible applicants may be considered for Guangdong Government, Shenzhen Universiade, or Liyuan International scholarships under the published 2027 guide.",
+    hasScholarship: true,
+    applicationUrl: "https://status.szu.edu.cn/szulxs/html/vue/stuBm.html?fxq=2027-03&lxslbm=10",
+    applicationNote: `Official program code ${row.code}; ${row.faculty}; March 2027 intake. Applicants must first contact a potential supervisor and obtain the required recommendation letter.`,
+    status: "active",
+    sourceUrl: szuCatalogSource.finalUrl ?? szuCatalogSource.url,
+    sourceLabel: szuCatalogSource.label,
+    sourceSha256: szuCatalogSource.sha256,
+    capturedAt: szuCatalogSource.fetchedAt,
+    sourceFieldLineage: {
+      nameEn: `official Spring 2027 doctoral program table, code ${row.code}, ${row.faculty}`,
+      nameZh: `official Spring 2027 doctoral program table, code ${row.code}, ${row.faculty}`,
+      degreeLevel: "official page title and degree section",
+      durationYears: `official program table, code ${row.code}, ${row.faculty}`,
+      teachingLanguage: "official catalog note: starred programs are Chinese-taught; all other programs are English-taught",
+      ...(row.teachingLanguage === "Chinese" ? { hskRequirement: "admission guide, Eligibility section 3" } : {}),
+      ...(row.teachingLanguage === "English" ? { englishRequirement: "admission guide, Eligibility section 3" } : {}),
+      tuitionAmount: `admission guide, Fees Standard; ${tuitionCategory} category selected from official program discipline code and catalog category`,
+      tuitionCurrency: "admission guide, Fees Standard",
+      tuitionPeriod: "admission guide, Fees Standard",
+      tuitionText: "admission guide, Fees Standard",
+      scholarshipText: "admission guide, Available Scholarship Grants section",
+      applicationNote: "admission guide, Application Procedure; official catalog faculty and code columns",
+    },
+    verificationStatus: "verified",
+    lastVerifiedAt: szuGuideSource.fetchedAt,
+  };
+});
 if (szuPrograms.length !== 21 || new Set(szuPrograms.map((program) => program.slug)).size !== 21) {
   throw new Error(`Expected 21 unique SZU Spring 2027 doctoral routes, found ${szuPrograms.length}.`);
 }
@@ -279,11 +303,136 @@ const programIntakes = [...cauIntakes, sjtuIntake, ...szuIntakes].sort((left, ri
 const generatedAt = [...evidence.values()].map((source) => source.fetchedAt).sort().at(-1)!;
 const schoolSlugs = new Set(programs.map((program) => program.schoolSlug));
 const citySlugs = new Set(programs.map((program) => program.citySlug).filter((slug): slug is string => Boolean(slug)));
+const baseSchool = (slug: string) => {
+  const school = (release.schools ?? []).find((row) => row.slug === slug);
+  if (!school) throw new Error(`Missing school dependency: ${slug}`);
+  return school;
+};
+const refreshedSchools: CatalogSeedSchool[] = [
+  {
+    ...baseSchool("china-agricultural-university"),
+    applicationLevel: "Undergraduate",
+    languageOfInstruction: "Chinese",
+    languageRequirement: "HSK Level 5 or above; Veterinary Medicine requires HSK Level 5 with a score of at least 250.",
+    hskRequirement: "HSK Level 5 or above; Veterinary Medicine requires HSK Level 5 with a score of at least 250.",
+    englishRequirement: undefined,
+    deadlineSummary: "Applications for the 2027 undergraduate intake are accepted from November 1, 2026 to May 31, 2027.",
+    tuitionSummary: "CNY 20,000 per academic year.",
+    applicationFee: "CNY 400, non-refundable.",
+    admissionsUrl: cauGuideSource.finalUrl ?? cauGuideSource.url,
+    cscaRequired: true,
+    cscaRequirement: "All undergraduate applicants must submit CSCA results; each required subject has a passing score of 50.",
+    cscaSubjects: [...new Set(refreshedCauPrograms.flatMap((program) => program.cscaSubjects ?? []))].sort(),
+    subjectTags: [...new Set(refreshedCauPrograms.map((program) => program.fieldCategory).filter((value): value is string => Boolean(value)))].sort(),
+    languageTags: ["Chinese", "HSK 5"],
+    sourceUrl: cauGuideSource.finalUrl ?? cauGuideSource.url,
+    sourceLabel: cauGuideSource.label,
+    sourceSha256: cauGuideSource.sha256,
+    capturedAt: cauGuideSource.fetchedAt,
+    sourceFieldLineage: {
+      nameEn: "official university identity and guide title",
+      nameZh: "official university identity",
+      citySlug: "official university context",
+      applicationLevel: "2027 undergraduate guide title",
+      languageOfInstruction: "Eligibility, Chinese-language proficiency requirement",
+      languageRequirement: "Eligibility section 7",
+      hskRequirement: "Eligibility section 7",
+      deadlineSummary: "Application Period",
+      tuitionSummary: "Fees section",
+      applicationFee: "Fees section",
+      admissionsUrl: "official 2027 guide URL",
+      cscaRequired: "Eligibility section 8",
+      cscaRequirement: "Eligibility section 8",
+      cscaSubjects: "2027 undergraduate program catalog CSCA columns",
+    },
+    verificationStatus: "verified",
+    lastVerifiedAt: cauGuideSource.fetchedAt,
+  },
+  {
+    ...baseSchool("shanghai-jiao-tong-university"),
+    applicationLevel: "Undergraduate",
+    languageOfInstruction: "English",
+    languageRequirement: "For non-native English speakers: TOEFL iBT, IELTS or Duolingo under the published thresholds and exemption rules.",
+    hskRequirement: "HSK Level 4 is required for graduation except for the published dual-degree or international-program exceptions.",
+    englishRequirement: refreshedSjtuProgram.englishRequirement,
+    deadlineSummary: "Early Action deadline November 1, 2026; regular application deadline March 31, 2027.",
+    tuitionSummary: "RMB 150,000 per year, subject to governing-authority record filing.",
+    applicationFee: "USD 75, non-refundable.",
+    admissionsUrl: sjtuSource.finalUrl ?? sjtuSource.url,
+    cscaRequired: true,
+    cscaRequirement: refreshedSjtuProgram.cscaRequirement,
+    cscaSubjects: ["Mathematics"],
+    subjectTags: ["Engineering", "Computer Science", "Materials Science", "Automation", "Mechanical Engineering", "Power and Energy Engineering"],
+    languageTags: ["English-taught", "HSK 4 at graduation"],
+    campusHighlights: ["Engineering Cluster", "Introductory engineering study at Global College", "September 2027 entry"],
+    sourceUrl: sjtuSource.finalUrl ?? sjtuSource.url,
+    sourceLabel: sjtuSource.label,
+    sourceSha256: sjtuSource.sha256,
+    capturedAt: sjtuSource.fetchedAt,
+    sourceFieldLineage: {
+      nameEn: "official page title",
+      nameZh: "official institution identity",
+      citySlug: "official university context",
+      applicationLevel: "official page title",
+      languageOfInstruction: "program introduction",
+      languageRequirement: "English language requirements",
+      hskRequirement: "program reminder and graduation requirement",
+      englishRequirement: "English language requirements",
+      deadlineSummary: "Application Deadlines for 2027 Admission",
+      tuitionSummary: "Fees section",
+      applicationFee: "Fees section",
+      admissionsUrl: "official 2027 route URL",
+      cscaRequired: "Test Scores section 1.1",
+      cscaRequirement: "Test Scores section 1.1",
+      cscaSubjects: "Test Scores section 1.1",
+    },
+    verificationStatus: "verified",
+    lastVerifiedAt: sjtuSource.fetchedAt,
+  },
+  {
+    ...baseSchool("shenzhen-university"),
+    applicationLevel: "Doctoral",
+    languageOfInstruction: "Chinese and English, program-dependent.",
+    languageRequirement: "Chinese-taught routes require HSK Level 5 with at least 180; English-taught routes require an English proficiency certificate, with native-speaker exemption subject to university review.",
+    hskRequirement: "HSK Level 5 with a minimum score of 180 for Chinese-taught routes.",
+    englishRequirement: "English proficiency certificate for English-taught routes; native English speakers may be exempt after university review.",
+    deadlineSummary: "Spring 2027 doctoral applications: October 10-November 30, 2026.",
+    tuitionSummary: "CNY 34,000/year for liberal arts; CNY 40,000/year for science and engineering; CNY 52,000/year for medicine, arts and physical education.",
+    applicationFee: "CNY 400 or USD 60, non-refundable.",
+    admissionsUrl: szuGuideSource.finalUrl ?? szuGuideSource.url,
+    cscaRequired: undefined,
+    cscaRequirement: undefined,
+    cscaSubjects: undefined,
+    subjectTags: [...new Set(szuPrograms.map((program) => program.fieldCategory).filter((value): value is string => Boolean(value)))].sort(),
+    languageTags: ["Chinese", "English", "HSK 5"],
+    campusHighlights: ["March 2027 doctoral intake", "21 officially listed doctoral routes", "Supervisor recommendation required before application"],
+    sourceUrl: szuGuideSource.finalUrl ?? szuGuideSource.url,
+    sourceLabel: szuGuideSource.label,
+    sourceSha256: szuGuideSource.sha256,
+    capturedAt: szuGuideSource.fetchedAt,
+    sourceFieldLineage: {
+      nameEn: "official guide institution title",
+      nameZh: "official guide institution title",
+      citySlug: "official contact information",
+      applicationLevel: "official Spring 2027 doctoral guide title",
+      languageOfInstruction: "official program catalog teaching-language note",
+      languageRequirement: "Eligibility section 3",
+      hskRequirement: "Eligibility section 3",
+      englishRequirement: "Eligibility section 3",
+      deadlineSummary: "Application Time",
+      tuitionSummary: "Fees Standard",
+      applicationFee: "Fees Standard",
+      admissionsUrl: "official Spring 2027 guide URL",
+    },
+    verificationStatus: "verified",
+    lastVerifiedAt: szuGuideSource.fetchedAt,
+  },
+].sort((left, right) => left.slug.localeCompare(right.slug));
 const candidate: CatalogSeedBundle = {
   version: 1,
   generatedAt,
   cities: (release.cities ?? []).filter((row) => citySlugs.has(row.slug)),
-  schools: (release.schools ?? []).filter((row) => schoolSlugs.has(row.slug)),
+  schools: refreshedSchools,
   programs,
   programIntakes,
   scholarships: [],
@@ -310,9 +459,9 @@ const review = {
   },
   evidence: [...evidence.values()].map(({ id, label, url, fetchedAt, sha256 }) => ({ id, label, url, fetchedAt, sha256 })).sort((a, b) => a.id.localeCompare(b.id)),
   notes: [
-    "CAU rows are limited to the 31 programs explicitly listed in the official 2027 workbook; graduate routes remain at 2026.",
+    "CAU rows are limited to the 31 programs explicitly listed in the official 2027 workbook; Veterinary Medicine carries the workbook's explicit five-year duration, while other unpublished route durations remain empty and graduate routes remain at 2026.",
     "The SJTU rolling program page changed from 2026 to 2027. Tuition is refreshed from RMB 120,000 to RMB 150,000 and the 2027 CSCA deadline is retained.",
-    "SZU adds only the 21 doctoral routes explicitly listed for the March 2027 intake; no undergraduate or master's route is rolled forward.",
+    "SZU adds only the 21 doctoral routes explicitly listed for the March 2027 intake. The guide's CNY 34,000 liberal-arts and CNY 40,000 science-and-engineering tuition categories are applied to the listed disciplines; no undergraduate or master's route is rolled forward.",
     "Nankai's 2027 undergraduate page is not imported because its program attachment requires a CAPTCHA and the page does not enumerate the 46 program names.",
     "No applicant or account data is present.",
   ],

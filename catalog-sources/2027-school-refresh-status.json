@@ -1,0 +1,1038 @@
+{
+  "version": 1,
+  "status": "discovery_audit_complete",
+  "checkedAt": "2026-10-20",
+  "publicationAuthorized": false,
+  "databaseWriteAuthorized": false,
+  "fullRefresh": {
+    "requestedSources": 1123,
+    "successfulSources": 1005,
+    "failedSources": 118,
+    "recoveredByRetry": 10,
+    "successfulSourcesAfterRetry": 1015,
+    "remainingFailedSources": 108,
+    "changedArtifacts": 228,
+    "newArtifacts": 38,
+    "unchangedArtifacts": 739,
+    "schoolsNeedingArtifactReview": 63,
+    "result": "No previously unresolved 2026-only school page was found to have switched to a general 2027 degree-admission cycle. Changed legacy URLs that now expose 2027 content were already represented by registered 2027 aliases, except for the newly captured DUT Type A bilateral scholarship."
+  },
+  "policy": {
+    "scope": "Official university admissions domains only.",
+    "meaning": "These records document discovery checks. They are not source evidence and do not authorize catalog fields or publication.",
+    "unresolved": "If no explicit 2027 degree-admission source is found, existing 2026 data is not relabeled as 2027."
+  },
+  "schools": [
+    {
+      "schoolSlug": "beijing-foreign-studies-university",
+      "result": "partial_january_and_march_2027_scholarship_routes_captured",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship page explicitly publishes January 2027 four-week and March 2027 one-semester routes. The official appendices provide coverage standards and application materials. General Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://osao.bfsu.edu.cn/info/2462/6812.htm",
+        "https://osao.bfsu.edu.cn/666.pdf",
+        "https://osao.bfsu.edu.cn/444.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "central-china-normal-university",
+      "result": "partial_spring_2027_scholarship_route_captured",
+      "notes": "The official guide publishes a March 2027 five-month International Chinese Language Teachers Scholarship route requiring HSK Level 3 score 180 plus HSKK, with tuition, accommodation, living allowance and medical insurance coverage and a September 17-October 31, 2026 application window. Monetary allowance amounts and general 2027 degree admissions are not published on this source and remain unresolved.",
+      "observedOfficialUrls": [
+        "https://dge.ccnu.edu.cn/info/1381/31051.htm",
+        "https://cice.ccnu.edu.cn/lhl_/gjzwjsjxj.htm"
+      ]
+    },
+    {
+      "schoolSlug": "harbin-engineering-university",
+      "result": "partial_spring_2027_language_scholarship_and_atomic_energy_routes_captured",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship guide explicitly publishes three five-month March 2027 one-semester directions with route-specific HSK/HSKK rules, full coverage, a CNY 2,500 monthly allowance and an October 31, 2026 deadline; those routes are captured. The separate College of Nuclear Science and Technology page confirms a 2027-2028 Atomic Energy Scholarship application guide. Its attachment download resolves to a CAPTCHA page, so the attachment was not bypassed and no attachment-only fields are inferred from older guides.",
+      "observedOfficialUrls": [
+        "https://cnst.hrbeu.edu.cn/info/1046/17941.htm",
+        "https://cnst.hrbeu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1934887394&wbfileid=DC1B1AC8227FC08BFD0F15D4E291CCE3",
+        "https://heucice.hrbeu.edu.cn/info/1071/2196.htm"
+      ]
+    },
+    {
+      "schoolSlug": "harbin-institute-of-technology",
+      "result": "partial_winter_2026_2027_nondegree_route_captured",
+      "notes": "The official short-term Chinese-language page explicitly publishes a winter session from December 28, 2026 to January 22, 2027 with fees, eligibility, application materials and a November 30 deadline. It does not establish general Fall 2027 degree admissions, which remain unresolved.",
+      "observedOfficialUrls": [
+        "https://studyathit.hit.edu.cn/ShortwTermPrograms/list.htm"
+      ]
+    },
+    {
+      "schoolSlug": "sichuan-university",
+      "result": "partial_2027_china_link_route_captured",
+      "notes": "The official 2026 China Link page explicitly allows 1-12 month research exchanges starting no later than August 31, 2027 and publishes funding, eligibility and a relative three-month application lead time. General Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://global.scu.edu.cn/oso/article/details/caf722e1-9e76-4376-b9a9-8f3eaa47e5c6"
+      ]
+    },
+    {
+      "schoolSlug": "zhejiang-university",
+      "result": "partial_spring_2027_scholarship_route_and_undergraduate_talent_plan_launch_captured",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship page explicitly publishes a March 2027 one-semester Chinese Language and Literature route. That route is captured. The official notice index dated September 29, 2026 also records the launch of the 2027 international undergraduate Talent Plan 2.0, but its detail link leaves the university domain and the university admissions pages still do not publish a general Fall 2027 degree guide, program table, fees or application window. No structured degree fields are inferred from the index title.",
+      "observedOfficialUrls": [
+        "https://iczu.zju.edu.cn/gjzwjsjxj/list.htm",
+        "https://iczu.zju.edu.cn/admissionsen/wachelorwswwegreewwrograms/list.htm",
+        "https://iczu.zju.edu.cn/tzgg/list.htm"
+      ]
+    },
+    {
+      "schoolSlug": "tongji-university",
+      "result": "partial_spring_2027_nondegree_and_exchange_captured",
+      "notes": "The current degree guide remains for the 2026 intake. The official application-information page now publishes the Spring 2027 non-degree and exchange deadline and the CSC ChinaLink deadline for nominated partner-institution exchange students. The current official international-student fee table separately confirms a CNY 600 school-level application fee. A grouped route and scholarship deadline are drafted; specific courses, route-specific tuition and Fall 2027 degree rounds remain unpublished and are not inferred.",
+      "observedOfficialUrls": [
+        "https://study.tongji.edu.cn/en/info/1075/1231.htm",
+        "https://study.tongji.edu.cn/en/ADMISSION/Application_Information_Updates.htm",
+        "https://study.tongji.edu.cn/en/CURRENT_STUDENTS/Free_Costs.htm"
+      ]
+    },
+    {
+      "schoolSlug": "beihang-university",
+      "result": "partial_spring_2027_scholarship_route_captured",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship guide explicitly publishes a March 2027 one-semester route. That route is captured; no general Fall 2027 degree-admission guide was found during this check.",
+      "observedOfficialUrls": [
+        "https://is.buaa.edu.cn/en/info/1040/1935.htm"
+      ]
+    },
+    {
+      "schoolSlug": "beijing-institute-of-technology",
+      "result": "partial_2027_nondegree_captured",
+      "notes": "The official 2027 pre-university and Chinese-language admission book is captured and converted into Spring/Fall draft routes; the general degree guide remains 2026.",
+      "observedOfficialUrls": [
+        "https://isc.bit.edu.cn/sylbt/177760fa6e89407ca3cab25c77601a47.htm"
+      ]
+    },
+    {
+      "schoolSlug": "fudan-university",
+      "result": "partial_2027_degree_and_nondegree_routes_captured",
+      "notes": "The 2027 School of Management international master's routes are captured. A newly published ICES guide adds separate Spring 2027 semester and academic-year Chinese-language routes with exact schedules, application dates, eligibility, materials, placement policy, application fee and qualified reference tuition. The School of Economics UIPE page says its 2027 degree guide will be released in October, but still links only the 2026 guide as of 2026-10-20; no UIPE 2027 dates or requirements are inferred. General undergraduate sources found remain for 2026 and are not rolled forward.",
+      "observedOfficialUrls": [
+        "https://www.fdsm.fudan.edu.cn/upec/2026/0904/c2660a37229/page.htm",
+        "https://iso.fudan.edu.cn/_upload/article/files/44/63/7f95ce7f43ba893d49b9d8127ac5/21e4e31c-3c5e-4488-ae63-322dda408127.pdf",
+        "https://ices.fudan.edu.cn/_t326/69/08/c6658a485640/page.htm",
+      "https://ices.fudan.edu.cn/_upload/article/files/9e/6d/2ced2d9b44efbf4f18ad73e0e179/15500f02-6855-4d61-8b60-b2eff5c90917.pdf",
+      "https://econ.fudan.edu.cn/uipe/Prospective_Students1/Entry_Requirements.htm"
+      ]
+    },
+    {
+      "schoolSlug": "shanghai-jiao-tong-university",
+      "result": "partial_2027_degree_and_nondegree_routes_captured",
+      "notes": "The 2027 English Engineering Cluster is published, and the official School of Humanities guide now adds a full-time long-term Chinese-language route for Spring and Fall 2027 with study periods, eligibility, materials, tuition, application fee, insurance and accommodation policy. The Fall deadline conflicts between the official DOCX (June 15) and webpage (June 30), so the conflict is retained without a structured deadlineDate. No general 2027 degree guide was found in this check.",
+      "observedOfficialUrls": [
+        "https://isc.sjtu.edu.cn/cn/content.aspx?flag=64&info_lb=205",
+        "https://ichinese.sjtu.edu.cn/en/programs/74/detail?sort=0",
+        "https://ichinese.sjtu.edu.cn/storage/other/f6/05/145480a51760436a046b170a69e305f6.docx"
+      ]
+    },
+    {
+      "schoolSlug": "beijing-normal-university",
+      "result": "partial_2027_nondegree_captured",
+      "notes": "Official Spring 2027 Chinese- and English-taught undergraduate- and graduate-credit plus scientific-research non-degree programs are captured and converted into draft routes; the degree brochure remains 2026. The credit pages are represented only at their published fee, duration, teaching-language and eligibility category level; linked 2026 major or course catalogs are not relabelled as 2027.",
+      "observedOfficialUrls": [
+        "https://admission-is.bnu.edu.cn/english/admissionprogram/nondegreeprogram/undergraduatecredi/b/104640.html",
+        "https://admission-is.bnu.edu.cn/english/admissionprogram/nondegreeprogram/graduatecreditprogram/c/index.html",
+        "https://admission-is.bnu.edu.cn/english/admissionprogram/nondegreeprogram/AdmissionBrochureforScientificResearchProgram/index.html",
+        "https://admission-is.bnu.edu.cn/english/admissionprogram/nondegreeprogram/undergraduatecredi/a/105146.html",
+        "https://admission-is.bnu.edu.cn/zsxm/fxlxm/yjsxfxm/ywsk/index.html",
+        "https://admission-is.bnu.edu.cn/english/admissionprogram/bachelordegreeprogram/admissionbrochure/index.html"
+      ]
+    },
+    {
+      "schoolSlug": "peking-university-health-science-center",
+      "result": "2027_undergraduate_medical_routes_captured",
+      "notes": "The official 2027 undergraduate brochure is captured and converted into Clinical Medicine and Stomatology routes with exact duration, HSK, CSCA or published equivalent-exam standards, two self-funded application rounds, interviews, tuition and Type A scholarship application requirements.",
+      "observedOfficialUrls": [
+        "https://oic.bjmu.edu.cn/lxby/zsjz/b722ea27933042248caf4884c1f1a50f.htm",
+        "https://oic.bjmu.edu.cn/docs//2026-10/9bdfe9b3e4ff43d0b317340d8d089ea7.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "donghua-university",
+      "result": "partial_spring_2027_scholarship_route_captured",
+      "notes": "The official International Chinese Language Teachers Scholarship page explicitly publishes a March 2027 one-semester Chinese Language and Literature route with the October 31, 2026 deadline, language threshold, application materials and full coverage. General Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://english.dhu.edu.cn/_t1264/2021/0119/c5221a273256/page.psp"
+      ]
+    },
+    {
+      "schoolSlug": "shanghai-international-studies-university",
+      "result": "2027_graduate_catalog_and_scholarships_captured",
+      "notes": "The official 2027 graduate catalog is captured and converted into 64 master's and 25 doctoral program rows with duration, teaching language, tuition, campus, scholarship eligibility and language requirements. The 2027 Chinese Government Scholarship Type B guide and the China Link route accepting starts through August 31, 2027 are also captured. General undergraduate admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://www.oisa.shisu.edu.cn/index.php/index/newscontent/cid/39/id/684.html",
+        "https://www.oisa.shisu.edu.cn/index.php/index/download_sys/url/%252F..%252FUploads%252F2026-10-16%252Fimge%252F6ad1d30260995.xls.html",
+        "https://www.oisa.shisu.edu.cn/index.php/en/index/newscontent/cid/130/id/663.html"
+      ]
+    },
+    {
+      "schoolSlug": "east-china-normal-university",
+      "result": "2027_winter_and_spring_nondegree_captured",
+      "notes": "Four official Winter/Spring 2027 non-degree routes are captured with route-level dates, fees and requirements: Standard Chinese, Business Chinese, Global China and Love (AI) Shanghai. The degree-program pages found in this check do not establish a Fall 2027 degree intake guide.",
+      "observedOfficialUrls": [
+        "https://lxs.ecnu.edu.cn/en_admission_chinese_language_programs_standard_chinese_language_program/list.htm",
+        "https://lxs.ecnu.edu.cn/en_admission_chinese_language_programs_business_chinese_language_program/list.htm",
+        "https://lxs.ecnu.edu.cn/en_admission_visiting_programs_global_china_program/list.htm",
+        "https://lxs.ecnu.edu.cn/en_admission_short_term_programs_AI/list.htm",
+        "https://lxs.ecnu.edu.cn/en_admission_degree_programs_undergraduate_program/"
+      ]
+    },
+    {
+      "schoolSlug": "university-of-international-business-and-economics",
+      "result": "partial_spring_2027_scholarship_route_captured",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship page explicitly publishes an October 31, 2026 deadline for the March 2027 one-semester Basic Chinese or Business Chinese route. The category paragraph contains a conflicting March 2026 reference, which is preserved as a review note rather than silently corrected. General Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://sie.uibe.edu.cn/zslq2/jxjsq2/gjzwjsjxj2/index.htm",
+        "https://sie.uibe.edu.cn/en/Newsss/NotAnn/f220e1682663490c9a562aeec0676155.htm"
+      ]
+    },
+    {
+      "schoolSlug": "university-of-science-and-technology-beijing",
+      "result": "2027_undergraduate_programs_and_graduate_degree_categories_captured",
+      "notes": "The official 2027 master's and doctoral guide is captured as four degree-and-language category routes. The separately published 2027 undergraduate program list and application guide add 44 explicit standard, bilingual and special undergraduate routes with application dates, tuition, language, CSCA, materials and scholarship information. A stale 2026-intake disclaimer in the page titled 2027 Undergraduate Admission Brochure is retained as an unresolved source conflict and is not used to override the separate 2027 guide dates.",
+      "observedOfficialUrls": [
+        "https://iscen.ustb.edu.cn/Admissions/6a362321ddfe4dd9ab8edb6d1822fd07.htm",
+        "https://iscen.ustb.edu.cn/Admissions/6af7b4dc01f248db8976d07d4fb4e592.htm",
+        "https://iscen.ustb.edu.cn/Admissions/072526f8750843e0a1b124db966be700.htm",
+        "https://iscen.ustb.edu.cn/Admissions/c1075bf6cf1f481da2e43a496e89af78.htm",
+        "https://iscen.ustb.edu.cn/Admissions/def87c05661b4842880ed9ca6dcd9dc6.htm",
+        "https://iscen.ustb.edu.cn/Admissions/6c71185c5a5345f5ac0fe79974564410.htm",
+        "https://iscen.ustb.edu.cn/Admissions/7a574bf57214495aa87b81647650f3da.htm"
+      ]
+    },
+    {
+      "schoolSlug": "huazhong-university-of-science-and-technology",
+      "result": "partial_2027_nondegree_exchange_and_scholarship_captured",
+      "notes": "Official 2027 foundation, Chinese-language, partner-exchange and scholarship information is captured. The exchange guide adds 17 officially listed English-medium visiting programs with Spring and Fall 2027 rounds, language thresholds, materials and reference living costs. The refreshed Youth of Excellence guide adds the English-taught Master of International Business and Master of Public Administration (IMPA), a two-year 1+1 format, first-year full scholarship coverage, eligibility and March 2027 deadlines. Agreement-specific exchange tuition, numeric Youth of Excellence tuition and allowance, and general Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://iso.hust.edu.cn/info/1194/5126.htm",
+        "https://iso.hust.edu.cn/info/1194/5129.htm",
+        "https://iso.hust.edu.cn/info/1194/5130.htm",
+        "https://iso.hust.edu.cn/2027EnglishmediumProgramsforVisitingStudentandScholar.pdf",
+        "https://iso.hust.edu.cn/Scholarships/Scholarship_Information_and_Tips.htm",
+        "https://iso.hust.edu.cn/info/1194/4638.htm",
+        "https://iso.hust.edu.cn/Scholarships/YESCP.htm"
+      ]
+    },
+    {
+      "schoolSlug": "zhejiang-university-of-technology",
+      "result": "spring_2027_scholarship_route_already_current",
+      "notes": "No explicit 2027 degree-admission guide was found. The reviewed 100-school baseline already contains the registered Spring 2027 one-semester International Chinese Language Teachers Scholarship program, intake and scholarship record, so no duplicate delta row is created.",
+      "observedOfficialUrls": [
+        "https://www.gjxy.zjut.edu.cn/index.php/en/scholarship/international-chinese-language-teachers-scholarship"
+      ]
+    },
+    {
+      "schoolSlug": "xi-an-jiaotong-university",
+      "result": "2027_foundation_chinese_language_master_and_doctoral_programs_captured",
+      "notes": "The official 2027 Chinese-taught foundation page is captured and converted into IFP and 1+4 draft routes. The Xi'an-campus Chinese-language guide adds one-semester and one-academic-year options for Spring and Fall 2027, with application deadlines, eligibility, fees, materials, placement levels and a separate scholarship route. Official October 19, 2026 workbooks now add 73 master's and 74 doctoral 2027 program routes with program codes, teaching languages, durations, degree types and supervisor acceptance-letter requirements. The degree catalogs do not publish a general application window, tuition schedule or general language-score threshold, so those fields remain unresolved.",
+      "observedOfficialUrls": [
+        "https://sie.xjtu.edu.cn/en/info/1165/3212.htm",
+        "https://sie.xjtu.edu.cn/en/info/1104/3213.htm",
+        "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Master_Program.htm",
+        "https://sie.xjtu.edu.cn/en/js/M.xlsx",
+        "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Doctoral_Program.htm",
+        "https://sie.xjtu.edu.cn/en/js/D.xlsx"
+      ]
+    },
+    {
+      "schoolSlug": "dalian-university-of-technology",
+      "result": "partial_2027_degree_categories_and_scholarship_captured",
+      "notes": "Official 2027 undergraduate, master and doctoral admission pages and the Type B scholarship are captured. Degree-level, teaching-language and tuition-category routes are drafted; exact major and CSCA-subject attachments remain unresolved because the university download requires a CAPTCHA.",
+      "observedOfficialUrls": [
+        "https://sie.dlut.edu.cn/zsxx/xlxm/bks/bkszwskzy.htm",
+        "https://sie.dlut.edu.cn/info/1179/2480.htm",
+        "https://sie.dlut.edu.cn/zsxx/xlxm/ssyjs/yjszwskzy.htm",
+        "https://sie.dlut.edu.cn/zsxx/xlxm/ssyjs/yjsywskzy.htm",
+        "https://sie.dlut.edu.cn/zsxx/xlxm/bsyjs/bsszwskzy.htm",
+        "https://sie.dlut.edu.cn/zsxx/xlxm/bsyjs/bssywskzy.htm",
+        "https://sie.dlut.edu.cn/info/1024/1991.htm"
+      ]
+    },
+    {
+      "schoolSlug": "guangdong-university-of-foreign-studies",
+      "result": "partial_spring_2027_degree_and_nondegree_routes_captured",
+      "notes": "The official Spring 2027 degree notice explicitly names the Chinese B.A. and Chinese (Business Chinese) routes. Those two routes are captured with current official descriptions, fees, CSCA and HSK rules, materials and the December 10 deadline. Separate official notices add the Spring 2027 Chinese-language semester and one-month Winter 2027 Chinese-language routes with exact schedules, fees and deadlines. Unlisted routes and an unscheduled academic-year intake are not inferred.",
+      "observedOfficialUrls": [
+        "https://iie-en.gdufs.edu.cn/info/1174/2795.htm",
+        "https://iie.gdufs.edu.cn/info/1099/5938.htm",
+        "https://iie-en.gdufs.edu.cn/info/1132/2191.htm",
+        "https://iie-en.gdufs.edu.cn/info/1174/2785.htm",
+        "https://iie-en.gdufs.edu.cn/info/1174/2775.htm"
+      ]
+    },
+    {
+      "schoolSlug": "beijing-language-and-culture-university",
+      "result": "2027_undergraduate_graduate_nondegree_and_spring_scholarship_captured",
+      "notes": "The official image-only 2027 undergraduate and non-degree program tables are captured, rendered and transcribed into draft routes. The official two-page 2027 graduate table adds 58 master's and 19 doctoral Fall routes with printed teaching language, duration, campus, annual tuition and a July 31, 2027 deadline. The official Beijing International Students Scholarship page adds a March 2027 round covering first-year tuition for eligible bachelor, master and doctoral freshmen. The printed September 1, 2026 age-reference date is preserved. Associate-program tuition figures still require confirmation and remain omitted.",
+      "observedOfficialUrls": [
+        "https://admission.blcu.edu.cn/2026/1014/c1572a3064/page.htm",
+        "https://admission.blcu.edu.cn/2026/1014/c1572a3065/page.htm",
+        "https://admission.blcu.edu.cn/2026/1014/c1572a3066/page.htm",
+        "https://admission.blcu.edu.cn/_upload/article/files/07/a9/2474dce243c9a5e608cd8a02a161/7521c31b-754b-4861-96c8-c14b9983bb17.pdf",
+        "https://admission.blcu.edu.cn/_upload/article/files/39/74/e89e82e5490687d93679a0c4b3c4/206c8a45-4a29-45e6-9870-cfd697dd5c60.pdf",
+        "https://admission.blcu.edu.cn/_upload/article/files/35/ca/b253dec34e6699c6ea1f6e98519d/15f00af8-d2e9-4265-87b3-2648688c5193.pdf",
+        "https://admission.blcu.edu.cn/en/98/list.psp"
+      ]
+    },
+    {
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+      "result": "complete_current_2027_route_catalog_captured",
+      "notes": "The current official catalog's complete 33-route set is captured: six English-taught bachelor's programs, 25 master's programs, foundation and Chinese-language routes, plus the current NUAA Freshman, Nanjing Government, Silk Road and Chinese Government scholarship schemes. The refreshed foundation page now publishes one Spring route from March 9 to early July 2027, CNY 8,400 tuition including medical insurance, a USD 65 application fee, a December 30, 2026 deadline and conditional bachelor's progression after a satisfactory CSCA result. The visible bachelor's Fall deadline of May 30 conflicts with June 1 in some Course JSON-LD, so the earlier visible date is retained. Seven master's pages contain contradictory undergraduate prerequisite copy; CUAC leaves that copied material unresolved rather than inferring it.",
+      "observedOfficialUrls": [
+        "https://ciee.nuaa.edu.cn/programs",
+        "https://ciee.nuaa.edu.cn/admissions",
+        "https://ciee.nuaa.edu.cn/academics/scholarships-fees",
+        "https://ciee.nuaa.edu.cn/programs/bachelors-in-aeronautical-engineering",
+        "https://ciee.nuaa.edu.cn/programs/bachelors-in-artificial-intelligence-ai",
+        "https://ciee.nuaa.edu.cn/programs/bachelors-in-civil-engineering",
+        "https://ciee.nuaa.edu.cn/programs/bachelors-in-electrical-and-electronics-engineering",
+        "https://ciee.nuaa.edu.cn/programs/bachelors-in-international-business-trade",
+        "https://ciee.nuaa.edu.cn/programs/bachelors-in-mechanical-engineering",
+        "https://ciee.nuaa.edu.cn/programs/pre-engineeringpre-business-foundation-program",
+        "https://ciee.nuaa.edu.cn/programs/chinese-language-program"
+      ]
+    },
+    {
+      "schoolSlug": "nankai-university",
+      "result": "partial_2027_undergraduate_master_doctoral_groups_and_scholarships_captured",
+      "notes": "The official 2027 undergraduate, master's and doctoral guides are captured with their application periods, eligibility, language requirements, fees and usable scholarship routes. The graduate guides publish 163 master's programs (8 English-taught) and 129 doctoral programs (2 English-taught); these are represented as four degree-and-medium groups because the exact XLSX catalogs require a university CAPTCHA. The undergraduate 46-major XLSX is protected by the same control. Exact majors, program-specific tuition, catalog exceptions and CSCA mappings remain unresolved and are not inferred.",
+      "observedOfficialUrls": [
+        "https://ensie.nankai.edu.cn/info/1089/1357.htm",
+        "https://ensie.nankai.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1793829979&wbfileid=15097687",
+        "https://ensie.nankai.edu.cn/info/1085/1358.htm",
+        "https://ensie.nankai.edu.cn/DEGREE_PROGRAMS/phd/pro.htm"
+      ]
+    },
+    {
+      "schoolSlug": "qingdao-university",
+      "result": "spring_2027_nondegree_already_current",
+      "notes": "The official Spring 2027 Chinese-language guide was rechecked page by page. The reviewed 100-school baseline already contains the matching non-degree program and Spring 2027 intake with the published deadline, tuition, application fee, insurance fee, eligibility and materials, so no duplicate delta row is created.",
+      "observedOfficialUrls": [
+        "https://istudy.qdu.edu.cn/uploads/attached/file/20260916/E916493127159720.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "central-south-university",
+      "result": "partial_explicit_spring_2027_scholarship_guide_captured",
+      "notes": "The dedicated official Spring 2027 International Chinese Language Teachers Scholarship guide now directly verifies the March 2027 five-month Chinese-language route, HSK/HSKK threshold, full coverage, CNY 2,500 monthly allowance, CNY 400 insurance standard and October 31 application deadline. The application-fee amount and general Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://intl.csu.edu.cn/English/Scholarship/International_Chinese_Language_Teachers_Scholars.htm",
+        "https://intl.csu.edu.cn/info/1145/3987.htm"
+      ]
+    },
+    {
+      "schoolSlug": "chang-an-university",
+      "result": "spring_2027_programs_and_scholarships_captured",
+      "notes": "The official 2027 Spring Intake guide confirms the existing March 2027 International Chinese Language Teachers Scholarship route and adds a self-funded Chinese-language route plus a 1-12 month China Link research exchange route. Fixed deadlines are captured only where published; China Link requires email confirmation and therefore has no invented deadlineDate. The university search index exposes a corrected 2026-2027 Chinese Government Scholarship Type B path under c8645, but the exact official page currently returns HTTP 410 to the deterministic collector; Type A also returns HTTP 410. Neither inaccessible page is converted into catalog evidence. General Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://ies.chd.edu.cn/2026/0228/c8839a258742/page.htm",
+        "https://ies.chd.edu.cn/en/2026/1013/c8645a263011/page.htm",
+        "https://ies.chd.edu.cn/en/2025/1106/c8645a256964/page.htm",
+        "https://ies.chd.edu.cn/en/2025/1106/c8889a256963/page.htm"
+      ]
+    },
+    {
+      "schoolSlug": "jilin-university",
+      "result": "partial_spring_2027_scholarship_and_pre_medical_route_captured",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship guide explicitly publishes a March 2027 one-semester route. The newly published 2027 Bridging Medicine guide adds a March-June non-degree pre-medical route with eligibility, curriculum, CNY 12,000 tuition, CNY 750-1,500 monthly accommodation and a December 31, 2026 submission deadline. Its teaching language and language-score threshold are not published and remain absent. The scholarship coverage attachment remains CAPTCHA-protected and was not bypassed; general Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://cie.jlu.edu.cn/info/1079/3666.htm",
+        "https://cie.jlu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1407748499&wbfileid=18047278",
+        "https://cie.jlu.edu.cn/info/1079/3784.htm"
+      ]
+    },
+    {
+      "schoolSlug": "liaoning-university-of-traditional-chinese-medicine",
+      "result": "partial_spring_2027_self_funded_route_captured",
+      "notes": "The official 2026-2027 Chinese-language guide explicitly publishes a Spring 2027 self-funded one-semester route with fees and deadline. General Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://gjhzjlc.lnutcm.edu.cn/info/1293/4132.htm"
+      ]
+    },
+    {
+      "schoolSlug": "shanghai-university",
+      "result": "partial_spring_2027_scholarship_and_pre_university_routes_captured",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship guide explicitly publishes a March 2027 one-semester International Chinese Language Education route. The separate official Spring 2027 pre-university guide publishes Science and Engineering and Humanities, Economics and Management tracks with exact application dates, entry requirements, curriculum and fees. General Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://apply.shu.edu.cn/upload/shangda/2/c/0/2026%E5%B9%B4%E4%B8%8A%E6%B5%B7%E5%A4%A7%E5%AD%A6%E5%9B%BD%E9%99%85%E4%B8%AD%E6%96%87%E6%95%99%E5%B8%88%E5%A5%96%E5%AD%A6%E9%87%91%EF%BC%88%E5%AD%94%E5%AD%90%E5%AD%A6%E9%99%A2%E5%A5%96%E5%AD%A6%E9%87%91%EF%BC%89%E7%94%B3%E8%AF%B7%E6%8C%87%E5%8D%97.pdf",
+        "https://apply.shu.edu.cn/upload/shangda/1/2/1/Pre-University%20Program%20of%20Shanghai%20University(2027%20Spring%20Intake%EF%BC%89.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "zhejiang-gongshang-university",
+      "result": "spring_2027_scholarship_and_self_funded_routes_captured",
+      "notes": "The official scholarship page publishes a March 2027 one-semester route, and the official program page adds a Spring 2027 self-funded Chinese Language and Culture route with eligibility, materials and a December 31 application deadline. The current official fee table confirms a CNY 400 application fee and Chinese Language and Culture tuition of CNY 7,000 per semester or CNY 14,000 per academic year. General Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://sie.zjgsu.edu.cn/gjen/_t75/InternationalChineseLanguageTeacherswConfuciusInstitutewScholarship/list.psp",
+        "https://sie.zjgsu.edu.cn/gjen/2131/list.htm",
+        "https://sie.zjgsu.edu.cn/gjen/FEES/list.htm"
+      ]
+    },
+    {
+      "schoolSlug": "sun-yat-sen-university",
+      "result": "partial_spring_summer_2027_routes_captured",
+      "notes": "The official pre-university page explicitly gives an expected February 2027 entry for its one-semester option, and the official China Link page publishes a December 1, 2026 deadline for Spring/Summer 2027 research exchange. General Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://iso.sysu.edu.cn/en/application/nondegree/1421644.htm",
+        "https://iso.sysu.edu.cn/cn/jxjxm/1420931.htm"
+      ]
+    },
+    {
+      "schoolSlug": "tianjin-foreign-studies-university",
+      "result": "partial_spring_2027_language_and_2027_2028_graduate_scholarship_routes_captured",
+      "notes": "The official Spring 2027 brochure publishes one-semester and one-academic-year Chinese-language options with eligibility, application materials, CNY 6,700/semester or CNY 13,400/year tuition, insurance, accommodation, December 31, 2026 deadline and February 24-25, 2027 registration. The official 2027-2028 Chinese Government Scholarship High-Level Graduate Program notice adds a full Type B master's and doctoral scholarship with exact coverage, language thresholds and a February 21, 2027 university deadline. Its major-list attachment is CAPTCHA-protected, so exact eligible program rows and durations remain unresolved; general self-funded Fall 2027 degree admissions are not inferred.",
+      "observedOfficialUrls": [
+        "https://isa.tjfsu.edu.cn/info/1040/1918.htm",
+        "https://isa.tjfsu.edu.cn/info/1040/1931.htm"
+      ]
+    },
+    {
+      "schoolSlug": "tianjin-university-of-technology",
+      "result": "partial_spring_2027_self_funded_route_captured",
+      "notes": "The official page publishes a March 2027 one-semester Chinese-language route with its 16-week schedule, eligibility, materials, tuition, insurance, accommodation and December 15, 2026 deadline. The page prints an October 8, 2025 opening date despite being published in October 2026; that conflict is preserved and no openDate is emitted. General Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://chinese.tjut.edu.cn/info/1053/1143.htm"
+      ]
+    },
+    {
+      "schoolSlug": "tianjin-normal-university",
+      "result": "partial_spring_2027_scholarship_route_captured",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship guide explicitly publishes a March 2027 one-semester route for International Chinese Language Education or Chinese Language and Literature with the October 31, 2026 deadline, HSK/HSKK threshold and application materials. The guide does not restate the monetary coverage package, and general Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://gjjl.tjnu.edu.cn/info/1265/6540.htm",
+        "https://gjjl.tjnu.edu.cn/__local/A/E9/C1/4B9C4EFA1220ED14AAC98D6A162_1C7CC2D9_3A7A3.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "chongqing-normal-university",
+      "result": "partial_spring_2027_scholarship_route_captured",
+      "notes": "The official guide publishes a March 2027 five-month International Chinese Language Teachers Scholarship route with track-specific HSK/HSKK thresholds, full coverage, a CNY 2,500 monthly allowance and an October 31, 2026 deadline. General Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://international.cqnu.edu.cn/info/1331/5225.htm"
+      ]
+    },
+    {
+      "schoolSlug": "china-academy-of-art",
+      "result": "partial_spring_2027_china_link_route_captured",
+      "notes": "The official guide publishes a March 2027 China Link short-term exchange route with art-course scope, teaching languages, full funding and stipend amounts. It gives a relative three-month application lead time rather than an exact calendar deadline. General 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://admission.caa.edu.cn/en/Admissions/China_Link_Short_term_Exchange_Scholarship_Progr.htm"
+      ]
+    },
+    {
+      "schoolSlug": "wuhan-university",
+      "result": "partial_spring_2027_self_funded_nondegree_window_captured",
+      "notes": "The official postgraduate guide publishes an October-December 2026 application window for Spring 2027 self-funded non-degree study. It does not name the available programs, tuition, duration or route-specific language requirements, so those fields remain absent.",
+      "observedOfficialUrls": [
+        "https://admission.whu.edu.cn/info/1141/6112.htm"
+      ]
+    },
+    {
+      "schoolSlug": "jinan-university",
+      "result": "partial_summer_2027_visiting_student_routes_captured",
+      "notes": "The official 2026-2027 session page publishes three 2027 summer visiting-student sessions with dates, English eligibility, credit, duration and fee information. It does not publish a fixed application deadline or establish general Fall 2027 degree admissions.",
+      "observedOfficialUrls": [
+        "https://oiss.jnu.edu.cn/main.htm"
+      ]
+    },
+    {
+      "schoolSlug": "university-of-science-and-technology-of-china",
+      "result": "partial_2026_2027_visiting_student_route_captured",
+      "notes": "The official CAS International Visiting Student Program publishes a one- to six-month USTC research-visit route scheduled between August 20, 2026 and June 30, 2027, with a March 21, 2026 application deadline, exact funding amounts and application materials. The deadline has passed, and general Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://sz.ustc.edu.cn/upload/202603/04/202603041533422206.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "yanshan-university",
+      "result": "complete_current_latest_public_guide_2026_2027_2028_internal_plan_only",
+      "notes": "Rechecked on October 20, 2026. The official notice confirms that Yanshan University collected its 2027-2028 international degree-program and supervisor plans in September 2026, but final quotas still depend on later approvals. The refreshed public international guide still identifies the 2026 cycle, so the current school source is verified without creating a 2027 intake or carrying forward a 2026 date.",
+      "observedOfficialUrls": [
+        "https://notice.ysu.edu.cn/info/2059/25797.htm",
+        "https://admission.ysu.edu.cn/",
+        "https://ies.ysu.edu.cn/info/1167/8510.htm"
+      ]
+    },
+    {
+      "schoolSlug": "ocean-university-of-china",
+      "result": "partial_2026_2027_scholarships_captured_general_guide_still_2026",
+      "notes": "The official 2027 master's guide found in this check is for China's national graduate-admission route, not international-student admission and remains excluded. The current international admission-brochures index was captured again on 2026-10-20 and still lists only 2026 international routes. Four distinct 2026/2027 Chinese Government Scholarship routes are captured, including the Marine Scholarship notice that incorporates the High-Level Graduate Student Program guide by reference; none is relabeled as a Fall 2027 intake.",
+      "observedOfficialUrls": [
+        "https://yz.ouc.edu.cn/2026/0930/c31646a538356/page.htm",
+        "https://sie.ouc.edu.cn/english/AdmissionBrochures/list.htm",
+        "https://sie.ouc.edu.cn/2025/1215/c17904a513186/page.htm"
+      ]
+    },
+    {
+      "schoolSlug": "east-china-university-of-science-and-technology",
+      "result": "complete_current_latest_public_guide_2026_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The current official College of International Education page still publishes the 2026 international undergraduate guide. Its tuition ranges and source metadata are refreshed, but references to passport validity beyond September 1, 2027 remain document-validity rules rather than evidence of a 2027 intake.",
+      "observedOfficialUrls": [
+        "https://cie.ecust.edu.cn/notices/514.html",
+        "https://cie.ecust.edu.cn/notices/"
+      ]
+    },
+    {
+      "schoolSlug": "south-china-normal-university",
+      "result": "complete_current_latest_public_guide_2026_outbound_2027_route_excluded",
+      "notes": "Rechecked on October 20, 2026. The official international-student undergraduate guide remains for 2026. Current tuition and source metadata are refreshed; the Spring 2027 visiting-student notice remains excluded because it is outbound for currently enrolled SCNU students.",
+      "observedOfficialUrls": [
+        "https://io.scnu.edu.cn/a/20260401/2099.html",
+        "https://io.scnu.edu.cn/a/20260918/2159.html"
+      ]
+    },
+    {
+      "schoolSlug": "shanghai-university-of-electric-power",
+      "result": "complete_current_international_guide_still_2026_domestic_2027_guide_excluded",
+      "notes": "The official international-admission index still lists 2026 as the latest international guide. The newly published 2027 master's guide belongs to China's national graduate-admission route and is excluded from the international catalog.",
+      "observedOfficialUrls": [
+        "https://xxgk.shiep.edu.cn/6206/list.htm",
+        "https://yjsc.shiep.edu.cn/4e/3d/c948a282173/page.htm"
+      ]
+    },
+    {
+      "schoolSlug": "tianjin-university-of-finance-and-economics",
+      "result": "complete_current_latest_public_guide_2026_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The official International Education College still publishes the 2026 undergraduate guide as its latest degree-cycle source. Current tuition and accommodation values are retained, but recurring Spring/Autumn portal deadlines are not promoted into a 2027 intake without a cycle-specific notice.",
+      "observedOfficialUrls": [
+        "https://inter.tjufe.edu.cn/info/1065/1662.htm",
+        "https://inter.tjufe.edu.cn/info/1065/1663.htm",
+        "https://inter.tjufe.edu.cn/zsxx1.htm",
+        "https://inter.tjufe.edu.cn/info/1065/1660.htm",
+        "https://inter.tjufe.edu.cn/info/1065/1661.htm"
+      ]
+    },
+    {
+      "schoolSlug": "east-china-jiaotong-university",
+      "result": "complete_current_latest_public_guide_2026_domestic_2027_guide_excluded",
+      "notes": "Rechecked on October 20, 2026. The official international-student policy page still publishes the 2026 English-taught brochure. Current tuition and source metadata are refreshed; the 2027 master's guide remains excluded because it is a domestic national-examination route.",
+      "observedOfficialUrls": [
+        "https://gjc.ecjtu.edu.cn/lhlx/zszc.htm",
+        "https://yjsy.ecjtu.edu.cn/info/1041/6932.htm"
+      ]
+    },
+    {
+      "schoolSlug": "guangxi-medical-university",
+      "result": "complete_current_latest_public_guide_2026_domestic_2027_guide_excluded",
+      "notes": "Rechecked on October 20, 2026. The official International Education College undergraduate guide remains for 2026. Source verification is refreshed, but the official 2027 full-time master's guide remains excluded because it belongs to the domestic national graduate-admission route.",
+      "observedOfficialUrls": [
+        "https://gjy.gxmu.edu.cn/cn/xwtz/tzgg/t224265.html",
+        "https://yjs.gxmu.edu.cn/zsgz/zsgg/t240238.html"
+      ]
+    },
+    {
+      "schoolSlug": "kunming-medical-university",
+      "result": "complete_current_international_guide_still_2026_domestic_2027_notices_excluded",
+      "notes": "The international MBBS source located in this check points applicants to the 2026 scholarship cycle. The 2027 notices on the graduate-school site are domestic examination and recommendation routes, so they do not establish a 2027 international intake.",
+      "observedOfficialUrls": [
+        "https://www.kmmu.edu.cn/upload/20251111/2025111111371682.pdf",
+        "https://www.kmmu.edu.cn/Pages_320_61371.aspx"
+      ]
+    },
+    {
+      "schoolSlug": "xuzhou-medical-university",
+      "result": "complete_current_international_guide_still_2026_outbound_2027_route_excluded",
+      "notes": "The latest official foreign-student brochure found remains for 2026. The 2027 winter visiting notice is an outbound program for current Xuzhou Medical University students and is excluded from inbound international admissions.",
+      "observedOfficialUrls": [
+        "https://gjjy.xzhmu.edu.cn/__local/C/19/DE/1FEC275609B0692C77021342B62_585D1550_2EDAE.pdf",
+        "https://dice.xzhmu.edu.cn/info/1017/3791.htm"
+      ]
+    },
+    {
+      "schoolSlug": "beijing-university-of-chemical-technology",
+      "result": "partial_2027_korean_preparatory_undergraduate_pathway_captured",
+      "notes": "The official international-student site still presents the 2026 general undergraduate guide, and the newly published 2027 master's materials belong to China's national graduate-admission route and remain excluded. A separate official pathway for Korean high-school graduates accepts applications through January 10, 2027, provides eight months of Chinese and academic preparation, and requires CSCA plus the completion examination for undergraduate progression. That narrow route is captured without inferring general 2027 degree admissions, tuition or named scholarship terms.",
+      "observedOfficialUrls": [
+        "https://study.buct.edu.cn/cn/index",
+        "https://graduate.buct.edu.cn/2026/0930/c14023a223294/page.htm",
+        "https://apply.buct.edu.cn/14728/list.htm"
+      ]
+    },
+    {
+      "schoolSlug": "beijing-forestry-university",
+      "result": "complete_current_school_cost_and_workflow_general_guide_still_2026",
+      "notes": "The latest official international undergraduate prospectus remains the 2026 cycle, and its program catalog may span the 2026-2027 academic year without establishing a new 2027 intake. Current official pages now refresh degree and non-degree tuition, accommodation prices and the five-step application workflow; no 2027 dates or requirements are inferred.",
+      "observedOfficialUrls": [
+        "https://english.bjfu.edu.cn/docs/2025-11/4092e0495fdc4546ab0774035f5ab258.pdf",
+        "https://ic.bjfu.edu.cn/Admission/ApplicationProcedure/index.htm",
+        "https://ic.bjfu.edu.cn/Admission/TuitionandAccommodation/index.htm"
+      ]
+    },
+    {
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications",
+      "result": "complete_current_latest_public_guide_2026_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The registered official 2026 international admissions brochure remains retrievable and is recorded as the latest public international cycle source. Domestic 2027 recommendation and graduate-admission routes remain excluded, and no 2026 intake date is carried forward as 2027.",
+      "observedOfficialUrls": [
+        "https://ois.bupt.edu.cn/",
+        "https://zsc.bupt.edu.cn/info/1016/1209.htm",
+        "https://xxgk.bupt.edu.cn/__local/4/9D/6D/1EB441EB8B730D5E91D1635D888_A9DEF37C_2D5B4.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "central-university-of-finance-and-economics",
+      "result": "complete_current_latest_public_guide_2026_domestic_2027_guide_excluded",
+      "notes": "Rechecked on October 20, 2026. The official international admissions guide still lists 2026 as its latest international-student cycle. Current tuition and fee information is retained, while the domestic-route 2027 International Chinese Education master's notice remains excluded and no 2026 deadline is carried forward.",
+      "observedOfficialUrls": [
+        "https://sice.cufe.edu.cn/zsxx.htm",
+        "https://sice.cufe.edu.cn/admissions/info/1045/3419.htm",
+        "https://sice.cufe.edu.cn/admissions/info/1045/3420.htm",
+        "https://sice.cufe.edu.cn/info/1012/4319.htm"
+      ]
+    },
+    {
+      "schoolSlug": "shanghai-university-of-political-science-and-law",
+      "result": "complete_current_latest_public_guide_2026_domestic_2027_routes_excluded",
+      "notes": "Rechecked on October 20, 2026. The official international program page still exposes the 2026 autumn guide as its latest applicant-facing cycle. Current tuition and source metadata are refreshed; domestic recommendation notices for 2027 remain excluded.",
+      "observedOfficialUrls": [
+        "https://iso.shupl.edu.cn/english/Program/list.htm",
+        "https://iso.shupl.edu.cn/english/2025/1029/c3356a143603/page.htm",
+        "https://iso.shupl.edu.cn/zfglxy/2026/0818/c1617a151335/page.psp"
+      ]
+    },
+    {
+      "schoolSlug": "south-china-university-of-technology",
+      "result": "complete_current_general_fees_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The official current fees index and international admissions pages remain available, but they defer cycle-specific details to the latest annual notice. No cycle-specific 2027 international applicant guide was found, so recurring deadlines and unlisted fee amounts remain unresolved.",
+      "observedOfficialUrls": [
+        "https://sie.scut.edu.cn/FQA/list.htm",
+        "https://sie.scut.edu.cn/29025/list.htm",
+        "https://sie.scut.edu.cn/29037/list.htm"
+      ]
+    },
+    {
+      "schoolSlug": "university-of-electronic-science-and-technology-of-china",
+      "result": "complete_current_international_guide_still_2026",
+      "notes": "The latest official international admission brochure found is explicitly for 2026. The live international admission news index was checked on 2026-10-20 and its newest admission-cycle announcement still opens the 2026 Fall application rather than a 2027 cycle. General pre-university descriptions with recurring spring and autumn terms do not identify a 2027 application cycle and are not relabeled.",
+      "observedOfficialUrls": [
+        "https://en.uestc.edu.cn/UESTC_Admission_Brochure-CN.pdf",
+        "https://admission.uestc.edu.cn/"
+      ]
+    },
+    {
+      "schoolSlug": "fuzhou-university",
+      "result": "complete_current_latest_public_guide_2026_2027_doctoral_guide_announced",
+      "notes": "Rechecked on October 20, 2026. The registered official 2026 master and doctoral guide remains the latest public inbound degree guide. A September 2026 preparation notice confirms that a 2027 international doctoral guide is planned, but it is not the final applicant guide. The current school source is verified without creating a 2027 intake or carrying forward 2026 dates; outbound Spring 2027 exchange notices remain excluded.",
+      "observedOfficialUrls": [
+        "https://oce.fzu.edu.cn/info/1025/7986.htm",
+        "https://oce.fzu.edu.cn/info/1025/8021.htm",
+      "https://oce.fzu.edu.cn/gj_search.jsp?_va=&_vb=&_vc=0&_ve=&_vk=&_vm=&_vn=5aWW5a2m6YeR&_vs=&_vt=&currentnum=90&searchScope=0&wbtreeid=1052",
+      "https://oce.fzu.edu.cn/info/1024/8131.htm"
+      ]
+    },
+    {
+      "schoolSlug": "xiangtan-university",
+      "result": "partial_2026_2027_silk_road_scholarship_captured_general_guide_still_2026",
+      "notes": "The official English news index identifies a 2026/2027 Chinese Government Scholarship Silk Road Program for ten named African countries. Its full funding, eligible master's and doctoral fields, language thresholds and May 20, 2026 deadline are captured without relabeling it as a Fall 2027 intake. The general international-student guide remains for 2026, while the separate Spring 2027 cooperation and visiting notices are outbound programs for current students and remain excluded.",
+      "observedOfficialUrls": [
+        "https://www.xtu.edu.cn/index/tzgg/gjjlc.htm",
+        "https://gjjlc.xtu.edu.cn/xwdt/tzgg.htm",
+        "https://en.xtu.edu.cn/News.htm",
+        "https://en.xtu.edu.cn/info/1121/2001.htm",
+        "https://en.xtu.edu.cn/__local/7/27/B3/C253685FA249B35C4744D9180BE_7E9C5683_2669D.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "anhui-agricultural-university",
+      "result": "complete_current_latest_public_guide_2026_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The official International Education College application guide still identifies 2026 as the latest international-student admission cycle. Its current school-level tuition is retained and a display band is added, but the 2026-2027 academic calendar is not treated as a 2027 applicant intake.",
+      "observedOfficialUrls": [
+        "https://gjjy.ahau.edu.cn/info/1151/8831.htm",
+        "https://gjjy.ahau.edu.cn/__local/1/E4/32/9484D23043EC998E5EEDE013D3E_E32DF942_521B2.pdf",
+        "https://gjjy.ahau.edu.cn/sy.htm",
+        "https://gjjy.ahau.edu.cn/__local/0/0B/25/8E45C0C702BD0CCAEFB6AA58FBC_25BB2109_3626D.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "hefei-normal-university",
+      "result": "complete_current_international_guide_still_2026",
+      "notes": "The latest official international-student brochure found is explicitly for 2026. No applicant-facing 2027 degree or non-degree intake notice was found, so the 2026 programs and requirements are not relabeled.",
+      "observedOfficialUrls": [
+        "https://gjjlc.hfnu.edu.cn/__local/B/94/DA/EBF6FD9FC4735C2537183B6E020_886FD3B5_543EA.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "changchun-university-of-science-and-technology",
+      "result": "complete_current_international_guide_still_2026",
+      "notes": "The official international education source found in this check is the Spring 2026 admission guide and the latest scholarship material is also tied to 2026. No 2027 international applicant guide was found.",
+      "observedOfficialUrls": [
+        "https://sie.cust.edu.cn/pub/gjjlxy2019/docs/2025-11/166bad05103941e19f5e5695eefe2212.pdf",
+        "https://sie.cust.edu.cn/docs/2025-12/e24e872050074531a3cd81e646b8f2c6.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "harbin-university-of-science-and-technology",
+      "result": "complete_current_latest_public_guide_2026_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The official undergraduate guide still publishes the 2026 cycle. Current tuition and source metadata are refreshed, but the recurring March-to-June wording is not promoted to a 2027 intake without a cycle-specific notice.",
+      "observedOfficialUrls": [
+        "https://gjhz.hrbust.edu.cn/513/listm.htm",
+        "https://gjhz.hrbust.edu.cn/2026/0423/c513a104539/page.htm"
+      ]
+    },
+    {
+      "schoolSlug": "anhui-university",
+      "result": "complete_current_general_fees_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The registered official international admissions fee and application brochure remains available, but it is not identified as a 2027 cycle source. Current general evidence is retained without relabeling it as a 2027 intake or inferring missing deadlines.",
+      "observedOfficialUrls": [
+        "https://sie.ahu.edu.cn/_upload/article/files/b4/e0/c137afce42859129fc0e68b094df/2fa37fb8-dd10-451b-a7c9-d1759a9bc289.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "beijing-polytechnic-university",
+      "result": "complete_current_latest_public_guide_2026_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The latest registered official international-student brochure is explicitly for 2026. Current tuition and source metadata are refreshed, but the English overview still publishes no 2027 international application cycle, so no dates are inferred.",
+      "observedOfficialUrls": [
+        "https://www.bpu.edu.cn/wwwz/info/1045/1364.htm",
+        "https://www.bpu.edu.cn/wwwz/International.htm"
+      ]
+    },
+    {
+      "schoolSlug": "beijing-sport-university",
+      "result": "complete_current_latest_public_guide_2026_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The official international admissions portal still lists the 2026 international prospectus as its latest cycle. Current tuition ranges and source verification are refreshed, but no Spring or Fall 2027 international intake or deadline is inferred.",
+      "observedOfficialUrls": [
+        "https://zs.bsu.edu.cn/lxszsw/",
+        "https://zs.bsu.edu.cn/lxszsw/lxstzgg/66d8ebf30f85422688e099f28f51b58e.htm",
+        "https://zs.bsu.edu.cn/docs/2025-11/047e53d565314b8a8cd6b38b65533656.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "beijing-technology-and-business-university",
+      "result": "complete_current_international_guide_still_2026_domestic_and_outbound_routes_excluded",
+      "notes": "The official international-student index still publishes 2026 undergraduate and postgraduate brochures. The other 2027-adjacent academic-year notices are scholarship administration or outbound exchange items and do not establish a 2027 inbound admission cycle.",
+      "observedOfficialUrls": [
+        "https://international.btbu.edu.cn/gjxs/index.htm",
+        "https://gjjy.btbu.edu.cn/docs/2026-03/026a6d668e884a8cbcc80f409ae0a7ac.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "east-china-university-of-political-science-and-law",
+      "result": "complete_current_latest_public_guide_2026_domestic_2027_routes_excluded",
+      "notes": "Rechecked on October 20, 2026. The official Study at ECUPL page still publishes the 2026 international undergraduate guide and program catalog. Current tuition and source metadata are refreshed; domestic graduate and recommendation notices remain excluded and no 2027 international cycle is inferred.",
+      "observedOfficialUrls": [
+        "https://study.ecupl.edu.cn/2025/1202/c10735a223431/page.htm",
+        "https://study.ecupl.edu.cn/_upload/article/files/80/dd/509280b84dcba4237777658d0329/4dd6ac12-463c-4939-9085-b94c81738b92.xls"
+      ]
+    },
+    {
+      "schoolSlug": "guizhou-medical-university",
+      "result": "complete_current_latest_public_guide_2026_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The official overseas education guide still lists 2026 as the latest international undergraduate cycle. Source verification is refreshed, but no complete school-level tuition range or applicant-facing Spring/Fall 2027 guide is inferred.",
+      "observedOfficialUrls": [
+        "https://soe.gmc.edu.cn/zsxx.htm",
+        "https://soe.gmc.edu.cn/info/1008/1702.htm",
+        "https://soe.gmc.edu.cn/__local/3/FC/52/1F9D6DB546BAA1A51B10844BA6E_E1AEE628_91911C.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "hangzhou-dianzi-university",
+      "result": "complete_current_latest_public_guide_2026_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The official International Education College admissions guide still identifies 2026 as its newest cycle. Current tuition and source metadata are refreshed, but no 2027 application guide or intake notice is inferred.",
+      "observedOfficialUrls": [
+        "https://intedu.hdu.edu.cn/12669/list.htm",
+        "https://intedu.hdu.edu.cn/2026/0323/c12669a290539/page.htm"
+      ]
+    },
+    {
+      "schoolSlug": "harbin-institute-of-technology-shenzhen",
+      "result": "complete_current_latest_public_guide_2026_main_campus_2027_not_substituted",
+      "notes": "Rechecked on October 20, 2026. The official HIT Shenzhen international undergraduate prospectus remains the 2026 cycle. Current tuition and campus-specific source metadata are refreshed; general HIT pages do not establish a separate Shenzhen 2027 intake and are not substituted.",
+      "observedOfficialUrls": [
+        "https://global.hitsz.edu.cn/info/1153/2381.htm",
+        "https://global.hitsz.edu.cn/__local/3/28/34/93FAE9A2DB2126960BCB9567033_D6038EC1_2636E.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "hunan-university-of-technology-and-business",
+      "result": "complete_current_latest_public_guide_2026_domestic_2027_guide_excluded",
+      "notes": "Rechecked on October 20, 2026. The official international office still publishes the 2026 inbound guide. Current tuition and source metadata are refreshed, while its June 30, 2026 deadline is not carried forward and the domestic-route 2027 master's guide remains excluded.",
+      "observedOfficialUrls": [
+        "https://iec.hutb.edu.cn/xwzx/tzgg/content_90133",
+        "https://admi.hutb.edu.cn/"
+      ]
+    },
+    {
+      "schoolSlug": "jiangsu-university-of-science-and-technology",
+      "result": "complete_current_latest_public_guide_2026_domestic_2027_routes_excluded",
+      "notes": "Rechecked on October 20, 2026. The latest registered official international-student enrollment guideline remains explicitly for 2026. Current tuition and source metadata are refreshed; domestic undergraduate or graduate materials remain excluded and do not establish a 2027 international cycle.",
+      "observedOfficialUrls": [
+        "https://admission.just.edu.cn/admissionen/2026/0409/c10152a372095/page.htm"
+      ]
+    },
+    {
+      "schoolSlug": "kunming-university",
+      "result": "complete_current_international_guide_still_2026",
+      "notes": "The official International College admissions page and downloadable brochure still identify 2026 as the latest international-student cycle. No 2027 application notice was found.",
+      "observedOfficialUrls": [
+        "https://gjxy.kmu.edu.cn/info/1124/1837.htm",
+        "https://gjxy.kmu.edu.cn/__local/4/38/11/7C49AA3344FD0B21144CB54CDA7_3A9DA747_5ACB4.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "luzhou-vocational-and-technical-college",
+      "result": "complete_current_latest_public_guide_2026_2027_intake_unpublished",
+      "notes": "Rechecked on October 20, 2026. The newest official international Chinese-language trainee brochure is explicitly for an October 2026 start. Current tuition and source metadata are refreshed, but it does not establish a 2027 intake and is not relabeled.",
+      "observedOfficialUrls": [
+        "https://wyx.lzy.edu.cn/info/1084/4314.htm",
+        "https://wyx.lzy.edu.cn/index.htm"
+      ]
+    },
+    {
+      "schoolSlug": "shandong-normal-university",
+      "result": "complete_current_latest_public_guide_2026_academic_year_2027_not_relabelled",
+      "notes": "Rechecked on October 20, 2026. The official admission brochure remains the 2026 cycle. Its current tuition and source metadata are refreshed, while the 2026-2027 academic-year catalog is not treated as a distinct Spring or Fall 2027 applicant intake.",
+      "observedOfficialUrls": [
+        "https://cie.sdnu.edu.cn/info/1141/14242.htm",
+        "https://cie.sdnu.edu.cn/__local/6/83/2D/9035CBBC4F944A4E15FD1C9F1F0_44FB66E1_6FAA5.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "shandong-university",
+      "result": "partial_spring_2027_scholarship_route_captured",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship guide explicitly publishes a March 2027 one-semester route with a five-month duration, route-specific HSK/HSKK requirements, full scholarship coverage and an October 31, 2026 application deadline. That route is captured. The official international admissions index still lists 2026 undergraduate, master's and doctoral guides, so general Fall 2027 degree admissions remain unresolved and 2026-2027 academic-year catalogs are not relabeled.",
+      "observedOfficialUrls": [
+        "https://www.istudy.sdu.edu.cn/zsjz.htm",
+        "https://www.istudy.sdu.edu.cn/info/1291/3973.htm",
+        "https://www.istudy.sdu.edu.cn/info/1291/3972.htm",
+        "https://www.istudy.sdu.edu.cn/info/1291/3971.htm",
+        "https://www.istudy.sdu.edu.cn/info/1291/3947.htm",
+        "https://www.istudy.sdu.edu.cn/__local/4/2B/BF/DD3116434A857D86CAB97540722_D638F9D3_502851.jpg"
+      ]
+    },
+    {
+      "schoolSlug": "shandong-university-of-finance-and-economics",
+      "result": "complete_current_2026_scholarship_table_general_guide_still_2026",
+      "notes": "The latest official international undergraduate guide found is explicitly for 2026, with a June 20, 2026 deadline, and no cycle-specific 2027 international applicant guide was found. The April 15, 2026 official scholarship table was captured and structures five current scholarship schemes without inventing unpublished deadlines or relabeling them as Fall 2027 routes.",
+      "observedOfficialUrls": [
+        "https://sie.sdufe.edu.cn/info/1209/79511.htm",
+        "https://sie.sdufe.edu.cn/info/1209/79461.htm"
+      ]
+    },
+    {
+      "schoolSlug": "shanghai-jiao-tong-university-school-of-medicine",
+      "result": "complete_current_latest_public_guide_2026_domestic_2027_routes_excluded",
+      "notes": "Rechecked on October 20, 2026. The official international undergraduate page still lists only the 2026 Chinese-taught and MBBS prospectuses. Current tuition and source metadata are refreshed; the 2027 clinical doctorate reform notice remains excluded as a domestic admissions route.",
+      "observedOfficialUrls": [
+        "https://www.shsmu.edu.cn/iso/zsxx/bkszs.htm",
+        "https://www.shsmu.edu.cn/iso/info/1034/1346.htm",
+        "https://www.shsmu.edu.cn/iso/info/1108/1486.htm"
+      ]
+    },
+    {
+      "schoolSlug": "southern-university-of-science-and-technology",
+      "result": "complete_current_undergraduate_cost_general_2027_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The official international-student application and program pages publish current CSCA, English-language, document, major and scholarship requirements but still do not identify a cycle-specific 2027 window or intake dates. The current official undergraduate cost API now refreshes tuition, housing, insurance, residence-permit, health-check and living-cost values. The dynamically populated requirements POST endpoints were not submitted, continuing-student awards remain excluded, and none of these sources is converted into a 2027 intake.",
+      "observedOfficialUrls": [
+        "https://global.sustech.edu.cn/en/international_students",
+        "https://infoadmin.sustech.edu.cn/programs/new",
+        "https://global.sustech.edu.cn/en/news/detail/nid-418",
+        "https://infoadmin.sustech.edu.cn/application",
+        "https://infoadmin.sustech.edu.cn/wap/programs",
+        "https://infoadmin.sustech.edu.cn/tabcontent?xxlmm=8"
+      ]
+    },
+    {
+      "schoolSlug": "southwestern-university-of-finance-and-economics-tianfu-college",
+      "result": "complete_current_latest_public_guide_2026_domestic_cooperative_2027_routes_excluded",
+      "notes": "Rechecked on October 20, 2026. The official inbound international-student brochure remains explicitly for 2026. Current tuition and source metadata are refreshed, while the September 30, 2026 deadline is not carried forward and domestic cooperative programs remain excluded.",
+      "observedOfficialUrls": [
+        "https://int.tfswufe.edu.cn/info/1003/2985.htm",
+        "https://sino.tfswufe.edu.cn/info/1071/1371.htm"
+      ]
+    },
+    {
+      "schoolSlug": "university-of-chinese-academy-of-sciences",
+      "result": "complete_current_admission_overview_individual_supervisor_2027_invitation_excluded",
+      "notes": "Rechecked on October 20, 2026. UCAS's current international admission overview and tuition information are refreshed, while university-level degree and scholarship calls remain for 2026. Individual faculty invitations for 2027 still do not establish an institution-wide admission route and remain excluded.",
+      "observedOfficialUrls": [
+        "https://english.ucas.ac.cn/index.php/admission/international-students/notice/6654-call-for-2026-master-s-doctoral-degree-programs-for-international-students",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/major",
+        "https://people.ucas.ac.cn/~zhangxiaopu?language=en"
+      ]
+    },
+    {
+      "schoolSlug": "university-of-sanya",
+      "result": "complete_current_academic_year_guide_starts_in_2026_not_relabelled_as_2027_intake",
+      "notes": "Rechecked on October 20, 2026. The official guide is labelled 2026-2027 but explicitly describes the admission cycle beginning in September 2026. Current tuition and source metadata are refreshed, but the guide is not treated as a distinct 2027 applicant intake.",
+      "observedOfficialUrls": [
+        "https://www.sanyau.edu.cn/en/2026/0313/c921a412009/page.htm"
+      ]
+    },
+    {
+      "schoolSlug": "wenzhou-university",
+      "result": "partial_2027_china_link_route_captured",
+      "notes": "The official 2026 China Link call explicitly permits one-to-twelve-month research exchanges starting no later than August 31, 2027 and publishes full scholarship coverage, monthly stipends, eligibility and a year-round application process. That route is captured. The current official entry-requirements page also establishes undergraduate HSK/English thresholds and mandatory CSCA transcripts from the 2026/2027 academic year; route-specific CSCA subjects remain delegated to the unpublished admitted-major directory. The official International Education College admissions index still lists 2026 as its latest international undergraduate and master's cycle, so general Spring or Fall 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://cie.wzu.edu.cn/info/1248/15112.htm",
+        "https://cic.wzu.edu.cn/wendaguojixueyuanzhaosheng20262.pdf",
+        "https://cic.wzu.edu.cn/info/1718/11956.htm",
+        "https://cic.wzu.edu.cn/prospective/EntryRequirements.htm"
+      ]
+    },
+    {
+      "schoolSlug": "wuchang-university-of-technology",
+      "result": "complete_current_latest_public_guide_2026_outbound_2027_route_excluded",
+      "notes": "Rechecked on October 20, 2026. The official inbound international admissions page still publishes the 2026 prospectus as its latest cycle. Current tuition and source metadata are refreshed; the 2027 summer work-and-travel notice remains excluded as an outbound program.",
+      "observedOfficialUrls": [
+        "https://sie.wut.edu.cn/zszl/lhlx.htm",
+        "https://en.wut.edu.cn/admissions"
+      ]
+    },
+    {
+      "schoolSlug": "xinjiang-agricultural-university",
+      "result": "complete_current_latest_public_guide_2026_2027_international_guide_unpublished",
+      "notes": "Rechecked on October 20, 2026. The official international-student guide remains tied to the 2026 cycle, with a July 15, 2026 application deadline and late-August 2026 registration. The source is refreshed, but no deadline, fee or intake is carried forward into 2027.",
+      "observedOfficialUrls": [
+        "https://cie.xjau.edu.cn/1279/list.htm",
+        "https://cie.xjau.edu.cn/2026/0319/c6442a113905/page.htm",
+        "https://cie.xjau.edu.cn/Enlish/2026/0325/c5623a114105/page.htm"
+      ]
+    },
+    {
+      "schoolSlug": "yunnan-university-of-finance-and-economics",
+      "result": "complete_current_international_guide_still_2026_academic_year_award_not_relabelled",
+      "notes": "The official overseas college index still lists the 2026 international admission and scholarship guides as its newest cycle. A 2026-2027 scholarship candidate announcement concerns awards for the 2026 admission year and is not treated as a separate 2027 intake.",
+      "observedOfficialUrls": [
+        "https://www.ynufe.edu.cn/sooe/lhlx/yncjdxgjxszsjz.htm",
+        "https://www.ynufe.edu.cn/sooe/info/1211/8601.htm",
+        "https://www.ynufe.edu.cn/__local/9/B5/A2/F861B8365C1DCBD8213FAA7B655_51CE098A_486E8.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "nanjing-university",
+      "result": "2027_undergraduate_master_doctoral_and_scholarship_sources_captured",
+      "notes": "Official 2027 undergraduate, master's and doctoral application guides and program catalogs are registered, together with the 2027 high-level postgraduate scholarship source. These sources feed the reviewed 2027 release candidate; unresolved fields remain source-bounded.",
+      "observedOfficialUrls": [
+        "https://hwxy.nju.edu.cn/lxnd/zsxx/bkxm/sbzn/index.html",
+        "https://hwxy.nju.edu.cn/lxnd/zsxx/ssxm/sbzn/index.html",
+        "https://hwxy.nju.edu.cn/lxnd/zsxx/bsxm/sbzn/index.html",
+        "https://hwxy.nju.edu.cn/lxnd/zsxx/jxj/zgzfjxj/20231025/i252280.html"
+      ]
+    },
+    {
+      "schoolSlug": "xiamen-university",
+      "result": "2027_undergraduate_master_doctoral_programs_and_scholarship_sources_captured",
+      "notes": "Official 2027 undergraduate, master's and doctoral admission guides, Chinese- and English-taught program catalogs, and the new international student scholarship source are registered and represented in the reviewed release candidate.",
+      "observedOfficialUrls": [
+        "https://admissions.xmu.edu.cn/cn/info/1063/10733.htm",
+        "https://admissions.xmu.edu.cn/cn/info/1063/10743.htm",
+        "https://admissions.xmu.edu.cn/cn/info/1063/10753.htm",
+        "https://admissions.xmu.edu.cn/cn/info/1063/8993.htm"
+      ]
+    },
+    {
+      "schoolSlug": "southeast-university",
+      "result": "2027_undergraduate_and_postgraduate_sources_captured",
+      "notes": "Official 2027 international undergraduate and postgraduate guides, application guidance and supporting PDFs are registered and feed the 2027 release candidate. No scholarship fields are inferred where a 2027 scholarship source is absent.",
+      "observedOfficialUrls": [
+        "https://cis.seu.edu.cn/hwenglish/2025/0917/c28429a539891/page.htm",
+        "https://cis.seu.edu.cn/hwenglish/2025/1125/c14041a546670/page.htm",
+        "https://cis.seu.edu.cn/hwenglish/2025/1125/c14041a546671/page.htm"
+      ]
+    },
+    {
+      "schoolSlug": "tianjin-university",
+      "result": "2027_undergraduate_master_doctoral_and_csca_sources_captured",
+      "notes": "Official 2027 international undergraduate, master's and doctoral admission guides and program catalogs are registered. The undergraduate source set also includes the cycle-specific CSCA subject requirements.",
+      "observedOfficialUrls": [
+        "https://sie.tju.edu.cn/en/xwxm/UNDERGRADUATE/202609/t20260930_324729.html",
+        "https://sie.tju.edu.cn/en/xwxm/MASTERPROGRAMS/202609/t20260930_324731.html",
+        "https://sie.tju.edu.cn/en/xwxm/DOCTORALPROGRAMS/202609/t20260930_324733.html",
+        "https://sie.tju.edu.cn/en/xwxm/UNDERGRADUATE/202609/W020260930599325310575.pdf"
+      ]
+    },
+    {
+      "schoolSlug": "tsinghua-university",
+      "result": "2027_international_undergraduate_graduate_and_spring_nondegree_sources_captured",
+      "notes": "Official 2027 international undergraduate schedule, eligibility, division, fee, application-procedure and document sources are registered. The official 2026/2027 visiting-student page additionally publishes a Spring 2027 non-degree application window, visitor classifications, language requirements, materials and costs. The official 2027 international graduate guide, catalog index and tuition schedule add 41 explicitly listed English-taught master's and doctoral program rows, the general application period and two graduate scholarship schemes. MIA-GG, Global Business Journalism, Global MBA, IMAP, CPFP, Advanced Computing, Computer Science doctoral, GMA, IMEM, the School of Environment English master's route and the English Master of Architecture are individually locked with program-specific evidence. The Environment guide supplies exact academic and English thresholds, two 2027 application rounds and scholarship guidance; its unpublished duration remains absent. The Architecture page supplies the current two-year design, admissions prerequisites and tuition, while its stale 2024 calendar is explicitly excluded. Other department-specific fields remain unresolved until their individual catalog or department pages are locked.",
+      "observedOfficialUrls": [
+        "https://international.join-tsinghua.edu.cn/Admission1/Schedule.htm",
+        "https://international.join-tsinghua.edu.cn/Admission1/Eligibility.htm",
+        "https://international.join-tsinghua.edu.cn/Divisions1.htm",
+        "https://international.join-tsinghua.edu.cn/Admission1/Fees.htm",
+        "https://intl-nondegree.tsinghua.edu.cn/f/yzlxs/yz_lxs_kstzb/view?id=264627",
+        "https://yz.tsinghua.edu.cn/info/1015/3252.htm",
+        "https://yzbm.tsinghua.edu.cn/publish/s05/s0503/list",
+        "https://yzbm.tsinghua.edu.cn/publish/s05/s0501/detail/bb745c8c-e817-4532-8cc1-70fa21bae1b5",
+        "https://www.sss.tsinghua.edu.cn/info/1025/8711.htm",
+        "https://gbj.tsjc.tsinghua.edu.cn/info/1100/2418.htm",
+        "https://gbj.tsjc.tsinghua.edu.cn/info/1100/2230.htm",
+      "https://gbj.tsjc.tsinghua.edu.cn/info/1100/2421.htm",
+      "https://gmba.sem.tsinghua.edu.cn/Admissions/International/Admissions_Calendar___Criteria.htm",
+      "https://www.pcs.tsinghua.edu.cn/xwdt/tz.htm",
+      "https://www.pcs.tsinghua.edu.cn/info/1031/2195.htm",
+      "https://ac.cs.tsinghua.edu.cn/application.html",
+      "https://www.dir.tsinghua.edu.cn/iren/info/1030/1471.htm",
+      "https://www.ie.tsinghua.edu.cn/eng/Academic_Admissions/International_Master_Program/Admissions/How_to_Apply.htm",
+      "https://www.ie.tsinghua.edu.cn/eng/Academic_Admissions/International_Master_Program/Admissions/Qualifications.htm",
+      "https://www.ie.tsinghua.edu.cn/eng/Academic_Admissions/International_Master_Program/Admissions/Costs.htm",
+      "https://www.ie.tsinghua.edu.cn/eng/Academic_Admissions/International_Master_Program/Overview/Master_s_Program_in_Global_Manufacturing_and_Analy.htm",
+      "https://yz.tsinghua.edu.cn/en/info/1014/1156.htm",
+      "https://www.tsinghua.edu.cn/enven/info/1061/2424.htm",
+      "https://www.arch.tsinghua.edu.cn/column/Admissions"
+      ]
+    },
+    {
+      "schoolSlug": "northwestern-polytechnical-university",
+      "result": "2027_master_doctoral_foundation_and_scholarship_sources_captured",
+      "notes": "Official 2027 international master's and doctoral guides and catalogs, the foundation program, and the Youth of Excellence scholarship source are registered and feed the 2027 release candidate. The master's and doctoral admissions pages were refreshed on October 20, 2026; the only substantive page edits were the English-speaking-country reference link and admissions-office room number, so catalog facts remain unchanged while intake evidence now points to the latest snapshots. A 2027 undergraduate degree route is not inferred from the foundation source.",
+      "observedOfficialUrls": [
+        "https://studyat.nwpu.edu.cn/info/1303/8791.htm",
+        "https://studyat.nwpu.edu.cn/info/1313/8831.htm",
+        "https://studyat.nwpu.edu.cn/info/1094/10681.htm",
+        "https://studyat.nwpu.edu.cn/info/1009/10601.htm"
+      ]
+    },
+    {
+      "schoolSlug": "china-agricultural-university",
+      "result": "2027_international_undergraduate_and_graduate_sources_captured",
+      "notes": "The official 2027 international undergraduate guide and catalog plus the 2027 international graduate guide and complete graduate program workbook are registered and represented in the release candidate. Scholarship names and application windows are retained from the graduate guide, while unpublished award-specific coverage is not inferred.",
+      "observedOfficialUrls": [
+        "https://admissions.cau.edu.cn/art/2026/9/3/art_48600_1135194.html",
+        "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=5b2a32d6768d4b5da557db4c967344b9.xlsx",
+        "https://admissions.cau.edu.cn/art/2026/9/3/art_48603_1135170.html",
+        "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=fa3c616f741c4e3a9a771a2c362fcf93.xlsx"
+      ]
+    },
+    {
+      "schoolSlug": "shenzhen-university",
+      "result": "partial_spring_2027_doctoral_sources_captured",
+      "notes": "Official Spring 2027 international doctoral admission and program-catalog sources are registered and represented in the reviewed release candidate. Other study levels and Fall 2027 routes remain unresolved.",
+      "observedOfficialUrls": [
+        "https://lxs.szu.edu.cn/info/1168/8627.htm",
+        "https://lxs.szu.edu.cn/info/1279/8597.htm"
+      ]
+    },
+    {
+      "schoolSlug": "peking-university",
+      "result": "partial_2027_phbs_spring_language_and_current_shenzhen_environment_routes_captured",
+      "notes": "The official Peking University HSBC Business School page explicitly publishes the 2027 Master of Economics route. The International Students Division additionally publishes a February 22-March 19, 2027 four-week Chinese-language route with an application period, eligibility, materials, tuition and accommodation reference fees. A September 21, 2026 PKU Shenzhen School of Environment and Energy program overview adds five explicit international graduate program-and-medium combinations with exact two-, three- or four-year durations. That overview does not establish a cycle-specific intake, application window, language-score threshold or approved 2027 tuition, so those fields remain absent. University-wide 2027 undergraduate and graduate coverage remains unresolved.",
+      "observedOfficialUrls": [
+        "https://english.phbs.pku.edu.cn/Academics/Master/Master_of_Economics.htm",
+        "https://www.isd.pku.edu.cn/en/detail.php?id=836",
+        "https://see.pkusz.edu.cn/info/1022/2092.htm"
+      ]
+    },
+    {
+      "schoolSlug": "westlake-university",
+      "result": "partial_fall_2027_international_phd_route_captured",
+      "notes": "The official graduate admissions page publishes the Fall 2027 international PhD route and program information represented in the release candidate. The university-level 2027 doctoral guide lists all eleven represented disciplines, explicitly routes non-Chinese nationals into the international application channel, and establishes four-year study for master's-entry and five-year study for bachelor's-entry routes; the release candidate stores the five-year upper bound for all eleven programs. Other study levels and scholarship details remain source-bounded.",
+      "observedOfficialUrls": [
+        "https://en.westlake.edu.cn/admissions/graduate/",
+        "https://www.westlake.edu.cn/admissions/graduate/brochure/general/202610/t20261010_70269.html",
+        "https://engineering.westlake.edu.cn/Admission/GraduateProgram/zszx_2623/202610/t20261016_70469.shtml",
+        "https://physics.westlake.edu.cn/news/202610/t20261016_70441.shtml",
+        "https://sls.westlake.edu.cn/Education/Short_term_Programs/"
+      ]
+    },
+    {
+      "schoolSlug": "sichuan-international-studies-university",
+      "result": "partial_spring_2027_international_chinese_language_teachers_scholarship_captured",
+      "notes": "The official guide explicitly publishes a March 2027 International Chinese Language Teachers Scholarship route and is represented in the release candidate. General 2027 degree admissions remain unresolved.",
+      "observedOfficialUrls": [
+        "https://studyinsisu.sisu.edu.cn/tzgg/9a6553d398db4090b5177ef7a4f78231.htm"
+      ]
+    }
+  ]
+}

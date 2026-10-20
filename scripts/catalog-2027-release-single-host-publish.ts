@@ -18,14 +18,14 @@ const bundle = JSON.parse(await readFile(resolve(process.cwd(), "seeds/catalog.2
 const review = JSON.parse(await readFile(resolve(process.cwd(), "seeds/catalog.2027-release.review.json"), "utf8"));
 const report = createCatalogMigrationValidationReport(bundle);
 if (!report.ok || bundle.version !== 2 || review.status !== "human_review_completed"
-  || review.reviewReference !== "project-owner-chat-review-2026-10-18"
+  || review.reviewReference !== "project-owner-chat-approval-2026-10-20-100-school"
   || bundle.handoff?.reviewReference !== review.reviewReference || bundle.handoff.prohibitedDataReviewReference !== review.reviewReference
   || review.publicationBundleSha256 !== report.bundleSha256 || review.operationPlanSha256 !== report.operationPlanSha256
   || review.confirmations?.projectOwnerApprovedDirectPublication !== true || review.confirmations?.officialSourcesReviewed !== true
   || review.confirmations?.prohibitedDataConfirmedExcluded !== true || review.confirmations?.missingDataMayRemainEmpty !== true
   || review.confirmations?.unresolvedDatesWereNotInferred !== true || review.confirmations?.existingSchoolAndCityProfilesMustBePreserved !== true
-  || report.summary.cities !== 6 || report.summary.schools !== 9 || report.summary.programs !== 769
-  || report.summary.programIntakes !== 761 || report.summary.scholarships !== 1) {
+  || report.summary.cities !== 34 || report.summary.schools !== 99 || report.summary.programs !== 2031
+  || report.summary.programIntakes !== 1958 || report.summary.scholarships !== 95) {
   throw new Error(`Reviewed 2027 release validation failed: ${report.errors.join(" ")}`);
 }
 
@@ -67,7 +67,7 @@ try {
       (select count(*)::int from scholarships where slug=any($3::text[]) and status='active' and verification_status='verified') scholarships`,
     [programSlugs, JSON.stringify(intakeKeys), scholarshipSlugs]);
     const row = verified[0];
-    if (!row || row.programs !== 769 || row.intakes !== 761 || row.open_intakes !== 759 || row.closed_intakes !== 2 || row.scholarships !== 1) {
+    if (!row || row.programs !== 2031 || row.intakes !== 1958 || row.open_intakes !== 1798 || row.closed_intakes !== 7 || row.scholarships !== 95) {
       throw new Error(`2027 release post-check failed: ${JSON.stringify(row)}`);
     }
     return {

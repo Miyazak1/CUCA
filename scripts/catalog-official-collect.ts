@@ -11,7 +11,7 @@ import {
 
 const args = process.argv.slice(2);
 const allowedPrefixes = ["--registry=", "--output=", "--source=", "--baseline=", "--max-bytes="];
-const allowedFlags = new Set(["--validate-only"]);
+const allowedFlags = new Set(["--validate-only", "--continue-on-error"]);
 const unknown = args.filter((arg) => !allowedFlags.has(arg) && !allowedPrefixes.some((prefix) => arg.startsWith(prefix)));
 if (unknown.length) throw new Error(`Unknown options: ${unknown.join(", ")}`);
 
@@ -39,19 +39,24 @@ if (args.includes("--validate-only")) {
 const generatedAt = new Date().toISOString();
 const defaultRunName = generatedAt.replace(/[:.]/g, "-");
 const outputPath = resolve(process.cwd(), option("--output=") || `work/catalog-official/${defaultRunName}`);
+const continueOnError = args.includes("--continue-on-error");
 const snapshots = [];
+const failures: Array<{ id: string; url: string; error: string }> = [];
+await mkdir(resolve(outputPath, "raw"), { recursive: true });
 for (const [index, source] of sources.entries()) {
   if (index > 0) await new Promise((resolveDelay) => setTimeout(resolveDelay, 1_000));
-  snapshots.push(await fetchOfficialCatalogSource(source, { maxBytes }));
-}
-
-await mkdir(resolve(outputPath, "raw"), { recursive: true });
-for (const snapshot of snapshots) {
-  const extension = extensionFor(snapshot.metadata.contentType, snapshot.metadata.finalUrl);
-  const artifactName = `${snapshot.metadata.id}.${snapshot.metadata.sha256}.${extension}`;
-  const artifactPath = resolve(outputPath, "raw", artifactName);
-  await writeFile(artifactPath, snapshot.content, { flag: "wx" });
-  snapshot.metadata.artifactPath = relative(outputPath, artifactPath).replaceAll("\\", "/");
+  try {
+    const snapshot = await fetchOfficialCatalogSource(source, { maxBytes });
+    const extension = extensionFor(snapshot.metadata.contentType, snapshot.metadata.finalUrl);
+    const artifactName = `${snapshot.metadata.id}.${snapshot.metadata.sha256}.${extension}`;
+    const artifactPath = resolve(outputPath, "raw", artifactName);
+    await writeFile(artifactPath, snapshot.content, { flag: "wx" });
+    snapshot.metadata.artifactPath = relative(outputPath, artifactPath).replaceAll("\\", "/");
+    snapshots.push(snapshot);
+  } catch (error) {
+    if (!continueOnError) throw error;
+    failures.push({ id: source.id, url: source.url, error: error instanceof Error ? error.message : String(error) });
+  }
 }
 
 const manifest: OfficialCatalogAcquisitionManifest = {
@@ -62,6 +67,10 @@ const manifest: OfficialCatalogAcquisitionManifest = {
 };
 const manifestPath = resolve(outputPath, "manifest.json");
 await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, { flag: "wx" });
+const failuresPath = failures.length ? resolve(outputPath, "failures.json") : null;
+if (failuresPath) {
+  await writeFile(failuresPath, `${JSON.stringify({ version: 1, generatedAt, failures }, null, 2)}\n`, { flag: "wx" });
+}
 
 let diff = null;
 const baselineOption = option("--baseline=");
@@ -72,7 +81,18 @@ if (baselineOption) {
   await writeFile(resolve(outputPath, "diff.json"), `${JSON.stringify(diff, null, 2)}\n`, { flag: "wx" });
 }
 
-console.log(JSON.stringify({ ok: true, registryPath, outputPath, manifestPath, sourceCount: sources.length, diff }, null, 2));
+console.log(JSON.stringify({
+  ok: failures.length === 0,
+  completedWithFailures: failures.length > 0,
+  registryPath,
+  outputPath,
+  manifestPath,
+  failuresPath,
+  requestedSourceCount: sources.length,
+  sourceCount: snapshots.length,
+  failureCount: failures.length,
+  diff,
+}, null, 2));
 
 function extensionFor(contentType: string, finalUrl: string): string {
   if (contentType === "text/html") return "html";

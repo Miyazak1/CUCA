@@ -1115,6 +1115,16 @@
       "schoolSlug": "dalian-university-of-technology"
     },
     {
+      "id": "dut-chinese-government-scholarship-type-a-2027",
+      "label": "DUT 2027 Chinese Government Scholarship Type A Bilateral Program",
+      "url": "https://sie.dlut.edu.cn/info/1024/3042.htm",
+      "allowedHosts": [
+        "sie.dlut.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "dalian-university-of-technology"
+    },
+    {
       "id": "dut-china-link-scholarship-2026",
       "label": "DUT 2026 Chinese Government Scholarship China Link Program",
       "url": "https://sie.dlut.edu.cn/info/1024/22251.htm",
@@ -1333,6 +1343,26 @@
       "schoolSlug": "jilin-university"
     },
     {
+      "id": "jilin-bridging-medicine-program-2027",
+      "label": "Jilin University 2027 Bridging Medicine Program admission guide",
+      "url": "https://cie.jlu.edu.cn/info/1079/3784.htm",
+      "allowedHosts": [
+        "cie.jlu.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "jilin-university"
+    },
+    {
+      "id": "jilin-international-chinese-language-teachers-scholarship-coverage-2026",
+      "label": "Jilin University International Chinese Language Teachers Scholarship coverage and standards 2026",
+      "url": "https://cie.jlu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1407748499&wbfileid=18047278",
+      "allowedHosts": [
+        "cie.jlu.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "jilin-university"
+    },
+    {
       "id": "nankai-silk-road-scholarship-2026",
       "label": "Nankai University 2026 Chinese Government Scholarship Silk Road Program",
       "url": "https://ensie.nankai.edu.cn/info/1047/1347.htm",
@@ -1348,6 +1378,22 @@
       "url": "https://ensie.nankai.edu.cn/info/1089/1167.htm",
       "allowedHosts": ["ensie.nankai.edu.cn"],
       "sourceRole": "school-admissions",
+      "schoolSlug": "nankai-university"
+    },
+    {
+      "id": "nankai-undergraduate-admissions-2027",
+      "label": "Nankai University 2027 international undergraduate admissions guide",
+      "url": "https://ensie.nankai.edu.cn/info/1089/1357.htm",
+      "allowedHosts": ["ensie.nankai.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "nankai-university"
+    },
+    {
+      "id": "nankai-undergraduate-program-catalog-xlsx-2027",
+      "label": "Nankai University 2027 international undergraduate program catalog (XLSX)",
+      "url": "https://ensie.nankai.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1793829979&wbfileid=15097687",
+      "allowedHosts": ["ensie.nankai.edu.cn"],
+      "sourceRole": "program-catalog",
       "schoolSlug": "nankai-university"
     },
     {
@@ -1857,6 +1903,16 @@
       "schoolSlug": "huazhong-university-of-science-and-technology"
     },
     {
+      "id": "hust-youth-of-excellence-scholarship-2027",
+      "label": "HUST 2027 Youth of Excellence Scheme of China Program",
+      "url": "https://iso.hust.edu.cn/Scholarships/YESCP.htm",
+      "allowedHosts": [
+        "iso.hust.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "huazhong-university-of-science-and-technology"
+    },
+    {
       "id": "bit-undergraduate-admissions-2026",
       "label": "北京理工大学 2026 年国际学生本科生招生简章",
       "url": "https://isc.bit.edu.cn/aboutbit/faq/b112085.htm",
@@ -2317,6 +2373,26 @@
       "schoolSlug": "xi-an-jiaotong-university"
     },
     {
+      "id": "xjtu-other-scholarships-current",
+      "label": "Xi'an Jiaotong University current other scholarships",
+      "url": "https://sie.xjtu.edu.cn/en/SCHOLARSHIPS1/Other_Scholarships.htm",
+      "allowedHosts": [
+        "sie.xjtu.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "xi-an-jiaotong-university"
+    },
+    {
+      "id": "xjtu-xian-belt-and-road-scholarship-current",
+      "label": "Xi'an Jiaotong University Xi'an City Government Belt and Road Scholarship",
+      "url": "https://sie.xjtu.edu.cn/en/SCHOLARSHIPS1/XJTU_Xi_an_City_Government_Belt___Road_Scholarshi1.htm",
+      "allowedHosts": [
+        "sie.xjtu.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "xi-an-jiaotong-university"
+    },
+    {
       "id": "xjtu-atomic-energy-scholarship-2026",
       "label": "Xi'an Jiaotong University 2026 Chinese Government Atomic Energy Scholarship",
       "url": "https://sie.xjtu.edu.cn/en/atomic.pdf",
@@ -2427,13 +2503,63 @@
       "schoolSlug": "huazhong-university-of-science-and-technology"
     },
     {
-      "id": "hust-scholarship-information-2026",
-      "label": "HUST 2026 Scholarship Information and Tips",
+      "id": "hust-scholarship-information-2027",
+      "label": "HUST 2027 Scholarship Information and Tips",
       "url": "https://iso.hust.edu.cn/Scholarships/Scholarship_Information_and_Tips.htm",
       "allowedHosts": [
         "iso.hust.edu.cn"
       ],
       "sourceRole": "scholarship",
+      "schoolSlug": "huazhong-university-of-science-and-technology"
+    },
+    {
+      "id": "hust-chinese-government-scholarship-review-regulations-current",
+      "label": "HUST current Chinese Government Scholarship review regulations and funding standards",
+      "url": "https://iso.hust.edu.cn/Policies___Regulations/Scholarship_Review_Regulations.htm",
+      "allowedHosts": [
+        "iso.hust.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "huazhong-university-of-science-and-technology"
+    },
+    {
+      "id": "hust-foundation-program-2027",
+      "label": "HUST 2027 Foundation Program application guide",
+      "url": "https://iso.hust.edu.cn/info/1194/5126.htm",
+      "allowedHosts": [
+        "iso.hust.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "huazhong-university-of-science-and-technology"
+    },
+    {
+      "id": "hust-chinese-language-programs-2027",
+      "label": "HUST 2027 Chinese language programs application guide",
+      "url": "https://iso.hust.edu.cn/info/1194/5129.htm",
+      "allowedHosts": [
+        "iso.hust.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "huazhong-university-of-science-and-technology"
+    },
+    {
+      "id": "hust-international-exchange-programs-2027",
+      "label": "HUST 2027 International Exchange Programs application guide",
+      "url": "https://iso.hust.edu.cn/info/1194/5130.htm",
+      "allowedHosts": [
+        "iso.hust.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "huazhong-university-of-science-and-technology"
+    },
+    {
+      "id": "hust-visiting-student-english-programs-2027",
+      "label": "HUST 2027 English-medium Programs for Visiting Students and Scholars",
+      "url": "https://iso.hust.edu.cn/2027EnglishmediumProgramsforVisitingStudentandScholar.pdf",
+      "allowedHosts": [
+        "iso.hust.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
       "schoolSlug": "huazhong-university-of-science-and-technology"
     },
     {
@@ -2622,6 +2748,16 @@
       "url": "https://ic.ustc.edu.cn/en/",
       "allowedHosts": [
         "ic.ustc.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "university-of-science-and-technology-of-china"
+    },
+    {
+      "id": "ustc-international-visiting-student-program-2026-2027",
+      "label": "USTC International Visiting Student Program for visits through June 2027",
+      "url": "https://sz.ustc.edu.cn/upload/202603/04/202603041533422206.pdf",
+      "allowedHosts": [
+        "sz.ustc.edu.cn"
       ],
       "sourceRole": "school-admissions",
       "schoolSlug": "university-of-science-and-technology-of-china"
@@ -3097,6 +3233,16 @@
       "schoolSlug": "harbin-institute-of-technology"
     },
     {
+      "id": "hit-short-term-chinese-winter-2026-2027",
+      "label": "Harbin Institute of Technology 2026-2027 winter short-term Chinese language program",
+      "url": "https://studyathit.hit.edu.cn/ShortwTermPrograms/list.htm",
+      "allowedHosts": [
+        "studyathit.hit.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "harbin-institute-of-technology"
+    },
+    {
       "id": "seu-school-profile",
       "label": "Southeast University official profile",
       "url": "https://www.seu.edu.cn/2023/0519/c47217a446087/page.htm",
@@ -3114,6 +3260,62 @@
         "cis.seu.edu.cn"
       ],
       "sourceRole": "school-admissions",
+      "schoolSlug": "southeast-university"
+    },
+    {
+      "id": "seu-admission-index-2027",
+      "label": "Southeast University 2027 international admission index",
+      "url": "https://cis.seu.edu.cn/hwenglish/2025/0917/c28429a539891/page.htm",
+      "allowedHosts": ["cis.seu.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "southeast-university"
+    },
+    {
+      "id": "seu-application-guidance-2027",
+      "label": "Southeast University 2027 international student application guidance",
+      "url": "https://cis.seu.edu.cn/hwenglish/2025/0928/c14041a540896/page.htm",
+      "allowedHosts": ["cis.seu.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "southeast-university"
+    },
+    {
+      "id": "seu-application-guidance-pdf-2027",
+      "label": "Southeast University 2027 international student application guidance PDF",
+      "url": "https://cis.seu.edu.cn/_upload/article/files/2d/c9/d078d2474634af26c4d4149f03a8/b9e258ef-4a63-47b1-bea3-9a1da573f801.pdf",
+      "allowedHosts": ["cis.seu.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "southeast-university"
+    },
+    {
+      "id": "seu-undergraduate-admissions-2027",
+      "label": "Southeast University 2027 international undergraduate admissions guide",
+      "url": "https://cis.seu.edu.cn/hwenglish/2025/1125/c14041a546670/page.htm",
+      "allowedHosts": ["cis.seu.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "southeast-university"
+    },
+    {
+      "id": "seu-undergraduate-admissions-pdf-2027",
+      "label": "Southeast University 2027 international undergraduate admissions guide PDF",
+      "url": "https://cis.seu.edu.cn/_upload/article/files/0f/77/25e1b6864596852a1f98f4265835/a66738e4-f670-447a-8ef2-c6cd16e4b090.pdf",
+      "allowedHosts": ["cis.seu.edu.cn"],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "southeast-university"
+    },
+    {
+      "id": "seu-postgraduate-admissions-2027",
+      "label": "Southeast University 2027 international postgraduate admissions guide",
+      "url": "https://cis.seu.edu.cn/hwenglish/2025/1125/c14041a546671/page.htm",
+      "allowedHosts": ["cis.seu.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "southeast-university"
+    },
+    {
+      "id": "seu-postgraduate-admissions-pdf-2027",
+      "label": "Southeast University 2027 international postgraduate admissions guide PDF",
+      "url": "https://cis.seu.edu.cn/_upload/article/files/05/68/565639a6479595db057223ab2e54/1ce9c483-6cb8-4a4e-8294-0c19a9e5dfde.pdf",
+      "allowedHosts": ["cis.seu.edu.cn"],
+      "sourceRole": "program-catalog",
       "schoolSlug": "southeast-university"
     },
     {
@@ -3953,12 +4155,31 @@
       "schoolSlug": "sichuan-university"
     },
     {
+      "id": "scu-china-link-scholarship-2026-2027",
+      "label": "Sichuan University 2026 China Link scholarship with entry through August 2027",
+      "url": "https://global.scu.edu.cn/oso/article/details/caf722e1-9e76-4376-b9a9-8f3eaa47e5c6",
+      "allowedHosts": [
+        "global.scu.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "sichuan-university"
+    },
+    {
       "id": "uestc-admission-brochure-en-2026",
       "label": "University of Electronic Science and Technology of China 2026 international admission brochure",
       "url": "https://en.uestc.edu.cn/UESTC_Admission_Brochure-EN.pdf",
       "allowedHosts": ["en.uestc.edu.cn"],
       "sourceRole": "school-admissions",
       "schoolSlug": "university-of-electronic-science-and-technology-of-china"
+    },
+    {
+      "id": "uestc-international-admission-news-index-current",
+      "label": "University of Electronic Science and Technology of China current international admission news index",
+      "url": "https://admission.uestc.edu.cn/",
+      "allowedHosts": ["admission.uestc.edu.cn"],
+      "sourceRole": "freshness-index",
+      "schoolSlug": "university-of-electronic-science-and-technology-of-china",
+      "citySlug": "chengdu"
     },
     {
       "id": "uestc-china-link-scholarship-2026",
@@ -4068,6 +4289,30 @@
       "id": "sustech-undergraduate-program-catalog",
       "label": "Southern University of Science and Technology international undergraduate program catalog",
       "url": "https://infoadmin.sustech.edu.cn/programs/new",
+      "allowedHosts": ["infoadmin.sustech.edu.cn"],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "southern-university-of-science-and-technology"
+    },
+    {
+      "id": "sustech-current-undergraduate-requirements",
+      "label": "Southern University of Science and Technology current international undergraduate requirements and documents",
+      "url": "https://infoadmin.sustech.edu.cn/application",
+      "allowedHosts": ["infoadmin.sustech.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "southern-university-of-science-and-technology"
+    },
+    {
+      "id": "sustech-current-undergraduate-admission-process",
+      "label": "Southern University of Science and Technology current international undergraduate admission process",
+      "url": "https://infoadmin.sustech.edu.cn/admission",
+      "allowedHosts": ["infoadmin.sustech.edu.cn"],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "southern-university-of-science-and-technology"
+    },
+    {
+      "id": "sustech-current-undergraduate-programs",
+      "label": "Southern University of Science and Technology current international undergraduate program list",
+      "url": "https://infoadmin.sustech.edu.cn/wap/programs",
       "allowedHosts": ["infoadmin.sustech.edu.cn"],
       "sourceRole": "program-catalog",
       "schoolSlug": "southern-university-of-science-and-technology"
@@ -4397,6 +4642,17 @@
   ],
   "sourceRole": "school-admissions",
   "schoolSlug": "ocean-university-of-china"
+},
+{
+  "id": "ouc-international-admission-brochures-index-current",
+  "label": "Ocean University of China current international admission brochures index",
+  "url": "https://sie.ouc.edu.cn/english/AdmissionBrochures/list.htm",
+  "allowedHosts": [
+    "sie.ouc.edu.cn"
+  ],
+  "sourceRole": "freshness-index",
+  "schoolSlug": "ocean-university-of-china",
+  "citySlug": "qingdao"
 },
 {
   "id": "ouc-international-admission-guide-pdf-2026",
@@ -4797,6 +5053,14 @@
 {
   "id": "changan-cgs-type-b-2026-2027",
   "label": "Chang'an University Chinese Government Scholarship Type B 2026-2027",
+  "url": "https://ies.chd.edu.cn/en/2025/1106/c8645a256964/page.htm",
+  "allowedHosts": ["ies.chd.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "chang-an-university"
+},
+{
+  "id": "changan-cgs-type-b-2026-2027-release-url",
+  "label": "Chang'an University Chinese Government Scholarship Type B 2026-2027 release URL",
   "url": "https://ies.chd.edu.cn/en/2025/1106/c8889a256964/page.htm",
   "allowedHosts": ["ies.chd.edu.cn"],
   "sourceRole": "scholarship",
@@ -4995,6 +5259,14 @@
   "schoolSlug": "beihang-university"
 },
 {
+  "id": "beihang-distinguished-foreign-students-scholarship-policy",
+  "label": "Beihang University distinguished foreign students scholarship policy",
+  "url": "https://is.buaa.edu.cn/en/info/1041/1938.htm",
+  "allowedHosts": ["is.buaa.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "beihang-university"
+},
+{
   "id": "beihang-program-cooperation-scholarship-policy",
   "label": "Beihang University program and cooperation scholarship policy",
   "url": "https://is.buaa.edu.cn/en/info/1041/1936.htm",
@@ -5064,6 +5336,14 @@
   "url": "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=5b2a32d6768d4b5da557db4c967344b9.xlsx",
   "allowedHosts": ["admissions.cau.edu.cn"],
   "sourceRole": "program-catalog",
+  "schoolSlug": "china-agricultural-university"
+},
+{
+  "id": "cau-undergraduate-duration-policy-2026",
+  "label": "China Agricultural University 2026 undergraduate admissions charter",
+  "url": "https://www.cau.edu.cn/tzgg/0efe1720dc674b868ddcc4e8b442d0c5.htm",
+  "allowedHosts": ["www.cau.edu.cn"],
+  "sourceRole": "school-admissions",
   "schoolSlug": "china-agricultural-university"
 },
 {
@@ -7589,11 +7869,47 @@
   "citySlug": "beijing"
 },
 {
+  "id": "bfsu-international-chinese-language-teachers-scholarship-2026-2027",
+  "label": "Beijing Foreign Studies University 2026 International Chinese Language Teachers Scholarship with January and March 2027 routes",
+  "url": "https://osao.bfsu.edu.cn/info/2462/6812.htm",
+  "allowedHosts": ["osao.bfsu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "beijing-foreign-studies-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "bfsu-international-chinese-language-teachers-scholarship-coverage-2026",
+  "label": "Beijing Foreign Studies University 2026 International Chinese Language Teachers Scholarship coverage and standards",
+  "url": "https://osao.bfsu.edu.cn/666.pdf",
+  "allowedHosts": ["osao.bfsu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "beijing-foreign-studies-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "bfsu-international-chinese-language-teachers-scholarship-materials-2026",
+  "label": "Beijing Foreign Studies University 2026 International Chinese Language Teachers Scholarship application materials",
+  "url": "https://osao.bfsu.edu.cn/444.pdf",
+  "allowedHosts": ["osao.bfsu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "beijing-foreign-studies-university",
+  "citySlug": "beijing"
+},
+{
   "id": "ecust-international-undergraduate-admissions-en-2026",
   "label": "East China University of Science and Technology 2026 international undergraduate admissions",
   "url": "https://cie.ecust.edu.cn/notices/514.html",
   "allowedHosts": ["cie.ecust.edu.cn"],
   "sourceRole": "school-admissions",
+  "schoolSlug": "east-china-university-of-science-and-technology",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecust-international-notices-index-current",
+  "label": "East China University of Science and Technology current international notices index",
+  "url": "https://cie.ecust.edu.cn/notices/",
+  "allowedHosts": ["cie.ecust.edu.cn"],
+  "sourceRole": "freshness-index",
   "schoolSlug": "east-china-university-of-science-and-technology",
   "citySlug": "shanghai"
 },
@@ -8426,6 +8742,60 @@
   "citySlug": "shanghai"
 },
 {
+  "id": "fudan-management-international-masters-procedure-image-2027",
+  "label": "Fudan School of Management 2027 international master's detailed admission procedure image",
+  "url": "https://www.fdsm.fudan.edu.cn/_upload/article/images/bd/0f/7076127a4002a61a32b2d8c99396/d331e226-74f1-4379-a82c-64065932de69_d.png",
+  "allowedHosts": ["www.fdsm.fudan.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "fudan-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "fudan-mif-program-and-international-admissions-2027",
+  "label": "Fudan School of Management MIF program and 2027 international admissions",
+  "url": "https://www.fdsm.fudan.edu.cn/en/programs/mf.html",
+  "allowedHosts": ["www.fdsm.fudan.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "fudan-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "fudan-aib-program-overview-2027",
+  "label": "Fudan School of Management 2027 Master of AI for Business program overview",
+  "url": "https://www.fdsm.fudan.edu.cn/upec/2026/0721/c2659a35201/page.htm",
+  "allowedHosts": ["www.fdsm.fudan.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "fudan-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "fudan-management-program-fees-2027",
+  "label": "Fudan School of Management 2027 MIF and AIB program fees",
+  "url": "https://www.fdsm.fudan.edu.cn/upec/2026/0916/c2077a37532/page.htm",
+  "allowedHosts": ["www.fdsm.fudan.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "fudan-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "fudan-chinese-language-spring-2027",
+  "label": "Fudan University Spring 2027 semester and academic-year Chinese language program notice",
+  "url": "https://ices.fudan.edu.cn/_t326/69/08/c6658a485640/page.htm",
+  "allowedHosts": ["ices.fudan.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "fudan-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "fudan-chinese-language-guide-pdf-spring-2027",
+  "label": "Fudan University Spring 2027 semester and academic-year Chinese language program guide PDF",
+  "url": "https://ices.fudan.edu.cn/_upload/article/files/9e/6d/2ced2d9b44efbf4f18ad73e0e179/15500f02-6855-4d61-8b60-b2eff5c90917.pdf",
+  "allowedHosts": ["ices.fudan.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "fudan-university",
+  "citySlug": "shanghai"
+},
+{
   "id": "pku-phbs-master-economics-2027",
   "label": "Peking University HSBC Business School Master of Economics 2027 admissions",
   "url": "https://english.phbs.pku.edu.cn/Academics/Master/Master_of_Economics.htm",
@@ -8442,6 +8812,1719 @@
   "sourceRole": "program-catalog",
   "schoolSlug": "westlake-university",
   "citySlug": "hangzhou"
-}
+},
+{
+  "id": "westlake-engineering-doctoral-duration-2027",
+  "label": "Westlake University School of Engineering 2027 doctoral admissions and duration policy",
+  "url": "https://engineering.westlake.edu.cn/Admission/GraduateProgram/zszx_2623/202610/t20261016_70469.shtml",
+  "allowedHosts": ["engineering.westlake.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "westlake-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "westlake-general-doctoral-admissions-2027",
+  "label": "Westlake University 2027 general doctoral admissions and duration policy",
+  "url": "https://www.westlake.edu.cn/admissions/graduate/brochure/general/202610/t20261010_70269.html",
+  "allowedHosts": ["www.westlake.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "westlake-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "westlake-physics-doctoral-duration-2027",
+  "label": "Westlake University Physics 2027 doctoral admissions and duration policy",
+  "url": "https://physics.westlake.edu.cn/news/202610/t20261016_70441.shtml",
+  "allowedHosts": ["physics.westlake.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "westlake-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "westlake-quantitative-biology-doctoral-duration-2027",
+  "label": "Westlake University Quantitative Biology and Complex Systems 2027 doctoral admissions and duration policy",
+  "url": "https://science.westlake.edu.cn/news/detail/dfec168ba6db46e1bb8ccd63262e36fd",
+  "allowedHosts": ["science.westlake.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "westlake-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "westlake-biology-doctoral-duration-policy",
+  "label": "Westlake University School of Life Sciences doctoral duration policy",
+  "url": "https://sls.westlake.edu.cn/Education/Short_term_Programs/",
+  "allowedHosts": ["sls.westlake.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "westlake-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "westlake-astronomy-admissions-index-2027",
+  "label": "Westlake University Astronomy 2027 doctoral admissions index",
+  "url": "https://astro.westlake.edu.cn/",
+  "allowedHosts": ["astro.westlake.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "westlake-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "nwpu-master-admissions-2027",
+  "label": "Northwestern Polytechnical University 2027 international master application guide",
+  "url": "https://studyat.nwpu.edu.cn/info/1303/8791.htm",
+  "allowedHosts": ["studyat.nwpu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "northwestern-polytechnical-university",
+  "citySlug": "xian"
+},
+{
+  "id": "nwpu-master-program-catalog-2027",
+  "label": "Northwestern Polytechnical University 2027 international master program catalog",
+  "url": "https://studyat.nwpu.edu.cn/info/1203/10691.htm",
+  "allowedHosts": ["studyat.nwpu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "northwestern-polytechnical-university",
+  "citySlug": "xian"
+},
+{
+  "id": "nwpu-doctoral-admissions-2027",
+  "label": "Northwestern Polytechnical University 2027 international doctoral application guide",
+  "url": "https://studyat.nwpu.edu.cn/info/1313/8831.htm",
+  "allowedHosts": ["studyat.nwpu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "northwestern-polytechnical-university",
+  "citySlug": "xian"
+},
+{
+  "id": "nwpu-doctoral-program-catalog-2027",
+  "label": "Northwestern Polytechnical University 2027 international doctoral program catalog",
+  "url": "https://studyat.nwpu.edu.cn/info/1203/10701.htm",
+  "allowedHosts": ["studyat.nwpu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "northwestern-polytechnical-university",
+  "citySlug": "xian"
+},
+{
+  "id": "nwpu-foundation-program-2027",
+  "label": "Northwestern Polytechnical University 2027 international foundation program",
+  "url": "https://studyat.nwpu.edu.cn/info/1094/10681.htm",
+  "allowedHosts": ["studyat.nwpu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "northwestern-polytechnical-university",
+  "citySlug": "xian"
+},
+{
+  "id": "nwpu-youth-of-excellence-scholarship-2027",
+  "label": "Northwestern Polytechnical University 2027 Youth of Excellence Scheme of China",
+  "url": "https://studyat.nwpu.edu.cn/info/1009/10601.htm",
+  "allowedHosts": ["studyat.nwpu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "northwestern-polytechnical-university",
+  "citySlug": "xian"
+},
+{
+  "id": "xjtu-foundation-programs-2027",
+  "label": "Xi'an Jiaotong University 2027 Chinese-taught pre-university foundation programs",
+  "url": "https://sie.xjtu.edu.cn/en/info/1165/3212.htm",
+  "allowedHosts": ["sie.xjtu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "xi-an-jiaotong-university",
+  "citySlug": "xian"
+},
+{
+  "id": "bnu-undergraduate-credit-program-english-spring-2027",
+  "label": "Beijing Normal University Spring 2027 English-taught undergraduate credit program",
+  "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/nondegreeprogram/undergraduatecredi/b/104640.html",
+  "allowedHosts": ["admission-is.bnu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-normal-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "bnu-graduate-credit-program-chinese-spring-2027",
+  "label": "Beijing Normal University Spring 2027 Chinese-taught graduate credit program",
+  "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/nondegreeprogram/graduatecreditprogram/c/index.html",
+  "allowedHosts": ["admission-is.bnu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-normal-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "bnu-scientific-research-program-spring-2027",
+  "label": "Beijing Normal University Spring 2027 Scientific Research Program",
+  "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/nondegreeprogram/AdmissionBrochureforScientificResearchProgram/index.html",
+  "allowedHosts": ["admission-is.bnu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-normal-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "bit-pre-university-language-programs-page-2027",
+  "label": "Beijing Institute of Technology 2027 pre-university and Chinese-language program page",
+  "url": "https://isc.bit.edu.cn/sylbt/177760fa6e89407ca3cab25c77601a47.htm",
+  "allowedHosts": ["isc.bit.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "beijing-institute-of-technology",
+  "citySlug": "beijing"
+},
+{
+  "id": "bit-pre-university-language-programs-pdf-2027",
+  "label": "Beijing Institute of Technology 2027 pre-university and Chinese-language admission book PDF",
+  "url": "https://isc.bit.edu.cn/docs//2026-10/5bb1b13db18f445fbb8af1c28b9a7c58.pdf",
+  "allowedHosts": ["isc.bit.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-institute-of-technology",
+  "citySlug": "beijing"
+},
+{
+  "id": "dut-undergraduate-admissions-chinese-2027",
+  "label": "Dalian University of Technology 2027 Chinese-taught international undergraduate admissions",
+  "url": "https://sie.dlut.edu.cn/zsxx/xlxm/bks/bkszwskzy.htm",
+  "allowedHosts": ["sie.dlut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "dalian-university-of-technology",
+  "citySlug": "dalian"
+},
+{
+  "id": "dut-undergraduate-admissions-english-2027",
+  "label": "Dalian University of Technology 2027 English-taught international undergraduate admissions",
+  "url": "https://sie.dlut.edu.cn/info/1179/2480.htm",
+  "allowedHosts": ["sie.dlut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "dalian-university-of-technology",
+  "citySlug": "dalian"
+},
+{
+  "id": "dut-master-admissions-chinese-2027",
+  "label": "Dalian University of Technology 2027 Chinese-taught international master admissions",
+  "url": "https://sie.dlut.edu.cn/zsxx/xlxm/ssyjs/yjszwskzy.htm",
+  "allowedHosts": ["sie.dlut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "dalian-university-of-technology",
+  "citySlug": "dalian"
+},
+{
+  "id": "dut-master-admissions-english-2027",
+  "label": "Dalian University of Technology 2027 English-taught international master admissions",
+  "url": "https://sie.dlut.edu.cn/zsxx/xlxm/ssyjs/yjsywskzy.htm",
+  "allowedHosts": ["sie.dlut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "dalian-university-of-technology",
+  "citySlug": "dalian"
+},
+{
+  "id": "dut-doctoral-admissions-chinese-2027",
+  "label": "Dalian University of Technology 2027 Chinese-taught international doctoral admissions",
+  "url": "https://sie.dlut.edu.cn/zsxx/xlxm/bsyjs/bsszwskzy.htm",
+  "allowedHosts": ["sie.dlut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "dalian-university-of-technology",
+  "citySlug": "dalian"
+},
+{
+  "id": "dut-doctoral-admissions-english-2027",
+  "label": "Dalian University of Technology 2027 English-taught international doctoral admissions",
+  "url": "https://sie.dlut.edu.cn/zsxx/xlxm/bsyjs/bssywskzy.htm",
+  "allowedHosts": ["sie.dlut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "dalian-university-of-technology",
+  "citySlug": "dalian"
+},
+{
+  "id": "dut-chinese-government-scholarship-type-b-2027",
+  "label": "Dalian University of Technology 2027 Chinese Government Scholarship High-Level Graduate and Silk Road Program Type B",
+  "url": "https://sie.dlut.edu.cn/info/1024/1991.htm",
+  "allowedHosts": ["sie.dlut.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "dalian-university-of-technology",
+  "citySlug": "dalian"
+},
+{
+  "id": "gdufs-degree-admissions-spring-2027",
+  "label": "Guangdong University of Foreign Studies Spring 2027 international degree admissions",
+  "url": "https://iie-en.gdufs.edu.cn/info/1174/2795.htm",
+  "allowedHosts": ["iie-en.gdufs.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "guangdong-university-of-foreign-studies",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "gdufs-degree-admissions-chinese-spring-2027",
+  "label": "Guangdong University of Foreign Studies Spring 2027 international degree admissions Chinese notice",
+  "url": "https://iie.gdufs.edu.cn/info/1099/5938.htm",
+  "allowedHosts": ["iie.gdufs.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "guangdong-university-of-foreign-studies",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "gdufs-chinese-language-spring-2027",
+  "label": "Guangdong University of Foreign Studies Spring 2027 Chinese language program",
+  "url": "https://iie-en.gdufs.edu.cn/info/1174/2785.htm",
+  "allowedHosts": ["iie-en.gdufs.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "guangdong-university-of-foreign-studies",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "gdufs-winter-chinese-program-2027",
+  "label": "Guangdong University of Foreign Studies 2027 winter Chinese language program",
+  "url": "https://iie-en.gdufs.edu.cn/info/1174/2775.htm",
+  "allowedHosts": ["iie-en.gdufs.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "guangdong-university-of-foreign-studies",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "gdufs-chinese-language-undergraduate-programs-current",
+  "label": "Guangdong University of Foreign Studies Chinese language undergraduate program descriptions and fees",
+  "url": "https://iie-en.gdufs.edu.cn/info/1132/2191.htm",
+  "allowedHosts": ["iie-en.gdufs.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "guangdong-university-of-foreign-studies",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "blcu-undergraduate-program-table-2027",
+  "label": "Beijing Language and Culture University 2027 international undergraduate program table",
+  "url": "https://admission.blcu.edu.cn/2026/1014/c1572a3064/page.htm",
+  "allowedHosts": ["admission.blcu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-language-and-culture-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "blcu-graduate-program-table-2027",
+  "label": "Beijing Language and Culture University 2027 international master's and doctoral program table",
+  "url": "https://admission.blcu.edu.cn/2026/1014/c1572a3065/page.htm",
+  "allowedHosts": ["admission.blcu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-language-and-culture-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "blcu-graduate-program-table-pdf-2027",
+  "label": "Beijing Language and Culture University 2027 international master's and doctoral program table PDF",
+  "url": "https://admission.blcu.edu.cn/_upload/article/files/07/a9/2474dce243c9a5e608cd8a02a161/7521c31b-754b-4861-96c8-c14b9983bb17.pdf",
+  "allowedHosts": ["admission.blcu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-language-and-culture-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "blcu-nondegree-program-table-2027",
+  "label": "Beijing Language and Culture University 2027 international non-degree program table",
+  "url": "https://admission.blcu.edu.cn/2026/1014/c1572a3066/page.htm",
+  "allowedHosts": ["admission.blcu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-language-and-culture-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "blcu-undergraduate-program-table-pdf-2027",
+  "label": "Beijing Language and Culture University 2027 international undergraduate program table PDF",
+  "url": "https://admission.blcu.edu.cn/_upload/article/files/39/74/e89e82e5490687d93679a0c4b3c4/206c8a45-4a29-45e6-9870-cfd697dd5c60.pdf",
+  "allowedHosts": ["admission.blcu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-language-and-culture-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "blcu-nondegree-program-table-pdf-2027",
+  "label": "Beijing Language and Culture University 2027 international non-degree program table PDF",
+  "url": "https://admission.blcu.edu.cn/_upload/article/files/35/ca/b253dec34e6699c6ea1f6e98519d/15f00af8-d2e9-4265-87b3-2648688c5193.pdf",
+  "allowedHosts": ["admission.blcu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "beijing-language-and-culture-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "tongji-application-information-updates-spring-2027",
+  "label": "Tongji University application information updates for Spring 2027",
+  "url": "https://study.tongji.edu.cn/en/ADMISSION/Application_Information_Updates.htm",
+  "allowedHosts": ["study.tongji.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tongji-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "tongji-current-international-student-fees",
+  "label": "Tongji University current international student fees and application fee",
+  "url": "https://study.tongji.edu.cn/en/CURRENT_STUDENTS/Free_Costs.htm",
+  "allowedHosts": ["study.tongji.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tongji-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecnu-current-international-student-fee-list",
+  "label": "East China Normal University current international student fee list",
+  "url": "https://lxs.ecnu.edu.cn/en_feespayment_feelist/list.htm",
+  "allowedHosts": ["lxs.ecnu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "east-china-normal-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecnu-standard-chinese-language-spring-2027",
+  "label": "East China Normal University Standard Chinese Language Program Spring 2027",
+  "url": "https://lxs.ecnu.edu.cn/en_admission_chinese_language_programs_standard_chinese_language_program/list.htm",
+  "allowedHosts": ["lxs.ecnu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "east-china-normal-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecnu-business-chinese-language-spring-2027",
+  "label": "East China Normal University Business Chinese Language Program Spring 2027",
+  "url": "https://lxs.ecnu.edu.cn/en_admission_chinese_language_programs_business_chinese_language_program/list.htm",
+  "allowedHosts": ["lxs.ecnu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "east-china-normal-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecnu-global-china-program-spring-2027",
+  "label": "East China Normal University Global China Program Spring 2027",
+  "url": "https://lxs.ecnu.edu.cn/en_admission_visiting_programs_global_china_program/list.htm",
+  "allowedHosts": ["lxs.ecnu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "east-china-normal-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "ecnu-love-ai-shanghai-winter-study-program-2027",
+  "label": "East China Normal University Love AI Shanghai Winter Study Program 2027",
+  "url": "https://lxs.ecnu.edu.cn/en_admission_short_term_programs_AI/list.htm",
+  "allowedHosts": ["lxs.ecnu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "east-china-normal-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "sysu-foundation-one-semester-spring-2027",
+  "label": "Sun Yat-sen University one-semester international foundation program expected February 2027 entry",
+  "url": "https://iso.sysu.edu.cn/en/application/nondegree/1421644.htm",
+  "allowedHosts": ["iso.sysu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "sun-yat-sen-university",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "sysu-china-link-spring-2027",
+  "label": "Sun Yat-sen University China Link Scholarship for Spring and Summer 2027",
+  "url": "https://iso.sysu.edu.cn/cn/jxjxm/1420931.htm",
+  "allowedHosts": ["iso.sysu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "sun-yat-sen-university",
+  "citySlug": "guangzhou"
+},
+{
+  "id": "dhu-international-chinese-language-teachers-scholarship-spring-2027",
+  "label": "Donghua University 2026 International Chinese Language Teachers Scholarship with March 2027 route",
+  "url": "https://english.dhu.edu.cn/_t1264/2021/0119/c5221a273256/page.psp",
+  "allowedHosts": ["english.dhu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "donghua-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "shisu-chinese-government-scholarship-type-b-2027",
+  "label": "Shanghai International Studies University 2027 Chinese Government Scholarship Type B application guide",
+  "url": "https://www.oisa.shisu.edu.cn/index.php/index/newscontent/cid/39/id/684.html",
+  "allowedHosts": ["www.oisa.shisu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "shanghai-international-studies-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "shisu-graduate-program-catalog-xls-2027",
+  "label": "Shanghai International Studies University 2027 graduate program information table",
+  "url": "https://www.oisa.shisu.edu.cn/index.php/index/download_sys/url/%252F..%252FUploads%252F2026-10-16%252Fimge%252F6ad1d30260995.xls.html",
+  "allowedHosts": ["www.oisa.shisu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "shanghai-international-studies-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "shisu-china-link-scholarship-2026-2027",
+  "label": "Shanghai International Studies University 2026 China Link scholarship with entry through August 2027",
+  "url": "https://www.oisa.shisu.edu.cn/index.php/en/index/newscontent/cid/130/id/663.html",
+  "allowedHosts": ["www.oisa.shisu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "shanghai-international-studies-university",
+  "citySlug": "shanghai"
+},
+{
+  "id": "uibe-international-chinese-language-teachers-scholarship-spring-2027",
+  "label": "University of International Business and Economics 2026 International Chinese Language Teachers Scholarship with March 2027 route",
+  "url": "https://sie.uibe.edu.cn/zslq2/jxjsq2/gjzwjsjxj2/index.htm",
+  "allowedHosts": ["sie.uibe.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "university-of-international-business-and-economics",
+  "citySlug": "beijing"
+},
+{
+  "id": "ustb-graduate-admissions-2027",
+  "label": "University of Science and Technology Beijing 2027 master's and doctoral admissions guide",
+  "url": "https://iscen.ustb.edu.cn/Admissions/6a362321ddfe4dd9ab8edb6d1822fd07.htm",
+  "allowedHosts": ["iscen.ustb.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "university-of-science-and-technology-beijing",
+  "citySlug": "beijing"
+},
+{
+  "id": "ustb-undergraduate-programs-2027",
+  "label": "University of Science and Technology Beijing 2027 undergraduate program list",
+  "url": "https://iscen.ustb.edu.cn/Admissions/6af7b4dc01f248db8976d07d4fb4e592.htm",
+  "allowedHosts": ["iscen.ustb.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "university-of-science-and-technology-beijing",
+  "citySlug": "beijing"
+},
+{
+  "id": "ustb-undergraduate-application-2027",
+  "label": "University of Science and Technology Beijing 2027 bachelor application guide",
+  "url": "https://iscen.ustb.edu.cn/Admissions/072526f8750843e0a1b124db966be700.htm",
+  "allowedHosts": ["iscen.ustb.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "university-of-science-and-technology-beijing",
+  "citySlug": "beijing"
+},
+{
+  "id": "ustb-chinese-ai-joint-program-2027",
+  "label": "University of Science and Technology Beijing 2027 Chinese Language and Artificial Intelligence joint program",
+  "url": "https://iscen.ustb.edu.cn/Admissions/c1075bf6cf1f481da2e43a496e89af78.htm",
+  "allowedHosts": ["iscen.ustb.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "university-of-science-and-technology-beijing",
+  "citySlug": "beijing"
+},
+{
+  "id": "ustb-international-economics-1-plus-3-2027",
+  "label": "University of Science and Technology Beijing 2027 International Economy and Trade 1+3 program",
+  "url": "https://iscen.ustb.edu.cn/Admissions/def87c05661b4842880ed9ca6dcd9dc6.htm",
+  "allowedHosts": ["iscen.ustb.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "university-of-science-and-technology-beijing",
+  "citySlug": "beijing"
+},
+{
+  "id": "ustb-csca-requirements-2027",
+  "label": "University of Science and Technology Beijing 2027 CSCA requirements",
+  "url": "https://iscen.ustb.edu.cn/Admissions/6c71185c5a5345f5ac0fe79974564410.htm",
+  "allowedHosts": ["iscen.ustb.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "university-of-science-and-technology-beijing",
+  "citySlug": "beijing"
+},
+{
+  "id": "ustb-undergraduate-brochure-2027",
+  "label": "University of Science and Technology Beijing 2027 international undergraduate admission brochure",
+  "url": "https://iscen.ustb.edu.cn/Admissions/7a574bf57214495aa87b81647650f3da.htm",
+  "allowedHosts": ["iscen.ustb.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "university-of-science-and-technology-beijing",
+  "citySlug": "beijing"
+},
+{
+  "id": "pkuhsc-undergraduate-admissions-page-2027",
+  "label": "Peking University Health Science Center 2027 international undergraduate admissions page",
+  "url": "https://oic.bjmu.edu.cn/lxby/zsjz/b722ea27933042248caf4884c1f1a50f.htm",
+  "allowedHosts": ["oic.bjmu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "peking-university-health-science-center",
+  "citySlug": "beijing"
+},
+{
+  "id": "pkuhsc-undergraduate-admissions-pdf-2027",
+  "label": "Peking University Health Science Center 2027 international undergraduate admissions brochure PDF",
+  "url": "https://oic.bjmu.edu.cn/docs//2026-10/9bdfe9b3e4ff43d0b317340d8d089ea7.pdf",
+  "allowedHosts": ["oic.bjmu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "peking-university-health-science-center",
+  "citySlug": "beijing"
+},
+{
+  "id": "tjnu-international-chinese-language-teachers-scholarship-page-2026-2027",
+  "label": "Tianjin Normal University 2026 International Chinese Language Teachers Scholarship page with March 2027 route",
+  "url": "https://gjjl.tjnu.edu.cn/info/1265/6540.htm",
+  "allowedHosts": ["gjjl.tjnu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "tianjin-normal-university",
+  "citySlug": "tianjin"
+},
+{
+  "id": "tjnu-international-chinese-language-teachers-scholarship-pdf-2026-2027",
+  "label": "Tianjin Normal University 2026 International Chinese Language Teachers Scholarship guide PDF with March 2027 route",
+  "url": "https://gjjl.tjnu.edu.cn/__local/A/E9/C1/4B9C4EFA1220ED14AAC98D6A162_1C7CC2D9_3A7A3.pdf",
+  "allowedHosts": ["gjjl.tjnu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "tianjin-normal-university",
+  "citySlug": "tianjin"
+},
+{
+  "id": "heu-atomic-energy-scholarship-page-2027-2028",
+  "label": "Harbin Engineering University College of Nuclear Science and Technology 2027-2028 Atomic Energy Scholarship admissions page",
+  "url": "https://cnst.hrbeu.edu.cn/info/1046/17941.htm",
+  "allowedHosts": ["cnst.hrbeu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "harbin-engineering-university",
+  "citySlug": "harbin"
+},
+{
+  "id": "heu-atomic-energy-scholarship-pdf-2027-2028",
+  "label": "Harbin Engineering University 2027-2028 Atomic Energy Scholarship of China guide PDF",
+  "url": "https://cnst.hrbeu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1934887394&wbfileid=DC1B1AC8227FC08BFD0F15D4E291CCE3",
+  "allowedHosts": ["cnst.hrbeu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "harbin-engineering-university",
+  "citySlug": "harbin"
+},
+{
+  "id": "tjutech-chinese-language-spring-2027",
+  "label": "Tianjin University of Technology Spring 2027 Chinese language program admissions guide",
+  "url": "https://chinese.tjut.edu.cn/info/1053/1143.htm",
+  "allowedHosts": ["chinese.tjut.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tianjin-university-of-technology",
+  "citySlug": "tianjin"
+},
+{
+  "id": "changan-spring-intake-programs-2027",
+  "label": "Chang'an University 2027 international student spring intake programs guide",
+  "url": "https://ies.chd.edu.cn/en/2026/1013/c8645a263011/page.htm",
+  "allowedHosts": ["ies.chd.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "chang-an-university",
+  "citySlug": "xian"
+},
+{
+  "id": "zjgsu-chinese-language-culture-spring-2027",
+  "label": "Zhejiang Gongshang University Spring 2027 Chinese Language and Culture Program",
+  "url": "https://sie.zjgsu.edu.cn/gjen/2131/list.htm",
+  "allowedHosts": ["sie.zjgsu.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "zhejiang-gongshang-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "zjgsu-current-international-student-fees",
+  "label": "Zhejiang Gongshang University current international student fees",
+  "url": "https://sie.zjgsu.edu.cn/gjen/FEES/list.htm",
+  "allowedHosts": ["sie.zjgsu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "zhejiang-gongshang-university",
+  "citySlug": "hangzhou"
+},
+{
+  "id": "blcu-beijing-international-students-scholarship-spring-2027",
+  "label": "Beijing Language and Culture University Beijing International Students Scholarship with March 2027 deadline",
+  "url": "https://admission.blcu.edu.cn/en/98/list.psp",
+  "allowedHosts": ["admission.blcu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "beijing-language-and-culture-university",
+  "citySlug": "beijing"
+},
+{
+  "id": "nuaa-international-program-index-current",
+  "label": "Nanjing University of Aeronautics and Astronautics current international program catalog with 2027 route pages",
+  "url": "https://ciee.nuaa.edu.cn/programs",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-international-admissions-current",
+  "label": "Nanjing University of Aeronautics and Astronautics current international admissions process and requirements",
+  "url": "https://ciee.nuaa.edu.cn/admissions",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-scholarships-and-fees-current",
+  "label": "Nanjing University of Aeronautics and Astronautics current international scholarships and fees",
+  "url": "https://ciee.nuaa.edu.cn/academics/scholarships-fees",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-aeronautical-engineering-bachelor-2027",
+  "label": "NUAA Aeronautical Engineering bachelor's March and September 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/bachelors-in-aeronautical-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-artificial-intelligence-bachelor-2027",
+  "label": "NUAA Artificial Intelligence bachelor's March and September 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/bachelors-in-artificial-intelligence-ai",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-civil-engineering-bachelor-2027",
+  "label": "NUAA Civil Engineering bachelor's March and September 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/bachelors-in-civil-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-electrical-electronics-engineering-bachelor-2027",
+  "label": "NUAA Electrical and Electronics Engineering bachelor's March and September 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/bachelors-in-electrical-and-electronics-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-international-business-trade-bachelor-2027",
+  "label": "NUAA International Business and Trade bachelor's March and September 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/bachelors-in-international-business-trade",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-mechanical-engineering-bachelor-2027",
+  "label": "NUAA Mechanical Engineering bachelor's March and September 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/bachelors-in-mechanical-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-foundation-program-2027",
+  "label": "NUAA Pre-Engineering and Pre-Business Foundation Program March and September 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/pre-engineeringpre-business-foundation-program",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-chinese-language-program-2027",
+  "label": "NUAA Chinese Language Program March and September 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/chinese-language-program",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-accounting-master-2027",
+  "label": "NUAA Accounting master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-accounting",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-aerospace-science-technology-master-2027",
+  "label": "NUAA Aerospace Science and Technology master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-aerospace-science-and-technology",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-applied-economics-master-2027",
+  "label": "NUAA Applied Economics master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-applied-economics",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-chemistry-master-2027",
+  "label": "NUAA Chemistry master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-chemistry",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-civil-engineering-master-2027",
+  "label": "NUAA Civil Engineering master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-civil-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-computer-science-technology-master-2027",
+  "label": "NUAA Computer Science and Technology master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-computer-science-and-technology",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-control-science-engineering-master-2027",
+  "label": "NUAA Control Science and Engineering master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-control-science-and-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-cyberspace-safety-master-2027",
+  "label": "NUAA Cyberspace Safety master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-cyberspace-safety",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-electrical-engineering-master-2027",
+  "label": "NUAA Electrical Engineering master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-electrical-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-electronics-science-technology-master-2027",
+  "label": "NUAA Electronics Science and Technology master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-electronics-science-and-technology",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-information-communication-engineering-master-2027",
+  "label": "NUAA Information and Communication Engineering master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-information-and-communication-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-instrument-science-technology-master-2027",
+  "label": "NUAA Instrument Science and Technology master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-instrument-science-and-technology",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-management-science-engineering-master-2027",
+  "label": "NUAA Management Science and Engineering master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-management-science-and-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-materials-science-engineering-master-2027",
+  "label": "NUAA Materials Science and Engineering master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-materials-science-and-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-mathematics-master-2027",
+  "label": "NUAA Mathematics master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-maths",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-mechanics-master-2027",
+  "label": "NUAA Mechanics master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/master-s-in-mechanics",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-optical-engineering-master-2027",
+  "label": "NUAA Optical Engineering master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-optical-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-physics-master-2027",
+  "label": "NUAA Physics master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-physics",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-power-engineering-thermophysics-master-2027",
+  "label": "NUAA Power Engineering and Thermophysics master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-power-engineering-and-thermophysics-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-software-engineering-master-2027",
+  "label": "NUAA Software Engineering master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-software-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-transportation-engineering-master-2027",
+  "label": "NUAA Transportation Engineering master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-transportation-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-integrated-circuits-master-2027",
+  "label": "NUAA Integrated Circuits Science and Engineering master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/master-s-in-integrated-circuits-science-and-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-mechanical-engineering-master-2027",
+  "label": "NUAA Mechanical Engineering master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/master-s-in-mechanical-engineering",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-nuclear-science-technology-master-2027",
+  "label": "NUAA Nuclear Science and Technology master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/master-s-in-nuclear-science-and-technology",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "nuaa-corporate-management-master-2027",
+  "label": "NUAA Corporate Management master's 2027 route",
+  "url": "https://ciee.nuaa.edu.cn/programs/masters-in-corporate-management",
+  "allowedHosts": ["ciee.nuaa.edu.cn"],
+  "sourceRole": "program-catalog",
+  "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+  "citySlug": "nanjing"
+},
+{
+  "id": "tjfsu-chinese-language-spring-2027",
+  "label": "Tianjin Foreign Studies University Spring 2027 Chinese Language Program admissions brochure",
+  "url": "https://isa.tjfsu.edu.cn/info/1040/1918.htm",
+  "allowedHosts": ["isa.tjfsu.edu.cn"],
+  "sourceRole": "school-admissions",
+  "schoolSlug": "tianjin-foreign-studies-university",
+  "citySlug": "tianjin"
+},
+{
+  "id": "ccnu-international-chinese-language-teachers-scholarship-spring-2027",
+  "label": "Central China Normal University Spring 2027 International Chinese Language Teachers Scholarship guide",
+  "url": "https://dge.ccnu.edu.cn/info/1381/31051.htm",
+  "allowedHosts": ["dge.ccnu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "central-china-normal-university",
+  "citySlug": "wuhan"
+},
+{
+  "id": "sisu-international-chinese-language-teachers-scholarship-spring-2027",
+  "label": "Sichuan International Studies University March 2027 International Chinese Language Teachers Scholarship guide",
+  "url": "https://studyinsisu.sisu.edu.cn/tzgg/9a6553d398db4090b5177ef7a4f78231.htm",
+  "allowedHosts": ["studyinsisu.sisu.edu.cn"],
+  "sourceRole": "scholarship",
+  "schoolSlug": "sichuan-international-studies-university",
+  "citySlug": "chongqing"
+  },
+  {
+    "id": "sdnu-international-chinese-language-teachers-scholarship-2026",
+    "label": "Shandong Normal University 2026 International Chinese Language Teachers Scholarship application guide",
+    "url": "https://cie.sdnu.edu.cn/lxsgz/jxj/kzxyjxj/xsjxjxm.htm",
+    "allowedHosts": ["cie.sdnu.edu.cn"],
+    "sourceRole": "scholarship",
+    "schoolSlug": "shandong-normal-university",
+    "citySlug": "jinan"
+  },
+  {
+    "id": "sdu-international-chinese-language-teachers-scholarship-image-2026",
+    "label": "Shandong University 2026 International Chinese Language Teachers Scholarship guide image",
+    "url": "https://www.istudy.sdu.edu.cn/__local/4/2B/BF/DD3116434A857D86CAB97540722_D638F9D3_502851.jpg",
+    "allowedHosts": ["www.istudy.sdu.edu.cn"],
+    "sourceRole": "scholarship",
+    "schoolSlug": "shandong-university",
+    "citySlug": "jinan"
+  },
+  {
+    "id": "sdnu-international-chinese-language-teachers-scholarship-pdf-2026",
+    "label": "Shandong Normal University 2026 International Chinese Language Teachers Scholarship application guide PDF",
+    "url": "https://cie.sdnu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1424284235&wbfileid=ACB73E67F990BCB59D270438F9BA38B7",
+    "allowedHosts": ["cie.sdnu.edu.cn"],
+    "sourceRole": "scholarship",
+    "schoolSlug": "shandong-normal-university",
+    "citySlug": "jinan"
+  },
+  {
+    "id": "heu-atomic-energy-scholarship-image-01-2027-2028",
+    "label": "Harbin Engineering University 2027-2028 nuclear school international admissions image 1",
+    "url": "https://cnst.hrbeu.edu.cn/__local/8/E1/8D/6DB9A23D2B0314074BBAE20CC4F_91F6CB2B_368D1.jpg",
+    "allowedHosts": ["cnst.hrbeu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "harbin-engineering-university",
+    "citySlug": "harbin"
+  },
+  {
+    "id": "heu-atomic-energy-scholarship-image-02-2027-2028",
+    "label": "Harbin Engineering University 2027-2028 nuclear school international admissions image 2",
+    "url": "https://cnst.hrbeu.edu.cn/__local/7/E9/D9/2F8361160951E873CE45246AA87_C0149E1C_647BF.jpg",
+    "allowedHosts": ["cnst.hrbeu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "harbin-engineering-university",
+    "citySlug": "harbin"
+  },
+  {
+    "id": "heu-atomic-energy-scholarship-image-03-2027-2028",
+    "label": "Harbin Engineering University 2027-2028 nuclear school international admissions image 3",
+    "url": "https://cnst.hrbeu.edu.cn/__local/A/6A/A4/B846B6B312E55B79AA7D85B96B9_A19C806A_4F701.jpg",
+    "allowedHosts": ["cnst.hrbeu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "harbin-engineering-university",
+    "citySlug": "harbin"
+  },
+  {
+    "id": "heu-atomic-energy-scholarship-image-04-2027-2028",
+    "label": "Harbin Engineering University 2027-2028 nuclear school international admissions image 4",
+    "url": "https://cnst.hrbeu.edu.cn/__local/A/C0/DF/DAFECC0BBBC6777818C3CDCA1B5_69D610E5_563BE.jpg",
+    "allowedHosts": ["cnst.hrbeu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "harbin-engineering-university",
+    "citySlug": "harbin"
+  },
+  {
+    "id": "heu-atomic-energy-scholarship-image-05-2027-2028",
+    "label": "Harbin Engineering University 2027-2028 nuclear school international admissions image 5",
+    "url": "https://cnst.hrbeu.edu.cn/__local/0/3D/CE/FDB961DF2D00869B4A86C2D7BB2_63D6AE68_6E826.jpg",
+    "allowedHosts": ["cnst.hrbeu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "harbin-engineering-university",
+    "citySlug": "harbin"
+  },
+  {
+    "id": "heu-atomic-energy-scholarship-image-06-2027-2028",
+    "label": "Harbin Engineering University 2027-2028 nuclear school international admissions image 6",
+    "url": "https://cnst.hrbeu.edu.cn/__local/E/B5/1E/C73D3B8E30BE7B280EAAAAA7C18_6AF1A572_680B6.jpg",
+    "allowedHosts": ["cnst.hrbeu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "harbin-engineering-university",
+    "citySlug": "harbin"
+  },
+  {
+    "id": "cqnu-international-chinese-language-teachers-scholarship-spring-2027",
+    "label": "Chongqing Normal University 2026 International Chinese Language Teachers Scholarship with March 2027 entry",
+    "url": "https://international.cqnu.edu.cn/info/1331/5225.htm",
+    "allowedHosts": ["international.cqnu.edu.cn"],
+    "sourceRole": "scholarship",
+    "schoolSlug": "chongqing-normal-university",
+    "citySlug": "chongqing"
+  },
+  {
+    "id": "caa-china-link-scholarship-spring-2027",
+    "label": "China Academy of Art 2026 China Link scholarship with March 2027 spring entry",
+    "url": "https://admission.caa.edu.cn/en/Admissions/China_Link_Short_term_Exchange_Scholarship_Progr.htm",
+    "allowedHosts": ["admission.caa.edu.cn"],
+    "sourceRole": "scholarship",
+    "schoolSlug": "china-academy-of-art",
+    "citySlug": "hangzhou"
+  },
+  {
+    "id": "wzu-china-link-scholarship-2026-2027",
+    "label": "Wenzhou University 2026 China Link short-term scientific exchange scholarship with entry through August 2027",
+    "url": "https://cic.wzu.edu.cn/info/1718/11956.htm",
+    "allowedHosts": ["cic.wzu.edu.cn"],
+    "sourceRole": "scholarship",
+    "schoolSlug": "wenzhou-university",
+    "citySlug": "wenzhou"
+  },
+  {
+    "id": "jnu-summer-fall-winter-sessions-2026-2027",
+    "label": "Jinan University 2026-2027 Summer, Fall and Winter Sessions with 2027 summer dates",
+    "url": "https://oiss.jnu.edu.cn/main.htm",
+    "allowedHosts": ["oiss.jnu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "jinan-university",
+    "citySlug": "guangzhou"
+  },
+  {
+    "id": "ecnu-current-undergraduate-language-requirements",
+    "label": "ECNU current international undergraduate language requirements",
+    "url": "https://lxs.ecnu.edu.cn/en_admission_degree_programs_undergraduate_program/list.htm",
+    "allowedHosts": ["lxs.ecnu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "east-china-normal-university",
+    "citySlug": "shanghai"
+  },
+  {
+    "id": "ecnu-current-graduate-language-requirements",
+    "label": "ECNU current international graduate language requirements",
+    "url": "https://lxs.ecnu.edu.cn/en_admission_degree_programs_graduate_program/list.htm",
+    "allowedHosts": ["lxs.ecnu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "east-china-normal-university",
+    "citySlug": "shanghai"
+  },
+  {
+    "id": "tongji-international-chinese-language-teachers-scholarship-spring-2027",
+    "label": "Tongji 2026 International Chinese Language Teachers Scholarship with March 2027 entry",
+    "url": "https://study.tongji.edu.cn/__local/A/47/D7/D98D91C973F84276A349FB806A7_E033BF03_29DEF.pdf",
+    "allowedHosts": ["study.tongji.edu.cn"],
+    "sourceRole": "scholarship",
+    "schoolSlug": "tongji-university",
+    "citySlug": "shanghai"
+  },
+  {
+    "id": "wzu-current-international-entry-requirements",
+    "label": "Wenzhou University current international student entry requirements and CSCA policy",
+    "url": "https://cic.wzu.edu.cn/prospective/EntryRequirements.htm",
+    "allowedHosts": ["cic.wzu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "wenzhou-university",
+    "citySlug": "wenzhou"
+  },
+  {
+    "id": "pku-spring-four-week-chinese-language-2027",
+    "label": "Peking University Spring 2027 four-week Chinese language program",
+    "url": "https://www.isd.pku.edu.cn/en/detail.php?id=836",
+    "allowedHosts": ["www.isd.pku.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "peking-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "nankai-master-admissions-2027",
+    "label": "Nankai University 2027 international master admissions guide",
+    "url": "https://ensie.nankai.edu.cn/info/1085/1358.htm",
+    "allowedHosts": ["ensie.nankai.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "nankai-university",
+    "citySlug": "tianjin"
+  },
+  {
+    "id": "nankai-doctoral-admissions-2027",
+    "label": "Nankai University 2027 international doctoral admissions guide",
+    "url": "https://ensie.nankai.edu.cn/DEGREE_PROGRAMS/phd/pro.htm",
+    "allowedHosts": ["ensie.nankai.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "nankai-university",
+    "citySlug": "tianjin"
+  },
+  {
+    "id": "sjtu-chinese-language-admission-guideline-current",
+    "label": "Shanghai Jiao Tong University current Chinese language admission guideline with Spring 2027 attachment",
+    "url": "https://ichinese.sjtu.edu.cn/en/programs/74/detail?sort=0",
+    "allowedHosts": ["ichinese.sjtu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "shanghai-jiao-tong-university",
+    "citySlug": "shanghai"
+  },
+  {
+    "id": "sjtu-spring-chinese-language-full-time-2027-docx",
+    "label": "Shanghai Jiao Tong University Spring 2027 full-time long-term Chinese language course guide",
+    "url": "https://ichinese.sjtu.edu.cn/storage/other/f6/05/145480a51760436a046b170a69e305f6.docx",
+    "allowedHosts": ["ichinese.sjtu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "shanghai-jiao-tong-university",
+    "citySlug": "shanghai"
+  },
+  {
+    "id": "xjtu-chinese-language-program-xian-2027",
+    "label": "Xi'an Jiaotong University 2027 Chinese Language Program in Xi'an",
+    "url": "https://sie.xjtu.edu.cn/en/info/1104/3213.htm",
+    "allowedHosts": ["sie.xjtu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "xi-an-jiaotong-university",
+    "citySlug": "xian"
+  },
+  {
+    "id": "xjtu-visiting-scholar-program-2027",
+    "label": "Xi'an Jiaotong University 2027 Visiting Scholar Program",
+    "url": "https://sie.xjtu.edu.cn/en/info/1164/3225.htm",
+    "allowedHosts": ["sie.xjtu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "xi-an-jiaotong-university",
+    "citySlug": "xian"
+  },
+  {
+    "id": "xjtu-student-exchange-program-2027-pdf",
+    "label": "Xi'an Jiaotong University 2027 Student Exchange Program brochure",
+    "url": "https://sie.xjtu.edu.cn/__local/5/C2/34/D217D92D8B7305A729A75626026_39A038F4_820B47.pdf",
+    "allowedHosts": ["sie.xjtu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "xi-an-jiaotong-university",
+    "citySlug": "xian"
+  },
+  {
+    "id": "tsinghua-visiting-student-program-spring-2027",
+    "label": "Tsinghua University 2026/2027 visiting student program with Spring 2027 admission",
+    "url": "https://intl-nondegree.tsinghua.edu.cn/f/yzlxs/yz_lxs_kstzb/view?id=264627",
+    "allowedHosts": ["intl-nondegree.tsinghua.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "tsinghua-visiting-student-program-handbook-spring-2027",
+    "label": "Tsinghua University Spring 2027 visiting student program handbook",
+    "url": "https://intl-nondegree.tsinghua.edu.cn/b/yzlxs/yz_sys_xxfjb/download/file?id=536584",
+    "allowedHosts": ["intl-nondegree.tsinghua.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "tsinghua-visiting-student-majors-spring-2027",
+    "label": "Tsinghua University Spring 2027 visiting student majors",
+    "url": "https://intl-nondegree.tsinghua.edu.cn/b/yzlxs/yz_sys_xxfjb/download/file?id=536585",
+    "allowedHosts": ["intl-nondegree.tsinghua.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "tsinghua-visiting-student-fees-spring-2027",
+    "label": "Tsinghua University Spring 2027 visiting student fee schedule",
+    "url": "https://intl-nondegree.tsinghua.edu.cn/b/yzlxs/yz_sys_xxfjb/download/file?id=536588",
+    "allowedHosts": ["intl-nondegree.tsinghua.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "tsinghua-visiting-student-scholarships-spring-2027",
+    "label": "Tsinghua University Spring 2027 visiting student scholarship overview",
+    "url": "https://intl-nondegree.tsinghua.edu.cn/b/yzlxs/yz_sys_xxfjb/download/file?id=536589",
+    "allowedHosts": ["intl-nondegree.tsinghua.edu.cn"],
+    "sourceRole": "scholarship",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "shu-pre-university-program-spring-2027",
+    "label": "Shanghai University Pre-University Program Spring 2027",
+    "url": "https://apply.shu.edu.cn/upload/shangda/1/2/1/Pre-University%20Program%20of%20Shanghai%20University(2027%20Spring%20Intake%EF%BC%89.pdf",
+    "allowedHosts": ["apply.shu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "shanghai-university",
+    "citySlug": "shanghai"
+  },
+  {
+    "id": "tsinghua-international-graduate-admissions-2027",
+    "label": "Tsinghua University 2027 international graduate admissions guide",
+    "url": "https://yz.tsinghua.edu.cn/info/1015/3252.htm",
+    "allowedHosts": ["yz.tsinghua.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "tsinghua-international-graduate-catalog-2027",
+    "label": "Tsinghua University 2027 international graduate program catalog index",
+    "url": "https://yzbm.tsinghua.edu.cn/publish/s05/s0503/list",
+    "allowedHosts": ["yzbm.tsinghua.edu.cn"],
+    "sourceRole": "program-catalog",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "tsinghua-international-doctoral-catalog-detail-2027",
+    "label": "Tsinghua University 2027 international doctoral program catalog detail",
+    "url": "https://yzbm.tsinghua.edu.cn/publish/s05/s0503/detail/328d8c87-9be5-4826-a1c0-6fb464e8f026/2",
+    "allowedHosts": ["yzbm.tsinghua.edu.cn"],
+    "sourceRole": "program-catalog",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "tsinghua-international-master-catalog-detail-2027",
+    "label": "Tsinghua University 2027 international master's program catalog detail",
+    "url": "https://yzbm.tsinghua.edu.cn/publish/s05/s0503/detail/84682384-10d4-4eb6-9d49-356299983813/1",
+    "allowedHosts": ["yzbm.tsinghua.edu.cn"],
+    "sourceRole": "program-catalog",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "tsinghua-sigs-graduate-admissions-2027",
+    "label": "Tsinghua Shenzhen International Graduate School 2027 graduate admissions",
+    "url": "https://www.sigs.tsinghua.edu.cn/en/2026/0917/c7519a293346/page.htm",
+    "allowedHosts": ["www.sigs.tsinghua.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "shenzhen"
+  },
+  {
+    "id": "tsinghua-international-graduate-tuition-2027",
+    "label": "Tsinghua University 2027 international graduate tuition schedule",
+    "url": "https://yzbm.tsinghua.edu.cn/publish/s05/s0501/detail/bb745c8c-e817-4532-8cc1-70fa21bae1b5",
+    "allowedHosts": ["yzbm.tsinghua.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "tjfsu-cgs-high-level-graduate-type-b-2027",
+    "label": "Tianjin Foreign Studies University 2027-2028 Chinese Government Scholarship High-Level Graduate Program Type B",
+    "url": "https://isa.tjfsu.edu.cn/info/1040/1931.htm",
+    "allowedHosts": ["isa.tjfsu.edu.cn"],
+    "sourceRole": "scholarship",
+    "schoolSlug": "tianjin-foreign-studies-university",
+    "citySlug": "tianjin"
+  },
+  {
+    "id": "pku-shenzhen-environment-energy-international-programs-current",
+    "label": "Peking University Shenzhen School of Environment and Energy international student program overview",
+    "url": "https://see.pkusz.edu.cn/info/1022/2092.htm",
+    "allowedHosts": ["see.pkusz.edu.cn"],
+    "sourceRole": "program-catalog",
+    "schoolSlug": "peking-university",
+    "citySlug": "shenzhen"
+  },
+  {
+    "id": "zju-2027-undergraduate-talent-plan-launch-index",
+    "label": "Zhejiang University notice index recording launch of the 2027 international undergraduate Talent Plan 2.0",
+    "url": "https://iczu.zju.edu.cn/tzgg/list.htm",
+    "allowedHosts": ["iczu.zju.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "zhejiang-university",
+    "citySlug": "hangzhou"
+  },
+  {
+    "id": "buct-korean-preparatory-undergraduate-pathway-2027",
+    "label": "Beijing University of Chemical Technology preparatory and undergraduate pathway for Korean students ending January 2027",
+    "url": "https://apply.buct.edu.cn/14728/list.htm",
+    "allowedHosts": ["apply.buct.edu.cn"],
+    "sourceRole": "program-catalog",
+    "schoolSlug": "beijing-university-of-chemical-technology",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "csu-international-chinese-language-teachers-scholarship-spring-2027",
+    "label": "Central South University Spring 2027 International Chinese Language Teachers Scholarship guide",
+    "url": "https://intl.csu.edu.cn/info/1145/3987.htm",
+    "allowedHosts": ["intl.csu.edu.cn"],
+    "sourceRole": "scholarship",
+    "schoolSlug": "central-south-university",
+    "citySlug": "changsha"
+  },
+  {
+    "id": "xjtu-master-program-index-2027",
+    "label": "Xi'an Jiaotong University 2027 international master's program list index",
+    "url": "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Master_Program.htm",
+    "allowedHosts": ["sie.xjtu.edu.cn"],
+    "sourceRole": "program-catalog",
+    "schoolSlug": "xi-an-jiaotong-university",
+    "citySlug": "xian"
+  },
+  {
+    "id": "xjtu-master-program-list-2027",
+    "label": "Xi'an Jiaotong University 2027 international master's program list",
+    "url": "https://sie.xjtu.edu.cn/en/js/M.xlsx",
+    "allowedHosts": ["sie.xjtu.edu.cn"],
+    "sourceRole": "program-catalog",
+    "schoolSlug": "xi-an-jiaotong-university",
+    "citySlug": "xian"
+  },
+  {
+    "id": "xjtu-doctoral-program-index-2027",
+    "label": "Xi'an Jiaotong University 2027 international doctoral program list index",
+    "url": "https://sie.xjtu.edu.cn/en/Programs/Degree_Program/Doctoral_Program.htm",
+    "allowedHosts": ["sie.xjtu.edu.cn"],
+    "sourceRole": "program-catalog",
+    "schoolSlug": "xi-an-jiaotong-university",
+    "citySlug": "xian"
+  },
+  {
+    "id": "xjtu-doctoral-program-list-2027",
+    "label": "Xi'an Jiaotong University 2027 international doctoral program list",
+    "url": "https://sie.xjtu.edu.cn/en/js/D.xlsx",
+    "allowedHosts": ["sie.xjtu.edu.cn"],
+    "sourceRole": "program-catalog",
+    "schoolSlug": "xi-an-jiaotong-university",
+    "citySlug": "xian"
+  },
+  {
+    "id": "fuzhou-international-doctoral-program-preparation-2027",
+    "label": "Fuzhou University 2027 international doctoral program preparation notice",
+    "url": "https://oce.fzu.edu.cn/info/1024/8131.htm",
+    "allowedHosts": ["oce.fzu.edu.cn"],
+    "sourceRole": "freshness-index",
+    "schoolSlug": "fuzhou-university",
+    "citySlug": "fuzhou"
+  },
+  {
+    "id": "yanshan-international-admission-plan-preparation-2027-2028",
+    "label": "Yanshan University 2027-2028 international degree admission plan preparation notice",
+    "url": "https://notice.ysu.edu.cn/info/2059/25797.htm",
+    "allowedHosts": ["notice.ysu.edu.cn"],
+    "sourceRole": "freshness-index",
+    "schoolSlug": "yanshan-university",
+    "citySlug": "qinhuangdao"
+  },
+  {
+    "id": "fudan-uipe-2027-release-status",
+    "label": "Fudan University UIPE 2027 application-guide release status",
+    "url": "https://econ.fudan.edu.cn/uipe/Prospective_Students1/Entry_Requirements.htm",
+    "allowedHosts": ["econ.fudan.edu.cn"],
+    "sourceRole": "freshness-index",
+    "schoolSlug": "fudan-university",
+    "citySlug": "shanghai"
+  },
+  {
+    "id": "bnu-undergraduate-credit-program-chinese-spring-2027",
+    "label": "Beijing Normal University Spring 2027 Chinese-taught undergraduate credit program",
+    "url": "https://admission-is.bnu.edu.cn/english/admissionprogram/nondegreeprogram/undergraduatecredi/a/105146.html",
+    "allowedHosts": ["admission-is.bnu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "beijing-normal-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "bnu-graduate-credit-program-english-spring-2027",
+    "label": "Beijing Normal University Spring 2027 English-taught graduate credit program",
+    "url": "https://admission-is.bnu.edu.cn/zsxm/fxlxm/yjsxfxm/ywsk/index.html",
+    "allowedHosts": ["admission-is.bnu.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "beijing-normal-university",
+    "citySlug": "beijing"
+  },
+  {
+    "id": "heu-international-chinese-language-teachers-scholarship-spring-2027",
+    "label": "Harbin Engineering University Spring 2027 International Chinese Language Teachers Scholarship",
+    "url": "https://heucice.hrbeu.edu.cn/info/1071/2196.htm",
+    "allowedHosts": ["heucice.hrbeu.edu.cn"],
+    "sourceRole": "scholarship",
+    "schoolSlug": "harbin-engineering-university",
+    "citySlug": "harbin"
+  },
+  {
+    "id": "tsinghua-mia-global-governance-admissions-2027",
+    "label": "Tsinghua University MIA Global Governance 2027 international admissions brochure",
+    "url": "https://www.sss.tsinghua.edu.cn/info/1025/8711.htm",
+    "allowedHosts": ["www.sss.tsinghua.edu.cn"],
+    "sourceRole": "school-admissions",
+    "schoolSlug": "tsinghua-university",
+    "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-global-business-journalism-admissions-2027",
+      "label": "Tsinghua University Global Business Journalism 2027 admissions guide",
+      "url": "https://gbj.tsjc.tsinghua.edu.cn/info/1100/2418.htm",
+      "allowedHosts": [
+        "gbj.tsjc.tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-global-business-journalism-required-documents",
+      "label": "Tsinghua University Global Business Journalism required documents",
+      "url": "https://gbj.tsjc.tsinghua.edu.cn/info/1100/2230.htm",
+      "allowedHosts": [
+        "gbj.tsjc.tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-global-business-journalism-faq",
+      "label": "Tsinghua University Global Business Journalism official FAQ",
+      "url": "https://gbj.tsjc.tsinghua.edu.cn/info/1100/2421.htm",
+      "allowedHosts": [
+        "gbj.tsjc.tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "cau-graduate-admissions-2027",
+      "label": "China Agricultural University 2027 international graduate admissions",
+      "url": "https://admissions.cau.edu.cn/art/2026/9/3/art_48603_1135170.html",
+      "allowedHosts": [
+        "admissions.cau.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "china-agricultural-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "cau-graduate-program-catalog-2027",
+      "label": "China Agricultural University 2027 international graduate program catalog",
+      "url": "https://admissions.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=fa3c616f741c4e3a9a771a2c362fcf93.xlsx",
+      "allowedHosts": [
+        "admissions.cau.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "china-agricultural-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-global-mba-admissions-2027",
+      "label": "Tsinghua University Global MBA 2027 international admissions guide",
+      "url": "https://gmba.sem.tsinghua.edu.cn/Admissions/International/Admissions_Calendar___Criteria.htm",
+      "allowedHosts": [
+        "gmba.sem.tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-imap-admissions-2027",
+      "label": "Tsinghua University International Master of Applied Psychology 2027 admissions guide",
+      "url": "https://www.pcs.tsinghua.edu.cn/info/1031/2195.htm",
+      "allowedHosts": [
+        "www.pcs.tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-advanced-computing-admissions-2027",
+      "label": "Tsinghua University Advanced Computing 2027 admissions guide",
+      "url": "https://ac.cs.tsinghua.edu.cn/application.html",
+      "allowedHosts": [
+        "ac.cs.tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-cpfp-admissions-2027",
+      "label": "Tsinghua University CPFP 2027 admissions guide",
+      "url": "https://www.dir.tsinghua.edu.cn/iren/info/1030/1471.htm",
+      "allowedHosts": [
+        "www.dir.tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-industrial-engineering-apply-2027",
+      "label": "Tsinghua University Industrial Engineering 2027 international master's application guide",
+      "url": "https://www.ie.tsinghua.edu.cn/eng/Academic_Admissions/International_Master_Program/Admissions/How_to_Apply.htm",
+      "allowedHosts": [
+        "www.ie.tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-industrial-engineering-qualifications-2027",
+      "label": "Tsinghua University Industrial Engineering 2027 international master's qualifications",
+      "url": "https://www.ie.tsinghua.edu.cn/eng/Academic_Admissions/International_Master_Program/Admissions/Qualifications.htm",
+      "allowedHosts": [
+        "www.ie.tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-industrial-engineering-costs-current",
+      "label": "Tsinghua University Industrial Engineering international master's costs",
+      "url": "https://www.ie.tsinghua.edu.cn/eng/Academic_Admissions/International_Master_Program/Admissions/Costs.htm",
+      "allowedHosts": [
+        "www.ie.tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-gma-overview-current",
+      "label": "Tsinghua University Global Manufacturing and Analytics program overview",
+      "url": "https://www.ie.tsinghua.edu.cn/eng/Academic_Admissions/International_Master_Program/Overview/Master_s_Program_in_Global_Manufacturing_and_Analy.htm",
+      "allowedHosts": [
+        "www.ie.tsinghua.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-industrial-engineering-programs-2027",
+      "label": "Tsinghua University Industrial Engineering programs for international students 2027",
+      "url": "https://yz.tsinghua.edu.cn/en/info/1014/1156.htm",
+      "allowedHosts": [
+        "yz.tsinghua.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-environment-master-admissions-2027",
+      "label": "Tsinghua University School of Environment 2027 English master's admissions guide",
+      "url": "https://www.tsinghua.edu.cn/enven/info/1061/2424.htm",
+      "allowedHosts": [
+        "www.tsinghua.edu.cn"
+      ],
+      "sourceRole": "school-admissions",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tsinghua-architecture-international-programs-current",
+      "label": "Tsinghua University School of Architecture international graduate programs",
+      "url": "https://www.arch.tsinghua.edu.cn/column/Admissions",
+      "allowedHosts": [
+        "www.arch.tsinghua.edu.cn"
+      ],
+      "sourceRole": "program-catalog",
+      "schoolSlug": "tsinghua-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "pku-international-student-scholarship-current",
+      "label": "Peking University Scholarship for International Students current terms",
+      "url": "https://isd.pku.edu.cn/en/detail.php?id=525",
+      "allowedHosts": [
+        "isd.pku.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "peking-university"
+    },
+    {
+      "id": "pku-advanced-graduate-scholarship-current",
+      "label": "Peking University Chinese Government Scholarship Advanced Graduate Program current terms",
+      "url": "https://isd.pku.edu.cn/en/detail.php?id=18",
+      "allowedHosts": [
+        "isd.pku.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "peking-university"
+    },
+    {
+      "id": "bjfu-international-admission-index-current",
+      "label": "Beijing Forestry University current international admission index",
+      "url": "https://ic.bjfu.edu.cn/Admission/index.htm",
+      "allowedHosts": [
+        "ic.bjfu.edu.cn"
+      ],
+      "sourceRole": "freshness-index",
+      "schoolSlug": "beijing-forestry-university",
+      "citySlug": "beijing"
+    },
+    {
+      "id": "tjufe-international-admission-index-current",
+      "label": "Tianjin University of Finance and Economics current international admission index",
+      "url": "https://inter.tjufe.edu.cn/zsxx1.htm",
+      "allowedHosts": [
+        "inter.tjufe.edu.cn"
+      ],
+      "sourceRole": "freshness-index",
+      "schoolSlug": "tianjin-university-of-finance-and-economics",
+      "citySlug": "tianjin"
+    },
+    {
+      "id": "xtu-international-news-index-current",
+      "label": "Xiangtan University current English news and international admission index",
+      "url": "https://en.xtu.edu.cn/News.htm",
+      "allowedHosts": [
+        "en.xtu.edu.cn"
+      ],
+      "sourceRole": "freshness-index",
+      "schoolSlug": "xiangtan-university",
+      "citySlug": "xiangtan"
+    },
+    {
+      "id": "xtu-cgs-silk-road-scholarship-2026-2027",
+      "label": "Xiangtan University 2026/2027 Chinese Government Scholarship Silk Road Program admission brochure",
+      "url": "https://en.xtu.edu.cn/info/1121/2001.htm",
+      "allowedHosts": [
+        "en.xtu.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "xiangtan-university",
+      "citySlug": "xiangtan"
+    },
+    {
+      "id": "xtu-cgs-silk-road-scholarship-pdf-2026-2027",
+      "label": "Xiangtan University 2026/2027 Chinese Government Scholarship Silk Road Program brochure PDF",
+      "url": "https://en.xtu.edu.cn/__local/7/27/B3/C253685FA249B35C4744D9180BE_7E9C5683_2669D.pdf",
+      "allowedHosts": [
+        "en.xtu.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "xiangtan-university",
+      "citySlug": "xiangtan"
+    },
+    {
+      "id": "fuzhou-international-admission-index-current",
+      "label": "Fuzhou University current international admission information index",
+      "url": "https://oce.fzu.edu.cn/lxfd/zsxx.htm",
+      "allowedHosts": [
+        "oce.fzu.edu.cn"
+      ],
+      "sourceRole": "freshness-index",
+      "schoolSlug": "fuzhou-university",
+      "citySlug": "fuzhou"
+    },
+    {
+      "id": "sdufe-international-student-scholarships-pdf-2026",
+      "label": "Shandong University of Finance and Economics international student scholarships PDF 2026",
+      "url": "https://sie.sdufe.edu.cn/virtual_attach_file.vsb?afc=9LmfAfnNQ7UlCDn1mrkUz9inRl8nm9m8MRlYLR6kUzGiL7l0gihFp2hmCIa0UYhVoShfLYyaUllZnzLiMzNsUl-8MmrVMmMVLR62oRTkU4fFUz-iLR6fL4fFLllaUzLJv2nto4OeosMXQShXptQ0g47YLRN0M4N8Mm7JqdNnx&oid=1280673832&tid=1209&nid=79461&e=.pdf",
+      "allowedHosts": [
+        "sie.sdufe.edu.cn"
+      ],
+      "sourceRole": "scholarship",
+      "schoolSlug": "shandong-university-of-finance-and-economics",
+      "citySlug": "jinan"
+  }
 ]
 }
