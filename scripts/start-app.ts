@@ -10,7 +10,8 @@ try {
     onEvent: event => console.log(JSON.stringify(event)),
   });
   console.log(JSON.stringify({ event: "application.started", port }));
-} catch {
+} catch (error) {
+  if (process.env.CUAC_REHEARSAL_DIAGNOSTICS === "1") console.error(error);
   console.error("Managed application startup failed. Check the protected build and runtime configuration.");
   process.exitCode = 1;
 }

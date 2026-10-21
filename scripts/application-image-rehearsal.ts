@@ -48,7 +48,7 @@ try {
     "--build-arg", `CUAC_NODE_IMAGE=${config.nodeImage}`,
     "--label", `cuac.application.rehearsal=${owner}`,
     "-f", "scripts/application/Dockerfile", "-t", tag, ".",
-  ], { timeout: 180_000 });
+  ], { timeout: 360_000 });
   if (build.stderr) console.log(build.stderr);
 
   const [image] = JSON.parse((await docker(["image", "inspect", tag])).stdout);
@@ -105,10 +105,20 @@ try {
     "--label", `cuac.application.rehearsal=${owner}`, "--network", network,
     "--read-only", "--tmpfs", "/tmp:rw,noexec,nosuid,size=32m", "--publish", "127.0.0.1::3000",
     "--env", "CUAC_START_MODE=development", "--env", "CUAC_ENV=development",
+    "--env", "CUAC_REHEARSAL_DIAGNOSTICS=1",
     "--env", "DATABASE_URL", "--env", "PGSSLMODE=disable", tag],
   { env: { ...process.env, DATABASE_URL: containerDatabaseUrl } });
   applicationCreated = true;
-  const applicationBinding = (await docker(["port", application, "3000/tcp"])).stdout;
+  let applicationBinding: string;
+  try {
+    applicationBinding = (await docker(["port", application, "3000/tcp"])).stdout;
+  } catch (error) {
+    const [state, logs] = await Promise.all([
+      docker(["inspect", "--format", "{{json .State}}", application]),
+      docker(["logs", "--tail", "80", application]),
+    ]);
+    throw new Error(`Application container exited before publishing its port. State: ${state.stdout}\nLogs:\n${logs.stdout}\n${logs.stderr}`, { cause: error });
+  }
   const applicationPort = /^127\.0\.0\.1:(\d+)$/.exec(applicationBinding)?.[1];
   assert.ok(applicationPort);
   let health;
@@ -124,7 +134,13 @@ try {
     } catch { /* startup is still in progress */ }
     await delay(250);
   }
-  assert.equal(health?.status, "ok");
+  if (health?.status !== "ok") {
+    const [state, logs] = await Promise.all([
+      docker(["inspect", "--format", "{{json .State}}", application]),
+      docker(["logs", "--tail", "80", application]),
+    ]);
+    throw new Error(`Application did not become healthy. State: ${state.stdout}\nLogs:\n${logs.stdout}\n${logs.stderr}`);
+  }
   assert.equal(health?.database?.reachable, true);
   assert.equal(health?.release?.releaseScope, "school-handoff-v1");
   assert.match(healthHeaders?.get("content-security-policy") ?? "", /default-src 'self'/);

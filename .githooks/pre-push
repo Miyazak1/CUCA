@@ -3,3 +3,4 @@ set -eu
 
 echo "Running CUAC local quality gate before push..."
 npm run quality:local
+npm run container:rehearse
