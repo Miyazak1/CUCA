@@ -308,7 +308,7 @@ const baseSchool = (slug: string) => {
   if (!school) throw new Error(`Missing school dependency: ${slug}`);
   return school;
 };
-const refreshedSchools: CatalogSeedSchool[] = [
+const refreshedSchools = ([
   {
     ...baseSchool("china-agricultural-university"),
     applicationLevel: "Undergraduate",
@@ -427,7 +427,7 @@ const refreshedSchools: CatalogSeedSchool[] = [
     verificationStatus: "verified",
     lastVerifiedAt: szuGuideSource.fetchedAt,
   },
-].sort((left, right) => left.slug.localeCompare(right.slug));
+] satisfies CatalogSeedSchool[]).sort((left, right) => left.slug.localeCompare(right.slug));
 const candidate: CatalogSeedBundle = {
   version: 1,
   generatedAt,

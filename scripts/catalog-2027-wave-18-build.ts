@@ -7,6 +7,7 @@ import {
   type CatalogSeedProgram,
   type CatalogSeedProgramIntake,
   type CatalogSeedScholarship,
+  type CatalogSeedSchool,
 } from "../src/server/catalog/seed-contract.ts";
 
 type ManifestSource = { id: string; label: string; url: string; finalUrl?: string; fetchedAt: string; status: number; sha256: string; artifactPath: string };
@@ -52,7 +53,7 @@ const fields = (id: string) => {
   return { sourceUrl: item.finalUrl ?? item.url, sourceLabel: item.label, sourceSha256: item.sha256, capturedAt: item.fetchedAt };
 };
 const verifiedAt = [...evidence.values()].map((row) => row.fetchedAt).sort().at(-1)!;
-const schools = [
+const schools: CatalogSeedSchool[] = [
   {
     ...hitBase,
     deadlineSummary: "The official 2026-2027 short-term Chinese-language page lists a November 30 deadline for the winter session running December 28, 2026-January 22, 2027. It does not establish general Fall 2027 degree deadlines.",

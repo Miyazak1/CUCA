@@ -3,11 +3,13 @@ import { readFile } from "node:fs/promises";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
 import { localDatabaseUrl } from "./lib/local-development.ts";
 
+type GraduateRoute = { degree: string; teachingLanguage: string; schoolOrDepartment: string; nameEn: string };
+
 const parsed = JSON.parse(await readFile("work/catalog-official/zju-complete-batch-01/parsed-graduate-routes.json", "utf8"));
 const slugify = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
   .replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const routeIdentity = (route: any) => [route.degree, route.teachingLanguage, route.schoolOrDepartment, route.nameEn].join("|");
-const programSlug = (route: any) => {
+const routeIdentity = (route: GraduateRoute) => [route.degree, route.teachingLanguage, route.schoolOrDepartment, route.nameEn].join("|");
+const programSlug = (route: GraduateRoute) => {
   const verbose = slugify(["zhejiang-university", route.degree, route.schoolOrDepartment, route.nameEn, route.teachingLanguage].join(" "));
   return verbose.length <= 180 ? verbose : `${verbose.slice(0, 163).replace(/-+$/g, "")}-${createHash("sha256").update(routeIdentity(route)).digest("hex").slice(0, 16)}`;
 };

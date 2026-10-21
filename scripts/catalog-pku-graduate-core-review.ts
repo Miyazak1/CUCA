@@ -5,6 +5,13 @@ import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type Ca
 import { localDatabaseUrl } from "./lib/local-development.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; finalUrl: string; label: string; fetchedAt: string; contentType: string; manifestSha256: string };
+type EvidenceManifest = { sources?: Omit<EvidenceSource, "manifestSha256">[] };
+type SchoolRow = { id: string; status: string; verification_status: string };
+type CityRow = { id: string; status: string };
+type CountRow = { active_count: number; verified_count: number };
+type Baseline = { school: SchoolRow[]; city: CityRow[]; counts: CountRow; slugConflicts: Array<{ slug: string }>; semanticConflicts: Array<{ slug: string; name_en: string; degree_level: string; teaching_language: string }> };
+
 const root = process.cwd();
 const paths = {
   dependency: resolve(root, "seeds/catalog.pku-school-program-batch-01.approved.local.json"),
@@ -23,11 +30,11 @@ const manifestIds = [
   "pku-doctoral-programs-chinese-2026",
   "pku-doctoral-programs-english-2026",
 ] as const;
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const id of manifestIds) {
   const manifestPath = resolve(root, `work/catalog-official/pku-graduate-core-20260914/${id}/manifest.json`);
   const manifestText = await readFile(manifestPath, "utf8");
-  const manifest = JSON.parse(manifestText);
+  const manifest = JSON.parse(manifestText) as EvidenceManifest;
   const item = manifest.sources?.[0];
   if (manifest.sources?.length !== 1 || item?.id !== id || item?.status !== 200 || !/^[a-f0-9]{64}$/.test(item?.sha256 ?? "")) throw new Error(`Invalid PKU official evidence: ${id}`);
   evidence.set(id, { ...item, manifestSha256: sha(manifestText) });
@@ -123,13 +130,13 @@ if (!validation.ok) throw new Error(`Invalid PKU graduate candidate: ${validatio
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
 const state = await parse(paths.state);
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:pku-graduate-core-review" });
-let baseline: any;
+let baseline: Baseline;
 try {
-  const schoolRows = await pool.query("select id,status,verification_status from schools where slug='peking-university'");
-  const cityRows = await pool.query("select id,status from cities where slug='beijing'");
-  const counts = await pool.query("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count from programs where school_id=$1 and status='active'", [schoolRows.rows[0]?.id]);
-  const slugRows = await pool.query("select slug from programs where slug=any($1::text[])", [programs.map((row) => row.slug)]);
-  const semanticRows = await pool.query("select slug,name_en,degree_level,teaching_language from programs where school_id=$1 and status='active' and lower(name_en)=any($2::text[])", [schoolRows.rows[0]?.id, programs.map((row) => row.nameEn.toLowerCase())]);
+  const schoolRows = await pool.query<SchoolRow>("select id,status,verification_status from schools where slug='peking-university'");
+  const cityRows = await pool.query<CityRow>("select id,status from cities where slug='beijing'");
+  const counts = await pool.query<CountRow>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count from programs where school_id=$1 and status='active'", [schoolRows.rows[0]?.id]);
+  const slugRows = await pool.query<{ slug: string }>("select slug from programs where slug=any($1::text[])", [programs.map((row) => row.slug)]);
+  const semanticRows = await pool.query<{ slug: string; name_en: string; degree_level: string; teaching_language: string }>("select slug,name_en,degree_level,teaching_language from programs where school_id=$1 and status='active' and lower(name_en)=any($2::text[])", [schoolRows.rows[0]?.id, programs.map((row) => row.nameEn.toLowerCase())]);
   baseline = { school: schoolRows.rows, city: cityRows.rows, counts: counts.rows[0], slugConflicts: slugRows.rows, semanticConflicts: semanticRows.rows };
 } finally { await pool.end(); }
 if (baseline.school.length !== 1 || baseline.school[0].status !== "active" || baseline.school[0].verification_status !== "verified" || baseline.city.length !== 1 || baseline.city[0].status !== "active" || baseline.counts.active_count !== 23 || baseline.counts.verified_count !== 23 || baseline.slugConflicts.length !== 0 || baseline.semanticConflicts.length !== 0) throw new Error(`PKU graduate baseline changed: ${JSON.stringify(baseline)}`);

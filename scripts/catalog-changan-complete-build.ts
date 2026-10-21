@@ -1,13 +1,16 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+
+type EvidenceSource = { id: string; status: number; sha256: string; finalUrl: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources: EvidenceSource[] };
 
 const root = process.cwd();
 const manifestPath = resolve(root, "work/catalog-official/changan-complete-batch-01/manifest.json");
 const manifestText = await readFile(manifestPath, "utf8");
-const manifest = JSON.parse(manifestText);
-const sources = new Map(manifest.sources.map((row: any) => [row.id, row]));
+const manifest = JSON.parse(manifestText) as EvidenceManifest;
+const sources = new Map(manifest.sources.map((row) => [row.id, row]));
 const requiredSourceIds = [
   "changan-admissions-brochure-page-2026", "changan-bachelor-guide-2026", "changan-bachelor-programs-chinese-2026",
   "changan-bachelor-programs-english-2026", "changan-csca-chinese-pdf-2026", "changan-csca-english-pdf-2026",
@@ -18,11 +21,12 @@ const requiredSourceIds = [
   "changan-international-chinese-language-teachers-scholarship-2026",
 ];
 for (const id of requiredSourceIds) {
-  const source: any = sources.get(id);
+  const source = sources.get(id);
   if (!source || source.status !== 200 || !/^[a-f0-9]{64}$/.test(source.sha256)) throw new Error(`Missing valid source: ${id}`);
 }
 const meta = (id: string) => {
-  const source: any = sources.get(id);
+  const source = sources.get(id);
+  if (!source) throw new Error(`Missing source: ${id}`);
   return { sourceUrl: source.finalUrl, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
 };
 const slugify = (value: string) => value.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -141,7 +145,7 @@ const programSets: Array<[Major[], Degree, Language, string]> = [
   [doctoralChinese, "Doctoral", "Chinese", "changan-phd-programs-chinese-pdf-2026"], [doctoralEnglish, "Doctoral", "English", "changan-phd-programs-english-pdf-2026"],
 ];
 const seenSlugs = new Set<string>();
-const programs: any[] = [];
+const programs: CatalogSeedProgram[] = [];
 for (const [majors, degreeLevel, teachingLanguage, sourceId] of programSets) for (const [school, rawName] of majors) {
   const suffix = `${degreeLevel === "Bachelor" ? "" : `${degreeLevel.toLowerCase()}-`}${slugify(rawName)}${teachingLanguage === "English" ? "-english" : ""}`;
   let slug = `${schoolSlug}-${suffix}`;

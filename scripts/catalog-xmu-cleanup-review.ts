@@ -3,7 +3,10 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
+import { type CatalogEntityStatusRow, type CatalogTotalsRow } from "./lib/catalog-database-rows.ts";
 import { localDatabaseUrl } from "./lib/local-development.ts";
+
+type XmuBaseline = { school: CatalogEntityStatusRow[]; city: CatalogEntityStatusRow[]; safePrograms: CatalogEntityStatusRow[]; safeScholarships: CatalogEntityStatusRow[]; legacyPrograms: CatalogEntityStatusRow[]; legacyScholarships: CatalogEntityStatusRow[]; stableScholarship: CatalogEntityStatusRow[]; totals: CatalogTotalsRow };
 
 const root = process.cwd();
 const paths = { complete: resolve(root, "seeds/catalog.xmu-complete-batch-01.draft.json"), completeReview: resolve(root, "seeds/catalog.xmu-complete-batch-01.review.json"), safeReview: resolve(root, "seeds/catalog.xmu-safe-new-batch-01.review.json"), safeApproval: resolve(root, "seeds/catalog.xmu-safe-new-batch-01.approval.json"), safePublication: resolve(root, "seeds/catalog.xmu-safe-new-batch-01.approved.local.json"), freshManifest: resolve(root, "work/catalog-official/xmu-refresh-20260914/manifest.json"), candidate: resolve(root, "seeds/catalog.xmu-cleanup.draft.json"), validation: resolve(root, "seeds/catalog.xmu-cleanup.validation.json"), review: resolve(root, "seeds/catalog.xmu-cleanup.review.json"), state: resolve(root, ".cuac-local/runtime.json") };
@@ -20,20 +23,20 @@ const stableScholarship = complete.scholarships.filter((row) => row.slug === sta
 if (stableScholarship.length !== 1) throw new Error("XMU stable scholarship candidate changed.");
 
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:xmu-cleanup-review" });
-let baseline: any;
+let baseline: XmuBaseline;
 try {
-  const school = await pool.query("select id,slug,status,verification_status from schools where slug=$1", [schoolSlug]);
-  const city = await pool.query("select id,slug,status,verification_status from cities where slug='xiamen'");
-  const safePrograms = await pool.query("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug", [safeApproval.programSlugs]);
-  const safeScholarships = await pool.query("select slug,status,verification_status,last_verified_at from scholarships where slug=any($1::text[]) order by slug", [safeApproval.scholarshipSlugs]);
-  const legacyPrograms = await pool.query("select id,slug,status,verification_status from programs where slug=any($1::text[]) order by slug", [programAliases]);
-  const legacyScholarships = await pool.query("select id,slug,status,verification_status from scholarships where slug=any($1::text[]) order by slug", [scholarshipAliases]);
-  const stableScholarshipDb = await pool.query("select id,slug,status,verification_status from scholarships where slug=$1", [stableScholarshipSlug]);
-  const totals = await pool.query("select (select count(*) from programs where school_id=$1 and status='active')::int programs,(select count(*) from scholarships where school_id=$1 and status='active')::int scholarships", [school.rows[0]?.id]);
+  const school = await pool.query<CatalogEntityStatusRow>("select id,slug,status,verification_status from schools where slug=$1", [schoolSlug]);
+  const city = await pool.query<CatalogEntityStatusRow>("select id,slug,status,verification_status from cities where slug='xiamen'");
+  const safePrograms = await pool.query<CatalogEntityStatusRow>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug", [safeApproval.programSlugs]);
+  const safeScholarships = await pool.query<CatalogEntityStatusRow>("select slug,status,verification_status,last_verified_at from scholarships where slug=any($1::text[]) order by slug", [safeApproval.scholarshipSlugs]);
+  const legacyPrograms = await pool.query<CatalogEntityStatusRow>("select id,slug,status,verification_status from programs where slug=any($1::text[]) order by slug", [programAliases]);
+  const legacyScholarships = await pool.query<CatalogEntityStatusRow>("select id,slug,status,verification_status from scholarships where slug=any($1::text[]) order by slug", [scholarshipAliases]);
+  const stableScholarshipDb = await pool.query<CatalogEntityStatusRow>("select id,slug,status,verification_status from scholarships where slug=$1", [stableScholarshipSlug]);
+  const totals = await pool.query<CatalogTotalsRow>("select (select count(*) from programs where school_id=$1 and status='active')::int programs,(select count(*) from scholarships where school_id=$1 and status='active')::int scholarships", [school.rows[0]?.id]);
   baseline = { school: school.rows, city: city.rows, safePrograms: safePrograms.rows, safeScholarships: safeScholarships.rows, legacyPrograms: legacyPrograms.rows, legacyScholarships: legacyScholarships.rows, stableScholarship: stableScholarshipDb.rows, totals: totals.rows[0] };
   if (school.rows.length !== 1 || school.rows[0].status !== "active" || school.rows[0].verification_status !== "unverified" || city.rows.length !== 1 || city.rows[0].status !== "active") throw new Error("XMU school/city baseline changed.");
-  if (safePrograms.rows.length !== 535 || safeScholarships.rows.length !== 3 || [...safePrograms.rows, ...safeScholarships.rows].some((row: any) => row.status !== "active" || row.verification_status !== "verified" || row.last_verified_at?.toISOString() !== safeApproval.approvedAt)) throw new Error("XMU safe publication changed.");
-  if (legacyPrograms.rows.length !== 14 || legacyScholarships.rows.length !== 3 || [...legacyPrograms.rows, ...legacyScholarships.rows].some((row: any) => row.status !== "active" || row.verification_status !== "unverified") || stableScholarshipDb.rows.length !== 1 || stableScholarshipDb.rows[0].status !== "active" || stableScholarshipDb.rows[0].verification_status !== "verified" || totals.rows[0]?.programs !== 549 || totals.rows[0]?.scholarships !== 7) throw new Error("XMU legacy baseline changed.");
+  if (safePrograms.rows.length !== 535 || safeScholarships.rows.length !== 3 || [...safePrograms.rows, ...safeScholarships.rows].some((row) => row.status !== "active" || row.verification_status !== "verified" || row.last_verified_at?.toISOString() !== safeApproval.approvedAt)) throw new Error("XMU safe publication changed.");
+  if (legacyPrograms.rows.length !== 14 || legacyScholarships.rows.length !== 3 || [...legacyPrograms.rows, ...legacyScholarships.rows].some((row) => row.status !== "active" || row.verification_status !== "unverified") || stableScholarshipDb.rows.length !== 1 || stableScholarshipDb.rows[0].status !== "active" || stableScholarshipDb.rows[0].verification_status !== "verified" || totals.rows[0]?.programs !== 549 || totals.rows[0]?.scholarships !== 7) throw new Error("XMU legacy baseline changed.");
 } finally { await pool.end(); }
 
 const candidate: CatalogSeedBundle = { version: 1, generatedAt: freshManifest.generatedAt, cities: complete.cities, schools: complete.schools, programs: [], programIntakes: [], scholarships: stableScholarship };
@@ -45,7 +48,7 @@ const reviewBase = {
   scope: { schoolSlug, cityOverwriteCount: 1, schoolOverwriteCount: 1, scholarshipOverwriteCount: 1, archiveProgramAliasCount: 14, archiveScholarshipAliasCount: 3, verifiedSafeProgramMutationCount: 0, verifiedSafeScholarshipMutationCount: 0 },
   candidateSha256: sha(candidateText), candidateBundleSha256: validation.bundleSha256, operationPlanSha256: validation.operationPlanSha256,
   evidence: { freshManifestSha256: sha(freshManifestFile.text), freshOfficialSourceCount: 13, completeReviewSha256: sha(completeReviewFile.text), safeReviewSha256: sha(safeReviewFile.text), safeApprovalSha256: sha(safeApprovalFile.text), safePublicationSha256: sha(safePublicationFile.text) },
-  reconciliation: { destructiveDeletion: false, overwrite: [{ entityType: "city", id: baseline.city[0].id, slug: "xiamen" }, { entityType: "school", id: baseline.school[0].id, slug: schoolSlug }, { entityType: "scholarship", id: baseline.stableScholarship[0].id, slug: stableScholarshipSlug }], archives: [...baseline.legacyPrograms.map((row: any) => ({ entityType: "program", id: row.id, slug: row.slug })), ...baseline.legacyScholarships.map((row: any) => ({ entityType: "scholarship", id: row.id, slug: row.slug }))], protectedSafeProgramSlugs: safeApproval.programSlugs, protectedSafeScholarshipSlugs: safeApproval.scholarshipSlugs, databaseBaseline: { schoolId: baseline.school[0].id, cityId: baseline.city[0].id } },
+  reconciliation: { destructiveDeletion: false, overwrite: [{ entityType: "city", id: baseline.city[0].id, slug: "xiamen" }, { entityType: "school", id: baseline.school[0].id, slug: schoolSlug }, { entityType: "scholarship", id: baseline.stableScholarship[0].id, slug: stableScholarshipSlug }], archives: [...baseline.legacyPrograms.map((row) => ({ entityType: "program", id: row.id, slug: row.slug })), ...baseline.legacyScholarships.map((row) => ({ entityType: "scholarship", id: row.id, slug: row.slug }))], protectedSafeProgramSlugs: safeApproval.programSlugs, protectedSafeScholarshipSlugs: safeApproval.scholarshipSlugs, databaseBaseline: { schoolId: baseline.school[0].id, cityId: baseline.city[0].id } },
   sourceReview: { result: "pass", note: "All 13 XMU official sources were refreshed byte-for-byte unchanged; city, school and stable scholarship updates remain bound to reviewed evidence." }, visualReview: safeReview.visualReview,
   sensitiveDataCheck: { result: "pass", scope: "city, school, one stable scholarship and 17 archive status changes", note: "Only public catalog fields and record identifiers are present. Contact columns and applicant, account, payment and bank data are excluded." },
   reviewNotes: ["The 535 newly published programs and three newly published rich scholarships are protected and will not be rewritten.", "Fourteen program aliases and three scholarship aliases are status-archived, not deleted.", "The existing verified Chinese Government Scholarship is refreshed in place from the same official source."],

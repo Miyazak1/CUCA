@@ -17,6 +17,22 @@ const basePath = resolve(root, "seeds/catalog.cscalite-online-20260910.published
 const schoolSlug = "huazhong-university-of-science-and-technology";
 const applicationUrl = "https://admission.hust.edu.cn/";
 
+type ManifestSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type ParsedRoute = {
+  sourceId: string;
+  school: string;
+  degree: string;
+  language: string;
+  nameEn: string;
+  nameZh?: string;
+  durationYears?: number;
+  awardType?: string;
+  supervisorLetterRequired?: boolean;
+  interviewRequired?: boolean;
+  note?: string;
+};
+type ParsedRoutes = { counts: { undergraduate: number; master: number; doctoral: number }; routes: ParsedRoute[] };
+
 const expected: Record<string, string> = {
   "hust-youth-of-excellence-scholarship-2026": "884149521722d13b7f9189a494820c2ebcd874b4ff7542ee51aecfe973678097",
   "hust-admissions-overview-2026": "b3ea14ea6708f31a82059472f02a5ccbbcc11414fac0b32b11bf982dc0c9e4a4",
@@ -34,10 +50,10 @@ const expected: Record<string, string> = {
   "hust-china-link-scholarship-2025-2026": "41a0380c7381380c0e6fb75cab44c361bf415acad82d58754e2ac4d4e09168bd",
 };
 
-const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8"));
-const parsed = JSON.parse(await readFile(resolve(runDir, "parsed-routes.json"), "utf8"));
+const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8")) as { generatedAt: string; sources: ManifestSource[] };
+const parsed = JSON.parse(await readFile(resolve(runDir, "parsed-routes.json"), "utf8")) as ParsedRoutes;
 const base = JSON.parse(await readFile(basePath, "utf8")) as CatalogSeedBundle;
-const evidence = new Map<string, any>();
+const evidence = new Map<string, ManifestSource>();
 for (const source of manifest.sources ?? []) {
   if (expected[source.id] !== source.sha256 || source.status !== 200) throw new Error(`Official snapshot mismatch: ${source.id}`);
   evidence.set(source.id, source);
@@ -66,9 +82,9 @@ const stable: Record<string, string> = {
 };
 const legacyProgramAliasesToArchive = [`${schoolSlug}-communication-engineering`];
 
-const isMedicine = (route: any) => route.sourceId === "hust-medical-postgraduate-programs-2026" || /Medicine|Hospital|Stomatology|Pharmacy|Nursing/i.test(route.school);
-const isHumanities = (route: any) => /Economics|Management|Humanities|Law|Design|Education|Sociology|Foreign Languages|Journalism|Public Administration/i.test(route.school);
-const tuitionFor = (route: any) => {
+const isMedicine = (route: ParsedRoute) => route.sourceId === "hust-medical-postgraduate-programs-2026" || /Medicine|Hospital|Stomatology|Pharmacy|Nursing/i.test(route.school);
+const isHumanities = (route: ParsedRoute) => /Economics|Management|Humanities|Law|Design|Education|Sociology|Foreign Languages|Journalism|Public Administration/i.test(route.school);
+const tuitionFor = (route: ParsedRoute) => {
   if (route.degree === "Undergraduate") {
     if (route.language === "English") return /Clinical Medicine/i.test(route.nameEn) ? 40000 : /Pharmacy/i.test(route.nameEn) ? 35000 : 30000;
     return isMedicine(route) ? 33000 : isHumanities(route) ? 18000 : 25000;
@@ -76,7 +92,7 @@ const tuitionFor = (route: any) => {
   if (route.degree === "Master") return isMedicine(route) ? 40000 : route.language === "English" ? (isHumanities(route) ? 33000 : 38000) : (isHumanities(route) ? 25000 : 30000);
   return isMedicine(route) ? 50000 : route.language === "English" ? (isHumanities(route) ? 38000 : 50000) : (isHumanities(route) ? 30000 : 42000);
 };
-const cscaFor = (route: any): string[] => {
+const cscaFor = (route: ParsedRoute): string[] => {
   if (route.degree !== "Undergraduate") return [];
   if (route.language === "English") {
     return /Telecommunications|Mechanical Design/i.test(route.nameEn) ? ["Mathematics", "Physics"] : ["Mathematics", "Chemistry"];
@@ -85,7 +101,7 @@ const cscaFor = (route: any): string[] => {
   if (isHumanities(route)) return ["Professional Chinese - Liberal Arts", "Mathematics"];
   return ["Professional Chinese - Science and Engineering", "Mathematics", "Physics"];
 };
-const languageRequirement = (route: any) => {
+const languageRequirement = (route: ParsedRoute) => {
   if (route.language === "English") return route.degree === "Undergraduate" ? "TOEFL 80, IELTS 5.5, or an accepted equivalent; published exemptions may apply" : "TOEFL 80, IELTS 6.0, GRE 310, or an accepted equivalent; published exemptions may apply";
   if (route.degree === "Undergraduate") return isHumanities(route) || /Artificial Intelligence/i.test(route.school) ? "HSK 5 score 180 or above; published exemptions may apply" : "HSK 4 score 180 or above; published exemptions may apply";
   if (/Union Hospital/i.test(route.school)) return "HSK 5 score 200 or above; published exemptions may apply";
@@ -93,7 +109,7 @@ const languageRequirement = (route: any) => {
 };
 
 const used = new Set<string>();
-const programs: CatalogSeedProgram[] = parsed.routes.map((route: any, index: number) => {
+const programs: CatalogSeedProgram[] = parsed.routes.map((route, index) => {
   const source = evidence.get(route.sourceId)!;
   const guide = evidence.get(route.degree === "Undergraduate" ? "hust-undergraduate-guide-2026" : "hust-graduate-guide-2026")!;
   const key = `${route.degree}|${route.nameEn}|${route.language}`;
@@ -148,7 +164,7 @@ const guide = evidence.get("hust-undergraduate-guide-2026")!;
 const candidate: CatalogSeedBundle = {
   version: 1, generatedAt: manifest.generatedAt,
   cities: [{ slug: "wuhan", nameEn: "Wuhan", nameZh: "武汉", region: "Central China", province: "Hubei", status: "draft", sourceUrl: guide.url, sourceLabel: guide.label, sourceSha256: guide.sha256, capturedAt: guide.fetchedAt, sourceFieldLineage: { nameEn: "official HUST address", province: "official HUST address" } }],
-  schools: [{ slug: schoolSlug, nameEn: "Huazhong University of Science and Technology", nameZh: "华中科技大学", citySlug: "wuhan", schoolType: "public", region: "Wuhan, Hubei, Central China", applicationLevel: "Undergraduate, Master, Doctoral", languageOfInstruction: "Chinese and English, depending on program", languageRequirement: "Program-level language requirements are recorded on each route.", hskRequirement: "Undergraduate: HSK 4 score 180 for science, engineering and medicine; HSK 5 score 180 for economics, management, humanities, arts, law and AI. Graduate thresholds vary by discipline and hospital.", englishRequirement: "Undergraduate: TOEFL 80 or IELTS 5.5; Graduate: TOEFL 80, IELTS 6.0 or GRE 310. Published exemptions may apply.", deadlineSummary: "2026 undergraduate deadline: June 15, 2026; graduate deadline: March 1, 2026; scholarship deadlines vary by route.", tuitionSummary: "Undergraduate CNY 18,000-40,000/year; Master CNY 25,000-40,000/year except Executive MBA CNY 324,000/2 years; Doctoral CNY 30,000-50,000/year.", applicationFee: "CNY 600 / USD 100", websiteUrl: "https://www.hust.edu.cn/", admissionsUrl: guide.url, cscaRequired: true, cscaRequirement: "2026 undergraduate applicants must submit CSCA results for the exact subjects published by teaching language and discipline.", cscaSubjects: ["Professional Chinese - Liberal Arts", "Professional Chinese - Science and Engineering", "Mathematics", "Physics", "Chemistry"], subjectTags: [...new Set(parsed.routes.map((route: any) => route.school))], languageTags: ["Chinese", "English"], tuitionBandLabel: "CNY 18,000-50,000/year for standard degree routes", campusHighlights: ["44 undergraduate routes", "215 master's routes", "207 doctoral routes", "Seven independently structured scholarship routes"], status: "draft", sourceUrl: guide.url, sourceLabel: guide.label, sourceSha256: guide.sha256, capturedAt: guide.fetchedAt, sourceFieldLineage: { nameEn: "official HUST admissions pages", citySlug: "official HUST address", applicationLevel: "2026 undergraduate and graduate program tables", languageRequirement: "2026 application guides", deadlineSummary: "2026 application guides", tuitionSummary: "2026 undergraduate and graduate fee tables", applicationFee: "2026 application guides", admissionsUrl: "registered official undergraduate guide", cscaRequirement: "official CSCA subject table embedded in the 2026 undergraduate guide" } }],
+  schools: [{ slug: schoolSlug, nameEn: "Huazhong University of Science and Technology", nameZh: "华中科技大学", citySlug: "wuhan", schoolType: "public", region: "Wuhan, Hubei, Central China", applicationLevel: "Undergraduate, Master, Doctoral", languageOfInstruction: "Chinese and English, depending on program", languageRequirement: "Program-level language requirements are recorded on each route.", hskRequirement: "Undergraduate: HSK 4 score 180 for science, engineering and medicine; HSK 5 score 180 for economics, management, humanities, arts, law and AI. Graduate thresholds vary by discipline and hospital.", englishRequirement: "Undergraduate: TOEFL 80 or IELTS 5.5; Graduate: TOEFL 80, IELTS 6.0 or GRE 310. Published exemptions may apply.", deadlineSummary: "2026 undergraduate deadline: June 15, 2026; graduate deadline: March 1, 2026; scholarship deadlines vary by route.", tuitionSummary: "Undergraduate CNY 18,000-40,000/year; Master CNY 25,000-40,000/year except Executive MBA CNY 324,000/2 years; Doctoral CNY 30,000-50,000/year.", applicationFee: "CNY 600 / USD 100", websiteUrl: "https://www.hust.edu.cn/", admissionsUrl: guide.url, cscaRequired: true, cscaRequirement: "2026 undergraduate applicants must submit CSCA results for the exact subjects published by teaching language and discipline.", cscaSubjects: ["Professional Chinese - Liberal Arts", "Professional Chinese - Science and Engineering", "Mathematics", "Physics", "Chemistry"], subjectTags: [...new Set<string>(parsed.routes.map((route) => route.school))], languageTags: ["Chinese", "English"], tuitionBandLabel: "CNY 18,000-50,000/year for standard degree routes", campusHighlights: ["44 undergraduate routes", "215 master's routes", "207 doctoral routes", "Seven independently structured scholarship routes"], status: "draft", sourceUrl: guide.url, sourceLabel: guide.label, sourceSha256: guide.sha256, capturedAt: guide.fetchedAt, sourceFieldLineage: { nameEn: "official HUST admissions pages", citySlug: "official HUST address", applicationLevel: "2026 undergraduate and graduate program tables", languageRequirement: "2026 application guides", deadlineSummary: "2026 application guides", tuitionSummary: "2026 undergraduate and graduate fee tables", applicationFee: "2026 application guides", admissionsUrl: "registered official undergraduate guide", cscaRequirement: "official CSCA subject table embedded in the 2026 undergraduate guide" } }],
   programs,
   programIntakes: programs.map(program => {
     const isUg = program.degreeLevel === "Undergraduate";

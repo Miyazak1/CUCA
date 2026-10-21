@@ -3,6 +3,11 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string; contentType: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
+type JilinProgramRow = { catalogId: string; collegeEn: string; collegeZh?: string; degreeLevel: CatalogSeedProgram["degreeLevel"]; durationYears: number; nameEn: string; nameZh?: string; sourceLocator: string; studyMode: string; teachingLanguage: string };
+type ParsedPrograms = { programCount: number; counts: Record<string, number>; programs: JilinProgramRow[] };
+
 const root = process.cwd();
 const schoolSlug = "jilin-university";
 const paths = {
@@ -16,7 +21,7 @@ const paths = {
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const parsedText = await readFile(paths.parsed, "utf8");
 if (sha(parsedText) !== "789f2f1c390a8d3af8aa4253be053a0a5df18ab2ddbe130775dc0f51c79ef729") throw new Error("Parsed Jilin artifact changed after review preparation.");
-const parsed = JSON.parse(parsedText);
+const parsed = JSON.parse(parsedText) as ParsedPrograms;
 if (parsed.programCount !== 244 || JSON.stringify(parsed.counts) !== JSON.stringify({ "Master:Chinese": 102, "Master:English": 41, "Doctoral:Chinese": 67, "Doctoral:English": 34 })) throw new Error("Jilin parsed counts mismatch.");
 
 const expected: Record<string, string> = {
@@ -29,17 +34,18 @@ const expected: Record<string, string> = {
   "jilin-northeast-asia-law-excellence-scholarship-2026": "536cda13ee831271f700a4f4a4de6fb7242835132f9dc3de26bc492f669fce8b",
   "jilin-pharmacology-excellence-scholarship-2026": "f5d11e718da389a490ba6d9da456f04c592c3ca9d8b9e8593b2ee61cf55a077f",
 };
-const manifests = [JSON.parse(await readFile(paths.manifest, "utf8")), JSON.parse(await readFile(paths.catalogManifest, "utf8"))];
-const evidence = new Map<string, any>();
+const manifests = [JSON.parse(await readFile(paths.manifest, "utf8")) as EvidenceManifest, JSON.parse(await readFile(paths.catalogManifest, "utf8")) as EvidenceManifest];
+const evidence = new Map<string, EvidenceSource>();
 for (const manifest of manifests) for (const row of manifest.sources ?? []) if (expected[row.id] === row.sha256 && row.status === 200) evidence.set(row.id, row);
 const missing = Object.keys(expected).filter(id => !evidence.has(id));
 if (missing.length) throw new Error(`Missing locked Jilin evidence: ${missing.join(", ")}`);
+const requireEvidence = (id: string) => { const source = evidence.get(id); if (!source) throw new Error(`Missing locked Jilin evidence: ${id}`); return source; };
 
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const catalogSource = evidence.get("jilin-high-level-graduate-program-catalog-2026");
-const admissionsSource = evidence.get("jilin-graduate-admissions-2026");
-const typeBSource = evidence.get("jilin-high-level-postgraduate-scholarship-2026");
-const programs: CatalogSeedProgram[] = parsed.programs.map((row: any) => {
+const catalogSource = requireEvidence("jilin-high-level-graduate-program-catalog-2026");
+const admissionsSource = requireEvidence("jilin-graduate-admissions-2026");
+const typeBSource = requireEvidence("jilin-high-level-postgraduate-scholarship-2026");
+const programs: CatalogSeedProgram[] = parsed.programs.map((row) => {
   const english = row.teachingLanguage === "English";
   const tuition = row.degreeLevel === "Master"
     ? "RMB 21,000-33,000/year depending on discipline, college and language route"
@@ -89,7 +95,7 @@ const info = (label: string, value?: string) => ({ label, ...(value ? { value } 
 const benefit = (label: string, note?: string) => ({ label, included: true, ...(note ? { note } : {}) });
 const commonMaterials = [info("Passport information page"), info("Highest diploma or expected-graduation proof"), info("Academic transcripts"), info("Language proficiency evidence"), info("Study or research plan"), info("Recommendation letters where required"), info("Physical examination record"), info("No-criminal-record report")];
 function scholarship(sourceId: string, value: Partial<CatalogSeedScholarship> & Pick<CatalogSeedScholarship, "slug" | "title" | "fundingLevel" | "coverage" | "applicableDegree" | "amountText">): CatalogSeedScholarship {
-  const source = evidence.get(sourceId);
+  const source = requireEvidence(sourceId);
   return {
     schoolSlug,
     status: "draft",
@@ -117,7 +123,7 @@ const scholarships: CatalogSeedScholarship[] = [
 
 const candidate: CatalogSeedBundle = {
   version: 1,
-  generatedAt: evidence.get("jilin-high-level-graduate-program-catalog-2026").fetchedAt,
+  generatedAt: catalogSource.fetchedAt,
   cities: [{ slug: "changchun", nameEn: "Changchun", nameZh: "长春", region: "东北", status: "active", sourceUrl: "https://www.cscapilot.com/zh/study-china/cities/changchun", sourceLabel: "CSCAPilot online city catalog recovery export", sourceSha256: "0a72b63c8e8f332ad6894b2b433f59b8bd752ceb7841fa943d5c5833a73c1139", capturedAt: "2026-07-14T05:17:47.163Z", sourceFieldLineage: { nameEn: "city_guides.nameEn", nameZh: "city_guides.nameZh", region: "city_guides.region" } }],
   schools: [{ slug: schoolSlug, nameEn: "Jilin University", nameZh: "吉林大学", citySlug: "changchun", schoolType: "regular", region: "Changchun, Northeast China", applicationLevel: "本科", languageOfInstruction: "Chinese, English", hskRequirement: "HSK4 可免专业中文；未通过需读预科。", deadlineSummary: "Round 1 closes 2026-07-15; Round 1 deadline 本科项目截止：2026 年 7 月 15 日。", tuitionSummary: "¥19,000 - ¥33,000/年。", websiteUrl: "https://www.jlu.edu.cn/", cscaRequired: true, cscaRequirement: "数学必考。", cscaSubjects: ["中文(文科)", "数学", "物理", "化学"], subjectTags: ["Law", "MBBS", "Economics"], languageTags: ["英文授课", "中文授课"], status: "active", sourceUrl: "https://csca.app/zh/universities/jilin-university", sourceLabel: "csca-reference-screenshot", sourceSha256: "1266c95cf3dfbcc2483b733ec7917f04de6a81795bd41e6a31fda4d2ffc8ce69", capturedAt: "2026-05-13T00:00:00Z", sourceFieldLineage: { nameEn: "schools.nameEn", nameZh: "schools.nameZh", citySlug: "schools.citySlug", schoolType: "schools.schoolType", region: "schools.region", applicationLevel: "schools.applicationLevel", languageOfInstruction: "schools.languageOfInstruction", hskRequirement: "schools.hskRequirement", deadlineSummary: "schools.deadlineSummary", tuitionSummary: "schools.tuitionSummary", websiteUrl: "schools.websiteUrl", cscaRequired: "schools.cscaRequired", cscaRequirement: "schools.cscaRequirement", cscaSubjects: "schools.cscaSubjects", subjectTags: "schools.subjectTags", languageTags: "schools.languageTags" } }],
   programs,
@@ -128,7 +134,7 @@ const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
 const validation = createCatalogMigrationValidationReport(JSON.parse(candidateText));
 if (!validation.ok) throw new Error(`Jilin candidate validation failed:\n${validation.errors.join("\n")}`);
 const candidateSha256 = sha(candidateText);
-const reviewBase: any = {
+const reviewBase = {
   version: 1,
   status: "standing_user_approval",
   generatedAt: candidate.generatedAt,

@@ -45,7 +45,11 @@ export function createStaffMfaHttpHandlers(
             route: "/api/v1/auth/mfa/complete",
           },
         });
-        const result = await service.completeLogin(body, requestId);
+        const result = await service.completeLogin({
+          challengeToken: body.challengeToken,
+          code: body.code,
+          recoveryCode: body.recoveryCode,
+        }, requestId);
         if ("mfaVerificationFailed" in result) throw forbidden("MFA verification failed.");
         const response = authResponse(result, requestId, 200, options);
         response.headers.set("cache-control", "no-store");

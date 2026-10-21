@@ -1,0 +1,32 @@
+export type CatalogApiVerificationRow = {
+  id: string;
+  slug: string;
+  schoolId: string;
+  programCount: number;
+  scholarshipCount: number;
+  sourceStatus: string;
+  lastVerifiedAt: string;
+  degreeLevel?: string;
+  teachingLanguage?: string;
+  durationMonths?: number;
+  verificationStatus?: string;
+  status?: string;
+  tuitionText?: string;
+  applicationNote?: string;
+  sourceUrl?: string;
+  coverage?: string;
+  deadlineLabel?: string;
+  benefitItems: unknown[];
+  eligibilityItems: unknown[];
+  applicationMaterials: unknown[];
+  applicationSteps: unknown[];
+  actionLinks: unknown[];
+  school?: { slug: string };
+  sourceFieldLineage?: unknown;
+  bodySections: unknown[];
+  benefits: unknown[];
+  tags: unknown[];
+};
+
+export type CatalogApiResponse = { data: CatalogApiVerificationRow[] };
+export type CatalogApiDetailResponse = { data: CatalogApiVerificationRow };

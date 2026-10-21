@@ -3,7 +3,13 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type EvidenceSource = { id: string; status: number; contentType: string; sha256: string; finalUrl: string; url: string; byteLength: number; label: string; fetchedAt: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
+type SchoolBaselineRow = { id: string; status: string; verification_status: string; programs: number; verified_programs: number; scholarships: number };
+type ConflictRow = { slug: string; status: string; verification_status: string };
+type Baseline = { school: SchoolBaselineRow; conflicts: ConflictRow[] };
 
 const root = process.cwd();
 const batch = "sjtu-medicine-scholarships-batch-01";
@@ -22,16 +28,16 @@ const paths = {
   state: resolve(root, ".cuac-local/runtime.json"),
 };
 const sha = (value: string) => createHash("sha256").update(value).digest("hex");
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const [sourceId, manifestPath, expectedSha] of manifestDefinitions) {
-  const manifest = JSON.parse(await readFile(resolve(root, manifestPath), "utf8"));
-  const source = manifest.sources?.find((item: any) => item.id === sourceId);
+  const manifest = JSON.parse(await readFile(resolve(root, manifestPath), "utf8")) as EvidenceManifest;
+  const source = manifest.sources?.find((item) => item.id === sourceId);
   if (!source || source.status !== 200 || source.contentType !== "text/html" || source.sha256 !== expectedSha || source.finalUrl !== source.url || source.byteLength > 15 * 1024 * 1024) {
     throw new Error(`Reviewed SJTUSM source missing, changed, redirected or oversized: ${sourceId}`);
   }
   evidence.set(sourceId, source);
 }
-const dependency = JSON.parse(await readFile(dependencyPath, "utf8"));
+const dependency = JSON.parse(await readFile(dependencyPath, "utf8")) as CatalogSeedBundle;
 if (dependency.schools?.length !== 1 || dependency.schools[0]?.slug !== schoolSlug || dependency.programs?.length !== 3 || dependency.scholarships?.length !== 0) throw new Error("SJTUSM dependency bundle changed.");
 const list = (values: string[]) => values.map(label => ({ label }));
 const benefits = (values: Array<string | [string, string]>) => values.map(value => Array.isArray(value) ? ({ label: value[0], included: true, note: value[1] }) : ({ label: value, included: true }));
@@ -44,8 +50,9 @@ type Input = {
 };
 function make(input: Input): CatalogSeedScholarship {
   const source = evidence.get(input.sourceId);
+  if (!source) throw new Error(`Missing SJTUSM evidence: ${input.sourceId}`);
   const summary = `${input.title} is a distinct official scholarship route published by Shanghai Jiao Tong University School of Medicine. Coverage, eligibility and application routing are shown only to the level stated on the reviewed source.`;
-  const record: any = {
+  const record: CatalogSeedScholarship = {
     schoolSlug, slug: input.slug, title: input.title, nameZh: input.nameZh, type: input.type, typeLabel: input.typeLabel,
     fundingLevel: input.fundingLevel, providerName: input.providerName, providerNameEn: input.providerNameEn,
     providerLocation: "Shanghai, China", coverage: input.coverage, applicableDegree: input.applicableDegree,
@@ -58,7 +65,7 @@ function make(input: Input): CatalogSeedScholarship {
     tags: ["2026", input.typeLabel], summary, sortOrder: input.sortOrder, status: "draft",
     sourceUrl: source.finalUrl, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt,
   };
-  const sourceFieldLineage = Object.fromEntries(Object.keys(record).filter(key => record[key] !== undefined && !["status", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt"].includes(key)).map(key => [key, `explicit or normalized from ${input.sourceId} ${source.sha256}`]));
+  const sourceFieldLineage = Object.fromEntries(Object.entries(record).filter(([key, value]) => value !== undefined && !["status", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt"].includes(key)).map(([key]) => [key, `explicit or normalized from ${input.sourceId} ${source.sha256}`]));
   return { ...record, sourceFieldLineage };
 }
 const scholarships: CatalogSeedScholarship[] = [
@@ -104,19 +111,19 @@ const scholarships: CatalogSeedScholarship[] = [
 ];
 const scholarshipSlugs = scholarships.map(item => item.slug);
 if (new Set(scholarshipSlugs).size !== 3 || scholarships.some(item => !item.benefitItems?.length || !item.eligibilityItems?.length || !item.applicationMaterials?.length || !item.applicationSteps?.length || !item.actionLinks?.length)) throw new Error("SJTUSM rich scholarship scope is incomplete.");
-const state = JSON.parse(await readFile(paths.state, "utf8"));
+const state = JSON.parse(await readFile(paths.state, "utf8")) as LocalDevelopmentState;
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:sjtu-medicine-scholarships-review" });
-let baseline: any;
+let baseline: Baseline;
 try {
-  const school = await pool.query(`select s.id,s.status,s.verification_status,(select count(*) from programs p where p.school_id=s.id and p.status='active')::int programs,(select count(*) from programs p where p.school_id=s.id and p.status='active' and p.verification_status='verified')::int verified_programs,(select count(*) from scholarships h where h.school_id=s.id and h.status='active')::int scholarships from schools s where s.slug=$1`, [schoolSlug]);
-  const conflicts = await pool.query("select slug,status,verification_status from scholarships where slug=any($1::text[])", [scholarshipSlugs]);
-  baseline = { school: school.rows[0], conflicts: conflicts.rows };
+  const school = await pool.query<SchoolBaselineRow>(`select s.id,s.status,s.verification_status,(select count(*) from programs p where p.school_id=s.id and p.status='active')::int programs,(select count(*) from programs p where p.school_id=s.id and p.status='active' and p.verification_status='verified')::int verified_programs,(select count(*) from scholarships h where h.school_id=s.id and h.status='active')::int scholarships from schools s where s.slug=$1`, [schoolSlug]);
+  const conflicts = await pool.query<ConflictRow>("select slug,status,verification_status from scholarships where slug=any($1::text[])", [scholarshipSlugs]);
+  baseline = { school: school.rows[0]!, conflicts: conflicts.rows };
   if (school.rows.length !== 1 || baseline.school.status !== "active" || baseline.school.verification_status !== "verified" || baseline.school.programs !== 3 || baseline.school.verified_programs !== 3 || baseline.school.scholarships !== 0 || conflicts.rows.length !== 0) throw new Error("SJTUSM safe-new database baseline changed.");
 } finally { await pool.end(); }
 const candidate: CatalogSeedBundle = {
-  version: 1, generatedAt: evidence.get("sjtu-medicine-cgs-bilateral-program-2026").fetchedAt,
-  cities: dependency.cities.map((item: any) => { const { verificationStatus: _v, lastVerifiedAt: _l, ...rest } = item; return { ...rest, status: "draft" }; }),
-  schools: dependency.schools.map((item: any) => { const { verificationStatus: _v, lastVerifiedAt: _l, ...rest } = item; return { ...rest, status: "draft" }; }),
+  version: 1, generatedAt: evidence.get("sjtu-medicine-cgs-bilateral-program-2026")!.fetchedAt,
+  cities: dependency.cities!.map((item) => ({ ...item, verificationStatus: undefined, lastVerifiedAt: undefined, status: "draft" as const })),
+  schools: dependency.schools!.map((item) => ({ ...item, verificationStatus: undefined, lastVerifiedAt: undefined, status: "draft" as const })),
   programs: [], programIntakes: [], scholarships,
 };
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
@@ -127,7 +134,7 @@ const reviewBase = {
   version: 1, status: "standing_user_approval", generatedAt: candidate.generatedAt,
   scope: { schoolSlug, dependencyCityReplayCount: 1, dependencySchoolReplayCount: 1, newScholarshipCount: 3, overwriteCount: 0, archiveCount: 0 },
   candidateSha256: sha(candidateText), candidateBundleSha256: validation.bundleSha256, operationPlanSha256: validation.operationPlanSha256,
-  evidence: manifestDefinitions.map(([sourceId]) => { const source = evidence.get(sourceId); return { sourceId, sourceUrl: source.finalUrl, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt, contentType: source.contentType, byteLength: source.byteLength }; }),
+  evidence: manifestDefinitions.map(([sourceId]) => { const source = evidence.get(sourceId); if (!source) throw new Error(`Missing SJTUSM evidence: ${sourceId}`); return { sourceId, sourceUrl: source.finalUrl, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt, contentType: source.contentType, byteLength: source.byteLength }; }),
   standingAuthorization: { reference: "user-chat-default-publication", instruction: "发布默认允许", appliesBecause: "Three new reviewed official scholarship routes are inserted; no school, program, intake or existing scholarship is overwritten, archived or deleted." },
   sourceReview: { result: "pass", note: "The current 2026 scholarship index and three route pages were collected from registered SJTUSM URLs. Each route is modeled separately and unresolved amounts or deadlines remain explicitly unresolved." },
   reconciliation: { destructiveDeletion: false, overwrites: [], archives: [], databaseBaseline: baseline },

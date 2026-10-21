@@ -57,7 +57,7 @@ const publication: CatalogSeedBundle = {
 const report = createCatalogMigrationValidationReport(publication);
 if (!report.ok || report.summary.programs !== 244 || report.summary.programIntakes !== 244 || report.summary.scholarships !== 5) throw new Error(`Invalid Jilin publication: ${report.errors.join(" ")}`);
 const approval = { version: 1, approvedAt, approvalMode: "standing-user-default-publication", reviewReference, approvedReviewSha256: approvedReviewHash, approvedCandidateFileSha256: candidateSha256, approvedCandidateBundleSha256: fresh.bundleSha256, publicationBundle: "seeds/catalog.jilin-safe-new-batch-01.approved.local.json", publicationBundleSha256: report.bundleSha256, schoolSlug: "jilin-university", programSlugs: publication.programs!.map(row => row.slug), scholarshipSlugs: publication.scholarships!.map(row => row.slug), archivedProgramAliases: [], archivedScholarshipAliases: [], prohibitedDataConfirmedExcluded: true };
-async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: any) { if (error?.code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
+async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: unknown) { if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
 await writeOrVerify(paths.output, publication);
 await writeOrVerify(paths.approval, approval);
 

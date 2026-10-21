@@ -10,6 +10,12 @@ const root=process.cwd(), batch="bsu-safe-new-batch-01", prefix=`catalog.${batch
 const paths={candidate:resolve(root,`seeds/${prefix}.draft.json`),validation:resolve(root,`seeds/${prefix}.validation.json`),review:resolve(root,`seeds/${prefix}.review.json`),output:resolve(root,`seeds/${prefix}.approved.local.json`),approval:resolve(root,`seeds/${prefix}.approval.json`),state:resolve(root,".cuac-local/runtime.json")};
 const parse=async(path:string)=>JSON.parse(await readFile(path,"utf8"));
 const sha=(value:string)=>createHash("sha256").update(value).digest("hex");
+type SchoolSnapshotRow={id:string;snapshot:Record<string,unknown>};
+type SnapshotRow={snapshot:Record<string,unknown>};
+type AggregateSnapshotRow={snapshot:unknown[]|null};
+type EntityStatusRow={slug:string;status:string;verification_status:string;last_verified_at:Date|null};
+type IntakeStatusRow={slug:string;intake_year:number;status:string};
+type TotalsRow={id:string;programs:number;verified_programs:number;intakes:number;scholarships:number;verified_scholarships:number};
 const [candidateText,validation,review,state,oldApproval]=await Promise.all([readFile(paths.candidate,"utf8"),parse(paths.validation),parse(paths.review),parse(paths.state),parse(paths.approval).catch(()=>null)]);
 const candidate=JSON.parse(candidateText) as CatalogSeedBundle;
 const {reviewHash,publicationReference,...reviewBase}=review;
@@ -25,28 +31,28 @@ const report=createCatalogMigrationValidationReport(publication);
 if(!report.ok||report.summary.programs!==96||report.summary.programIntakes!==96||report.summary.scholarships!==1) throw new Error(`Invalid BSU publication: ${report.errors.join(" ")}`);
 const programSlugs=publication.programs!.map(row=>row.slug),scholarshipSlugs=publication.scholarships!.map(row=>row.slug);
 const approval={version:1,approvedAt,approvalMode:"standing-user-default-publication",reviewReference:publicationReference,approvedReviewSha256:reviewHash,approvedCandidateFileSha256:sha(candidateText),approvedCandidateBundleSha256:fresh.bundleSha256,publicationBundle:`seeds/${prefix}.approved.local.json`,publicationBundleSha256:report.bundleSha256,schoolSlug,programSlugs,scholarshipSlugs,archivedProgramAliases:[],archivedScholarshipAliases:[],prohibitedDataConfirmedExcluded:true};
-async function writeOrVerify(path:string,value:unknown){const body=`${JSON.stringify(value,null,2)}\n`;try{await writeFile(path,body,{encoding:"utf8",flag:"wx"});}catch(error:any){if(error?.code!=="EEXIST")throw error;if(await readFile(path,"utf8")!==body)throw new Error(`Existing artifact differs: ${path}`);}}
+async function writeOrVerify(path:string,value:unknown){const body=`${JSON.stringify(value,null,2)}\n`;try{await writeFile(path,body,{encoding:"utf8",flag:"wx"});}catch (error: unknown){if((error as NodeJS.ErrnoException).code!=="EEXIST")throw error;if(await readFile(path,"utf8")!==body)throw new Error(`Existing artifact differs: ${path}`);}}
 await writeOrVerify(paths.output,publication);await writeOrVerify(paths.approval,approval);
 const target=assertLocalCatalogPublishTarget(state,publication,LOCAL_CATALOG_PUBLISH_CONFIRMATION,publicationReference);
 const pool=createPostgresPool({databaseUrl:target.databaseUrl,max:1,applicationName:"cuac:bsu-safe-new-publish"});
 try{
  const client=createTransactionalSqlClient(pool);
  const result=await client.transaction(async tx=>{
-  const schoolBefore=await tx.query<any>("select id,to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1",[schoolSlug]);
-  const oldProgramsBefore=await tx.query<any>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.school_id=$1 and not(p.slug=any($2::text[]))",[schoolBefore[0]?.id,programSlugs]);
-  const existing=await tx.query<any>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug",[programSlugs]);
-  const existingIntakes=await tx.query<any>("select p.slug,pi.intake_year,pi.status from program_intakes pi join programs p on p.id=pi.program_id where p.slug=any($1::text[])",[programSlugs]);
-  const existingScholarships=await tx.query<any>("select slug,status,verification_status,last_verified_at from scholarships where slug=any($1::text[])",[scholarshipSlugs]);
+  const schoolBefore=await tx.query<SchoolSnapshotRow>("select id,to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1",[schoolSlug]);
+  const oldProgramsBefore=await tx.query<AggregateSnapshotRow>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.school_id=$1 and not(p.slug=any($2::text[]))",[schoolBefore[0]?.id,programSlugs]);
+  const existing=await tx.query<EntityStatusRow>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug",[programSlugs]);
+  const existingIntakes=await tx.query<IntakeStatusRow>("select p.slug,pi.intake_year,pi.status from program_intakes pi join programs p on p.id=pi.program_id where p.slug=any($1::text[])",[programSlugs]);
+  const existingScholarships=await tx.query<EntityStatusRow>("select slug,status,verification_status,last_verified_at from scholarships where slug=any($1::text[])",[scholarshipSlugs]);
   if(schoolBefore.length!==1||review.reconciliation.databaseBaseline.schoolId!==schoolBefore[0].id||!Array.isArray(oldProgramsBefore[0]?.snapshot)||oldProgramsBefore[0].snapshot.length!==10) throw new Error("BSU protected baseline changed.");
   const pre=existing.length===0&&existingIntakes.length===0&&existingScholarships.length===0;
   const post=existing.length===96&&existingIntakes.length===96&&existingScholarships.length===1&&existing.every(row=>row.status==="active"&&row.verification_status==="verified"&&row.last_verified_at?.toISOString()===approvedAt)&&existingIntakes.every(row=>row.intake_year===2026&&row.status==="closed")&&existingScholarships.every(row=>row.status==="active"&&row.verification_status==="verified"&&row.last_verified_at?.toISOString()===approvedAt);
   if(!pre&&!post) throw new Error(`BSU safe-new state partially conflicts: ${JSON.stringify({programs:existing.length,intakes:existingIntakes.length,scholarships:existingScholarships.length})}`);
   const written=await new CatalogSeedWriter(tx).writeBundle(publication,{preserveExistingCitySlugs:["beijing"],preserveExistingSchoolSlugs:[schoolSlug]});
   if(!written.ok) throw new Error(`BSU catalog write failed: ${written.errors.join(" ")}`);
-  const schoolAfter=await tx.query<any>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1",[schoolSlug]);
-  const oldProgramsAfter=await tx.query<any>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.school_id=$1 and not(p.slug=any($2::text[]))",[schoolBefore[0].id,programSlugs]);
+  const schoolAfter=await tx.query<SnapshotRow>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1",[schoolSlug]);
+  const oldProgramsAfter=await tx.query<AggregateSnapshotRow>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.school_id=$1 and not(p.slug=any($2::text[]))",[schoolBefore[0].id,programSlugs]);
   if(JSON.stringify(schoolAfter[0]?.snapshot)!==JSON.stringify(schoolBefore[0].snapshot)||JSON.stringify(oldProgramsAfter[0]?.snapshot)!==JSON.stringify(oldProgramsBefore[0].snapshot)) throw new Error("BSU publication changed protected school or old programs.");
-  const totals=await tx.query<any>(`select s.id,(select count(*) from programs p where p.school_id=s.id and p.status='active')::int programs,(select count(*) from programs p where p.school_id=s.id and p.status='active' and p.verification_status='verified')::int verified_programs,(select count(*) from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=s.id and p.status='active')::int intakes,(select count(*) from scholarships h where h.school_id=s.id and h.status='active')::int scholarships,(select count(*) from scholarships h where h.school_id=s.id and h.status='active' and h.verification_status='verified')::int verified_scholarships from schools s where s.slug=$1`,[schoolSlug]);
+  const totals=await tx.query<TotalsRow>(`select s.id,(select count(*) from programs p where p.school_id=s.id and p.status='active')::int programs,(select count(*) from programs p where p.school_id=s.id and p.status='active' and p.verification_status='verified')::int verified_programs,(select count(*) from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=s.id and p.status='active')::int intakes,(select count(*) from scholarships h where h.school_id=s.id and h.status='active')::int scholarships,(select count(*) from scholarships h where h.school_id=s.id and h.status='active' and h.verification_status='verified')::int verified_scholarships from schools s where s.slug=$1`,[schoolSlug]);
   if(totals.length!==1||totals[0].programs!==106||totals[0].verified_programs!==96||totals[0].intakes!==106||totals[0].scholarships!==1||totals[0].verified_scholarships!==1) throw new Error(`BSU post-check failed: ${JSON.stringify(totals[0])}`);
   return{written:written.summary,totals:totals[0]};
  });

@@ -3,7 +3,12 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+import type { CatalogCityRow } from "./lib/catalog-database-rows.ts";
+
+type EvidenceSource = { id: string; status: number; contentType: string; byteLength: number; sha256: string; finalUrl?: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
+type Preflight = { schools: unknown[]; conflicts: unknown[]; city: CatalogCityRow[] };
 
 const root = process.cwd();
 const paths = {
@@ -19,7 +24,7 @@ const [candidateText, validationText, manifestText, stateText] = await Promise.a
 ]);
 const candidate = JSON.parse(candidateText) as CatalogSeedBundle;
 const validation = JSON.parse(validationText);
-const manifest = JSON.parse(manifestText);
+const manifest = JSON.parse(manifestText) as EvidenceManifest;
 const evidence = manifest.sources ?? [];
 const fresh = createCatalogMigrationValidationReport(candidate);
 if (!fresh.ok || !validation.ok || fresh.bundleSha256 !== validation.bundleSha256 || fresh.operationPlanSha256 !== validation.operationPlanSha256) throw new Error("BUPT candidate validation changed.");
@@ -29,12 +34,12 @@ if (evidence.length !== 1 || evidence[0].status !== 200 || evidence[0].contentTy
 
 const schoolSlug = "beijing-university-of-posts-and-telecommunications";
 const programSlugs = candidate.programs.map((row) => row.slug);
-const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(JSON.parse(stateText)), max: 1, applicationName: "cuac:bupt-complete-review" });
-let preflight: any;
+const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(JSON.parse(stateText) as LocalDevelopmentState), max: 1, applicationName: "cuac:bupt-complete-review" });
+let preflight: Preflight;
 try {
   const schools = await pool.query("select id,slug,name_en,name_zh,status,verification_status from schools where slug=$1 or lower(name_en)=lower($2) or name_zh=$3", [schoolSlug, "Beijing University of Posts and Telecommunications", "北京邮电大学"]);
   const conflicts = await pool.query("select slug,status,verification_status from programs where slug=any($1::text[])", [programSlugs]);
-  const city = await pool.query("select id,slug,name_en,name_zh,region,province,status,verification_status,source_url,source_label,source_note,source_field_lineage_json from cities where slug='beijing'");
+  const city = await pool.query<CatalogCityRow>("select id,slug,name_en,name_zh,region,province,status,verification_status,source_url,source_label,source_note,source_field_lineage_json from cities where slug='beijing'");
   preflight = { schools: schools.rows, conflicts: conflicts.rows, city: city.rows };
   if (schools.rows.length || conflicts.rows.length || city.rows.length !== 1 || city.rows[0].status !== "active") throw new Error(`BUPT safe-new baseline mismatch: ${JSON.stringify(preflight)}`);
 } finally { await pool.end(); }
@@ -51,7 +56,7 @@ const reviewBase = {
   candidateBundleSha256: fresh.bundleSha256,
   operationPlanSha256: fresh.operationPlanSha256,
   sourceManifestSha256: sha(manifestText),
-  evidence: evidence.map((row: any) => ({ sourceId: row.id, sourceUrl: row.finalUrl ?? row.url, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType, byteLength: row.byteLength })),
+  evidence: evidence.map((row) => ({ sourceId: row.id, sourceUrl: row.finalUrl ?? row.url, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType, byteLength: row.byteLength })),
   sourceReview: { result: "pass", note: "The official BUPT 2026 international admission brochure was captured byte-for-byte and all 10 pages were extracted and visually reviewed. It publishes 58 distinct degree-language routes: 17 undergraduate, 28 master and 13 doctoral." },
   reconciliation: { destructiveDeletion: false, overwrites: [], archives: [], databaseBaseline: { schoolCount: 0, candidateSlugConflictCount: 0, cityDependency: preflight.city[0] } },
   coverageLimitations: [

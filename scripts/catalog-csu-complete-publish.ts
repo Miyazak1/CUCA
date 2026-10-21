@@ -34,7 +34,8 @@ const candidate = JSON.parse(candidateText) as CatalogSeedBundle;
 const storedValidation = await parse(paths.validation);
 const review = await parse(paths.review);
 const state = await parse(paths.state);
-const { reviewHash: storedReviewHash, approvalPhrase: _approvalPhrase, ...reviewBase } = review;
+const storedReviewHash = review.reviewHash;
+const reviewBase = Object.fromEntries(Object.entries(review).filter(([key]) => key !== "reviewHash" && key !== "approvalPhrase"));
 const actualReviewHash = createHash("sha256").update(JSON.stringify(reviewBase)).digest("hex");
 if (storedReviewHash !== approvedReviewHash || actualReviewHash !== approvedReviewHash) throw new Error("User-approved review hash does not match the stored CSU review.");
 const candidateFileSha256 = createHash("sha256").update(candidateText).digest("hex");
@@ -89,7 +90,7 @@ const approvalRecord = {
 async function writeOrVerify(path: string, value: unknown) {
   const text = `${JSON.stringify(value, null, 2)}\n`;
   try { await writeFile(path, text, { encoding: "utf8", flag: "wx" }); }
-  catch (error: any) { if (error?.code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== text) throw new Error(`Existing artifact does not match this approval: ${path}`); }
+  catch (error: unknown) { if ((error as { code?: string }).code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== text) throw new Error(`Existing artifact does not match this approval: ${path}`); }
 }
 await writeOrVerify(paths.output, publication);
 await writeOrVerify(paths.approval, approvalRecord);

@@ -7,6 +7,7 @@ import {
   type CatalogSeedProgram,
   type CatalogSeedProgramIntake,
   type CatalogSeedScholarship,
+  type CatalogSeedSchool,
 } from "../src/server/catalog/seed-contract.ts";
 
 type ManifestSource = { id: string; label: string; url: string; finalUrl?: string; fetchedAt: string; status: number; sha256: string; artifactPath: string };
@@ -48,7 +49,7 @@ const fields = (id: string) => {
   return { sourceUrl: item.finalUrl ?? item.url, sourceLabel: item.label, sourceSha256: item.sha256, capturedAt: item.fetchedAt };
 };
 const verifiedAt = [...evidence.values()].map((row) => row.fetchedAt).sort().at(-1)!;
-const school = {
+const school: CatalogSeedSchool = {
   ...baseSchool,
   deadlineSummary: "The one-semester foundation route expected to enter in February 2027 closed July 31, 2026. The China Link scholarship route for Spring or Summer 2027 closes December 1, 2026. These sources do not establish general Fall 2027 degree deadlines.",
   verificationStatus: "verified",

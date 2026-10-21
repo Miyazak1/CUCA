@@ -3,6 +3,11 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources?: EvidenceSource[] };
+type UcasProgramRow = { nameEn: string; sourceLocator: string; subjectCode: string };
+type ParsedPrograms = { programCount: number; excludedAmbiguousCodeCount: number; programs: UcasProgramRow[] };
+
 const root = process.cwd();
 const paths = {
   manifest: resolve(root, "work/catalog-official/ucas-complete-batch-01/manifest.json"),
@@ -13,7 +18,7 @@ const paths = {
 };
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const [manifestText, parsedText, baseText] = await Promise.all([readFile(paths.manifest, "utf8"), readFile(paths.parsed, "utf8"), readFile(paths.base, "utf8")]);
-const manifest = JSON.parse(manifestText), parsed = JSON.parse(parsedText), base = JSON.parse(baseText) as CatalogSeedBundle;
+const manifest = JSON.parse(manifestText) as EvidenceManifest, parsed = JSON.parse(parsedText) as ParsedPrograms, base = JSON.parse(baseText) as CatalogSeedBundle;
 const expected: Record<string, string> = {
   "ucas-graduate-admission-2026": "becc112bc169655952fa8a41172e6fdc60162744489a265527a8838521fbb45c",
   "ucas-international-major-index-current": "f99b9c7944a3ebb77a7d4a849985e442d86d6f1696907871beb63ad5456b2366",
@@ -22,16 +27,18 @@ const expected: Record<string, string> = {
   "ucas-cgs-scholarship-2026": "d9344e5a88680d5374f5293d8a1ab3743b1d0bd0a76cecca7c484a43bfefb396",
   "ucas-cas-anso-scholarship-2026": "2005bf8156b0c2e7fec3773c3a5eb4f621972a86c410a83241dc77b37c793088",
 };
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const row of manifest.sources ?? []) if (row.status === 200 && expected[row.id] === row.sha256) evidence.set(row.id, row);
 if (evidence.size !== 6 || parsed.programCount !== 174 || parsed.excludedAmbiguousCodeCount !== 54) throw new Error("UCAS evidence/parser mismatch.");
+const requireEvidence = (id: string) => { const source = evidence.get(id); if (!source) throw new Error(`Missing UCAS evidence: ${id}`); return source; };
 const city = base.cities?.find((row) => row.slug === "beijing");
 if (!city) throw new Error("Current Beijing dependency missing.");
 
 const schoolSlug = "university-of-chinese-academy-of-sciences";
 const majorSource = evidence.get("ucas-international-major-index-current"), admissionSource = evidence.get("ucas-graduate-admission-2026");
+if (!majorSource || !admissionSource) throw new Error("UCAS program evidence is incomplete.");
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const programs: CatalogSeedProgram[] = parsed.programs.map((row: any) => ({
+const programs: CatalogSeedProgram[] = parsed.programs.map((row) => ({
   slug: `${schoolSlug}-master-${row.subjectCode.toLowerCase()}-${slugify(row.nameEn)}-english`,
   schoolSlug,
   citySlug: "beijing",
@@ -71,7 +78,7 @@ const info = (label: string, value?: string) => ({ label, ...(value ? { value } 
 const benefit = (label: string, note?: string) => ({ label, included: true, ...(note ? { note } : {}) });
 const materials = [info("Passport information page"), info("Degree certificate or expected-graduation proof"), info("Academic transcripts"), info("English or Chinese proficiency proof"), info("Motivation letter"), info("Two academic reference letters"), info("Supervisor acceptance form, if available")];
 function scholarship(sourceId: string, value: Partial<CatalogSeedScholarship> & Pick<CatalogSeedScholarship, "slug" | "title" | "fundingLevel" | "coverage" | "applicableDegree" | "amountText">): CatalogSeedScholarship {
-  const source = evidence.get(sourceId);
+  const source = requireEvidence(sourceId);
   return {
     schoolSlug, status: "draft", sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt,
     providerLocation: "China", targetCountries: [], targetRegions: [],
@@ -101,7 +108,7 @@ const scholarships: CatalogSeedScholarship[] = [
   }),
 ];
 
-const overview = evidence.get("ucas-international-admission-overview-current");
+const overview = requireEvidence("ucas-international-admission-overview-current");
 const candidate: CatalogSeedBundle = {
   version: 1,
   generatedAt: manifest.generatedAt,

@@ -3,7 +3,14 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type CompleteReview = { sourceReview?: { result?: string }; visualReview?: { result?: string } & Record<string, unknown> };
+type SafeApproval = { programSlugs: string[]; scholarshipSlugs: string[]; approvedAt: string };
+type EvidenceManifest = { generatedAt: string; sources: Array<Record<string, unknown>> };
+type CatalogRow = { id: string; slug: string; status: string; verification_status?: string; source_url?: string };
+type VerifiedRow = CatalogRow & { verification_status: string; last_verified_at: Date | null };
+type Baseline = { school: CatalogRow[]; city: CatalogRow[]; stable: CatalogRow[]; safePrograms: VerifiedRow[]; safeScholarships: VerifiedRow[]; activePrograms: CatalogRow[]; activeScholarships: CatalogRow[] };
 
 const root = process.cwd();
 const paths = {
@@ -22,7 +29,7 @@ const parseText = async (path: string) => { const text = await readFile(path, "u
 const [completeFile, completeReviewFile, safeApprovalFile, safePublicationFile, freshManifestFile, stateFile] = await Promise.all([
   paths.complete, paths.completeReview, paths.safeApproval, paths.safePublication, paths.freshManifest, paths.state,
 ].map(parseText));
-const complete = completeFile.value as CatalogSeedBundle, completeReview = completeReviewFile.value, safeApproval = safeApprovalFile.value, safePublication = safePublicationFile.value as CatalogSeedBundle, freshManifest = freshManifestFile.value, state = stateFile.value;
+const complete = completeFile.value as CatalogSeedBundle, completeReview = completeReviewFile.value as CompleteReview, safeApproval = safeApprovalFile.value as SafeApproval, safePublication = safePublicationFile.value as CatalogSeedBundle, freshManifest = freshManifestFile.value as EvidenceManifest, state = stateFile.value as LocalDevelopmentState;
 const schoolSlug = "university-of-science-and-technology-beijing";
 if (complete.cities?.length !== 1 || complete.schools?.length !== 1 || complete.schools[0].slug !== schoolSlug || safePublication.cities?.length !== 1 || safeApproval.programSlugs?.length !== 145 || safeApproval.scholarshipSlugs?.length !== 5) throw new Error("USTB cleanup dependencies changed.");
 if (freshManifest.sources?.length !== 14 || completeReview.sourceReview?.result !== "pass" || completeReview.visualReview?.result !== "pass") throw new Error("USTB current evidence review is unavailable.");
@@ -33,26 +40,26 @@ const stableIntakes = complete.programIntakes?.filter((row) => stableProgramSet.
 if (stablePrograms.length !== 11 || stableIntakes.length !== 11) throw new Error("USTB cleanup must contain eleven stable routes and intakes.");
 
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:ustb-cleanup-review" });
-let baseline: any;
+let baseline!: Baseline;
 try {
-  const school = await pool.query("select id,slug,status,verification_status,source_url from schools where slug=$1", [schoolSlug]);
-  const city = await pool.query("select id,slug,status,verification_status,source_url from cities where slug='beijing'");
-  const stable = await pool.query("select id,slug,status,verification_status,source_url from programs where slug=any($1::text[]) order by slug", [[...stableProgramSet]]);
-  const safePrograms = await pool.query("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug", [safeApproval.programSlugs]);
-  const safeScholarships = await pool.query("select slug,status,verification_status,last_verified_at from scholarships where slug=any($1::text[]) order by slug", [safeApproval.scholarshipSlugs]);
-  const activePrograms = await pool.query("select id,slug,status,verification_status from programs where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
-  const activeScholarships = await pool.query("select id,slug,status,verification_status from scholarships where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
+  const school = await pool.query<CatalogRow>("select id,slug,status,verification_status,source_url from schools where slug=$1", [schoolSlug]);
+  const city = await pool.query<CatalogRow>("select id,slug,status,verification_status,source_url from cities where slug='beijing'");
+  const stable = await pool.query<CatalogRow>("select id,slug,status,verification_status,source_url from programs where slug=any($1::text[]) order by slug", [[...stableProgramSet]]);
+  const safePrograms = await pool.query<VerifiedRow>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug", [safeApproval.programSlugs]);
+  const safeScholarships = await pool.query<VerifiedRow>("select slug,status,verification_status,last_verified_at from scholarships where slug=any($1::text[]) order by slug", [safeApproval.scholarshipSlugs]);
+  const activePrograms = await pool.query<CatalogRow>("select id,slug,status,verification_status from programs where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
+  const activeScholarships = await pool.query<CatalogRow>("select id,slug,status,verification_status from scholarships where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
   baseline = { school: school.rows, city: city.rows, stable: stable.rows, safePrograms: safePrograms.rows, safeScholarships: safeScholarships.rows, activePrograms: activePrograms.rows, activeScholarships: activeScholarships.rows };
   if (school.rows.length !== 1 || school.rows[0].status !== "active" || school.rows[0].verification_status !== "unverified" || city.rows.length !== 1 || city.rows[0].status !== "active") throw new Error("USTB school/city baseline changed.");
-  if (stable.rows.length !== 11 || stable.rows.some((row: any) => row.status !== "active" || row.verification_status !== "unverified")) throw new Error("USTB stable program baseline changed.");
-  if (safePrograms.rows.length !== 145 || safePrograms.rows.some((row: any) => row.status !== "active" || row.verification_status !== "verified" || row.last_verified_at?.toISOString() !== safeApproval.approvedAt)) throw new Error("USTB safe program publication changed.");
-  if (safeScholarships.rows.length !== 5 || safeScholarships.rows.some((row: any) => row.status !== "active" || row.verification_status !== "verified" || row.last_verified_at?.toISOString() !== safeApproval.approvedAt)) throw new Error("USTB safe scholarship publication changed.");
+  if (stable.rows.length !== 11 || stable.rows.some((row) => row.status !== "active" || row.verification_status !== "unverified")) throw new Error("USTB stable program baseline changed.");
+  if (safePrograms.rows.length !== 145 || safePrograms.rows.some((row) => row.status !== "active" || row.verification_status !== "verified" || row.last_verified_at?.toISOString() !== safeApproval.approvedAt)) throw new Error("USTB safe program publication changed.");
+  if (safeScholarships.rows.length !== 5 || safeScholarships.rows.some((row) => row.status !== "active" || row.verification_status !== "verified" || row.last_verified_at?.toISOString() !== safeApproval.approvedAt)) throw new Error("USTB safe scholarship publication changed.");
   if (activePrograms.rows.length !== 157 || activeScholarships.rows.length !== 6) throw new Error("USTB active totals changed.");
 } finally { await pool.end(); }
 const officialProgramSlugs = new Set([...safeApproval.programSlugs, ...stableProgramSet]);
-const programAliases = baseline.activePrograms.filter((row: any) => !officialProgramSlugs.has(row.slug));
-const scholarshipAliases = baseline.activeScholarships.filter((row: any) => !safeApproval.scholarshipSlugs.includes(row.slug));
-if (programAliases.length !== 1 || scholarshipAliases.length !== 1 || [...programAliases, ...scholarshipAliases].some((row: any) => row.verification_status !== "unverified")) throw new Error("USTB legacy alias set changed.");
+const programAliases = baseline.activePrograms.filter((row) => !officialProgramSlugs.has(row.slug));
+const scholarshipAliases = baseline.activeScholarships.filter((row) => !safeApproval.scholarshipSlugs.includes(row.slug));
+if (programAliases.length !== 1 || scholarshipAliases.length !== 1 || [...programAliases, ...scholarshipAliases].some((row) => row.verification_status !== "unverified")) throw new Error("USTB legacy alias set changed.");
 
 const candidate: CatalogSeedBundle = { version: 1, generatedAt: freshManifest.generatedAt, cities: complete.cities, schools: complete.schools, programs: stablePrograms, programIntakes: stableIntakes, scholarships: [] };
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
@@ -63,7 +70,7 @@ const reviewBase = {
   scope: { schoolSlug, cityDependencyReplayCount: 1, schoolOverwriteCount: 1, stableProgramOverwriteCount: 11, programIntakeUpsertCount: 11, archiveProgramAliasCount: 1, archiveScholarshipAliasCount: 1, verifiedSafeProgramMutationCount: 0, verifiedSafeScholarshipMutationCount: 0 },
   candidateSha256: sha(candidateText), candidateBundleSha256: validation.bundleSha256, operationPlanSha256: validation.operationPlanSha256,
   evidence: { freshManifestSha256: sha(freshManifestFile.text), freshOfficialSourceCount: 14, completeReviewSha256: sha(completeReviewFile.text), safeApprovalSha256: sha(safeApprovalFile.text), safePublicationSha256: sha(safePublicationFile.text) },
-  reconciliation: { destructiveDeletion: false, overwrite: [{ entityType: "school", id: baseline.school[0].id, slug: schoolSlug }, ...baseline.stable.map((row: any) => ({ entityType: "program", id: row.id, slug: row.slug }))], archives: [...programAliases.map((row: any) => ({ entityType: "program", id: row.id, slug: row.slug })), ...scholarshipAliases.map((row: any) => ({ entityType: "scholarship", id: row.id, slug: row.slug }))], protectedSafeProgramSlugs: safeApproval.programSlugs, protectedSafeScholarshipSlugs: safeApproval.scholarshipSlugs, databaseBaseline: { schoolId: baseline.school[0].id, cityId: baseline.city[0].id, stableProgramIds: baseline.stable.map((row: any) => row.id) } },
+  reconciliation: { destructiveDeletion: false, overwrite: [{ entityType: "school", id: baseline.school[0].id, slug: schoolSlug }, ...baseline.stable.map((row) => ({ entityType: "program", id: row.id, slug: row.slug }))], archives: [...programAliases.map((row) => ({ entityType: "program", id: row.id, slug: row.slug })), ...scholarshipAliases.map((row) => ({ entityType: "scholarship", id: row.id, slug: row.slug }))], protectedSafeProgramSlugs: safeApproval.programSlugs, protectedSafeScholarshipSlugs: safeApproval.scholarshipSlugs, databaseBaseline: { schoolId: baseline.school[0].id, cityId: baseline.city[0].id, stableProgramIds: baseline.stable.map((row) => row.id) } },
   sourceReview: { result: "pass", note: "Fourteen current official USTB 2026/2026-2027 pages were refreshed byte-for-byte unchanged from the interpreted review set." },
   visualReview: completeReview.visualReview,
   sensitiveDataCheck: { result: "pass", scope: "school profile, eleven stable programs and two status archives", note: "Only public catalog data is present. Applicant, account, payment, bank, staff-name and personal-contact data are excluded." },

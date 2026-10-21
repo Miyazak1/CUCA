@@ -3,7 +3,11 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type EvidenceSource = { id: string; status: number; contentType: string; byteLength: number; sha256: string; finalUrl?: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
+type Preflight = { schools: unknown[]; conflicts: unknown[]; city: Array<{ status: string }> };
 
 const root = process.cwd();
 const paths = {
@@ -18,17 +22,17 @@ const sha = (value: string | Buffer) => createHash("sha256").update(value).diges
 const [candidateText, validationText, manifestText, parsedText, stateText] = await Promise.all([
   readFile(paths.candidate, "utf8"), readFile(paths.validation, "utf8"), readFile(paths.manifest, "utf8"), readFile(paths.parsed, "utf8"), readFile(paths.state, "utf8"),
 ]);
-const candidate = JSON.parse(candidateText) as CatalogSeedBundle, validation = JSON.parse(validationText), manifest = JSON.parse(manifestText), parsed = JSON.parse(parsedText);
+const candidate = JSON.parse(candidateText) as CatalogSeedBundle, validation = JSON.parse(validationText), manifest = JSON.parse(manifestText) as EvidenceManifest, parsed = JSON.parse(parsedText);
 const fresh = createCatalogMigrationValidationReport(candidate), evidence = manifest.sources ?? [];
 if (!fresh.ok || !validation.ok || fresh.bundleSha256 !== validation.bundleSha256 || fresh.operationPlanSha256 !== validation.operationPlanSha256) throw new Error("NUAA candidate validation changed.");
 if (candidate.schools?.length !== 1 || candidate.programs?.length !== 77 || candidate.programIntakes?.length !== 77 || candidate.scholarships?.length !== 6 || parsed.programCount !== 77 || parsed.duplicateIdentities.length) throw new Error("NUAA locked scope changed.");
 if (candidate.scholarships.some((row) => !row.coverage || !row.amountText || !row.benefitItems?.length || !row.eligibilityItems?.length || !row.applicationMaterials?.length || !row.applicationSteps?.length || !row.actionLinks?.length)) throw new Error("NUAA scholarship rich fields incomplete.");
-if (evidence.length !== 5 || evidence.some((row: any) => row.status !== 200 || row.contentType !== "text/html" || !/^[a-f0-9]{64}$/.test(row.sha256))) throw new Error("NUAA official evidence manifest incomplete.");
+if (evidence.length !== 5 || evidence.some((row) => row.status !== 200 || row.contentType !== "text/html" || !/^[a-f0-9]{64}$/.test(row.sha256))) throw new Error("NUAA official evidence manifest incomplete.");
 
 const schoolSlug = "nanjing-university-of-aeronautics-and-astronautics";
 const programSlugs = candidate.programs.map((row) => row.slug), scholarshipSlugs = candidate.scholarships.map((row) => row.slug);
-const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(JSON.parse(stateText)), max: 1, applicationName: "cuac:nuaa-complete-review" });
-let preflight: any;
+const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(JSON.parse(stateText) as LocalDevelopmentState), max: 1, applicationName: "cuac:nuaa-complete-review" });
+let preflight: Preflight;
 try {
   const schools = await pool.query("select id,slug,name_en,name_zh,status,verification_status from schools where slug=$1 or lower(name_en)=lower($2) or name_zh=$3", [schoolSlug, "Nanjing University of Aeronautics and Astronautics", "南京航空航天大学"]);
   const conflicts = await pool.query("select 'program' kind,slug from programs where slug=any($1::text[]) union all select 'scholarship' kind,slug from scholarships where slug=any($2::text[])", [programSlugs, scholarshipSlugs]);
@@ -44,7 +48,7 @@ const reviewBase = {
   standingAuthorization: { instruction: "发布默认允许", scope: "new, non-conflicting official catalog records only" },
   scope: { schoolSlug, newSchoolCount: 1, programRouteCount: 77, degreeCounts, languageCounts, programIntakeCount: 77, newScholarshipCount: 6, cityOverwriteCount: 0, schoolOverwriteCount: 0, archiveProgramAliasCount: 0, archiveScholarshipAliasCount: 0 },
   candidateSha256: sha(candidateText), candidateBundleSha256: fresh.bundleSha256, operationPlanSha256: fresh.operationPlanSha256, sourceManifestSha256: sha(manifestText), parsedArtifactSha256: sha(parsedText),
-  evidence: evidence.map((row: any) => ({ sourceId: row.id, sourceUrl: row.finalUrl ?? row.url, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType, byteLength: row.byteLength })),
+  evidence: evidence.map((row) => ({ sourceId: row.id, sourceUrl: row.finalUrl ?? row.url, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType, byteLength: row.byteLength })),
   sourceReview: { result: "pass", note: "Five current official NUAA 2026 admissions and scholarship pages were captured. Structured extraction yields 77 unique degree-language-college routes: 12 undergraduate, 35 master and 30 doctoral. Six non-duplicative scholarship records preserve degree-specific amounts and application paths." },
   reconciliation: { destructiveDeletion: false, overwrites: [], archives: [], databaseBaseline: { schoolCount: 0, candidateSlugConflictCount: 0, cityDependency: preflight.city[0] } },
   coverageLimitations: [

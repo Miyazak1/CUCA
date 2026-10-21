@@ -1,28 +1,35 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type EntityRow = { id: string; slug: string; status: string; verification_status: string; name_en?: string; degree_level?: string; last_verified_at?: Date | null };
+type CountRow = { count: number };
+type ProgramBaseline = { school?: EntityRow; city?: EntityRow; activePrograms: EntityRow[]; intakeCount: number; activeScholarships: EntityRow[] };
+type EvidenceSource = { id: string; finalUrl: string; label: string; sha256: string; fetchedAt: string; contentType: string; byteLength: number; lastModified?: string };
+type EvidenceManifest = { sources: EvidenceSource[] };
+type ParsedPrograms = { degreeCounts: Record<string, number> };
 
 const root = process.cwd();
 const paths = { candidate: resolve(root, "seeds/catalog.ahu-programs-safe-new-batch-01.draft.json"), validation: resolve(root, "seeds/catalog.ahu-programs-safe-new-batch-01.validation.json"), review: resolve(root, "seeds/catalog.ahu-programs-safe-new-batch-01.review.json"), manifest: resolve(root, "work/catalog-official/ahu-programs-batch-01/manifest.json"), parsed: resolve(root, "work/catalog-official/ahu-programs-batch-01/parsed-programs.json"), state: resolve(root, ".cuac-local/runtime.json") };
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const [candidateText, validationText, manifestText, parsedText, stateText] = await Promise.all([readFile(paths.candidate, "utf8"), readFile(paths.validation, "utf8"), readFile(paths.manifest, "utf8"), readFile(paths.parsed, "utf8"), readFile(paths.state, "utf8")]);
-const candidate = JSON.parse(candidateText), validation = JSON.parse(validationText), manifest = JSON.parse(manifestText), parsed = JSON.parse(parsedText), state = JSON.parse(stateText);
+const candidate = JSON.parse(candidateText) as CatalogSeedBundle, validation = JSON.parse(validationText), manifest = JSON.parse(manifestText) as EvidenceManifest, parsed = JSON.parse(parsedText) as ParsedPrograms, state = JSON.parse(stateText) as LocalDevelopmentState;
 const fresh = createCatalogMigrationValidationReport(candidate);
-if (!fresh.ok || !validation.ok || fresh.bundleSha256 !== validation.bundleSha256 || fresh.operationPlanSha256 !== validation.operationPlanSha256 || candidate.programs.length !== 168) throw new Error("AHU program candidate validation changed.");
-const slugs = candidate.programs.map((row: any) => row.slug);
+if (!fresh.ok || !validation.ok || fresh.bundleSha256 !== validation.bundleSha256 || fresh.operationPlanSha256 !== validation.operationPlanSha256 || (candidate.programs ?? []).length !== 168) throw new Error("AHU program candidate validation changed.");
+const slugs = (candidate.programs ?? []).map((row) => row.slug);
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:ahu-programs-review" });
-let baseline: any;
+let baseline: ProgramBaseline;
 try {
-  const school = await pool.query("select id,slug,status,verification_status from schools where slug='anhui-university'");
-  const city = await pool.query("select id,slug,status from cities where slug='hefei'");
-  const conflicts = await pool.query("select id,slug,status,verification_status from programs where slug=any($1::text[]) order by slug", [slugs]);
-  const activePrograms = await pool.query("select id,slug,name_en,degree_level,status,verification_status from programs where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
-  const intakes = await pool.query("select count(*)::int count from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=$1", [school.rows[0]?.id]);
-  const scholarships = await pool.query("select id,slug,status,verification_status,last_verified_at from scholarships where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
-  if (school.rows.length !== 1 || city.rows.length !== 1 || conflicts.rows.length !== 0 || activePrograms.rows.length !== 2 || !activePrograms.rows.every((row: any) => row.name_en === "Economics" && row.verification_status === "unverified") || scholarships.rows.length !== 2) throw new Error("AHU safe-new program database baseline changed.");
+  const school = await pool.query<EntityRow>("select id,slug,status,verification_status from schools where slug='anhui-university'");
+  const city = await pool.query<EntityRow>("select id,slug,status from cities where slug='hefei'");
+  const conflicts = await pool.query<EntityRow>("select id,slug,status,verification_status from programs where slug=any($1::text[]) order by slug", [slugs]);
+  const activePrograms = await pool.query<EntityRow>("select id,slug,name_en,degree_level,status,verification_status from programs where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
+  const intakes = await pool.query<CountRow>("select count(*)::int count from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=$1", [school.rows[0]?.id]);
+  const scholarships = await pool.query<EntityRow>("select id,slug,status,verification_status,last_verified_at from scholarships where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
+  if (school.rows.length !== 1 || city.rows.length !== 1 || conflicts.rows.length !== 0 || activePrograms.rows.length !== 2 || !activePrograms.rows.every((row) => row.name_en === "Economics" && row.verification_status === "unverified") || scholarships.rows.length !== 2) throw new Error("AHU safe-new program database baseline changed.");
   baseline = { school: school.rows[0], city: city.rows[0], activePrograms: activePrograms.rows, intakeCount: intakes.rows[0].count, activeScholarships: scholarships.rows };
 } finally { await pool.end(); }
 const reviewBase = {
@@ -31,7 +38,7 @@ const reviewBase = {
   generatedAt: candidate.generatedAt,
   scope: { schoolSlug: "anhui-university", dependencyCityReplayCount: 1, dependencySchoolReplayCount: 1, sourceProgramCount: 169, excludedSemanticConflictCount: 1, newProgramRouteCount: 168, newProgramIntakeCount: 0, overwriteCount: 0, archiveCount: 0, scholarshipMutationCount: 0 },
   candidateSha256: sha(candidateText), candidateBundleSha256: fresh.bundleSha256, operationPlanSha256: fresh.operationPlanSha256, manifestSha256: sha(manifestText), parsedProgramsSha256: sha(parsedText),
-  evidence: manifest.sources.map((source: any) => ({ sourceId: source.id, sourceUrl: source.finalUrl, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt, contentType: source.contentType, byteLength: source.byteLength, lastModified: source.lastModified })),
+  evidence: manifest.sources.map((source) => ({ sourceId: source.id, sourceUrl: source.finalUrl, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt, contentType: source.contentType, byteLength: source.byteLength, lastModified: source.lastModified })),
   standingAuthorization: { reference: "user-chat-default-publication", instruction: "发布默认允许", appliesBecause: "This batch inserts 168 new non-conflicting official AHU program records. It replays Hefei and Anhui University only as protected dependencies and changes no existing school, program, intake or scholarship record." },
   reconciliation: { destructiveDeletion: false, overwrites: [], archives: [], excludedSemanticConflicts: [{ degreeLevel: "Undergraduate", nameEn: "Economics", sourceRowCount: 1, existingRecordCount: 2, reason: "Two active unverified undergraduate Economics records already exist and require a separate cleanup decision." }], databaseBaseline: baseline },
   sourceReview: { result: "pass", note: "Both exact official AHU PDFs were acquired through the allowlisted collector, are below 15 MiB, and explicitly identify themselves as undergraduate/master programs for international students." },

@@ -13,6 +13,7 @@ if (!source || source.status !== 200 || source.contentType !== "application/pdf"
   || source.sha256 !== "f6517f43679db0bc12fa6e2a523cd7f978f840578383b2106012f921191c48fe") {
   throw new Error("Yanshan requirement evidence mismatch.");
 }
+const reviewedSource = source;
 const seed = JSON.parse(await readFile(resolve(root, "seeds/catalog.yanshan-complete-batch-01.draft.json"), "utf8")) as CatalogSeed;
 if (seed.programs.length !== 63 || seed.programIntakes.length !== 64) throw new Error("Unexpected Yanshan complete seed.");
 for (const program of seed.programs) {
@@ -95,12 +96,12 @@ function degreeDocument(degree: "Undergraduate" | "Master" | "Doctoral", languag
     item("acceptance_letter", "documents", "required", `${degree} applicants`, `Contact a ${degree.toLowerCase()} supervisor independently and submit the resulting acceptance letter.`, "document", `brochure page ${page} application checklist`),
   );
   return parseRequirementDocument({ schemaVersion: 1, language: "en", coverage: "complete",
-    sources: [{ key: "yanshan_guide", url: source.url, title: source.label, capturedAt: source.fetchedAt, contentSha256: source.sha256 }], requirements });
+    sources: [{ key: "yanshan_guide", url: reviewedSource.url, title: reviewedSource.label, capturedAt: reviewedSource.fetchedAt, contentSha256: reviewedSource.sha256 }], requirements });
 }
 
 function languageDocument(term: "Spring" | "Fall") {
   return parseRequirementDocument({ schemaVersion: 1, language: "en", coverage: "complete",
-    sources: [{ key: "yanshan_guide", url: source.url, title: source.label, capturedAt: source.fetchedAt, contentSha256: source.sha256 }],
+    sources: [{ key: "yanshan_guide", url: reviewedSource.url, title: reviewedSource.label, capturedAt: reviewedSource.fetchedAt, contentSha256: reviewedSource.sha256 }],
     requirements: [
       item("citizenship_health", "identity", "required", "Chinese-language applicants", "Be a physically healthy non-Chinese citizen holding a valid foreign passport.", "document", "brochure page 6 requirements"),
       item("age", "identity", "required", "Chinese-language applicants", "Be at least 18 and no older than 45.", "document", "brochure page 6 requirements"),

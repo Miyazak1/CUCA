@@ -1,11 +1,14 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+
+type EvidenceSource = { id: string; status: number; contentType: string; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
 
 const root = process.cwd();
 const schoolSlug = "beijing-normal-university";
-const schoolBundle = JSON.parse(await readFile(resolve(root, "seeds/catalog.bnu-school-program-batch-01.approved.local.json"), "utf8"));
+const schoolBundle = JSON.parse(await readFile(resolve(root, "seeds/catalog.bnu-school-program-batch-01.approved.local.json"), "utf8")) as CatalogSeedBundle;
 const output = {
   draft: resolve(root, "seeds/catalog.bnu-scholarships-batch-01.draft.json"),
   validation: resolve(root, "seeds/catalog.bnu-scholarships-batch-01.validation.json"),
@@ -22,17 +25,18 @@ const sourceDefinitions = [
   ["bnu-international-chinese-language-teachers-scholarship-2026", "work/catalog-official/2026-09-11T10-17-22-008Z/manifest.json", "6c0063849bde8b5e40acb0d04fe60b1ff0a436de332beaab038953f82e24adce"],
 ] as const;
 
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const [sourceId, manifestRelativePath, expectedSha] of sourceDefinitions) {
-  const manifest = JSON.parse(await readFile(resolve(root, manifestRelativePath), "utf8"));
-  const item = manifest.sources?.find((candidate: any) => candidate.id === sourceId);
+  const manifest = JSON.parse(await readFile(resolve(root, manifestRelativePath), "utf8")) as EvidenceManifest;
+  const item = manifest.sources?.find((candidate) => candidate.id === sourceId);
   if (!item || item.status !== 200 || item.contentType !== "text/html" || item.sha256 !== expectedSha) {
     throw new Error(`Reviewed BNU source is missing or changed: ${sourceId}`);
   }
   evidence.set(sourceId, item);
 }
 
-const undergraduateGuide = evidence.get("bnu-undergraduate-scholarships-2026");
+const requireEvidence = (sourceId: string) => { const source = evidence.get(sourceId); if (!source) throw new Error(`Missing BNU evidence: ${sourceId}`); return source; };
+const undergraduateGuide = requireEvidence("bnu-undergraduate-scholarships-2026");
 const guideReference = `bnu-undergraduate-scholarships-2026 ${undergraduateGuide.sha256}`;
 const listItems = (values: string[]) => values.map(label => ({ label }));
 const benefitItems = (values: string[]) => values.map(label => ({ label, included: true }));
@@ -59,7 +63,7 @@ type ScholarshipInput = {
 };
 
 function make(input: ScholarshipInput): CatalogSeedScholarship {
-  const source = evidence.get(input.sourceId);
+  const source = requireEvidence(input.sourceId);
   const summary = `${input.title} is a distinct scholarship route published by Beijing Normal University. Its funding, eligibility, application materials and process are kept separate from other BNU awards.`;
   const record = {
     schoolSlug, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt,
@@ -86,7 +90,7 @@ function make(input: ScholarshipInput): CatalogSeedScholarship {
   const evidenceFields = new Set(["sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "status"]);
   const derived = new Set(["schoolSlug", "slug", "title", "nameZh", "type", "typeLabel", "fundingLevel", "providerName", "providerNameEn", "providerLocation", "applicableDegree", "applicableProgram", "bodySections", "tags", "summary", "sortOrder", ...(input.derivedFields ?? [])]);
   const sourceFieldLineage = Object.fromEntries(Object.keys(record)
-    .filter(field => !evidenceFields.has(field) && (record as any)[field] !== undefined)
+    .filter(field => !evidenceFields.has(field) && record[field as keyof typeof record] !== undefined)
     .map(field => [field, `${derived.has(field) ? "derived" : "explicit"}: ${input.sourceId} ${source.sha256}${["deadlineDate", "deadlineLabel", "applicationRound", "applicationMaterials"].includes(field) ? `; ${guideReference}` : ""}`]));
   return { ...record, sourceFieldLineage };
 }
@@ -185,9 +189,9 @@ const scholarships: CatalogSeedScholarship[] = [
 if (scholarships.length !== 6 || new Set(scholarships.map(item => item.slug)).size !== 6) throw new Error("BNU scholarship batch must contain six distinct routes.");
 const candidateRaw = {
   version: 1,
-  generatedAt: evidence.get("bnu-international-chinese-language-teachers-scholarship-2026").fetchedAt,
-  cities: (schoolBundle.cities ?? []).map((item: any) => { const { verificationStatus: _v, lastVerifiedAt: _l, ...rest } = item; return { ...rest, status: "draft" }; }),
-  schools: (schoolBundle.schools ?? []).map((item: any) => { const { verificationStatus: _v, lastVerifiedAt: _l, ...rest } = item; return { ...rest, status: "draft" }; }),
+  generatedAt: requireEvidence("bnu-international-chinese-language-teachers-scholarship-2026").fetchedAt,
+  cities: (schoolBundle.cities ?? []).map((item) => ({ ...Object.fromEntries(Object.entries(item).filter(([key]) => key !== "verificationStatus" && key !== "lastVerifiedAt")), status: "draft" })),
+  schools: (schoolBundle.schools ?? []).map((item) => ({ ...Object.fromEntries(Object.entries(item).filter(([key]) => key !== "verificationStatus" && key !== "lastVerifiedAt")), status: "draft" })),
   programs: [], programIntakes: [], scholarships,
 };
 const serializedCandidate = `${JSON.stringify(candidateRaw, null, 2)}\n`;
@@ -198,7 +202,7 @@ const review = {
   version: 1, status: "awaiting_user_approval", generatedAt: candidate.generatedAt,
   scope: { schoolSlug, schoolCount: 1, scholarshipCount: 6, existingVerifiedCount: 1, newScholarshipCount: 6, archiveCount: 1 },
   evidence: sourceDefinitions.map(([sourceId]) => {
-    const item = evidence.get(sourceId);
+    const item = requireEvidence(sourceId);
     return { sourceId, sourceUrl: item.url, sourceLabel: item.label, sha256: item.sha256, fetchedAt: item.fetchedAt, contentType: item.contentType };
   }),
   reconciliation: { stableMatchingSlugs: [], newScholarshipCount: 6, legacyAliasesToArchive: ["official-2026-bnu-undergraduate-scholarship-options"], destructiveDeletion: false },

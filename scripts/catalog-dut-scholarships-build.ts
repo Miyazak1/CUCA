@@ -11,6 +11,7 @@ const validationPath = resolve(root, "seeds/catalog.dut-scholarships-batch-01.va
 const [schoolBundleText, manifestText] = await Promise.all([readFile(schoolBundlePath, "utf8"), readFile(manifestPath, "utf8")]);
 const schoolBundle = JSON.parse(schoolBundleText) as CatalogSeedBundle;
 const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { id: string; label: string; url: string; sha256: string; status: number }[] };
+if (!schoolBundle.schools) throw new Error("DUT school identity bundle is incomplete.");
 const school = schoolBundle.schools.find((row) => row.slug === "dalian-university-of-technology");
 if (!school) throw new Error("Missing DUT school identity draft");
 const evidence = (id: string) => {
@@ -22,7 +23,7 @@ const common = (id: string) => {
   const row = evidence(id);
   return {
     schoolSlug: school.slug,
-    status: "draft",
+    status: "draft" as const,
     sourceUrl: row.url,
     sourceLabel: row.label,
     sourceSha256: row.sha256,

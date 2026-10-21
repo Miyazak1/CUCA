@@ -101,8 +101,9 @@ const approval = {
 async function writeOrVerify(path: string, value: unknown) {
   const body = `${JSON.stringify(value, null, 2)}\n`;
   try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); }
-  catch (error: any) {
-    if (error?.code !== "EEXIST") throw error;
+  catch (error: unknown) {
+    const code = error && typeof error === "object" && "code" in error ? error.code : undefined;
+    if (code !== "EEXIST") throw error;
     if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`);
   }
 }
@@ -114,36 +115,44 @@ const pool = createPostgresPool({ databaseUrl: target.databaseUrl, max: 1, appli
 try {
   const client = createTransactionalSqlClient(pool);
   const result = await client.transaction(async (tx) => {
-    const identity = await tx.query<any>("select current_database() database_name,current_user database_user", []);
+    type IdentityRow = { database_name: string; database_user: string };
+    type SnapshotRow = { snapshot: unknown[] | Record<string, unknown> | null };
+    type SchoolRow = { id: string; status: string; verification_status: string; last_verified_at: Date | null };
+    type ProgramRow = { id: string; slug: string; status: string; verification_status: string; last_verified_at: Date | null };
+    type IntakeIdentityRow = { slug: string; intake_term: string; intake_year: number };
+    type ProgramSnapshot = { id: string };
+    type ReturnedIdRow = { id: string };
+    type TotalsRow = Record<string, number> & { school_verified: number; programs: number; verified_programs: number; intakes: number; scholarships: number; verified_scholarships: number };
+    const identity = await tx.query<IdentityRow>("select current_database() database_name,current_user database_user", []);
     if (identity[0]?.database_name !== target.publicTarget.databaseName || identity[0]?.database_user !== target.publicTarget.databaseUser) throw new Error("Database identity mismatch.");
-    const cityBefore = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='beijing'", []);
-    const schoolBefore = await tx.query<any>("select id,status,verification_status,last_verified_at from schools where slug=$1", [schoolSlug]);
-    const targetProgramsBefore = await tx.query<any>("select id,slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug", [programSlugs]);
-    const targetIntakesBefore = await tx.query<any>("select p.slug,pi.intake_term,pi.intake_year from program_intakes pi join programs p on p.id=pi.program_id where p.slug=any($1::text[]) order by p.slug,pi.intake_year,pi.intake_term", [programSlugs]);
-    const protectedProgramsBefore = await tx.query<any>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.slug=any($1::text[])", [protectedProgramSlugs]);
-    const protectedScholarshipsBefore = await tx.query<any>("select jsonb_agg(to_jsonb(s)-'created_at'-'updated_at' order by s.slug) snapshot from scholarships s where s.slug=any($1::text[])", [protectedScholarshipSlugs]);
+    const cityBefore = await tx.query<SnapshotRow>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='beijing'", []);
+    const schoolBefore = await tx.query<SchoolRow>("select id,status,verification_status,last_verified_at from schools where slug=$1", [schoolSlug]);
+    const targetProgramsBefore = await tx.query<ProgramRow>("select id,slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug", [programSlugs]);
+    const targetIntakesBefore = await tx.query<IntakeIdentityRow>("select p.slug,pi.intake_term,pi.intake_year from program_intakes pi join programs p on p.id=pi.program_id where p.slug=any($1::text[]) order by p.slug,pi.intake_year,pi.intake_term", [programSlugs]);
+    const protectedProgramsBefore = await tx.query<SnapshotRow>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.slug=any($1::text[])", [protectedProgramSlugs]);
+    const protectedScholarshipsBefore = await tx.query<SnapshotRow>("select jsonb_agg(to_jsonb(s)-'created_at'-'updated_at' order by s.slug) snapshot from scholarships s where s.slug=any($1::text[])", [protectedScholarshipSlugs]);
     if (cityBefore.length !== 1 || schoolBefore.length !== 1 || schoolBefore[0].id !== review.reconciliation.databaseBaseline.schoolId || schoolBefore[0].status !== "active") throw new Error("BSU school/city baseline changed.");
     if (targetProgramsBefore.length !== 10 || targetProgramsBefore.some((row) => row.status !== "active")) throw new Error("BSU undergraduate baseline changed.");
     const intakeIsReviewed = targetIntakesBefore.length === 10 && targetIntakesBefore.every((row) => row.intake_year === 2026 && row.intake_term === "2026 本科申请");
     const intakeIsPublished = targetIntakesBefore.length === 10 && targetIntakesBefore.every((row) => row.intake_year === 2026 && row.intake_term === "Fall");
     if (!intakeIsReviewed && !intakeIsPublished) throw new Error(`BSU undergraduate intake baseline changed: ${JSON.stringify(targetIntakesBefore)}`);
-    const baselineIds = new Set(review.reconciliation.databaseBaseline.programSnapshots.map((row: any) => row.id));
+    const baselineIds = new Set((review.reconciliation.databaseBaseline.programSnapshots as ProgramSnapshot[]).map((row) => row.id));
     if (targetProgramsBefore.some((row) => !baselineIds.has(row.id))) throw new Error("BSU undergraduate identities changed.");
     if (protectedProgramsBefore[0]?.snapshot?.length !== 96 || protectedScholarshipsBefore[0]?.snapshot?.length !== 1) throw new Error("BSU protected records are incomplete.");
     const beforeIsReviewed = schoolBefore[0].verification_status === "unverified" && targetProgramsBefore.every((row) => row.verification_status === "unverified");
     const beforeIsPublished = schoolBefore[0].verification_status === "verified" && schoolBefore[0].last_verified_at?.toISOString() === approvedAt && targetProgramsBefore.every((row) => row.verification_status === "verified" && row.last_verified_at?.toISOString() === approvedAt);
     if (!beforeIsReviewed && !beforeIsPublished) throw new Error("BSU cleanup is neither at the reviewed baseline nor the approved published state.");
     if (intakeIsReviewed) {
-      const remapped = await tx.query<any>("update program_intakes pi set intake_term='Fall',updated_at=now() from programs p where pi.program_id=p.id and p.slug=any($1::text[]) and pi.intake_year=2026 and pi.intake_term='2026 本科申请' returning pi.id", [programSlugs]);
+      const remapped = await tx.query<ReturnedIdRow>("update program_intakes pi set intake_term='Fall',updated_at=now() from programs p where pi.program_id=p.id and p.slug=any($1::text[]) and pi.intake_year=2026 and pi.intake_term='2026 本科申请' returning pi.id", [programSlugs]);
       if (remapped.length !== 10) throw new Error(`BSU intake key remap affected ${remapped.length} rows instead of 10.`);
     }
     const written = await new CatalogSeedWriter(tx).writeBundle(publication, { preserveExistingCitySlugs: ["beijing"] });
     if (!written.ok) throw new Error(`BSU cleanup write failed: ${written.errors.join(" ")}`);
-    const cityAfter = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='beijing'", []);
-    const protectedProgramsAfter = await tx.query<any>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.slug=any($1::text[])", [protectedProgramSlugs]);
-    const protectedScholarshipsAfter = await tx.query<any>("select jsonb_agg(to_jsonb(s)-'created_at'-'updated_at' order by s.slug) snapshot from scholarships s where s.slug=any($1::text[])", [protectedScholarshipSlugs]);
+    const cityAfter = await tx.query<SnapshotRow>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='beijing'", []);
+    const protectedProgramsAfter = await tx.query<SnapshotRow>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.slug=any($1::text[])", [protectedProgramSlugs]);
+    const protectedScholarshipsAfter = await tx.query<SnapshotRow>("select jsonb_agg(to_jsonb(s)-'created_at'-'updated_at' order by s.slug) snapshot from scholarships s where s.slug=any($1::text[])", [protectedScholarshipSlugs]);
     if (JSON.stringify(cityAfter[0]?.snapshot) !== JSON.stringify(cityBefore[0]?.snapshot) || JSON.stringify(protectedProgramsAfter[0]?.snapshot) !== JSON.stringify(protectedProgramsBefore[0]?.snapshot) || JSON.stringify(protectedScholarshipsAfter[0]?.snapshot) !== JSON.stringify(protectedScholarshipsBefore[0]?.snapshot)) throw new Error("BSU publication changed protected dependencies.");
-    const totals = await tx.query<any>(`select
+    const totals = await tx.query<TotalsRow>(`select
       (select count(*) from schools where id=$1 and status='active' and verification_status='verified' and last_verified_at=$2)::int school_verified,
       (select count(*) from programs where school_id=$1 and status='active')::int programs,
       (select count(*) from programs where school_id=$1 and status='active' and verification_status='verified')::int verified_programs,

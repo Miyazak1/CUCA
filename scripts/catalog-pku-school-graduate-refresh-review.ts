@@ -2,8 +2,14 @@ import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
+
+type EvidenceRow = { sourceId: string; sourceUrl: string; sourceLabel: string; sha256: string; fetchedAt: string; contentType: string; manifestSha256: string };
+type EvidenceManifest = { sources?: Array<{ id: string; status: number; sha256: string; finalUrl: string; label: string; fetchedAt: string; contentType: string }> };
+type SchoolRow = { id: string; status: string; verification_status: string; last_verified_at: Date | null; application_level: string; language_of_instruction: string; deadline_summary: string; tuition_summary: string };
+type CountRow = { programs: number; scholarships: number };
+type Baseline = { school: SchoolRow[]; counts: CountRow };
 
 const root = process.cwd();
 const paths = {
@@ -16,20 +22,19 @@ const paths = {
 };
 const sha = (value: string) => createHash("sha256").update(value).digest("hex");
 const parse = async (path: string) => JSON.parse(await readFile(path, "utf8"));
-const [prior, graduateApproval, state] = await Promise.all([parse(paths.prior), parse(paths.graduateApproval), parse(paths.state)]);
-const city = prior.cities?.find((row: any) => row.slug === "beijing");
-const oldSchool = prior.schools?.find((row: any) => row.slug === "peking-university");
+const [prior, graduateApproval, state] = await Promise.all([parse(paths.prior) as Promise<CatalogSeedBundle>, parse(paths.graduateApproval), parse(paths.state) as Promise<LocalDevelopmentState>]);
+const city = prior.cities?.find((row) => row.slug === "beijing");
+const oldSchool = prior.schools?.find((row) => row.slug === "peking-university");
 if (!city || !oldSchool || graduateApproval.approvedReviewSha256 !== "e78219a8ef30b43f64531132b3e873f05caca865c20dc077c3408fb1a9767722") throw new Error("Reviewed PKU dependency publications are unavailable.");
 const evidenceIds = ["pku-graduate-admissions-guide-2026", "pku-graduate-tuition-2026"];
-const evidence: any[] = [];
+const evidence: EvidenceRow[] = [];
 for (const id of evidenceIds) {
   const manifestText = await readFile(resolve(root, `work/catalog-official/pku-graduate-core-20260914/${id}/manifest.json`), "utf8");
-  const item = JSON.parse(manifestText).sources?.[0];
+  const item = (JSON.parse(manifestText) as EvidenceManifest).sources?.[0];
   if (item?.id !== id || item?.status !== 200 || !/^[a-f0-9]{64}$/.test(item?.sha256 ?? "")) throw new Error(`PKU school evidence mismatch: ${id}`);
   evidence.push({ sourceId: item.id, sourceUrl: item.finalUrl, sourceLabel: item.label, sha256: item.sha256, fetchedAt: item.fetchedAt, contentType: item.contentType, manifestSha256: sha(manifestText) });
 }
 const guide = evidence.find((row) => row.sourceId === "pku-graduate-admissions-guide-2026")!;
-const tuition = evidence.find((row) => row.sourceId === "pku-graduate-tuition-2026")!;
 const school = {
   ...oldSchool,
   applicationLevel: "Undergraduate, Master, Doctoral",
@@ -67,10 +72,10 @@ const validation = createCatalogMigrationValidationReport(candidate);
 if (!validation.ok) throw new Error(`Invalid PKU school refresh candidate: ${validation.errors.join(" ")}`);
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:pku-school-graduate-refresh-review" });
-let baseline: any;
+let baseline: Baseline;
 try {
-  const schoolRows = await pool.query("select id,status,verification_status,last_verified_at,application_level,language_of_instruction,deadline_summary,tuition_summary from schools where slug='peking-university'");
-  const counts = await pool.query("select (select count(*)::int from programs where school_id=$1 and status='active') programs,(select count(*)::int from scholarships where school_id=$1 and status='active') scholarships", [schoolRows.rows[0]?.id]);
+  const schoolRows = await pool.query<SchoolRow>("select id,status,verification_status,last_verified_at,application_level,language_of_instruction,deadline_summary,tuition_summary from schools where slug='peking-university'");
+  const counts = await pool.query<CountRow>("select (select count(*)::int from programs where school_id=$1 and status='active') programs,(select count(*)::int from scholarships where school_id=$1 and status='active') scholarships", [schoolRows.rows[0]?.id]);
   baseline = { school: schoolRows.rows, counts: counts.rows[0] };
 } finally { await pool.end(); }
 if (baseline.school.length !== 1 || baseline.school[0].status !== "active" || baseline.school[0].verification_status !== "verified" || baseline.school[0].application_level !== "Undergraduate" || baseline.counts.programs !== 65 || baseline.counts.scholarships !== 9) throw new Error(`PKU school refresh baseline changed: ${JSON.stringify(baseline)}`);

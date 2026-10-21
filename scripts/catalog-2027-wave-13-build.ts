@@ -62,8 +62,8 @@ const program: CatalogSeedProgram = {
   tuitionText: "CNY 20,000-35,000/year; exact tuition depends on the program catalog. Medical programs last five years; other programs last four years. Application fee CNY 400 is paid at admission, while Chinese Government Scholarship recipients are exempt. Accommodation CNY 23-60/person/day and medical insurance CNY 800/year are separate.",
   applicationUrl: "https://nankai.at0086.cn/StuApplication/Login.aspx",
   applicationNote: "Nankai uses a 1+3 pathway: one foundation academic year followed by three years of major study. Applicants must be non-Chinese citizens in good physical and mental health, normally aged 18-25, hold a senior high-school diploma with strong academic performance, submit the published academic, passport, CSCA, HSK, personal-statement, recommendation, medical, financial and criminal-record documents, and complete document review and interview. Business Economics and Business Administration accept first-choice applications only.",
-  status: "active",
-  verificationStatus: "verified",
+  status: "active" as const,
+  verificationStatus: "verified" as const,
   lastVerifiedAt: admissionsSource.fetchedAt,
   ...sourceFields(admissionsSource),
   sourceFieldLineage: {
@@ -85,8 +85,8 @@ const intake: CatalogSeedProgramIntake = {
 const scholarshipBase = {
   schoolSlug: school.slug,
   applicableDegree: "Bachelor",
-  status: "active",
-  verificationStatus: "verified",
+  status: "active" as const,
+  verificationStatus: "verified" as const,
   lastVerifiedAt: admissionsSource.fetchedAt,
   ...sourceFields(admissionsSource),
 };

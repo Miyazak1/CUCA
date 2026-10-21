@@ -124,7 +124,7 @@ const schools: CatalogSeedSchool[] = specs.map((spec) => {
 
 const bundle: CatalogSeedBundle = {
   version: 1,
-  generatedAt: new Date(Math.max(...schools.map((school) => Date.parse(school.capturedAt)))).toISOString(),
+  generatedAt: new Date(Math.max(...schools.map((school) => Date.parse(school.capturedAt!)))).toISOString(),
   cities: cityBundles.map((bundle) => bundle.cities[0]),
   schools,
   programs: [],

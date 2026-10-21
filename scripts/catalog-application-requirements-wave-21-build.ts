@@ -13,6 +13,7 @@ if (!source || source.status !== 200 || source.contentType !== "application/pdf"
   || source.sha256 !== "b611b98782b8717c854fc9b29d9ecee71ef0f7741d30621cfab2cedbb13effc5") {
   throw new Error("HITSZ requirement evidence mismatch.");
 }
+const reviewedSource = source;
 const seed = JSON.parse(await readFile(resolve(root, "seeds/catalog.hitsz-complete-batch-01.draft.json"), "utf8")) as CatalogSeed;
 const engineeringProgramSlugs = seed.programs.filter((program) => program.cscaSubjects?.includes("Physics (English)")).map((program) => program.slug);
 const mathematicsProgramSlugs = seed.programs.filter((program) => !program.cscaSubjects?.includes("Physics (English)")).map((program) => program.slug);
@@ -69,8 +70,8 @@ function documentFor(group: "engineering" | "mathematics") {
   const engineering = group === "engineering";
   return parseRequirementDocument({
     schemaVersion: 1, language: "en", coverage: "complete",
-    sources: [{ key: "hitsz_undergraduate", url: source.url, title: source.label,
-      capturedAt: source.fetchedAt, contentSha256: source.sha256 }],
+    sources: [{ key: "hitsz_undergraduate", url: reviewedSource.url, title: reviewedSource.label,
+      capturedAt: reviewedSource.fetchedAt, contentSha256: reviewedSource.sha256 }],
     requirements: [
       ...commonRequirements,
       item("csca", "academic_results", "required", `${engineering ? "Engineering" : "Business Administration, Economics and Architecture"} applicants`,

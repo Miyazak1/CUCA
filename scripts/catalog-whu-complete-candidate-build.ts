@@ -16,21 +16,26 @@ const [baseText, tuitionText, scholarshipText] = await Promise.all([
 const base = JSON.parse(baseText) as CatalogSeedBundle;
 const tuition = JSON.parse(tuitionText) as CatalogSeedBundle;
 const scholarship = JSON.parse(scholarshipText) as CatalogSeedBundle;
-if (base.programs.length !== 599 || base.programIntakes.length !== 599 || tuition.programs.length !== 599 || scholarship.scholarships.length !== 6) {
+const basePrograms = base.programs;
+const baseProgramIntakes = base.programIntakes;
+const tuitionPrograms = tuition.programs;
+const scholarshipRecords = scholarship.scholarships;
+if (!basePrograms || !baseProgramIntakes || !tuitionPrograms || !scholarshipRecords
+  || basePrograms.length !== 599 || baseProgramIntakes.length !== 599 || tuitionPrograms.length !== 599 || scholarshipRecords.length !== 6) {
   throw new Error("Unexpected WHU source-bundle cardinality.");
 }
-const baseSlugs = new Set(base.programs.map((program) => program.slug));
-const tuitionSlugs = new Set(tuition.programs.map((program) => program.slug));
+const baseSlugs = new Set(basePrograms.map((program) => program.slug));
+const tuitionSlugs = new Set(tuitionPrograms.map((program) => program.slug));
 if (baseSlugs.size !== 599 || tuitionSlugs.size !== 599 || [...baseSlugs].some((slug) => !tuitionSlugs.has(slug))) {
   throw new Error("WHU tuition overlay does not map one-to-one to the official program catalog.");
 }
-const intakeSlugs = new Set(base.programIntakes.map((intake) => intake.programSlug));
+const intakeSlugs = new Set(baseProgramIntakes.map((intake) => intake.programSlug));
 if (intakeSlugs.size !== 599 || [...baseSlugs].some((slug) => !intakeSlugs.has(slug))) throw new Error("WHU intake coverage is incomplete.");
-for (const program of tuition.programs) {
+for (const program of tuitionPrograms) {
   if (!program.tuitionAmount || !program.tuitionText || program.status !== "draft") throw new Error(`WHU tuition is incomplete: ${program.slug}`);
 }
-for (const intake of base.programIntakes) {
-  const expectedDeadline = base.programs.find((program) => program.slug === intake.programSlug)?.degreeLevel === "Undergraduate"
+for (const intake of baseProgramIntakes) {
+  const expectedDeadline = basePrograms.find((program) => program.slug === intake.programSlug)?.degreeLevel === "Undergraduate"
     ? "2026-06-30T15:59:59.000Z" : "2026-06-15T15:59:59.000Z";
   if (intake.intakeTerm !== "Fall" || intake.intakeYear !== 2026 || intake.deadlineDate !== expectedDeadline || intake.status !== "closed") {
     throw new Error(`WHU intake is not an exact closed Fall 2026 binding: ${intake.programSlug}`);
@@ -42,9 +47,9 @@ const candidate: CatalogSeedBundle = {
   generatedAt: new Date().toISOString(),
   cities: scholarship.cities,
   schools: scholarship.schools,
-  programs: tuition.programs,
-  programIntakes: base.programIntakes,
-  scholarships: scholarship.scholarships,
+  programs: tuitionPrograms,
+  programIntakes: baseProgramIntakes,
+  scholarships: scholarshipRecords,
 };
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
 const validation = createCatalogMigrationValidationReport(JSON.parse(candidateText));

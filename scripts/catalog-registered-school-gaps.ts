@@ -1,14 +1,19 @@
 import { readFile } from "node:fs/promises";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { type CatalogEntityStatusRow } from "./lib/catalog-database-rows.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
 
-const registry = JSON.parse(await readFile("catalog-sources/official-sources.json", "utf8"));
-const state = JSON.parse(await readFile(".cuac-local/runtime.json", "utf8"));
-const registered = [...new Set(registry.sources.map((row: any) => row.schoolSlug).filter(Boolean))].sort() as string[];
+type RegistrySource = { schoolSlug?: string; sourceRole: string };
+type SourceRegistry = { sources: RegistrySource[] };
+type SchoolGapRow = CatalogEntityStatusRow & { name_en: string; name_zh: string | null; active_programs: number; verified_programs: number; active_scholarships: number; verified_scholarships: number };
+
+const registry = JSON.parse(await readFile("catalog-sources/official-sources.json", "utf8")) as SourceRegistry;
+const state = JSON.parse(await readFile(".cuac-local/runtime.json", "utf8")) as LocalDevelopmentState;
+const registered = [...new Set(registry.sources.map((row) => row.schoolSlug).filter((slug): slug is string => Boolean(slug)))].sort();
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:registered-school-gaps" });
 try {
-  const schools = await pool.query<any>("select slug,verification_status,status from schools where slug=any($1::text[]) order by slug", [registered]);
-  const unregistered = await pool.query<any>(
+  const schools = await pool.query<CatalogEntityStatusRow>("select slug,verification_status,status from schools where slug=any($1::text[]) order by slug", [registered]);
+  const unregistered = await pool.query<SchoolGapRow>(
     `select s.id,s.slug,s.name_en,s.name_zh,s.verification_status,s.status,
             count(distinct p.id) filter(where p.status='active')::int active_programs,
             count(distinct p.id) filter(where p.status='active' and p.verification_status='verified')::int verified_programs,
@@ -22,7 +27,7 @@ try {
       order by s.verification_status desc,active_programs desc,s.slug`,
     [registered],
   );
-  const bySlug = new Map(schools.rows.map((row: any) => [row.slug, row]));
+  const bySlug = new Map(schools.rows.map((row) => [row.slug, row]));
   const sourceCounts = new Map<string, { total: number; roles: Record<string, number> }>();
   for (const row of registry.sources) {
     if (!row.schoolSlug) continue;

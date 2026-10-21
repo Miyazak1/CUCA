@@ -104,7 +104,7 @@ function searchParams(query: string, limit: number, offset: number): unknown[] {
   return [query.toLocaleLowerCase(), ...tokens.map(token => `%${token}%`), limit, offset];
 }
 
-function buildSearchStatement(type: SiteSearchType, query: string): string {
+function buildSearchStatement(type: Exclude<SiteSearchType, "insight">, query: string): string {
   const tokens = query.split(/\s+/).filter(Boolean);
   const tokenClauses = tokens.map((_, index) => `(search_text like $${index + 2} or related_search_text like $${index + 2})`).join(" and ");
   const limitRef = `$${tokens.length + 2}`;
@@ -130,7 +130,7 @@ function buildSearchStatement(type: SiteSearchType, query: string): string {
   limit ${limitRef} offset ${offsetRef}`;
 }
 
-function candidateSql(type: SiteSearchType): string {
+function candidateSql(type: Exclude<SiteSearchType, "insight">): string {
   switch (type) {
     case "program":
       return `select 'program'::text as type, p.id::text as id, p.slug, p.name_en as title, p.name_zh as title_zh,
@@ -207,4 +207,5 @@ function candidateSql(type: SiteSearchType): string {
       from public_guides g
       where g.status = 'published'`;
   }
+  throw new Error(`Unsupported site search type: ${type satisfies never}`);
 }

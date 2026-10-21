@@ -3,6 +3,11 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources?: EvidenceSource[] };
+type NuaaProgramRow = { collegeEn?: string; degreeAward?: string; degreeLevel: string; nameEn: string; sourceId: string; sourceRow: number; sourceTable: string; teachingLanguage: string };
+type ParsedPrograms = { programCount: number; duplicateIdentities: unknown[]; counts: Record<string, number>; programs: NuaaProgramRow[] };
+
 const root = process.cwd();
 const paths = {
   manifest: resolve(root, "work/catalog-official/2026-10-15T08-36-21-628Z/manifest.json"),
@@ -13,7 +18,7 @@ const paths = {
 };
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const [manifestText, parsedText, baseText] = await Promise.all([readFile(paths.manifest, "utf8"), readFile(paths.parsed, "utf8"), readFile(paths.base, "utf8")]);
-const manifest = JSON.parse(manifestText), parsed = JSON.parse(parsedText), base = JSON.parse(baseText) as CatalogSeedBundle;
+const manifest = JSON.parse(manifestText) as EvidenceManifest, parsed = JSON.parse(parsedText) as ParsedPrograms, base = JSON.parse(baseText) as CatalogSeedBundle;
 const expected: Record<string, string> = {
   "nuaa-undergraduate-admissions-2026": "05bebd7b3991fbd2e0297660b2bc0f4efd625a5107e05af3332cb318b1f411bc",
   "nuaa-postgraduate-admissions-2026": "24a064d4cee016e0a156ea6b70961f663a8cabcedce8e99446b16f06c6ac643a",
@@ -21,7 +26,7 @@ const expected: Record<string, string> = {
   "nuaa-csc-silk-road-scholarship-2026": "60c783bd9fac70b70d250a18249c53a7d40016135702cd94cdd6509585571241",
   "nuaa-fly-high-scholarship-2026": "440a9b4b9e43ff9667359b868f0685102935e9e85d90baf2238bf09fc51d46fa",
 };
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const row of manifest.sources ?? []) if (row.status === 200 && expected[row.id] === row.sha256) evidence.set(row.id, row);
 const missing = Object.keys(expected).filter((id) => !evidence.has(id));
 if (missing.length || parsed.programCount !== 77 || parsed.duplicateIdentities.length) throw new Error(`NUAA evidence/parser mismatch: ${missing.join(",")}`);
@@ -31,8 +36,9 @@ if (!city) throw new Error("Current Nanjing city dependency missing.");
 const schoolSlug = "nanjing-university-of-aeronautics-and-astronautics";
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const used = new Set<string>();
-const programs: CatalogSeedProgram[] = parsed.programs.map((row: any, index: number) => {
-  const source = evidence.get(row.sourceId), undergraduate = row.degreeLevel === "Undergraduate", business = /International Business|Economics and Management/.test(`${row.nameEn} ${row.collegeEn ?? ""}`);
+const requireEvidence = (id: string) => { const source = evidence.get(id); if (!source) throw new Error(`Missing NUAA evidence: ${id}`); return source; };
+const programs: CatalogSeedProgram[] = parsed.programs.map((row, index) => {
+  const source = requireEvidence(row.sourceId), undergraduate = row.degreeLevel === "Undergraduate", business = /International Business|Economics and Management/.test(`${row.nameEn} ${row.collegeEn ?? ""}`);
   const tuition = undergraduate ? (row.nameEn === "International Business" ? 22900 : 23900) : row.degreeLevel === "Master" ? (business ? 30000 : 33600) : (business ? 34000 : 37800);
   let slug = `${schoolSlug}-${row.degreeLevel.toLowerCase()}-${slugify(row.nameEn)}-${slugify(row.collegeEn ?? row.degreeAward ?? `route-${row.sourceRow}`)}-${row.teachingLanguage.toLowerCase()}`;
   if (used.has(slug)) slug = `${slug}-${index + 1}`;
@@ -59,7 +65,7 @@ const info = (label: string, value?: string) => ({ label, ...(value ? { value } 
 const benefit = (label: string, note?: string) => ({ label, included: true, ...(note ? { note } : {}) });
 const commonMaterials = [info("Passport information page"), info("Highest diploma or expected-graduation proof"), info("Academic transcripts"), info("Language proficiency certificate"), info("Study or research plan"), info("Recommendation letters where required"), info("Physical examination record"), info("No-criminal-record certificate")];
 function scholarship(sourceId: string, value: Partial<CatalogSeedScholarship> & Pick<CatalogSeedScholarship, "slug" | "title" | "fundingLevel" | "coverage" | "applicableDegree" | "amountText">): CatalogSeedScholarship {
-  const source = evidence.get(sourceId);
+  const source = requireEvidence(sourceId);
   return { schoolSlug, status: "draft", sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt, providerLocation: "China", targetCountries: [], targetRegions: [], actionLinks: [{ label: source.label, url: source.url, kind: "official-source" }, { label: "NUAA online application system", url: "https://nj.at0086.cn/StuApplication/Login.aspx", kind: "official-application" }], sourceFieldLineage: { title: "official notice title or scholarship table label", fundingLevel: "official coverage section", coverage: "official coverage section", amountText: "official coverage or scholarship table", applicableDegree: "official eligibility or admissions section", applicableProgram: "official major/eligibility section", eligibilityItems: "official eligibility section", applicationMaterials: "official application documents", applicationSteps: "official application procedure", ...(value.deadlineDate ? { deadlineDate: "official application time" } : { deadlineLabel: "official admissions/application note" }) }, ...value };
 }
 const scholarships: CatalogSeedScholarship[] = [
@@ -71,7 +77,7 @@ const scholarships: CatalogSeedScholarship[] = [
   scholarship("nuaa-fly-high-scholarship-2026", { slug: "official-2026-nuaa-fly-high-scholarship", title: "2026 NUAA Fly-High Scholarship", nameZh: "南京航空航天大学2026年飞高奖学金", type: "university", typeLabel: "NUAA Fly-High Scholarship", providerName: "南京航空航天大学", providerNameEn: "Nanjing University of Aeronautics and Astronautics", fundingLevel: "Partial", coverage: "First prize waives first-year tuition; second and third prizes provide one-time awards", applicableDegree: "Undergraduate, Master, Doctoral", applicableProgram: "Published 2026 NUAA international degree programs", amountText: "First prize: 100% first-year tuition waiver; second prize: CNY 20,000 one-time; third prize: CNY 10,000 one-time.", deadlineLabel: "Assessed with the relevant 2026 NUAA admission application", applicationRound: "2026 NUAA admissions", benefitItems: [benefit("First prize", "100% first-year tuition waiver"), benefit("Second prize", "CNY 20,000 one-time"), benefit("Third prize", "CNY 10,000 one-time")], eligibilityItems: [info("Selection", "Comprehensive evaluation of academic achievement, professional background and other relevant factors")], applicationMaterials: [info("Relevant NUAA degree-program application and supporting documents")], applicationSteps: [info("Step 1", "Submit the relevant NUAA admission application"), info("Step 2", "Select the Fly-High scholarship where offered"), info("Step 3", "Check the admission letter for the scholarship result")], bodySections: [{ title: "Costs not covered", body: "Accommodation and living costs remain payable unless another award covers them." }, { title: "After the first year", body: "Students may compete for the NUAA Academic Scholarship, a one-time award of up to CNY 20,000, based on academic performance and conduct." }], summary: "NUAA's 2026 first-year merit award with three published prize levels.", sortOrder: 60 }),
 ];
 
-const undergraduateSource = evidence.get("nuaa-undergraduate-admissions-2026"), postgraduateSource = evidence.get("nuaa-postgraduate-admissions-2026");
+const undergraduateSource = requireEvidence("nuaa-undergraduate-admissions-2026"), postgraduateSource = requireEvidence("nuaa-postgraduate-admissions-2026");
 const candidate: CatalogSeedBundle = {
   version: 1, generatedAt: manifest.generatedAt, cities: [city],
   schools: [{ slug: schoolSlug, nameEn: "Nanjing University of Aeronautics and Astronautics", nameZh: "南京航空航天大学", citySlug: "nanjing", schoolType: "Public", region: "Nanjing, Jiangsu, East China", applicationLevel: "Undergraduate, Master, Doctoral", languageOfInstruction: "Chinese and English undergraduate; English postgraduate", hskRequirement: "HSK Level 4 or above for Chinese-taught undergraduate routes.", englishRequirement: "Undergraduate: IELTS 6.0 or TOEFL 80; postgraduate: IELTS 6.0 or TOEFL 70; equivalent proof accepted.", deadlineSummary: "Undergraduate: May 30, 2026; postgraduate final deadline: June 15, 2026; scholarship deadlines vary by award.", tuitionSummary: "Undergraduate CNY 22,900-23,900/year; master's CNY 30,000-33,600/year; doctoral CNY 34,000-37,800/year.", applicationFee: "CNY 400, non-refundable", websiteUrl: "https://www.nuaa.edu.cn/", admissionsUrl: "https://cie.nuaa.edu.cn/", cscaRequired: true, cscaRequirement: "All undergraduate applicants must take CSCA; business requires Mathematics, engineering requires Mathematics and Physics, in English.", cscaSubjects: ["Mathematics", "Physics"], subjectTags: ["Aeronautics", "Astronautics", "Mechanical Engineering", "Computer Science", "Artificial Intelligence", "Civil Engineering", "International Business"], languageTags: ["Chinese", "English"], campusHighlights: ["Jiangjun Road campus", "Aeronautics and astronautics", "Engineering and business programs"], status: "draft", sourceUrl: undergraduateSource.url, sourceLabel: undergraduateSource.label, sourceSha256: undergraduateSource.sha256, capturedAt: undergraduateSource.fetchedAt, sourceFieldLineage: { nameEn: "official 2026 brochure identity", nameZh: "official institution identity", citySlug: "official contact address", applicationLevel: "2026 undergraduate and postgraduate program tables", languageOfInstruction: "2026 program guide introductions", hskRequirement: "2026 undergraduate language requirements", englishRequirement: "2026 admissions eligibility", deadlineSummary: "2026 application time sections", tuitionSummary: "2026 Tuition & Fees tables", applicationFee: "2026 application procedure", cscaSubjects: "2026 undergraduate CSCA section" } }],

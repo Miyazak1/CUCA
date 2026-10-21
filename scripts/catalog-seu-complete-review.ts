@@ -8,6 +8,11 @@ import {
   type CatalogSeedScholarship,
 } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
+type SeuRoute = { cscaRequirementEn?: string; degree: string; durationYears: number; majorEn: string; schoolEn: string; sourceId: string; sourcePage: number; teachingLanguage: string };
+type ParsedRoutes = { counts: Record<string, number>; chineseCatalogCounts: Record<string, number>; bilingualCatalogDifference: unknown; routes: SeuRoute[] };
+
 const root = process.cwd();
 const runDirs = [
   resolve(root, "work/catalog-official/seu-complete-batch-01"),
@@ -52,9 +57,9 @@ const expected: Record<string, string> = {
   "seu-doctoral-programs-en-pdf-2026": "09fd319c5db64c29b2cc05ab5e7a4480c5cea373d66dcba943ed4e6b12c37528",
 };
 
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const runDir of runDirs) {
-  const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8"));
+  const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8")) as EvidenceManifest;
   for (const source of manifest.sources ?? []) {
     if (source.status !== 200 || expected[source.id] !== source.sha256) throw new Error(`Official snapshot mismatch: ${source.id}`);
     if (evidence.has(source.id)) throw new Error(`Duplicate evidence id: ${source.id}`);
@@ -62,7 +67,7 @@ for (const runDir of runDirs) {
   }
 }
 if (evidence.size !== Object.keys(expected).length) throw new Error(`Incomplete SEU evidence set: ${evidence.size}/${Object.keys(expected).length}`);
-const parsed = JSON.parse(await readFile(resolve(runDirs[0], "parsed-routes.json"), "utf8"));
+const parsed = JSON.parse(await readFile(resolve(runDirs[0], "parsed-routes.json"), "utf8")) as ParsedRoutes;
 const requiredCounts = { undergraduate: 70, master: 92, doctoral: 68, total: 230 };
 if (JSON.stringify(parsed.counts) !== JSON.stringify(requiredCounts)) throw new Error(`Unexpected SEU route counts: ${JSON.stringify(parsed.counts)}`);
 
@@ -76,7 +81,7 @@ const cscaSubjects = (text: string) => [
 ].filter(Boolean) as string[];
 const isMedicine = (school: string, major: string) => /Medical|Medicine|Public Health/i.test(`${school} ${major}`);
 const isHumanities = (school: string) => /Humanities|Economics|Management|Foreign Languages|Arts|Law|Marxism|Education/i.test(school);
-const tuitionFor = (route: any) => {
+const tuitionFor = (route: SeuRoute) => {
   if (route.degree === "Undergraduate") {
     if (route.teachingLanguage === "English") return { tuitionAmount: 32000, tuitionText: "RMB 32,000/year" };
     const amount = isMedicine(route.schoolEn, route.majorEn) ? 20000 : isHumanities(route.schoolEn) ? 16000 : 19000;
@@ -88,18 +93,18 @@ const tuitionFor = (route: any) => {
     : isMedicine(route.schoolEn, route.majorEn) ? 50000 : isHumanities(route.schoolEn) ? 28000 : 33000;
   return { tuitionAmount: amount, tuitionText: `RMB ${amount.toLocaleString("en-US")}/year` };
 };
-const specialSource = (route: any) => {
+const specialSource = (route: SeuRoute) => {
   if (route.degree === "Undergraduate" && route.majorEn === "E-Business" && route.teachingLanguage === "Chinese") return "seu-ecommerce-undergraduate-2026";
   if (route.degree === "Undergraduate" && route.majorEn === "Tourism Management") return "seu-tourism-management-undergraduate-2026";
   if (route.degree === "Undergraduate" && route.majorEn === "Clinical Medicine" && route.teachingLanguage === "English") return "seu-mbbs-undergraduate-2026";
   return route.sourceId;
 };
-const graduateHsk = (route: any) => isMedicine(route.schoolEn, route.majorEn) || isHumanities(route.schoolEn)
+const graduateHsk = (route: SeuRoute) => isMedicine(route.schoolEn, route.majorEn) || isHumanities(route.schoolEn)
   ? "HSK Level 5 or above for Chinese-taught medicine, humanities, economics and management routes"
   : "HSK Level 4, score 200 or above for Chinese-taught routes";
 
 const usedSlugs = new Set<string>();
-const programs: Array<CatalogSeedProgram & { _deadlineDate: string; _deadlineLabel: string }> = parsed.routes.map((route: any, index: number) => {
+const programs: Array<CatalogSeedProgram & { _deadlineDate: string; _deadlineLabel: string }> = parsed.routes.map((route, index) => {
   const sourceId = specialSource(route);
   const source = evidence.get(sourceId)!;
   const guideId = route.degree === "Undergraduate" ? "seu-undergraduate-guide-en-pdf-2026" : "seu-graduate-guide-zh-pdf-2026";
@@ -208,7 +213,9 @@ const scholarships: CatalogSeedScholarship[] = [
 ];
 
 const profile = evidence.get("seu-school-profile")!;
-const cleanPrograms = programs.map(({ _deadlineDate, _deadlineLabel, ...program }) => program);
+const cleanPrograms = programs.map((program) => Object.fromEntries(
+  Object.entries(program).filter(([key]) => key !== "_deadlineDate" && key !== "_deadlineLabel"),
+)) as CatalogSeedProgram[];
 const candidate: CatalogSeedBundle = {
   version: 1, generatedAt: evidence.get("seu-admission-index-2026")!.fetchedAt,
   cities: [{ slug: "nanjing", nameEn: "Nanjing", nameZh: "南京", region: "East China", province: "Jiangsu", status: "active", sourceUrl: "https://hwxy.nju.edu.cn/English/StudyatNJU/Admissions/BachelorsPrograms/index.html", sourceLabel: "Nanjing University Bachelor’s Programs", sourceSha256: "aef8f2b6536b3e3f2daf916d725328f6b858a49c0ea1472a537b8ede69638625", capturedAt: "2026-09-11T06:39:38.300Z", sourceFieldLineage: { nameEn: "institution name and contact address", province: "institution name and contact address" } }],

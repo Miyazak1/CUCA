@@ -9,6 +9,7 @@ const candidatePath = resolve(root, "seeds/catalog.dut-legacy-alignment-batch-01
 const validationPath = resolve(root, "seeds/catalog.dut-legacy-alignment-batch-01.validation.json");
 const sourceText = await readFile(sourcePath, "utf8");
 const source = JSON.parse(sourceText) as CatalogSeedBundle;
+if (!source.scholarships) throw new Error("DUT scholarship source bundle is incomplete.");
 const canonicalSlug = "official-2026-dut-international-students-presidential-scholarship";
 const record = source.scholarships.find((row) => row.slug === canonicalSlug);
 if (!record) throw new Error(`Missing DUT canonical scholarship: ${canonicalSlug}`);

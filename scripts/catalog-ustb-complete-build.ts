@@ -1,13 +1,17 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+
+type EvidenceSource = { id: string; status: number; sha256: string; finalUrl: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources: EvidenceSource[] };
 
 const root = process.cwd();
 const manifestPath = resolve(root, "work/catalog-official/ustb-complete-batch-01/manifest.json");
 const manifestText = await readFile(manifestPath, "utf8");
-const manifest = JSON.parse(manifestText);
-const sources = new Map(manifest.sources.map((row: any) => [row.id, row]));
+const manifest = JSON.parse(manifestText) as EvidenceManifest;
+const sources = new Map(manifest.sources.map((row) => [row.id, row]));
+const requireSource = (id: string) => { const source = sources.get(id); if (!source) throw new Error(`Missing valid source: ${id}`); return source; };
 const requiredSourceIds = [
   "ustb-international-admission-guide-2026", "ustb-undergraduate-application-2026", "ustb-graduate-application-2026",
   "ustb-undergraduate-program-catalog-2026", "ustb-master-program-catalog-2026", "ustb-doctoral-program-catalog-2026",
@@ -16,11 +20,11 @@ const requiredSourceIds = [
   "ustb-silk-road-scholarship-2026", "ustb-beijing-government-scholarship-2026-2027",
 ];
 for (const id of requiredSourceIds) {
-  const source: any = sources.get(id);
+  const source = sources.get(id);
   if (!source || source.status !== 200 || !/^[a-f0-9]{64}$/.test(source.sha256)) throw new Error(`Missing valid source: ${id}`);
 }
 const meta = (id: string) => {
-  const source: any = sources.get(id);
+  const source = requireSource(id);
   return { sourceUrl: source.finalUrl, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
 };
 const slugify = (value: string) => value.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -113,7 +117,7 @@ const common = (sourceId: string, nameZh: string, nameEn: string, school: string
   ...meta(sourceId), sourceFieldLineage: { nameZh: "official 2026 program table", nameEn: "CUAC normalized English translation of the official Chinese major title", fieldCategory: "official school/college column", degreeLevel: "official catalog heading", teachingLanguage: teachingLanguage === "English" ? "official English-taught program page" : "official degree catalog and language policy", durationYears: "official 2026 admission guide", tuitionText: "official 2026 admission guide fee table", hskRequirement: "official 2026 application requirements", englishRequirement: "official 2026 application requirements", cscaRequirement: "official 2026 CSCA instructions" },
 });
 
-const programs: any[] = [];
+const programs: CatalogSeedProgram[] = [];
 for (const [nameZh, nameEn, school] of undergraduate) programs.push(common("ustb-undergraduate-program-catalog-2026", nameZh, nameEn, school, "Bachelor", "Chinese", `${schoolSlug}-${slugify(nameEn)}`));
 for (const nameEn of ["Materials Science and Engineering", "Environmental Engineering"]) {
   const [nameZh, , school] = undergraduate.find((row) => row[1] === nameEn)!;

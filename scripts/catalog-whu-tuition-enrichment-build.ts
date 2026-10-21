@@ -144,9 +144,11 @@ const annualFees: Record<string, number> = {
   "Doctoral|English|medicine-stomatology": 55000,
 };
 
-const programsNeedingTuition = input.programs.filter((program) => !program.tuitionText);
-if (input.programs.length !== 599 || programsNeedingTuition.length !== 599) {
-  throw new Error(`Expected 599 WHU programs needing tuition, received ${input.programs.length}/${programsNeedingTuition.length}.`);
+const inputPrograms = input.programs;
+if (!inputPrograms) throw new Error("WHU program dependency is missing.");
+const programsNeedingTuition = inputPrograms.filter((program) => !program.tuitionText);
+if (inputPrograms.length !== 599 || programsNeedingTuition.length !== 599) {
+  throw new Error(`Expected 599 WHU programs needing tuition, received ${inputPrograms.length}/${programsNeedingTuition.length}.`);
 }
 const feeBandFor = (program: CatalogSeedProgram): FeeBand => {
   if (program.teachingLanguage === "English") {
@@ -154,9 +156,11 @@ const feeBandFor = (program: CatalogSeedProgram): FeeBand => {
     if (!band) throw new Error(`No reviewed English-program fee band for ${program.slug}: ${program.nameEn}`);
     return band;
   }
-  if (liberalArtsUnits.has(program.fieldCategory)) return "liberal-arts";
-  if (scienceEngineeringUnits.has(program.fieldCategory)) return "science-engineering";
-  if (medicineUnits.has(program.fieldCategory)) return "medicine-stomatology";
+  const fieldCategory = program.fieldCategory;
+  if (!fieldCategory) throw new Error(`WHU program has no reviewed fee category: ${program.slug}`);
+  if (liberalArtsUnits.has(fieldCategory)) return "liberal-arts";
+  if (scienceEngineeringUnits.has(fieldCategory)) return "science-engineering";
+  if (medicineUnits.has(fieldCategory)) return "medicine-stomatology";
   throw new Error(`No reviewed Chinese-program fee band for ${program.slug}: ${program.fieldCategory}`);
 };
 const programs: CatalogSeedProgram[] = programsNeedingTuition.map((program) => {
@@ -180,9 +184,9 @@ const programs: CatalogSeedProgram[] = programsNeedingTuition.map((program) => {
   };
 });
 
-const school = input.schools.find((row) => row.slug === "wuhan-university");
+const school = input.schools?.find((row) => row.slug === "wuhan-university");
 if (!school) throw new Error("WHU school dependency is missing.");
-const city = input.cities.find((row) => row.slug === school.citySlug);
+const city = input.cities?.find((row) => row.slug === school.citySlug);
 if (!city) throw new Error("WHU city dependency is missing.");
 const candidate: CatalogSeedBundle = {
   version: 1,

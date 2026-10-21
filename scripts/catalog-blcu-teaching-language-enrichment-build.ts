@@ -58,15 +58,24 @@ const missing = coverage.missingRecords.filter(
 if (missing.length !== exactChineseSlugs.size) {
   throw new Error(`Expected ${exactChineseSlugs.size} exact BLCU gaps, received ${missing.length}.`);
 }
-const bundleCache = new Map<string, { text: string; bundle: CatalogSeedBundle }>();
+type CompleteBundle = CatalogSeedBundle & {
+  programs: NonNullable<CatalogSeedBundle["programs"]>;
+  schools: NonNullable<CatalogSeedBundle["schools"]>;
+  cities: NonNullable<CatalogSeedBundle["cities"]>;
+};
+const bundleCache = new Map<string, { text: string; bundle: CompleteBundle }>();
 for (const row of missing) {
   if (!bundleCache.has(row.sourceFile)) {
     const bundleText = await readFile(resolve(root, "seeds", row.sourceFile), "utf8");
-    bundleCache.set(row.sourceFile, { text: bundleText, bundle: JSON.parse(bundleText) as CatalogSeedBundle });
+    const bundle = JSON.parse(bundleText) as CatalogSeedBundle;
+    if (!bundle.programs || !bundle.schools || !bundle.cities) throw new Error(`BLCU dependency bundle is incomplete: ${row.sourceFile}`);
+    bundleCache.set(row.sourceFile, { text: bundleText, bundle: bundle as CompleteBundle });
   }
 }
 const programs: CatalogSeedProgram[] = missing.map((row) => {
-  const program = bundleCache.get(row.sourceFile)!.bundle.programs.find((candidate) => candidate.slug === row.slug);
+  const dependency = bundleCache.get(row.sourceFile);
+  if (!dependency) throw new Error(`BLCU dependency bundle is missing: ${row.sourceFile}`);
+  const program = dependency.bundle.programs.find((candidate) => candidate.slug === row.slug);
   if (!program || program.teachingLanguage) throw new Error(`BLCU source precondition changed: ${row.slug}`);
   return {
     ...program,
@@ -79,9 +88,10 @@ const programs: CatalogSeedProgram[] = missing.map((row) => {
   };
 });
 const dependencyBundle = bundleCache.values().next().value?.bundle;
-const school = dependencyBundle?.schools.find((row) => row.slug === "beijing-language-and-culture-university");
+if (!dependencyBundle) throw new Error("BLCU dependency bundle is missing.");
+const school = dependencyBundle.schools.find((row) => row.slug === "beijing-language-and-culture-university");
 if (!school) throw new Error("BLCU school dependency is missing.");
-const city = dependencyBundle!.cities.find((row) => row.slug === school.citySlug);
+const city = dependencyBundle.cities.find((row) => row.slug === school.citySlug);
 if (!city) throw new Error("BLCU city dependency is missing.");
 const candidate: CatalogSeedBundle = {
   version: 1,

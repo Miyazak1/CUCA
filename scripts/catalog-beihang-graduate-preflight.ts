@@ -2,10 +2,13 @@ import { readFile } from "node:fs/promises";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
 import { localDatabaseUrl } from "./lib/local-development.ts";
 
-const parsed = JSON.parse(await readFile("work/catalog-official/beihang-graduate-batch-01/parsed-graduate-routes.json", "utf8"));
+type GraduateRoute = { degreeLevel: string; schoolEn: string; nameEn: string; teachingLanguage: string };
+type ParsedRoutes = { routes: GraduateRoute[] };
+
+const parsed = JSON.parse(await readFile("work/catalog-official/beihang-graduate-batch-01/parsed-graduate-routes.json", "utf8")) as ParsedRoutes;
 const slugify = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
   .replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const slugs = parsed.routes.map((route: any) => slugify([
+const slugs = parsed.routes.map((route) => slugify([
   "beihang-university", route.degreeLevel, route.schoolEn, route.nameEn, route.teachingLanguage,
 ].join(" ")));
 if (new Set(slugs).size !== slugs.length) throw new Error("Generated Beihang graduate program slugs are not unique.");

@@ -10,6 +10,9 @@ const candidatePath = resolve(root, "seeds/catalog.uestc-legacy-alignment-batch-
 const validationPath = resolve(root, "seeds/catalog.uestc-legacy-alignment-batch-01.validation.json");
 const [sourceText, manifestText] = await Promise.all([readFile(sourcePath, "utf8"), readFile(manifestPath, "utf8")]);
 const source = JSON.parse(sourceText) as CatalogSeedBundle;
+const sourcePrograms = source.programs;
+const sourceProgramIntakes = source.programIntakes;
+if (!sourcePrograms || !sourceProgramIntakes) throw new Error("UESTC source bundle is incomplete.");
 const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { url: string; sha256: string; status: number }[] };
 const evidence = new Set(manifest.sources.filter((row) => row.status === 200).map((row) => `${row.url}\n${row.sha256}`));
 const programMap: Record<string, string> = {
@@ -17,13 +20,13 @@ const programMap: Record<string, string> = {
   "university-of-electronic-science-and-technology-of-china-mechanical-design-manufacture-and-automation": "official-2026-uestc-bachelor-mechanical-design-manufacture-and-automation-chinese",
 };
 const programs = Object.entries(programMap).map(([legacySlug, canonicalSlug]) => {
-  const record = source.programs.find((row) => row.slug === canonicalSlug);
+  const record = sourcePrograms.find((row) => row.slug === canonicalSlug);
   if (!record) throw new Error(`Missing UESTC canonical program: ${canonicalSlug}`);
   if (!evidence.has(`${record.sourceUrl}\n${record.sourceSha256}`)) throw new Error(`Unpinned UESTC program evidence: ${canonicalSlug}`);
   return { ...record, slug: legacySlug, applicationNote: `${record.applicationNote ?? ""} Legacy CUAC identity aligned to the unique current official bachelor's route; canonical draft identity: ${canonicalSlug}.`.trim(), sourceFieldLineage: { ...record.sourceFieldLineage, slug: `legacy CUAC identity aligned to unique official route ${canonicalSlug}; draft only` } };
 });
 const programIntakes = Object.entries(programMap).map(([legacySlug, canonicalSlug]) => {
-  const record = source.programIntakes.find((row) => row.programSlug === canonicalSlug);
+  const record = sourceProgramIntakes.find((row) => row.programSlug === canonicalSlug);
   if (!record) throw new Error(`Missing UESTC canonical intake: ${canonicalSlug}`);
   if (!evidence.has(`${record.sourceUrl}\n${record.sourceSha256}`)) throw new Error(`Unpinned UESTC intake evidence: ${canonicalSlug}`);
   return { ...record, programSlug: legacySlug };

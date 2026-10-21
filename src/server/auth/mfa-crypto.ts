@@ -23,7 +23,7 @@ export type MfaKeyring = {
   keys: ReadonlyMap<string, Buffer>;
 };
 
-export function mfaKeyringFromEnv(env: NodeJS.ProcessEnv = process.env): MfaKeyring {
+export function mfaKeyringFromEnv(env: Record<string, string | undefined> = process.env): MfaKeyring {
   const activeKeyId = env.CUAC_AUTH_MFA_ACTIVE_KEY_ID?.trim();
   const source = env.CUAC_AUTH_MFA_KEYS_JSON;
   if (!activeKeyId || !source) throw serviceUnavailable("MFA encryption keyring is not configured.");

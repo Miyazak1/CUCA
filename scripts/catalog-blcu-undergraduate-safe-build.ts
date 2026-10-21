@@ -5,11 +5,14 @@ import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "
 const prefix = "catalog.blcu-undergraduate-safe-batch-01";
 const sha = (value: string) => createHash("sha256").update(value).digest("hex");
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+type ManifestSource = { id: string; sha256: string; contentType: string; url: string; label: string; fetchedAt: string };
 const manifestText = await readFile("work/catalog-official/blcu-school-programs-attachments-batch-01/manifest.json", "utf8");
-const manifest = JSON.parse(manifestText);
-const base = JSON.parse(await readFile("seeds/catalog.blcu-graduate-safe-batch-03.approved.local.json", "utf8"));
-const source = manifest.sources.find((row: any) => row.id === "blcu-undergraduate-programs-pdf-2026");
-if (source?.sha256 !== "9afce0ef7a651d54a67be6b62a0f1783cc3e2c6bac080def5a22c9b9d58ab954" || source?.contentType !== "application/pdf") {
+const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: ManifestSource[] };
+const base = JSON.parse(await readFile("seeds/catalog.blcu-graduate-safe-batch-03.approved.local.json", "utf8")) as CatalogSeedBundle;
+const source = manifest.sources.find((row) => row.id === "blcu-undergraduate-programs-pdf-2026");
+const city = base.cities?.find((row) => row.slug === "beijing");
+const school = base.schools?.find((row) => row.slug === "beijing-language-and-culture-university");
+if (source?.sha256 !== "9afce0ef7a651d54a67be6b62a0f1783cc3e2c6bac080def5a22c9b9d58ab954" || source.contentType !== "application/pdf" || !city || !school) {
   throw new Error("BLCU undergraduate evidence mismatch.");
 }
 
@@ -84,7 +87,7 @@ const programs = rows.map((row) => ({
   degreeLevel: row.degree ?? "Bachelor", ...(row.durationYears ? { durationYears: row.durationYears } : {}),
   fieldCategory: row.group, subjectArea: row.school, ...(row.teachingLanguage ? { teachingLanguage: row.teachingLanguage } : {}),
   ...(row.tuitionAmount ? { tuitionAmount: row.tuitionAmount, tuitionCurrency: "RMB", tuitionPeriod: "year" } : {}), tuitionText: row.tuitionText,
-  applicationUrl: "https://apply.blcu.edu.cn", applicationNote: `2026 ${row.group} route; campus: ${row.campus}.`, status: "draft",
+  applicationUrl: "https://apply.blcu.edu.cn", applicationNote: `2026 ${row.group} route; campus: ${row.campus}.`, status: "draft" as const,
   sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt,
   sourceFieldLineage: {
     nameZh: `2026 undergraduate catalog PDF page ${row.page}, ${row.group} table`,
@@ -101,14 +104,14 @@ const deadlines: Record<Intake, { date: string; label: string }> = {
 };
 const programIntakes = rows.flatMap((row, index) => row.intakes.map((intakeTerm) => ({
   programSlug: programs[index].slug, intakeTerm, intakeYear: 2026, deadlineDate: deadlines[intakeTerm].date,
-  deadlineLabel: deadlines[intakeTerm].label, applicationRound: "BLCU 2026 international degree admissions", status: "closed",
+  deadlineLabel: deadlines[intakeTerm].label, applicationRound: "BLCU 2026 international degree admissions", status: "closed" as const,
   sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt,
   sourceFieldLineage: { deadlineDate: "2026 undergraduate catalog PDF page 2, registration information" },
 })));
 const candidate: CatalogSeedBundle = {
   version: 1, generatedAt: manifest.generatedAt,
-  cities: [base.cities.find((row: any) => row.slug === "beijing")],
-  schools: [base.schools.find((row: any) => row.slug === schoolSlug)],
+  cities: [city],
+  schools: [school],
   programs, programIntakes, scholarships: [],
 };
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;

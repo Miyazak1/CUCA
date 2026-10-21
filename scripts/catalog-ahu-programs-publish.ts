@@ -23,30 +23,35 @@ const report = createCatalogMigrationValidationReport(publication);
 if (!report.ok || report.summary.programs !== 168 || report.summary.programIntakes !== 0 || report.summary.scholarships !== 0) throw new Error(`Invalid AHU program publication: ${report.errors.join(" ")}`);
 const programSlugs = publication.programs!.map((row) => row.slug);
 const approval = { version: 1, approvedAt, approvalMode: "standing-user-default-publication", reviewReference: publicationReference, approvedReviewSha256: reviewHash, approvedCandidateFileSha256: sha(candidateText), approvedCandidateBundleSha256: fresh.bundleSha256, publicationBundle: `seeds/${prefix}.approved.local.json`, publicationBundleSha256: report.bundleSha256, schoolSlug, programSlugs, archivedProgramAliases: [], prohibitedDataConfirmedExcluded: true };
-async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: any) { if (error?.code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
+async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: unknown) { const code = error && typeof error === "object" && "code" in error ? error.code : undefined; if (code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
 await writeOrVerify(paths.output, publication); await writeOrVerify(paths.approval, approval);
 const target = assertLocalCatalogPublishTarget(state, publication, LOCAL_CATALOG_PUBLISH_CONFIRMATION, publicationReference), pool = createPostgresPool({ databaseUrl: target.databaseUrl, max: 1, applicationName: "cuac:ahu-programs-publish" });
 try {
   const result = await createTransactionalSqlClient(pool).transaction(async (tx) => {
-    const schoolBefore = await tx.query<any>("select id,to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1", [schoolSlug]);
-    const cityBefore = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='hefei'", []);
-    const oldProgramsBefore = await tx.query<any>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.school_id=$1 and not(p.slug=any($2::text[]))", [schoolBefore[0]?.id, programSlugs]);
-    const oldIntakesBefore = await tx.query<any>("select jsonb_agg(to_jsonb(pi)-'created_at'-'updated_at' order by pi.id) snapshot from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=$1", [schoolBefore[0]?.id]);
-    const scholarshipsBefore = await tx.query<any>("select jsonb_agg(to_jsonb(s)-'created_at'-'updated_at' order by s.slug) snapshot from scholarships s where s.school_id=$1", [schoolBefore[0]?.id]);
-    const existing = await tx.query<any>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug", [programSlugs]);
+    type SchoolSnapshotRow = { id: string; snapshot: unknown };
+    type CitySnapshotRow = { snapshot: { id: string } };
+    type AggregateSnapshotRow = { snapshot: unknown[] | null };
+    type ExistingProgramRow = { slug: string; status: string; verification_status: string; last_verified_at: Date | null };
+    type ProgramTotalsRow = { programs: number; verified_programs: number };
+    const schoolBefore = await tx.query<SchoolSnapshotRow>("select id,to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1", [schoolSlug]);
+    const cityBefore = await tx.query<CitySnapshotRow>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='hefei'", []);
+    const oldProgramsBefore = await tx.query<AggregateSnapshotRow>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.school_id=$1 and not(p.slug=any($2::text[]))", [schoolBefore[0]?.id, programSlugs]);
+    const oldIntakesBefore = await tx.query<AggregateSnapshotRow>("select jsonb_agg(to_jsonb(pi)-'created_at'-'updated_at' order by pi.id) snapshot from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=$1", [schoolBefore[0]?.id]);
+    const scholarshipsBefore = await tx.query<AggregateSnapshotRow>("select jsonb_agg(to_jsonb(s)-'created_at'-'updated_at' order by s.slug) snapshot from scholarships s where s.school_id=$1", [schoolBefore[0]?.id]);
+    const existing = await tx.query<ExistingProgramRow>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug", [programSlugs]);
     if (schoolBefore.length !== 1 || schoolBefore[0].id !== review.reconciliation.databaseBaseline.school.id || cityBefore[0]?.snapshot?.id !== review.reconciliation.databaseBaseline.city.id || oldProgramsBefore[0]?.snapshot?.length !== 2 || scholarshipsBefore[0]?.snapshot?.length !== 2) throw new Error("AHU protected program baseline changed.");
     const pre = existing.length === 0;
     const post = existing.length === 168 && existing.every((row) => row.status === "active" && row.verification_status === "verified" && row.last_verified_at?.toISOString() === approvedAt);
     if (!pre && !post) throw new Error(`AHU safe-new program state conflicts: ${existing.length} candidate rows already exist.`);
     const written = await new CatalogSeedWriter(tx).writeBundle(publication, { preserveExistingCitySlugs: ["hefei"], preserveExistingSchoolSlugs: [schoolSlug] });
     if (!written.ok) throw new Error(`AHU program write failed: ${written.errors.join(" ")}`);
-    const schoolAfter = await tx.query<any>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1", [schoolSlug]);
-    const cityAfter = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='hefei'", []);
-    const oldProgramsAfter = await tx.query<any>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.school_id=$1 and not(p.slug=any($2::text[]))", [schoolBefore[0].id, programSlugs]);
-    const oldIntakesAfter = await tx.query<any>("select jsonb_agg(to_jsonb(pi)-'created_at'-'updated_at' order by pi.id) snapshot from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=$1", [schoolBefore[0].id]);
-    const scholarshipsAfter = await tx.query<any>("select jsonb_agg(to_jsonb(s)-'created_at'-'updated_at' order by s.slug) snapshot from scholarships s where s.school_id=$1", [schoolBefore[0].id]);
+    const schoolAfter = await tx.query<{ snapshot: unknown }>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1", [schoolSlug]);
+    const cityAfter = await tx.query<CitySnapshotRow>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='hefei'", []);
+    const oldProgramsAfter = await tx.query<AggregateSnapshotRow>("select jsonb_agg(to_jsonb(p)-'created_at'-'updated_at' order by p.slug) snapshot from programs p where p.school_id=$1 and not(p.slug=any($2::text[]))", [schoolBefore[0].id, programSlugs]);
+    const oldIntakesAfter = await tx.query<AggregateSnapshotRow>("select jsonb_agg(to_jsonb(pi)-'created_at'-'updated_at' order by pi.id) snapshot from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=$1", [schoolBefore[0].id]);
+    const scholarshipsAfter = await tx.query<AggregateSnapshotRow>("select jsonb_agg(to_jsonb(s)-'created_at'-'updated_at' order by s.slug) snapshot from scholarships s where s.school_id=$1", [schoolBefore[0].id]);
     if (JSON.stringify(schoolAfter[0]?.snapshot) !== JSON.stringify(schoolBefore[0].snapshot) || JSON.stringify(cityAfter[0]?.snapshot) !== JSON.stringify(cityBefore[0].snapshot) || JSON.stringify(oldProgramsAfter[0]?.snapshot) !== JSON.stringify(oldProgramsBefore[0].snapshot) || JSON.stringify(oldIntakesAfter[0]?.snapshot) !== JSON.stringify(oldIntakesBefore[0]?.snapshot) || JSON.stringify(scholarshipsAfter[0]?.snapshot) !== JSON.stringify(scholarshipsBefore[0]?.snapshot)) throw new Error("AHU publication changed protected records.");
-    const totals = await tx.query<any>("select count(*) filter(where status='active')::int programs,count(*) filter(where status='active' and verification_status='verified')::int verified_programs from programs where school_id=$1", [schoolBefore[0].id]);
+    const totals = await tx.query<ProgramTotalsRow>("select count(*) filter(where status='active')::int programs,count(*) filter(where status='active' and verification_status='verified')::int verified_programs from programs where school_id=$1", [schoolBefore[0].id]);
     if (totals[0]?.programs !== 170 || totals[0]?.verified_programs !== 168) throw new Error(`AHU program post-check failed: ${JSON.stringify(totals[0])}`);
     return { written: written.summary, totals: totals[0], schoolId: schoolBefore[0].id };
   });

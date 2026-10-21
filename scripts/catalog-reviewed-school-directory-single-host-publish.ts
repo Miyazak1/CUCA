@@ -17,8 +17,9 @@ if (!["postgres:", "postgresql:"].includes(target.protocol) || target.search || 
 const bundle = JSON.parse(await readFile(resolve(process.cwd(), "seeds/catalog.reviewed-50-school-directory.json"), "utf8")) as CatalogSeedBundle;
 const review = JSON.parse(await readFile(resolve(process.cwd(), "seeds/catalog.reviewed-50-school-directory.review.json"), "utf8"));
 const report = createCatalogMigrationValidationReport(bundle);
+const handoff = bundle.handoff;
 if (!report.ok || bundle.version !== 2 || review.status !== "human_review_completed"
-  || bundle.handoff?.reviewReference !== review.reviewReference || bundle.handoff.prohibitedDataReviewReference !== review.reviewReference
+  || !handoff || handoff.reviewReference !== review.reviewReference || handoff.prohibitedDataReviewReference !== review.reviewReference
   || review.publicationBundleSha256 !== report.bundleSha256 || review.operationPlanSha256 !== report.operationPlanSha256
   || review.confirmations?.officialSourcesReviewed !== true || review.confirmations?.prohibitedDataConfirmedExcluded !== true
   || review.confirmations?.existingDetailFieldsMustBePreserved !== true

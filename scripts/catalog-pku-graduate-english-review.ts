@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram } from "../src/server/catalog/seed-contract.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
 
 const root = process.cwd();
@@ -18,7 +18,18 @@ const paths = {
 const parse = async (path: string) => JSON.parse(await readFile(path, "utf8"));
 const sha = (value: string) => createHash("sha256").update(value).digest("hex");
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const keyOf = (row: any) => `${row.sourceId}|${row.code}`;
+type Route = { sourceId: string; code: string; degree: string; nameEn: string; modes: string[]; researchFields: string[]; schoolOrDepartment: string; sourceUrl: string; sourceLabel: string; sourceSha256: string; capturedAt: string; sourcePage: number; sourceTable: string };
+type ExtractedSource = { sourceId: string; sourceUrl: string; sourceLabel: string; sha256: string; capturedAt: string; pages: number; routes: number; manifestSha256: string };
+type Extracted = { counts?: { sources?: number; pages?: number; routes?: number }; routes: Route[]; sources: ExtractedSource[] };
+type GuideSource = { id: string; status: number; sha256: string; finalUrl: string; label: string; fetchedAt: string };
+type GuideManifest = { sources: GuideSource[] };
+type StatusRow = { id: string; status: string; verification_status?: string };
+type CountRow = { active_count: number; verified_count: number };
+type SlugRow = { slug: string };
+type ExistingRow = { slug: string; name_en: string; degree_level: string; field_category: string };
+type Conflict = { candidateSlug: string; existingSlug: string };
+type Baseline = { school: StatusRow[]; city: StatusRow[]; counts: CountRow; slugConflicts: SlugRow[]; semanticConflicts: Conflict[] };
+const keyOf = (row: Route) => `${row.sourceId}|${row.code}`;
 
 // These major-level rows are already represented by reviewed, active PKU route records.
 // They are excluded rather than overwritten or duplicated.
@@ -39,18 +50,18 @@ const represented = new Map<string, string>([
 
 const [extracted, dependency, guideManifest, state] = await Promise.all([
   parse(paths.extracted), parse(paths.dependency), parse(paths.guideManifest), parse(paths.state),
-]);
+]) as [Extracted, CatalogSeedBundle, GuideManifest, LocalDevelopmentState];
 if (extracted.counts?.sources !== 30 || extracted.counts?.pages !== 34 || extracted.counts?.routes !== 113) throw new Error("PKU English department extraction count changed.");
 const guide = guideManifest.sources?.[0];
 if (guideManifest.sources?.length !== 1 || guide?.id !== "pku-graduate-admissions-guide-2026" || guide?.status !== 200 || !/^[a-f0-9]{64}$/.test(guide?.sha256 ?? "")) throw new Error("PKU graduate guide evidence is invalid.");
-const city = dependency.cities?.find((row: any) => row.slug === "beijing");
-const school = dependency.schools?.find((row: any) => row.slug === "peking-university");
+const city = dependency.cities?.find((row) => row.slug === "beijing");
+const school = dependency.schools?.find((row) => row.slug === "peking-university");
 if (!city || !school) throw new Error("Reviewed PKU dependency rows are unavailable.");
 
-const excludedRows = extracted.routes.filter((row: any) => represented.has(keyOf(row))).map((row: any) => ({ sourceId: row.sourceId, code: row.code, degree: row.degree, nameEn: row.nameEn, reason: represented.get(keyOf(row)) }));
+const excludedRows = extracted.routes.filter((row) => represented.has(keyOf(row))).map((row) => ({ sourceId: row.sourceId, code: row.code, degree: row.degree, nameEn: row.nameEn, reason: represented.get(keyOf(row)) }));
 if (excludedRows.length !== represented.size) throw new Error(`Expected ${represented.size} represented routes, found ${excludedRows.length}.`);
-const newRoutes = extracted.routes.filter((row: any) => !represented.has(keyOf(row)));
-const programs: CatalogSeedProgram[] = newRoutes.map((row: any) => {
+const newRoutes = extracted.routes.filter((row) => !represented.has(keyOf(row)));
+const programs: CatalogSeedProgram[] = newRoutes.map((row) => {
   const mode = row.modes.join(" / ");
   const fields = row.researchFields.join("; ");
   const slug = `peking-university-graduate-en-${row.degree.toLowerCase()}-${slugify(row.schoolOrDepartment)}-${row.code.toLowerCase()}`;
@@ -98,22 +109,22 @@ const programIntakes = programs.map((program) => ({
   capturedAt: guide.fetchedAt,
   sourceFieldLineage: { deadlineLabel: "Application Period note for English-taught programs", applicationRound: "official page title and enrollment section" },
 }));
-const generatedAt = [...extracted.sources.map((row: any) => row.capturedAt), guide.fetchedAt].sort().at(-1);
+const generatedAt = [...extracted.sources.map((row) => row.capturedAt), guide.fetchedAt].sort().at(-1) ?? guide.fetchedAt;
 const candidate: CatalogSeedBundle = { version: 1, generatedAt, cities: [city], schools: [school], programs, programIntakes, scholarships: [] };
 const validation = createCatalogMigrationValidationReport(candidate);
 if (!validation.ok) throw new Error(`Invalid PKU English candidate: ${validation.errors.join(" ")}`);
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
 
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:pku-graduate-english-review" });
-let baseline: any;
+let baseline!: Baseline;
 try {
-  const schoolRows = await pool.query("select id,status,verification_status from schools where slug='peking-university'");
-  const cityRows = await pool.query("select id,status from cities where slug='beijing'");
-  const counts = await pool.query("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count from programs where school_id=$1 and status='active'", [schoolRows.rows[0]?.id]);
-  const slugRows = await pool.query("select slug from programs where slug=any($1::text[])", [programs.map((row) => row.slug)]);
-  const existing = await pool.query("select slug,name_en,degree_level,field_category from programs where school_id=$1 and status='active'", [schoolRows.rows[0]?.id]);
+  const schoolRows = await pool.query<StatusRow>("select id,status,verification_status from schools where slug='peking-university'");
+  const cityRows = await pool.query<StatusRow>("select id,status from cities where slug='beijing'");
+  const counts = await pool.query<CountRow>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count from programs where school_id=$1 and status='active'", [schoolRows.rows[0]?.id]);
+  const slugRows = await pool.query<SlugRow>("select slug from programs where slug=any($1::text[])", [programs.map((row) => row.slug)]);
+  const existing = await pool.query<ExistingRow>("select slug,name_en,degree_level,field_category from programs where school_id=$1 and status='active'", [schoolRows.rows[0]?.id]);
   const normalize = (value: unknown) => String(value ?? "").toLowerCase().replace(/[^a-z0-9]+/g, "");
-  const semanticConflicts = programs.flatMap((program) => existing.rows.filter((row: any) => row.degree_level === program.degreeLevel && normalize(row.name_en) === normalize(program.nameEn) && normalize(row.field_category) === normalize(program.fieldCategory)).map((row: any) => ({ candidateSlug: program.slug, existingSlug: row.slug })));
+  const semanticConflicts = programs.flatMap((program) => existing.rows.filter((row) => row.degree_level === program.degreeLevel && normalize(row.name_en) === normalize(program.nameEn) && normalize(row.field_category) === normalize(program.fieldCategory)).map((row) => ({ candidateSlug: program.slug, existingSlug: row.slug })));
   baseline = { school: schoolRows.rows, city: cityRows.rows, counts: counts.rows[0], slugConflicts: slugRows.rows, semanticConflicts };
 } finally { await pool.end(); }
 if (baseline.school.length !== 1 || baseline.school[0].status !== "active" || baseline.school[0].verification_status !== "verified" || baseline.city.length !== 1 || baseline.city[0].status !== "active" || baseline.counts.active_count !== 65 || baseline.counts.verified_count !== 65 || baseline.slugConflicts.length !== 0 || baseline.semanticConflicts.length !== 0) throw new Error(`PKU English baseline changed: ${JSON.stringify(baseline)}`);
@@ -124,7 +135,7 @@ const reviewBase = {
   generatedAt,
   scope: { schoolSlug: "peking-university", dependencyCityReplayCount: 1, dependencySchoolReplayCount: 1, extractedMajorCount: 113, representedAndExcludedCount: excludedRows.length, newProgramRouteCount: programs.length, newProgramIntakeCount: programIntakes.length, overwriteCount: 0, archiveCount: 0 },
   candidateSha256: sha(candidateText), candidateBundleSha256: validation.bundleSha256, operationPlanSha256: validation.operationPlanSha256,
-  evidence: extracted.sources.map((row: any) => ({ sourceId: row.sourceId, sourceUrl: row.sourceUrl, sourceLabel: row.sourceLabel, sha256: row.sha256, fetchedAt: row.capturedAt, pages: row.pages, routes: row.routes, manifestSha256: row.manifestSha256 })),
+  evidence: extracted.sources.map((row) => ({ sourceId: row.sourceId, sourceUrl: row.sourceUrl, sourceLabel: row.sourceLabel, sha256: row.sha256, fetchedAt: row.capturedAt, pages: row.pages, routes: row.routes, manifestSha256: row.manifestSha256 })),
   visualReview: { result: "pass", pdfFilesReviewed: 30, pdfPagesReviewed: 34, renderedContactSheetsReviewed: 9, note: "Every successful official PDF page was rendered and visually checked; tables were legible and program grouping matched extraction." },
   standingAuthorization: { reference: "user-chat-2026-09-13-default-publication", instruction: "发布默认允许", appliesBecause: "This batch inserts only new non-conflicting official program routes and intakes. It overwrites, archives and deletes nothing; Beijing and PKU are preserved dependencies." },
   sourceReview: { result: "pass", note: "Thirty exact PKU 2026 English-taught department PDFs were captured. One program is created per official major code; research fields remain program detail." },

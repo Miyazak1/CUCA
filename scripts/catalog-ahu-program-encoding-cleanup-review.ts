@@ -1,7 +1,12 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type EntityRow = { id: string; slug: string; status: string; verification_status: string; name_en: string; name_zh: string; degree_level: string; field_category: string; subject_area: string };
+type EncodingBaseline = { school?: EntityRow; programs: EntityRow[]; targetSlugConflicts: EntityRow[] };
+type EvidenceSource = { id: string; url: string; sha256: string; fetchedAt: string; contentType: string };
+type EvidenceManifest = { sources: EvidenceSource[] };
 
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const prefix = "catalog.ahu-program-encoding-cleanup";
@@ -40,24 +45,24 @@ const [undergraduatePdf, masterPdf, stateText, manifestText] = await Promise.all
 ]);
 if (sha(undergraduatePdf) !== "95397e8a135c3a67045dceddd10b8e4bbfe652d3ddc02f2eeab1e553c7ae6b98" || sha(masterPdf) !== "06f23c29e4f330d01e58ed67b198a2018de09b79825a654d2ff510bd05cbed46") throw new Error("AHU source PDF hash changed.");
 
-const state = JSON.parse(stateText);
+const state = JSON.parse(stateText) as LocalDevelopmentState;
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:ahu-program-encoding-cleanup-review" });
-let baseline: any;
+let baseline: EncodingBaseline;
 try {
-  const school = await pool.query("select id,slug,status,verification_status from schools where slug='anhui-university'");
-  const oldRows = await pool.query("select id,slug,name_en,name_zh,degree_level,field_category,subject_area,status,verification_status from programs where slug=any($1::text[]) order by slug", [corrections.map((row) => row.oldSlug)]);
-  const conflicts = await pool.query("select id,slug,status from programs where slug=any($1::text[])", [corrections.map((row) => row.newSlug)]);
+  const school = await pool.query<EntityRow>("select id,slug,status,verification_status from schools where slug='anhui-university'");
+  const oldRows = await pool.query<EntityRow>("select id,slug,name_en,name_zh,degree_level,field_category,subject_area,status,verification_status from programs where slug=any($1::text[]) order by slug", [corrections.map((row) => row.oldSlug)]);
+  const conflicts = await pool.query<EntityRow>("select id,slug,status from programs where slug=any($1::text[])", [corrections.map((row) => row.newSlug)]);
   baseline = { school: school.rows[0], programs: oldRows.rows, targetSlugConflicts: conflicts.rows };
-  if (school.rows.length !== 1 || school.rows[0].status !== "active" || oldRows.rows.length !== 5 || oldRows.rows.some((row: any) => row.status !== "active" || row.verification_status !== "verified") || conflicts.rows.length !== 0) throw new Error(`AHU encoding-cleanup baseline changed: ${JSON.stringify(baseline)}`);
+  if (school.rows.length !== 1 || school.rows[0].status !== "active" || oldRows.rows.length !== 5 || oldRows.rows.some((row) => row.status !== "active" || row.verification_status !== "verified") || conflicts.rows.length !== 0) throw new Error(`AHU encoding-cleanup baseline changed: ${JSON.stringify(baseline)}`);
   for (const correction of corrections) {
-    const row = oldRows.rows.find((item: any) => item.slug === correction.oldSlug);
+    const row = oldRows.rows.find((item) => item.slug === correction.oldSlug);
     const acceptedDegreeLevels = correction.degreeLevel === "本科" ? ["本科", "Undergraduate"] : ["硕士", "Master"];
     if (!row || !acceptedDegreeLevels.includes(row.degree_level) || !`${row.name_en} ${row.field_category}`.includes("(cid:")) throw new Error(`Unexpected AHU source row: ${JSON.stringify({ correction: correction.oldSlug, row })}`);
   }
 } finally { await pool.end(); }
 
-const manifest = JSON.parse(manifestText);
-const evidence = manifest.sources.map((source: any) => ({ sourceId: source.id, sourceUrl: source.url, sha256: source.sha256, capturedAt: source.fetchedAt, contentType: source.contentType }));
+const manifest = JSON.parse(manifestText) as EvidenceManifest;
+const evidence = manifest.sources.map((source) => ({ sourceId: source.id, sourceUrl: source.url, sha256: source.sha256, capturedAt: source.fetchedAt, contentType: source.contentType }));
 const reviewBase = {
   version: 1, status: "requires_explicit_approval", generatedAt: new Date().toISOString(),
   scope: { schoolSlug: "anhui-university", programOverwriteCount: 5, programSlugRenameCount: 5, archiveCount: 0, deleteCount: 0 },

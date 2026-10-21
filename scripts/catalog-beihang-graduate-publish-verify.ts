@@ -1,21 +1,23 @@
 import assert from "node:assert/strict";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import type { CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+import { type CatalogApiDetailResponse, type CatalogApiResponse, type CatalogApiVerificationRow } from "./lib/catalog-api-verification.ts";
 
 const root = process.cwd();
 const baseUrl = process.argv.find(arg => arg.startsWith("--base-url="))?.slice("--base-url=".length) ?? "http://127.0.0.1:52118";
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("Verification is restricted to the local CUAC application.");
 
-const bundle = JSON.parse(await readFile(resolve(root, "seeds/catalog.beihang-graduate-batch-01.approved.local.json"), "utf8"));
-const approval = JSON.parse(await readFile(resolve(root, "seeds/catalog.beihang-graduate-batch-01.approval.json"), "utf8"));
+const bundle = JSON.parse(await readFile(resolve(root, "seeds/catalog.beihang-graduate-batch-01.approved.local.json"), "utf8")) as CatalogSeedBundle;
+const approval = JSON.parse(await readFile(resolve(root, "seeds/catalog.beihang-graduate-batch-01.approval.json"), "utf8")) as { approvedAt: string; publicationBundleSha256: string };
 const reportPath = resolve(root, "seeds/catalog.beihang-graduate-batch-01.publication-verification.json");
 
 async function all(path: string) {
-  const rows: any[] = [];
+  const rows: CatalogApiVerificationRow[] = [];
   for (let offset = 0; ; offset += 100) {
     const response = await fetch(`${baseUrl}${path}${path.includes("?") ? "&" : "?"}limit=100&offset=${offset}`);
     assert.equal(response.status, 200, `${path} failed at offset ${offset}`);
-    const page = (await response.json() as { data: any[] }).data;
+    const page = (await response.json() as CatalogApiResponse).data;
     rows.push(...page);
     if (page.length < 100) break;
   }
@@ -24,7 +26,7 @@ async function all(path: string) {
 
 const schoolResponse = await fetch(`${baseUrl}/api/v1/catalog/schools?limit=100&query=Beihang%20University`);
 assert.equal(schoolResponse.status, 200);
-const schools = (await schoolResponse.json() as { data: any[] }).data.filter(row => row.slug === "beihang-university");
+const schools = (await schoolResponse.json() as CatalogApiResponse).data.filter(row => row.slug === "beihang-university");
 assert.equal(schools.length, 1);
 const school = schools[0];
 assert.equal(school.id, "f4b01e0e-9373-4f39-bd79-12adc139d6bb");
@@ -38,7 +40,7 @@ const graduatePrograms = programs.filter(row => row.degreeLevel === "Master" || 
 assert.equal(graduatePrograms.length, 188);
 assert.equal(graduatePrograms.filter(row => row.degreeLevel === "Master").length, 100);
 assert.equal(graduatePrograms.filter(row => row.degreeLevel === "Doctoral").length, 88);
-assert.deepEqual(new Set(graduatePrograms.map(row => row.slug)), new Set(bundle.programs.map((row: any) => row.slug)));
+assert.deepEqual(new Set(graduatePrograms.map(row => row.slug)), new Set((bundle.programs ?? []).map((row) => row.slug)));
 
 const samples = [
   graduatePrograms.find(row => row.degreeLevel === "Master" && row.teachingLanguage === "Chinese"),
@@ -48,11 +50,11 @@ const samples = [
   graduatePrograms.find(row => row.teachingLanguage === "French"),
   graduatePrograms.find(row => row.teachingLanguage === "German"),
   graduatePrograms.find(row => row.teachingLanguage === "Russian"),
-].filter(Boolean);
+].filter((row): row is CatalogApiVerificationRow => Boolean(row));
 for (const row of samples) {
   const response = await fetch(`${baseUrl}/api/v1/catalog/programs/${row.id}`);
   assert.equal(response.status, 200);
-  const detail = (await response.json() as { data: any }).data;
+  const detail = (await response.json() as CatalogApiDetailResponse).data;
   assert.equal(detail.slug, row.slug);
   assert.equal(detail.verificationStatus, "verified");
   assert.equal(detail.lastVerifiedAt, approval.approvedAt);

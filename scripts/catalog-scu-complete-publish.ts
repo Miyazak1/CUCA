@@ -5,6 +5,7 @@ import { CatalogSeedWriter } from "../src/server/catalog/seed-writer.ts";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { assertLocalCatalogPublishTarget, LOCAL_CATALOG_PUBLISH_CONFIRMATION } from "../src/server/catalog/local-publish-safety.ts";
 import { createPostgresPool, createTransactionalSqlClient } from "../src/server/db/postgres-client.ts";
+import { type CatalogCityRow, type CatalogEntityStatusRow, type CatalogTotalsRow } from "./lib/catalog-database-rows.ts";
 
 const options = new Map(process.argv.slice(2).map(arg => { const at = arg.indexOf("="); if (!arg.startsWith("--") || at < 0) throw new Error(`Option requires a value: ${arg}`); return [arg.slice(2, at), arg.slice(at + 1)]; }));
 const required = (name: string) => { const value = options.get(name)?.trim(); if (!value) throw new Error(`Missing --${name}=...`); return value; };
@@ -60,7 +61,7 @@ const publication: CatalogSeedBundle = {
 const report = createCatalogMigrationValidationReport(publication);
 if (!report.ok || report.summary.cities !== 1 || report.summary.schools !== 1 || report.summary.programs !== 639 || report.summary.programIntakes !== 639 || report.summary.scholarships !== 2) throw new Error(`Invalid SCU publication: ${report.errors.join(" ")}`);
 const approval = { version: 1, approvedAt, approvalMode: "standing-user-default-publication", reviewReference, approvedReviewSha256: approvedReviewHash, approvedCandidateFileSha256: createHash("sha256").update(candidateText).digest("hex"), approvedCandidateBundleSha256: fresh.bundleSha256, publicationBundle: "seeds/catalog.scu-complete-batch-01.approved.local.json", publicationBundleSha256: report.bundleSha256, schoolSlug: "sichuan-university", programSlugs: publication.programs!.map(row => row.slug), scholarshipSlugs: publication.scholarships!.map(row => row.slug), archivedProgramAliases: [], archivedScholarshipAliases: [], prohibitedDataConfirmedExcluded: true };
-async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: any) { if (error?.code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
+async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: unknown) { if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
 await writeOrVerify(paths.output, publication);
 await writeOrVerify(paths.approval, approval);
 
@@ -71,24 +72,24 @@ try {
   const result = await client.transaction(async tx => {
     const identity = await tx.query<{ database_name: string; database_user: string }>("select current_database() database_name,current_user database_user", []);
     if (identity[0]?.database_name !== target.publicTarget.databaseName || identity[0]?.database_user !== target.publicTarget.databaseUser) throw new Error("Database identity mismatch.");
-    const cityBefore = await tx.query<any>("select id,slug,name_en,name_zh,region,province,status,verification_status,source_url,source_label,source_field_lineage_json from cities where slug='chengdu'", []);
+    const cityBefore = await tx.query<CatalogCityRow>("select id,slug,name_en,name_zh,region,province,status,verification_status,source_url,source_label,source_field_lineage_json from cities where slug='chengdu'", []);
     const expectedCity = [{ id: "eaad5100-cb9e-401c-a9be-936666bd6d1f", slug: "chengdu", name_en: "Chengdu", name_zh: "成都", region: "西南", province: null, status: "active", verification_status: "unverified", source_url: "https://www.cscapilot.com/zh/study-china/cities/chengdu", source_label: "CSCAPilot online city catalog recovery export", source_field_lineage_json: { nameEn: "city_guides.nameEn", nameZh: "city_guides.nameZh", region: "city_guides.region" } }];
     if (JSON.stringify(cityBefore) !== JSON.stringify(expectedCity)) throw new Error(`Chengdu dependency baseline mismatch: ${JSON.stringify(cityBefore)}`);
-    const schoolBefore = await tx.query<any>("select id,status,verification_status from schools where slug='sichuan-university'", []);
+    const schoolBefore = await tx.query<CatalogEntityStatusRow>("select id,status,verification_status from schools where slug='sichuan-university'", []);
     const programSlugs = publication.programs!.map(row => row.slug);
     const scholarshipSlugs = publication.scholarships!.map(row => row.slug);
-    const programsBefore = await tx.query<any>("select slug,status,verification_status from programs where slug=any($1::text[])", [programSlugs]);
-    const scholarshipsBefore = await tx.query<any>("select slug,status,verification_status from scholarships where slug=any($1::text[])", [scholarshipSlugs]);
+    const programsBefore = await tx.query<CatalogEntityStatusRow>("select slug,status,verification_status from programs where slug=any($1::text[])", [programSlugs]);
+    const scholarshipsBefore = await tx.query<CatalogEntityStatusRow>("select slug,status,verification_status from scholarships where slug=any($1::text[])", [scholarshipSlugs]);
     const pre = schoolBefore.length === 0 && programsBefore.length === 0 && scholarshipsBefore.length === 0;
     const post = schoolBefore.length === 1 && schoolBefore[0].status === "active" && schoolBefore[0].verification_status === "verified" && programsBefore.length === 639 && programsBefore.every(row => row.status === "active" && row.verification_status === "verified") && scholarshipsBefore.length === 2 && scholarshipsBefore.every(row => row.status === "active" && row.verification_status === "verified");
     if (!pre && !post) throw new Error(`SCU candidate is partially present: ${JSON.stringify({ school: schoolBefore.length, programs: programsBefore.length, scholarships: scholarshipsBefore.length })}`);
     const written = await new CatalogSeedWriter(tx).writeBundle(publication);
     if (!written.ok) throw new Error(`Catalog write failed: ${written.errors.join(" ")}`);
-    const totals = await tx.query<any>("select s.id school_id,(select count(*) from programs p where p.school_id=s.id and p.status='active')::int programs,(select count(*) from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=s.id)::int intakes,(select count(*) from scholarships sc where sc.school_id=s.id and sc.status='active')::int scholarships,(select count(*) from scholarships sc where sc.school_id=s.id and sc.status='active' and sc.verification_status='verified')::int verified_scholarships from schools s where s.slug='sichuan-university' and s.status='active' and s.verification_status='verified'", []);
+    const totals = await tx.query<CatalogTotalsRow>("select s.id school_id,(select count(*) from programs p where p.school_id=s.id and p.status='active')::int programs,(select count(*) from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=s.id)::int intakes,(select count(*) from scholarships sc where sc.school_id=s.id and sc.status='active')::int scholarships,(select count(*) from scholarships sc where sc.school_id=s.id and sc.status='active' and sc.verification_status='verified')::int verified_scholarships from schools s where s.slug='sichuan-university' and s.status='active' and s.verification_status='verified'", []);
     if (totals.length !== 1 || totals[0].programs !== 639 || totals[0].intakes !== 639 || totals[0].scholarships !== 2 || totals[0].verified_scholarships !== 2) throw new Error(`SCU post-check failed: ${JSON.stringify(totals)}`);
-    const rich = await tx.query<any>("select count(*)::int count from scholarships where slug=any($1::text[]) and status='active' and verification_status='verified' and jsonb_array_length(benefit_items)>0 and jsonb_array_length(eligibility_items)>0 and jsonb_array_length(application_materials)>0 and jsonb_array_length(application_steps)>0 and jsonb_array_length(action_links)>0", [scholarshipSlugs]);
+    const rich = await tx.query<CatalogTotalsRow>("select count(*)::int count from scholarships where slug=any($1::text[]) and status='active' and verification_status='verified' and jsonb_array_length(benefit_items)>0 and jsonb_array_length(eligibility_items)>0 and jsonb_array_length(application_materials)>0 and jsonb_array_length(application_steps)>0 and jsonb_array_length(action_links)>0", [scholarshipSlugs]);
     if (rich[0]?.count !== 2) throw new Error(`SCU rich scholarship post-check failed: ${JSON.stringify(rich)}`);
-    const cityAfter = await tx.query<any>("select id,slug,name_en,name_zh,region,province,status,verification_status,source_url,source_label,source_field_lineage_json from cities where slug='chengdu'", []);
+    const cityAfter = await tx.query<CatalogCityRow>("select id,slug,name_en,name_zh,region,province,status,verification_status,source_url,source_label,source_field_lineage_json from cities where slug='chengdu'", []);
     if (JSON.stringify(cityAfter) !== JSON.stringify(cityBefore)) throw new Error("SCU publication substantively changed the Chengdu dependency city.");
     return { written: written.summary, schoolId: totals[0].school_id, totals: totals[0], richScholarships: rich[0].count };
   });

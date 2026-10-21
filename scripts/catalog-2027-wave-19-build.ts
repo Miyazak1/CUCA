@@ -7,6 +7,7 @@ import {
   type CatalogSeedProgram,
   type CatalogSeedProgramIntake,
   type CatalogSeedScholarship,
+  type CatalogSeedSchool,
 } from "../src/server/catalog/seed-contract.ts";
 
 type ManifestSource = { id: string; label: string; url: string; finalUrl?: string; fetchedAt: string; status: number; sha256: string; artifactPath: string };
@@ -49,7 +50,7 @@ const fields = (id: string) => {
   return { sourceUrl: item.finalUrl ?? item.url, sourceLabel: item.label, sourceSha256: item.sha256, capturedAt: item.fetchedAt };
 };
 const verifiedAt = [...evidence.values()].map((row) => row.fetchedAt).sort().at(-1)!;
-const school = {
+const school: CatalogSeedSchool = {
   ...baseSchool,
   languageOfInstruction: "Chinese for the published January and March 2027 scholarship routes.",
   languageRequirement: "Route-specific HSK/HSKK rules apply: the one-semester route requires HSK 3 score 180 plus HSKK; the four-week route requires an HSK score but publishes no minimum.",

@@ -1,21 +1,24 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+
+type EvidenceSource = { id: string; status: number; sha256: string; finalUrl: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources: EvidenceSource[] };
 
 const root = process.cwd();
 const runPath = resolve(root, "work/catalog-official/dut-complete-batch-01");
 const manifestText = await readFile(resolve(runPath, "manifest.json"), "utf8");
-const manifest = JSON.parse(manifestText);
-const legacy = JSON.parse(await readFile(resolve(root, "seeds/catalog.cscalite-online-20260910.published.json"), "utf8"));
-const byId = new Map(manifest.sources.map((source: any) => [source.id, source]));
+const manifest = JSON.parse(manifestText) as EvidenceManifest;
+const legacy = JSON.parse(await readFile(resolve(root, "seeds/catalog.cscalite-online-20260910.published.json"), "utf8")) as CatalogSeedBundle;
+const byId = new Map(manifest.sources.map((source) => [source.id, source]));
 const meta = (id: string) => {
-  const source: any = byId.get(id);
+  const source = byId.get(id);
   if (!source || source.status !== 200 || !/^[a-f0-9]{64}$/.test(source.sha256)) throw new Error(`Missing valid source metadata: ${id}`);
   return { sourceUrl: source.finalUrl, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
 };
 const schoolSlug = "dalian-university-of-technology";
-const school = legacy.schools.find((row: any) => row.slug === schoolSlug);
+const school = legacy.schools?.find((row) => row.slug === schoolSlug);
 if (!school) throw new Error("DUT legacy dependency school not found.");
 
 const programDefinitions = [
@@ -66,7 +69,8 @@ const programIntakes = programs.map(program => ({
   sourceFieldLineage: { deadlineDate: "申请方式：学校网站申请截止日期 2月15日; date normalized to ISO UTC" },
 }));
 
-const common = (sourceId: string, value: any) => ({
+type ScholarshipInput = Omit<CatalogSeedScholarship, "schoolSlug" | "status" | "sourceUrl" | "sourceLabel" | "sourceSha256" | "capturedAt" | "actionLinks" | "sourceFieldLineage">;
+const common = (sourceId: string, value: ScholarshipInput): CatalogSeedScholarship => ({
   schoolSlug,
   status: "draft" as const,
   providerLocation: "Dalian, China",
@@ -74,7 +78,7 @@ const common = (sourceId: string, value: any) => ({
   targetRegions: [],
   ...meta(sourceId),
   actionLinks: [
-    { label: value.title, url: (byId.get(sourceId) as any).finalUrl, kind: "official-source" },
+    { label: value.title, url: meta(sourceId).sourceUrl, kind: "official-source" },
     { label: "DUT international application system", url: "https://iso.dlut.edu.cn", kind: "official-application" },
   ],
   sourceFieldLineage: {

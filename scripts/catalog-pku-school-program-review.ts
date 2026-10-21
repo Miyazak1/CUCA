@@ -3,6 +3,9 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; sha256: string; status: number; url: string; label: string; fetchedAt: string; contentType: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
+
 const root = process.cwd();
 const candidatePath = resolve(root, "seeds/catalog.pku-school-program-batch-01.draft.json");
 const validationPath = resolve(root, "seeds/catalog.pku-school-program-batch-01.validation.json");
@@ -13,14 +16,15 @@ const evidenceSpecs = [
   ["work/catalog-official/2026-09-11T08-20-11-511Z/manifest.json", "pku-undergraduate-admission-catalog-2026", "ba5d3c64b540bf423246b947e644d9aa3269ca32fdfeee34860a53bbb9f6fa60"],
   ["work/catalog-official/2026-09-11T08-21-09-883Z/manifest.json", "pku-undergraduate-admission-catalog-zh-2026", "ad5353802c1a8ee837f3000c10b71f8d17ae86e0a3e81092484cf85998b95720"],
 ] as const;
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const [path, id, sha] of evidenceSpecs) {
-  const item = JSON.parse(await readFile(resolve(root, path), "utf8")).sources?.[0];
+  const item = (JSON.parse(await readFile(resolve(root, path), "utf8")) as EvidenceManifest).sources?.[0];
   if (item?.id !== id || item?.sha256 !== sha || item?.status !== 200) throw new Error(`Official evidence mismatch: ${id}`);
   evidence.set(id, item);
 }
 const EXAM = evidence.get("pku-undergraduate-entrance-exam-2026")!;
 const CATALOG = evidence.get("pku-undergraduate-admission-catalog-2026")!;
+const EXEMPTION = evidence.get("pku-undergraduate-without-written-exam-2026")!;
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 type Route = { nameEn: string; nameZh: string; faculty: string; science: boolean; streams: string };
 const routes: Route[] = [
@@ -76,7 +80,7 @@ const candidate: CatalogSeedBundle = {
     sourceFieldLineage: { nameEn: "official notice title and institution context", nameZh: "official Chinese catalogue", languageOfInstruction: "Basic Information", languageRequirement: "two 2026 admission route notices", deadlineSummary: "Application Method sections", tuitionSummary: "Related Fees", applicationFee: "Related Fees", cscaRequirement: "Scholarships CSCA rule", campusHighlights: "Basic Information and Admission Catalogue note 1" },
   }],
   programs,
-  programIntakes: programs.map(program => ({ programSlug: program.slug, intakeTerm: "Fall", intakeYear: 2026, openDate: "2025-12-19T04:00:00.000Z", deadlineDate: "2026-07-10T15:59:59.000Z", deadlineLabel: "July 10, 2026 (final written-test exemption round)", applicationRound: "2026 entrance-exam or written-test-exemption admission", status: "closed" as const, sourceUrl: evidence.get("pku-undergraduate-without-written-exam-2026").url, sourceLabel: evidence.get("pku-undergraduate-without-written-exam-2026").label, sourceSha256: evidence.get("pku-undergraduate-without-written-exam-2026").sha256, capturedAt: evidence.get("pku-undergraduate-without-written-exam-2026").fetchedAt, sourceFieldLineage: { openDate: "Application Method round 1", deadlineDate: "Application Method round 2" } })),
+  programIntakes: programs.map(program => ({ programSlug: program.slug, intakeTerm: "Fall", intakeYear: 2026, openDate: "2025-12-19T04:00:00.000Z", deadlineDate: "2026-07-10T15:59:59.000Z", deadlineLabel: "July 10, 2026 (final written-test exemption round)", applicationRound: "2026 entrance-exam or written-test-exemption admission", status: "closed" as const, sourceUrl: EXEMPTION.url, sourceLabel: EXEMPTION.label, sourceSha256: EXEMPTION.sha256, capturedAt: EXEMPTION.fetchedAt, sourceFieldLineage: { openDate: "Application Method round 1", deadlineDate: "Application Method round 2" } })),
   scholarships: [],
 };
 const validation = createCatalogMigrationValidationReport(candidate);

@@ -17,8 +17,9 @@ if (!["postgres:", "postgresql:"].includes(target.protocol) || target.search || 
 const bundle = JSON.parse(await readFile(resolve(process.cwd(), "seeds/catalog.current-2027-prerequisites.reviewed.json"), "utf8")) as CatalogSeedBundle;
 const review = JSON.parse(await readFile(resolve(process.cwd(), "seeds/catalog.current-2027-prerequisites.review.json"), "utf8"));
 const report = createCatalogMigrationValidationReport(bundle);
-if (!report.ok || bundle.version !== 2 || bundle.handoff?.reviewReference !== review.reviewReference
-  || bundle.handoff.prohibitedDataReviewReference !== review.reviewReference || review.status !== "human_review_completed"
+const handoff = bundle.handoff;
+if (!report.ok || bundle.version !== 2 || !handoff || handoff.reviewReference !== review.reviewReference
+  || handoff.prohibitedDataReviewReference !== review.reviewReference || review.status !== "human_review_completed"
   || review.publicationBundleSha256 !== report.bundleSha256 || review.operationPlanSha256 !== report.operationPlanSha256
   || review.confirmations?.contentReviewed !== true || review.confirmations?.officialSourcesReviewed !== true
   || review.confirmations?.publicContentConfirmed !== true || review.confirmations?.prohibitedDataConfirmedExcluded !== true

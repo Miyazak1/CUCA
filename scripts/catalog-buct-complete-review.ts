@@ -8,6 +8,11 @@ import {
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
 import { localDatabaseUrl } from "./lib/local-development.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; finalUrl?: string; label: string; fetchedAt: string; contentType: string; byteLength: number };
+type EvidenceManifest = { sources: EvidenceSource[] };
+type DatabaseRow = { id: string; slug: string; status: string; verification_status: string; [key: string]: unknown };
+type Preflight = { schools: DatabaseRow[]; conflicts: DatabaseRow[]; city: DatabaseRow[] };
+
 const root = process.cwd();
 const paths = {
   candidate: resolve(root, "seeds/catalog.buct-complete-batch-01.draft.json"),
@@ -28,7 +33,7 @@ const [candidateText, validationText, manifestText, parsedText, stateText] = awa
 ]);
 const candidate = JSON.parse(candidateText) as CatalogSeedBundle;
 const validation = JSON.parse(validationText);
-const manifest = JSON.parse(manifestText);
+const manifest = JSON.parse(manifestText) as EvidenceManifest;
 const parsed = JSON.parse(parsedText);
 const evidence = manifest.sources;
 const fresh = createCatalogMigrationValidationReport(candidate);
@@ -45,7 +50,7 @@ if (candidate.programs.some((row) => /https?:|Supervisor\s+List/i.test(`${row.na
 if (candidate.scholarships.some((row) => !row.coverage || !row.amountText || !row.benefitItems?.length || !row.eligibilityItems?.length || !row.applicationMaterials?.length || !row.applicationSteps?.length || !row.actionLinks?.length)) {
   throw new Error("BUCT scholarship rich fields incomplete.");
 }
-if (evidence.length !== 7 || evidence.some((row: any) => row.status !== 200 || row.contentType !== "text/html" || !/^[a-f0-9]{64}$/.test(row.sha256) || row.byteLength > 15 * 1024 * 1024)) {
+if (evidence.length !== 7 || evidence.some((row) => row.status !== 200 || row.contentType !== "text/html" || !/^[a-f0-9]{64}$/.test(row.sha256) || row.byteLength > 15 * 1024 * 1024)) {
   throw new Error("BUCT official evidence manifest incomplete.");
 }
 
@@ -53,11 +58,11 @@ const schoolSlug = "beijing-university-of-chemical-technology";
 const programSlugs = candidate.programs.map((row) => row.slug);
 const scholarshipSlugs = candidate.scholarships.map((row) => row.slug);
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(JSON.parse(stateText)), max: 1, applicationName: "cuac:buct-complete-review" });
-let preflight: any;
+let preflight: Preflight;
 try {
-  const schools = await pool.query("select id,slug,name_en,name_zh,status,verification_status from schools where slug=$1 or lower(name_en)=lower($2) or name_zh=$3", [schoolSlug, "Beijing University of Chemical Technology", "北京化工大学"]);
-  const conflicts = await pool.query("select 'program' kind,slug from programs where slug=any($1::text[]) union all select 'scholarship' kind,slug from scholarships where slug=any($2::text[])", [programSlugs, scholarshipSlugs]);
-  const city = await pool.query("select id,slug,name_en,name_zh,region,province,status,verification_status,source_url,source_label,source_note,source_field_lineage_json from cities where slug='beijing'");
+  const schools = await pool.query<DatabaseRow>("select id,slug,name_en,name_zh,status,verification_status from schools where slug=$1 or lower(name_en)=lower($2) or name_zh=$3", [schoolSlug, "Beijing University of Chemical Technology", "北京化工大学"]);
+  const conflicts = await pool.query<DatabaseRow>("select 'program' kind,slug from programs where slug=any($1::text[]) union all select 'scholarship' kind,slug from scholarships where slug=any($2::text[])", [programSlugs, scholarshipSlugs]);
+  const city = await pool.query<DatabaseRow>("select id,slug,name_en,name_zh,region,province,status,verification_status,source_url,source_label,source_note,source_field_lineage_json from cities where slug='beijing'");
   preflight = { schools: schools.rows, conflicts: conflicts.rows, city: city.rows };
   if (schools.rows.length || conflicts.rows.length || city.rows.length !== 1 || city.rows[0].status !== "active") {
     throw new Error(`BUCT safe-new baseline mismatch: ${JSON.stringify(preflight)}`);
@@ -91,7 +96,7 @@ const reviewBase = {
   operationPlanSha256: fresh.operationPlanSha256,
   sourceManifestSha256: sha(manifestText),
   parsedArtifactSha256: sha(parsedText),
-  evidence: evidence.map((row: any) => ({ sourceId: row.id, sourceUrl: row.finalUrl ?? row.url, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType, byteLength: row.byteLength })),
+  evidence: evidence.map((row) => ({ sourceId: row.id, sourceUrl: row.finalUrl ?? row.url, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType, byteLength: row.byteLength })),
   sourceReview: {
     result: "pass",
     note: "Seven registered official BUCT HTML sources were captured within policy. Current 2026–2027 degree tables yield 108 unique school/program/language routes: 46 undergraduate, 46 master and 16 doctoral. Three current scholarship routes preserve the published coverage, eligibility, materials and application path.",

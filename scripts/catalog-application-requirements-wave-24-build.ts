@@ -12,6 +12,7 @@ if (!source || source.status !== 200 || source.contentType !== "text/html"
   || source.sha256 !== "8fe09f32b70210fee64ab4f0c9bc982803914adcbd00a31a42ed4136e3b9c138") {
   throw new Error("GXMU requirement evidence mismatch.");
 }
+const reviewedSource = source;
 const seed = JSON.parse(await readFile(resolve(root, "seeds/catalog.gxmu-complete-batch-01.draft.json"), "utf8")) as CatalogSeed;
 const mbbsSlug = "guangxi-medical-university-mbbs";
 const chineseProgramSlugs = seed.programs.map((program) => program.slug).filter((slug) => slug !== mbbsSlug);
@@ -58,8 +59,8 @@ function documentFor(route: "mbbs" | "chinese") {
   const mbbs = route === "mbbs";
   return parseRequirementDocument({
     schemaVersion: 1, language: "en", coverage: "complete",
-    sources: [{ key: "gxmu_undergraduate", url: source.url, title: source.label,
-      capturedAt: source.fetchedAt, contentSha256: source.sha256 }],
+    sources: [{ key: "gxmu_undergraduate", url: reviewedSource.url, title: reviewedSource.label,
+      capturedAt: reviewedSource.fetchedAt, contentSha256: reviewedSource.sha256 }],
     requirements: [
       ...commonRequirements,
       item("csca", "academic_results", "required", mbbs ? "English-taught MBBS applicants" : "Chinese-taught undergraduate applicants",

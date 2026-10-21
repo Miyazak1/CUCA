@@ -6,6 +6,7 @@ import { localDatabaseUrl } from "./lib/local-development.ts";
 
 type Row = Record<string, unknown>;
 type EntityType = "school" | "program" | "scholarship";
+type FieldOperation = Row & { entityType: EntityType; entitySlug: string; field: string };
 
 const root = process.cwd();
 const quality = resolve(root, "work/catalog-quality");
@@ -37,7 +38,7 @@ if (readiness.executionAuthorized !== false || readiness.publicationAuthorized !
   || rehearsal.planSha256 !== readiness.planSha256 || rehearsal.status !== "passed_non_authorizing_rehearsal") throw new Error("Readiness and rehearsal evidence do not match.");
 if (!Object.values(readiness.gates as Row).every(value => value === true)) throw new Error("A readiness gate has not passed.");
 
-const fieldOperations = [...remediation.replayReady.fieldOperations, ...remediation.reviewDeferred.fieldOperations] as Row[];
+const fieldOperations = [...remediation.replayReady.fieldOperations, ...remediation.reviewDeferred.fieldOperations] as FieldOperation[];
 const intakeOperations = [...remediation.replayReady.intakeOperations, ...remediation.reviewDeferred.intakeOperations] as Row[];
 const replacements = prohibited.classifications.officialReplacementDraft as Row[];
 const quarantines = prohibited.classifications.quarantineRequired as Row[];
@@ -46,6 +47,10 @@ for (const operation of [...fieldOperations, ...intakeOperations]) {
   if (!String(operation.sourceUrl).startsWith("https://") || prohibitedSource(operation.sourceUrl) || !exactSha(operation.sourceSha256)) {
     throw new Error("Release candidate contains unsafe operation evidence.");
   }
+}
+if (fieldOperations.some((operation) => typeof operation.entitySlug !== "string" || typeof operation.field !== "string"
+  || !["school", "program", "scholarship"].includes(operation.entityType))) {
+  throw new Error("Release candidate contains an invalid field operation.");
 }
 for (const item of replacements) {
   const candidate = item.candidate as Row;

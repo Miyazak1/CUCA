@@ -1,7 +1,13 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+import {
+  createCatalogMigrationValidationReport,
+  type CatalogSeedBundle,
+  type CatalogSeedProgram,
+  type CatalogSeedProgramIntake,
+  type CatalogSeedScholarship,
+} from "../src/server/catalog/seed-contract.ts";
 
 const root = process.cwd();
 const parsedPath = resolve(root, "work/catalog-official/zju-complete-batch-01/parsed-graduate-routes.json");
@@ -12,16 +18,38 @@ const reviewPath = resolve(root, "seeds/catalog.zju-complete-batch-01.review.jso
 const parsedText = await readFile(parsedPath, "utf8");
 const sha256 = (value: string) => createHash("sha256").update(value).digest("hex");
 if (sha256(parsedText) !== "41674054f4d7fca1ae1d0f19d1f04f14f653fe5e9c8ec2715cc5e3b853c8467e") throw new Error("ZJU parsed graduate routes changed after visual review.");
-const parsed = JSON.parse(parsedText);
+type ParsedRoute = {
+  degree: string;
+  teachingLanguage: string;
+  schoolOrDepartment: string;
+  nameEn: string;
+  requirementsAndTips: string;
+  durationYears?: number;
+  durationText: string;
+  sourceId: string;
+  sourcePage: number;
+  sourceRow: number;
+  tuitionAmount?: number;
+  tuitionPeriod?: string;
+  tuitionText: string;
+  applicationDeadline: string;
+};
+type ParsedRoutes = { counts: Record<string, number>; duplicateIdentities: unknown[]; suspiciousRows: unknown[]; routes: ParsedRoute[] };
+type EvidenceSource = { id: string; url: string; label: string; sha256: string; status: number; fetchedAt: string };
+type Manifest = { sources?: EvidenceSource[] };
+const parsed = JSON.parse(parsedText) as ParsedRoutes;
 if (JSON.stringify(parsed.counts) !== JSON.stringify({ total: 588, master: 284, doctoral: 304, chinese: 442, english: 146, specialDeadline: 25 }) || parsed.duplicateIdentities.length || parsed.suspiciousRows.length) throw new Error(`Unexpected ZJU extraction summary: ${JSON.stringify(parsed.counts)}`);
-const prior = JSON.parse(await readFile(priorPath, "utf8"));
+const prior = JSON.parse(await readFile(priorPath, "utf8")) as CatalogSeedBundle;
 if (prior.schools?.length !== 1 || prior.schools[0].slug !== "zhejiang-university") throw new Error("Reviewed ZJU dependency bundle is unavailable.");
+if (!prior.cities) throw new Error("Reviewed ZJU city dependency is unavailable.");
+const priorCities = prior.cities;
+const priorSchools = prior.schools;
 
 const manifests = await Promise.all([
   "work/catalog-official/zju-complete-batch-01/manifest.json",
   "work/catalog-official/zju-complete-batch-01-english/manifest.json",
   "work/catalog-official/zju-scholarships-batch-01-extra/manifest.json",
-].map(path => readFile(resolve(root, path), "utf8").then(JSON.parse)));
+].map(async (path) => JSON.parse(await readFile(resolve(root, path), "utf8")) as Manifest));
 const expected: Record<string, string> = {
   "zju-master-admissions-en-2026": "206cfe853e0b34603f9308b937d7f6df48065b864f6b2139d7385a26d2e4c8cf",
   "zju-doctoral-admissions-2026": "8d55e19959f02ff20e6b5a2c5cfa23f28d429d417b09fc800fad4b13b355dc76",
@@ -32,19 +60,19 @@ const expected: Record<string, string> = {
   "zju-cgs-university-program-scholarship-2026": "e46f805f77efa309994ca3606f9ff3724951d4e023cb3cdca7d2817c59f21495",
   "zju-ism-master-freshman-scholarship-2026": "b091d49f378601ab861059b288bdcec435af138b7673eb040d1a74bb4357ed2e",
 };
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const manifest of manifests) for (const source of manifest.sources ?? []) if (expected[source.id] === source.sha256 && source.status === 200) evidence.set(source.id, source);
 const missing = Object.keys(expected).filter(id => !evidence.has(id));
 if (missing.length) throw new Error(`Missing locked ZJU evidence: ${missing.join(", ")}`);
 
 const slugify = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const routeIdentity = (route: any) => [route.degree, route.teachingLanguage, route.schoolOrDepartment, route.nameEn].join("|");
-const programSlug = (route: any) => {
+const routeIdentity = (route: ParsedRoute) => [route.degree, route.teachingLanguage, route.schoolOrDepartment, route.nameEn].join("|");
+const programSlug = (route: ParsedRoute) => {
   const verbose = slugify(["zhejiang-university", route.degree, route.schoolOrDepartment, route.nameEn, route.teachingLanguage].join(" "));
   return verbose.length <= 180 ? verbose : `${verbose.slice(0, 163).replace(/-+$/g, "")}-${sha256(routeIdentity(route)).slice(0, 16)}`;
 };
 const publicNote = (value: string) => value.replace(/https?:\/\/\S+/gi, "").replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "").replace(/\+?86[\d\s-]{7,}/g, "").replace(/\s+/g, " ").trim();
-const programs = parsed.routes.map((route: any) => {
+const programs = parsed.routes.map<CatalogSeedProgram>((route) => {
   const source = evidence.get(route.sourceId)!;
   const notes = publicNote(route.requirementsAndTips);
   const normalizedDuration = route.durationYears && Number.isInteger(route.durationYears)
@@ -72,7 +100,7 @@ const programs = parsed.routes.map((route: any) => {
   };
 });
 if (new Set(programs.map(program => program.slug)).size !== programs.length) throw new Error("ZJU program slugs are not unique.");
-const programIntakes = programs.map((program, index) => {
+const programIntakes = programs.map<CatalogSeedProgramIntake>((program, index) => {
   const route = parsed.routes[index];
   return { programSlug: program.slug, intakeTerm: "Fall", intakeYear: 2026, deadlineDate: `${route.applicationDeadline}T00:00:00.000Z`, deadlineLabel: `Application deadline: ${route.applicationDeadline === "2026-05-31" ? "May 31, 2026" : "February 28, 2026"}`, applicationRound: "2026 international graduate intake", status: "closed" as const, sourceUrl: program.sourceUrl, sourceLabel: program.sourceLabel, sourceSha256: program.sourceSha256, capturedAt: program.capturedAt, sourceFieldLineage: { deadlineDate: `PDF page ${route.sourcePage}, general note or Other Requirements and Tips; date-only value normalized to ISO UTC` } };
 });
@@ -89,13 +117,13 @@ const scholarships: CatalogSeedScholarship[] = [
 ];
 
 const generatedAt = new Date().toISOString();
-const candidate: CatalogSeedBundle = { version: 1, generatedAt, cities: prior.cities.map((row: any) => ({ ...row })), schools: prior.schools.map((row: any) => ({ ...row })), programs, programIntakes, scholarships };
+const candidate: CatalogSeedBundle = { version: 1, generatedAt, cities: priorCities.map((row) => ({ ...row })), schools: priorSchools.map((row) => ({ ...row })), programs, programIntakes, scholarships };
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
 const validation = createCatalogMigrationValidationReport(JSON.parse(candidateText));
 if (!validation.ok) throw new Error(`ZJU complete candidate validation failed:\n${validation.errors.join("\n")}`);
 const candidateSha256 = sha256(candidateText);
 const evidenceRows = [...evidence.values()].map(source => ({ sourceId: source.id, sourceUrl: source.url, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt })).sort((a, b) => a.sourceId.localeCompare(b.sourceId));
-const reviewBase = { version: 1, status: "standing_user_approval", generatedAt, scope: { schoolSlug: "zhejiang-university", dependencyCityReplayCount: prior.cities.length, dependencySchoolReplayCount: 1, newProgramRouteCount: 588, masterRouteCount: 284, doctoralRouteCount: 304, newProgramIntakeCount: 588, newScholarshipCount: 2, archiveProgramAliasCount: 0, archiveScholarshipAliasCount: 0 }, candidateSha256, evidence: evidenceRows, visualReview: { result: "pass", masterPdfPagesReviewed: 21, doctoralPdfPagesReviewed: 21, note: "All 42 official catalog pages were rendered and visually inspected. Ruled tables, cross-page institution groups, duration, tuition and special deadline notes are readable. Research directions remain part of their parent program." }, standingAuthorization: { reference: "user-chat-2026-09-13-default-publication", instruction: "发布默认允许", appliesBecause: "The batch adds only new non-conflicting graduate routes, intakes and two distinct scholarship records. It archives and deletes nothing. Existing Hangzhou and ZJU rows are replayed byte-equivalently from the approved bundle." }, reconciliation: { actionAfterReview: "insert_new_verified_zju_graduate_routes_and_two_scholarships", destructiveDeletion: false, existingDependencyRowsReplayedByteEquivalently: true, newProgramSlugConflicts: 0, existingGraduateSemanticConflicts: 0, newScholarshipSlugConflicts: 0 }, deferredConflicts: [{ existingSlug: "zhejiang-university", title: "浙江省政府来华留学生奖学金", reason: "semantic overlap with a richer official 2026 Zhejiang Government Scholarship record; archive/replace requires exact approval" }, { existingSlug: "zhejiang-university-csc-type-a", title: "中国政府奖学金国别双边项目（CSC Type A）", reason: "semantic overlap with a richer official 2026 CSC Type A record; archive/replace requires exact approval" }], unresolvedFields: ["Rows publishing combined academic/professional durations retain the exact duration text when a single numeric duration cannot be represented.", "Program-specific language thresholds remain linked to official ZJU requirements unless explicitly stated in the reviewed catalog.", "Two conflicting legacy scholarship summaries are excluded from this safe publication batch pending reconciliation approval."], sensitiveDataCheck: { result: "pass", scope: "candidate bundle only", note: "Only public institutional, program, tuition, admissions and scholarship data is included. Applicant data is absent. Personal contact strings from program-table notes are removed from public application notes." }, reviewNotes: ["Program identity is degree + teaching language + school/department + discipline/program.", "Master and doctoral catalogs are official 2026 ZJU publications; tuition and special deadlines are preserved per row.", "The existing verified International Chinese Language Teachers Scholarship is untouched."] };
+const reviewBase = { version: 1, status: "standing_user_approval", generatedAt, scope: { schoolSlug: "zhejiang-university", dependencyCityReplayCount: priorCities.length, dependencySchoolReplayCount: 1, newProgramRouteCount: 588, masterRouteCount: 284, doctoralRouteCount: 304, newProgramIntakeCount: 588, newScholarshipCount: 2, archiveProgramAliasCount: 0, archiveScholarshipAliasCount: 0 }, candidateSha256, evidence: evidenceRows, visualReview: { result: "pass", masterPdfPagesReviewed: 21, doctoralPdfPagesReviewed: 21, note: "All 42 official catalog pages were rendered and visually inspected. Ruled tables, cross-page institution groups, duration, tuition and special deadline notes are readable. Research directions remain part of their parent program." }, standingAuthorization: { reference: "user-chat-2026-09-13-default-publication", instruction: "发布默认允许", appliesBecause: "The batch adds only new non-conflicting graduate routes, intakes and two distinct scholarship records. It archives and deletes nothing. Existing Hangzhou and ZJU rows are replayed byte-equivalently from the approved bundle." }, reconciliation: { actionAfterReview: "insert_new_verified_zju_graduate_routes_and_two_scholarships", destructiveDeletion: false, existingDependencyRowsReplayedByteEquivalently: true, newProgramSlugConflicts: 0, existingGraduateSemanticConflicts: 0, newScholarshipSlugConflicts: 0 }, deferredConflicts: [{ existingSlug: "zhejiang-university", title: "浙江省政府来华留学生奖学金", reason: "semantic overlap with a richer official 2026 Zhejiang Government Scholarship record; archive/replace requires exact approval" }, { existingSlug: "zhejiang-university-csc-type-a", title: "中国政府奖学金国别双边项目（CSC Type A）", reason: "semantic overlap with a richer official 2026 CSC Type A record; archive/replace requires exact approval" }], unresolvedFields: ["Rows publishing combined academic/professional durations retain the exact duration text when a single numeric duration cannot be represented.", "Program-specific language thresholds remain linked to official ZJU requirements unless explicitly stated in the reviewed catalog.", "Two conflicting legacy scholarship summaries are excluded from this safe publication batch pending reconciliation approval."], sensitiveDataCheck: { result: "pass", scope: "candidate bundle only", note: "Only public institutional, program, tuition, admissions and scholarship data is included. Applicant data is absent. Personal contact strings from program-table notes are removed from public application notes." }, reviewNotes: ["Program identity is degree + teaching language + school/department + discipline/program.", "Master and doctoral catalogs are official 2026 ZJU publications; tuition and special deadlines are preserved per row.", "The existing verified International Chinese Language Teachers Scholarship is untouched."] };
 const reviewHash = sha256(JSON.stringify(reviewBase));
 const review = { ...reviewBase, reviewHash, publicationReference: "standing-user-default-publication" };
 await writeFile(candidatePath, candidateText, { flag: "wx" });

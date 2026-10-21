@@ -8,6 +8,11 @@ import {
   type CatalogSeedScholarship,
 } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources?: EvidenceSource[] };
+type HitRoute = { sourceId: string; degree: CatalogSeedProgram["degreeLevel"]; language: string; majorEn: string; schoolEn: string; durationYears: number; cscaRequirementEn?: string; sourceRow: number };
+type ParsedRoutes = { counts: Record<string, number>; routes: HitRoute[] };
+
 const root = process.cwd();
 const runDir = resolve(root, "work/catalog-official/hit-complete-batch-01");
 const candidatePath = resolve(root, "seeds/catalog.hit-complete-batch-01.draft.json");
@@ -31,9 +36,9 @@ const expected: Record<string, string> = {
   "hit-china-link-scholarship-2026": "2f8038073786c333a19d022a67332658df70f6c8d8b88f0562d08da48a2d99ba",
 };
 
-const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8"));
-const parsed = JSON.parse(await readFile(resolve(runDir, "parsed-routes.json"), "utf8"));
-const evidence = new Map<string, any>();
+const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8")) as EvidenceManifest;
+const parsed = JSON.parse(await readFile(resolve(runDir, "parsed-routes.json"), "utf8")) as ParsedRoutes;
+const evidence = new Map<string, EvidenceSource>();
 for (const source of manifest.sources ?? []) {
   if (source.status !== 200 || expected[source.id] !== source.sha256) throw new Error(`Official snapshot mismatch: ${source.id}`);
   evidence.set(source.id, source);
@@ -51,10 +56,9 @@ const subjects = (text: string) => [
   /Chemistry/i.test(text) ? "Chemistry" : null,
 ].filter(Boolean) as string[];
 const usedSlugs = new Set<string>();
-const programs: CatalogSeedProgram[] = parsed.routes.map((route: any, index: number) => {
+const programs: Array<CatalogSeedProgram & { _deadlineDate: string }> = parsed.routes.map((route, index) => {
   const source = evidence.get(route.sourceId)!;
   const guideId = route.degree === "Undergraduate" ? "hit-bachelor-guide-2026" : route.degree === "Master" ? "hit-master-guide-2026" : "hit-doctoral-guide-2026";
-  const guide = evidence.get(guideId)!;
   const routeSubjects = subjects(route.cscaRequirementEn || "");
   const teachingLanguage = route.language === "English & Chinese" ? "Chinese and English" : route.language;
   let slug = `${schoolSlug}-${route.degree.toLowerCase()}-${slugify(route.schoolEn)}-${slugify(route.majorEn)}-${slugify(teachingLanguage)}`;
@@ -140,7 +144,9 @@ const scholarships: CatalogSeedScholarship[] = [
 ];
 
 const bachelorGuide = evidence.get("hit-bachelor-guide-2026")!;
-const cleanPrograms = programs.map(({ _deadlineDate, ...program }: any) => program);
+const cleanPrograms = programs.map((program) => Object.fromEntries(
+  Object.entries(program).filter(([key]) => key !== "_deadlineDate"),
+)) as CatalogSeedProgram[];
 const candidate: CatalogSeedBundle = {
   version: 1, generatedAt: manifest.generatedAt,
   cities: [{ slug: "harbin", nameEn: "Harbin", nameZh: "哈尔滨", region: "Northeast China", province: "Heilongjiang", status: "draft", sourceUrl: bachelorGuide.url, sourceLabel: bachelorGuide.label, sourceSha256: bachelorGuide.sha256, capturedAt: bachelorGuide.fetchedAt, sourceFieldLineage: { nameEn: "official university address", province: "official university address" } }],
@@ -161,7 +167,7 @@ const candidate: CatalogSeedBundle = {
     sourceFieldLineage: { nameEn: "official admission guide", citySlug: "official address", applicationLevel: "three degree guides", languageRequirement: "degree-guide eligibility sections", deadlineSummary: "degree-guide application periods", tuitionSummary: "degree-guide fee tables", applicationFee: "degree-guide fee tables", admissionsUrl: "registered official bachelor guide", cscaRequirement: "official 2026/27 bachelor major list" },
   }],
   programs: cleanPrograms,
-  programIntakes: programs.map((program: any) => {
+  programIntakes: programs.map((program) => {
     const graduate = program.degreeLevel !== "Undergraduate";
     const source = evidence.get(graduate ? program.degreeLevel === "Master" ? "hit-master-guide-2026" : "hit-doctoral-guide-2026" : "hit-bachelor-guide-2026")!;
     return { programSlug: program.slug, intakeTerm: "Fall", intakeYear: 2026, deadlineDate: program._deadlineDate, deadlineLabel: graduate ? "September 2026 intake deadline: May 31, 2026" : "September 2026 intake deadline: July 15, 2026", applicationRound: "Applications open throughout the year until the published final deadline", status: "closed" as const, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt, sourceFieldLineage: { deadlineDate: "official degree guide application period" } };

@@ -10,6 +10,9 @@ const candidatePath = resolve(root, "seeds/catalog.uibe-legacy-alignment-batch-0
 const validationPath = resolve(root, "seeds/catalog.uibe-legacy-alignment-batch-01.validation.json");
 const [sourceText, manifestText] = await Promise.all([readFile(sourcePath, "utf8"), readFile(manifestPath, "utf8")]);
 const source = JSON.parse(sourceText) as CatalogSeedBundle;
+const sourcePrograms = source.programs;
+const sourceSchools = source.schools;
+if (!sourcePrograms || !sourceSchools) throw new Error("UIBE source bundle is incomplete.");
 const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { url: string; sha256: string; status: number }[] };
 const manifestEvidence = new Set(manifest.sources.filter((row) => row.status === 200).map((row) => `${row.url}\n${row.sha256}`));
 
@@ -20,7 +23,7 @@ const programMap: Record<string, string> = {
   "university-of-international-business-and-economics-marketing-467": "uibe-marketing-bachelor",
 };
 const programs = Object.entries(programMap).map(([legacySlug, canonicalSlug]) => {
-  const record = source.programs.find((row) => row.slug === canonicalSlug);
+  const record = sourcePrograms.find((row) => row.slug === canonicalSlug);
   if (!record) throw new Error(`Missing UIBE canonical program: ${canonicalSlug}`);
   if (!manifestEvidence.has(`${record.sourceUrl}\n${record.sourceSha256}`)) throw new Error(`Unpinned UIBE program evidence: ${canonicalSlug}`);
   return {
@@ -31,7 +34,7 @@ const programs = Object.entries(programMap).map(([legacySlug, canonicalSlug]) =>
   };
 });
 
-const schools = source.schools.map((school) => {
+const schools = sourceSchools.map((school) => {
   if (school.slug !== "university-of-international-business-and-economics") return school;
   if (!manifestEvidence.has(`${school.sourceUrl}\n${school.sourceSha256}`)) {
     throw new Error(`Unpinned UIBE school evidence: ${school.slug}`);

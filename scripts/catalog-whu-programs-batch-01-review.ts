@@ -10,6 +10,10 @@ import {
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
 import { localDatabaseUrl } from "./lib/local-development.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; finalUrl: string; url: string; byteLength: number; contentType: string; artifactPath: string; label: string; fetchedAt: string };
+type WhuProgramRow = { catalogGroup?: string; degreeLevel: string; degreeType?: string; departmentEn?: string; durationYears: number; nameEn: string; nameZh?: string; sourceId: string; sourceRow: number; teachingLanguage: string };
+type EntityStatusRow = { slug: string; status: string; verification_status: string };
+
 const root = process.cwd();
 const batch = "whu-programs-batch-01";
 const prefix = `catalog.${batch}`;
@@ -45,7 +49,7 @@ const expectedDocHashes: Record<string, string> = {
   "whu-doctoral-programs-chinese-2026": "1cafb742100696ac597e78b436f2685fc736496555a322490eddc23ad190703b",
   "whu-master-programs-chinese-2026": "0873b1a3d027ed6e2069126e6efa7481d3ed4055f7c962c6141ff2688f6dce6f",
 };
-const docEvidence = new Map<string, any>();
+const docEvidence = new Map<string, EvidenceSource>();
 for (const source of docManifest.sources ?? []) {
   if (expectedDocHashes[source.id] !== source.sha256 || source.status !== 200 || source.finalUrl !== source.url || source.byteLength > 15 * 1024 * 1024 || !String(source.contentType).includes("wordprocessingml.document")) {
     throw new Error(`WHU DOCX evidence changed: ${source.id}`);
@@ -58,7 +62,7 @@ if (docEvidence.size !== 5 || parsed.summary?.programRoutes !== 599 || parsed.su
   throw new Error(`WHU parsed program scope changed: ${JSON.stringify(parsed.summary)}`);
 }
 const guideIds = ["whu-undergraduate-guide-2026", "whu-postgraduate-guide-2026", "whu-csca-instructions-2026"];
-const guideEvidence = new Map<string, any>();
+const guideEvidence = new Map<string, EvidenceSource>();
 for (const source of guideManifest.sources ?? []) if (guideIds.includes(source.id)) guideEvidence.set(source.id, source);
 const expectedGuideHashes: Record<string, string> = {
   "whu-undergraduate-guide-2026": "a5922203ef423a934b1c72cdf55290dc7fe1d351d2da8c04a43679e461f10de1",
@@ -70,7 +74,7 @@ for (const id of guideIds) {
   if (!source || source.status !== 200 || source.sha256 !== expectedGuideHashes[id] || source.finalUrl !== source.url || source.contentType !== "text/html") throw new Error(`WHU guide evidence changed: ${id}`);
 }
 
-const cscaFor = (row: any): { subjects: string[]; note: string } | null => {
+const cscaFor = (row: WhuProgramRow): { subjects: string[]; note: string } | null => {
   if (row.degreeLevel !== "Undergraduate") return null;
   if (row.teachingLanguage === "English") {
     const medical = /medicine|surgery|mbbs|clinical/i.test(`${row.nameEn} ${row.departmentEn ?? ""}`);
@@ -92,8 +96,9 @@ const cscaFor = (row: any): { subjects: string[]; note: string } | null => {
   };
 };
 const usedSlugs = new Set<string>();
-const programs: CatalogSeedProgram[] = parsed.programs.map((row: any) => {
+const programs: CatalogSeedProgram[] = parsed.programs.map((row: WhuProgramRow) => {
   const source = docEvidence.get(row.sourceId);
+  if (!source) throw new Error(`Missing WHU document evidence: ${row.sourceId}`);
   const degreeSlug = row.degreeLevel === "Undergraduate" ? "bachelor" : row.degreeLevel.toLowerCase();
   const departmentSlug = slugify(row.departmentEn || row.catalogGroup || "general");
   const professionalSlug = row.degreeType === "professional" ? "professional" : "academic";
@@ -149,6 +154,7 @@ if (programs.length !== 599 || usedSlugs.size !== 599) throw new Error("WHU prog
 const programIntakes: CatalogSeedProgramIntake[] = programs.map(program => {
   const undergraduate = program.degreeLevel === "Undergraduate";
   const source = guideEvidence.get(undergraduate ? "whu-undergraduate-guide-2026" : "whu-postgraduate-guide-2026");
+  if (!source) throw new Error(`Missing WHU ${undergraduate ? "undergraduate" : "postgraduate"} guide evidence.`);
   return {
     programSlug: program.slug,
     intakeTerm: "Fall",
@@ -182,11 +188,11 @@ try {
   const school = await pool.query("select s.id,s.status,s.verification_status,c.slug city_slug from schools s left join cities c on c.id=s.city_id where s.slug=$1", [schoolSlug]);
   const currentPrograms = await pool.query("select slug,status,verification_status from programs where school_id=$1 order by slug", [school.rows[0]?.id]);
   const conflicts = await pool.query("select slug,status,verification_status from programs where slug=any($1::text[]) order by slug", [programs.map(row => row.slug)]);
-  const scholarships = await pool.query("select slug,status,verification_status from scholarships where school_id=$1 order by slug", [school.rows[0]?.id]);
+  const scholarships = await pool.query<EntityStatusRow>("select slug,status,verification_status from scholarships where school_id=$1 order by slug", [school.rows[0]?.id]);
   if (school.rows.length !== 1 || school.rows[0].status !== "active" || school.rows[0].verification_status !== "verified" || school.rows[0].city_slug !== "wuhan") throw new Error("WHU verified school baseline changed.");
   if (currentPrograms.rows.length !== 0 || conflicts.rows.length !== 0) throw new Error(`WHU program baseline is no longer safe-new: ${JSON.stringify({ current: currentPrograms.rows.length, conflicts: conflicts.rows.length })}`);
-  if (scholarships.rows.length !== 6 || scholarships.rows.some((row: any) => row.status !== "active" || row.verification_status !== "verified")) throw new Error("WHU six-scholarship baseline changed.");
-  const evidence = [...docEvidence.values(), ...guideIds.map(id => guideEvidence.get(id))].map(source => ({ sourceId: source.id, sourceUrl: source.finalUrl, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt, contentType: source.contentType }));
+  if (scholarships.rows.length !== 6 || scholarships.rows.some((row) => row.status !== "active" || row.verification_status !== "verified")) throw new Error("WHU six-scholarship baseline changed.");
+  const evidence = [...docEvidence.values(), ...guideIds.map(id => guideEvidence.get(id)!)].map(source => ({ sourceId: source.id, sourceUrl: source.finalUrl, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt, contentType: source.contentType }));
   const reviewBase = {
     version: 1,
     status: "standing_user_approval",

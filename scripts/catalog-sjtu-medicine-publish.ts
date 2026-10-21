@@ -78,8 +78,8 @@ const approvalRecord = {
 async function writeOrVerify(path: string, value: unknown) {
   const content = `${JSON.stringify(value, null, 2)}\n`;
   try { await writeFile(path, content, { encoding: "utf8", flag: "wx" }); }
-  catch (error: any) {
-    if (error?.code !== "EEXIST") throw error;
+  catch (error: unknown) {
+    if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error;
     if (await readFile(path, "utf8") !== content) throw new Error(`Existing artifact does not match this approval: ${path}`);
   }
 }

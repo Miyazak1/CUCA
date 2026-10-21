@@ -1,0 +1,6 @@
+{
+  "lintErrorsByRule": {
+    "@typescript-eslint/no-explicit-any": 0
+  },
+  "typeErrorsByCode": {}
+}

@@ -1,21 +1,23 @@
 import assert from "node:assert/strict";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import type { CatalogSeedBundle, CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+import { type CatalogApiDetailResponse, type CatalogApiResponse, type CatalogApiVerificationRow } from "./lib/catalog-api-verification.ts";
 
 const root = process.cwd();
 const baseUrl = process.argv.find(arg => arg.startsWith("--base-url="))?.slice("--base-url=".length) ?? "http://127.0.0.1:52118";
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("Verification is restricted to the local CUAC application.");
-const bundle = JSON.parse(await readFile(resolve(root, "seeds/catalog.bnu-scholarships-batch-01.approved.local.json"), "utf8"));
-const approval = JSON.parse(await readFile(resolve(root, "seeds/catalog.bnu-scholarships-batch-01.approval.json"), "utf8"));
+const bundle = JSON.parse(await readFile(resolve(root, "seeds/catalog.bnu-scholarships-batch-01.approved.local.json"), "utf8")) as CatalogSeedBundle;
+const approval = JSON.parse(await readFile(resolve(root, "seeds/catalog.bnu-scholarships-batch-01.approval.json"), "utf8")) as { approvedAt: string; publicationBundleSha256: string };
 const reportPath = resolve(root, "seeds/catalog.bnu-scholarships-batch-01.publication-verification.json");
-const expectedBySlug = new Map<string, any>(bundle.scholarships.map((item: any) => [item.slug, item]));
+const expectedBySlug = new Map<string, CatalogSeedScholarship>((bundle.scholarships ?? []).map((item) => [item.slug, item]));
 assert.equal(expectedBySlug.size, 6);
 
-const publicItems: any[] = [];
+const publicItems: CatalogApiVerificationRow[] = [];
 for (let offset = 0; offset < 2000; offset += 100) {
   const response = await fetch(`${baseUrl}/api/v1/catalog/scholarships?limit=100&offset=${offset}`);
   assert.equal(response.status, 200, `Scholarship list failed at offset ${offset}`);
-  const page = await response.json() as { data: any[] };
+  const page = await response.json() as CatalogApiResponse;
   assert.ok(Array.isArray(page.data));
   publicItems.push(...page.data);
   if (page.data.length < 100) break;
@@ -30,27 +32,27 @@ for (const [slug, expected] of expectedBySlug) {
   assert.equal(listItem.schoolId, "f72de919-b281-4835-b9dd-db93a80c3963");
   assert.equal(listItem.sourceStatus, "verified");
   assert.equal(listItem.lastVerifiedAt, approval.approvedAt);
-  for (const field of ["benefitItems", "eligibilityItems", "applicationMaterials", "applicationSteps", "actionLinks"]) {
-    assert.equal(listItem[field].length, expected[field].length, `${slug}.${field} count mismatch`);
+  for (const field of ["benefitItems", "eligibilityItems", "applicationMaterials", "applicationSteps", "actionLinks"] as const) {
+    assert.equal(listItem[field].length, expected[field]?.length, `${slug}.${field} count mismatch`);
     assert.ok(listItem[field].length > 0, `${slug}.${field} is empty`);
   }
   const response = await fetch(`${baseUrl}/api/v1/catalog/scholarships/${listItem.id}`);
   assert.equal(response.status, 200, `Scholarship detail failed: ${slug}`);
-  const detail = (await response.json() as { data: any }).data;
+  const detail = (await response.json() as CatalogApiDetailResponse).data;
   assert.equal(detail.slug, slug);
   assert.equal(detail.status, "active");
   assert.equal(detail.verificationStatus, "verified");
   assert.equal(detail.lastVerifiedAt, approval.approvedAt);
-  assert.equal(detail.bodySections.length, expected.bodySections.length);
-  assert.equal(detail.benefits.length, expected.benefits.length);
-  assert.equal(detail.tags.length, expected.tags.length);
+  assert.equal(detail.bodySections.length, expected.bodySections?.length ?? 0);
+  assert.equal(detail.benefits.length, expected.benefits?.length ?? 0);
+  assert.equal(detail.tags.length, expected.tags?.length ?? 0);
   assert.equal(detail.school?.slug, "beijing-normal-university");
   assert.deepEqual(detail.sourceFieldLineage, expected.sourceFieldLineage);
 }
 
 const schoolResponse = await fetch(`${baseUrl}/api/v1/catalog/schools/f72de919-b281-4835-b9dd-db93a80c3963`);
 assert.equal(schoolResponse.status, 200, "BNU school detail failed.");
-const school = (await schoolResponse.json() as { data: any }).data;
+const school = (await schoolResponse.json() as CatalogApiDetailResponse).data;
 assert.equal(school.slug, "beijing-normal-university");
 assert.equal(school.programCount, 33);
 assert.equal(school.scholarshipCount, 6);
@@ -72,8 +74,8 @@ const result = {
 const content = `${JSON.stringify(result, null, 2)}\n`;
 try {
   await writeFile(reportPath, content, { encoding: "utf8", flag: "wx" });
-} catch (error: any) {
-  if (error?.code !== "EEXIST") throw error;
+} catch (error: unknown) {
+  if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error;
   const existing = JSON.parse(await readFile(reportPath, "utf8"));
   if (existing.publicationBundleSha256 !== result.publicationBundleSha256) throw new Error("Existing verification report belongs to another publication bundle.");
 }

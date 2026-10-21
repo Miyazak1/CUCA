@@ -96,7 +96,7 @@ const programs: CatalogSeedProgram[] = routes.map((route) => {
     displayGroup: "Non-degree",
     displayGroupLabel: "Chinese language programs",
     ...verified,
-    sourceFieldLineage: { nameEn: "official brochure title and duration options", nameZh: "official brochure title and duration options", ...(route.durationMonths ? { durationMonths: "official 16-18-week semester duration" } : {}), ...(route.durationYears ? { durationYears: "official one-academic-year option" } : {}), subjectArea: "official course description", teachingLanguage: "official Chinese-language curriculum", hskRequirement: "official eligibility section publishes no HSK threshold and placement-test section assigns new students by written and oral testing", tuitionAmount: "official fee section", tuitionText: "official fee section", applicationNote: "official eligibility, materials and placement-test sections" },
+    sourceFieldLineage: { nameEn: "official brochure title and duration options", nameZh: "official brochure title and duration options", ...("durationMonths" in route ? { durationMonths: "official 16-18-week semester duration" } : {}), ...("durationYears" in route ? { durationYears: "official one-academic-year option" } : {}), subjectArea: "official course description", teachingLanguage: "official Chinese-language curriculum", hskRequirement: "official eligibility section publishes no HSK threshold and placement-test section assigns new students by written and oral testing", tuitionAmount: "official fee section", tuitionText: "official fee section", applicationNote: "official eligibility, materials and placement-test sections" },
   };
   return program;
 });

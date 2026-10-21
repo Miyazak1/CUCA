@@ -3,7 +3,15 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type EvidenceSource = { id: string; status: number; contentType: string; sha256: string; finalUrl: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources: EvidenceSource[] };
+type ExtractedRoute = { sourceId: string; degreeLevel: string; collegeZh: string; collegeEn: string; nameZh: string; nameEn: string; teachingLanguage: string; durationYears: number; locator: string };
+type ExtractedPrograms = { counts: Record<string, number>; programs: ExtractedRoute[] };
+type EntityRow = { id: string; slug: string; name_en: string; name_zh: string | null; status: string; verification_status: string; source_url: string };
+type SlugRow = { slug: string };
+type DatabaseBaseline = { school: EntityRow[]; city: EntityRow[]; programConflicts: SlugRow[]; scholarshipConflicts: SlugRow[] };
 
 const root = process.cwd();
 const paths = {
@@ -19,10 +27,10 @@ const sha = (value: string | Buffer) => createHash("sha256").update(value).diges
 const manifestText = await readFile(paths.manifest, "utf8");
 const supplementManifestText = await readFile(paths.supplementManifest, "utf8");
 const extractedText = await readFile(paths.extracted, "utf8");
-const manifest = JSON.parse(manifestText);
-const supplementManifest = JSON.parse(supplementManifestText);
-const extracted = JSON.parse(extractedText);
-const evidence = new Map([...manifest.sources, ...supplementManifest.sources].map((source: any) => [source.id, source]));
+const manifest = JSON.parse(manifestText) as EvidenceManifest;
+const supplementManifest = JSON.parse(supplementManifestText) as EvidenceManifest;
+const extracted = JSON.parse(extractedText) as ExtractedPrograms;
+const evidence = new Map([...manifest.sources, ...supplementManifest.sources].map((source) => [source.id, source]));
 const requiredSourceIds = [
   "scu-international-admission-guide-2026",
   "scu-undergraduate-program-catalog-2026",
@@ -38,18 +46,19 @@ const requiredSourceIds = [
   "scu-doctoral-tuition-2026",
 ];
 for (const id of requiredSourceIds) {
-  const source: any = evidence.get(id);
+  const source = evidence.get(id);
   if (!source || source.status !== 200 || source.contentType !== "text/html" || !/^[a-f0-9]{64}$/.test(source.sha256)) throw new Error(`Missing valid SCU evidence: ${id}`);
 }
 const expectedCounts = { programs: 639, bachelor: 84, master: 275, doctoral: 280, english: 59, chinese: 580 };
 if (JSON.stringify(extracted.counts) !== JSON.stringify(expectedCounts)) throw new Error(`SCU extracted counts changed: ${JSON.stringify(extracted.counts)}`);
 const schoolSlug = "sichuan-university";
 const meta = (id: string) => {
-  const source: any = evidence.get(id);
+  const source = evidence.get(id);
+  if (!source) throw new Error(`Missing SCU evidence: ${id}`);
   return { sourceUrl: source.finalUrl, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
 };
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 54).replace(/-+$/g, "");
-const routeHash = (route: any) => sha(JSON.stringify([route.degreeLevel, route.collegeZh, route.collegeEn, route.nameZh, route.nameEn, route.teachingLanguage, route.durationYears])).slice(0, 12);
+const routeHash = (route: ExtractedRoute) => sha(JSON.stringify([route.degreeLevel, route.collegeZh, route.collegeEn, route.nameZh, route.nameEn, route.teachingLanguage, route.durationYears])).slice(0, 12);
 const degreeKey: Record<string, string> = { Bachelor: "bachelor", Master: "master", Doctoral: "doctoral" };
 const tuitionByDegree: Record<string, { text: string; display: string; sourceId: string }> = {
   Bachelor: { text: "Official category schedule: CNY 17,500-45,000/year; the exact amount depends on humanities/economics/management, science/engineering, medicine, stomatology, clinical medicine, arts/sports or archaeology classification.", display: "CNY 17,500-45,000/year", sourceId: "scu-undergraduate-tuition-2026" },
@@ -62,7 +71,7 @@ const requirementsByDegree: Record<string, string> = {
   Doctoral: "scu-doctoral-application-requirements-2026",
 };
 
-const programs: CatalogSeedProgram[] = extracted.programs.map((route: any) => {
+const programs: CatalogSeedProgram[] = extracted.programs.map((route) => {
   const source = meta(route.sourceId);
   const tuition = tuitionByDegree[route.degreeLevel];
   const language = route.teachingLanguage;
@@ -232,14 +241,14 @@ const persisted = JSON.parse(candidateText) as CatalogSeedBundle;
 const validation = createCatalogMigrationValidationReport(persisted);
 if (!validation.ok || validation.summary.schools !== 1 || validation.summary.programs !== 639 || validation.summary.programIntakes !== 639 || validation.summary.scholarships !== 2) throw new Error(`Invalid SCU candidate: ${validation.errors.join(" ")}`);
 
-const state = JSON.parse(await readFile(paths.state, "utf8"));
+const state = JSON.parse(await readFile(paths.state, "utf8")) as LocalDevelopmentState;
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:scu-complete-review" });
-let databaseBaseline: any;
+let databaseBaseline: DatabaseBaseline;
 try {
-  const school = await pool.query("select id,slug,name_en,name_zh,status,verification_status,source_url from schools where slug=$1 or lower(name_en)=lower($2) or name_zh=$3", [schoolSlug, "Sichuan University", "四川大学"]);
-  const city = await pool.query("select id,slug,name_en,name_zh,status,verification_status,source_url from cities where slug='chengdu'", []);
-  const programConflicts = await pool.query("select slug from programs where slug=any($1::text[])", [programs.map(row => row.slug)]);
-  const scholarshipConflicts = await pool.query("select slug from scholarships where slug=any($1::text[])", [scholarships.map(row => row.slug)]);
+  const school = await pool.query<EntityRow>("select id,slug,name_en,name_zh,status,verification_status,source_url from schools where slug=$1 or lower(name_en)=lower($2) or name_zh=$3", [schoolSlug, "Sichuan University", "四川大学"]);
+  const city = await pool.query<EntityRow>("select id,slug,name_en,name_zh,status,verification_status,source_url from cities where slug='chengdu'", []);
+  const programConflicts = await pool.query<SlugRow>("select slug from programs where slug=any($1::text[])", [programs.map(row => row.slug)]);
+  const scholarshipConflicts = await pool.query<SlugRow>("select slug from scholarships where slug=any($1::text[])", [scholarships.map(row => row.slug)]);
   databaseBaseline = { school: school.rows, city: city.rows, programConflicts: programConflicts.rows, scholarshipConflicts: scholarshipConflicts.rows };
   if (school.rows.length || programConflicts.rows.length || scholarshipConflicts.rows.length) throw new Error(`SCU standing-authorized insert conflicts: ${JSON.stringify(databaseBaseline)}`);
   if (JSON.stringify(city.rows) !== JSON.stringify([{ id: "eaad5100-cb9e-401c-a9be-936666bd6d1f", slug: "chengdu", name_en: "Chengdu", name_zh: "成都", status: "active", verification_status: "unverified", source_url: "https://www.cscapilot.com/zh/study-china/cities/chengdu" }])) throw new Error(`Chengdu dependency baseline changed: ${JSON.stringify(city.rows)}`);
@@ -258,7 +267,7 @@ const reviewBase = {
   extractedSha256: sha(extractedText),
   sourceManifestSha256: sha(manifestText),
   supplementManifestSha256: sha(supplementManifestText),
-  evidence: requiredSourceIds.map(id => { const source: any = evidence.get(id); return { sourceId: id, sourceUrl: source.finalUrl, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt, contentType: source.contentType }; }),
+  evidence: requiredSourceIds.map(id => { const source = evidence.get(id); if (!source) throw new Error(`Missing SCU evidence: ${id}`); return { sourceId: id, sourceUrl: source.finalUrl, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt, contentType: source.contentType }; }),
   sourceReview: { result: "pass", note: "The 2026 admissions guide links the three current bilingual program tables. All 639 route pairs were parsed from the captured HTML with row-level locators; degree requirements, CSCA rules and tuition ranges were cross-checked against six separately captured official pages." },
   reconciliation: { destructiveDeletion: false, overwrites: [], archives: [], databaseBaseline, existingChengduCityReusedWithoutWrite: true },
   excludedEvidence: [{ sourceId: "scu-chinese-government-scholarship-guide", reason: "The page contains an obsolete passport-validity example referring to March 2023, so it is retained as raw evidence but excluded from the 2026 publication." }],

@@ -5,6 +5,9 @@ import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type Ca
 
 type Snapshot = { id: string; label: string; url: string; finalUrl: string; status: number; contentType: string; sha256: string; fetchedAt: string };
 type Route = { degree: "Undergraduate" | "Master" | "Doctoral"; schoolZh: string; schoolEn: string; nameZh: string; nameEn: string; teachingLanguage: string; durationYears: number; cscaRequirement: string | null; researchFieldsZh: string[]; researchFieldsEn: string[]; notesZh: string[]; notesEn: string[]; sourceWorkbook: string; sourceSheet: string };
+type RegistrySource = { id: string; url: string; label: string };
+type SourceRegistry = { sources: RegistrySource[] };
+type ManualEvidence = { name: string; sha256: string; sourceId: string; sourceUrl: string; sourceLabel: string; capturedAt: string };
 
 const root = process.cwd();
 const guidesManifestPath = resolve(root, "work/catalog-official/csu-guides-2026/manifest.json");
@@ -42,7 +45,7 @@ const shaFile = async (path: string) => createHash("sha256").update(await readFi
 const [guideManifest, scholarshipManifest, registry, routeData] = await Promise.all([
   readFile(guidesManifestPath, "utf8").then(JSON.parse),
   readFile(scholarshipsManifestPath, "utf8").then(JSON.parse),
-  readFile(registryPath, "utf8").then(JSON.parse),
+  readFile(registryPath, "utf8").then((text) => JSON.parse(text) as SourceRegistry),
   readFile(routesPath, "utf8").then(JSON.parse),
 ]);
 const snapshotById = new Map<string, Snapshot>();
@@ -51,14 +54,14 @@ for (const [id, hash] of Object.entries(expectedSnapshots)) {
   const source = snapshotById.get(id);
   if (!source || source.sha256 !== hash || source.status !== 200 || source.contentType !== "text/html" || source.url !== source.finalUrl) throw new Error(`Official snapshot mismatch: ${id}`);
 }
-const registryById = new Map<string, any>(registry.sources.map((source: any) => [source.id, source]));
+const registryById = new Map<string, RegistrySource>(registry.sources.map((source) => [source.id, source]));
 const manualIds: Record<string, string> = {
   "csu-chinese-undergraduate-programs-2026.xlsx": "csu-chinese-undergraduate-programs-2026",
   "csu-english-undergraduate-programs-2026.xlsx": "csu-english-undergraduate-programs-2026",
   "csu-graduate-programs-2026.xlsx": "csu-graduate-programs-2026",
   "csu-charging-standards-2026.pdf": "csu-chinese-undergraduate-fees-2026",
 };
-const manualEvidence = new Map<string, any>();
+const manualEvidence = new Map<string, ManualEvidence>();
 for (const [name, hash] of Object.entries(expectedManual)) {
   const path = resolve(manualDir, name);
   if (await shaFile(path) !== hash) throw new Error(`Official manual attachment mismatch: ${name}`);
@@ -204,7 +207,7 @@ const reviewBase = {
   version: 1, status: "awaiting_user_approval", generatedAt,
   scope: { schoolSlug, schoolCount: 1, programRouteCount: programs.length, undergraduateRouteCount: 84, chineseUndergraduateRouteCount: 79, englishUndergraduateRouteCount: 5, masterRouteCount: 166, doctoralRouteCount: 120, scholarshipCount: scholarships.length, existingProgramCount: 10, existingScholarshipCount: 1, archiveProgramAliasCount: 0, archiveScholarshipAliasCount: 0 },
   candidateSha256,
-  evidence: [...snapshotById.values()].map(source => ({ sourceId: source.id, sourceUrl: source.url, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt })).concat([...manualEvidence.values()]),
+  evidence: [...snapshotById.values()].map(source => ({ sourceId: source.id, sourceUrl: source.url, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt })).concat([...manualEvidence.values()].map(source => ({ sourceId: source.sourceId, sourceUrl: source.sourceUrl, sourceLabel: source.sourceLabel, sha256: source.sha256, fetchedAt: source.capturedAt }))),
   reconciliation: { stableUndergraduateSlugs: Object.values(stableUndergraduate), newProgramRoutes: programs.length - Object.values(stableUndergraduate).length, legacyProgramAliasesToArchive: [], stableScholarshipSlugs: ["official-2026-csu-international-student-scholarship"], newScholarshipRoutes: 6, legacyScholarshipAliasesToArchive: [], destructiveDeletion: false },
   unresolvedFields: ["The charging-standard PDF defines tuition by broad discipline category but the program workbooks do not map every school or major to a category; affected program records therefore publish the official range rather than an inferred exact fee.", "The CSU graduate guide mentions MOFCOM support, but no current standalone 2026 detailed application guide was found in the reviewed registered sources, so no MOFCOM scholarship record is included.", "Bilateral-program eligibility and the exact deadline depend on the applicant's home-country dispatching authority."],
   sensitiveDataCheck: { result: "pass", scope: "candidate bundle and manually downloaded official attachments", note: "Only public institutional, program, fee and scholarship information is included. No applicant, account, payment, passport, private-contact or uploaded document data is present." },

@@ -3,9 +3,12 @@ import { readFile } from "node:fs/promises";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
 import { localDatabaseUrl } from "./lib/local-development.ts";
 
-const parsed = JSON.parse(await readFile("work/catalog-official/nju-complete-batch-02/parsed-graduate-routes.json", "utf8"));
+type GraduateRoute = { degree: string; code: string; teachingLanguage: string; schoolOrDepartment: string; nameEn: string };
+type ParsedRoutes = { routes: GraduateRoute[] };
+
+const parsed = JSON.parse(await readFile("work/catalog-official/nju-complete-batch-02/parsed-graduate-routes.json", "utf8")) as ParsedRoutes;
 const slugify = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const programSlug = (route: any) => {
+const programSlug = (route: GraduateRoute) => {
   const identity = [route.degree, route.code, route.teachingLanguage, route.schoolOrDepartment, route.nameEn].join("|");
   const verbose = slugify(["nanjing-university", route.degree, route.code, route.schoolOrDepartment, route.nameEn, route.teachingLanguage].join(" "));
   return verbose.length <= 180 ? verbose : `${verbose.slice(0, 163).replace(/-+$/g, "")}-${createHash("sha256").update(identity).digest("hex").slice(0, 16)}`;

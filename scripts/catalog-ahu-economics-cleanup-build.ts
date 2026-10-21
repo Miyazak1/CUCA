@@ -1,12 +1,16 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 
-const parsed = JSON.parse(await readFile("work/catalog-official/ahu-programs-batch-01/parsed-programs.json", "utf8"));
-const manifest = JSON.parse(await readFile("work/catalog-official/ahu-programs-batch-01/manifest.json", "utf8"));
-const sourceBundle = JSON.parse(await readFile("seeds/catalog.cscalite-online-20260910.published.json", "utf8"));
-const source = parsed.programs.filter((row: any) => row.degreeLevel === "Undergraduate" && row.major === "Economics");
-const city = sourceBundle.cities?.find((row: any) => row.slug === "hefei");
-const school = sourceBundle.schools?.find((row: any) => row.slug === "anhui-university");
+type ProgramSourceRow = { degreeLevel: string; major: string; school: string; sourcePage: number; sourceTableRow: number; sourceUrl: string; sourceLabel: string; sourceSha256: string; capturedAt: string };
+type ParsedPrograms = { programs: ProgramSourceRow[] };
+type EvidenceManifest = { generatedAt: string };
+
+const parsed = JSON.parse(await readFile("work/catalog-official/ahu-programs-batch-01/parsed-programs.json", "utf8")) as ParsedPrograms;
+const manifest = JSON.parse(await readFile("work/catalog-official/ahu-programs-batch-01/manifest.json", "utf8")) as EvidenceManifest;
+const sourceBundle = JSON.parse(await readFile("seeds/catalog.cscalite-online-20260910.published.json", "utf8")) as CatalogSeedBundle;
+const source = parsed.programs.filter((row) => row.degreeLevel === "Undergraduate" && row.major === "Economics");
+const city = sourceBundle.cities?.find((row) => row.slug === "hefei");
+const school = sourceBundle.schools?.find((row) => row.slug === "anhui-university");
 if (source.length !== 1 || source[0].school !== "Economy" || source[0].sourcePage !== 1 || source[0].sourceTableRow !== 28 || !city || !school) throw new Error("AHU Economics source identity changed.");
 const row = source[0];
 const candidate: CatalogSeedBundle = {

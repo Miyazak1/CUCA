@@ -43,7 +43,7 @@ const publication: CatalogSeedBundle = {
 const report = createCatalogMigrationValidationReport(publication);
 if (!report.ok || report.summary.programs !== 99 || report.summary.programIntakes !== 99 || report.summary.scholarships !== 0) throw new Error(`Invalid SCUT undergraduate publication: ${report.errors.join(" ")}`);
 const approval = { version: 1, approvedAt, approvalMode: "standing-user-default-publication", reviewReference, approvedReviewSha256: reviewHash, approvedCandidateFileSha256: sha(candidateText), approvedCandidateBundleSha256: fresh.bundleSha256, publicationBundle: "seeds/catalog.scut-undergraduate-batch-01.approved.local.json", publicationBundleSha256: report.bundleSha256, schoolSlug: "south-china-university-of-technology", programSlugs, archivedAliases: [], prohibitedDataConfirmedExcluded: true };
-async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: any) { if (error?.code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
+async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: unknown) { const code = error && typeof error === "object" && "code" in error ? error.code : undefined; if (code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
 await writeOrVerify(paths.output, publication);
 await writeOrVerify(paths.approval, approval);
 
@@ -52,22 +52,29 @@ const pool = createPostgresPool({ databaseUrl: target.databaseUrl, max: 1, appli
 try {
   const client = createTransactionalSqlClient(pool);
   const result = await client.transaction(async (tx) => {
-    const school = await tx.query<any>("select id,status,verification_status from schools where slug='south-china-university-of-technology'", []);
-    const cityBefore = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='guangzhou'", []);
-    const schoolBefore = await tx.query<any>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='south-china-university-of-technology'", []);
-    const rowsBefore = await tx.query<any>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[])", [programSlugs]);
-    const totalsBefore = await tx.query<any>("select count(*)::int total_count,count(*) filter(where status='active')::int active_count from programs where school_id=$1", [school[0]?.id]);
-    const scholarshipsBefore = await tx.query<any>("select coalesce(jsonb_agg(to_jsonb(sch) order by sch.id),'[]'::jsonb) snapshot from scholarships sch where school_id=$1", [school[0]?.id]);
+    type SchoolRow = { id: string; status: string; verification_status: string };
+    type ObjectSnapshotRow = { snapshot: { id?: string } & Record<string, unknown> };
+    type ArraySnapshotRow = { snapshot: unknown[] };
+    type ProgramRow = { slug: string; status: string; verification_status: string; last_verified_at: Date | null };
+    type BeforeTotalsRow = { total_count: number; active_count: number };
+    type FinalTotalsRow = { active_count: number; verified_count: number; published_batch: number };
+    type IntakeTotalsRow = { count: number; closed_count: number };
+    const school = await tx.query<SchoolRow>("select id,status,verification_status from schools where slug='south-china-university-of-technology'", []);
+    const cityBefore = await tx.query<ObjectSnapshotRow>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='guangzhou'", []);
+    const schoolBefore = await tx.query<ObjectSnapshotRow>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='south-china-university-of-technology'", []);
+    const rowsBefore = await tx.query<ProgramRow>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[])", [programSlugs]);
+    const totalsBefore = await tx.query<BeforeTotalsRow>("select count(*)::int total_count,count(*) filter(where status='active')::int active_count from programs where school_id=$1", [school[0]?.id]);
+    const scholarshipsBefore = await tx.query<ArraySnapshotRow>("select coalesce(jsonb_agg(to_jsonb(sch) order by sch.id),'[]'::jsonb) snapshot from scholarships sch where school_id=$1", [school[0]?.id]);
     const pre = school.length === 1 && school[0].id === review.reconciliation.databaseBaseline.schoolId && school[0].status === "active" && school[0].verification_status === "verified" && cityBefore[0]?.snapshot.id === review.reconciliation.databaseBaseline.cityId && totalsBefore[0]?.total_count === 0 && rowsBefore.length === 0;
     const post = school.length === 1 && school[0].id === review.reconciliation.databaseBaseline.schoolId && school[0].status === "active" && school[0].verification_status === "verified" && cityBefore[0]?.snapshot.id === review.reconciliation.databaseBaseline.cityId && totalsBefore[0]?.active_count === 99 && rowsBefore.length === 99 && rowsBefore.every((row) => row.status === "active" && row.verification_status === "verified" && row.last_verified_at?.toISOString() === approvedAt);
     if (!pre && !post) throw new Error(`SCUT undergraduate scope partially conflicts: ${JSON.stringify({ totalsBefore: totalsBefore[0], candidateRows: rowsBefore.length })}`);
     const written = await new CatalogSeedWriter(tx).writeBundle(publication, { preserveExistingCitySlugs: ["guangzhou"], preserveExistingSchoolSlugs: ["south-china-university-of-technology"] });
     if (!written.ok) throw new Error(`SCUT undergraduate write failed: ${written.errors.join(" ")}`);
-    const cityAfter = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='guangzhou'", []);
-    const schoolAfter = await tx.query<any>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='south-china-university-of-technology'", []);
-    const final = await tx.query<any>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count,count(*) filter(where slug=any($2::text[]))::int published_batch from programs where school_id=$1 and status='active'", [school[0].id, programSlugs]);
-    const intakeFinal = await tx.query<any>("select count(*)::int count,count(*) filter(where i.status='closed')::int closed_count from program_intakes i join programs p on p.id=i.program_id where p.school_id=$1 and p.slug=any($2::text[]) and i.intake_year=2026", [school[0].id, programSlugs]);
-    const scholarshipsAfter = await tx.query<any>("select coalesce(jsonb_agg(to_jsonb(sch) order by sch.id),'[]'::jsonb) snapshot from scholarships sch where school_id=$1", [school[0].id]);
+    const cityAfter = await tx.query<ObjectSnapshotRow>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='guangzhou'", []);
+    const schoolAfter = await tx.query<ObjectSnapshotRow>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='south-china-university-of-technology'", []);
+    const final = await tx.query<FinalTotalsRow>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count,count(*) filter(where slug=any($2::text[]))::int published_batch from programs where school_id=$1 and status='active'", [school[0].id, programSlugs]);
+    const intakeFinal = await tx.query<IntakeTotalsRow>("select count(*)::int count,count(*) filter(where i.status='closed')::int closed_count from program_intakes i join programs p on p.id=i.program_id where p.school_id=$1 and p.slug=any($2::text[]) and i.intake_year=2026", [school[0].id, programSlugs]);
+    const scholarshipsAfter = await tx.query<ArraySnapshotRow>("select coalesce(jsonb_agg(to_jsonb(sch) order by sch.id),'[]'::jsonb) snapshot from scholarships sch where school_id=$1", [school[0].id]);
     if (JSON.stringify(cityAfter[0]?.snapshot) !== JSON.stringify(cityBefore[0]?.snapshot) || JSON.stringify(schoolAfter[0]?.snapshot) !== JSON.stringify(schoolBefore[0]?.snapshot)) throw new Error("SCUT city or school dependency changed.");
     if (JSON.stringify(scholarshipsAfter[0]?.snapshot) !== JSON.stringify(scholarshipsBefore[0]?.snapshot)) throw new Error("SCUT scholarships changed during program publication.");
     if (final[0]?.active_count !== 99 || final[0]?.verified_count !== 99 || final[0]?.published_batch !== 99 || intakeFinal[0]?.count !== 99 || intakeFinal[0]?.closed_count !== 99) throw new Error(`SCUT undergraduate post-check failed: ${JSON.stringify({ final: final[0], intakes: intakeFinal[0] })}`);

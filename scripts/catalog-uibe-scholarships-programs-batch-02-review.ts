@@ -4,9 +4,11 @@ import { resolve } from "node:path";
 import {
   createCatalogMigrationValidationReport,
   type CatalogSeedBundle,
+  type CatalogSeedCity,
   type CatalogSeedProgram,
   type CatalogSeedProgramIntake,
   type CatalogSeedScholarship,
+  type CatalogSeedSchool,
 } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
 import { localDatabaseUrl } from "./lib/local-development.ts";
@@ -26,10 +28,23 @@ const paths = {
   state: resolve(root, ".cuac-local/runtime.json"),
 };
 const sha = (value: string) => createHash("sha256").update(value).digest("hex");
-const evidence = new Map<string, any>();
+type ReviewedSource = {
+  id: string;
+  label: string;
+  url: string;
+  finalUrl: string;
+  fetchedAt: string;
+  status: number;
+  contentType: string;
+  sha256: string;
+  byteLength: number;
+  artifactPath: string;
+};
+type SourceManifest = { sources?: ReviewedSource[] };
+const evidence = new Map<string, ReviewedSource>();
 for (const [sourceId, manifestPath, expectedSha] of manifestDefinitions) {
-  const manifest = JSON.parse(await readFile(resolve(root, manifestPath), "utf8"));
-  const source = manifest.sources?.find((item: any) => item.id === sourceId);
+  const manifest = JSON.parse(await readFile(resolve(root, manifestPath), "utf8")) as SourceManifest;
+  const source = manifest.sources?.find((item) => item.id === sourceId);
   if (!source || source.status !== 200 || source.contentType !== "text/html" || source.sha256 !== expectedSha || source.finalUrl !== source.url || source.byteLength > 15 * 1024 * 1024) {
     throw new Error(`Reviewed UIBE source missing, changed, redirected or oversized: ${sourceId}`);
   }
@@ -41,16 +56,24 @@ for (const [sourceId, manifestPath, expectedSha] of manifestDefinitions) {
   evidence.set(sourceId, source);
 }
 
-const dependency = JSON.parse(await readFile(dependencyPath, "utf8"));
+const dependency = JSON.parse(await readFile(dependencyPath, "utf8")) as CatalogSeedBundle;
 if (dependency.cities?.length !== 1 || dependency.cities[0]?.slug !== "beijing" || dependency.schools?.length !== 1 || dependency.schools[0]?.slug !== schoolSlug) {
   throw new Error("UIBE dependency bundle changed.");
 }
-const sourceOf = (id: string) => evidence.get(id);
+const dependencyCities = dependency.cities;
+const dependencySchools = dependency.schools;
+const sourceOf = (id: string): ReviewedSource => {
+  const source = evidence.get(id);
+  if (!source) throw new Error(`Missing reviewed UIBE source: ${id}`);
+  return source;
+};
 const sourceFields = (sourceId: string, lineage: Record<string, string>) => {
   const source = sourceOf(sourceId);
   return { sourceUrl: source.finalUrl, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt, sourceFieldLineage: lineage };
 };
-const program = (sourceId: string, row: Omit<CatalogSeedProgram, "schoolSlug" | "citySlug" | "status">): CatalogSeedProgram => ({
+type ProgramInput = Omit<CatalogSeedProgram,
+  "schoolSlug" | "citySlug" | "status" | "sourceUrl" | "sourceLabel" | "sourceSha256" | "capturedAt" | "sourceFieldLineage">;
+const program = (sourceId: string, row: ProgramInput): CatalogSeedProgram => ({
   schoolSlug, citySlug: "beijing", status: "draft", ...row,
   ...sourceFields(sourceId, {
     nameEn: `explicit program name in ${sourceId}`,
@@ -137,7 +160,9 @@ const programIntakes: CatalogSeedProgramIntake[] = programs.map(row => {
 });
 const info = (values: string[]) => values.map(label => ({ label }));
 const steps = (values: string[]) => values.map((body, index) => ({ label: `Step ${index + 1}`, body }));
-const scholarship = (sourceId: string, row: Omit<CatalogSeedScholarship, "schoolSlug" | "status">): CatalogSeedScholarship => ({
+type ScholarshipInput = Omit<CatalogSeedScholarship,
+  "schoolSlug" | "status" | "targetCountries" | "targetRegions" | "sourceUrl" | "sourceLabel" | "sourceSha256" | "capturedAt" | "sourceFieldLineage">;
+const scholarship = (sourceId: string, row: ScholarshipInput): CatalogSeedScholarship => ({
   schoolSlug, status: "draft", targetCountries: [], targetRegions: [], ...row,
   ...sourceFields(sourceId, Object.fromEntries(Object.keys(row).filter(key => !["slug", "status"].includes(key)).map(key => [key, `explicit or normalized from ${sourceId}`]))),
 });
@@ -194,8 +219,18 @@ if (new Set(programSlugs).size !== 4 || new Set(scholarshipSlugs).size !== 2 || 
 const candidate: CatalogSeedBundle = {
   version: 1,
   generatedAt: sourceOf("uibe-youth-excellence-impa-2026").fetchedAt,
-  cities: dependency.cities.map((row: any) => { const { verificationStatus: _v, lastVerifiedAt: _l, ...rest } = row; return { ...rest, status: "draft" }; }),
-  schools: dependency.schools.map((row: any) => { const { verificationStatus: _v, lastVerifiedAt: _l, ...rest } = row; return { ...rest, status: "draft" }; }),
+  cities: dependencyCities.map((row): CatalogSeedCity => {
+    const draft = { ...row };
+    delete draft.verificationStatus;
+    delete draft.lastVerifiedAt;
+    return { ...draft, status: "draft" };
+  }),
+  schools: dependencySchools.map((row): CatalogSeedSchool => {
+    const draft = { ...row };
+    delete draft.verificationStatus;
+    delete draft.lastVerifiedAt;
+    return { ...draft, status: "draft" };
+  }),
   programs, programIntakes, scholarships,
 };
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
@@ -204,16 +239,20 @@ if (!validation.ok) throw new Error(`UIBE batch validation failed: ${validation.
 
 const state = JSON.parse(await readFile(paths.state, "utf8"));
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:uibe-batch-02-review" });
-let baseline: any;
-try {
-  const school = await pool.query(`select s.id,s.status,s.verification_status,(select count(*) from programs p where p.school_id=s.id and p.status='active')::int programs,(select count(*) from programs p where p.school_id=s.id and p.status='active' and p.verification_status='verified')::int verified_programs,(select count(*) from scholarships h where h.school_id=s.id and h.status='active')::int scholarships,(select count(*) from scholarships h where h.school_id=s.id and h.status='active' and h.verification_status='verified')::int verified_scholarships from schools s where s.slug=$1`, [schoolSlug]);
-  const programConflicts = await pool.query("select slug,status,verification_status from programs where slug=any($1::text[])", [programSlugs]);
-  const scholarshipConflicts = await pool.query("select slug,status,verification_status from scholarships where slug=any($1::text[])", [scholarshipSlugs]);
-  baseline = { school: school.rows[0], programConflicts: programConflicts.rows, scholarshipConflicts: scholarshipConflicts.rows };
-  if (school.rows.length !== 1 || baseline.school.status !== "active" || baseline.school.verification_status !== "verified" || baseline.school.programs !== 15 || baseline.school.verified_programs !== 9 || baseline.school.scholarships !== 3 || baseline.school.verified_scholarships !== 1 || programConflicts.rows.length || scholarshipConflicts.rows.length) {
-    throw new Error(`UIBE safe-new database baseline changed: ${JSON.stringify(baseline)}`);
-  }
-} finally { await pool.end(); }
+type SchoolBaseline = { id: string; status: string; verification_status: string; programs: number; verified_programs: number; scholarships: number; verified_scholarships: number };
+type ConflictRow = { slug: string; status: string; verification_status: string };
+const baseline = await (async () => {
+  try {
+    const school = await pool.query<SchoolBaseline>(`select s.id,s.status,s.verification_status,(select count(*) from programs p where p.school_id=s.id and p.status='active')::int programs,(select count(*) from programs p where p.school_id=s.id and p.status='active' and p.verification_status='verified')::int verified_programs,(select count(*) from scholarships h where h.school_id=s.id and h.status='active')::int scholarships,(select count(*) from scholarships h where h.school_id=s.id and h.status='active' and h.verification_status='verified')::int verified_scholarships from schools s where s.slug=$1`, [schoolSlug]);
+    const programConflicts = await pool.query<ConflictRow>("select slug,status,verification_status from programs where slug=any($1::text[])", [programSlugs]);
+    const scholarshipConflicts = await pool.query<ConflictRow>("select slug,status,verification_status from scholarships where slug=any($1::text[])", [scholarshipSlugs]);
+    const result = { school: school.rows[0], programConflicts: programConflicts.rows, scholarshipConflicts: scholarshipConflicts.rows };
+    if (school.rows.length !== 1 || !result.school || result.school.status !== "active" || result.school.verification_status !== "verified" || result.school.programs !== 15 || result.school.verified_programs !== 9 || result.school.scholarships !== 3 || result.school.verified_scholarships !== 1 || programConflicts.rows.length || scholarshipConflicts.rows.length) {
+      throw new Error(`UIBE safe-new database baseline changed: ${JSON.stringify(result)}`);
+    }
+    return result as { school: SchoolBaseline; programConflicts: ConflictRow[]; scholarshipConflicts: ConflictRow[] };
+  } finally { await pool.end(); }
+})();
 
 const reviewBase = {
   version: 1, status: "standing_user_approval", generatedAt: candidate.generatedAt,

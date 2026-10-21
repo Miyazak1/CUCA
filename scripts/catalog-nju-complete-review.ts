@@ -21,7 +21,7 @@ const parsedText = await readFile(parsedPath, "utf8");
 if (sha256(parsedText) !== "d7f59317f68cfdcddf1b6307f9c915e5467dcdbf9e1953f6b944e9626f1d0773") throw new Error("NJU parsed graduate routes changed after visual review.");
 const parsed = JSON.parse(parsedText) as { counts: Record<string, number>; duplicateIdentities: unknown[]; suspiciousRows: unknown[]; routes: GraduateRoute[] };
 if (JSON.stringify(parsed.counts) !== JSON.stringify({ total: 202, master: 141, doctoral: 61, chinese: 193, english: 9 }) || parsed.duplicateIdentities.length || parsed.suspiciousRows.length) throw new Error(`Unexpected NJU extraction summary: ${JSON.stringify(parsed.counts)}`);
-const prior = JSON.parse(await readFile(priorPath, "utf8")) as CatalogSeedBundle;
+const prior = JSON.parse(await readFile(priorPath, "utf8")) as CatalogSeedBundle & { cities: NonNullable<CatalogSeedBundle["cities"]> };
 if (prior.schools?.length !== 1 || prior.schools[0].slug !== "nanjing-university" || prior.programs?.length !== 59) throw new Error("Reviewed NJU dependency bundle is unavailable.");
 
 const manifests = await Promise.all(["work/catalog-official/nju-complete-batch-02/manifest.json", "work/catalog-official/nju-complete-batch-02-en/manifest.json"].map(path => readFile(resolve(root, path), "utf8").then(JSON.parse)));

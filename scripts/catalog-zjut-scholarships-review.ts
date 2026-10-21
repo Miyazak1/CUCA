@@ -1,25 +1,32 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
-import { createCatalogMigrationValidationReport } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type ReviewedCandidate = CatalogSeedBundle & { generatedAt: string; programs: CatalogSeedProgram[]; scholarships: CatalogSeedScholarship[] };
+type EvidenceSource = { id: string; url: string; label: string; sha256: string; fetchedAt: string; contentType: string };
+type EvidenceManifest = { sources: EvidenceSource[] };
+type EntityRow = { id: string; slug: string; status: string; verification_status?: string };
+type TotalsRow = { programs: string; verified_programs: string; scholarships: string };
+type Baseline = { school: EntityRow; city: EntityRow; conflicts: EntityRow[]; totals: TotalsRow };
 
 const prefix = "catalog.zjut-scholarships-safe-new-batch-01", sha = (value: string) => createHash("sha256").update(value).digest("hex");
-const candidateText = await readFile(`seeds/${prefix}.draft.json`, "utf8"), candidate = JSON.parse(candidateText), validation = JSON.parse(await readFile(`seeds/${prefix}.validation.json`, "utf8")), manifestText = await readFile("work/catalog-official/zjut-complete-batch-01/manifest.json", "utf8"), manifest = JSON.parse(manifestText), state = JSON.parse(await readFile(".cuac-local/runtime.json", "utf8")), fresh = createCatalogMigrationValidationReport(candidate);
+const candidateText = await readFile(`seeds/${prefix}.draft.json`, "utf8"), candidate = JSON.parse(candidateText) as ReviewedCandidate, validation = JSON.parse(await readFile(`seeds/${prefix}.validation.json`, "utf8")), manifestText = await readFile("work/catalog-official/zjut-complete-batch-01/manifest.json", "utf8"), manifest = JSON.parse(manifestText) as EvidenceManifest, state = JSON.parse(await readFile(".cuac-local/runtime.json", "utf8")) as LocalDevelopmentState, fresh = createCatalogMigrationValidationReport(candidate);
 if (!fresh.ok || fresh.bundleSha256 !== validation.bundleSha256 || candidate.scholarships.length !== 9 || candidate.programs.length !== 0) throw new Error("ZJUT scholarship candidate changed.");
-const slugs = candidate.scholarships.map((row: any) => row.slug);
+const slugs = candidate.scholarships.map((row) => row.slug);
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:zjut-scholarships-review" });
-let baseline: any;
+let baseline: Baseline;
 try {
-  const school = await pool.query("select id,slug,status,verification_status from schools where slug='zhejiang-university-of-technology'");
-  const city = await pool.query("select id,slug,status from cities where slug='hangzhou'");
-  const conflicts = await pool.query("select id,slug,status,verification_status from scholarships where slug=any($1::text[])", [slugs]);
-  const totals = await pool.query("select count(*) filter(where status='active')::text programs,count(*) filter(where status='active' and verification_status='verified')::text verified_programs,(select count(*) from scholarships where school_id=$1 and status='active')::text scholarships from programs where school_id=$1", [school.rows[0]?.id]);
+  const school = await pool.query<EntityRow>("select id,slug,status,verification_status from schools where slug='zhejiang-university-of-technology'");
+  const city = await pool.query<EntityRow>("select id,slug,status from cities where slug='hangzhou'");
+  const conflicts = await pool.query<EntityRow>("select id,slug,status,verification_status from scholarships where slug=any($1::text[])", [slugs]);
+  const totals = await pool.query<TotalsRow>("select count(*) filter(where status='active')::text programs,count(*) filter(where status='active' and verification_status='verified')::text verified_programs,(select count(*) from scholarships where school_id=$1 and status='active')::text scholarships from programs where school_id=$1", [school.rows[0]?.id]);
   baseline = { school: school.rows[0], city: city.rows[0], conflicts: conflicts.rows, totals: totals.rows[0] };
   if (school.rows.length !== 1 || school.rows[0].status !== "active" || city.rows.length !== 1 || city.rows[0].status !== "active" || conflicts.rows.length !== 0 || totals.rows[0].programs !== "23" || totals.rows[0].verified_programs !== "0" || totals.rows[0].scholarships !== "0") throw new Error(`ZJUT scholarship baseline changed: ${JSON.stringify(baseline)}`);
 } finally { await pool.end(); }
 const scholarshipSourceIds = ["zjut-chinese-government-scholarship-current", "zjut-university-scholarship-current", "zjut-phd-full-scholarship-current", "zjut-international-chinese-language-teachers-scholarship-2027-spring"];
-const evidence = manifest.sources.filter((row: any) => scholarshipSourceIds.includes(row.id)).map((row: any) => ({ sourceId: row.id, sourceUrl: row.url, sourceLabel: row.label, sha256: row.sha256, capturedAt: row.fetchedAt, contentType: row.contentType }));
+const evidence = manifest.sources.filter((row) => scholarshipSourceIds.includes(row.id)).map((row) => ({ sourceId: row.id, sourceUrl: row.url, sourceLabel: row.label, sha256: row.sha256, capturedAt: row.fetchedAt, contentType: row.contentType }));
 if (evidence.length !== 4) throw new Error("ZJUT scholarship evidence is incomplete.");
 const reviewBase = {
   version: 1, status: "standing_user_approval", generatedAt: candidate.generatedAt,

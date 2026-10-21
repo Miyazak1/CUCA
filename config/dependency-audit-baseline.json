@@ -1,0 +1,26 @@
+{
+  "braces": {
+    "severity": "high",
+    "advisorySources": [1240992]
+  },
+  "fast-glob": {
+    "severity": "high",
+    "advisorySources": []
+  },
+  "micromatch": {
+    "severity": "high",
+    "advisorySources": []
+  },
+  "vinext": {
+    "severity": "high",
+    "advisorySources": []
+  },
+  "vite-plugin-commonjs": {
+    "severity": "high",
+    "advisorySources": []
+  },
+  "vite-plugin-dynamic-import": {
+    "severity": "high",
+    "advisorySources": []
+  }
+}

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+import { type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool, createSqlCatalogClient } from "../src/server/db/postgres-client.ts";
 
 const root = process.cwd();
@@ -13,19 +14,52 @@ const reportPath = resolve(root, process.argv.find(arg => arg.startsWith("--repo
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(baseUrl)) throw new Error("Verification is restricted to the local CUAC application.");
 if (!Number.isSafeInteger(expectedTotal) || expectedTotal < 20) throw new Error("Expected total must be a positive integer.");
 
-const readJson = async (path: string) => JSON.parse(await readFile(resolve(root, path), "utf8"));
-const bundle = await readJson("seeds/catalog.scholarships-rich-batch-01.approved-verified.local.json");
-const approval = await readJson("seeds/catalog.scholarships-rich-batch-01.approval-verified.json");
-const runtime = await readJson(".cuac-local/runtime.json") as LocalDevelopmentState;
-const expectedBySlug = new Map(bundle.scholarships.map((record: any) => [record.slug, record]));
+type ExpectedScholarship = CatalogSeedScholarship & Required<Pick<CatalogSeedScholarship,
+  "applicableDegree" | "applicableProgram" | "benefitItems" | "eligibilityItems" | "applicationMaterials"
+  | "applicationSteps" | "actionLinks" | "bodySections" | "benefits" | "tags" | "sourceFieldLineage">>;
+type PublicScholarship = {
+  id: string;
+  slug: string;
+  title: string;
+  status?: string;
+  verificationStatus?: string;
+  sourceStatus?: string;
+  lastVerifiedAt?: string;
+  sourceUrl?: string;
+  sourceLabel?: string;
+  applicableDegree?: string;
+  applicableProgram?: string;
+  summary?: string;
+  coverage?: string;
+  requirementText?: string;
+  deadlineDate?: string;
+  benefitItems: unknown[];
+  eligibilityItems: unknown[];
+  applicationMaterials: unknown[];
+  applicationSteps: unknown[];
+  actionLinks: unknown[];
+  bodySections: unknown[];
+  benefits: unknown[];
+  tags: unknown[];
+  school?: { id?: string; slug?: string };
+  sourceFieldLineage: Record<string, string>;
+};
+type Approval = { approvedDraftBundleSha256: string; publicationBundleSha256: string; approvedAt: string };
+const readJson = async <T>(path: string): Promise<T> => JSON.parse(await readFile(resolve(root, path), "utf8")) as T;
+const bundle = await readJson<CatalogSeedBundle>("seeds/catalog.scholarships-rich-batch-01.approved-verified.local.json");
+const approval = await readJson<Approval>("seeds/catalog.scholarships-rich-batch-01.approval-verified.json");
+const runtime = await readJson<LocalDevelopmentState>(".cuac-local/runtime.json");
+assert.ok(bundle.scholarships);
+const expectedScholarships = bundle.scholarships as ExpectedScholarship[];
+const expectedBySlug = new Map<string, ExpectedScholarship>(expectedScholarships.map(record => [record.slug, record]));
 assert.equal(expectedBySlug.size, 20);
 assert.equal(approval.approvedDraftBundleSha256, "b4a010af88f94136027a56e737dc9a0a823b9e5bd014f42220b6c8d00ab84c59");
 
-const publicItems: any[] = [];
+const publicItems: PublicScholarship[] = [];
 for (let offset = 0; offset < 2000; offset += 100) {
   const response = await fetch(`${baseUrl}/api/v1/catalog/scholarships?limit=100&offset=${offset}`);
   assert.equal(response.status, 200, `Scholarship list failed at offset ${offset}`);
-  const page = await response.json() as { data: any[] };
+  const page = await response.json() as { data: PublicScholarship[] };
   assert.ok(Array.isArray(page.data));
   publicItems.push(...page.data);
   if (page.data.length < 100) break;
@@ -46,7 +80,7 @@ const removedVisibleSlugs = removedHistoricalSlugs.filter(slug => publicBySlug.h
 
 let explicitDeadlineCount = 0;
 for (const [slug, expected] of expectedBySlug) {
-  const listItem: any = publicBySlug.get(slug);
+  const listItem = publicBySlug.get(slug);
   assert.ok(listItem, `Published scholarship missing from list: ${slug}`);
   assert.equal(listItem.title, expected.title);
   assert.equal(listItem.sourceUrl, expected.sourceUrl);
@@ -58,7 +92,7 @@ for (const [slug, expected] of expectedBySlug) {
   assert.ok(listItem.summary?.trim());
   assert.ok(listItem.coverage?.trim());
   assert.ok(listItem.requirementText?.trim());
-  for (const field of ["benefitItems", "eligibilityItems", "applicationMaterials", "applicationSteps", "actionLinks"]) {
+  for (const field of ["benefitItems", "eligibilityItems", "applicationMaterials", "applicationSteps", "actionLinks"] as const) {
     assert.equal(listItem[field].length, expected[field].length, `${slug}.${field} count mismatch`);
     assert.ok(listItem[field].length > 0, `${slug}.${field} is empty`);
   }
@@ -69,7 +103,7 @@ for (const [slug, expected] of expectedBySlug) {
 
   const detailResponse = await fetch(`${baseUrl}/api/v1/catalog/scholarships/${listItem.id}`);
   assert.equal(detailResponse.status, 200, `Scholarship detail failed: ${slug}`);
-  const detail = (await detailResponse.json() as { data: any }).data;
+  const detail = (await detailResponse.json() as { data: PublicScholarship }).data;
   assert.equal(detail.slug, slug);
   assert.equal(detail.status, "active");
   assert.equal(detail.verificationStatus, "verified");

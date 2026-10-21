@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import {
   type ApplicationChoice,
   type ApplicationBlocker,
@@ -532,7 +533,7 @@ export function CuacApp({
       <header className="top-nav">
         <div className="brand-lockup">
           <button className="brand" aria-label="UCAC home" onClick={() => navigate("/")}>
-            <img className="brand-mark" src="/ucac-study-in-china.png?v=20261015" width="360" height="60" alt="UCAC — University & College Application Center — Study in China" />
+            <Image priority className="brand-mark" src="/ucac-study-in-china.png" width={360} height={60} alt="UCAC — University & College Application Center — Study in China" />
           </button>
         </div>
         <nav aria-label="Primary navigation">

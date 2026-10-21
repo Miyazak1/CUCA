@@ -20,7 +20,7 @@ export type OpsDataRightsReview = { reviewId: string; revision: number; status: 
   assignedUserId: string; assignedRole: Role; escalationCode: string | null; escalationReference: string | null;
   escalatedAt: Date | null; createdAt: Date; updatedAt: Date };
 export type OpsDataRightsQueueRow = { requestId: string; requestType: string; correctionScope: string | null;
-  preferredLocale: string; status: string; revision: number; receivedAt: Date; updatedAt: Date;
+  preferredLocale: "en" | "zh-CN"; status: string; revision: number; receivedAt: Date; updatedAt: Date;
   identityConfirmedAt: Date | null; deadlinePolicyVersion: "data_rights_response_v1";
   internalTargetAt: Date; responseDueAt: Date; extendedDueAt: Date | null; observedAt: Date;
   notificationRecipientUserId:string|null;

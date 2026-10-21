@@ -3,6 +3,9 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; byteLength: number; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources?: EvidenceSource[] };
+
 const root = process.cwd();
 const paths = {
   manifest: resolve(root, "work/catalog-official/bupt-complete-batch-01/manifest.json"),
@@ -12,9 +15,9 @@ const paths = {
 };
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const [manifestText, baseText] = await Promise.all([readFile(paths.manifest, "utf8"), readFile(paths.base, "utf8")]);
-const manifest = JSON.parse(manifestText);
+const manifest = JSON.parse(manifestText) as EvidenceManifest;
 const base = JSON.parse(baseText) as CatalogSeedBundle;
-const source = manifest.sources?.find((row: any) => row.id === "bupt-international-admission-brochure-2026");
+const source = manifest.sources?.find((row) => row.id === "bupt-international-admission-brochure-2026");
 if (!source || source.status !== 200 || source.sha256 !== "60c223830d1e46ab8625daa3060584544ad699bf3c7925a33ce59cc0d32d56a8" || source.byteLength !== 185780) throw new Error("BUPT official brochure evidence mismatch.");
 const city = base.cities?.find((row) => row.slug === "beijing");
 if (!city) throw new Error("Current Beijing city dependency missing.");

@@ -2,15 +2,18 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; contentType: string; byteLength: number; finalUrl: string; label: string; sha256: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources: EvidenceSource[] };
+
 const root = process.cwd();
-const manifest = JSON.parse(await readFile(resolve(root, "work/catalog-official/blcu-scholarships-safe-new-batch-02/manifest.json"), "utf8"));
+const manifest = JSON.parse(await readFile(resolve(root, "work/catalog-official/blcu-scholarships-safe-new-batch-02/manifest.json"), "utf8")) as EvidenceManifest;
 const sourceBundle = JSON.parse(await readFile(resolve(root, "seeds/catalog.cscalite-online-20260910.published.json"), "utf8")) as CatalogSeedBundle;
 const outputPath = resolve(root, "seeds/catalog.blcu-scholarships-safe-new-batch-02.draft.json");
 const validationPath = resolve(root, "seeds/catalog.blcu-scholarships-safe-new-batch-02.validation.json");
 const city = sourceBundle.cities?.find((row) => row.slug === "beijing");
 const school = sourceBundle.schools?.find((row) => row.slug === "beijing-language-and-culture-university");
 const source = (id: string) => {
-  const row = manifest.sources.find((item: any) => item.id === id);
+  const row = manifest.sources.find((item) => item.id === id);
   if (!row || row.contentType !== "text/html" || row.byteLength > 15 * 1024 * 1024) throw new Error(`Missing BLCU source: ${id}`);
   return row;
 };

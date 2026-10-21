@@ -8,6 +8,11 @@ import {
   type CatalogSeedScholarship,
 } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources?: EvidenceSource[] };
+type SysuRoute = { campus: string; cscaRequirement: string; degree: string; degreeType?: string; department: string; disciplinaryCategory: string; durationYears: number; field?: string; fieldNo: string; hskRequirement?: string; language: string; major: string; majorNo: string; note?: string; page?: number; routeNo: string; sourceId: string; tuitionAmount: number };
+type ParsedRoutes = { counts: { undergraduate: number; master: number; doctoral: number }; routes: SysuRoute[] };
+
 const root = process.cwd();
 const runDir = resolve(root, "work/catalog-official/sysu-complete-batch-01");
 const candidatePath = resolve(root, "seeds/catalog.sysu-complete-batch-01.draft.json");
@@ -38,9 +43,9 @@ const expected: Record<string, string> = {
   "sysu-international-students-scholarship-2026": "543c183522ab1b04f5b9f98e7ae5cea10ad03e085fa3b83fba28e82f43d993a9",
 };
 
-const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8"));
-const parsed = JSON.parse(await readFile(resolve(runDir, "parsed-routes.json"), "utf8"));
-const evidence = new Map<string, any>();
+const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8")) as EvidenceManifest;
+const parsed = JSON.parse(await readFile(resolve(runDir, "parsed-routes.json"), "utf8")) as ParsedRoutes;
+const evidence = new Map<string, EvidenceSource>();
 for (const source of manifest.sources ?? []) {
   if (expected[source.id] !== source.sha256 || source.status !== 200) throw new Error(`Official snapshot mismatch: ${source.id}`);
   evidence.set(source.id, source);
@@ -59,7 +64,7 @@ const cscaSubjects = (text: string) => [
   /Physics/i.test(text) ? "Physics" : null,
   /Chemistry/i.test(text) ? "Chemistry" : null,
 ].filter(Boolean) as string[];
-const graduateTuition = (route: any) => {
+const graduateTuition = (route: SysuRoute) => {
   if (route.degree === "Master") {
     if (/Business Administration/i.test(route.major) && /English/i.test(route.language)) return 109000;
     if (/Medicine/i.test(route.disciplinaryCategory)) return 55000;
@@ -70,10 +75,10 @@ const graduateTuition = (route: any) => {
   if (/^(01|02|03|04|05|06|12|13)/.test(route.majorNo)) return 34000;
   return 44200;
 };
-const sourceForRoute = (route: any) => evidence.get(route.sourceId)!;
-const guideForRoute = (route: any) => evidence.get(route.degree === "Undergraduate" ? "sysu-undergraduate-guide-2026" : route.degree === "Master" ? "sysu-master-guide-2026" : "sysu-doctoral-guide-2026")!;
+const sourceForRoute = (route: SysuRoute) => evidence.get(route.sourceId)!;
+const guideForRoute = (route: SysuRoute) => evidence.get(route.degree === "Undergraduate" ? "sysu-undergraduate-guide-2026" : route.degree === "Master" ? "sysu-master-guide-2026" : "sysu-doctoral-guide-2026")!;
 const usedSlugs = new Set<string>();
-const programs: CatalogSeedProgram[] = parsed.routes.map((route: any, index: number) => {
+const programs: CatalogSeedProgram[] = parsed.routes.map((route, index) => {
   const source = sourceForRoute(route);
   const guide = guideForRoute(route);
   const noDirection = /No Designated Concentration|Regardless of professional direction/i.test(route.field ?? "");
@@ -85,9 +90,6 @@ const programs: CatalogSeedProgram[] = parsed.routes.map((route: any, index: num
   usedSlugs.add(slug);
   const tuition = route.degree === "Undergraduate" ? route.tuitionAmount : graduateTuition(route);
   const subjects = route.degree === "Undergraduate" ? cscaSubjects(route.cscaRequirement) : [];
-  const deadlineLabel = route.degree === "Undergraduate"
-    ? "Final 2026 undergraduate application deadline: April 30, 2026"
-    : `Final 2026 ${route.degree.toLowerCase()} application deadline: April 30, 2026`;
   return {
     slug, schoolSlug, citySlug: cityForCampus(route.campus), nameEn, degreeLevel: route.degree,
     durationYears: route.durationYears,

@@ -12,10 +12,13 @@ const candidatePath = resolve(root, "seeds/catalog.scholarship-core-enrichment-b
 const validationPath = resolve(root, "seeds/catalog.scholarship-core-enrichment-batch-01.validation.json");
 const inputText = await readFile(inputPath, "utf8");
 const input = JSON.parse(inputText) as CatalogSeedBundle;
+if (!input.scholarships || !input.schools || !input.cities) {
+  throw new Error("ZJSU enrichment input dependencies are incomplete.");
+}
 const scholarshipSlug = "official-2026-zjsu-international-chinese-language-teachers-scholarship";
 const expectedDigest = "77edca771d2f4ca7c48457c91da63afb6cd2f80992bc47a0cc4986ff5b89be09";
 const scholarship = input.scholarships.find((row) => row.slug === scholarshipSlug);
-if (!scholarship || scholarship.sourceSha256 !== expectedDigest) {
+if (!scholarship || scholarship.sourceSha256 !== expectedDigest || !scholarship.schoolSlug || !scholarship.capturedAt) {
   throw new Error("ZJSU scholarship evidence is missing or changed.");
 }
 const school = input.schools.find((row) => row.slug === scholarship.schoolSlug);

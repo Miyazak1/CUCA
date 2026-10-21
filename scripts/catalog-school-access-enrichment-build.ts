@@ -53,8 +53,9 @@ const loaded = await Promise.all(specs.map(async (spec) => {
 
 const cities = [...new Map(loaded.flatMap(({ bundle }) => bundle.cities ?? []).map((city) => [city.slug, city])).values()];
 const schools: CatalogSeedSchool[] = loaded.map(({ spec, bundle }) => {
-  const school = bundle.schools.find((row) => row.slug === spec.slug);
+  const school = bundle.schools?.find((row) => row.slug === spec.slug);
   if (!school) throw new Error(`Missing school ${spec.slug} in ${spec.path}`);
+  if (!school.capturedAt) throw new Error(`School capture timestamp is missing: ${spec.slug}`);
   if (school.sourceSha256 !== spec.sha256) throw new Error(`School evidence digest changed: ${spec.slug}`);
   const sourceOrigin = new URL(school.sourceUrl).origin;
   if (new URL(spec.websiteUrl).origin !== sourceOrigin) throw new Error(`Website origin differs from official evidence: ${spec.slug}`);
@@ -74,7 +75,7 @@ const schools: CatalogSeedSchool[] = loaded.map(({ spec, bundle }) => {
   };
 });
 
-const generatedAt = new Date(Math.max(...schools.map((school) => Date.parse(school.capturedAt)))).toISOString();
+const generatedAt = new Date(Math.max(...schools.map((school) => Date.parse(school.capturedAt!)))).toISOString();
 const candidate: CatalogSeedBundle = {
   version: 1,
   generatedAt,

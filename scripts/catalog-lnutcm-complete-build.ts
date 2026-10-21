@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedProgramIntake, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
 const root = process.cwd();
 const paths = {
@@ -11,9 +11,11 @@ const paths = {
   validation: resolve(root, "seeds/catalog.lnutcm-complete-batch-01.validation.json"),
 };
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
+type ManifestSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type Manifest = { generatedAt: string; sources: ManifestSource[] };
 const [coreText, languageText] = await Promise.all([readFile(paths.coreManifest, "utf8"), readFile(paths.languageManifest, "utf8")]);
-const coreManifest = JSON.parse(coreText), languageManifest = JSON.parse(languageText);
-const evidence = new Map<string, any>([...(coreManifest.sources || []), ...(languageManifest.sources || [])].map((row: any) => [row.id, row]));
+const coreManifest = JSON.parse(coreText) as Manifest, languageManifest = JSON.parse(languageText) as Manifest;
+const evidence = new Map<string, ManifestSource>([...coreManifest.sources, ...languageManifest.sources].map((row) => [row.id, row]));
 const expected = {
   "lnutcm-undergraduate-admissions-2026": "c21656d991347673388a8b5600feba61e7fec54125a4e775bb423744c2dbc885",
   "lnutcm-master-admissions-2026": "40b168c139b24341f1bbbfd426d68666da68ce12cfdf0670adc3c675548a7b79",
@@ -29,12 +31,16 @@ for (const [id, digest] of Object.entries(expected)) {
 
 const schoolSlug = "liaoning-university-of-traditional-chinese-medicine";
 const citySlug = "shenyang";
-const undergraduate = evidence.get("lnutcm-undergraduate-admissions-2026");
-const masterGuide = evidence.get("lnutcm-master-admissions-2026");
-const masterCatalog = evidence.get("lnutcm-master-program-catalog-2026");
-const languageScholarship = evidence.get("lnutcm-international-chinese-language-teachers-scholarship-2026");
-const languagePage = evidence.get("lnutcm-chinese-language-program-2026-2027");
-const cgs = evidence.get("lnutcm-cgs-high-level-graduate-2026");
+const requireEvidence = (id: string): ManifestSource => {
+  const source = evidence.get(id);
+  if (!source) throw new Error(`LNUTCM evidence is unavailable: ${id}`);
+  return source;
+};
+const undergraduate = requireEvidence("lnutcm-undergraduate-admissions-2026");
+const masterGuide = requireEvidence("lnutcm-master-admissions-2026");
+const masterCatalog = requireEvidence("lnutcm-master-program-catalog-2026");
+const languageScholarship = requireEvidence("lnutcm-international-chinese-language-teachers-scholarship-2026");
+const cgs = requireEvidence("lnutcm-cgs-high-level-graduate-2026");
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 const academicMasters = [
@@ -133,7 +139,7 @@ const languageProgram: CatalogSeedProgram = {
 };
 const programs = [tcmUndergraduate, ...masterPrograms, languageProgram];
 
-const intake = (program: CatalogSeedProgram, source: any, values: Record<string, unknown>) => ({
+const intake = (program: CatalogSeedProgram, source: ManifestSource, values: Omit<CatalogSeedProgramIntake, "programSlug" | "sourceUrl" | "sourceLabel" | "sourceSha256" | "capturedAt" | "sourceFieldLineage">): CatalogSeedProgramIntake => ({
   programSlug: program.slug, status: "closed", sourceUrl: source.url, sourceLabel: source.label,
   sourceSha256: source.sha256, capturedAt: source.fetchedAt,
   sourceFieldLineage: { deadlineDate: "official application period", intakeYear: "official guide cycle" }, ...values,
@@ -146,7 +152,7 @@ const programIntakes = [
 
 const info = (label: string, value?: string) => ({ label, ...(value ? { value } : {}) });
 const benefit = (label: string, note?: string) => ({ label, included: true, ...(note ? { note } : {}) });
-const scholarshipBase = (source: any) => ({ schoolSlug, status: "draft", sourceUrl: source.url, sourceLabel: source.label,
+const scholarshipBase = (source: ManifestSource) => ({ schoolSlug, status: "draft" as const, sourceUrl: source.url, sourceLabel: source.label,
   sourceSha256: source.sha256, capturedAt: source.fetchedAt, providerLocation: "Shenyang, Liaoning, China", targetCountries: [], targetRegions: [],
   actionLinks: [{ label: source.label, url: source.url, kind: "official-source" }],
   sourceFieldLineage: { title: "official page title", fundingLevel: "official coverage section", coverage: "official coverage section",

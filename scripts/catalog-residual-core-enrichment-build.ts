@@ -4,7 +4,9 @@ import { resolve } from "node:path";
 import {
   createCatalogMigrationValidationReport,
   type CatalogSeedBundle,
+  type CatalogSeedCity,
   type CatalogSeedProgram,
+  type CatalogSeedSchool,
 } from "../src/server/catalog/seed-contract.ts";
 
 const root = process.cwd();
@@ -22,10 +24,19 @@ const paths = {
 const inputKeys = ["uibe", "buct", "lnutcm", "uibeSilkManifest", "uibeImpaManifest", "buctManifest", "lnutcmManifest"] as const;
 const fileEntries = await Promise.all(inputKeys.map(async (key) => [key, await readFile(paths[key], "utf8")] as const));
 const text = Object.fromEntries(fileEntries) as Record<(typeof inputKeys)[number], string>;
+type CompleteBundle = CatalogSeedBundle & {
+  cities: CatalogSeedCity[];
+  schools: CatalogSeedSchool[];
+  programs: CatalogSeedProgram[];
+};
+const completeBundle = (value: CatalogSeedBundle, label: string): CompleteBundle => {
+  if (!value.cities || !value.schools || !value.programs) throw new Error(`${label} bundle dependencies are incomplete.`);
+  return value as CompleteBundle;
+};
 const bundles = {
-  uibe: JSON.parse(text.uibe) as CatalogSeedBundle,
-  buct: JSON.parse(text.buct) as CatalogSeedBundle,
-  lnutcm: JSON.parse(text.lnutcm) as CatalogSeedBundle,
+  uibe: completeBundle(JSON.parse(text.uibe) as CatalogSeedBundle, "UIBE"),
+  buct: completeBundle(JSON.parse(text.buct) as CatalogSeedBundle, "BUCT"),
+  lnutcm: completeBundle(JSON.parse(text.lnutcm) as CatalogSeedBundle, "LNUTCM"),
 };
 type Manifest = { sources: { id: string; status: number; sha256: string; fetchedAt: string }[] };
 const manifests = {
@@ -63,7 +74,7 @@ for (const [key, row] of Object.entries(evidence)) {
   }
 }
 
-const findProgram = (bundle: CatalogSeedBundle, slug: string) => {
+const findProgram = (bundle: CompleteBundle, slug: string) => {
   const program = bundle.programs.find((row) => row.slug === slug);
   if (!program) throw new Error(`Missing program dependency: ${slug}`);
   return program;
@@ -135,7 +146,7 @@ programs.push({
   },
 });
 
-const dependencies = new Map<string, { school: CatalogSeedBundle["schools"][number]; city: CatalogSeedBundle["cities"][number] }>();
+const dependencies = new Map<string, { school: CatalogSeedSchool; city: CatalogSeedCity }>();
 for (const [bundleKey, bundle] of Object.entries(bundles)) {
   for (const program of programs.filter((row) => bundle.programs.some((candidate) => candidate.slug === row.slug))) {
     const school = bundle.schools.find((row) => row.slug === program.schoolSlug);

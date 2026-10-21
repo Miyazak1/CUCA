@@ -40,7 +40,8 @@ const candidate = JSON.parse(candidateText) as CatalogSeedBundle;
 const storedValidation = await parse(paths.validation);
 const review = await parse(paths.review);
 const state = await parse(paths.state);
-const { reviewHash: storedReviewHash, publicationReference: _publicationReference, ...reviewBase } = review;
+const storedReviewHash = review.reviewHash;
+const reviewBase = Object.fromEntries(Object.entries(review).filter(([key]) => key !== "reviewHash" && key !== "publicationReference"));
 const actualReviewHash = createHash("sha256").update(JSON.stringify(reviewBase)).digest("hex");
 if (storedReviewHash !== approvedReviewHash || actualReviewHash !== approvedReviewHash) throw new Error("Standing-authorized review hash does not match the stored HIT review.");
 if (createHash("sha256").update(candidateText).digest("hex") !== review.candidateSha256) throw new Error("HIT candidate changed after review.");
@@ -90,8 +91,8 @@ const approvalRecord = {
 async function writeOrVerify(path: string, value: unknown) {
   const text = `${JSON.stringify(value, null, 2)}\n`;
   try { await writeFile(path, text, { encoding: "utf8", flag: "wx" }); }
-  catch (error: any) {
-    if (error?.code !== "EEXIST") throw error;
+  catch (error: unknown) {
+    if ((error as { code?: string }).code !== "EEXIST") throw error;
     if (await readFile(path, "utf8") !== text) throw new Error(`Existing artifact does not match this publication: ${path}`);
   }
 }

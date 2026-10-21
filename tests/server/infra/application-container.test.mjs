@@ -28,7 +28,7 @@ test("application image is pinned, multi-stage, non-root, read-only compatible a
   for (const deferredWorker of ["student-file", "official-submission", "payment-reconciliation"]) {
     assert.doesNotMatch(dockerfile, new RegExp(`COPY --from=build[^\\n]+start-${deferredWorker}-worker\\.ts`));
   }
-  assert.equal(packageJson.dependencies.vinext, "1.0.0-beta.10");
+  assert.equal(packageJson.dependencies.vinext, "1.3.0");
   assert.equal(packageJson.devDependencies?.vinext, undefined);
   for (const excluded of [".env*", "node_modules", "releases", "tests", "seeds/catalog.*.json"]) {
     assert.match(dockerignore, new RegExp(`^${excluded.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "m"));

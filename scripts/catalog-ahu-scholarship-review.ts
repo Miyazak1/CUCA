@@ -1,25 +1,31 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type EntityRow = { id: string; slug: string; status: string; verification_status: string };
+type ScholarshipBaseline = { school: EntityRow; city: EntityRow; existingScholarships: EntityRow[] };
+type EvidenceSource = { id: string; finalUrl: string; label: string; sha256: string; fetchedAt: string; contentType: string; byteLength: number };
+type EvidenceManifest = { sources: EvidenceSource[] };
 
 const root = process.cwd();
 const paths = { candidate: resolve(root, "seeds/catalog.ahu-scholarship-safe-new-batch-01.draft.json"), validation: resolve(root, "seeds/catalog.ahu-scholarship-safe-new-batch-01.validation.json"), review: resolve(root, "seeds/catalog.ahu-scholarship-safe-new-batch-01.review.json"), manifest: resolve(root, "work/catalog-official/ahu-scholarship-batch-01/manifest.json"), state: resolve(root, ".cuac-local/runtime.json") };
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const [candidateText, validationText, manifestText, stateText] = await Promise.all([readFile(paths.candidate, "utf8"), readFile(paths.validation, "utf8"), readFile(paths.manifest, "utf8"), readFile(paths.state, "utf8")]);
-const candidate = JSON.parse(candidateText), validation = JSON.parse(validationText), manifest = JSON.parse(manifestText), state = JSON.parse(stateText);
+const candidate = JSON.parse(candidateText) as CatalogSeedBundle, validation = JSON.parse(validationText), manifest = JSON.parse(manifestText) as EvidenceManifest, state = JSON.parse(stateText) as LocalDevelopmentState;
 const fresh = createCatalogMigrationValidationReport(candidate);
 if (!fresh.ok || !validation.ok || fresh.bundleSha256 !== validation.bundleSha256 || fresh.operationPlanSha256 !== validation.operationPlanSha256) throw new Error("AHU candidate validation changed.");
-const scholarshipSlug = candidate.scholarships[0].slug;
+const scholarshipSlug = candidate.scholarships?.[0]?.slug;
+if (!scholarshipSlug) throw new Error("AHU scholarship candidate is empty.");
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:ahu-scholarship-review" });
-let baseline: any;
+let baseline: ScholarshipBaseline;
 try {
-  const school = await pool.query("select id,slug,status,verification_status from schools where slug='anhui-university'");
-  const city = await pool.query("select id,slug,status from cities where slug='hefei'");
-  const conflict = await pool.query("select id,slug,status,verification_status from scholarships where slug=$1", [scholarshipSlug]);
-  const active = await pool.query("select id,slug,status,verification_status from scholarships where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
+  const school = await pool.query<EntityRow>("select id,slug,status,verification_status from schools where slug='anhui-university'");
+  const city = await pool.query<EntityRow>("select id,slug,status from cities where slug='hefei'");
+  const conflict = await pool.query<EntityRow>("select id,slug,status,verification_status from scholarships where slug=$1", [scholarshipSlug]);
+  const active = await pool.query<EntityRow>("select id,slug,status,verification_status from scholarships where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
   if (school.rows.length !== 1 || city.rows.length !== 1 || conflict.rows.length !== 0 || active.rows.length !== 1) throw new Error("AHU safe-new database baseline changed.");
   baseline = { school: school.rows[0], city: city.rows[0], existingScholarships: active.rows };
 } finally { await pool.end(); }

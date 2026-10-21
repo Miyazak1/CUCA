@@ -8,6 +8,11 @@ import {
   type CatalogSeedScholarship,
 } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
+type SduRoute = { sourceId: string; degree: CatalogSeedProgram["degreeLevel"]; fieldCategory: string; nameEn: string; teachingLanguage: string; durationYears: number; tuitionAmount: number; campus: string; sourcePage: number; sourceRow: number };
+type ParsedRoutes = { counts: Record<string, number>; routes: SduRoute[] };
+
 const root = process.cwd();
 const workRoot = resolve(root, "work/catalog-official");
 const batchRoot = resolve(workRoot, "sdu-complete-batch-01");
@@ -68,9 +73,9 @@ async function manifestPaths(directory: string): Promise<string[]> {
 }
 
 async function findEvidence() {
-  const evidence = new Map<string, any>();
+  const evidence = new Map<string, EvidenceSource>();
   for (const path of await manifestPaths(workRoot)) {
-    const manifest = JSON.parse(await readFile(path, "utf8"));
+    const manifest = JSON.parse(await readFile(path, "utf8")) as EvidenceManifest;
     for (const source of manifest.sources ?? []) {
       if (expected[source.id] && source.status === 200 && source.sha256 === expected[source.id]) evidence.set(source.id, source);
     }
@@ -81,13 +86,13 @@ async function findEvidence() {
 }
 
 const evidence = await findEvidence();
-const parsed = JSON.parse(await readFile(parsedPath, "utf8"));
+const parsed = JSON.parse(await readFile(parsedPath, "utf8")) as ParsedRoutes;
 const requiredCounts = { undergraduate: 20, master: 58, doctoral: 65, chinese: 68, english: 75, total: 143 };
 if (JSON.stringify(parsed.counts) !== JSON.stringify(requiredCounts)) throw new Error(`Unexpected SDU route counts: ${JSON.stringify(parsed.counts)}`);
 
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const used = new Set<string>();
-function uniqueSlug(route: any, index: number) {
+function uniqueSlug(route: SduRoute, index: number) {
   const base = `${schoolSlug}-${route.degree.toLowerCase()}-${slugify(route.fieldCategory)}-${slugify(route.nameEn)}-${slugify(route.teachingLanguage)}`;
   const slug = used.has(base) ? `${base}-${index + 1}` : base;
   used.add(slug);
@@ -117,14 +122,14 @@ const undergraduateCsca: Record<string, string[]> = {
   "Intelligent Manufacturing Engineering|English": ["Mathematics", "Physics"],
 };
 
-function languageRequirement(route: any) {
+function languageRequirement(route: SduRoute) {
   if (route.teachingLanguage === "English") return { englishRequirement: "IELTS 6.0+, TOEFL 80+ (SDU DI code C296), TOEFL MyBest 80+, Essentials 8+, or equivalent; native English speakers and applicants whose highest education was taught in English may qualify for an exemption with proof." };
   if (route.degree === "Undergraduate") return { hskRequirement: route.nameEn === "Teaching Chinese to Speakers of Other Languages" ? "HSK 4, 210+" : "HSK 5, 180+" };
   if (route.degree === "Master") return { hskRequirement: route.nameEn === "International Chinese Language Education" ? "HSK 5, 180+" : "HSK 6, 180+" };
   return { hskRequirement: "HSK 6, 210+" };
 }
 
-const programs: CatalogSeedProgram[] = parsed.routes.map((route: any, index: number) => {
+const programs: CatalogSeedProgram[] = parsed.routes.map((route, index) => {
   const source = evidence.get(route.sourceId)!;
   const cscaSubjects = route.degree === "Undergraduate" ? undergraduateCsca[`${route.nameEn}|${route.teachingLanguage}`] : undefined;
   if (route.degree === "Undergraduate" && !cscaSubjects) throw new Error(`Missing CSCA subject mapping for ${route.nameEn} (${route.teachingLanguage})`);

@@ -142,7 +142,7 @@ export class PostgresInsightGovernance {
     const revision = inputInteger(fields.expectedPublicationRevision, "Publication revision", 1, MAX_VERSION), reason = inputEnum(fields.reason, "Withdrawal reason", INSIGHT_WITHDRAWAL_REASONS);
     return this.client.transaction(async tx => {
       await this.liveAuthority(tx, scope);
-      const updated = await tx.query(`update insight_posts set status = 'archived', publication_revision = publication_revision + 1, updated_at = now()
+      const updated = await tx.query<{ versionId: string; publicationRevision: number; updatedAt: Date }>(`update insight_posts set status = 'archived', publication_revision = publication_revision + 1, updated_at = now()
         where id = $1 and status = 'published' and publication_revision = $2 returning current_version_id::text as "versionId", publication_revision as "publicationRevision", updated_at as "updatedAt"`, [scope.postId, revision]);
       if (updated.length !== 1) throw conflict();
       const catalogRevision = await tx.query(`update catalog_publication_revisions set revision = revision + 1, updated_at = now()

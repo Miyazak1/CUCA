@@ -4,13 +4,26 @@ import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 
 const root = process.cwd();
+type ParsedProgram = {
+  degreeLevel: string;
+  major: string;
+  school: string;
+  sourceUrl: string;
+  sourceLabel: string;
+  sourceSha256: string;
+  capturedAt: string;
+  sourcePage: number;
+  sourceTableRow: number;
+};
+type ParsedPrograms = { programCount: number; degreeCounts: { Undergraduate: number; Master: number }; programs: ParsedProgram[] };
+type Manifest = { generatedAt: string; sources: unknown[] };
 const paths = { parsed: resolve(root, "work/catalog-official/ahu-programs-batch-01/parsed-programs.json"), manifest: resolve(root, "work/catalog-official/ahu-programs-batch-01/manifest.json"), sourceBundle: resolve(root, "seeds/catalog.cscalite-online-20260910.published.json"), output: resolve(root, "seeds/catalog.ahu-programs-safe-new-batch-01.draft.json"), validation: resolve(root, "seeds/catalog.ahu-programs-safe-new-batch-01.validation.json") };
-const [parsed, manifest, sourceBundle] = await Promise.all([readFile(paths.parsed, "utf8").then(JSON.parse), readFile(paths.manifest, "utf8").then(JSON.parse), readFile(paths.sourceBundle, "utf8").then(JSON.parse)]) as [any, any, CatalogSeedBundle];
+const [parsed, manifest, sourceBundle] = await Promise.all([readFile(paths.parsed, "utf8").then(JSON.parse), readFile(paths.manifest, "utf8").then(JSON.parse), readFile(paths.sourceBundle, "utf8").then(JSON.parse)]) as [ParsedPrograms, Manifest, CatalogSeedBundle];
 const city = sourceBundle.cities?.find((row) => row.slug === "hefei"), school = sourceBundle.schools?.find((row) => row.slug === "anhui-university");
 if (!city || !school || parsed.programCount !== 169 || parsed.degreeCounts.Undergraduate !== 80 || parsed.degreeCounts.Master !== 89 || manifest.sources.length !== 2) throw new Error("AHU parsed program evidence is incomplete.");
 const slugify = (value: string) => value.normalize("NFKD").replace(/[’']/g, "").replace(/&/g, " and ").replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-|-$/g, "").toLowerCase();
-const safeRows = parsed.programs.filter((row: any) => !(row.degreeLevel === "Undergraduate" && row.major === "Economics"));
-const programs = safeRows.map((row: any) => ({
+const safeRows = (parsed.programs as ParsedProgram[]).filter((row) => !(row.degreeLevel === "Undergraduate" && row.major === "Economics"));
+const programs = safeRows.map((row) => ({
   slug: `anhui-university-${row.degreeLevel.toLowerCase()}-${slugify(row.major)}-${slugify(row.school)}`,
   schoolSlug: "anhui-university",
   citySlug: "hefei",

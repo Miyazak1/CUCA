@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import type { CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
 import { localDatabaseUrl } from "./lib/local-development.ts";
 
@@ -13,11 +14,11 @@ try {
   const scholarships = await pool.query("select id,slug,title,status,verification_status,source_url from scholarships where school_id=(select id from schools where slug=$1) order by slug", ["nankai-university"]);
   let candidateConflicts: unknown[] | null = null;
   try {
-    const candidate = JSON.parse(await readFile("seeds/catalog.nankai-complete-batch-01.draft.json", "utf8"));
-    const slugs = candidate.programs.map((row: any) => row.slug);
+    const candidate = JSON.parse(await readFile("seeds/catalog.nankai-complete-batch-01.draft.json", "utf8")) as CatalogSeedBundle;
+    const slugs = (candidate.programs ?? []).map((row) => row.slug);
     candidateConflicts = (await pool.query("select slug,status,verification_status from programs where slug=any($1::text[]) order by slug", [slugs])).rows;
-  } catch (error: any) {
-    if (!String(error?.message).includes("ENOENT")) throw error;
+  } catch (error: unknown) {
+    if (!String(error instanceof Error ? error.message : error).includes("ENOENT")) throw error;
   }
   console.log(JSON.stringify({ school: school.rows, city: city.rows, programs: programs.rows, programRows: programRows.rows, intakeCount: intakes.rows[0]?.count, scholarships: scholarships.rows, candidateProgramConflicts: candidateConflicts }, null, 2));
 } finally { await pool.end(); }

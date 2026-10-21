@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, relative, resolve } from "node:path";
+import type { CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 
 const root = process.cwd();
 const reviewPath = resolve(root, "seeds/catalog.scholarships-rich-batch-01.review.json");
@@ -9,34 +10,71 @@ const validationPath = resolve(root, "seeds/catalog.scholarships-rich-batch-01.v
 const registryPath = resolve(root, "catalog-sources/official-sources.json");
 const outputPath = resolve(root, "docs/reviews/CUAC_SCHOLARSHIP_BATCH_01_REVIEW.md");
 
-const parse = async (path: string) => JSON.parse(await readFile(path, "utf8"));
+interface ReviewSource {
+  id: string;
+  url: string;
+  label: string;
+  manifestPath: string;
+  artifactPath: string;
+  sha256: string;
+}
+
+interface ReviewRecord {
+  schoolSlug: string;
+  scholarshipSlug: string;
+  status: string;
+  title: string;
+  unresolvedFields: string[];
+  sources: ReviewSource[];
+}
+
+interface ScholarshipReview {
+  status: string;
+  schoolCount: number;
+  scholarshipCount: number;
+  sourceCount: number;
+  records: ReviewRecord[];
+}
+
+interface ValidationReport {
+  ok: boolean;
+  errors: string[];
+  bundleSha256: string;
+}
+
+interface RegisteredSource { id: string; url: string; schoolSlug: string }
+interface SourceRegistry { sources: RegisteredSource[] }
+interface ManifestSource { id: string; url: string; sha256: string; artifactPath: string }
+interface SourceManifest { sources: ManifestSource[] }
+
+const parse = async <T>(path: string): Promise<T> => JSON.parse(await readFile(path, "utf8")) as T;
 const sha256 = (value: Buffer) => createHash("sha256").update(value).digest("hex");
 const display = (value: unknown) => String(value ?? "").replaceAll("|", "\\|").replaceAll("\n", " ");
 
-const review = await parse(reviewPath);
-const draft = await parse(draftPath);
-const validation = await parse(validationPath);
-const registry = await parse(registryPath);
+const review = await parse<ScholarshipReview>(reviewPath);
+const draft = await parse<CatalogSeedBundle>(draftPath);
+const validation = await parse<ValidationReport>(validationPath);
+const registry = await parse<SourceRegistry>(registryPath);
 const errors: string[] = [];
-const manifests = new Map<string, any>();
-const registryById = new Map(registry.sources.map((source: any) => [source.id, source]));
-const schoolsBySlug = new Map(draft.schools.map((school: any) => [school.slug, school]));
-const scholarshipsBySlug = new Map(draft.scholarships.map((scholarship: any) => [scholarship.slug, scholarship]));
+const manifests = new Map<string, SourceManifest>();
+const registryById = new Map(registry.sources.map((source) => [source.id, source]));
+const schoolsBySlug = new Map((draft.schools ?? []).map((school) => [school.slug, school]));
+const scholarshipsBySlug = new Map((draft.scholarships ?? []).map((scholarship) => [scholarship.slug, scholarship]));
 
 if (review.status !== "awaiting_user_approval") errors.push(`Unexpected review status: ${review.status}`);
 if (review.records.length !== 20) errors.push(`Expected 20 review records, found ${review.records.length}`);
-if (new Set(review.records.map((record: any) => record.schoolSlug)).size !== 20) errors.push("Review does not contain 20 distinct schools");
+if (new Set(review.records.map((record) => record.schoolSlug)).size !== 20) errors.push("Review does not contain 20 distinct schools");
 if (!validation.ok || validation.errors.length) errors.push("Draft validation report is not clean");
 
 for (const record of review.records) {
-  const scholarship: any = scholarshipsBySlug.get(record.scholarshipSlug);
+  const scholarship = scholarshipsBySlug.get(record.scholarshipSlug);
   if (!schoolsBySlug.has(record.schoolSlug)) errors.push(`Missing school: ${record.schoolSlug}`);
   if (!scholarship) errors.push(`Missing scholarship: ${record.scholarshipSlug}`);
   if (scholarship?.schoolSlug !== record.schoolSlug) errors.push(`School mismatch: ${record.scholarshipSlug}`);
   if (scholarship?.status !== "draft" || record.status !== "draft") errors.push(`Non-draft record: ${record.scholarshipSlug}`);
 
   for (const source of record.sources) {
-    const registered: any = registryById.get(source.id);
+    const registered = registryById.get(source.id);
     if (!registered) errors.push(`Unregistered source: ${source.id}`);
     if (registered?.url !== source.url) errors.push(`Registry URL mismatch: ${source.id}`);
     if (registered?.schoolSlug !== record.schoolSlug) errors.push(`Registry school mismatch: ${source.id}`);
@@ -44,10 +82,10 @@ for (const record of review.records) {
     const manifestPath = resolve(root, source.manifestPath);
     let manifest = manifests.get(manifestPath);
     if (!manifest) {
-      manifest = await parse(manifestPath);
+      manifest = await parse<SourceManifest>(manifestPath);
       manifests.set(manifestPath, manifest);
     }
-    const manifestSource = manifest.sources.find((item: any) => item.id === source.id);
+    const manifestSource = manifest.sources.find((item) => item.id === source.id);
     if (!manifestSource) errors.push(`Source absent from manifest: ${source.id}`);
     if (manifestSource?.sha256 !== source.sha256) errors.push(`Manifest checksum mismatch: ${source.id}`);
     if (manifestSource?.url !== source.url) errors.push(`Manifest URL mismatch: ${source.id}`);
@@ -85,11 +123,11 @@ if (errors.length) {
   ];
 
   for (const record of review.records) {
-    const school: any = schoolsBySlug.get(record.schoolSlug);
-    const scholarship: any = scholarshipsBySlug.get(record.scholarshipSlug);
+    const school = schoolsBySlug.get(record.schoolSlug);
+    const scholarship = scholarshipsBySlug.get(record.scholarshipSlug);
     const unresolved = record.unresolvedFields.map((item: string) => unresolvedZh[item] ?? item).join("；") || "无";
-    const sources = record.sources.map((source: any) => `[${display(source.label)}](${source.url})`).join("；");
-    lines.push(`| ${display(school.nameZh || school.nameEn)} | ${display(record.title)} | ${display(scholarship.deadlineDate || scholarship.deadlineLabel || "官方未公布")} | ${display(scholarship.applicableDegree)} | ${display(scholarship.fundingLevel || scholarship.coverage)} | ${display(unresolved)} | ${sources} |`);
+    const sources = record.sources.map((source) => `[${display(source.label)}](${source.url})`).join("；");
+    lines.push(`| ${display(school?.nameZh || school?.nameEn)} | ${display(record.title)} | ${display(scholarship?.deadlineDate || scholarship?.deadlineLabel || "官方未公布")} | ${display(scholarship?.applicableDegree)} | ${display(scholarship?.fundingLevel || scholarship?.coverage)} | ${display(unresolved)} | ${sources} |`);
   }
 
   lines.push(
@@ -108,8 +146,8 @@ if (errors.length) {
   console.log(JSON.stringify({
     ok: true,
     reviewRecords: review.records.length,
-    distinctSchools: new Set(review.records.map((record: any) => record.schoolSlug)).size,
-    sources: review.records.reduce((count: number, record: any) => count + record.sources.length, 0),
+    distinctSchools: new Set(review.records.map((record) => record.schoolSlug)).size,
+    sources: review.records.reduce((count, record) => count + record.sources.length, 0),
     bundleSha256: validation.bundleSha256,
     output: relative(root, outputPath),
   }, null, 2));

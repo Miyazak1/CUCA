@@ -6,6 +6,11 @@ import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "
 import { assertLocalCatalogPublishTarget, LOCAL_CATALOG_PUBLISH_CONFIRMATION } from "../src/server/catalog/local-publish-safety.ts";
 import { createPostgresPool, createTransactionalSqlClient } from "../src/server/db/postgres-client.ts";
 
+type SnapshotRow = { snapshot: { id: string; verification_status: string } & Record<string, unknown> };
+type StatusRow = { slug: string; status: string; verification_status: string };
+type VerifiedStatusRow = StatusRow & { last_verified_at: Date | null };
+type TotalsRow = Record<string, number>;
+
 const root = process.cwd();
 const batch = "xmu-safe-new-batch-01";
 const prefix = `catalog.${batch}`;
@@ -35,7 +40,7 @@ const publication: CatalogSeedBundle = {
 const report = createCatalogMigrationValidationReport(publication);
 if (!report.ok || report.summary.programs !== 535 || report.summary.programIntakes !== 535 || report.summary.scholarships !== 3) throw new Error(`Invalid XMU publication: ${report.errors.join(" ")}`);
 const approval = { version: 1, approvedAt, approvalMode: "standing-user-default-publication", reviewReference: publicationReference, approvedReviewSha256: reviewHash, approvedCandidateFileSha256: sha(candidateText), approvedCandidateBundleSha256: fresh.bundleSha256, publicationBundle: `seeds/${prefix}.approved.local.json`, publicationBundleSha256: report.bundleSha256, schoolSlug: review.scope.schoolSlug, programSlugs: publication.programs!.map((row) => row.slug), scholarshipSlugs: publication.scholarships!.map((row) => row.slug), archivedProgramAliases: [], archivedScholarshipAliases: [], prohibitedDataConfirmedExcluded: true };
-async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: any) { if (error?.code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
+async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: unknown) { if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
 await writeOrVerify(paths.output, publication);
 await writeOrVerify(paths.approval, approval);
 
@@ -44,26 +49,26 @@ const pool = createPostgresPool({ databaseUrl: target.databaseUrl, max: 1, appli
 try {
   const client = createTransactionalSqlClient(pool);
   const result = await client.transaction(async (tx) => {
-    const cityBefore = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='xiamen'", []);
-    const schoolBefore = await tx.query<any>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='xiamen-university'", []);
+    const cityBefore = await tx.query<SnapshotRow>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='xiamen'", []);
+    const schoolBefore = await tx.query<SnapshotRow>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='xiamen-university'", []);
     if (cityBefore.length !== 1 || schoolBefore.length !== 1 || cityBefore[0].snapshot.id !== review.reconciliation.databaseBaseline.cityId || schoolBefore[0].snapshot.id !== review.reconciliation.databaseBaseline.schoolId || schoolBefore[0].snapshot.verification_status !== "unverified") throw new Error("XMU dependency baseline changed.");
-    const deferredPrograms = await tx.query<any>("select slug,status,verification_status from programs where slug=any($1::text[]) order by slug", [review.reconciliation.deferredProgramSlugs]);
-    const stableScholarships = await tx.query<any>("select slug,status,verification_status from scholarships where slug=any($1::text[]) order by slug", [review.reconciliation.deferredStableScholarshipSlugs]);
-    const legacyScholarships = await tx.query<any>("select slug,status,verification_status from scholarships where slug=any($1::text[]) order by slug", [review.reconciliation.deferredLegacyScholarshipSlugs]);
+    const deferredPrograms = await tx.query<StatusRow>("select slug,status,verification_status from programs where slug=any($1::text[]) order by slug", [review.reconciliation.deferredProgramSlugs]);
+    const stableScholarships = await tx.query<StatusRow>("select slug,status,verification_status from scholarships where slug=any($1::text[]) order by slug", [review.reconciliation.deferredStableScholarshipSlugs]);
+    const legacyScholarships = await tx.query<StatusRow>("select slug,status,verification_status from scholarships where slug=any($1::text[]) order by slug", [review.reconciliation.deferredLegacyScholarshipSlugs]);
     if (deferredPrograms.length !== 14 || deferredPrograms.some((row) => row.status !== "active" || row.verification_status !== "unverified") || stableScholarships.length !== 1 || stableScholarships[0].status !== "active" || stableScholarships[0].verification_status !== "verified" || legacyScholarships.length !== 3 || legacyScholarships.some((row) => row.status !== "active" || row.verification_status !== "unverified")) throw new Error("XMU deferred rows changed.");
     const programSlugs = publication.programs!.map((row) => row.slug);
     const scholarshipSlugs = publication.scholarships!.map((row) => row.slug);
-    const beforePrograms = await tx.query<any>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[])", [programSlugs]);
-    const beforeScholarships = await tx.query<any>("select slug,status,verification_status,last_verified_at from scholarships where slug=any($1::text[])", [scholarshipSlugs]);
+    const beforePrograms = await tx.query<VerifiedStatusRow>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[])", [programSlugs]);
+    const beforeScholarships = await tx.query<VerifiedStatusRow>("select slug,status,verification_status,last_verified_at from scholarships where slug=any($1::text[])", [scholarshipSlugs]);
     const pre = beforePrograms.length === 0 && beforeScholarships.length === 0;
     const post = beforePrograms.length === 535 && beforeScholarships.length === 3 && [...beforePrograms, ...beforeScholarships].every((row) => row.status === "active" && row.verification_status === "verified" && row.last_verified_at?.toISOString() === approvedAt);
     if (!pre && !post) throw new Error("XMU safe-new slugs partially conflict.");
     const written = await new CatalogSeedWriter(tx).writeBundle(publication, { preserveExistingCitySlugs: ["xiamen"], preserveExistingSchoolSlugs: ["xiamen-university"] });
     if (!written.ok) throw new Error(`XMU write failed: ${written.errors.join(" ")}`);
-    const cityAfter = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='xiamen'", []);
-    const schoolAfter = await tx.query<any>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='xiamen-university'", []);
+    const cityAfter = await tx.query<SnapshotRow>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='xiamen'", []);
+    const schoolAfter = await tx.query<SnapshotRow>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='xiamen-university'", []);
     if (JSON.stringify(cityAfter[0]?.snapshot) !== JSON.stringify(cityBefore[0].snapshot) || JSON.stringify(schoolAfter[0]?.snapshot) !== JSON.stringify(schoolBefore[0].snapshot)) throw new Error("XMU dependency rows changed.");
-    const totals = await tx.query<any>("select (select count(*) from programs where school_id=$1 and status='active')::int programs,(select count(*) from programs where school_id=$1 and status='active' and verification_status='verified')::int verified_programs,(select count(*) from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=$1)::int intakes,(select count(*) from scholarships where school_id=$1 and status='active')::int scholarships,(select count(*) from scholarships where school_id=$1 and status='active' and verification_status='verified')::int verified_scholarships,(select count(*) from scholarships where slug=any($2::text[]) and status='active' and verification_status='verified' and jsonb_array_length(benefit_items)>0 and jsonb_array_length(eligibility_items)>0 and jsonb_array_length(application_materials)>0 and jsonb_array_length(application_steps)>0 and jsonb_array_length(action_links)>0)::int new_rich_scholarships", [review.reconciliation.databaseBaseline.schoolId, scholarshipSlugs]);
+    const totals = await tx.query<TotalsRow>("select (select count(*) from programs where school_id=$1 and status='active')::int programs,(select count(*) from programs where school_id=$1 and status='active' and verification_status='verified')::int verified_programs,(select count(*) from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=$1)::int intakes,(select count(*) from scholarships where school_id=$1 and status='active')::int scholarships,(select count(*) from scholarships where school_id=$1 and status='active' and verification_status='verified')::int verified_scholarships,(select count(*) from scholarships where slug=any($2::text[]) and status='active' and verification_status='verified' and jsonb_array_length(benefit_items)>0 and jsonb_array_length(eligibility_items)>0 and jsonb_array_length(application_materials)>0 and jsonb_array_length(application_steps)>0 and jsonb_array_length(action_links)>0)::int new_rich_scholarships", [review.reconciliation.databaseBaseline.schoolId, scholarshipSlugs]);
     const expected = { programs: 549, verified_programs: 535, intakes: 535, scholarships: 7, verified_scholarships: 4, new_rich_scholarships: 3 };
     if (Object.entries(expected).some(([key, value]) => totals[0]?.[key] !== value)) throw new Error(`XMU post-check failed: ${JSON.stringify({ expected, actual: totals[0] })}`);
     return { written: written.summary, totals: totals[0], schoolId: review.reconciliation.databaseBaseline.schoolId };

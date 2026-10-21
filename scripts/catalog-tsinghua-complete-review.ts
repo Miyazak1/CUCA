@@ -8,6 +8,11 @@ import {
   type CatalogSeedScholarship,
 } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
+type TsinghuaRoute = { degree: CatalogSeedProgram["degreeLevel"]; fieldCategory: string; nameEn: string; teachingLanguage: string; admissionGroup: string; sourceTable: string };
+type ParsedRoutes = { counts: Record<string, number>; undergraduate: TsinghuaRoute[]; graduateEnglish: TsinghuaRoute[] };
+
 const root = process.cwd();
 const workRoot = resolve(root, "work/catalog-official");
 const parsedPath = resolve(workRoot, "tsinghua-complete-batch-01/parsed-routes.json");
@@ -39,16 +44,16 @@ const expected: Record<string, string> = {
 };
 
 async function findEvidence() {
-  const evidence = new Map<string, any>();
+  const evidence = new Map<string, EvidenceSource>();
   for (const entry of await readdir(workRoot, { withFileTypes: true })) {
     if (!entry.isDirectory()) continue;
     try {
-      const manifest = JSON.parse(await readFile(resolve(workRoot, entry.name, "manifest.json"), "utf8"));
+      const manifest = JSON.parse(await readFile(resolve(workRoot, entry.name, "manifest.json"), "utf8")) as EvidenceManifest;
       for (const source of manifest.sources ?? []) {
         if (expected[source.id] && source.status === 200 && source.sha256 === expected[source.id]) evidence.set(source.id, source);
       }
-    } catch (error: any) {
-      if (error?.code !== "ENOENT") throw error;
+    } catch (error: unknown) {
+      if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
     }
   }
   const missing = Object.keys(expected).filter(id => !evidence.has(id));
@@ -57,19 +62,19 @@ async function findEvidence() {
 }
 
 const evidence = await findEvidence();
-const parsed = JSON.parse(await readFile(parsedPath, "utf8"));
+const parsed = JSON.parse(await readFile(parsedPath, "utf8")) as ParsedRoutes;
 const requiredCounts = { undergraduate: 91, graduateEnglish: 37, doctoralEnglish: 9, masterEnglish: 28, total: 128 };
 if (JSON.stringify(parsed.counts) !== JSON.stringify(requiredCounts)) throw new Error(`Unexpected route counts: ${JSON.stringify(parsed.counts)}`);
 
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const used = new Set<string>();
-function uniqueSlug(route: any, index: number) {
+function uniqueSlug(route: TsinghuaRoute, index: number) {
   const base = `${schoolSlug}-${route.degree.toLowerCase()}-${slugify(route.fieldCategory)}-${slugify(route.nameEn)}-${slugify(route.teachingLanguage)}`;
   const slug = used.has(base) ? `${base}-${index + 1}` : base;
   used.add(slug);
   return slug;
 }
-function undergraduateTuition(route: any) {
+function undergraduateTuition(route: TsinghuaRoute) {
   const text = `${route.fieldCategory} ${route.admissionGroup} ${route.nameEn}`;
   if (/Clinical Medicine/i.test(text)) return { tuitionText: "RMB 40,000/year foundation stage; RMB 60,000/year research stage; RMB 70,000/year clinical stage", displayTuition: "RMB 40,000-70,000/year" };
   if (/Arts|Design|Fine Arts|Sculpture|Art History/i.test(text)) return { tuitionAmount: 40000, tuitionText: "RMB 40,000/year", displayTuition: "RMB 40,000/year" };
@@ -79,9 +84,8 @@ function undergraduateTuition(route: any) {
 }
 
 const division = evidence.get("tsinghua-international-undergraduate-divisions-2026")!;
-const faq = evidence.get("tsinghua-international-undergraduate-faq-2026")!;
 const graduate = evidence.get("tsinghua-graduate-programs-english")!;
-const programs: CatalogSeedProgram[] = [...parsed.undergraduate, ...parsed.graduateEnglish].map((route: any, index: number) => {
+const programs: CatalogSeedProgram[] = [...parsed.undergraduate, ...parsed.graduateEnglish].map((route, index) => {
   const isUg = route.degree === "Undergraduate";
   const source = isUg ? division : graduate;
   const durationYears = isUg ? (/Architecture|Sculpture/i.test(route.nameEn) ? 5 : /Clinical Medicine/i.test(route.nameEn) ? 8 : 4) : undefined;

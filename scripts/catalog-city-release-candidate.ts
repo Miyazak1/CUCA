@@ -85,13 +85,13 @@ try {
   const slugs = operations.map(operation => operation.slug);
   const cities = (await connection.query("select to_jsonb(c) data from cities c where slug=any($1::text[]) order by slug", [slugs])).rows.map(row => row.data as Row);
   if (cities.length !== slugs.length) throw new Error("One or more candidate cities are absent from the database.");
-  const cityIds = cities.map(city => city.id);
+  const cityIds = cities.map(city => String(city.id));
   const schools = (await connection.query(`select to_jsonb(s) data from cities c cross join lateral (
     select s.* from schools s where s.city_id=c.id and s.status='active' and exists (
       select 1 from programs p where p.school_id=s.id and p.status='active' and coalesce(p.city_id,s.city_id)=c.id)
     order by s.slug limit 1) s where c.id=any($1::uuid[]) order by c.slug`, [cityIds])).rows.map(row => row.data as Row);
   if (schools.length !== slugs.length) throw new Error("Every city candidate must have an active school with an active program.");
-  const schoolIds = schools.map(school => school.id);
+  const schoolIds = schools.map(school => String(school.id));
   const programs = (await connection.query(`select to_jsonb(p) data from schools s cross join lateral (
     select p.* from programs p where p.school_id=s.id and p.status='active' and coalesce(p.city_id,s.city_id)=s.city_id
     order by p.slug limit 1) p where s.id=any($1::uuid[]) order by s.slug`, [schoolIds])).rows.map(row => row.data as Row);
@@ -99,7 +99,7 @@ try {
   const identity = (await connection.query("select current_database() database_name, current_user database_user")).rows[0];
   const currentBySlug = new Map(cities.map(city => [String(city.slug), city]));
   const expectedFirstPassChanges = operations.filter(operation => {
-    const current = currentBySlug.get(operation.slug) as Row;
+    const current = currentBySlug.get(String(operation.slug)) as Row;
     const city = operation.city as Row;
     return current.name_zh !== city.nameZh || current.name_en !== city.nameEn || current.region !== city.region
       || current.province !== city.province || current.monthly_cost !== city.monthlyCost || current.monthly_cost_rmb !== city.monthlyCostRmb

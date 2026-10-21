@@ -10,6 +10,10 @@ const candidatePath = resolve(root, "seeds/catalog.xmu-legacy-alignment-batch-01
 const validationPath = resolve(root, "seeds/catalog.xmu-legacy-alignment-batch-01.validation.json");
 const [sourceText, manifestText] = await Promise.all([readFile(sourcePath, "utf8"), readFile(manifestPath, "utf8")]);
 const source = JSON.parse(sourceText) as CatalogSeedBundle;
+const sourcePrograms = source.programs;
+const sourceProgramIntakes = source.programIntakes;
+const sourceScholarships = source.scholarships;
+if (!sourcePrograms || !sourceProgramIntakes || !sourceScholarships) throw new Error("XMU source bundle is incomplete.");
 const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { url: string; sha256: string; status: number }[] };
 const manifestEvidence = new Set(manifest.sources.filter((row) => row.status === 200).map((row) => `${row.url}\n${row.sha256}`));
 
@@ -33,7 +37,7 @@ const scholarshipMap: Record<string, string> = {
 };
 
 const programs = Object.entries(programMap).map(([legacySlug, canonicalSlug]) => {
-  const record = source.programs.find((row) => row.slug === canonicalSlug);
+  const record = sourcePrograms.find((row) => row.slug === canonicalSlug);
   if (!record) throw new Error(`Missing XMU canonical program: ${canonicalSlug}`);
   if (!manifestEvidence.has(`${record.sourceUrl}\n${record.sourceSha256}`)) throw new Error(`Unpinned XMU program evidence: ${canonicalSlug}`);
   return {
@@ -44,13 +48,13 @@ const programs = Object.entries(programMap).map(([legacySlug, canonicalSlug]) =>
   };
 });
 const programIntakes = Object.entries(programMap).map(([legacySlug, canonicalSlug]) => {
-  const record = source.programIntakes.find((row) => row.programSlug === canonicalSlug);
+  const record = sourceProgramIntakes.find((row) => row.programSlug === canonicalSlug);
   if (!record) throw new Error(`Missing XMU canonical intake: ${canonicalSlug}`);
   if (!manifestEvidence.has(`${record.sourceUrl}\n${record.sourceSha256}`)) throw new Error(`Unpinned XMU intake evidence: ${canonicalSlug}`);
   return { ...record, programSlug: legacySlug };
 });
 const scholarships = Object.entries(scholarshipMap).map(([legacySlug, canonicalSlug]) => {
-  const record = source.scholarships.find((row) => row.slug === canonicalSlug);
+  const record = sourceScholarships.find((row) => row.slug === canonicalSlug);
   if (!record) throw new Error(`Missing XMU canonical scholarship: ${canonicalSlug}`);
   if (!manifestEvidence.has(`${record.sourceUrl}\n${record.sourceSha256}`)) throw new Error(`Unpinned XMU scholarship evidence: ${canonicalSlug}`);
   return {

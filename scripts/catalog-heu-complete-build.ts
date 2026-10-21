@@ -3,14 +3,17 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; finalUrl: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources: EvidenceSource[] };
+
 const root = process.cwd();
 const manifestPaths = [
   resolve(root, "work/catalog-official/heu-complete-batch-01/manifest.json"),
   resolve(root, "work/catalog-official/heu-pdf-batch-01/manifest.json"),
 ];
 const manifestTexts = await Promise.all(manifestPaths.map((path) => readFile(path, "utf8")));
-const manifests = manifestTexts.map((text) => JSON.parse(text));
-const sources = new Map(manifests.flatMap((manifest) => manifest.sources).map((row: any) => [row.id, row]));
+const manifests = manifestTexts.map((text) => JSON.parse(text) as EvidenceManifest);
+const sources = new Map<string, EvidenceSource>(manifests.flatMap((manifest) => manifest.sources).map((row) => [row.id, row]));
 const requiredSourceIds = [
   "heu-international-home", "heu-undergraduate-guide-2026", "heu-graduate-guide-2026", "heu-admission-handbook-page-2026",
   "heu-cgs-bilateral-current", "heu-cgs-high-level-graduate-current", "heu-marine-scholarship-current",
@@ -21,11 +24,12 @@ const requiredSourceIds = [
   "heu-international-chinese-language-teachers-scholarship-pdf-2025",
 ];
 for (const id of requiredSourceIds) {
-  const source: any = sources.get(id);
+  const source = sources.get(id);
   if (!source || source.status !== 200 || !/^[a-f0-9]{64}$/.test(source.sha256)) throw new Error(`Missing valid source: ${id}`);
 }
 const meta = (id: string) => {
-  const source: any = sources.get(id);
+  const source = sources.get(id);
+  if (!source) throw new Error(`Missing HEU source: ${id}`);
   return { sourceUrl: source.finalUrl, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
 };
 const slugify = (value: string) => value.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");

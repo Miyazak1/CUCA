@@ -13,10 +13,10 @@ function fixture({ role = "cuac_admin", authStrength = "step_up", grant = true }
   const auth = {
     async findActiveSessionByTokenHash() {
       return { userId: randomUUID(), selectedSurface: "ops", activeRole: role, tenantSchoolId: null, authStrength,
-        expiresAt: new Date("2026-09-29T00:00:00Z"), revokedAt: null, accountStatus: "active" };
+        expiresAt: new Date("2999-12-31T23:59:59Z"), revokedAt: null, accountStatus: "active" };
     },
     async findActiveCuacStaffAccessGrantByUserAndRole(userId, activeRole) {
-      return grant ? { userId, role: activeRole, status: "approved", expiresAt: new Date("2026-09-29T00:00:00Z") } : null;
+      return grant ? { userId, role: activeRole, status: "approved", expiresAt: new Date("2999-12-31T23:59:59Z") } : null;
     },
   };
   return { calls, handlers: createRequirementGovernanceHttpHandlers(service, auth) };

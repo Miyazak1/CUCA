@@ -10,11 +10,14 @@ const candidatePath = resolve(root, "seeds/catalog.blcu-legacy-alignment-batch-0
 const validationPath = resolve(root, "seeds/catalog.blcu-legacy-alignment-batch-01.validation.json");
 const [sourceText, manifestText] = await Promise.all([readFile(sourcePath, "utf8"), readFile(manifestPath, "utf8")]);
 const source = JSON.parse(sourceText) as CatalogSeedBundle;
+const sourcePrograms = source.programs;
+const sourceProgramIntakes = source.programIntakes;
+if (!sourcePrograms || !sourceProgramIntakes) throw new Error("BLCU source bundle is incomplete.");
 const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { url: string; sha256: string; status: number }[] };
 const evidence = new Set(manifest.sources.filter((row) => row.status === 200).map((row) => `${row.url}\n${row.sha256}`));
 const legacySlug = "beijing-language-and-culture-university-international-economics-and-trade-52";
 const canonicalSlug = "beijing-language-and-culture-university-international-economics-and-trade";
-const current = source.programs.find((row) => row.slug === canonicalSlug);
+const current = sourcePrograms.find((row) => row.slug === canonicalSlug);
 if (!current) throw new Error(`Missing BLCU canonical program: ${canonicalSlug}`);
 if (!evidence.has(`${current.sourceUrl}\n${current.sourceSha256}`)) throw new Error(`Unpinned BLCU program evidence: ${canonicalSlug}`);
 const program = {
@@ -23,7 +26,7 @@ const program = {
   applicationNote: `${current.applicationNote ?? ""} Legacy CUAC identity aligned to the exact current independent bachelor's route; canonical draft identity: ${canonicalSlug}.`.trim(),
   sourceFieldLineage: { ...current.sourceFieldLineage, slug: `legacy CUAC identity aligned to exact official route ${canonicalSlug}; draft only` },
 };
-const programIntakes = source.programIntakes.filter((row) => row.programSlug === canonicalSlug).map((row) => {
+const programIntakes = sourceProgramIntakes.filter((row) => row.programSlug === canonicalSlug).map((row) => {
   if (!evidence.has(`${row.sourceUrl}\n${row.sourceSha256}`)) throw new Error(`Unpinned BLCU intake evidence: ${canonicalSlug}`);
   return { ...row, programSlug: legacySlug };
 });

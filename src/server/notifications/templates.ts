@@ -193,7 +193,7 @@ export function materializeDataRightsReminder(input:{recipientUserId:string;requ
     ||(student?input.deadlineAt!==null:!input.deadlineAt||!Number.isFinite(input.deadlineAt.getTime())))
     throw serviceUnavailable("Data-rights reminder target is invalid.");
   const copy=dataRightsReminderDefinitions[input.locale][input.reminderCode];
-  const variables=student?{}:{targetDate:input.deadlineAt!.toISOString().slice(0,10)};
+  const variables:Record<string,string>=student?{}:{targetDate:input.deadlineAt!.toISOString().slice(0,10)};
   const variableKeys=student?[]:["targetDate"];
   const actionPath=student?"/preferences-api.html#privacy-requests":"/ops-admin-api.html#privacy";
   const eventType=`data_rights_reminder_${input.reminderCode}`;

@@ -48,9 +48,7 @@ const score = (row: Located<Record<string, unknown>>) => richness(row) * 100 + (
 const select = <T extends Record<string, unknown>>(rows: Located<T>[] | undefined, label: string): T => {
   if (!rows?.length) throw new Error(`No registered official-source candidate for ${label}.`);
   const selected = rows.sort((left, right) => score(right) - score(left) || left.sourceFile.localeCompare(right.sourceFile))[0];
-  const record = { ...selected };
-  delete record.sourceFile;
-  return record as T;
+  return Object.fromEntries(Object.entries(selected).filter(([key]) => key !== "sourceFile")) as T;
 };
 const selectedSchools = [...targetSchoolSlugs].sort().map((schoolSlug) => ({ ...select(schools.get(schoolSlug), `school:${schoolSlug}`), status: "active" as const, verificationStatus: "verified" as const, lastVerifiedAt: reviewedAt }));
 const selectedPrograms = [...programs.keys()].sort().map((programSlug) => select(programs.get(programSlug), `program:${programSlug}`))

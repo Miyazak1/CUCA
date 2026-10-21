@@ -59,14 +59,15 @@ export function parseInsightDocument(value: unknown): Omit<InsightPost, "status"
     let contentOrder: string[] | undefined;
     if (row.contentOrder !== undefined) {
       if (!Array.isArray(row.contentOrder)) throw badRequest("Insight section content order must be a list.");
-      contentOrder = row.contentOrder.map((token, index) => text(token, `Insight section content order ${index + 1}`, 24));
+      const parsedContentOrder = row.contentOrder.map((token, index) => text(token, `Insight section content order ${index + 1}`, 24));
       const expected = [
         ...paragraphs.map((_, index) => `p:${index}`),
         ...(bullets?.length ? ["b"] : []),
         ...(tables || []).map((_, index) => `t:${index}`),
       ];
-      if (contentOrder.length !== expected.length || new Set(contentOrder).size !== contentOrder.length
-        || expected.some(token => !contentOrder.includes(token))) throw badRequest("Insight section content order must reference each content block exactly once.");
+      if (parsedContentOrder.length !== expected.length || new Set(parsedContentOrder).size !== parsedContentOrder.length
+        || expected.some(token => !parsedContentOrder.includes(token))) throw badRequest("Insight section content order must reference each content block exactly once.");
+      contentOrder = parsedContentOrder;
     }
     return { id, heading: text(row.heading, "Insight section heading", 180), paragraphs,
       ...(bullets === undefined ? {} : { bullets }), ...(tables === undefined ? {} : { tables }),

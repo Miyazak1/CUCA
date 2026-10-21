@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { strFromU8, unzipSync } from "fflate";
-import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram } from "../src/server/catalog/seed-contract.ts";
 
 type ManifestSource = { id: string; label: string; url: string; finalUrl?: string; fetchedAt: string; status: number; sha256: string; artifactPath: string };
 type WorkbookRow = { row: number; college: string; major: string; language: string; master: string; doctoral: string };
@@ -122,7 +122,7 @@ const school = {
   },
 };
 
-const programRows: Array<Record<string, unknown>> = [];
+const programRows: CatalogSeedProgram[] = [];
 for (const row of workbookRows) {
   const languages = [row.language.includes("English") ? "English" : "", row.language.includes("Chinese") ? "Chinese" : ""].filter(Boolean);
   const degrees = [

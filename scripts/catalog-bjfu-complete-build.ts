@@ -3,6 +3,11 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources?: EvidenceSource[] };
+type BjfuProgramRow = { sourceId: string; nameEn: string; degreeLevel: CatalogSeedProgram["degreeLevel"]; school: string; teachingLanguage: string; durationText: string; degreeAward: string; sourceTable: string; sourceRow: number };
+type BjfuParsedPrograms = { programCount: number; duplicateIdentities: unknown[]; counts: Record<string, number>; programs: BjfuProgramRow[] };
+
 const root = process.cwd();
 const paths = {
   admissionManifest: resolve(root, "work/catalog-official/bjfu-complete-batch-01/manifest.json"),
@@ -16,7 +21,7 @@ const sha = (value: string | Buffer) => createHash("sha256").update(value).diges
 const [admissionManifestText, programManifestText, parsedText, baseText] = await Promise.all([
   readFile(paths.admissionManifest, "utf8"), readFile(paths.programManifest, "utf8"), readFile(paths.parsed, "utf8"), readFile(paths.base, "utf8"),
 ]);
-const admissionManifest = JSON.parse(admissionManifestText), programManifest = JSON.parse(programManifestText), parsed = JSON.parse(parsedText), base = JSON.parse(baseText) as CatalogSeedBundle;
+const admissionManifest = JSON.parse(admissionManifestText) as EvidenceManifest, programManifest = JSON.parse(programManifestText) as EvidenceManifest, parsed = JSON.parse(parsedText) as BjfuParsedPrograms, base = JSON.parse(baseText) as CatalogSeedBundle;
 const expected: Record<string, string> = {
   "bjfu-undergraduate-prospectus-2026": "0f65891ffda216b74665fa004b6ac2a245ad26b7bdee0228200fcb72601408c7",
   "bjfu-degree-program-index-current": "fda31b4fe514af09c9178c77bc7a0eb28e63fc11cabbceb8428421dc181d1fe3",
@@ -26,10 +31,11 @@ const expected: Record<string, string> = {
   "bjfu-doctoral-program-index-current": "75375048219c838a0c34c303b0bf834e2c19ea81a96a5d968254352d65b322b8",
   "bjfu-application-procedure-current": "e95bca92bceb7a985e92a7e65235cae20681fadd711c259178c7192fbf3be43c",
 };
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const manifest of [admissionManifest, programManifest]) for (const row of manifest.sources ?? []) if (row.status === 200 && expected[row.id] === row.sha256) evidence.set(row.id, row);
 const missing = Object.keys(expected).filter((id) => !evidence.has(id));
 if (missing.length || parsed.programCount !== 149 || parsed.duplicateIdentities.length) throw new Error(`BJFU evidence/parser mismatch: ${missing.join(",")}`);
+const requireEvidence = (id: string | undefined) => { const source = id ? evidence.get(id) : undefined; if (!source) throw new Error(`Missing evidence source: ${id ?? "unknown"}`); return source; };
 const expectedCounts = { "Undergraduate-Chinese": 37, "Master-English": 9, "Master-Chinese": 62, "Doctoral-English": 10, "Doctoral-Chinese": 31 };
 if (JSON.stringify(parsed.counts) !== JSON.stringify(expectedCounts)) throw new Error(`BJFU parsed counts changed: ${JSON.stringify(parsed.counts)}`);
 const city = base.cities?.find((row) => row.slug === "beijing");
@@ -38,8 +44,8 @@ if (!city) throw new Error("Current Beijing city dependency missing.");
 const schoolSlug = "beijing-forestry-university";
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const used = new Set<string>();
-const programs: CatalogSeedProgram[] = parsed.programs.map((row: any, index: number) => {
-  const source = evidence.get(row.sourceId), undergraduate = row.degreeLevel === "Undergraduate";
+const programs: CatalogSeedProgram[] = parsed.programs.map((row, index) => {
+  const source = requireEvidence(row.sourceId), undergraduate = row.degreeLevel === "Undergraduate";
   let slug = `${schoolSlug}-${row.degreeLevel.toLowerCase()}-${slugify(row.nameEn)}-${slugify(row.school)}-${row.teachingLanguage.toLowerCase()}`;
   if (used.has(slug)) slug = `${slug}-${index + 1}`;
   used.add(slug);
@@ -60,7 +66,7 @@ const programs: CatalogSeedProgram[] = parsed.programs.map((row: any, index: num
 });
 if (programs.length !== 149 || used.size !== 149) throw new Error("BJFU program build mismatch.");
 
-const ugSource = evidence.get("bjfu-undergraduate-prospectus-2026");
+const ugSource = requireEvidence("bjfu-undergraduate-prospectus-2026");
 const info = (label: string, value?: string) => ({ label, ...(value ? { value } : {}) });
 const benefit = (label: string, note?: string) => ({ label, included: true, ...(note ? { note } : {}) });
 const materials = [info("Passport information page"), info("Notarized high-school diploma"), info("High-school transcript"), info("HSK certificate"), info("CSCA transcript"), info("Study plan"), info("No-criminal-record certificate"), info("Two recommendation letters"), info("Physical examination form")];
@@ -77,7 +83,7 @@ const candidate: CatalogSeedBundle = {
   version: 1, generatedAt: admissionManifest.generatedAt, cities: [city],
   schools: [{ slug: schoolSlug, nameEn: "Beijing Forestry University", nameZh: "北京林业大学", citySlug: "beijing", schoolType: "Public", region: "Beijing, North China", applicationLevel: "Undergraduate, Master, Doctoral", languageOfInstruction: "Chinese undergraduate; Chinese and English postgraduate", hskRequirement: "HSK Level 4 or above for 2026 undergraduate admission.", deadlineSummary: "Undergraduate application deadline: June 15, 2026. Graduate deadline is not published in the captured compliant sources.", tuitionSummary: "Undergraduate tuition: CNY 24,800/year. Current graduate tuition is not published in the captured compliant sources.", applicationFee: "CNY 800, non-refundable", websiteUrl: "https://www.bjfu.edu.cn/", admissionsUrl: "https://ic.bjfu.edu.cn/", cscaRequired: true, cscaRequirement: "All 2026 undergraduate applicants must take CSCA; required/optional subjects vary by school.", cscaSubjects: ["Chinese", "Mathematics", "Physics", "Chemistry"], subjectTags: ["Forestry", "Landscape Architecture", "Ecology", "Environmental Science", "Biological Science", "Economics and Management"], languageTags: ["Chinese", "English"], campusHighlights: ["National key university", "Forestry and landscape architecture", "International students from about 70 countries"], status: "draft", sourceUrl: ugSource.url, sourceLabel: ugSource.label, sourceSha256: ugSource.sha256, capturedAt: ugSource.fetchedAt, sourceFieldLineage: { nameEn: "2026 undergraduate prospectus cover and profile", nameZh: "2026 undergraduate prospectus", citySlug: "official contact address", applicationLevel: "current official degree program pages", languageOfInstruction: "current official degree program pages", hskRequirement: "2026 undergraduate prospectus eligibility", deadlineSummary: "2026 undergraduate prospectus deadline; graduate gap explicitly retained", tuitionSummary: "2026 undergraduate prospectus fees; graduate gap explicitly retained", applicationFee: "2026 undergraduate prospectus fees", cscaSubjects: "2026 undergraduate prospectus CSCA table" } }],
   programs,
-  programIntakes: programs.map((program) => { const source = evidence.get(parsed.programs.find((row: any) => row.nameEn === program.nameEn && row.degreeLevel === program.degreeLevel && row.school === program.fieldCategory && row.teachingLanguage === program.teachingLanguage)?.sourceId); const undergraduate = program.degreeLevel === "Undergraduate"; return { programSlug: program.slug, intakeTerm: "Fall", intakeYear: 2026, ...(undergraduate ? { deadlineDate: "2026-06-15T00:00:00.000Z", deadlineLabel: "June 15, 2026", status: "closed" as const } : { deadlineLabel: "Not published in the captured compliant source" }), applicationRound: "2026 international degree catalog", sourceUrl: undergraduate ? ugSource.url : source.url, sourceLabel: undergraduate ? ugSource.label : source.label, sourceSha256: undergraduate ? ugSource.sha256 : source.sha256, capturedAt: undergraduate ? ugSource.fetchedAt : source.fetchedAt, sourceFieldLineage: undergraduate ? { deadlineDate: "2026 undergraduate prospectus application deadline" } : { deadlineLabel: "explicit source gap; no date inferred" } }; }),
+  programIntakes: programs.map((program) => { const source = requireEvidence(parsed.programs.find((row) => row.nameEn === program.nameEn && row.degreeLevel === program.degreeLevel && row.school === program.fieldCategory && row.teachingLanguage === program.teachingLanguage)?.sourceId); const undergraduate = program.degreeLevel === "Undergraduate"; return { programSlug: program.slug, intakeTerm: "Fall", intakeYear: 2026, ...(undergraduate ? { deadlineDate: "2026-06-15T00:00:00.000Z", deadlineLabel: "June 15, 2026", status: "closed" as const } : { deadlineLabel: "Not published in the captured compliant source" }), applicationRound: "2026 international degree catalog", sourceUrl: undergraduate ? ugSource.url : source.url, sourceLabel: undergraduate ? ugSource.label : source.label, sourceSha256: undergraduate ? ugSource.sha256 : source.sha256, capturedAt: undergraduate ? ugSource.fetchedAt : source.fetchedAt, sourceFieldLineage: undergraduate ? { deadlineDate: "2026 undergraduate prospectus application deadline" } : { deadlineLabel: "explicit source gap; no date inferred" } }; }),
   scholarships,
 };
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`, validation = createCatalogMigrationValidationReport(JSON.parse(candidateText));

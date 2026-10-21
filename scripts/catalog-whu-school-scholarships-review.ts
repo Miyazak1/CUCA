@@ -3,6 +3,9 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; sha256: string; status: number; contentType: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources?: EvidenceSource[] };
+
 const root = process.cwd();
 const runDir = resolve(root, "work/catalog-official/whu-complete-batch-01");
 const candidatePath = resolve(root, "seeds/catalog.whu-school-scholarships-batch-01.draft.json");
@@ -24,8 +27,8 @@ const expected: Record<string, string> = {
   "whu-china-studies-phd-fellowship-2026": "6bce2c8441a756ef27d7ee830a72e16719a7d8b81ffadf63a82e5c40ed3fd3cd",
 };
 
-const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8"));
-const evidence = new Map<string, any>();
+const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8")) as EvidenceManifest;
+const evidence = new Map<string, EvidenceSource>();
 for (const source of manifest.sources ?? []) {
   if (expected[source.id]) {
     if (expected[source.id] !== source.sha256 || source.status !== 200 || source.contentType !== "text/html") {
@@ -133,7 +136,6 @@ const scholarships: CatalogSeedScholarship[] = [
 ];
 
 const undergraduate = evidence.get("whu-undergraduate-guide-2026")!;
-const postgraduate = evidence.get("whu-postgraduate-guide-2026")!;
 const csca = evidence.get("whu-csca-instructions-2026")!;
 const candidate: CatalogSeedBundle = {
   version: 1,

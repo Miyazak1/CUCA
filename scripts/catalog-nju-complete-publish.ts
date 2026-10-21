@@ -20,7 +20,8 @@ const parse = async (path: string) => JSON.parse(await readFile(path, "utf8"));
 const candidateText = await readFile(paths.candidate, "utf8");
 const candidate = JSON.parse(candidateText) as CatalogSeedBundle;
 const storedValidation = await parse(paths.validation), review = await parse(paths.review), prior = await parse(paths.prior), state = await parse(paths.state);
-const { reviewHash: storedReviewHash, publicationReference: _publicationReference, ...reviewBase } = review;
+const storedReviewHash = review.reviewHash;
+const reviewBase = Object.fromEntries(Object.entries(review).filter(([key]) => key !== "reviewHash" && key !== "publicationReference"));
 const actualReviewHash = createHash("sha256").update(JSON.stringify(reviewBase)).digest("hex");
 if (storedReviewHash !== approvedReviewHash || actualReviewHash !== approvedReviewHash) throw new Error("Standing-authorized review hash does not match the stored NJU review.");
 const candidateFileSha256 = createHash("sha256").update(candidateText).digest("hex");
@@ -37,7 +38,7 @@ const publication: CatalogSeedBundle = { version: 2, generatedAt: approvalRecord
 const publicationReport = createCatalogMigrationValidationReport(publication);
 if (!publicationReport.ok || publicationReport.summary.schools !== 1 || publicationReport.summary.programs !== 202 || publicationReport.summary.programIntakes !== 202 || publicationReport.summary.scholarships !== 3) throw new Error(`NJU publication bundle is invalid: ${publicationReport.errors.join(" ")}`);
 const approvalRecord = { version: 1, approvedAt: approvalRecordedAt, reviewReference, approvedReviewSha256: approvedReviewHash, approvalMode: "standing-user-default-publication", approvedCandidate: "seeds/catalog.nju-complete-batch-02.draft.json", approvedCandidateFileSha256: candidateFileSha256, approvedCandidateBundleSha256: freshValidation.bundleSha256, publicationBundle: "seeds/catalog.nju-complete-batch-02.approved.local.json", publicationBundleSha256: publicationReport.bundleSha256, schoolSlug: "nanjing-university", dependencyCitySlugs: candidate.cities?.map(row => row.slug), dependencySchoolReplay: true, programSlugs: publication.programs?.map(row => row.slug), scholarshipSlugs: publication.scholarships?.map(row => row.slug), archivedProgramAliases: [], archivedScholarshipAliases: [], prohibitedDataConfirmedExcluded: true };
-async function writeOrVerify(path: string, value: unknown) { const text = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, text, { encoding: "utf8", flag: "wx" }); } catch (error: any) { if (error?.code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== text) throw new Error(`Existing artifact does not match this publication: ${path}`); } }
+async function writeOrVerify(path: string, value: unknown) { const text = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, text, { encoding: "utf8", flag: "wx" }); } catch (error: unknown) { if ((error as { code?: string }).code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== text) throw new Error(`Existing artifact does not match this publication: ${path}`); } }
 await writeOrVerify(paths.output, publication);
 await writeOrVerify(paths.approval, approvalRecord);
 

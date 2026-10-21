@@ -25,27 +25,30 @@ const lines = (html: string) => decode(html
   .replace(/<\/p>/gi, "\n")
   .replace(/<[^>]+>/g, " "))
   .split(/\n+/)
-  .map((line) => line.replace(/[\u200b\u200c\u200d\ufeff]/g, "").replace(/\s+/g, " ").trim())
+  .map((line) => line.replace(/\u200b|\u200c|\u200d|\ufeff/g, "").replace(/\s+/g, " ").trim())
   .filter(Boolean);
 
 type Cell = { attrs: string; lines: string[] };
+type SourceRecord = { id: string; sha256: string; status: number; artifactPath: string; fetchedAt: string; url: string };
+type SourceManifest = { sources?: SourceRecord[] };
+type Route = { degree: string; nameEn: string; fieldCategory: string; admissionGroup: string; teachingLanguage: string; sourceTable: string };
 const tableRows = (table: string): Cell[][] => [...table.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)].map((row) =>
   [...row[1].matchAll(/<t[dh]\b([^>]*)>([\s\S]*?)<\/t[dh]>/gi)].map((cell) => ({ attrs: cell[1], lines: lines(cell[2]) })),
 );
 
-const manifests: Array<{ dir: string; source: any }> = [];
+const manifests: Array<{ dir: string; source: SourceRecord }> = [];
 for (const entry of await readdir(workRoot, { withFileTypes: true })) {
   if (!entry.isDirectory()) continue;
   const manifestPath = join(workRoot, entry.name, "manifest.json");
   try {
-    const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+    const manifest = JSON.parse(await readFile(manifestPath, "utf8")) as SourceManifest;
     for (const source of manifest.sources ?? []) manifests.push({ dir: dirname(manifestPath), source });
-  } catch (error: any) {
-    if (error?.code !== "ENOENT") throw error;
+  } catch (error: unknown) {
+    if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
   }
 }
 
-const snapshots = new Map<string, { source: any; html: string }>();
+const snapshots = new Map<string, { source: SourceRecord; html: string }>();
 for (const [id, sha256] of Object.entries(expected)) {
   const match = manifests.find((item) => item.source.id === id && item.source.sha256 === sha256 && item.source.status === 200);
   if (!match) throw new Error(`Missing locked official snapshot: ${id} ${sha256}`);
@@ -56,7 +59,7 @@ const undergraduateHtml = snapshots.get("tsinghua-international-undergraduate-di
 const undergraduateTables = [...undergraduateHtml.matchAll(/<table\b[^>]*>[\s\S]*?<\/table>/gi)].map((match) => match[0]);
 if (undergraduateTables.length < 3) throw new Error(`Expected three undergraduate route tables, found ${undergraduateTables.length}`);
 
-const undergraduate: any[] = [];
+const undergraduate: Route[] = [];
 let division = "";
 let school = "";
 for (const cells of tableRows(undergraduateTables[0]).slice(1)) {
@@ -95,7 +98,7 @@ for (const cells of tableRows(undergraduateTables[2]).slice(1)) {
 const graduateHtml = snapshots.get("tsinghua-graduate-programs-english")!.html;
 const graduateTables = [...graduateHtml.matchAll(/<table\b[^>]*>[\s\S]*?<\/table>/gi)].map((match) => match[0]);
 if (!graduateTables.length) throw new Error("Missing graduate English program table");
-const graduateEnglish: any[] = [];
+const graduateEnglish: Route[] = [];
 school = "";
 for (const cells of tableRows(graduateTables[0]).slice(1)) {
   if (cells.length < 2) continue;
@@ -108,8 +111,8 @@ for (const cells of tableRows(graduateTables[0]).slice(1)) {
   }
 }
 
-const key = (route: any) => [route.degree, route.nameEn, route.admissionGroup, route.teachingLanguage].join("|").toLowerCase();
-const unique = (routes: any[]) => [...new Map(routes.map((route) => [key(route), route])).values()];
+const key = (route: Route) => [route.degree, route.nameEn, route.admissionGroup, route.teachingLanguage].join("|").toLowerCase();
+const unique = (routes: Route[]) => [...new Map(routes.map((route) => [key(route), route])).values()];
 const parsed = {
   version: 1,
   generatedAt: new Date().toISOString(),
@@ -117,8 +120,8 @@ const parsed = {
   counts: {
     undergraduate: unique(undergraduate).length,
     graduateEnglish: unique(graduateEnglish).length,
-    doctoralEnglish: unique(graduateEnglish).filter((route: any) => route.degree === "Doctoral").length,
-    masterEnglish: unique(graduateEnglish).filter((route: any) => route.degree === "Master").length,
+    doctoralEnglish: unique(graduateEnglish).filter((route) => route.degree === "Doctoral").length,
+    masterEnglish: unique(graduateEnglish).filter((route) => route.degree === "Master").length,
     total: unique(undergraduate).length + unique(graduateEnglish).length,
   },
   undergraduate: unique(undergraduate),

@@ -69,7 +69,7 @@ const approval = {
 async function writeOrVerify(path: string, value: unknown) {
   const body = `${JSON.stringify(value, null, 2)}\n`;
   try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); }
-  catch (error: any) { if (error?.code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); }
+  catch (error: unknown) { if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); }
 }
 await writeOrVerify(paths.output, publication);
 await writeOrVerify(paths.approval, approval);

@@ -23,10 +23,15 @@ for (const [id, digest] of Object.entries(expected)) {
   if (!source || source.status !== 200 || source.sha256 !== digest) throw new Error(`TJFSU evidence mismatch: ${id}`);
 }
 
-const undergraduate = sources.get("tjfsu-international-undergraduate-admissions-2026");
-const municipal = sources.get("tjfsu-tianjin-government-scholarship-2026");
-const bilateral = sources.get("tjfsu-cgs-bilateral-type-a-2026");
-const highLevel = sources.get("tjfsu-cgs-high-level-graduate-type-b-2026");
+const requiredSource = (id: string): SourceRecord => {
+  const source = sources.get(id);
+  if (!source) throw new Error(`TJFSU evidence is missing after validation: ${id}`);
+  return source;
+};
+const undergraduate = requiredSource("tjfsu-international-undergraduate-admissions-2026");
+const municipal = requiredSource("tjfsu-tianjin-government-scholarship-2026");
+const bilateral = requiredSource("tjfsu-cgs-bilateral-type-a-2026");
+const highLevel = requiredSource("tjfsu-cgs-high-level-graduate-type-b-2026");
 const schoolSlug = "tianjin-foreign-studies-university", citySlug = "tianjin";
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -89,9 +94,9 @@ const programIntakes = programs.map(program => ({
 
 const info = (label: string, value?: string) => ({ label, ...(value ? { value } : {}) });
 const benefit = (label: string, note?: string) => ({ label, included: true, ...(note ? { note } : {}) });
-const scholarshipBase = (source: SourceRecord) => ({ schoolSlug, status: "draft", sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256,
+const scholarshipBase = (source: SourceRecord) => ({ schoolSlug, status: "draft" as const, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256,
   capturedAt: source.fetchedAt, providerLocation: "Tianjin, China", targetCountries: [], targetRegions: [],
-  actionLinks: [{ label: source.label, url: source.url, kind: "official-source" }],
+  actionLinks: [{ label: source.label, url: source.url, kind: "official-source" as const }],
   sourceFieldLineage: { title: "official page title", fundingLevel: "official coverage section", coverage: "official coverage section", applicableDegree: "official category section", eligibilityItems: "official eligibility section", applicationMaterials: "official materials section", applicationSteps: "official application procedure" } });
 const scholarships: CatalogSeedScholarship[] = [
   { ...scholarshipBase(municipal), slug: "official-2026-tjfsu-tianjin-government-scholarship", title: "TJFSU 2026 Tianjin Government Scholarship for International Students", nameZh: "天津外国语大学2026年天津市外国留学生政府奖学金", type: "government", typeLabel: "Tianjin Government Scholarship", providerName: "天津市人民政府 / 天津外国语大学", providerNameEn: "Tianjin Municipal Government / Tianjin Foreign Studies University", fundingLevel: "Full or tuition-only first-year award", coverage: "First prize covers first-year tuition, medical insurance and ten months of living allowance; second prize covers one year of tuition.", applicableDegree: "Non-degree, Undergraduate, Master, Doctoral", applicableProgram: "Published TJFSU programs subject to program-specific entry requirements", amountText: "First prize stipend: CNY 1,400/month for non-degree and undergraduate, CNY 1,700/month for master, CNY 2,000/month for doctoral, for ten months.", deadlineDate: "2026-06-30", deadlineLabel: "Applications accepted April 1-June 30, 2026", applicationRound: "2026 Tianjin Government Scholarship", benefitItems: [benefit("Tuition", "First or second prize"), benefit("Comprehensive medical insurance", "First prize"), benefit("Living allowance", "First prize, ten months")], eligibilityItems: [info("Citizenship", "Non-Chinese citizen"), info("Age", "Non-degree under 45; undergraduate under 30; master under 35; doctoral under 40"), info("Language", "Chinese routes: HSK 4/5/6 by degree; English routes: IELTS 6.0, TOEFL 80 or equivalent"), info("Other funding", "Applicant must not hold another scholarship")], applicationMaterials: [info("Passport"), info("Highest diploma and transcripts"), info("Language certificate"), info("Physical examination"), info("No-criminal-record certificate"), info("Bank statement"), info("CSCA report for undergraduate applicants")], applicationSteps: [info("Step 1", "Apply through the TJFSU international student service platform"), info("Step 2", "Submit the published supporting evidence"), info("Step 3", "Await university review and scholarship decision")], summary: "Closed 2026 municipal scholarship with distinct first- and second-prize coverage." },

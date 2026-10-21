@@ -2,10 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import type {
   CatalogSeedBundle,
-  CatalogSeedProgram,
   CatalogSeedProgramIntake,
-  CatalogSeedScholarship,
-  CatalogSeedSchool,
   CatalogSeedSource,
 } from "../src/server/catalog/seed-contract.ts";
 
@@ -73,7 +70,6 @@ const missingSourceFields = (row: CatalogSeedSource) => [
 const ratio = (covered: number, total: number) => total === 0 ? null : Number((covered / total).toFixed(4));
 const countCovered = (rows: JsonRecord[], fields: string[]) => rows.filter((row) => hasAny(row, fields)).length;
 
-const programSchoolBySlug = new Map(effectivePrograms.map((row) => [row.slug, row.schoolSlug]));
 const orphanIntakes = effectiveIntakes.filter((row) => !effectiveProgramSlugs.has(row.programSlug));
 const non2027Intakes = effectiveIntakes.filter((row) => row.intakeYear !== 2027);
 const orphanScholarships = effectiveScholarships.filter((row) => row.schoolSlug && !effectiveSchoolSlugs.has(row.schoolSlug));

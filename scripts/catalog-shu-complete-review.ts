@@ -5,6 +5,11 @@ import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
 import { localDatabaseUrl } from "./lib/local-development.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; finalUrl?: string; label: string; fetchedAt: string; contentType: string; byteLength: number };
+type EvidenceManifest = { sources: EvidenceSource[] };
+type DatabaseRow = { id: string; slug: string; status: string; verification_status: string; source_note?: unknown; [key: string]: unknown };
+type Preflight = { schools: DatabaseRow[]; conflicts: DatabaseRow[]; city: DatabaseRow[] };
+
 const root = process.cwd();
 const paths = {
   candidate: resolve(root, "seeds/catalog.shu-complete-batch-01.draft.json"),
@@ -19,7 +24,7 @@ const sha = (value: string | Buffer) => createHash("sha256").update(value).diges
 const [candidateText, validationText, primaryText, englishText, parsedText, stateText] = await Promise.all([
   readFile(paths.candidate, "utf8"), readFile(paths.validation, "utf8"), readFile(paths.primaryManifest, "utf8"), readFile(paths.englishManifest, "utf8"), readFile(paths.parsed, "utf8"), readFile(paths.state, "utf8"),
 ]);
-const candidate = JSON.parse(candidateText) as CatalogSeedBundle, validation = JSON.parse(validationText), primary = JSON.parse(primaryText), english = JSON.parse(englishText), parsed = JSON.parse(parsedText);
+const candidate = JSON.parse(candidateText) as CatalogSeedBundle, validation = JSON.parse(validationText), primary = JSON.parse(primaryText) as EvidenceManifest, english = JSON.parse(englishText) as EvidenceManifest, parsed = JSON.parse(parsedText);
 const evidence = [...primary.sources, ...english.sources];
 const fresh = createCatalogMigrationValidationReport(candidate);
 if (!fresh.ok || !validation.ok || fresh.bundleSha256 !== validation.bundleSha256 || fresh.operationPlanSha256 !== validation.operationPlanSha256) throw new Error("SHU candidate validation changed.");
@@ -27,15 +32,15 @@ if (candidate.schools?.length !== 1 || candidate.programs?.length !== 242 || can
 if (new Set(candidate.programs.map((row) => row.slug)).size !== 242) throw new Error("SHU program slugs are not unique.");
 if (candidate.programs.some((row) => !row.nameEn || !row.fieldCategory || !row.teachingLanguage || !row.tuitionAmount || !row.sourceFieldLineage?.nameEn || !row.applicationNote?.includes("Official published length"))) throw new Error("SHU program fields or exact-length note incomplete.");
 if (candidate.scholarships.some((row) => !row.coverage || !row.amountText || !row.benefitItems?.length || !row.eligibilityItems?.length || !row.applicationMaterials?.length || !row.applicationSteps?.length || !row.actionLinks?.length)) throw new Error("SHU scholarship rich fields incomplete.");
-if (evidence.length !== 12 || evidence.some((row: any) => row.status !== 200 || !["text/html", "application/pdf"].includes(row.contentType) || !/^[a-f0-9]{64}$/.test(row.sha256) || row.byteLength > 15 * 1024 * 1024)) throw new Error("SHU official evidence manifest incomplete.");
+if (evidence.length !== 12 || evidence.some((row) => row.status !== 200 || !["text/html", "application/pdf"].includes(row.contentType) || !/^[a-f0-9]{64}$/.test(row.sha256) || row.byteLength > 15 * 1024 * 1024)) throw new Error("SHU official evidence manifest incomplete.");
 
 const schoolSlug = "shanghai-university", programSlugs = candidate.programs.map((row) => row.slug), scholarshipSlugs = candidate.scholarships.map((row) => row.slug);
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(JSON.parse(stateText)), max: 1, applicationName: "cuac:shu-complete-review" });
-let preflight: any;
+let preflight: Preflight;
 try {
-  const schools = await pool.query("select id,slug,name_en,name_zh,status,verification_status from schools where slug=$1 or lower(name_en)=lower($2) or name_zh=$3", [schoolSlug, "Shanghai University", "上海大学"]);
-  const conflicts = await pool.query("select 'program' kind,slug from programs where slug=any($1::text[]) union all select 'scholarship' kind,slug from scholarships where slug=any($2::text[])", [programSlugs, scholarshipSlugs]);
-  const city = await pool.query("select id,slug,name_en,name_zh,region,province,status,verification_status,source_url,source_label,source_note,source_field_lineage_json from cities where slug='shanghai'");
+  const schools = await pool.query<DatabaseRow>("select id,slug,name_en,name_zh,status,verification_status from schools where slug=$1 or lower(name_en)=lower($2) or name_zh=$3", [schoolSlug, "Shanghai University", "上海大学"]);
+  const conflicts = await pool.query<DatabaseRow>("select 'program' kind,slug from programs where slug=any($1::text[]) union all select 'scholarship' kind,slug from scholarships where slug=any($2::text[])", [programSlugs, scholarshipSlugs]);
+  const city = await pool.query<DatabaseRow>("select id,slug,name_en,name_zh,region,province,status,verification_status,source_url,source_label,source_note,source_field_lineage_json from cities where slug='shanghai'");
   preflight = { schools: schools.rows, conflicts: conflicts.rows, city: city.rows };
   if (schools.rows.length || conflicts.rows.length || city.rows.length !== 1 || city.rows[0].status !== "active") throw new Error(`SHU safe-new baseline mismatch: ${JSON.stringify(preflight)}`);
   const candidateCity = candidate.cities?.[0];
@@ -64,7 +69,7 @@ const reviewBase = {
   scope: { schoolSlug, newSchoolCount: 1, programRouteCount: 242, degreeCounts: parsed.degreeCounts, languageCounts: parsed.languageCounts, programIntakeCount: 242, newScholarshipCount: 6, cityOverwriteCount: 0, schoolOverwriteCount: 0, archiveProgramAliasCount: 0, archiveScholarshipAliasCount: 0 },
   candidateSha256: sha(candidateText), candidateBundleSha256: fresh.bundleSha256, operationPlanSha256: fresh.operationPlanSha256,
   primaryManifestSha256: sha(primaryText), englishManifestSha256: sha(englishText), parsedArtifactSha256: sha(parsedText),
-  evidence: evidence.map((row: any) => ({ sourceId: row.id, sourceUrl: row.finalUrl ?? row.url, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType, byteLength: row.byteLength })),
+  evidence: evidence.map((row) => ({ sourceId: row.id, sourceUrl: row.finalUrl ?? row.url, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType, byteLength: row.byteLength })),
   sourceReview: { result: "pass", note: "Twelve registered Shanghai University official sources were captured within policy: two current HTML pages and ten PDFs. The 2026-2027 program-table pages were parsed and visually checked. The five detailed scholarship guides and current scholarship overview support six separate rich scholarship routes." },
   reconciliation: { destructiveDeletion: false, overwrites: [], archives: [], databaseBaseline: { schoolCount: 0, candidateSlugConflictCount: 0, cityDependency: preflight.city[0] } },
   coverageLimitations: [

@@ -3,6 +3,9 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; sha256: string; status: number; url: string; label: string; fetchedAt: string; contentType: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
+
 const root = process.cwd();
 const candidatePath = resolve(root, "seeds/catalog.sjtu-medicine-batch-01.draft.json");
 const validationPath = resolve(root, "seeds/catalog.sjtu-medicine-batch-01.validation.json");
@@ -11,9 +14,9 @@ const specs = [
   ["work/catalog-official/2026-09-11T07-59-20-792Z/manifest.json", "sjtu-medicine-chinese-undergraduate-2026", "83a3ecbaf04e449ff89cb7d08d1a3c858a24b76c895feed36e9582eabc4cce68"],
   ["work/catalog-official/2026-09-11T07-59-21-247Z/manifest.json", "sjtu-medicine-mbbs-2026", "925dfb9fc32be0ddde55713353b02900efcc6ef7a211344da2922bbae4b5a268"],
 ] as const;
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const [path, id, sha] of specs) {
-  const item = JSON.parse(await readFile(resolve(root, path), "utf8")).sources?.[0];
+  const item = (JSON.parse(await readFile(resolve(root, path), "utf8")) as EvidenceManifest).sources?.[0];
   if (item?.id !== id || item?.sha256 !== sha || item?.status !== 200) throw new Error(`Official evidence mismatch: ${id}`);
   evidence.set(id, item);
 }

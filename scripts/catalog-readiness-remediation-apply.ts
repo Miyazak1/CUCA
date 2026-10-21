@@ -110,9 +110,11 @@ try {
 }
 
 function schoolDocument(record: CatalogSchoolRecord, schoolType: string): Record<string, unknown> {
-  const { id: _id, version: _version, status: _status, verificationStatus: _verificationStatus,
-    verifiedByUserId: _verifiedByUserId, lastVerifiedAt: _lastVerifiedAt, nextReviewDueAt: _nextReviewDueAt,
-    createdAt: _createdAt, updatedAt: _updatedAt, ...document } = record;
+  const databaseFields = new Set([
+    "id", "version", "status", "verificationStatus", "verifiedByUserId", "lastVerifiedAt",
+    "nextReviewDueAt", "createdAt", "updatedAt",
+  ]);
+  const document = Object.fromEntries(Object.entries(record).filter(([key]) => !databaseFields.has(key)));
   return { ...document, schoolType };
 }
 

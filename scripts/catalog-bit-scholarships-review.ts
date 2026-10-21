@@ -1,7 +1,10 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+
+type EvidenceSource = { id: string; url: string; status: number; contentType: string; sha256: string; fetchedAt: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
 
 const root = process.cwd();
 const schoolBundlePath = resolve(root, "seeds/catalog.bit-school-program-batch-01.approved.local.json");
@@ -15,10 +18,10 @@ const sourceLabel = "Beijing Institute of Technology 2026 Admission and Scholars
 const schoolSlug = "beijing-institute-of-technology";
 
 const [schoolBundle, manifest] = await Promise.all([
-  readFile(schoolBundlePath, "utf8").then(JSON.parse),
-  readFile(manifestPath, "utf8").then(JSON.parse),
+  readFile(schoolBundlePath, "utf8").then((text) => JSON.parse(text) as CatalogSeedBundle),
+  readFile(manifestPath, "utf8").then((text) => JSON.parse(text) as EvidenceManifest),
 ]);
-const evidence = manifest.sources?.find((item: any) => item.id === sourceId);
+const evidence = manifest.sources?.find((item) => item.id === sourceId);
 if (!evidence || evidence.url !== sourceUrl || evidence.status !== 200 || evidence.contentType !== "application/pdf") {
   throw new Error("The reviewed BIT scholarship PDF snapshot is missing or no longer matches the registered source.");
 }
@@ -178,9 +181,9 @@ function make(input: {
     "schoolSlug", "applicableDegree", "applicableProgram", "bodySections", "tags", "summary", "sortOrder",
     ...(input.derivedFields ?? []),
   ]);
-  const sourceFieldLineage = Object.fromEntries(Object.keys(record)
-    .filter(field => !evidenceFields.has(field) && (record as any)[field] !== undefined)
-    .map(field => [field, `${derivedFields.has(field) ? "derived" : "explicit"}: BIT 2026 Admission and Scholarship Book ${input.pages}`]));
+  const sourceFieldLineage = Object.fromEntries(Object.entries(record)
+    .filter(([field, value]) => !evidenceFields.has(field) && value !== undefined)
+    .map(([field]) => [field, `${derivedFields.has(field) ? "derived" : "explicit"}: BIT 2026 Admission and Scholarship Book ${input.pages}`]));
   return { ...record, sourceFieldLineage };
 }
 
@@ -188,14 +191,8 @@ if (scholarships.length !== 6 || new Set(scholarships.map(item => item.slug)).si
 const candidateRaw = {
   version: 1,
   generatedAt: evidence.fetchedAt,
-  cities: (schoolBundle.cities ?? []).map((item: any) => {
-    const { verificationStatus: _verificationStatus, lastVerifiedAt: _lastVerifiedAt, ...rest } = item;
-    return { ...rest, status: "draft" };
-  }),
-  schools: (schoolBundle.schools ?? []).map((item: any) => {
-    const { verificationStatus: _verificationStatus, lastVerifiedAt: _lastVerifiedAt, ...rest } = item;
-    return { ...rest, status: "draft" };
-  }),
+  cities: (schoolBundle.cities ?? []).map((item) => ({ ...Object.fromEntries(Object.entries(item).filter(([key]) => key !== "verificationStatus" && key !== "lastVerifiedAt")), status: "draft" })),
+  schools: (schoolBundle.schools ?? []).map((item) => ({ ...Object.fromEntries(Object.entries(item).filter(([key]) => key !== "verificationStatus" && key !== "lastVerifiedAt")), status: "draft" })),
   programs: [], programIntakes: [], scholarships,
 };
 const serializedCandidate = `${JSON.stringify(candidateRaw, null, 2)}\n`;

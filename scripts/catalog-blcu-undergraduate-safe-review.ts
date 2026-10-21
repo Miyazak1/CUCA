@@ -1,24 +1,29 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
-import { createCatalogMigrationValidationReport } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type SchoolRow = { id: string; status: string; verification_status: string };
+type ProgramRow = { id: string; slug: string; name_en: string; name_zh?: string };
+type TotalsRow = { programs: string; verified: string; legacy: string; intakes: string; scholarships: string };
+type Baseline = { school: SchoolRow; conflicts: ProgramRow[]; totals: TotalsRow; protectedLegacyPrograms: ProgramRow[] };
 
 const prefix = "catalog.blcu-undergraduate-safe-batch-01";
 const sha = (value: string) => createHash("sha256").update(value).digest("hex");
 const candidateText = await readFile(`seeds/${prefix}.draft.json`, "utf8");
-const candidate = JSON.parse(candidateText);
+const candidate = JSON.parse(candidateText) as CatalogSeedBundle;
 const validation = JSON.parse(await readFile(`seeds/${prefix}.validation.json`, "utf8"));
 const fresh = createCatalogMigrationValidationReport(candidate);
-if (!fresh.ok || fresh.bundleSha256 !== validation.bundleSha256 || candidate.programs.length !== 36 || candidate.programIntakes.length !== 46) throw new Error("BLCU undergraduate candidate changed.");
-const state = JSON.parse(await readFile(".cuac-local/runtime.json", "utf8"));
+if (!fresh.ok || fresh.bundleSha256 !== validation.bundleSha256 || candidate.programs?.length !== 36 || candidate.programIntakes?.length !== 46) throw new Error("BLCU undergraduate candidate changed.");
+const state = JSON.parse(await readFile(".cuac-local/runtime.json", "utf8")) as LocalDevelopmentState;
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:blcu-undergraduate-safe-review" });
-let baseline: any;
+let baseline: Baseline;
 try {
-  const school = await pool.query("select id,status,verification_status from schools where slug='beijing-language-and-culture-university'");
-  const conflicts = await pool.query("select id,slug,name_en from programs where slug=any($1::text[])", [candidate.programs.map((row: any) => row.slug)]);
-  const totals = await pool.query("select count(*)::text programs,count(*) filter(where verification_status='verified')::text verified,count(*) filter(where verification_status<>'verified')::text legacy,(select count(*) from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=$1)::text intakes,(select count(*) from scholarships where school_id=$1 and status='active')::text scholarships from programs where school_id=$1 and status='active'", [school.rows[0]?.id]);
-  const legacy = await pool.query("select id,slug,name_en,name_zh from programs where school_id=$1 and status='active' and verification_status<>'verified' order by slug", [school.rows[0]?.id]);
+  const school = await pool.query<SchoolRow>("select id,status,verification_status from schools where slug='beijing-language-and-culture-university'");
+  const conflicts = await pool.query<ProgramRow>("select id,slug,name_en from programs where slug=any($1::text[])", [(candidate.programs ?? []).map((row) => row.slug)]);
+  const totals = await pool.query<TotalsRow>("select count(*)::text programs,count(*) filter(where verification_status='verified')::text verified,count(*) filter(where verification_status<>'verified')::text legacy,(select count(*) from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=$1)::text intakes,(select count(*) from scholarships where school_id=$1 and status='active')::text scholarships from programs where school_id=$1 and status='active'", [school.rows[0]?.id]);
+  const legacy = await pool.query<ProgramRow>("select id,slug,name_en,name_zh from programs where school_id=$1 and status='active' and verification_status<>'verified' order by slug", [school.rows[0]?.id]);
   baseline = { school: school.rows[0], conflicts: conflicts.rows, totals: totals.rows[0], protectedLegacyPrograms: legacy.rows };
   if (!baseline.school || baseline.school.verification_status !== "unverified" || baseline.conflicts.length || baseline.totals.programs !== "74" || baseline.totals.verified !== "60" || baseline.totals.legacy !== "14" || baseline.totals.intakes !== "60" || baseline.totals.scholarships !== "9" || legacy.rows.length !== 14) throw new Error(`BLCU undergraduate baseline changed: ${JSON.stringify(baseline)}`);
 } finally { await pool.end(); }
@@ -29,7 +34,7 @@ const reviewBase = {
   scope: { schoolSlug: "beijing-language-and-culture-university", newProgramCount: 36, newIntakeCount: 46, schoolOverwriteCount: 0, archiveCount: 0, deleteCount: 0 },
   candidateSha256: sha(candidateText), bundleSha256: fresh.bundleSha256, operationPlanSha256: fresh.operationPlanSha256,
   reconciliation: { destructiveDeletion: false, overwrites: [], archives: [], baseline },
-  evidence: { sourceId: "blcu-undergraduate-programs-pdf-2026", sourceUrl: candidate.programs[0].sourceUrl, sourceLabel: candidate.programs[0].sourceLabel, sha256: candidate.programs[0].sourceSha256, capturedAt: candidate.programs[0].capturedAt, pagesReviewed: 2 },
+  evidence: { sourceId: "blcu-undergraduate-programs-pdf-2026", sourceUrl: candidate.programs![0].sourceUrl, sourceLabel: candidate.programs![0].sourceLabel, sha256: candidate.programs![0].sourceSha256, capturedAt: candidate.programs![0].capturedAt, pagesReviewed: 2 },
   visualReview: { result: "pass", pagesReviewed: [1, 2], note: "Both PDF pages were rendered at 180 DPI and inspected in full. Program headings, partner institutions, campuses, tuition columns, intake terms and 2026 deadlines are legible." },
   interpretationPolicy: { englishTitles: "Derived editorial translations are explicitly marked in sourceFieldLineage.", unresolvedFields: "Teaching language and duration are absent unless the PDF states them directly or the cultivation arrangement explicitly spans four/two years." },
   excludedSemanticConflicts: ["BLCU-Beijing University of Science and Technology Chinese Language and Artificial Intelligence directions", "existing Chinese-language tracks", "existing translation tracks", "International Chinese Language Education", "International Economics and Trade and digital-business variants", "Digital Finance and Digital Accounting", "Chinese Studies", "the repeated English-taught Hearing and Speech Rehabilitation listing"],

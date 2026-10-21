@@ -99,7 +99,7 @@ function ecustDocument(degree: string, language: string): RequirementDocument {
   ] });
 }
 
-const templates: unknown[] = [];
+const templates: Array<{ document: RequirementDocument } & Record<string, unknown>> = [];
 for (const [degree, programs] of grouped(bfsu.programs, (row) => row.degreeLevel)) {
   intakeCheck(bfsu, programs);
   templates.push({ key: `bfsu-${degree.toLowerCase()}-fall-2026`, schoolSlug: "beijing-foreign-studies-university", cycle: "fall-2026", targetProgramSlugs: programs.map((row) => row.slug), targetIntake: { term: "Fall", year: 2026 }, targetBindingStatus: "ready", reviewStatus: "unreviewed", fieldAssessment: { cycle: "explicit", targetPrograms: "explicit", requirements: "complete" }, unresolvedNotes: ["Fall 2026 is closed and must not be displayed as a current intake.", "Program-specific language scores are not stated in the captured BFSU catalogs and remain unfilled.", "Personal supervisor contact details are intentionally excluded."], document: bfsuDocument(degree) });

@@ -7,6 +7,7 @@ import {
   type CatalogSeedProgram,
   type CatalogSeedProgramIntake,
   type CatalogSeedScholarship,
+  type CatalogSeedSchool,
 } from "../src/server/catalog/seed-contract.ts";
 
 type ManifestSource = { id: string; label: string; url: string; finalUrl?: string; fetchedAt: string; status: number; sha256: string; artifactPath: string };
@@ -54,7 +55,7 @@ const languageScholarshipFields = {
   sourceSha256: languageScholarshipSource.sha256,
   capturedAt: languageScholarshipSource.fetchedAt,
 };
-const school = {
+const school: CatalogSeedSchool = {
   ...baseSchool,
   deadlineSummary: "Spring 2027 non-degree and exchange program applications are due by December 30, 2026. The CSC ChinaLink application deadline on the CSC website is November 20, 2026 for officially nominated exchange students from partner institutions. Fall 2027 degree timelines are not yet published on this source.",
   applicationFee: "CNY 600. The current official international-student fee table lists the application fee separately from tuition and insurance.",

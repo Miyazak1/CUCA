@@ -1,11 +1,14 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
+
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; finalUrl: string; label: string; fetchedAt: string; contentType: string };
+type EvidenceManifest = { sources?: EvidenceSource[] };
 
 const root = process.cwd();
 const schoolSlug = "shanghai-jiao-tong-university";
-const schoolBundle = JSON.parse(await readFile(resolve(root, "seeds/catalog.sjtu-school-program-batch-01.approved.local.json"), "utf8"));
+const schoolBundle = JSON.parse(await readFile(resolve(root, "seeds/catalog.sjtu-school-program-batch-01.approved.local.json"), "utf8")) as CatalogSeedBundle;
 const paths = {
   draft: resolve(root, "seeds/catalog.sjtu-scholarships-batch-01.draft.json"),
   validation: resolve(root, "seeds/catalog.sjtu-scholarships-batch-01.validation.json"),
@@ -19,16 +22,16 @@ const sourceDefinitions = [
   ["sjtu-excellence-scholarship", "work/catalog-official/2026-09-11T10-42-26-708Z/manifest.json", "c2656ffe347223fcbc689efd22af511f304d34e01961f5c1aeb9102091d8d392"],
   ["sjtu-shanghai-government-scholarship", "work/catalog-official/2026-09-11T10-42-25-841Z/manifest.json", "7a08305aef960818eead9d6aec7a9a59d30c932f182eb3f1125260bb7900e9b1"],
 ] as const;
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const [sourceId, manifestPath, expectedSha] of sourceDefinitions) {
-  const manifest = JSON.parse(await readFile(resolve(root, manifestPath), "utf8"));
-  const item = manifest.sources?.find((source: any) => source.id === sourceId);
+  const manifest = JSON.parse(await readFile(resolve(root, manifestPath), "utf8")) as EvidenceManifest;
+  const item = manifest.sources?.find((source) => source.id === sourceId);
   if (!item || item.status !== 200 || item.contentType !== "text/html" || item.sha256 !== expectedSha) throw new Error(`Reviewed SJTU source is missing or changed: ${sourceId}`);
   evidence.set(sourceId, item);
 }
+const requireEvidence = (id: string) => { const source = evidence.get(id); if (!source) throw new Error(`Missing reviewed SJTU evidence: ${id}`); return source; };
 
-const master = evidence.get("sjtu-international-master-admissions-scholarships-2026");
-const doctoral = evidence.get("sjtu-international-graduate-scholarships-2026");
+const master = requireEvidence("sjtu-international-master-admissions-scholarships-2026");
 const listItems = (values: string[]) => values.map(label => ({ label }));
 const benefitItems = (values: string[]) => values.map(label => ({ label, included: true }));
 const stepItems = (values: string[]) => values.map((body, index) => ({ label: `Step ${index + 1}`, body }));
@@ -50,8 +53,8 @@ type Input = {
 };
 
 function make(input: Input): CatalogSeedScholarship {
-  const source = evidence.get(input.sourceId);
-  const supporting = (input.supportingSourceIds ?? []).map(id => evidence.get(id));
+  const source = requireEvidence(input.sourceId);
+  const supporting = (input.supportingSourceIds ?? []).map(requireEvidence);
   const summary = `${input.title} is recorded as a distinct scholarship route in SJTU's official scholarship and 2026 international graduate admissions pages. Award levels remain subject to the published review process.`;
   const record = {
     schoolSlug, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt,
@@ -150,8 +153,8 @@ if (scholarships.length !== 4 || new Set(scholarships.map(item => item.slug)).si
 const candidateRaw = {
   version: 1,
   generatedAt: master.fetchedAt,
-  cities: (schoolBundle.cities ?? []).map((item: any) => { const { verificationStatus: _v, lastVerifiedAt: _l, ...rest } = item; return { ...rest, status: "draft" }; }),
-  schools: (schoolBundle.schools ?? []).map((item: any) => { const { verificationStatus: _v, lastVerifiedAt: _l, ...rest } = item; return { ...rest, status: "draft" }; }),
+  cities: (schoolBundle.cities ?? []).map((item) => ({ ...Object.fromEntries(Object.entries(item).filter(([key]) => key !== "verificationStatus" && key !== "lastVerifiedAt")), status: "draft" })),
+  schools: (schoolBundle.schools ?? []).map((item) => ({ ...Object.fromEntries(Object.entries(item).filter(([key]) => key !== "verificationStatus" && key !== "lastVerifiedAt")), status: "draft" })),
   programs: [], programIntakes: [], scholarships,
 };
 const serializedCandidate = `${JSON.stringify(candidateRaw, null, 2)}\n`;
@@ -161,7 +164,7 @@ if (!validation.ok) throw new Error(`Generated SJTU scholarship candidate is inv
 const review = {
   version: 1, status: "awaiting_user_approval", generatedAt: candidate.generatedAt,
   scope: { schoolSlug, schoolCount: 1, scholarshipCount: 4, existingVerifiedCount: 1, newScholarshipCount: 4, archiveCount: 1 },
-  evidence: sourceDefinitions.map(([sourceId]) => { const item = evidence.get(sourceId); return { sourceId, sourceUrl: item.url, sourceLabel: item.label, sha256: item.sha256, fetchedAt: item.fetchedAt, contentType: item.contentType }; }),
+  evidence: sourceDefinitions.map(([sourceId]) => { const item = requireEvidence(sourceId); return { sourceId, sourceUrl: item.url, sourceLabel: item.label, sha256: item.sha256, fetchedAt: item.fetchedAt, contentType: item.contentType }; }),
   reconciliation: { stableMatchingSlugs: [], newScholarshipCount: 4, legacyAliasesToArchive: ["official-2026-sjtu-international-graduate-scholarships"], destructiveDeletion: false },
   records: scholarships.map(item => ({
     slug: item.slug, title: item.title, fundingLevel: item.fundingLevel, applicableDegree: item.applicableDegree,

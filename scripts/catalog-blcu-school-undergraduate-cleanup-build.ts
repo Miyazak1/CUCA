@@ -4,11 +4,13 @@ import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "
 
 const prefix = "catalog.blcu-school-undergraduate-cleanup";
 const sha = (value: string) => createHash("sha256").update(value).digest("hex");
+type ManifestSource = { id: string; sha256: string; contentType: string; url: string; label: string; fetchedAt: string };
 const manifestText = await readFile("work/catalog-official/blcu-school-programs-attachments-batch-01/manifest.json", "utf8");
-const manifest = JSON.parse(manifestText);
-const base = JSON.parse(await readFile("seeds/catalog.blcu-undergraduate-safe-batch-01.approved.local.json", "utf8"));
-const source = manifest.sources.find((row: any) => row.id === "blcu-undergraduate-programs-pdf-2026");
-if (source?.sha256 !== "9afce0ef7a651d54a67be6b62a0f1783cc3e2c6bac080def5a22c9b9d58ab954" || source?.contentType !== "application/pdf") throw new Error("BLCU undergraduate cleanup evidence mismatch.");
+const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: ManifestSource[] };
+const base = JSON.parse(await readFile("seeds/catalog.blcu-undergraduate-safe-batch-01.approved.local.json", "utf8")) as CatalogSeedBundle;
+const source = manifest.sources.find((row) => row.id === "blcu-undergraduate-programs-pdf-2026");
+const city = base.cities?.find((row) => row.slug === "beijing");
+if (source?.sha256 !== "9afce0ef7a651d54a67be6b62a0f1783cc3e2c6bac080def5a22c9b9d58ab954" || source.contentType !== "application/pdf" || !city) throw new Error("BLCU undergraduate cleanup evidence mismatch.");
 
 const schoolSlug = "beijing-language-and-culture-university";
 const school = {
@@ -17,7 +19,7 @@ const school = {
   deadlineSummary: "2026 spring intake deadline: February 15, 2026; 2026 fall intake deadline: June 30, 2026",
   tuitionSummary: "Published 2026 routes range from CNY 22,000 to CNY 82,500 per academic year; overseas partner-stage tuition varies by institution and year.",
   applicationFee: "CNY 800, non-refundable", websiteUrl: "https://www.blcu.edu.cn", admissionsUrl: "https://admission.blcu.edu.cn", campusHighlights: ["Beijing", "Hainan", "Tokyo and overseas partner stages for named joint programs"],
-  status: "draft", sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt,
+  status: "draft" as const, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt,
   sourceFieldLineage: { nameEn: "official university identity shown on PDF pages 1-2", nameZh: "official university name and logo on PDF page 1", citySlug: "PDF cultivation-campus columns", applicationLevel: "PDF title and degree-section headings", languageOfInstruction: "PDF page 2 English-taught section and other published route tables", deadlineSummary: "PDF page 2 registration information", tuitionSummary: "PDF pages 1-2 tuition columns", applicationFee: "PDF page 2 registration information", websiteUrl: "PDF page 2 registration information", admissionsUrl: "PDF page 2 registration information", campusHighlights: "PDF pages 1-2 cultivation arrangements" },
 };
 
@@ -41,13 +43,13 @@ const specs: Spec[] = [
 ];
 if (specs.length !== 13 || new Set(specs.map((row) => row.slug)).size !== 13) throw new Error("BLCU cleanup program specification mismatch.");
 const programs = specs.map((row) => ({
-  slug: row.slug, schoolSlug, citySlug: "beijing", nameEn: row.en, nameZh: row.zh, degreeLevel: "Bachelor", ...(row.durationYears ? { durationYears: row.durationYears } : {}), fieldCategory: row.group, subjectArea: row.school, ...(row.teachingLanguage ? { teachingLanguage: row.teachingLanguage } : {}), ...(row.tuitionAmount ? { tuitionAmount: row.tuitionAmount, tuitionCurrency: "RMB", tuitionPeriod: "year" } : {}), tuitionText: row.tuitionText, applicationUrl: "https://apply.blcu.edu.cn", applicationNote: row.note, status: "draft", sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt,
+  slug: row.slug, schoolSlug, citySlug: "beijing", nameEn: row.en, nameZh: row.zh, degreeLevel: "Bachelor", ...(row.durationYears ? { durationYears: row.durationYears } : {}), fieldCategory: row.group, subjectArea: row.school, ...(row.teachingLanguage ? { teachingLanguage: row.teachingLanguage } : {}), ...(row.tuitionAmount ? { tuitionAmount: row.tuitionAmount, tuitionCurrency: "RMB", tuitionPeriod: "year" } : {}), tuitionText: row.tuitionText, applicationUrl: "https://apply.blcu.edu.cn", applicationNote: row.note, status: "draft" as const, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt,
   sourceFieldLineage: { nameZh: `PDF page ${row.page}, ${row.group} table`, nameEn: `editorial English translation of the official Chinese title on PDF page ${row.page}`, degreeLevel: "PDF title and section heading", ...(row.durationYears ? { durationYears: `PDF page ${row.page} cultivation arrangement` } : {}), ...(row.teachingLanguage ? { teachingLanguage: "PDF page 2 English-taught section heading" } : {}), tuitionText: `PDF page ${row.page} tuition column`, applicationUrl: "PDF page 2 registration information" },
 }));
 const deadline: Record<Intake, [string, string]> = { Spring: ["2026-02-15T00:00:00.000Z", "February 15, 2026"], Fall: ["2026-06-30T00:00:00.000Z", "June 30, 2026"] };
 const programIntakes = specs.flatMap((row) => row.intakes.map((term) => ({ programSlug: row.slug, intakeTerm: term, intakeYear: 2026, deadlineDate: deadline[term][0], deadlineLabel: deadline[term][1], applicationRound: "BLCU 2026 international degree admissions", status: "closed" as const, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt, sourceFieldLineage: { deadlineDate: "PDF page 2 registration information" } })));
 if (programIntakes.length !== 22) throw new Error("BLCU cleanup intake count mismatch.");
-const candidate: CatalogSeedBundle = { version: 1, generatedAt: manifest.generatedAt, cities: [base.cities.find((row: any) => row.slug === "beijing")], schools: [school], programs, programIntakes, scholarships: [] };
+const candidate: CatalogSeedBundle = { version: 1, generatedAt: manifest.generatedAt, cities: [city], schools: [school], programs, programIntakes, scholarships: [] };
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`, validation = createCatalogMigrationValidationReport(candidate);
 if (!validation.ok) throw new Error(validation.errors.join("\n"));
 await Promise.all([writeFile(`seeds/${prefix}.draft.json`, candidateText), writeFile(`seeds/${prefix}.validation.json`, `${JSON.stringify({ ...validation, candidateSha256: sha(candidateText), manifestSha256: sha(manifestText) }, null, 2)}\n`)]);

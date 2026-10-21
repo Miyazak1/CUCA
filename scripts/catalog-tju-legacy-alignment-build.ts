@@ -10,6 +10,9 @@ const candidatePath = resolve(root, "seeds/catalog.tju-legacy-alignment-batch-01
 const validationPath = resolve(root, "seeds/catalog.tju-legacy-alignment-batch-01.validation.json");
 const [sourceText, manifestText] = await Promise.all([readFile(sourcePath, "utf8"), readFile(manifestPath, "utf8")]);
 const source = JSON.parse(sourceText) as CatalogSeedBundle;
+const sourcePrograms = source.programs;
+const sourceProgramIntakes = source.programIntakes;
+if (!sourcePrograms || !sourceProgramIntakes) throw new Error("TJU source bundle is incomplete.");
 const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { url: string; sha256: string; status: number }[] };
 const manifestEvidence = new Set(manifest.sources.filter((row) => row.status === 200).map((row) => `${row.url}\n${row.sha256}`));
 
@@ -28,7 +31,7 @@ const programMap: Record<string, string> = {
   "tianjin-university-synthetic-biology": "tianjin-university-undergraduate-synthetic-biology-chinese-98327",
 };
 const programs = Object.entries(programMap).map(([legacySlug, canonicalSlug]) => {
-  const record = source.programs.find((row) => row.slug === canonicalSlug);
+  const record = sourcePrograms.find((row) => row.slug === canonicalSlug);
   if (!record) throw new Error(`Missing TJU canonical program: ${canonicalSlug}`);
   if (!manifestEvidence.has(`${record.sourceUrl}\n${record.sourceSha256}`)) throw new Error(`Unpinned TJU program evidence: ${canonicalSlug}`);
   return {
@@ -39,7 +42,7 @@ const programs = Object.entries(programMap).map(([legacySlug, canonicalSlug]) =>
   };
 });
 const programIntakes = Object.entries(programMap).map(([legacySlug, canonicalSlug]) => {
-  const record = source.programIntakes.find((row) => row.programSlug === canonicalSlug);
+  const record = sourceProgramIntakes.find((row) => row.programSlug === canonicalSlug);
   if (!record) throw new Error(`Missing TJU canonical intake: ${canonicalSlug}`);
   if (!manifestEvidence.has(`${record.sourceUrl}\n${record.sourceSha256}`)) throw new Error(`Unpinned TJU intake evidence: ${canonicalSlug}`);
   return { ...record, programSlug: legacySlug };

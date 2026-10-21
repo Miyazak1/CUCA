@@ -47,6 +47,11 @@ const evidence = new Map<string, SourceRow>();
 for (const manifest of manifests) for (const row of manifest.sources ?? []) if (expected[row.id] === row.sha256 && row.status === 200) evidence.set(row.id, row);
 const missing = Object.keys(expected).filter((id) => !evidence.has(id));
 if (missing.length) throw new Error(`Missing locked TJU evidence: ${missing.join(", ")}`);
+const requiredEvidence = (id: string): SourceRow => {
+  const source = evidence.get(id);
+  if (!source) throw new Error(`TJU evidence is missing after validation: ${id}`);
+  return source;
+};
 
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const cscaBySchool: Record<string, string[]> = {
@@ -153,7 +158,7 @@ const info = (label: string, value?: string) => ({ label, ...(value ? { value } 
 const benefit = (label: string) => ({ label, included: true });
 const commonMaterials = [info("Passport information page"), info("Highest diploma or expected-graduation proof"), info("Academic transcripts"), info("Language qualification certificate"), info("Study or research plan"), info("Foreigner Physical Examination Form"), info("Non-criminal record certificate")];
 function scholarship(sourceId: string, value: Partial<CatalogSeedScholarship> & Pick<CatalogSeedScholarship, "slug" | "title" | "fundingLevel" | "coverage" | "applicableDegree" | "amountText">): CatalogSeedScholarship {
-  const source = evidence.get(sourceId);
+  const source = requiredEvidence(sourceId);
   return {
     schoolSlug,
     status: "draft",
@@ -178,7 +183,7 @@ const scholarships: CatalogSeedScholarship[] = [
   scholarship("tju-growth-steel-indonesia-2026", { slug: "official-2026-tju-growth-steel-indonesia", title: "Tianjin University 2026 Growth Steel Group Indonesia Scholarship", nameZh: "天津大学2026年 Growth Steel Group 印尼奖学金", type: "other", typeLabel: "Growth Steel Group Indonesia Scholarship", providerName: "Growth Steel Group / 天津大学", providerNameEn: "Growth Steel Group / Tianjin University", fundingLevel: "Partial", coverage: "One-year tiered tuition subsidies; top undergraduate and master's tiers also include published living allowances, and the master's first prize includes medical insurance", applicableDegree: "Bachelor, Master", applicableProgram: "Eligible Tianjin University bachelor's and master's programs for Indonesian citizens", amountText: "Bachelor tiers: CNY 20,000 tuition plus CNY 1,400/month for 10 months, or tuition subsidies of CNY 20,000/10,000/6,000. Master's first prize: CNY 30,000 tuition, CNY 1,700/month for 10 months and CNY 800 insurance; second prize: CNY 30,000 tuition.", deadlineDate: "2026-05-31", deadlineLabel: "May 31, 2026", applicationRound: "2026 Growth Steel Group Indonesia Scholarship", targetCountries: ["Indonesia"], benefitItems: [benefit("Tiered tuition subsidy"), benefit("Living allowance for top published tiers"), benefit("CNY 800 medical insurance for master's first prize")], eligibilityItems: [info("Nationality", "Citizen of Indonesia with a valid passport"), info("Bachelor", "High-school diploma and under 25"), info("Master", "Bachelor's diploma and under 35"), info("Language", "Chinese route HSK 5/180, with HSK 4/180 for School of International Education undergraduate routes; English route IELTS 6.0 or TOEFL 80, subject to stated exemptions"), info("CSCA", "Required for undergraduate applicants")], applicationMaterials: [...commonMaterials, info("CSCA transcript for undergraduate applicants"), info("Financial evidence and route-specific attachments")], applicationSteps: [info("Step 1", "Apply through the TJU system"), info("Step 2", "Upload all admission and scholarship materials"), info("Step 3", "Await the tier and award stated in the admission notice")], summary: "A one-year tiered 2026 scholarship for eligible Indonesian bachelor and master applicants at TJU.", sortOrder: 60 }),
 ];
 
-const schoolSource = evidence.get("tju-undergraduate-admissions-2027");
+const schoolSource = requiredEvidence("tju-undergraduate-admissions-2027");
 const candidate: CatalogSeedBundle = {
   version: 1,
   generatedAt: manifests[0].generatedAt,

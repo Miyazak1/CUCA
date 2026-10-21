@@ -6,8 +6,9 @@ import { totpCode } from "../src/server/auth/mfa-crypto.ts";
 import { NOTIFICATION_TOPICS_BY_ROLE } from "../src/server/notifications/templates.ts";
 
 const projectDir = fileURLToPath(new URL("../", import.meta.url));
-const state = JSON.parse(await readFile(resolve(projectDir, LOCAL_STATE_RELATIVE_PATH), "utf8")) as unknown;
-assertLocalDevelopmentState(state);
+const parsedState = JSON.parse(await readFile(resolve(projectDir, LOCAL_STATE_RELATIVE_PATH), "utf8")) as unknown;
+assertLocalDevelopmentState(parsedState);
+const state = parsedState;
 const accounts = localSyntheticAccounts(state);
 const origin = `http://127.0.0.1:${state.applicationPort}`;
 const localMfaPath = resolve(projectDir, ".cuac-local/smoke-mfa.json");

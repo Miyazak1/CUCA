@@ -1,7 +1,13 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+import {
+  createCatalogMigrationValidationReport,
+  type CatalogSeedBundle,
+  type CatalogSeedProgram,
+  type CatalogSeedProgramIntake,
+  type CatalogSeedScholarship,
+} from "../src/server/catalog/seed-contract.ts";
 
 const root = process.cwd();
 const identityPath = resolve(root, "seeds/catalog.school-identity-replacements-batch-01.draft.json");
@@ -11,8 +17,8 @@ const validationPath = resolve(root, "seeds/catalog.gmcu-complete-batch-01.valid
 const [identityText, manifestText] = await Promise.all([readFile(identityPath, "utf8"), readFile(manifestPath, "utf8")]);
 const identity = JSON.parse(identityText) as CatalogSeedBundle;
 const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { id: string; label: string; url: string; sha256: string; status: number; fetchedAt: string }[] };
-const city = identity.cities.find((row) => row.slug === "guiyang");
-const school = identity.schools.find((row) => row.slug === "guizhou-medical-university");
+const city = identity.cities?.find((row) => row.slug === "guiyang");
+const school = identity.schools?.find((row) => row.slug === "guizhou-medical-university");
 if (!city || !school) throw new Error("Missing Guiyang/Guizhou Medical University identity dependencies");
 const source = manifest.sources.find((row) => row.id === "guiyang-gmcu-undergraduate-admission-pdf-2026" && row.status === 200);
 const page = manifest.sources.find((row) => row.id === "guiyang-gmcu-undergraduate-admission-2026" && row.status === 200);
@@ -20,8 +26,8 @@ if (!source || source.sha256 !== "63ce26468c55164de9ecf534322a3972910fba4cba035e
   || !page || page.sha256 !== "6d11acc0cf35e4afb7f2132d0d694b0b5ef95b3a404c1baee2f00c713b5401bb") {
   throw new Error("Missing or changed Guizhou Medical University brochure evidence");
 }
-const sourceBase = { status: "draft", sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
-const programs = [
+const sourceBase = { status: "draft" as const, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
+const programs: CatalogSeedProgram[] = [
   {
     slug: "guizhou-medical-university-clinical-medicine",
     schoolSlug: school.slug,
@@ -95,7 +101,7 @@ const programs = [
     },
   },
 ];
-const programIntakes = programs.map((program) => ({
+const programIntakes = programs.map<CatalogSeedProgramIntake>((program) => ({
   programSlug: program.slug,
   intakeTerm: "Fall",
   intakeYear: 2026,
@@ -111,7 +117,7 @@ const programIntakes = programs.map((program) => ({
 }));
 const scholarshipBase = { schoolSlug: school.slug, ...sourceBase, providerLocation: "China", targetCountries: [], targetRegions: [], actionLinks: [{ label: source.label, url: source.url, kind: "official-source" }] };
 const scholarshipLineage = { title: "brochure page 6 scholarship list", fundingLevel: "brochure identifies the award but does not publish a fixed level", coverage: "unpublished in the reviewed brochure", applicableDegree: "brochure undergraduate context", applicableProgram: "brochure undergraduate context", eligibilityItems: "brochure describes awards for outstanding students", applicationSteps: "no separate application procedure published in the reviewed brochure" };
-const scholarships = [
+const scholarships: CatalogSeedScholarship[] = [
   {
     ...scholarshipBase,
     slug: "official-2026-gmcu-guizhou-government-excellent-international-students",

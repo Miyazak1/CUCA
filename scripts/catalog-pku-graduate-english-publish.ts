@@ -42,7 +42,7 @@ const publication: CatalogSeedBundle = {
 const report = createCatalogMigrationValidationReport(publication);
 if (!report.ok || report.summary.programs !== 101 || report.summary.programIntakes !== 101 || report.summary.scholarships !== 0) throw new Error(`Invalid PKU English publication: ${report.errors.join(" ")}`);
 const approval = { version: 1, approvedAt, approvalMode: "standing-product-owner-authorization", reviewReference, approvedReviewSha256: reviewHash, approvedCandidateBundleSha256: fresh.bundleSha256, publicationBundle: "seeds/catalog.pku-graduate-english-batch-02.approved.local.json", publicationBundleSha256: report.bundleSha256, schoolSlug: "peking-university", programSlugs, archivedAliases: [], prohibitedDataConfirmedExcluded: true };
-async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: any) { if (error?.code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
+async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: unknown) { if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
 await writeOrVerify(paths.output, publication);
 await writeOrVerify(paths.approval, approval);
 const target = assertLocalCatalogPublishTarget(state, publication, confirmation, reviewReference);
@@ -50,20 +50,26 @@ const pool = createPostgresPool({ databaseUrl: target.databaseUrl, max: 1, appli
 try {
   const client = createTransactionalSqlClient(pool);
   const result = await client.transaction(async (tx) => {
-    const school = await tx.query<any>("select id,status,verification_status from schools where slug='peking-university'", []);
-    const cityBefore = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='beijing'", []);
-    const schoolBefore = await tx.query<any>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='peking-university'", []);
-    const counts = await tx.query<any>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count from programs where school_id=$1 and status='active'", [school[0]?.id]);
-    const conflicts = await tx.query<any>("select slug from programs where slug=any($1::text[])", [programSlugs]);
-    const scholarshipsBefore = await tx.query<any>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count from scholarships where school_id=$1 and status='active'", [school[0]?.id]);
+    type SchoolRow = { id: string; status: string; verification_status: string };
+    type SnapshotRow = { snapshot: { id?: string } & Record<string, unknown> };
+    type CountRow = { active_count: number; verified_count: number };
+    type SlugRow = { slug: string };
+    type FinalCountRow = CountRow & { published_batch: number };
+    type IntakeCountRow = { count: number };
+    const school = await tx.query<SchoolRow>("select id,status,verification_status from schools where slug='peking-university'", []);
+    const cityBefore = await tx.query<SnapshotRow>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='beijing'", []);
+    const schoolBefore = await tx.query<SnapshotRow>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='peking-university'", []);
+    const counts = await tx.query<CountRow>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count from programs where school_id=$1 and status='active'", [school[0]?.id]);
+    const conflicts = await tx.query<SlugRow>("select slug from programs where slug=any($1::text[])", [programSlugs]);
+    const scholarshipsBefore = await tx.query<CountRow>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count from scholarships where school_id=$1 and status='active'", [school[0]?.id]);
     if (school.length !== 1 || school[0].id !== review.reconciliation.databaseBaseline.schoolId || school[0].status !== "active" || school[0].verification_status !== "verified" || cityBefore.length !== 1 || cityBefore[0].snapshot.id !== review.reconciliation.databaseBaseline.cityId || counts[0]?.active_count !== 65 || counts[0]?.verified_count !== 65 || conflicts.length !== 0) throw new Error("PKU English graduate publication baseline changed.");
     const written = await new CatalogSeedWriter(tx).writeBundle(publication, { preserveExistingCitySlugs: ["beijing"], preserveExistingSchoolSlugs: ["peking-university"] });
     if (!written.ok) throw new Error(`PKU English graduate write failed: ${written.errors.join(" ")}`);
-    const cityAfter = await tx.query<any>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='beijing'", []);
-    const schoolAfter = await tx.query<any>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='peking-university'", []);
-    const final = await tx.query<any>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count,count(*) filter(where slug=any($2::text[]))::int published_batch from programs where school_id=$1 and status='active'", [school[0].id, programSlugs]);
-    const intakeFinal = await tx.query<any>("select count(*)::int count from program_intakes i join programs p on p.id=i.program_id where p.school_id=$1 and p.slug=any($2::text[]) and i.intake_year=2026", [school[0].id, programSlugs]);
-    const scholarshipsAfter = await tx.query<any>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count from scholarships where school_id=$1 and status='active'", [school[0].id]);
+    const cityAfter = await tx.query<SnapshotRow>("select to_jsonb(c)-'created_at'-'updated_at' snapshot from cities c where slug='beijing'", []);
+    const schoolAfter = await tx.query<SnapshotRow>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug='peking-university'", []);
+    const final = await tx.query<FinalCountRow>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count,count(*) filter(where slug=any($2::text[]))::int published_batch from programs where school_id=$1 and status='active'", [school[0].id, programSlugs]);
+    const intakeFinal = await tx.query<IntakeCountRow>("select count(*)::int count from program_intakes i join programs p on p.id=i.program_id where p.school_id=$1 and p.slug=any($2::text[]) and i.intake_year=2026", [school[0].id, programSlugs]);
+    const scholarshipsAfter = await tx.query<CountRow>("select count(*)::int active_count,count(*) filter(where verification_status='verified')::int verified_count from scholarships where school_id=$1 and status='active'", [school[0].id]);
     if (JSON.stringify(cityAfter[0]?.snapshot) !== JSON.stringify(cityBefore[0].snapshot) || JSON.stringify(schoolAfter[0]?.snapshot) !== JSON.stringify(schoolBefore[0].snapshot)) throw new Error("PKU city or school dependency changed.");
     if (final[0]?.active_count !== 166 || final[0]?.verified_count !== 166 || final[0]?.published_batch !== 101 || intakeFinal[0]?.count !== 101 || JSON.stringify(scholarshipsAfter[0]) !== JSON.stringify(scholarshipsBefore[0])) throw new Error(`PKU English graduate post-check failed: ${JSON.stringify({ final: final[0], intakes: intakeFinal[0], scholarshipsBefore: scholarshipsBefore[0], scholarshipsAfter: scholarshipsAfter[0] })}`);
     return { written, final: final[0], intakes: intakeFinal[0], scholarships: scholarshipsAfter[0] };

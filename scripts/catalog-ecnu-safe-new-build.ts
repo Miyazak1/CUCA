@@ -5,20 +5,26 @@ import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "
 
 const root = process.cwd();
 const runPath = resolve(root, "work/catalog-official/ecnu-complete-batch-01");
-const manifest = JSON.parse(await readFile(resolve(runPath, "manifest.json"), "utf8"));
-const extracted = JSON.parse(await readFile(resolve(runPath, "programs.extracted.json"), "utf8"));
-const legacy = JSON.parse(await readFile(resolve(root, "seeds/catalog.cscalite-online-20260910.published.json"), "utf8"));
-const tongji = JSON.parse(await readFile(resolve(root, "seeds/catalog.tongji-school-program-batch-01.approved.local.json"), "utf8"));
-const byId = new Map(manifest.sources.map((source: any) => [source.id, source]));
+type EvidenceSource = { id: string; finalUrl: string; label: string; sha256: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources: EvidenceSource[] };
+type ExtractedProgram = { degreeLevel: string; nameEn: string; school: string; teachingLanguage: string; hskLevel?: string; hskMinimumScore?: number; durationYears: number; cscaSubjects?: string; tuitionText: string; campus: string; locator: string; sourceId: string };
+type ExtractedCatalog = { programs: ExtractedProgram[]; counts: Record<string, number> };
+type CatalogProgram = NonNullable<CatalogSeedBundle["programs"]>[number];
+type ScholarshipInput = Omit<NonNullable<CatalogSeedBundle["scholarships"]>[number], "schoolSlug" | "status" | "providerLocation" | "targetCountries" | "targetRegions" | "sourceUrl" | "sourceLabel" | "sourceSha256" | "capturedAt" | "actionLinks" | "sourceFieldLineage">;
+const manifest = JSON.parse(await readFile(resolve(runPath, "manifest.json"), "utf8")) as EvidenceManifest;
+const extracted = JSON.parse(await readFile(resolve(runPath, "programs.extracted.json"), "utf8")) as ExtractedCatalog;
+const legacy = JSON.parse(await readFile(resolve(root, "seeds/catalog.cscalite-online-20260910.published.json"), "utf8")) as CatalogSeedBundle;
+const tongji = JSON.parse(await readFile(resolve(root, "seeds/catalog.tongji-school-program-batch-01.approved.local.json"), "utf8")) as CatalogSeedBundle;
+const byId = new Map(manifest.sources.map((source) => [source.id, source]));
+const getSource = (id: string): EvidenceSource => { const source = byId.get(id); if (!source) throw new Error(`Missing source metadata: ${id}`); return source; };
 const meta = (id: string) => {
-  const source: any = byId.get(id);
-  if (!source) throw new Error(`Missing source metadata: ${id}`);
+  const source = getSource(id);
   return { sourceUrl: source.finalUrl, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
 };
 const slugify = (value: string) => value.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 92) || "program";
 const degrees: Record<string, string> = { Bachelor: "Bachelor", Master: "Master", Doctoral: "Doctoral" };
 const programSeen = new Map<string, number>();
-const programs = extracted.programs.map((row: any, index: number) => {
+const programs: CatalogProgram[] = extracted.programs.map((row) => {
   const base = `official-2026-ecnu-${row.degreeLevel.toLowerCase()}-${slugify(row.nameEn)}-${slugify(row.school)}`;
   const ordinal = (programSeen.get(base) ?? 0) + 1;
   programSeen.set(base, ordinal);
@@ -58,12 +64,11 @@ const programs = extracted.programs.map((row: any, index: number) => {
       hskRequirement: `${row.locator}, circled HSK marker and current admissions guide`,
       cscaRequirement: row.degreeLevel === "Bachelor" ? `${row.locator}, CSCA Test Subjects column` : "graduate admissions guide",
     },
-    _sourceOrdinal: index + 1,
   };
-}).map(({ _sourceOrdinal, ...row }: any) => row);
+});
 
 const admissionsSource = (degree: string) => degree === "Bachelor" ? meta("ecnu-undergraduate-admissions-2026") : meta("ecnu-graduate-admissions-2026");
-const programIntakes = programs.map((program: any) => ({
+const programIntakes = programs.map((program) => ({
   programSlug: program.slug,
   intakeTerm: "Fall",
   intakeYear: 2026,
@@ -76,14 +81,14 @@ const programIntakes = programs.map((program: any) => ({
 }));
 
 const commonMaterials = ["Passport information page", "Highest diploma or expected-graduation proof", "Academic transcripts", "Language proficiency evidence", "Study or research plan", "Physical examination record where required", "No-criminal-record report where required"].map(label => ({ label }));
-const scholarship = (sourceId: string, value: any) => ({
+const scholarship = (sourceId: string, value: ScholarshipInput) => ({
   schoolSlug: "east-china-normal-university",
   status: "draft" as const,
   providerLocation: "Shanghai, China",
   targetCountries: [], targetRegions: [],
   ...meta(sourceId),
   actionLinks: [
-    { label: value.title, url: (byId.get(sourceId) as any).finalUrl, kind: "official-source" },
+    { label: value.title, url: getSource(sourceId).finalUrl, kind: "official-source" },
     { label: "ECNU international application system", url: "https://lxsapply.ecnu.edu.cn/", kind: "official-application" },
   ],
   sourceFieldLineage: { title: "official page title", fundingLevel: "Scholarship Coverage section", coverage: "Scholarship Coverage section", applicableDegree: "Target Applicants section", applicableProgram: "Target Applicants section", eligibilityItems: "Eligibility section", applicationMaterials: "linked official admissions guide and Application Documents section", applicationSteps: "Application Procedures section" },
@@ -119,8 +124,8 @@ const scholarships = [
 ];
 
 if (programs.length !== 280 || programIntakes.length !== 280 || scholarships.length !== 8) throw new Error("ECNU safe-new scope count mismatch.");
-const city = tongji.cities.find((row: any) => row.slug === "shanghai");
-const school = legacy.schools.find((row: any) => row.slug === "east-china-normal-university");
+const city = tongji.cities?.find((row) => row.slug === "shanghai");
+const school = legacy.schools?.find((row) => row.slug === "east-china-normal-university");
 if (!city || !school) throw new Error("Dependency records not found.");
 const bundle: CatalogSeedBundle = { version: 1, generatedAt: manifest.generatedAt, cities: [city], schools: [school], programs, programIntakes, scholarships };
 const report = createCatalogMigrationValidationReport(bundle);

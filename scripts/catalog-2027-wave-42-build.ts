@@ -181,7 +181,8 @@ const programIntakes: CatalogSeedProgramIntake[] = programs.map((program) => ({
   sourceFieldLineage: { intakeTerm: "official early-September enrollment", intakeYear: "official 2027 page titles and application period", openDate: "official application period", deadlineDate: "official application period; Beijing end-of-day normalization", deadlineLabel: "official application period", status: "deadline compared with capturedAt" },
 }));
 
-const scholarship = (row: Omit<CatalogSeedScholarship, "schoolSlug" | "applicationRound" | "status" | "verificationStatus" | "lastVerifiedAt" | "sourceFieldLineage">): CatalogSeedScholarship => ({
+const scholarship = (row: Omit<CatalogSeedScholarship,
+  "schoolSlug" | "applicationRound" | "status" | "verificationStatus" | "lastVerifiedAt" | "sourceUrl" | "sourceLabel" | "sourceSha256" | "capturedAt" | "sourceFieldLineage">): CatalogSeedScholarship => ({
   schoolSlug: school.slug,
   applicationRound: "2027 undergraduate intake",
   status: "active",

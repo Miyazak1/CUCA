@@ -8,6 +8,11 @@ import {
   type CatalogSeedScholarship,
 } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources?: EvidenceSource[] };
+type UstcRoute = { sourceId: string; degree: CatalogSeedProgram["degreeLevel"]; language: string; major: string; researchField: string; page: number | null };
+type ParsedRoutes = { routes: UstcRoute[]; summary: { Master: { Chinese: number; English: number }; Doctoral: { Chinese: number; English: number } } };
+
 const root = process.cwd();
 const runDir = resolve(root, process.env.CUAC_USTC_MANIFEST_DIR || "work/catalog-official/2026-10-15T08-46-24-262Z");
 const parsedPath = resolve(root, "work/catalog-official/ustc-complete-batch-01/parsed-routes.json");
@@ -36,10 +41,10 @@ const expected: Record<string, string> = {
   "ustc-international-home-current": "dd3b2248c54943fb154b5136bc6a2459c1ffc3fe1967b2e7cb5f1f86d0d31a5c",
 };
 
-const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8"));
-const parsed = JSON.parse(await readFile(parsedPath, "utf8"));
+const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8")) as EvidenceManifest;
+const parsed = JSON.parse(await readFile(parsedPath, "utf8")) as ParsedRoutes;
 const base = JSON.parse(await readFile(basePath, "utf8")) as CatalogSeedBundle;
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const source of manifest.sources ?? []) {
   if (expected[source.id] !== source.sha256 || source.status !== 200) throw new Error(`Official snapshot mismatch: ${source.id}`);
   evidence.set(source.id, source);
@@ -74,7 +79,7 @@ const routes = [...undergraduateRoutes, ...parsed.routes];
 
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const used = new Set<string>();
-const programs: CatalogSeedProgram[] = routes.map((route: any, index: number) => {
+const programs: CatalogSeedProgram[] = routes.map((route, index) => {
   const source = evidence.get(route.sourceId)!;
   const isUndergraduate = route.degree === "Undergraduate";
   const guide = evidence.get(isUndergraduate ? "ustc-undergraduate-guide-2026" : "ustc-postgraduate-guide-2026")!;
@@ -205,7 +210,7 @@ const candidate: CatalogSeedBundle = {
     websiteUrl: "https://www.ustc.edu.cn/", admissionsUrl: guide.url, cscaRequired: true,
     cscaRequirement: "2026 undergraduate applicants must submit CSCA results: Professional Chinese (STEM), Mathematics, plus Physics or Chemistry.",
     cscaSubjects: ["Professional Chinese - STEM", "Mathematics", "Physics", "Chemistry"],
-    subjectTags: [...new Set(routes.map((route: any) => route.major))], languageTags: ["Chinese", "English"],
+    subjectTags: [...new Set(routes.map((route) => route.major))], languageTags: ["Chinese", "English"],
     tuitionBandLabel: "CNY 26,000-35,000/year for standard degree routes", campusHighlights: ["35 undergraduate programs explicitly enumerated on the detail page", "78 master's research fields", "89 doctoral research fields", "Five independently structured scholarship routes"],
     status: "draft", sourceUrl: guide.url, sourceLabel: guide.label, sourceSha256: guide.sha256, capturedAt: guide.fetchedAt,
     sourceFieldLineage: { nameEn: "official USTC admissions site", citySlug: "official USTC address", applicationLevel: "2026 program pages", languageRequirement: "2026 application guidelines and language-specific program tables", deadlineSummary: "2026 application guidelines", tuitionSummary: "2026 application guidelines fees sections", admissionsUrl: "registered official undergraduate guide", cscaRequirement: "2026 undergraduate application guideline CSCA row" },

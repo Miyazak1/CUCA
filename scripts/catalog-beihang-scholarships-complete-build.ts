@@ -2,6 +2,9 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; finalUrl: string; sha256: string; label: string; fetchedAt: string };
+type EvidenceManifest = { sources: EvidenceSource[] };
+
 const root = process.cwd();
 const manifestPath = resolve(root, "work/catalog-official/beihang-scholarships-complete-batch-01/manifest.json");
 const schoolBundlePath = resolve(root, "seeds/catalog.beihang-graduate-batch-01.approved.local.json");
@@ -11,7 +14,7 @@ const [manifest, schoolBundle] = await Promise.all([
   readFile(manifestPath, "utf8").then(JSON.parse),
   readFile(schoolBundlePath, "utf8").then(JSON.parse),
 ]);
-const sources = new Map<string, any>(manifest.sources.map((row: any) => [row.id, row]));
+const sources = new Map<string, EvidenceSource>((manifest as EvidenceManifest).sources.map((row) => [row.id, row]));
 const requiredSourceIds = [
   "beihang-undergraduate-program-2026-rich", "beihang-self-supported-scholarship-policy",
   "beihang-program-cooperation-scholarship-policy", "beihang-postgraduate-self-supported-scholarships-2026",

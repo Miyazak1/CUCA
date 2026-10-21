@@ -5,6 +5,7 @@ import { CatalogSeedWriter } from "../src/server/catalog/seed-writer.ts";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { assertLocalCatalogPublishTarget, LOCAL_CATALOG_PUBLISH_CONFIRMATION } from "../src/server/catalog/local-publish-safety.ts";
 import { createPostgresPool, createTransactionalSqlClient } from "../src/server/db/postgres-client.ts";
+import { type CatalogEntityStatusRow, type CatalogIntakeStatusRow, type CatalogSnapshotRow, type CatalogTotalsRow } from "./lib/catalog-database-rows.ts";
 
 const root = process.cwd(), batch = "whu-programs-batch-01", prefix = `catalog.${batch}`, schoolSlug = "wuhan-university";
 const paths = {
@@ -41,27 +42,27 @@ const report = createCatalogMigrationValidationReport(publication);
 if (!report.ok || report.summary.programs !== 599 || report.summary.programIntakes !== 599 || report.summary.scholarships !== 0) throw new Error(`Invalid WHU publication: ${report.errors.join(" ")}`);
 const programSlugs = publication.programs!.map(row => row.slug);
 const approval = { version: 1, approvedAt, approvalMode: "standing-user-default-publication", reviewReference: publicationReference, approvedReviewSha256: reviewHash, approvedCandidateFileSha256: sha(candidateText), approvedCandidateBundleSha256: fresh.bundleSha256, publicationBundle: `seeds/${prefix}.approved.local.json`, publicationBundleSha256: report.bundleSha256, schoolSlug, programSlugs, archivedProgramAliases: [], archivedScholarshipAliases: [], prohibitedDataConfirmedExcluded: true };
-async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: any) { if (error?.code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
+async function writeOrVerify(path: string, value: unknown) { const body = `${JSON.stringify(value, null, 2)}\n`; try { await writeFile(path, body, { encoding: "utf8", flag: "wx" }); } catch (error: unknown) { if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error; if (await readFile(path, "utf8") !== body) throw new Error(`Existing artifact differs: ${path}`); } }
 await writeOrVerify(paths.output, publication); await writeOrVerify(paths.approval, approval);
 const target = assertLocalCatalogPublishTarget(state, publication, LOCAL_CATALOG_PUBLISH_CONFIRMATION, publicationReference);
 const pool = createPostgresPool({ databaseUrl: target.databaseUrl, max: 1, applicationName: "cuac:whu-programs-batch-01-publish" });
 try {
   const client = createTransactionalSqlClient(pool);
   const result = await client.transaction(async tx => {
-    const schoolBefore = await tx.query<any>("select id,to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1", [schoolSlug]);
-    const scholarshipBefore = await tx.query<any>("select jsonb_agg(to_jsonb(h)-'created_at'-'updated_at' order by h.slug) snapshot from scholarships h where h.school_id=$1", [schoolBefore[0]?.id]);
-    const existing = await tx.query<any>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug", [programSlugs]);
-    const existingIntakes = await tx.query<any>("select p.slug,pi.intake_year,pi.intake_term,pi.status from program_intakes pi join programs p on p.id=pi.program_id where p.slug=any($1::text[]) order by p.slug", [programSlugs]);
+    const schoolBefore = await tx.query<CatalogSnapshotRow>("select id,to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1", [schoolSlug]);
+    const scholarshipBefore = await tx.query<CatalogSnapshotRow>("select jsonb_agg(to_jsonb(h)-'created_at'-'updated_at' order by h.slug) snapshot from scholarships h where h.school_id=$1", [schoolBefore[0]?.id]);
+    const existing = await tx.query<CatalogEntityStatusRow>("select slug,status,verification_status,last_verified_at from programs where slug=any($1::text[]) order by slug", [programSlugs]);
+    const existingIntakes = await tx.query<CatalogIntakeStatusRow>("select p.slug,pi.intake_year,pi.intake_term,pi.status from program_intakes pi join programs p on p.id=pi.program_id where p.slug=any($1::text[]) order by p.slug", [programSlugs]);
     if (schoolBefore.length !== 1 || review.reconciliation.databaseBaseline.schoolId !== schoolBefore[0].id || !Array.isArray(scholarshipBefore[0]?.snapshot) || scholarshipBefore[0].snapshot.length !== 6) throw new Error("WHU protected baseline changed.");
     const preState = existing.length === 0 && existingIntakes.length === 0;
     const postState = existing.length === 599 && existingIntakes.length === 599 && existing.every(row => row.status === "active" && row.verification_status === "verified" && row.last_verified_at?.toISOString() === approvedAt) && existingIntakes.every(row => row.intake_year === 2026 && row.intake_term === "Fall" && row.status === "closed");
     if (!preState && !postState) throw new Error(`WHU safe-new state partially conflicts: ${JSON.stringify({ programs: existing.length, intakes: existingIntakes.length })}`);
     const written = await new CatalogSeedWriter(tx).writeBundle(publication, { preserveExistingCitySlugs: ["wuhan"], preserveExistingSchoolSlugs: [schoolSlug] });
     if (!written.ok) throw new Error(`WHU catalog write failed: ${written.errors.join(" ")}`);
-    const schoolAfter = await tx.query<any>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1", [schoolSlug]);
-    const scholarshipAfter = await tx.query<any>("select jsonb_agg(to_jsonb(h)-'created_at'-'updated_at' order by h.slug) snapshot from scholarships h where h.school_id=$1", [schoolBefore[0].id]);
+    const schoolAfter = await tx.query<CatalogSnapshotRow>("select to_jsonb(s)-'created_at'-'updated_at' snapshot from schools s where slug=$1", [schoolSlug]);
+    const scholarshipAfter = await tx.query<CatalogSnapshotRow>("select jsonb_agg(to_jsonb(h)-'created_at'-'updated_at' order by h.slug) snapshot from scholarships h where h.school_id=$1", [schoolBefore[0]!.id]);
     if (JSON.stringify(schoolAfter[0]?.snapshot) !== JSON.stringify(schoolBefore[0].snapshot) || JSON.stringify(scholarshipAfter[0]?.snapshot) !== JSON.stringify(scholarshipBefore[0].snapshot)) throw new Error("WHU publication changed protected school or scholarship records.");
-    const totals = await tx.query<any>(`select s.id,(select count(*) from programs p where p.school_id=s.id and p.status='active')::int programs,(select count(*) from programs p where p.school_id=s.id and p.status='active' and p.verification_status='verified')::int verified_programs,(select count(*) from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=s.id and p.status='active')::int intakes,(select count(*) from scholarships h where h.school_id=s.id and h.status='active')::int scholarships,(select count(*) from scholarships h where h.school_id=s.id and h.status='active' and h.verification_status='verified')::int verified_scholarships from schools s where s.slug=$1 and s.status='active' and s.verification_status='verified'`, [schoolSlug]);
+    const totals = await tx.query<CatalogTotalsRow>(`select s.id,(select count(*) from programs p where p.school_id=s.id and p.status='active')::int programs,(select count(*) from programs p where p.school_id=s.id and p.status='active' and p.verification_status='verified')::int verified_programs,(select count(*) from program_intakes pi join programs p on p.id=pi.program_id where p.school_id=s.id and p.status='active')::int intakes,(select count(*) from scholarships h where h.school_id=s.id and h.status='active')::int scholarships,(select count(*) from scholarships h where h.school_id=s.id and h.status='active' and h.verification_status='verified')::int verified_scholarships from schools s where s.slug=$1 and s.status='active' and s.verification_status='verified'`, [schoolSlug]);
     if (totals.length !== 1 || totals[0].programs !== 599 || totals[0].verified_programs !== 599 || totals[0].intakes !== 599 || totals[0].scholarships !== 6 || totals[0].verified_scholarships !== 6) throw new Error(`WHU post-check failed: ${JSON.stringify(totals[0])}`);
     return { written: written.summary, totals: totals[0] };
   });

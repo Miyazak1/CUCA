@@ -34,14 +34,8 @@ for (const [relativePath, id, sha] of evidenceSpecs) {
 const source = (id: string) => evidence.get(id)!;
 const GUIDE_ID = "fudan-university-chinese-undergraduate-guide-pdf-2026";
 const CATALOG_ID = "fudan-university-chinese-undergraduate-catalog-2026";
-const CSCA_ID = "fudan-university-chinese-undergraduate-csca-2026";
-const TUITION_ID = "fudan-university-chinese-undergraduate-tuition-2026";
-const ENGLISH_CATALOG_ID = "fudan-university-english-undergraduate-catalog-2026";
 const GUIDE = source(GUIDE_ID);
 const CATALOG = source(CATALOG_ID);
-const CSCA = source(CSCA_ID);
-const TUITION = source(TUITION_ID);
-const ENGLISH_CATALOG = source(ENGLISH_CATALOG_ID);
 const APPLY_URL = "https://istudent.fudan.edu.cn/apply";
 
 type ChineseSpec = { nameEn: string; nameZh: string; field: string; school: string; slug?: string };

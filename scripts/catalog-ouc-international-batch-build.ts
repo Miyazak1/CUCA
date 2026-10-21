@@ -3,11 +3,14 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; finalUrl: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources: EvidenceSource[] };
+
 const root = process.cwd();
 const manifestPath = resolve(root, "work/catalog-official/ouc-complete-batch-01/manifest.json");
 const manifestText = await readFile(manifestPath, "utf8");
-const manifest = JSON.parse(manifestText);
-const sources = new Map(manifest.sources.map((row: any) => [row.id, row]));
+const manifest = JSON.parse(manifestText) as EvidenceManifest;
+const sources = new Map<string, EvidenceSource>(manifest.sources.map((row) => [row.id, row]));
 const requiredSourceIds = [
   "ouc-international-admission-guide-page-2026",
   "ouc-english-undergraduate-program-pdf-2026",
@@ -19,11 +22,12 @@ const requiredSourceIds = [
   "ouc-high-level-graduate-scholarship-pdf-2026",
 ];
 for (const id of requiredSourceIds) {
-  const source: any = sources.get(id);
+  const source = sources.get(id);
   if (!source || source.status !== 200 || !/^[a-f0-9]{64}$/.test(source.sha256)) throw new Error(`Missing valid OUC source: ${id}`);
 }
 const meta = (id: string) => {
-  const source: any = sources.get(id);
+  const source = sources.get(id);
+  if (!source) throw new Error(`Missing OUC source: ${id}`);
   return { sourceUrl: source.finalUrl, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
 };
 const schoolSlug = "ocean-university-of-china";

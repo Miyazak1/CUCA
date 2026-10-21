@@ -22,10 +22,15 @@ for (const [id, digest] of Object.entries(expected)) {
   const source = sources.get(id);
   if (!source || source.status !== 200 || source.sha256 !== digest) throw new Error(`QDU evidence mismatch: ${id}`);
 }
-const ug = sources.get("qdu-international-undergraduate-guide-pdf-2026");
-const mbbsSource = sources.get("qdu-mbbs-guide-pdf-2026");
-const languageSource = sources.get("qdu-chinese-language-guide-pdf-spring-2027");
-const president = sources.get("qdu-presidential-scholarship-2026");
+const requiredSource = (id: string): SourceRecord => {
+  const source = sources.get(id);
+  if (!source) throw new Error(`QDU evidence is missing after validation: ${id}`);
+  return source;
+};
+const ug = requiredSource("qdu-international-undergraduate-guide-pdf-2026");
+const mbbsSource = requiredSource("qdu-mbbs-guide-pdf-2026");
+const languageSource = requiredSource("qdu-chinese-language-guide-pdf-spring-2027");
+const president = requiredSource("qdu-presidential-scholarship-2026");
 const schoolSlug = "qingdao-university", citySlug = "qingdao";
 
 const program = (values: Partial<CatalogSeedProgram> & Pick<CatalogSeedProgram, "slug" | "nameEn" | "degreeLevel" | "teachingLanguage" | "sourceUrl" | "sourceLabel" | "sourceSha256" | "capturedAt">): CatalogSeedProgram => ({

@@ -3,7 +3,13 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type CompleteReview = { reconciliation: { stableProgramSlugs: string[]; legacyProgramAliasesToArchive: string[] } };
+type SafeApproval = { programSlugs?: string[]; scholarshipSlugs?: string[] };
+type EntityRow = { id: string; slug: string; status: string; verification_status: string; source_url: string };
+type CountRow = { active_count: string; verified_count: string };
+type Baseline = { school: EntityRow[]; programTotals: CountRow[]; stablePrograms: EntityRow[]; legacyPrograms: EntityRow[]; scholarships: CountRow[] };
 
 const root = process.cwd();
 const paths = {
@@ -22,10 +28,10 @@ const [completeText, completeReviewText, safeApprovalText, safePublicationText, 
   readFile(paths.safePublication, "utf8"), readFile(paths.state, "utf8"),
 ]);
 const complete = JSON.parse(completeText) as CatalogSeedBundle;
-const completeReview = JSON.parse(completeReviewText);
-const safeApproval = JSON.parse(safeApprovalText);
+const completeReview = JSON.parse(completeReviewText) as CompleteReview;
+const safeApproval = JSON.parse(safeApprovalText) as SafeApproval;
 const safePublication = JSON.parse(safePublicationText) as CatalogSeedBundle;
-const state = JSON.parse(stateText);
+const state = JSON.parse(stateText) as LocalDevelopmentState;
 const schoolSlug = "huazhong-university-of-science-and-technology";
 const stableSlugs: string[] = completeReview.reconciliation.stableProgramSlugs;
 const legacySlugs: string[] = completeReview.reconciliation.legacyProgramAliasesToArchive;
@@ -41,15 +47,15 @@ const validation = createCatalogMigrationValidationReport(candidate);
 if (!validation.ok) throw new Error(`Invalid HUST cleanup candidate: ${validation.errors.join(" ")}`);
 
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:hust-cleanup-review" });
-let baseline: any;
+let baseline: Baseline;
 try {
-  const school = await pool.query("select id,status,verification_status,source_url from schools where slug=$1", [schoolSlug]);
-  const programTotals = await pool.query("select count(*)::text active_count,count(*) filter(where verification_status='verified')::text verified_count from programs where school_id=$1 and status='active'", [school.rows[0]?.id]);
-  const stablePrograms = await pool.query("select id,slug,status,verification_status,source_url from programs where slug=any($1::text[]) order by slug", [stableSlugs]);
-  const legacyPrograms = await pool.query("select id,slug,status,verification_status,source_url from programs where slug=any($1::text[]) order by slug", [legacySlugs]);
-  const scholarships = await pool.query("select count(*)::text active_count,count(*) filter(where verification_status='verified')::text verified_count from scholarships where school_id=$1 and status='active'", [school.rows[0]?.id]);
+  const school = await pool.query<EntityRow>("select id,status,verification_status,source_url from schools where slug=$1", [schoolSlug]);
+  const programTotals = await pool.query<CountRow>("select count(*)::text active_count,count(*) filter(where verification_status='verified')::text verified_count from programs where school_id=$1 and status='active'", [school.rows[0]?.id]);
+  const stablePrograms = await pool.query<EntityRow>("select id,slug,status,verification_status,source_url from programs where slug=any($1::text[]) order by slug", [stableSlugs]);
+  const legacyPrograms = await pool.query<EntityRow>("select id,slug,status,verification_status,source_url from programs where slug=any($1::text[]) order by slug", [legacySlugs]);
+  const scholarships = await pool.query<CountRow>("select count(*)::text active_count,count(*) filter(where verification_status='verified')::text verified_count from scholarships where school_id=$1 and status='active'", [school.rows[0]?.id]);
   baseline = { school: school.rows, programTotals: programTotals.rows, stablePrograms: stablePrograms.rows, legacyPrograms: legacyPrograms.rows, scholarships: scholarships.rows };
-  if (school.rows.length !== 1 || school.rows[0].status !== "active" || school.rows[0].verification_status !== "unverified" || programTotals.rows[0]?.active_count !== "467" || programTotals.rows[0]?.verified_count !== "452" || stablePrograms.rows.length !== 14 || stablePrograms.rows.some((row: any) => row.status !== "active" || row.verification_status !== "unverified") || legacyPrograms.rows.length !== 1 || legacyPrograms.rows[0].status !== "active" || legacyPrograms.rows[0].verification_status !== "unverified" || scholarships.rows[0]?.active_count !== "8" || scholarships.rows[0]?.verified_count !== "8") throw new Error(`HUST cleanup baseline changed: ${JSON.stringify(baseline)}`);
+  if (school.rows.length !== 1 || school.rows[0]!.status !== "active" || school.rows[0]!.verification_status !== "unverified" || programTotals.rows[0]?.active_count !== "467" || programTotals.rows[0]?.verified_count !== "452" || stablePrograms.rows.length !== 14 || stablePrograms.rows.some((row) => row.status !== "active" || row.verification_status !== "unverified") || legacyPrograms.rows.length !== 1 || legacyPrograms.rows[0]!.status !== "active" || legacyPrograms.rows[0]!.verification_status !== "unverified" || scholarships.rows[0]?.active_count !== "8" || scholarships.rows[0]?.verified_count !== "8") throw new Error(`HUST cleanup baseline changed: ${JSON.stringify(baseline)}`);
 } finally { await pool.end(); }
 
 const reviewBase = {
@@ -60,11 +66,11 @@ const reviewBase = {
   reconciliation: {
     destructiveDeletion: false,
     overwrites: [
-      { entityType: "school", id: baseline.school[0].id, slug: schoolSlug, reason: "Replace the active unverified third-party school profile with the reviewed official HUST profile." },
-      ...baseline.stablePrograms.map((row: any) => ({ entityType: "program", id: row.id, slug: row.slug, reason: "Replace the active unverified route fields with the reviewed official 2026 program route." })),
+      { entityType: "school", id: baseline.school[0]!.id, slug: schoolSlug, reason: "Replace the active unverified third-party school profile with the reviewed official HUST profile." },
+      ...baseline.stablePrograms.map((row) => ({ entityType: "program", id: row.id, slug: row.slug, reason: "Replace the active unverified route fields with the reviewed official 2026 program route." })),
     ],
-    archives: baseline.legacyPrograms.map((row: any) => ({ entityType: "program", id: row.id, slug: row.slug, reason: "Superseded by the verified official English Telecommunications Engineering route." })),
-    databaseBaseline: { schoolId: baseline.school[0].id, stableProgramIds: baseline.stablePrograms.map((row: any) => row.id), legacyProgramIds: baseline.legacyPrograms.map((row: any) => row.id) },
+    archives: baseline.legacyPrograms.map((row) => ({ entityType: "program", id: row.id, slug: row.slug, reason: "Superseded by the verified official English Telecommunications Engineering route." })),
+    databaseBaseline: { schoolId: baseline.school[0]!.id, stableProgramIds: baseline.stablePrograms.map((row) => row.id), legacyProgramIds: baseline.legacyPrograms.map((row) => row.id) },
   },
   sensitiveDataCheck: { result: "pass", scope: "school profile, fourteen program routes and one archive status change", note: "Public institutional and admissions catalog fields only; applicant, account, payment and personal-contact data are excluded." },
   reviewNotes: ["The 452 safe-new verified programs and all eight verified scholarships remain unchanged.", "The legacy program is status-archived, not physically deleted.", "After publication HUST will have a verified school, 466/466 active verified programs and 8/8 active verified scholarships."],

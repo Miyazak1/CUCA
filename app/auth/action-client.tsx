@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useLayoutEffect, useRef, useState } from "react";
+import Image from "next/image";
 import styles from "./auth-action.module.css";
 
 type ActionKind = "verify" | "reset";
@@ -170,7 +171,7 @@ export function AuthActionClient({ kind }: { kind: ActionKind }) {
       <header className={styles.header}>
         <div className={styles.brandLockup}>
           <a className={styles.brand} href={localeHref(locale, "/home-v3.html")} aria-label={translate(locale, "UCAC home")}>
-            <img className={styles.mark} src="/ucac-study-in-china.png?v=20261015" width="360" height="60" alt="UCAC — University & College Application Center — Study in China" />
+            <Image priority className={styles.mark} src="/ucac-study-in-china.png" width={360} height={60} alt="UCAC — University & College Application Center — Study in China" />
           </a>
         </div>
         <a className={styles.signInLink} href={localeHref(locale, "/auth.html")}>{translate(locale, "Sign in")}</a>

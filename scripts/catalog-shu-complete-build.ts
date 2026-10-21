@@ -3,6 +3,11 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources?: EvidenceSource[] };
+type ShuProgramRow = { sourceId: string; degreeLevel: CatalogSeedProgram["degreeLevel"]; teachingLanguage: string; college: string; nameEn: string; degreeCategory: string; durationYears: number; cscaSubjects: string; tuitionAmount: number; sourceLocator: string };
+type ShuParsedPrograms = { programCount: number; programs: ShuProgramRow[]; counts: Record<string, number>; degreeCounts: Record<string, number>; languageCounts: Record<string, number> };
+
 const root = process.cwd();
 const paths = {
   primaryManifest: resolve(root, "work/catalog-official/shu-complete-batch-01/manifest.json"),
@@ -16,7 +21,7 @@ const sha = (value: string | Buffer) => createHash("sha256").update(value).diges
 const [primaryText, englishText, parsedText, baseText] = await Promise.all([
   readFile(paths.primaryManifest, "utf8"), readFile(paths.englishManifest, "utf8"), readFile(paths.parsed, "utf8"), readFile(paths.base, "utf8"),
 ]);
-const primary = JSON.parse(primaryText), english = JSON.parse(englishText), parsed = JSON.parse(parsedText), base = JSON.parse(baseText) as CatalogSeedBundle;
+const primary = JSON.parse(primaryText) as EvidenceManifest, english = JSON.parse(englishText) as EvidenceManifest, parsed = JSON.parse(parsedText) as ShuParsedPrograms, base = JSON.parse(baseText) as CatalogSeedBundle;
 const expected: Record<string, string> = {
   "shu-international-application-overview-2026": "b4552634c743f69849c1e401652002b6f4d8a58f713bfe60e98cbff96716d310",
   "shu-undergraduate-guide-2026": "5803a7fe424847e113afa4eb4ef1b5cc0710063c7ca8b3870a5d6de35318e3d5",
@@ -31,18 +36,19 @@ const expected: Record<string, string> = {
   "shu-master-guide-en-2026": "b56f0ce6a96005c6b0a4fdd0eea88db5aee88da114cd7c3c2e8a7c607db09e64",
   "shu-doctoral-guide-en-2026": "817e07bd1ecb84636e8752c1a2b3a17163e3c6e9afc9bb586f7d295451a3e24f",
 };
-const evidence = new Map<string, any>();
+const evidence = new Map<string, EvidenceSource>();
 for (const row of [...(primary.sources ?? []), ...(english.sources ?? [])]) {
   if (row.status === 200 && expected[row.id] === row.sha256) evidence.set(row.id, row);
 }
 if (evidence.size !== 12 || parsed.programCount !== 242) throw new Error("SHU evidence/parser mismatch.");
+const requireEvidence = (id: string) => { const source = evidence.get(id); if (!source) throw new Error(`Missing evidence source: ${id}`); return source; };
 const city = base.cities?.find((row) => row.slug === "shanghai");
 if (!city) throw new Error("Current Shanghai dependency missing.");
 
 const schoolSlug = "shanghai-university";
 const slugify = (value: string) => value.toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-const programSource = (row: any) => evidence.get(row.sourceId);
-const programs: CatalogSeedProgram[] = parsed.programs.map((row: any) => {
+const programSource = (row: ShuProgramRow) => requireEvidence(row.sourceId);
+const programs: CatalogSeedProgram[] = parsed.programs.map((row) => {
   const source = programSource(row);
   const languageSlug = slugify(row.teachingLanguage);
   return {
@@ -94,7 +100,7 @@ const degreeMaterials = [
 ];
 const graduateMaterials = [...degreeMaterials, info("Two signed academic recommendation letters"), info("Prospective-supervisor acceptance where required"), info("Academic research evidence or art portfolio where required")];
 function scholarship(sourceId: string, value: Partial<CatalogSeedScholarship> & Pick<CatalogSeedScholarship, "slug" | "title" | "fundingLevel" | "coverage" | "applicableDegree" | "amountText">): CatalogSeedScholarship {
-  const source = evidence.get(sourceId);
+  const source = requireEvidence(sourceId);
   return {
     schoolSlug,
     status: "draft",
@@ -151,7 +157,7 @@ const scholarships: CatalogSeedScholarship[] = [
   }),
 ];
 
-const overview = evidence.get("shu-international-application-overview-2026");
+const overview = requireEvidence("shu-international-application-overview-2026");
 const candidate: CatalogSeedBundle = {
   version: 1,
   generatedAt: primary.generatedAt,

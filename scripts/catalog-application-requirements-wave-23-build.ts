@@ -12,6 +12,7 @@ if (!source || source.status !== 200 || source.contentType !== "application/pdf"
   || source.sha256 !== "63ce26468c55164de9ecf534322a3972910fba4cba035e886067c143247cc798") {
   throw new Error("GMU requirement evidence mismatch.");
 }
+const reviewedSource = source;
 const seed = JSON.parse(await readFile(resolve(root, "seeds/catalog.gmcu-complete-batch-01.draft.json"), "utf8")) as CatalogSeed;
 const clinicalSlug = "guizhou-medical-university-clinical-medicine";
 const dentalSlug = "official-2026-gmcu-bachelor-dental-surgery-bds";
@@ -62,8 +63,8 @@ function documentFor(route: "clinical" | "dental") {
   const clinical = route === "clinical";
   return parseRequirementDocument({
     schemaVersion: 1, language: "en", coverage: "complete",
-    sources: [{ key: "gmcu_undergraduate", url: source.url, title: source.label,
-      capturedAt: source.fetchedAt, contentSha256: source.sha256 }],
+    sources: [{ key: "gmcu_undergraduate", url: reviewedSource.url, title: reviewedSource.label,
+      capturedAt: reviewedSource.fetchedAt, contentSha256: reviewedSource.sha256 }],
     requirements: [
       ...commonRequirements,
       item("duration_and_delivery", "education", "required", clinical ? "Clinical Medicine applicants" : "Bachelor of Dental Surgery applicants",

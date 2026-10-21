@@ -8,27 +8,37 @@ const primaryPath = resolve(root, "work/catalog-official/sustech-complete-batch-
 const apiPath = resolve(root, "work/catalog-official/sustech-complete-batch-01-api");
 const primaryText = await readFile(resolve(primaryPath, "manifest.json"), "utf8");
 const apiText = await readFile(resolve(apiPath, "manifest.json"), "utf8");
-const primary = JSON.parse(primaryText);
-const api = JSON.parse(apiText);
-const sources = new Map([...primary.sources, ...api.sources].map((row: any) => [row.id, row]));
+type SourceRecord = { id: string; finalUrl: string; label: string; sha256: string; fetchedAt: string; artifactPath: string; status: number };
+type SourceManifest = { generatedAt: string; sources: SourceRecord[] };
+type MajorApiRow = { id: string; zyywmc?: string; zymc?: string; zwfjmc?: string };
+type MajorApiResponse = { isSuccess: boolean; module: MajorApiRow[] };
+type CatalogProgram = NonNullable<CatalogSeedBundle["programs"]>[number];
+const primary = JSON.parse(primaryText) as SourceManifest;
+const api = JSON.parse(apiText) as SourceManifest;
+const sources = new Map([...primary.sources, ...api.sources].map((row) => [row.id, row]));
 const requiredSourceIds = [
   "sustech-international-students-overview",
   "sustech-postgraduate-admission-guide-2026",
   "sustech-undergraduate-scholarships-api",
   "sustech-undergraduate-cost-api",
-  ...api.sources.filter((row: any) => row.id.includes("-majors-")).map((row: any) => row.id),
+  ...api.sources.filter((row) => row.id.includes("-majors-")).map((row) => row.id),
 ];
+const getSource = (id: string): SourceRecord => {
+  const source = sources.get(id);
+  if (!source) throw new Error(`Missing source: ${id}`);
+  return source;
+};
 for (const id of requiredSourceIds) {
-  const source: any = sources.get(id);
+  const source = sources.get(id);
   if (!source || source.status !== 200 || !/^[a-f0-9]{64}$/.test(source.sha256)) throw new Error(`Missing valid source: ${id}`);
 }
 const meta = (id: string) => {
-  const source: any = sources.get(id);
+  const source = getSource(id);
   return { sourceUrl: source.finalUrl, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
 };
-const readSnapshot = async (basePath: string, id: string) => {
-  const source: any = sources.get(id);
-  return JSON.parse(await readFile(resolve(basePath, source.artifactPath), "utf8"));
+const readSnapshot = async (basePath: string, id: string): Promise<MajorApiResponse> => {
+  const source = getSource(id);
+  return JSON.parse(await readFile(resolve(basePath, source.artifactPath), "utf8")) as MajorApiResponse;
 };
 const slugify = (value: string) => value.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const schoolSlug = "southern-university-of-science-and-technology";
@@ -50,8 +60,8 @@ const departmentNames: Record<string, string> = {
   finance: "School of Finance", "industrial-design": "School of Design",
 };
 
-const bachelorPrograms: any[] = [];
-for (const source of api.sources.filter((row: any) => row.id.includes("-majors-") && !row.id.endsWith("no-degree-program-api"))) {
+const bachelorPrograms: CatalogProgram[] = [];
+for (const source of api.sources.filter((row) => row.id.includes("-majors-") && !row.id.endsWith("no-degree-program-api"))) {
   const response = await readSnapshot(apiPath, source.id);
   if (!response.isSuccess || !Array.isArray(response.module)) throw new Error(`Invalid majors API response: ${source.id}`);
   const departmentKey = source.id.replace("sustech-undergraduate-majors-", "").replace("-api", "");
@@ -83,7 +93,7 @@ const graduateDefinitions = [
   ["083000", "Environmental Science and Engineering", true, true], ["083100", "Biomedical Engineering", true, true],
   ["087300", "Integrated Circuits Science and Engineering", true, true], ["120100", "Management Science and Engineering", true, false],
 ] as const;
-const graduatePrograms: any[] = [];
+const graduatePrograms: CatalogProgram[] = [];
 for (const [code, nameEn, doctoral, master] of graduateDefinitions) {
   for (const degreeLevel of [...(master ? ["Master"] : []), ...(doctoral ? ["Doctoral"] : [])]) {
     graduatePrograms.push({

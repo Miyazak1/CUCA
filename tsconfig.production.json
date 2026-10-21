@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "next-env.d.ts",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "src/**/*.ts",
+    "worker/**/*.ts",
+    "next.config.ts",
+    "vite.config.ts",
+    "scripts/application-container-entry.ts",
+    "scripts/application-image-rehearsal.ts",
+    "scripts/run-vinext-build.ts",
+    "scripts/start-*.ts",
+    "scripts/lib/**/*.ts",
+    "scripts/release/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "scripts/catalog-*.ts",
+    "scripts/*acceptance*.ts",
+    "scripts/local-smoke.ts"
+  ]
+}

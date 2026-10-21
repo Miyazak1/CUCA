@@ -23,7 +23,7 @@ function formatDate(value: Date) {
   return new Intl.DateTimeFormat("en", { dateStyle: "medium", timeZone: "UTC" }).format(value);
 }
 export default async function GuidesPage() {
-  let guides = [];
+  let guides: Awaited<ReturnType<typeof listPublishedGuidePages>> = [];
   let unavailable = false;
   try {
     guides = await listPublishedGuidePages();

@@ -1,3 +1,5 @@
+export {};
+
 try {
   const mode = (process.env.CUAC_START_MODE ?? "").trim().toLowerCase();
   if (process.argv.length !== 2) {

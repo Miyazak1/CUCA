@@ -2,14 +2,17 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; contentType: string; byteLength: number; finalUrl: string; label: string; sha256: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources: EvidenceSource[] };
+
 const root = process.cwd();
 const manifestPath = resolve(root, "work/catalog-official/ahu-scholarship-batch-01/manifest.json");
 const sourceBundlePath = resolve(root, "seeds/catalog.cscalite-online-20260910.published.json");
 const outputPath = resolve(root, "seeds/catalog.ahu-scholarship-safe-new-batch-01.draft.json");
 const validationPath = resolve(root, "seeds/catalog.ahu-scholarship-safe-new-batch-01.validation.json");
-const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+const manifest = JSON.parse(await readFile(manifestPath, "utf8")) as EvidenceManifest;
 const sourceBundle = JSON.parse(await readFile(sourceBundlePath, "utf8")) as CatalogSeedBundle;
-const source = manifest.sources.find((row: any) => row.id === "ahu-cgs-university-program-2026");
+const source = manifest.sources.find((row) => row.id === "ahu-cgs-university-program-2026");
 const city = sourceBundle.cities?.find((row) => row.slug === "hefei");
 const school = sourceBundle.schools?.find((row) => row.slug === "anhui-university");
 if (!source || source.contentType !== "application/pdf" || source.byteLength > 15 * 1024 * 1024 || !city || !school) throw new Error("AHU official evidence or dependencies are incomplete.");

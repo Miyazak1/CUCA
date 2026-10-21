@@ -3,7 +3,12 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type EvidenceSource = { id: string; status: number; sha256: string; finalUrl: string; label: string; fetchedAt: string; contentType: string };
+type EvidenceManifest = { generatedAt: string; sources?: EvidenceSource[] };
+type EntityRow = { id: string; slug: string; status: string; verification_status: string };
+type Baseline = { school: EntityRow; activeScholarships: EntityRow[] };
 
 const root = process.cwd();
 const batch = "pku-scholarships-split-batch-01";
@@ -11,9 +16,9 @@ const schoolSlug = "peking-university";
 const paths = { dependencies: resolve(root, "seeds/catalog.pku-school-program-batch-01.approved.local.json"), manifest: resolve(root, "work/catalog-official/pku-scholarships-refresh-20260914/manifest.json"), candidate: resolve(root, `seeds/catalog.${batch}.draft.json`), validation: resolve(root, `seeds/catalog.${batch}.validation.json`), review: resolve(root, `seeds/catalog.${batch}.review.json`), state: resolve(root, ".cuac-local/runtime.json") };
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const parse = async (path: string) => JSON.parse(await readFile(path, "utf8"));
-const [dependencies, manifest, state] = await Promise.all([parse(paths.dependencies), parse(paths.manifest), parse(paths.state)]) as [CatalogSeedBundle, any, any];
+const [dependencies, manifest, state] = await Promise.all([parse(paths.dependencies), parse(paths.manifest), parse(paths.state)]) as [CatalogSeedBundle, EvidenceManifest, LocalDevelopmentState];
 const source = manifest.sources?.[0];
-if (dependencies.cities?.length !== 1 || dependencies.schools?.length !== 1 || dependencies.schools[0].slug !== schoolSlug || manifest.sources?.length !== 1 || source.id !== "pku-prospective-graduate-scholarships-2026" || source.status !== 200 || source.sha256 !== "d621e136f140be0f015e1167d85f9f8ba744c6831b6ebcbed2ab4117b797e1c5") throw new Error("PKU scholarship dependencies or evidence changed.");
+if (!source || dependencies.cities?.length !== 1 || dependencies.schools?.length !== 1 || dependencies.schools[0].slug !== schoolSlug || manifest.sources?.length !== 1 || source.id !== "pku-prospective-graduate-scholarships-2026" || source.status !== 200 || source.sha256 !== "d621e136f140be0f015e1167d85f9f8ba744c6831b6ebcbed2ab4117b797e1c5") throw new Error("PKU scholarship dependencies or evidence changed.");
 const item = (label: string, value?: string) => ({ label, ...(value ? { value } : {}) });
 const benefit = (label: string) => ({ label, included: true });
 const common = {
@@ -31,11 +36,11 @@ const scholarships: CatalogSeedScholarship[] = [
 ];
 if (scholarships.some((row) => !row.benefitItems?.length || !row.eligibilityItems?.length || !row.applicationMaterials?.length || !row.applicationSteps?.length || !row.actionLinks?.length)) throw new Error("PKU split scholarships are incomplete.");
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:pku-scholarships-split-review" });
-let baseline: any;
+let baseline: Baseline;
 try {
-  const school = await pool.query("select id,slug,status,verification_status from schools where slug=$1", [schoolSlug]);
-  const conflicts = await pool.query("select id,slug,status,verification_status from scholarships where slug=any($1::text[]) order by slug", [scholarships.map((row) => row.slug)]);
-  const active = await pool.query("select id,slug,status,verification_status from scholarships where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
+  const school = await pool.query<EntityRow>("select id,slug,status,verification_status from schools where slug=$1", [schoolSlug]);
+  const conflicts = await pool.query<EntityRow>("select id,slug,status,verification_status from scholarships where slug=any($1::text[]) order by slug", [scholarships.map((row) => row.slug)]);
+  const active = await pool.query<EntityRow>("select id,slug,status,verification_status from scholarships where school_id=$1 and status='active' order by slug", [school.rows[0]?.id]);
   if (school.rows.length !== 1 || school.rows[0].status !== "active" || school.rows[0].verification_status !== "verified" || conflicts.rows.length !== 0 || active.rows.length !== 6) throw new Error("PKU scholarship database baseline changed.");
   baseline = { school: school.rows[0], activeScholarships: active.rows };
 } finally { await pool.end(); }
@@ -43,7 +48,7 @@ const candidate: CatalogSeedBundle = { version: 1, generatedAt: manifest.generat
 const candidateText = `${JSON.stringify(candidate, null, 2)}\n`;
 const validation = createCatalogMigrationValidationReport(candidate);
 if (!validation.ok) throw new Error(`PKU split validation failed: ${validation.errors.join(" ")}`);
-const reviewBase = { version: 1, status: "standing_user_approval", generatedAt: candidate.generatedAt, scope: { schoolSlug, dependencyCityReplayCount: 1, dependencySchoolReplayCount: 1, newScholarshipCount: 3, overwriteCount: 0, archiveCount: 0 }, candidateSha256: sha(candidateText), candidateBundleSha256: validation.bundleSha256, operationPlanSha256: validation.operationPlanSha256, manifestSha256: sha(await readFile(paths.manifest, "utf8")), evidence: [{ sourceId: source.id, sourceUrl: source.finalUrl, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt, contentType: source.contentType }], standingAuthorization: { reference: "user-chat-2026-09-13-default-publication", instruction: "发布默认允许", appliesBecause: "This batch inserts only three new independently modeled official scholarship records; the verified PKU school, programs and all six existing scholarship records are preserved." }, sourceReview: { result: "pass", note: "The registered 2026 PKU scholarship notice was refreshed on 2026-09-14 and is byte-for-byte unchanged. Its three named award sections are represented separately." }, reconciliation: { destructiveDeletion: false, overwrites: [], archives: [], deferredExistingScholarships: baseline.activeScholarships.map((row: any) => row.slug), databaseBaseline: { schoolId: baseline.school.id, activeScholarshipCount: 6 } }, sensitiveDataCheck: { result: "pass", scope: "three PKU scholarship records", note: "Only public scholarship policy fields are present. Footer contact details, applicant data, accounts, payment and bank data are excluded." }, reviewNotes: ["The existing verified combined scholarship overview is preserved pending explicit archival approval.", "The five unrelated or legacy unverified scholarship rows are unchanged.", "PKU requires only one university-system scholarship application; the three award records preserve that shared-process note without merging award identities."] };
+const reviewBase = { version: 1, status: "standing_user_approval", generatedAt: candidate.generatedAt, scope: { schoolSlug, dependencyCityReplayCount: 1, dependencySchoolReplayCount: 1, newScholarshipCount: 3, overwriteCount: 0, archiveCount: 0 }, candidateSha256: sha(candidateText), candidateBundleSha256: validation.bundleSha256, operationPlanSha256: validation.operationPlanSha256, manifestSha256: sha(await readFile(paths.manifest, "utf8")), evidence: [{ sourceId: source.id, sourceUrl: source.finalUrl, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt, contentType: source.contentType }], standingAuthorization: { reference: "user-chat-2026-09-13-default-publication", instruction: "发布默认允许", appliesBecause: "This batch inserts only three new independently modeled official scholarship records; the verified PKU school, programs and all six existing scholarship records are preserved." }, sourceReview: { result: "pass", note: "The registered 2026 PKU scholarship notice was refreshed on 2026-09-14 and is byte-for-byte unchanged. Its three named award sections are represented separately." }, reconciliation: { destructiveDeletion: false, overwrites: [], archives: [], deferredExistingScholarships: baseline.activeScholarships.map((row) => row.slug), databaseBaseline: { schoolId: baseline.school.id, activeScholarshipCount: 6 } }, sensitiveDataCheck: { result: "pass", scope: "three PKU scholarship records", note: "Only public scholarship policy fields are present. Footer contact details, applicant data, accounts, payment and bank data are excluded." }, reviewNotes: ["The existing verified combined scholarship overview is preserved pending explicit archival approval.", "The five unrelated or legacy unverified scholarship rows are unchanged.", "PKU requires only one university-system scholarship application; the three award records preserve that shared-process note without merging award identities."] };
 const reviewHash = sha(JSON.stringify(reviewBase));
 const publicationReference = `standing-authorized-${batch}-${reviewHash}`;
 await Promise.all([writeFile(paths.candidate, candidateText, "utf8"), writeFile(paths.validation, `${JSON.stringify(validation, null, 2)}\n`, "utf8"), writeFile(paths.review, `${JSON.stringify({ ...reviewBase, reviewHash, publicationReference }, null, 2)}\n`, "utf8")]);

@@ -17,9 +17,10 @@ if (!["postgres:", "postgresql:"].includes(target.protocol) || target.search || 
 const bundle = JSON.parse(await readFile(resolve(process.cwd(), "seeds/catalog.2027-release.reviewed.json"), "utf8")) as CatalogSeedBundle;
 const review = JSON.parse(await readFile(resolve(process.cwd(), "seeds/catalog.2027-release.review.json"), "utf8"));
 const report = createCatalogMigrationValidationReport(bundle);
+const handoff = bundle.handoff;
 if (!report.ok || bundle.version !== 2 || review.status !== "human_review_completed"
   || review.reviewReference !== "project-owner-chat-approval-2026-10-20-100-school"
-  || bundle.handoff?.reviewReference !== review.reviewReference || bundle.handoff.prohibitedDataReviewReference !== review.reviewReference
+  || !handoff || handoff.reviewReference !== review.reviewReference || handoff.prohibitedDataReviewReference !== review.reviewReference
   || review.publicationBundleSha256 !== report.bundleSha256 || review.operationPlanSha256 !== report.operationPlanSha256
   || review.confirmations?.projectOwnerApprovedDirectPublication !== true || review.confirmations?.officialSourcesReviewed !== true
   || review.confirmations?.prohibitedDataConfirmedExcluded !== true || review.confirmations?.missingDataMayRemainEmpty !== true

@@ -14,6 +14,7 @@ const candidatePath = resolve(root, "seeds/catalog.bjfu-tuition-enrichment-batch
 const validationPath = resolve(root, "seeds/catalog.bjfu-tuition-enrichment-batch-01.validation.json");
 const [inputText, manifestText] = await Promise.all([readFile(inputPath, "utf8"), readFile(manifestPath, "utf8")]);
 const input = JSON.parse(inputText) as CatalogSeedBundle;
+if (!input.programs || !input.schools || !input.cities) throw new Error("BFU input dependencies are incomplete.");
 const manifest = JSON.parse(manifestText) as {
   sources: { id: string; status: number; sha256: string; fetchedAt: string }[];
 };

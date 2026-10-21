@@ -1,7 +1,13 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+import {
+  createCatalogMigrationValidationReport,
+  type CatalogSeedBundle,
+  type CatalogSeedProgram,
+  type CatalogSeedProgramIntake,
+  type CatalogSeedScholarship,
+} from "../src/server/catalog/seed-contract.ts";
 
 const root = process.cwd();
 const identityPath = resolve(root, "seeds/catalog.school-identity-replacements-batch-01.draft.json");
@@ -11,8 +17,8 @@ const validationPath = resolve(root, "seeds/catalog.gxmu-complete-batch-01.valid
 const [identityText, manifestText] = await Promise.all([readFile(identityPath, "utf8"), readFile(manifestPath, "utf8")]);
 const identity = JSON.parse(identityText) as CatalogSeedBundle;
 const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { id: string; label: string; url: string; sha256: string; status: number; fetchedAt: string }[] };
-const city = identity.cities.find((row) => row.slug === "nanning");
-const school = identity.schools.find((row) => row.slug === "guangxi-medical-university");
+const city = identity.cities?.find((row) => row.slug === "nanning");
+const school = identity.schools?.find((row) => row.slug === "guangxi-medical-university");
 if (!city || !school) throw new Error("Missing Nanning/GXMU identity dependencies");
 const source = manifest.sources.find((row) => row.id === "nanning-gxmu-undergraduate-admission-2026" && row.status === 200);
 if (!source || source.sha256 !== "8fe09f32b70210fee64ab4f0c9bc982803914adcbd00a31a42ed4136e3b9c138") {
@@ -48,8 +54,8 @@ const definitions: Definition[] = [
   { slug: "official-2026-gxmu-elderly-care-service-management", name: "Elderly Care Service Management", duration: 4, field: "Administration" },
 ];
 if (definitions.length !== 25) throw new Error(`Unexpected GXMU catalog count: ${definitions.length}`);
-const sourceBase = { status: "draft", sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
-const programs = definitions.map((row) => {
+const sourceBase = { status: "draft" as const, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
+const programs = definitions.map<CatalogSeedProgram>((row) => {
   const language = row.language ?? "Chinese";
   const csca = language === "English" ? ["Mathematics", "Chemistry"] : ["Mathematics", "Chemistry", "Chinese (STEM)"];
   return {
@@ -97,7 +103,7 @@ const programs = definitions.map((row) => {
     },
   };
 });
-const programIntakes = definitions.map((row) => ({
+const programIntakes = definitions.map<CatalogSeedProgramIntake>((row) => ({
   programSlug: row.slug,
   intakeTerm: "Fall",
   intakeYear: 2026,
@@ -113,7 +119,7 @@ const programIntakes = definitions.map((row) => ({
 }));
 const scholarshipBase = { schoolSlug: school.slug, ...sourceBase, providerLocation: "China", targetCountries: [], targetRegions: [], actionLinks: [{ label: source.label, url: source.url, kind: "official-source" }] };
 const scholarshipLineage = { title: "official financial-aid section", fundingLevel: "official financial-aid section", coverage: "official financial-aid section; unsupported amounts intentionally omitted", applicableDegree: "official program restrictions", applicableProgram: "official program restrictions", eligibilityItems: "official financial-aid requirements", applicationSteps: "official application-channel text" };
-const scholarships = [
+const scholarships: CatalogSeedScholarship[] = [
   {
     ...scholarshipBase,
     slug: "official-2026-gxmu-cgs-type-a-bilateral",

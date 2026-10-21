@@ -3,6 +3,28 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 
+type ParsedRoute = {
+  degreeLevel: string;
+  schoolEn: string;
+  nameEn: string;
+  nameZh: string;
+  teachingLanguage: string;
+  durationYears?: number;
+  locator: string;
+  tuitionAmount: number;
+  tuitionCurrency: string;
+  tuitionPeriod: string;
+  applicationUrl: string;
+  applicationNote: string;
+  sourceUrl: string;
+  sourceLabel: string;
+  sourceSha256: string;
+  capturedAt: string;
+};
+type ParsedRoutes = { summary: { totalRoutes: number; byDegree: { Master: number; Doctoral: number }; suspiciousRows: number }; routes: ParsedRoute[] };
+type ManifestSource = { id: string; url: string; label: string; sha256: string; fetchedAt: string };
+type Manifest = { sources: ManifestSource[] };
+
 const root = process.cwd();
 const parsedPath = resolve(root, "work/catalog-official/beihang-graduate-batch-01/parsed-graduate-routes.json");
 const htmlManifestPath = resolve(root, "work/catalog-official/beihang-graduate-batch-01/manifest.json");
@@ -12,14 +34,14 @@ const candidatePath = resolve(root, "seeds/catalog.beihang-graduate-batch-01.dra
 const validationPath = resolve(root, "seeds/catalog.beihang-graduate-batch-01.validation.json");
 const reviewPath = resolve(root, "seeds/catalog.beihang-graduate-batch-01.review.json");
 
-const parsed = JSON.parse(await readFile(parsedPath, "utf8"));
-const htmlManifest = JSON.parse(await readFile(htmlManifestPath, "utf8"));
-const pdfManifest = JSON.parse(await readFile(pdfManifestPath, "utf8"));
-const prior = JSON.parse(await readFile(priorBundlePath, "utf8"));
+const parsed = JSON.parse(await readFile(parsedPath, "utf8")) as ParsedRoutes;
+const htmlManifest = JSON.parse(await readFile(htmlManifestPath, "utf8")) as Manifest;
+const pdfManifest = JSON.parse(await readFile(pdfManifestPath, "utf8")) as Manifest;
+const prior = JSON.parse(await readFile(priorBundlePath, "utf8")) as CatalogSeedBundle;
 if (parsed.summary.totalRoutes !== 188 || parsed.summary.byDegree.Master !== 100 || parsed.summary.byDegree.Doctoral !== 88 || parsed.summary.suspiciousRows !== 0) {
   throw new Error(`Unexpected Beihang parsed route summary: ${JSON.stringify(parsed.summary)}`);
 }
-if (prior.schools?.length !== 1 || prior.schools[0].slug !== "beihang-university") throw new Error("Reviewed Beihang dependency bundle is unavailable.");
+if (!prior.cities || prior.schools?.length !== 1 || prior.schools[0].slug !== "beihang-university") throw new Error("Reviewed Beihang dependency bundle is unavailable.");
 
 const slugify = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
   .replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -34,7 +56,7 @@ const fieldCategory = (school: string) => /Economics and Management/i.test(schoo
       : /Hangzhou|Regional Centre/i.test(school) ? "Hangzhou International Campus"
         : "Natural Science and Engineering";
 
-const programs = parsed.routes.map((route: any) => {
+const programs = parsed.routes.map((route) => {
   const slug = slugify(["beihang-university", route.degreeLevel, route.schoolEn, route.nameEn, route.teachingLanguage].join(" "));
   const citySlug = /Hangzhou|Regional Centre/i.test(route.schoolEn) ? "hangzhou" : "beijing";
   const sourceLocator = `${route.locator}; language marker mapped using the official page legend`;
@@ -69,8 +91,8 @@ const generatedAt = new Date().toISOString();
 const candidate: CatalogSeedBundle = {
   version: 1,
   generatedAt,
-  cities: prior.cities.map((city: any) => ({ ...city })),
-  schools: prior.schools.map((school: any) => ({ ...school })),
+  cities: prior.cities.map((city) => ({ ...city })),
+  schools: prior.schools.map((school) => ({ ...school })),
   programs,
   programIntakes,
   scholarships: [],
@@ -81,7 +103,7 @@ const validation = createCatalogMigrationValidationReport(persistedCandidate);
 if (!validation.ok) throw new Error(`Beihang graduate candidate validation failed:\n${validation.errors.join("\n")}`);
 const sha256 = (value: string) => createHash("sha256").update(value).digest("hex");
 const candidateSha256 = sha256(candidateText);
-const evidence = [...htmlManifest.sources, ...pdfManifest.sources].map((source: any) => ({
+const evidence = [...htmlManifest.sources, ...pdfManifest.sources].map((source) => ({
   sourceId: source.id, sourceUrl: source.url, sourceLabel: source.label, sha256: source.sha256, fetchedAt: source.fetchedAt,
 })).sort((a, b) => a.sourceId.localeCompare(b.sourceId));
 const reviewBase = {

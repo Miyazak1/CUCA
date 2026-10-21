@@ -1,7 +1,13 @@
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+import {
+  createCatalogMigrationValidationReport,
+  type CatalogSeedBundle,
+  type CatalogSeedProgram,
+  type CatalogSeedProgramIntake,
+  type CatalogSeedScholarship,
+} from "../src/server/catalog/seed-contract.ts";
 
 const root = process.cwd();
 const identityPath = resolve(root, "seeds/catalog.school-identity-replacements-batch-01.draft.json");
@@ -11,8 +17,8 @@ const validationPath = resolve(root, "seeds/catalog.yanshan-complete-batch-01.va
 const [identityText, manifestText] = await Promise.all([readFile(identityPath, "utf8"), readFile(manifestPath, "utf8")]);
 const identity = JSON.parse(identityText) as CatalogSeedBundle;
 const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { id: string; label: string; url: string; sha256: string; status: number; fetchedAt: string }[] };
-const city = identity.cities.find((row) => row.slug === "qinhuangdao");
-const school = identity.schools.find((row) => row.slug === "yanshan-university");
+const city = identity.cities?.find((row) => row.slug === "qinhuangdao");
+const school = identity.schools?.find((row) => row.slug === "yanshan-university");
 if (!city || !school) throw new Error("Missing Qinhuangdao/Yanshan identity dependencies");
 const pdf = manifest.sources.find((row) => row.id === "qinhuangdao-ysu-international-admission-guide-pdf-2-2026" && row.status === 200);
 const page = manifest.sources.find((row) => row.id === "qinhuangdao-ysu-international-admission-guide-2026" && row.status === 200);
@@ -115,7 +121,7 @@ if (undergraduate.length !== 13 || masters.length !== 34 || doctorals.length !==
   throw new Error("Unexpected Yanshan complete program set.");
 }
 const sourceBase = {
-  status: "draft",
+  status: "draft" as const,
   sourceUrl: pdf.url,
   sourceLabel: pdf.label,
   sourceSha256: pdf.sha256,
@@ -131,7 +137,7 @@ const tuitionFor = (row: ProgramDefinition) => {
   if (row.degree === "Doctoral") return { text: "CNY 23,100/year in Chinese or CNY 28,100/year in English", display: "CNY 23,100-28,100/year" };
   return { text: "CNY 7,000 per semester or CNY 14,000 per academic year", display: "CNY 7,000/semester or 14,000/year" };
 };
-const programs = definitions.map((row) => {
+const programs = definitions.map<CatalogSeedProgram>((row) => {
   const tuition = tuitionFor(row);
   const pageNumber = row.degree === "Undergraduate" ? 3 : row.degree === "Master" ? 4 : row.degree === "Doctoral" ? 5 : 6;
   return ({
@@ -179,7 +185,7 @@ const programs = definitions.map((row) => {
   },
   });
 });
-const degreeIntakes = definitions.filter((row) => row.degree !== "Non-degree").map((row) => ({
+const degreeIntakes = definitions.filter((row) => row.degree !== "Non-degree").map<CatalogSeedProgramIntake>((row) => ({
   programSlug: row.slug,
   intakeTerm: "Fall",
   intakeYear: 2026,
@@ -200,7 +206,7 @@ const degreeIntakes = definitions.filter((row) => row.degree !== "Non-degree").m
     status: "derived: deadline predates evidence capture",
   },
 }));
-const languageIntakes = [
+const languageIntakes: CatalogSeedProgramIntake[] = [
   { term: "Spring", deadlineDate: "2025-12-15T00:00:00.000Z", deadlineLabel: "December 15, 2025 — closed",
     deadlineLineage: "derived from the 2026 guide's Spring Semester December 15 deadline" },
   { term: "Fall", deadlineDate: "2026-06-15T00:00:00.000Z", deadlineLabel: "June 15, 2026 — closed",
@@ -213,7 +219,7 @@ const languageIntakes = [
     deadlineDate: intake.deadlineLineage, deadlineLabel: intake.deadlineLineage, applicationRound: "explicit 2026 guide context",
     status: "derived: deadline predates evidence capture" },
 }));
-const programIntakes = [...degreeIntakes, ...languageIntakes];
+const programIntakes: CatalogSeedProgramIntake[] = [...degreeIntakes, ...languageIntakes];
 const scholarshipBase = {
   schoolSlug: school.slug,
   ...sourceBase,
@@ -256,7 +262,7 @@ const presidential = (slug: string, degree: string, coverage: string, amountText
   summary: `YSU's 2026 president scholarship route for ${degree.toLowerCase()} students.`,
   sortOrder,
 });
-const scholarships = [
+const scholarships: CatalogSeedScholarship[] = [
   {
     ...scholarshipBase,
     slug: "official-2026-yanshan-cgs-type-a",

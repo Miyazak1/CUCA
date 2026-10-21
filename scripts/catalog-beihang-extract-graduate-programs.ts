@@ -6,6 +6,29 @@ const runDir = resolve(root, "work/catalog-official/beihang-graduate-batch-01");
 const manifest = JSON.parse(await readFile(resolve(runDir, "manifest.json"), "utf8"));
 const outputPath = resolve(runDir, "parsed-graduate-routes.json");
 
+type ManifestSource = { id: string; artifactPath: string; url: string; label: string; sha256: string; fetchedAt: string };
+type ExtractedRoute = {
+  degreeLevel: "Master" | "Doctoral";
+  schoolEn: string;
+  schoolZh?: string;
+  nameEn: string;
+  nameZh?: string;
+  teachingLanguage: string;
+  durationYears?: number;
+  tuitionAmount: number;
+  tuitionCurrency: string;
+  tuitionPeriod: string;
+  deadlineDate: string;
+  applicationUrl: string;
+  applicationNote: string;
+  sourceId: string;
+  sourceUrl: string;
+  sourceLabel: string;
+  sourceSha256: string;
+  capturedAt: string;
+  locator: string;
+};
+
 const languageSymbols = new Map([
   ["●", "Chinese"],
   ["▲", "English"],
@@ -91,9 +114,9 @@ function schoolPair(lines: string[]) {
   return nameEn ? { nameEn: cleanSymbols(nameEn), nameZh: nameZh ? cleanSymbols(nameZh) : undefined } : null;
 }
 
-function extractRows(html: string, degreeLevel: "Master" | "Doctoral", source: any) {
-  const rows: any[] = [];
-  const tables = html.match(/<table\b[\s\S]*?<\/table>/gi) ?? [];
+function extractRows(html: string, degreeLevel: "Master" | "Doctoral", source: ManifestSource) {
+  const rows: ExtractedRoute[] = [];
+  const tables: string[] = html.match(/<table\b[\s\S]*?<\/table>/gi) ?? [];
   let currentSchool: { nameEn: string; nameZh?: string } | null = null;
   for (const table of tables) {
     const rawTableText = linesFromCell(table).join(" ");
@@ -150,8 +173,9 @@ function extractRows(html: string, degreeLevel: "Master" | "Doctoral", source: a
   return rows;
 }
 
-const allRows: any[] = [];
-for (const source of manifest.sources) {
+const typedManifest = manifest as { generatedAt: string; sources: ManifestSource[] };
+const allRows: ExtractedRoute[] = [];
+for (const source of typedManifest.sources) {
   const html = await readFile(resolve(runDir, source.artifactPath), "utf8");
   const degreeLevel = source.id.includes("master") ? "Master" : "Doctoral";
   const extracted = extractRows(html, degreeLevel, source);
@@ -159,7 +183,7 @@ for (const source of manifest.sources) {
   allRows.push(...extracted);
 }
 
-const key = (row: any) => [row.degreeLevel, row.schoolEn, row.nameEn, row.teachingLanguage].map(value => value.toLowerCase()).join("|");
+const key = (row: ExtractedRoute) => [row.degreeLevel, row.schoolEn, row.nameEn, row.teachingLanguage].map(value => value.toLowerCase()).join("|");
 const unique = [...new Map(allRows.map(row => [key(row), row])).values()];
 const suspicious = unique.filter(row => !row.nameEn || !row.schoolEn || !row.nameZh || !row.schoolZh);
 const summary = {
@@ -169,6 +193,6 @@ const summary = {
   uniqueMajors: new Set(unique.map(row => [row.degreeLevel, row.schoolEn, row.nameEn].join("|"))).size,
   suspiciousRows: suspicious.length,
 };
-const output = { version: 1, generatedAt: manifest.generatedAt, summary, routes: unique, suspicious };
+const output = { version: 1, generatedAt: typedManifest.generatedAt, summary, routes: unique, suspicious };
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`, { flag: "wx" });
 console.log(JSON.stringify({ ok: suspicious.length === 0, outputPath, summary, suspicious: suspicious.slice(0, 20) }, null, 2));

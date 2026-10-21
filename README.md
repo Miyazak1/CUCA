@@ -41,14 +41,17 @@ To prepare the database without keeping the application server attached, run `np
 ## Verification
 
 ```powershell
-npm run test:backend
-npm test
-npm exec tsc -b --pretty false
+npm run quality:local
+npm run security:audit
 npm run db:pg:rehearse
 npm run db:http:rehearse
 ```
 
-`npm test` builds the production frontend and runs the API-specific frontend contract suites. The archived frontend-only demo assertions remain available as `npm run test:legacy-demo`; they are not a production gate because they require the retired `design-lab` mirror, browser-local business state, and demo Agent behavior.
+`quality:local` is the zero-cost release-quality gate. It runs application linting, linting and TypeScript checks for the active catalog release path, the production-only TypeScript check, the complete server suite, frontend contracts, deployment release gates, and the production build without relying on GitHub Actions or another hosted CI service. Run `npm run quality:quick` during development for the shorter lint, production typecheck, and frontend-contract loop. The historical one-off catalog archive still has known lint and type debt; `catalog:debt:check` compares it with `config/catalog-tool-debt-baseline.json`, so every error category may only decrease and a new category blocks the local gate. `lint:catalog-tools` remains available when the complete raw report is needed.
+
+To install the repository-owned pre-push hook on a workstation, run `npm run quality:install-hooks` once. The hook invokes `quality:local` and prevents a push when the local gate fails. `security:audit` remains a separate network-backed check because upstream advisories can change independently of the source tree. It permits only the exact reviewed, currently unpatched Vinext dependency chains recorded in `config/dependency-audit-baseline.json`; a new package, advisory, or severity increase fails the check. Use `security:audit:raw` for npm's unfiltered report, and do not apply `npm audit fix --force` automatically.
+
+`npm test` continues to build the production frontend and run the API-specific frontend contract suites. The archived frontend-only demo assertions remain available as `npm run test:legacy-demo`; they are not a production gate because they require the retired `design-lab` mirror, browser-local business state, and demo Agent behavior.
 
 The PostgreSQL rehearsals use disposable loopback-only databases. The HTTP rehearsal also builds and starts the production API adapter on a disposable loopback port.
 

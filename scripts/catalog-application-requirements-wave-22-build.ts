@@ -12,6 +12,7 @@ if (!source || source.status !== 200 || source.contentType !== "text/html"
   || source.sha256 !== "8e4bc248eaaeec322074a5f6240995993cd9ff1dd03edb66a9de7688fb2626d3") {
   throw new Error("HRBUST requirement evidence mismatch.");
 }
+const reviewedSource = source;
 const seed = JSON.parse(await readFile(resolve(root, "seeds/catalog.hrbust-complete-batch-01.draft.json"), "utf8")) as CatalogSeed;
 const chineseEducationSlug = "harbin-university-of-science-and-technology-chinese-language-education";
 const ordinaryProgramSlugs = seed.programs.map((program) => program.slug).filter((slug) => slug !== chineseEducationSlug);
@@ -62,8 +63,8 @@ function documentFor(route: "chinese_education" | "ordinary") {
   const dedicated = route === "chinese_education";
   return parseRequirementDocument({
     schemaVersion: 1, language: "en", coverage: "complete",
-    sources: [{ key: "hrbust_undergraduate", url: source.url, title: source.label,
-      capturedAt: source.fetchedAt, contentSha256: source.sha256 }],
+    sources: [{ key: "hrbust_undergraduate", url: reviewedSource.url, title: reviewedSource.label,
+      capturedAt: reviewedSource.fetchedAt, contentSha256: reviewedSource.sha256 }],
     requirements: [
       ...commonRequirements,
       item("language_requirement", "language", dedicated ? "recommended" : "required",

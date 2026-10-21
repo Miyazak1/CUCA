@@ -6,6 +6,7 @@ import {
   type CatalogSeedBundle,
   type CatalogSeedProgram,
   type CatalogSeedProgramIntake,
+  type CatalogSeedSchool,
 } from "../src/server/catalog/seed-contract.ts";
 
 type ManifestSource = { id: string; label: string; url: string; finalUrl?: string; fetchedAt: string; status: number; sha256: string; artifactPath: string };
@@ -53,7 +54,7 @@ const fields = (id: string) => {
   return { sourceUrl: item.finalUrl ?? item.url, sourceLabel: item.label, sourceSha256: item.sha256, capturedAt: item.fetchedAt };
 };
 const verifiedAt = [...evidence.values()].map((row) => row.fetchedAt).sort().at(-1)!;
-const school = {
+const school: CatalogSeedSchool = {
   ...baseSchool,
   deadlineSummary: "ECNU's published 2027 non-degree deadlines include December 6, 2026 for the winter study program and December 25, 2026 for the Standard Chinese, Business Chinese and Global China spring programs. General Fall 2027 degree deadlines are not yet established by these sources.",
   tuitionSummary: "Current official fees: Chinese-language and China-study programs CNY 9,800-18,000/semester; short-term Chinese CNY 500-1,500/week; undergraduate/visiting categories generally CNY 22,000-50,000/year, with AEBS routes published separately; master's categories generally CNY 25,000-35,000/year with higher MBA/AEBS rates; doctoral categories CNY 30,000-45,000/year.",

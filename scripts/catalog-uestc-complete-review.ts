@@ -3,6 +3,9 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle, type CatalogSeedProgram, type CatalogSeedScholarship } from "../src/server/catalog/seed-contract.ts";
 
+type EvidenceSource = { id: string; status: number; contentType: string; byteLength: number; sha256: string; finalUrl: string; url: string; label: string; fetchedAt: string };
+type EvidenceManifest = { generatedAt: string; sources?: EvidenceSource[] };
+
 const root = process.cwd();
 const schoolSlug = "university-of-electronic-science-and-technology-of-china";
 const paths = {
@@ -12,8 +15,8 @@ const paths = {
   review: resolve(root, "seeds/catalog.uestc-complete-batch-01.review.json"),
 };
 const sha = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
-const manifest = JSON.parse(await readFile(paths.manifest, "utf8"));
-const source = manifest.sources?.find((row: any) => row.id === "uestc-admission-brochure-en-2026");
+const manifest = JSON.parse(await readFile(paths.manifest, "utf8")) as EvidenceManifest;
+const source = manifest.sources?.find((row) => row.id === "uestc-admission-brochure-en-2026");
 if (!source || source.status !== 200 || source.contentType !== "application/pdf" || source.sha256 !== "cd4ea8f64f11474c569dcd6dd9a38960ccbc8fe9ae4a606ec59d066396418d70") {
   throw new Error("Locked UESTC 2026 brochure evidence is missing or changed.");
 }
@@ -214,7 +217,7 @@ const legacyScholarshipSlugs = [
   "university-of-electronic-science-and-technology-of-china-58",
   "university-of-electronic-science-and-technology-of-china-59",
 ];
-const reviewBase: any = {
+const reviewBase = {
   version: 1,
   status: "awaiting_user_approval",
   generatedAt: candidate.generatedAt,

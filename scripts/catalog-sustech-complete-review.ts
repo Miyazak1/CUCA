@@ -3,7 +3,11 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type EvidenceSource = { id: string; status: number; sha256: string; finalUrl: string; label: string; fetchedAt: string; contentType: string };
+type EvidenceManifest = { sources: EvidenceSource[] };
+type Preflight = { schools: unknown[]; conflicts: unknown[]; city: unknown[] };
 
 const root = process.cwd();
 const paths = {
@@ -20,9 +24,9 @@ const candidate = JSON.parse(candidateText) as CatalogSeedBundle;
 const storedValidation = JSON.parse(await readFile(paths.validation, "utf8"));
 const primaryText = await readFile(paths.primaryManifest, "utf8");
 const apiText = await readFile(paths.apiManifest, "utf8");
-const manifests = [JSON.parse(primaryText), JSON.parse(apiText)];
+const manifests = [JSON.parse(primaryText), JSON.parse(apiText)] as EvidenceManifest[];
 const evidence = manifests.flatMap((manifest) => manifest.sources);
-if (evidence.length !== 34 || evidence.some((row: any) => row.status !== 200 || !/^[a-f0-9]{64}$/.test(row.sha256))) throw new Error("SUSTech evidence manifest incomplete.");
+if (evidence.length !== 34 || evidence.some((row) => row.status !== 200 || !/^[a-f0-9]{64}$/.test(row.sha256))) throw new Error("SUSTech evidence manifest incomplete.");
 const fresh = createCatalogMigrationValidationReport(candidate);
 if (!fresh.ok || fresh.bundleSha256 !== storedValidation.bundleSha256 || fresh.operationPlanSha256 !== storedValidation.operationPlanSha256) throw new Error("SUSTech validation changed after candidate build.");
 const programs = candidate.programs ?? [];
@@ -32,9 +36,9 @@ const degreeCounts = Object.fromEntries(["Bachelor", "Master", "Doctoral"].map((
 if (JSON.stringify(degreeCounts) !== JSON.stringify({ Bachelor: 35, Master: 11, Doctoral: 14 }) || programs.length !== 60 || intakes.length !== 25 || scholarships.length !== 7 || programs.some((row) => row.teachingLanguage !== "English")) throw new Error("SUSTech locked scope changed.");
 if (scholarships.some((row) => !row.coverage || !row.amountText || !row.benefitItems?.length || !row.eligibilityItems?.length || !row.applicationMaterials?.length || !row.applicationSteps?.length || !row.actionLinks?.length)) throw new Error("SUSTech rich scholarship fields incomplete.");
 
-const state = JSON.parse(await readFile(paths.state, "utf8"));
+const state = JSON.parse(await readFile(paths.state, "utf8")) as LocalDevelopmentState;
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:sustech-complete-review" });
-let preflight: any;
+let preflight: Preflight;
 try {
   const school = await pool.query("select id,slug,status from schools where slug=$1 or lower(name_en)=lower($2) or name_zh=$3", ["southern-university-of-science-and-technology", "Southern University of Science and Technology", "南方科技大学"]);
   const programSlugs = programs.map((row) => row.slug);
@@ -56,7 +60,7 @@ const reviewBase = {
   candidateBundleSha256: fresh.bundleSha256,
   operationPlanSha256: fresh.operationPlanSha256,
   primaryManifestSha256: sha(primaryText), apiManifestSha256: sha(apiText),
-  evidence: evidence.map((row: any) => ({ sourceId: row.id, sourceUrl: row.finalUrl, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType })),
+  evidence: evidence.map((row) => ({ sourceId: row.id, sourceUrl: row.finalUrl, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType })),
   sourceReview: { result: "pass", note: "The current official undergraduate API chain returned 6 colleges, 21 department endpoints and 35 non-empty degree majors. The dated 2026 postgraduate guide published 14 major codes producing 11 master and 14 doctoral routes, plus application, eligibility and scholarship sections." },
   reconciliation: { destructiveDeletion: false, overwrites: [], archives: [], databaseBaseline: { schoolCount: 0, candidateSlugConflictCount: 0, cityDependencyId: "0ca88c73-b154-4d7b-9ba7-340bdfdbf177" } },
   coverageLimitations: ["The current undergraduate catalog endpoint does not publish an admissions year or deadline, so no undergraduate intake row or deadline is invented.", "Some undergraduate curriculum attachment filenames carry 2019 or 2022 revision years; the candidate records only the current official catalog membership and does not infer current curriculum details from those filenames.", "The 2026 postgraduate guide is complete for the majors it publishes but is hosted by the SUSTech School of Medicine; its text explicitly describes Southern University of Science and Technology-wide postgraduate programs.", "No scholarship deadline is invented when the official page says automatic consideration or delegates timing to an embassy."],

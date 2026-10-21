@@ -8,9 +8,10 @@ const manifestPath = resolve(root, "work/catalog-official/2026-09-22T11-04-36-78
 const cityPath = resolve(root, "seeds/catalog.guangzhou-city-rich-batch-01.draft.json");
 const candidatePath = resolve(root, "seeds/catalog.jnu-complete-batch-01.draft.json");
 const validationPath = resolve(root, "seeds/catalog.jnu-complete-batch-01.validation.json");
-const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-const cityBundle = JSON.parse(await readFile(cityPath, "utf8"));
-const sources = new Map<string, any>((manifest.sources || []).map((row: any) => [row.id, row]));
+type ManifestSource = { id: string; status: number; sha256: string; url: string; label: string; fetchedAt: string };
+const manifest = JSON.parse(await readFile(manifestPath, "utf8")) as { generatedAt: string; sources: ManifestSource[] };
+const cityBundle = JSON.parse(await readFile(cityPath, "utf8")) as CatalogSeedBundle;
+const sources = new Map<string, ManifestSource>(manifest.sources.map((row) => [row.id, row]));
 const expected = {
   "jnu-international-undergraduate-admissions-2026": "410a58a54a4e30732ac9fdad9433e910386ca269a0b0127b34e0b3fcac2ef62c",
   "jnu-international-graduate-admissions-2026": "88786309243efe9afbd1ec94f3d723ddf6ef4405d024cf3527097de8fa156c73",
@@ -22,12 +23,19 @@ for (const [id, hash] of Object.entries(expected)) {
   if (!source || source.status !== 200 || source.sha256 !== hash) throw new Error(`JNU evidence mismatch: ${id}`);
 }
 
-const undergraduate = sources.get("jnu-international-undergraduate-admissions-2026");
-const graduate = sources.get("jnu-international-graduate-admissions-2026");
-const highLevel = sources.get("jnu-cgs-high-level-graduate-2026");
-const silkRoad = sources.get("jnu-cgs-silk-road-undergraduate-2026");
+const requireSource = (id: string): ManifestSource => {
+  const source = sources.get(id);
+  if (!source) throw new Error(`JNU evidence is unavailable: ${id}`);
+  return source;
+};
+const undergraduate = requireSource("jnu-international-undergraduate-admissions-2026");
+const graduate = requireSource("jnu-international-graduate-admissions-2026");
+const highLevel = requireSource("jnu-cgs-high-level-graduate-2026");
+const silkRoad = requireSource("jnu-cgs-silk-road-undergraduate-2026");
 const schoolSlug = "jinan-university";
 const citySlug = "guangzhou";
+const city = cityBundle.cities?.[0];
+if (!city) throw new Error("JNU city dependency is unavailable.");
 
 type ProgramSpec = {
   slug: string; nameEn: string; nameZh: string; durationYears: number; category: string;
@@ -85,8 +93,8 @@ const programIntakes = programs.map((program) => ({
 
 const info = (label: string, value?: string) => ({ label, ...(value ? { value } : {}) });
 const benefit = (label: string, note?: string) => ({ label, included: true, ...(note ? { note } : {}) });
-function scholarshipBase(source: any) {
-  return { schoolSlug, status: "draft", sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256,
+function scholarshipBase(source: ManifestSource) {
+  return { schoolSlug, status: "draft" as const, sourceUrl: source.url, sourceLabel: source.label, sourceSha256: source.sha256,
     capturedAt: source.fetchedAt, providerLocation: "Guangzhou, Guangdong, China", targetRegions: [],
     actionLinks: [{ label: source.label, url: source.url, kind: "official-source" }],
     sourceFieldLineage: { title: "official page title", fundingLevel: "funding section", coverage: "funding section",
@@ -122,7 +130,7 @@ const scholarships: CatalogSeedScholarship[] = [
 ];
 
 const candidate: CatalogSeedBundle = {
-  version: 1, generatedAt: manifest.generatedAt, cities: [cityBundle.cities[0]],
+  version: 1, generatedAt: manifest.generatedAt, cities: [city],
   schools: [{ slug: schoolSlug, nameEn: "Jinan University", nameZh: "暨南大学", citySlug,
     schoolType: "Public", region: "Guangzhou, Guangdong, South China", applicationLevel: "Undergraduate, Master and Doctoral",
     languageOfInstruction: "Chinese and English", languageRequirement: "Chinese- and English-taught programs use different published language thresholds.",

@@ -3,7 +3,12 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
 import { createPostgresPool } from "../src/server/db/postgres-client.ts";
-import { localDatabaseUrl } from "./lib/local-development.ts";
+import { localDatabaseUrl, type LocalDevelopmentState } from "./lib/local-development.ts";
+
+type EvidenceSource = { id: string; status: number; sha256: string; finalUrl: string; label: string; fetchedAt: string; contentType: string };
+type EvidenceManifest = { sources: EvidenceSource[] };
+type EntityRow = { id: string; slug: string; status: string; verification_status: string; source_url: string; tuition_text?: string };
+type Preflight = { school: EntityRow[]; city: EntityRow[]; stablePrograms: EntityRow[]; archivePrograms: EntityRow[]; archiveScholarships: EntityRow[]; newConflicts: Pick<EntityRow, "slug">[] };
 
 const root = process.cwd();
 const paths = {
@@ -18,24 +23,24 @@ const candidateText = await readFile(paths.candidate, "utf8");
 const candidate = JSON.parse(candidateText) as CatalogSeedBundle;
 const validation = JSON.parse(await readFile(paths.validation, "utf8"));
 const manifestText = await readFile(paths.manifest, "utf8");
-const manifest = JSON.parse(manifestText);
+const manifest = JSON.parse(manifestText) as EvidenceManifest;
 const fresh = createCatalogMigrationValidationReport(candidate);
 if (!fresh.ok || fresh.bundleSha256 !== validation.bundleSha256 || fresh.operationPlanSha256 !== validation.operationPlanSha256) throw new Error("OUC validation changed after candidate build.");
-if (manifest.sources.length !== 16 || manifest.sources.some((row: any) => row.status !== 200 || !/^[a-f0-9]{64}$/.test(row.sha256))) throw new Error("OUC evidence manifest incomplete.");
+if (manifest.sources.length !== 16 || manifest.sources.some((row) => row.status !== 200 || !/^[a-f0-9]{64}$/.test(row.sha256))) throw new Error("OUC evidence manifest incomplete.");
 if (candidate.programs?.length !== 10 || candidate.programIntakes?.length !== 10 || candidate.scholarships?.length !== 3) throw new Error("OUC locked scope changed.");
 if (candidate.scholarships.some((row) => !row.coverage || !row.amountText || !row.benefitItems?.length || !row.eligibilityItems?.length || !row.applicationMaterials?.length || !row.applicationSteps?.length || !row.actionLinks?.length)) throw new Error("OUC rich scholarship fields incomplete.");
 
-const state = JSON.parse(await readFile(paths.state, "utf8"));
+const state = JSON.parse(await readFile(paths.state, "utf8")) as LocalDevelopmentState;
 const pool = createPostgresPool({ databaseUrl: localDatabaseUrl(state), max: 1, applicationName: "cuac:ouc-international-review" });
-let preflight: any;
+let preflight: Preflight;
 try {
-  const school = await pool.query("select id,slug,status,verification_status,source_url from schools where slug='ocean-university-of-china'");
-  const city = await pool.query("select id,slug,status,verification_status,source_url from cities where slug='qingdao'");
-  const stablePrograms = await pool.query("select id,slug,status,verification_status,source_url,tuition_text from programs where slug=any($1::text[]) order by slug", [["ocean-university-of-china-computer-science-and-technology", "ocean-university-of-china-international-economics-and-trade"]]);
-  const archivePrograms = await pool.query("select id,slug,status,verification_status,source_url from programs where slug='ocean-university-of-china-business-management'");
-  const archiveScholarships = await pool.query("select id,slug,status,verification_status,source_url from scholarships where slug='ocean-university-of-china'");
+  const school = await pool.query<EntityRow>("select id,slug,status,verification_status,source_url from schools where slug='ocean-university-of-china'");
+  const city = await pool.query<EntityRow>("select id,slug,status,verification_status,source_url from cities where slug='qingdao'");
+  const stablePrograms = await pool.query<EntityRow>("select id,slug,status,verification_status,source_url,tuition_text from programs where slug=any($1::text[]) order by slug", [["ocean-university-of-china-computer-science-and-technology", "ocean-university-of-china-international-economics-and-trade"]]);
+  const archivePrograms = await pool.query<EntityRow>("select id,slug,status,verification_status,source_url from programs where slug='ocean-university-of-china-business-management'");
+  const archiveScholarships = await pool.query<EntityRow>("select id,slug,status,verification_status,source_url from scholarships where slug='ocean-university-of-china'");
   const newSlugs = (candidate.programs ?? []).map((row) => row.slug).filter((slug) => !["ocean-university-of-china-computer-science-and-technology", "ocean-university-of-china-international-economics-and-trade"].includes(slug));
-  const newConflicts = await pool.query("select slug from programs where slug=any($1::text[]) union all select slug from scholarships where slug=any($2::text[])", [newSlugs, (candidate.scholarships ?? []).map((row) => row.slug)]);
+  const newConflicts = await pool.query<Pick<EntityRow, "slug">>("select slug from programs where slug=any($1::text[]) union all select slug from scholarships where slug=any($2::text[])", [newSlugs, (candidate.scholarships ?? []).map((row) => row.slug)]);
   preflight = { school: school.rows, city: city.rows, stablePrograms: stablePrograms.rows, archivePrograms: archivePrograms.rows, archiveScholarships: archiveScholarships.rows, newConflicts: newConflicts.rows };
   if (school.rows.length !== 1 || city.rows.length !== 1 || stablePrograms.rows.length !== 2 || archivePrograms.rows.length !== 1 || archiveScholarships.rows.length !== 1 || newConflicts.rows.length) throw new Error(`OUC database baseline mismatch: ${JSON.stringify(preflight)}`);
 } finally { await pool.end(); }
@@ -46,7 +51,7 @@ const reviewBase = {
   generatedAt: candidate.generatedAt,
   scope: { schoolSlug: "ocean-university-of-china", cityOverwriteCount: 1, schoolOverwriteCount: 1, programRouteCount: 10, bachelorRouteCount: 4, masterRouteCount: 6, programIntakeCount: 10, newProgramCount: 8, stableProgramOverwriteCount: 2, newScholarshipCount: 3, archiveProgramAliasCount: 1, archiveScholarshipAliasCount: 1 },
   candidateSha256: sha(candidateText), candidateBundleSha256: fresh.bundleSha256, operationPlanSha256: fresh.operationPlanSha256, manifestSha256: sha(manifestText),
-  evidence: manifest.sources.map((row: any) => ({ sourceId: row.id, sourceUrl: row.finalUrl, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType })),
+  evidence: manifest.sources.map((row) => ({ sourceId: row.id, sourceUrl: row.finalUrl, sourceLabel: row.label, sha256: row.sha256, fetchedAt: row.fetchedAt, contentType: row.contentType })),
   sourceReview: { result: "pass_with_documented_gap", note: "Sixteen exact official OUC pages/PDFs were captured. Program-table structure was visually verified across the undergraduate, doctoral and postgraduate sections. The separate 2026 full admission-guide PDF repeatedly terminated at about 34 MB, so no field depends on that unavailable file." },
   reconciliation: {
     destructiveDeletion: false,
@@ -60,7 +65,7 @@ const reviewBase = {
       { entityType: "program", id: preflight.archivePrograms[0].id, slug: "ocean-university-of-china-business-management", reason: "official English undergraduate route is Tourism Management, not Business Management" },
       { entityType: "scholarship", id: preflight.archiveScholarships[0].id, slug: "ocean-university-of-china", reason: "replace generic unverified merged placeholder with three independently documented rich awards" },
     ],
-    databaseBaseline: { schoolId: preflight.school[0].id, cityId: preflight.city[0].id, stableProgramIds: preflight.stablePrograms.map((row: any) => row.id) },
+    databaseBaseline: { schoolId: preflight.school[0].id, cityId: preflight.city[0].id, stableProgramIds: preflight.stablePrograms.map((row) => row.id) },
   },
   coverageLimitations: [
     "This first OUC batch locks the 10 English international programs whose language, duration and tuition are explicitly published; the broader official undergraduate, doctoral and postgraduate program tables are retained for a later structured route batch.",

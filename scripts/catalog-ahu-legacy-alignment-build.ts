@@ -17,6 +17,9 @@ const [sourceText, dependencyText, manifestText] = await Promise.all([
 ]);
 const source = JSON.parse(sourceText) as CatalogSeedBundle;
 const dependencies = JSON.parse(dependencyText) as CatalogSeedBundle;
+if (!source.programs || !dependencies.cities || !dependencies.schools) {
+  throw new Error("Anhui University alignment dependencies are incomplete.");
+}
 const manifest = JSON.parse(manifestText) as { generatedAt: string; sources: { url: string; sha256: string; status: number }[] };
 const evidence = new Set(manifest.sources.filter((row) => row.status === 200).map((row) => `${row.url}\n${row.sha256}`));
 

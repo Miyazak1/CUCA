@@ -268,6 +268,7 @@ async function lockNotice(tx: TransactionalSqlClient, locale: NoticeLocale, at: 
     || row.reviewedAt > at || row.effectiveFrom > at || row.reviewDueAt <= at) return null;
   let document;
   try { document = parseNoticeDocument(row.content, scope); } catch { throw corrupt(); }
+  if (document.noticeKey !== "application_disclosure") throw corrupt();
   const required = ["application_choices", ...(selection.applicantFields.length ? ["applicant_basics"] : []),
     ...(selection.educationRecordIds.length ? ["education_history"] : []),
     ...(selection.assessmentRecordIds.length ? ["assessment_results"] : [])];
