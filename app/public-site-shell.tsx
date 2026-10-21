@@ -1,6 +1,7 @@
 import Script from "next/script";
 
-const SHELL_RELEASE = "20261020-nav-width";
+const SHELL_STYLE_RELEASE = "20261021-design-system";
+const SHELL_RUNTIME_RELEASE = "20261015-study-in-china";
 
 export function PublicSiteShell({
   active,
@@ -17,7 +18,7 @@ export function PublicSiteShell({
 }>) {
   return (
     <div className={pageClassName}>
-      <link rel="stylesheet" href={`/shared-shell.css?v=${SHELL_RELEASE}`} />
+      <link rel="stylesheet" href={`/shared-shell.css?v=${SHELL_STYLE_RELEASE}`} />
       <div
         data-cuac-header
         data-active={active}
@@ -26,8 +27,8 @@ export function PublicSiteShell({
       />
       {children}
       <div data-cuac-footer />
-      <Script src={`/i18n-runtime.js?v=${SHELL_RELEASE}`} strategy="afterInteractive" />
-      <Script src={`/shared-shell.js?v=${SHELL_RELEASE}`} strategy="afterInteractive" />
+      <Script src={`/i18n-runtime.js?v=${SHELL_RUNTIME_RELEASE}`} strategy="afterInteractive" />
+      <Script src={`/shared-shell.js?v=${SHELL_RUNTIME_RELEASE}`} strategy="afterInteractive" />
     </div>
   );
 }

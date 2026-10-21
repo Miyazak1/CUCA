@@ -8,9 +8,9 @@
     <title>UCAC | Cities</title>
     <meta name="description" content="Compare published China city guides, living-cost references, universities, programs, and scholarship routes for international students." />
     <link rel="canonical" href="https://ucac.cn/cities.html" />
-    <link rel="stylesheet" href="shared-shell.css?v=20261015-study-in-china" />
+    <link rel="stylesheet" href="shared-shell.css?v=20261021-design-system" />
     <link rel="stylesheet" href="catalog-list-api.css?v=20260929-list-states" />
-    <link rel="stylesheet" href="cities.css?v=20260923-empty-state" />
+    <link rel="stylesheet" href="cities.css?v=20261021-design-system" />
   </head>
   <body data-agent-mode="off" data-catalog-list-page="cities" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page">
@@ -84,10 +84,10 @@
                 <span class="eyebrow">Budget check</span>
                 <h2>Estimate a monthly student budget</h2>
                 <p id="budgetIntro">Published cost details will appear when available.</p>
-                <div class="budget-controls" aria-label="Lifestyle budget level">
-                  <button class="active" type="button" data-budget-mode="lean">Lean</button>
-                  <button type="button" data-budget-mode="balanced">Balanced</button>
-                  <button type="button" data-budget-mode="comfortable">Comfortable</button>
+                <div class="budget-controls" role="group" aria-label="Lifestyle budget level">
+                  <button class="active" type="button" data-budget-mode="lean" aria-pressed="true">Lean</button>
+                  <button type="button" data-budget-mode="balanced" aria-pressed="false">Balanced</button>
+                  <button type="button" data-budget-mode="comfortable" aria-pressed="false">Comfortable</button>
                 </div>
               </div>
               <div class="budget-panel">

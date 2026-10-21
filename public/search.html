@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Search UCAC</title>
-    <link rel="stylesheet" href="shared-shell.css?v=20261015-study-in-china" />
+    <link rel="stylesheet" href="shared-shell.css?v=20261021-design-system" />
     <link rel="stylesheet" href="search.css" />
   </head>
   <body data-agent-mode="off" data-i18n-locales="en,vi,th,id,ms,ar">
@@ -25,14 +25,14 @@
           </form>
         </section>
 
-        <nav class="search-types" aria-label="Search result types" data-search-types>
-          <button class="active" type="button" data-search-type=""><span data-search-type-label="all">All</span> <span data-count-for="all">0</span></button>
-          <button type="button" data-search-type="program"><span data-search-type-label="program">Programs</span> <span data-count-for="program">0</span></button>
-          <button type="button" data-search-type="school"><span data-search-type-label="school">Universities</span> <span data-count-for="school">0</span></button>
-          <button type="button" data-search-type="scholarship"><span data-search-type-label="scholarship">Scholarships</span> <span data-count-for="scholarship">0</span></button>
-          <button type="button" data-search-type="city"><span data-search-type-label="city">Cities</span> <span data-count-for="city">0</span></button>
-          <button type="button" data-search-type="guide"><span data-search-type-label="guide">Guides</span> <span data-count-for="guide">0</span></button>
-          <button type="button" data-search-type="insight"><span data-search-type-label="insight">Insights</span> <span data-count-for="insight">0</span></button>
+        <nav class="search-types" role="group" aria-label="Search result types" data-search-types>
+          <button class="active" type="button" data-search-type="" aria-pressed="true"><span data-search-type-label="all">All</span> <span data-count-for="all">0</span></button>
+          <button type="button" data-search-type="program" aria-pressed="false"><span data-search-type-label="program">Programs</span> <span data-count-for="program">0</span></button>
+          <button type="button" data-search-type="school" aria-pressed="false"><span data-search-type-label="school">Universities</span> <span data-count-for="school">0</span></button>
+          <button type="button" data-search-type="scholarship" aria-pressed="false"><span data-search-type-label="scholarship">Scholarships</span> <span data-count-for="scholarship">0</span></button>
+          <button type="button" data-search-type="city" aria-pressed="false"><span data-search-type-label="city">Cities</span> <span data-count-for="city">0</span></button>
+          <button type="button" data-search-type="guide" aria-pressed="false"><span data-search-type-label="guide">Guides</span> <span data-count-for="guide">0</span></button>
+          <button type="button" data-search-type="insight" aria-pressed="false"><span data-search-type-label="insight">Insights</span> <span data-count-for="insight">0</span></button>
         </nav>
 
         <section class="search-status" data-search-status role="status" aria-live="polite"></section>

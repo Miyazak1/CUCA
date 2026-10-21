@@ -91,7 +91,7 @@ svg {
   margin-bottom: 14px;
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .eyebrow::before {
@@ -113,7 +113,7 @@ h1 {
   max-width: 850px;
   margin-bottom: 12px;
   font-size: 54px;
-  font-weight: 780;
+  font-weight: 800;
   line-height: 1;
   letter-spacing: 0;
 }
@@ -150,7 +150,7 @@ h1 {
 .trust-strip span {
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .funding-intent {
@@ -240,7 +240,7 @@ h1 {
   background: white;
   color: var(--text-muted);
   font-size: 13px;
-  font-weight: 780;
+  font-weight: 800;
 }
 
 .route-shortcuts {
@@ -317,7 +317,7 @@ h1 {
 .text-link {
   color: var(--accent-dark);
   font-size: 14px;
-  font-weight: 860;
+  font-weight: 800;
 }
 
 .coverage-band {
@@ -412,7 +412,7 @@ h1 {
   border-radius: var(--radius-xs);
   background: rgb(255 255 255 / 0.08);
   font-size: 13px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .route-list {
@@ -444,7 +444,7 @@ h1 {
   color: var(--accent-dark);
   font-size: 13px;
   font-style: normal;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .browser-tools {
@@ -486,7 +486,7 @@ h1 {
   border-radius: var(--radius-xs);
   background: white;
   color: var(--text);
-  font-weight: 780;
+  font-weight: 800;
 }
 
 .primary {
@@ -503,7 +503,7 @@ h1 {
   border-radius: var(--radius-xs);
   background: white;
   color: var(--text);
-  font-weight: 780;
+  font-weight: 800;
   padding-right: 34px;
 }
 
@@ -523,7 +523,7 @@ h1 {
   background: rgb(var(--accent-rgb) / 0.08);
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 780;
+  font-weight: 800;
 }
 
 .scholarship-agent-notice.visible {
@@ -534,7 +534,7 @@ h1 {
 .scholarship-agent-notice a {
   margin-left: 8px;
   color: var(--accent-dark);
-  font-weight: 900;
+  font-weight: 800;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -595,7 +595,7 @@ h1 {
   background: white;
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .focus-facts b {
@@ -780,7 +780,7 @@ h1 {
   background: #f0f6f4;
   color: var(--accent-dark);
   font-size: 12px;
-  font-weight: 780;
+  font-weight: 800;
   line-height: 1;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -803,7 +803,7 @@ h1 {
   border-left: 1px solid var(--border);
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .facts span:first-child {
@@ -838,7 +838,7 @@ h1 {
   background: linear-gradient(180deg, #ffffff, #f4fbf9);
   color: var(--accent-dark);
   font-size: 12px;
-  font-weight: 820;
+  font-weight: 800;
   line-height: 1.2;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -863,7 +863,7 @@ h1 {
 .scholarship-readiness b {
   color: var(--text-muted);
   font-size: 11px;
-  font-weight: 850;
+  font-weight: 800;
   line-height: 1.1;
   text-transform: uppercase;
 }
@@ -874,7 +874,7 @@ h1 {
   color: var(--text);
   font-size: 12px;
   font-style: normal;
-  font-weight: 760;
+  font-weight: 800;
   line-height: 1.25;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -913,7 +913,7 @@ h1 {
   margin-right: 4px;
   color: var(--text-muted);
   font-size: 13px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .pagination-ellipsis {
@@ -986,7 +986,7 @@ h1 {
 .related-card span {
   color: var(--accent-dark);
   font-size: 14px;
-  font-weight: 860;
+  font-weight: 800;
 }
 
 .faq-list article {
@@ -1085,7 +1085,7 @@ h1 {
 .filter-group > span {
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 860;
+  font-weight: 800;
 }
 
 .filter-group label {
@@ -1095,7 +1095,7 @@ h1 {
   align-items: center;
   color: var(--text-muted);
   font-size: 13px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .filter-select {
@@ -1106,7 +1106,7 @@ h1 {
   border-radius: var(--radius-xs);
   background: #fbfdfc;
   color: var(--text);
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .check-list {
@@ -1124,7 +1124,7 @@ h1 {
   background: #fbfdfc;
   color: var(--text);
   font-size: 14px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .check-list input {

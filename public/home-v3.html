@@ -9,8 +9,8 @@
     <meta name="description" content="Explore published Chinese university programs, scholarships, cities, application guidance, and current intake information with UCAC." />
     <link rel="canonical" href="https://ucac.cn/" />
     <meta name="application-name" content="UCAC" />
-    <link rel="stylesheet" href="shared-shell.css?v=20261015-study-in-china" />
-    <link rel="stylesheet" href="home-v3.css?v=20261013-category-icons" />
+    <link rel="stylesheet" href="shared-shell.css?v=20261021-design-system" />
+    <link rel="stylesheet" href="home-v3.css?v=20261021-design-system" />
   </head>
   <body data-agent-mode="off" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page">
@@ -28,12 +28,12 @@
               <button type="submit" aria-label="Search UCAC"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg><span>Search</span></button>
             </form>
 
-            <div class="chips" aria-label="Prompt starters">
-              <button type="button" data-search-chip="undergraduate">Undergraduate</button>
-              <button type="button" data-search-chip="master">Master</button>
-              <button type="button" data-search-chip="English taught">English-taught</button>
-              <button type="button" data-search-chip="scholarship">Scholarship</button>
-              <button type="button" data-search-chip="current intake">Current intakes</button>
+            <div class="chips" role="group" aria-label="Prompt starters">
+              <button type="button" data-search-chip="undergraduate" aria-pressed="false">Undergraduate</button>
+              <button type="button" data-search-chip="master" aria-pressed="false">Master</button>
+              <button type="button" data-search-chip="English taught" aria-pressed="false">English-taught</button>
+              <button type="button" data-search-chip="scholarship" aria-pressed="false">Scholarship</button>
+              <button type="button" data-search-chip="current intake" aria-pressed="false">Current intakes</button>
             </div>
             <div class="planner-feedback" data-planner-feedback aria-live="polite"></div>
           </div>

@@ -106,7 +106,7 @@ main {
   margin-bottom: 22px;
 }
 
-.profile-detail-hero h1 {
+.profile-detail-hero [data-profile-detail-title] {
   max-width: 720px;
   margin: 6px 0 0;
   color: var(--text);
@@ -119,7 +119,7 @@ main {
   margin: 10px 0 0;
   color: var(--muted);
   font-size: 18px;
-  font-weight: 680;
+  font-weight: 700;
 }
 
 .hero-copy,
@@ -171,14 +171,14 @@ main {
 .application-id-card span {
   color: var(--muted);
   font-size: 12px;
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .application-id-card strong {
   color: var(--accent-dark);
   font-size: 18px;
   line-height: 1.1;
-  font-weight: 900;
+  font-weight: 800;
   white-space: nowrap;
 }
 
@@ -213,7 +213,7 @@ main {
   margin: 0;
   color: var(--muted);
   font-size: 15px;
-  font-weight: 680;
+  font-weight: 700;
 }
 
 .status-facts {
@@ -250,7 +250,7 @@ main {
   margin-top: 5px;
   color: var(--muted);
   font-size: 12px;
-  font-weight: 780;
+  font-weight: 800;
 }
 
 .application-gate {
@@ -278,7 +278,7 @@ main {
 .application-gate span {
   color: var(--text);
   font-size: 12px;
-  font-weight: 780;
+  font-weight: 800;
   line-height: 1.35;
 }
 
@@ -346,7 +346,7 @@ main {
   color: var(--text);
   font-size: 18px;
   line-height: 1.02;
-  font-weight: 900;
+  font-weight: 800;
   overflow-wrap: anywhere;
   text-align: center;
 }
@@ -368,7 +368,7 @@ main {
   min-height: 36px;
   font-size: 15px;
   line-height: 1.12;
-  font-weight: 900;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -433,7 +433,7 @@ main {
   margin-bottom: 22px;
   color: var(--accent-dark);
   font-size: 14px;
-  font-weight: 840;
+  font-weight: 800;
 }
 
 .application-set-switcher {
@@ -494,7 +494,7 @@ main {
   margin: 0 0 8px;
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .hero-copy h1 {
@@ -514,7 +514,7 @@ main {
   margin: 16px 0 0;
   color: var(--muted);
   font-size: 20px;
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .hero-actions,
@@ -542,7 +542,7 @@ main {
   justify-content: center;
   padding: 0 16px;
   border-radius: var(--radius-xs);
-  font-weight: 860;
+  font-weight: 800;
 }
 
 .primary-action {
@@ -581,7 +581,7 @@ main {
   padding: 7px 10px;
   border-radius: var(--radius-pill);
   font-size: 13px;
-  font-weight: 880;
+  font-weight: 800;
 }
 
 .draft-status span {
@@ -610,7 +610,7 @@ main {
 .draft-card p {
   margin: 0;
   color: var(--muted);
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .draft-facts,
@@ -648,7 +648,7 @@ main {
   margin-top: 6px;
   color: var(--muted);
   font-size: 12px;
-  font-weight: 780;
+  font-weight: 800;
 }
 
 .draft-facts span,
@@ -658,7 +658,7 @@ main {
   background: var(--accent-soft);
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 840;
+  font-weight: 800;
 }
 
 .readiness {
@@ -682,7 +682,7 @@ main {
 .readiness span {
   color: var(--muted);
   font-size: 13px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .readiness em {
@@ -791,7 +791,7 @@ main {
 .progress-strip em {
   color: var(--muted);
   font-size: 12px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .progress-strip article.done em {
@@ -901,7 +901,7 @@ main {
   background: rgb(var(--accent-rgb) / 0.08);
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 780;
+  font-weight: 800;
 }
 
 .application-action-notice.visible {
@@ -930,7 +930,7 @@ main {
   background: var(--accent-soft);
   color: var(--accent-dark);
   font-size: 12px;
-  font-weight: 880;
+  font-weight: 800;
   white-space: nowrap;
 }
 
@@ -1012,7 +1012,7 @@ main {
   color: var(--muted);
   font-size: 15px;
   font-style: normal;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .choice-list {
@@ -1068,7 +1068,7 @@ main {
   background: white;
   color: var(--accent-dark);
   font-size: 12px;
-  font-weight: 860;
+  font-weight: 800;
 }
 
 .choice-route-actions {
@@ -1096,7 +1096,7 @@ main {
   background: var(--accent);
   color: white;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .backup .role-pill {
@@ -1132,7 +1132,7 @@ main {
   background: white;
   color: var(--text);
   font-size: 12px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .choice-school-note {
@@ -1190,7 +1190,7 @@ main {
   margin: 4px 0 0;
   color: var(--text);
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .task-panel {
@@ -1234,7 +1234,7 @@ main {
   background: var(--accent);
   color: white;
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 800;
   grid-row: 1 / span 2;
   align-self: start;
 }
@@ -1303,7 +1303,7 @@ main {
   margin: -4px 0 14px;
   color: var(--muted);
   font-size: 13px;
-  font-weight: 680;
+  font-weight: 700;
 }
 
 .profile-document-matrix .section-title button,
@@ -1317,7 +1317,7 @@ main {
   border-radius: var(--radius-xs);
   background: white;
   color: var(--accent-dark);
-  font-weight: 860;
+  font-weight: 800;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -1348,19 +1348,19 @@ main {
   background: var(--night);
   color: white;
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .matrix-row-title {
   background: var(--surface-soft);
   color: var(--text);
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .matrix-cell {
   color: var(--muted);
   font-size: 13px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .matrix-cell.ready {
@@ -1411,7 +1411,7 @@ main {
   margin: 6px 0 0;
   color: var(--muted);
   font-size: 14px;
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .overview-section-cards {
@@ -1528,7 +1528,7 @@ button.section-card {
   color: var(--accent-dark);
   font-size: 12px;
   font-style: normal;
-  font-weight: 860;
+  font-weight: 800;
 }
 
 .section-card.done .section-status {
@@ -1590,7 +1590,7 @@ button.section-card {
   margin-top: 6px;
   color: var(--muted);
   font-size: 14px;
-  font-weight: 680;
+  font-weight: 700;
 }
 
 .student-info-form {
@@ -1652,7 +1652,7 @@ button.section-card {
 .profile-panel-head span {
   color: var(--muted);
   font-size: 12px;
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .profile-section-card strong {
@@ -1666,7 +1666,7 @@ button.section-card {
   margin: 0;
   color: var(--muted);
   font-size: 15px;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1.42;
 }
 
@@ -1682,7 +1682,7 @@ button.section-card {
   color: var(--text);
   font-size: 15px;
   font-style: normal;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .profile-section-card.done {
@@ -1697,7 +1697,7 @@ button.section-card {
   gap: 10px;
   background: #6d9400;
   color: white;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .profile-section-card.done em::before {
@@ -1755,7 +1755,7 @@ button.section-card {
   border: 0;
   background: transparent;
   color: var(--muted);
-  font-weight: 830;
+  font-weight: 800;
   text-align: left;
 }
 
@@ -1776,7 +1776,7 @@ button.section-card {
   color: var(--muted);
   font-size: 11px;
   font-style: normal;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .profile-section-nav button.missing em {
@@ -1984,7 +1984,7 @@ button.section-card {
 .assessment-component-row label span {
   color: var(--muted);
   font-size: 12px;
-  font-weight: 740;
+  font-weight: 700;
 }
 
 .assessment-component-row input {
@@ -2013,7 +2013,7 @@ button.section-card {
   margin: 14px 0 0;
   color: var(--muted);
   font-size: 12px;
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .record-operation-status[data-tone="success"] {
@@ -2047,7 +2047,7 @@ button.section-card {
 .student-info-grid label span {
   color: var(--muted);
   font-size: 13px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .student-info-grid label span em {
@@ -2058,7 +2058,7 @@ button.section-card {
   color: var(--accent-dark);
   font-size: 11px;
   font-style: normal;
-  font-weight: 850;
+  font-weight: 800;
   white-space: nowrap;
 }
 
@@ -2070,7 +2070,7 @@ button.section-card {
   border-radius: var(--radius-xs);
   background: #fbfdfc;
   color: var(--text);
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .student-info-grid input[readonly] {
@@ -2120,7 +2120,7 @@ button.section-card {
   background: #fbfdfc;
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .profile-consent-line {
@@ -2136,7 +2136,7 @@ button.section-card {
   background: #f6fbfa;
   color: var(--accent-dark);
   font-size: 14px;
-  font-weight: 780;
+  font-weight: 800;
 }
 
 .profile-consent-line input {
@@ -2190,7 +2190,7 @@ button.section-card {
   padding: 0 11px;
   border-radius: var(--radius-pill);
   font-size: 12px;
-  font-weight: 860;
+  font-weight: 800;
 }
 
 .profile-save-status.saved {
@@ -2210,7 +2210,7 @@ button.section-card {
   color: var(--accent-dark);
   padding: 7px 10px;
   font-size: 12px;
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .boundary-note,
@@ -2232,7 +2232,7 @@ button.section-card {
   background: #fffaf0;
   color: #714900;
   font-size: 13px;
-  font-weight: 760;
+  font-weight: 800;
   line-height: 1.45;
 }
 
@@ -2281,7 +2281,7 @@ button.section-card {
 .mini-section-head span {
   color: var(--muted);
   font-size: 12px;
-  font-weight: 860;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -2297,7 +2297,7 @@ button.section-card {
   color: var(--text);
   font-size: 15px;
   font-style: normal;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .fee-total-panel b,
@@ -2358,7 +2358,7 @@ button.section-card {
 .submit-check-panel em {
   color: var(--text);
   font-size: 13px;
-  font-weight: 840;
+  font-weight: 800;
 }
 
 .fee-reason-grid span {
@@ -2392,7 +2392,7 @@ button.section-card {
   background: var(--accent);
   color: white;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .submit-check-panel span.missing::before {
@@ -2446,13 +2446,13 @@ button.section-card {
   margin-top: 3px;
   color: var(--muted);
   font-size: 12px;
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .fee-line em {
   color: var(--accent-dark);
   font-style: normal;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .full-action {
@@ -2496,7 +2496,7 @@ button.section-card {
   margin: 8px 0 0;
   color: var(--muted);
   font-size: 15px;
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .payment-page-layout {
@@ -2592,7 +2592,7 @@ button.section-card {
 .send-review-grid span {
   color: var(--muted);
   font-size: 12px;
-  font-weight: 820;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -2690,7 +2690,7 @@ button.section-card {
 .submission-confirmation-form label span {
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .submission-confirmation-form input {
@@ -2735,7 +2735,7 @@ button.section-card {
 .submission-receipt-strip span {
   color: var(--muted);
   font-size: 11px;
-  font-weight: 850;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -2870,7 +2870,7 @@ button.section-card {
   background: var(--accent-soft);
   color: var(--accent-dark) !important;
   font-size: 13px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .choice-dialog-close {
@@ -2908,13 +2908,13 @@ button.section-card {
 
 .choice-stage-field select {
   background-color: white;
-  font-weight: 860;
+  font-weight: 800;
 }
 
 .choice-form label span {
   color: var(--text);
   font-size: 13px;
-  font-weight: 860;
+  font-weight: 800;
 }
 
 .choice-form input,
@@ -2987,7 +2987,7 @@ button.section-card {
   background: white;
   color: var(--text);
   font-size: 12px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .choice-source-map {
@@ -3036,7 +3036,7 @@ button.section-card {
 .choice-source-map span {
   color: var(--accent-dark);
   font-size: 11px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -3089,7 +3089,7 @@ button.section-card {
   background: var(--accent-soft);
   color: var(--accent-dark);
   font-size: 12px;
-  font-weight: 860;
+  font-weight: 800;
 }
 
 .choice-dialog-actions {
@@ -3137,7 +3137,7 @@ button.section-card {
   border-top: 1px solid var(--border);
   color: var(--accent-dark);
   font-size: 22px;
-  font-weight: 920;
+  font-weight: 800;
 }
 
 .payment-status-panel {
@@ -3157,7 +3157,7 @@ button.section-card {
 .payment-state span {
   color: var(--accent-dark);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -3170,7 +3170,7 @@ button.section-card {
 .payment-state p {
   margin: 0;
   color: var(--muted);
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .payment-state.processing {
@@ -3193,7 +3193,7 @@ button.section-card {
   background: white;
   color: var(--muted);
   font-size: 12px;
-  font-weight: 860;
+  font-weight: 800;
   text-align: left;
 }
 
@@ -3230,13 +3230,13 @@ button.section-card {
 .payment-receipt-strip span {
   color: var(--muted);
   font-size: 11px;
-  font-weight: 840;
+  font-weight: 800;
 }
 
 .payment-receipt-strip strong {
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 920;
+  font-weight: 800;
 }
 
 .payment-receipt-strip em {
@@ -3246,7 +3246,7 @@ button.section-card {
   color: var(--accent-dark);
   font-size: 11px;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .payment-error {
@@ -3257,7 +3257,7 @@ button.section-card {
   background: #fffaf0;
   color: #7b5600;
   font-size: 13px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .payment-error[hidden] {
@@ -3285,7 +3285,7 @@ button.section-card {
 .consent-row span {
   color: var(--text);
   font-size: 14px;
-  font-weight: 740;
+  font-weight: 700;
 }
 
 button:focus-visible,
@@ -3386,7 +3386,7 @@ a,
   color: var(--muted);
   font-size: 11px;
   font-style: normal;
-  font-weight: 760;
+  font-weight: 800;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -3576,7 +3576,7 @@ a,
 
 .material-evidence-grid > span[data-evidence-current="true"] em {
   color: var(--accent-dark);
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .material-preview-empty {
@@ -3610,7 +3610,7 @@ a,
   background: #fffaf0;
   color: #7b5200;
   font-size: 11px;
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .material-notice {
@@ -3873,7 +3873,7 @@ a,
     font-size: 12px;
   }
 
-  .profile-detail-hero h1 {
+  .profile-detail-hero [data-profile-detail-title] {
     font-size: 38px;
   }
 

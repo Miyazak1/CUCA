@@ -286,6 +286,8 @@ function updateRequiredStepCards() {
     card.classList.toggle("active", active);
     card.classList.toggle("locked", !item.open);
     card.setAttribute("aria-disabled", item.open ? "false" : "true");
+    if (active) card.setAttribute("aria-current", "step");
+    else card.removeAttribute("aria-current");
     const status = card.querySelector("[data-step-status]");
     if (status) status.textContent = appUi(item.status);
   });
@@ -314,6 +316,8 @@ function updateOverviewStepCards(state = getRequiredStepState()) {
     card.classList.toggle("locked", !item.open);
     card.classList.toggle("warning", item.open && !item.complete && (step === "fee" || step === "payment" || step === "send"));
     card.setAttribute("aria-disabled", item.open ? "false" : "true");
+    if (isActive) card.setAttribute("aria-current", "step");
+    else card.removeAttribute("aria-current");
     const status = card.querySelector("[data-overview-step-status]");
     if (status) status.textContent = appUi(item.status);
   });
@@ -437,10 +441,13 @@ function updateApplicationStepper() {
     const target = item.dataset.flowTarget;
     const index = stageIndex(target);
     const isOpen = canOpenApplicationStage(target);
-    item.classList.toggle("active", target === currentApplicationStage);
+    const active = target === currentApplicationStage;
+    item.classList.toggle("active", active);
     item.classList.toggle("done", target !== currentApplicationStage && (index < activeIndex || (target === "send" && submittedToSchools)));
     item.classList.toggle("locked", !isOpen);
     item.setAttribute("aria-disabled", isOpen ? "false" : "true");
+    if (active) item.setAttribute("aria-current", "step");
+    else item.removeAttribute("aria-current");
   });
 }
 

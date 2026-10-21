@@ -8,9 +8,9 @@
     <title>UCAC | Programs</title>
     <meta name="description" content="Compare published China study programs by degree, language, tuition, intake, deadline, scholarship, and official source status." />
     <link rel="canonical" href="https://ucac.cn/programs.html" />
-    <link rel="stylesheet" href="shared-shell.css?v=20261015-study-in-china" />
+    <link rel="stylesheet" href="shared-shell.css?v=20261021-design-system" />
     <link rel="stylesheet" href="catalog-list-api.css?v=20260929-list-states" />
-    <link rel="stylesheet" href="programs.css?v=20260929-list-states" />
+    <link rel="stylesheet" href="programs.css?v=20261021-design-system" />
     <link rel="stylesheet" href="catalog-search.css?v=20261020-unified-search" />
   </head>
   <body data-agent-mode="off" data-catalog-list-page="programs" data-i18n-locales="en,vi,th,id,ms,ar">
@@ -68,9 +68,9 @@
                 <option value="tuition" data-catalog-ui>Tuition low to high</option>
                 <option value="scholarship" data-catalog-ui>Scholarship route</option>
               </select>
-              <div class="view-toggle" aria-label="View mode">
-                <button class="active" type="button" data-view="list" data-catalog-copy="common.cards">Cards</button>
-                <button type="button" data-view="compact" data-catalog-copy="common.dense">Dense</button>
+              <div class="view-toggle" role="group" aria-label="View mode">
+                <button class="active" type="button" data-view="list" aria-pressed="true" data-catalog-copy="common.cards">Cards</button>
+                <button type="button" data-view="compact" aria-pressed="false" data-catalog-copy="common.dense">Dense</button>
               </div>
             </div>
           </section>

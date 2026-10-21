@@ -928,7 +928,11 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       document.querySelectorAll("[data-view]").forEach((button) => {
         button.addEventListener("click", () => {
           state.view = button.dataset.view;
-          document.querySelectorAll("[data-view]").forEach((item) => item.classList.toggle("active", item === button));
+          document.querySelectorAll("[data-view]").forEach((item) => {
+            const active = item === button;
+            item.classList.toggle("active", active);
+            item.setAttribute("aria-pressed", String(active));
+          });
           render();
         });
       });

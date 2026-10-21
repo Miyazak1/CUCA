@@ -90,7 +90,7 @@ svg {
   margin-bottom: 14px;
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .eyebrow::before {
@@ -112,7 +112,7 @@ h1 {
   max-width: 900px;
   margin-bottom: 12px;
   font-size: 54px;
-  font-weight: 780;
+  font-weight: 800;
   line-height: 1;
   letter-spacing: 0;
 }
@@ -149,7 +149,7 @@ h1 {
 .hero-evidence span {
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .city-intent {
@@ -239,7 +239,7 @@ h1 {
   background: white;
   color: var(--text-muted);
   font-size: 13px;
-  font-weight: 780;
+  font-weight: 800;
 }
 
 .city-rail {
@@ -272,7 +272,7 @@ h1 {
 .rail-city span {
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 740;
+  font-weight: 700;
 }
 
 .rail-city b {
@@ -318,7 +318,7 @@ h1 {
 .text-link {
   color: var(--accent-dark);
   font-size: 14px;
-  font-weight: 860;
+  font-weight: 800;
 }
 
 .feature-story {
@@ -367,7 +367,7 @@ h1 {
   background: rgb(255 255 255 / 0.92);
   color: var(--accent-dark);
   font-size: 12px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .story-copy {
@@ -414,7 +414,7 @@ h1 {
 .story-facts span {
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 740;
+  font-weight: 700;
 }
 
 .story-actions,
@@ -437,7 +437,7 @@ h1 {
   border-radius: var(--radius-xs);
   background: white;
   color: var(--text);
-  font-weight: 780;
+  font-weight: 800;
 }
 
 .primary,
@@ -459,7 +459,7 @@ h1 {
   justify-content: center;
   background: #ffffff;
   color: var(--accent-dark);
-  font-weight: 820;
+  font-weight: 800;
   letter-spacing: 0;
   text-decoration: none;
   box-shadow: none;
@@ -521,7 +521,7 @@ h1 {
 .matrix-table th {
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .matrix-table td {
@@ -547,7 +547,7 @@ h1 {
 .signal {
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .pace,
@@ -560,7 +560,7 @@ h1 {
   background: var(--lake-soft);
   color: var(--lake);
   font-size: 12px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .cost.low {
@@ -662,7 +662,7 @@ h1 {
   background: rgb(var(--accent-rgb) / 0.08);
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 780;
+  font-weight: 800;
 }
 
 .city-agent-notice.visible {
@@ -813,7 +813,7 @@ h1 {
   background: #f0f6f4;
   color: var(--accent-dark);
   font-size: 12px;
-  font-weight: 780;
+  font-weight: 800;
 }
 
 .city-stats {
@@ -832,7 +832,7 @@ h1 {
   border-left: 1px solid var(--border);
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .city-stats span:first-child {
@@ -902,7 +902,7 @@ h1 {
 
 .budget-total span {
   color: var(--text-muted);
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .budget-total strong {
@@ -915,7 +915,7 @@ h1 {
   color: var(--text-muted);
   font-size: 12px;
   font-style: normal;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .budget-bars {
@@ -930,7 +930,7 @@ h1 {
   align-items: center;
   color: var(--text-muted);
   font-size: 13px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .bar-track {

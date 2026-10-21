@@ -33,7 +33,7 @@ test("public shell uses the UCAC Study in China identity without the parent-bran
   assert.doesNotMatch(shell, /China admissions 2026:/);
   assert.doesNotMatch(home, /by Holalobe/);
   assert.match(home, /catalog-list-api\.js\?v=20261016-current-routes/);
-  assert.match(home, /home-v3\.css\?v=20261013-category-icons/);
+  assert.match(home, /home-v3\.css\?v=20261021-design-system/);
   assert.doesNotMatch(home, /documents=light/);
   assert.match(homeScript, /window\.CuacCatalogList/);
   assert.match(homeScript, /api\.loadPage/);

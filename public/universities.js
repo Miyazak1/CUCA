@@ -462,10 +462,14 @@ const state = {
         sortSelect.value = state.sort;
         document.querySelectorAll("[data-filter], [data-chip]").forEach((button) => {
           const value = button.dataset.filter || button.dataset.chip;
-          button.classList.toggle("active", state.filters.has(value));
+          const active = state.filters.has(value);
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", String(active));
         });
         document.querySelectorAll("[data-view]").forEach((button) => {
-          button.classList.toggle("active", button.dataset.view === state.view);
+          const active = button.dataset.view === state.view;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", String(active));
         });
         criteriaFields.forEach((field) => {
           if (field.dataset.criteriaField === "scholarshipRoute") {
@@ -604,7 +608,11 @@ const state = {
       document.querySelectorAll("[data-view]").forEach((button) => {
         button.addEventListener("click", () => {
           state.view = button.dataset.view;
-          document.querySelectorAll("[data-view]").forEach((item) => item.classList.toggle("active", item === button));
+          document.querySelectorAll("[data-view]").forEach((item) => {
+            const active = item === button;
+            item.classList.toggle("active", active);
+            item.setAttribute("aria-pressed", String(active));
+          });
           render();
         });
       });

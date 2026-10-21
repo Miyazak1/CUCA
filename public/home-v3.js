@@ -17,8 +17,12 @@
 
       document.querySelectorAll("[data-search-chip]").forEach((chip) => {
         chip.addEventListener("click", () => {
-          document.querySelectorAll("[data-search-chip]").forEach((item) => item.classList.remove("active"));
+          document.querySelectorAll("[data-search-chip]").forEach((item) => {
+            item.classList.remove("active");
+            item.setAttribute("aria-pressed", "false");
+          });
           chip.classList.add("active");
+          chip.setAttribute("aria-pressed", "true");
           const addition = chip.dataset.searchChip;
           syncPlannerValue(addition);
           plannerInputs[0]?.dispatchEvent(new Event("input", { bubbles: true }));

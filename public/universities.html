@@ -8,9 +8,9 @@
     <title>UCAC | Universities</title>
     <meta name="description" content="Compare published Chinese university records, locations, program routes, scholarships, deadlines, and official admissions sources." />
     <link rel="canonical" href="https://ucac.cn/universities.html" />
-    <link rel="stylesheet" href="shared-shell.css?v=20261015-study-in-china" />
+    <link rel="stylesheet" href="shared-shell.css?v=20261021-design-system" />
     <link rel="stylesheet" href="catalog-list-api.css?v=20260929-list-states" />
-    <link rel="stylesheet" href="universities.css?v=20260929-list-states" />
+    <link rel="stylesheet" href="universities.css?v=20261021-design-system" />
     <link rel="stylesheet" href="catalog-search.css?v=20261020-unified-search" />
   </head>
   <body data-agent-mode="off" data-catalog-list-page="universities" data-i18n-locales="en,vi,th,id,ms,ar">
@@ -41,11 +41,11 @@
               <button class="primary" id="searchButton" type="button" data-catalog-copy="common.search">Search</button>
             </div>
             <div class="catalog-search__filters">
-              <div class="catalog-filter-chips" aria-label="University filters">
-                <button class="catalog-filter-chip" type="button" data-filter="Application ready" data-catalog-ui>Application ready</button>
-                <button class="catalog-filter-chip" type="button" data-filter="English routes" data-catalog-ui>English routes</button>
-                <button class="catalog-filter-chip" type="button" data-filter="Scholarship" data-catalog-ui>Scholarship</button>
-                <button class="catalog-filter-chip" type="button" data-filter="Upcoming deadlines" data-catalog-ui>Upcoming deadlines</button>
+              <div class="catalog-filter-chips" role="group" aria-label="University filters">
+                <button class="catalog-filter-chip" type="button" data-filter="Application ready" aria-pressed="false" data-catalog-ui>Application ready</button>
+                <button class="catalog-filter-chip" type="button" data-filter="English routes" aria-pressed="false" data-catalog-ui>English routes</button>
+                <button class="catalog-filter-chip" type="button" data-filter="Scholarship" aria-pressed="false" data-catalog-ui>Scholarship</button>
+                <button class="catalog-filter-chip" type="button" data-filter="Upcoming deadlines" aria-pressed="false" data-catalog-ui>Upcoming deadlines</button>
               </div>
               <div class="catalog-filter-actions">
                 <label class="catalog-select-field">
@@ -69,9 +69,9 @@
                 <option value="routes" data-catalog-ui>International routes</option>
                 <option value="readiness" data-catalog-ui>Application readiness</option>
               </select>
-              <div class="toggle" aria-label="View mode">
-                <button class="active" type="button" data-view="grid" data-catalog-copy="common.grid">Grid</button>
-                <button type="button" data-view="list" data-catalog-copy="common.list">List</button>
+              <div class="toggle" role="group" aria-label="View mode">
+                <button class="active" type="button" data-view="grid" aria-pressed="true" data-catalog-copy="common.grid">Grid</button>
+                <button type="button" data-view="list" aria-pressed="false" data-catalog-copy="common.list">List</button>
               </div>
             </div>
           </section>

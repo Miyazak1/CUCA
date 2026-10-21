@@ -176,7 +176,9 @@ function setDirty(nextDirty) {
 function setActiveSection(section) {
   const nextSection = sectionCopy[section] ? section : "preferences";
   document.querySelectorAll("[data-section]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.section === nextSection);
+    const active = button.dataset.section === nextSection;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
   });
   document.querySelectorAll("[data-panel]").forEach((panel) => {
     panel.classList.toggle("active", panel.dataset.panel === nextSection);

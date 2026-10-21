@@ -551,7 +551,7 @@ textarea {
   gap: 9px;
   color: var(--cuac-text-muted);
   font-size: 14px;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .dot {
@@ -662,7 +662,7 @@ textarea {
   border: 1px solid var(--cuac-border);
   background: var(--cuac-surface);
   color: var(--cuac-text-muted);
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .band-head button:hover,
@@ -758,7 +758,7 @@ textarea {
 
 .process-band span {
   color: var(--cuac-primary);
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .process-band p {
@@ -891,7 +891,7 @@ textarea {
   background: var(--cuac-action-soft);
   color: var(--cuac-action-dark);
   font-size: 12px;
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .badge.warning {
@@ -1018,7 +1018,7 @@ textarea {
   border-radius: 8px;
   background: var(--cuac-success-soft);
   color: var(--cuac-success);
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .document-list {
@@ -1048,7 +1048,7 @@ textarea {
   background: var(--cuac-warning-soft);
   color: var(--cuac-warning);
   font-size: 12px;
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .doc-status.accepted,
@@ -1314,7 +1314,7 @@ textarea {
     padding: 13px;
     background: var(--cuac-action);
     color: white;
-    font-weight: 850;
+    font-weight: 800;
   }
 }
 

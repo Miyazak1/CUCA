@@ -344,7 +344,9 @@ function renderBudget() {
     </div>
   `).join("");
   document.querySelectorAll("[data-budget-mode]").forEach((button) => {
-    button.classList.toggle("active", button.dataset.budgetMode === budgetMode);
+    const active = button.dataset.budgetMode === budgetMode;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
   });
 }
 

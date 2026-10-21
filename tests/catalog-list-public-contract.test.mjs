@@ -240,7 +240,7 @@ test("university pagination stays compact instead of stretching across the resul
     source("universities.css"),
   ]);
 
-  assert.match(html, /universities\.css\?v=20260929-list-states/);
+  assert.match(html, /universities\.css\?v=20261021-design-system/);
   assert.match(css, /\.pagination\s*\{[^}]*flex-wrap:\s*wrap[^}]*justify-content:\s*center/s);
   assert.match(css, /\.pagination button\s*\{[^}]*flex:\s*0 0 40px[^}]*width:\s*40px[^}]*min-width:\s*40px/s);
 });

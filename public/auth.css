@@ -87,7 +87,7 @@ p {
   margin-bottom: 26px;
   color: var(--text-muted);
   font-size: 14px;
-  font-weight: 760;
+  font-weight: 800;
 }
 
 .back-link:hover {
@@ -101,7 +101,7 @@ p {
   margin-bottom: 14px;
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .eyebrow::before {
@@ -116,7 +116,7 @@ h1 {
   max-width: 820px;
   margin-bottom: 16px;
   font-size: 48px;
-  font-weight: 720;
+  font-weight: 700;
   line-height: 1.06;
   letter-spacing: 0;
 }
@@ -188,7 +188,7 @@ h1 {
   background: rgb(var(--accent-rgb) / 0.055);
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 740;
+  font-weight: 700;
   line-height: 1.45;
 }
 
@@ -208,7 +208,7 @@ h1 {
   border-radius: var(--radius-xs);
   background: transparent;
   color: var(--text-muted);
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .auth-tabs button.active {
@@ -276,7 +276,7 @@ h1 {
 .workspace-option span {
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 750;
+  font-weight: 700;
 }
 
 .auth-role-panel {
@@ -353,7 +353,7 @@ h1 {
   gap: 8px !important;
   color: var(--text-muted) !important;
   font-size: 13px !important;
-  font-weight: 720 !important;
+  font-weight: 700 !important;
 }
 
 .check.hidden {
@@ -368,7 +368,7 @@ h1 {
   background: rgb(var(--accent-rgb) / 0.07);
   color: var(--text-muted);
   font-size: 13px;
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .role-note.strong {
@@ -386,7 +386,7 @@ h1 {
 .form-row a {
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .text-link {
@@ -395,7 +395,7 @@ h1 {
   background: transparent;
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .primary {
@@ -406,7 +406,7 @@ h1 {
   border-radius: var(--radius-xs);
   background: var(--accent);
   color: white;
-  font-weight: 860;
+  font-weight: 800;
   box-shadow: 0 14px 28px rgb(var(--accent-rgb) / 0.2);
   transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
@@ -450,7 +450,7 @@ h1 {
   margin: 16px 0 0;
   color: var(--text-muted);
   font-size: 13px;
-  font-weight: 720;
+  font-weight: 700;
 }
 
 .auth-runtime-status[data-state="error"] {
@@ -483,7 +483,7 @@ h1 {
 .verification-note span {
   color: var(--text-muted);
   font-size: 13px;
-  font-weight: 680;
+  font-weight: 700;
 }
 
 .separator {
@@ -493,7 +493,7 @@ h1 {
   margin: 24px 0 16px;
   color: var(--text-muted);
   font-size: 12px;
-  font-weight: 820;
+  font-weight: 800;
 }
 
 .separator::before {
@@ -528,7 +528,7 @@ h1 {
   background: white;
   color: var(--text);
   font-size: 13px;
-  font-weight: 820;
+  font-weight: 800;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
@@ -569,7 +569,7 @@ h1 {
 .next-panel a {
   color: var(--accent-dark);
   font-size: 13px;
-  font-weight: 860;
+  font-weight: 800;
   white-space: nowrap;
 }
 

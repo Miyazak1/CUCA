@@ -59,7 +59,7 @@
     document.querySelectorAll("[data-search-type]").forEach(button => {
       const active = button.dataset.searchType === type;
       button.classList.toggle("active", active);
-      button.setAttribute("aria-current", active ? "page" : "false");
+      button.setAttribute("aria-pressed", String(active));
     });
   }
 

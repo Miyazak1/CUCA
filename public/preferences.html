@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>UCAC | Preferences</title>
-    <link rel="stylesheet" href="shared-shell.css?v=20261015-study-in-china" />
+    <link rel="stylesheet" href="shared-shell.css?v=20261021-design-system" />
     <link rel="stylesheet" href="preferences.css" />
   </head>
   <body data-agent-mode="off">
@@ -41,14 +41,14 @@
         <section class="preference-shell reveal" aria-label="Preference settings">
           <aside class="account-side" aria-label="Account preference sections">
             <span class="module-kicker">Account</span>
-            <nav class="account-nav" aria-label="Preference categories">
-              <button class="active" type="button" data-section="preferences">Preferences</button>
-              <button type="button" data-section="hub">Hub personalisation</button>
-              <button type="button" data-section="support">Study support</button>
-              <button type="button" data-section="language">Language & region</button>
-              <button type="button" data-section="notifications">Notifications</button>
-              <button type="button" data-section="security">Password & security</button>
-              <button type="button" data-section="privacy">Privacy</button>
+            <nav class="account-nav" role="group" aria-label="Preference categories">
+              <button class="active" type="button" data-section="preferences" aria-pressed="true">Preferences</button>
+              <button type="button" data-section="hub" aria-pressed="false">Hub personalisation</button>
+              <button type="button" data-section="support" aria-pressed="false">Study support</button>
+              <button type="button" data-section="language" aria-pressed="false">Language & region</button>
+              <button type="button" data-section="notifications" aria-pressed="false">Notifications</button>
+              <button type="button" data-section="security" aria-pressed="false">Password & security</button>
+              <button type="button" data-section="privacy" aria-pressed="false">Privacy</button>
             </nav>
             <div class="side-note">
               <strong>Not application data</strong>

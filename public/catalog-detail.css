@@ -11,7 +11,6 @@
   --detail-brand-deep: #075653;
   --detail-coral: #a5483d;
   --detail-width: min(1180px, calc(100vw - 64px));
-  font-family: Inter, Aptos, "Segoe UI", sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -52,7 +51,7 @@ select { font: inherit; }
   margin-bottom: 14px;
   color: var(--detail-brand-deep);
   font-size: 13px;
-  font-weight: 760;
+  font-weight: 800;
   text-decoration: none;
 }
 
@@ -84,15 +83,15 @@ select { font: inherit; }
 }
 
 .catalog-record-code span {
-  font-family: "Segoe UI Variable Display", Aptos, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 40px;
-  font-weight: 720;
+  font-weight: 700;
   line-height: 1;
 }
 
 .catalog-record-code small {
   font-size: 10px;
-  font-weight: 850;
+  font-weight: 800;
   letter-spacing: 0;
 }
 
@@ -105,7 +104,7 @@ select { font: inherit; }
   margin-bottom: 13px;
   color: var(--entity-color, var(--detail-brand));
   font-size: 11px;
-  font-weight: 850;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -119,9 +118,9 @@ select { font: inherit; }
   max-width: 760px;
   margin: 0;
   color: var(--detail-ink);
-  font-family: "Segoe UI Variable Display", Aptos, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 44px;
-  font-weight: 680;
+  font-weight: 700;
   line-height: 1.04;
   letter-spacing: 0;
   overflow-wrap: anywhere;
@@ -133,7 +132,7 @@ select { font: inherit; }
   margin: 10px 0 0;
   color: var(--detail-copy);
   font-size: 17px;
-  font-weight: 590;
+  font-weight: 600;
 }
 
 .catalog-record-intro {
@@ -169,7 +168,7 @@ select { font: inherit; }
 
 .catalog-record-context a {
   color: var(--detail-brand-deep);
-  font-weight: 740;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -192,7 +191,7 @@ select { font: inherit; }
   max-width: 100%;
   color: var(--detail-brand-deep);
   font-size: 12px;
-  font-weight: 760;
+  font-weight: 800;
   overflow-wrap: anywhere;
   text-underline-offset: 3px;
 }
@@ -216,7 +215,7 @@ select { font: inherit; }
 .catalog-definition-list dt {
   color: var(--detail-muted);
   font-size: 10px;
-  font-weight: 820;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -225,7 +224,7 @@ select { font: inherit; }
   margin-top: 8px;
   color: var(--detail-ink);
   font-size: 15px;
-  font-weight: 690;
+  font-weight: 700;
   line-height: 1.38;
   overflow-wrap: anywhere;
 }
@@ -263,7 +262,7 @@ select { font: inherit; }
   margin-bottom: 8px;
   color: var(--entity-color, var(--detail-brand));
   font-size: 11px;
-  font-weight: 850;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -271,9 +270,9 @@ select { font: inherit; }
   max-width: 720px;
   margin: 0;
   color: var(--detail-ink);
-  font-family: "Segoe UI Variable Display", Aptos, "Segoe UI", sans-serif;
+  font-family: var(--font-ui);
   font-size: 25px;
-  font-weight: 670;
+  font-weight: 700;
   line-height: 1.18;
 }
 
@@ -308,7 +307,7 @@ select { font: inherit; }
   margin: 7px 0 0;
   color: var(--detail-ink);
   font-size: 14px;
-  font-weight: 640;
+  font-weight: 600;
   line-height: 1.52;
   overflow-wrap: anywhere;
 }
@@ -329,7 +328,7 @@ select { font: inherit; }
   color: var(--detail-copy);
   background: var(--detail-white);
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .catalog-item-list {
@@ -352,7 +351,7 @@ select { font: inherit; }
 .catalog-item-label {
   color: var(--detail-muted);
   font-size: 11px;
-  font-weight: 820;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -372,7 +371,7 @@ select { font: inherit; }
   margin-bottom: 7px;
   color: var(--entity-color, var(--detail-brand));
   font-size: 10px;
-  font-weight: 850;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -449,7 +448,7 @@ select { font: inherit; }
   color: var(--detail-brand-deep);
   background: var(--detail-white);
   font-size: 12px;
-  font-weight: 770;
+  font-weight: 800;
   text-decoration: none;
 }
 
@@ -565,7 +564,7 @@ select { font: inherit; }
   border-radius: 4px;
   color: var(--detail-white);
   background: var(--detail-brand);
-  font-weight: 760;
+  font-weight: 800;
   cursor: pointer;
 }
 
