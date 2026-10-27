@@ -1,0 +1,27 @@
+import { createHash } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+
+type Source = { id: string; label: string; url: string; finalUrl?: string; fetchedAt: string; status: number; contentType: string; sha256: string; artifactPath: string };
+const root = process.cwd();
+const directory = resolve(root, "work/catalog-official/2026-10-26T14-31-47-428Z");
+const lockedSha = "bd73ebeaf3e9ccce7817b739ce9ae4afad572e4d9bdf182f64240471b303b0c6";
+const manifest = JSON.parse(await readFile(resolve(directory, "manifest.json"), "utf8")) as { sources: Source[] };
+const source = manifest.sources.find((entry) => entry.id === "xauat-information-disclosure-home-current" && entry.status === 200 && entry.sha256 === lockedSha);
+if (!source) throw new Error("Missing locked XAUAT source");
+if (createHash("sha256").update(await readFile(resolve(directory, source.artifactPath))).digest("hex") !== lockedSha) throw new Error("XAUAT evidence hash mismatch");
+const reviewed = JSON.parse(await readFile(resolve(root, "seeds/catalog.reviewed-100-official-release.json"), "utf8")) as CatalogSeedBundle;
+const city = reviewed.cities?.find((entry) => entry.slug === "xian");
+if (!city) throw new Error("Reviewed Xi'an dependency missing");
+const sf = { sourceUrl: source.finalUrl ?? source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
+const school = { slug: "xian-university-of-architecture-and-technology", nameEn: "Xi'an University of Architecture and Technology", nameZh: "西安建筑科技大学", citySlug: city.slug, schoolType: "Public science and engineering university", region: "Xi'an, Shaanxi, Northwest China", applicationLevel: "The official international-education profile is registered but its host rejects deterministic collection. This candidate therefore asserts current university identity only; 2027 applicant-facing programs and requirements remain unresolved.", websiteUrl: "https://cn.xauat.edu.cn/", admissionsUrl: "https://cn.xauat.edu.cn/rcpy/gjjy.htm", subjectTags: [], languageTags: [], campusHighlights: ["Official university in Xi'an", "Current official information-disclosure site captured and hash-locked", "International degree and non-degree study details remain queued for verified capture"], status: "active" as const, verificationStatus: "verified" as const, lastVerifiedAt: source.fetchedAt, ...sf, sourceFieldLineage: { nameEn: "official university identity normalized to English", nameZh: "captured official university identity", citySlug: "official university identity plus reviewed Xi'an dependency", schoolType: "CUAC taxonomy for official university identity", region: "verified location plus CUAC taxonomy", applicationLevel: "registered official international-education profile and documented access limitation", websiteUrl: "official university domain", admissionsUrl: "registered official international-education profile", subjectTags: "empty because route evidence was not hash-locked", languageTags: "empty because route evidence was not hash-locked", campusHighlights: "captured official information-disclosure home and documented access state" } };
+const candidate: CatalogSeedBundle = { version: 1, generatedAt: source.fetchedAt, cities: [city], schools: [school], programs: [], programIntakes: [], scholarships: [] };
+const text = `${JSON.stringify(candidate, null, 2)}\n`;
+const candidateSha256 = createHash("sha256").update(text).digest("hex");
+const validation = createCatalogMigrationValidationReport(JSON.parse(text));
+if (!validation.ok) throw new Error(validation.errors.join("\n"));
+const review = { version: 1, status: "unreviewed_draft", generatedAt: source.fetchedAt, candidateSha256, publicationAuthorized: false, databaseWriteAuthorized: false, scope: { target: "2026 ShanghaiRanking BCUR top 150", targetPosition: 118, schoolSlugs: [school.slug], newSchools: 1, programs: 0, programIntakes: 0, scholarships: 0 }, evidence: [{ id: source.id, label: source.label, url: source.finalUrl ?? source.url, contentType: source.contentType, fetchedAt: source.fetchedAt, sha256: source.sha256 }], unresolved: ["The current official international-education pages return HTTP 403 to deterministic collection; access controls were not bypassed.", "No applicant-facing 2027 guide was captured, so program names, intakes, tuition, deadlines, language rules and scholarships remain absent.", "Search-index excerpts are not used as candidate evidence.", "Applicant data, personal contacts, payment instructions and bank information are excluded."], sensitiveDataCheck: { result: "pass", note: "No applicant data, personal contacts, payment instructions or bank information are present." } };
+const stem = resolve(root, "seeds/catalog.2027-wave-194");
+await Promise.all([writeFile(`${stem}.draft.json`, text, "utf8"), writeFile(`${stem}.validation.json`, `${JSON.stringify({ ...validation, candidateSha256, publicationAuthorized: false, databaseWriteAuthorized: false }, null, 2)}\n`, "utf8"), writeFile(`${stem}.review.json`, `${JSON.stringify(review, null, 2)}\n`, "utf8")]);
+console.log(JSON.stringify({ ok: true, wave: 194, candidateSha256, counts: validation.summary, publicationAuthorized: false, databaseWriteAuthorized: false }, null, 2));

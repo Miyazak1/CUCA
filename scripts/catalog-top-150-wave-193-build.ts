@@ -1,0 +1,27 @@
+import { createHash } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+
+type Source = { id: string; label: string; url: string; finalUrl?: string; fetchedAt: string; status: number; contentType: string; sha256: string; artifactPath: string };
+const root = process.cwd();
+const directory = resolve(root, "work/catalog-official/2026-10-26T14-24-30-162Z");
+const lockedSha = "8027ecb252c1dd4b1e7f1da53595b1e7f7c8c076334fa0072ccd84674f7f013d";
+const manifest = JSON.parse(await readFile(resolve(directory, "manifest.json"), "utf8")) as { sources: Source[] };
+const source = manifest.sources.find((entry) => entry.id === "ynu-international-new-student-opening-2026" && entry.status === 200 && entry.sha256 === lockedSha);
+if (!source) throw new Error("Missing locked YNU source");
+if (createHash("sha256").update(await readFile(resolve(directory, source.artifactPath))).digest("hex") !== lockedSha) throw new Error("YNU evidence hash mismatch");
+const reviewed = JSON.parse(await readFile(resolve(root, "seeds/catalog.reviewed-100-official-release.json"), "utf8")) as CatalogSeedBundle;
+const city = reviewed.cities?.find((entry) => entry.slug === "kunming");
+if (!city) throw new Error("Reviewed Kunming dependency missing");
+const sf = { sourceUrl: source.finalUrl ?? source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
+const school = { slug: "yunnan-university", nameEn: "Yunnan University", nameZh: "云南大学", citySlug: city.slug, schoolType: "Public comprehensive research university", region: "Kunming, Yunnan, Southwest China", applicationLevel: "The current official English admissions site publishes 2026 undergraduate, graduate, non-degree, scholarship and major categories. Its certificate does not match the hostname, while another official international endpoint terminates TLS; this candidate therefore asserts school identity and current international enrollment only.", websiteUrl: "https://www.ynu.edu.cn/", admissionsUrl: "https://english.ynu.edu.cn/", subjectTags: [], languageTags: [], campusHighlights: ["Official university in Kunming", "Current official report confirms 2026 international new students", "International degree, non-degree, scholarship and major categories remain queued for verified capture"], status: "active" as const, verificationStatus: "verified" as const, lastVerifiedAt: source.fetchedAt, ...sf, sourceFieldLineage: { nameEn: "official university identity normalized to English", nameZh: "official university identity", citySlug: "official university identity plus reviewed Kunming dependency", schoolType: "CUAC taxonomy for official university identity", region: "verified location plus CUAC taxonomy", applicationLevel: "registered current English admissions categories and documented TLS limitation", websiteUrl: "official university domain", admissionsUrl: "official English admissions domain", subjectTags: "empty because route evidence was not hash-locked", languageTags: "empty because route evidence was not hash-locked", campusHighlights: "captured official 2026 international-new-student report and access state" } };
+const candidate: CatalogSeedBundle = { version: 1, generatedAt: source.fetchedAt, cities: [city], schools: [school], programs: [], programIntakes: [], scholarships: [] };
+const text = `${JSON.stringify(candidate, null, 2)}\n`;
+const candidateSha256 = createHash("sha256").update(text).digest("hex");
+const validation = createCatalogMigrationValidationReport(JSON.parse(text));
+if (!validation.ok) throw new Error(validation.errors.join("\n"));
+const review = { version: 1, status: "unreviewed_draft", generatedAt: source.fetchedAt, candidateSha256, publicationAuthorized: false, databaseWriteAuthorized: false, scope: { target: "2026 ShanghaiRanking BCUR top 150", targetPosition: 71, schoolSlugs: [school.slug], newSchools: 1, programs: 0, programIntakes: 0, scholarships: 0 }, evidence: [{ id: source.id, label: source.label, url: source.finalUrl ?? source.url, contentType: source.contentType, fetchedAt: source.fetchedAt, sha256: source.sha256 }], unresolved: ["The current English international-admissions host presents a certificate that does not match english.ynu.edu.cn, and another official international endpoint terminates the TLS handshake; certificate validation was not disabled.", "The current index indicates 2026 as the newest inbound cycle, so no 2027 route is inferred.", "Program names, intake records, tuition, deadlines, language rules and scholarships remain absent until valid official snapshots are available.", "Applicant data, personal contacts, payment instructions and bank information are excluded."], sensitiveDataCheck: { result: "pass", note: "No applicant data, personal contacts, payment instructions or bank information are present." } };
+const stem = resolve(root, "seeds/catalog.2027-wave-193");
+await Promise.all([writeFile(`${stem}.draft.json`, text, "utf8"), writeFile(`${stem}.validation.json`, `${JSON.stringify({ ...validation, candidateSha256, publicationAuthorized: false, databaseWriteAuthorized: false }, null, 2)}\n`, "utf8"), writeFile(`${stem}.review.json`, `${JSON.stringify(review, null, 2)}\n`, "utf8")]);
+console.log(JSON.stringify({ ok: true, wave: 193, candidateSha256, counts: validation.summary, publicationAuthorized: false, databaseWriteAuthorized: false }, null, 2));

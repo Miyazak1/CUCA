@@ -1,0 +1,1765 @@
+{
+  "version": 1,
+  "schoolSlug": "jiangnan-university",
+  "academicYear": "2026",
+  "method": "pandas/lxml extraction from official English HTML tables with locked source hashes and exact expected row counts",
+  "sources": [
+    {
+      "id": "jiangnan-international-bachelor-en-2026",
+      "sha256": "d8c766ffa17480ec58031b4dfbcd1a00d84c2fad13b458c470f9f80cbe1d9b0d",
+      "url": "https://studyabroad.jiangnan.edu.cn/en/Admission/Bachelor_Program.htm",
+      "fetchedAt": "2026-10-26T06:09:30.905Z",
+      "routes": 52
+    },
+    {
+      "id": "jiangnan-international-master-en-2026",
+      "sha256": "2ce380ecda1a032f628b0fc4a58ce8e91ec23e6a13646b905b903109978f3ad5",
+      "url": "https://studyabroad.jiangnan.edu.cn/en/Admission/Master_Program.htm",
+      "fetchedAt": "2026-10-26T06:09:31.552Z",
+      "routes": 50
+    },
+    {
+      "id": "jiangnan-international-phd-en-2026",
+      "sha256": "0a1fecc93758ab9f05929efe0729ab05a9eac7a1f56ca2654bde2918bb13da3b",
+      "url": "https://studyabroad.jiangnan.edu.cn/en/Admission/PhD_Program.htm",
+      "fetchedAt": "2026-10-26T06:09:33.609Z",
+      "routes": 27
+    }
+  ],
+  "counts": {
+    "total": 129,
+    "Bachelor": 52,
+    "Master": 50,
+    "Doctoral": 27,
+    "Chinese": 112,
+    "English": 17
+  },
+  "duplicateIdentities": [],
+  "routes": [
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Food Science & Technology",
+      "nameEn": "Food Science & Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 2,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Food Science & Technology",
+      "nameEn": "Food Quality & Safety",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 3,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Food Science & Technology",
+      "nameEn": "Food Nutrition & Health",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 4,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Bioengineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 5,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Biotechnology",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 6,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Brewing Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 7,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Synthetic Biology",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 8,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Textile Science & Engineering",
+      "nameEn": "Textile Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 9,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Textile Science & Engineering",
+      "nameEn": "Light Chemistry Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 10,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Chemical & Material Engineering",
+      "nameEn": "Chemical Engineering & Technology",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 11,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Chemical & Material Engineering",
+      "nameEn": "Macromolecule Materials & Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 12,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Chemical & Material Engineering",
+      "nameEn": "Applied Chemistry",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 13,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Automation and Intelligent Science (School of Internet of Things)",
+      "nameEn": "Internet of Things Technology",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 14,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Automation and Intelligent Science (School of Internet of Things)",
+      "nameEn": "Electrical Engineering & Automation",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 15,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Automation and Intelligent Science (School of Internet of Things)",
+      "nameEn": "Automation",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 16,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Environment & Civil Engineering",
+      "nameEn": "Environment Science",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 17,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Environment & Civil Engineering",
+      "nameEn": "Environment Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 18,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Business",
+      "nameEn": "Business Administration",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 19,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Business",
+      "nameEn": "Finance",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 20,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Business",
+      "nameEn": "Big Data Management Application",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 21,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Business",
+      "nameEn": "Digital Economy",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 22,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Science",
+      "nameEn": "Information & Computing Science",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 23,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Science",
+      "nameEn": "Optical Information Science & Technology",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 24,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Mechanical Engineering",
+      "nameEn": "Mechanical Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 25,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Mechanical Engineering",
+      "nameEn": "Packaging Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 26,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Design",
+      "nameEn": "Product Design",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 27,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Design",
+      "nameEn": "Visual Communication Design",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 28,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Design",
+      "nameEn": "Environmental Design",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 29,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Design",
+      "nameEn": "Public Art",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 30,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Design",
+      "nameEn": "Fashion & Apparel Design",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 31,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Life Sciences & Health Engineering",
+      "nameEn": "Pharmacy",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 32,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Life Sciences & Health Engineering",
+      "nameEn": "Pharmaceutical Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 33,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Medicine",
+      "nameEn": "Nursing",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 34,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Humanities",
+      "nameEn": "Chinese Language & Literature",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 35,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Humanities",
+      "nameEn": "Choreography",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 36,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Foreign Studies",
+      "nameEn": "English",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 37,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Foreign Studies",
+      "nameEn": "Japanese",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 38,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Artificial Intelligence & Computer Science",
+      "nameEn": "Computer Science & Technology",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 39,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Artificial Intelligence & Computer Science",
+      "nameEn": "Artificial Intelligence",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 40,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Law",
+      "nameEn": "Law",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 41,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Law",
+      "nameEn": "Social Work",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 42,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Marxism",
+      "nameEn": "Ideological and Political Education",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 43,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Digital Technology & Innovation Design",
+      "nameEn": "Industrial Design",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 44,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Xiakewan",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Digital Technology & Innovation Design",
+      "nameEn": "Digital Media Art",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 45,
+      "cscaSubjects": [
+        "Humanities Chinese",
+        "Mathematics"
+      ],
+      "campus": "Xiakewan",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Digital Technology & Innovation Design",
+      "nameEn": "Intelligent Interaction Design",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 46,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Xiakewan",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Integrated Circuits",
+      "nameEn": "Microelectronic Science & Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 47,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Xiakewan",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Integrated Circuits",
+      "nameEn": "Electronic Packaging Technology",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 48,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Xiakewan",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Fiber Engineering and Equipment Technology",
+      "nameEn": "Aircraft Design and Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 49,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Xiakewan",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Intelligent Manufacturing",
+      "nameEn": "Robotics Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 50,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Xiakewan",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Intelligent Manufacturing",
+      "nameEn": "Intelligent Manufacturing Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 1,
+      "sourceRow": 51,
+      "cscaSubjects": [
+        "STEM Chinese",
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Xiakewan",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Textile Science & Engineering",
+      "nameEn": "Textile Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 2,
+      "sourceRow": 2,
+      "cscaSubjects": [
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "campus": "Lihu",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Digital Technology & Innovation Design",
+      "nameEn": "Industrial Design",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-bachelor-en-2026",
+      "table": 2,
+      "sourceRow": 3,
+      "cscaSubjects": [
+        "Mathematics",
+        "Physics"
+      ],
+      "campus": "Xiakewan",
+      "tuitionBand": "CNY 14,800/year for Liberal Arts or CNY 16,400/year for Design, Science & Engineering; the source does not map every major to a fee category."
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Food Science & Technology",
+      "nameEn": "Food Science & Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 0,
+      "sourceRow": 2,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Fermentation Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 0,
+      "sourceRow": 3,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Microbiology",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 0,
+      "sourceRow": 4,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Biochemistry & Molecular Biology",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 0,
+      "sourceRow": 5,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Sugar Refining Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 0,
+      "sourceRow": 6,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Design",
+      "nameEn": "Design",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 0,
+      "sourceRow": 7,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Textile Science & Engineering",
+      "nameEn": "Textile Science & Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 0,
+      "sourceRow": 8,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Life Sciences and Health Engineering",
+      "nameEn": "Pharmacy",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 0,
+      "sourceRow": 9,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Food Science & Technology",
+      "nameEn": "Food Science & Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 2,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Fermentation Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 3,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Microbiology",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 4,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Biochemistry & Molecular Biology",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 5,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Sugar Refining Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 6,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Design",
+      "nameEn": "Design",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 7,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Design",
+      "nameEn": "Art",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 8,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Textile Science & Engineering",
+      "nameEn": "Textile Science & Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 9,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Chemical & Material Engineering",
+      "nameEn": "Materials Science & Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 10,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Chemical & Material Engineering",
+      "nameEn": "Chemistry Engineering & Technology",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 11,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Automation and Intelligent Science (School of Internet of Things)",
+      "nameEn": "Control Science & Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 12,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Automation and Intelligent Science (School of Internet of Things)",
+      "nameEn": "Electrical Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 13,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Automation and Intelligent Science (School of Internet of Things)",
+      "nameEn": "Intelligent Science & Technology",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 14,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Environment and Ecology",
+      "nameEn": "Environmental Science & Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 15,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Mechanical Engineering",
+      "nameEn": "Mechanical Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 16,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Mechanical Engineering",
+      "nameEn": "Packaging Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 17,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Artificial Intelligence and Computer Science",
+      "nameEn": "Computer Science & Technology",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 18,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Artificial Intelligence and Computer Science",
+      "nameEn": "Software Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 19,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Marxism",
+      "nameEn": "Marxism Theory",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 20,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Marxism",
+      "nameEn": "Chinese History",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 21,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Medicine",
+      "nameEn": "Public Health & Preventive Medicine",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 22,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Life Sciences and Health Engineering",
+      "nameEn": "Pharmacy",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 23,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Business",
+      "nameEn": "Business Administration",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 24,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Business",
+      "nameEn": "Applied Economics",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 25,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Business",
+      "nameEn": "Management Science & Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 26,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Science",
+      "nameEn": "Optical Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 27,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Science",
+      "nameEn": "Mathematics",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 28,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Science",
+      "nameEn": "Physics",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 29,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Humanities",
+      "nameEn": "Pedagogy",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 30,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Humanities",
+      "nameEn": "Chinese Language & Literature",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 31,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Humanities",
+      "nameEn": "Education Technology",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 32,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Humanities",
+      "nameEn": "Art",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 33,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Foreign Studies",
+      "nameEn": "English Language Literature",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 34,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Foreign Studies",
+      "nameEn": "Japanese Language Literature",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 35,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Law",
+      "nameEn": "Law",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 36,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Fiber Engineering and Equipment Technology",
+      "nameEn": "Civil Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 37,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Fiber Engineering and Equipment Technology",
+      "nameEn": "Textile Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 38,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Fiber Engineering and Equipment Technology",
+      "nameEn": "Low-altitude Technology and Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 39,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Digital Technology& Innovation Design",
+      "nameEn": "Design",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 40,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Integrated Circuits",
+      "nameEn": "Electronic Science and Technology",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 41,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Integrated Circuits",
+      "nameEn": "Integrated Circuit Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 42,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Intelligent Manufacturing",
+      "nameEn": "Mechanical Engineering",
+      "durationYears": 3,
+      "sourceId": "jiangnan-international-master-en-2026",
+      "table": 1,
+      "sourceRow": 43,
+      "tuitionAmount": 20000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Food Science & Technology",
+      "nameEn": "Food Science & Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 0,
+      "sourceRow": 2,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Fermentation Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 0,
+      "sourceRow": 3,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Sugar Refining Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 0,
+      "sourceRow": 4,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Design",
+      "nameEn": "Design",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 0,
+      "sourceRow": 5,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Textile Science & Engineering",
+      "nameEn": "Textile Science & Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 0,
+      "sourceRow": 6,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Chemical &Material Engineering",
+      "nameEn": "Chemical Engineering & Technology",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 0,
+      "sourceRow": 7,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "schoolOrFaculty": "School of Life Sciences and Health Engineering",
+      "nameEn": "Pharmaceutical Engineering & Technology",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 0,
+      "sourceRow": 8,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Food Science & Technology",
+      "nameEn": "Food Science & Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 2,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Fermentation Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 3,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Sugar Refining Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 4,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Biotechnology",
+      "nameEn": "Bioengineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 5,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Design",
+      "nameEn": "Design",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 6,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Textile Science & Engineering",
+      "nameEn": "Textile Science & Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 7,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Chemical & Material Engineering",
+      "nameEn": "Chemical Engineering & Technology",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 8,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Chemical & Material Engineering",
+      "nameEn": "Materials Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 9,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Automation and Intelligent Science (School of Internet of Things)",
+      "nameEn": "Control Science & Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 10,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Automation and Intelligent Science (School of Internet of Things)",
+      "nameEn": "Internet of Things Technology & Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 11,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Environment and Ecology",
+      "nameEn": "Environmental Science & Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 12,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Business",
+      "nameEn": "System Science and Management",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 13,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Science",
+      "nameEn": "Optical Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 14,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Mechanical Engineering",
+      "nameEn": "Mechanical Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 15,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Artificial Intelligence and Computer Science",
+      "nameEn": "Software Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 16,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Marxism",
+      "nameEn": "Marxism Theory",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 17,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Medicine",
+      "nameEn": "Food Borne Chronic Diseases",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 18,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Life Sciences and Health Engineering",
+      "nameEn": "Pharmaceutical Engineering & Technology",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 19,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Life Sciences and Health Engineering",
+      "nameEn": "Bioengineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 20,
+      "tuitionAmount": 25000
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolOrFaculty": "School of Fiber Engineering and Equipment Technology",
+      "nameEn": "Textile Science & Engineering",
+      "durationYears": 4,
+      "sourceId": "jiangnan-international-phd-en-2026",
+      "table": 1,
+      "sourceRow": 21,
+      "tuitionAmount": 25000
+    }
+  ]
+}

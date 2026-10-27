@@ -33,6 +33,7 @@ const expected = new Map<string, string>([
   ["xjtu-master-program-list-2027", "a630446f0007e01515daadf7cb4754a418a48cf0851ad3802d09b1b63b1f7aca"],
   ["xjtu-doctoral-program-index-2027", "b9c412c5ccb1e58c7db9773782a7c98860e014d4fa272a2d3a728220b4060836"],
   ["xjtu-doctoral-program-list-2027", "5fab453912a326e326e8099e40a3aadc9c19ccfcf377de8790ca1623bc572c9f"],
+  ["xjtu-eligibility-and-application-documents-current", "dcb3709af4d0b31f7ae0ad070d99f24810bf15a29575f7b8f71ab0c3f9815c1a"],
 ]);
 const evidence = new Map<string, ManifestSource>();
 
@@ -238,6 +239,11 @@ const programs: CatalogSeedProgram[] = routes.map((route) => {
       ? "Supervisor acceptance-letter requirements differ by listed offering; consult the official catalog for the selected school or supervisor."
       : "The official catalog marks a supervisor acceptance letter as required for the listed offering(s).";
   const languageSlug = language ? language.toLowerCase() : "language-unspecified";
+  const languageRequirement = language === "Chinese"
+    ? { hskRequirement: "Current XJTU general eligibility: valid HSK Level 4 with 180 points or above; an approved alternative certificate may be accepted, and a prior Chinese-medium degree from a Chinese university may qualify for the published exemption." }
+    : language === "English"
+      ? { englishRequirement: "Current XJTU general eligibility: IELTS 6.0 or above or TOEFL 80 or above; another language-proficiency certificate may be accepted with XJTU approval. Program-specific requirements take precedence." }
+      : {};
   return {
     slug: `xi-an-jiaotong-university-2027-${degreeLevel.toLowerCase()}-${code}-${languageSlug}-${String(durationYears).replace(".", "-")}y-${degreeType.toLowerCase()}`,
     schoolSlug: school.slug,
@@ -247,8 +253,9 @@ const programs: CatalogSeedProgram[] = routes.map((route) => {
     ...(Number.isInteger(durationYears) ? { durationYears } : { durationMonths: Math.round(durationYears * 12) }),
     subjectArea: name,
     ...(language ? { teachingLanguage: language } : {}),
+    ...languageRequirement,
     applicationUrl: index.finalUrl ?? index.url,
-    applicationNote: `Official 2027 ${degreeType.toLowerCase()} ${degreeLevel.toLowerCase()} program, code ${code}. ${acceptance} The program list does not publish an application window or general language-score threshold.`,
+    applicationNote: `Official 2027 ${degreeType.toLowerCase()} ${degreeLevel.toLowerCase()} program, code ${code}. ${acceptance} Current general XJTU language requirements are applied by the listed teaching language; program-specific requirements take precedence. The 2027 program list does not publish an application window or tuition schedule.`,
     displayGroup: `xjtu-2027-${degreeLevel.toLowerCase()}-${slugPart(degreeType)}`,
     displayGroupLabel: `2027 ${degreeType} ${degreeLevel} programs`,
     status: "active",
@@ -266,8 +273,10 @@ const programs: CatalogSeedProgram[] = routes.map((route) => {
         : { durationMonths: "official workbook Basic Study Duration (Y) column; 2.5 years normalized to 30 months" }),
       subjectArea: "official workbook Programs column",
       ...(language ? { teachingLanguage: "official workbook Teaching Language column" } : {}),
+      ...(language === "Chinese" ? { hskRequirement: "current official Eligibility and Application Documents page" } : {}),
+      ...(language === "English" ? { englishRequirement: "current official Eligibility and Application Documents page" } : {}),
       applicationUrl: "registered official program-list index",
-      applicationNote: "official workbook Program Code, Degree Type and supervisor acceptance-letter columns",
+      applicationNote: "official workbook Program Code, Degree Type and supervisor acceptance-letter columns plus current official general eligibility page",
     },
   };
 });
@@ -297,7 +306,8 @@ const review = {
   scope: { schoolSlugs: [school.slug], refreshedPrograms: programs.length, new2027Intakes: 0, refreshedScholarships: 0, sourceSnapshots: evidence.size },
   evidence: [...evidence.values()].map(({ id, label, url, fetchedAt, sha256 }) => ({ id, label, url, fetchedAt, sha256 })).sort((a, b) => a.id.localeCompare(b.id)),
   unresolved: [
-    "The official 2027 program lists do not publish a general application window, intake term, tuition schedule or general language-score threshold; these fields remain absent.",
+    "The official 2027 program lists do not publish a general application window, intake term or tuition schedule; these fields remain absent.",
+    "Language thresholds come from XJTU's current general eligibility page rather than a dated 2027 guide. Program-specific requirements take precedence, and no threshold is assigned to the one doctoral row whose teaching language is not published.",
     "The doctoral Occupational and Environmental Health row has no legible English/Chinese marker in the Teaching Language cell; teachingLanguage remains absent.",
     "Program-level supervisor names are deliberately not migrated. Acceptance-letter requirements are summarized only at the route level and remain offering-specific where the same route has conflicting rows.",
   ],

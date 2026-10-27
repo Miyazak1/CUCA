@@ -17,6 +17,20 @@ const base = JSON.parse(await readFile(resolve(root, "seeds/catalog.reviewed-100
   programIntakes: Array<{ programSlug: string; sourceUrl?: string; sourceSha256?: string }>;
   scholarships: Array<{ schoolSlug?: string; sourceUrl?: string; sourceSha256?: string }>;
 };
+const target = JSON.parse(await readFile(resolve(root, "catalog-sources/china-top-150-targets.2026.json"), "utf8")) as {
+  rankingBasis: { publisher: string; edition: string; list: string; sourceUrl: string };
+  schools: Array<{
+    targetPosition: number;
+    publishedRank: string;
+    nameEn: string;
+    catalogSchoolSlug: string | null;
+  }>;
+};
+const targetSchools = target.schools.map((school) => {
+  if (!school.catalogSchoolSlug) throw new Error(`Top-150 target position ${school.targetPosition} has no catalog school slug.`);
+  return { ...school, slug: school.catalogSchoolSlug };
+});
+if (new Set(targetSchools.map((school) => school.slug)).size !== targetSchools.length) throw new Error("Top-150 target contains duplicate catalog school slugs.");
 const registry = JSON.parse(await readFile(resolve(root, "catalog-sources/official-sources.json"), "utf8")) as {
   sources: RegisteredSource[];
 };
@@ -28,14 +42,14 @@ if (discoveryBySchool.size !== discovery.schools.length) throw new Error("2027 d
 
 const year2027Pattern = /(?:^|[^0-9])2027(?:[^0-9]|$)/i;
 const academicCyclePattern = /2026\s*[-–/]\s*2027/i;
-const explicitTerm2027Pattern = /(?:spring|fall|autumn)\s*2027|2027\s*(?:spring|fall|autumn)/i;
+const explicitTerm2027Pattern = /(?:spring|summer|fall|autumn|winter|january|february|march|april|may|june|july|august|september|october|november|december)\s*2027|2027\s*(?:spring|summer|fall|autumn|winter|january|february|march|april|may|june|july|august|september|october|november|december)|2027\s*年\s*(?:1[0-2]|0?[1-9])\s*月/i;
 const priorPattern = /(?:^|[^0-9])2026(?:[^0-9]|$)/i;
 const sourceText = (source: RegisteredSource) => `${source.id}\n${source.label}\n${source.url}`;
 const isExplicit2027Source = (source: RegisteredSource) => {
   const text = sourceText(source);
   return year2027Pattern.test(text) && (!academicCyclePattern.test(text) || explicitTerm2027Pattern.test(text));
 };
-const nonDegreePattern = /language program|chinese language|non[- ]degree|exchange|pre[- ]university|foundation program/i;
+const nonDegreePattern = /language program|chinese language|non[- ]degree|exchange|visiting program|visiting student|pre[- ]university|foundation program/i;
 const degreeSourceRoles = new Set(["school-admissions", "program-catalog"]);
 const isDegreeSource = (source: RegisteredSource) => degreeSourceRoles.has(source.sourceRole) && !nonDegreePattern.test(sourceText(source));
 const currentSources = registry.sources.filter(isExplicit2027Source);
@@ -64,6 +78,7 @@ const evidenceKey = (row: { sourceUrl?: string; sourceSha256?: string }) => {
   }
 };
 const programSchoolBySlug = new Map(base.programs.map((program) => [program.slug, program.schoolSlug]));
+const baseSchoolBySlug = new Map(base.schools.map((school) => [school.slug, school]));
 const seedFiles = (await readdir(resolve(root, "seeds")))
   .filter((file) => /2027.*\.(?:draft|reviewed)\.json$/i.test(file) || /spring-2027\.draft\.json$/i.test(file));
 
@@ -76,9 +91,8 @@ for (const file of seedFiles) {
     continue;
   }
   const slugs = new Set<string>();
-  for (const row of Array.isArray(bundle.schools) ? bundle.schools as JsonRecord[] : []) {
-    if (row.slug) slugs.add(String(row.slug));
-  }
+  // A school-only row establishes directory coverage, not a refreshed 2027 route.
+  // Count a draft as actionable only when it carries a program or scholarship row.
   for (const key of ["programs", "scholarships"] as const) {
     for (const row of Array.isArray(bundle[key]) ? bundle[key] as JsonRecord[] : []) {
       if (row.schoolSlug) slugs.add(String(row.schoolSlug));
@@ -91,7 +105,7 @@ for (const file of seedFiles) {
   }
 }
 
-const rows = base.schools.map((school) => {
+const rows = targetSchools.map((school) => {
   const sources = registry.sources.filter((source) => source.schoolSlug === school.slug);
   const sources2027 = sources.filter(isExplicit2027Source);
   const academicCycleSources = sources.filter((source) => academicCyclePattern.test(sourceText(source)) && !isExplicit2027Source(source));
@@ -122,14 +136,15 @@ const rows = base.schools.map((school) => {
   const baselinePrograms = base.programs.filter((program) => program.schoolSlug === school.slug);
   const baselineIntakes = base.programIntakes.filter((intake) => programSchoolBySlug.get(intake.programSlug) === school.slug);
   const baselineScholarships = base.scholarships.filter((scholarship) => scholarship.schoolSlug === school.slug);
+  const baselineSchool = baseSchoolBySlug.get(school.slug);
   const baselineTotals = {
-    school: 1,
+    school: baselineSchool ? 1 : 0,
     programs: baselinePrograms.length,
     programIntakes: baselineIntakes.length,
     scholarships: baselineScholarships.length,
   };
   const baselineCurrentEvidence = {
-    school: backedByCurrentSource(school) ? 1 : 0,
+    school: baselineSchool && backedByCurrentSource(baselineSchool) ? 1 : 0,
     programs: baselinePrograms.filter(backedByCurrentSource).length,
     programIntakes: baselineIntakes.filter(backedByCurrentSource).length,
     scholarships: baselineScholarships.filter(backedByCurrentSource).length,
@@ -138,10 +153,15 @@ const rows = base.schools.map((school) => {
   const degreeCatalogCurrentInBaseline = baselinePrograms.length > 0
     && baselineCurrentEvidence.programs === baselinePrograms.length
     && baselineCurrentEvidence.programIntakes === baselineIntakes.length;
+  const blockedByAcquisitionLimit = !draftFiles.length
+    && degreeSources2027.length > 0
+    && /(?:oversize|exceeds? the 15 mib|acquisition[- ]policy limit)/i.test(`${discoveryBySchool.get(school.slug)?.result ?? ""}\n${discoveryBySchool.get(school.slug)?.notes ?? ""}`);
   const workState = degreeCatalogCurrentInBaseline
     ? "already_current_in_baseline"
     : draftFiles.length
       ? "current_draft_pending_review"
+      : blockedByAcquisitionLimit
+        ? "current_source_blocked_by_acquisition_limit"
       : degreeSources2027.length
         ? "current_source_extraction_needed"
         : discoveryBySchool.has(school.slug)
@@ -149,11 +169,14 @@ const rows = base.schools.map((school) => {
           : "degree_source_discovery_needed";
   const workPriority = workState === "current_draft_pending_review" ? 1
     : workState === "current_source_extraction_needed" ? 2
-      : workState === "degree_source_discovery_needed" ? 3
-        : workState === "discovery_checked_no_explicit_degree_source" ? 4 : 5;
+      : workState === "current_source_blocked_by_acquisition_limit" ? 3
+        : workState === "degree_source_discovery_needed" ? 4
+          : workState === "discovery_checked_no_explicit_degree_source" ? 5 : 6;
   return {
     schoolSlug: school.slug,
     schoolName: school.nameEn,
+    targetPosition: school.targetPosition,
+    publishedRank: school.publishedRank,
     state,
     priority,
     workState,
@@ -182,7 +205,8 @@ const report = {
   status: "unreviewed_audit",
   publicationAuthorized: false,
   databaseWriteAuthorized: false,
-  objective: "Refresh all 100 current CUAC schools from official 2027 sources where published, preserving unresolved fields and keeping review separate from publication.",
+  objective: "Refresh the 2026 ShanghaiRanking BCUR top 150 CUAC target schools from official 2027 sources where published, preserving unresolved fields and keeping review separate from publication.",
+  rankingBasis: target.rankingBasis,
   policy: {
     currentEvidenceRule: "A source counts as a 2027 intake source only when its registered ID, label, or URL explicitly states 2027; a generic 2026-2027 academic-cycle label does not qualify unless it also states a Spring/Fall/Autumn 2027 intake.",
     actionableDegreeSourceRule: "Only registered school-admissions and program-catalog sources can create degree-extraction work. Freshness indexes, preparation notices and discovery-only evidence never create publishable routes by themselves.",

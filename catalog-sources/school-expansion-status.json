@@ -1,0 +1,585 @@
+{
+  "version": 1,
+  "status": "top_150_school_candidate_coverage_complete_2027_detail_refresh_in_progress",
+  "checkedAt": "2026-10-27T03:02:54.812Z",
+  "policy": {
+    "officialSourcesOnly": true,
+    "doNotInferMissing2027Fields": true,
+    "doNotTreatTemporaryFetchFailureAsNoInformation": true,
+    "publicationAuthorized": false,
+    "databaseWriteAuthorized": false
+  },
+  "baseline": {
+    "publishedDirectorySchools": 100,
+    "existingSchoolsWithExplicit2027Evidence": 57,
+    "existingSchoolsStillWithoutExplicit2027Cycle": 43,
+    "unpublishedCandidateSchoolsWithRegisteredOfficialSources": 101,
+    "newSchoolCandidatesBuilt": 97
+  },
+  "continuation": {
+    "lastCompletedExistingSchool": "sichuan-international-studies-university",
+    "lastCompletedExpansionSchool": "shaanxi-university-of-science-and-technology",
+    "nextExistingBatch": [],
+    "nextExpansionBatch": [],
+    "retryRequired": [
+      "jiamusi-university",
+      "renmin-university-of-china",
+      "chongqing-university",
+      "hebei-university-of-economics-and-business",
+      "northeastern-university",
+      "dalian-medical-university",
+      "yunnan-university",
+      "ningbo-university",
+      "xian-university-of-architecture-and-technology",
+      "chengdu-university-of-technology",
+      "shaanxi-university-of-science-and-technology"
+    ]
+  },
+  "schools": [
+    {
+      "schoolSlug": "beijing-jiaotong-university",
+      "result": "official_2027_international_source_not_found_domestic_results_excluded",
+      "notes": "Rechecked on October 26, 2026. Indexed 2027 Beijing Jiaotong University results concern domestic graduate admissions rather than inbound international-student admissions. The official information-disclosure international admissions index currently exposes older material only. No 2027 international candidate is inferred; discovery remains queued."
+    },
+    {
+      "schoolSlug": "anqing-normal-university",
+      "result": "official_2026_source_registered_awaiting_2027",
+      "notes": "Rechecked on October 26, 2026. The official 2026 international admission brochure remains the newest inbound source. Indexed 2027 material is an outbound Oxford/Cambridge winter course for currently enrolled students and is excluded. No 2026 field is relabeled as 2027."
+    },
+    {
+      "schoolSlug": "china-university-of-petroleum-east-china",
+      "result": "wave_103_unreviewed_2027_school_and_cgs_candidate_built",
+      "notes": "The official October 15, 2026 Chinese Government Scholarship guide, its official application-material PDF and current international entry requirements are captured and hash-locked. Wave 103 adds the school and a fully structured 2027 master's/doctoral full-scholarship candidate with the December 15, 2026 deadline, tuition/accommodation/insurance coverage, CNY 36,000 master's and CNY 42,000 doctoral annual stipends, eligibility, materials and application steps. The scholarship material states HSK Level 4 while the current university graduate entry page states HSK Level 5 score 180; both are retained and applicants are told to meet the applicable university requirement. General self-funded 2027 catalogs, tuition and deadlines remain unresolved. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "changsha-university",
+      "result": "official_2026_sources_registered_awaiting_2027",
+      "notes": "Rechecked on October 26, 2026. The official notice index still lists the April 20, 2026 international prospectus as the latest inbound admissions guide. No explicit 2027 inbound international-student cycle is published, so no 2026 field is carried forward."
+    },
+    {
+      "schoolSlug": "soochow-university",
+      "result": "wave_103_unreviewed_explicit_spring_2027_candidate_built",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship guide explicitly publishes a five-month one-semester route commencing in March 2027, with an October 31, 2026 deadline and full tuition, accommodation, CNY 2,500 monthly allowance and medical-insurance coverage. Wave 103 adds the school, one non-degree program, one Spring 2027 intake and one scholarship. A separate current CSCA preparatory guide is captured for school-level context and fees, but no 2027 intake is inferred from it because the page does not explicitly print the intake year. General 2027 degree admissions remain unresolved. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "chengdu-university",
+      "result": "wave_97_unreviewed_candidate_built_from_explicit_spring_2027_source",
+      "notes": "The official Spring 2027 Chinese Language and Culture non-degree announcement is captured and hash-locked. Wave 97 adds one school, two duration/fee variants and two Spring 2027 intake records with publication and database writes disabled. General 2027 undergraduate and master's admission guides remain unresolved."
+    },
+    {
+      "schoolSlug": "china-medical-university",
+      "result": "official_current_portal_registered_fetch_retry_required",
+      "notes": "The official international admissions portal is registered. A deterministic October 26 fetch attempt timed out while connecting to the official host; exact current program, intake and scholarship sources remain unresolved and the timeout is not treated as absence of information."
+    },
+    {
+      "schoolSlug": "china-university-of-geosciences-wuhan",
+      "result": "wave_96_unreviewed_candidate_built_from_explicit_2027_sources",
+      "notes": "Official 2027 international bachelor's, master's and doctoral guide pages, their publicly embedded PDFs, and the complete 2027 CSCA pre-university page are captured and hash-locked. Wave 96 adds one school, one verified pre-university program and one 2027 application round with publication and database writes disabled. Degree-program tables remain pending structured visual extraction; the scholarship download still has an unexpected text/html content type and remains excluded."
+    },
+    {
+      "schoolSlug": "chongqing-university",
+      "result": "wave_190_unreviewed_school_identity_candidate_built_spring_2027_detail_retry_required",
+      "notes": "The current official university home is captured and hash-locked. Wave 190 adds Chongqing University as a school-directory candidate with the reviewed Chongqing dependency. The official international subsite indexes 2026 undergraduate and postgraduate guides plus an International Chinese Language Teachers Scholarship guide that explicitly covers a five-month Chinese Language and Literature route commencing in March 2027. Those detail pages returned HTTP 412 during deterministic collection, while the separate international service platform presented a certificate for another hostname; neither protection was bypassed. Program, intake, tuition, deadline, language and scholarship fields remain absent until valid official snapshots are available. Applicant data, personal contacts, payment instructions and bank information are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "dalian-jiaotong-university",
+      "result": "partial_2026_2027_sources_registered_fetch_retry_required",
+      "notes": "Official 2026 undergraduate and 2026-2027 scholarship/CSCA sources are registered. A deterministic October 26 fetch attempt timed out while connecting to the official international host; no 2027 degree cycle is inferred from domestic graduate results and candidate construction remains pending."
+    },
+    {
+      "schoolSlug": "gansu-university-of-chinese-medicine",
+      "result": "official_current_scope_captured_current_detail_absent",
+      "notes": "The current official international portal, enrollment-guide index, application overview and study index are captured and hash-locked. They confirm that the university recruits international bachelor, master and doctoral students and offers 14 medical programs, but the current detail pages do not publish a usable current-cycle program table, deadlines, fees or scholarship rules. The newest linked detailed brochure is explicitly 2021-2022; its page and PDF are archived as historical evidence and excluded from current and 2027 fields."
+    },
+    {
+      "schoolSlug": "guizhou-university",
+      "result": "waves_101_102_unreviewed_complete_2027_catalog_and_scholarship_candidates_built",
+      "notes": "The current official admissions index, complete 2027 undergraduate, master's and doctoral catalog PDFs, and the 2027/2028 Chinese Government Scholarship High-Level Graduate guide are captured and hash-locked. Wave 101 adds the school and fully structured Type B scholarship, including the December 15, 2026 deadline, eligibility, HSK/English thresholds, stipend, coverage, materials and steps. Wave 102 deterministically extracts 299 official offerings and 299 source-bounded 2027 cohort records: 62 undergraduate, 166 master's program/research-field and 71 doctoral program/research-field rows. Every undergraduate row retains CSCA subjects; every route retains explicit tuition evidence; dual-language fees remain verbatim instead of being collapsed. General self-funded application dates remain blank because the captured catalogs do not publish them. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "hebei-university-of-economics-and-business",
+      "result": "explicit_spring_2027_scholarship_registered_tls_retry_required",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship page explicitly publishes a March 2027 five-month route with an October 31, 2026 deadline. The exact page is registered, but deterministic collection of it and the three earlier HUEB sources fails TLS verification with UNABLE_TO_VERIFY_LEAF_SIGNATURE. No certificate bypass is used and no candidate is built until a valid raw snapshot and hash are available."
+    },
+    {
+      "schoolSlug": "inner-mongolia-university",
+      "result": "wave_105_unreviewed_explicit_spring_2027_candidate_built",
+      "notes": "The official 2026 International Chinese Language Teachers Scholarship guide is captured and hash-locked. It explicitly publishes a five-month one-semester route beginning in March 2027 with an October 31, 2026 deadline. Wave 105 adds Hohhot, the school, one non-degree program, one Spring 2027 intake and one full scholarship covering tuition, accommodation, living allowance and comprehensive medical insurance. Monetary benefit amounts are left blank because the captured guide does not publish them. General 2027 undergraduate, master's, doctoral and self-funded admissions remain unresolved. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "northeastern-university",
+      "result": "wave_191_unreviewed_school_identity_candidate_built_explicit_spring_2027_detail_tls_retry_required",
+      "notes": "The current official university home is captured and hash-locked. Wave 191 adds Northeastern University as a school-directory candidate with the reviewed Shenyang dependency. The official international-student platform publishes current bachelor, master, doctoral and Chinese-language guide titles, and indexed content explicitly identifies a March 2027 long-term Chinese-language intake with a December 30, 2026 deadline. The platform serves a certificate for another domain, while the International Education College host has a mismatched multi-label hostname and its certificate-valid alternative has no DNS record; TLS validation was not bypassed. Route, intake, fee, language and scholarship fields remain absent until valid official snapshots are available. Applicant data, personal contacts, payment instructions and bank information are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "china-university-of-petroleum-beijing",
+      "result": "wave_126_unreviewed_school_identity_candidate_built_current_2027_cycle_unresolved",
+      "notes": "The current official international education home is captured and hash-locked. Wave 126 adds the school identity, Beijing dependency, non-degree/bachelor/master/PhD scope, official general October-July 15 application timing, Changping location and institutional subject focus. The page does not identify a 2027 intake, so its typical timing is not converted into a 2027 deadline. Current route names, teaching languages, tuition, detailed requirements, application materials and scholarships remain empty rather than copied from the exposed 2026 cycle. Indexed 2027 graduate notices are domestic admissions and are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "dalian-medical-university",
+      "result": "wave_108_unreviewed_minimal_spring_2027_candidate_built_attachment_retry_required",
+      "notes": "The official September 21, 2026 Chinese and English announcements are captured and hash-locked. Wave 108 adds Dalian Medical University, the Spring 2027 Pre-Medical route and the Spring 2027 English-taught Clinical Medicine (MBBS) route, together with the October 20, 2026 system opening date and the application-process facts printed on the announcement. Both official attachment endpoints return a verification-code HTML page rather than the advertised PDF; the CAPTCHA was not bypassed. The closing date, tuition, application fee, duration, scholarship terms, CSCA rules and unpublished language thresholds therefore remain absent. The university-published application system is HTTP-only and is retained in explanatory text rather than written into the HTTPS-only applicationUrl field. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "yiwu-industrial-and-commercial-college",
+      "result": "wave_106_unreviewed_complete_spring_2027_language_candidate_built",
+      "notes": "The official Spring 2027 international Chinese-language guide is captured and hash-locked. Wave 106 adds Yiwu, the college, one non-degree Chinese Language program and one Spring 2027 intake with the November 1-December 31, 2026 application window, foundation through advanced curriculum, 20 weekly class hours, complete eligibility and materials, and the published CNY 19,200 annual fee breakdown. The guide names provincial, municipal, college and special scholarship opportunities but does not publish award values or application rules, so no scholarship record is inferred. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "jiamusi-university",
+      "result": "official_2026_2027_chinese_and_english_sources_retry_required",
+      "notes": "The exact official 2026-2027 Chinese and English admission brochure pages are registered and their indexed official content confirms bachelor, master, doctoral and non-degree scope. The latest dual-page deterministic retry at 14:40 UTC on October 26 again failed while connecting to the official HTTPS host, following earlier timeouts and socket closures. Raw snapshot retry remains required; search-index content is not copied into candidate facts and this is not classified as missing information."
+    },
+    {
+      "schoolSlug": "jiangsu-university-of-technology",
+      "result": "official_2026_sources_registered_awaiting_2027",
+      "notes": "Official desktop and mobile 2026 admission pages are registered; 2027 discovery remains pending."
+    },
+    {
+      "schoolSlug": "renmin-university-of-china",
+      "result": "wave_189_unreviewed_school_identity_candidate_built_explicit_spring_2027_guide_tls_retry_required",
+      "notes": "The current official university Study at Renmin profile is captured and hash-locked. Wave 189 adds Renmin University of China as a school-directory candidate with the reviewed Beijing dependency and the official profile's confirmed bachelor, master, doctoral, Chinese-language and exchange-study scope. The separate official visiting-program guide explicitly covers Fall 2026 and Spring 2027, but deterministic collection remains blocked because iso.ruc.edu.cn serves a self-signed TLS certificate; TLS verification was not bypassed. Route names, intake records, tuition, deadlines, language requirements and scholarships remain absent until a valid official snapshot is available. General 2027 degree admissions remain unresolved; applicant data, personal contacts, payment instructions and bank information are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "shanghai-normal-university",
+      "result": "wave_168_unreviewed_current_five_degree_routes_and_nine_scholarship_categories_candidate_built_2027_admission_cycle_unresolved",
+      "notes": "The official current International College of Chinese Studies home, admission index, bachelor, master, doctoral, scholarship and academic-schedule pages are captured and hash-locked. Wave 168 adds Shanghai Normal University, five current international degree routes and nine current scholarship-category records. It preserves two bachelor, two master and one doctoral Chinese-taught route, published durations, current graduate tuition, the CNY 520 application fee, bachelor CSCA subjects, HSK 5 score 180 for master study and generic deadlines. The current schedule lists Spring and Autumn 2027 academic calendars but is not an applicant-facing admission guide, so no 2027 intake is inferred. The doctoral page conflicts internally between HSK 6 score 180 in requirements and HSK 5 score 180 in materials, and the current bachelor fee conflicts with the indexed 2026 fall guide; those structured fields remain unresolved. Three registered 2026 brochure PDFs returned HTTP 404 during deterministic collection. Scholarship rows preserve only category, applicable program group and coverage because no numeric amounts, cycle-specific eligibility or 2027 deadline are published. Applicant files, personal contacts, bank/payment instructions and recipient lists are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "wuhan-university-of-science-and-technology",
+      "result": "wave_169_unreviewed_school_identity_candidate_built_2026_attachment_verification_code_required_2027_cycle_unresolved",
+      "notes": "The official International Education College home, profile, inbound-program index and May 22, 2026 international admission-guide announcement are captured and hash-locked. Wave 169 adds Wuhan University of Science and Technology as a directory candidate and preserves the official profile's confirmation of inbound international undergraduate and postgraduate enrollment. The linked PDF download endpoint returned an official verification-code page, so CAPTCHA/access controls were not bypassed and attachment-only program, tuition, deadline, language, material and scholarship fields remain absent. The public index exposes the 2026 announcement and two 2023 guides but no applicant-facing 2027 guide; no historic field is relabeled as 2027. The official English subsite was not retrievable through the approved discovery channel, and no mirror or aggregator is substituted. Applicant data, personal contacts, recipient lists and payment instructions are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "jiangxi-normal-university",
+      "result": "wave_170_unreviewed_complete_current_catalog_closed_2026_intakes_and_explicit_spring_2027_language_routes_candidate_built",
+      "notes": "The official international home, complete 2026 general brochure, current ten-page major catalog, 2026 fee and scholarship tables, program-specific English bachelor guide, 2026 International Chinese Language Teachers Scholarship guide and 2026-2027 Chinese Government Scholarship high-level graduate guide are captured and hash-locked. Wave 170 adds Jiangxi Normal University, 174 deterministically extracted current-catalog routes, two additional explicit Spring 2027 one-semester language/culture routes, 174 closed Fall 2026 intake records, two Spring 2027 intake records and four scholarship records. All ten rendered catalog pages were visually reviewed; cross-page Music and Foreign Languages faculty cells were restored from the layout and six repeated page-10 Mathematics and Statistics rows were removed. The candidate preserves three English-taught bachelor routes, CSCA Mathematics for bachelor applicants, the published language thresholds and tuition bands, the closed May 30, 2026 general deadline, and the explicit March 2027 one-semester start. The Spring 2027 scholarship guide publishes no deadline, and no general applicant-facing 2027 degree guide is available, so those fields remain empty rather than inferred. The general brochure states Duolingo 100 while the program-specific English guide states 95; 95 is used only for the three named English routes and the conflict is disclosed. Route-level numeric tuition is not inferred from discipline bands. Applicant documents, personal contacts, recipient lists, bank details and payment instructions are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "chengdu-university-of-technology",
+      "result": "wave_195_unreviewed_school_identity_candidate_built_2026_admission_pages_http_412_2027_cycle_unresolved",
+      "notes": "The official International Education College home, current admission-guide index, complete 2026 undergraduate and postgraduate guides, and 2026-2027 Chinese Government Scholarship high-level postgraduate guide are registered. Their host continued to return HTTP 412 during deterministic collection, and access controls were not bypassed. The official international-student management policy was captured and hash-locked, so wave 195 adds Chengdu University of Technology as a school-directory candidate and confirms international undergraduate and postgraduate enrollment. The policy is not an admissions guide: program, intake, tuition, deadline, language and scholarship rows remain absent, and no 2026 field is relabeled as 2027. Applicant data, personal contacts, payment instructions and bank information are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "shandong-agricultural-university",
+      "result": "wave_171_unreviewed_school_and_taian_identity_candidate_built_current_program_details_unresolved",
+      "notes": "The official International Office home, current international-student admission and enrollment workflow, and official English university home are captured and hash-locked. Wave 171 adds Tai'an and Shandong Agricultural University as directory candidates. The workflow confirms university-level international-student admission and enrollment, and current official English news confirms international master's and doctoral joint-training activity, but neither source is an applicant-facing program catalog. No program, intake, tuition, teaching-language, deadline, language-threshold or scholarship row is inferred. Indexed 2027 graduate admissions are domestic and are excluded. Application forms, applicant-document attachments, personal contacts and accommodation approval forms are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "hebei-university",
+      "result": "wave_172_unreviewed_complete_closed_2026_catalog_candidate_built_2027_cycle_unresolved",
+      "notes": "The official International College home, current international admission index, 2026 guide page and complete image-only ten-page guide PDF are captured and hash-locked. All ten rendered pages were visually reviewed. Wave 172 adds Baoding, Hebei University, 88 structured routes covering short-term Chinese, bachelor, master and doctoral study, 88 closed 2026 intake records and four scholarship categories. It preserves the January 1-May 31, 2026 application period, teaching languages, published route notes, general and route-specific language thresholds, bachelor CSCA requirement, discipline-level tuition bands, registration fee, provincial award amounts and university-president award schedule. The current official index exposes no general 2027 international guide, so no 2026 route is relabeled as 2027. Exact CSCA subject arrays and numeric route-level tuition remain empty where the visual table grouping or discipline mapping is ambiguous. Applicant documents, personal contacts, bank details and payment instructions are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "xinjiang-university",
+      "result": "wave_173_unreviewed_complete_closed_2026_catalog_and_explicit_spring_2027_language_candidate_built",
+      "notes": "The official International College home, current admission index, complete Chinese and English 2026 self-financed guides, 2026 Xinjiang Government Scholarship guide, 2026 International Chinese Language Teachers Scholarship guide and 2026 Chinese Government Scholarship High Level Postgraduate guide are captured and hash-locked. Wave 173 adds Xinjiang University, 87 structured closed-cycle routes plus four explicit March 2027 one-semester language/culture directions, 91 intake records and three scholarship records. The candidate preserves 22 recruiting-college program coverage, degree and language categories, durations, HSK and English thresholds, bachelor CSCA Chinese and Mathematics subjects, the March 1-May 15, 2026 self-financed window, fee bands, application fee, scholarship coverage, provincial stipend amounts and closed scholarship deadlines. The language-teacher guide explicitly publishes March 2027 entry and an October 31, 2026 deadline; those four routes are the only records labeled 2027. Domestic 2027 graduate-admission notices are excluded and no general 2026 degree route is relabeled as 2027. Route-level numeric tuition remains empty where the guide does not explicitly map programs to liberal-arts or science/engineering bands. Applicant files, personal contacts, bank statements and HTTP-only application-system links are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "shaanxi-university-of-science-and-technology",
+      "result": "wave_196_unreviewed_school_identity_candidate_built_current_admission_hosts_unavailable_2027_cycle_unresolved",
+      "notes": "The official university home, International Cooperation Office home and international-study index are registered, but continued to fail deterministic collection and the official English site returned HTTP 403 through discovery. Access controls and TLS validation were not bypassed. An official institutional profile page was captured and hash-locked, so wave 196 adds Shaanxi University of Science and Technology as a school-directory candidate. Because that page is not an admissions guide, programs, intakes, tuition, deadlines, language rules and scholarships remain absent. Third-party admissions portals are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "tiangong-university",
+      "result": "wave_174_unreviewed_current_55_route_catalog_and_2026_language_candidate_built_2027_cycle_unresolved",
+      "notes": "The official current international notification, project and scholarship indexes, current majors PDF, current fee page, current bachelor and graduate rules, current CSCA notice, 2026 Chinese-language guide and 2026 scholarship PDF are captured and hash-locked. Wave 174 adds Tiangong University, 25 bachelor, 22 master, six doctoral and two non-degree Chinese-language routes without inferred intake records. It preserves explicitly marked English-taught bachelor routes, current bachelor HSK and English thresholds, current degree-level tuition bands, CNY 500 application fee, accommodation context and the 2026 language tuition. The current official index publishes no complete applicant-facing general 2027 degree guide or deadline, so no current or 2026 route is relabeled as 2027. Graduate research directions are not expanded as separate programs where the degree-level mapping is ambiguous; exact CSCA subjects and image-heavy 2026 scholarship tables remain pending deterministic review. Applicant documents, personal contacts, HTTP-only application links and payment instructions are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "sichuan-agricultural-university",
+      "result": "wave_175_unreviewed_closed_2026_degree_requirements_and_undergraduate_scholarships_candidate_built_2027_cycle_pending",
+      "notes": "The official International Office home, current undergraduate and graduate indexes, complete 2026 bachelor, master and doctoral guide pages and current scholarship index are captured and hash-locked. Wave 175 adds Sichuan Agricultural University and two source-bounded 2026 undergraduate university scholarship records. It preserves the closed December 1, 2025-May 31, 2026 application window, HSK 4 bachelor and HSK 5 graduate thresholds, IELTS 5.5/TOEFL 70/Duolingo 100 graduate English thresholds, CNY 12,000/16,000/20,000 annual bachelor/master/doctoral tuition, CNY 600 application fee, undergraduate CSCA requirement, tuition-waiver award and CNY 6,000/CNY 2,000 academic scholarship tiers. The current indexes publish no applicant-facing 2027 international guide. The three named program catalogs require a verification code; access controls are not bypassed, so no route row, intake or route-specific CSCA subject array is inferred. Applicant documents, personal contacts, bank/payment instructions and financial-proof details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "changsha-university-of-science-and-technology",
+      "result": "wave_176_unreviewed_complete_closed_2026_catalog_and_explicit_spring_2027_language_routes_candidate_built",
+      "notes": "The current official international admissions index, complete Fall 2026 general guide, 2026/2027 Silk Road and high-level postgraduate Chinese Government Scholarship guides, 2026 Chinese Plus bachelor guide and 2026 International Chinese Language Teachers Scholarship guide are captured and hash-locked. Wave 176 adds Changsha University of Science and Technology, all 34 closed Fall 2026 general routes, six explicit five-month March 2027 scholarship study directions, 40 intake records and four scholarship records. It preserves teaching languages, durations, HSK and English thresholds, bachelor CSCA context, annual tuition bands, CNY 500 application and registration fees, scholarship coverage and published closed-cycle deadlines. The language-teacher guide explicitly prints March 2027 entry but an October 31, 2027 deadline after that intake; the conflict is disclosed and no corrected deadline is inferred. The general guide does not publish route-specific CSCA subjects; only Mathematics and Physics for the Silk Road New Energy scholarship route are explicit. The high-level postgraduate program attachment remains uncaptured. No Fall 2026 route is relabeled as a general 2027 degree intake. Applicant documents, personal contacts, account links and payment instructions are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "shihezi-university",
+      "result": "wave_177_unreviewed_school_and_shihezi_identity_candidate_built_current_applicant_details_unresolved",
+      "notes": "The official university home, International Exchange and Cooperation Office home, current Study at Shihezi page, April 2026 Silk Road Chinese Government Scholarship project announcement and March 2026 international master recruitment activity are captured and hash-locked. Wave 177 adds Shihezi and Shihezi University as directory candidates. Current official news confirms international master recruitment activity in Energy and Power and Energy Storage Technology and ten full graduate Silk Road scholarship places across Chemical Engineering and Technology, Agricultural Engineering and Mechanical fields for applicants from five Central Asian countries. The current Study at Shihezi page contains no applicant-facing program table, fees, language requirements, deadline or 2027 guide, so news is not substituted for an admissions catalog and no program, intake or scholarship row is inferred. Domestic 2027 graduate admissions are excluded. Applicant accounts, personal contacts and recipient lists are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "ningxia-university",
+      "result": "wave_178_unreviewed_complete_closed_2026_degree_catalog_and_two_scholarships_candidate_built_2027_cycle_pending",
+      "notes": "The current official international degree-education index, 2026 guide page and complete 24-page scanned official PDF are captured and hash-locked. Wave 178 adds Yinchuan, Ningxia University, 41 bachelor/master/doctoral routes, 41 closed Autumn 2026 intake records and two closed full-scholarship records. It preserves all program names visible in the official tables, Chinese teaching language, four-/three-/four-year durations, HSK 4 above 240 for bachelor study, HSK 5 above 180 for graduate study, route-grouped CSCA Chinese, Mathematics and Physics-or-Chemistry requirements, CNY 14,000/16,000/18,000 annual tuition, CNY 400 registration fee, CNY 800 insurance, the May 30, 2026 general deadline, scholarship quotas and published stipend amounts. The current index exposes no applicant-facing 2027 guide, so every route and award remains closed 2026 and is not relabeled. Tutor names and personal email addresses printed in the scanned tables are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "huaqiao-university",
+      "result": "wave_179_unreviewed_complete_explicit_2027_full_time_graduate_catalog_and_cgs_candidate_built",
+      "notes": "The current undergraduate and graduate indexes, explicit 2027 foreign international graduate guide, complete 2027 program catalog and 2027 Chinese Government Scholarship high-level graduate guide are captured and hash-locked. Wave 179 adds Quanzhou, Huaqiao University, 57 full-time master routes, 17 full-time doctoral routes, 74 open Fall 2027 intake records and one scholarship record. It preserves faculty, program code, academic/professional degree type, Quanzhou/Xiamen campus, Chinese teaching, HSK 5 score 180 general admission threshold, three-/four-year durations, CNY 19,000/25,000 annual tuition, two general application batches ending May 20, 2027 and the one-major rule. The scholarship record preserves its lower scholarship-specific HSK 4 score 180 threshold, age limits, 10 recommendation places and March 5, 2027 second-batch cutoff without overwriting general route requirements. The university guide does not itemize scholarship benefit coverage, so no generic CSC amount is inferred. Thirteen non-full-time master rows and one non-full-time doctoral row are excluded because the foreign international guide defines full-time on-campus study. The current undergraduate index has no 2027 guide, so no undergraduate row is inferred. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "southwest-university-of-political-science-and-law",
+      "result": "official_current_portal_registered_fetch_retry_required",
+      "notes": "The official international admissions portal is registered. A deterministic October 26 fetch attempt received HTTP 412; exact current program, intake and scholarship sources remain unresolved and no bypass is used."
+    },
+    {
+      "schoolSlug": "liaoning-university",
+      "result": "wave_100_unreviewed_candidate_built_from_complete_2027_guide_and_program_workbook",
+      "notes": "The official October 20, 2026 international admissions guide and its 2027 degree-program workbook are captured and hash-locked. Wave 100 adds one new school, 96 routes and 97 intake records spanning undergraduate, master, doctoral and long-term Chinese study, including program teaching languages, duration, discipline, undergraduate CSCA subjects, exact deadlines, language thresholds and standard tuition. Scholarship rows are intentionally omitted because the guide names scholarship eligibility without award-specific coverage or application rules. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "tongren-university",
+      "result": "official_2026_source_registered_awaiting_2027",
+      "notes": "Official 2026 international admission brochure is registered; 2027 discovery remains pending."
+    },
+    {
+      "schoolSlug": "university-of-shanghai-for-science-and-technology",
+      "result": "official_current_and_2026_sources_registered_awaiting_2027",
+      "notes": "Official application qualification, procedure and major-list sources are registered. The current site contains 2026/2027 academic-year scholarship and preparatory references plus 2027 suspension notes for selected majors, but these do not establish a general 2027 international application cycle; no 2027 candidate is inferred."
+    },
+    {
+      "schoolSlug": "yunnan-minzu-university",
+      "result": "official_2026_sources_registered_awaiting_2027",
+      "notes": "Official 2026 program catalog page and workbook are registered; admission requirements and 2027 discovery remain pending."
+    },
+    {
+      "schoolSlug": "southwestern-university-of-finance-and-economics",
+      "result": "wave_104_unreviewed_complete_2027_chinese_program_and_scholarship_candidates_built",
+      "notes": "The official 2027 Chinese Language Training guide, Spring 2027 International Chinese Language Teachers Scholarship guide, coverage attachment and application-material attachment are captured and hash-locked. Wave 104 adds the school, one non-degree Chinese program, explicit Spring and Fall 2027 intake records, and one Spring 2027 full scholarship. The program retains exact application windows, 17-week semesters, CNY 8,000 semester tuition, CNY 600 application fee, other published fees and application rules. The scholarship retains the October 26, 2026 deadline, HSK 3 score 180 plus HSKK requirement, CNY 2,500 monthly stipend, accommodation and insurance rules, and application materials. General 2027 undergraduate, master's and doctoral routes remain unresolved. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "zhengzhou-university",
+      "result": "wave_116_unreviewed_school_and_closed_2025_english_undergraduate_candidate_built_awaiting_2027",
+      "notes": "The current official School of International Education home and profile plus the archived 2025 English-taught and general undergraduate guides are captured and hash-locked. Wave 116 adds Zhengzhou city, the university, seven English-taught bachelor routes and seven closed Fall 2025 intake records. It preserves exact program names, four- or six-year duration, CNY 23,000-35,000 annual tuition, IELTS 6.0/TOEFL 83 threshold, eligibility and the historic application window while labeling every time-sensitive value as 2025. The old international.zzu.edu.cn host timed out, and no explicit 2027 inbound guide was found. Master, doctoral, foundation, language and visiting categories are confirmed only at institutional level and are not expanded without catalogs. No scholarship record is inferred from the brief Henan Government Scholarship mention. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "nanjing-university-of-science-and-technology",
+      "result": "wave_111_unreviewed_complete_2026_undergraduate_catalog_candidate_built_awaiting_2027",
+      "notes": "The official international admissions portal entry and four-page 2026 undergraduate program and CSCA catalog are captured and hash-locked. Wave 111 adds the school and 40 official 2026 undergraduate routes: 36 Chinese-taught and four English-taught, each with its exact published CSCA subject combination. The source states that each English-taught major requires at least eight enrolled students to open. The catalog does not publish application dates, tuition, duration, language thresholds or an intake term, so those fields and all programIntake records remain absent. The separate English guide endpoint returned an anti-bot HTTP 202 response and is excluded from candidate claims. No explicit 2027 inbound international guide was found, so no 2026 field is relabeled as 2027. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "hunan-university",
+      "result": "wave_112_unreviewed_2026_postgraduate_and_full_scholarship_candidate_built_awaiting_2027",
+      "notes": "The official 2026 Chinese Government Scholarship High-level Postgraduate page and four-page guide PDF are captured and hash-locked. Wave 112 adds the school, eight explicitly named master's/doctoral routes, eight closed 2026 cycle records, and one fully structured CSC Type B scholarship. It retains HSK 4, IELTS 6.0/TOEFL 80, the March 1, 2026 deadline, Type B agency number 10532, full tuition/accommodation coverage, CNY 3,000 master's and CNY 3,500 doctoral monthly stipends, CNY 800 annual insurance, eligibility, materials and application steps. Additional Chinese-taught majors referenced but not enumerated by the guide remain absent. No explicit 2027 inbound degree guide was found, so no 2026 field is relabeled as 2027. Personal contacts printed in the guide are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "xidian-university",
+      "result": "wave_113_unreviewed_complete_2026_degree_foundation_and_language_candidate_built_awaiting_2027",
+      "notes": "The official 2026 admissions hub and bachelor, master, doctoral, foundation and Chinese-language guide PDFs are captured and hash-locked. Wave 113 adds the school, 55 routes and 55 closed 2026 cycle records: four bachelor, 28 master, 21 doctoral, one foundation and one Chinese-language route. It retains the published teaching languages, bachelor CSCA subjects, HSK and English thresholds, durations, annual tuition, three degree-application rounds and the June 15 foundation/language deadline. The hub says May 15 while the route PDFs say May 17 for round two; the candidate follows the program-specific PDFs and flags the discrepancy. The transfer guide is captured but is not modeled until transfer-year and credit-recognition fields have a dedicated contract. No explicit 2027 inbound guide was found, so no 2026 field is relabeled as 2027. Personal contacts and QR codes are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "lanzhou-university",
+      "result": "wave_114_unreviewed_school_and_stale_2022_language_routes_candidate_built_current_cycle_missing",
+      "notes": "The official international-college homepage returns HTTP 412 to the registered collector and official-domain discovery found no 2026 or 2027 inbound international-student prospectus. The newest directly retrievable official guide is the 2022 self-funded prospectus, which is captured and hash-locked. Wave 114 adds Lanzhou city, the university, two explicit long-term Chinese-language routes and three closed 2022 intake records. It preserves the guide's eligibility, duration, language thresholds and historical fee bands while labeling every time-sensitive value as 2022. The guide does not enumerate degree majors, so no bachelor, master, doctoral or visiting-major record is inferred. Current application dates, tuition, program catalogs and scholarships remain absent. Personal contacts are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "beijing-jiaotong-university",
+      "result": "wave_115_unreviewed_school_identity_candidate_built_current_cycle_sources_unavailable",
+      "notes": "The current official information-disclosure index and the official English 2025 admission-brochure announcement are captured and hash-locked. The disclosure index still exposes a 2024 handbook, and the English university page still points to a 2025 brochure. The current international admissions endpoint timed out during registered collection; the official 2023 PDF exceeds the collector's strict 15 MiB limit and is not used for imported fields. Wave 115 therefore closes only the directory identity gap. Programs, tuition, current deadlines, language requirements, scholarships and application materials remain absent, the admissions endpoint remains queued for retry, and no historic field is relabeled as 2027. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "huazhong-agricultural-university",
+      "result": "wave_117_unreviewed_current_2027_postgraduate_school_and_scholarship_candidate_built",
+      "notes": "The official current international postgraduate application guide, programs-and-supervisors index, Chinese Government Scholarship overview and HZAU Scholarship overview are captured and hash-locked. Wave 117 adds the university and two 2027 postgraduate scholarship routes with the November 1, 2026-February 21, 2027 window, master's/doctoral eligibility, HSK 5 rule, published fee bands, required materials, full scholarship coverage and stipends. The university scholarship's partial tier is retained as unresolved because no coverage is published. Major-level extraction from the separate college tables remains queued; no generic program row is inferred from college headings. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "shanghaitech-university",
+      "result": "wave_118_unreviewed_school_and_closed_2026_international_visiting_candidate_built_awaiting_2027_degree_guide",
+      "notes": "The official Office of International Affairs home, empty international admission-guide index and 2026 Summer Lab page are captured and hash-locked. Wave 118 adds the university plus one closed invitation-based international visiting route with its 6-8 week duration, June 29 start, April 30 deadline, GPA and English eligibility, required materials, visa note and tuition/registration waiver. Indexed 2027 admissions pages are domestic graduate routes and are excluded. No 2027 inbound international degree guide, tuition, deadline, scholarship or degree-program catalog was found, and no domestic route is repurposed. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "northeast-normal-university",
+      "result": "wave_119_unreviewed_complete_2026_international_graduate_catalog_candidate_built_awaiting_2027",
+      "notes": "The official 2026 international master's and doctoral guides, 11-page program catalog PDF and Chinese Government Scholarship High-level Graduate guide are captured and hash-locked. All 11 rendered PDF pages were visually inspected and the ruled table was deterministically extracted as a continuous 1-151 sequence. Wave 119 adds the school, 151 routes and 151 closed 2026 intake records: 95 master's, 56 doctoral, 95 Chinese-taught and 56 English-taught, with official duration, faculty, degree type, tuition, campus and scholarship-eligibility marks. It also adds one closed 2026 full CSC scholarship. The PDF's Chinese text layer is corrupted, so Chinese major names are absent rather than guessed. No 2026 field is relabeled as 2027. Personal contacts are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "southwest-jiaotong-university",
+      "result": "wave_120_unreviewed_explicit_2027_chinese_language_candidate_built",
+      "notes": "The official 2027 Chinese Language Learning Programs page is captured and hash-locked. Wave 120 adds the school, beginner and intermediate non-degree Chinese-language routes, and Spring and Fall 2027 intake records for each route. It preserves the January 1 and June 30 deadlines, March 1 fall opening date, one- or two-semester duration, CNY 7,000 semester/CNY 14,000 annual tuition, CNY 400 application fee, CNY 1,000 insurance, CNY 365 monthly twin-room accommodation, eligibility, materials and application steps. Current 2027 bachelor, master's, doctoral and scholarship details remain unresolved and are not inferred. Personal contacts are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "jiangnan-university",
+      "result": "wave_121_unreviewed_complete_2026_international_degree_catalog_candidate_built_awaiting_2027",
+      "notes": "The official international admissions overview, English bachelor/master/PhD guides and 2026 Chinese Government Scholarship High-level Postgraduate guide are captured and hash-locked. Deterministic HTML-table extraction yields 129 routes: 52 bachelor, 50 master and 27 doctoral; 112 Chinese-taught and 17 English-taught. Wave 121 adds Wuxi, the school, all 129 routes, 129 closed 2026 intake records, exact bachelor CSCA subjects and one closed full CSC scholarship. Bachelor tuition remains the official CNY 14,800-16,400 discipline-category range because the source does not map every major to a fee category; no amount is guessed. Indexed 2027 graduate notices are domestic admissions and are excluded. No 2026 field is relabeled as 2027. Personal contacts are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "wuhan-university-of-technology",
+      "result": "wave_122_unreviewed_school_identity_candidate_built_official_documents_retry_required",
+      "notes": "The official international student application system is captured and hash-locked, closing the top-150 directory identity gap. Its HTML is a JavaScript shell and publishes no route, fee, deadline or scholarship fields. The registered official 2026 MOFCOM and bilateral scholarship PDFs both failed deterministic collection in this run, so search snippets are not imported and the sources remain queued for retry. No explicit inbound international 2027 guide was found, no historic field is relabeled as 2027, and publication/database writes remain disabled."
+    },
+    {
+      "schoolSlug": "nanjing-agricultural-university",
+      "result": "wave_123_unreviewed_complete_2027_international_undergraduate_candidate_built",
+      "notes": "The official 2027 international undergraduate page, eight-page embedded guide PDF, current English program table, fee table and scholarship indexes are captured and hash-locked. All eight rendered pages were visually inspected. Wave 123 adds the school, 72 Chinese-taught bachelor routes and 72 Fall 2027 intake records with the May 31, 2027 deadline, HSK 5, CSCA requirement, eligibility, materials and CNY 500/USD 80 application fee. The current fee page publishes only a CNY 20,000-33,000 undergraduate discipline-group range, so route-specific amounts remain empty. The protected CSCA attachment and WeChat-hosted 2027 postgraduate scholarship details are not bypassed; exact CSCA subjects and scholarship fields remain unresolved. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "nanjing-normal-university",
+      "result": "wave_124_unreviewed_school_identity_candidate_built_current_cycle_unresolved",
+      "notes": "The official university home page is captured and hash-locked, closing the top-150 directory identity gap. The official English site returned HTTP 412 and remains queued for retry. Official-domain discovery found no inbound international 2027 guide; third-party admissions pages are excluded. Programs, tuition, deadlines, language requirements and scholarships remain empty rather than inferred, and publication/database writes remain disabled."
+    },
+    {
+      "schoolSlug": "southwest-university",
+      "result": "wave_125_unreviewed_current_undergraduate_school_candidate_built_protected_attachments_pending",
+      "notes": "The current official international undergraduate page is captured and hash-locked. Wave 125 adds the school identity and source-bounded current undergraduate requirements: high-school qualification, age limit, HSK/TOEFL/IELTS/Duolingo thresholds, CSCA requirement, four-year standard duration, annual January 1-June 15 application period, CNY 500 application fee, accommodation and insurance amounts, materials and official application route. The page does not explicitly identify a 2027 intake, so no 2027 intake is inferred. Its four official 2026-2027 program and tuition workbooks are registered, but the university serves CAPTCHA pages instead of spreadsheet bytes; no program or tuition row is guessed. Scholarship categories lack cycle-specific award details, so no scholarship record is inferred. Bank details and personal contacts are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "hohai-university",
+      "result": "wave_127_unreviewed_explicit_2027_english_graduate_catalog_candidate_built",
+      "notes": "The current official graduate admissions index, 2027 English-taught master's and doctoral pages, and all five full-size embedded program-table images are captured and hash-locked. All five images were visually inspected. Wave 127 adds the school, 25 master's routes, 20 doctoral routes and 45 source-bounded 2027 entry records. It preserves exact program names, colleges, degree levels and English teaching language without assuming an unspecified semester. The 2027-2028 Chinese Government Scholarship High-level Graduate page is captured, but its embedded PDF is restricted to campus-network access; no scholarship coverage, eligibility, deadline or materials are inferred. Duration, tuition, language-score thresholds, self-funded deadlines and application materials remain empty because the accessible route tables do not publish them. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "shaanxi-normal-university",
+      "result": "wave_128_unreviewed_closed_2026_2027_csc_doctoral_candidate_built_awaiting_new_2027_cycle",
+      "notes": "The current official international admissions index and 2026-2027 CSC Silk Road guide are captured and hash-locked. Wave 128 adds the school, five English-taught four-year doctoral routes, five closed 2026-2027 cycle records and one full scholarship with tuition/registration, accommodation, CNY 3,500 monthly stipend and medical-insurance coverage. It retains IELTS 6.0/TOEFL 80, eligibility, application steps and the May 22, 2026 deadline. The cycle is explicitly labeled closed and is not presented as a new open 2027 intake. No general 2027 international guide, self-funded tuition or broader program catalog is inferred. Personal contacts are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "beijing-university-of-technology",
+      "result": "wave_129_unreviewed_school_identity_candidate_built_awaiting_2027_international_guide",
+      "notes": "The current official international admissions home is captured and hash-locked, closing the top-150 directory identity gap and confirming bachelor, master, doctoral, visiting/exchange, advanced-visiting and summer/winter categories. The official 2026 prospectus is registered but exceeds the controlled collector's 15 MiB limit, so no bypass or transcription is attempted. Domestic 2027 graduate admissions are excluded. Programs, route languages, fees, deadlines, detailed eligibility, materials and scholarships remain absent until a compliant international source is captured. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "china-university-of-mining-and-technology-xuzhou",
+      "result": "wave_130_unreviewed_explicit_spring_2027_chinese_training_candidate_built",
+      "notes": "The official March 2027 one-semester Chinese training guide is captured and hash-locked. Wave 130 adds the university, elementary and intermediate Chinese-training routes, and two open Spring 2027 intake records. It preserves the October 15, 2026-January 4, 2027 application window, February 28 registration, March 1-July 11 study dates, 120-student quota, eligibility, required materials, intermediate HSK 3 prerequisite, CNY 6,000 tuition, CNY 400 application fee, CNY 1,500 twin-room accommodation, CNY 415 insurance and about CNY 300 textbooks. The page timestamp/body-cycle discrepancy is disclosed. Broader degree catalogs and scholarships remain unresolved; personal contacts and financial-document contents are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "northwest-a-f-university",
+      "result": "wave_131_unreviewed_school_and_yangling_identity_candidate_built_awaiting_2027_guide",
+      "notes": "The current official international-college profile and English home are captured and hash-locked. Wave 131 adds Yangling and the university, preserving the official statement that all university majors are qualified to receive international students only at school level. No route rows are guessed from that statement. Current sources expose 2026 admissions activity but no explicit inbound international 2027 guide, program table, fee schedule, deadline or scholarship award, so those fields remain absent. Staff contacts are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "northwest-university",
+      "result": "wave_132_unreviewed_school_identity_candidate_built_awaiting_2027_international_guide",
+      "notes": "The current official international education home and latest 2026 international undergraduate guide page are captured and hash-locked. Wave 132 adds the university and confirms bachelor, master, doctoral and non-degree international study categories at school level. No explicit inbound international 2027 guide, route table, tuition, deadline or scholarship award is published; the 2026 attachment is not relabeled as 2027 and domestic 2027 graduate admissions are excluded. Contact details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "yunnan-university",
+      "result": "wave_193_unreviewed_school_identity_candidate_built_international_details_tls_retry_required",
+      "notes": "The official main-site report confirming 2026 international new-student enrollment is captured and hash-locked. Wave 193 adds Yunnan University as a school-directory candidate with the reviewed Kunming dependency. The current official English admissions site publishes undergraduate, graduate, non-degree, scholarship and major categories, but its certificate does not match english.ynu.edu.cn; another official international endpoint terminates TLS. Certificate validation was not disabled and search-rendered detail was not imported. The current index exposes 2026 as the newest inbound cycle, so no 2027 route is inferred. Program, intake, fee, language and scholarship fields remain absent until valid official snapshots are available. Applicant data, personal contacts, payment instructions and bank information are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "nanchang-university",
+      "result": "wave_133_unreviewed_current_school_requirements_and_fee_candidate_built_awaiting_2027_cycle",
+      "notes": "Seven official pages are captured and hash-locked: the current international admissions overview, application requirements, undergraduate program list, application method, application period, degree tuition schedule and accommodation schedule. Wave 133 adds the university with current bachelor/master/doctoral/non-degree scope, HSK and English thresholds, degree-level tuition bands, insurance and accommodation amounts. The application-period page says 'Full Year' but is dated April 18, 2024 and does not identify a 2027 cycle. The undergraduate page lists majors but does not publish a cycle, per-route teaching language, duration or route-specific fee category, so no ambiguous program or intake rows are generated. Personal contacts are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "china-university-of-geosciences-beijing",
+      "result": "wave_134_unreviewed_closed_2026_school_candidate_built_awaiting_2027_guide",
+      "notes": "The current official international admissions index, 2026 guide page and 14-page English guide PDF are captured and hash-locked. Wave 134 adds the university with bachelor/master/doctoral/language/visiting scope, HSK 4, undergraduate CSCA subject groups, durations, application fee, tuition ranges, accommodation and insurance. The current index still exposes 2026 as the newest general inbound guide. Its March 15 and June 30 deadlines are explicitly retained as closed 2026 facts and are not converted into 2027 intakes. Staff contacts and emergency-contact document copies are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "china-university-of-mining-and-technology-beijing",
+      "result": "wave_135_unreviewed_closed_2026_school_candidate_built_awaiting_2027_guide",
+      "notes": "The current official international admissions index and both Chinese-taught and English-taught 2026 guides are captured and hash-locked. Wave 135 adds the university with degree scope, HSK 4/5 and English graduate thresholds, durations, degree-level tuition, accommodation, insurance and bachelor CSCA requirement. The current index exposes 2026 as its newest inbound cycle; no explicit 2027 international guide or general deadline is published. Embedded program and CSCA tables remain pending separate extraction review, and no 2026 route or scholarship is relabeled as 2027. Personal contacts and financial-document contents are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "ningbo-university",
+      "result": "wave_192_unreviewed_school_identity_candidate_built_2026_detail_retry_required",
+      "notes": "The current official university home is captured and hash-locked. Wave 192 adds Ningbo, Ningbo University and a school-directory candidate. The current official International College home, 2026 undergraduate/master/doctoral/language guides and scholarship index remain registered, but the protected site rejects deterministic collection with HTTP 403 and invalid response-header syntax; access controls were not bypassed and search-rendered text was not imported. Route, intake, fee, language and scholarship fields remain absent until valid official snapshots are available. No applicant-facing general 2027 international guide was found. Applicant data, personal contacts, payment instructions and bank information are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "hefei-university-of-technology",
+      "result": "wave_136_unreviewed_closed_2026_undergraduate_school_candidate_built_awaiting_2027_guide",
+      "notes": "The current official international notice index, 2026 undergraduate guide and exact official program/CSCA workbook are captured and hash-locked. Wave 136 adds the university with the closed 2026 undergraduate scope, Chinese and English thresholds, CSCA requirement, tuition, accommodation, insurance, application fee and scholarship coverage summary. The index still exposes 2026 as the newest general inbound guide; the June 15, 2026 deadline is explicitly closed and no program, intake or scholarship is represented as open for 2027. Staff contacts, bank details and financial-guarantee contents are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "jiangsu-university",
+      "result": "wave_137_unreviewed_explicit_2027_intake_calendar_school_candidate_built",
+      "notes": "The current official Overseas Education College home, eligibility, application procedure, 2027 dates, estimated costs and 2026 brochure are captured and hash-locked. Wave 137 adds the university with bachelor/master/doctoral/non-degree/preparatory scope, current HSK and English requirements, undergraduate CSCA requirement, current tuition and living-cost bands, and the explicit 2027 Spring and September calendars. Spring closes December 25, 2026 and registers March 3-5, 2027; September entry opens April 1, closes June 25 and registers September 6-10, 2027. The dates page does not map each route to an intake, so no generic program or intake is inferred. Staff contacts, bank details and financial-proof contents are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "nanjing-university-of-posts-and-telecommunications",
+      "result": "wave_138_unreviewed_closed_2026_school_candidate_built_awaiting_2027_guide",
+      "notes": "The current official Overseas Education College home, notice index, 2026 brochure page and embedded 11-page PDF are captured and hash-locked. Wave 138 adds the university with bachelor/master/doctoral scope, HSK 5 and English thresholds, undergraduate CSCA subject groups, degree-level tuition, accommodation and application fee. The current index still exposes the 2026 brochure as its newest general inbound guide; its end-of-May 2026 window is explicitly closed and no route or scholarship is represented as open for 2027. Personal contacts and applicant bank-proof details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "north-china-electric-power-university",
+      "result": "wave_139_unreviewed_school_identity_and_application_scope_candidate_built_awaiting_2027_guide",
+      "notes": "The current official international admissions gateway, international-student overview, application system and public user guide are captured and hash-locked. Wave 139 adds the university with bachelor/master/doctoral/visiting/language scope, official application route, school-level energy and power focus, current international-student scale and named scholarship categories. No explicit inbound international 2027 guide, route table, tuition, deadline or award-specific scholarship rules are published in the captured sources, so those fields remain absent. Staff contacts and payment instructions are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "guangxi-university",
+      "result": "wave_140_unreviewed_school_identity_candidate_built_explicit_march_2027_language_notice_body_blocked",
+      "notes": "The current official international education English index is captured and hash-locked and explicitly lists '2027 Chinese Language Program (March Intake)' dated October 23, 2026. The linked university-published WeChat article was also registered and fetched, but the platform returned a CAPTCHA page instead of article content. Wave 140 therefore adds the school and preserves the March 2027 notice only as school-level context; no deadline, fee, eligibility, duration, program, intake or scholarship row is inferred from the title alone. Office contacts are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "hainan-university",
+      "result": "wave_141_unreviewed_2026_2027_school_candidate_built_without_distinct_2027_intake",
+      "notes": "The current official International Education College home and 2026-2027 international student guide are captured and hash-locked. Wave 141 adds Haikou and the university with non-degree/bachelor/master/doctoral scope, HSK and English thresholds, undergraduate CSCA requirement, application fee, accommodation and insurance costs. Degree tuition is explicitly pending, route tables are embedded as images and the guide does not publish a distinct new general 2027 degree deadline, so no route, intake, tuition amount or scholarship record is inferred. Staff contacts, bank details and financial-proof contents are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "nanjing-tech-university",
+      "result": "wave_142_unreviewed_school_identity_candidate_built_2026_attachments_captcha_protected",
+      "notes": "The current official Overseas Education College admissions index and 2026 prospectus page are captured and hash-locked. Wave 142 adds the university and confirms that the official index currently exposes 2026 as its newest inbound guide. The Chinese and English prospectus attachments require a download CAPTCHA; access controls are not bypassed and no attachment-only route, fee, deadline, language requirement or scholarship is inferred. Domestic 2027 graduate admissions are excluded. Office contacts are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "fujian-normal-university",
+      "result": "wave_143_unreviewed_explicit_2027_long_term_chinese_candidate_built",
+      "notes": "The official bilingual 2027 long-term Chinese-language guide is captured and hash-locked. Wave 143 adds the university, one-semester and one-academic-year language routes, and Spring/Fall 2027 intake records for each. It preserves the November 30, 2026 Spring deadline, March 2027 Fall opening, May 30, 2027 Fall deadline, prior-Chinese requirement for Spring, beginner suitability for Fall, CNY 7,500 semester/CNY 15,000 annual tuition, registration, accommodation, insurance, eligibility and materials. Current 2027 degree catalogs and scholarships remain unresolved. Contacts and financial-document contents are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "zhejiang-normal-university",
+      "result": "wave_144_unreviewed_closed_2026_school_candidate_built_awaiting_2027_guides",
+      "notes": "The current official guide index and 2026 bachelor, master, doctoral and language guides are captured and hash-locked. Wave 144 adds Jinhua and the university with degree/language scope, closed 2026 fee bands, accommodation, insurance, application fee and undergraduate CSCA requirement. The current index still exposes 2026 as its newest inbound cycle; no route, intake or scholarship is represented as 2027. Route-specific language and CSCA details remain in an uncaptured linked workbook and are not inferred. Staff contacts and financial-document contents are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "hunan-normal-university",
+      "result": "wave_145_unreviewed_complete_2027_program_catalog_and_cgs_candidate_built",
+      "notes": "The official 13-page 2027 international program catalog, current admission index, scholarship page and eight-page 2027/2028 Chinese Government Scholarship High-Level Graduate PDF are captured and hash-locked. A deterministic extractor produces 301 source-bounded routes: 71 bachelor, 155 master and 75 doctoral. Wave 145 also adds the full Type B scholarship with the February 21, 2027 deadline, September 2027 enrollment, Chinese-taught scope, HSK 4 threshold, tuition waiver, free on-campus accommodation, CNY 3,000/CNY 3,500 monthly stipends and medical insurance. Route-specific general teaching language, self-funded tuition, requirements and deadlines remain blank because the catalog does not publish them. Personal contacts and applicant document contents are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "nanjing-forestry-university",
+      "result": "wave_146_unreviewed_closed_2026_english_undergraduate_candidate_built_awaiting_2027_guide",
+      "notes": "The current official international notice index and closed 2026 English-taught undergraduate guide are captured and hash-locked. Wave 146 adds the university, Forestry and Wood Science and Engineering routes, two closed Fall 2026 intake records, English thresholds, CSCA Mathematics and Chemistry, CNY 16,500 annual tuition, CNY 600 insurance, CNY 400 application fee and the published 4-6 year duration. The current index does not publish a general 2027 international guide. Named scholarship categories lack award-specific terms, so no scholarship record is inferred. Personal contacts and financial-guarantee contents are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "yangzhou-university",
+      "result": "wave_147_unreviewed_closed_2026_undergraduate_guidance_candidate_built_awaiting_2027_guide",
+      "notes": "The official four-page 2026 international undergraduate application guidance is captured and hash-locked. Wave 147 adds Yangzhou and the university with source-bounded Chinese/English language evidence, HSK 4, undergraduate CSCA Mathematics plus prospectus-dependent subjects, and the CNY 600 application fee. The guide contains no program table or general application deadline, so no route or intake is inferred and the July 30 graduation-certificate date is not misrepresented as an application deadline. The official overseas-education home returned HTTP 412 and was not bypassed. Bank/payment details, personal contacts and applicant document contents are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "henan-university",
+      "result": "wave_148_unreviewed_explicit_2027_2028_cgs_candidate_built_protected_annex_pending",
+      "notes": "The current official admissions index and bilingual 2027/2028 Chinese Government Scholarship High-Level Postgraduate guide are captured and hash-locked. Wave 148 adds Kaifeng, the university and one full Type B scholarship with the January 17, 2027 deadline, master/doctoral scope, HSK 5 score 180, IELTS 6.5/new TOEFL 86, tuition, free on-campus accommodation, living expenses and medical-insurance coverage, eligibility and application steps. The official application-materials archive returns a CAPTCHA page and was not bypassed, so annex program lists, exact living-expense amounts and complete material details remain blank. Staff contacts and applicant personal-document details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "guangdong-university-of-technology",
+      "result": "wave_149_unreviewed_closed_2026_named_undergraduate_routes_candidate_built_awaiting_2027_guide",
+      "notes": "The current official international admissions index and 2026 guide are captured and hash-locked. Wave 149 adds the university, three named English-taught bachelor routes and one named Chinese-taught Civil Engineering route, plus four closed Fall 2026 intake records. It preserves the June 30, 2026 deadline, HSK 4/5 and TOEFL 80/IELTS 5.5 thresholds, degree-level tuition bands and application fees. Linked broader undergraduate and graduate catalogs were not captured in this wave, so only routes named directly in the guide are structured. The index publishes no 2027 international guide. Scholarship terms are incomplete, so no award row is inferred. Bank/payment details, contacts and applicant document contents are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "taiyuan-university-of-technology",
+      "result": "wave_150_unreviewed_school_city_and_current_fee_candidate_built_2027_guide_pending",
+      "notes": "The current official international admission-program index and six-page international fee-standard PDF are captured and hash-locked. Wave 150 adds Taiyuan and the university with undergraduate/master/doctoral/non-degree scope, CNY 400 application fee, annual bachelor/master/doctoral tuition of CNY 10,000/12,000/15,000, non-degree tuition bands and official accommodation prices. The current index exposes a 2026 guide and 2025 program list, not a 2027 international guide. The 2026 online guide host presents a TLS certificate valid only for *.17gz.org rather than is.tyut.edu.cn; certificate verification was not disabled. Program, language, deadline and cycle-specific scholarship fields remain blank. Personal contacts are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "nanjing-university-of-information-science-and-technology",
+      "result": "wave_151_unreviewed_complete_2027_undergraduate_catalog_candidate_built",
+      "notes": "The current official international admissions index, 2027 undergraduate program-list PDF and application-procedure page are captured and hash-locked. Wave 151 adds the university, 61 undergraduate routes and 61 open Fall 2027 intake records. It preserves the published four-year duration, CNY 15,000 annual tuition, Chinese or bilingual teaching labels, April 30, 2027 deadline, CNY 500 application fee and route-specific CSCA subject combinations. The guide warns that recruitment may close early when capacity is reached. No HSK or English score threshold is inferred because the captured 2027 sources do not publish one. Scholarship terms remain unresolved; personal contacts and payment details are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "capital-normal-university",
+      "result": "wave_152_unreviewed_explicit_spring_2027_program_and_scholarship_candidate_built",
+      "notes": "The official Spring 2027 prospectus, scholarship guide and current admissions indexes are captured and hash-locked. Wave 152 adds the university, Chinese Language bachelor, Teaching Chinese to Speakers of Other Languages bachelor and Chinese Language Training routes, with three Spring 2027 intake records. It preserves the December 31, 2026 general deadline, HSK thresholds, undergraduate CSCA requirements, CNY 11,800 undergraduate semester tuition, CNY 9,800 training semester tuition and CNY 450 application fee. It also adds the March 2027 one-semester International Chinese Language Teachers Scholarship with its October 31, 2026 deadline, published HSK/HSKK rules and tuition, accommodation, living-allowance and insurance coverage. Numeric scholarship allowance and bachelor duration remain blank because the captured guides do not state them. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "shanxi-university",
+      "result": "wave_153_unreviewed_2026_entry_2027_bachelor_phase_pathway_and_scholarship_candidate_built",
+      "notes": "The official university home, current international-school home and bilingual 1+4 program guide are captured and hash-locked. Wave 153 adds Taiyuan-referenced Shanxi University, one preparatory-to-bachelor pathway, one closed 2026 entry record and one performance-based university scholarship. It preserves the September 2026-July 2027 preparatory year, September 2027-July 2031 bachelor phase, six progression majors, age and transcript eligibility, CNY 5,000 preparatory tuition, CNY 20,000 annual bachelor tuition and ancillary costs. Scholarship Tier A waives tuition and accommodation and provides CNY 7,500/year living allowance; Tier B waives tuition and accommodation, subject to the published CSCA, entrance-exam, HSK, attendance and final-exam thresholds. The source does not advertise direct Fall 2027 admission, so it is not represented as an open 2027 intake. Broader current 2027 guides remain unresolved. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "south-china-agricultural-university",
+      "result": "wave_154_unreviewed_current_school_requirements_candidate_built_awaiting_2027_cycle",
+      "notes": "The official university home, International Education College home, current application procedure, international-student profile and funding page are captured and hash-locked. Wave 154 adds the university with bachelor/master/doctoral/non-degree scope, HSK 4, TOEFL iBT 80/IELTS 6.0 graduate English thresholds and the generic self-funded March 1-June 30 application period. The current procedure does not label these dates as a 2027 cycle, so no 2027 intake is inferred. The funding page contains historical 2024 markers; named Chinese Government and Guangdong Government scholarship categories remain school-level context and no current award record is generated. Tuition, route tables and explicit 2027 deadlines remain blank. Contacts and applicant personal-document details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "guangzhou-university",
+      "result": "wave_155_unreviewed_school_identity_candidate_built_2026_attachment_captcha_protected",
+      "notes": "The official university home and 2026 international admission-guide page are captured and hash-locked. Wave 155 adds Guangzhou University and its reviewed Guangzhou city dependency, but does not infer programs, intakes, scholarships, tuition, deadlines or language requirements. The official guide attachment endpoint returned a CAPTCHA page and no attempt was made to bypass it. No official 2027 international guide was found in the captured sources. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "university-of-shanghai-for-science-and-technology",
+      "result": "wave_156_unreviewed_2026_school_requirements_and_fee_candidate_built_2027_cycle_unresolved",
+      "notes": "The official international admission-guide index, 2026 self-funded guide, current application-process page, program-catalog index and combined degree-program workbook are captured and hash-locked. Wave 156 adds the university and reviewed Shanghai dependency with bachelor/master/doctoral scope, published language thresholds, CNY 800 application fee and degree-level annual tuition bands. It creates no program or intake rows because the workbook contains 96 catalog rows but its embedded application and start-year fields conflict with its 2026 publication label; deterministic legacy-XLS extraction and cycle resolution remain pending. The current catalog notes that Animation and Package Design stop admission in 2027, but no complete 2027 guide or current scholarship award was found. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "hebei-university-of-technology",
+      "result": "wave_157_unreviewed_closed_2026_degree_routes_and_cgs_candidate_built_awaiting_2027_cycle",
+      "notes": "The official university home, current international admissions index, 2026 undergraduate and postgraduate guides, undergraduate CSCA table and Chinese Government Scholarship Type B guide are captured and hash-locked. Wave 157 adds the university, 14 named bachelor/master/doctoral routes, 14 closed Fall 2026 intake records and one closed 2026 full graduate scholarship. It preserves the May 15, 2026 general deadline, February 10, 2026 scholarship deadline, HSK 4 score 210, TOEFL 85/IELTS 6.0, route-specific CSCA subjects, CNY 14,000-30,000 annual tuition and CNY 600 application fee. The current official index publishes no inbound 2027 guide, so no 2027 fields are inferred. Applicant-document, contact and payment details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "kunming-university-of-science-and-technology",
+      "result": "wave_158_unreviewed_school_identity_candidate_built_2026_attachments_captcha_protected",
+      "notes": "The current official International College admissions index, 2026 international guide page, 2026 degree-program catalog page and 2026 Yunnan Government Scholarship page are captured and hash-locked. Wave 158 adds the university and reviewed Kunming dependency with bachelor/master/doctoral scope advertised at page-title level. The guide and program details remain in university CAPTCHA-protected attachments, and the scholarship page delegates terms to an uncaptured external WeChat article. Access controls were not bypassed; program, intake, language, tuition, deadline and scholarship rows remain empty. The current index publishes no inbound 2027 guide. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "xian-university-of-technology",
+      "result": "wave_159_unreviewed_current_school_requirements_fees_and_scholarship_context_candidate_built_2027_cycle_unresolved",
+      "notes": "The official university home and current international admissions, application, image-based major-list and scholarship pages are captured and hash-locked. Wave 159 adds the university with bachelor/master/doctoral scope, HSK requirements, annual tuition bands, CNY 400 or USD 60 application fee, accommodation rates and the generic March-May application window ending May 31. It records four current scholarship categories at school-context level but creates no award row because no 2027 application round or deadline is published. The image-only major list is not converted without a deterministic image/OCR review path, and no 2027 intake is inferred. Bank/payment details, contacts and applicant-document requirements are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "zhejiang-sci-tech-university",
+      "result": "wave_160_unreviewed_complete_2026_bachelor_catalog_candidate_built_awaiting_2027_cycle",
+      "notes": "The current official international portal, 2026 degree-application page, 2026 brochure PDF and 2026 program-catalog XLS are captured and hash-locked. Wave 160 adds the university, 43 explicit Chinese- and English-taught bachelor routes and 43 closed Fall 2026 intake records. It preserves route-specific CSCA subject combinations, HSK 4 score 180, TOEFL 80/B2 or IELTS 5.5, the May 31, 2026 deadline, CNY 300 application fee and school-level CNY 15,000/18,000/22,000 annual bachelor tuition bands. Route-level numeric tuition remains blank because the official workbook does not map each route to a fee category. Graduate worksheets remain unresolved because their track-level language symbols need deterministic interpretation. No inbound 2027 guide or award-specific 2027 scholarship terms are published; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "dalian-maritime-university",
+      "result": "wave_161_unreviewed_explicit_2027_cgs_type_b_candidate_built_protected_attachment_pending",
+      "notes": "The current official international home, admissions index, master and doctoral requirement pages and 2027 Chinese Government Scholarship landing page are captured and hash-locked. Wave 161 adds the university and one source-bounded 2027 CSC Type B scholarship record. The official landing page exposes 2027 prospectus and checklist attachment titles, but the attachment download endpoint requires a CAPTCHA; access controls were not bypassed, so degree scope, coverage, deadline, amounts and detailed requirements remain blank. Current graduate pages publish general annual language requirements and a June 30 deadline but do not identify a general 2027 cycle or expose deterministic text program tables, so no program or intake row is inferred. Applicant documents, contacts and payment details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "northeast-forestry-university-china",
+      "result": "wave_162_unreviewed_complete_2027_master_doctoral_catalog_and_current_scholarships_candidate_built",
+      "notes": "The current official international home, explicit 2027 master and doctoral pages, 2026 bachelor page and two current scholarship pages are captured and hash-locked. Wave 162 adds the university, 34 master and 19 doctoral discipline/college routes, 53 open Fall 2027 intake records and two current scholarship records. It preserves the June 30, 2027 graduate deadline, three-/four-year duration, HSK 4/5 and IELTS 6.5/TOEFL 95 thresholds, CNY 25,000/30,000 master tuition, CNY 32,000/38,000 doctoral tuition, accommodation, insurance and CNY 400 application fee. The bachelor page remains explicitly Fall 2026 and is not relabeled as 2027. Research directions remain on the source pages rather than being misrepresented as separate degree programs. Scholarship pages publish recurring windows but no cycle-specific 2027 closing date. Applicant-document contents and personal contacts are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "hangzhou-normal-university",
+      "result": "wave_163_unreviewed_current_school_and_scholarship_candidate_built_2027_detailed_guide_pending",
+      "notes": "The current official international home and admissions index, complete 2026 bachelor, graduate, language and fee materials, current university scholarship policy, closed 2026 Chinese Government Scholarship guide and October 20 official 2027 recruitment-preparation update are captured and hash-locked. Wave 163 adds the university and two source-bounded scholarship records. It preserves the latest published degree counts, language thresholds, 2026 fee bands and closed deadlines while explicitly stating that the detailed 2027 guide, route table, tuition, application deadline and intake are not yet published. The official 2026 program-list page exposes attachment labels without a deterministic public file URL in the captured HTML, so no route row is inferred. Applicant forms, contacts, payment instructions and bank details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "xian-university-of-architecture-and-technology",
+      "result": "wave_194_unreviewed_school_identity_candidate_built_current_international_profile_http_403_2027_cycle_unresolved",
+      "notes": "The official current university home and international-education profile are registered, but deterministic collection continues to receive HTTP 403 and the legacy gateway returns HTTP 404. Access controls were not bypassed. The current official information-disclosure home was captured and hash-locked, so wave 194 adds Xi'an University of Architecture and Technology as a school-directory candidate. Search-index evidence describing degree fields, non-degree study and scholarship categories is not copied into candidate facts. Program, intake, tuition, deadline, language and scholarship rows remain absent until official admissions evidence can be captured; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "southwest-petroleum-university",
+      "result": "wave_164_unreviewed_complete_closed_2026_program_catalog_and_current_scholarships_candidate_built_2027_plan_pending",
+      "notes": "The official university and international-office homes, complete 2026 international guide, September 2026 notice starting internal compilation of the 2027 international enrollment plan and current scholarship policy are captured and hash-locked. Wave 164 adds the university, 24 English-taught degree routes, 24 closed 2026 admission records and four current scholarship-policy records. It preserves seven bachelor, eleven master and six doctoral programs, four-/three-year durations, route-specific undergraduate CSCA Mathematics plus Physics or Chemistry, CNY 16,000/20,000/25,000 annual degree tuition, CNY 1,000 insurance and CNY 600 registration fee. The planning notice is not an applicant-facing 2027 guide, so no 2026 field is relabeled as 2027 and the detailed 2027 routes, fees and deadline remain blank. Accommodation details, applicant documents, contacts and financial-guarantee contents are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "northeast-agricultural-university",
+      "result": "wave_165_unreviewed_complete_closed_2026_program_catalog_and_two_scholarships_candidate_built_2027_cycle_pending",
+      "notes": "The official university and International Cultural and Educational College homes, complete 2026 undergraduate guide, graduate guide PDF, Chinese Government Scholarship high-level graduate guide, Eurasian Countries Scholarship guide and current fee table are captured and hash-locked. Wave 165 adds the university, 142 bachelor/master/doctoral routes, 142 closed 2026 admission records and two closed 2026 full-scholarship records. It preserves 49 bachelor, 50 master and 43 doctoral routes; four- or five-year bachelor, three-year master and four-year doctoral durations; route-specific undergraduate CSCA subjects; HSK 4 and TOEFL iBT 95/IELTS 6.5 language rules; current CNY 16,000/20,000/25,000 annual tuition; the May 31 undergraduate deadline; and the March 15 graduate scholarship deadline. Five doctoral routes are explicitly marked Chinese/English and the remaining routes follow the official Chinese-taught labels. No applicant-facing 2027 international guide, approved route list, tuition schedule or deadline was found, so no 2026 field is relabeled as 2027. Applicant documents, contacts, accommodation room-price details and visa/financial-support materials are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "hubei-university",
+      "result": "wave_166_unreviewed_current_40_route_catalog_and_explicit_spring_2027_scholarship_candidate_built",
+      "notes": "The official English university home, current international online-application/program page, current scholarship index and explicit 2026-2027 International Chinese Language Teachers Scholarship guide are captured and hash-locked. Wave 166 adds the university, 40 current bachelor/master/doctoral/non-degree routes without inferred intake rows, plus one source-bounded five-month Spring 2027 scholarship route, one closed Spring 2027 intake and one full scholarship. The current catalog preserves teaching languages, durations, HSK 4 score 180 for Chinese-taught bachelor study, HSK 5 score 180 for Chinese-taught graduate study, the requirement for an English-test transcript without inventing a numeric threshold, published bachelor/master/non-degree tuition and the CNY 400 registration fee. The March 2027 one-semester scholarship preserves its October 10, 2026 deadline, HSK/HSKK direction-specific rules, CNY 2,500 monthly allowance, tuition, accommodation and insurance coverage. The current general catalog does not state an intake year or deadline and does not publish doctoral tuition, so those fields remain blank. Applicant documents, personal contacts, accommodation room prices and payment details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "fujian-agriculture-and-forestry-university",
+      "result": "wave_167_unreviewed_complete_closed_2026_master_doctoral_catalog_and_three_scholarships_candidate_built_2027_cycle_pending",
+      "notes": "The official English university home, current application index, complete 2026 international application guide, 2026 program catalog, current fee table and current scholarship policy are captured and hash-locked. Wave 167 adds the university, 68 master/doctoral routes, 68 closed 2026 admission records and three closed-cycle scholarship records. It preserves all 65 source catalog rows, deterministically expanding the three rows labeled Master/Doctor into separate degree records; HSK 5, IELTS 6.5/TOEFL 85, CNY 21,000 master and CNY 24,000 doctoral annual tuition, CNY 500 or USD 80 application fee, the April 30 general deadline and February 15 Chinese Government Scholarship deadline. No applicant-facing 2027 international guide, approved route list or deadline is published on the current application index, so no 2026 field is relabeled as 2027. The domestic 2027 graduate guide, applicant/recipient public notices, personal contacts, payment instructions and bank details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "shandong-university-of-science-and-technology",
+      "result": "wave_180_unreviewed_historical_degree_catalog_and_current_nondegree_candidate_built_2027_cycle_unresolved",
+      "notes": "The current official international-college home and FAQ, labeled 2021 undergraduate/master/doctoral catalogs, and current Chinese-language and English-taught STEM preparatory pages are captured and hash-locked. Wave 180 adds the university, 73 bachelor, 110 master, 34 doctoral, one Chinese-language and one preparatory route. The 217 degree routes remain historical closed 2021 records and are not relabeled as 2027. It preserves current HSK/IELTS/TOEFL thresholds, the CNY 600 or USD 95 application fee and CNY 9,000 preparatory tuition. No current degree tuition, deadlines, CSCA rules, route availability or scholarship terms are published in the captured sources. Applicant data, personal contacts, bank details and payment instructions are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "shanghai-ocean-university",
+      "result": "wave_181_unreviewed_explicit_2027_graduate_routes_and_two_full_scholarships_candidate_built",
+      "notes": "The current official international admissions index, 2027 degree-prospectus page, 2027 Chinese Government Scholarship high-level postgraduate guide and 2027 foreign-languages full-scholarship guide are captured and hash-locked. Wave 181 adds the university, 18 explicit Fall 2027 graduate routes, 18 open intake records and two full scholarships. It preserves the February 1, 2027 scholarship deadline, three-/four-year duration, HSK 5, IELTS 6.0/TOEFL 80, Chinese Government Scholarship coverage, and the SHOU Type A CNY 800 monthly living allowance. The linked complete prospectus PDF is approximately 21 MiB, above the governed collector's 15 MiB safety limit; programs visible only in that PDF, general self-funded tuition and the general deadline remain unresolved. Supervisor names, personal contacts, applicant data, bank details and payment instructions are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "north-university-of-china",
+      "result": "wave_182_unreviewed_school_identity_candidate_built_2026_attachment_protected_2027_cycle_unresolved",
+      "notes": "The current official international admissions index and 2026 graduate-guide landing page are captured and hash-locked. Wave 182 adds Taiyuan and North University of China as directory candidates. The current 2026 program attachment requires a verification code and was not bypassed; an indexed signed PDF URL returned HTTP 404 during deterministic collection. Program names, language rules, tuition fields, intake records, current deadlines and scholarships remain absent because no valid attachment snapshot is available. The current index publishes no applicant-facing 2027 international guide. Personal contacts, applicant data and payment details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "anhui-normal-university",
+      "result": "wave_206_unreviewed_2027_china_link_route_added_general_2027_degree_cycle_pending",
+      "notes": "The current official international guide index, complete 2026 application guide, 2026/2027 Silk Road Chinese Government Scholarship guide, and the official China Link notice permitting entry through August 31, 2027 are captured and hash-locked. Wave 183 adds Wuhu, Anhui Normal University, 47 non-degree/bachelor/master/doctoral route records, 47 closed 2026 intake records and two scholarship records. Wave 206 adds one explicit rolling 2027 non-degree research-exchange route and one full China Link scholarship record, preserving the published 1-12 month duration, Chinese-or-English instruction, all fields except Chinese-language study, full tuition/accommodation/insurance coverage, and CNY 3,000/3,500 monthly stipends. The official page publishes year-round access and a two-month institutional lead time but no single AHNU deadline, so deadlineDate remains empty. Undergraduate CSCA subjects, the Silk Road living-allowance amount, named China Link placements, fixed language-test scores, and a general Fall 2027 degree cycle remain unresolved. No closed route is relabeled as 2027. Personal contacts, applicant data, bank details and payment instructions are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "henan-agricultural-university",
+      "result": "wave_184_unreviewed_school_identity_candidate_built_current_detail_unavailable_2027_cycle_unresolved",
+      "notes": "The current official international admissions index and its hash-locked 2022 international guide are captured. Wave 184 adds Zhengzhou and Henan Agricultural University as directory candidates. The current guide detail URL returned HTTP 404 during deterministic collection, and the current captured index exposes no applicant-facing 2027 guide. Program names, intake records, current tuition, deadlines, language requirements and scholarships remain absent. Access controls were not bypassed; personal contacts, applicant data and payment details are excluded. Publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "chongqing-university-of-posts-and-telecommunications",
+      "result": "wave_185_unreviewed_school_identity_candidate_built_2026_2027_undergraduate_detail_http_412",
+      "notes": "The current official International College home is captured and hash-locked. It explicitly lists a 2026-2027 international undergraduate admission guide and older international master and doctoral guides. All three linked detail pages returned HTTP 412 during deterministic collection; access controls were not bypassed. Wave 185 adds Chongqing University of Posts and Telecommunications and the reviewed Chongqing dependency, while program, intake, tuition, deadline, language and scholarship fields remain absent until current guide evidence can be hash-locked. Personal contacts, applicant data and payment details are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "nantong-university",
+      "result": "wave_186_unreviewed_closed_2026_foundation_and_current_engineering_routes_candidate_built_2027_cycle_pending",
+      "notes": "The current official international gateway, closed Spring 2026 foundation brochure and current Electronic Information Engineering international page are captured and hash-locked. Wave 186 adds Nantong, the university, one closed foundation route and three current bachelor/master/doctoral information-and-communications routes. It preserves the January 11, 2026 foundation deadline, HSK 3 progression target, CNY 6,000 semester tuition and CNY 600 application fee. Current degree-route intake year, language thresholds, fees and deadlines remain blank. No applicant-facing 2027 international guide or scholarship terms were captured, and no 2026 field is relabeled as 2027. Personal contacts, applicant documents, payment details, bank information and QR codes are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "guangxi-normal-university",
+      "result": "wave_187_unreviewed_explicit_2027_2028_program_and_two_scholarship_candidate_built",
+      "notes": "The current official international bulletin, September 2026 internal 2027 enrollment-plan notice, two 2027/2028 scholarship landing pages and their embedded PDFs are captured and hash-locked. Wave 187 adds Guilin, Guangxi Normal University, 42 source-bounded bachelor/master/doctoral scholarship routes, 42 Fall 2027 intake records and two government scholarship records. It preserves the January 31, 2027 CGS deadline, February 28, 2027 ASEAN-scholarship deadline, HSK 4 score 180, undergraduate CSCA Chinese and Mathematics threshold of 50 in each, CNY 400 application fee, CGS full tuition/accommodation/insurance coverage and CNY 3,000/3,500 monthly master/doctoral stipends. The ASEAN guide does not itemize financial coverage, so its amount and benefit fields remain blank. The internal planning notice is not treated as a public general guide; broader self-funded 2027 routes, fees and deadline remain unresolved. Applicant documents, personal contacts, payment details and bank information are excluded; publication and database writes remain disabled."
+    },
+    {
+      "schoolSlug": "zhejiang-a-f-university",
+      "result": "wave_188_unreviewed_closed_2026_self_funded_catalog_and_open_spring_2027_scholarship_route_candidate_built",
+      "notes": "The current official international application index, complete Fall 2026 bilingual guide and PDF, Spring 2026 language page and PDF, and International Chinese Language Teachers Scholarship guide are captured and hash-locked. Wave 188 adds Zhejiang A&F University, 14 English-taught bachelor routes, one general language route, one explicit March 2027 scholarship language route, 16 intake records and one scholarship record. It preserves the October 31, 2026 deadline for March 2027 entry, HSK 3 score 180 plus HSKK, full tuition/accommodation/insurance coverage and CNY 2,500 monthly language-student allowance. The 2026 self-funded routes remain closed and retain their original cycle; no general 2027 self-funded guide or graduate route catalog is inferred. Applicant documents, personal contacts, payment instructions and bank information are excluded; publication and database writes remain disabled."
+    }
+  ]
+}

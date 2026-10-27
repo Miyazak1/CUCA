@@ -1,0 +1,27 @@
+import { createHash } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+
+type Source = { id: string; label: string; url: string; finalUrl?: string; fetchedAt: string; status: number; contentType: string; sha256: string; artifactPath: string };
+const root = process.cwd();
+const directory = resolve(root, "work/catalog-official/2026-10-26T14-15-23-249Z");
+const lockedSha = "bea6ad045dd898412939215b5cf936e1efeb43fb75b37a70fa63774f9347eaa0";
+const manifest = JSON.parse(await readFile(resolve(directory, "manifest.json"), "utf8")) as { sources: Source[] };
+const source = manifest.sources.find((entry) => entry.id === "cqu-university-home-current" && entry.status === 200 && entry.sha256 === lockedSha);
+if (!source) throw new Error("Missing locked CQU source");
+if (createHash("sha256").update(await readFile(resolve(directory, source.artifactPath))).digest("hex") !== lockedSha) throw new Error("CQU evidence hash mismatch");
+const reviewed = JSON.parse(await readFile(resolve(root, "seeds/catalog.reviewed-100-official-release.json"), "utf8")) as CatalogSeedBundle;
+const city = reviewed.cities?.find((entry) => entry.slug === "chongqing");
+if (!city) throw new Error("Reviewed Chongqing dependency missing");
+const sf = { sourceUrl: source.finalUrl ?? source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
+const school = { slug: "chongqing-university", nameEn: "Chongqing University", nameZh: "重庆大学", citySlug: city.slug, schoolType: "Public comprehensive research university", region: "Chongqing, Southwest China", applicationLevel: "The official international admissions subsite indexes 2026 undergraduate and postgraduate guides and a scholarship page with Spring 2027 entry, but deterministic collection returned HTTP 412. This candidate therefore records the university only and does not assert route-level fields.", websiteUrl: source.finalUrl ?? source.url, admissionsUrl: "https://study.cqu.edu.cn/", subjectTags: [], languageTags: [], campusHighlights: ["Official university in Chongqing", "International admissions detail pages remain queued for safe retry"], status: "active" as const, verificationStatus: "verified" as const, lastVerifiedAt: source.fetchedAt, ...sf, sourceFieldLineage: { nameEn: "official university identity normalized to English", nameZh: "official university identity", citySlug: "official university identity plus reviewed Chongqing dependency", schoolType: "CUAC taxonomy for official university identity", region: "verified location plus CUAC taxonomy", applicationLevel: "documented current international-subsite index and deterministic HTTP 412 limitation", websiteUrl: "official university domain", admissionsUrl: "official international admissions domain", subjectTags: "empty because current program sources were not hash-locked", languageTags: "empty because current program sources were not hash-locked", campusHighlights: "captured official identity and access state" } };
+const candidate: CatalogSeedBundle = { version: 1, generatedAt: source.fetchedAt, cities: [city], schools: [school], programs: [], programIntakes: [], scholarships: [] };
+const text = `${JSON.stringify(candidate, null, 2)}\n`;
+const candidateSha256 = createHash("sha256").update(text).digest("hex");
+const validation = createCatalogMigrationValidationReport(JSON.parse(text));
+if (!validation.ok) throw new Error(validation.errors.join("\n"));
+const review = { version: 1, status: "unreviewed_draft", generatedAt: source.fetchedAt, candidateSha256, publicationAuthorized: false, databaseWriteAuthorized: false, scope: { target: "2026 ShanghaiRanking BCUR top 150", targetPosition: 34, schoolSlugs: [school.slug], newSchools: 1, programs: 0, programIntakes: 0, scholarships: 0 }, evidence: [{ id: source.id, label: source.label, url: source.finalUrl ?? source.url, contentType: source.contentType, fetchedAt: source.fetchedAt, sha256: source.sha256 }], unresolved: ["Current international undergraduate, postgraduate and Spring 2027 scholarship pages returned HTTP 412 during deterministic collection; access controls were not bypassed.", "The separate international service platform presents a certificate for a different hostname and was rejected by TLS verification.", "Program names, intake records, tuition, deadlines, language rules and scholarships remain absent until valid official snapshots are available.", "Applicant data, personal contacts, payment instructions and bank information are excluded."], sensitiveDataCheck: { result: "pass", note: "No applicant data, personal contacts, payment instructions or bank information are present." } };
+const stem = resolve(root, "seeds/catalog.2027-wave-190");
+await Promise.all([writeFile(`${stem}.draft.json`, text, "utf8"), writeFile(`${stem}.validation.json`, `${JSON.stringify({ ...validation, candidateSha256, publicationAuthorized: false, databaseWriteAuthorized: false }, null, 2)}\n`, "utf8"), writeFile(`${stem}.review.json`, `${JSON.stringify(review, null, 2)}\n`, "utf8")]);
+console.log(JSON.stringify({ ok: true, wave: 190, candidateSha256, counts: validation.summary, publicationAuthorized: false, databaseWriteAuthorized: false }, null, 2));

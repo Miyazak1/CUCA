@@ -1,0 +1,1359 @@
+{
+  "version": 1,
+  "schoolSlug": "china-university-of-petroleum-east-china",
+  "scope": "Current official degree catalogs; no degree row is relabeled as 2027",
+  "counts": {
+    "total": 163,
+    "bachelorChinese": 60,
+    "bachelorEnglish": 10,
+    "masterChineseAcademic": 35,
+    "masterChineseProfessional": 1,
+    "masterEnglish": 3,
+    "doctoralChinese": 27,
+    "doctoralEnglish": 27
+  },
+  "sources": [
+    {
+      "run": "2026-10-27T06-54-05-596Z",
+      "id": "upc-bachelor-programs-chinese-current",
+      "sha256": "78d9b8010a2489166cff12c898d98ec6e2c94e049d5efcb87818e8265a530c0b",
+      "fetchedAt": "2026-10-27T06:54:10.825Z",
+      "url": "https://cie.upc.edu.cn/admission_en/Program_Course/Bachelor_s_Programs1/Chinese_medium_Bachelor_s_Programs.htm"
+    },
+    {
+      "run": "2026-10-27T06-54-05-596Z",
+      "id": "upc-master-programs-chinese-academic-current",
+      "sha256": "f7d9bc43929ca6371c8d8bf5bfd06aea7048088f4f6456e13f3c32c0c337c7b4",
+      "fetchedAt": "2026-10-27T06:54:14.141Z",
+      "url": "https://cie.upc.edu.cn/admission_en/Program_Course/Master_s_Programs1/Chinese_medium_Master_s_Programs1/Academic_Master_s_Programs.htm"
+    },
+    {
+      "run": "2026-10-27T06-54-05-596Z",
+      "id": "upc-master-programs-chinese-professional-current",
+      "sha256": "5aaa8f8437e9577eb93dc17d87340bb7e4f09356e0b51616d0af008add96188b",
+      "fetchedAt": "2026-10-27T06:54:15.214Z",
+      "url": "https://cie.upc.edu.cn/admission_en/Program_Course/Master_s_Programs1/Chinese_medium_Master_s_Programs1/Professional_Master_s_Programs.htm"
+    },
+    {
+      "run": "2026-10-27T06-54-05-596Z",
+      "id": "upc-doctoral-programs-current",
+      "sha256": "d2e0e529c6a4cc05f2cdd61b834c313f7f6ac1d84cde9959f2f5fe5b7b4f066d",
+      "fetchedAt": "2026-10-27T06:54:16.286Z",
+      "url": "https://cie.upc.edu.cn/admission_en/Program_Course/Doctoral_Programs.htm"
+    },
+    {
+      "run": "2026-10-27T06-55-13-699Z",
+      "id": "upc-english-medium-programs-current",
+      "sha256": "bdbd24ab30db06cdd88930cbaa031e01bbba04796c734f0875146b296d6beb76",
+      "fetchedAt": "2026-10-27T06:55:13.946Z",
+      "url": "https://cie.upc.edu.cn/admission_en/info/1152/1126.htm"
+    }
+  ],
+  "programs": [
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Geosciences",
+      "nameEn": "Resource Exploration Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Geosciences",
+      "nameEn": "Exploration Technology and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Geosciences",
+      "nameEn": "Geology",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Geosciences",
+      "nameEn": "Geophysics",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Petroleum Engineering",
+      "nameEn": "Petroleum Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Petroleum Engineering",
+      "nameEn": "Offshore Oil and Gas Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Petroleum Engineering",
+      "nameEn": "Carbon Storage Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemical Engineering and Techniques",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Applied Chemistry",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Environmental Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Energy Chemistry Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemical Safety Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemistry",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Mechanical and Electrical Engineering",
+      "nameEn": "Mechanical Design, Manufacturing and Automation",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Mechanical and Electrical Engineering",
+      "nameEn": "Intelligent Manufacturing Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Mechanical and Electrical Engineering",
+      "nameEn": "Security Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Mechanical and Electrical Engineering",
+      "nameEn": "Vehicle Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Mechanical and Electrical Engineering",
+      "nameEn": "Industrial Design",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Mechanical and Electrical Engineering",
+      "nameEn": "Naval Architecture and Ocean Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Oil- Gas Storage and Transportation Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Engineering Mechanics",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Building Environment and Energy Application Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Architecture",
+      "durationYears": 5,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Materials Science and Engineering",
+      "nameEn": "New Energy Materials and Devices",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Materials Science and Engineering",
+      "nameEn": "Materials Shaping and Control Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Materials Science and Engineering",
+      "nameEn": "Electronic Information Materials",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Materials Science and Engineering",
+      "nameEn": "Materials Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of New Energy",
+      "nameEn": "New Energy Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of New Energy",
+      "nameEn": "Electrical Engineering and Automation",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of New Energy",
+      "nameEn": "Energy and Power Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of New Energy",
+      "nameEn": "Process Equipment and Control Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of New Energy",
+      "nameEn": "Environmental Equipment Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of New Energy",
+      "nameEn": "Energy Storage Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Oceanography and Space Informatics",
+      "nameEn": "Communication Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Oceanography and Space Informatics",
+      "nameEn": "Electronic and Information Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Oceanography and Space Informatics",
+      "nameEn": "Remote Sensing Science and Technology",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Oceanography and Space Informatics",
+      "nameEn": "Integrated Circuit Design and Integrated System",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Oceanography and Space Informatics",
+      "nameEn": "Geomatics Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Control Science and Engineering",
+      "nameEn": "Intelligent Sensing Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Control Science and Engineering",
+      "nameEn": "Automation",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Control Science and Engineering",
+      "nameEn": "Measurement & Control Technology and Instrumentation",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Computer Science and Technology",
+      "nameEn": "Computer Science and Technology",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Computer Science and Technology",
+      "nameEn": "Software Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Computer Science and Technology",
+      "nameEn": "Artificial Intelligence",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Computer Science and Technology",
+      "nameEn": "Intelligent Science and Technology",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Economics and Management",
+      "nameEn": "Engineering Management",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Economics and Management",
+      "nameEn": "Information Management and Information System",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Economics and Management",
+      "nameEn": "Accounting",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Economics and Management",
+      "nameEn": "Big Data Management and Application",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Economics and Management",
+      "nameEn": "Economics",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Science",
+      "nameEn": "Information and Computing Science",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Science",
+      "nameEn": "Mathematics and Applied Mathematics",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Science",
+      "nameEn": "Applied Physics",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Science",
+      "nameEn": "Opto-Electronics Information Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "College of Science",
+      "nameEn": "Data Science and Big Data Technology",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Foreign Studies",
+      "nameEn": "English",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Foreign Studies",
+      "nameEn": "Russian",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Humanities and Law",
+      "nameEn": "Law",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Humanities and Law",
+      "nameEn": "Chinese Language and Literature",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "college": "School of Humanities and Law",
+      "nameEn": "Musicology",
+      "durationYears": 4,
+      "sourceId": "upc-bachelor-programs-chinese-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Petroleum Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Geology",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Resource Exploration Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Mechanical Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Software Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Civil Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Architecture",
+      "durationYears": 5,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Big Data Management and Application",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "New Energy Materials and Devices",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Electrical Engineering and Automation",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Geosciences",
+      "nameEn": "Marine Science",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Geosciences",
+      "nameEn": "Geophysics",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Geosciences",
+      "nameEn": "Geology",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Geosciences",
+      "nameEn": "Geological Resource and Geological Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Petroleum Engineering",
+      "nameEn": "Oil and Natural Gas Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemical Engineering and Technology",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Biochemical Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Environmental Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemistry",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Mechanical and Electronic Engineering",
+      "nameEn": "Mechanical Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Mechanical and Electronic Engineering",
+      "nameEn": "Design and Construction of Naval Architecture & OceanStructures",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Mechanical and Electronic Engineering",
+      "nameEn": "Safety Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Oil-Gas Storage and Transportation Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Mechanics",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Civil Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Materials Science and Engineering",
+      "nameEn": "Materials Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of New Energy",
+      "nameEn": "Electric Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of New Energy",
+      "nameEn": "New Energy Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of New Energy",
+      "nameEn": "Power Engineering and Engineering Thermophysics",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Oceanography and Space Informatics",
+      "nameEn": "Marine Science",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Oceanography and Space Informatics",
+      "nameEn": "Information and Communication Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Oceanography and Space Informatics",
+      "nameEn": "Remote Sensing Science and Technology",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Control Science and Engineering",
+      "nameEn": "Control Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Control Science and Engineering",
+      "nameEn": "Instrument Science and Technology",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Computer Science and Technology",
+      "nameEn": "Computer Science and Technology",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Computer Science and Technology",
+      "nameEn": "Software Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Economics and Management",
+      "nameEn": "Applied Economics",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Economics and Management",
+      "nameEn": "Management Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Economics and Management",
+      "nameEn": "Business Administration",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Economics and Management",
+      "nameEn": "Accounting",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Science",
+      "nameEn": "Mathematics",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "College of Science",
+      "nameEn": "Physics",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Humanities and Law",
+      "nameEn": "Law",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Foreign Studies",
+      "nameEn": "Foreign Language and Literature",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Marxism Studies",
+      "nameEn": "Marxism Theories",
+      "durationYears": 3,
+      "sourceId": "upc-master-programs-chinese-academic-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "college": "School of Humanities and Law",
+      "nameEn": "International Chinese Education",
+      "durationYears": 3,
+      "professional": true,
+      "sourceId": "upc-master-programs-chinese-professional-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Oil and Natural Gas Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Geological Resource and Geological Engineering",
+      "durationYears": 3,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "college": "College or school not stated on the official English-medium summary",
+      "nameEn": "Chemical Engineering and Technology",
+      "durationYears": 3,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "School of Geosciences",
+      "nameEn": "Geology",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "School of Geosciences",
+      "nameEn": "Geological Resource and Geological Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "School of Geosciences",
+      "nameEn": "Geophysics",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "School of Petroleum Engineering",
+      "nameEn": "Oil and Natural Gas Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemical Engineering and Technology",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Environmental Chemical Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Energy and Environmental Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemistry",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Mechanical and Electrical Engineering",
+      "nameEn": "Mechanical Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Mechanical and Electrical Engineering",
+      "nameEn": "Safety Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Mechanics",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Oil- Gas Storage and Transportation Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Geomechanics and Geotechnical Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "School of Materials Science and Engineering",
+      "nameEn": "Materials Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of New Energy",
+      "nameEn": "Power Engineering and Engineering Thermophysics",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of New Energy",
+      "nameEn": "New Energy Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Oceanography and Space Informatics",
+      "nameEn": "Remote Sensing Science and Technology",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Control Science and Engineering",
+      "nameEn": "Control Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Control Science and Engineering",
+      "nameEn": "Precision Measurement and Control Instrument",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Computer Science and Technology",
+      "nameEn": "Software Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "School of Economics and Management",
+      "nameEn": "Management Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "School of Economics and Management",
+      "nameEn": "Energy Economic Management",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Science",
+      "nameEn": "Applied Mathematics and Energy Data Science",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "College of Science",
+      "nameEn": "Energy Physics Science and Technology",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "School of Marxism Studies",
+      "nameEn": "Marxism Theories",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "School of Humanities and Law",
+      "nameEn": "Energy Governance and Law",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "college": "School of Foreign Studies",
+      "nameEn": "Language Service Engineering and Management",
+      "durationYears": 4,
+      "sourceId": "upc-doctoral-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "School of Geosciences",
+      "nameEn": "Geology",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "School of Geosciences",
+      "nameEn": "Geological Resource and Geological Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "School of Geosciences",
+      "nameEn": "Geophysics",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "School of Petroleum Engineering",
+      "nameEn": "Oil and Natural Gas Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemical Engineering and Technology",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Environmental Chemical Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Energy and Environmental Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemistry",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Mechanical and Electrical Engineering",
+      "nameEn": "Mechanical Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Mechanical and Electrical Engineering",
+      "nameEn": "Safety Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Mechanics",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Oil- Gas Storage and Transportation Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Pipeline and Civil Engineering",
+      "nameEn": "Geomechanics and Geotechnical Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "School of Materials Science and Engineering",
+      "nameEn": "Materials Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of New Energy",
+      "nameEn": "Power Engineering and Engineering Thermophysics",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of New Energy",
+      "nameEn": "New Energy Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Oceanography and Space Informatics",
+      "nameEn": "Remote Sensing Science and Technology",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Control Science and Engineering",
+      "nameEn": "Control Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Control Science and Engineering",
+      "nameEn": "Precision Measurement and Control Instrument",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Computer Science and Technology",
+      "nameEn": "Software Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "School of Economics and Management",
+      "nameEn": "Management Science and Engineering",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "School of Economics and Management",
+      "nameEn": "Energy Economic Management",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Science",
+      "nameEn": "Applied Mathematics and Energy Data Science",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "College of Science",
+      "nameEn": "Energy Physics Science and Technology",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "School of Marxism Studies",
+      "nameEn": "Marxism Theories",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "School of Humanities and Law",
+      "nameEn": "Energy Governance and Law",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "college": "School of Foreign Studies",
+      "nameEn": "Language Service Engineering and Management",
+      "durationYears": 4,
+      "sourceId": "upc-english-medium-programs-current"
+    }
+  ]
+}

@@ -1,0 +1,3080 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-27T07:04:40.799Z",
+  "schoolSlug": "henan-university",
+  "scope": "Official degree-program pages still linked from the current HENU index; published March 26, 2019 and not relabeled as 2027",
+  "sourceRun": "2026-10-27T07-04-40-437Z",
+  "counts": {
+    "total": 339,
+    "bachelor": 97,
+    "master": 195,
+    "doctoral": 47
+  },
+  "sources": [
+    {
+      "id": "henu-chinese-medium-bachelor-programs-current",
+      "sha256": "ab87f28334215963fa9900c8588c14e1ff0f24565fef1e97e04dbdd68866fe0b"
+    },
+    {
+      "id": "henu-chinese-medium-master-programs-current",
+      "sha256": "ac6ff8d6b366795260c79be4cfc9cac7920763b1afd60bb1b292537ceb34a746"
+    },
+    {
+      "id": "henu-chinese-medium-doctoral-programs-current",
+      "sha256": "de56d949054fb57a747413ce8680e94fca12fb81ab8adc891ecff01119fdd37a"
+    }
+  ],
+  "programs": [
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Business Administration",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "E-commerce",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Marketing",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Accountancy",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Financial Management",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Logistics Management",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Accountancy (CPA)",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Human Resources Management",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Musicology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Music Performance(European orchestral)",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Music Performance (Choral Conducting)",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Visual Communication Design",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Painting (Chinese Painting and Oil Painting)",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Fine Arts",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Animation",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Choreography",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Performance (Drama)",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Photography",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Environmental Design",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Music Performance",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Calligraphy",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Art Design",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Painting",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Sculpture",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Composition and Technical Theory of Composition",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Chemistry",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Applied Chemistry",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Material Chemistry",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Chemical Engineering and Technology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Chinese Language and Literature",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Literature of Theatre Film& Television",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Chinese International Education",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Civil Engineering and Architecture",
+      "nameEn": "Architecture",
+      "durationYears": 5,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Civil Engineering and Architecture",
+      "nameEn": "Town and Country Planning",
+      "durationYears": 5,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Civil Engineering and Architecture",
+      "nameEn": "Civil Engineering",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer and Information Engineering",
+      "nameEn": "Automation",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer and Information Engineering",
+      "nameEn": "Computer Science and Technology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer and Information Engineering",
+      "nameEn": "Software Engineering",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer and Information Engineering",
+      "nameEn": "Network Engineering",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Economics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Insurance",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "International Trade and Economics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Economic Statistics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Public Finance",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Finance",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Pedagogy",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Pre-school Education",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Educational Technology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Geographical Science",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Human Geography and Urban Planning",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Physical Geography and Resource Environment",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Geographic Information Science",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Environmental Science",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "Cultural Heritage and Museology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "History",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "Cultural Industry Management",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "Archaeology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "World History",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "Tourism Management",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Journalism and Communication",
+      "nameEn": "Journalism",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Journalism and Communication",
+      "nameEn": "Editing and Publishing",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Journalism and Communication",
+      "nameEn": "Radio and TV",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Journalism and Communication",
+      "nameEn": "Radio and TV Editing",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Journalism and Communication",
+      "nameEn": "Advertising",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Journalism and Communication",
+      "nameEn": "Broadcasting and hosting Art",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Law",
+      "nameEn": "Law",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Biological Science",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Plant Science and Technology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Bio-engineering",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Marxism",
+      "nameEn": "Ideological and Political Education",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematics and Statistics",
+      "nameEn": "Mathematics and Applied Mathematics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematics and Statistics",
+      "nameEn": "Financial Mathematics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematics and Statistics",
+      "nameEn": "Information and Computating Science",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematics and Statistics",
+      "nameEn": "Statistics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Clinical Medicine",
+      "durationYears": 5,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Dentistry",
+      "durationYears": 5,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Nursing and Health",
+      "nameEn": "Nursing",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Pharmacy",
+      "nameEn": "Pharmacy",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Pharmacy",
+      "nameEn": "Clinical Pharmacy",
+      "durationYears": 5,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Pharmacy",
+      "nameEn": "Pharmaceutical Preparation",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Pharmacy",
+      "nameEn": "Pharmacy of Traditional Chinese Medicine",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Philosophy",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Administrative Management",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Social Work",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Public Administration",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Labor and Social Security",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "Physical Education",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "Sports Training",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "Martial Arts and Traditional Sports",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "Choreography ( Dance sport)",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Physics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Control Technology and Instrument",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Electronic Information Science and Technology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Meterage Control Technology and Instruments (Automotive Electronic Control Technology)",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Information Engineering",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Software",
+      "nameEn": "Software Engineering",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Software",
+      "nameEn": "Network Engineering",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-bachelor-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Public Finance",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Finance",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "National Economics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Management Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "E-commerce",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Logistics Management and Engineering",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Business Management",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Technical Economics and Management",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Strategic Marketing",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Auditing",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Bussiness School",
+      "nameEn": "Accountancy",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Key Lab for Special Functional Materials",
+      "nameEn": "Physics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Key Lab for Special Functional Materials",
+      "nameEn": "Chemistry",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Key Lab for Special Functional Materials",
+      "nameEn": "Materials Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Fine Arts",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Drama and Film Studies",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Artistic Theory",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Musicology and Dance",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Art",
+      "nameEn": "Design",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Inorganic chemistry",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Physical Chemistry",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Organic Chemistry",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Polymer Chemistry and Physics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Chemical Engineering",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Chemical Processes",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Analytical Chemistry",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Applied Chemistry",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Environmental Science",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Curriculum and Teaching Methodology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Study of Chinese Classical Text",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Folklore",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Linguistics and Applied Linguistics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Chinese Philology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Documentary Information",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Ancient Chinese Literary",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Modern and Contemporary Chinese Literature",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Comparative Literature and World Literature",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Drama and Film Studies",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Theory of Literature and Art",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Civil Engineering and Architecture",
+      "nameEn": "Materials Science",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Civil Engineering and Architecture",
+      "nameEn": "Design",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Civil Engineering and Architecture",
+      "nameEn": "Civil Engineering",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer and Information Engineering",
+      "nameEn": "Computer Architecture",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer and Information Engineering",
+      "nameEn": "Computer Software and Theory",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer and Information Engineering",
+      "nameEn": "Computer Applications Technology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer and Information Engineering",
+      "nameEn": "Spatial Data Processing and Application",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer and Information Engineering",
+      "nameEn": "Control Theory and Control Engineering",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer and Information Engineering",
+      "nameEn": "Pattern Recognition and Intelligent Systems",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer and Information Engineering",
+      "nameEn": "Software Engineering",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Political Economics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "National Economics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Economic History",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Western Economics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "World Economy",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Population, Resources and Environmental Economics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Industrial Economy",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "International Trade",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Quantitative Economics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Finance",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Business Management",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Agricultural Economics Management",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Regional Economics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Labor Economics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Statistics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Basic Principles of Marxism",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Public Finance",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Pre-school Education",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "History of Education",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Higher Education",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Comparative Education",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Adult Education",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Vocational and Technical Education",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Children's Organization and Ideology Education",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Teacher Education",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Applied Psychology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Basic Psychology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Developmental and Educational Psychology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Cognitive Psychology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Educational Economy and Management",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Curriculum and Teaching Methodology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Educational Technology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Pedagogy",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Regional Economics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Physical Geography",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Human Geography",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Cartography and Geography Information System",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Remote Sensing Information Technology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Economic Geography",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Cartography and Geographic Information Engineering",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Land Resources Management",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Environmental Science",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Tourism Management",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Ecology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Curriculum and Teaching Methodology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "Chinese History",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "Archaeology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "Tourism Management",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "World History",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Journalism and Communication",
+      "nameEn": "Journalism",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Journalism and Communication",
+      "nameEn": "Communication Studies",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Journalism and Communication",
+      "nameEn": "Study of Theater and Film",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Journalism and Communication",
+      "nameEn": "Broadcasting and Hosting Art",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Law",
+      "nameEn": "Theories of Law",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Law",
+      "nameEn": "History of Law",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Law",
+      "nameEn": "Constitutional Law and Administrative Law",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Law",
+      "nameEn": "Criminal Law",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Law",
+      "nameEn": "Civil and commercial Law",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Law",
+      "nameEn": "Litigation Law",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Law",
+      "nameEn": "Economic Jurisprudence",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Law",
+      "nameEn": "Science of Environment and Natural Resources Protection Law",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Law",
+      "nameEn": "International Law",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Zoology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Microbiology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Neurobiology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Developmental Biology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Biochemical Engineering",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Plant Genetics and Breeding",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Genetics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Ecology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematics and Statistics",
+      "nameEn": "Mathematics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematics and Statistics",
+      "nameEn": "Statistics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Physiology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Microbiology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Cell Biology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Biochemistry and Molecular Biology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Human Anatomy Histology and Embryology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Immunology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Pathogen Biology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Pathology and Pathophysiology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Internal Medicine",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Neurology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Imaging and Nuclear Medicine",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Clinical Laboratory Diagnostics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Surgery",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Oncology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Molecular Pathology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Pediatrics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "General Medicine",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Emergency Medicine",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Ophthalmology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Geriatric Medicine",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Anesthesiology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Stomatology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Clinical Medicine",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Clinical Medicine（Anesthesiology）",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Clinical Medicine (Medical Imaging)",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Medicine",
+      "nameEn": "Clinical Medicine (Medical Laboratory Science)",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Nursing and Health",
+      "nameEn": "Social Medicine and Health Management",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Pharmacy",
+      "nameEn": "Pharmacy",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Pharmacy",
+      "nameEn": "Science of Chinese Pharmacology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Marxist Philosophy",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Chinese Philosophy",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Foreign Philosophies",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Logic",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Ethics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Science of Religion",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Philosophy of Science and Technology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Political Theory",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Chinese and Foreign Political Institution",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Scientific Socialism and International Communist Movement",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "History of the Chinese Communist Party",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "International Politics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "International Relation",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Foreign Studies",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Foreign Marxist Studies",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Administrative Management",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Educational Economics and Administration",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Social Security",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Social Work and Management",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Basic Principles of Marxism",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "Humane Studies of Athletics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "Human Movement Science",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "Sports Health",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "Sports Economics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "Theory of Sports Pedagogy and Training",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "National Traditional Sports",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Theoretical Physics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Atomic and Molecular Physics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Optics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Photovoltaic Materials and Solar Cells",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Physical Electronics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Circuits and Systems",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Microelectronics and Solid-State Electronics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Optical Engineering",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Detection Technology and Automatic Equipment",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Condensed Matter Physics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Materials Physics and Chemistry",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Curriculum and Teaching Methodology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "The Key Lab of Natural Medicine and Immuno-Engineering",
+      "nameEn": "Medicinal Chemistry",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "The Key Lab of Natural Medicine and Immuno-Engineering",
+      "nameEn": "Pharmacology",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "The Key Lab of Natural Medicine and Immuno-Engineering",
+      "nameEn": "Organic Chemistry",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "The Yellow River Civilization and the Sustainable Development Research Center",
+      "nameEn": "Folklore",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "The Yellow River Civilization and the Sustainable Development Research Center",
+      "nameEn": "Regional Economics",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "The Yellow River Civilization and the Sustainable Development Research Center",
+      "nameEn": "Chinese History",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "The Yellow River Civilization and the Sustainable Development Research Center",
+      "nameEn": "Human Geography",
+      "durationYears": 3,
+      "sourceId": "henu-chinese-medium-master-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Engineering Research Center for Nanomaterials",
+      "nameEn": "Polymer Chemistry and Physics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Engineering Research Center for Nanomaterials",
+      "nameEn": "Organic chemistry",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Engineering Research Center for Nanomaterials",
+      "nameEn": "Physical Chemistry",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Key Lab for Special Functional Materials",
+      "nameEn": "Inorganic chemistry",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Key Lab for Special Functional Materials",
+      "nameEn": "Physical Chemistry",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Key Lab for Special Functional Materials",
+      "nameEn": "Condensed Matter Physics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Key Lab of Plant Stress Biology",
+      "nameEn": "Botany",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Key Lab of Plant Stress Biology",
+      "nameEn": "Cell Biology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Key Lab of Plant Stress Biology",
+      "nameEn": "Biochemistry and Molecular Biology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Analytical Chemistry",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Inorganic Chemistry",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chemistry and Chemical Engineering",
+      "nameEn": "Physical Chemistry",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Study of Chinese Classical Text",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Chinese Philology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Ancient Chinese Literary",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Modern and Contemporary Chinese Literature",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Comparative Literature and World Literature",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Chinese Language and Literature",
+      "nameEn": "Theory of Literature and Art",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Political Economics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Industrial Economy",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "International Trade",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Regional Economics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Labor Economics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics",
+      "nameEn": "Statistics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Educational Principle",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "History of Education",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Higher Education",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Curriculum and Teaching Methodology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Moral Education",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "Educational Technology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Education",
+      "nameEn": "The Management of Educational Human Resources",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Physical Geography",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Human Geography",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Cartography and Geography Information System",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Remote Sensing Information Technology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Environment and Planing",
+      "nameEn": "Economic Geography",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "Chinese History",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of History and Culture",
+      "nameEn": "Modern and Contemporary Chinese History",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Neurobiology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Genetics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Ecology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Cell Biology",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Marxism",
+      "nameEn": "Basic Principles of Marxism",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy and Public Management",
+      "nameEn": "Basic Principles of Marxism",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "Theory of Sports Pedagogy and Training",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physics and Electronics",
+      "nameEn": "Condensed Matter Physics",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "The Key Lab of Natural Medicine and Immuno-Engineering",
+      "nameEn": "Organic chemistry",
+      "durationYears": 4,
+      "sourceId": "henu-chinese-medium-doctoral-programs-current",
+      "sourcePublishedAt": "2019-03-26"
+    }
+  ]
+}

@@ -1,0 +1,2937 @@
+{
+  "version": 1,
+  "schoolSlug": "northeast-normal-university",
+  "academicYear": "2026",
+  "method": "pdfplumber ruled-table extraction; all 11 rendered pages visually reviewed; numbering checked as a continuous 1-151 sequence",
+  "source": {
+    "id": "nenu-international-graduate-program-catalog-pdf-2026",
+    "url": "https://iso.nenu.edu.cn/M-D.pdf",
+    "sha256": "36c4f9325b1d5f16581b26ad750935fe125aa59b0e5686483bc296bffa5f1ce1",
+    "fetchedAt": "2026-10-26T05:55:10.060Z",
+    "pages": 11
+  },
+  "counts": {
+    "total": 151,
+    "master": 95,
+    "doctoral": 56,
+    "chinese": 95,
+    "english": 56
+  },
+  "pageRows": [
+    {
+      "page": 1,
+      "routes": 14
+    },
+    {
+      "page": 2,
+      "routes": 14
+    },
+    {
+      "page": 3,
+      "routes": 14
+    },
+    {
+      "page": 4,
+      "routes": 14
+    },
+    {
+      "page": 5,
+      "routes": 14
+    },
+    {
+      "page": 6,
+      "routes": 14
+    },
+    {
+      "page": 7,
+      "routes": 14
+    },
+    {
+      "page": 8,
+      "routes": 14
+    },
+    {
+      "page": 9,
+      "routes": 14
+    },
+    {
+      "page": 10,
+      "routes": 14
+    },
+    {
+      "page": 11,
+      "routes": 11
+    }
+  ],
+  "routes": [
+    {
+      "number": 1,
+      "page": 1,
+      "nameEn": "Studies of Comparative Education",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 2,
+      "page": 1,
+      "nameEn": "Studies of Comparative Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 3,
+      "page": 1,
+      "nameEn": "Studies of Comparative Education",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 4,
+      "page": 1,
+      "nameEn": "Studies of Comparative Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 5,
+      "page": 1,
+      "nameEn": "Studies of Higher Education",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 6,
+      "page": 1,
+      "nameEn": "Studies of Higher Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 7,
+      "page": 1,
+      "nameEn": "Studies of Higher Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 8,
+      "page": 1,
+      "nameEn": "Educational Management and Policy",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 9,
+      "page": 1,
+      "nameEn": "Educational Management and Policy",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 10,
+      "page": 1,
+      "nameEn": "History of Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 11,
+      "page": 1,
+      "nameEn": "History of Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 12,
+      "page": 1,
+      "nameEn": "Principles of Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 13,
+      "page": 1,
+      "nameEn": "Principles of Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 14,
+      "page": 1,
+      "nameEn": "Curriculum & Methodology",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 15,
+      "page": 2,
+      "nameEn": "Curriculum & Methodology",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 16,
+      "page": 2,
+      "nameEn": "Curriculum & Methodology",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 17,
+      "page": 2,
+      "nameEn": "Rural Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 18,
+      "page": 2,
+      "nameEn": "Studies of Pre-school Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 19,
+      "page": 2,
+      "nameEn": "Studies of Pre-school Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 20,
+      "page": 2,
+      "nameEn": "Teacher Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 21,
+      "page": 2,
+      "nameEn": "Education Statistics, Measurement and Evaluation",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 22,
+      "page": 2,
+      "nameEn": "Primary School Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 2,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 23,
+      "page": 2,
+      "nameEn": "Preschool Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 2,
+      "schoolOrFaculty": "Faculty of Education",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 24,
+      "page": 2,
+      "nameEn": "Psychology of Development and Education",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Psychology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 25,
+      "page": 2,
+      "nameEn": "Psychology of Development and Education",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Psychology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 26,
+      "page": 2,
+      "nameEn": "Basic Psychological Studies",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Psychology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 27,
+      "page": 2,
+      "nameEn": "Basic Psychological Studies",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Psychology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 28,
+      "page": 2,
+      "nameEn": "Applied Psychology",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Psychology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 29,
+      "page": 3,
+      "nameEn": "Law",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Politics and Law",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 30,
+      "page": 3,
+      "nameEn": "International Politics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Politics and Law",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 31,
+      "page": 3,
+      "nameEn": "Public Administration",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Politics and Law",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 32,
+      "page": 3,
+      "nameEn": "Finance",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Business School",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 33,
+      "page": 3,
+      "nameEn": "Enterprise Management",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "Business School",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 34,
+      "page": 3,
+      "nameEn": "Teaching Chinese as a Foreign Language",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Literature",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 35,
+      "page": 3,
+      "nameEn": "Chinese Philology",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Literature",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 36,
+      "page": 3,
+      "nameEn": "Theory of Literature and Art",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Literature",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 37,
+      "page": 3,
+      "nameEn": "Linguistics & Applied Linguistics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Literature",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 38,
+      "page": 3,
+      "nameEn": "Chinese Modern & Contemporary Literature",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Literature",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 39,
+      "page": 3,
+      "nameEn": "Study of Chinese Classical Text",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Literature",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 40,
+      "page": 3,
+      "nameEn": "Ancient Chinese Text",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Literature",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 41,
+      "page": 3,
+      "nameEn": "Comparative Literature and World Literature",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Literature",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 42,
+      "page": 3,
+      "nameEn": "World History",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of History and Literature",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 43,
+      "page": 4,
+      "nameEn": "World History",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of History and Literature",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 44,
+      "page": 4,
+      "nameEn": "World History",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of History and Literature",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 45,
+      "page": 4,
+      "nameEn": "Russian Language and Literature",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of International Studies",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 46,
+      "page": 4,
+      "nameEn": "Japanese Language and Literature",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of International Studies",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 47,
+      "page": 4,
+      "nameEn": "Japanese Language and Literature",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of International Studies",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 48,
+      "page": 4,
+      "nameEn": "Foreign Linguistics and Applied Linguistics",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of International Studies",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 49,
+      "page": 4,
+      "nameEn": "Foreign Linguistics and Applied Linguistics",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of International Studies",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 50,
+      "page": 4,
+      "nameEn": "English Language and Literature",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of International Studies",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 22000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 51,
+      "page": 4,
+      "nameEn": "English Language and Literature",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of International Studies",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 52,
+      "page": 4,
+      "nameEn": "Russian Translation",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of International Studies",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 53,
+      "page": 4,
+      "nameEn": "Russian Interpretation",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of International Studies",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 54,
+      "page": 4,
+      "nameEn": "Dance",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Music and Dance",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 26000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 55,
+      "page": 4,
+      "nameEn": "Art",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Music and Dance",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 26000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 56,
+      "page": 4,
+      "nameEn": "Music",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Music and Dance",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 26000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 57,
+      "page": 5,
+      "nameEn": "Music",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Music and Dance",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 29000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 58,
+      "page": 5,
+      "nameEn": "Curriculum & Methodology",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Music and Dance",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 26000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 59,
+      "page": 5,
+      "nameEn": "Fine Arts and Calligraphy",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Fine Arts",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 26000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 60,
+      "page": 5,
+      "nameEn": "Design",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Fine Arts",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 26000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 61,
+      "page": 5,
+      "nameEn": "Design",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Fine Arts",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 26000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 62,
+      "page": 5,
+      "nameEn": "Art",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Fine Arts",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 26000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 63,
+      "page": 5,
+      "nameEn": "Fundamental Mathematics",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 64,
+      "page": 5,
+      "nameEn": "Fundamental Mathematics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 65,
+      "page": 5,
+      "nameEn": "Fundamental Mathematics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 66,
+      "page": 5,
+      "nameEn": "Computing Mathematics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 67,
+      "page": 5,
+      "nameEn": "Mathematics Education",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 68,
+      "page": 5,
+      "nameEn": "Mathematics Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 69,
+      "page": 5,
+      "nameEn": "Mathematics Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 70,
+      "page": 5,
+      "nameEn": "Statistics",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 71,
+      "page": 6,
+      "nameEn": "Statistics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 72,
+      "page": 6,
+      "nameEn": "Statistics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 73,
+      "page": 6,
+      "nameEn": "Applied Mathematics",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 74,
+      "page": 6,
+      "nameEn": "Applied Mathematics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 75,
+      "page": 6,
+      "nameEn": "Applied Mathematics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 76,
+      "page": 6,
+      "nameEn": "Applied Mathematics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 77,
+      "page": 6,
+      "nameEn": "Operational Research and Cybernetics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Mathematics and Statistics",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 78,
+      "page": 6,
+      "nameEn": "Computer Science and Technology",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Information Science and Technology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 79,
+      "page": 6,
+      "nameEn": "Computer Science and Technology",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Information Science and Technology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 80,
+      "page": 6,
+      "nameEn": "Artificial Intelligence",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Information Science and Technology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 81,
+      "page": 6,
+      "nameEn": "Educational Technology",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Information Science and Technology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 82,
+      "page": 6,
+      "nameEn": "Information Science",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Information Science and Technology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 83,
+      "page": 6,
+      "nameEn": "Library Science",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Information Science and Technology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 84,
+      "page": 6,
+      "nameEn": "Library and Information Studies",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Information Science and Technology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 85,
+      "page": 7,
+      "nameEn": "Intelligent Science and Technology",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Information Science and Technology",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 86,
+      "page": 7,
+      "nameEn": "Analytical Chemistry",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 87,
+      "page": 7,
+      "nameEn": "Analytical Chemistry",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 88,
+      "page": 7,
+      "nameEn": "Analytical Chemistry",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 89,
+      "page": 7,
+      "nameEn": "Analytical Chemistry",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 90,
+      "page": 7,
+      "nameEn": "Macromolecule Chemistry and Physics",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 91,
+      "page": 7,
+      "nameEn": "Macromolecule Chemistry and Physics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 92,
+      "page": 7,
+      "nameEn": "Macromolecule Chemistry and Physics",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 93,
+      "page": 7,
+      "nameEn": "Macromolecule Chemistry and Physics",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 94,
+      "page": 7,
+      "nameEn": "Inorganic Chemistry",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 95,
+      "page": 7,
+      "nameEn": "Inorganic Chemistry",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 96,
+      "page": 7,
+      "nameEn": "Inorganic Chemistry",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 97,
+      "page": 7,
+      "nameEn": "Inorganic Chemistry",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 98,
+      "page": 7,
+      "nameEn": "Physical Chemistry",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 99,
+      "page": 8,
+      "nameEn": "Physical Chemistry",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 100,
+      "page": 8,
+      "nameEn": "Physical Chemistry",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 101,
+      "page": 8,
+      "nameEn": "Physical Chemistry",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 102,
+      "page": 8,
+      "nameEn": "Organic Chemistry",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 103,
+      "page": 8,
+      "nameEn": "Organic Chemistry",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 104,
+      "page": 8,
+      "nameEn": "Organic Chemistry",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 105,
+      "page": 8,
+      "nameEn": "Organic Chemistry",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Chemistry",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 106,
+      "page": 8,
+      "nameEn": "Grass Science",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 107,
+      "page": 8,
+      "nameEn": "Grass Science",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 108,
+      "page": 8,
+      "nameEn": "Zoology",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 109,
+      "page": 8,
+      "nameEn": "Zoology",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 110,
+      "page": 8,
+      "nameEn": "Ecology",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 111,
+      "page": 8,
+      "nameEn": "Ecology",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 112,
+      "page": 8,
+      "nameEn": "Biochemistry and Molecule Biology",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 113,
+      "page": 9,
+      "nameEn": "Biochemistry and Molecule Biology",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 114,
+      "page": 9,
+      "nameEn": "Cell Biology",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 115,
+      "page": 9,
+      "nameEn": "Cell Biology",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 116,
+      "page": 9,
+      "nameEn": "Genetics",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 117,
+      "page": 9,
+      "nameEn": "Genetics",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 118,
+      "page": 9,
+      "nameEn": "Botany",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 119,
+      "page": 9,
+      "nameEn": "Botany",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Life Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 120,
+      "page": 9,
+      "nameEn": "Urban and Regional Planning",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 121,
+      "page": 9,
+      "nameEn": "Urban and Regional Planning",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 122,
+      "page": 9,
+      "nameEn": "Urban and Rural Planning",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 123,
+      "page": 9,
+      "nameEn": "Cartology and Geography Information System",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 124,
+      "page": 9,
+      "nameEn": "Cartology and Geography Information System",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 125,
+      "page": 9,
+      "nameEn": "Cartology and Geography Information System",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 126,
+      "page": 9,
+      "nameEn": "Cartology and Geography Information System",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 127,
+      "page": 10,
+      "nameEn": "Human Geography",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 128,
+      "page": 10,
+      "nameEn": "Human Geography",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 129,
+      "page": 10,
+      "nameEn": "Wetland Science",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 130,
+      "page": 10,
+      "nameEn": "Wetland Science",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 131,
+      "page": 10,
+      "nameEn": "Wetland Science",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 132,
+      "page": 10,
+      "nameEn": "Wetland Science",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 133,
+      "page": 10,
+      "nameEn": "Physical Geography",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 134,
+      "page": 10,
+      "nameEn": "Physical Geography",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 135,
+      "page": 10,
+      "nameEn": "Physical Geography",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 136,
+      "page": 10,
+      "nameEn": "Physical Geography",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Geographical Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 137,
+      "page": 10,
+      "nameEn": "Environmental Engineering",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Environment",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 138,
+      "page": 10,
+      "nameEn": "Environmental Engineering",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Environment",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 139,
+      "page": 10,
+      "nameEn": "Environmental Science",
+      "teachingLanguage": "English",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "schoolOrFaculty": "School of Environment",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 29000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 140,
+      "page": 10,
+      "nameEn": "Environmental Science",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Environment",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 141,
+      "page": 11,
+      "nameEn": "Ecology",
+      "teachingLanguage": "English",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Environment",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 23000,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": true,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 142,
+      "page": 11,
+      "nameEn": "Sport Education",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Physical Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 26000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 143,
+      "page": 11,
+      "nameEn": "Physical Education and Sports Coaching",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Physical Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 26000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 144,
+      "page": 11,
+      "nameEn": "Human Kinesiology and Science",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Physical Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 26000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 145,
+      "page": 11,
+      "nameEn": "Sports Training",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Physical Education",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 26000,
+      "campus": "Renmin St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 146,
+      "page": 11,
+      "nameEn": "Communication",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Media Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 147,
+      "page": 11,
+      "nameEn": "Drama and Film Studies",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Media Sciences",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 148,
+      "page": 11,
+      "nameEn": "Journalism",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Media Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 149,
+      "page": 11,
+      "nameEn": "Journalism and Communication",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Media Sciences",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 150,
+      "page": 11,
+      "nameEn": "Art",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "schoolOrFaculty": "School of Media Sciences",
+      "degreeType": "Full -time Academic Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": true,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": false,
+        "nenuPresidential": true
+      }
+    },
+    {
+      "number": 151,
+      "page": 11,
+      "nameEn": "International Chinese Language Education (Teaching Chinese to Speakers of Other Languages)",
+      "teachingLanguage": "Chinese",
+      "degreeLevel": "Master",
+      "durationYears": 2,
+      "schoolOrFaculty": "School of International Chinese Education",
+      "degreeType": "Full-time Professional Degree",
+      "tuitionAmount": 18600,
+      "campus": "Jingyue St. Campus",
+      "scholarshipEligibility": {
+        "cscHighLevelGraduates": false,
+        "cscBeltAndRoad": false,
+        "cscTypeA": true,
+        "internationalChineseLanguageTeachers": true,
+        "nenuPresidential": false
+      }
+    }
+  ]
+}

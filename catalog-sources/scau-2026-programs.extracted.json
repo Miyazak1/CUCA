@@ -1,0 +1,2118 @@
+{
+  "version": 1,
+  "status": "deterministic_official_extraction",
+  "publicationAuthorized": false,
+  "databaseWriteAuthorized": false,
+  "run": "2026-10-27T08-46-18-229Z",
+  "sources": [
+    {
+      "id": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "label": "South China Agricultural University international undergraduate program catalog PDF 2026",
+      "url": "https://cie.scau.edu.cn/_upload/article/files/66/4f/7d3066f0417890a244d3182b6429/6babfc9f-8615-4ac3-990c-3b6ea467fc02.pdf",
+      "fetchedAt": "2026-10-27T08:46:21.204Z",
+      "sha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58"
+    },
+    {
+      "id": "scau-international-master-program-catalog-pdf-2026",
+      "label": "South China Agricultural University international master program catalog PDF 2026",
+      "url": "https://cie.scau.edu.cn/_upload/article/files/9a/dd/7549f78a4abdad761a2ef5458557/03a1876b-1e7d-4369-a1d9-87a46a298f60.pdf",
+      "fetchedAt": "2026-10-27T08:46:19.975Z",
+      "sha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c"
+    },
+    {
+      "id": "scau-international-doctoral-program-catalog-pdf-2026",
+      "label": "South China Agricultural University international doctoral program catalog PDF 2026",
+      "url": "https://cie.scau.edu.cn/_upload/article/files/d8/60/725213874ec6ba86eef994c3d787/5db52030-beb6-4df6-b517-42dbaa7b31ee.pdf",
+      "fetchedAt": "2026-10-27T08:46:18.692Z",
+      "sha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08"
+    }
+  ],
+  "counts": {
+    "Undergraduate": 95,
+    "Master": 80,
+    "Doctoral": 34,
+    "total": 209
+  },
+  "limitations": [
+    "The embedded Chinese font maps do not decode reliably; Chinese labels are omitted instead of storing mojibake.",
+    "The catalogs are explicitly current for 2026 and do not establish a 2027 intake.",
+    "Teaching language, admission requirements and application deadlines are not stated per program in these PDFs."
+  ],
+  "programs": [
+    {
+      "sourceOrdinal": 1,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Agriculture"
+    },
+    {
+      "sourceOrdinal": 2,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Seed Science and Engineering"
+    },
+    {
+      "sourceOrdinal": 3,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Biological Breeding Science"
+    },
+    {
+      "sourceOrdinal": 4,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Ecology"
+    },
+    {
+      "sourceOrdinal": 5,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Environmental Engineering"
+    },
+    {
+      "sourceOrdinal": 6,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Environmental Science"
+    },
+    {
+      "sourceOrdinal": 7,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Geographic Information Science"
+    },
+    {
+      "sourceOrdinal": 8,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Surveying and Mapping Engineering"
+    },
+    {
+      "sourceOrdinal": 9,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Agricultural Resources and Environment"
+    },
+    {
+      "sourceOrdinal": 10,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Pratacultural Science"
+    },
+    {
+      "sourceOrdinal": 11,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Forestry"
+    },
+    {
+      "sourceOrdinal": 12,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Forest Conservation"
+    },
+    {
+      "sourceOrdinal": 13,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Tourism Management"
+    },
+    {
+      "sourceOrdinal": 14,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Landscape Architecture (Gardening)"
+    },
+    {
+      "sourceOrdinal": 15,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Urban and Rural Planning"
+    },
+    {
+      "sourceOrdinal": 16,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Resources and Development of Traditional Chinese Medicine"
+    },
+    {
+      "sourceOrdinal": 17,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Wild Animals and Nature Reserve management"
+    },
+    {
+      "sourceOrdinal": 18,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "National Park Construction and Management"
+    },
+    {
+      "sourceOrdinal": 19,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Landscape Architecture"
+    },
+    {
+      "sourceOrdinal": 20,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Tea Science"
+    },
+    {
+      "sourceOrdinal": 21,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Horticulture"
+    },
+    {
+      "sourceOrdinal": 22,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Facility Agriculture Science and Engineering"
+    },
+    {
+      "sourceOrdinal": 23,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Machine Design, Manufacturing and Automation"
+    },
+    {
+      "sourceOrdinal": 24,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Agricultural Mechanization and Automation"
+    },
+    {
+      "sourceOrdinal": 25,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Vehicle Engineering"
+    },
+    {
+      "sourceOrdinal": 26,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Electric Engineering and Automation"
+    },
+    {
+      "sourceOrdinal": 27,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Industrial Design"
+    },
+    {
+      "sourceOrdinal": 28,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Robotics Engineering"
+    },
+    {
+      "sourceOrdinal": 29,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Biotechnology"
+    },
+    {
+      "sourceOrdinal": 30,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Bioscience"
+    },
+    {
+      "sourceOrdinal": 31,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Wood Science and Engineering"
+    },
+    {
+      "sourceOrdinal": 32,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Materials Science and Engineering"
+    },
+    {
+      "sourceOrdinal": 33,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Energy and environment systems engineering"
+    },
+    {
+      "sourceOrdinal": 34,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Applied Chemistry"
+    },
+    {
+      "sourceOrdinal": 35,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Materials Chemistry"
+    },
+    {
+      "sourceOrdinal": 36,
+      "sourcePage": 1,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Pharmaceutical Engineering"
+    },
+    {
+      "sourceOrdinal": 37,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Biomass Energy and Materials"
+    },
+    {
+      "sourceOrdinal": 38,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Furniture Design and Engineering"
+    },
+    {
+      "sourceOrdinal": 39,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Mathematics and Applied Mathematics"
+    },
+    {
+      "sourceOrdinal": 40,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Information and Computer Science"
+    },
+    {
+      "sourceOrdinal": 41,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Computer Science and Technology"
+    },
+    {
+      "sourceOrdinal": 42,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Software Engineering"
+    },
+    {
+      "sourceOrdinal": 43,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Information Management and Information Systems"
+    },
+    {
+      "sourceOrdinal": 44,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Statistics"
+    },
+    {
+      "sourceOrdinal": 45,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Data science and big data technology"
+    },
+    {
+      "sourceOrdinal": 46,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Big Data Management and Application"
+    },
+    {
+      "sourceOrdinal": 47,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Integrated Circuit Design and Integrated Systems"
+    },
+    {
+      "sourceOrdinal": 48,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Electronic Science and Technology"
+    },
+    {
+      "sourceOrdinal": 49,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Electronic Information Engineering"
+    },
+    {
+      "sourceOrdinal": 50,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Electronics and Information Science"
+    },
+    {
+      "sourceOrdinal": 51,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Optoelectronics Information Science and Engineering"
+    },
+    {
+      "sourceOrdinal": 52,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Artificial Intelligence"
+    },
+    {
+      "sourceOrdinal": 53,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Animal Pharmacy"
+    },
+    {
+      "sourceOrdinal": 54,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Animal Medicine"
+    },
+    {
+      "sourceOrdinal": 55,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Sericulture"
+    },
+    {
+      "sourceOrdinal": 56,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Animal Science"
+    },
+    {
+      "sourceOrdinal": 57,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Smart Animal Husbandry Science and Engineering"
+    },
+    {
+      "sourceOrdinal": 58,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Marine Science"
+    },
+    {
+      "sourceOrdinal": 59,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Aquaculture"
+    },
+    {
+      "sourceOrdinal": 60,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Packaging Engineering"
+    },
+    {
+      "sourceOrdinal": 61,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Food Science and Engineering"
+    },
+    {
+      "sourceOrdinal": 62,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Food Quality and Safety"
+    },
+    {
+      "sourceOrdinal": 63,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Bioengineering"
+    },
+    {
+      "sourceOrdinal": 64,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Architecture"
+    },
+    {
+      "sourceOrdinal": 65,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Civil Engineering"
+    },
+    {
+      "sourceOrdinal": 66,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Water Resources and Hydropower Engineering"
+    },
+    {
+      "sourceOrdinal": 67,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Business Administration"
+    },
+    {
+      "sourceOrdinal": 68,
+      "sourcePage": 2,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "International Economics and Trade"
+    },
+    {
+      "sourceOrdinal": 69,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Accounting"
+    },
+    {
+      "sourceOrdinal": 70,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Finance"
+    },
+    {
+      "sourceOrdinal": 71,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Economics"
+    },
+    {
+      "sourceOrdinal": 72,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Agricultural and Forestry Economy and Management"
+    },
+    {
+      "sourceOrdinal": 73,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Marketing"
+    },
+    {
+      "sourceOrdinal": 74,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Human Resources Management"
+    },
+    {
+      "sourceOrdinal": 75,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Chinese Language and Literature"
+    },
+    {
+      "sourceOrdinal": 76,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "History"
+    },
+    {
+      "sourceOrdinal": 77,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Law"
+    },
+    {
+      "sourceOrdinal": 78,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Public Affairs Management"
+    },
+    {
+      "sourceOrdinal": 79,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Labor and Social Security"
+    },
+    {
+      "sourceOrdinal": 80,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Social Work"
+    },
+    {
+      "sourceOrdinal": 81,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Land Resources Management"
+    },
+    {
+      "sourceOrdinal": 82,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Administration Management"
+    },
+    {
+      "sourceOrdinal": 83,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Real Estate Development and Management"
+    },
+    {
+      "sourceOrdinal": 84,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Animation"
+    },
+    {
+      "sourceOrdinal": 85,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Radio and Television Editing and Directing"
+    },
+    {
+      "sourceOrdinal": 86,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Visual Communication Design"
+    },
+    {
+      "sourceOrdinal": 87,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Environmental Design"
+    },
+    {
+      "sourceOrdinal": 88,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Product Design"
+    },
+    {
+      "sourceOrdinal": 89,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Fashion and Apparel Design"
+    },
+    {
+      "sourceOrdinal": 90,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Acting"
+    },
+    {
+      "sourceOrdinal": 91,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Music Performance"
+    },
+    {
+      "sourceOrdinal": 92,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "English"
+    },
+    {
+      "sourceOrdinal": 93,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Japanese"
+    },
+    {
+      "sourceOrdinal": 94,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Plant Protection"
+    },
+    {
+      "sourceOrdinal": 95,
+      "sourcePage": 3,
+      "degreeLevel": "Undergraduate",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-undergraduate-program-catalog-pdf-2026",
+      "sourceSha256": "57a59f23f64d546980fee8c1cefd03639ef39044393a0da19a855e3995827b58",
+      "nameEn": "Ideological and Political Education"
+    },
+    {
+      "sourceOrdinal": 1,
+      "sourcePage": 1,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Crop Science",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 2,
+      "sourcePage": 1,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agronomy and Seed Industry",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 3,
+      "sourcePage": 1,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Land-use Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 4,
+      "sourcePage": 1,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Environmental Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 5,
+      "sourcePage": 1,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Mapping Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 6,
+      "sourcePage": 1,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agricultural Resources and Environment",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 7,
+      "sourcePage": 1,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Ecology",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 8,
+      "sourcePage": 1,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Resource utilization and plant protection",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 9,
+      "sourcePage": 1,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Environmental Science and Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 10,
+      "sourcePage": 1,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Forestry",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 11,
+      "sourcePage": 1,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agrostology",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 12,
+      "sourcePage": 2,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Forestry",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 13,
+      "sourcePage": 2,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Landscape Architecture",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 14,
+      "sourcePage": 2,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agronomy and Seed Industry",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 15,
+      "sourcePage": 2,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agriculture Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 16,
+      "sourcePage": 2,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Mechanical Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 17,
+      "sourcePage": 2,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agriculture Engineering and Information Technology",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 18,
+      "sourcePage": 2,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Robot Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 19,
+      "sourcePage": 2,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Control Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 20,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agricultural machinery Equipment Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 21,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Mechanical Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 22,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Biology",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 23,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Biology Engineering and Technology",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 24,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Forestry Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 25,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Chemical Engineering and Technology",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 26,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Materials Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 27,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Forestry Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 28,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Chemical Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 29,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Home Intelligent Design and Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 30,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Mathematics",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 31,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Computer Science and Technology",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 32,
+      "sourcePage": 3,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Computer Technology",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 33,
+      "sourcePage": 4,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Software Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 34,
+      "sourcePage": 4,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Industrial Engineering and Management",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 35,
+      "sourcePage": 4,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Optical Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 36,
+      "sourcePage": 4,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agriculture Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 37,
+      "sourcePage": 4,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Artificial Intelligence",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 38,
+      "sourcePage": 4,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "information and Communication Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 39,
+      "sourcePage": 4,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "The New Generation of Electronic Information Technology",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 40,
+      "sourcePage": 4,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Veterinary Medicine",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 41,
+      "sourcePage": 4,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Veterinary",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 42,
+      "sourcePage": 4,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Healthy Animal Husbandry for Safe Production",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 43,
+      "sourcePage": 4,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Animal Nutrition and Feed Science",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 44,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Animal Genetics, Breeding and Reproduction",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 45,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "The Rearing of Special-type Economic Animals",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 46,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Animal husbandry",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 47,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Aquaculture",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 48,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Biology",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 49,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Fishery Development",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 50,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Food Science and Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 51,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Food Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 52,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Biology",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 53,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Food and Nutrition",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 54,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agriculture Engineering",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 55,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Civil Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 56,
+      "sourcePage": 5,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Water Conservancy",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 57,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Artificial Environment Engineering",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 58,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agriculture and Forest Economics and Management",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 59,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Business Administration",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 60,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Industrial Economics",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 61,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Finance",
+      "durationYears": 2,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 62,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agricultural management",
+      "durationYears": 2,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 63,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Accounting",
+      "durationYears": 2,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 64,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Chinese History",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 65,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "History of Science and Technology",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 66,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Land Resource Management",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 67,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Rural development",
+      "durationYears": 2,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 68,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Social Security",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 69,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Administration Management",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 70,
+      "sourcePage": 6,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Social Work",
+      "durationYears": 2,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 71,
+      "sourcePage": 7,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Design",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 72,
+      "sourcePage": 7,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Drama, Film and Television",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 73,
+      "sourcePage": 7,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Design",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 74,
+      "sourcePage": 7,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Agricultural Entomology and Pest Control",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 75,
+      "sourcePage": 7,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Pesticide Science",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 76,
+      "sourcePage": 7,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Plant Pathology",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 77,
+      "sourcePage": 7,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Biology",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 78,
+      "sourcePage": 7,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Resource utilization and plant protection",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 79,
+      "sourcePage": 7,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "Marxism theory",
+      "durationYears": 3,
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 80,
+      "sourcePage": 7,
+      "degreeLevel": "Master",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-master-program-catalog-pdf-2026",
+      "sourceSha256": "480452f16b878f8d4cb1f8a1a8fb977862d90cbe5e803011b2c73dac5b1c766c",
+      "nameEn": "English Translation",
+      "durationYears": 3,
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 1,
+      "sourcePage": 1,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Crop Science",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 2,
+      "sourcePage": 1,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Agriculture",
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 3,
+      "sourcePage": 1,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Agricultural Resources and Environment",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 4,
+      "sourcePage": 1,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Ecology",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 5,
+      "sourcePage": 1,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Land-use Engineering",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 6,
+      "sourcePage": 1,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Landscape Architecture",
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 7,
+      "sourcePage": 1,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Forestry",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 8,
+      "sourcePage": 2,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Horticulture",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 9,
+      "sourcePage": 2,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Agriculture",
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 10,
+      "sourcePage": 2,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Agriculture Engineering",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 11,
+      "sourcePage": 2,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Agriculture",
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 12,
+      "sourcePage": 2,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Biology",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 13,
+      "sourcePage": 2,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Crop Science",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 14,
+      "sourcePage": 2,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Forestry Engineering",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 15,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Agriculture Engineering",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 16,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Agriculture Engineering",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 17,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Veterinary Medicine",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 18,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Veterinary",
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 19,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Animal Nutrition and Feed Science",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 20,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Animal Genetics, Breeding and Reproduction",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 21,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "The Rearing of Special-type Economic Animals",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 22,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Animal Health Breeding and Safe Production",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 23,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Agriculture",
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 24,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Biology",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 25,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Biology",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 26,
+      "sourcePage": 3,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Food Science and Engineering",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 27,
+      "sourcePage": 4,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Agricultural Engineering",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 28,
+      "sourcePage": 4,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Economic Management of Agriculture and Forestry",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 29,
+      "sourcePage": 4,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Pesticide Science",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 30,
+      "sourcePage": 4,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Plant Pathology",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 31,
+      "sourcePage": 4,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Biology",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 32,
+      "sourcePage": 4,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Agricultural Entomology and Pest Control",
+      "programType": "Academic"
+    },
+    {
+      "sourceOrdinal": 33,
+      "sourcePage": 4,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Agriculture",
+      "programType": "Professional"
+    },
+    {
+      "sourceOrdinal": 34,
+      "sourcePage": 4,
+      "degreeLevel": "Doctoral",
+      "catalogYear": 2026,
+      "sourceId": "scau-international-doctoral-program-catalog-pdf-2026",
+      "sourceSha256": "3a2a636d303fad84e6b8a41e7a48252b1f5df98a4c0e3a5fbe85471af7a52f08",
+      "nameEn": "Land Use Engineering",
+      "programType": "Academic"
+    }
+  ]
+}

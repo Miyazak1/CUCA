@@ -1,0 +1,1840 @@
+{
+  "version": 1,
+  "schoolSlug": "jiangxi-normal-university",
+  "academicYear": "current catalog captured in 2026; not relabeled as 2027",
+  "method": "pdfplumber ruled-table extraction; all 10 rendered pages visually reviewed; cross-page Music and Foreign Languages faculty cells restored from the rendered layout; six repeated page-10 Mathematics and Statistics rows removed",
+  "source": {
+    "id": "jxnu-international-major-catalog-pdf-current",
+    "url": "https://laihua.jxnu.edu.cn/_upload/article/files/7c/70/f75b419a4dc3afb01756c409ac0c/7517764e-f8f9-46ed-afb5-5aa827e8f00a.pdf",
+    "sha256": "f2834b39363eab6b58e700eb2be16d3eacd60bcac9c17a69706dc1bae2876c23",
+    "fetchedAt": "2026-10-26T10:36:38.952Z",
+    "pages": 10
+  },
+  "counts": {
+    "raw": 180,
+    "duplicatesRemoved": 6,
+    "total": 174,
+    "bachelor": 75,
+    "master": 81,
+    "doctoral": 16,
+    "nonDegree": 2,
+    "chinese": 171,
+    "english": 3
+  },
+  "pageRows": [
+    {
+      "page": 1,
+      "routes": 20
+    },
+    {
+      "page": 2,
+      "routes": 20
+    },
+    {
+      "page": 3,
+      "routes": 16
+    },
+    {
+      "page": 4,
+      "routes": 20
+    },
+    {
+      "page": 5,
+      "routes": 13
+    },
+    {
+      "page": 6,
+      "routes": 20
+    },
+    {
+      "page": 7,
+      "routes": 20
+    },
+    {
+      "page": 8,
+      "routes": 18
+    },
+    {
+      "page": 9,
+      "routes": 19
+    },
+    {
+      "page": 10,
+      "routes": 14
+    }
+  ],
+  "duplicateRows": [
+    {
+      "page": 10,
+      "row": 9,
+      "identity": "Mathematics and Statistics|Mathematics and Applied Mathematics|Bachelor|4 years"
+    },
+    {
+      "page": 10,
+      "row": 10,
+      "identity": "Mathematics and Statistics|Statistics|Bachelor|4 years"
+    },
+    {
+      "page": 10,
+      "row": 11,
+      "identity": "Mathematics and Statistics|Mathematics|Master|3 years"
+    },
+    {
+      "page": 10,
+      "row": 12,
+      "identity": "Mathematics and Statistics|Subject Teaching (Mathematics)|Master|3 years"
+    },
+    {
+      "page": 10,
+      "row": 13,
+      "identity": "Mathematics and Statistics|Applied Statistics|Master|3 years"
+    },
+    {
+      "page": 10,
+      "row": 14,
+      "identity": "Mathematics and Statistics|Mathematics|Doctoral|4 years"
+    }
+  ],
+  "routes": [
+    {
+      "page": 1,
+      "row": 1,
+      "nameEn": "Law",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Politics and Law",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 2,
+      "nameEn": "Administrative Management",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Politics and Law",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 3,
+      "nameEn": "Social work",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Politics and Law",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 4,
+      "nameEn": "Law",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Politics and Law",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 5,
+      "nameEn": "Juris Master(Non-Law Background)",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Politics and Law",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 6,
+      "nameEn": "Juris Master in Law",
+      "degreeLevel": "Master",
+      "durationYears": 2,
+      "durationText": "2 years",
+      "schoolOrFaculty": "Politics and Law",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 7,
+      "nameEn": "Social work",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Politics and Law",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 8,
+      "nameEn": "Public Administration",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Politics and Law",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 9,
+      "nameEn": "Disciplinary Inspection and Supervision Law",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Politics and Law",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 10,
+      "nameEn": "Preschool Education",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Education",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 11,
+      "nameEn": "Public Affairs Management",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Education",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 12,
+      "nameEn": "Elementary Education",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Education",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 13,
+      "nameEn": "Education",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Education",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 14,
+      "nameEn": "Primary School Education",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Education",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 15,
+      "nameEn": "Preschool Education",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Education",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 16,
+      "nameEn": "Public Administration",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Education",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 17,
+      "nameEn": "Education",
+      "degreeLevel": "Doctoral",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Education",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 18,
+      "nameEn": "School Curriculum and Instruction",
+      "degreeLevel": "Doctoral",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Education",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 19,
+      "nameEn": "Student Development and Education",
+      "degreeLevel": "Doctoral",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Education",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 1,
+      "row": 20,
+      "nameEn": "Education Leadership and Management",
+      "degreeLevel": "Doctoral",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Education",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 1,
+      "nameEn": "Accounting",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 2,
+      "nameEn": "Finance",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 3,
+      "nameEn": "Economics",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 4,
+      "nameEn": "E-Commerce",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 5,
+      "nameEn": "Business Administration",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "English"
+    },
+    {
+      "page": 2,
+      "row": 6,
+      "nameEn": "International Economics and Trade",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "English"
+    },
+    {
+      "page": 2,
+      "row": 7,
+      "nameEn": "Applied Economics",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 8,
+      "nameEn": "Finance",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 9,
+      "nameEn": "Accounting",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 10,
+      "nameEn": "Accounting",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 11,
+      "nameEn": "(MIB)International Business",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 12,
+      "nameEn": "Management Science and Engineering",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 13,
+      "nameEn": "Business Administration",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 14,
+      "nameEn": "(MBA)Business Administration",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Economics and Management",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 15,
+      "nameEn": "Geography",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Geography and Environment",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 16,
+      "nameEn": "Geographical Information Science",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Geography and Environment",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 17,
+      "nameEn": "Geography 01Physical Geography 02Human Geography 03Cartography and Geographic Information Systems 04Environmental Governance and Ecological Restoration 05Spatial Integrated Humanities and Social Sciences 06Computational and Service of Ecological Environment",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Geography and Environment",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 18,
+      "nameEn": "Subject Teaching (Geography)",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Geography and Environment",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 19,
+      "nameEn": "Resources and Environment",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Geography and Environment",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 2,
+      "row": 20,
+      "nameEn": "Geography",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Geography and Environment",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 1,
+      "nameEn": "Educational Technology",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Journalism and Communication",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 2,
+      "nameEn": "Television Broadcasting Science",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Journalism and Communication",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 3,
+      "nameEn": "Journalism",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Journalism and Communication",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 4,
+      "nameEn": "Advertising",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Journalism and Communication",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 5,
+      "nameEn": "Journalism",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Journalism and Communication",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 6,
+      "nameEn": "Modern Educational Technology",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Journalism and Communication",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 7,
+      "nameEn": "Journalism and Communication",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Journalism and Communication",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 8,
+      "nameEn": "Journalism and Communication",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Journalism and Communication",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 9,
+      "nameEn": "Educational Technology",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Journalism and Communication",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 10,
+      "nameEn": "Journalism and Communication",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Journalism and Communication",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 11,
+      "nameEn": "Psychology",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Psychology",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 12,
+      "nameEn": "Applied Psychology",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Psychology",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 13,
+      "nameEn": "Psychology",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Psychology",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 14,
+      "nameEn": "Mental Health Education",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Psychology",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 15,
+      "nameEn": "Applied Psychology",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Psychology",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 3,
+      "row": 16,
+      "nameEn": "Psychology",
+      "degreeLevel": "Doctoral",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Psychology",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 1,
+      "nameEn": "Physical Education",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 2,
+      "nameEn": "Social Sports Guidance and Management",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 3,
+      "nameEn": "Sports Training",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 4,
+      "nameEn": "Martial Arts and Traditional Ethnic Sports",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 5,
+      "nameEn": "Major of Football",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 6,
+      "nameEn": "Humanities and Social Sciences of Physical Education 01Physical Education and Social Development 02Sports Culture 03Sports Systems and Strategies",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 7,
+      "nameEn": "Sports Human Body Science 01Physical and Mental Adaptation in Sports 02Sports Physiology and Biochemistry 03Sports Medicine and Rehabilitation",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 8,
+      "nameEn": "Theory of Sports Pedagogy and Training 01Theories of School Physical Education 02Exercise Adaptation and Health Promotion 03Theories and Methods of Specialized Training 04 Biological Analysis and Application of Sports Techniques",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 9,
+      "nameEn": "Traditional Ethnic Sports 01 Theories and Methodology of Martial Arts Teaching and Training 02Research on Folk Sports 03 Principles and Methods of Traditional Ethnic Sports",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 10,
+      "nameEn": "Physical Education",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 11,
+      "nameEn": "Athletic Training",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 12,
+      "nameEn": "Sports Prevention and Rehabilitation",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 13,
+      "nameEn": "Physical Education Subject",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Physical Education degreeprograms",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 14,
+      "nameEn": "Musicology",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Music",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 15,
+      "nameEn": "Music Performance",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Music",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 16,
+      "nameEn": "Dancology",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Music",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 17,
+      "nameEn": "Broadcasting and Hosting",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Music",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 18,
+      "nameEn": "Performance(Drama and Film-and-Television)",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Music",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 19,
+      "nameEn": "Performance (Aerobics)",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Music",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 4,
+      "row": 20,
+      "nameEn": "Performance (Sports Dance)",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Music",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 0,
+      "nameEn": "Art Studies",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Music",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 3,
+      "nameEn": "Music",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Music",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 4,
+      "nameEn": "Dance",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Music",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 5,
+      "nameEn": "Threater and Film",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Music",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 6,
+      "nameEn": "Fine Arts",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Fine Arts",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 7,
+      "nameEn": "Painting",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Fine Arts",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 8,
+      "nameEn": "Visual Communication Design",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Fine Arts",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 9,
+      "nameEn": "Environment Design",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Fine Arts",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 10,
+      "nameEn": "Product Design",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Fine Arts",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 11,
+      "nameEn": "Animation",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Fine Arts",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 12,
+      "nameEn": "Art Studies",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Fine Arts",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 13,
+      "nameEn": "Fine Arts and Calligraphy",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Fine Arts",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 5,
+      "row": 14,
+      "nameEn": "Design",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Fine Arts",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 1,
+      "nameEn": "Teaching Chinese to Speakers of Other Languages",
+      "degreeLevel": "Non-degree",
+      "durationYears": 0.5,
+      "durationText": "0.5/1 year",
+      "schoolOrFaculty": "Literature",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 2,
+      "nameEn": "Chinese Language and Literature",
+      "degreeLevel": "Non-degree",
+      "durationYears": 1,
+      "durationText": "1 years",
+      "schoolOrFaculty": "Literature",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 3,
+      "nameEn": "Chinese Language and Literature",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Literature",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 4,
+      "nameEn": "International Chinese Language Education",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Literature",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 5,
+      "nameEn": "International Chinese Language Education",
+      "degreeLevel": "Master",
+      "durationYears": 2,
+      "durationText": "2 years",
+      "schoolOrFaculty": "Literature",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 6,
+      "nameEn": "Subject Teaching(Chinese)",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Literature",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 7,
+      "nameEn": "Chinese Language and Literature",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Literature",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 8,
+      "nameEn": "Chinese Language and Literature",
+      "degreeLevel": "Doctoral",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Literature",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 9,
+      "nameEn": "English",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 10,
+      "nameEn": "Japanese",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 11,
+      "nameEn": "Russian",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 12,
+      "nameEn": "French",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 13,
+      "nameEn": "Korean",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 14,
+      "nameEn": "Business English(International Accounting)",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 15,
+      "nameEn": "Business English(International Finance)",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 16,
+      "nameEn": "Business English (Transnational Business)",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 17,
+      "nameEn": "Subject Teaching (English)",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 18,
+      "nameEn": "English Language and Literature",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 19,
+      "nameEn": "French Language and Literature",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 6,
+      "row": 20,
+      "nameEn": "Japanese Language and Literature",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 0,
+      "nameEn": "Foreign Linguistics and Applied Linguistics",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 1,
+      "nameEn": "Business English Studies",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 2,
+      "nameEn": "English Translation",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 3,
+      "nameEn": "English Interpretation",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 4,
+      "nameEn": "Japanese Translation",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 5,
+      "nameEn": "Foreign Languages and Literatures",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 6,
+      "nameEn": "Architecture",
+      "degreeLevel": "Bachelor",
+      "durationYears": 5,
+      "durationText": "5 years",
+      "schoolOrFaculty": "City Construction",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 7,
+      "nameEn": "Urban and Rural Planning",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "City Construction",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 8,
+      "nameEn": "Engineering Management",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "City Construction",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 9,
+      "nameEn": "Urban and Rural Planning",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "City Construction",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 10,
+      "nameEn": "Landscape Architecture",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "City Construction",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 11,
+      "nameEn": "Public Administration",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "City Construction",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 12,
+      "nameEn": "History",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "History, Culture and Tourism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 13,
+      "nameEn": "Cultural Industry Management",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "History, Culture and Tourism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 14,
+      "nameEn": "Tourist Management",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "History, Culture and Tourism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 15,
+      "nameEn": "Cultural Heritage and Museology",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "History, Culture and Tourism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 16,
+      "nameEn": "Subject Teaching (History)",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "History, Culture and Tourism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 17,
+      "nameEn": "History of China",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "History, Culture and Tourism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 18,
+      "nameEn": "World History",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "History, Culture and Tourism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 7,
+      "row": 19,
+      "nameEn": "Chinese History",
+      "degreeLevel": "Doctoral",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "History, Culture and Tourism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 1,
+      "nameEn": "Ideological and Political Education",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Marxism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 2,
+      "nameEn": "Marxist Theory",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Marxism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 3,
+      "nameEn": "Philosophy",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Marxism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 4,
+      "nameEn": "Marxist Theory",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Marxism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 5,
+      "nameEn": "Subject Teaching (Ideology and Politics)",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Marxism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 6,
+      "nameEn": "Marxist Theory",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Marxism",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 7,
+      "nameEn": "Computer Science and Technology",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Artificial Intelligence",
+      "teachingLanguage": "English"
+    },
+    {
+      "page": 8,
+      "row": 8,
+      "nameEn": "Electronic Information",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Artificial Intelligence",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 9,
+      "nameEn": "Software Engineering",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Artificial Intelligence",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 10,
+      "nameEn": "Computer Science and Technology",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Artificial Intelligence",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 11,
+      "nameEn": "Software Engneering 01Language Computing 02Intelligent Educational Software 03Software Service Engneering and Technology 04Software Engneering Theory and Methods 05Computer Vision and Image Processing",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Artificial Intelligence",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 12,
+      "nameEn": "Electronic Information",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Artificial Intelligence",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 13,
+      "nameEn": "Mathematics and Applied Mathematics",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Mathematics and Statistics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 14,
+      "nameEn": "Statistics",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Mathematics and Statistics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 15,
+      "nameEn": "Mathematics",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Mathematics and Statistics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 16,
+      "nameEn": "Subject Teaching (Mathematics)",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Mathematics and Statistics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 17,
+      "nameEn": "Applied Statistics",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Mathematics and Statistics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 8,
+      "row": 18,
+      "nameEn": "Mathematics",
+      "degreeLevel": "Doctoral",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Mathematics and Statistics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 1,
+      "nameEn": "Physics",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Physics and Communication Electronics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 2,
+      "nameEn": "Communication Engineering",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Physics and Communication Electronics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 3,
+      "nameEn": "Electronic Information Engineering",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Physics and Communication Electronics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 4,
+      "nameEn": "Optoelectronic Information Science and Engineering",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Physics and Communication Electronics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 5,
+      "nameEn": "Physics",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Physics and Communication Electronics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 6,
+      "nameEn": "Electronic Information",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Physics and Communication Electronics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 7,
+      "nameEn": "Subject Teaching (Physics)",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Physics and Communication Electronics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 8,
+      "nameEn": "Physics",
+      "degreeLevel": "Doctoral",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Physics and Communication Electronics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 9,
+      "nameEn": "Chemistry",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Chemistry and Materials",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 10,
+      "nameEn": "Applied Chemistry",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Chemistry and Materials",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 11,
+      "nameEn": "Materials Chemistry",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Chemistry and Materials",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 12,
+      "nameEn": "Subject Teaching (Chemistry)",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Chemistry and Materials",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 13,
+      "nameEn": "Chemistry",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Chemistry and Materials",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 14,
+      "nameEn": "Materials Science and Engineering",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Chemistry and Materials",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 15,
+      "nameEn": "Chemistry",
+      "degreeLevel": "Doctoral",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Chemistry and Materials",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 16,
+      "nameEn": "Chemical Engineering and Technics",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Chemical Engineering",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 17,
+      "nameEn": "Process Equipment and Control Engineering",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Chemical Engineering",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 18,
+      "nameEn": "Chemical Engneering and Techology",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Chemical Engineering",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 9,
+      "row": 19,
+      "nameEn": "Material and Chemical Industry",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Chemical Engineering",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 10,
+      "row": 1,
+      "nameEn": "Bioengineering",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Life Sciences",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 10,
+      "row": 2,
+      "nameEn": "Biological Sciences",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "Life Sciences",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 10,
+      "row": 3,
+      "nameEn": "Biology",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Life Sciences",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 10,
+      "row": 4,
+      "nameEn": "Subject Teaching (Biology)",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Life Sciences",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 10,
+      "row": 5,
+      "nameEn": "Biology",
+      "degreeLevel": "Doctoral",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "Life Sciences",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 10,
+      "row": 6,
+      "nameEn": "Biopharmacy",
+      "degreeLevel": "Bachelor",
+      "durationYears": 4,
+      "durationText": "4 years",
+      "schoolOrFaculty": "School of Pharmacy",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 10,
+      "row": 7,
+      "nameEn": "Biological and Pharmaceutical Sciences",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Pharmacy",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "page": 10,
+      "row": 8,
+      "nameEn": "Pharmacy",
+      "degreeLevel": "Master",
+      "durationYears": 3,
+      "durationText": "3 years",
+      "schoolOrFaculty": "School of Pharmacy",
+      "teachingLanguage": "Chinese"
+    }
+  ]
+}

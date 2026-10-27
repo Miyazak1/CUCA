@@ -1,0 +1,27 @@
+import { createHash } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+
+type Source = { id: string; label: string; url: string; finalUrl?: string; fetchedAt: string; status: number; contentType: string; sha256: string; artifactPath: string };
+const root = process.cwd();
+const directory = resolve(root, "work/catalog-official/2026-10-26T14-33-15-544Z");
+const lockedSha = "2d0cb5aab1debce38e324ed7ae69e8ffd365a0ba68d8070f3848735be8e8f74e";
+const manifest = JSON.parse(await readFile(resolve(directory, "manifest.json"), "utf8")) as { sources: Source[] };
+const source = manifest.sources.find((entry) => entry.id === "cdut-international-student-management-policy-official" && entry.status === 200 && entry.sha256 === lockedSha);
+if (!source) throw new Error("Missing locked CDUT source");
+if (createHash("sha256").update(await readFile(resolve(directory, source.artifactPath))).digest("hex") !== lockedSha) throw new Error("CDUT evidence hash mismatch");
+const reviewed = JSON.parse(await readFile(resolve(root, "seeds/catalog.reviewed-100-official-release.json"), "utf8")) as CatalogSeedBundle;
+const city = reviewed.cities?.find((entry) => entry.slug === "chengdu");
+if (!city) throw new Error("Reviewed Chengdu dependency missing");
+const sf = { sourceUrl: source.finalUrl ?? source.url, sourceLabel: source.label, sourceSha256: source.sha256, capturedAt: source.fetchedAt };
+const school = { slug: "chengdu-university-of-technology", nameEn: "Chengdu University of Technology", nameZh: "成都理工大学", citySlug: city.slug, schoolType: "Public science and engineering university", region: "Chengdu, Sichuan, Southwest China", applicationLevel: "The official 2026 undergraduate and postgraduate guides are registered but their host returns HTTP 412 to deterministic collection. This candidate asserts university identity and official international degree enrollment only; no 2026 field is relabeled as 2027.", websiteUrl: "https://www.cdut.edu.cn/", admissionsUrl: "https://cie.cdut.edu.cn/lxcl1/zsjz.htm", subjectTags: [], languageTags: [], campusHighlights: ["Official university in Chengdu", "Official policy confirms international undergraduate and postgraduate enrollment", "Current admissions detail remains queued for verified capture"], status: "active" as const, verificationStatus: "verified" as const, lastVerifiedAt: source.fetchedAt, ...sf, sourceFieldLineage: { nameEn: "official university identity normalized to English", nameZh: "official university identity", citySlug: "official identity plus reviewed Chengdu dependency", schoolType: "CUAC taxonomy for official university identity", region: "verified location plus CUAC taxonomy", applicationLevel: "captured official international-student policy and documented admissions-host limitation", websiteUrl: "official university domain", admissionsUrl: "registered official international-admissions index", subjectTags: "empty because route evidence was not hash-locked", languageTags: "empty because route evidence was not hash-locked", campusHighlights: "captured official international-student policy" } };
+const candidate: CatalogSeedBundle = { version: 1, generatedAt: source.fetchedAt, cities: [city], schools: [school], programs: [], programIntakes: [], scholarships: [] };
+const text = `${JSON.stringify(candidate, null, 2)}\n`;
+const candidateSha256 = createHash("sha256").update(text).digest("hex");
+const validation = createCatalogMigrationValidationReport(JSON.parse(text));
+if (!validation.ok) throw new Error(validation.errors.join("\n"));
+const review = { version: 1, status: "unreviewed_draft", generatedAt: source.fetchedAt, candidateSha256, publicationAuthorized: false, databaseWriteAuthorized: false, scope: { target: "2026 ShanghaiRanking BCUR top 150", targetPosition: 127, schoolSlugs: [school.slug], newSchools: 1, programs: 0, programIntakes: 0, scholarships: 0 }, evidence: [{ id: source.id, label: source.label, url: source.finalUrl ?? source.url, contentType: source.contentType, fetchedAt: source.fetchedAt, sha256: source.sha256 }], unresolved: ["The official international-college home and 2026 guides return HTTP 412 to deterministic collection; access controls were not bypassed.", "No applicant-facing 2027 general guide was captured, so program names, intakes, tuition, deadlines, language rules and scholarships remain absent.", "The captured management policy establishes international degree enrollment but is not used as a current admissions guide.", "Applicant data, personal contacts, payment instructions and bank information are excluded."], sensitiveDataCheck: { result: "pass", note: "No applicant data, personal contacts, payment instructions or bank information are present." } };
+const stem = resolve(root, "seeds/catalog.2027-wave-195");
+await Promise.all([writeFile(`${stem}.draft.json`, text, "utf8"), writeFile(`${stem}.validation.json`, `${JSON.stringify({ ...validation, candidateSha256, publicationAuthorized: false, databaseWriteAuthorized: false }, null, 2)}\n`, "utf8"), writeFile(`${stem}.review.json`, `${JSON.stringify(review, null, 2)}\n`, "utf8")]);
+console.log(JSON.stringify({ ok: true, wave: 195, candidateSha256, counts: validation.summary, publicationAuthorized: false, databaseWriteAuthorized: false }, null, 2));

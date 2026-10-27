@@ -1,0 +1,1337 @@
+{
+  "version": 1,
+  "schoolSlug": "inner-mongolia-university",
+  "sourceRun": "2026-10-27T07-20-19-252Z",
+  "source": {
+    "id": "imu-international-admission-brochure-current",
+    "sha256": "e66ae1ccf49ac9213aaa98705d2b93b0fb7db8afe5a714eea6bbee4240e1ec60"
+  },
+  "counts": {
+    "total": 165,
+    "bachelor": 67,
+    "master": 76,
+    "doctoral": 22
+  },
+  "programs": [
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Mongolian Language and Literature",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Journalism",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "History",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Tourism Management",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Classical Philology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Languages and Literature of Chinese Ethnic Minorities",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Literary Theory",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Comparative Literature and World Literature",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Linguistics and Applied Linguistics",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Religious Studies",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Journalism and Communication",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Journalism and Communication (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Chinese History",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Chinese Language",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mongolian Studies",
+      "nameEn": "Literature and Chinese History",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ethnology and Sociology",
+      "nameEn": "Ethnology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ethnology and Sociology",
+      "nameEn": "Social Work",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ethnology and Sociology",
+      "nameEn": "Sociology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ethnology and Sociology",
+      "nameEn": "Ethnology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ethnology and Sociology",
+      "nameEn": "Sociology of Ethnic Relations",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ethnology and Sociology",
+      "nameEn": "Social Work (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ethnology and Sociology",
+      "nameEn": "Ethnology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ethnology and Sociology",
+      "nameEn": "Sociology of Ethnic Relations",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Liberal Arts and Journalism",
+      "nameEn": "Chinese Language and Literature",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Liberal Arts and Journalism",
+      "nameEn": "Teaching Chinese to Speakers of Other Languages (TCSOL)",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Liberal Arts and Journalism",
+      "nameEn": "Journalism",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Liberal Arts and Journalism",
+      "nameEn": "Network and New Media",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Liberal Arts and Journalism",
+      "nameEn": "Broadcasting and Hosting Arts",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Liberal Arts and Journalism",
+      "nameEn": "Chinese Language and Literature",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Liberal Arts and Journalism",
+      "nameEn": "Journalism and Communication",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Liberal Arts and Journalism",
+      "nameEn": "Art Theory",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Liberal Arts and Journalism",
+      "nameEn": "Journalism and Communication (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Liberal Arts and Journalism",
+      "nameEn": "Chinese Language and Literature",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of History and Tourism Culture",
+      "nameEn": "History",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of History and Tourism Culture",
+      "nameEn": "Archaeology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of History and Tourism Culture",
+      "nameEn": "Tourism Management",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of History and Tourism Culture",
+      "nameEn": "Cultural Relics and Museology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of History and Tourism Culture",
+      "nameEn": "Base for Literature, History, and Philosophy",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of History and Tourism Culture",
+      "nameEn": "Chinese History",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of History and Tourism Culture",
+      "nameEn": "Tourism Management",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of History and Tourism Culture",
+      "nameEn": "Tourism Management (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of History and Tourism Culture",
+      "nameEn": "Chinese History",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy",
+      "nameEn": "Philosophy",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy",
+      "nameEn": "Political Science",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy",
+      "nameEn": "Economics and Philosophy",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy",
+      "nameEn": "Marxist Philosophy",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy",
+      "nameEn": "Philosophy of Science and Technology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy",
+      "nameEn": "Chinese Philosophy",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Philosophy",
+      "nameEn": "Foreign Philosophy",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Public Management",
+      "nameEn": "Public Service Management",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Public Management",
+      "nameEn": "Administrative Management",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Public Management",
+      "nameEn": "Political Science and Public Administration",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Public Management",
+      "nameEn": "Labor and Social Security",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Public Management",
+      "nameEn": "Land Resources Management",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Public Management",
+      "nameEn": "Public Management",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Public Management",
+      "nameEn": "Public Management (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Public Management",
+      "nameEn": "Public Management",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Foreign Languages College",
+      "nameEn": "English",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Foreign Languages College",
+      "nameEn": "Japanese",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Foreign Languages College",
+      "nameEn": "Russian (Self-financed Students Only)",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Foreign Languages College",
+      "nameEn": "English Language and Literature",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Foreign Languages College",
+      "nameEn": "Russian Language and Literature",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Foreign Languages College",
+      "nameEn": "Japanese Language and Literature",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Foreign Languages College",
+      "nameEn": "Foreign Linguistics and Applied Linguistics",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Foreign Languages College",
+      "nameEn": "English Translation (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Foreign Languages College",
+      "nameEn": "English Interpretation (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Foreign Languages College",
+      "nameEn": "Russian Translation (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Foreign Languages College",
+      "nameEn": "Japanese Translation (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Law School",
+      "nameEn": "Jurisprudence",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Law School",
+      "nameEn": "Discipline Inspection and Supervision",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Law School",
+      "nameEn": "Jurisprudence",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Law School",
+      "nameEn": "Law (Non-jurisprudence Major) (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Law School",
+      "nameEn": "Law (Jurisprudence Major) (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics and Management",
+      "nameEn": "Economics",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics and Management",
+      "nameEn": "Finance",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics and Management",
+      "nameEn": "Business Administration",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics and Management",
+      "nameEn": "Accounting",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics and Management",
+      "nameEn": "Business Administration",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics and Management",
+      "nameEn": "Business Administration (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics and Management",
+      "nameEn": "Accounting (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics and Management",
+      "nameEn": "Applied Economics",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics and Management",
+      "nameEn": "Finance (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Economics and Management",
+      "nameEn": "Applied Economics",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Biotechnology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Biological Sciences",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Biomedical Engineering",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Biology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Biology and Medicine (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Plant Science",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Zoology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Microbiology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Life Sciences",
+      "nameEn": "Biochemistry and Molecular Biology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematical Sciences",
+      "nameEn": "Mathematics and Applied Mathematics",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematical Sciences",
+      "nameEn": "Information and Computational Science",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematical Sciences",
+      "nameEn": "Statistics",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematical Sciences",
+      "nameEn": "Mathematics",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematical Sciences",
+      "nameEn": "Applied Statistics (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Mathematical Sciences",
+      "nameEn": "Mathematics",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Science and Technology",
+      "nameEn": "Physics",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Science and Technology",
+      "nameEn": "Applied Physics",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Science and Technology",
+      "nameEn": "Electronic Science and Technology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Science and Technology",
+      "nameEn": "Physics",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Science and Technology",
+      "nameEn": "Physical Electronics",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Science and Technology",
+      "nameEn": "Optoelectronic Information Engineering (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Science and Technology",
+      "nameEn": "Physical Science",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Electronic Information Engineering",
+      "nameEn": "Electronic Information (including Communication Engineering, Electronic Information Science and Technology, and Automation)",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Electronic Information Engineering",
+      "nameEn": "Electronic Science and Technology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Electronic Information Engineering",
+      "nameEn": "Information and Communication Engineering",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Electronic Information Engineering",
+      "nameEn": "Control Engineering (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Electronic Information Engineering",
+      "nameEn": "Communication Engineering (including Broadband Networks, Mobile Communication, and other majors) (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemistry",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Applied Chemistry",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemical Engineering and Technology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Materials Chemistry",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemistry",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Applied Chemistry",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Materials Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Materials and Chemical Engineering (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Chemistry and Chemical Engineering",
+      "nameEn": "Chemistry",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer Science",
+      "nameEn": "Computer Science and Technology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer Science",
+      "nameEn": "Software Engineering",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer Science",
+      "nameEn": "Data Science and Big Data Technology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer Science",
+      "nameEn": "Computer Science and Technology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer Science",
+      "nameEn": "Software Engineering",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer Science",
+      "nameEn": "Computer Technology (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer Science",
+      "nameEn": "Software Engineering (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer Science",
+      "nameEn": "Artificial Intelligence (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer Science",
+      "nameEn": "Big Data Technology and Engineering (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer Science",
+      "nameEn": "Network and Information Security (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Computer Science",
+      "nameEn": "Computer Science and Technology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Transportation Institute",
+      "nameEn": "Civil Engineering (Highway and Bridge)",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Transportation Institute",
+      "nameEn": "Transportation",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Transportation Institute",
+      "nameEn": "Logistics Management",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Transportation Institute",
+      "nameEn": "Vehicle Engineering",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Transportation Institute",
+      "nameEn": "Engineering Management",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Transportation Institute",
+      "nameEn": "Road, Bridge, and River-crossing Engineering",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Transportation Institute",
+      "nameEn": "Mechanical Engineering",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Transportation Institute",
+      "nameEn": "Highway Environmental Engineering",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Transportation Institute",
+      "nameEn": "Civil Engineering",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Transportation Institute",
+      "nameEn": "Transportation (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ecology and Environment",
+      "nameEn": "Ecology",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ecology and Environment",
+      "nameEn": "Environmental Engineering",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ecology and Environment",
+      "nameEn": "Environmental Science",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ecology and Environment",
+      "nameEn": "Environmental and Ecological Engineering",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ecology and Environment",
+      "nameEn": "Atmospheric Science",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ecology and Environment",
+      "nameEn": "Ecology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ecology and Environment",
+      "nameEn": "Environmental Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ecology and Environment",
+      "nameEn": "Resources and Environment (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ecology and Environment",
+      "nameEn": "Grassland Science",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ecology and Environment",
+      "nameEn": "Environmental Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Ecology and Environment",
+      "nameEn": "Ecology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Physical Education",
+      "nameEn": "Sports Training",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Marxism",
+      "nameEn": "Marxism",
+      "durationYears": 4,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Marxism",
+      "nameEn": "Marxism",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "School of Marxism",
+      "nameEn": "Marxism",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Energy Materials and Chemistry",
+      "nameEn": "Chemistry",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Energy Materials and Chemistry",
+      "nameEn": "Materials Science and Engineering",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Energy Materials and Chemistry",
+      "nameEn": "Materials and Chemical Engineering (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "College of Energy Materials and Chemistry",
+      "nameEn": "Chemistry",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Institutes of Biomedical Sciences",
+      "nameEn": "Biology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Institutes of Biomedical Sciences",
+      "nameEn": "Biology and Medicine (Specialized Degree)",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Institutes of Biomedical Sciences",
+      "nameEn": "Biochemistry and Molecular Biology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Research Center of Chinese Nation",
+      "nameEn": "Economic Development of Chinese Ethnic Minorities",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Research Center of Chinese Nation",
+      "nameEn": "History of Chinese Ethnic Minorities",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "schoolEn": "Research Center of Chinese Nation",
+      "nameEn": "Ethnology",
+      "durationYears": 3,
+      "sourceId": "imu-international-admission-brochure-current"
+    }
+  ]
+}

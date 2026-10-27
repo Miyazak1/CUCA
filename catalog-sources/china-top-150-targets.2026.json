@@ -1,0 +1,2776 @@
+{
+  "version": 1,
+  "status": "active_expansion_target",
+  "generatedAt": "2026-10-26T14:34:09.125Z",
+  "rankingBasis": {
+    "publisher": "ShanghaiRanking",
+    "edition": "2026 Best Chinese Universities Ranking",
+    "list": "BCUR main list",
+    "rankId": 11,
+    "sourceUrl": "https://www.shanghairanking.cn/rankings/bcur/2026",
+    "payloadUrl": "https://www.shanghairanking.cn/_nuxt/static/1792567042/rankings/bcur/2026/payload.js",
+    "payloadSha256": "b04f6f3ea199fae357d9d41aa68abb87c6a9df59a16cb3b14881592f097491d3",
+    "selectionRule": "First 150 institutions in the publisher's ordered 2026 BCUR main list. Tied ranks retain publisher order; positions 149-150 are the two institutions tied at published rank 149."
+  },
+  "policy": {
+    "rankingUsedForTargetSelectionOnly": true,
+    "admissionsFactsRequireOfficialUniversitySources": true,
+    "missing2027FieldsRemainAbsent": true,
+    "publicationAuthorized": false,
+    "databaseWriteAuthorized": false
+  },
+  "counts": {
+    "targetSchools": 150,
+    "reviewedRelease": 58,
+    "unreviewedCandidates": 92,
+    "coveredIncludingCandidates": 150,
+    "missing": 0
+  },
+  "schools": [
+    {
+      "targetPosition": 1,
+      "publishedRank": "1",
+      "rankingSlug": "tsinghua-university",
+      "nameZh": "清华大学",
+      "nameEn": "Tsinghua University",
+      "province": "北京",
+      "category": "综合",
+      "score": 1087.1,
+      "catalogSchoolSlug": "tsinghua-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-01.draft.json",
+          "seeds/catalog.2027-wave-45.draft.json",
+          "seeds/catalog.2027-wave-50.draft.json",
+          "seeds/catalog.2027-wave-58.draft.json",
+          "seeds/catalog.2027-wave-62.draft.json",
+          "seeds/catalog.2027-wave-63.draft.json",
+          "seeds/catalog.2027-wave-65.draft.json",
+          "seeds/catalog.2027-wave-66.draft.json",
+          "seeds/catalog.2027-wave-67.draft.json",
+          "seeds/catalog.2027-wave-68.draft.json",
+          "seeds/catalog.2027-wave-69.draft.json",
+          "seeds/catalog.2027-wave-70.draft.json",
+          "seeds/catalog.2027-wave-71.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 2,
+      "publishedRank": "2",
+      "rankingSlug": "peking-university",
+      "nameZh": "北京大学",
+      "nameEn": "Peking University",
+      "province": "北京",
+      "category": "综合",
+      "score": 1036.3,
+      "catalogSchoolSlug": "peking-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-04.draft.json",
+          "seeds/catalog.2027-wave-38.draft.json",
+          "seeds/catalog.2027-wave-52.draft.json",
+          "seeds/catalog.2027-wave-76.draft.json",
+          "seeds/catalog.2027-wave-99.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 3,
+      "publishedRank": "3",
+      "rankingSlug": "zhejiang-university",
+      "nameZh": "浙江大学",
+      "nameEn": "Zhejiang University",
+      "province": "浙江",
+      "category": "综合",
+      "score": 895.6,
+      "catalogSchoolSlug": "zhejiang-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-16.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 4,
+      "publishedRank": "4",
+      "rankingSlug": "shanghai-jiao-tong-university",
+      "nameZh": "上海交通大学",
+      "nameEn": "Shanghai Jiao Tong University",
+      "province": "上海",
+      "category": "综合",
+      "score": 894.2,
+      "catalogSchoolSlug": "shanghai-jiao-tong-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-03.draft.json",
+          "seeds/catalog.2027-wave-40.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 5,
+      "publishedRank": "5",
+      "rankingSlug": "fudan-university",
+      "nameZh": "复旦大学",
+      "nameEn": "Fudan University",
+      "province": "上海",
+      "category": "综合",
+      "score": 792.4,
+      "catalogSchoolSlug": "fudan-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-04.draft.json",
+          "seeds/catalog.2027-wave-48.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 6,
+      "publishedRank": "6",
+      "rankingSlug": "nanjing-university",
+      "nameZh": "南京大学",
+      "nameEn": "Nanjing University",
+      "province": "江苏",
+      "category": "综合",
+      "score": 708.5,
+      "catalogSchoolSlug": "nanjing-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-01.draft.json",
+          "seeds/catalog.2027-wave-75.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 7,
+      "publishedRank": "7",
+      "rankingSlug": "university-of-science-and-technology-of-china",
+      "nameZh": "中国科学技术大学",
+      "nameEn": "University of Science and Technology of China",
+      "province": "安徽",
+      "category": "理工",
+      "score": 653.1,
+      "catalogSchoolSlug": "university-of-science-and-technology-of-china",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-36.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 8,
+      "publishedRank": "8",
+      "rankingSlug": "wuhan-university",
+      "nameZh": "武汉大学",
+      "nameEn": "Wuhan University",
+      "province": "湖北",
+      "category": "综合",
+      "score": 638.7,
+      "catalogSchoolSlug": "wuhan-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-34.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 9,
+      "publishedRank": "9",
+      "rankingSlug": "huazhong-university-of-science-and-technology",
+      "nameZh": "华中科技大学",
+      "nameEn": "Huazhong University of Science and Technology",
+      "province": "湖北",
+      "category": "综合",
+      "score": 638,
+      "catalogSchoolSlug": "huazhong-university-of-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-06.draft.json",
+          "seeds/catalog.2027-wave-37.draft.json",
+          "seeds/catalog.2027-wave-72.draft.json",
+          "seeds/catalog.2027-wave-109.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 10,
+      "publishedRank": "10",
+      "rankingSlug": "xian-jiaotong-university",
+      "nameZh": "西安交通大学",
+      "nameEn": "Xi'an Jiaotong University",
+      "province": "陕西",
+      "category": "综合",
+      "score": 620.8,
+      "catalogSchoolSlug": "xi-an-jiaotong-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-08.draft.json",
+          "seeds/catalog.2027-wave-41.draft.json",
+          "seeds/catalog.2027-wave-55.draft.json",
+          "seeds/catalog.2027-wave-59.draft.json",
+          "seeds/catalog.2027-wave-73.draft.json",
+          "seeds/catalog.2027-wave-82.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 11,
+      "publishedRank": "11",
+      "rankingSlug": "beihang-university",
+      "nameZh": "北京航空航天大学",
+      "nameEn": "Beihang University",
+      "province": "北京",
+      "category": "理工",
+      "score": 612.8,
+      "catalogSchoolSlug": "beihang-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-16.draft.json",
+          "seeds/catalog.2027-wave-80.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 12,
+      "publishedRank": "12",
+      "rankingSlug": "harbin-institute-of-technology",
+      "nameZh": "哈尔滨工业大学",
+      "nameEn": "Harbin Institute of Technology",
+      "province": "黑龙江",
+      "category": "理工",
+      "score": 607.7,
+      "catalogSchoolSlug": "harbin-institute-of-technology",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-18.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 13,
+      "publishedRank": "13",
+      "rankingSlug": "sun-yat-sen-university",
+      "nameZh": "中山大学",
+      "nameEn": "Sun Yat-sen University",
+      "province": "广东",
+      "category": "综合",
+      "score": 597.6,
+      "catalogSchoolSlug": "sun-yat-sen-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-17.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 14,
+      "publishedRank": "14",
+      "rankingSlug": "beijing-institute-of-technology",
+      "nameZh": "北京理工大学",
+      "nameEn": "Beijing Institute of Technology",
+      "province": "北京",
+      "category": "理工",
+      "score": 595.4,
+      "catalogSchoolSlug": "beijing-institute-of-technology",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-09.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 15,
+      "publishedRank": "15",
+      "rankingSlug": "southeast-university",
+      "nameZh": "东南大学",
+      "nameEn": "Southeast University",
+      "province": "江苏",
+      "category": "综合",
+      "score": 592.3,
+      "catalogSchoolSlug": "southeast-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-05.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 16,
+      "publishedRank": "16",
+      "rankingSlug": "sichuan-university",
+      "nameZh": "四川大学",
+      "nameEn": "Sichuan University",
+      "province": "四川",
+      "category": "综合",
+      "score": 581.3,
+      "catalogSchoolSlug": "sichuan-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-18.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 17,
+      "publishedRank": "17",
+      "rankingSlug": "renmin-university-of-china",
+      "nameZh": "中国人民大学",
+      "nameEn": "Renmin University of China",
+      "province": "北京",
+      "category": "综合",
+      "score": 558.1,
+      "catalogSchoolSlug": "renmin-university-of-china",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-189.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 18,
+      "publishedRank": "18",
+      "rankingSlug": "tongji-university",
+      "nameZh": "同济大学",
+      "nameEn": "Tongji University",
+      "province": "上海",
+      "category": "综合",
+      "score": 556.6,
+      "catalogSchoolSlug": "tongji-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-14.draft.json",
+          "seeds/catalog.2027-wave-110.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 19,
+      "publishedRank": "19",
+      "rankingSlug": "beijing-normal-university",
+      "nameZh": "北京师范大学",
+      "nameEn": "Beijing Normal University",
+      "province": "北京",
+      "category": "师范",
+      "score": 553.2,
+      "catalogSchoolSlug": "beijing-normal-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-09.draft.json",
+          "seeds/catalog.2027-wave-43.draft.json",
+          "seeds/catalog.2027-wave-60.draft.json",
+          "seeds/catalog.2027-wave-74.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 20,
+      "publishedRank": "20",
+      "rankingSlug": "tianjin-university",
+      "nameZh": "天津大学",
+      "nameEn": "Tianjin University",
+      "province": "天津",
+      "category": "理工",
+      "score": 544.2,
+      "catalogSchoolSlug": "tianjin-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-81.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 21,
+      "publishedRank": "21",
+      "rankingSlug": "nankai-university",
+      "nameZh": "南开大学",
+      "nameEn": "Nankai University",
+      "province": "天津",
+      "category": "综合",
+      "score": 528.8,
+      "catalogSchoolSlug": "nankai-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-05.draft.json",
+          "seeds/catalog.2027-wave-13.draft.json",
+          "seeds/catalog.2027-wave-39.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 22,
+      "publishedRank": "22",
+      "rankingSlug": "shandong-university",
+      "nameZh": "山东大学",
+      "nameEn": "Shandong University",
+      "province": "山东",
+      "category": "综合",
+      "score": 527.1,
+      "catalogSchoolSlug": "shandong-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-29.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 23,
+      "publishedRank": "23",
+      "rankingSlug": "northwestern-polytechnical-university",
+      "nameZh": "西北工业大学",
+      "nameEn": "Northwestern Polytechnical University",
+      "province": "陕西",
+      "category": "理工",
+      "score": 519.2,
+      "catalogSchoolSlug": "northwestern-polytechnical-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-07.draft.json",
+          "seeds/catalog.2027-wave-98.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 24,
+      "publishedRank": "24",
+      "rankingSlug": "china-agricultural-university",
+      "nameZh": "中国农业大学",
+      "nameEn": "China Agricultural University",
+      "province": "北京",
+      "category": "农业",
+      "score": 519.1,
+      "catalogSchoolSlug": "china-agricultural-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-03.draft.json",
+          "seeds/catalog.2027-wave-64.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 25,
+      "publishedRank": "25",
+      "rankingSlug": "xiamen-university",
+      "nameZh": "厦门大学",
+      "nameEn": "Xiamen University",
+      "province": "福建",
+      "category": "综合",
+      "score": 512.5,
+      "catalogSchoolSlug": "xiamen-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-02.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 26,
+      "publishedRank": "26",
+      "rankingSlug": "jilin-university",
+      "nameZh": "吉林大学",
+      "nameEn": "Jilin University",
+      "province": "吉林",
+      "category": "综合",
+      "score": 498.2,
+      "catalogSchoolSlug": "jilin-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-16.draft.json",
+          "seeds/catalog.2027-wave-72.draft.json",
+          "seeds/catalog.2027-wave-106.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 27,
+      "publishedRank": "27",
+      "rankingSlug": "central-south-university",
+      "nameZh": "中南大学",
+      "nameEn": "Central South University",
+      "province": "湖南",
+      "category": "综合",
+      "score": 497,
+      "catalogSchoolSlug": "central-south-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-16.draft.json",
+          "seeds/catalog.2027-wave-54.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 28,
+      "publishedRank": "28",
+      "rankingSlug": "dalian-university-of-technology",
+      "nameZh": "大连理工大学",
+      "nameEn": "Dalian University of Technology",
+      "province": "辽宁",
+      "category": "理工",
+      "score": 495.4,
+      "catalogSchoolSlug": "dalian-university-of-technology",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-10.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 29,
+      "publishedRank": "29",
+      "rankingSlug": "east-china-normal-university",
+      "nameZh": "华东师范大学",
+      "nameEn": "East China Normal University",
+      "province": "上海",
+      "category": "师范",
+      "score": 469.1,
+      "catalogSchoolSlug": "east-china-normal-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-15.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 30,
+      "publishedRank": "30",
+      "rankingSlug": "southern-university-of-science-and-technology",
+      "nameZh": "南方科技大学",
+      "nameEn": "Southern University of Science and Technology",
+      "province": "广东",
+      "category": "综合",
+      "score": 466.9,
+      "catalogSchoolSlug": "southern-university-of-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-87.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 31,
+      "publishedRank": "31",
+      "rankingSlug": "hunan-university",
+      "nameZh": "湖南大学",
+      "nameEn": "Hunan University",
+      "province": "湖南",
+      "category": "综合",
+      "score": 464.1,
+      "catalogSchoolSlug": "hunan-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-112.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 32,
+      "publishedRank": "32",
+      "rankingSlug": "south-china-university-of-technology",
+      "nameZh": "华南理工大学",
+      "nameEn": "South China University of Technology",
+      "province": "广东",
+      "category": "理工",
+      "score": 456.4,
+      "catalogSchoolSlug": "south-china-university-of-technology",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-89.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 33,
+      "publishedRank": "33",
+      "rankingSlug": "university-of-electronic-science-and-technology-of-china",
+      "nameZh": "电子科技大学",
+      "nameEn": "University of Electronic Science and Technology of China",
+      "province": "四川",
+      "category": "理工",
+      "score": 453.6,
+      "catalogSchoolSlug": "university-of-electronic-science-and-technology-of-china",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-94.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 34,
+      "publishedRank": "34",
+      "rankingSlug": "chongqing-university",
+      "nameZh": "重庆大学",
+      "nameEn": "Chongqing University",
+      "province": "重庆",
+      "category": "综合",
+      "score": 436,
+      "catalogSchoolSlug": "chongqing-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-190.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 35,
+      "publishedRank": "35",
+      "rankingSlug": "university-of-science-and-technology-beijing",
+      "nameZh": "北京科技大学",
+      "nameEn": "University of Science and Technology Beijing",
+      "province": "北京",
+      "category": "理工",
+      "score": 429.3,
+      "catalogSchoolSlug": "university-of-science-and-technology-beijing",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-21.draft.json",
+          "seeds/catalog.2027-wave-42.draft.json",
+          "seeds/catalog.2027-wave-107.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 36,
+      "publishedRank": "36",
+      "rankingSlug": "nanjing-university-of-science-and-technology",
+      "nameZh": "南京理工大学",
+      "nameEn": "Nanjing University of Science & Technology",
+      "province": "江苏",
+      "category": "理工",
+      "score": 419.3,
+      "catalogSchoolSlug": "nanjing-university-of-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-111.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 37,
+      "publishedRank": "37",
+      "rankingSlug": "nanjing-university-of-aeronautics-and-astronautics",
+      "nameZh": "南京航空航天大学",
+      "nameEn": "Nanjing University of Aeronautics and Astronautics",
+      "province": "江苏",
+      "category": "理工",
+      "score": 417.4,
+      "catalogSchoolSlug": "nanjing-university-of-aeronautics-and-astronautics",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-24.draft.json",
+          "seeds/catalog.2027-wave-25.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 38,
+      "publishedRank": "38",
+      "rankingSlug": "northeastern-university",
+      "nameZh": "东北大学",
+      "nameEn": "Northeastern University",
+      "province": "辽宁",
+      "category": "理工",
+      "score": 398.7,
+      "catalogSchoolSlug": "northeastern-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-191.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 39,
+      "publishedRank": "39",
+      "rankingSlug": "xidian-university",
+      "nameZh": "西安电子科技大学",
+      "nameEn": "Xidian University",
+      "province": "陕西",
+      "category": "理工",
+      "score": 391.5,
+      "catalogSchoolSlug": "xidian-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-113.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 40,
+      "publishedRank": "40",
+      "rankingSlug": "lanzhou-university",
+      "nameZh": "兰州大学",
+      "nameEn": "Lanzhou University",
+      "province": "甘肃",
+      "category": "综合",
+      "score": 388.4,
+      "catalogSchoolSlug": "lanzhou-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-114.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 41,
+      "publishedRank": "41",
+      "rankingSlug": "beijing-jiaotong-university",
+      "nameZh": "北京交通大学",
+      "nameEn": "Beijing Jiaotong University",
+      "province": "北京",
+      "category": "理工",
+      "score": 381.1,
+      "catalogSchoolSlug": "beijing-jiaotong-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-115.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 42,
+      "publishedRank": "42",
+      "rankingSlug": "east-china-university-of-science-and-technology",
+      "nameZh": "华东理工大学",
+      "nameEn": "East China University of Science and Technology",
+      "province": "上海",
+      "category": "理工",
+      "score": 380.4,
+      "catalogSchoolSlug": "east-china-university-of-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-89.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 43,
+      "publishedRank": "43",
+      "rankingSlug": "harbin-engineering-university",
+      "nameZh": "哈尔滨工程大学",
+      "nameEn": "Harbin Engineering University",
+      "province": "黑龙江",
+      "category": "理工",
+      "score": 380.1,
+      "catalogSchoolSlug": "harbin-engineering-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-30.draft.json",
+          "seeds/catalog.2027-wave-61.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 44,
+      "publishedRank": "44",
+      "rankingSlug": "zhengzhou-university",
+      "nameZh": "郑州大学",
+      "nameEn": "Zhengzhou University",
+      "province": "河南",
+      "category": "综合",
+      "score": 380,
+      "catalogSchoolSlug": "zhengzhou-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-116.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 45,
+      "publishedRank": "45",
+      "rankingSlug": "huazhong-agricultural-university",
+      "nameZh": "华中农业大学",
+      "nameEn": "Huazhong Agricultural University",
+      "province": "湖北",
+      "category": "农业",
+      "score": 375.6,
+      "catalogSchoolSlug": "huazhong-agricultural-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-117.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 46,
+      "publishedRank": "46",
+      "rankingSlug": "soochow-university-china",
+      "nameZh": "苏州大学",
+      "nameEn": "Soochow University",
+      "province": "江苏",
+      "category": "综合",
+      "score": 374.4,
+      "catalogSchoolSlug": "soochow-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-103.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 47,
+      "publishedRank": "47",
+      "rankingSlug": "shanghaitech-university",
+      "nameZh": "上海科技大学",
+      "nameEn": "ShanghaiTech University",
+      "province": "上海",
+      "category": "综合",
+      "score": 373.4,
+      "catalogSchoolSlug": "shanghaitech-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-118.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 48,
+      "publishedRank": "48",
+      "rankingSlug": "northeast-normal-university",
+      "nameZh": "东北师范大学",
+      "nameEn": "Northeast Normal University",
+      "province": "吉林",
+      "category": "师范",
+      "score": 372.4,
+      "catalogSchoolSlug": "northeast-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-119.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 49,
+      "publishedRank": "49",
+      "rankingSlug": "southwest-jiaotong-university",
+      "nameZh": "西南交通大学",
+      "nameEn": "Southwest Jiaotong University",
+      "province": "四川",
+      "category": "理工",
+      "score": 366.3,
+      "catalogSchoolSlug": "southwest-jiaotong-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-120.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 50,
+      "publishedRank": "50",
+      "rankingSlug": "beijing-university-of-posts-and-telecommunications",
+      "nameZh": "北京邮电大学",
+      "nameEn": "Beijing University of Posts and Telecommunications",
+      "province": "北京",
+      "category": "理工",
+      "score": 360.3,
+      "catalogSchoolSlug": "beijing-university-of-posts-and-telecommunications",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-88.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 51,
+      "publishedRank": "51",
+      "rankingSlug": "ocean-university-of-china",
+      "nameZh": "中国海洋大学",
+      "nameEn": "Ocean University of China",
+      "province": "山东",
+      "category": "综合",
+      "score": 359.2,
+      "catalogSchoolSlug": "ocean-university-of-china",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-84.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 52,
+      "publishedRank": "52",
+      "rankingSlug": "jiangnan-university",
+      "nameZh": "江南大学",
+      "nameEn": "Jiangnan University",
+      "province": "江苏",
+      "category": "综合",
+      "score": 355.8,
+      "catalogSchoolSlug": "jiangnan-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-121.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 53,
+      "publishedRank": "53",
+      "rankingSlug": "central-china-normal-university",
+      "nameZh": "华中师范大学",
+      "nameEn": "Central China Normal University",
+      "province": "湖北",
+      "category": "师范",
+      "score": 355.1,
+      "catalogSchoolSlug": "central-china-normal-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-27.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 54,
+      "publishedRank": "54",
+      "rankingSlug": "wuhan-university-of-technology",
+      "nameZh": "武汉理工大学",
+      "nameEn": "Wuhan University of Technology",
+      "province": "湖北",
+      "category": "理工",
+      "score": 351.9,
+      "catalogSchoolSlug": "wuhan-university-of-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-122.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 55,
+      "publishedRank": "55",
+      "rankingSlug": "nanjing-agricultural-university",
+      "nameZh": "南京农业大学",
+      "nameEn": "Nanjing Agricultural University",
+      "province": "江苏",
+      "category": "农业",
+      "score": 350.9,
+      "catalogSchoolSlug": "nanjing-agricultural-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-123.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 56,
+      "publishedRank": "56",
+      "rankingSlug": "china-university-of-geosciences-wuhan",
+      "nameZh": "中国地质大学（武汉）",
+      "nameEn": "China University of Geosciences",
+      "province": "湖北",
+      "category": "理工",
+      "score": 350.8,
+      "catalogSchoolSlug": "china-university-of-geosciences-wuhan",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-96.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 57,
+      "publishedRank": "57",
+      "rankingSlug": "beijing-university-of-chemical-technology",
+      "nameZh": "北京化工大学",
+      "nameEn": "Beijing University of Chemical Technology",
+      "province": "北京",
+      "category": "理工",
+      "score": 345,
+      "catalogSchoolSlug": "beijing-university-of-chemical-technology",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-53.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 58,
+      "publishedRank": "58",
+      "rankingSlug": "nanjing-normal-university",
+      "nameZh": "南京师范大学",
+      "nameEn": "Nanjing Normal University",
+      "province": "江苏",
+      "category": "师范",
+      "score": 344.4,
+      "catalogSchoolSlug": "nanjing-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-124.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 59,
+      "publishedRank": "59",
+      "rankingSlug": "jinan-university",
+      "nameZh": "暨南大学",
+      "nameEn": "Jinan University",
+      "province": "广东",
+      "category": "综合",
+      "score": 343.5,
+      "catalogSchoolSlug": "jinan-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-35.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 60,
+      "publishedRank": "60",
+      "rankingSlug": "shanghai-university",
+      "nameZh": "上海大学",
+      "nameEn": "Shanghai University",
+      "province": "上海",
+      "category": "综合",
+      "score": 343.3,
+      "catalogSchoolSlug": "shanghai-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-16.draft.json",
+          "seeds/catalog.2027-wave-46.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 61,
+      "publishedRank": "61",
+      "rankingSlug": "southwest-university",
+      "nameZh": "西南大学",
+      "nameEn": "Southwest University",
+      "province": "重庆",
+      "category": "综合",
+      "score": 343,
+      "catalogSchoolSlug": "southwest-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-125.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 62,
+      "publishedRank": "62",
+      "rankingSlug": "china-university-of-petroleum-beijing",
+      "nameZh": "中国石油大学（北京）",
+      "nameEn": "China University of Petroleum, Beijing",
+      "province": "北京",
+      "category": "理工",
+      "score": 342.7,
+      "catalogSchoolSlug": "china-university-of-petroleum-beijing",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-126.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 63,
+      "publishedRank": "63",
+      "rankingSlug": "hohai-university",
+      "nameZh": "河海大学",
+      "nameEn": "Hohai University",
+      "province": "江苏",
+      "category": "理工",
+      "score": 342,
+      "catalogSchoolSlug": "hohai-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-127.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 64,
+      "publishedRank": "63",
+      "rankingSlug": "shaanxi-normal-university",
+      "nameZh": "陕西师范大学",
+      "nameEn": "Shaanxi Normal University",
+      "province": "陕西",
+      "category": "师范",
+      "score": 342,
+      "catalogSchoolSlug": "shaanxi-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-128.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 65,
+      "publishedRank": "65",
+      "rankingSlug": "beijing-university-of-technology",
+      "nameZh": "北京工业大学",
+      "nameEn": "Beijing University of Technology",
+      "province": "北京",
+      "category": "理工",
+      "score": 341.5,
+      "catalogSchoolSlug": "beijing-university-of-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-129.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 66,
+      "publishedRank": "66",
+      "rankingSlug": "shenzhen-university",
+      "nameZh": "深圳大学",
+      "nameEn": "Shenzhen University",
+      "province": "广东",
+      "category": "综合",
+      "score": 341.4,
+      "catalogSchoolSlug": "shenzhen-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-03.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 67,
+      "publishedRank": "67",
+      "rankingSlug": "china-university-of-mining-and-technology-xuzhou",
+      "nameZh": "中国矿业大学",
+      "nameEn": "China University of Mining and Technology",
+      "province": "江苏",
+      "category": "理工",
+      "score": 335.7,
+      "catalogSchoolSlug": "china-university-of-mining-and-technology-xuzhou",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-130.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 68,
+      "publishedRank": "68",
+      "rankingSlug": "zhejiang-university-of-technology",
+      "nameZh": "浙江工业大学",
+      "nameEn": "Zhejiang University of Technology",
+      "province": "浙江",
+      "category": "理工",
+      "score": 334.4,
+      "catalogSchoolSlug": "zhejiang-university-of-technology",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-77.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 69,
+      "publishedRank": "69",
+      "rankingSlug": "northwest-a-f-university",
+      "nameZh": "西北农林科技大学",
+      "nameEn": "Northwest A&F University",
+      "province": "陕西",
+      "category": "农业",
+      "score": 330.7,
+      "catalogSchoolSlug": "northwest-a-f-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-131.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 70,
+      "publishedRank": "70",
+      "rankingSlug": "northwest-university",
+      "nameZh": "西北大学",
+      "nameEn": "Northwest University",
+      "province": "陕西",
+      "category": "综合",
+      "score": 329.7,
+      "catalogSchoolSlug": "northwest-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-132.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 71,
+      "publishedRank": "71",
+      "rankingSlug": "yunnan-university",
+      "nameZh": "云南大学",
+      "nameEn": "Yunnan University",
+      "province": "云南",
+      "category": "综合",
+      "score": 325.8,
+      "catalogSchoolSlug": "yunnan-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-193.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 72,
+      "publishedRank": "72",
+      "rankingSlug": "donghua-university",
+      "nameZh": "东华大学",
+      "nameEn": "Donghua University",
+      "province": "上海",
+      "category": "理工",
+      "score": 317.4,
+      "catalogSchoolSlug": "donghua-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-20.draft.json",
+          "seeds/catalog.2027-wave-107.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 73,
+      "publishedRank": "73",
+      "rankingSlug": "china-university-of-petroleum-huadong",
+      "nameZh": "中国石油大学（华东）",
+      "nameEn": "China University of Petroleum (East China)",
+      "province": "山东",
+      "category": "理工",
+      "score": 316.3,
+      "catalogSchoolSlug": "china-university-of-petroleum-east-china",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-103.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 74,
+      "publishedRank": "74",
+      "rankingSlug": "nanchang-university",
+      "nameZh": "南昌大学",
+      "nameEn": "Nanchang University",
+      "province": "江西",
+      "category": "综合",
+      "score": 314.5,
+      "catalogSchoolSlug": "nanchang-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-133.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 75,
+      "publishedRank": "75",
+      "rankingSlug": "china-university-of-geosciences-beijing",
+      "nameZh": "中国地质大学（北京）",
+      "nameEn": "China University of Geosciences Beijing",
+      "province": "北京",
+      "category": "理工",
+      "score": 314.2,
+      "catalogSchoolSlug": "china-university-of-geosciences-beijing",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-134.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 76,
+      "publishedRank": "76",
+      "rankingSlug": "china-university-of-mining-and-technology-beijing",
+      "nameZh": "中国矿业大学（北京）",
+      "nameEn": "China University of Mining and Technology-Beijing",
+      "province": "北京",
+      "category": "理工",
+      "score": 313.7,
+      "catalogSchoolSlug": "china-university-of-mining-and-technology-beijing",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-135.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 77,
+      "publishedRank": "77",
+      "rankingSlug": "fuzhou-university",
+      "nameZh": "福州大学",
+      "nameEn": "Fuzhou University",
+      "province": "福建",
+      "category": "理工",
+      "score": 310.5,
+      "catalogSchoolSlug": "fuzhou-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-88.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 78,
+      "publishedRank": "78",
+      "rankingSlug": "ningbo-university",
+      "nameZh": "宁波大学",
+      "nameEn": "Ningbo University",
+      "province": "浙江",
+      "category": "综合",
+      "score": 310.3,
+      "catalogSchoolSlug": "ningbo-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-192.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 79,
+      "publishedRank": "79",
+      "rankingSlug": "south-china-normal-university",
+      "nameZh": "华南师范大学",
+      "nameEn": "South China Normal University",
+      "province": "广东",
+      "category": "师范",
+      "score": 306.6,
+      "catalogSchoolSlug": "south-china-normal-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-92.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 80,
+      "publishedRank": "80",
+      "rankingSlug": "hefei-university-of-technology",
+      "nameZh": "合肥工业大学",
+      "nameEn": "Hefei University of Technology",
+      "province": "安徽",
+      "category": "理工",
+      "score": 304.8,
+      "catalogSchoolSlug": "hefei-university-of-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-136.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 81,
+      "publishedRank": "81",
+      "rankingSlug": "jiangsu-university",
+      "nameZh": "江苏大学",
+      "nameEn": "Jiangsu University",
+      "province": "江苏",
+      "category": "综合",
+      "score": 301.3,
+      "catalogSchoolSlug": "jiangsu-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-137.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 82,
+      "publishedRank": "82",
+      "rankingSlug": "nanjing-university-of-posts-and-telecommunications",
+      "nameZh": "南京邮电大学",
+      "nameEn": "Nanjing University of Posts and Telecommunications",
+      "province": "江苏",
+      "category": "理工",
+      "score": 297.9,
+      "catalogSchoolSlug": "nanjing-university-of-posts-and-telecommunications",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-138.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 83,
+      "publishedRank": "83",
+      "rankingSlug": "beijing-forestry-university",
+      "nameZh": "北京林业大学",
+      "nameEn": "Beijing Forestry University",
+      "province": "北京",
+      "category": "林业",
+      "score": 294.9,
+      "catalogSchoolSlug": "beijing-forestry-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-86.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 84,
+      "publishedRank": "84",
+      "rankingSlug": "north-china-electric-power-university",
+      "nameZh": "华北电力大学",
+      "nameEn": "North China Electric Power University",
+      "province": "北京",
+      "category": "理工",
+      "score": 293.5,
+      "catalogSchoolSlug": "north-china-electric-power-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-139.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 85,
+      "publishedRank": "85",
+      "rankingSlug": "guizhou-university",
+      "nameZh": "贵州大学",
+      "nameEn": "Guizhou University",
+      "province": "贵州",
+      "category": "综合",
+      "score": 291.1,
+      "catalogSchoolSlug": "guizhou-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-101.draft.json",
+          "seeds/catalog.2027-wave-102.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 86,
+      "publishedRank": "86",
+      "rankingSlug": "guangxi-university",
+      "nameZh": "广西大学",
+      "nameEn": "Guangxi University",
+      "province": "广西",
+      "category": "综合",
+      "score": 288.9,
+      "catalogSchoolSlug": "guangxi-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-140.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 87,
+      "publishedRank": "87",
+      "rankingSlug": "hainan-university",
+      "nameZh": "海南大学",
+      "nameEn": "Hainan University",
+      "province": "海南",
+      "category": "综合",
+      "score": 286.9,
+      "catalogSchoolSlug": "hainan-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-141.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 88,
+      "publishedRank": "88",
+      "rankingSlug": "nanjing-tech-university",
+      "nameZh": "南京工业大学",
+      "nameEn": "Nanjing Tech University",
+      "province": "江苏",
+      "category": "理工",
+      "score": 285.2,
+      "catalogSchoolSlug": "nanjing-tech-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-142.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 89,
+      "publishedRank": "89",
+      "rankingSlug": "changan-university",
+      "nameZh": "长安大学",
+      "nameEn": "Chang'an University",
+      "province": "陕西",
+      "category": "理工",
+      "score": 282.7,
+      "catalogSchoolSlug": "chang-an-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-16.draft.json",
+          "seeds/catalog.2027-wave-23.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 90,
+      "publishedRank": "90",
+      "rankingSlug": "fujian-normal-university",
+      "nameZh": "福建师范大学",
+      "nameEn": "Fujian Normal University",
+      "province": "福建",
+      "category": "师范",
+      "score": 282.5,
+      "catalogSchoolSlug": "fujian-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-143.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 91,
+      "publishedRank": "91",
+      "rankingSlug": "zhejiang-normal-university",
+      "nameZh": "浙江师范大学",
+      "nameEn": "Zhejiang Normal University",
+      "province": "浙江",
+      "category": "师范",
+      "score": 282.2,
+      "catalogSchoolSlug": "zhejiang-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-144.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 92,
+      "publishedRank": "92",
+      "rankingSlug": "hunan-normal-university",
+      "nameZh": "湖南师范大学",
+      "nameEn": "Hunan Normal University",
+      "province": "湖南",
+      "category": "师范",
+      "score": 280.5,
+      "catalogSchoolSlug": "hunan-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-145.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 93,
+      "publishedRank": "93",
+      "rankingSlug": "nanjing-forestry-university",
+      "nameZh": "南京林业大学",
+      "nameEn": "Nanjing Forestry University",
+      "province": "江苏",
+      "category": "林业",
+      "score": 280.3,
+      "catalogSchoolSlug": "nanjing-forestry-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-146.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 94,
+      "publishedRank": "93",
+      "rankingSlug": "yangzhou-university",
+      "nameZh": "扬州大学",
+      "nameEn": "Yangzhou University",
+      "province": "江苏",
+      "category": "综合",
+      "score": 280.3,
+      "catalogSchoolSlug": "yangzhou-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-147.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 95,
+      "publishedRank": "95",
+      "rankingSlug": "henan-university",
+      "nameZh": "河南大学",
+      "nameEn": "Henan University",
+      "province": "河南",
+      "category": "综合",
+      "score": 279.1,
+      "catalogSchoolSlug": "henan-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-148.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 96,
+      "publishedRank": "96",
+      "rankingSlug": "guangdong-university-of-technology",
+      "nameZh": "广东工业大学",
+      "nameEn": "Guangdong University of Technology",
+      "province": "广东",
+      "category": "理工",
+      "score": 276.1,
+      "catalogSchoolSlug": "guangdong-university-of-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-149.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 97,
+      "publishedRank": "97",
+      "rankingSlug": "taiyuan-university-of-technology",
+      "nameZh": "太原理工大学",
+      "nameEn": "Taiyuan University of Technology",
+      "province": "山西",
+      "category": "理工",
+      "score": 275.7,
+      "catalogSchoolSlug": "taiyuan-university-of-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-150.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 98,
+      "publishedRank": "98",
+      "rankingSlug": "nanjing-university-of-information-science-technology",
+      "nameZh": "南京信息工程大学",
+      "nameEn": "Nanjing University of Information Science & Technology",
+      "province": "江苏",
+      "category": "理工",
+      "score": 275.1,
+      "catalogSchoolSlug": "nanjing-university-of-information-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-151.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 99,
+      "publishedRank": "99",
+      "rankingSlug": "hangzhou-dianzi-university",
+      "nameZh": "杭州电子科技大学",
+      "nameEn": "Hangzhou Dianzi University",
+      "province": "浙江",
+      "category": "理工",
+      "score": 274.6,
+      "catalogSchoolSlug": "hangzhou-dianzi-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-91.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 100,
+      "publishedRank": "100",
+      "rankingSlug": "capital-normal-university",
+      "nameZh": "首都师范大学",
+      "nameEn": "Capital Normal University",
+      "province": "北京",
+      "category": "师范",
+      "score": 273.4,
+      "catalogSchoolSlug": "capital-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-152.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 101,
+      "publishedRank": "101",
+      "rankingSlug": "anhui-university",
+      "nameZh": "安徽大学",
+      "nameEn": "Anhui University",
+      "province": "安徽",
+      "category": "综合",
+      "score": 273.3,
+      "catalogSchoolSlug": "anhui-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-89.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 102,
+      "publishedRank": "102",
+      "rankingSlug": "shanxi-university",
+      "nameZh": "山西大学",
+      "nameEn": "Shanxi University",
+      "province": "山西",
+      "category": "综合",
+      "score": 272.4,
+      "catalogSchoolSlug": "shanxi-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-153.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 103,
+      "publishedRank": "103",
+      "rankingSlug": "south-china-agricultural-university",
+      "nameZh": "华南农业大学",
+      "nameEn": "South China Agricultural University",
+      "province": "广东",
+      "category": "农业",
+      "score": 270.1,
+      "catalogSchoolSlug": "south-china-agricultural-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-154.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 104,
+      "publishedRank": "104",
+      "rankingSlug": "shandong-normal-university",
+      "nameZh": "山东师范大学",
+      "nameEn": "Shandong Normal University",
+      "province": "山东",
+      "category": "师范",
+      "score": 268.6,
+      "catalogSchoolSlug": "shandong-normal-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-90.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 105,
+      "publishedRank": "105",
+      "rankingSlug": "guangzhou-university",
+      "nameZh": "广州大学",
+      "nameEn": "Guangzhou University",
+      "province": "广东",
+      "category": "综合",
+      "score": 267.8,
+      "catalogSchoolSlug": "guangzhou-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-155.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 106,
+      "publishedRank": "106",
+      "rankingSlug": "university-of-shanghai-for-science-and-technology",
+      "nameZh": "上海理工大学",
+      "nameEn": "University of Shanghai for Science and Technology",
+      "province": "上海",
+      "category": "理工",
+      "score": 266.9,
+      "catalogSchoolSlug": "university-of-shanghai-for-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-156.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 107,
+      "publishedRank": "107",
+      "rankingSlug": "hebei-university-of-technology",
+      "nameZh": "河北工业大学",
+      "nameEn": "Hebei University of Technology",
+      "province": "河北",
+      "category": "理工",
+      "score": 266.5,
+      "catalogSchoolSlug": "hebei-university-of-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-157.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 108,
+      "publishedRank": "108",
+      "rankingSlug": "qingdao-university",
+      "nameZh": "青岛大学",
+      "nameEn": "Qingdao University",
+      "province": "山东",
+      "category": "综合",
+      "score": 263.1,
+      "catalogSchoolSlug": "qingdao-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 109,
+      "publishedRank": "109",
+      "rankingSlug": "yanshan-university",
+      "nameZh": "燕山大学",
+      "nameEn": "Yanshan University",
+      "province": "河北",
+      "category": "理工",
+      "score": 261.9,
+      "catalogSchoolSlug": "yanshan-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-88.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 110,
+      "publishedRank": "110",
+      "rankingSlug": "kunming-university-of-science-and-technology",
+      "nameZh": "昆明理工大学",
+      "nameEn": "Kunming University of Science and Technology",
+      "province": "云南",
+      "category": "理工",
+      "score": 260.8,
+      "catalogSchoolSlug": "kunming-university-of-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-158.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 111,
+      "publishedRank": "111",
+      "rankingSlug": "xian-university-of-technology",
+      "nameZh": "西安理工大学",
+      "nameEn": "Xi'an University of Technology",
+      "province": "陕西",
+      "category": "理工",
+      "score": 259.8,
+      "catalogSchoolSlug": "xian-university-of-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-159.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 112,
+      "publishedRank": "112",
+      "rankingSlug": "zhejiang-sci-tech-university",
+      "nameZh": "浙江理工大学",
+      "nameEn": "Zhejiang Sci-Tech University",
+      "province": "浙江",
+      "category": "理工",
+      "score": 259.2,
+      "catalogSchoolSlug": "zhejiang-sci-tech-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-160.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 113,
+      "publishedRank": "113",
+      "rankingSlug": "dalian-maritime-university",
+      "nameZh": "大连海事大学",
+      "nameEn": "Dalian Maritime University",
+      "province": "辽宁",
+      "category": "综合",
+      "score": 257.2,
+      "catalogSchoolSlug": "dalian-maritime-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-161.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 114,
+      "publishedRank": "114",
+      "rankingSlug": "inner-mongolia-university",
+      "nameZh": "内蒙古大学",
+      "nameEn": "Inner Mongolia University",
+      "province": "内蒙古",
+      "category": "综合",
+      "score": 256.8,
+      "catalogSchoolSlug": "inner-mongolia-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-105.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 115,
+      "publishedRank": "115",
+      "rankingSlug": "northeast-forestry-university-china",
+      "nameZh": "东北林业大学",
+      "nameEn": "Northeast Forestry University",
+      "province": "黑龙江",
+      "category": "林业",
+      "score": 255.4,
+      "catalogSchoolSlug": "northeast-forestry-university-china",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-162.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 116,
+      "publishedRank": "116",
+      "rankingSlug": "hangzhou-normal-university",
+      "nameZh": "杭州师范大学",
+      "nameEn": "Hangzhou Normal University",
+      "province": "浙江",
+      "category": "师范",
+      "score": 254,
+      "catalogSchoolSlug": "hangzhou-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-163.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 117,
+      "publishedRank": "117",
+      "rankingSlug": "xiangtan-university",
+      "nameZh": "湘潭大学",
+      "nameEn": "Xiangtan University",
+      "province": "湖南",
+      "category": "综合",
+      "score": 253.7,
+      "catalogSchoolSlug": "xiangtan-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-83.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 118,
+      "publishedRank": "118",
+      "rankingSlug": "xian-university-of-architecture-and-technology",
+      "nameZh": "西安建筑科技大学",
+      "nameEn": "Xi'an University of Architecture and Technology",
+      "province": "陕西",
+      "category": "理工",
+      "score": 251.7,
+      "catalogSchoolSlug": "xian-university-of-architecture-and-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-194.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 119,
+      "publishedRank": "119",
+      "rankingSlug": "southwest-petroleum-university",
+      "nameZh": "西南石油大学",
+      "nameEn": "Southwest Petroleum University",
+      "province": "四川",
+      "category": "理工",
+      "score": 248.3,
+      "catalogSchoolSlug": "southwest-petroleum-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-164.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 120,
+      "publishedRank": "120",
+      "rankingSlug": "northeast-agricultural-university-china",
+      "nameZh": "东北农业大学",
+      "nameEn": "Northeast Agricultural University",
+      "province": "黑龙江",
+      "category": "农业",
+      "score": 245.7,
+      "catalogSchoolSlug": "northeast-agricultural-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-165.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 121,
+      "publishedRank": "121",
+      "rankingSlug": "hubei-university",
+      "nameZh": "湖北大学",
+      "nameEn": "Hubei University",
+      "province": "湖北",
+      "category": "综合",
+      "score": 243.9,
+      "catalogSchoolSlug": "hubei-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-166.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 122,
+      "publishedRank": "122",
+      "rankingSlug": "fujian-agriculture-and-forestry-university",
+      "nameZh": "福建农林大学",
+      "nameEn": "Fujian Agriculture and Forestry University",
+      "province": "福建",
+      "category": "农业",
+      "score": 243.4,
+      "catalogSchoolSlug": "fujian-agriculture-and-forestry-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-167.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 123,
+      "publishedRank": "123",
+      "rankingSlug": "shanghai-normal-university",
+      "nameZh": "上海师范大学",
+      "nameEn": "Shanghai Normal University",
+      "province": "上海",
+      "category": "师范",
+      "score": 238.4,
+      "catalogSchoolSlug": "shanghai-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-168.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 124,
+      "publishedRank": "123",
+      "rankingSlug": "wuhan-university-of-science-and-technology",
+      "nameZh": "武汉科技大学",
+      "nameEn": "Wuhan University of Science and Technology",
+      "province": "湖北",
+      "category": "理工",
+      "score": 238.4,
+      "catalogSchoolSlug": "wuhan-university-of-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-169.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 125,
+      "publishedRank": "125",
+      "rankingSlug": "liaoning-university",
+      "nameZh": "辽宁大学",
+      "nameEn": "Liaoning University",
+      "province": "辽宁",
+      "category": "综合",
+      "score": 238.1,
+      "catalogSchoolSlug": "liaoning-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-100.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 126,
+      "publishedRank": "126",
+      "rankingSlug": "jiangxi-normal-university",
+      "nameZh": "江西师范大学",
+      "nameEn": "Jiangxi Normal University",
+      "province": "江西",
+      "category": "师范",
+      "score": 238,
+      "catalogSchoolSlug": "jiangxi-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-170.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 127,
+      "publishedRank": "127",
+      "rankingSlug": "chengdu-university-of-technology",
+      "nameZh": "成都理工大学",
+      "nameEn": "Chengdu University of Technology",
+      "province": "四川",
+      "category": "理工",
+      "score": 237.7,
+      "catalogSchoolSlug": "chengdu-university-of-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-195.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 128,
+      "publishedRank": "128",
+      "rankingSlug": "shandong-agricultural-university",
+      "nameZh": "山东农业大学",
+      "nameEn": "Shandong Agricultural University",
+      "province": "山东",
+      "category": "农业",
+      "score": 234.7,
+      "catalogSchoolSlug": "shandong-agricultural-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-171.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 129,
+      "publishedRank": "129",
+      "rankingSlug": "wenzhou-university",
+      "nameZh": "温州大学",
+      "nameEn": "Wenzhou University",
+      "province": "浙江",
+      "category": "综合",
+      "score": 234.5,
+      "catalogSchoolSlug": "wenzhou-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-31.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 130,
+      "publishedRank": "130",
+      "rankingSlug": "hebei-university",
+      "nameZh": "河北大学",
+      "nameEn": "Hebei University",
+      "province": "河北",
+      "category": "综合",
+      "score": 233.9,
+      "catalogSchoolSlug": "hebei-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-172.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 131,
+      "publishedRank": "131",
+      "rankingSlug": "xinjiang-university",
+      "nameZh": "新疆大学",
+      "nameEn": "Xinjiang University",
+      "province": "新疆",
+      "category": "综合",
+      "score": 233.6,
+      "catalogSchoolSlug": "xinjiang-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-173.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 132,
+      "publishedRank": "132",
+      "rankingSlug": "shaanxi-university-of-science-and-technology",
+      "nameZh": "陕西科技大学",
+      "nameEn": "Shaanxi University of Science & Technology",
+      "province": "陕西",
+      "category": "理工",
+      "score": 232.4,
+      "catalogSchoolSlug": "shaanxi-university-of-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-196.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 133,
+      "publishedRank": "133",
+      "rankingSlug": "tiangong-university",
+      "nameZh": "天津工业大学",
+      "nameEn": "Tiangong University",
+      "province": "天津",
+      "category": "理工",
+      "score": 231.9,
+      "catalogSchoolSlug": "tiangong-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-174.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 134,
+      "publishedRank": "134",
+      "rankingSlug": "sichuan-agricultural-university",
+      "nameZh": "四川农业大学",
+      "nameEn": "Sichuan Agricultural University",
+      "province": "四川",
+      "category": "农业",
+      "score": 231.7,
+      "catalogSchoolSlug": "sichuan-agricultural-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-175.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 135,
+      "publishedRank": "135",
+      "rankingSlug": "changsha-university-of-science-and-technology",
+      "nameZh": "长沙理工大学",
+      "nameEn": "Changsha University of Science & Technology",
+      "province": "湖南",
+      "category": "理工",
+      "score": 231.6,
+      "catalogSchoolSlug": "changsha-university-of-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-176.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 136,
+      "publishedRank": "135",
+      "rankingSlug": "shihezi-university",
+      "nameZh": "石河子大学",
+      "nameEn": "Shihezi University",
+      "province": "新疆",
+      "category": "综合",
+      "score": 231.6,
+      "catalogSchoolSlug": "shihezi-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-177.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 137,
+      "publishedRank": "137",
+      "rankingSlug": "ningxia-university",
+      "nameZh": "宁夏大学",
+      "nameEn": "Ningxia University",
+      "province": "宁夏",
+      "category": "综合",
+      "score": 230.9,
+      "catalogSchoolSlug": "ningxia-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-178.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 138,
+      "publishedRank": "138",
+      "rankingSlug": "changchun-university-of-science-and-technology",
+      "nameZh": "长春理工大学",
+      "nameEn": "Changchun University of Science and Technology",
+      "province": "吉林",
+      "category": "理工",
+      "score": 230.6,
+      "catalogSchoolSlug": "changchun-university-of-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-94.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 139,
+      "publishedRank": "139",
+      "rankingSlug": "huaqiao-university",
+      "nameZh": "华侨大学",
+      "nameEn": "Huaqiao University",
+      "province": "福建",
+      "category": "综合",
+      "score": 229.8,
+      "catalogSchoolSlug": "huaqiao-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-179.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 140,
+      "publishedRank": "140",
+      "rankingSlug": "shandong-university-of-science-and-technology",
+      "nameZh": "山东科技大学",
+      "nameEn": "Shandong University of Science and Technology",
+      "province": "山东",
+      "category": "理工",
+      "score": 226.4,
+      "catalogSchoolSlug": "shandong-university-of-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-180.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 141,
+      "publishedRank": "141",
+      "rankingSlug": "jiangsu-university-of-science-and-technology",
+      "nameZh": "江苏科技大学",
+      "nameEn": "Jiangsu University of Science and Technology",
+      "province": "江苏",
+      "category": "理工",
+      "score": 224.9,
+      "catalogSchoolSlug": "jiangsu-university-of-science-and-technology",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-91.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 142,
+      "publishedRank": "142",
+      "rankingSlug": "shanghai-ocean-university",
+      "nameZh": "上海海洋大学",
+      "nameEn": "Shanghai Ocean University",
+      "province": "上海",
+      "category": "农业",
+      "score": 222.5,
+      "catalogSchoolSlug": "shanghai-ocean-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-181.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 143,
+      "publishedRank": "143",
+      "rankingSlug": "anhui-agricultural-university",
+      "nameZh": "安徽农业大学",
+      "nameEn": "Anhui Agricultural University",
+      "province": "安徽",
+      "category": "农业",
+      "score": 222,
+      "catalogSchoolSlug": "anhui-agricultural-university",
+      "coverage": {
+        "inReviewedRelease": true,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-88.draft.json"
+        ],
+        "status": "reviewed_release"
+      }
+    },
+    {
+      "targetPosition": 144,
+      "publishedRank": "144",
+      "rankingSlug": "north-university-of-china",
+      "nameZh": "中北大学",
+      "nameEn": "North University of China",
+      "province": "山西",
+      "category": "理工",
+      "score": 221.5,
+      "catalogSchoolSlug": "north-university-of-china",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-182.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 145,
+      "publishedRank": "145",
+      "rankingSlug": "anhui-normal-university",
+      "nameZh": "安徽师范大学",
+      "nameEn": "Anhui Normal University",
+      "province": "安徽",
+      "category": "师范",
+      "score": 220.6,
+      "catalogSchoolSlug": "anhui-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-183.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 146,
+      "publishedRank": "145",
+      "rankingSlug": "henan-agricultural-university",
+      "nameZh": "河南农业大学",
+      "nameEn": "Henan Agricultural University",
+      "province": "河南",
+      "category": "农业",
+      "score": 220.6,
+      "catalogSchoolSlug": "henan-agricultural-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-184.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 147,
+      "publishedRank": "147",
+      "rankingSlug": "chongqing-university-of-posts-and-telecommunications",
+      "nameZh": "重庆邮电大学",
+      "nameEn": "Chongqing University of Posts and Telecommunications",
+      "province": "重庆",
+      "category": "理工",
+      "score": 219.3,
+      "catalogSchoolSlug": "chongqing-university-of-posts-and-telecommunications",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-185.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 148,
+      "publishedRank": "147",
+      "rankingSlug": "nantong-university",
+      "nameZh": "南通大学",
+      "nameEn": "Nantong University",
+      "province": "江苏",
+      "category": "综合",
+      "score": 219.3,
+      "catalogSchoolSlug": "nantong-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-186.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 149,
+      "publishedRank": "149",
+      "rankingSlug": "guangxi-normal-university",
+      "nameZh": "广西师范大学",
+      "nameEn": "Guangxi Normal University",
+      "province": "广西",
+      "category": "师范",
+      "score": 217.8,
+      "catalogSchoolSlug": "guangxi-normal-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-187.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    },
+    {
+      "targetPosition": 150,
+      "publishedRank": "149",
+      "rankingSlug": "zhejiang-a-f-university",
+      "nameZh": "浙江农林大学",
+      "nameEn": "Zhejiang A&F University",
+      "province": "浙江",
+      "category": "林业",
+      "score": 217.8,
+      "catalogSchoolSlug": "zhejiang-a-f-university",
+      "coverage": {
+        "inReviewedRelease": false,
+        "candidateWavePaths": [
+          "seeds/catalog.2027-wave-188.draft.json"
+        ],
+        "status": "unreviewed_candidate"
+      }
+    }
+  ]
+}

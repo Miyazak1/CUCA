@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import type {
   CatalogSeedBundle,
@@ -10,48 +10,68 @@ type JsonRecord = Record<string, unknown>;
 type Entity = CatalogSeedSource & JsonRecord;
 
 const root = process.cwd();
-const candidate = JSON.parse(await readFile(resolve(root, "seeds/catalog.2027-release-candidate.draft.json"), "utf8")) as CatalogSeedBundle;
-const currentPrerequisites = JSON.parse(await readFile(resolve(root, "seeds/catalog.current-2027-prerequisites.reviewed.json"), "utf8")) as CatalogSeedBundle;
-const refreshStatus = JSON.parse(await readFile(resolve(root, "catalog-sources/2027-school-refresh-status.json"), "utf8")) as {
-  status?: string;
-  schools?: Array<{ schoolSlug?: string }>;
+const coverageAudit = JSON.parse(await readFile(resolve(root, "work/catalog-quality/catalog-2027-coverage-audit.json"), "utf8")) as {
+  summary?: { targetSchools?: number; workStates?: Record<string, number> };
+  queue?: Array<{ schoolSlug?: string; workState?: string }>;
 };
-const sourceDiscoveryAuditedSchoolSlugs = new Set((refreshStatus.schools ?? []).map((row) => row.schoolSlug).filter((slug): slug is string => Boolean(slug)));
-if (refreshStatus.status !== "discovery_audit_complete" || sourceDiscoveryAuditedSchoolSlugs.size !== 100) {
-  throw new Error(`Expected a completed 100-school source-discovery audit, found status ${refreshStatus.status ?? "missing"} and ${sourceDiscoveryAuditedSchoolSlugs.size} unique schools.`);
-}
-const alreadyCurrentSchoolSlugs = new Set([
-  "qingdao-university",
-  "tianjin-university",
-  "zhejiang-university-of-technology",
+const coverageQueue = coverageAudit.queue ?? [];
+const targetSchoolCount = coverageAudit.summary?.targetSchools ?? 0;
+const classifiedWorkStates = new Set([
+  "current_draft_pending_review",
+  "current_source_extraction_needed",
+  "current_source_blocked_by_acquisition_limit",
+  "discovery_checked_no_explicit_degree_source",
 ]);
-
-const candidateSchools = candidate.schools ?? [];
-const candidateSchoolSlugs = new Set(candidateSchools.map((row) => row.slug));
-const effectiveSchools = [
-  ...candidateSchools,
-  ...(currentPrerequisites.schools ?? []).filter((row) => alreadyCurrentSchoolSlugs.has(row.slug) && !candidateSchoolSlugs.has(row.slug)),
-];
+const remainingWork = coverageQueue.filter((row) => !classifiedWorkStates.has(String(row.workState)));
+if (targetSchoolCount !== 150 || coverageQueue.length !== 150 || remainingWork.length > 0) {
+  throw new Error(`Expected a fully classified 150-school coverage audit; found target=${targetSchoolCount}, queue=${coverageQueue.length}, remaining=${remainingWork.length}.`);
+}
+const candidateSchoolSlugs = new Set(coverageQueue
+  .filter((row) => ["current_draft_pending_review", "current_source_extraction_needed"].includes(String(row.workState)))
+  .map((row) => row.schoolSlug)
+  .filter((slug): slug is string => Boolean(slug)));
+const filePriority = (file: string) => {
+  if (file === "catalog.2027-release-candidate.draft.json") return 0;
+  if (file === "catalog.2027-release.reviewed.json") return 1;
+  if (file === "catalog.current-2027-prerequisites.reviewed.json") return 2;
+  const wave = file.match(/wave-(\d+)/i)?.[1];
+  return wave ? 1_000 + Number(wave) : 500;
+};
+const seedFiles = (await readdir(resolve(root, "seeds")))
+  .filter((file) => /2027.*\.(?:draft|reviewed)\.json$/i.test(file) || /spring-2027\.draft\.json$/i.test(file))
+  .sort((left, right) => filePriority(left) - filePriority(right) || left.localeCompare(right));
+const bundles: CatalogSeedBundle[] = [];
+for (const file of seedFiles) {
+  try {
+    bundles.push(JSON.parse(await readFile(resolve(root, "seeds", file), "utf8")) as CatalogSeedBundle);
+  } catch {
+    // Review metadata and incomplete draft files are not catalog bundles.
+  }
+}
+const schoolBySlug = new Map<string, NonNullable<CatalogSeedBundle["schools"]>[number]>();
+const programBySlug = new Map<string, NonNullable<CatalogSeedBundle["programs"]>[number]>();
+for (const bundle of bundles) {
+  for (const school of bundle.schools ?? []) if (candidateSchoolSlugs.has(school.slug)) schoolBySlug.set(school.slug, school);
+  for (const program of bundle.programs ?? []) if (candidateSchoolSlugs.has(program.schoolSlug)) programBySlug.set(program.slug, program);
+}
+const effectiveSchools = [...schoolBySlug.values()];
 const effectiveSchoolSlugs = new Set(effectiveSchools.map((row) => row.slug));
 if (effectiveSchools.length !== effectiveSchoolSlugs.size) throw new Error("Effective 2027 school set contains duplicate school slugs.");
-
-const candidateProgramSlugs = new Set((candidate.programs ?? []).map((row) => row.slug));
-const effectivePrograms = [
-  ...(candidate.programs ?? []),
-  ...(currentPrerequisites.programs ?? []).filter((row) => alreadyCurrentSchoolSlugs.has(row.schoolSlug) && !candidateProgramSlugs.has(row.slug)),
-];
+const effectivePrograms = [...programBySlug.values()];
 const effectiveProgramSlugs = new Set(effectivePrograms.map((row) => row.slug));
 const intakeKey = (row: CatalogSeedProgramIntake) => `${row.programSlug}\u0000${row.intakeTerm}\u0000${row.intakeYear}`;
-const candidateIntakeKeys = new Set((candidate.programIntakes ?? []).map(intakeKey));
-const effectiveIntakes = [
-  ...(candidate.programIntakes ?? []),
-  ...(currentPrerequisites.programIntakes ?? []).filter((row) => row.intakeYear === 2027 && effectiveProgramSlugs.has(row.programSlug) && !candidateIntakeKeys.has(intakeKey(row))),
-];
-const candidateScholarshipSlugs = new Set((candidate.scholarships ?? []).map((row) => row.slug));
-const effectiveScholarships = [
-  ...(candidate.scholarships ?? []),
-  ...(currentPrerequisites.scholarships ?? []).filter((row) => row.schoolSlug && alreadyCurrentSchoolSlugs.has(row.schoolSlug) && !candidateScholarshipSlugs.has(row.slug)),
-];
+const intakeByKey = new Map<string, CatalogSeedProgramIntake>();
+const scholarshipBySlug = new Map<string, NonNullable<CatalogSeedBundle["scholarships"]>[number]>();
+for (const bundle of bundles) {
+  for (const intake of bundle.programIntakes ?? []) if (intake.intakeYear === 2027 && effectiveProgramSlugs.has(intake.programSlug)) intakeByKey.set(intakeKey(intake), intake);
+  for (const scholarship of bundle.scholarships ?? []) {
+    if ((scholarship.schoolSlug && candidateSchoolSlugs.has(scholarship.schoolSlug)) || (scholarship.programSlug && effectiveProgramSlugs.has(scholarship.programSlug))) {
+      scholarshipBySlug.set(scholarship.slug, scholarship);
+    }
+  }
+}
+const effectiveIntakes = [...intakeByKey.values()];
+const effectiveScholarships = [...scholarshipBySlug.values()];
 
 const hasValue = (value: unknown): boolean => {
   if (typeof value === "string") return value.trim().length > 0;
@@ -135,7 +155,7 @@ const rows = effectiveSchools.map((school) => {
   return {
     schoolSlug: school.slug,
     schoolName: school.nameEn,
-    source: candidateSchoolSlugs.has(school.slug) ? "2027_release_candidate" : "already_current_baseline",
+    source: "2027_draft_union",
     counts: { programs: programs.length, programIntakes: intakes.length, scholarships: scholarships.length },
     integrity: { ok: entitySourceProblems.length === 0, sourceProblems: entitySourceProblems },
     publishedFieldCoverage: {
@@ -149,7 +169,9 @@ const rows = effectiveSchools.map((school) => {
   };
 }).sort((left, right) => Number(!right.integrity.ok) - Number(!left.integrity.ok) || right.unresolvedCount - left.unresolvedCount || left.schoolSlug.localeCompare(right.schoolSlug));
 
+const missingCandidateSchools = [...candidateSchoolSlugs].filter((slug) => !effectiveSchoolSlugs.has(slug));
 const integrityErrors = [
+  ...missingCandidateSchools.map((slug) => `Missing school row for classified 2027 draft: ${slug}`),
   ...orphanIntakes.map((row) => `Orphan intake: ${intakeKey(row)}`),
   ...non2027Intakes.map((row) => `Non-2027 intake: ${intakeKey(row)}`),
   ...orphanScholarships.map((row) => `Orphan scholarship: ${row.slug}`),
@@ -168,11 +190,11 @@ const report = {
     scholarshipRule: "Zero scholarship rows is not an error because a school may publish no applicable 2027 scholarship on the captured official sources.",
   },
   summary: {
-    sourceDiscoveryAuditedSchools: sourceDiscoveryAuditedSchoolSlugs.size,
+    sourceDiscoveryAuditedSchools: targetSchoolCount,
     schools: rows.length,
-    candidateSchools: candidateSchools.length,
-    alreadyCurrentSchools: rows.filter((row) => row.source === "already_current_baseline").length,
-    schoolsWithoutExplicit2027Route: sourceDiscoveryAuditedSchoolSlugs.size - rows.length,
+    candidateSchools: effectiveSchools.length,
+    alreadyCurrentSchools: 0,
+    schoolsWithoutExplicit2027Route: targetSchoolCount - candidateSchoolSlugs.size,
     programs: effectivePrograms.length,
     programIntakes: effectiveIntakes.length,
     scholarships: effectiveScholarships.length,

@@ -1,0 +1,3132 @@
+{
+  "version": 1,
+  "status": "source_bounded_extraction",
+  "generatedAt": "2026-10-27T08:02:44.096Z",
+  "schoolSlug": "nanchang-university",
+  "evidence": [
+    {
+      "id": "ncu-international-undergraduate-programs-current",
+      "label": "Nanchang University current official international undergraduate programs and fees",
+      "url": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "fetchedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "id": "ncu-international-master-programs-current",
+      "label": "Nanchang University current official international master programs",
+      "url": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "fetchedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "id": "ncu-international-phd-programs-current",
+      "label": "Nanchang University current official international PhD programs",
+      "url": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "fetchedAt": "2026-10-27T08:02:44.096Z"
+    }
+  ],
+  "counts": {
+    "Bachelor": 86,
+    "Master": 190,
+    "Doctoral": 33,
+    "total": 309
+  },
+  "programs": [
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Humanities",
+      "nameEn": "Chinese Language & Literature",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Humanities",
+      "nameEn": "Teaching Chinese to Speakers of Other Languages",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Journalism and Communication",
+      "nameEn": "Journalism",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Journalism and Communication",
+      "nameEn": "Radio & Television",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Journalism and Communication",
+      "nameEn": "Advertising",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Journalism and Communication",
+      "nameEn": "Arts of Broadcasting and Anchoring",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "English",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "Japanese",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "German",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "French",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "Spanish",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "Russian",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Music",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Performance",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Product Design",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Visual Communication Design",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Environmental Design",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Dancology",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Drawing",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Industrial Design",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Law",
+      "nameEn": "Law",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Law",
+      "nameEn": "Intellectual Property",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Public Administration",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Human Resource Management",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Public Relations",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Applied Psychology",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Sociology",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Economics",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Finance",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Business Administration",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Accounting",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Industrial Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Tourism",
+      "nameEn": "Tourism Management",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Tourism",
+      "nameEn": "Exhibition Economy and Management",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Management",
+      "nameEn": "Management Science",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Management",
+      "nameEn": "Information Management and System",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Management",
+      "nameEn": "E-commerce",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Physical Education",
+      "nameEn": "Physical Education",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Physical Education",
+      "nameEn": "Sports Training",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Science",
+      "nameEn": "Mathematics and Applied Mathematics",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Science",
+      "nameEn": "Information and Computing Science",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Science",
+      "nameEn": "Physics",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Science",
+      "nameEn": "Financial Mathematics",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Chemistry",
+      "nameEn": "Chemistry",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Life Science",
+      "nameEn": "Biological Science",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Life Science",
+      "nameEn": "Ecology",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Life Science",
+      "nameEn": "Aquaculture Science",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Food Science",
+      "nameEn": "Food Science and Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Food Science",
+      "nameEn": "Biological Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Materials Science and Engineering",
+      "nameEn": "Materials Science and Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Materials Science and Engineering",
+      "nameEn": "Polymer Material and Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Environmental Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Water Supply and Drainage Science and Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Chemical Engineering & Technology",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Process Equipment &Control Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Vehicle Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Material Shaping and Control Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Energy and Power Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Mechanical Design Manufacturing and Automation",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Civil Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Building Environment and Energy Application Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Water Resources and Hydropower Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Architecture (5 years)",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Urban and Rural Planning (5 years)",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Engineering Mechanics",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Electronic & Information Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Electrical Engineering and Automation",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Measurement and Control Technology and Instrumentation",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Automation",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Computer (Computer and Big Data, Computer Science & Technology, Data Science and Big Data Technology)",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Software",
+      "nameEn": "Software Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Software",
+      "nameEn": "Cyberspace Security",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Basic Medicine (5 years)",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Clinical Medicine (5 years)",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Pediatrics",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Anesthesiology (5 years)",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Optometry Medicine (5 years)",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Stomatology (5 years)",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Nursing",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Preventive Medicine (5 years)",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Rehabilitation Therapeutics",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Medical Laboratory Technology",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Medical Imaging (5 years)",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Pharmacology",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "School of Medicine",
+      "nameEn": "Intelligent Medical Engineering",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "schoolName": "International Education College",
+      "nameEn": "Teaching Chinese to Speakers of Other Languages",
+      "sourceId": "ncu-international-undergraduate-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Undergraduate_Programs.htm",
+      "sourceLabel": "Nanchang University current official international undergraduate programs and fees",
+      "sourceSha256": "4229a9741682a137b49ce797fb25c217916b933ebd0cee8d95e180d0e6a49405",
+      "capturedAt": "2026-10-27T08:01:29.332Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Law",
+      "nameEn": "Law Sciences",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Law",
+      "nameEn": "Law",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Law",
+      "nameEn": "Intellectual Property Law",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Political Economics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Western Economics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "World Economy",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Population",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Resources & Environmental Economics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Regional Economics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Industrial Economics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Quantitative Economics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Finance Studies",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Statistics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Accounting Studies",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Enterprise Management",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Technology Economy and Management",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Digital Business Management",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Business Administration",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Accounting",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Industrial Engineering and Management",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Humanities",
+      "nameEn": "Philosophy",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Humanities",
+      "nameEn": "Teaching Chinese to Speakers of Other Languages",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Humanities",
+      "nameEn": "Chinese Language & Literature",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Humanities",
+      "nameEn": "Chinese Classics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Humanities",
+      "nameEn": "Chinese History",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Humanities",
+      "nameEn": "Archival Science",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "English Language and Literature",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "Foreign Linguistics and Applied Linguistics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "English Translation",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "English Interpretation",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "Japanese Language and Literature",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Foreign Studies",
+      "nameEn": "Russian Language and Literature",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Industrial Design Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Music and Dancology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Fine Arts",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Design Studies",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Art",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Music",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Science",
+      "nameEn": "Mathematics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Science",
+      "nameEn": "Physics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Science",
+      "nameEn": "Astrophysics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Science",
+      "nameEn": "Space Plasma Physics & Technology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Science",
+      "nameEn": "Statistics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Science",
+      "nameEn": "Electronic Information",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Physical Education",
+      "nameEn": "Physical Education",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Life Science",
+      "nameEn": "Botany",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Life Science",
+      "nameEn": "Zoology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Life Science",
+      "nameEn": "Hydrobiology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Life Science",
+      "nameEn": "Microbiology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Life Science",
+      "nameEn": "Neurobiology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Life Science",
+      "nameEn": "Genetics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Life Science",
+      "nameEn": "Cell Biology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Life Science",
+      "nameEn": "Biochemistry & Molecular Biology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Life Science",
+      "nameEn": "Ecology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Mechanical Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Material Processing Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Power Engineering and Thermophysics Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Instrumentation Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Mechanics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Material Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Power & Energy",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Electrical Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Information and Communication Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Control Science and Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Computer Science and Technology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "New Generation Electronic Information Technology (including quantum technology, etc.)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Communication Engineering (including broadband network, mobile communication, etc.)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Integrated Circuit Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Computer Technology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Software Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Control Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Biomedical Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Artificial Intelligence",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Network and Information Security",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Dynamics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Architecture",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Civil Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Heat",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Gas Supply",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Ventilation & Air Conditioning Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Water Conservancy Project",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Fluid Machinery and Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Chemical Process Equipment",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Municipal Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Chemical Engineering and Technology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Environmental Science and Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Materials & Chemical Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Resources and Environment",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Power & Energy",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Resources and Environment",
+      "nameEn": "Municipal Engineering (including water supply, etc.)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Materials Science and Engineering",
+      "nameEn": "Materials Science and Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Materials Science and Engineering",
+      "nameEn": "Material Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Political Theory",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Chinese and Foreign Political Systems",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Scientific Socialism and International Communist Movement",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "History of the Communist Party of China",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "International Politics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "International Relations",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Social Work",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Applied Psychology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Administration",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Social Security",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Land Resource Management",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Public Management",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Software",
+      "nameEn": "Cyberspace Security",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Software",
+      "nameEn": "Software Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Journalism and Communication",
+      "nameEn": "Journalism",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Journalism and Communication",
+      "nameEn": "Communication Studies",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Journalism and Communication",
+      "nameEn": "Journalism & Communication",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Journalism and Communication",
+      "nameEn": "Publication",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Journalism and Communication",
+      "nameEn": "Radio & Television Art",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Journalism and Communication",
+      "nameEn": "Radio and Television",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Food Science",
+      "nameEn": "Nutrition and Food Hygiene",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Food Science",
+      "nameEn": "Food Science and Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Food Science",
+      "nameEn": "Biotechnology and Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Food Science",
+      "nameEn": "Food Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Food Science",
+      "nameEn": "Fermentation Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Food Science",
+      "nameEn": "Food Processing and Safety",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Management",
+      "nameEn": "Management Science and Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Management",
+      "nameEn": "Library Information and File Management",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Management",
+      "nameEn": "Engineering Management",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Management",
+      "nameEn": "Library and Information",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Chemistry",
+      "nameEn": "Chemistry",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Chemistry",
+      "nameEn": "Applied Chemistry",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Chemistry",
+      "nameEn": "Industrial Catalysis",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Chemistry",
+      "nameEn": "Pharmaceutical Engineering",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Tourism",
+      "nameEn": "Tourism Management",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Tourism",
+      "nameEn": "Chinese History",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "Schoolof Educational Development",
+      "nameEn": "Principles of Pedagogy",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "Schoolof Educational Development",
+      "nameEn": "Higher Education",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "Schoolof Educational Development",
+      "nameEn": "Educational Technology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "Schoolof Educational Development",
+      "nameEn": "Children's Organization & Ideological Education",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "Schoolof Educational Development",
+      "nameEn": "Graduate Education",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "Schoolof Educational Development",
+      "nameEn": "Educational Economy & Management",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "Schoolof Educational Development",
+      "nameEn": "Education",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Biology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Basic Medicine",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Translational Medicine",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Pharmacy",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Clinical Laboratory Diagnostics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Public Health & Preventive Medicine",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Public Health",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Social Medicine & Health Management",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Nursing",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Nursing Studies",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Stomatology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Optometry",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Internal Medicine",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Pediatrics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Geriatrics",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Neurology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Psychiatry & Mental Health",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Dermatology & Venereology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Imaging Medicine & Nuclear Medicine",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Surgery",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Obstetrics & Gynecology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Otolaryngology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Oncology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Rehabilitation Medicine and Physiotherapy",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Sports Medicine",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Anesthesiology",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Emergency Medicine",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Critical Care Medicine",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Precision Medicine",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Integrated Traditional Chinese & Western Medicine",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Internal Medicine (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Pediatrics (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Geriatrics (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Neurology (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Psychiatry and Mental Health (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Dermatology and Venereology (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Emergency Medicine (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Critical Care Medicine (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "General Practice (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Rehabilitation Medicine and Physiography (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Surgery (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Orthopedics (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Sports Medicine (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Obstetrics & Gynecology (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Ophthalmology (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Otolaryngology (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Anesthesiology (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Clinical Pathology (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Oncology (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Radiation Oncology (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Radiology (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Ultrasound Medicine (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Nuclear Medicine (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Medical Genetics (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Master",
+      "schoolName": "School of Medicine",
+      "nameEn": "Stomatology (Clinical)",
+      "sourceId": "ncu-international-master-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/Master_Programs.htm",
+      "sourceLabel": "Nanchang University current official international master programs",
+      "sourceSha256": "17460babbf508bcbdc7a6470960af1f59810d36bdc34a6f71a97c3b10cef4252",
+      "capturedAt": "2026-10-27T08:02:42.912Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Law",
+      "nameEn": "Social Governance and Rule of Law SystemEngineering",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Statistics",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Economics and Management",
+      "nameEn": "Regional and Industrial Economic Management",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Humanities",
+      "nameEn": "Philosophy",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Humanities",
+      "nameEn": "Historical Heritage Management",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Humanities",
+      "nameEn": "Chinese Language and Literature",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Art and Design",
+      "nameEn": "Arts Management",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Science",
+      "nameEn": "Mathematics",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Science",
+      "nameEn": "Physics",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Life Science",
+      "nameEn": "Biology",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Mechanical Engineering",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Mechanical and Electrical Engineering",
+      "nameEn": "Material Processing Engineering",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Industrial Control Engineering",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Information Engineering",
+      "nameEn": "Information Management and Information System",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Mechanics",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Architecture and Civil Engineering",
+      "nameEn": "Water Conservancy Project",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Resources and Environment and Chemical Industry",
+      "nameEn": "Environmental Science and Engineering",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School ofMaterial ScienceandEngineering",
+      "nameEn": "Material Science and Engineering",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Medicine",
+      "nameEn": "Clinical Medicine",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Medicine",
+      "nameEn": "Dentistry",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Public Administration",
+      "nameEn": "Public Policy and Public Management",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Journalism and Communication",
+      "nameEn": "Journalism and Communication",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Food Science",
+      "nameEn": "Food Science and Engineering",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Food Science",
+      "nameEn": "Biology and Medicine",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Food Science",
+      "nameEn": "Nutrition and Food Hygiene",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Management",
+      "nameEn": "Management of Science and Engineering",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Chemistry",
+      "nameEn": "Chemistry",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Chemistry",
+      "nameEn": "Chemical Engineering and Technology",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Basic Medicine",
+      "nameEn": "Basic Medicine",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Pharmacy",
+      "nameEn": "Pharmacy",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Public Health",
+      "nameEn": "Public Health & Preventive Medicine",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Nursing",
+      "nameEn": "Nursing",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "schoolName": "School of Stomatology",
+      "nameEn": "Stomatology",
+      "sourceId": "ncu-international-phd-programs-current",
+      "sourceUrl": "https://english.ncu.edu.cn/Admissions/PhD_Programs.htm",
+      "sourceLabel": "Nanchang University current official international PhD programs",
+      "sourceSha256": "05fd2c47e43d2ba95f21082260c6c798c426c88661f20bdb9780493d45e494fe",
+      "capturedAt": "2026-10-27T08:02:44.096Z"
+    }
+  ],
+  "notes": [
+    "Rows are split only at top-level ASCII or full-width commas; commas inside parentheses remain part of the official program label.",
+    "Exact duplicates within the same degree level and school are removed; similarly named programs under different schools remain distinct.",
+    "No intake year, teaching language, duration, tuition category or deadline is inferred from the program tables."
+  ]
+}

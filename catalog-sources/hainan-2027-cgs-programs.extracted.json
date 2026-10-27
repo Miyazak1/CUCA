@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "schoolSlug": "hainan-university",
+  "cycle": "2027-2028",
+  "sourceId": "hainan-university-cgs-high-level-graduate-2027-2028",
+  "sourceSha256": "cbcc3b44e1c9987858187d8e686989125737fa4c302ebfce0fdb50e99408c362",
+  "deadlineConflict": {
+    "chineseText": "2027年2月28日（北京时间）",
+    "englishText": "February 28, 2026 (Peking time)",
+    "structuredDate": "2027-02-28",
+    "resolution": "Use the Chinese source text and the 2027-2028 cycle title; retain the conflicting English year in review metadata and deadline labels."
+  },
+  "groups": [
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "Chinese",
+      "programs": [
+        "Physics", "Ecology", "Marine Science", "Biology", "Biotechnology and Engineering", "Biomedical Engineering", "Civil Engineering", "Civil and Hydraulic Engineering", "Big Data Technology and Engineering", "Network and Information Security", "Cyberspace Security", "Communication and Information Engineering", "Apparatus and Instrument", "Robot Engineering", "Ocean Engineering", "Material Science and Engineering", "Food Processing and Safety", "Food Science and Engineering", "Crop Science", "Plant Protection", "Horticulture", "Agronomy and Seed Industry", "Resource Utilization and Plant Protection", "Forestry", "Fisheries", "Pharmaceutical Engineering", "Pharmacy", "Philosophy", "International Chinese Language Education", "Chinese-English Translation", "Chinese-English Interpreting", "Chinese-Japanese Translation", "Law", "Discipline Inspection and Supervision", "Tourism Management", "Public Administration", "Business Administration (Professional Degree)", "Business Administration (Academic Degree)", "Accounting", "International Business", "Management Science and Engineering", "Agricultural and Forestry Economics Management", "Finance", "Applied Economics"
+      ]
+    },
+    {
+      "degreeLevel": "Master",
+      "teachingLanguage": "English",
+      "programs": [
+        "Chemistry", "Biology", "Biotechnology and Engineering", "Biomedical Engineering", "Computer Science", "Crop Science", "Horticulture", "Law", "Business Administration (Professional Degree)"
+      ]
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "Chinese",
+      "programs": [
+        "Ecology", "Biotechnology and Engineering", "Biomedical Engineering", "Civil Engineering", "Photoelectric Information Engineering", "Food Science and Engineering", "Network and Information Security", "Big Data Technology and Engineering", "Cyberspace Security", "Communication and Information Engineering", "Material Science and Engineering", "Crop Science", "Law", "Public Administration", "Business Administration"
+      ]
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "teachingLanguage": "English",
+      "programs": [
+        "Biology", "Biotechnology and Engineering", "Biomedical Engineering", "Computer Technology", "Software Engineering", "Food Science and Engineering", "Crop Science", "Fisheries", "Business Administration"
+      ]
+    }
+  ]
+}

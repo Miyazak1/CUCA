@@ -1,0 +1,626 @@
+{
+  "version": 1,
+  "status": "deterministic_official_extraction",
+  "publicationAuthorized": false,
+  "databaseWriteAuthorized": false,
+  "run": "2026-10-27T08-35-49-485Z",
+  "source": {
+    "id": "tyut-international-program-catalog-page-2025",
+    "label": "Taiyuan University of Technology official bachelor master and doctoral program catalog 2025",
+    "url": "https://ciee.tyut.edu.cn/info/1016/3456.htm",
+    "finalUrl": "https://ciee.tyut.edu.cn/info/1016/3456.htm",
+    "fetchedAt": "2026-10-27T08:35:51.282Z",
+    "sha256": "1126b3bfc9bdb623029f5925a56a7981c6ad12cae418de645d6e8e08d4b8dfc3"
+  },
+  "counts": {
+    "Doctoral": 17,
+    "Master": 31,
+    "Bachelor": 19,
+    "total": 67
+  },
+  "programs": [
+    {
+      "sourceRow": 2,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Chemical Engineering and Technology",
+      "nameZh": "化学工程与技术",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 3,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Materials Science and Engineering",
+      "nameZh": "材料科学与工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 4,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Electrical Engineering",
+      "nameZh": "电气工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 5,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Mechanical Engineering",
+      "nameZh": "机械工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 6,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Mineral Engineering",
+      "nameZh": "矿业工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 7,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Geological Resources and Geological Engineering",
+      "nameZh": "地质资源与地质工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 8,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Safety Science and Engineering",
+      "nameZh": "安全科学与工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 9,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Mechanics",
+      "nameZh": "力学",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 10,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Environmental Science and Engineering",
+      "nameZh": "环境科学与工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 11,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Biomedical Engineering",
+      "nameZh": "生物医学工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 12,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Civil Engineering",
+      "nameZh": "土木工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 13,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Hydraulic Engineering",
+      "nameZh": "水利工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 14,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Computer Science and Technology",
+      "nameZh": "计算机科学与技术",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 15,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Optical Engineering",
+      "nameZh": "光学工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 16,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Electronic Science and Technology",
+      "nameZh": "电子科学与技术",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 17,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Mathematics",
+      "nameZh": "数学",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 18,
+      "degreeLevel": "Doctoral",
+      "nameEn": "Management Science and Engineering",
+      "nameZh": "管理科学与工程",
+      "durationYears": 4,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 2,
+      "degreeLevel": "Master",
+      "nameEn": "Chemical Engineering and Technology",
+      "nameZh": "化学工程与技术",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 3,
+      "degreeLevel": "Master",
+      "nameEn": "Materials Science and Engineering",
+      "nameZh": "材料科学与工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 4,
+      "degreeLevel": "Master",
+      "nameEn": "Metallurgical Engineering",
+      "nameZh": "冶金工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 5,
+      "degreeLevel": "Master",
+      "nameEn": "Power Engineering and Engineering Thermophysics",
+      "nameZh": "动力工程与工程热物理",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 6,
+      "degreeLevel": "Master",
+      "nameEn": "Electrical Engineering",
+      "nameZh": "电气工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 7,
+      "degreeLevel": "Master",
+      "nameEn": "Control Science and Engineering",
+      "nameZh": "控制科学与工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 8,
+      "degreeLevel": "Master",
+      "nameEn": "Computer Science and Technology",
+      "nameZh": "计算机科学与技术",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 9,
+      "degreeLevel": "Master",
+      "nameEn": "Civil Engineering",
+      "nameZh": "土木工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 10,
+      "degreeLevel": "Master",
+      "nameEn": "Hydraulic Engineering",
+      "nameZh": "水利工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 11,
+      "degreeLevel": "Master",
+      "nameEn": "Chemistry",
+      "nameZh": "化学",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 12,
+      "degreeLevel": "Master",
+      "nameEn": "Mechanical Engineering",
+      "nameZh": "机械工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 13,
+      "degreeLevel": "Master",
+      "nameEn": "Mechanics (Engineering)",
+      "nameZh": "力学",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 14,
+      "degreeLevel": "Master",
+      "nameEn": "Mineral Engineering",
+      "nameZh": "矿业工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 15,
+      "degreeLevel": "Master",
+      "nameEn": "Surveying Science and Technology",
+      "nameZh": "测绘科学与技术",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 16,
+      "degreeLevel": "Master",
+      "nameEn": "Geological Resources and Geological Engineering",
+      "nameZh": "地质资源与地质工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 17,
+      "degreeLevel": "Master",
+      "nameEn": "Environmental Science and Engineering",
+      "nameZh": "环境科学与工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 18,
+      "degreeLevel": "Master",
+      "nameEn": "Mathematics",
+      "nameZh": "数学",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 19,
+      "degreeLevel": "Master",
+      "nameEn": "Management Science and Engineering",
+      "nameZh": "管理科学与工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 20,
+      "degreeLevel": "Master",
+      "nameEn": "Business Administration",
+      "nameZh": "工商管理学",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 21,
+      "degreeLevel": "Master",
+      "nameEn": "Physics",
+      "nameZh": "物理学",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 22,
+      "degreeLevel": "Master",
+      "nameEn": "Optical Engineering",
+      "nameZh": "光学工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 23,
+      "degreeLevel": "Master",
+      "nameEn": "Instruments Science and Technology",
+      "nameZh": "仪器科学与技术",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 24,
+      "degreeLevel": "Master",
+      "nameEn": "Electronic Science and Technology",
+      "nameZh": "电子科学与技术",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 25,
+      "degreeLevel": "Master",
+      "nameEn": "Biomedical Engineering (Engineering)",
+      "nameZh": "生物医学工程(工程)",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 26,
+      "degreeLevel": "Master",
+      "nameEn": "Software Engineering",
+      "nameZh": "软件工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 27,
+      "degreeLevel": "Master",
+      "nameEn": "Safety Science and Engineering",
+      "nameZh": "安全科学与工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 28,
+      "degreeLevel": "Master",
+      "nameEn": "Foreign Language and Literature",
+      "nameZh": "外国语言文学",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 29,
+      "degreeLevel": "Master",
+      "nameEn": "Integrated Circuit Science and Engineering",
+      "nameZh": "集成电路科学与工程",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 30,
+      "degreeLevel": "Master",
+      "nameEn": "Design",
+      "nameZh": "设计学",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 31,
+      "degreeLevel": "Master",
+      "nameEn": "Architecture",
+      "nameZh": "建筑学",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 32,
+      "degreeLevel": "Master",
+      "nameEn": "Urban and Rural Planning",
+      "nameZh": "城乡规划学",
+      "durationYears": 3,
+      "teachingLanguage": "Not stated",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 2,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Computer Science and Technology",
+      "nameZh": "计算机科学与技术",
+      "durationYears": 4,
+      "teachingLanguage": "English",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 3,
+      "degreeLevel": "Bachelor",
+      "nameEn": "International Economics and Trade",
+      "nameZh": "国际经济与贸易",
+      "durationYears": 4,
+      "teachingLanguage": "English",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 4,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Software Engineering",
+      "nameZh": "软件工程",
+      "durationYears": 4,
+      "teachingLanguage": "English",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 5,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Computer Science and Technology",
+      "nameZh": "计算机科学与技术",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 6,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Civil Engineering",
+      "nameZh": "土木工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 7,
+      "degreeLevel": "Bachelor",
+      "nameEn": "International Economics and Trade",
+      "nameZh": "国际经济与贸易",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 8,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Teaching Chinese to Speakers of Other Languages",
+      "nameZh": "汉语国际教育",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 9,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Arts and Crafts",
+      "nameZh": "工艺美术",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 10,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Cultural Relics Protection and Restoration",
+      "nameZh": "文物保护与修复",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 11,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Digital Media Art",
+      "nameZh": "数字媒体艺术",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 12,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Environmental design",
+      "nameZh": "环境设计",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 13,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Hydrology and Water Resources Engineering",
+      "nameZh": "水文与水资源工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 14,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Applied Chemistry",
+      "nameZh": "应用化学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 15,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Mining Engineering",
+      "nameZh": "采矿工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 16,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Surveying and Mapping Engineering",
+      "nameZh": "测绘工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 17,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Geological Engineering",
+      "nameZh": "地质工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 18,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Resources Exploration Engineering",
+      "nameZh": "资源勘查工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 19,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Optoelectronic Information Science and Engineering",
+      "nameZh": "光电信息科学与工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    },
+    {
+      "sourceRow": 20,
+      "degreeLevel": "Bachelor",
+      "nameEn": "Biomedical Engineering",
+      "nameZh": "生物医学工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "catalogYear": 2025
+    }
+  ]
+}

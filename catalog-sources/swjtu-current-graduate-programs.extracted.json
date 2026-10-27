@@ -1,0 +1,833 @@
+{
+  "version": 1,
+  "schoolSlug": "southwest-jiaotong-university",
+  "sourceCatalogYear": 2025,
+  "currentGuideAcademicYear": "2026-2027",
+  "method": "pdfplumber ruled-table extraction from the exact official PDFs linked by the current 2026-2027 guides; source catalog year remains 2025 and is not relabeled",
+  "sources": [
+    {
+      "id": "swjtu-master-program-catalog-current",
+      "url": "https://sie.swjtu.edu.cn/fujian1-shuoshishengzhuanyeMasterProgramMajorList.pdf",
+      "sha256": "658a9fd108713bb2918d0787428eaee6365207e5de4da880080525e1d1fedfc9",
+      "fetchedAt": "2026-10-27T06:19:58.097Z",
+      "pages": 2,
+      "routes": 57
+    },
+    {
+      "id": "swjtu-doctoral-program-catalog-current",
+      "url": "https://sie.swjtu.edu.cn/fujian2-boshishengzhuanyeDoctoralProgramMajorList.pdf",
+      "sha256": "08143ae358c40d9e812afd4b9ad8f55ee084b18671896ec6d81da58ce0027f56",
+      "fetchedAt": "2026-10-27T06:19:59.169Z",
+      "pages": 1,
+      "routes": 32
+    }
+  ],
+  "counts": {
+    "total": 89,
+    "master": 57,
+    "doctoral": 32
+  },
+  "routes": [
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "数学",
+      "nameEn": "Mathematics",
+      "facultyZh": "数学学院",
+      "facultyEn": "School of Mathematics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "统计学",
+      "nameEn": "Statistics",
+      "facultyZh": "数学学院",
+      "facultyEn": "School of Mathematics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "电气工程",
+      "nameEn": "Electrical Engineering",
+      "facultyZh": "电气工程学院",
+      "facultyEn": "School of Electrical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "控制科学与工程",
+      "nameEn": "Control Science and Engineering",
+      "facultyZh": "电气工程学院",
+      "facultyEn": "School of Electrical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "轨道交通电气化与信 息技术",
+      "nameEn": "Rail Transit Electrification and Information Engineering",
+      "facultyZh": "电气工程学院",
+      "facultyEn": "School of Electrical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "生物学",
+      "nameEn": "Biology",
+      "facultyZh": "生命科学与工程学院",
+      "facultyEn": "",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "药学",
+      "nameEn": "Pharmacy",
+      "facultyZh": "生命科学与工程学院",
+      "facultyEn": "",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "生物与医药（专业硕 士）",
+      "nameEn": "Biology and Medicine",
+      "facultyZh": "生命科学与工程学院",
+      "facultyEn": "",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "药学（专硕）",
+      "nameEn": "Pharmacy",
+      "facultyZh": "生命科学与工程学院",
+      "facultyEn": "",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "机械工程",
+      "nameEn": "Mechanical Engineering",
+      "facultyZh": "机械工程学院",
+      "facultyEn": "School of Mechanical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "车辆工程",
+      "nameEn": "Vehicle Engineering",
+      "facultyZh": "机械工程学院",
+      "facultyEn": "School of Mechanical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "动力工程及工程热物 理",
+      "nameEn": "Power Engineering and Engineering Thermophysics",
+      "facultyZh": "机械工程学院",
+      "facultyEn": "School of Mechanical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "供热、供燃气、通风 及空调工程",
+      "nameEn": "Heating/Gas Supply, Ventilation And Air Conditioning Engineering",
+      "facultyZh": "机械工程学院",
+      "facultyEn": "School of Mechanical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "中国语言文学",
+      "nameEn": "Chinese Language and Literature",
+      "facultyZh": "人文学院",
+      "facultyEn": "School of Humanities",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "汉语国际教育",
+      "nameEn": "International Education of Chinese Language",
+      "facultyZh": "人文学院",
+      "facultyEn": "School of Humanities",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "中国哲学",
+      "nameEn": "Chinese Philosophy",
+      "facultyZh": "人文学院",
+      "facultyEn": "School of Humanities",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "宗教学",
+      "nameEn": "History of Daoism",
+      "facultyZh": "人文学院",
+      "facultyEn": "School of Humanities",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "新闻传播学（学术硕 士）",
+      "nameEn": "Journalism and Communication（academic master）",
+      "facultyZh": "人文学院",
+      "facultyEn": "School of Humanities",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "新闻与传播学（专业 硕士）",
+      "nameEn": "Journalism and Communication（professional master）",
+      "facultyZh": "人文学院",
+      "facultyEn": "School of Humanities",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "外国语言文学",
+      "nameEn": "Foreign Language and Literature",
+      "facultyZh": "外国语学院",
+      "facultyEn": "School of Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "英语语言文学（英语 文学、国别与区域研 究）",
+      "nameEn": "English Language and Literature (English Literature, Area and Country Studies)",
+      "facultyZh": "外国语学院",
+      "facultyEn": "School of Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "德语语言文学",
+      "nameEn": "German Language and Literature",
+      "facultyZh": "外国语学院",
+      "facultyEn": "School of Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "外国语言学及应用语 言学（英语、日语、法 语）",
+      "nameEn": "Foreign Linguistics and Applied Linguistics(English,/Japanese/French)",
+      "facultyZh": "外国语学院",
+      "facultyEn": "School of Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "翻译学（英语、日语 、法语）",
+      "nameEn": "Translation Studies (English, Japanese, French)",
+      "facultyZh": "外国语学院",
+      "facultyEn": "School of Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "比较文学与跨文化研 究（英语、日语、法 语）",
+      "nameEn": "Comparative Literature and Transcultural Studies (English, Japanese, French)",
+      "facultyZh": "外国语学院",
+      "facultyEn": "School of Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "英语笔译",
+      "nameEn": "English Translation",
+      "facultyZh": "外国语学院",
+      "facultyEn": "School of Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "国际中文教育",
+      "nameEn": "Teaching Chinese to Speakers of Other Languages",
+      "facultyZh": "外国语学院",
+      "facultyEn": "School of Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "建筑学",
+      "nameEn": "Architecture",
+      "facultyZh": "建筑学院",
+      "facultyEn": "School of Architecture",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "规划",
+      "nameEn": "Urban and Rural Planning",
+      "facultyZh": "建筑学院",
+      "facultyEn": "School of Architecture",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "桥梁与隧道工程",
+      "nameEn": "Bridge and Tunnel Engineering",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "道路与铁道工程",
+      "nameEn": "Road and Railway Engineering",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "岩土工程",
+      "nameEn": "Geotechnical Engineering",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "结构工程",
+      "nameEn": "Structural Engineering",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "交通运输",
+      "nameEn": "Transportation",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "土木水利",
+      "nameEn": "Civil and Hydraulic Engineering",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "物理学",
+      "nameEn": "Physics",
+      "facultyZh": "物理科学与技术学院",
+      "facultyEn": "School of Physical Science",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "电子科学与技术",
+      "nameEn": "Electronic Science and Technology",
+      "facultyZh": "物理科学与技术学院",
+      "facultyEn": "School of Physical Science",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "交通运输规划与管理",
+      "nameEn": "Transportation Planning and Management",
+      "facultyZh": "交通运输与物流学院",
+      "facultyEn": "School of Transportation and Logistics",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "交通工程",
+      "nameEn": "Traffic Engineering",
+      "facultyZh": "交通运输与物流学院",
+      "facultyEn": "School of Transportation and Logistics",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "力学",
+      "nameEn": "Mechanics",
+      "facultyZh": "力学与航空航天学院",
+      "facultyEn": "School of Mechanics and Aerospace Engineering",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "航空宇航科学与技术",
+      "nameEn": "Aeronautical and Astronautical Science and Technology",
+      "facultyZh": "力学与航空航天学院",
+      "facultyEn": "School of Mechanics and Aerospace Engineering",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "设计",
+      "nameEn": "Design",
+      "facultyZh": "设计艺术学院",
+      "facultyEn": "School of Design",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "公共管理",
+      "nameEn": "Public Administration",
+      "facultyZh": "公共管理学院",
+      "facultyEn": "School of Public Administration",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 1,
+      "nameZh": "法学",
+      "nameEn": "Law",
+      "facultyZh": "公共管理学院",
+      "facultyEn": "School of Public Administration",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "计算机科学与技术",
+      "nameEn": "Computer Science and Technology",
+      "facultyZh": "计算机与人工智能学院",
+      "facultyEn": "School of Computing and Artificial Intelligence",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "软件工程",
+      "nameEn": "Software Engineering",
+      "facultyZh": "计算机与人工智能学院",
+      "facultyEn": "School of Computing and Artificial Intelligence",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "人工智能（专业学 位）",
+      "nameEn": "Artificial Intelligence",
+      "facultyZh": "计算机与人工智能学院",
+      "facultyEn": "School of Computing and Artificial Intelligence",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "车辆工程",
+      "nameEn": "Vehicle Engineering",
+      "facultyZh": "轨道交通运载系统全国重点实 验室",
+      "facultyEn": "State Key Laboratory of",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "载运工具运用工程",
+      "nameEn": "Vehicle Operation Engineering",
+      "facultyZh": "轨道交通运载系统全国重点实 验室",
+      "facultyEn": "State Key Laboratory of",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "交通运输",
+      "nameEn": "Traffic and Transportation",
+      "facultyZh": "轨道交通运载系统全国重点实 验室",
+      "facultyEn": "State Key Laboratory of",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "信息与通信工程",
+      "nameEn": "Information and Communication Engineering",
+      "facultyZh": "信息科学与技术学院",
+      "facultyEn": "School of Information Science and Technology",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "交通信息工程及控制",
+      "nameEn": "Traffic Information Engineering and Control",
+      "facultyZh": "信息科学与技术学院",
+      "facultyEn": "School of Information Science and Technology",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "电子科学与技术",
+      "nameEn": "Electronic Science and Technology",
+      "facultyZh": "信息科学与技术学院",
+      "facultyEn": "School of Information Science and Technology",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "电子信息",
+      "nameEn": "Electronics and Information",
+      "facultyZh": "信息科学与技术学院",
+      "facultyEn": "School of Information Science and Technology",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "交通运输",
+      "nameEn": "Transportation",
+      "facultyZh": "信息科学与技术学院",
+      "facultyEn": "School of Information Science and Technology",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "地质资源与地质工程",
+      "nameEn": "Geological Resource and Geological Engineering",
+      "facultyZh": "地球科学与环境工程学院",
+      "facultyEn": "School of Geosciences and Environmental Engineering",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Master",
+      "page": 2,
+      "nameZh": "测绘科学与技术",
+      "nameEn": "Science and Technology of Surveying and Mapping",
+      "facultyZh": "地球科学与环境工程学院",
+      "facultyEn": "School of Geosciences and Environmental Engineering",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "数学",
+      "nameEn": "Mathematics",
+      "facultyZh": "数学学院",
+      "facultyEn": "School of Mathmetics",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "电气工程",
+      "nameEn": "Electrical Engineering",
+      "facultyZh": "电气工程学院",
+      "facultyEn": "School of Electrical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "控制科学与工程",
+      "nameEn": "Control Science and Engineering",
+      "facultyZh": "电气工程学院",
+      "facultyEn": "School of Electrical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "机械制造及其自动化",
+      "nameEn": "Mechanical Manufacturing And Automation",
+      "facultyZh": "机械工程学院",
+      "facultyEn": "School of Mechanical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "机械电子工程",
+      "nameEn": "Machinery And Electronics Engineering",
+      "facultyZh": "机械工程学院",
+      "facultyEn": "School of Mechanical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "机械设计及理论",
+      "nameEn": "Mechanical Design And Theory",
+      "facultyZh": "机械工程学院",
+      "facultyEn": "School of Mechanical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "车辆工程",
+      "nameEn": "Vehicle Engineering",
+      "facultyZh": "机械工程学院",
+      "facultyEn": "School of Mechanical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "供热、供燃气、通风及空调",
+      "nameEn": "Heating/Gas Supply, Ventilation And Air Conditioning 工程 Engineering",
+      "facultyZh": "机械工程学院",
+      "facultyEn": "School of Mechanical Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "中国语言文学",
+      "nameEn": "Chinese Language and Literature",
+      "facultyZh": "人文学院",
+      "facultyEn": "School of Humanities",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "中国语言文学",
+      "nameEn": "Chinese Language and Literature",
+      "facultyZh": "外国语学院",
+      "facultyEn": "School of Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "译介学",
+      "nameEn": "Medio-translatology",
+      "facultyZh": "外国语学院",
+      "facultyEn": "School of Foreign Languages",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "建筑学",
+      "nameEn": "Achitecture",
+      "facultyZh": "建筑学院",
+      "facultyEn": "School of Architecture",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "桥梁与隧道工程",
+      "nameEn": "Bridge and Tunnel Engineering",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "道路与铁道工程",
+      "nameEn": "Road and Railway Engineering",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "岩土工程",
+      "nameEn": "Geotechnical Engineering",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "结构工程",
+      "nameEn": "Structural Engineering",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "防灾减灾工程及防护工程",
+      "nameEn": "Disaster Prevention and Mitigation Engineering, Protection Engineering",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "交通运输",
+      "nameEn": "Transportation",
+      "facultyZh": "土木工程学院",
+      "facultyEn": "School of Civil Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "物理学",
+      "nameEn": "Physics",
+      "facultyZh": "物理科学与技术学院",
+      "facultyEn": "School of Physical Science",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "交通运输规划与管理",
+      "nameEn": "Transporation Planning and Management",
+      "facultyZh": "交通运输与物流学院",
+      "facultyEn": "School of Transportation and Logistics",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "交通工程",
+      "nameEn": "Traffic Engineering",
+      "facultyZh": "交通运输与物流学院",
+      "facultyEn": "School of Transportation and Logistics",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "力学",
+      "nameEn": "Mechanics",
+      "facultyZh": "力学与航空航天学院",
+      "facultyEn": "School of Mechanics and Aerospace Engineering",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "计算机科学与技术",
+      "nameEn": "Computer Science and Technology",
+      "facultyZh": "计算机与人工智能学院",
+      "facultyEn": "School of Computing and Artificial Intelligence",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "车辆工程",
+      "nameEn": "Vehicle Engineering",
+      "facultyZh": "轨道交通运载系统全国重点实验 室",
+      "facultyEn": "State Key Laboratory of Traction Power",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "载运工具运用工程",
+      "nameEn": "Vehicle Operation Engineering",
+      "facultyZh": "轨道交通运载系统全国重点实验 室",
+      "facultyEn": "State Key Laboratory of Traction Power",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "信息与通信工程",
+      "nameEn": "Information and Communication Engineering",
+      "facultyZh": "信息科学与技术学院",
+      "facultyEn": "School of Information Science and Technology",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "交通信息工程及控制",
+      "nameEn": "Traffic Information Engineering and Control",
+      "facultyZh": "信息科学与技术学院",
+      "facultyEn": "School of Information Science and Technology",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "地质资源与地质工程",
+      "nameEn": "Geological Resource and Geological Engineering",
+      "facultyZh": "地球科学与环境工程学院",
+      "facultyEn": "School of Geosciences and Environmental Engineering",
+      "teachingLanguage": "English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "测绘科学与技术",
+      "nameEn": "Science and Technology of Surveying and Mapping",
+      "facultyZh": "地球科学与环境工程学院",
+      "facultyEn": "School of Geosciences and Environmental Engineering",
+      "teachingLanguage": "Chinese"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "材料科学与工程",
+      "nameEn": "Materials Science and Engineering",
+      "facultyZh": "材料科学与工程学院",
+      "facultyEn": "School fo Materials Science and Engineering",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "工商管理学",
+      "nameEn": "Business Administration",
+      "facultyZh": "经济管理学院",
+      "facultyEn": "School of Economics and Management",
+      "teachingLanguage": "Chinese and English"
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "page": 1,
+      "nameZh": "管理科学与工程",
+      "nameEn": "Management Science and Engineering",
+      "facultyZh": "经济管理学院",
+      "facultyEn": "School of Economics and Management",
+      "teachingLanguage": "Chinese and English"
+    }
+  ]
+}

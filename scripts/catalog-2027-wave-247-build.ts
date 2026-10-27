@@ -1,0 +1,25 @@
+import { createHash } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { createCatalogMigrationValidationReport, type CatalogSeedBundle } from "../src/server/catalog/seed-contract.ts";
+
+type Source={id:string;label:string;url:string;finalUrl?:string;fetchedAt:string;status:number;contentType:string;sha256:string;artifactPath:string};
+const root=process.cwd(),runRoot=resolve(root,"work/catalog-official/bupt-refresh-2026-10-27");
+const sourceId="bupt-international-admission-brochure-2026",sourceSha256="60c223830d1e46ab8625daa3060584544ad699bf3c7925a33ce59cc0d32d56a8";
+const manifest=JSON.parse(await readFile(resolve(runRoot,"manifest.json"),"utf8")) as {sources:Source[]};
+const source=manifest.sources.find(row=>row.id===sourceId&&row.status===200&&row.sha256===sourceSha256);if(!source)throw new Error("Missing locked BUPT brochure.");
+if(createHash("sha256").update(await readFile(resolve(runRoot,source.artifactPath))).digest("hex")!==sourceSha256)throw new Error("BUPT brochure hash mismatch.");
+const base=JSON.parse(await readFile(resolve(root,"seeds/catalog.reviewed-100-official-release.json"),"utf8")) as CatalogSeedBundle;
+const schoolSlug="beijing-university-of-posts-and-telecommunications",city=base.cities?.find(row=>row.slug==="beijing"),priorSchool=base.schools?.find(row=>row.slug===schoolSlug);
+const priorPrograms=(base.programs??[]).filter(row=>row.schoolSlug===schoolSlug),programSlugs=new Set(priorPrograms.map(row=>row.slug)),priorIntakes=(base.programIntakes??[]).filter(row=>programSlugs.has(row.programSlug));
+if(!city||!priorSchool||priorPrograms.length!==58||priorIntakes.length!==58)throw new Error(`Unexpected BUPT baseline dependency counts: ${priorPrograms.length}/${priorIntakes.length}.`);
+const fields={sourceUrl:source.finalUrl??source.url,sourceLabel:source.label,sourceSha256:source.sha256,capturedAt:source.fetchedAt};
+const school={...priorSchool,deadlineSummary:"Latest public international degree cycle is Fall 2026 and is closed; the application period was October 20, 2025 to April 20, 2026. No 2027 international degree deadline is published.",admissionsUrl:source.finalUrl??source.url,lastVerifiedAt:source.fetchedAt,...fields,sourceFieldLineage:{...(priorSchool.sourceFieldLineage??{}),deadlineSummary:"official 2026 brochure plus October 27, 2026 freshness review",admissionsUrl:"official 2026 brochure"}};
+const programs=priorPrograms.map(program=>({...program,applicationUrl:source.finalUrl??source.url,applicationNote:`${program.applicationNote??"Official 2026 degree route."} Retained as current reference only; not relabeled as a 2027 intake.`,lastVerifiedAt:source.fetchedAt,...fields,sourceFieldLineage:{...(program.sourceFieldLineage??{}),applicationUrl:"official 2026 brochure",applicationNote:"official 2026 route plus explicit 2027 limitation"}}));
+const programIntakes=priorIntakes.map(intake=>({...intake,status:"closed" as const,...fields,sourceFieldLineage:{...(intake.sourceFieldLineage??{}),status:"deadline passed before the October 27, 2026 refresh"}}));
+const candidate:CatalogSeedBundle={version:1,generatedAt:source.fetchedAt,cities:[city],schools:[school],programs,programIntakes,scholarships:[]};
+const validation=createCatalogMigrationValidationReport(candidate);if(!validation.ok)throw new Error(validation.errors.join("\n"));
+const text=`${JSON.stringify(candidate,null,2)}\n`,candidateSha256=createHash("sha256").update(text).digest("hex");
+const review={version:1,status:"unreviewed_draft",generatedAt:candidate.generatedAt,candidateSha256,publicationAuthorized:false,databaseWriteAuthorized:false,scope:{target:"2026 ShanghaiRanking BCUR top 150",targetPosition:50,schoolSlugs:[schoolSlug],newSchools:0,programs:58,programIntakes:58,scholarships:0},evidence:[{id:source.id,label:source.label,url:source.finalUrl??source.url,contentType:source.contentType,fetchedAt:source.fetchedAt,sha256:source.sha256}],unresolved:["The latest public general degree brochure is the closed 2026 cycle. No route, requirement, fee or deadline is relabeled as 2027.","The maintained scholarship page returned HTTP 412 to the deterministic collector, so no scholarship entity is created.","Domestic 2027 admission and recommendation notices are outside the international-student scope and remain excluded."],sensitiveDataCheck:{result:"pass",note:"Only existing reviewed catalog fields are retained; no applicant or personal contact data is included."}};
+const stem=resolve(root,"seeds/catalog.2027-wave-247");await Promise.all([writeFile(`${stem}.draft.json`,text,"utf8"),writeFile(`${stem}.validation.json`,`${JSON.stringify({...validation,candidateSha256,publicationAuthorized:false,databaseWriteAuthorized:false},null,2)}\n`,`utf8`),writeFile(`${stem}.review.json`,`${JSON.stringify(review,null,2)}\n`,`utf8`)]);
+console.log(JSON.stringify({ok:true,wave:247,candidateSha256,counts:validation.summary,publicationAuthorized:false,databaseWriteAuthorized:false},null,2));

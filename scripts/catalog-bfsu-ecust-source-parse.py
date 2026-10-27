@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -322,6 +323,34 @@ def assert_no_sensitive_text(value: object) -> None:
 
 
 def main() -> None:
+    if len(sys.argv) == 3 and sys.argv[1] == "--ecust-run":
+        run = Path(sys.argv[2]).resolve()
+        raw = run / "raw"
+        ids = {
+            "undergraduate": "ecust-international-undergraduate-program-catalog-2026",
+            "master": "ecust-international-master-program-catalog-en-2026",
+            "doctoral": "ecust-international-doctoral-program-catalog-en-2026",
+        }
+        for level, source_id in ids.items():
+            matches = list(raw.glob(f"{source_id}.*.html"))
+            if len(matches) != 1:
+                raise RuntimeError(f"Expected one captured ECUST artifact for {source_id}, found {len(matches)}")
+            ECUST_HTML[level] = matches[0]
+        ecust = {
+            "schoolSlug": "east-china-university-of-science-and-technology",
+            "programs": parse_ecust_undergraduate() + parse_ecust_postgraduate("master") + parse_ecust_postgraduate("doctoral"),
+        }
+        assert_no_sensitive_text(ecust)
+        degrees: dict[str, int] = {}
+        for row in ecust["programs"]:
+            degrees[row["degreeLevel"]] = degrees.get(row["degreeLevel"], 0) + 1
+        ecust["summary"] = {"programCount": len(ecust["programs"]), "degreeCounts": degrees}
+        output = run / "ecust-programs.extracted.json"
+        output.write_text(json.dumps(ecust, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(json.dumps({"ok": True, "output": str(output), "ecust": ecust["summary"]}, indent=2))
+        return
+    if len(sys.argv) != 1:
+        raise SystemExit("Usage: catalog-bfsu-ecust-source-parse.py [--ecust-run <captured-run-directory>]")
     bfsu = {
         "schoolSlug": "beijing-foreign-studies-university",
         "programs": parse_bfsu_undergraduate() + parse_bfsu_master() + parse_bfsu_doctoral(),

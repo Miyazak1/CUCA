@@ -11,10 +11,10 @@ import {
 
 type ManifestSource = { id: string; label: string; url: string; finalUrl?: string; fetchedAt: string; status: number; sha256: string; artifactPath: string };
 const root = process.cwd();
-const runRoot = resolve(root, "work/catalog-official/ustb-undergraduate-2027-2026-10-20");
+const runRoot = resolve(root, "work/catalog-official/2026-10-27T06-00-29-908Z");
 const expected: Record<string, string> = {
   "ustb-undergraduate-programs-2027": "523d70aa2c3a910ccf25d9036b38979af4ca2a2db52b520e420ff0cc5738a9a6",
-  "ustb-undergraduate-application-2027": "50cf78c25ac767faefeb8eb2608fca3100062a9b99bd8deb5530c8143a72b5cc",
+  "ustb-undergraduate-application-2027": "c17c47892c939b05cde8fc1059ebf642eee2451ccfd56c58fefaa7aa09eafbf4",
   "ustb-chinese-ai-joint-program-2027": "5ccb9c51c30a7c0ff376e21abf4e250fc53b3a3fdb8c3ac189b58aa3d3f8d517",
   "ustb-international-economics-1-plus-3-2027": "c25cf11719ff097832faadbe330645de880cdcfb06c15aa2c0b266a60921e53f",
   "ustb-csca-requirements-2027": "329db3a54b56cf97a8fc1c9afe87267971ba8b0c76ea80282fdc9fc91dd92a1b",
@@ -116,7 +116,7 @@ const standardProgram = (major: Major, language: "Chinese" | "English"): Catalog
     tuitionText: "CNY 23,300 per year; application fee CNY 600; insurance CNY 800/year or CNY 400/semester.",
     scholarshipText: "The 2027 guide lists Chinese Government Scholarship Type A and Type B, the USTB Chancellor Scholarship, and Beijing Government Scholarship; exact eligibility and award terms follow each scholarship notice.",
     applicationUrl,
-    applicationNote: "Applicants should generally be age 35 or younger, hold a high-school diploma, meet the foreign-nationality and residence rules, and upload the diploma, transcript, passport, language proof, physical examination, financial guarantee, police-clearance certificate and required CSCA transcript. No paper application is mailed.",
+    applicationNote: "Applicants should generally be age 35 or younger and hold a high-school diploma. Applicants born with foreign nationality to one or two Chinese-citizen parents settled abroad must not possess Chinese nationality. Applicants formerly resident in mainland China, Hong Kong, Macao or Taiwan who later naturalized abroad, together with other applicants covered by the policy, must meet the published four-year nationality and two-year overseas-residence rule. Upload the diploma, transcript, passport, language proof, physical examination, financial guarantee, police-clearance certificate and required CSCA transcript; no paper application is mailed.",
     hasScholarship: true,
     badgeText: "2027 undergraduate admissions",
     displayGroup: "Undergraduate",
@@ -219,7 +219,10 @@ const review = {
     "The Chinese Language + Artificial Intelligence joint-program page requires an HSK score report but does not publish a minimum admission level, so no HSK threshold is inferred.",
     "The general scholarship periods remain deadlineLabel text unless an exact date is published. Award terms remain subject to the specific scholarship notice.",
   ],
-  notes: ["No applicant, account, passport, payment or other personal data is included."],
+  notes: [
+    "The October 27 snapshot adds nationality clarification for applicants born abroad to Chinese-citizen parents and for former mainland China, Hong Kong, Macao or Taiwan residents who later naturalized abroad. Dates, fees, CSCA requirements and program listings are unchanged.",
+    "No applicant, account, passport, payment or other personal data is included.",
+  ],
 };
 const stem = resolve(root, "seeds/catalog.2027-wave-42");
 await Promise.all([

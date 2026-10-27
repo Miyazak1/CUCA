@@ -1,0 +1,1811 @@
+{
+  "version": 1,
+  "programs": [
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Law",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Intellectual Property",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Political and Administrative Sciences",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Sociology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Administrative Management",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Philosophy",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Chemistry",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Chemical Engineering and Technology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Pedagogy",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Educational Studies of Special Needs",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Studies of Education Technology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Psychology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Applied Psychology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "History",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Tourism Management",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Exhibition Economy and Management",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Fine Arts",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Painting",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Artistic Designing",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Digital Media Art",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Economics",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Finance",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Accounting",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Biological Sciences",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Biotechnology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Mathematics and Applied Mathematics",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Information and Computation Science",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Statistics",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Data Science and Big Data Technology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 1
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Computer Science and Technology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Communication and Information Systems",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Software Engineering",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Artificial Intelligence",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Physical Education",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Sports Training",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Kinesiology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Wu Shu and Traditional Sports",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "English",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Russian",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Japanese",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "French",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Korean",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Translation and Interpreting",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "German",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Spanish",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Literature of Theatre Film and Television",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Chinese Literature",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Teaching Chinese to Speakers of Other languages",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Physics",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Electronic Information Science and Technology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Journalism",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Internet and New Media",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Editing and Directing of Radio and Television",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Techniques of Broadcasting and Anchoring",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Clinical Medicine",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Preventive Medicine",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Pharmaceutical Sciences",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Medical Inspection Technology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Nursing",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Music",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Music Performance",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Dance",
+      "durationText": "4-5 academic years",
+      "sourcePage": 2
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Applied Electronics Technology Education",
+      "durationText": "4-5 academic years",
+      "sourcePage": 3
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Mechanical Technology",
+      "durationText": "4-5 academic years",
+      "sourcePage": 3
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Machine Design Manufacturing and Automation",
+      "durationText": "4-5 academic years",
+      "sourcePage": 3
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Electronic Information Engineering",
+      "durationText": "4-5 academic years",
+      "sourcePage": 3
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Visual Communication Design",
+      "durationText": "4-5 academic years",
+      "sourcePage": 3
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Clothing and Apparel Design",
+      "durationText": "4-5 academic years",
+      "sourcePage": 3
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Geography",
+      "durationText": "4-5 academic years",
+      "sourcePage": 3
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Geographical Information Science",
+      "durationText": "4-5 academic years",
+      "sourcePage": 3
+    },
+    {
+      "degreeLevel": "Bachelor",
+      "nameEn": "Human Geography and Urban and Rural Planning",
+      "durationText": "4-5 academic years",
+      "sourcePage": 3
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Criminal Law",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Civil and Commercial Law",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "International Law",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Economic Law",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Procedural Law",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Environmental and Resources Protection Law",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "JM (non-law)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "JM (law)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Political Science",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Sociology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Social Work (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Theoretical Economics",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Applied Economics",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Business Administration",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Finance (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Business Administration (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Accounting (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "International Chinese Language Education (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Theory of Literature and Art",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Linguistics and Applied Linguistics",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Chinese Philology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Chinese Classical Text",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Ancient Chinese Literature",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Modern and Contemporary Chinese Literature",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Comparative Literature and World Literature",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Grammatology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Teaching Chinese as a Foreign Language",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Art Studies",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Drama and Film (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Chinese History",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "World History",
+      "durationText": "2-3 academic years",
+      "sourcePage": 4
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Studies of Journalism and Communication",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Journalism and Communication (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Publishing (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Drama and Film (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Tourism Management",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Tourism Management (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Foreign Languages & Literatures",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "English Language and Literature",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Foreign Linguistics and Applied Linguistics",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Comparative Literature and Intercultural Study",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "International and Regional Studies",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Russian Language and Literature",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Japanese Language and Literature",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Asian-African Languages and Literatures",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "French Language and Literature",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Language Intelligence and Cross-cultural Communication",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "English Translation",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "English Interpreting",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Japanese Translation",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Korean Translation",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Subject Teaching (English)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Russian Translation",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Education Science",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Principles of Education",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Curriculum and Teaching Methodology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "History of Education",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Studies of Comparative Education",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Pre-school Education",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Higher Education",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Vocational and Technical Education",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Psychology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Education Technology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 5
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Modern Education Technology (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Primary Education (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Mental Health Education (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Science and Technology Education (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Pre-school Education (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Special Education (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Applied Psychology (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Education Management (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Applied Statistics (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Mathematics",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Statistics",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Physics",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Astronomy",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Materials Sciences and Engineering",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Electronic Science and Technology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Subject Teaching (Physics)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Chemistry",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Chemical Engineering and Technology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Pharmaceutical Analysis",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Materials and Chemical Engineering (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Physical Geography",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Human Geography",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Cartography and Geography Information System",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Resources and Environment (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Subject Teaching (Geography)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 6
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Botany",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Zoology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Physiology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Microbiology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Genetics",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Developmental Biology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Cell Biology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Biochemistry and Molecular Biology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Biotechnology and Bioengineering (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Subject Teaching (Biology)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Humane and Sociological Science of Sports",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Kinesiology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Physical Education and Training",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Traditional Chinese Sports",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Physical Education (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Sports Training (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Art Studies",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Music (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Dance (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Art Studies",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Design",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Studies of Design",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Subject Teaching (Fine Arts)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Fine Arts and Calligraphy (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Vocational and Technical Education",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Vocational and Technical Education (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Electronic Science and Technology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Mechanical Engineering (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Studies of Design",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Design",
+      "durationText": "2-3 academic years",
+      "sourcePage": 7
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Medical Physiology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Human Anatomy Histology and Embryology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Medical Immunology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Pathogen Biology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Pathology and Pathophysiology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Oncology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Public Health and Preventive Medicine",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Pharmacy",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Public Health (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Nursing (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Internal Medicine (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Pediatrics (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Geriatrics (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Neurology (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Dermatology and Venereology (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Emergency Medicine (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "General Practice (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Rehabilitation Medicine and Physiotherapy (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Surgery (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Osteopathic Medicine (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Ophthalmology (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Otorhinolaryngology (ear-nose-throat medicine) (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Anesthesiology (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Clinicopathology (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Laboratory Diagnostic (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Oncology (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Radiation Oncology (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Radiology (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Ultrasound Medicine (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Nursing (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 8
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Teaching Chinese as a Foreign Language (Overseas Chinese Education)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 9
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Journalism and Communication (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 9
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Electronic Science and Technology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 9
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Computer Science and Technology",
+      "durationText": "2-3 academic years",
+      "sourcePage": 9
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Software Engineering",
+      "durationText": "2-3 academic years",
+      "sourcePage": 9
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Electronic Information (Professional Master's Degree)",
+      "durationText": "2-3 academic years",
+      "sourcePage": 9
+    },
+    {
+      "degreeLevel": "Master",
+      "nameEn": "Philosophy",
+      "durationText": "2-3 academic years",
+      "sourcePage": 9
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Constitutional Law and Administrative Law",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Civil Law and Commercial Law",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Science of Environment and Natural Resources Protection Law",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "International law",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Philosophy of Marxism",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Foreign Philosophies",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Ethics",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Philosophy of Science & Technology",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Political Science",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Theoretical Economics",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Political Economy",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Economic History",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Western Economics",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "World Economics",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Theory of Literature and Art",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Linguistics and Applied Linguistics",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Chinese Philology",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Ancient Chinese Literature",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Modern & Contemporary Chinese Literature",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Teaching Chinese to Speakers of Other Languages",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Chinese History",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Studies of Journalism and Communication",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Journalism",
+      "durationText": "4 academic years",
+      "sourcePage": 10
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Communication",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "New Media Communication",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Editing and Publishing",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Foreign Languages & Literatures",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "English Language and Literature",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Linguistics and Applied Linguistics in Foreign Languages",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Comparative Literature and Intercultural Studies",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "International and Regional Studies",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Asian &African Languages and Literatures",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Educational Principle",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Curriculum and Teaching Methodology",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Pre-school Education",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Higher Education",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Psychology",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Curriculum and Instruction",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Student Development and Education",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Mathematics",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Fundamental Mathematics",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Computational Mathematics",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Applied Mathematics",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Operational Research and Cybernetics",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Statistics",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Biostatistics",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Socio-economic Statistics",
+      "durationText": "4 academic years",
+      "sourcePage": 11
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Physics",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Condensed Matter Physics",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Particle Physics and Nuclear Physics",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Chemistry",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Inorganic Chemistry",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Analytical Chemistry",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Organic Chemistry",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Physical Chemistry",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Physical Geography",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Human Geography",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Cartology and Geography Information System",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Botany",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Zoology",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Physiology",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Microbiology",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Genetics",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Developmental Biology",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Cell Biology",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Biochemistry and Molecular Biology",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Kinesiology",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Physical Education and Training",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Art Studies",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Music",
+      "durationText": "4 academic years",
+      "sourcePage": 12
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Art Studies",
+      "durationText": "4 academic years",
+      "sourcePage": 13
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Fine Arts and Calligraphy",
+      "durationText": "4 academic years",
+      "sourcePage": 13
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Basic Medicine",
+      "durationText": "4 academic years",
+      "sourcePage": 13
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Theory Marxism",
+      "durationText": "4 academic years",
+      "sourcePage": 13
+    },
+    {
+      "degreeLevel": "Doctoral",
+      "nameEn": "Foreign Languages and Literatures",
+      "durationText": "4 academic years",
+      "sourcePage": 13
+    }
+  ]
+}

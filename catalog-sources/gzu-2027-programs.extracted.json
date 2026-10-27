@@ -1,0 +1,5334 @@
+{
+  "version": 1,
+  "schoolSlug": "guizhou-university",
+  "year": 2027,
+  "sources": {
+    "undergraduate": {
+      "id": "gzu-international-undergraduate-program-catalog-pdf-2027",
+      "sha256": "603ab490400fd0b6af239ff98c9693dd3ee24aa44c27158f278979005e1c6de6",
+      "fetchedAt": "2026-10-26T03:25:25.195Z",
+      "url": "https://cie.gzu.edu.cn/_upload/article/files/4d/dc/1f6512214fbb81487f904e68e648/bb1e21fe-79ae-4280-bea7-c125fd89fb0d.pdf"
+    },
+    "master": {
+      "id": "gzu-international-master-program-catalog-pdf-2027",
+      "sha256": "df77504ef39812463fd0b7ca633a077c0801c56171f3b7d8a4d05c2e51651f4b",
+      "fetchedAt": "2026-10-26T03:25:24.123Z",
+      "url": "https://cie.gzu.edu.cn/_upload/article/files/f8/01/096b46224eadbd3bfbda71b16174/30a6d89f-dc7f-435e-a8a6-2eac33e60f39.pdf"
+    },
+    "doctoral": {
+      "id": "gzu-international-doctoral-program-catalog-pdf-2027",
+      "sha256": "6fa9b9c446d4e87f80b47acdd05c92fa87f846d734058d84ba4b0db9c937ec9a",
+      "fetchedAt": "2026-10-26T03:25:22.970Z",
+      "url": "https://cie.gzu.edu.cn/_upload/article/files/eb/fa/e0a0a01f4fb993869bc70c6d75d5/0e3b51b0-bafa-4be9-8940-469a8c6d9a7c.pdf"
+    }
+  },
+  "undergraduate": [
+    {
+      "page": 1,
+      "collegeEn": "College of Humanities",
+      "collegeZh": "人文学院",
+      "nameEn": "Chinese Language and Literature",
+      "nameZh": "汉语言文学",
+      "code": "050101",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ],
+      "notes": "1.HSK5级230分以上。 1.HSK 5 with a score of 230 or above."
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Humanities",
+      "collegeZh": "人文学院",
+      "nameEn": "History",
+      "nameZh": "历史学",
+      "code": "060101",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of History",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Communication",
+      "collegeZh": "传媒学院",
+      "nameEn": "Journalism",
+      "nameZh": "新闻学",
+      "code": "050301",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ],
+      "notes": "1.HSK5级230分以上。 1.HSK 5 with a score of 230 or above."
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "nameEn": "Law",
+      "nameZh": "法学",
+      "code": "030101K",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Laws",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Music",
+      "collegeZh": "音乐学院",
+      "nameEn": "Music Performance (Vocal Performance)",
+      "nameZh": "音乐表演（声乐）",
+      "code": "130201",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Music",
+      "collegeZh": "音乐学院",
+      "nameEn": "Music Performance (Piano and Keyboard Musical Instruments)",
+      "nameZh": "音乐表演（键盘）",
+      "code": "130201",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Music",
+      "collegeZh": "音乐学院",
+      "nameEn": "Music Performance (Orchestral and Percussion Instruments)",
+      "nameZh": "音乐表演（管弦）",
+      "code": "130201",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Music",
+      "collegeZh": "音乐学院",
+      "nameEn": "Acting",
+      "nameZh": "表演",
+      "code": "130301",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Music",
+      "collegeZh": "音乐学院",
+      "nameEn": "Dance Performance",
+      "nameZh": "舞蹈表演",
+      "code": "130204",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Art",
+      "collegeZh": "美术学院",
+      "nameEn": "Drawing（Chinese Painting）",
+      "nameZh": "绘画(国画）",
+      "code": "130402",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ],
+      "notes": "1.需提供作品集。 1.Portfolio Required"
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Art",
+      "collegeZh": "美术学院",
+      "nameEn": "Drawing（Oil Painting）",
+      "nameZh": "绘画(油画）",
+      "code": "130402",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Art",
+      "collegeZh": "美术学院",
+      "nameEn": "Drawing（Print-making）",
+      "nameZh": "绘画(版画）",
+      "code": "130402",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Art",
+      "collegeZh": "美术学院",
+      "nameEn": "Visual Communication Design（Visual Communication Design）",
+      "nameZh": "视觉传达设计（视觉传 达设计）",
+      "code": "130502",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Art",
+      "collegeZh": "美术学院",
+      "nameEn": "Visual Communication Design（Cultural and Creative Design）",
+      "nameZh": "视觉传达设计（文创设 计）",
+      "code": "130502",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Art",
+      "collegeZh": "美术学院",
+      "nameEn": "Visual Communication Design（Digital Art Design）",
+      "nameZh": "视觉传达设计（数字艺 术设计）",
+      "code": "130502",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Art",
+      "collegeZh": "美术学院",
+      "nameEn": "Visual Communication Design（Visual Spatial Design）",
+      "nameZh": "视觉传达设计（视觉空 间设计）",
+      "code": "130502",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Fine Arts",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Management",
+      "collegeZh": "管理学院",
+      "nameEn": "Business Administration",
+      "nameZh": "工商管理",
+      "code": "120201K",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Management",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Management",
+      "collegeZh": "管理学院",
+      "nameEn": "Marketing",
+      "nameZh": "市场营销",
+      "code": "120202",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Management",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Management",
+      "collegeZh": "管理学院",
+      "nameEn": "Accounting",
+      "nameZh": "会计学",
+      "code": "120203K",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Management",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Management",
+      "collegeZh": "管理学院",
+      "nameEn": "Engineering Management",
+      "nameZh": "工程管理",
+      "code": "120103",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Management",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "nameEn": "Economics",
+      "nameZh": "经济学",
+      "code": "020101",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Economics",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "nameEn": "Finance",
+      "nameZh": "金融学",
+      "code": "020301K",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Economics",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "nameEn": "Agriculture and Forest Economics and Management",
+      "nameZh": "农林经济管理",
+      "code": "120301",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Management",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理学院",
+      "nameEn": "Politics and Administration",
+      "nameZh": "政治学与行政学",
+      "code": "030201",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Laws",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理学院",
+      "nameEn": "Social Work",
+      "nameZh": "社会工作",
+      "code": "030302",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Laws",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理学院",
+      "nameEn": "Public Administration",
+      "nameZh": "行政管理",
+      "code": "120402",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "B achelor of Management",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Tourism and Culture Industry",
+      "collegeZh": "旅游与文化产业 学院",
+      "nameEn": "Cultural Industry Management",
+      "nameZh": "文化产业管理",
+      "code": "120210",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Management",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Tourism and Culture Industry",
+      "collegeZh": "旅游与文化产业 学院",
+      "nameEn": "Tourism Management",
+      "nameZh": "旅游管理",
+      "code": "120901K",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Management",
+      "cscaSubjects": [
+        "Chinese (Arts)",
+        "Mathematics"
+      ],
+      "tuitionText": "14000",
+      "tuitionAmounts": [
+        14000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学学院",
+      "nameEn": "Biological Science",
+      "nameZh": "生物科学",
+      "code": "071001",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Science",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学学院",
+      "nameEn": "Ecology",
+      "nameZh": "生态学",
+      "code": "071004",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Science",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of BIg Data and Information Engineering",
+      "collegeZh": "大数据与信息工 程学院",
+      "nameEn": "Data Science and Big Data Technology",
+      "nameZh": "数据科学与大数据技术",
+      "code": "080910T",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Physics",
+      "collegeZh": "物理学院",
+      "nameEn": "Physics",
+      "nameZh": "物理学",
+      "code": "070201",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Science",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Electrical Engineering",
+      "collegeZh": "电气工程学院",
+      "nameEn": "Energy and Power Engineering",
+      "nameZh": "能源与动力工程",
+      "code": "080501",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Architecture and Urban Planning",
+      "collegeZh": "建筑与城市规划 学院",
+      "nameEn": "Architecture",
+      "nameZh": "建筑学",
+      "code": "082801",
+      "durationYears": 5,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Architecture",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Architecture and Urban Planning",
+      "collegeZh": "建筑与城市规划 学院",
+      "nameEn": "Urban and Rural Planning",
+      "nameZh": "城乡规划",
+      "code": "082802",
+      "durationYears": 5,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程学院",
+      "nameEn": "Agricultural Mechanization and Automation",
+      "nameZh": "农业机械化及其自动化",
+      "code": "082302",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程学院",
+      "nameEn": "Mechanical Design, Manufacturing and Automation (Chinese-foreign cooperative education program)",
+      "nameZh": "机械设计制造及其自动 化",
+      "code": "080202",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程学院",
+      "nameEn": "Materials Shaping and Control Engineering",
+      "nameZh": "材料成型及控制工程",
+      "code": "080203",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工学院",
+      "nameEn": "Chemistry",
+      "nameZh": "化学",
+      "code": "070301",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Science",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工学院",
+      "nameEn": "Chemical Biology",
+      "nameZh": "化学生物学",
+      "code": "070303T",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Bachelor of Science",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "中文授课/Chinese Taught Program：15500 英文授课/English Taught Program：21500",
+      "tuitionAmounts": [
+        15500,
+        21500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工学院",
+      "nameEn": "Chemical Engineering and Technics",
+      "nameZh": "化学工程与工艺",
+      "code": "081301",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "nameEn": "Environmental Engineering",
+      "nameZh": "环境工程",
+      "code": "082502",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "nameEn": "Planetary Science",
+      "nameZh": "行星科学",
+      "code": "070804TK",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Science",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "nameEn": "Resource Exploration Engineering",
+      "nameZh": "资源勘查工程",
+      "code": "081403K",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "nameEn": "Geology Engineering",
+      "nameZh": "地质工程",
+      "code": "081401",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "nameEn": "Hydrology and Water Resources Engineering",
+      "nameZh": "水文与水资源工程",
+      "code": "081102",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "nameEn": "Agronomy",
+      "nameZh": "农学",
+      "code": "090101",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Agriculture",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "nameEn": "Plant Protection",
+      "nameZh": "植物保护",
+      "code": "090103",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Agriculture",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Tobacco Science",
+      "collegeZh": "烟草学院",
+      "nameEn": "Tobacco",
+      "nameZh": "烟草",
+      "code": "090108T",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Agriculture",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "nameEn": "Mining Engineering",
+      "nameZh": "采矿工程",
+      "code": "081501",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "nameEn": "Mineral Processing Engineering",
+      "nameZh": "矿物加工工程",
+      "code": "081503",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "nameEn": "Security Engineering",
+      "nameZh": "安全工程",
+      "code": "082901",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Animal Science",
+      "collegeZh": "动物科学学院",
+      "nameEn": "Veterinary Medicine",
+      "nameZh": "动物医学",
+      "code": "090401",
+      "durationYears": 5,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Bachelor of Agriculture",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "中文授课/Chinese Taught Program：15500 英文授课/English Taught Program：21500",
+      "tuitionAmounts": [
+        15500,
+        21500
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Animal Science",
+      "collegeZh": "动物科学学院",
+      "nameEn": "Animal Science",
+      "nameZh": "动物科学",
+      "code": "090301",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Agriculture",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Animal Science",
+      "collegeZh": "动物科学学院",
+      "nameEn": "Pratacultural Science",
+      "nameZh": "草业科学",
+      "code": "090701",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Agriculture",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Liquor and Food Engineering",
+      "collegeZh": "酿酒与食品工程 学院",
+      "nameEn": "Food Science and Engineering",
+      "nameZh": "食品科学与工程",
+      "code": "082701",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Liquor and Food Engineering",
+      "collegeZh": "酿酒与食品工程 学院",
+      "nameEn": "Food Quality and Safety",
+      "nameZh": "食品质量与安全",
+      "code": "082702",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Liquor and Food Engineering",
+      "collegeZh": "酿酒与食品工程 学院",
+      "nameEn": "Brewing Engineering",
+      "nameZh": "酿酒工程",
+      "code": "082705",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Chemistry"
+      ],
+      "tuitionText": "15500",
+      "tuitionAmounts": [
+        15500
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Pharmaceutical Sciences",
+      "collegeZh": "药学院",
+      "nameEn": "Pharmacy",
+      "nameZh": "药学",
+      "code": "100701",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Science",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "tuitionText": "21000",
+      "tuitionAmounts": [
+        21000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "North Alabama International College of Engineering and Technology",
+      "collegeZh": "北阿拉巴马国际 工程技术学院",
+      "nameEn": "Mechanical Design, Manufacturing and Automation (Chinese-foreign cooperative education program)",
+      "nameZh": "机械设计制造及其自动 化（中外合作办学）",
+      "code": "080202(080202 H)",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "tuitionText": "60000",
+      "tuitionAmounts": [
+        60000
+      ],
+      "notes": "1.只招收自费学生， 2.符合贵州大学和美国北阿拉巴马大学两校 学位授予条件的学生，授予双方学位证书； 对符合其中一方学位授予条件的学生，授予 一方学位证书。 Notes: 1.For Self-Funded Students Only. 2.Students who meet the degree requirements of both Guizhou University and the University of North Alabama will be awarded diplomas by both institutions. Those who fulfill the degree requirements of only one university will receive a diploma solely from that institution."
+    },
+    {
+      "page": 6,
+      "collegeEn": "North Alabama International College of Engineering and Technology",
+      "collegeZh": "北阿拉巴马国际 工程技术学院",
+      "nameEn": "Chemical Engineering and Technics（Chinese‑foreign cooperative education program）",
+      "nameZh": "化学工程与工艺（中外 合作办学）",
+      "code": "081301(081301 H)",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "tuitionText": "60000",
+      "tuitionAmounts": [
+        60000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "North Alabama International College of Engineering and Technology",
+      "collegeZh": "北阿拉巴马国际 工程技术学院",
+      "nameEn": "Environmental Science （Chinese‑foreign cooperative education program）",
+      "nameZh": "环境科学（中外合作办 学）",
+      "code": "082503(082503 H)",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Bachelor of Engineering",
+      "cscaSubjects": [
+        "Chinese (Science)",
+        "Mathematics",
+        "Physics",
+        "Chemistry"
+      ],
+      "tuitionText": "60000",
+      "tuitionAmounts": [
+        60000
+      ]
+    }
+  ],
+  "master": [
+    {
+      "page": 1,
+      "collegeEn": "College of Foreign Languages",
+      "collegeZh": "外国语学院",
+      "majorEn": "International Chinese Language Education",
+      "majorZh": "国际中文教育",
+      "code": "045300",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Teaching Chinese to Speakers of Other Languages",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ],
+      "notes": "1.HSK5级230分以上。 1.HSK 5 with a score of 230 or above."
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Foreign Languages",
+      "collegeZh": "外国语学院",
+      "majorEn": "Foreign Linguistics & Applied Linguistics",
+      "majorZh": "外国语言学及应用语 言学",
+      "code": "050211",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Arts (Literature)",
+      "tuitionText": "中文授课/Chinese Taught Program： 18000 英文授课/English Taught Program： 24000",
+      "tuitionAmounts": [
+        18000,
+        24000
+      ],
+      "notes": "1.HSK 5 with a score of 230 or above."
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Foreign Languages",
+      "collegeZh": "外国语学院",
+      "majorEn": "English Translation",
+      "majorZh": "英语笔译",
+      "code": "055101",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Translation and Interpreting",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Foreign Languages",
+      "collegeZh": "外国语学院",
+      "majorEn": "Japanese Translation",
+      "majorZh": "日语笔译",
+      "code": "055105",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Translation and Interpreting",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ],
+      "notes": "1.日本语能力测试 (JLPT)N2； 2.HSK5级230分以上。 1.A Japanese-Language Proficiency Test (JLPT) N2 certificate is required. 2.HSK 5 with a score of 230 or above."
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Communication",
+      "collegeZh": "传媒学院",
+      "majorEn": "Journalism and Communication",
+      "majorZh": "新闻与传播",
+      "code": "055200",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "ster of Journalism and Communicat",
+      "tuitionText": "i 18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "majorEn": "Jurisprudence",
+      "majorZh": "法学理论",
+      "code": "030101",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "majorEn": "Civil Law",
+      "majorZh": "民商法学",
+      "code": "030105",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "majorEn": "Economical Law",
+      "majorZh": "经济法学",
+      "code": "030107",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "majorEn": "Environmental & Resources Protection Law",
+      "majorZh": "环境与资源保护法学",
+      "code": "030108",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "majorEn": "International Law",
+      "majorZh": "国际法学",
+      "code": "030109",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "majorEn": "Law (Non-law Majored)",
+      "majorZh": "法律（非法学）",
+      "code": "035101",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Juris Master",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "majorEn": "Law (Law Majored)",
+      "majorZh": "法律（法学）",
+      "code": "035102",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Juris Master",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Marxism",
+      "collegeZh": "马克思主义 学院",
+      "majorEn": "Marxism Theory",
+      "majorZh": "马克思主义理论",
+      "code": "030500",
+      "fieldEn": "Basic Principles of Marxism",
+      "fieldZh": "马克思主义基本原理",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Marxism",
+      "collegeZh": "马克思主义 学院",
+      "majorEn": "Marxism Theory",
+      "majorZh": "马克思主义理论",
+      "code": "030500",
+      "fieldEn": "Marxism in Chinese Society",
+      "fieldZh": "马克思主义中国化研究",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Marxism",
+      "collegeZh": "马克思主义 学院",
+      "majorEn": "Marxism Theory",
+      "majorZh": "马克思主义理论",
+      "code": "030500",
+      "fieldEn": "Ideological and Political Education",
+      "fieldZh": "思想政治教育",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Marxism",
+      "collegeZh": "马克思主义 学院",
+      "majorEn": "Marxism Theory",
+      "majorZh": "马克思主义理论",
+      "code": "030500",
+      "fieldEn": "Research on Basic Topics of Modern and Contemporary Chinese History",
+      "fieldZh": "中国近现代史基本问题研 究",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "majorEn": "Applied Economics",
+      "majorZh": "应用经济学",
+      "code": "020200",
+      "fieldEn": "Regional Economics",
+      "fieldZh": "区域经济学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Economics",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "majorEn": "Applied Economics",
+      "majorZh": "应用经济学",
+      "code": "020200",
+      "fieldEn": "Public Finance",
+      "fieldZh": "财政学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Economics",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "majorEn": "Applied Economics",
+      "majorZh": "应用经济学",
+      "code": "020200",
+      "fieldEn": "Finance",
+      "fieldZh": "金融学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Economics",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "majorEn": "Applied Economics",
+      "majorZh": "应用经济学",
+      "code": "020200",
+      "fieldEn": "Industrial Economics",
+      "fieldZh": "产业经济学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Economics",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "majorEn": "Applied Economics",
+      "majorZh": "应用经济学",
+      "code": "020200",
+      "fieldEn": "International Trade",
+      "fieldZh": "国际贸易学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Economics",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "majorEn": "Applied Economics",
+      "majorZh": "应用经济学",
+      "code": "020200",
+      "fieldEn": "Labor Economics",
+      "fieldZh": "劳动经济学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Economics",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "majorEn": "Applied Economics",
+      "majorZh": "应用经济学",
+      "code": "020200",
+      "fieldEn": "Econometrics",
+      "fieldZh": "数量经济学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Economics",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "majorEn": "Finance",
+      "majorZh": "金融",
+      "code": "025100",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Finance",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "majorEn": "Agriculture and Forest Economics and Management",
+      "majorZh": "农林经济管理",
+      "code": "120300",
+      "fieldEn": "Agricultural Economics and Management",
+      "fieldZh": "农业经济管理",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Management",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Economics",
+      "collegeZh": "经济学院",
+      "majorEn": "Agriculture and Forest Economics and Management",
+      "majorZh": "农林经济管理",
+      "code": "120300",
+      "fieldEn": "Forestry Economics and Management",
+      "fieldZh": "林业经济管理",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Management",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Management",
+      "collegeZh": "管理学院",
+      "majorEn": "Management Science and Engineering",
+      "majorZh": "管理科学与工程",
+      "code": "120100",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Management",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Management",
+      "collegeZh": "管理学院",
+      "majorEn": "Business Administration",
+      "majorZh": "工商管理学",
+      "code": "120200",
+      "fieldEn": "Accounting",
+      "fieldZh": "会计学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Management",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Management",
+      "collegeZh": "管理学院",
+      "majorEn": "Business Administration",
+      "majorZh": "工商管理学",
+      "code": "120200",
+      "fieldEn": "Enterprise Management",
+      "fieldZh": "企业管理",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Management",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理 学院",
+      "majorEn": "Political Science",
+      "majorZh": "政治学",
+      "code": "030200",
+      "fieldEn": "Political Theory",
+      "fieldZh": "政治学理论",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理 学院",
+      "majorEn": "Political Science",
+      "majorZh": "政治学",
+      "code": "030200",
+      "fieldEn": "Comparative Politics",
+      "fieldZh": "中外政治制度",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理 学院",
+      "majorEn": "Political Science",
+      "majorZh": "政治学",
+      "code": "030200",
+      "fieldEn": "International Politics",
+      "fieldZh": "国际政治",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理 学院",
+      "majorEn": "Sociology",
+      "majorZh": "社会学",
+      "code": "030300",
+      "fieldEn": "Sociology",
+      "fieldZh": "社会学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理 学院",
+      "majorEn": "Sociology",
+      "majorZh": "社会学",
+      "code": "030300",
+      "fieldEn": "Demography",
+      "fieldZh": "人口学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理 学院",
+      "majorEn": "Sociology",
+      "majorZh": "社会学",
+      "code": "030300",
+      "fieldEn": "Anthropology",
+      "fieldZh": "人类学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Laws",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理 学院",
+      "majorEn": "Social Work",
+      "majorZh": "社会工作",
+      "code": "035200",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Social Work",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理 学院",
+      "majorEn": "Science of Public Management",
+      "majorZh": "公共管理学",
+      "code": "120400",
+      "fieldEn": "Public Administration",
+      "fieldZh": "行政管理",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Management",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理 学院",
+      "majorEn": "Science of Public Management",
+      "majorZh": "公共管理学",
+      "code": "120400",
+      "fieldEn": "Social Welfare",
+      "fieldZh": "社会保障",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Management",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Public Administration",
+      "collegeZh": "公共管理 学院",
+      "majorEn": "Science of Public Management",
+      "majorZh": "公共管理学",
+      "code": "120400",
+      "fieldEn": "Land Resource Management",
+      "fieldZh": "土地资源管理",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Management",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Tourism and Culture Industry",
+      "collegeZh": "旅游与文化 产业学院",
+      "majorEn": "Business Administration",
+      "majorZh": "工商管理学",
+      "code": "120200",
+      "fieldEn": "Tourism management",
+      "fieldZh": "旅游管理",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Management",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学 学院",
+      "majorEn": "Botany",
+      "majorZh": "植物学",
+      "code": "071001",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "English",
+      "degreeName": "Master of Science",
+      "tuitionText": "26000",
+      "tuitionAmounts": [
+        26000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学 学院",
+      "majorEn": "Microbiology",
+      "majorZh": "微生物学",
+      "code": "071005",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "English",
+      "degreeName": "Master of Science",
+      "tuitionText": "26000",
+      "tuitionAmounts": [
+        26000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学 学院",
+      "majorEn": "Genetics",
+      "majorZh": "遗传学",
+      "code": "071007",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "English",
+      "degreeName": "Master of Science",
+      "tuitionText": "26000",
+      "tuitionAmounts": [
+        26000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学 学院",
+      "majorEn": "Biochemistry and Molecule Biology",
+      "majorZh": "生物化学与分子生物",
+      "code": "071010",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "English",
+      "degreeName": "Master of Science",
+      "tuitionText": "26000",
+      "tuitionAmounts": [
+        26000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学 学院",
+      "majorEn": "Ecology",
+      "majorZh": "生态学",
+      "code": "071300",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "English",
+      "degreeName": "Master of Science",
+      "tuitionText": "26000",
+      "tuitionAmounts": [
+        26000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学 学院",
+      "majorEn": "Biotechnology And Engineering",
+      "majorZh": "生物技术与工程",
+      "code": "086001",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "English",
+      "degreeName": "Master of Biology and Medicine",
+      "tuitionText": "26000",
+      "tuitionAmounts": [
+        26000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Pharmaceutical Sciences",
+      "collegeZh": "药学院",
+      "majorEn": "Pharmacy",
+      "majorZh": "药学",
+      "code": "078000",
+      "fieldEn": "Pharmaceutical/Medicin al Chemistry",
+      "fieldZh": "药物化学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Pharmaceutical Sciences",
+      "collegeZh": "药学院",
+      "majorEn": "Pharmacy",
+      "majorZh": "药学",
+      "code": "078000",
+      "fieldEn": "Pharmaceutics",
+      "fieldZh": "药剂学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Pharmaceutical Sciences",
+      "collegeZh": "药学院",
+      "majorEn": "Pharmacy",
+      "majorZh": "药学",
+      "code": "078000",
+      "fieldEn": "Pharmacognosy",
+      "fieldZh": "生药学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Pharmaceutical Sciences",
+      "collegeZh": "药学院",
+      "majorEn": "Pharmacy",
+      "majorZh": "药学",
+      "code": "078000",
+      "fieldEn": "Pharmaceutical Analysis",
+      "fieldZh": "药物分析学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Pharmaceutical Sciences",
+      "collegeZh": "药学院",
+      "majorEn": "Pharmacy",
+      "majorZh": "药学",
+      "code": "078000",
+      "fieldEn": "Microbiology and Biochemical Pharmacy",
+      "fieldZh": "微生物与生化药学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Pharmaceutical Sciences",
+      "collegeZh": "药学院",
+      "majorEn": "Pharmacy",
+      "majorZh": "药学",
+      "code": "078000",
+      "fieldEn": "Pharmacology",
+      "fieldZh": "药理学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Pharmaceutical Sciences",
+      "collegeZh": "药学院",
+      "majorEn": "Biology and Medicine",
+      "majorZh": "生物与医药",
+      "code": "086000",
+      "fieldEn": "Pharmacy Engineering",
+      "fieldZh": "制药工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Biology and Medicine",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境 工程学院",
+      "majorEn": "Geology",
+      "majorZh": "地质学",
+      "code": "070900",
+      "fieldEn": "Mineralogy, Petrology, Mineral Deposit Geology",
+      "fieldZh": "矿物学、岩石学、矿床学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境 工程学院",
+      "majorEn": "Geology",
+      "majorZh": "地质学",
+      "code": "070900",
+      "fieldEn": "Geochemistry",
+      "fieldZh": "地球化学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境 工程学院",
+      "majorEn": "Geology",
+      "majorZh": "地质学",
+      "code": "070900",
+      "fieldEn": "Paleontology and Stratigraphy",
+      "fieldZh": "古生物学与地层学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境 工程学院",
+      "majorEn": "Geological Resources and Geological Engineering",
+      "majorZh": "地质资源与地质工程",
+      "code": "081800",
+      "fieldEn": "Mineral Resource Prospecting and Exploration",
+      "fieldZh": "矿产普查与勘探",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境 工程学院",
+      "majorEn": "Geological Resources and Geological Engineering",
+      "majorZh": "地质资源与地质工程",
+      "code": "081800",
+      "fieldEn": "Geodetection and Information Technology",
+      "fieldZh": "地球探测与信息技术",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境 工程学院",
+      "majorEn": "Geological Resources and Geological Engineering",
+      "majorZh": "地质资源与地质工程",
+      "code": "081800",
+      "fieldEn": "Geology Engineering",
+      "fieldZh": "地质工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境 工程学院",
+      "majorEn": "Environmental Science and Engineering",
+      "majorZh": "环境科学与工程",
+      "code": "083000",
+      "fieldEn": "Environmental Science",
+      "fieldZh": "环境科学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境 工程学院",
+      "majorEn": "Environmental Science and Engineering",
+      "majorZh": "环境科学与工程",
+      "code": "083000",
+      "fieldEn": "Environmental Engineering",
+      "fieldZh": "环境工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境 工程学院",
+      "majorEn": "Environmental Engineering",
+      "majorZh": "环境工程",
+      "code": "085701",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Resource and Environmen",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境 工程学院",
+      "majorEn": "Geology Engineering",
+      "majorZh": "地质工程",
+      "code": "085703",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Resource and Environmen",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Liquor and Food Engineering",
+      "collegeZh": "酿酒与食品 工程学院",
+      "majorEn": "Food Science and Engineering",
+      "majorZh": "食品科学与工程",
+      "code": "083200",
+      "fieldEn": "Food Science",
+      "fieldZh": "食品科学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Liquor and Food Engineering",
+      "collegeZh": "酿酒与食品 工程学院",
+      "majorEn": "Food Science and Engineering",
+      "majorZh": "食品科学与工程",
+      "code": "083200",
+      "fieldEn": "Grain, Grease and Botanic Protein Engineering",
+      "fieldZh": "粮食、油脂及植物蛋白工 程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Liquor and Food Engineering",
+      "collegeZh": "酿酒与食品 工程学院",
+      "majorEn": "Food Science and Engineering",
+      "majorZh": "食品科学与工程",
+      "code": "083200",
+      "fieldEn": "Agriculture Product Processing and Preserving Engineering",
+      "fieldZh": "农产品加工及贮藏工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Liquor and Food Engineering",
+      "collegeZh": "酿酒与食品 工程学院",
+      "majorEn": "Food Science and Engineering",
+      "majorZh": "食品科学与工程",
+      "code": "083200",
+      "fieldEn": "Food Biotechnology",
+      "fieldZh": "食品生物工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Liquor and Food Engineering",
+      "collegeZh": "酿酒与食品 工程学院",
+      "majorEn": "Food Engineering",
+      "majorZh": "食品工程",
+      "code": "086003",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Biology and Medicine",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工 学院",
+      "majorEn": "Inorganic Chemistry",
+      "majorZh": "无机化学",
+      "code": "070301",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工 学院",
+      "majorEn": "Analytical Chemistry",
+      "majorZh": "分析化学",
+      "code": "070302",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工 学院",
+      "majorEn": "Physical Chemistry",
+      "majorZh": "物理化学",
+      "code": "070304",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工 学院",
+      "majorEn": "Chemical Engineering and Technology",
+      "majorZh": "化学工程与技术",
+      "code": "081700",
+      "fieldEn": "Chemical Engineering",
+      "fieldZh": "化学工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工 学院",
+      "majorEn": "Chemical Engineering and Technology",
+      "majorZh": "化学工程与技术",
+      "code": "081700",
+      "fieldEn": "Chemical Process",
+      "fieldZh": "化学工艺",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工 学院",
+      "majorEn": "Chemical Engineering and Technology",
+      "majorZh": "化学工程与技术",
+      "code": "081700",
+      "fieldEn": "Applied Chemistry",
+      "fieldZh": "应用化学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工 学院",
+      "majorEn": "Chemical Engineering and Technology",
+      "majorZh": "化学工程与技术",
+      "code": "081700",
+      "fieldEn": "Industrial Catalyse",
+      "fieldZh": "工业催化",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工 学院",
+      "majorEn": "Material and Chemical Industry",
+      "majorZh": "材料与化工",
+      "code": "085600",
+      "fieldEn": "Chemical Engineering",
+      "fieldZh": "化学工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "er of Materials and Chemical Engine",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Computer Science and Technology",
+      "collegeZh": "计算机科学 与技术学院",
+      "majorEn": "Computer Technology",
+      "majorZh": "计算机技术",
+      "code": "085404",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Electronic Information",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Computer Science and Technology",
+      "collegeZh": "计算机科学 与技术学院",
+      "majorEn": "Artificial Intelligence",
+      "majorZh": "人工智能",
+      "code": "085410",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Electronic Information",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Computer Science and Technology",
+      "collegeZh": "计算机科学 与技术学院",
+      "majorEn": "Network & Information Security",
+      "majorZh": "网络与信息安全",
+      "code": "085412",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Electronic Information",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Big Data and Information Engineering",
+      "collegeZh": "大数据与信 息工程学院",
+      "majorEn": "Electronic Information",
+      "majorZh": "电子信息",
+      "code": "085400",
+      "fieldEn": "New Generation of Electronic Information",
+      "fieldZh": "新一代电子信息技术（含 量子技术等）",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Electronic Information",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Electrical Engineering",
+      "collegeZh": "电气工程 学院",
+      "majorEn": "Electrical Engineering",
+      "majorZh": "电气工程",
+      "code": "080800",
+      "fieldEn": "Technology (Content Electric Power System and Its Automatization",
+      "fieldZh": "电力系统及其自动化",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程 学院",
+      "majorEn": "Mechanical Engineering",
+      "majorZh": "机械工程",
+      "code": "080200",
+      "fieldEn": "Mechanical Manufacture and Automation",
+      "fieldZh": "机械制造及其自动化",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程 学院",
+      "majorEn": "Mechanical Engineering",
+      "majorZh": "机械工程",
+      "code": "080200",
+      "fieldEn": "Mechatronic Engineering",
+      "fieldZh": "机械电子工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程 学院",
+      "majorEn": "Mechanical Engineering",
+      "majorZh": "机械工程",
+      "code": "080200",
+      "fieldEn": "Mechanical Design and Theory",
+      "fieldZh": "机械设计及理论",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程 学院",
+      "majorEn": "Mechanical Engineering",
+      "majorZh": "机械工程",
+      "code": "080200",
+      "fieldEn": "Vehicle Engineering",
+      "fieldZh": "车辆工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程 学院",
+      "majorEn": "Mechanics",
+      "majorZh": "机械",
+      "code": "085500",
+      "fieldEn": "Mechanical Engineering",
+      "fieldZh": "机械工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Mechanical Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程 学院",
+      "majorEn": "Engineering Management",
+      "majorZh": "工程管理",
+      "code": "125601",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering Management",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金 学院",
+      "majorEn": "Materials Science and Engineering",
+      "majorZh": "材料科学与工程",
+      "code": "080500",
+      "fieldEn": "Material Physics and Chemistry",
+      "fieldZh": "材料物理与化学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金 学院",
+      "majorEn": "Materials Science and Engineering",
+      "majorZh": "材料科学与工程",
+      "code": "080500",
+      "fieldEn": "Material Science",
+      "fieldZh": "材料学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金 学院",
+      "majorEn": "Materials Science and Engineering",
+      "majorZh": "材料科学与工程",
+      "code": "080500",
+      "fieldEn": "Material Processing Engineering",
+      "fieldZh": "材料加工工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金 学院",
+      "majorEn": "Metallurgical Engineering",
+      "majorZh": "冶金工程",
+      "code": "080600",
+      "fieldEn": "Metallurgy Physics and Chemistry",
+      "fieldZh": "冶金物理化学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金 学院",
+      "majorEn": "Metallurgical Engineering",
+      "majorZh": "冶金工程",
+      "code": "080600",
+      "fieldEn": "Ferrous Metallurgy",
+      "fieldZh": "钢铁冶金",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金 学院",
+      "majorEn": "Metallurgical Engineering",
+      "majorZh": "冶金工程",
+      "code": "080600",
+      "fieldEn": "Non-ferrous Metallurgy",
+      "fieldZh": "有色金属冶金",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金 学院",
+      "majorEn": "Material and Chemical Industry",
+      "majorZh": "材料与化工",
+      "code": "085600",
+      "fieldEn": "Materials Engineering",
+      "fieldZh": "材料工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Materials and Chemical Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金 学院",
+      "majorEn": "Material and Chemical Industry",
+      "majorZh": "材料与化工",
+      "code": "085600",
+      "fieldEn": "Metallurgical Engineering",
+      "fieldZh": "冶金工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Materials and Chemical Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Surveying Science and Technology",
+      "majorZh": "测绘科学与技术",
+      "code": "081600",
+      "fieldEn": "Geodesy and Survey Engineering",
+      "fieldZh": "大地测量学与测量工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Surveying Science and Technology",
+      "majorZh": "测绘科学与技术",
+      "code": "081600",
+      "fieldEn": "Photographical Survey and Remote Sensing",
+      "fieldZh": "摄影测量与遥感",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Surveying Science and Technology",
+      "majorZh": "测绘科学与技术",
+      "code": "081600",
+      "fieldEn": "Cartography and Geographic Information Engineering",
+      "fieldZh": "地图制图学与地理信息工 程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Mining Engineering",
+      "majorZh": "采矿工程",
+      "code": "081901",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Mineral Processing Engineering",
+      "majorZh": "矿物加工工程",
+      "code": "081902",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chine2s6e0 T0a0ught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Safety Science and Engineering",
+      "majorZh": "安全科学与工程",
+      "code": "083700",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "中文授课/Chine2s6e0 T0a0ught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Security Engineering",
+      "majorZh": "安全工程",
+      "code": "085702",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Resources and Environment",
+      "tuitionText": "中文授课/Chine2s6e0 T0a0ught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Geomatics Engineering",
+      "majorZh": "测绘工程",
+      "code": "085704",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Resources and Environment",
+      "tuitionText": "中文授课/Chine2s6e0 T0a0ught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Mineral Engineering",
+      "majorZh": "矿业工程",
+      "code": "085705",
+      "fieldEn": "Mining Engineering",
+      "fieldZh": "采矿工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Resources and Environment",
+      "tuitionText": "中文授课/Chine2s6e0 T0a0ught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Mineral Engineering",
+      "majorZh": "矿业工程",
+      "code": "085705",
+      "fieldEn": "Mineral Processing Engineering",
+      "fieldZh": "矿物加工工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Resources and Environment",
+      "tuitionText": "中文授课/Chine2s6e0 T0a0ught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Crop Science",
+      "majorZh": "作物学",
+      "code": "090100",
+      "fieldEn": "Crop Cultivation & Farming System",
+      "fieldZh": "作物栽培学与耕作学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Agriculture",
+      "tuitionText": "26000 20000",
+      "tuitionAmounts": [
+        26000,
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Crop Science",
+      "majorZh": "作物学",
+      "code": "090100",
+      "fieldEn": "Plant Genetics & Breeding",
+      "fieldZh": "作物遗传育种",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Agriculture",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Agricultural Resources and Environment",
+      "majorZh": "农业资源与环境",
+      "code": "090300",
+      "fieldEn": "Pedology",
+      "fieldZh": "土壤学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Agricultural Resources and Environment",
+      "majorZh": "农业资源与环境",
+      "code": "090300",
+      "fieldEn": "Plant Nutrition Science",
+      "fieldZh": "植物营养学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chine2s6e0 T0a0ught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Plant Pathology",
+      "fieldZh": "植物病理学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chine2s6e0 T0a0ught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Agri-entomology & Insects Control",
+      "fieldZh": "农业昆虫与害虫防治",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chine2s6e0 T0a0ught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Safety and Quality of Farm Products",
+      "fieldZh": "农产品质量安全",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chine2s6e0 T0a0ught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Agronomy and Seed Industry",
+      "majorZh": "农艺与种业",
+      "code": "095131",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Agriculture (M.Agri.)",
+      "tuitionText": "26000 20000",
+      "tuitionAmounts": [
+        26000,
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Resource Utilization and Plant Protection",
+      "majorZh": "资源利用与植物保护",
+      "code": "095132",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri.)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Forestry",
+      "collegeZh": "林学院",
+      "majorEn": "Forest Genetics & Breeding",
+      "majorZh": "林木遗传育种",
+      "code": "090701",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "26000 中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        26000,
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Animal husbandry",
+      "majorZh": "畜牧学",
+      "code": "090500",
+      "fieldEn": "Animal Genetics, Breeding & Reproduction",
+      "fieldZh": "动物遗传育种与繁殖",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Animal husbandry",
+      "majorZh": "畜牧学",
+      "code": "090500",
+      "fieldEn": "Animal Nutrition & Feed Science",
+      "fieldZh": "动物营养与饲料科学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Animal husbandry",
+      "majorZh": "畜牧学",
+      "code": "090500",
+      "fieldEn": "Special Animal Breeding and Raising",
+      "fieldZh": "特种经济动物饲养",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Aquaculture",
+      "majorZh": "水产养殖学",
+      "code": "0905Z1",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Veterinary Science",
+      "majorZh": "兽医学",
+      "code": "090600",
+      "fieldEn": "Basic Veterinary Medicine",
+      "fieldZh": "基础兽医学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Veterinary Science",
+      "majorZh": "兽医学",
+      "code": "090600",
+      "fieldEn": "Preventive Veterinary Medicine",
+      "fieldZh": "预防兽医学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Veterinary Science",
+      "majorZh": "兽医学",
+      "code": "090600",
+      "fieldEn": "Clinic Veterinary Medicine",
+      "fieldZh": "临床兽医学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Grass Science",
+      "majorZh": "草学",
+      "code": "090900",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Agronomy and Seed Industry",
+      "majorZh": "农艺与种业",
+      "code": "095131",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri.)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Animal Husbandry",
+      "majorZh": "畜牧",
+      "code": "095133",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri.)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Fishery Development",
+      "majorZh": "渔业发展",
+      "code": "095134",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri.)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Zoology",
+      "collegeZh": "动物科学 学院",
+      "majorEn": "Veterinary Science",
+      "majorZh": "兽医",
+      "code": "095200",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Veterinary Medicine",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "State Key Laboratory of Green Pesticides(Center for R&D of Fine Chemicals of Guizhou University)",
+      "collegeZh": "绿色农药全 国重点实验 室(精细化工 研究开发中 心)",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Pesticide Science",
+      "fieldZh": "农药学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "State Key Laboratory of Green Pesticides(Center for R&D of Fine Chemicals of Guizhou University)",
+      "collegeZh": "绿色农药全 国重点实验 室(精细化工 研究开发中 心)",
+      "majorEn": "Resource Utilization and Plant Protection",
+      "majorZh": "资源利用与植物保护",
+      "code": "095132",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri.)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program：",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "Research Center of Space Structures",
+      "collegeZh": "空间结构研 究中心",
+      "majorEn": "Civil Engineering",
+      "majorZh": "土木工程",
+      "code": "081400",
+      "fieldEn": "Structural Engineering",
+      "fieldZh": "结构工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Civil Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "Key Laboratory of Karst Geological Resources and Environmen of the Ministry of Education",
+      "collegeZh": "喀斯特地质 资源与环境 教育部重点 实验室",
+      "majorEn": "Geological Resources and Geological Engineering",
+      "majorZh": "地质资源与地质工程",
+      "code": "081800",
+      "fieldEn": "Geodetection and Information Technology",
+      "fieldZh": "地球探测与信息技术",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "Key Laboratory of Karst Geological Resources and Environmen of the Ministry of Education",
+      "collegeZh": "喀斯特地质 资源与环境 教育部重点 实验室",
+      "majorEn": "Geological Resources and Geological Engineering",
+      "majorZh": "地质资源与地质工程",
+      "code": "081800",
+      "fieldEn": "Geology Engineering",
+      "fieldZh": "地质工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "Key Laboratory of Karst Geological Resources and Environmen of the Ministry of Education",
+      "collegeZh": "喀斯特地质 资源与环境 教育部重点 实验室",
+      "majorEn": "Environmental Science and Engineering",
+      "majorZh": "环境科学与工程",
+      "code": "083000",
+      "fieldEn": "Environmental Science",
+      "fieldZh": "环境科学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "Key Laboratory of Karst Geological Resources and Environmen of the Ministry of Education",
+      "collegeZh": "喀斯特地质 资源与环境 教育部重点 实验室",
+      "majorEn": "Environmental Science and Engineering",
+      "majorZh": "环境科学与工程",
+      "code": "083000",
+      "fieldEn": "Environmental Engineering",
+      "fieldZh": "环境工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "Key Laboratory of Karst Geological Resources and Environmen of the Ministry of Education",
+      "collegeZh": "喀斯特地质 资源与环境 教育部重点 实验室",
+      "majorEn": "Environmental Engineering",
+      "majorZh": "环境工程",
+      "code": "085701",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Resources and Environment",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "Key Laboratory of Karst Geological Resources and Environmen of the Ministry of Education",
+      "collegeZh": "喀斯特地质 资源与环境 教育部重点 实验室",
+      "majorEn": "Geology Engineering",
+      "majorZh": "地质工程",
+      "code": "085703",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Resources and Environment",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Architecture and Urban Planning",
+      "collegeZh": "建筑与城市 规划学院",
+      "majorEn": "Urban and Rural Planning",
+      "majorZh": "城乡规划学",
+      "code": "083300",
+      "fieldEn": "Urban and Rural Planning and Design Methods",
+      "fieldZh": "城乡规划与设计方法",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Architecture and Urban Planning",
+      "collegeZh": "建筑与城市 规划学院",
+      "majorEn": "Urban and Rural Planning",
+      "majorZh": "城乡规划学",
+      "code": "083300",
+      "fieldEn": "Urban and rural history and heritage preservation",
+      "fieldZh": "城乡历史与遗产保护",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Architecture and Urban Planning",
+      "collegeZh": "建筑与城市 规划学院",
+      "majorEn": "Urban and Rural Planning",
+      "majorZh": "城乡规划学",
+      "code": "083300",
+      "fieldEn": "Urban and Rural Systems and Planning Technology",
+      "fieldZh": "城乡系统与规划技术",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Architecture and Urban Planning",
+      "collegeZh": "建筑与城市 规划学院",
+      "majorEn": "Landscape Architecture",
+      "majorZh": "风景园林",
+      "code": "086200",
+      "fieldEn": "Landscape Architecture Planning and Design",
+      "fieldZh": "风景园林规划与设计领域",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Landscape Architecture",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 6,
+      "collegeEn": "College of Physical Education",
+      "collegeZh": "体育学院",
+      "majorEn": "Sports Training",
+      "majorZh": "运动训练",
+      "code": "045202",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Sport",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Humanities",
+      "collegeZh": "人文学院",
+      "majorEn": "Chinese Language and Literature",
+      "majorZh": "中国语言文学",
+      "code": "050100",
+      "fieldEn": "Chinese Ancient Literature",
+      "fieldZh": "中国古代文学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Arts (Literature)",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Humanities",
+      "collegeZh": "人文学院",
+      "majorEn": "Chinese Language and Literature",
+      "majorZh": "中国语言文学",
+      "code": "050100",
+      "fieldEn": "Comparative Literature & World Literature",
+      "fieldZh": "比较文学与世界文学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Arts (Literature)",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Humanities",
+      "collegeZh": "人文学院",
+      "majorEn": "Chinese History",
+      "majorZh": "中国史",
+      "code": "060200",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of History",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Humanities",
+      "collegeZh": "人文学院",
+      "majorEn": "Cultural Heritage",
+      "majorZh": "文物",
+      "code": "145100",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Cultural Heritage",
+      "tuitionText": "18000",
+      "tuitionAmounts": [
+        18000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Physics",
+      "collegeZh": "物理学院",
+      "majorEn": "Physics",
+      "majorZh": "物理学",
+      "code": "070200",
+      "fieldEn": "Theoretical Physics",
+      "fieldZh": "理论物理",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Physics",
+      "collegeZh": "物理学院",
+      "majorEn": "Physics",
+      "majorZh": "物理学",
+      "code": "070200",
+      "fieldEn": "Condensed Matter Physics",
+      "fieldZh": "凝聚态物理",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Physics",
+      "collegeZh": "物理学院",
+      "majorEn": "Physics",
+      "majorZh": "物理学",
+      "code": "070200",
+      "fieldEn": "Optics",
+      "fieldZh": "光学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Physics",
+      "collegeZh": "物理学院",
+      "majorEn": "Physics",
+      "majorZh": "物理学",
+      "code": "070200",
+      "fieldEn": "Theoretical and Observational Astrophysics",
+      "fieldZh": "理论与实测天体物理",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Science",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Music",
+      "collegeZh": "音乐学院",
+      "majorEn": "Music",
+      "majorZh": "音乐",
+      "code": "135200",
+      "fieldEn": "Music Performance",
+      "fieldZh": "音乐表演",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Music",
+      "tuitionText": "27000",
+      "tuitionAmounts": [
+        27000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Fine Arts",
+      "collegeZh": "美术学院",
+      "majorEn": "Design",
+      "majorZh": "设计学",
+      "code": "140300",
+      "fieldEn": "Brand Design and Strategy",
+      "fieldZh": "品牌形象设计与策划",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Arts (Art Studies)",
+      "tuitionText": "27000",
+      "tuitionAmounts": [
+        27000
+      ],
+      "notes": "1.需提供作品集。 1.A portfolio is required."
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Fine Arts",
+      "collegeZh": "美术学院",
+      "majorEn": "Design",
+      "majorZh": "设计学",
+      "code": "140300",
+      "fieldEn": "Artisanal Craft Design",
+      "fieldZh": "手工艺设计",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Arts (Art Studies)",
+      "tuitionText": "27000",
+      "tuitionAmounts": [
+        27000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Fine Arts",
+      "collegeZh": "美术学院",
+      "majorEn": "Fine Arts and Calligraphy",
+      "majorZh": "美术与书法",
+      "code": "135600",
+      "fieldEn": "Chinese Painting",
+      "fieldZh": "国画",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Fine Arts and Calligraphy",
+      "tuitionText": "27000",
+      "tuitionAmounts": [
+        27000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Fine Arts",
+      "collegeZh": "美术学院",
+      "majorEn": "Fine Arts and Calligraphy",
+      "majorZh": "美术与书法",
+      "code": "135600",
+      "fieldEn": "Oil Painting",
+      "fieldZh": "油画",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Fine Arts and Calligraphy",
+      "tuitionText": "27000",
+      "tuitionAmounts": [
+        27000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Fine Arts",
+      "collegeZh": "美术学院",
+      "majorEn": "Fine Arts and Calligraphy",
+      "majorZh": "美术与书法",
+      "code": "135600",
+      "fieldEn": "Print-making",
+      "fieldZh": "版画",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Fine Arts and Calligraphy",
+      "tuitionText": "27000",
+      "tuitionAmounts": [
+        27000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Fine Arts",
+      "collegeZh": "美术学院",
+      "majorEn": "Design",
+      "majorZh": "设计",
+      "code": "135700",
+      "fieldEn": "Research on Visual Design",
+      "fieldZh": "视觉设计研究",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Design",
+      "tuitionText": "27000",
+      "tuitionAmounts": [
+        27000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Fine Arts",
+      "collegeZh": "美术学院",
+      "majorEn": "Design",
+      "majorZh": "设计",
+      "code": "135700",
+      "fieldEn": "Innovative Design in Folk Art",
+      "fieldZh": "民间艺术创新设计",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Design",
+      "tuitionText": "27000",
+      "tuitionAmounts": [
+        27000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Fine Arts",
+      "collegeZh": "美术学院",
+      "majorEn": "Art",
+      "majorZh": "艺术学",
+      "code": "130100",
+      "fieldEn": "Art Theory and Criticism",
+      "fieldZh": "美术理论与批评",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Arts (Art Studies)",
+      "tuitionText": "27000",
+      "tuitionAmounts": [
+        27000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Tobacco Science",
+      "collegeZh": "烟草学院",
+      "majorEn": "Crop Science",
+      "majorZh": "作物学",
+      "code": "090100",
+      "fieldEn": "Tobacco Science",
+      "fieldZh": "烟草学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Tobacco Science",
+      "collegeZh": "烟草学院",
+      "majorEn": "Agronomy and Seed Industry",
+      "majorZh": "农艺与种业",
+      "code": "095131",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Agriculture (M.Agri.)",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Tea Science",
+      "collegeZh": "茶学院",
+      "majorEn": "Agronomy and Seed Industry",
+      "majorZh": "农艺与种业",
+      "code": "095131",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "English",
+      "degreeName": "Master of Agriculture (M.Agri.)",
+      "tuitionText": "26000",
+      "tuitionAmounts": [
+        26000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "College of Tea Science",
+      "collegeZh": "茶学院",
+      "majorEn": "Biotechnology and Engineering",
+      "majorZh": "生物技术与工程",
+      "code": "086001",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "English",
+      "degreeName": "Master of Biology and Medicine",
+      "tuitionText": "26000",
+      "tuitionAmounts": [
+        26000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "State Key Laboratory of Public Big Data",
+      "collegeZh": "贵州省大数 据实验室",
+      "majorEn": "Big Data Technology and Engineering",
+      "majorZh": "大数据技术与工程",
+      "code": "085411",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Electronic Information",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 7,
+      "collegeEn": "North Alabama International College of Engineering and Technology",
+      "collegeZh": "北阿拉巴马 国际工程技 术学院",
+      "majorEn": "Mechanics",
+      "majorZh": "机械",
+      "code": "085500",
+      "fieldEn": "Mechanical Engineering",
+      "fieldZh": "机械工程",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Master of Mechanical Engineering",
+      "tuitionText": "20000",
+      "tuitionAmounts": [
+        20000
+      ]
+    },
+    {
+      "page": 8,
+      "collegeEn": "China-Sri Lanka Belt and Road Joint Laboratory on Tea Green Pest Control Technology",
+      "collegeZh": "中国-斯里兰 卡茶叶绿色 防控技术一 带一路联合 实验室",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Pesticide Science",
+      "fieldZh": "农药学",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    },
+    {
+      "page": 8,
+      "collegeEn": "China-Sri Lanka Belt and Road Joint Laboratory on Tea Green Pest Control Technology",
+      "collegeZh": "中国-斯里兰 卡茶叶绿色 防控技术一 带一路联合 实验室",
+      "majorEn": "Resource Utilization and Plant Protection",
+      "majorZh": "资源利用与植物保护",
+      "code": "095132",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 3,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Master of Agriculture (M.Agri.)",
+      "tuitionText": "中文授课/Chinese Taught Program： 20000 英文授课/English Taught Program： 26000",
+      "tuitionAmounts": [
+        20000,
+        26000
+      ]
+    }
+  ],
+  "doctoral": [
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "majorEn": "Jurisprudence",
+      "majorZh": "法学理论",
+      "code": "030101",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Laws",
+      "tuitionText": "22000",
+      "tuitionAmounts": [
+        22000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "majorEn": "Civil Law",
+      "majorZh": "民商法学",
+      "code": "030105",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Laws",
+      "tuitionText": "22000",
+      "tuitionAmounts": [
+        22000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "majorEn": "Environmental & Resources Protection Law",
+      "majorZh": "环境与资源保 护法学",
+      "code": "030108",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Laws",
+      "tuitionText": "22000",
+      "tuitionAmounts": [
+        22000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Law",
+      "collegeZh": "法学院",
+      "majorEn": "International Law",
+      "majorZh": "国际法学",
+      "code": "030109",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Laws",
+      "tuitionText": "22000",
+      "tuitionAmounts": [
+        22000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Management",
+      "collegeZh": "管理学院",
+      "majorEn": "Management Science and Engineering",
+      "majorZh": "管理科学与工 程",
+      "code": "120100",
+      "fieldEn": "Management Science and Big Data Analysis",
+      "fieldZh": "管理科学与大数据分析",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Management",
+      "tuitionText": "22000",
+      "tuitionAmounts": [
+        22000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Management",
+      "collegeZh": "管理学院",
+      "majorEn": "Management Science and Engineering",
+      "majorZh": "管理科学与工 程",
+      "code": "120100",
+      "fieldEn": "Management System Engineering",
+      "fieldZh": "管理系统工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Management",
+      "tuitionText": "22000",
+      "tuitionAmounts": [
+        22000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Management",
+      "collegeZh": "管理学院",
+      "majorEn": "Management Science and Engineering",
+      "majorZh": "管理科学与工 程",
+      "code": "120100",
+      "fieldEn": "Social Management Engineering",
+      "fieldZh": "社会管理工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Management",
+      "tuitionText": "22000",
+      "tuitionAmounts": [
+        22000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Management",
+      "collegeZh": "管理学院",
+      "majorEn": "Management Science and Engineering",
+      "majorZh": "管理科学与工 程",
+      "code": "120100",
+      "fieldEn": "Service Science and Innovation Management",
+      "fieldZh": "服务科学与创新管理",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Management",
+      "tuitionText": "22000",
+      "tuitionAmounts": [
+        22000
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学学院",
+      "majorEn": "Biology",
+      "majorZh": "生物学",
+      "code": "071000",
+      "fieldEn": "Botany",
+      "fieldZh": "植物学",
+      "durationYears": 4,
+      "teachingLanguage": "English",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "32500",
+      "tuitionAmounts": [
+        32500
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学学院",
+      "majorEn": "Biology",
+      "majorZh": "生物学",
+      "code": "071000",
+      "fieldEn": "Microbiology",
+      "fieldZh": "微生物学",
+      "durationYears": 4,
+      "teachingLanguage": "English",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "32500",
+      "tuitionAmounts": [
+        32500
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学学院",
+      "majorEn": "Biology",
+      "majorZh": "生物学",
+      "code": "071000",
+      "fieldEn": "Genetics",
+      "fieldZh": "遗传学",
+      "durationYears": 4,
+      "teachingLanguage": "English",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "32500",
+      "tuitionAmounts": [
+        32500
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学学院",
+      "majorEn": "Biology",
+      "majorZh": "生物学",
+      "code": "071000",
+      "fieldEn": "Biochemistry and Molecular Biology",
+      "fieldZh": "生物化学与分子生物学",
+      "durationYears": 4,
+      "teachingLanguage": "English",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "32500",
+      "tuitionAmounts": [
+        32500
+      ]
+    },
+    {
+      "page": 1,
+      "collegeEn": "College of Life Science",
+      "collegeZh": "生命科学学院",
+      "majorEn": "Ecology",
+      "majorZh": "生态学",
+      "code": "071300",
+      "fieldEn": "Ecological Restoration Studies",
+      "fieldZh": "修复生态学",
+      "durationYears": 4,
+      "teachingLanguage": "English",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "32500",
+      "tuitionAmounts": [
+        32500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "majorEn": "Environmental Science and Engineering",
+      "majorZh": "环境科学与工 程",
+      "code": "083000",
+      "fieldEn": "Environmental Science",
+      "fieldZh": "环境科学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "majorEn": "Environmental Science and Engineering",
+      "majorZh": "环境科学与工 程",
+      "code": "083000",
+      "fieldEn": "Environmental Engineering",
+      "fieldZh": "环境工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "majorEn": "Environmental Science and Engineering",
+      "majorZh": "环境科学与工 程",
+      "code": "083000",
+      "fieldEn": "Environmental Health",
+      "fieldZh": "环境健康",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "majorEn": "Environmental Science and Engineering",
+      "majorZh": "环境科学与工 程",
+      "code": "083000",
+      "fieldEn": "Environmental Geochemistry",
+      "fieldZh": "环境地球化学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "majorEn": "Environmental Engineering",
+      "majorZh": "环境工程",
+      "code": "085701",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Resources and Environment",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "majorEn": "Security Engineering",
+      "majorZh": "安全工程",
+      "code": "085702",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Resources and Environment",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "majorEn": "Geological Engineering",
+      "majorZh": "地质工程",
+      "code": "085703",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Resources and Environment",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "majorEn": "Mining Engineering",
+      "majorZh": "矿业工程",
+      "code": "085705",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Resources and Environment",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "majorEn": "Geology",
+      "majorZh": "地质学",
+      "code": "070900",
+      "fieldEn": "Mineralogy, Petrology, Mineral Deposits Geology",
+      "fieldZh": "矿物学、岩石学、矿床",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "majorEn": "Geology",
+      "majorZh": "地质学",
+      "code": "070900",
+      "fieldEn": "Geochemistry",
+      "fieldZh": "地球化学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Resources and Environmental Engineering",
+      "collegeZh": "资源与环境工程 学院",
+      "majorEn": "Geology",
+      "majorZh": "地质学",
+      "code": "070900",
+      "fieldEn": "Paleontology and Stratigraphy",
+      "fieldZh": "古生物学与地层学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工学院",
+      "majorEn": "Chemistry",
+      "majorZh": "化学",
+      "code": "070300",
+      "fieldEn": "Inorganic Chemistry",
+      "fieldZh": "无机化学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工学院",
+      "majorEn": "Chemistry",
+      "majorZh": "化学",
+      "code": "070300",
+      "fieldEn": "Organic Chemistry",
+      "fieldZh": "有机化学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工学院",
+      "majorEn": "Chemistry",
+      "majorZh": "化学",
+      "code": "070300",
+      "fieldEn": "Physical Chemistry",
+      "fieldZh": "物理化学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Chemistry and Chemical Engineering",
+      "collegeZh": "化学与化工学院",
+      "majorEn": "Materials Science and Engineering",
+      "majorZh": "材料科学与工 程",
+      "code": "080500",
+      "fieldEn": "Materials Chemical Engineering",
+      "fieldZh": "材料化学工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Computer Science and Technology",
+      "collegeZh": "计算机科学与技 术学院",
+      "majorEn": "Software Engineering",
+      "majorZh": "软件工程",
+      "code": "083500",
+      "fieldEn": "Software Engineering Technology and Artificial Intelligence",
+      "fieldZh": "软件工程技术与人工智 能",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 2,
+      "collegeEn": "College of Big Data and Information Engineering",
+      "collegeZh": "大数据与信息工 程学院",
+      "majorEn": "Electronic Science and Technology",
+      "majorZh": "电子科学与技 术",
+      "code": "080900",
+      "fieldEn": "Microelectronics and Solid Electronics",
+      "fieldZh": "微电子学与固体电子学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Civil Engineering",
+      "collegeZh": "土木工程学院",
+      "majorEn": "Civil Engineering",
+      "majorZh": "土木工程",
+      "code": "081400",
+      "fieldEn": "Geotechnical Engineering",
+      "fieldZh": "岩土工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Civil Engineering",
+      "collegeZh": "土木工程学院",
+      "majorEn": "Civil Engineering",
+      "majorZh": "土木工程",
+      "code": "081400",
+      "fieldEn": "Structural Engineering",
+      "fieldZh": "结构工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Civil Engineering",
+      "collegeZh": "土木工程学院",
+      "majorEn": "Civil Engineering",
+      "majorZh": "土木工程",
+      "code": "081400",
+      "fieldEn": "Bridge and Tunnel Engineering",
+      "fieldZh": "桥梁与隧道工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程学院",
+      "majorEn": "Mechanical Engineering",
+      "majorZh": "机械工程",
+      "code": "080200",
+      "fieldEn": "Mechanical Manufacturing and Automation",
+      "fieldZh": "机械制造及其自动化",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程学院",
+      "majorEn": "Mechanical Engineering",
+      "majorZh": "机械工程",
+      "code": "080200",
+      "fieldEn": "Mechatronic Engineering",
+      "fieldZh": "机械电子工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Mechanical Engineering",
+      "collegeZh": "机械工程学院",
+      "majorEn": "Mechanical Engineering",
+      "majorZh": "机械工程",
+      "code": "080200",
+      "fieldEn": "Mechanical Design and Theory",
+      "fieldZh": "机械设计及理论",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金学院",
+      "majorEn": "Materials Science and Engineering",
+      "majorZh": "材料科学与工 程",
+      "code": "080500",
+      "fieldEn": "Material Physics and Chemistry",
+      "fieldZh": "材料物理与化学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金学院",
+      "majorEn": "Materials Science and Engineering",
+      "majorZh": "材料科学与工 程",
+      "code": "080500",
+      "fieldEn": "Material Science",
+      "fieldZh": "材料学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金学院",
+      "majorEn": "Materials Science and Engineering",
+      "majorZh": "材料科学与工 程",
+      "code": "080500",
+      "fieldEn": "Material Processing Engineering",
+      "fieldZh": "材料加工工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金学院",
+      "majorEn": "Metallurgical Engineering",
+      "majorZh": "冶金工程",
+      "code": "080600",
+      "fieldEn": "Non-ferrous Metallurgy",
+      "fieldZh": "有色金属冶金",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金学院",
+      "majorEn": "Metallurgical Engineering",
+      "majorZh": "冶金工程",
+      "code": "080600",
+      "fieldEn": "Ferrous Metallurgy",
+      "fieldZh": "钢铁冶金",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金学院",
+      "majorEn": "Material and Chemical Industry",
+      "majorZh": "材料与化工",
+      "code": "085600",
+      "fieldEn": "Metallurgical Engineering",
+      "fieldZh": "冶金工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Materials and Chemical Industry",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金学院",
+      "majorEn": "Material and Chemical Industry",
+      "majorZh": "材料与化工",
+      "code": "085600",
+      "fieldEn": "Materials Engineering",
+      "fieldZh": "材料工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Materials and Chemical Industry",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Materials and Metallurgical",
+      "collegeZh": "材料与冶金学院",
+      "majorEn": "Material and Chemical Industry",
+      "majorZh": "材料与化工",
+      "code": "085600",
+      "fieldEn": "Chemical Engineering",
+      "fieldZh": "化学工程",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Materials and Chemical Industry",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Safety Science and Engineering",
+      "majorZh": "安全科学与工 程",
+      "code": "083700",
+      "fieldEn": "Mining Safety and Intelligent Prevention and Control",
+      "fieldZh": "开采安全与智能防控",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Safety Science and Engineering",
+      "majorZh": "安全科学与工 程",
+      "code": "083700",
+      "fieldEn": "Engineering blasting safety and protection",
+      "fieldZh": "工程爆破安全与防护",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 3,
+      "collegeEn": "College of Mining",
+      "collegeZh": "矿业学院",
+      "majorEn": "Safety Science and Engineering",
+      "majorZh": "安全科学与工 程",
+      "code": "083700",
+      "fieldEn": "Engineering Environmental Safety and Hazard Control",
+      "fieldZh": "工程环境安全与危害控 制",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Plant Pathology",
+      "fieldZh": "植物病理学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Agri-entomology & Insects Control",
+      "fieldZh": "农业昆虫与害虫防治",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Quality and Safety of Agricultural Products",
+      "fieldZh": "农产品质量安全",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Biology",
+      "majorZh": "生物学",
+      "code": "071000",
+      "fieldEn": "Zoology",
+      "fieldZh": "动物学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Crop Science",
+      "majorZh": "作物学",
+      "code": "090100",
+      "fieldEn": "Crop Cultivation & Farming System",
+      "fieldZh": "作物栽培学与耕作学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Agriculture",
+      "collegeZh": "农学院",
+      "majorEn": "Crop Science",
+      "majorZh": "作物学",
+      "code": "090100",
+      "fieldEn": "Plant Genetics & Breeding",
+      "fieldZh": "作物遗传育种",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Forestry",
+      "collegeZh": "林学院",
+      "majorEn": "Forest Genetics and Breeding",
+      "majorZh": "林木遗传育种",
+      "code": "090701",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Forestry",
+      "collegeZh": "林学院",
+      "majorEn": "Forest Cultivation",
+      "majorZh": "森林培育",
+      "code": "090702",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Forestry",
+      "collegeZh": "林学院",
+      "majorEn": "Soil and Water Conservation and Desertification Combating",
+      "majorZh": "水土保持与荒 漠化防治",
+      "code": "090707",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Forestry",
+      "collegeZh": "林学院",
+      "majorEn": "Ecology",
+      "majorZh": "生态学",
+      "code": "071300",
+      "fieldEn": "Phytoecology",
+      "fieldZh": "植物生态学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Forestry",
+      "collegeZh": "林学院",
+      "majorEn": "Ecology",
+      "majorZh": "生态学",
+      "code": "071300",
+      "fieldEn": "Restoration Ecology",
+      "fieldZh": "修复生态学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Animal Science",
+      "collegeZh": "动物科学学院",
+      "majorEn": "Animal husbandry",
+      "majorZh": "畜牧学",
+      "code": "090500",
+      "fieldEn": "Animal Genetics, Breeding &Reproduction",
+      "fieldZh": "动物遗传育种与繁殖",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Animal Science",
+      "collegeZh": "动物科学学院",
+      "majorEn": "Animal husbandry",
+      "majorZh": "畜牧学",
+      "code": "090500",
+      "fieldEn": "Animal Nutrition & Feed Science",
+      "fieldZh": "动物营养与饲料科学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "College of Animal Science",
+      "collegeZh": "动物科学学院",
+      "majorEn": "Animal husbandry",
+      "majorZh": "畜牧学",
+      "code": "090500",
+      "fieldEn": "Special Animal Breeding and Raising",
+      "fieldZh": "特种经济动物饲养",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "State Key Laboratory of Green Pesticides(Center for R&D of Fine Chemicals of Guizhou University)",
+      "collegeZh": "绿色农药全国重 点实验室(精细 化工研究开发中 心)",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Pesticide Science",
+      "fieldZh": "农药学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 4,
+      "collegeEn": "State Key Laboratory of Green Pesticides(Center for R&D of Fine Chemicals of Guizhou University)",
+      "collegeZh": "绿色农药全国重 点实验室(精细 化工研究开发中 心)",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Plant Regulatory Chemistry and Biology",
+      "fieldZh": "植物调控化学与生物学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Philosophy",
+      "collegeZh": "哲学学院",
+      "majorEn": "Philosophy",
+      "majorZh": "哲学",
+      "code": "010100",
+      "fieldEn": "Chinese Philosophy",
+      "fieldZh": "中国哲学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Philosophy",
+      "tuitionText": "22000",
+      "tuitionAmounts": [
+        22000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Philosophy",
+      "collegeZh": "哲学学院",
+      "majorEn": "Philosophy",
+      "majorZh": "哲学",
+      "code": "010100",
+      "fieldEn": "Philosophy of Science & Techonology",
+      "fieldZh": "科学技术哲学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Philosophy",
+      "tuitionText": "22000",
+      "tuitionAmounts": [
+        22000
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Physics",
+      "collegeZh": "物理学院",
+      "majorEn": "Physics",
+      "majorZh": "物理学",
+      "code": "070200",
+      "fieldEn": "Theoretical Physics",
+      "fieldZh": "理论物理",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Physics",
+      "collegeZh": "物理学院",
+      "majorEn": "Physics",
+      "majorZh": "物理学",
+      "code": "070200",
+      "fieldEn": "Condensed Matter Physics",
+      "fieldZh": "凝聚态物理",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "College of Physics",
+      "collegeZh": "物理学院",
+      "majorEn": "Physics",
+      "majorZh": "物理学",
+      "code": "070200",
+      "fieldEn": "Optics",
+      "fieldZh": "光学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Science",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "State Key Laboratory of Public Big Data",
+      "collegeZh": "贵州省大数据实 验室",
+      "majorEn": "Software Engineering",
+      "majorZh": "软件工程",
+      "code": "083500",
+      "fieldEn": "No Further Division in Research Fields",
+      "fieldZh": "不区分研究方向",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese",
+      "degreeName": "Doctor of Engineering",
+      "tuitionText": "24500",
+      "tuitionAmounts": [
+        24500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "China-Sri Lanka Belt and Road Joint Laboratory on Tea Green Pest Control Technology",
+      "collegeZh": "中国-斯里兰卡 茶叶绿色防控技 术一带一路联合 实验室",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Pesticide Science",
+      "fieldZh": "农药学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    },
+    {
+      "page": 5,
+      "collegeEn": "China-Sri Lanka Belt and Road Joint Laboratory on Tea Green Pest Control Technology",
+      "collegeZh": "中国-斯里兰卡 茶叶绿色防控技 术一带一路联合 实验室",
+      "majorEn": "Plant Protection",
+      "majorZh": "植物保护",
+      "code": "090400",
+      "fieldEn": "Plant Regulatory Chemistry and Biology",
+      "fieldZh": "植物调控化学与生物学",
+      "durationYears": 4,
+      "teachingLanguage": "Chinese and English",
+      "degreeName": "Doctor of Agriculture",
+      "tuitionText": "中文授课/Chinese Taught Program：24500 英文授课/English Taught Program：32500",
+      "tuitionAmounts": [
+        24500,
+        32500
+      ]
+    }
+  ]
+}
