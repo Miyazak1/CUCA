@@ -3,6 +3,10 @@
   "include": [
     "scripts/catalog-2027-release-single-host-publish.ts",
     "scripts/catalog-reviewed-100-official-release-single-host-publish.ts",
+    "scripts/catalog-top-150-school-directory-reviewed-build.ts",
+    "scripts/catalog-top-150-school-directory-single-host-preflight.ts",
+    "scripts/catalog-top-150-school-directory-single-host-publish.ts",
+    "scripts/lib/top-150-school-directory-release.ts",
     "scripts/catalog-official-refresh-audit.ts",
     "scripts/catalog-data-integrity-audit.ts",
     "scripts/catalog-data-release-gate.ts"

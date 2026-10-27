@@ -125,6 +125,24 @@ curl -fsS 'http://127.0.0.1:3000/api/v1/catalog/schools?page=1&pageSize=1'
 curl -fsS 'http://127.0.0.1:3000/api/v1/catalog/programs?page=1&pageSize=1'
 ```
 
+## Publish the reviewed top-150 school directory only
+
+This release adds missing schools and refreshes only reviewed publication
+metadata for target schools already present. It preserves schools outside the
+target set and compares row counts plus content hashes for `programs`,
+`program_intakes`, and `scholarships` before and after the transaction. Any
+change to those protected tables aborts and rolls back the publication.
+
+```bash
+git pull --ff-only origin codex/release-baseline
+bash publish-reviewed-top-150-schools.sh
+```
+
+The script builds the application image, runs a repeatable-read read-only
+preflight, publishes with the exact approval token, restarts the application,
+and verifies that at least 150 public schools are visible. It does not run the
+program, intake, or scholarship release publishers.
+
 ## Preflight the official application-requirement candidate
 
 After rebuilding the image, compare the hash-locked 52-school requirement candidate with the persistent single-host catalog before preparing any reviewed import. This command opens a repeatable-read, read-only transaction and never creates a requirement version or publication:

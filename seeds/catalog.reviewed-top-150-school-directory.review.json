@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "status": "human_review_completed",
+  "reviewReference": "project-owner-chat-approval-2026-10-27-top-150-school-directory",
+  "reviewedAt": "2026-10-27T13:46:38.308Z",
+  "approvedCandidateFileSha256": "df4b9d75bd49832898ddbc51549df436fdc86a71e1524fa27deb253fcad056d6",
+  "approvedCandidateBundleSha256": "f88d2cc6dd71ebe9e2fde4463391792092f9800074fbc8406f068ac9e8aa888d",
+  "publicationBundleSha256": "763b4fb4f9dbee5d5a465b042fe95c270fe4ace00eb10502893f92dc2d2ab343",
+  "operationPlanSha256": "0bd93544c5bf7497ec5df4c5086eba05476e8cc94151e6e8fa77275c5a2de884",
+  "scope": {
+    "cities": 51,
+    "schools": 150,
+    "programs": 0,
+    "programIntakes": 0,
+    "scholarships": 0
+  },
+  "targetSchoolCoverage": 150,
+  "confirmations": {
+    "projectOwnerApprovedDirectPublication": true,
+    "contentReviewed": true,
+    "officialSourcesReviewed": true,
+    "publicContentConfirmed": true,
+    "prohibitedDataConfirmedExcluded": true,
+    "missingDataMayRemainEmpty": true,
+    "preserveSchoolsOutsideTarget": true,
+    "preserveExistingSchoolDetails": true,
+    "preserveExistingCities": true,
+    "programsMustRemainUnchanged": true,
+    "programIntakesMustRemainUnchanged": true,
+    "scholarshipsMustRemainUnchanged": true
+  }
+}

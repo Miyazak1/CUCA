@@ -5,7 +5,7 @@ import test from "node:test";
 const root = new URL("../../../", import.meta.url);
 
 test("single-host trial stays synthetic, loopback-bound and HTTPS-fronted", async () => {
-  const [compose, bootstrap, directmail, adminGrant, caddy, dockerfile, readme, dockerignore] = await Promise.all([
+  const [compose, bootstrap, directmail, adminGrant, caddy, dockerfile, readme, dockerignore, top150Publisher] = await Promise.all([
     readFile(new URL("deploy/trial/compose.yaml", root), "utf8"),
     readFile(new URL("deploy/trial/bootstrap.sh", root), "utf8"),
     readFile(new URL("deploy/trial/configure-directmail.sh", root), "utf8"),
@@ -14,6 +14,7 @@ test("single-host trial stays synthetic, loopback-bound and HTTPS-fronted", asyn
     readFile(new URL("deploy/trial/Dockerfile", root), "utf8"),
     readFile(new URL("deploy/trial/README.md", root), "utf8"),
     readFile(new URL(".dockerignore", root), "utf8"),
+    readFile(new URL("deploy/trial/publish-reviewed-top-150-schools.sh", root), "utf8"),
   ]);
 
   assert.match(compose, /127\.0\.0\.1:55432:5432/);
@@ -60,9 +61,17 @@ test("single-host trial stays synthetic, loopback-bound and HTTPS-fronted", asyn
   assert.match(dockerfile, /catalog\.local\.synthetic\.json/);
   assert.match(dockerfile, /catalog\.reviewed-100-official-release\.json/);
   assert.match(dockerfile, /catalog\.reviewed-100-official-release\.review\.json/);
+  assert.match(dockerfile, /catalog\.reviewed-top-150-school-directory\.json/);
+  assert.match(dockerfile, /catalog\.reviewed-top-150-school-directory\.review\.json/);
   assert.doesNotMatch(dockerfile, /npm prune --omit=dev/, "trial migration image must retain drizzle-kit");
   assert.match(dockerignore, /!seeds\/catalog\.local\.synthetic\.json/);
   assert.match(dockerignore, /!seeds\/catalog\.reviewed-100-official-release\.json/);
   assert.match(dockerignore, /!seeds\/catalog\.reviewed-100-official-release\.review\.json/);
+  assert.match(dockerignore, /!seeds\/catalog\.reviewed-top-150-school-directory\.json/);
+  assert.match(dockerignore, /!seeds\/catalog\.reviewed-top-150-school-directory\.review\.json/);
+  assert.match(top150Publisher, /catalog-top-150-school-directory-single-host-preflight\.ts/);
+  assert.match(top150Publisher, /catalog-top-150-school-directory-single-host-publish\.ts/);
+  assert.match(top150Publisher, /docker compose up -d --no-deps app proxy/);
+  assert.doesNotMatch(top150Publisher, /docker compose down|\s-v(?:\s|$)/);
   assert.match(readme, /must not hold real personal data/i);
 });
