@@ -175,13 +175,15 @@ input[type="file"]:disabled::file-selector-button {
 
 .brand-wordmark {
   display: block;
-  width: 360px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.brand-wordmark > img {
+  display: block;
+  width: auto;
   max-width: 100%;
   height: auto;
-  aspect-ratio: 6 / 1;
-  /* Frame the approved PNG's transparent margins without altering the artwork. */
-  object-fit: cover;
-  object-position: 50% 44%;
 }
 
 .nav-links {
@@ -882,7 +884,7 @@ input[type="file"]:disabled::file-selector-button {
 }
 
 .footer-workspace .brand .brand-wordmark {
-  width: 320px;
+  max-width: min(320px, 100%);
 }
 
 .footer-grid {

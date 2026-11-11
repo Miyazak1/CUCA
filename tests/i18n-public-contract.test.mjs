@@ -25,10 +25,12 @@ test("public shell uses the UCAC Study in China identity without the parent-bran
     source("public/about.html"),
     source("config/public-release-assets.json"),
   ]);
-  assert.match(shell, /ucac-study-in-china\.png/);
+  assert.match(shell, /src="\/ucac-wordmark\.svg"/);
+  assert.match(shell, /srcset="\/ucac-wordmark-compact\.svg"/);
   assert.doesNotMatch(shell, /brand-parent|by Holalobe/);
   assert.match(shell, /© 2026 UCAC\./);
-  assert.match(manifest, /"ucac-study-in-china\.png"/);
+  assert.match(manifest, /"ucac-wordmark\.svg"/);
+  assert.match(manifest, /"ucac-wordmark-compact\.svg"/);
   assert.match(shellCss, /\.cuac-back-to-top\.visible\s*\{[^}]*opacity:\s*1/s);
   assert.doesNotMatch(shell, /China admissions 2026:/);
   assert.doesNotMatch(home, /by Holalobe/);

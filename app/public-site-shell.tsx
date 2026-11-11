@@ -1,7 +1,7 @@
 import Script from "next/script";
 
-const SHELL_STYLE_RELEASE = "20261021-design-system";
-const SHELL_RUNTIME_RELEASE = "20261015-study-in-china";
+const SHELL_STYLE_RELEASE = "20261111-wordmark";
+const SHELL_RUNTIME_RELEASE = "20261111-wordmark";
 
 export function PublicSiteShell({
   active,

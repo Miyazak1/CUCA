@@ -664,7 +664,7 @@
 
   function brand() {
     const href = localizedPageHref("home-v3.html");
-    return `<span class="brand-lockup"><a class="brand" href="${href}" aria-label="UCAC home"><img class="brand-wordmark" src="/ucac-study-in-china.png?v=20261015" width="360" height="60" alt="UCAC — University & College Application Center — Study in China" /></a></span>`;
+    return `<span class="brand-lockup"><a class="brand" href="${href}" aria-label="UCAC home"><picture class="brand-wordmark"><source media="(max-width: 560px)" srcset="/ucac-wordmark-compact.svg" width="306" height="64"><img src="/ucac-wordmark.svg" width="360" height="64" alt="UCAC — Study in China — University & College Application Center" /></picture></a></span>`;
   }
 
   function shellText(key, fallback) {

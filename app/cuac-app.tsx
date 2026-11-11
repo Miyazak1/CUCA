@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
+import { UcacWordmark } from "./ucac-wordmark";
 import {
   type ApplicationChoice,
   type ApplicationBlocker,
@@ -533,7 +533,7 @@ export function CuacApp({
       <header className="top-nav">
         <div className="brand-lockup">
           <button className="brand" aria-label="UCAC home" onClick={() => navigate("/")}>
-            <Image priority className="brand-mark" src="/ucac-study-in-china.png" width={360} height={60} alt="UCAC — University & College Application Center — Study in China" />
+            <UcacWordmark />
           </button>
         </div>
         <nav aria-label="Primary navigation">

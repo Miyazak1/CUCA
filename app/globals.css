@@ -149,14 +149,17 @@ main {
   max-width: 100%;
 }
 
-.brand-mark {
+.brand-wordmark {
   display: block;
-  width: 360px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.brand-wordmark > img {
+  display: block;
+  width: auto;
   max-width: 100%;
   height: auto;
-  aspect-ratio: 6 / 1;
-  object-fit: cover;
-  object-position: 50% 44%;
 }
 
 .top-nav nav {

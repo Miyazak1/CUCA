@@ -50,7 +50,7 @@ test("public pages load the synchronized design-system release", async () => {
   const pages = await Promise.all(names.map(async (name) => [name, await readFile(new URL(name, directory), "utf8")]));
   for (const [name, html] of pages) {
     if (!html.includes("shared-shell.css?v=")) continue;
-    assert.match(html, /shared-shell\.css\?v=20261021-design-system/, name);
+    assert.match(html, /shared-shell\.css\?v=20261111-wordmark/, name);
   }
 });
 

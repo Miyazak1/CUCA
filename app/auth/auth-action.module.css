@@ -31,16 +31,6 @@
   max-width: 100%;
 }
 
-.mark {
-  display: block;
-  width: 360px;
-  max-width: 100%;
-  height: auto;
-  aspect-ratio: 6 / 1;
-  object-fit: cover;
-  object-position: 50% 44%;
-}
-
 .signInLink {
   color: #005e5a;
   font-size: 14px;
