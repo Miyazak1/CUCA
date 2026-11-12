@@ -22,8 +22,9 @@ test("public editorial pages use one bounded vertical rhythm and a separated foo
   }
 
   assert.match(sharedShell, /\.nav\s*\{[^}]*width:\s*var\(--shell-page-width\);[^}]*max-width:\s*var\(--shell-page-width\);/s);
-  assert.match(publicSiteShell, /SHELL_STYLE_RELEASE\s*=\s*"20261112-catalog-body"/);
-  assert.match(publicSiteShell, /SHELL_RUNTIME_RELEASE\s*=\s*"20261111-wordmark"/);
+  assert.match(publicSiteShell, /SHELL_STYLE_RELEASE\s*=\s*assetVersions\["shared-shell\.css"\]/);
+  assert.match(publicSiteShell, /SHELL_RUNTIME_RELEASE\s*=\s*assetVersions\["shared-shell\.js"\]/);
+  assert.match(publicSiteShell, /I18N_RUNTIME_RELEASE\s*=\s*assetVersions\["i18n-runtime\.js"\]/);
 });
 
 test("catalog detail pages do not stack a large page gap above the shared footer", async () => {

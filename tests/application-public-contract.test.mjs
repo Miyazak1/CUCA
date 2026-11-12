@@ -140,7 +140,7 @@ test("application student records localize controls without translating private 
     source("public/application-i18n.js"),
     source("public/application.js"),
   ]);
-  assert.match(html, /application-i18n\.js\?v=20261002-ucac-brand/);
+  assert.match(html, /application-i18n\.js\?v=[a-f0-9]{16}/);
   assert.match(script, /appFormat\("Saved revision \{revision\}\."/);
   assert.match(script, /appFormat\("History revision \{revision\}\."/);
   assert.match(script, /appFormat\("\{ready\}\/\{total\} required records ready"/);

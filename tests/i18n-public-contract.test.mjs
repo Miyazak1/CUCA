@@ -70,8 +70,8 @@ test("public shell uses the UCAC Study in China identity without the parent-bran
   assert.match(shellCss, /\.cuac-back-to-top\.visible\s*\{[^}]*opacity:\s*1/s);
   assert.doesNotMatch(shell, /China admissions 2026:/);
   assert.doesNotMatch(home, /by Holalobe/);
-  assert.match(home, /catalog-list-api\.js\?v=20261016-current-routes/);
-  assert.match(home, /home-v3\.css\?v=20261021-design-system/);
+  assert.match(home, /catalog-list-api\.js\?v=[a-f0-9]{16}/);
+  assert.match(home, /home-v3\.css\?v=[a-f0-9]{16}/);
   assert.doesNotMatch(home, /documents=light/);
   assert.match(homeScript, /window\.CuacCatalogList/);
   assert.match(homeScript, /api\.loadPage/);
@@ -270,8 +270,8 @@ test("public catalog lists share bounded launch locales and preserve language ac
   ]);
   for (const html of [universities, programs, scholarships]) {
     assert.match(html, /data-i18n-locales="en,vi,th,id,ms,ar"/);
-    assert.match(html, /i18n-runtime\.js\?v=20261002-ucac-brand/);
-    assert.match(html, /catalog-list-i18n\.js\?v=20261112-catalog-body/);
+    assert.match(html, /i18n-runtime\.js\?v=[a-f0-9]{16}/);
+    assert.match(html, /catalog-list-i18n\.js\?v=[a-f0-9]{16}/);
     assert.match(html, /data-catalog-copy="common\.contentNotice"/);
   }
   assert.match(runtime, /document\.documentElement\.dir = metadata\[locale\]\.dir/);

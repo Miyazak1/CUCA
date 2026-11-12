@@ -40,9 +40,9 @@ test("public account page uses real Auth APIs without browser-owned authenticati
   assert.match(html, /data-auth-panel="mfa"/);
   assert.match(html, /autocomplete="one-time-code"/);
   assert.match(html, /data-mfa-recovery-codes/);
-  assert.match(html, /shared-shell\.js\?v=20261111-wordmark/);
-  assert.match(html, /shared-shell\.css\?v=20261112-catalog-body/);
-  assert.match(html, /auth\.js\?v=20261002-ucac-brand/);
+  assert.match(html, /shared-shell\.js\?v=[a-f0-9]{16}/);
+  assert.match(html, /shared-shell\.css\?v=[a-f0-9]{16}/);
+  assert.match(html, /auth\.js\?v=[a-f0-9]{16}/);
   assert.match(script, /mfaRequired/);
   assert.match(script, /recoveryCodes/);
   assert.doesNotMatch(script, /localStorage|sessionStorage/);

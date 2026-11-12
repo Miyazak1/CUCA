@@ -1,8 +1,10 @@
 import Script from "next/script";
 import type { EditorialLocale } from "../src/content/editorial.ts";
+import assetVersions from "../config/public-asset-versions.json" with { type: "json" };
 
-const SHELL_STYLE_RELEASE = "20261112-catalog-body";
-const SHELL_RUNTIME_RELEASE = "20261111-wordmark";
+const SHELL_STYLE_RELEASE = assetVersions["shared-shell.css"];
+const SHELL_RUNTIME_RELEASE = assetVersions["shared-shell.js"];
+const I18N_RUNTIME_RELEASE = assetVersions["i18n-runtime.js"];
 
 export function PublicSiteShell({
   active,
@@ -30,7 +32,7 @@ export function PublicSiteShell({
       />
       {children}
       <div data-cuac-footer />
-      <Script src={`/i18n-runtime.js?v=${SHELL_RUNTIME_RELEASE}`} strategy="afterInteractive" />
+      <Script src={`/i18n-runtime.js?v=${I18N_RUNTIME_RELEASE}`} strategy="afterInteractive" />
       <Script src={`/shared-shell.js?v=${SHELL_RUNTIME_RELEASE}`} strategy="afterInteractive" />
     </div>
   );

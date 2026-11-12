@@ -1,6 +1,9 @@
 import { spawn } from "node:child_process";
 import { resolve } from "node:path";
 import { pruneBuiltPublicAssets } from "./lib/public-release-assets.ts";
+import { checkPublicAssetVersions } from "./public-asset-versions.mjs";
+
+await checkPublicAssetVersions();
 
 function normalizedProxyEnvironment(source = process.env) {
   const environment = { ...source };

@@ -246,7 +246,7 @@ test("program university routes send the school slug to the published API and re
     source("programs.css"),
   ]);
 
-  assert.match(html, /programs\.js\?v=20261020-unified-search/);
+  assert.match(html, /programs\.js\?v=[a-f0-9]{16}/);
   assert.match(script, /const focusedUniversity = routeParams\.get\("university"\)/);
   assert.match(script, /loadPage\("programs", \{[\s\S]*school: focusedUniversity,/);
   assert.doesNotMatch(script, /function programMatchesUniversity/);
@@ -265,7 +265,7 @@ test("catalog discovery pages share one coherent search and filter toolbar", asy
   ]);
 
   for (const html of [programs, universities, scholarships]) {
-    assert.match(html, /catalog-search\.css\?v=20261020-unified-search/);
+    assert.match(html, /catalog-search\.css\?v=[a-f0-9]{16}/);
     assert.match(html, /class="[^"]*catalog-search[^"]*"/);
     assert.match(html, /class="catalog-search__query"|class="search-row catalog-search__query"/);
     assert.match(html, /class="catalog-search__filters"/);
@@ -300,7 +300,7 @@ test("university pagination stays compact instead of stretching across the resul
     source("universities.css"),
   ]);
 
-  assert.match(html, /universities\.css\?v=20261021-design-system/);
+  assert.match(html, /universities\.css\?v=[a-f0-9]{16}/);
   assert.match(css, /\.pagination\s*\{[^}]*flex-wrap:\s*wrap[^}]*justify-content:\s*center/s);
   assert.match(css, /\.pagination button\s*\{[^}]*flex:\s*0 0 40px[^}]*width:\s*40px[^}]*min-width:\s*40px/s);
 });
