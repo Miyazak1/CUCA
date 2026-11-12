@@ -19,6 +19,8 @@ only published catalog data, not private profiles or application materials:
 
 ```powershell
 node scripts/catalog-translations-inventory.mjs --requirements
+node scripts/catalog-school-translation-snapshot.mjs --origin=https://ucac.cn
+node scripts/catalog-translations-inventory.mjs --cached
 node scripts/catalog-translations-ui-inventory.mjs
 node scripts/catalog-translations-batch.mjs
 ```
@@ -37,9 +39,11 @@ validate a complete language:
 ```powershell
 node scripts/catalog-translations-validate.mjs --locale=vi
 node scripts/catalog-translations-validate.mjs --locale=vi --publish-local
+npm run assets:update
 npm run build
 npm run preview:local
 node scripts/local-catalog-content-acceptance.mjs
+node scripts/local-school-body-acceptance.mjs
 npm run quality:quick
 ```
 
@@ -49,8 +53,18 @@ database. Repeat for th/id/ms/ar only after each language passes. A new snapshot
 changes the manifest source hash, so every enabled locale must be validated
 against that snapshot again.
 
-Coverage validation checks all inventoried source fields, unrestored authoring
-tokens, source numbers/exam identifiers/URLs, and unchanged long English prose.
+The school snapshot command reads all public pages from the selected known
+origin and checks the published total against unique IDs. It writes translation
+inputs only. The first local test database contained 100 schools; the deployed
+public catalog contains 192. Local fixture totals must not stand in for deployed
+coverage. The replay report records its exact source origin, date, and count.
+
+Inventory includes Unicode letters, including Chinese-only fields, locations,
+and current program titles from school deadlines. Official school-name source
+references remain separate from translated body fields. Coverage validation
+checks all inventoried source fields, unrestored authoring tokens, source
+numbers/exam identifiers/URLs/currency symbols, unchanged long English prose,
+and residual Chinese in non-Chinese translations.
 These are machine reference translations with reviewed overrides; those checks
 do not establish native-speaker review of every sentence. Admissions facts
 remain traceable to their original source and require normal catalog review.
@@ -64,6 +78,14 @@ two failure/pending fallbacks, and five fixture-based requirement-document
 rendering checks. There were no approved requirement documents in the current
 published snapshot, so fixture rendering is not recorded as an actual approved
 admissions-document test.
+
+`school-body-e2e.json` additionally replays every record from the published school
+snapshot through the local built detail renderer at 320, 1280 and 1920 pixels.
+It checks Chinese outside explicit source references, dictionary misses,
+horizontal overflow, and one update panel in the actual DOM. Anhui University's
+HSK4/220-point condition, currency and annual tuition unit, subjects and
+deduplicated location have explicit assertions. A stitched long screenshot can
+repeat sticky panels; repeated DOM nodes must be verified separately.
 
 The registered AHU PDF's character-ID repair is display-only. Its exact source,
 hash, printed row, and affected records are recorded in

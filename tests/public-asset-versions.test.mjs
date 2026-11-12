@@ -17,3 +17,11 @@ test('SSR pages version the runtime and shell separately using the same checked 
  assert.match(shell,/i18n-runtime\.js\?v=\$\{I18N_RUNTIME_RELEASE\}/);
  assert.match(shell,/shared-shell\.js\?v=\$\{SHELL_RUNTIME_RELEASE\}/);
 });
+test('a dictionary-only release also changes the catalog bootstrap and manifest cache key',async()=>{
+ const source=await readFile(new URL('../public/catalog-content-i18n.js',import.meta.url),'utf8');
+ const manifest=await readFile(new URL('../public/catalog-content-manifest.json',import.meta.url),'utf8');
+ const versions=JSON.parse(await readFile(new URL('../config/public-asset-versions.json',import.meta.url),'utf8'));
+ assert.equal(versions['catalog-content-i18n.js'],publicAssetVersion(source,manifest));
+ assert.notEqual(publicAssetVersion(source,manifest),publicAssetVersion(source,manifest+'changed'));
+ assert.match(source,/encodeURIComponent\(manifestVersion\)/);
+});

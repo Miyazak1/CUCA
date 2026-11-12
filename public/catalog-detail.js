@@ -355,7 +355,7 @@ function renderProgram(record, extras) {
   const choiceHref = firstIntake ? `application.html?programId=${encodeURIComponent(record.id)}&intakeId=${encodeURIComponent(firstIntake.id)}#add-choice` : "application.html#add-choice";
   return `${renderHero(record, { title: record.nameEn, localName: record.nameZh, context })}
     ${renderStrip([
-      ["Next intake", firstIntake ? `${titleCase(firstIntake.intakeTerm)} ${firstIntake.intakeYear}` : "None published"],
+      ["Next intake", firstIntake ? `${detailUi(titleCase(firstIntake.intakeTerm))} ${firstIntake.intakeYear}` : "None published"],
       ["Deadline", firstIntake ? formatDate(firstIntake.deadlineDate, firstIntake.deadlineLabel || "Not provided") : "Not provided"],
       ["Tuition", formatMoney(record)],
       ["Language", titleCase(record.teachingLanguage) || "Not provided"],
@@ -371,7 +371,7 @@ function renderDeadlineItems(items) {
   if (!Array.isArray(items) || !items.length) return renderEmpty("No upcoming published intake deadlines are available for this university.");
   return `<ol class="catalog-item-list">${items.map((item) => `
     <li>
-      <span class="catalog-item-label">${escapeHtml(`${titleCase(item.intakeTerm)} ${item.intakeYear}`)}</span>
+      <span class="catalog-item-label">${escapeHtml(`${detailUi(titleCase(item.intakeTerm))} ${item.intakeYear}`)}</span>
       <div class="catalog-item-copy">
         <strong>${escapeHtml(item.programNameEn || "Published program")}</strong>
         <p>${escapeHtml(formatDate(item.deadlineDate, item.deadlineLabel || "Deadline not provided"))}</p>
@@ -382,7 +382,10 @@ function renderDeadlineItems(items) {
 }
 
 function renderSchool(record) {
-  const location = [record.city || record.cityZh, record.province, record.regionLabel || record.region].filter(Boolean).map(escapeHtml).join(", ");
+  // Legacy region fields can already contain city and province. Translate
+  // each geographic component once rather than concatenating duplicate paths.
+  const locationParts = [...new Map([record.city || record.cityZh, record.province, ...(record.regionLabel || record.region || "").split(/[,，]/)].map(cleanText).filter(Boolean).map(part => [part.toLowerCase(), part])).values()];
+  const location = locationParts.map(part => detailUi(part)).join(", ");
   const cityLink = record.citySlug ? `<a href="${escapeHtml(detailHref(`city-detail.html?city=${encodeURIComponent(record.citySlug)}`))}">${escapeHtml(record.city || record.cityZh || "City record")}</a>` : "";
   const nextDeadline = Array.isArray(record.upcomingDeadlines) ? record.upcomingDeadlines[0] : null;
   const main = [
@@ -413,7 +416,8 @@ function renderSchool(record) {
       ? renderSection("Upcoming", "Published intake deadlines", renderDeadlineItems(record.upcomingDeadlines))
       : "",
   ].join("");
-  return `${renderHero(record, { title: record.nameEn, localName: record.nameZh, context: [cityLink, escapeHtml(detailUi(titleCase(record.schoolType))), escapeHtml(location)] })}
+  const regionalLocation = locationParts.filter(part => part.toLowerCase() !== cleanText(record.city || record.cityZh).toLowerCase()).map(part => detailUi(part)).join(", ");
+  return `${renderHero(record, { title: record.nameEn, localName: record.nameZh, context: [cityLink, escapeHtml(detailUi(titleCase(record.schoolType))), escapeHtml(regionalLocation)] })}
     ${renderStrip([
       ["Programs", record.programCount],
       ["English routes", record.englishProgramCount],

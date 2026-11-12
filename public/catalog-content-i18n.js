@@ -1,6 +1,9 @@
 (function installCatalogContent(global) {
   "use strict";
   const locale = global.CUACI18n?.locale || "en";
+  // The build version includes the translation manifest dependency, so a
+  // dictionary-only release also invalidates intermediate manifest caches.
+  const manifestVersion = new URL(document.currentScript?.src || location.href).searchParams.get("v") || "unversioned";
   const enabled = ["vi", "th", "id", "ms", "ar"].includes(locale);
   const normalize = value => String(value ?? "").normalize("NFC").replace(/\s+/g, " ").trim();
   const dictionary = new Map();
@@ -18,6 +21,11 @@
     ["(cid:36)(cid:85)(cid:87)(cid:76)(cid:191)(cid:70)(cid:76)(cid:68)(cid:79)(cid:3) Intelligence","Artificial Intelligence"]
   ]);
   const labelRows = [
+    ["数学","Mathematics","Toán học","คณิตศาสตร์","Matematika","Matematik","الرياضيات"],
+    ["物理","Physics","Vật lý","ฟิสิกส์","Fisika","Fizik","الفيزياء"],
+    ["化学","Chemistry","Hóa học","เคมี","Kimia","Kimia","الكيمياء"],
+    ["中文(文科)","Chinese (for Humanities Disciplines)","Tiếng Trung (khối ngành xã hội)","ภาษาจีน (สายมนุษยศาสตร์)","Bahasa Mandarin (Humaniora)","Bahasa Cina (Kemanusiaan)","الصينية (للتخصصات الإنسانية)"],
+    ["中文(理科)","Chinese (for Science Disciplines)","Tiếng Trung (khối ngành khoa học)","ภาษาจีน (สายวิทยาศาสตร์)","Bahasa Mandarin (Sains)","Bahasa Cina (Sains)","الصينية (للتخصصات العلمية)"],
     ["public","Public","Công lập","รัฐ","Negeri","Awam","حكومية"],
     ["private","Private","Tư thục","เอกชน","Swasta","Swasta","خاصة"],
     ["regular","Regular","Chính quy","ทั่วไป","Umum","Umum","عادية"],
@@ -81,13 +89,16 @@
   const displayFields = new Set(["nameEn","nameZh","title","fieldCategory","subjectArea","teachingLanguage","cscaSubjects","cscaRequirement","hskRequirement","englishRequirement","tuitionText","deadlineLabel","applicationRound","applicationNote","scholarshipText","badgeText","displayGroupLabel","schoolType","region","province","regionLabel","ranking","applicationLevel","languageOfInstruction","languageRequirement","deadlineSummary","tuitionSummary","applicationFee","subjectTags","languageTags","tuitionBandLabel","campusHighlights","typeLabel","fundingLevel","coverage","amountText","summary","requirementText","applicableDegree","applicableProgram","bodySections","benefitItems","benefits","eligibilityItems","applicationMaterials","applicationSteps","tags","targetCountries","targetRegions","providerNameEn","providerLocation","content","ruleText","appliesTo","category","level","stage","evidenceType"]);
   displayFields.delete("nameZh"); // Official Chinese names remain source references.
   displayFields.add("providerName");
+  displayFields.add("cityZh");
+  displayFields.add("programNameEn");
+  displayFields.add("intakeTerm");
   function collect(value) {
     if (Array.isArray(value)) { value.forEach(collect); return; }
     if (value && typeof value === "object") {
       Object.entries(value).filter(([key])=>!["key","id","url","sourceUrl","capturedAt","schemaVersion"].includes(key)).forEach(([,item])=>collect(item));
       return;
     }
-    if (typeof value !== "string" || !/[A-Za-z]{3}/.test(value)) return;
+    if (typeof value !== "string" || !/[\p{L}]/u.test(value)) return;
     const source = normalize(value);
     if(source.includes(" · ")){source.split(" · ").forEach(collect);return;}
     let translated = labels.get(source.toLowerCase()) || dictionary.get(source) || foldedDictionary.get(source.toLowerCase());
@@ -105,8 +116,9 @@
     (Array.isArray(records) ? records : [records]).forEach(record => {
       if (!record || typeof record !== "object") return;
       for (const [key,value] of Object.entries(record)) {
-        if (displayFields.has(key)) collect(value);
-        else if (["school","program","city","document","requirements"].includes(key)) track(value);
+        if (key === "city" && typeof value === "string") collect(value);
+        else if (displayFields.has(key)) collect(value);
+        else if (["school","program","city","document","requirements","upcomingDeadlines"].includes(key)) track(value);
       }
     });
   }
@@ -158,7 +170,7 @@
   const ready = enabled ? (async()=>{
     const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),8000);
     try {
-      const coverageResponse=await fetch("/catalog-content-manifest.json?v=20261112-catalog-body",{signal:controller.signal,cache:"no-cache"});
+      const coverageResponse=await fetch(`/catalog-content-manifest.json?v=${encodeURIComponent(manifestVersion)}`,{signal:controller.signal,cache:"no-cache"});
       if(!coverageResponse.ok)throw new Error("Translation coverage unavailable");
       const coverage=await coverageResponse.json();
       if(coverage.locales?.[locale]?.ready!==true){state="pending";apply();return state;}

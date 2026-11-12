@@ -3,6 +3,7 @@ import path from "node:path";
 import assert from "node:assert/strict";
 import {createHash} from "node:crypto";
 import {ProxyAgent} from "undici";
+import {CATALOG_FACT_PATTERN} from './lib/catalog-translation-validation.mjs';
 
 // Offline authoring only. The website never calls this public translation service.
 // Input is the published catalog inventory, never users or application materials.
@@ -20,7 +21,7 @@ if(proxy&&!/^https?:/.test(proxy))proxy="http://"+proxy;
 const dispatcher=proxy?new ProxyAgent(proxy):undefined;
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 let nextRequestAt=0;
-const factPattern=/https?:\/\/[^\s<>]+|\b(?:IELTS|TOEFL|TOEIC|HSKK?|CSCA|CSC|GPA|CGPA|CNY|RMB|USD|SAT|ACT|PTE|JLPT|TOPIK|DELF|DALF|DELE|TORFL|CEFR)\b|(?<![\p{N}])\d[\d.,]*(?:[-–]\d[\d.,]*)?%?/gu;
+const factPattern=CATALOG_FACT_PATTERN;
 function protect(text){const facts=[];const protectedText=text.replace(factPattern,match=>{const token=`[91357${String(facts.length).padStart(4,"0")}]`;facts.push(match);return token;});return {protectedText,facts};}
 function restore(text,facts){
  const matches=[...text.matchAll(/\[\s*91357(\d{4})\s*\]/g)].map(m=>Number(m[1]));
@@ -42,6 +43,9 @@ const missingByLocale={};
 for(const locale of locales){
  const file=path.join(dir,`${locale}${probe?"-probe":""}.json`);let dictionary={};try{dictionary=JSON.parse(await fs.readFile(file,"utf8"));}catch{}
  const languageIndex=["en","vi","th","id","ms","ar"].indexOf(locale);
+ // Old English-only coverage could leave Chinese clauses in an otherwise
+ // translated sentence. Such candidates must be regenerated or reviewed.
+ for(const [source,translation]of Object.entries(dictionary))if(/\p{Script=Han}/u.test(translation))delete dictionary[source];
  for(const row of overrides)dictionary[normalize(row[0])]=row[languageIndex];
  // PDF character IDs are opaque source data, not translatable prose. Retain
  // them exactly and report the source-quality exception in the final audit.
@@ -59,7 +63,7 @@ for(const locale of locales){
    const translated=(await request(input,locale)).replace(/[\u061c\u200e\u200f\u2066-\u2069]/g,"").replace(/[\u0660-\u0669\u06f0-\u06f9]/g,c=>String(c.charCodeAt(0)-(c<="\u0669"?0x660:0x6f0)));
    const parts=[...translated.matchAll(/\[\s*98271(\d{4})\s*\]\s*([\s\S]*?)(?=\[\s*98271\d{4}\s*\]|$)/g)];
    if(parts.length!==items.length){await fs.writeFile(path.join(dir,`${locale}-failed-boundaries.txt`),translated);throw new Error("Translation row boundaries were changed");}
-   const results=parts.map((m,i)=>{assert.equal(Number(m[1]),i);return restore(m[2],items[i].facts);});
+   const results=parts.map((m,i)=>{assert.equal(Number(m[1]),i);const result=restore(m[2],items[i].facts);assert.ok(!/\p{Script=Han}/u.test(result),'Untranslated Chinese remains');return result;});
    for(let i=0;i<items.length;i++)dictionary[items[i].source]=results[i];
    completed+=items.length;
    // One JS isolate serializes checkpoints; all current successful batches are retained.

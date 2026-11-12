@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
+import {catalogFacts,missingCatalogFacts,isCatalogDisplayText} from '../scripts/lib/catalog-translation-validation.mjs';
 
 const source=await fs.readFile(new URL('../public/catalog-content-i18n.js',import.meta.url),'utf8');
 async function runtime(locale,mode='ready'){
@@ -28,6 +29,19 @@ test('catalog translations preserve source objects, IDs, numbers and original re
  assert.equal(api.text('Unseen source text'),'Unseen source text');
  assert.equal(api.text('Public'),'Công lập');
  assert.equal(api.text('Full'),'Toàn phần');
+ assert.equal(api.text('数学'),'Toán học');
+ assert.equal(api.text('中文(文科)'),'Tiếng Trung (khối ngành xã hội)');
+ api.track({applicationNote:'需要学习计划'});
+ assert.ok(api.missing.includes('需要学习计划'),'Chinese-only fields must be tracked, not silently skipped');
+});
+test('Chinese/mixed fields and currencies are part of translation acceptance',()=>{
+ assert.equal(isCatalogDisplayText('数学'),true);
+ assert.equal(isCatalogDisplayText('¥15,000/年。'),true);
+ assert.equal(isCatalogDisplayText('HSK4 220 分以上'),true);
+ assert.deepEqual(catalogFacts('汉语言文学专业：HSK4 220 分以上。'),['HSK','4','220']);
+ assert.deepEqual(missingCatalogFacts('¥15,000/年。','₫15,000/năm.'),['¥']);
+ assert.deepEqual(missingCatalogFacts('¥15,000/年。','¥15,000/năm.'),[]);
+ assert.deepEqual(missingCatalogFacts('HSK4 220 分以上','HSK4 từ 200 điểm'),['220']);
 });
 test('unavailable and incomplete locales retain usable source text with distinct states',async()=>{
  for(const mode of ['pending','failed']){

@@ -4,11 +4,14 @@ import {pathToFileURL} from 'node:url';
 import {resolve} from 'node:path';
 
 const root=new URL('../',import.meta.url);
-export const publicAssetVersion=source=>createHash('sha256').update(source.replace(/\r\n/g,'\n')).digest('hex').slice(0,16);
+export const publicAssetVersion=(source,dependency='')=>createHash('sha256').update(source.replace(/\r\n/g,'\n')+(dependency?'\n'+dependency.replace(/\r\n/g,'\n'):'')).digest('hex').slice(0,16);
 export async function checkPublicAssetVersions({write=false}={}){
  const files=await fs.readdir(new URL('public/',root));
  const versions={};
- for(const name of files.filter(n=>/\.(?:js|css)$/.test(n)).sort())versions[name]=publicAssetVersion(await fs.readFile(new URL(`public/${name}`,root),'utf8'));
+ for(const name of files.filter(n=>/\.(?:js|css)$/.test(n)).sort()){
+  const dependency=name==='catalog-content-i18n.js'?await fs.readFile(new URL('public/catalog-content-manifest.json',root),'utf8'):'';
+  versions[name]=publicAssetVersion(await fs.readFile(new URL(`public/${name}`,root),'utf8'),dependency);
+ }
  const manifest=JSON.stringify(versions,null,2)+'\n',problems=[];
  const config=new URL('config/public-asset-versions.json',root);
  let existing='';try{existing=await fs.readFile(config,'utf8');}catch{}

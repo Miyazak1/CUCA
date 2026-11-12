@@ -589,7 +589,8 @@
     "qa:catalog-content-local": "node scripts/local-catalog-content-acceptance.mjs",
     "assets:update": "node scripts/public-asset-versions.mjs --write",
     "assets:check": "node scripts/public-asset-versions.mjs",
-    "qa:cache-upgrade-local": "node scripts/local-cache-upgrade-acceptance.mjs"
+    "qa:cache-upgrade-local": "node scripts/local-cache-upgrade-acceptance.mjs",
+    "qa:school-body-local": "node scripts/local-school-body-acceptance.mjs"
   },
   "dependencies": {
     "ali-oss": "6.23.0",
