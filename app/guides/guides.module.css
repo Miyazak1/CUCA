@@ -195,7 +195,7 @@
 
 .sourceList {
   margin: 0;
-  padding-left: 22px;
+  padding-inline-start: 22px;
 }
 
 .sourceList li + li {

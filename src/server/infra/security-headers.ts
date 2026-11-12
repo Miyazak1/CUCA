@@ -1,3 +1,6 @@
+import { randomBytes } from "node:crypto";
+import type { IncomingMessage } from "node:http";
+
 export const CUAC_CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -32,5 +35,25 @@ export function applicationSecurityHeaders(
     headers["strict-transport-security"] = "max-age=31536000; includeSubDomains";
   }
   return Object.freeze(headers);
+}
+
+/** Supply trusted per-request nonces to both the RSC renderer and the browser. */
+export function applicationRequestSecurityHeaders(
+  request: IncomingMessage,
+  env: Record<string, string | undefined> = process.env,
+): Readonly<Record<string, string>> {
+  const headers = applicationSecurityHeaders(env);
+  const path = (request.url || "").split("?")[0];
+  const editorialPage = /^\/(?:guides|insights)(?:\/|$)/.test(path) && !path.endsWith(".xml");
+  const accountActionPage = /^\/auth\/(?:verify-email|reset-password|school-invite)\/?$/.test(path);
+  if (!editorialPage && !accountActionPage) return headers;
+  const nonce = randomBytes(18).toString("base64");
+  const policy = headers["content-security-policy"]
+    .replace("script-src 'self'", `script-src 'self' 'nonce-${nonce}'`)
+    .replace("style-src 'self'", `style-src 'self' 'nonce-${nonce}'`);
+  // Incoming CSP values are untrusted; the renderer must see only our policy.
+  request.headers["content-security-policy"] = policy;
+  request.headers["x-nonce"] = nonce;
+  return Object.freeze({ ...headers, "content-security-policy": policy, "cache-control": "private, no-store" });
 }
 

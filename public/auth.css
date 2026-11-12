@@ -71,6 +71,13 @@ p {
   background: #f8f9fa;
 }
 
+.auth-page {
+  width: min(680px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+  overflow-wrap: anywhere;
+}
+
 .auth-shell {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(440px, 500px);
@@ -600,6 +607,7 @@ h1 {
   .auth-card {
     max-width: 680px;
     width: 100%;
+    margin-inline: auto;
   }
 }
 

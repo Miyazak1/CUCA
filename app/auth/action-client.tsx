@@ -66,8 +66,7 @@ function translate(locale: AuthLocale, value: string): string {
 }
 
 function localeHref(locale: AuthLocale, path: string): string {
-  if (locale === "en") return path;
-  const url = new URL(path, window.location.origin);
+  const url = new URL(path, "https://ucac.cn");
   url.searchParams.set("lang", locale);
   return `${url.pathname}${url.search}${url.hash}`;
 }

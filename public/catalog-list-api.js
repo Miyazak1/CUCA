@@ -26,6 +26,7 @@
 
   async function load(resource, options = {}) {
     if (!resources.has(resource)) throw new Error("Unsupported catalog resource.");
+    await global.CUACCatalogContent?.ready;
 
     const params = catalogParams(options);
 
@@ -42,6 +43,7 @@
       if (!Array.isArray(payload?.data)) {
         throw new Error(`The ${resource} response was not a list.`);
       }
+      global.CUACCatalogContent?.track(payload.data);
       completedRequests.set(requestUrl, payload.data);
       return payload.data;
     })();
@@ -55,6 +57,7 @@
 
   async function loadPage(resource, options = {}) {
     if (!resources.has(resource)) throw new Error("Unsupported catalog resource.");
+    await global.CUACCatalogContent?.ready;
     const params = catalogParams(options);
     const requestUrl = `/api/v1/catalog/${resource}?${params.toString()}`;
     if (completedPages.has(requestUrl)) return completedPages.get(requestUrl);
@@ -64,6 +67,7 @@
       const payload = await response.json().catch(() => null);
       if (!response.ok) throw new Error(messageFromPayload(payload, `Could not load ${resource}.`));
       if (!Array.isArray(payload?.data)) throw new Error(`The ${resource} response was not a list.`);
+      global.CUACCatalogContent?.track(payload.data);
       const responseTotal = payload?.pagination?.total;
       const result = {
         records: payload.data,
@@ -145,13 +149,14 @@
         ? item.providerNameEn || item.providerName || item.schoolName || item.typeLabel || "Funding route"
         : item.city || item.cityZh || item.region || item.province || "China university";
     const safeInitials = escapeHtml(initials);
-    const safeLabel = escapeHtml(String(label).slice(0, 38));
+    const displayLabel = String(label).replace(/^\p{L}/u, character => character.toUpperCase());
+    const safeLabel = escapeHtml(String(global.CUACCatalogI18n?.ui(displayLabel) || label).slice(0, 38));
     const motif = kind === "program"
       ? `<circle cx="760" cy="118" r="170" fill="none" stroke="${light}" stroke-width="34" opacity=".26"/><circle cx="760" cy="118" r="92" fill="none" stroke="white" stroke-width="3" opacity=".34"/><path d="M560 510 790 280 970 460" fill="none" stroke="white" stroke-width="16" opacity=".18"/>`
       : kind === "scholarship"
         ? `<circle cx="735" cy="302" r="122" fill="white" opacity=".1"/><circle cx="735" cy="302" r="82" fill="none" stroke="${light}" stroke-width="12" opacity=".55"/><path d="m692 374-24 106 67-37 67 37-24-106" fill="${light}" opacity=".28"/><path d="m735 242 18 37 41 6-30 29 7 41-36-19-36 19 7-41-30-29 41-6Z" fill="white" opacity=".48"/>`
         : `<path d="M500 470V280l150-82 150 82v190M540 470V315h220v155M390 470V350h110M800 470V350h110" fill="none" stroke="white" stroke-width="18" opacity=".22"/><path d="M355 486h590" stroke="white" stroke-width="10" opacity=".3"/>`;
-    const kindLabel = kind === "program" ? "PROGRAM" : kind === "scholarship" ? "SCHOLARSHIP" : "UNIVERSITY";
+    const kindLabel = global.CUACCatalogI18n?.ui(kind === "program" ? "PROGRAM" : kind === "scholarship" ? "SCHOLARSHIP" : "UNIVERSITY") || (kind === "program" ? "PROGRAM" : kind === "scholarship" ? "SCHOLARSHIP" : "UNIVERSITY");
     const identity = kind === "scholarship"
       ? `<circle cx="150" cy="304" r="82" fill="white" opacity=".14"/><circle cx="150" cy="304" r="66" fill="none" stroke="white" stroke-width="2" opacity=".6"/><text x="150" y="324" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="48" font-weight="700">${safeInitials}</text><text x="270" y="300" fill="white" font-family="Arial,sans-serif" font-size="31" font-weight="700">${kindLabel}</text><text x="270" y="342" fill="${light}" font-family="Arial,sans-serif" font-size="22">${safeLabel}</text>`
       : `<circle cx="148" cy="156" r="76" fill="white" opacity=".14"/><circle cx="148" cy="156" r="62" fill="none" stroke="white" stroke-width="2" opacity=".6"/><text x="148" y="176" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="50" font-weight="700">${safeInitials}</text><text x="80" y="500" fill="white" font-family="Arial,sans-serif" font-size="31" font-weight="700">${kindLabel}</text><text x="80" y="544" fill="${light}" font-family="Arial,sans-serif" font-size="22">${safeLabel}</text>`;
@@ -230,7 +235,8 @@
 
   function listState(target, state, options = {}) {
     if (!target) return;
-    const noun = options.noun || "records";
+    const nounKey = options.noun || "records";
+    const noun = global.CUACI18n?.t(`catalog.noun.${nounKey}`, global.CUACI18n?.t("catalog.noun.records", "records")) || nounKey;
     const page = document.body.dataset.catalogListPage || "";
     const t = (key, fallback, values) => global.CUACCatalogI18n?.t(key, fallback, values) || fallback;
     if (state === "loading") {

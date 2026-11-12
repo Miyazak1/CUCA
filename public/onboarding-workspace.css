@@ -297,6 +297,7 @@
   .onboarding-secondary,
   .onboarding-primary {
     width: 100%;
+    box-sizing: border-box;
   }
 }
 

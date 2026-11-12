@@ -79,18 +79,20 @@
     ["English", "Tiếng Anh", "ภาษาอังกฤษ", "Bahasa Inggris", "Bahasa Inggeris", "الإنجليزية"],
   ];
 
+  rows.push(["Coastal city", "Thành phố ven biển"], ["Municipality", "Thành phố trực thuộc trung ương"], ["Provincial capital", "Tỉnh lỵ"], ["current schools", "trường hiện có"], ["current catalog", "danh mục hiện tại"]);
   const i18n = window.CUACI18n;
   const localeIndex = { vi: 1, th: 2, id: 3, ms: 4, ar: 5 }[i18n?.locale] || 0;
   const dictionary = new Map(rows.map((row) => [row[0], row[localeIndex] || row[0]]));
-  const ui = (english) => dictionary.get(String(english)) || String(english);
+  const ui = (english) => dictionary.get(String(english)) || window.CUACCatalogContent?.text(english) || String(english);
   const format = (template, values = {}) => Object.entries(values).reduce((value, [key, replacement]) => value.replaceAll(`{${key}}`, String(replacement)), String(template));
 
   function href(rawHref) {
-    if (!rawHref || rawHref.startsWith("#") || !i18n || i18n.locale === "en") return rawHref;
+    if (i18n?.href) return i18n.href(rawHref);
+    if (!rawHref || rawHref.startsWith("#") || !i18n) return rawHref;
     const url = new URL(rawHref, location.href);
     if (url.origin !== location.origin || !url.pathname.toLowerCase().endsWith(".html")) return rawHref;
     url.searchParams.set("lang", i18n.locale);
-    return `${url.pathname.split("/").pop()}${url.search}${url.hash}`;
+    return `${url.pathname}${url.search}${url.hash}`;
   }
 
   function apply(root = document) {
@@ -106,6 +108,7 @@
     });
     const anchors = root.querySelectorAll?.("a[href]") || [];
     anchors.forEach((anchor) => {
+      if (anchor.closest?.("[data-catalog-original]")) return;
       const localized = href(anchor.getAttribute("href"));
       if (localized) anchor.setAttribute("href", localized);
     });
@@ -118,7 +121,7 @@
 
   window.CUACCitiesI18n = Object.freeze({ locale: i18n?.locale || "en", ui, format, href, apply });
   apply();
-  if (i18n?.locale !== "en") new MutationObserver((records) => records.forEach((record) => record.addedNodes.forEach((node) => {
+  if (i18n) new MutationObserver((records) => records.forEach((record) => record.addedNodes.forEach((node) => {
     if (node.nodeType === Node.ELEMENT_NODE) apply(node);
   }))).observe(document.body, { childList: true, subtree: true });
 }());

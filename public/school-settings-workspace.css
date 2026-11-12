@@ -78,6 +78,7 @@
 
 .school-settings-primary,
 .school-settings-secondary {
+  box-sizing: border-box;
   display: inline-flex;
   min-height: 40px;
   align-items: center;

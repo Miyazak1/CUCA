@@ -1,0 +1,34 @@
+{
+  "sourceSha256": "c805476951f310a76485e4ef192c355671c25120446297f411462a31a579144b",
+  "locales": [
+    "en",
+    "vi",
+    "th",
+    "id",
+    "ms",
+    "ar"
+  ],
+  "groups": {
+    "ui": 97,
+    "guides": 67,
+    "insights": 65
+  },
+  "sourceScope": {
+    "guideSlugs": [
+      "timeline",
+      "documents",
+      "language",
+      "scholarship-planning",
+      "visa-arrival",
+      "study-in-china-in-english-without-hsk",
+      "shortlist-chinese-universities-english-bachelors",
+      "compare-scholarships-china-coverage-costs",
+      "china-undergraduate-application-documents-checklist"
+    ],
+    "insightSlugs": [
+      "2026-admissions-notices-what-applicants-should-track",
+      "2026-scholarship-announcements-coverage-and-timing",
+      "2026-english-taught-program-lists-why-details-matter"
+    ]
+  }
+}

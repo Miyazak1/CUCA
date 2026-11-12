@@ -1,6 +1,7 @@
 import Script from "next/script";
+import type { EditorialLocale } from "../src/content/editorial.ts";
 
-const SHELL_STYLE_RELEASE = "20261111-wordmark";
+const SHELL_STYLE_RELEASE = "20261112-catalog-body";
 const SHELL_RUNTIME_RELEASE = "20261111-wordmark";
 
 export function PublicSiteShell({
@@ -9,15 +10,17 @@ export function PublicSiteShell({
   noteDetail,
   children,
   pageClassName,
+  locale = "en",
 }: Readonly<{
   active: "guides" | "insights";
   note: string;
   noteDetail?: string;
   children: React.ReactNode;
   pageClassName?: string;
+  locale?: EditorialLocale;
 }>) {
   return (
-    <div className={pageClassName}>
+    <div className={pageClassName} lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} data-i18n-locales="en,vi,th,id,ms,ar">
       <link rel="stylesheet" href={`/shared-shell.css?v=${SHELL_STYLE_RELEASE}`} />
       <div
         data-cuac-header

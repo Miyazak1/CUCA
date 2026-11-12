@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { runInNewContext } from "node:vm";
 
 const publicRoot = new URL("../public/", import.meta.url);
 const pages = [
@@ -13,6 +14,65 @@ const pages = [
 async function source(file) {
   return readFile(new URL(file, publicRoot), "utf8");
 }
+
+test("program badges distinguish unpublished intakes and deadlines from open routes", async () => {
+  const script = await source("programs.js");
+  const extract = (start, end) => script.slice(script.indexOf(`      function ${start}(`), script.indexOf(`      function ${end}(`));
+  const now = Date.parse("2026-11-12T12:00:00Z");
+  class ClockDate extends Date { static now() { return now; } }
+  const { status, badge } = runInNewContext(`${extract("programDeadline", "programTuitionAmount")}\n${extract("deadlineBadge", "programDecisionNote")}\n({status: programDeadlineStatus, badge: deadlineBadge})`, {
+    Date: ClockDate,
+    programTerm: program => program.intake || "",
+    catalogUi: text => text,
+    formatShortDate: value => value,
+  });
+  for (const program of [{}, { deadlineDate: "invalid" }, { deadlineStatus: "open" }, { intake: "late" }]) {
+    assert.equal(status(program), "pending");
+    assert.doesNotMatch(badge(program)[1], /Open until|Late intake until|date pending/);
+  }
+  assert.equal(badge({})[1], "Intake pending");
+  assert.equal(badge({ applicationRound: "Autumn 2027" })[1], "Deadline not published");
+  assert.equal(badge({ deadlineStatus: "closed" })[1], "Closed");
+  assert.equal(badge({ deadlineStatus: "closed", deadlineDate: "invalid" })[1], "Closed");
+  for (const [days, expected] of [[-1, "closed"], [7, "urgent"], [50, "closes-soon"], [100, "open"]]) {
+    const deadlineDate = new Date(now + days * 86400000).toISOString();
+    assert.equal(status({ deadlineDate }), expected);
+    assert.match(badge({ deadlineDate })[1], new RegExp(deadlineDate));
+  }
+});
+
+test("all reveal observers expose very tall sections when their first pixels enter view", async () => {
+  const shared = await source("shared-shell.js");
+  const cities = await source("cities.js");
+  const scholarships = await source("scholarships.js");
+  const callbacks = [];
+  const observed = new Set();
+  const visible = new Set();
+  const item = { dataset: {}, classList: { add: value => visible.add(value) } };
+  class Observer {
+    constructor(callback, options) { callbacks.push(callback); assert.equal(options.threshold, 0); }
+    observe(target) { observed.add(target); }
+    unobserve(target) { observed.delete(target); }
+  }
+  for (const script of [shared, cities, scholarships]) {
+    callbacks.length = 0; observed.clear(); visible.clear();
+    const observerStart = script.indexOf('if ("IntersectionObserver" in window && !document.body.classList.contains("motion-off"))');
+    const code = script === shared
+      ? script.slice(script.indexOf("  function initPageReveal("), script.indexOf("  let primaryNavigationDismissBound")) + "\ninitPageReveal();"
+      : script.slice(observerStart, script.indexOf("\n}", observerStart) + 2);
+    runInNewContext(code, {
+      window: { IntersectionObserver: Observer, location: { search: "" } },
+      document: { body: { classList: { contains: () => false } }, querySelectorAll: selector => selector.startsWith(".reveal") ? [item] : [] },
+      URLSearchParams, IntersectionObserver: Observer, revealItems: [item],
+    });
+    assert.equal(observed.has(item), true);
+    callbacks[0]([{ target: item, isIntersecting: false, intersectionRatio: 0 }]);
+    assert.equal(visible.has("visible"), false);
+    callbacks[0]([{ target: item, isIntersecting: true, intersectionRatio: 0.001 }]);
+    assert.equal(visible.has("visible"), true);
+    assert.equal(observed.has(item), false);
+  }
+});
 
 test("public catalog lists load the published APIs without demo data clients", async () => {
   for (const [page, resource] of pages) {
@@ -45,7 +105,7 @@ test("catalog list detail routes use public record identities", async () => {
   assert.match(universities, /CuacCatalogList\.cover\("school", item\)/);
   assert.match(programs, /CuacCatalogList\.cover\("program", program\)/);
   assert.match(scholarships, /CuacCatalogList\.cover\("scholarship", \{/);
-  assert.match(scholarships, /data-catalog-cover alt="\$\{escapeCatalogHtml\(title\)\} cover"/);
+  assert.match(scholarships, /data-catalog-cover alt="\$\{escapeCatalogHtml\(window\.CUACI18n\.format\("a11y\.cover", \{ name: title \}\)\)\}"/);
   assert.match(programs, /\$\{renderRequirementCards\(program\)\}/);
   assert.match(universities, /item\.cscaSubjects/);
   assert.match(universities, /item\.hskRequirement \|\| item\.englishRequirement/);
@@ -97,7 +157,7 @@ test("program catalog uses server-side pagination and filters", async () => {
   assert.match(api, /\["scholarship", "applicationReady", "upcomingDeadline"\]/);
   assert.match(home, /loadPage\("programs", \{ limit: 1 \}\)/);
   assert.match(home, /loadPage\("programs", \{ limit: 6, applicationReady: true, sort: "deadline" \}\)/);
-  assert.match(home, /formatCatalogCount\(programCatalogPage\.total\).*formatCatalogCount\(currentProgramPage\.total\).*currently available/);
+  assert.match(home, /homeText\("\{count\} programs · \{available\} currently available", \{ count: formatCatalogCount\(programCatalogPage\.total\), available: formatCatalogCount\(currentProgramPage\.total\) \}\)/);
   assert.match(home, /programs\.html\?applicationReady=true/);
   assert.match(script, /applicationReady: state\.filters\.applicationReady/);
   assert.match(script, /routeParams\.get\("applicationReady"\)/);

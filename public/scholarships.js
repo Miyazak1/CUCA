@@ -294,7 +294,7 @@ function renderScholarshipReadiness(item = {}) {
       ${rows.map(([label, value]) => `
         <span>
           <b>${label}</b>
-          <em>${escapeCatalogHtml(value)}</em>
+          <em>${escapeCatalogHtml(catalogUi(value))}</em>
         </span>
       `).join("")}
     </div>
@@ -388,7 +388,7 @@ function matchingProgramsHref(item = {}) {
   if (funding && funding !== "unknown") params.set("funding", funding);
   if (degree && degree !== "All levels") params.set("degree", window.CuacStudyLevels.normalize(degree, ""));
   if (!params.get("degree")) params.delete("degree");
-  return `programs.html?${params.toString()}`;
+  return window.CUACCatalogI18n.localizeHref(`programs.html?${params.toString()}`);
 }
 
 function renderCards() {
@@ -408,21 +408,21 @@ function renderCards() {
     const coverageItems = coverageValues(item);
     const shownCoverage = coverageItems.slice(0, 3);
     const hiddenCoverage = coverageItems.length - shownCoverage.length;
-    const detailHref = `scholarship-detail.html?scholarship=${encodeURIComponent(scholarshipDetailKey(item))}`;
+    const detailHref = window.CUACCatalogI18n.localizeHref(`scholarship-detail.html?scholarship=${encodeURIComponent(scholarshipDetailKey(item))}`);
     return `
-      <article class="scholarship-card" role="link" tabindex="0" data-scholarship-card data-detail-href="${detailHref}" aria-label="View ${escapeCatalogHtml(title)} funding details">
+      <article class="scholarship-card" role="link" tabindex="0" data-scholarship-card data-detail-href="${detailHref}" aria-label="${escapeCatalogHtml(window.CUACI18n.format("a11y.scholarshipCard", { name: title }))}">
         <div class="scholarship-media">
-          <img data-catalog-cover alt="${escapeCatalogHtml(title)} cover" src="${scholarshipImage(item)}" loading="lazy" />
-          <span class="badge type-badge ${type}">${escapeCatalogHtml(scholarshipTypeLabel(item))}</span>
+          <img data-catalog-cover alt="${escapeCatalogHtml(window.CUACI18n.format("a11y.cover", { name: title }))}" src="${scholarshipImage(item)}" loading="lazy" />
+          <span class="badge type-badge ${type}">${escapeCatalogHtml(catalogUi(scholarshipTypeLabel(item)))}</span>
           <button class="save-button catalog-save-control ${saved.has(entityId) ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved.has(entityId)}" aria-label="${escapeCatalogHtml(catalogT(saved.has(entityId) ? "common.remove" : "common.save", saved.has(entityId) ? `Remove ${title} from Favourites` : `Save ${title} to Favourites`, { name: title }))}" title="${escapeCatalogHtml(catalogT(saved.has(entityId) ? "common.savedTitle" : "common.saveTitle", saved.has(entityId) ? "Saved — click to remove" : "Save to Favourites"))}">${window.CuacCatalogList.saveHeartIcon()}</button>
           <span class="scholarship-card-open" aria-hidden="true">${scholarshipIcons.arrowRight}</span>
         </div>
         <h3>${escapeCatalogHtml(title)}</h3>
         <p class="school-line">${escapeCatalogHtml(scholarshipProvider(item))}</p>
-        <p class="summary">${escapeCatalogHtml(scholarshipSummary(item))}</p>
-        <div class="coverage-chips">${shownCoverage.map((value) => `<span>${escapeCatalogHtml(value)}</span>`).join("")}${hiddenCoverage ? `<span>+${hiddenCoverage}</span>` : ""}</div>
-        <div class="facts"><span><b>${escapeCatalogHtml(scholarshipFundingLabel(item))}</b>${escapeCatalogHtml(catalogUi("funding"))}</span><span><b>${escapeCatalogHtml(scholarshipDegree(item))}</b>${escapeCatalogHtml(catalogUi("degree fit"))}</span><span><b>${escapeCatalogHtml(scholarshipDeadlineLabel(item))}</b>${escapeCatalogHtml(catalogUi("deadline"))}</span></div>
-        <div class="scope-row" aria-label="Scholarship scope">${scholarshipScopeItems(item, filters.country).map((value) => `<span>${escapeCatalogHtml(value)}</span>`).join("")}</div>
+        <p class="summary">${escapeCatalogHtml(catalogUi(scholarshipSummary(item)))}</p>
+        <div class="coverage-chips">${shownCoverage.map((value) => `<span>${escapeCatalogHtml(catalogUi(value))}</span>`).join("")}${hiddenCoverage ? `<span>+${hiddenCoverage}</span>` : ""}</div>
+        <div class="facts"><span><b>${escapeCatalogHtml(catalogUi(scholarshipFundingLabel(item)))}</b>${escapeCatalogHtml(catalogUi("funding"))}</span><span><b>${escapeCatalogHtml(catalogUi(scholarshipDegree(item)))}</b>${escapeCatalogHtml(catalogUi("degree fit"))}</span><span><b>${escapeCatalogHtml(catalogUi(scholarshipDeadlineLabel(item)))}</b>${escapeCatalogHtml(catalogUi("deadline"))}</span></div>
+        <div class="scope-row" aria-label="Scholarship scope">${scholarshipScopeItems(item, filters.country).map((value) => `<span>${escapeCatalogHtml(catalogUi(value))}</span>`).join("")}</div>
         ${renderScholarshipReadiness(item)}
       </article>
     `;
@@ -500,7 +500,7 @@ function renderFocus() {
     ["Country scope", scholarshipCountryScope(item).slice(0, 3).join(", ") || "Check notice"],
     ["Linked routes", scholarshipScopeSummary(item)],
     ["Deadline", scholarshipDeadlineLabel(item)],
-  ].map(([label, value]) => `<span><b>${label}</b>${escapeCatalogHtml(value)}</span>`).join("");
+  ].map(([label, value]) => `<span><b>${label}</b>${escapeCatalogHtml(catalogUi(value))}</span>`).join("");
 }
 
 function renderActiveChips() {
@@ -822,7 +822,7 @@ if ("IntersectionObserver" in window && !document.body.classList.contains("motio
       entry.target.classList.add("visible");
       observer.unobserve(entry.target);
     }
-  }), { threshold: 0.12 });
+  }), { threshold: 0 });
   revealItems.forEach((item) => observer.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add("visible"));
@@ -848,7 +848,7 @@ async function loadScholarships() {
     document.querySelector("#summaryFullFunding").textContent = scholarships.filter((item) => scholarshipFundingLevel(item) === "full").length;
     document.querySelector("#summaryDeadlineWindow").textContent = futureDeadlines.length
       ? new Intl.DateTimeFormat(window.CUACCatalogI18n?.locale || "en", { month: "short", day: "numeric", year: "numeric" }).format(futureDeadlines[0])
-      : "Not published";
+      : catalogUi("Not published");
     applyHashFocus();
     renderFilters();
     renderCards();

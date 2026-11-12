@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&display=swap");
-
 :root {
   --font-ui: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
@@ -48,6 +46,25 @@ body {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
+
+/* Official names and translated words can exceed a narrow text column. */
+main {
+  overflow-wrap: anywhere;
+}
+
+.catalog-translation-notice {
+  box-sizing: border-box;
+  padding: 12px 14px;
+  margin: 12px 0 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--soft);
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.catalog-translation-notice a { color: var(--accent-dark); text-decoration: underline; }
+.catalog-record-original-name { color: var(--text-muted); font-size: 13px; line-height: 1.6; }
 
 :where(a, button, input, select, textarea, [tabindex]):focus-visible {
   outline: 3px solid rgb(var(--accent-rgb) / 0.28);
@@ -155,6 +172,7 @@ input[type="file"]:disabled::file-selector-button {
   display: flex;
   align-items: center;
   max-width: 100%;
+  padding: 0;
   color: var(--accent-dark);
   font-weight: 800;
   text-decoration: none;
@@ -544,9 +562,10 @@ input[type="file"]:disabled::file-selector-button {
 }
 
 .account-popover {
+  box-sizing: border-box;
   position: absolute;
   top: calc(100% + 10px);
-  right: 0;
+  inset-inline-end: 0;
   z-index: 60;
   display: grid;
   gap: 2px;
@@ -629,6 +648,7 @@ input[type="file"]:disabled::file-selector-button {
 }
 
 .footer {
+  width: var(--shell-page-width);
   max-width: var(--shell-page-width);
   margin: 0 auto;
   padding: 46px var(--shell-section-x) 58px;
@@ -822,6 +842,8 @@ input[type="file"]:disabled::file-selector-button {
 [dir="rtl"] main { text-align: right; }
 [dir="rtl"] .nav-actions { justify-self: start; }
 [dir="rtl"] .brand-lockup { justify-self: end; }
+[dir="rtl"] .footer .brand-lockup { justify-self: start; }
+[dir="rtl"] .footer .brand { padding-inline: 0; }
 
 .account-popover-head .account-email {
   display: block;
@@ -2131,7 +2153,8 @@ body.motion-off .result-enter {
   }
 }
 
-@media (max-width: 1020px) {
+/* Collapse before translated desktop links compress the full wordmark. */
+@media (max-width: 1180px) {
   .nav {
     grid-template-columns: 1fr auto;
     gap: 10px 18px;
@@ -2271,7 +2294,7 @@ body.motion-off .result-enter {
 
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .nav .brand-lockup {
     grid-column: 1 / -1;
     justify-self: center;
@@ -2312,7 +2335,7 @@ body.motion-off .result-enter {
   }
 
   .top-note {
-    display: block;
+    display: none;
     justify-content: flex-start;
     white-space: nowrap;
     overflow: hidden;
@@ -2369,7 +2392,8 @@ body.motion-off .result-enter {
   }
 
   .language-selector-menu {
-    inset-inline: 0 auto;
+    position: fixed;
+    inset: 72px 16px auto auto;
     width: min(236px, calc(100vw - 32px));
   }
 
@@ -2386,7 +2410,7 @@ body.motion-off .result-enter {
   }
 
   .account-popover {
-    right: -2px;
+    inset-inline-end: -2px;
     width: min(310px, calc(100vw - 22px));
     border-radius: 18px;
   }

@@ -256,7 +256,7 @@ try {
        set email_verified_at = coalesce(email_verified_at, clock_timestamp()),
            updated_at = clock_timestamp()
        where id = any($1::uuid[])`,
-      [[schoolIdentity.userId, opsIdentity.userId, adminIdentity.userId]],
+      [[studentIdentity.userId, schoolIdentity.userId, opsIdentity.userId, adminIdentity.userId]],
     );
     await tx.query(
       `insert into school_staff_memberships (school_id, user_id, role, status)

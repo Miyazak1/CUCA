@@ -18,6 +18,28 @@ export const SITE_SEARCH_SYNONYMS = Object.freeze({
   "khoa học máy tính": "computer science",
   "trí tuệ nhân tạo": "artificial intelligence",
   "tiếng anh": "english",
+  "dạy bằng tiếng anh": "english",
+  "bằng tiếng anh": "english",
+  "giảng dạy bằng tiếng anh": "english",
+  "y khoa": "medicine",
+  "y học": "medicine",
+  "kinh tế": "economics",
+  "kỹ thuật": "engineering",
+  "cntt": "computer science",
+  "công nghệ thông tin": "computer science",
+  "bắc kinh": "beijing",
+  "thượng hải": "shanghai",
+  "hàng châu": "hangzhou",
+  "quảng châu": "guangzhou",
+  "thâm quyến": "shenzhen",
+  "nam kinh": "nanjing",
+  "thiên tân": "tianjin",
+  "vũ hán": "wuhan",
+  "thành đô": "chengdu",
+  "trùng khánh": "chongqing",
+  "tây an": "xian",
+  "đại liên": "dalian",
+  "hạ môn": "xiamen",
   "ทุนการศึกษา": "scholarship",
   "ปริญญาตรี": "bachelor",
   "ปริญญาโท": "master",
@@ -179,7 +201,7 @@ export function expandSiteSearchQuery(query: string): string {
     let matched = false;
     for (let size = Math.min(maximumPhraseLength, tokens.length - index); size >= 1; size -= 1) {
       const candidate = tokens.slice(index, index + size).join(" ");
-      const synonym = SITE_SEARCH_SYNONYMS[candidate as keyof typeof SITE_SEARCH_SYNONYMS];
+      const synonym = siteSearchAliases.get(foldSearchAlias(candidate));
       if (!synonym) continue;
       interpreted.push(synonym);
       index += size;
@@ -193,6 +215,13 @@ export function expandSiteSearchQuery(query: string): string {
   }
   return interpreted.join(" ");
 }
+
+function foldSearchAlias(value: string): string {
+  return value.normalize("NFD").replace(/\p{M}/gu, "").replace(/đ/g, "d");
+}
+
+const siteSearchAliases = new Map(Object.entries(SITE_SEARCH_SYNONYMS)
+  .map(([alias, canonical]) => [foldSearchAlias(alias), canonical]));
 
 export function encodeSiteSearchCursor(input: { query: string; type: SiteSearchType; locale: SiteSearchLocale; offset: number }): string {
   return Buffer.from(JSON.stringify({ v: 2, q: input.query, t: input.type, l: input.locale, o: input.offset }), "utf8").toString("base64url");

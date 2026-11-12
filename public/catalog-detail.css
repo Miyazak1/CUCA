@@ -123,7 +123,8 @@ select { font: inherit; }
   font-weight: 700;
   line-height: 1.04;
   letter-spacing: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .catalog-record-title h1.long-title { font-size: 38px; }

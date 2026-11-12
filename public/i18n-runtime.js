@@ -36,7 +36,7 @@
       "home.step.3": "Prepare", "home.step.3Body": "Understand requirements and document work.", "home.step.4": "Decide", "home.step.4Body": "Build a shortlist worth applying to.",
       "home.boundaryTitle": "Important application boundary", "home.boundaryBody": "UCAC helps you discover and organize choices. Students submit application materials through each university's official channel in this release.",
       "home.accountTitle": "Keep your China options together", "home.accountBody": "Save programs, compare routes, and track intake dates in one student workspace.", "home.create": "Create list",
-      "home.destinationNotice": "Catalog navigation, city pages, and core detail labels are translated. Official names, source content, and guides remain in English while reviewed translations are completed.",
+      "home.destinationNotice": "Catalog controls, city pages, guides, and insights are available in the selected language. Official names and source admissions content retain their published language.",
       "home.feedback.search": "Press Enter or Search to view matching published catalog results.", "home.feedback.empty": "Enter a program, university, scholarship, or city.",
     },
     vi: {
@@ -49,7 +49,7 @@
       "home.placeholder": "Tìm chương trình, trường đại học, học bổng hoặc thành phố", "home.search": "Tìm kiếm", "home.chip.undergraduate": "Đại học", "home.chip.master": "Thạc sĩ", "home.chip.english": "Dạy bằng tiếng Anh", "home.chip.scholarship": "Học bổng", "home.chip.fall": "Kỳ nhập học hiện tại",
       "home.catalogTitle": "Bắt đầu từ nhu cầu của bạn", "home.cat.programs": "Chương trình", "home.cat.programsBody": "So sánh bậc học, ngôn ngữ, học phí và kỳ nhập học.", "home.cat.universities": "Trường đại học", "home.cat.universitiesBody": "Xem địa điểm, lộ trình và nguồn chính thức.", "home.cat.scholarships": "Học bổng", "home.cat.scholarshipsBody": "Tìm cơ hội tài trợ mà không coi đó là bảo đảm.", "home.cat.cities": "Thành phố và chi phí", "home.cat.citiesBody": "So sánh sinh hoạt phí và môi trường học tập.",
       "home.planTitle": "Một lộ trình rõ ràng gồm bốn bước", "home.planBody": "Dùng UCAC để thu hẹp lựa chọn, sau đó xác nhận hạn và yêu cầu với trường.", "home.step.1": "Khám phá", "home.step.1Body": "Chọn ngành, thành phố hoặc trường.", "home.step.2": "So sánh", "home.step.2Body": "Kiểm tra học phí, ngôn ngữ và kỳ nhập học.", "home.step.3": "Chuẩn bị", "home.step.3Body": "Hiểu yêu cầu và hồ sơ cần chuẩn bị.", "home.step.4": "Quyết định", "home.step.4Body": "Lập danh sách phù hợp để nộp.",
-      "home.boundaryTitle": "Phạm vi hỗ trợ quan trọng", "home.boundaryBody": "UCAC hỗ trợ tìm kiếm và sắp xếp lựa chọn. Trong phiên bản này, sinh viên nộp hồ sơ qua kênh chính thức của từng trường.", "home.accountTitle": "Quản lý các lựa chọn du học Trung Quốc", "home.accountBody": "Lưu chương trình, so sánh lộ trình và theo dõi kỳ nhập học trong một không gian sinh viên.", "home.create": "Tạo danh sách", "home.destinationNotice": "Điều hướng danh mục, trang thành phố và nhãn chi tiết cốt lõi đã được dịch. Tên chính thức, nội dung nguồn và hướng dẫn vẫn bằng tiếng Anh trong khi bản dịch được rà soát.", "home.feedback.search": "Nhấn Enter hoặc Tìm kiếm để xem kết quả đã công bố.", "home.feedback.empty": "Nhập chương trình, trường đại học, học bổng hoặc thành phố.",
+      "home.boundaryTitle": "Phạm vi hỗ trợ quan trọng", "home.boundaryBody": "UCAC hỗ trợ tìm kiếm và sắp xếp lựa chọn. Trong phiên bản này, sinh viên nộp hồ sơ qua kênh chính thức của từng trường.", "home.accountTitle": "Quản lý các lựa chọn du học Trung Quốc", "home.accountBody": "Lưu chương trình, so sánh lộ trình và theo dõi kỳ nhập học trong một không gian sinh viên.", "home.create": "Tạo danh sách", "home.destinationNotice": "Điều khiển danh mục, trang thành phố, hướng dẫn và phân tích có bằng ngôn ngữ đã chọn. Tên chính thức và nội dung tuyển sinh từ nguồn giữ ngôn ngữ gốc.", "home.feedback.search": "Nhấn Enter hoặc Tìm kiếm để xem kết quả đã công bố.", "home.feedback.empty": "Nhập chương trình, trường đại học, học bổng hoặc thành phố.",
     },
     th: {
       "shell.nav.home": "หน้าหลัก", "shell.nav.programs": "หลักสูตร", "shell.nav.universities": "มหาวิทยาลัย", "shell.nav.scholarships": "ทุนการศึกษา", "shell.nav.cities": "เมือง", "shell.nav.guides": "คู่มือ", "shell.nav.insights": "บทวิเคราะห์", "shell.nav.explore": "สำรวจ", "shell.nav.apply": "สมัครเรียนในจีน", "shell.nav.hub": "พื้นที่ของฉัน", "shell.openMenu": "เปิดเมนูนำทาง", "shell.closeMenu": "ปิดเมนูนำทาง",
@@ -59,7 +59,7 @@
       "home.kicker": "วางแผนเรียนต่อจีนอย่างชัดเจน", "home.title": "ค้นหาเส้นทางสู่มหาวิทยาลัยจีน", "home.sub": "ค้นหาหลักสูตร มหาวิทยาลัย ทุน เมือง และคู่มือที่เผยแพร่แล้วในที่เดียว", "home.placeholder": "ค้นหาหลักสูตร มหาวิทยาลัย ทุนการศึกษา หรือเมือง", "home.search": "ค้นหา", "home.chip.undergraduate": "ปริญญาตรี", "home.chip.master": "ปริญญาโท", "home.chip.english": "สอนเป็นภาษาอังกฤษ", "home.chip.scholarship": "ทุนการศึกษา", "home.chip.fall": "รอบเข้าเรียนปัจจุบัน",
       "home.catalogTitle": "เริ่มจากสิ่งที่คุณต้องการ", "home.cat.programs": "หลักสูตร", "home.cat.programsBody": "เปรียบเทียบระดับ ภาษา ค่าเล่าเรียน และรอบเข้าเรียน", "home.cat.universities": "มหาวิทยาลัย", "home.cat.universitiesBody": "ดูสถานที่ เส้นทาง และแหล่งข้อมูลทางการ", "home.cat.scholarships": "ทุนการศึกษา", "home.cat.scholarshipsBody": "สำรวจแหล่งทุนโดยไม่ถือว่าได้รับการรับรอง", "home.cat.cities": "เมืองและค่าใช้จ่าย", "home.cat.citiesBody": "เปรียบเทียบค่าครองชีพและสภาพแวดล้อมการเรียน",
       "home.planTitle": "เส้นทางสมัครที่ชัดเจนมีสี่ขั้น", "home.planBody": "ใช้ UCAC เพื่อคัดตัวเลือก แล้วตรวจสอบกำหนดเวลาและข้อกำหนดกับมหาวิทยาลัย", "home.step.1": "ค้นหา", "home.step.1Body": "เลือกสาขา เมือง หรือมหาวิทยาลัย", "home.step.2": "เปรียบเทียบ", "home.step.2Body": "ตรวจค่าเล่าเรียน ภาษา และรอบเข้าเรียน", "home.step.3": "เตรียมตัว", "home.step.3Body": "ทำความเข้าใจข้อกำหนดและเอกสาร", "home.step.4": "ตัดสินใจ", "home.step.4Body": "สร้างรายชื่อที่เหมาะแก่การสมัคร",
-      "home.boundaryTitle": "ขอบเขตการสมัครที่สำคัญ", "home.boundaryBody": "UCAC ช่วยค้นหาและจัดตัวเลือก ในรุ่นนี้นักศึกษาส่งเอกสารผ่านช่องทางทางการของแต่ละมหาวิทยาลัย", "home.accountTitle": "รวมตัวเลือกเรียนต่อจีนไว้ด้วยกัน", "home.accountBody": "บันทึกหลักสูตร เปรียบเทียบเส้นทาง และติดตามรอบเข้าเรียนในพื้นที่นักศึกษาเดียว", "home.create": "สร้างรายการ", "home.destinationNotice": "การนำทางแค็ตตาล็อก หน้าเมือง และป้ายรายละเอียดหลักได้รับการแปลแล้ว ชื่อทางการ เนื้อหาต้นฉบับ และคู่มือยังเป็นภาษาอังกฤษระหว่างการตรวจทานคำแปล", "home.feedback.search": "กด Enter หรือค้นหาเพื่อดูผลลัพธ์ที่เผยแพร่แล้ว", "home.feedback.empty": "กรอกหลักสูตร มหาวิทยาลัย ทุน หรือเมือง",
+      "home.boundaryTitle": "ขอบเขตการสมัครที่สำคัญ", "home.boundaryBody": "UCAC ช่วยค้นหาและจัดตัวเลือก ในรุ่นนี้นักศึกษาส่งเอกสารผ่านช่องทางทางการของแต่ละมหาวิทยาลัย", "home.accountTitle": "รวมตัวเลือกเรียนต่อจีนไว้ด้วยกัน", "home.accountBody": "บันทึกหลักสูตร เปรียบเทียบเส้นทาง และติดตามรอบเข้าเรียนในพื้นที่นักศึกษาเดียว", "home.create": "สร้างรายการ", "home.destinationNotice": "ส่วนควบคุมแค็ตตาล็อก หน้าเมือง คู่มือ และบทวิเคราะห์มีในภาษาที่เลือก ชื่อทางการและเนื้อหาการรับสมัครจากแหล่งข้อมูลคงภาษาที่เผยแพร่เดิม", "home.feedback.search": "กด Enter หรือค้นหาเพื่อดูผลลัพธ์ที่เผยแพร่แล้ว", "home.feedback.empty": "กรอกหลักสูตร มหาวิทยาลัย ทุน หรือเมือง",
     },
     id: {
       "shell.nav.home": "Beranda", "shell.nav.programs": "Program", "shell.nav.universities": "Universitas", "shell.nav.scholarships": "Beasiswa", "shell.nav.cities": "Kota", "shell.nav.guides": "Panduan", "shell.nav.insights": "Wawasan", "shell.nav.explore": "Jelajahi", "shell.nav.apply": "Daftar ke Tiongkok", "shell.nav.hub": "Ruang saya", "shell.openMenu": "Buka navigasi", "shell.closeMenu": "Tutup navigasi",
@@ -69,7 +69,7 @@
       "home.kicker": "Rencanakan studi di Tiongkok dengan jelas", "home.title": "Temukan jalur ke universitas di Tiongkok", "home.sub": "Cari program, universitas, beasiswa, kota, dan panduan yang telah dipublikasikan dalam satu tempat.", "home.placeholder": "Cari program, universitas, beasiswa, atau kota", "home.search": "Cari", "home.chip.undergraduate": "Sarjana", "home.chip.master": "Magister", "home.chip.english": "Berbahasa Inggris", "home.chip.scholarship": "Beasiswa", "home.chip.fall": "Penerimaan saat ini",
       "home.catalogTitle": "Mulai dari kebutuhan Anda", "home.cat.programs": "Program", "home.cat.programsBody": "Bandingkan jenjang, bahasa, biaya kuliah, dan penerimaan.", "home.cat.universities": "Universitas", "home.cat.universitiesBody": "Tinjau lokasi, jalur, dan sumber resmi.", "home.cat.scholarships": "Beasiswa", "home.cat.scholarshipsBody": "Jelajahi pendanaan tanpa menganggapnya pasti.", "home.cat.cities": "Kota dan biaya", "home.cat.citiesBody": "Bandingkan biaya hidup dan lingkungan belajar.",
       "home.planTitle": "Jalur pendaftaran yang jelas memiliki empat tahap", "home.planBody": "Gunakan UCAC untuk mempersempit katalog, lalu konfirmasikan tenggat dan persyaratan kepada universitas.", "home.step.1": "Temukan", "home.step.1Body": "Pilih bidang, kota, atau universitas.", "home.step.2": "Bandingkan", "home.step.2Body": "Periksa biaya, bahasa, dan jadwal masuk.", "home.step.3": "Siapkan", "home.step.3Body": "Pahami persyaratan dan dokumen.", "home.step.4": "Putuskan", "home.step.4Body": "Susun daftar yang layak didaftarkan.",
-      "home.boundaryTitle": "Batas penting layanan pendaftaran", "home.boundaryBody": "UCAC membantu menemukan dan mengatur pilihan. Pada rilis ini, pelajar mengirim dokumen melalui kanal resmi setiap universitas.", "home.accountTitle": "Satukan pilihan studi di Tiongkok", "home.accountBody": "Simpan program, bandingkan jalur, dan pantau jadwal masuk dalam satu ruang pelajar.", "home.create": "Buat daftar", "home.destinationNotice": "Navigasi katalog, halaman kota, dan label detail inti telah diterjemahkan. Nama resmi, konten sumber, dan panduan tetap berbahasa Inggris selama terjemahan ditinjau.", "home.feedback.search": "Tekan Enter atau Cari untuk melihat hasil katalog yang dipublikasikan.", "home.feedback.empty": "Masukkan program, universitas, beasiswa, atau kota.",
+      "home.boundaryTitle": "Batas penting layanan pendaftaran", "home.boundaryBody": "UCAC membantu menemukan dan mengatur pilihan. Pada rilis ini, pelajar mengirim dokumen melalui kanal resmi setiap universitas.", "home.accountTitle": "Satukan pilihan studi di Tiongkok", "home.accountBody": "Simpan program, bandingkan jalur, dan pantau jadwal masuk dalam satu ruang pelajar.", "home.create": "Buat daftar", "home.destinationNotice": "Kontrol katalog, halaman kota, panduan, dan analisis tersedia dalam bahasa pilihan. Nama resmi dan konten penerimaan dari sumber tetap dalam bahasa publikasinya.", "home.feedback.search": "Tekan Enter atau Cari untuk melihat hasil katalog yang dipublikasikan.", "home.feedback.empty": "Masukkan program, universitas, beasiswa, atau kota.",
     },
     ms: {
       "shell.nav.home": "Utama", "shell.nav.programs": "Program", "shell.nav.universities": "Universiti", "shell.nav.scholarships": "Biasiswa", "shell.nav.cities": "Bandar", "shell.nav.guides": "Panduan", "shell.nav.insights": "Wawasan", "shell.nav.explore": "Teroka", "shell.nav.apply": "Mohon ke China", "shell.nav.hub": "Ruang saya", "shell.openMenu": "Buka navigasi", "shell.closeMenu": "Tutup navigasi",
@@ -79,7 +79,7 @@
       "home.kicker": "Rancang pengajian di China dengan jelas", "home.title": "Cari laluan ke universiti di China", "home.sub": "Cari program, universiti, biasiswa, bandar dan panduan yang diterbitkan dalam satu tempat.", "home.placeholder": "Cari program, universiti, biasiswa atau bandar", "home.search": "Cari", "home.chip.undergraduate": "Sarjana muda", "home.chip.master": "Sarjana", "home.chip.english": "Diajarkan dalam bahasa Inggeris", "home.chip.scholarship": "Biasiswa", "home.chip.fall": "Pengambilan semasa",
       "home.catalogTitle": "Mulakan dengan keperluan anda", "home.cat.programs": "Program", "home.cat.programsBody": "Bandingkan tahap, bahasa, yuran dan pengambilan.", "home.cat.universities": "Universiti", "home.cat.universitiesBody": "Semak lokasi, laluan dan sumber rasmi.", "home.cat.scholarships": "Biasiswa", "home.cat.scholarshipsBody": "Teroka pembiayaan tanpa menganggapnya terjamin.", "home.cat.cities": "Bandar dan kos", "home.cat.citiesBody": "Bandingkan kos sara hidup dan persekitaran belajar.",
       "home.planTitle": "Laluan permohonan yang jelas mempunyai empat langkah", "home.planBody": "Gunakan UCAC untuk mengecilkan pilihan, kemudian sahkan tarikh akhir dan syarat dengan universiti.", "home.step.1": "Teroka", "home.step.1Body": "Pilih bidang, bandar atau universiti.", "home.step.2": "Bandingkan", "home.step.2Body": "Semak yuran, bahasa dan tarikh pengambilan.", "home.step.3": "Sediakan", "home.step.3Body": "Fahami syarat dan dokumen.", "home.step.4": "Putuskan", "home.step.4Body": "Bina senarai yang sesuai untuk dipohon.",
-      "home.boundaryTitle": "Batas penting permohonan", "home.boundaryBody": "UCAC membantu mencari dan menyusun pilihan. Dalam keluaran ini, pelajar menghantar dokumen melalui saluran rasmi setiap universiti.", "home.accountTitle": "Satukan pilihan pengajian di China", "home.accountBody": "Simpan program, bandingkan laluan dan jejak pengambilan dalam satu ruang pelajar.", "home.create": "Cipta senarai", "home.destinationNotice": "Navigasi katalog, halaman bandar dan label butiran teras telah diterjemahkan. Nama rasmi, kandungan sumber dan panduan kekal dalam bahasa Inggeris sementara terjemahan disemak.", "home.feedback.search": "Tekan Enter atau Cari untuk melihat hasil katalog yang diterbitkan.", "home.feedback.empty": "Masukkan program, universiti, biasiswa atau bandar.",
+      "home.boundaryTitle": "Batas penting permohonan", "home.boundaryBody": "UCAC membantu mencari dan menyusun pilihan. Dalam keluaran ini, pelajar menghantar dokumen melalui saluran rasmi setiap universiti.", "home.accountTitle": "Satukan pilihan pengajian di China", "home.accountBody": "Simpan program, bandingkan laluan dan jejak pengambilan dalam satu ruang pelajar.", "home.create": "Cipta senarai", "home.destinationNotice": "Kawalan katalog, halaman bandar, panduan dan analisis tersedia dalam bahasa pilihan. Nama rasmi dan kandungan kemasukan daripada sumber mengekalkan bahasa asal penerbitan.", "home.feedback.search": "Tekan Enter atau Cari untuk melihat hasil katalog yang diterbitkan.", "home.feedback.empty": "Masukkan program, universiti, biasiswa atau bandar.",
     },
     ar: {
       "shell.nav.home": "الرئيسية", "shell.nav.programs": "البرامج", "shell.nav.universities": "الجامعات", "shell.nav.scholarships": "المنح", "shell.nav.cities": "المدن", "shell.nav.guides": "الأدلة", "shell.nav.insights": "الرؤى", "shell.nav.explore": "استكشف", "shell.nav.apply": "التقديم إلى الصين", "shell.nav.hub": "مساحتي", "shell.openMenu": "فتح التنقل", "shell.closeMenu": "إغلاق التنقل",
@@ -89,16 +89,31 @@
       "home.kicker": "خطط للدراسة في الصين بوضوح", "home.title": "اعثر على مسارك إلى جامعة صينية", "home.sub": "ابحث عن البرامج والجامعات والمنح والمدن والأدلة المنشورة في مكان واحد.", "home.placeholder": "ابحث عن البرامج أو الجامعات أو المنح أو المدن", "home.search": "بحث", "home.chip.undergraduate": "بكالوريوس", "home.chip.master": "ماجستير", "home.chip.english": "باللغة الإنجليزية", "home.chip.scholarship": "منحة", "home.chip.fall": "مواعيد الالتحاق الحالية",
       "home.catalogTitle": "ابدأ بما تحتاج إليه", "home.cat.programs": "البرامج", "home.cat.programsBody": "قارن الدرجة واللغة والرسوم وموعد الالتحاق.", "home.cat.universities": "الجامعات", "home.cat.universitiesBody": "راجع الموقع والمسارات والمصادر الرسمية.", "home.cat.scholarships": "المنح", "home.cat.scholarshipsBody": "استكشف التمويل من دون اعتباره مضمونًا.", "home.cat.cities": "المدن والتكلفة", "home.cat.citiesBody": "قارن تكلفة المعيشة وبيئة الدراسة.",
       "home.planTitle": "يتكوّن مسار التقديم الواضح من أربع خطوات", "home.planBody": "استخدم UCAC لتضييق الخيارات، ثم أكد كل موعد ومتطلب مع الجامعة.", "home.step.1": "اكتشف", "home.step.1Body": "اختر تخصصًا أو مدينة أو جامعة.", "home.step.2": "قارن", "home.step.2Body": "تحقق من الرسوم واللغة ومواعيد الالتحاق.", "home.step.3": "استعد", "home.step.3Body": "افهم المتطلبات والعمل المطلوب للوثائق.", "home.step.4": "قرر", "home.step.4Body": "أنشئ قائمة مناسبة للتقديم.",
-      "home.boundaryTitle": "حدود مهمة لخدمة التقديم", "home.boundaryBody": "يساعدك UCAC على اكتشاف الخيارات وتنظيمها. في هذا الإصدار يرسل الطلاب مستندات التقديم عبر القناة الرسمية لكل جامعة.", "home.accountTitle": "اجمع خيارات الدراسة في الصين", "home.accountBody": "احفظ البرامج وقارن المسارات وتابع مواعيد الالتحاق في مساحة طالب واحدة.", "home.create": "إنشاء قائمة", "home.destinationNotice": "تُرجمت عناصر التنقل في الدليل وصفحات المدن وتسميات التفاصيل الأساسية. تبقى الأسماء الرسمية ومحتوى المصدر والأدلة باللغة الإنجليزية إلى حين مراجعة الترجمات.", "home.feedback.search": "اضغط Enter أو بحث لعرض نتائج الكتالوج المنشورة.", "home.feedback.empty": "أدخل برنامجًا أو جامعة أو منحة أو مدينة.",
+      "home.boundaryTitle": "حدود مهمة لخدمة التقديم", "home.boundaryBody": "يساعدك UCAC على اكتشاف الخيارات وتنظيمها. في هذا الإصدار يرسل الطلاب مستندات التقديم عبر القناة الرسمية لكل جامعة.", "home.accountTitle": "اجمع خيارات الدراسة في الصين", "home.accountBody": "احفظ البرامج وقارن المسارات وتابع مواعيد الالتحاق في مساحة طالب واحدة.", "home.create": "إنشاء قائمة", "home.destinationNotice": "تتوفر عناصر الدليل وصفحات المدن والأدلة والتحليلات باللغة المختارة. وتحتفظ الأسماء الرسمية ومحتويات مصادر القبول بلغة نشرها الأصلية.", "home.feedback.search": "اضغط Enter أو بحث لعرض نتائج الكتالوج المنشورة.", "home.feedback.empty": "أدخل برنامجًا أو جامعة أو منحة أو مدينة.",
     },
   };
+
+  Object.assign(copy.en, {
+    "shell.homeLabel": "UCAC home", "shell.logoAlt": "UCAC — Study in China — University & College Application Center",
+    "shell.rights": "All rights reserved.", "shell.backToTop": "Back to top",
+    "shell.nav.documents": "Documents", "shell.nav.language": "Language requirements", "shell.nav.visa": "Visa and JW form", "shell.nav.timeline": "Intake calendar",
+  });
+  Object.assign(copy.vi, {
+    "shell.homeLabel": "Trang chủ UCAC", "shell.logoAlt": "UCAC — Du học Trung Quốc — Trung tâm đăng ký đại học và cao đẳng",
+    "shell.rights": "Bảo lưu mọi quyền.", "shell.backToTop": "Về đầu trang",
+    "shell.nav.documents": "Hồ sơ", "shell.nav.language": "Yêu cầu ngôn ngữ", "shell.nav.visa": "Thị thực và mẫu JW", "shell.nav.timeline": "Lịch tuyển sinh",
+  });
+  Object.assign(copy.th, { "shell.homeLabel": "หน้าแรก UCAC", "shell.logoAlt": "UCAC — เรียนต่อจีน — ศูนย์สมัครมหาวิทยาลัยและวิทยาลัย", "shell.rights": "สงวนลิขสิทธิ์", "shell.backToTop": "กลับด้านบน", "shell.nav.documents": "เอกสาร", "shell.nav.language": "ข้อกำหนดภาษา", "shell.nav.visa": "วีซ่าและแบบฟอร์ม JW", "shell.nav.timeline": "ปฏิทินรับสมัคร" });
+  Object.assign(copy.id, { "shell.homeLabel": "Beranda UCAC", "shell.logoAlt": "UCAC — Studi di Tiongkok — Pusat Pendaftaran Universitas dan Perguruan Tinggi", "shell.rights": "Hak cipta dilindungi.", "shell.backToTop": "Kembali ke atas", "shell.nav.documents": "Dokumen", "shell.nav.language": "Persyaratan bahasa", "shell.nav.visa": "Visa dan formulir JW", "shell.nav.timeline": "Kalender penerimaan" });
+  Object.assign(copy.ms, { "shell.homeLabel": "Laman utama UCAC", "shell.logoAlt": "UCAC — Pengajian di China — Pusat Permohonan Universiti dan Kolej", "shell.rights": "Hak cipta terpelihara.", "shell.backToTop": "Kembali ke atas", "shell.nav.documents": "Dokumen", "shell.nav.language": "Syarat bahasa", "shell.nav.visa": "Visa dan borang JW", "shell.nav.timeline": "Kalendar pengambilan" });
+  Object.assign(copy.ar, { "shell.homeLabel": "الصفحة الرئيسية لـ UCAC", "shell.logoAlt": "UCAC — الدراسة في الصين — مركز التقديم للجامعات والكليات", "shell.rights": "جميع الحقوق محفوظة.", "shell.backToTop": "العودة إلى الأعلى", "shell.nav.documents": "الوثائق", "shell.nav.language": "متطلبات اللغة", "shell.nav.visa": "التأشيرة ونموذج JW", "shell.nav.timeline": "تقويم القبول" });
 
   function normalize(value) {
     if (typeof value !== "string") return null;
     const tag = value.trim().replaceAll("_", "-").toLowerCase();
     return aliases[tag] || aliases[tag.split("-")[0]] || null;
   }
-  const ready = (document.body.dataset.i18nLocales || "en").split(",").map(normalize).filter((item, index, all) => item && all.indexOf(item) === index);
+  const ready = (document.body.dataset.i18nLocales || document.querySelector("[data-i18n-locales]")?.dataset.i18nLocales || "en").split(",").map(normalize).filter((item, index, all) => item && all.indexOf(item) === index);
   if (!ready.includes("en")) ready.unshift("en");
   const requested = normalize(new URLSearchParams(location.search).get("lang"));
   const browser = (navigator.languages || [navigator.language]).map(normalize).find(item => ready.includes(item));
@@ -107,7 +122,123 @@
   document.documentElement.dir = metadata[locale].dir;
   document.body.dataset.cuacLocale = locale;
 
+  const footerCopy = [
+  [
+    "footer.students",
+    "Students",
+    "Sinh viên",
+    "นักศึกษา",
+    "Pelajar",
+    "Pelajar",
+    "الطلاب"
+  ],
+  [
+    "footer.ucac",
+    "UCAC",
+    "UCAC",
+    "UCAC",
+    "UCAC",
+    "UCAC",
+    "UCAC"
+  ],
+  [
+    "footer.programs",
+    "Search programs",
+    "Tìm chương trình",
+    "ค้นหาหลักสูตร",
+    "Cari program",
+    "Cari program",
+    "البحث عن البرامج"
+  ],
+  [
+    "footer.cities",
+    "City guides",
+    "Hướng dẫn thành phố",
+    "คู่มือเมือง",
+    "Panduan kota",
+    "Panduan bandar",
+    "أدلة المدن"
+  ],
+  [
+    "footer.language",
+    "HSK / IELTS",
+    "HSK / IELTS",
+    "HSK / IELTS",
+    "HSK / IELTS",
+    "HSK / IELTS",
+    "HSK / IELTS"
+  ],
+  [
+    "footer.about",
+    "About UCAC and Holalobe",
+    "Về UCAC và Holalobe",
+    "เกี่ยวกับ UCAC และ Holalobe",
+    "Tentang UCAC dan Holalobe",
+    "Tentang UCAC dan Holalobe",
+    "عن UCAC وHolalobe"
+  ],
+  [
+    "footer.privacy",
+    "Privacy",
+    "Quyền riêng tư",
+    "ความเป็นส่วนตัว",
+    "Privasi",
+    "Privasi",
+    "الخصوصية"
+  ],
+  [
+    "footer.children",
+    "Children's privacy",
+    "Quyền riêng tư của trẻ em",
+    "ความเป็นส่วนตัวของเด็ก",
+    "Privasi anak",
+    "Privasi kanak-kanak",
+    "خصوصية الأطفال"
+  ],
+  [
+    "footer.terms",
+    "Terms",
+    "Điều khoản",
+    "ข้อกำหนด",
+    "Ketentuan",
+    "Terma",
+    "الشروط"
+  ]
+];
+  ["en", "vi", "th", "id", "ms", "ar"].forEach((language, index) => {
+    footerCopy.forEach(([key, ...values]) => { copy[language][`shell.${key}`] = values[index]; });
+  });
+
+  const commonCopy = [
+    ["catalog.noun.records", "records", "mục", "รายการ", "data", "rekod", "السجلات"],
+    ["catalog.noun.catalog", "catalog", "danh mục", "แค็ตตาล็อก", "katalog", "katalog", "الدليل"],
+    ["catalog.noun.programs", "programs", "chương trình", "หลักสูตร", "program", "program", "البرامج"],
+    ["catalog.noun.schools", "universities", "trường đại học", "มหาวิทยาลัย", "universitas", "universiti", "الجامعات"],
+    ["catalog.noun.universities", "universities", "trường đại học", "มหาวิทยาลัย", "universitas", "universiti", "الجامعات"],
+    ["catalog.noun.scholarships", "scholarships", "học bổng", "ทุนการศึกษา", "beasiswa", "biasiswa", "المنح"],
+    ["catalog.noun.cities", "cities", "thành phố", "เมือง", "kota", "bandar", "المدن"],
+    ["a11y.programCard", "View {name} program route", "Xem lộ trình chương trình {name}", "ดูเส้นทางหลักสูตร {name}", "Lihat jalur program {name}", "Lihat laluan program {name}", "عرض مسار برنامج {name}"],
+    ["a11y.universityCard", "View {name} university guide", "Xem hướng dẫn trường {name}", "ดูคู่มือมหาวิทยาลัย {name}", "Lihat panduan universitas {name}", "Lihat panduan universiti {name}", "عرض دليل جامعة {name}"],
+    ["a11y.scholarshipCard", "View {name} funding details", "Xem chi tiết tài trợ {name}", "ดูรายละเอียดทุน {name}", "Lihat detail pendanaan {name}", "Lihat butiran pembiayaan {name}", "عرض تفاصيل تمويل {name}"],
+    ["a11y.cityCard", "View {name} city guide", "Xem hướng dẫn thành phố {name}", "ดูคู่มือเมือง {name}", "Lihat panduan kota {name}", "Lihat panduan bandar {name}", "عرض دليل مدينة {name}"],
+    ["a11y.cover", "{name} cover", "Ảnh bìa {name}", "ภาพปก {name}", "Sampul {name}", "Kulit {name}", "صورة غلاف {name}"],
+  ];
+  ["en", "vi", "th", "id", "ms", "ar"].forEach((language, index) => {
+    commonCopy.forEach(([key, ...values]) => { copy[language][key] = values[index]; });
+  });
+
   function t(key, fallback = key) { return copy[locale]?.[key] ?? copy.en[key] ?? fallback; }
+  function format(key, values = {}, fallback = key) {
+    return t(key, fallback).replace(/\{(\w+)\}/g, (token, name) => String(values[name] ?? token));
+  }
+  function href(rawHref) {
+    if (!rawHref || rawHref.startsWith("#") || /^(?:mailto:|tel:|javascript:)/i.test(rawHref)) return rawHref;
+    const url = new URL(rawHref, location.href);
+    if (url.origin !== location.origin || !(url.pathname === "/" || /\.html$/i.test(url.pathname) || /^\/(?:guides|insights)(?:\/|$)/.test(url.pathname))) return rawHref;
+    // English is an explicit selection too; never re-infer it from browser preferences.
+    url.searchParams.set("lang", locale);
+    return url.pathname + url.search + url.hash;
+  }
   function register(messages) {
     if (!messages || typeof messages !== "object") return;
     Object.entries(messages).forEach(([messageLocale, entries]) => {
@@ -121,5 +252,5 @@
     url.searchParams.set("lang", nextLocale);
     location.assign(url);
   }
-  window.CUACI18n = { locale, direction: metadata[locale].dir, readyLocales: Object.freeze([...ready]), metadata, normalize, register, t, changeLocale };
+  window.CUACI18n = { locale, direction: metadata[locale].dir, readyLocales: Object.freeze([...ready]), metadata, normalize, register, t, format, href, changeLocale };
 }());

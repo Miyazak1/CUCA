@@ -97,8 +97,8 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       const drawerBackdrop = document.querySelector("#drawerBackdrop");
 
       function formatMoney(value) {
-        if (!Number(value)) return "Tuition pending";
-        return `RMB ${value.toLocaleString("en-US")}`;
+        if (!Number(value)) return catalogUi("Tuition pending");
+        return `RMB ${value.toLocaleString(window.CUACCatalogI18n?.locale || "en-US")}`;
       }
 
       function formatShortDate(value) {
@@ -162,7 +162,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       }
 
       function programLanguageLabel(program = {}) {
-        return program.teachingLanguage || labelLanguage(programLanguageValue(program));
+        return catalogUi(program.teachingLanguage || labelLanguage(programLanguageValue(program)));
       }
 
       function programIntake(program = {}) {
@@ -182,10 +182,10 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       }
 
       function programDeadlineStatus(program = {}) {
+        const date = new Date(programDeadline(program));
+        if (Number.isNaN(date.getTime())) return program.deadlineStatus === "closed" ? "closed" : "pending";
         if (program.deadlineStatus) return program.deadlineStatus;
         if (programTerm(program) === "late") return "late";
-        const date = new Date(programDeadline(program));
-        if (Number.isNaN(date.getTime())) return "open";
         const days = Math.ceil((date.getTime() - Date.now()) / 86400000);
         if (days < 0) return "closed";
         if (days <= 45) return "urgent";
@@ -246,8 +246,8 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
           <div class="program-requirements" aria-label="Program requirements">
             ${items.map(([label, value]) => `
               <div class="program-requirement">
-                <span>${label}</span>
-                <strong>${value}</strong>
+                <span>${escapeCatalogHtml(catalogUi(label))}</span>
+                <strong>${escapeCatalogHtml(catalogUi(value))}</strong>
               </div>
             `).join("")}
           </div>
@@ -287,8 +287,10 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
 
       function deadlineBadge(program) {
         const deadline = programDeadline(program);
-        const dateLabel = deadline ? formatShortDate(deadline) : catalogUi("date pending");
         const status = programDeadlineStatus(program);
+        if (status === "pending") return ["", catalogUi(program.applicationRound || program.intake ? "Deadline not published" : "Intake pending")];
+        if (status === "closed" && Number.isNaN(new Date(deadline).getTime())) return ["danger", catalogUi("Closed")];
+        const dateLabel = formatShortDate(deadline);
         if (status === "urgent") return ["danger", `${catalogUi("Urgent:")} ${dateLabel}`];
         if (status === "closes-soon") return ["warning", `${catalogUi("Closes")} ${dateLabel}`];
         if (status === "late") return ["success", `${catalogUi("Late intake until")} ${dateLabel}`];
@@ -472,23 +474,24 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
         const university = programUniversity(program);
         const isSaved = state.saved.has(id);
         const isCompared = state.compared.has(id);
-        const programHref = `program-detail.html?program=${encodeURIComponent(id)}`;
+        const rawProgramHref = `program-detail.html?program=${encodeURIComponent(id)}`;
+        const programHref = window.CUACCatalogI18n?.localizeHref(rawProgramHref) || rawProgramHref;
         const universityHref = `university-detail.html?university=${encodeURIComponent(program.schoolId)}`;
         const scholarship = programScholarship(program);
         return `
-          <article class="program-row result-enter" style="--enter-index: ${index}" role="link" tabindex="0" data-program-id="${escapeCatalogHtml(id)}" data-program-card data-detail-href="${programHref}" aria-label="View ${escapeCatalogHtml(name)} program route">
+          <article class="program-row result-enter" data-enter-index="${index}" role="link" tabindex="0" data-program-id="${escapeCatalogHtml(id)}" data-program-card data-detail-href="${programHref}" aria-label="${escapeCatalogHtml(window.CUACI18n.format("a11y.programCard", { name: name }))}">
             <div class="program-art">
               <a href="${programHref}" aria-label="Open ${escapeCatalogHtml(name)}">
                 <img data-catalog-cover alt="${escapeCatalogHtml(name)} cover" src="${programImage(program)}" />
               </a>
               <div class="row-top">
-                <span class="badge ${badgeClassName}">${escapeCatalogHtml(badgeLabel)}</span>
                 <button class="save-button catalog-save-control ${isSaved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(id)}" aria-pressed="${isSaved}" aria-label="${escapeCatalogHtml(catalogT(isSaved ? "common.remove" : "common.save", isSaved ? `Remove ${name} from Favourites` : `Save ${name} to Favourites`, { name }))}" title="${escapeCatalogHtml(catalogT(isSaved ? "common.savedTitle" : "common.saveTitle", isSaved ? "Saved — click to remove" : "Save to Favourites"))}">${window.CuacCatalogList.saveHeartIcon()}</button>
               </div>
               <span class="program-card-open" aria-hidden="true">${iconArrowRight}</span>
             </div>
             <div class="program-main">
-              <h2><a href="${programHref}">${escapeCatalogHtml(name)}</a></h2>
+              <span class="badge program-status ${badgeClassName}">${escapeCatalogHtml(badgeLabel)}</span>
+              <h2><a href="${programHref}" title="${escapeCatalogHtml(name)}" lang="en">${escapeCatalogHtml(name).replace(/\(/g, "<wbr>(").replace(/\//g, "/<wbr>")}</a></h2>
               <div class="meta"><a href="${universityHref}">${escapeCatalogHtml(university)}</a> · ${escapeCatalogHtml(labelDegree(programDegreeValue(program)))} · ${escapeCatalogHtml(programLanguageLabel(program) || "Language not published")}</div>
               <div class="facts">
                 <div class="fact"><strong>${escapeCatalogHtml(programIntake(program))}</strong><span>${escapeCatalogHtml(catalogUi("application round"))}</span></div>
@@ -500,10 +503,10 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
                 <span class="signal ${programReadinessType(program)}">${escapeCatalogHtml(programReadiness(program))}</span>
               </div>
               ${renderRequirementCards(program)}
-              <p class="fit-line">${escapeCatalogHtml(programFit(program))}</p>
+              <p class="fit-line">${escapeCatalogHtml(catalogUi(programFit(program)))}</p>
             </div>
             <div class="row-actions">
-              <button class="program-card-action program-action-secondary compare-action ${isCompared ? "is-compared" : ""}" type="button" data-compare="${escapeCatalogHtml(id)}" aria-pressed="${isCompared ? "true" : "false"}" aria-label="${isCompared ? "Remove from compare" : "Add to compare"}: ${escapeCatalogHtml(name)}" title="${isCompared ? "Compared" : "Compare"}">${iconCompare}</button>
+              <button class="program-card-action program-action-secondary compare-action ${isCompared ? "is-compared" : ""}" type="button" data-compare="${escapeCatalogHtml(id)}" aria-pressed="${isCompared ? "true" : "false"}" aria-label="${escapeCatalogHtml(catalogUi(isCompared ? "Remove from compare" : "Add to compare"))}: ${escapeCatalogHtml(name)}" title="${escapeCatalogHtml(catalogUi(isCompared ? "Compared" : "Compare"))}">${iconCompare}</button>
             </div>
           </article>
         `;
@@ -740,7 +743,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
           return true;
         }
         if (action === "open-choice-modal") {
-          window.location.href = "application.html#add-choice";
+          window.location.href = window.CUACCatalogI18n.localizeHref("application.html#add-choice");
           return true;
         }
         return false;

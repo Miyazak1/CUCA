@@ -1,4 +1,4 @@
-import type { Server, ServerResponse, RequestListener } from "node:http";
+import type { Server, ServerResponse, RequestListener, IncomingMessage } from "node:http";
 import type { Socket } from "node:net";
 import { randomUUID } from "node:crypto";
 import { getApplicationLifecycle, type ApplicationLifecycle } from "../shared/application-lifecycle.ts";
@@ -11,7 +11,7 @@ type Options = {
   lifecycle?: ApplicationLifecycle;
   exit?: (code: number) => void;
   onEvent?: (event: { event: string; reason?: StopReason; outcome?: StopOutcome; activeRequests: number; closedResources?: string[] }) => void;
-  responseHeaders?: Readonly<Record<string, string>>;
+  responseHeaders?: Readonly<Record<string, string>> | ((request: IncomingMessage) => Readonly<Record<string, string>>);
 };
 
 export function installHttpLifecycle(server: Server, options: Options = {}) {
@@ -28,7 +28,8 @@ export function installHttpLifecycle(server: Server, options: Options = {}) {
   const report = (event: Parameters<NonNullable<Options["onEvent"]>>[0]) => { try { options.onEvent?.(event); } catch { /* Diagnostic sinks do not own shutdown. */ } };
 
   const request: RequestListener = (req, res) => {
-    for (const [name, value] of Object.entries(options.responseHeaders ?? {})) res.setHeader(name, value);
+    const responseHeaders = typeof options.responseHeaders === "function" ? options.responseHeaders(req) : options.responseHeaders;
+    for (const [name, value] of Object.entries(responseHeaders ?? {})) res.setHeader(name, value);
     if (lifecycle.snapshot().phase !== "running") {
       const requestId = randomUUID();
       res.writeHead(503, { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", pragma: "no-cache",

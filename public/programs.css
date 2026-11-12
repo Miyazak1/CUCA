@@ -782,9 +782,11 @@
         z-index: 1;
         display: flex;
         align-items: flex-start;
-        justify-content: space-between;
+        justify-content: flex-end;
         gap: 14px;
       }
+
+      .program-status { margin-bottom: 8px; white-space: normal; }
 
       .badge {
         display: inline-flex;
@@ -826,7 +828,9 @@
         font-size: 21px;
         line-height: 1.12;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 3;
+        overflow-wrap: break-word;
+        hyphens: auto;
       }
 
       .program-row h2 a,
@@ -1437,7 +1441,7 @@
         }
 
         .quick-summary {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
         h1 {

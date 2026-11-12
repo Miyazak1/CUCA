@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "sourceHash": "1e3e9b4a99f2cd42090fca3036461ab250fca57268d172ef84dfed1db0e3c6af",
+  "sourceCount": 17405,
+  "locales": {
+    "vi": {
+      "ready": true,
+      "sourceCount": 17405,
+      "sha256": "660e83f8028789a574fd857db279c5197c8fb30473cf2f5626f2855f752bfa88",
+      "validation": "Required source numbers, exam labels and URLs retained; no unchanged long prose",
+      "referenceTranslation": true
+    }
+  }
+}

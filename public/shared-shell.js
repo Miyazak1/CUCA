@@ -662,9 +662,11 @@
     `;
   }
 
-  function brand() {
-    const href = localizedPageHref("home-v3.html");
-    return `<span class="brand-lockup"><a class="brand" href="${href}" aria-label="UCAC home"><picture class="brand-wordmark"><source media="(max-width: 560px)" srcset="/ucac-wordmark-compact.svg" width="306" height="64"><img src="/ucac-wordmark.svg" width="360" height="64" alt="UCAC — Study in China — University & College Application Center" /></picture></a></span>`;
+  function brand(footer = false) {
+    const href = localizedPageHref("/");
+    const wordmark = footer ? "/ucac-wordmark-footer.svg" : "/ucac-wordmark.svg";
+    const compactWordmark = footer ? "/ucac-wordmark-compact-footer.svg" : "/ucac-wordmark-compact.svg";
+    return `<span class="brand-lockup"><a class="brand" href="${href}" aria-label="${escapeHTML(shellText("homeLabel", "UCAC home"))}"><picture class="brand-wordmark"><source media="(max-width: 560px)" srcset="${compactWordmark}" width="${footer ? 298 : 306}" height="64"><img src="${wordmark}" width="${footer ? 324 : 360}" height="64" alt="${escapeHTML(shellText("logoAlt", "UCAC — Study in China — University & College Application Center"))}" /></picture></a></span>`;
   }
 
   function shellText(key, fallback) {
@@ -708,7 +710,7 @@
     if (!rawHref) return rawHref;
     const url = new URL(rawHref, `${window.location.origin}/`);
     if (url.origin !== window.location.origin) return rawHref;
-    if (shouldCarryLocale(locale) && url.pathname.toLowerCase().endsWith(".html")) {
+    if (shouldCarryLocale(locale) && (url.pathname === "/" || url.pathname.toLowerCase().endsWith(".html") || /^\/(guides|insights)(\/|$)/.test(url.pathname))) {
       url.searchParams.set("lang", locale);
     }
     return `${url.pathname}${url.search}${url.hash}`;
@@ -868,6 +870,7 @@
     const exploreItems = exploreNavItemIds.map((id) => byId.get(id)).filter(Boolean);
     const applyItems = (localizedNav ? applyNavItemsZh : applyNavItems).map((item) => ({
       ...item,
+      label: localizedNav ? item.label : shellText(`nav.${item.id}`, item.label),
       href: localizedPageHref(item.href),
     }));
     const insights = byId.get("insights");
@@ -951,9 +954,9 @@
     if (workspace) {
       target.outerHTML = `
         <footer class="footer footer-workspace">
-          <div>${brand()}<span>${workspace.kind === "student" ? escapeHTML(shellText("studentWorkspaceTagline", "Your China application workspace")) : workspace.kind === "school" ? "当前学校租户内的招生工作区" : "受控、可审计的 UCAC 运营工作区"}</span></div>
+          <div>${brand(true)}<span>${workspace.kind === "student" ? escapeHTML(shellText("studentWorkspaceTagline", "Your China application workspace")) : workspace.kind === "school" ? "当前学校租户内的招生工作区" : "受控、可审计的 UCAC 运营工作区"}</span></div>
           <div class="footer-legal">
-            <a href="${localized ? "privacy.html?lang=zh-CN" : localizedPageHref("privacy.html")}">${localized ? "隐私与数据边界" : escapeHTML(shellText("privacyData", "Privacy and data use"))}</a>
+            <a href="${localized ? "/privacy.html?lang=zh-CN" : localizedPageHref("privacy.html")}">${localized ? "隐私与数据边界" : escapeHTML(shellText("privacyData", "Privacy and data use"))}</a>
             <a href="${localizedPageHref("/guides/")}">${localized ? "申请指南" : escapeHTML(shellText("nav.guides", "Application guides"))}</a>
           </div>
         </footer>
@@ -961,13 +964,25 @@
       return;
     }
     const translatedPublicShell = Boolean(window.CUACI18n && window.CUACI18n.locale !== "en");
-    const groups = localized ? footerGroupsZh : translatedPublicShell ? [] : footerGroups;
+    const groups = localized ? footerGroupsZh : footerGroups.map((group, index) => ({
+      title: shellText(["footer.students", "nav.apply", "footer.ucac"][index], group.title),
+      links: group.links.map(([label, href], linkIndex) => {
+        const keys = [
+          ["footer.programs", "nav.universities", "nav.scholarships", "footer.cities"],
+          ["nav.documents", "footer.language", "nav.visa", "nav.timeline"],
+          ["footer.about", "footer.privacy", "footer.children", "footer.terms"],
+        ];
+        const notice = index === 2 && linkIndex > 0 && translatedPublicShell
+          ? ` (${shellText("englishOnly", "English version")})` : "";
+        return [shellText(keys[index][linkIndex], label) + notice, href];
+      }),
+    }));
     const englishOnly = translatedPublicShell ? ` (${escapeHTML(shellText("englishOnly", "English version"))})` : "";
     target.outerHTML = `
       <footer class="footer">
         <div class="footer-grid">
           <div>
-            ${brand()}
+            ${brand(true)}
             <p>${localized ? "面向国际学生申请中国高校的招生搜索与管理平台。" : escapeHTML(shellText("tagline", "China admissions search for international students applying to Chinese universities."))}</p>
             <div class="footer-actions">
               <a href="${localizedPageHref("/guides/")}">${localized ? "申请指南" : escapeHTML(shellText("help", "Need help?"))}</a>
@@ -976,17 +991,17 @@
           ${groups
             .map((group) => `
               <div class="footer-col">
-                <strong>${group.title}</strong>
-                ${group.links.map(([label, href]) => `<a href="${localizedPageHref(href)}">${label}</a>`).join("")}
+                <strong>${escapeHTML(group.title)}</strong>
+                ${group.links.map(([label, href]) => `<a href="${localizedPageHref(href)}">${escapeHTML(label)}</a>`).join("")}
               </div>
             `)
             .join("")}
         </div>
         <div class="footer-bottom">
-          <span>© 2026 UCAC. ${localized ? "保留所有权利。" : "All rights reserved."}</span>
+          <span>© 2026 UCAC. ${localized ? "保留所有权利。" : escapeHTML(shellText("rights", "All rights reserved."))}</span>
           <div class="footer-legal">
-            <a href="cookies.html${localized ? "?lang=zh-CN" : ""}">${localized ? "Cookie 说明" : `${escapeHTML(shellText("cookies", "Cookie notice"))}${englishOnly}`}</a>
-            <a href="admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "数据与来源政策" : `${escapeHTML(shellText("dataPolicy", "Data and source policy"))}${englishOnly}`}</a>
+            <a href="/cookies.html${localized ? "?lang=zh-CN" : ""}">${localized ? "Cookie 说明" : `${escapeHTML(shellText("cookies", "Cookie notice"))}${englishOnly}`}</a>
+            <a href="/admissions-data-policy.html${localized ? "?lang=zh-CN" : ""}">${localized ? "数据与来源政策" : `${escapeHTML(shellText("dataPolicy", "Data and source policy"))}${englishOnly}`}</a>
           </div>
         </div>
       </footer>
@@ -1021,8 +1036,16 @@
   function normalizeContinuationTarget(value) {
     try {
       const url = new URL(value || currentRelativeUrl(), window.location.href);
-      if (url.origin !== window.location.origin || url.search) return null;
-      return `${url.pathname}${url.hash}`;
+      if (url.origin !== window.location.origin || url.username || url.password) return null;
+      const locatorKeys = url.pathname === "/application.html" ? ["applicationSet", "invoiceId", "programId", "intakeId"] : url.pathname === "/billing-api.html" ? ["invoice"] : [];
+      for (const [key, value] of url.searchParams) {
+        if (url.searchParams.getAll(key).length !== 1) return null;
+        if (key === "lang" && ["en", "vi", "th", "id", "ms", "ar", "zh-CN"].includes(value)) continue;
+        if (url.pathname === "/application.html" && key === "checkout" && ["success", "cancel"].includes(value)) continue;
+        if (locatorKeys.includes(key) && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value)) continue;
+        return null;
+      }
+      return `${url.pathname}${url.search}${url.hash}`;
     } catch {
       return null;
     }
@@ -1030,11 +1053,17 @@
 
   function continuationRequestFor(options = {}) {
     const requiredRole = options.requiredRole || options.role || "student";
-    let targetRoute = normalizeContinuationTarget(options.returnUrl);
+    const resumeHref = options.resumeAction?.type === "navigate" ? options.resumeAction.href : null;
+    let targetRoute = normalizeContinuationTarget(options.targetRoute || options.returnUrl || resumeHref);
     let actionKey = options.actionKey || "";
 
     if (actionKey === "application.open_add_choice") actionKey = "application.add_choice";
-    if (actionKey === "application.add_choice") targetRoute = "/application.html#add-choice";
+    if (actionKey === "application.add_choice") {
+      const target = new URL(targetRoute || "/application.html", window.location.href);
+      if (target.pathname !== "/application.html") { target.pathname = "/application.html"; target.search = ""; }
+      target.hash = "add-choice";
+      targetRoute = normalizeContinuationTarget(localizedPageHref(target.pathname + target.search + target.hash));
+    }
     if (!actionKey && targetRoute === "/application.html#add-choice") actionKey = "application.add_choice";
 
     const route = routeNameFromHref(targetRoute || "");
@@ -1086,6 +1115,8 @@
   function navigateToAuthPage(options = {}) {
     const params = new URLSearchParams();
     params.set("v", authPageVersion);
+    const locale = window.CUACI18n?.locale;
+    if (locale) params.set("lang", locale);
     if (options.capability) params.set("continue", "1");
     if (options.mode === "register") params.set("mode", "register");
     const query = params.toString();
@@ -1189,11 +1220,11 @@
   function activeWorkspaceHref() {
     const shellContext = getShellContext();
     const role = shellContext.role;
-    if (role === "student" && shellContext.accountEmailVerified !== true) return `auth.html?v=${authPageVersion}`;
-    if (role === "student") return "hub-api.html";
-    if (role === "school_staff") return "school-portal.html";
-    if (["cuac_ops", "cuac_admin"].includes(role)) return "ops-admin-api.html";
-    return "auth.html";
+    if (role === "student" && shellContext.accountEmailVerified !== true) return localizedPageHref(`auth.html?v=${authPageVersion}`);
+    if (role === "student") return localizedPageHref("hub-api.html");
+    if (role === "school_staff") return localizedPageHref("school-portal.html");
+    if (["cuac_ops", "cuac_admin"].includes(role)) return localizedPageHref("ops-admin-api.html");
+    return localizedPageHref("auth.html");
   }
 
   function requireStudentSignedIn(label = "Use this feature", afterSignIn) {
@@ -1281,7 +1312,10 @@
       const signInTrigger = event.target.closest("[data-cuac-sign-in-trigger]");
       if (!signInTrigger) return;
       event.preventDefault();
-      navigateToAuthPage();
+      const route = currentRouteName();
+      const requiredRole = protectedStudentRoutes.has(route) ? "student" : protectedRoleRoutes[route]?.role;
+      if (requiredRole) showSignInRequired("Sign in to continue", { requiredRole, returnUrl: currentRelativeUrl() });
+      else navigateToAuthPage();
     });
   }
 
@@ -1702,7 +1736,7 @@
       const target = targets[actionId];
       if (!target) return;
       window.setTimeout(() => {
-        window.location.href = target;
+        window.location.href = localizedPageHref(target);
       }, 520);
     }
 
@@ -1989,6 +2023,10 @@
 
     const resultItems = Array.from(root.querySelectorAll(".result-enter:not(.visible)"));
     if (resultItems.length) {
+      resultItems.forEach(item => {
+        const index = Number(item.dataset.enterIndex);
+        if (Number.isInteger(index) && index >= 0 && index <= 100) item.style.setProperty("--enter-index", String(index));
+      });
       window.requestAnimationFrame(() => {
         resultItems.forEach((item) => item.classList.add("visible"));
       });
@@ -2008,7 +2046,7 @@
         entry.target.classList.add("visible");
         observer.unobserve(entry.target);
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0 });
 
     revealItems.forEach((item) => {
       item.dataset.cuacRevealBound = "true";
@@ -2140,7 +2178,7 @@
           });
           if (!response.ok) throw new Error("Sign out failed.");
           runtimeAuthState = { resolved: true, authState: "signed-out", role: "visitor", surface: "public", tenantSchoolId: null, authStrength: "guest", accountEmail: null, accountEmailVerified: null, accountLocale: null };
-          window.location.assign("auth.html");
+          window.location.assign(localizedPageHref("auth.html"));
         } catch {
           link.removeAttribute("aria-disabled");
           const label = link.querySelector("span");

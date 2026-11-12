@@ -96,11 +96,12 @@
   const translations = new Map(rows.map(row => [row[0], row[localeIndex] || row[0]]));
   const ui = value => translations.get(String(value || "")) || String(value || "");
   const href = rawHref => {
-    if (!rawHref || rawHref.startsWith("#") || !i18n || i18n.locale === "en") return rawHref;
+    if (i18n?.href) return i18n.href(rawHref);
+    if (!rawHref || rawHref.startsWith("#") || !i18n) return rawHref;
     const url = new URL(rawHref, location.href);
     if (url.origin !== location.origin) return rawHref;
     url.searchParams.set("lang", i18n.locale);
-    return `${url.pathname.split("/").pop()}${url.search}${url.hash}`;
+    return `${url.pathname}${url.search}${url.hash}`;
   };
   function apply(root = document) {
     if (!localeIndex) return;

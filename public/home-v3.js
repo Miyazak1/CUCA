@@ -40,7 +40,7 @@
           return;
         }
         const params = new URLSearchParams({ q: query });
-        if (window.CUACI18n?.locale && window.CUACI18n.locale !== "en") params.set("lang", window.CUACI18n.locale);
+        if (window.CUACI18n?.locale) params.set("lang", window.CUACI18n.locale);
         window.location.href = `search.html?${params}`;
       });
 
@@ -55,7 +55,7 @@
         })) {
           return;
         }
-        window.location.href = "onboarding-api.html";
+        window.location.href = window.CUACHomeI18n?.href("onboarding-api.html") || "onboarding-api.html";
       });
 
       const homeIcons = {
@@ -79,6 +79,9 @@
         "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=700&q=80",
       ];
 
+      const homeText = (value, variables) => window.CUACHomeI18n?.text(value, variables) || value;
+      const homeHref = value => window.CUACHomeI18n?.href(value) || value;
+
       function escapeHomeHTML(value) {
         return String(value ?? "").replace(/[&<>"']/g, (character) => ({
           "&": "&amp;",
@@ -91,23 +94,26 @@
 
       function setHomeHTML(selector, html) {
         const target = document.querySelector(selector);
-        if (target && html) target.innerHTML = html;
+        if (target && html) {
+          target.innerHTML = html;
+          window.CUACHomeI18n?.apply(target);
+        }
       }
 
       function formatCatalogDate(value, fallback) {
         const date = value ? new Date(value) : null;
-        if (!date || !Number.isFinite(date.valueOf())) return fallback || "Date not published";
+        if (!date || !Number.isFinite(date.valueOf())) return homeText(fallback || "Date not published");
         return new Intl.DateTimeFormat(window.CUACI18n?.locale || "en", { year: "numeric", month: "short", day: "numeric" }).format(date);
       }
 
       function formatCatalogCount(value) {
         const count = Number(value);
-        return Number.isFinite(count) ? new Intl.NumberFormat("en-US").format(count) : "0";
+        return Number.isFinite(count) ? new Intl.NumberFormat(window.CUACI18n?.locale || "en-US").format(count) : "0";
       }
 
       function renderHomeCategories(categories) {
         setHomeHTML("[data-home-categories]", categories.map((category) => `
-          <a class="cat" href="${escapeHomeHTML(category.href || "#")}">
+          <a class="cat" href="${escapeHomeHTML(homeHref(category.href || "#"))}">
             <span class="category-icon">${homeIcons[category.icon] || homeIcons.program}</span>
             <strong>${escapeHomeHTML(category.title)}</strong><span>${escapeHomeHTML(category.value)}</span>
           </a>
@@ -138,17 +144,17 @@
       function renderSchools(schools) {
         if (!schools.length) return;
         setHomeHTML("[data-home-schools]", schools.map((school, index) => `
-          <a class="provider-card" href="university-detail.html?university=${encodeURIComponent(school.id)}">
-            <div class="provider-image"><img alt="${escapeHomeHTML(school.nameEn)} campus" src="${escapeHomeHTML(schoolImageFallbacks[index % schoolImageFallbacks.length])}" /></div>
+          <a class="provider-card" href="${escapeHomeHTML(homeHref(`university-detail.html?university=${encodeURIComponent(school.id)}`))}">
+            <div class="provider-image"><img alt="${escapeHomeHTML(homeText("{name} campus", { name: school.nameEn }))}" src="${escapeHomeHTML(schoolImageFallbacks[index % schoolImageFallbacks.length])}" /></div>
             <span class="heart">♡</span>
-            <div class="provider-copy"><strong>${escapeHomeHTML(school.nameEn)}</strong><span>${escapeHomeHTML([school.city, school.regionLabel, Number.isFinite(school.programCount) ? `${school.programCount} published programs` : ""].filter(Boolean).join(" · "))}</span></div>
+            <div class="provider-copy"><strong>${escapeHomeHTML(school.nameEn)}</strong><span>${escapeHomeHTML([school.city, school.regionLabel, Number.isFinite(school.programCount) ? homeText("{count} published programs", { count: formatCatalogCount(school.programCount) }) : ""].filter(Boolean).join(" · "))}</span></div>
           </a>
         `).join(""));
       }
 
       async function renderHomeSummary() {
         const api = window.CuacCatalogList;
-        if (!api || (window.CUACI18n && window.CUACI18n.locale !== "en")) return;
+        if (!api) return;
         try {
           const [programCatalogPage, currentProgramPage, schoolPage, scholarshipPage, cityPage] = await Promise.all([
             api.loadPage("programs", { limit: 1 }),
@@ -159,11 +165,11 @@
           ]);
           const currentPrograms = currentProgramPage.records.filter((program) => ["open", "upcoming"].includes(program.intakeAvailability));
           renderHomeCategories([
-            { title: "Programs", value: `${formatCatalogCount(programCatalogPage.total)} programs · ${formatCatalogCount(currentProgramPage.total)} currently available`, href: "programs.html?applicationReady=true", icon: "program" },
-            { title: "Universities", value: `${schoolPage.total} published`, href: "universities.html", icon: "school" },
-            { title: "Scholarships", value: `${scholarshipPage.total} funding routes`, href: "scholarships.html", icon: "funding" },
+            { title: "Programs", value: homeText("{count} programs · {available} currently available", { count: formatCatalogCount(programCatalogPage.total), available: formatCatalogCount(currentProgramPage.total) }), href: "programs.html?applicationReady=true", icon: "program" },
+            { title: "Universities", value: homeText("{count} published", { count: formatCatalogCount(schoolPage.total) }), href: "universities.html", icon: "school" },
+            { title: "Scholarships", value: homeText("{count} funding routes", { count: formatCatalogCount(scholarshipPage.total) }), href: "scholarships.html", icon: "funding" },
             { title: "Intakes", value: "Full dates", href: "programs.html?applicationReady=true", icon: "calendar" },
-            { title: "Cities & cost", value: `${cityPage.total} city guides`, href: "cities.html", icon: "city" },
+            { title: "Cities & cost", value: homeText("{count} city guides", { count: formatCatalogCount(cityPage.total) }), href: "cities.html", icon: "city" },
             { title: "English-taught", value: "Language filters", href: "programs.html?language=english", icon: "language" },
             { title: "Documents", value: "Application guide", href: "/guides/documents", icon: "documents" },
           ]);
@@ -172,6 +178,8 @@
           renderSchools(schoolPage.records);
         } catch (error) {
           console.warn("Current homepage catalog summary is unavailable.", error);
+        } finally {
+          document.querySelector("main").dataset.homeSummaryReady = "true";
         }
       }
 

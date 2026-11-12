@@ -466,6 +466,7 @@
 
   .preferences-api-heading .preferences-secondary {
     width: 100%;
+    box-sizing: border-box;
   }
 
   .preferences-section-nav {

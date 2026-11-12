@@ -81,6 +81,11 @@ function cityName(city = {}) {
   return city.nameEn || city.name || "City to confirm";
 }
 
+function cityTagLabel(tag) {
+  const labels = { "coastal-city": "Coastal city", "municipality": "Municipality", "provincial-capital": "Provincial capital" };
+  return cityUi(labels[tag] || String(tag).replaceAll("-", " "));
+}
+
 function citySearchText(city = {}) {
   return flattenText([
     city.nameEn,
@@ -174,7 +179,7 @@ function renderRail() {
       <strong>${escapeCatalogHtml(cityName(city))}</strong>
       <span>${escapeCatalogHtml(cityProvince(city))}${city.density ? ` · ${escapeCatalogHtml(city.density)}` : ""}</span>
       <b>${escapeCatalogHtml(money(cityMonthlyCost(city)))}</b>
-      <span>${escapeCatalogHtml((city.tags || [])[0] || city.costLevel || "Published guide")}</span>
+      <span>${escapeCatalogHtml(cityTagLabel((city.tags || [])[0] || city.costLevel || "Published guide"))}</span>
     </button>
   `).join("");
 }
@@ -184,7 +189,7 @@ function renderFeature() {
   document.querySelector("#featureStory").innerHTML = `
     <div class="story-image">
       <img alt="City catalog marker" src="globe.svg" />
-      <div class="story-label">${(city.tags || []).map((tag) => `<span>${escapeCatalogHtml(tag)}</span>`).join("")}</div>
+      <div class="story-label">${(city.tags || []).map((tag) => `<span>${escapeCatalogHtml(cityTagLabel(tag))}</span>`).join("")}</div>
     </div>
     <article class="story-copy">
       <div>
@@ -233,10 +238,10 @@ function renderMatrix() {
           <tr data-city-row="${citySlug(city)}">
             <td><div class="matrix-city"><strong>${escapeCatalogHtml(cityName(city))}</strong><span>${escapeCatalogHtml(cityProvince(city))}</span></div></td>
             <td><span class="cost ${costClass(city)}">${money(cityMonthlyCost(city))}</span></td>
-            <td>${citySchoolCount(city)}<div class="signal">current catalog</div></td>
+            <td>${citySchoolCount(city)}<div class="signal">${cityUi("current catalog")}</div></td>
             <td>${cityEnglishRouteCount(city)}<div class="signal">program routes</div></td>
             <td>${cityScholarshipCount(city)}<div class="signal">funding routes</div></td>
-            <td>${cityProgramCount(city)}<div class="signal">current catalog</div></td>
+            <td>${cityProgramCount(city)}<div class="signal">${cityUi("current catalog")}</div></td>
             <td><a class="matrix-action" href="${cityHref(`programs.html?city=${encodeURIComponent(citySlug(city))}`)}">${cityUi("Programs")}</a></td>
           </tr>
         `).join("")}
@@ -252,7 +257,7 @@ function renderNeeds() {
   document.querySelector("#needGrid").innerHTML = tags.map((tag) => `
     <button class="need-card ${activeNeed === String(tag).toLowerCase() ? "active" : ""}" type="button" data-need="${String(tag).toLowerCase()}">
       <span class="need-icon">${cityIcons.cost}</span>
-      <strong>${escapeCatalogHtml(tag)}</strong>
+      <strong>${escapeCatalogHtml(cityTagLabel(tag))}</strong>
       <span>${cityUi("Published city tag")}</span>
     </button>
   `).join("");
@@ -264,7 +269,7 @@ function renderActiveChips() {
   if (routeRegion) chips.push(["region", `Region: ${routeRegion}`]);
   if (routeCostLevel) chips.push(["cost", `${routeCostLevel} cost`]);
   if (routeDensity) chips.push(["density", `${routeDensity} density`]);
-  if (activeNeed !== "all") chips.push(["need", activeNeed]);
+  if (activeNeed !== "all") chips.push(["need", cityTagLabel(activeNeed)]);
   document.querySelector("#activeChips").innerHTML = chips.length
     ? chips.map(([key, label]) => `<button class="filter-chip active" type="button" data-clear-city-filter="${key}">${escapeCatalogHtml(label)} x</button>`).join("")
     : `<span class="filter-chip">${cityUi("No city filters selected")}</span>`;
@@ -285,7 +290,7 @@ function renderCityCards() {
   grid.innerHTML = list.map((city) => {
     const detailHref = cityHref(`city-detail.html?city=${encodeURIComponent(citySlug(city))}`);
     return `
-    <article class="city-card" role="link" tabindex="0" data-city-card data-detail-href="${detailHref}" aria-label="View ${escapeCatalogHtml(cityName(city))} city guide">
+    <article class="city-card" role="link" tabindex="0" data-city-card data-detail-href="${detailHref}" aria-label="${escapeCatalogHtml(window.CUACI18n.format("a11y.cityCard", { name: cityName(city) }))}">
       <div class="city-media">
         <img alt="City catalog marker" src="globe.svg" loading="lazy" />
         <span class="badge">${escapeCatalogHtml(city.costLevel ? `${city.costLevel} cost` : "Cost not published")}</span>
@@ -294,7 +299,7 @@ function renderCityCards() {
       <h3>${escapeCatalogHtml(cityName(city))}</h3>
       <p class="province">${escapeCatalogHtml([cityProvince(city), city.region].filter(Boolean).join(" · "))}</p>
       <p class="summary">${escapeCatalogHtml(citySummary(city))}</p>
-      <div class="city-tags">${(city.tags || []).slice(0, 3).map((tag) => `<span>${escapeCatalogHtml(tag)}</span>`).join("")}</div>
+      <div class="city-tags">${(city.tags || []).slice(0, 3).map((tag) => `<span>${escapeCatalogHtml(cityTagLabel(tag))}</span>`).join("")}</div>
       <div class="city-stats">
         <span><b>${money(cityMonthlyCost(city))}</b>monthly</span>
         <span><b>${cityNumber(cityProgramCount(city))}</b>${cityUi("programs")}</span>
@@ -339,10 +344,14 @@ function renderBudget() {
   document.querySelector("#budgetBars").innerHTML = entries.map(([label, value]) => `
     <div class="budget-row">
       <span>${label[0].toUpperCase()}${label.slice(1)}</span>
-      <span class="bar-track"><span class="bar-fill" style="width: ${total ? Math.max(10, (value / total) * 100) : 0}%"></span></span>
+      <span class="bar-track"><span class="bar-fill" data-cost-share="${total ? Math.max(10, (value / total) * 100) : 0}"></span></span>
       <strong>${money(value)}</strong>
     </div>
   `).join("");
+  document.querySelectorAll("[data-cost-share]").forEach(bar => {
+    const share = Number(bar.dataset.costShare);
+    if (Number.isFinite(share)) bar.style.width = `${Math.max(0, Math.min(100, share))}%`;
+  });
   document.querySelectorAll("[data-budget-mode]").forEach((button) => {
     const active = button.dataset.budgetMode === budgetMode;
     button.classList.toggle("active", active);
@@ -434,7 +443,7 @@ function applyCityAgentAction(action, detail = {}) {
     return true;
   }
   if (action === "save-program-shortlist") {
-    window.location.href = `programs.html?city=${encodeURIComponent(activeCity || "hangzhou")}`;
+    window.location.href = cityHref(`programs.html?city=${encodeURIComponent(activeCity || "hangzhou")}`);
     return true;
   }
   return false;
@@ -571,7 +580,7 @@ if ("IntersectionObserver" in window && !document.body.classList.contains("motio
       entry.target.classList.add("visible");
       observer.unobserve(entry.target);
     }
-  }), { threshold: 0.12 });
+  }), { threshold: 0 });
   revealItems.forEach((item) => observer.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add("visible"));
@@ -595,7 +604,7 @@ async function loadCities() {
     document.querySelector("#cityGuideTotal").textContent = cities.length;
     document.querySelector("#cityCostRange").textContent = costs.length
       ? `${money(costs[0])}${costs.length > 1 ? ` - ${money(costs[costs.length - 1])}` : ""}`
-      : "Not published";
+      : cityUi("Not published");
     document.querySelector("#cityProgramTotal").textContent = cities.reduce((total, city) => total + cityProgramCount(city), 0);
     renderAll();
   } catch (error) {

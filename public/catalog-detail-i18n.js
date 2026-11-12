@@ -168,20 +168,85 @@
     ["Confirm current dates and requirements on each university's official source before applying.", "Xác nhận ngày và yêu cầu hiện hành trên nguồn chính thức của từng trường trước khi nộp hồ sơ.", "ยืนยันวันที่และข้อกำหนดปัจจุบันจากแหล่งทางการของแต่ละมหาวิทยาลัยก่อนสมัคร", "Konfirmasikan tanggal dan persyaratan terkini pada sumber resmi setiap universitas sebelum mendaftar.", "Sahkan tarikh dan syarat semasa pada sumber rasmi setiap universiti sebelum memohon.", "أكد التواريخ والمتطلبات الحالية من المصدر الرسمي لكل جامعة قبل التقديم."],
   ];
 
+  rows.push(
+    ["Choose an exact intake before relying on deadlines or requirements. UCAC does not infer eligibility from profile data on this page.","Chọn kỳ tuyển sinh cụ thể trước khi dựa vào thời hạn hoặc yêu cầu. UCAC không suy đoán điều kiện từ thông tin hồ sơ trên trang này.","เลือกช่วงรับเข้าให้ชัดเจนก่อนใช้ข้อมูลกำหนดเวลาและข้อกำหนด UCAC ไม่อนุมานคุณสมบัติจากโปรไฟล์ในหน้านี้","Pilih periode penerimaan yang tepat sebelum mengandalkan tenggat atau persyaratan. UCAC tidak menyimpulkan kelayakan dari profil pada halaman ini.","Pilih sesi kemasukan tepat sebelum bergantung pada tarikh akhir atau syarat. UCAC tidak menyimpulkan kelayakan daripada profil di halaman ini.","اختر دورة قبول محددة قبل الاعتماد على المواعيد أو المتطلبات. لا يستنتج UCAC الأهلية من بيانات الملف في هذه الصفحة."],
+    ["Only open, non-expired intakes from the public catalog are shown.","Chỉ hiển thị các kỳ tuyển sinh đang mở và chưa hết hạn trong danh mục công khai.","แสดงเฉพาะรอบรับเข้าที่เปิดและยังไม่หมดอายุในแค็ตตาล็อกสาธารณะ","Hanya periode terbuka dan belum kedaluwarsa dari katalog publik yang ditampilkan.","Hanya sesi dibuka dan belum luput daripada katalog awam dipaparkan.","تُعرض فقط دورات القبول المفتوحة وغير المنتهية من الدليل العام."],
+    ["No currently open intake is published for this program.","Chưa công bố kỳ tuyển sinh đang mở cho chương trình này.","ยังไม่มีรอบรับเข้าที่เปิดสำหรับหลักสูตรนี้","Belum ada periode penerimaan terbuka untuk program ini.","Tiada sesi kemasukan dibuka diterbitkan bagi program ini.","لم تُنشر دورة قبول مفتوحة حاليًا لهذا البرنامج."],
+    ["These summary fields do not replace the intake-specific approved requirement document.","Các thông tin tóm tắt này không thay thế tài liệu yêu cầu đã được phê duyệt cho từng kỳ tuyển sinh.","ข้อมูลสรุปนี้ไม่แทนเอกสารข้อกำหนดที่อนุมัติสำหรับรอบรับเข้าเฉพาะ","Ringkasan ini tidak menggantikan dokumen persyaratan resmi untuk periode tertentu.","Ringkasan ini tidak menggantikan dokumen syarat diluluskan bagi sesi tertentu.","لا تحل حقول الملخص هذه محل وثيقة المتطلبات المعتمدة الخاصة بدورة القبول."],
+    ["No CSCA requirement is published for this graduate route.","Chưa công bố yêu cầu CSCA cho lộ trình sau đại học này.","ยังไม่มีข้อกำหนด CSCA สำหรับเส้นทางบัณฑิตศึกษานี้","Belum ada persyaratan CSCA untuk jalur pascasarjana ini.","Tiada syarat CSCA diterbitkan bagi laluan pascasiswazah ini.","لم تُنشر متطلبات CSCA لهذا المسار للدراسات العليا."],
+    ["UCAC | Program details","UCAC | Chi tiết chương trình","UCAC | รายละเอียดหลักสูตร","UCAC | Detail program","UCAC | Butiran program","UCAC | تفاصيل البرنامج"],
+    ["year","năm","ปี","tahun","tahun","سنة"], ["semester","học kỳ","ภาคเรียน","semester","semester","فصل دراسي"], ["month","tháng","เดือน","bulan","bulan","شهر"], ["program","chương trình","หลักสูตร","program","program","برنامج"],
+  );
+  rows.push(
+    ["Official name","Tên chính thức","ชื่อทางการ","Nama resmi","Nama rasmi","الاسم الرسمي"],
+    ["Opens","Mở từ","เปิดรับสมัคร","Dibuka","Dibuka","يفتح"],
+    ["Round","Đợt","รอบ","Putaran","Pusingan","الجولة"],
+    ["Applies to","Áp dụng cho","ใช้กับ","Berlaku untuk","Terpakai kepada","ينطبق على"],
+    ["Fall","Mùa thu","ฤดูใบไม้ร่วง","Musim gugur","Musim luruh","الخريف"],
+    ["Autumn","Mùa thu","ฤดูใบไม้ร่วง","Musim gugur","Musim luruh","الخريف"],
+    ["Spring","Mùa xuân","ฤดูใบไม้ผลิ","Musim semi","Musim bunga","الربيع"],
+    ["Summer","Mùa hè","ฤดูร้อน","Musim panas","Musim panas","الصيف"],
+    ["Winter","Mùa đông","ฤดูหนาว","Musim dingin","Musim sejuk","الشتاء"],
+    ["Deadline not provided","Chưa cung cấp hạn nộp","ไม่ได้ระบุกำหนดเวลา","Tenggat belum tersedia","Tarikh akhir tidak diberikan","الموعد النهائي غير متوفر"],
+    ["Requirement","Yêu cầu","ข้อกำหนด","Persyaratan","Syarat","المتطلب"],
+    ["Required","Bắt buộc","จำเป็น","Wajib","Wajib","مطلوب"],
+    ["Recommended","Khuyến nghị","แนะนำ","Disarankan","Disyorkan","موصى به"],
+    ["Optional","Không bắt buộc","ไม่บังคับ","Opsional","Pilihan","اختياري"],
+    ["Conditional","Có điều kiện","มีเงื่อนไข","Bersyarat","Bersyarat","مشروط"],
+    ["Information Only","Chỉ để tham khảo","เพื่อเป็นข้อมูลเท่านั้น","Hanya informasi","Maklumat sahaja","للاطلاع فقط"],
+    ["Education","Học vấn","การศึกษา","Pendidikan","Pendidikan","التعليم"],
+    ["Academic Results","Kết quả học tập","ผลการเรียน","Hasil akademik","Keputusan akademik","النتائج الأكاديمية"],
+    ["Documents","Hồ sơ","เอกสาร","Dokumen","Dokumen","المستندات"],
+    ["Identity","Danh tính","ตัวตน","Identitas","Identiti","الهوية"],
+    ["Application Policy","Chính sách đăng ký","นโยบายการสมัคร","Kebijakan pendaftaran","Dasar permohonan","سياسة التقديم"],
+    ["Other","Khác","อื่น ๆ","Lainnya","Lain-lain","أخرى"],
+    ["Preparation","Chuẩn bị","การเตรียมตัว","Persiapan","Persediaan","التحضير"],
+    ["Submission","Nộp hồ sơ","การยื่นใบสมัคร","Pengajuan","Penyerahan","التقديم"],
+    ["Enrollment","Nhập học","การเข้าศึกษา","Pendaftaran masuk","Pendaftaran masuk","الالتحاق"],
+    ["Self Report","Tự khai","ข้อมูลที่ผู้สมัครแจ้ง","Pernyataan mandiri","Pengisytiharan sendiri","إقرار ذاتي"],
+    ["Document","Tài liệu","เอกสาร","Dokumen","Dokumen","مستند"],
+    ["Official Result","Kết quả chính thức","ผลอย่างเป็นทางการ","Hasil resmi","Keputusan rasmi","نتيجة رسمية"],
+    ["School Review","Xét duyệt của trường","การพิจารณาโดยมหาวิทยาลัย","Peninjauan universitas","Semakan universiti","مراجعة الجامعة"],
+    ["Published program","Chương trình đã công bố","หลักสูตรที่เผยแพร่","Program terbit","Program diterbitkan","برنامج منشور"],
+    ["Official scholarship action","Hướng dẫn học bổng chính thức","การดำเนินการทุนอย่างเป็นทางการ","Tindakan beasiswa resmi","Tindakan biasiswa rasmi","إجراء المنحة الرسمي"],
+    ["Monthly","Hằng tháng","รายเดือน","Bulanan","Bulanan","شهريًا"],
+    ["Yearly","Hằng năm","รายปี","Tahunan","Tahunan","سنويًا"],
+    ["Note","Ghi chú","หมายเหตุ","Catatan","Nota","ملاحظة"],
+    ["Why consider this city","Lý do cân nhắc thành phố này","เหตุผลที่ควรพิจารณาเมืองนี้","Alasan mempertimbangkan kota ini","Sebab mempertimbangkan bandar ini","لماذا تنظر في هذه المدينة"],
+    ["Next steps","Các bước tiếp theo","ขั้นตอนถัดไป","Langkah berikutnya","Langkah seterusnya","الخطوات التالية"],
+    ["Universities","Trường đại học","มหาวิทยาลัย","Universitas","Universiti","الجامعات"],
+    ["No current, approved requirement document is published for this intake. Check the official application page before relying on requirements.","Chưa công bố tài liệu yêu cầu hiện hành đã được phê duyệt cho kỳ tuyển sinh này. Hãy kiểm tra trang đăng ký chính thức trước khi dựa vào các yêu cầu.","ยังไม่มีเอกสารข้อกำหนดปัจจุบันที่อนุมัติสำหรับรอบนี้ โปรดตรวจสอบหน้าสมัครอย่างเป็นทางการก่อนอ้างอิงข้อกำหนด","Belum ada dokumen persyaratan terkini yang disetujui untuk periode ini. Periksa halaman pendaftaran resmi sebelum mengandalkan persyaratan.","Tiada dokumen syarat semasa yang diluluskan diterbitkan bagi sesi ini. Semak halaman permohonan rasmi sebelum bergantung pada syarat.","لم تُنشر وثيقة متطلبات حالية معتمدة لهذه الدورة. راجع صفحة التقديم الرسمية قبل الاعتماد على المتطلبات."],
+    ["Requirement documents are information-only and retain their review and evidence controls.","Tài liệu yêu cầu chỉ cung cấp thông tin và vẫn tuân theo quy trình rà soát, kiểm soát bằng chứng.","เอกสารข้อกำหนดใช้เพื่อให้ข้อมูลเท่านั้น และยังอยู่ภายใต้การตรวจทานและการควบคุมหลักฐาน","Dokumen persyaratan hanya bersifat informatif dan tetap mengikuti peninjauan serta pengendalian bukti.","Dokumen syarat adalah untuk maklumat sahaja dan kekal tertakluk kepada semakan serta kawalan bukti.","وثائق المتطلبات معلوماتية فقط وتظل خاضعة لضوابط المراجعة والأدلة."],
+    ["No upcoming published intake deadlines are available for this university.","Chưa có hạn nộp kỳ tuyển sinh sắp tới được công bố cho trường này.","ยังไม่มีกำหนดรับสมัครรอบถัดไปที่เผยแพร่สำหรับมหาวิทยาลัยนี้","Belum ada tenggat penerimaan mendatang yang dipublikasikan untuk universitas ini.","Tiada tarikh akhir pengambilan akan datang diterbitkan bagi universiti ini.","لا تتوفر مواعيد نهائية منشورة لدورات القبول القادمة لهذه الجامعة."],
+    ["Confirm program-level requirements because a university summary may cover several routes.","Hãy xác nhận yêu cầu của từng chương trình vì phần tóm tắt của trường có thể bao gồm nhiều lộ trình.","โปรดยืนยันข้อกำหนดระดับหลักสูตร เนื่องจากข้อมูลสรุปของมหาวิทยาลัยอาจครอบคลุมหลายเส้นทาง","Konfirmasikan persyaratan tiap program karena ringkasan universitas dapat mencakup beberapa jalur.","Sahkan syarat setiap program kerana ringkasan universiti mungkin merangkumi beberapa laluan.","تأكد من متطلبات البرنامج لأن ملخص الجامعة قد يشمل مسارات متعددة."],
+    ["University-level summaries help narrow the catalog. Application decisions must use the exact program and intake record.","Tóm tắt cấp trường giúp thu hẹp danh mục. Quyết định đăng ký phải dựa trên hồ sơ chương trình và kỳ tuyển sinh cụ thể.","ข้อมูลสรุประดับมหาวิทยาลัยช่วยจำกัดตัวเลือก การตัดสินใจสมัครต้องอ้างอิงหลักสูตรและรอบรับสมัครที่แน่นอน","Ringkasan universitas membantu mempersempit pilihan. Keputusan pendaftaran harus menggunakan catatan program dan periode penerimaan yang tepat.","Ringkasan universiti membantu mengecilkan pilihan. Keputusan permohonan mesti menggunakan rekod program dan sesi kemasukan yang tepat.","تساعد ملخصات الجامعات في تضييق الخيارات. يجب أن تستند قرارات التقديم إلى سجل البرنامج ودورة القبول المحددين."],
+    ["These fields describe the published award. They are not an eligibility decision.","Các trường này mô tả học bổng đã công bố, không phải kết luận về điều kiện đủ để nhận học bổng.","ข้อมูลเหล่านี้อธิบายทุนที่เผยแพร่ ไม่ใช่การตัดสินคุณสมบัติของผู้สมัคร","Kolom ini menjelaskan beasiswa yang dipublikasikan, bukan keputusan kelayakan.","Medan ini menerangkan biasiswa yang diterbitkan, bukan keputusan kelayakan.","تصف هذه الحقول المنحة المنشورة ولا تمثل قرارًا بشأن الأهلية."],
+    ["UCAC shows the award as published. Funding is never treated as guaranteed, and contact data is not exposed through this public page.","UCAC hiển thị học bổng theo thông tin đã công bố. Tài trợ không được coi là bảo đảm và trang công khai này không tiết lộ dữ liệu liên hệ.","UCAC แสดงทุนตามที่เผยแพร่ ไม่ถือว่าการได้รับทุนเป็นสิ่งรับประกัน และไม่เปิดเผยข้อมูลติดต่อผ่านหน้านี้","UCAC menampilkan beasiswa sesuai publikasi. Pendanaan tidak dianggap terjamin dan data kontak tidak ditampilkan pada halaman publik ini.","UCAC memaparkan biasiswa seperti diterbitkan. Pembiayaan tidak dianggap terjamin dan data hubungan tidak didedahkan melalui halaman awam ini.","يعرض UCAC المنحة كما نُشرت. لا يُعد التمويل مضمونًا، ولا تُكشف بيانات الاتصال عبر هذه الصفحة العامة."],
+    ["These values are catalog references, not a personal budget estimate.","Các giá trị này là thông tin tham khảo trong danh mục, không phải dự toán ngân sách cá nhân.","ค่าดังกล่าวเป็นข้อมูลอ้างอิงในแค็ตตาล็อก ไม่ใช่ประมาณการงบประมาณส่วนบุคคล","Nilai ini merupakan referensi katalog, bukan perkiraan anggaran pribadi.","Nilai ini ialah rujukan katalog, bukan anggaran bajet peribadi.","هذه القيم مراجع من الدليل وليست تقديرًا لميزانية شخصية."],
+    ["Only keys present in the published city content object appear here.","Chỉ những mục có trong dữ liệu thành phố đã công bố mới được hiển thị tại đây.","แสดงเฉพาะรายการที่มีอยู่ในข้อมูลเมืองที่เผยแพร่","Hanya informasi yang terdapat dalam data kota terbit yang ditampilkan di sini.","Hanya maklumat yang terdapat dalam data bandar diterbitkan dipaparkan di sini.","تظهر هنا فقط المعلومات الموجودة في بيانات المدينة المنشورة."],
+    ["Counts are imported reference snapshots. They are not labeled as live totals.","Các số lượng là bản ghi tham khảo được nhập, không phải tổng số cập nhật theo thời gian thực.","จำนวนเป็นข้อมูลอ้างอิงที่นำเข้า ไม่ใช่ยอดรวมแบบเรียลไทม์","Jumlah merupakan cuplikan referensi yang diimpor, bukan total waktu nyata.","Bilangan ialah petikan rujukan yang diimport, bukan jumlah masa nyata.","الأعداد لقطات مرجعية مستوردة وليست إجماليات آنية."],
+    ["Use a city as a catalog filter, then make decisions from exact university, program, intake, and funding records.","Dùng thành phố để lọc danh mục, sau đó quyết định dựa trên hồ sơ trường, chương trình, kỳ tuyển sinh và tài trợ cụ thể.","ใช้เมืองเป็นตัวกรอง แล้วตัดสินใจจากระเบียนมหาวิทยาลัย หลักสูตร รอบรับสมัคร และทุนที่แน่นอน","Gunakan kota sebagai filter lalu buat keputusan berdasarkan catatan universitas, program, periode penerimaan, dan pendanaan yang tepat.","Gunakan bandar sebagai penapis, kemudian buat keputusan berdasarkan rekod universiti, program, sesi kemasukan dan pembiayaan yang tepat.","استخدم المدينة لتصفية الدليل ثم اتخذ قراراتك بناءً على سجلات الجامعة والبرنامج ودورة القبول والتمويل المحددة."],
+    ["This detail link does not include a catalog identifier.","Liên kết chi tiết này thiếu mã định danh danh mục.","ลิงก์รายละเอียดนี้ไม่มีตัวระบุแค็ตตาล็อก","Tautan detail ini tidak menyertakan ID katalog.","Pautan butiran ini tidak menyertakan pengecam katalog.","لا يتضمن رابط التفاصيل معرّفًا في الدليل."],
+    ["This link points to a demo or unpublished record. Open the catalog and choose a published result.","Liên kết dẫn đến bản thử nghiệm hoặc hồ sơ chưa công bố. Hãy mở danh mục và chọn kết quả đã công bố.","ลิงก์นี้ชี้ไปยังข้อมูลตัวอย่างหรือที่ยังไม่เผยแพร่ โปรดเลือกผลลัพธ์ที่เผยแพร่จากแค็ตตาล็อก","Tautan ini menuju demo atau catatan belum terbit. Buka katalog dan pilih hasil yang dipublikasikan.","Pautan ini menuju demo atau rekod belum diterbitkan. Buka katalog dan pilih hasil diterbitkan.","يشير الرابط إلى سجل تجريبي أو غير منشور. افتح الدليل واختر نتيجة منشورة."],
+    ["This record is not currently published.","Hồ sơ này hiện chưa được công bố.","ระเบียนนี้ยังไม่เผยแพร่","Catatan ini belum dipublikasikan.","Rekod ini belum diterbitkan.","هذا السجل غير منشور حاليًا."]
+  );
   const i18n = window.CUACI18n;
   const localeIndex = { vi: 1, th: 2, id: 3, ms: 4, ar: 5 }[i18n?.locale] || 0;
   const dictionary = new Map(rows.map((row) => [row[0], row[localeIndex] || row[0]]));
-  const ui = (english) => dictionary.get(String(english)) || String(english);
+  const ui = (english) => dictionary.get(String(english)) || window.CUACCatalogContent?.text(english) || String(english);
+  document.title = ui(document.title);
   function href(rawHref) {
-    if (!rawHref || !i18n || i18n.locale === "en") return rawHref;
+    if (i18n?.href) return i18n.href(rawHref);
+    if (!rawHref || !i18n) return rawHref;
     const url = new URL(rawHref, location.href);
-    if (url.origin !== location.origin || !url.pathname.toLowerCase().endsWith(".html")) return rawHref;
+    if (url.origin !== location.origin || !(url.pathname.toLowerCase().endsWith(".html") || /^\/(?:guides|insights)(?:\/|$)/.test(url.pathname))) return rawHref;
     url.searchParams.set("lang", i18n.locale);
-    return `${url.pathname.split("/").pop()}${url.search}${url.hash}`;
+    return `${url.pathname}${url.search}${url.hash}`;
   }
   function applyLinks(root = document) {
     const anchors = root.matches?.("a[href]") ? [root] : [...(root.querySelectorAll?.("a[href]") || [])];
     anchors.forEach((anchor) => {
+      if (anchor.closest?.("[data-catalog-original]")) return;
       const localized = href(anchor.getAttribute("href"));
       if (localized && localized !== anchor.getAttribute("href")) anchor.setAttribute("href", localized);
     });

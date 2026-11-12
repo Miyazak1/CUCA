@@ -46,7 +46,7 @@
     const params = new URLSearchParams();
     if (query) params.set("q", query);
     if (type) params.set("type", type);
-    if (locale !== "en") params.set("lang", locale);
+    params.set("lang", locale);
     const url = `search.html${params.size ? `?${params}` : ""}`;
     history[replace ? "replaceState" : "pushState"]({}, "", url);
   }
@@ -78,11 +78,16 @@
 
   function renderCard(item) {
     const verified = item.verificationStatus === "verified";
-    return `<a class="search-result-card" href="${escapeHtml(item.href)}">
+    const subtitleKeys = ["Master", "Bachelor", "Undergraduate", "Doctoral", "PhD", "Chinese", "English", "Bilingual"];
+    const subtitleTranslations = {"vi":["Thạc sĩ","Cử nhân","Đại học","Tiến sĩ","Tiến sĩ","Tiếng Trung","Tiếng Anh","Song ngữ"],"th":["ปริญญาโท","ปริญญาตรี","ปริญญาตรี","ปริญญาเอก","ปริญญาเอก","ภาษาจีน","ภาษาอังกฤษ","สองภาษา"],"id":["Magister","Sarjana","Sarjana","Doktor","Doktor","Mandarin","Inggris","Dwibahasa"],"ms":["Sarjana","Sarjana Muda","Prasiswazah","Kedoktoran","Kedoktoran","Cina","Inggeris","Dwibahasa"],"ar":["ماجستير","بكالوريوس","بكالوريوس","دكتوراه","دكتوراه","الصينية","الإنجليزية","ثنائي اللغة"]};
+    const subtitleLabels = Object.fromEntries(subtitleKeys.map((key, index) => [key, subtitleTranslations[i18n?.locale]?.[index] || key]));
+    const subtitle = item.subtitle && i18n?.locale !== "en"
+      ? item.subtitle.split(" · ").map(part => subtitleLabels[part] || part).join(" · ") : item.subtitle;
+    return `<a class="search-result-card" href="${escapeHtml(i18n?.href?.(item.href) || item.href)}">
       <span class="search-result-icon" aria-hidden="true">${icons[item.type] || "CU"}</span>
       <span class="search-result-copy">
         <strong>${escapeHtml(item.displayTitle || item.title)}${item.alternateTitle ? `<span class="title-zh">${escapeHtml(item.alternateTitle)}</span>` : ""}</strong>
-        ${item.subtitle ? `<span>${escapeHtml(item.subtitle)}</span>` : ""}
+        ${subtitle ? `<span class="search-result-meta">${escapeHtml(subtitle)}</span>` : ""}
         ${item.summary ? `<p>${escapeHtml(item.summary)}</p>` : ""}
       </span>
       <span class="search-verified">${escapeHtml(verified ? t("verified", "Verified") : t("sourceListed", "Source listed"))}</span>
@@ -116,6 +121,7 @@
   }
 
   async function runSearch(cursor = null) {
+    await window.CUACCatalogContent?.ready;
     const state = stateFromUrl();
     input.value = state.query;
     setActiveType(state.type);
@@ -141,6 +147,7 @@
       const response = await fetch(`/api/v1/search?${params}`, { headers: { accept: "application/json" }, signal: requestController.signal });
       const payload = await response.json().catch(() => null);
       if (!response.ok || !Array.isArray(payload?.data?.groups)) throw new Error(payload?.error?.message || t("unavailableMessage", "Search is temporarily unavailable."));
+      payload.data.groups.forEach(group=>window.CUACCatalogContent?.track(group.items));
       loadedGroups = cursor ? mergeGroups(loadedGroups, payload.data.groups) : payload.data.groups;
       setCounts(loadedGroups);
       renderGroups(loadedGroups, state.type);

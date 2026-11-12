@@ -6,6 +6,39 @@ import vm from "node:vm";
 const root = new URL("../", import.meta.url);
 const source = path => readFile(new URL(path, root), "utf8");
 
+test("Vietnamese catalog UI translates controls without changing official names or enum values", async () => {
+  const script = await source("public/catalog-list-i18n.js");
+  const window = { CUACI18n: { locale: "vi", register() {}, t: (_key, fallback) => fallback } };
+  vm.runInNewContext(script, { window, document: { body: { dataset: {} }, querySelectorAll: () => [] }, MutationObserver: class { observe() {} } });
+  const ui = window.CUACCatalogI18n.ui;
+  assert.equal(ui("Computer Science"), "Khoa học máy tính");
+  assert.equal(ui("What funding can cover"), "Các khoản tài trợ có thể chi trả");
+  assert.equal(ui("Language proof"), "Chứng minh ngôn ngữ");
+  assert.equal(ui("Chinese"), "Tiếng Trung");
+  assert.equal(ui("Public"), "Công lập");
+  assert.equal(ui("full"), "full");
+  assert.equal(ui("Critical Care Medicine (Academic/Professional Degree)"), "Critical Care Medicine (Academic/Professional Degree)");
+  assert.equal(ui("Synthetic University"), "Synthetic University");
+});
+
+test("public locale links carry language through root and extensionless content routes", async () => {
+  const script = await source("public/shared-shell.js");
+  const start = script.indexOf("  function shouldCarryLocale(");
+  const end = script.indexOf("  let authNavigationPending", start);
+  for (const locale of ["vi", "en"]) {
+    const href = vm.runInNewContext(`${script.slice(start, end)}\nlocalizedPageHref`, {
+      URL, URLSearchParams,
+      window: { CUACI18n: { locale }, location: { origin: "https://ucac.cn", search: `?lang=${locale}` } },
+    });
+    for (const path of ["/", "/guides/", "/guides/documents?section=passport#checklist", "/insights/", "programs.html"]) {
+      const url = new URL(href(path), "https://ucac.cn");
+      assert.equal(url.searchParams.get("lang"), locale);
+      if (path.includes("section=")) { assert.equal(url.searchParams.get("section"), "passport"); assert.equal(url.hash, "#checklist"); }
+    }
+    assert.equal(href("https://example.org/guide?lang=en"), "https://example.org/guide?lang=en");
+  }
+});
+
 test("localized home advertises only complete launch locales and loads locale before rendering", async () => {
   const html = await source("public/home-v3.html");
   assert.match(html, /data-i18n-locales="en,vi,th,id,ms,ar"/);
@@ -25,8 +58,11 @@ test("public shell uses the UCAC Study in China identity without the parent-bran
     source("public/about.html"),
     source("config/public-release-assets.json"),
   ]);
-  assert.match(shell, /src="\/ucac-wordmark\.svg"/);
-  assert.match(shell, /srcset="\/ucac-wordmark-compact\.svg"/);
+  assert.match(shell, /const wordmark = footer \? "\/ucac-wordmark-footer\.svg" : "\/ucac-wordmark\.svg"/);
+  assert.match(shell, /const compactWordmark = footer \? "\/ucac-wordmark-compact-footer\.svg" : "\/ucac-wordmark-compact\.svg"/);
+  assert.match(shell, /brand\(true\)/);
+  assert.match(manifest, /"ucac-wordmark-footer\.svg"/);
+  assert.match(manifest, /"ucac-wordmark-compact-footer\.svg"/);
   assert.doesNotMatch(shell, /brand-parent|by Holalobe/);
   assert.match(shell, /© 2026 UCAC\./);
   assert.match(manifest, /"ucac-wordmark\.svg"/);
@@ -108,13 +144,16 @@ test("shared student account navigation localizes labels and preserves the selec
   assert.match(shellCss, /\.language-selector-menu\[hidden\]/);
 });
 
-test("non-English home is a complete bounded landing experience and labels English destinations", async () => {
-  const [home, shell, css] = await Promise.all([
-    source("public/home-i18n.js"), source("public/shared-shell.js"), source("public/shared-shell.css"),
+test("home translation preserves the shared layout and footer navigation in every language", async () => {
+  const [home, summary, shell, css] = await Promise.all([
+    source("public/home-i18n.js"), source("public/home-v3.js"), source("public/shared-shell.js"), source("public/shared-shell.css"),
   ]);
-  for (const key of ["home.title", "home.catalogTitle", "home.planTitle", "home.boundaryTitle", "home.accountTitle"]) assert.ok(home.includes(key));
-  assert.match(home, /hreflang="en"/);
-  assert.match(home, /home\.destinationNotice/);
+  assert.doesNotMatch(home, /innerHTML\s*=/);
+  assert.match(home, /apply\(main\)/);
+  assert.match(summary, /CUACHomeI18n\?\.apply\(target\)/);
+  assert.doesNotMatch(summary, /if\s*\([^\n]*locale[^\n]*\) return/);
+  assert.doesNotMatch(shell, /translatedPublicShell \? \[\]/);
+  assert.match(shell, /footerGroups\.map/);
   assert.match(shell, /data-cuac-language/);
   assert.match(shell, /initLanguageSelectors/);
   assert.match(shell, /window\.CUACI18n && window\.CUACI18n\.locale !== "en"/);
@@ -131,6 +170,82 @@ test("multilingual UI does not silently broaden reviewed legal notice locales", 
   assert.doesNotMatch(notice, /NOTICE_LOCALES = \[[^\]]*(?:"vi"|"th"|"id"|"ms"|"ar")/);
   assert.match(shell, /shellText\("englishOnly", "English version"\)/);
   assert.match(runtime, /"shell\.englishOnly"/);
+});
+
+test("all homepage text and accessible descriptions are covered in five translations", async () => {
+  const [html, runtime, home] = await Promise.all([
+    source("public/home-v3.html"), source("public/i18n-runtime.js"), source("public/home-i18n.js"),
+  ]);
+  const main = html.split("<main>")[1].split("</main>")[0].replace(/<svg\b[\s\S]*?<\/svg>/g, "");
+  const strings = new Set([
+    ...[...main.matchAll(/>([^<>]+)</g)].map(match => match[1].trim()),
+    ...[...main.matchAll(/(?:aria-label|alt|placeholder)="([^"]+)"/g)].map(match => match[1]),
+  ].filter(value => value && !/^(?:\d+|A|✓|UCAC|IELTS|HSK \/ IELTS)$/.test(value)));
+  for (const locale of ["en", "vi", "th", "id", "ms", "ar"]) {
+    const location = new URL(`http://127.0.0.1/home-v3.html?lang=${locale}`);
+    const window = { location };
+    const document = { body: { dataset: { i18nLocales: "en,vi,th,id,ms,ar" } }, documentElement: {}, querySelector: () => null };
+    const context = vm.createContext({ window, document, location, navigator: { languages: ["en"] }, URL, URLSearchParams });
+    vm.runInContext(runtime, context);
+    vm.runInContext(home, context);
+    for (const original of strings) {
+      const actual = window.CUACHomeI18n.text(original);
+      if (locale === "en") assert.equal(actual, original);
+      else assert.notEqual(actual, original, `${locale} missing homepage copy: ${original}`);
+    }
+    const href = window.CUACHomeI18n.href("programs.html?language=english&langReq=no-hsk#results");
+    const url = new URL(href, location);
+    assert.equal(url.searchParams.get("language"), "english");
+    assert.equal(url.searchParams.get("langReq"), "no-hsk");
+    assert.equal(url.hash, "#results");
+    assert.equal(url.searchParams.get("lang"), locale);
+    assert.equal(window.CUACHomeI18n.href("https://example.com/guide.html"), "https://example.com/guide.html");
+  }
+});
+
+test("feedback catalog controls and detail explanations cover all five launch languages", async () => {
+  const [list, detail] = await Promise.all([source("public/catalog-list-i18n.js"), source("public/catalog-detail-i18n.js")]);
+  const supplemental = vm.runInNewContext(`(${list.match(/const viUi = (\{[\s\S]*?\n  \});/)[1]})`);
+  const unchangedTerms = new Set(["CSCA", "PROGRAM", "program"]);
+  for (const locale of ["vi", "th", "id", "ms", "ar"]) {
+    const window = { CUACI18n: { locale, register() {}, t: (_key, fallback) => fallback } };
+    const context = { window, URL, location: new URL("http://127.0.0.1/programs.html"), document: { body: { dataset: {} }, querySelectorAll: () => [] }, MutationObserver: class { observe() {} } };
+    vm.runInNewContext(list, context);
+    for (const original of Object.keys(supplemental)) {
+      if (!unchangedTerms.has(original)) assert.notEqual(window.CUACCatalogI18n.ui(original), original, `${locale}: ${original}`);
+    }
+    assert.equal(window.CUACCatalogI18n.localizeHref("/guides/documents#sources"), `/guides/documents?lang=${locale}#sources`);
+    vm.runInNewContext(detail, context);
+    for (const sentence of ["Only open, non-expired intakes from the public catalog are shown.", "No currently open intake is published for this program.", "These summary fields do not replace the intake-specific approved requirement document.", "No CSCA requirement is published for this graduate route."]) {
+      assert.notEqual(window.CUACCatalogDetailI18n.ui(sentence), sentence, `${locale}: detail explanation`);
+    }
+  }
+});
+
+test("about copy is complete in five languages and does not mislabel translated editorial pages", async () => {
+  const script = await source("public/about-i18n.js");
+  const messages = vm.runInNewContext(`(${script.match(/const messages = (\{[\s\S]*?\n\});/)[1]})`);
+  const english = Object.keys(messages.vi);
+  for (const locale of ["vi", "th", "id", "ms", "ar"]) {
+    assert.deepEqual(Object.keys(messages[locale]), english);
+    for (const key of english) assert.notEqual(messages[locale][key], key, `${locale}: ${key}`);
+    assert.doesNotMatch(messages[locale]["Read application guides"], /tiếng Anh|English/);
+  }
+});
+
+test("core locale keys and interpolation variables match English in all five languages", async () => {
+  const runtime = (await source("public/i18n-runtime.js")).replace("  window.CUACI18n =", "  window.__copy = copy;\n  window.CUACI18n =");
+  const window = {};
+  vm.runInNewContext(runtime, {
+    window, URLSearchParams, navigator: { languages: ["en"] }, location: { search: "?lang=en" },
+    document: { body: { dataset: { i18nLocales: "en,vi,th,id,ms,ar" } }, documentElement: {} },
+  });
+  const keys = Object.keys(window.__copy.en).sort();
+  const variables = text => [...text.matchAll(/\{(\w+)\}/g)].map(match => match[1]).sort();
+  for (const locale of ["vi", "th", "id", "ms", "ar"]) {
+    assert.deepEqual(Object.keys(window.__copy[locale]).sort(), keys, `${locale}: key coverage`);
+    for (const key of keys) assert.deepEqual(variables(window.__copy[locale][key]), variables(window.__copy.en[key]), `${locale}:${key}: interpolation variables`);
+  }
 });
 
 test("site search exposes the complete public locale set while labeling English catalog content", async () => {
@@ -156,7 +271,7 @@ test("public catalog lists share bounded launch locales and preserve language ac
   for (const html of [universities, programs, scholarships]) {
     assert.match(html, /data-i18n-locales="en,vi,th,id,ms,ar"/);
     assert.match(html, /i18n-runtime\.js\?v=20261002-ucac-brand/);
-    assert.match(html, /catalog-list-i18n\.js\?v=20261020-study-levels/);
+    assert.match(html, /catalog-list-i18n\.js\?v=20261112-catalog-body/);
     assert.match(html, /data-catalog-copy="common\.contentNotice"/);
   }
   assert.match(runtime, /document\.documentElement\.dir = metadata\[locale\]\.dir/);
@@ -192,7 +307,7 @@ test("student guide discovery server-renders only governed published records", a
     source("src/server/catalog/public-guide-pages.ts"),
   ]);
   assert.match(indexPage, /listPublishedGuidePages/);
-  assert.match(indexPage, /href=\{`\/guides\/\$\{encodeURIComponent\(guide\.slug\)\}`\}/);
+  assert.match(indexPage, /href=\{editorialHref\(`\/guides\/\$\{encodeURIComponent\(guide\.slug\)\}`, locale\)\}/);
   assert.match(detailPage, /getPublishedGuidePage/);
   assert.match(detailPage, /Official sources/);
   assert.match(helper, /PostgresCatalogRepository/);

@@ -38,6 +38,22 @@ function createRepository(seed = null) {
   };
 }
 
+test("continuations preserve registered locale and UUID locators while rejecting query smuggling", async () => {
+  const { repository } = createRepository();
+  const service = new SignInContinuationService(repository, { now });
+  const guest = createRequestContext({ guestSessionId: "guest-query-review" });
+  const id = "a1111111-a111-4111-8111-a11111111111";
+  for (const locale of ["en", "vi", "th", "id", "ms", "ar"]) {
+    for (const targetRoute of [`/application.html?lang=${locale}&applicationSet=${id}#info`, `/application.html?programId=${id}&intakeId=${id}&lang=${locale}#add-choice`, `/application.html?invoiceId=${id}&checkout=success&lang=${locale}#payment`, `/billing-api.html?invoice=${id}&lang=${locale}`]) {
+      const result = await service.createGuestContinuation(guest, { targetRoute, actionKey: "navigation.open_student_workspace", requiredRole: "student" });
+      assert.equal(result.targetRoute, targetRoute);
+    }
+  }
+  for (const targetRoute of ["/application.html?next=https://evil.example", "/application.html?lang=vi&lang=en", "/application.html?applicationSet=not-a-uuid", "/application.html?invoiceId=%252fadmin", "/hub-api.html?applicationSet=" + id, "/application.html?lang=xx", "/application.html?checkout=unverified", "/application.html?password=private", "/application.html#unregistered", "//evil.example/application.html", "/ops-admin-api.html?lang=vi"]) {
+    await assert.rejects(service.createGuestContinuation(guest, { targetRoute, actionKey: "navigation.open_student_workspace", requiredRole: "student" }), error => [400, 403].includes(error.status));
+  }
+});
+
 test("sign-in continuation creates short-lived guest continuation with hashed token storage", async () => {
   const { calls, repository } = createRepository();
   const auditEvents = [];

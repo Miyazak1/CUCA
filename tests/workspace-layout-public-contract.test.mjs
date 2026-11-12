@@ -36,7 +36,7 @@ test("student workspace entry pages load the synchronized layout revision", asyn
   const pages = ["hub-api.html", "application.html", "favourites-api.html", "notifications.html", "preferences-api.html", "billing-api.html"];
   for (const page of pages) {
     const html = await publicFile(page);
-    assert.match(html, /shared-shell\.css\?v=20261111-wordmark/, page);
+    assert.match(html, /shared-shell\.css\?v=20261112-catalog-body/, page);
     assert.match(html, /-workspace\.css\?v=20260923-workspace-spacing|application\.css\?v=20261021-design-system/, page);
   }
 });

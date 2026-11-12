@@ -5,6 +5,23 @@ import vm from "node:vm";
 
 const root = new URL("../", import.meta.url);
 
+test("tuition formats numeric source text once and preserves unstructured official fees", async () => {
+  const script = await source("public/catalog-detail.js");
+  for (const [locale, expected] of [["en", "RMB 39,800/year"], ["vi", "39.800 RMB/năm"]]) {
+    const format = vm.runInNewContext(`${functionBody(script, "formatMoney", "formatDuration")}\nformatMoney`, {
+      detailLocale: locale, Intl,
+      cleanText: value => typeof value === "string" ? value.trim() : "",
+      detailUi: text => locale === "vi" && text === "year" ? "năm" : text,
+    });
+    assert.equal(format({ tuitionText: "RMB39,800yuan/year" }), expected);
+    assert.equal(format({ tuitionAmount: 39800, tuitionCurrency: "CNY", tuitionPeriod: "year" }), expected);
+    assert.equal(format({ tuitionText: "RMB 30,000–40,000/year" }), "RMB 30,000–40,000/year");
+    assert.equal(format({ tuitionText: "Contact university for fees" }), "Contact university for fees");
+    assert.equal(format({ displayTuition: "USD 5,000/year", tuitionAmount: 39800 }), "USD 5,000/year");
+    assert.equal(format({}), "Not provided");
+  }
+});
+
 async function source(path) {
   return readFile(new URL(path, root), "utf8");
 }
@@ -160,7 +177,7 @@ test("core catalog detail pages preserve the selected public locale", async () =
     };
     vm.runInNewContext(script, context);
     assert.equal(context.window.CUACCatalogDetailI18n.ui("Back to programs"), backLabel);
-    assert.equal(context.window.CUACCatalogDetailI18n.href("programs.html"), `programs.html?lang=${locale}`);
+    assert.equal(context.window.CUACCatalogDetailI18n.href("programs.html"), `/programs.html?lang=${locale}`);
     assert.notEqual(context.window.CUACCatalogDetailI18n.ui("Record unavailable"), "Record unavailable");
   }
 });

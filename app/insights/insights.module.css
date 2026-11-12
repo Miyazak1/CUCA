@@ -46,6 +46,9 @@
 
 .heroCopy { max-width: 780px; }
 
+.categoryHero { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.categoryHero > * { min-width: 0; max-width: 780px; }
+
 .eyebrow {
   margin: 0 0 12px;
   color: var(--teal);
@@ -135,7 +138,7 @@
 .sectionHeading { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 28px; }
 .sectionHeading h2,
 .methodBand h2 { max-width: 720px; margin: 0; color: var(--deep); font-family: var(--font-display); font-size: clamp(30px, 4vw, 45px); line-height: 1.08; letter-spacing: -.025em; text-wrap: balance; }
-.sectionHeading > span { max-width: 240px; color: var(--muted); font-size: 13px; text-align: right; }
+.sectionHeading > span { max-width: 240px; color: var(--muted); font-size: 13px; text-align: end; }
 
 .categoryNav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
 .categoryNav a { position: relative; display: grid; min-height: 190px; padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255, 255, 255, .88); color: var(--deep); text-decoration: none; transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
@@ -162,7 +165,7 @@
 .tags,
 .relatedLinks { display: flex; flex-wrap: wrap; gap: 8px 18px; }
 .meta { margin-top: 20px; color: var(--muted); font-size: 12px; }
-.meta span + span::before { margin-right: 18px; color: #a7b8b5; content: "•"; }
+.meta span + span::before { margin-inline-end: 18px; color: #a7b8b5; content: "•"; }
 .readButton { align-self: flex-start; gap: 16px; margin-top: 28px; }
 .latestSection { scroll-margin-top: 32px; }
 
@@ -195,7 +198,7 @@
 .methodBand { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.2fr); gap: 56px; margin-top: 56px; padding: 42px; border-radius: 22px 22px 6px 22px; background: var(--deep); color: #fff; }
 .methodBand h2 { color: #fff; font-size: clamp(30px, 3.5vw, 42px); }
 .methodBand ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 0; padding: 0; list-style: none; }
-.methodBand li { padding-left: 18px; border-left: 1px solid rgba(255,255,255,.18); }
+.methodBand li { padding-inline-start: 18px; border-inline-start: 1px solid rgba(255,255,255,.18); }
 .methodBand li span { color: #79d5c6; font-size: 11px; font-weight: 800; letter-spacing: .1em; }
 .methodBand li strong { display: block; margin-top: 22px; font-family: var(--font-display); font-size: 23px; }
 .methodBand li p { margin: 8px 0 0; color: rgba(255,255,255,.7); font-size: 13px; line-height: 1.55; }
@@ -217,21 +220,21 @@
 .sourceBox p,
 .sourceList li,
 .related p { font-size: 17px; line-height: 1.8; }
-.section ul { padding-left: 24px; }
+.section ul { padding-inline-start: 24px; }
 .section li + li { margin-top: 8px; }
 .tableWrap { margin: 24px 0 28px; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: 0 8px 24px rgba(7, 63, 59, .05); }
 .tableWrap:focus-visible { outline: 3px solid rgba(0, 135, 125, .24); outline-offset: 3px; }
 .articleTable { width: 100%; min-width: 620px; border-collapse: collapse; color: var(--ink); font-size: 15px; line-height: 1.55; }
 .articleTable th,
-.articleTable td { padding: 13px 15px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.articleTable td { padding: 13px 15px; border-inline-end: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; }
 .articleTable th:last-child,
-.articleTable td:last-child { border-right: 0; }
+.articleTable td:last-child { border-inline-end: 0; }
 .articleTable tbody tr:last-child td { border-bottom: 0; }
 .articleTable th { background: var(--mint); color: var(--deep); font-size: 13px; font-weight: 800; }
 .articleTable tbody tr:nth-child(even) { background: #f9fbfa; }
 .sourceBox,
 .related { margin-top: 28px; }
-.sourceList { margin: 0; padding-left: 22px; }
+.sourceList { margin: 0; padding-inline-start: 22px; }
 .sourceList li + li { margin-top: 12px; }
 .sourceList span { color: var(--muted); font-size: 14px; }
 .related { background: var(--mint); border-color: #a8ddd4; }
@@ -256,7 +259,7 @@
   .heroCopy > p:not(.eyebrow),
   .dek { font-size: 17px; }
   .sectionHeading { align-items: flex-start; flex-direction: column; gap: 14px; }
-  .sectionHeading > span { text-align: left; }
+  .sectionHeading > span { text-align: start; }
   .featuredContent { padding: 30px 24px; }
   .featuredVisual { min-height: 220px; padding: 26px; }
   .grid { grid-template-columns: 1fr; }

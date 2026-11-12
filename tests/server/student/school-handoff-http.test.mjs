@@ -10,9 +10,10 @@ const studentSession = {
   activeRole: "student",
   tenantSchoolId: null,
   authStrength: "step_up",
-  expiresAt: new Date("2026-09-30T00:00:00.000Z"),
+  expiresAt: new Date(Date.now() + 86_400_000),
   revokedAt: null,
   accountStatus: "active",
+  emailVerified: true,
 };
 
 test("school handoff HTTP binds the authenticated student and returns a current-release receipt", async () => {
@@ -39,6 +40,7 @@ test("school progress HTTP returns only the student's bounded progress projectio
   const handlers = createSchoolHandoffHttpHandlers({
     async handoff() { throw new Error("unused"); },
     async getProgress(context, applicationSetId) {
+      assert.equal(context.actorUserId, studentSession.userId);
       return { applicationSetId, items: [{ schoolApplicationId: "app-1", applicationChoiceId: "choice-1",
         schoolId: "school-1", programId: "program-1", programIntakeId: "intake-1", status: "contacted",
         schoolRevision: 2, statusChangedAt: new Date("2026-09-14T00:00:00Z"), submittedAt: new Date("2026-09-13T00:00:00Z") }] };

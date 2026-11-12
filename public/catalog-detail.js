@@ -154,13 +154,16 @@ function formatDate(value, fallback = detailUi("Not provided")) {
 }
 
 function formatMoney(record, fallback = detailUi("Not provided")) {
-  if (cleanText(record.displayTuition)) return cleanText(record.displayTuition);
-  if (cleanText(record.tuitionText)) return cleanText(record.tuitionText);
-  if (Number.isFinite(record.tuitionAmount)) {
-    const currency = cleanText(record.tuitionCurrency) || "CNY";
-    const period = cleanText(record.tuitionPeriod);
-    const amount = new Intl.NumberFormat(detailLocale).format(record.tuitionAmount);
-    return `${currency} ${amount}${period ? ` / ${period}` : ""}`;
+  const published = cleanText(record.displayTuition) || cleanText(record.tuitionText);
+  const legacy = published.match(/^(?:RMB|CNY|[¥￥])?\s*([\d,]+(?:\.\d+)?)\s*(?:yuan|RMB|CNY|元)?(?:\s*\/\s*(year|semester|month|program))?$/i);
+  if (published && !legacy) return published;
+  const value = legacy ? Number(legacy[1].replaceAll(",", "")) : record.tuitionAmount;
+  if (Number.isFinite(value)) {
+    const currency = (legacy ? "CNY" : cleanText(record.tuitionCurrency)) || "CNY";
+    const currencyLabel = currency === "CNY" ? "RMB" : currency;
+    const period = detailUi(legacy?.[2]?.toLowerCase() || cleanText(record.tuitionPeriod));
+    const amount = new Intl.NumberFormat(detailLocale).format(value);
+    return `${detailLocale === "vi" ? `${amount} ${currencyLabel}` : `${currencyLabel} ${amount}`}${period ? `/${period}` : ""}`;
   }
   return fallback;
 }
@@ -168,8 +171,8 @@ function formatMoney(record, fallback = detailUi("Not provided")) {
 function formatDuration(record, fallback = detailUi("Not provided")) {
   const years = Number(record.durationYears);
   const months = Number(record.durationMonths);
-  if (Number.isInteger(years) && years > 0) return `${years} ${years === 1 ? "year" : "years"}`;
-  if (Number.isInteger(months) && months > 0) return `${months} ${months === 1 ? "month" : "months"}`;
+  if (Number.isInteger(years) && years > 0) return `${years} ${detailUi("year")}`;
+  if (Number.isInteger(months) && months > 0) return `${months} ${detailUi("month")}`;
   return fallback;
 }
 
@@ -207,7 +210,7 @@ function renderSection(kicker, title, content, description = "") {
     <header class="catalog-section-head">
       <span class="catalog-section-kicker">${escapeHtml(detailUi(kicker))}</span>
       <h2>${escapeHtml(detailUi(title))}</h2>
-      ${description ? `<p>${escapeHtml(description)}</p>` : ""}
+      ${description ? `<p>${escapeHtml(detailUi(description))}</p>` : ""}
     </header>
     ${content}
   </section>`;
@@ -217,7 +220,7 @@ function renderSource(record) {
   const sourceHref = safeUrl(record.sourceUrl);
   if (!sourceHref) return "";
   return `<aside class="catalog-source-rail" aria-label="${escapeHtml(detailUi("Open source"))}">
-    <a class="catalog-source-link" href="${escapeHtml(sourceHref)}" target="_blank" rel="noopener noreferrer">${escapeHtml(record.sourceLabel || detailUi("Open source"))}</a>
+    <a class="catalog-source-link" data-catalog-original lang="en" href="${escapeHtml(sourceHref)}" target="_blank" rel="noopener noreferrer">${escapeHtml(record.sourceLabel || detailUi("Open source"))}</a>
   </aside>`;
 }
 
@@ -225,13 +228,15 @@ function renderHero(record, options) {
   const localName = cleanText(options.localName);
   const intro = cleanText(options.intro);
   const context = (options.context || []).filter(Boolean);
-  const title = cleanText(options.title) || detailUi("Published catalog record");
+  const title = window.CUACCatalogContent?.sourceText(cleanText(options.title)) || cleanText(options.title) || detailUi("Published catalog record");
+  const displayTitle = window.CUACCatalogContent?.text(title) || title;
   return `<section class="catalog-record-hero">
     <div class="catalog-record-code" aria-hidden="true"><span>${escapeHtml(config.code)}</span><small>UCAC</small></div>
     <div class="catalog-record-title">
       <span class="catalog-record-type"><img src="${escapeHtml(config.icon)}" alt="" />${escapeHtml(config.typeLabel)}</span>
-      <h1 class="${title.length > 46 ? "long-title" : ""}">${escapeHtml(title)}</h1>
-      ${localName && localName !== title ? `<p class="catalog-record-local-name">${escapeHtml(localName)}</p>` : ""}
+      <h1 lang="${escapeHtml(detailLocale)}" class="${displayTitle.length > 46 ? "long-title" : ""}">${detailType === "program" ? escapeHtml(displayTitle).replace(/\(/g, "<wbr>(").replace(/\//g, "/<wbr>") : escapeHtml(displayTitle)}</h1>
+      ${displayTitle !== title ? `<p class="catalog-record-original-name" data-catalog-original><span>${escapeHtml(detailUi("Official name"))}: </span><span lang="en">${escapeHtml(title)}</span></p>` : ""}
+      ${localName && localName !== title ? `<p class="catalog-record-local-name" data-catalog-original lang="zh-CN">${escapeHtml(localName)}</p>` : ""}
       ${intro ? `<p class="catalog-record-intro">${escapeHtml(intro)}</p>` : ""}
       ${context.length ? `<ul class="catalog-record-context">${context.map((item) => `<li>${item}</li>`).join("")}</ul>` : ""}
     </div>
@@ -242,7 +247,7 @@ function renderHero(record, options) {
 function renderStrip(items) {
   const values = items.filter((item) => item && cleanText(item[0]) && hasDisplayValue(item[1])).slice(0, 4);
   if (!values.length) return "";
-  return `<section class="catalog-record-strip" style="--summary-count:${values.length}" aria-label="${escapeHtml(detailUi("Record summary"))}">${values.map(([label, value]) => `
+  return `<section class="catalog-record-strip" data-summary-count="${values.length}" aria-label="${escapeHtml(detailUi("Record summary"))}">${values.map(([label, value]) => `
     <article><span>${escapeHtml(detailUi(label))}</span><strong>${escapeHtml(displayValue(value))}</strong></article>
   `).join("")}</section>`;
 }
@@ -266,7 +271,7 @@ function renderAside(record, heading, actions, note) {
     </section>
     <section class="catalog-aside-panel catalog-disclaimer">
       <h3>${escapeHtml(detailUi("Before you decide"))}</h3>
-      <p>${escapeHtml(note)}</p>
+      <p>${escapeHtml(detailUi(note))}</p>
     </section>
     ${updateParts.length ? `<section class="catalog-aside-panel">
       <h3>${escapeHtml(detailUi("Record update"))}</h3>
@@ -288,12 +293,12 @@ function renderIntakes(intakes) {
   if (!intakes.length) return renderEmpty("No currently open intake is published for this program.");
   return `<ol class="catalog-item-list">${intakes.map((intake) => `
     <li>
-      <span class="catalog-item-label">${escapeHtml(`${titleCase(intake.intakeTerm)} ${intake.intakeYear}`)}</span>
+      <span class="catalog-item-label">${escapeHtml(`${detailUi(titleCase(intake.intakeTerm))} ${intake.intakeYear}`)}</span>
       <div class="catalog-item-copy">
         <strong>${escapeHtml(formatDate(intake.deadlineDate, intake.deadlineLabel || "Deadline not provided"))}</strong>
         <div class="catalog-item-meta">
-          <span>Opens: ${escapeHtml(formatDate(intake.openDate))}</span>
-          ${intake.applicationRound ? `<span>Round: ${escapeHtml(intake.applicationRound)}</span>` : ""}
+          <span>${escapeHtml(detailUi("Opens"))}: ${escapeHtml(formatDate(intake.openDate))}</span>
+          ${intake.applicationRound ? `<span>${escapeHtml(detailUi("Round"))}: ${escapeHtml(detailUi(intake.applicationRound))}</span>` : ""}
         </div>
       </div>
     </li>
@@ -306,12 +311,12 @@ function renderRequirements(requirements) {
   if (!items.length) return renderEmpty("No current, approved requirement document is published for this intake. Check the official application page before relying on requirements.");
   return `<ol class="catalog-item-list">${items.map((item) => `
     <li>
-      <span class="catalog-item-label">${escapeHtml(titleCase(item.category || "Requirement"))}</span>
+      <span class="catalog-item-label">${escapeHtml(detailUi(titleCase(item.category || "Requirement")))}</span>
       <div class="catalog-item-copy">
-        <span class="catalog-requirement-level">${escapeHtml(titleCase(item.level))}</span>
-        <strong>${escapeHtml(item.ruleText)}</strong>
-        ${item.appliesTo ? `<p>Applies to: ${escapeHtml(item.appliesTo)}</p>` : ""}
-        <div class="catalog-item-meta"><span>${escapeHtml(titleCase(item.stage))}</span><span>${escapeHtml(titleCase(item.evidenceType))}</span></div>
+        <span class="catalog-requirement-level">${escapeHtml(detailUi(titleCase(item.level)))}</span>
+        <strong>${escapeHtml(detailUi(item.ruleText))}</strong>
+        ${item.appliesTo ? `<p>${escapeHtml(detailUi("Applies to"))}: ${escapeHtml(detailUi(item.appliesTo))}</p>` : ""}
+        <div class="catalog-item-meta"><span>${escapeHtml(detailUi(titleCase(item.stage)))}</span><span>${escapeHtml(detailUi(titleCase(item.evidenceType)))}</span></div>
       </div>
     </li>
   `).join("")}</ol>`;
@@ -343,7 +348,7 @@ function renderProgram(record, extras) {
       ["Catalog group", record.displayGroupLabel || record.displayGroup],
     ])),
     renderSection("Intakes", "Open application windows", renderIntakes(intakes), "Only open, non-expired intakes from the public catalog are shown."),
-    firstIntake ? renderSection("Requirements", `${titleCase(firstIntake.intakeTerm)} ${firstIntake.intakeYear} requirements`, renderRequirements(extras.requirements), "Requirement documents are information-only and retain their review and evidence controls.") : "",
+    firstIntake ? renderSection("Requirements", `${detailUi(titleCase(firstIntake.intakeTerm))} ${firstIntake.intakeYear} · ${detailUi("Requirements")}`, renderRequirements(extras.requirements), "Requirement documents are information-only and retain their review and evidence controls.") : "",
     renderSection("Admission route", "Language and assessment conditions", admissionContent, "These summary fields do not replace the intake-specific approved requirement document."),
   ].join("");
   const applicationHref = safeUrl(record.applicationUrl);
@@ -377,8 +382,8 @@ function renderDeadlineItems(items) {
 }
 
 function renderSchool(record) {
-  const location = [record.cityZh || record.city, record.province, record.regionLabel || record.region].filter(Boolean).map(escapeHtml).join(", ");
-  const cityLink = record.citySlug ? `<a href="${escapeHtml(detailHref(`city-detail.html?city=${encodeURIComponent(record.citySlug)}`))}">${escapeHtml(record.cityZh || record.city || "City record")}</a>` : "";
+  const location = [record.city || record.cityZh, record.province, record.regionLabel || record.region].filter(Boolean).map(escapeHtml).join(", ");
+  const cityLink = record.citySlug ? `<a href="${escapeHtml(detailHref(`city-detail.html?city=${encodeURIComponent(record.citySlug)}`))}">${escapeHtml(record.city || record.cityZh || "City record")}</a>` : "";
   const nextDeadline = Array.isArray(record.upcomingDeadlines) ? record.upcomingDeadlines[0] : null;
   const main = [
     renderSection("University profile", "Institution and study context", renderDefinitions([
@@ -524,7 +529,7 @@ function cityContentBlocks(content) {
   const budget = content.budgetSummary;
   if (budget && typeof budget === "object" && !Array.isArray(budget)) {
     const items = [["Monthly", budget.monthly], ["Yearly", budget.yearly], ["Note", budget.note]]
-      .filter(([, value]) => cleanText(value)).map(([label, value]) => `${label}: ${cleanText(value)}`);
+      .filter(([, value]) => cleanText(value)).map(([label, value]) => `${detailUi(label)}: ${detailUi(cleanText(value))}`);
     if (items.length) blocks.push({ title: "Budget summary", body: "", paragraphs: [], items });
   }
   for (const [key, title] of [["quickFacts", "Quick facts"], ["costProfiles", "Cost profiles"], ["costBreakdown", "Cost breakdown"]]) {
@@ -626,12 +631,14 @@ function renderGuide(record) {
 }
 
 async function requestData(path) {
+  await window.CUACCatalogContent?.ready;
   const response = await fetch(path, { headers: { accept: "application/json" } });
   const body = await response.json().catch(() => ({}));
   if (!response.ok) {
     const message = body && body.error && body.error.message;
     throw new Error(message || `Catalog request failed with status ${response.status}.`);
   }
+  window.CUACCatalogContent?.track(body.data);
   return body.data;
 }
 
@@ -699,9 +706,14 @@ async function loadDetail() {
     if (detailType === "guide") html = renderGuide(record);
     const guideTranslation = detailType === "guide" && detailLocale !== "en" ? record.content?.translations?.[detailLocale] : null;
     const name = guideTranslation?.title || record.nameEn || record.titleEn || record.title || record.slug;
-    document.title = `${name} | UCAC`;
-    updateDetailMetadata(identifier, name);
+    const displayName = window.CUACCatalogContent?.text(name) || name;
+    document.title = `${displayName} | UCAC`;
+    updateDetailMetadata(identifier, displayName);
     detailRoot.innerHTML = `<a class="catalog-back-link" href="${escapeHtml(detailHref(config.backHref))}"><span aria-hidden="true">&larr;</span>${escapeHtml(config.backLabel)}</a>${html}`;
+    detailRoot.querySelectorAll("[data-summary-count]").forEach(strip => {
+      const count = Number(strip.dataset.summaryCount);
+      if (Number.isInteger(count) && count > 0 && count <= 12) strip.style.setProperty("--summary-count", String(count));
+    });
   } catch (error) {
     renderError(error);
   }

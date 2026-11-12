@@ -80,11 +80,12 @@
   const ui = (english) => dictionary.get(String(english)) || String(english);
 
   function href(rawHref) {
-    if (!rawHref || rawHref.startsWith("#") || !i18n || i18n.locale === "en") return rawHref;
+    if (i18n?.href) return i18n.href(rawHref);
+    if (!rawHref || rawHref.startsWith("#") || !i18n) return rawHref;
     const url = new URL(rawHref, location.href);
     if (url.origin !== location.origin || !url.pathname.toLowerCase().endsWith(".html")) return rawHref;
     url.searchParams.set("lang", i18n.locale);
-    return `${url.pathname.split("/").pop()}${url.search}${url.hash}`;
+    return `${url.pathname}${url.search}${url.hash}`;
   }
 
   function apply(root = document) {
@@ -111,7 +112,7 @@
 
   window.CUACOnboardingI18n = Object.freeze({ locale: i18n?.locale || "en", ui, href, apply });
   apply();
-  if (i18n?.locale !== "en") new MutationObserver((records) => records.forEach((record) => record.addedNodes.forEach((node) => {
+  if (i18n) new MutationObserver((records) => records.forEach((record) => record.addedNodes.forEach((node) => {
     if (node.nodeType === Node.ELEMENT_NODE) apply(node);
   }))).observe(document.body, { childList: true, subtree: true });
 }());

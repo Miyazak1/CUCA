@@ -55,7 +55,7 @@ const state = {
       }
 
       function schoolTags(item = {}) {
-        return [item.schoolType, item.sourceStatus].filter(Boolean);
+        return [item.schoolType?.trim().replace(/^public$/i, "Public").replace(/^private$/i, "Private"), item.sourceStatus?.trim().replace(/^verified$/i, "Verified").replace(/^unverified$/i, "Unverified")].filter(Boolean);
       }
 
       function escapeHtml(value) {
@@ -208,7 +208,7 @@ const state = {
       }
 
       function schoolDetailHref(item = {}) {
-        return `university-detail.html?university=${encodeURIComponent(item.id)}`;
+        return window.CUACCatalogI18n.localizeHref(`university-detail.html?university=${encodeURIComponent(item.id)}`);
       }
 
       function normalizeCityParam(value) {
@@ -357,7 +357,7 @@ const state = {
         const signals = [schoolApplicationReadiness(item), ...schoolTags(item).filter((tag) => tag !== "Verified").slice(0, 3)];
         const detailHref = schoolDetailHref(item);
         return `
-          <article class="university-card result-enter" style="--enter-index: ${index}" data-name="${escapeCatalogHtml(name)}" role="link" tabindex="0" data-university-card data-detail-href="${detailHref}" aria-label="View ${escapeCatalogHtml(name)} university guide">
+          <article class="university-card result-enter" data-enter-index="${index}" data-name="${escapeCatalogHtml(name)}" role="link" tabindex="0" data-university-card data-detail-href="${detailHref}" aria-label="${escapeCatalogHtml(window.CUACI18n.format("a11y.universityCard", { name: name }))}">
             <div class="card-image">
               <span class="badge">${escapeCatalogHtml(imageBadge)}</span>
               <button class="save catalog-save-control ${saved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved}" aria-label="${escapeCatalogHtml(catalogT(saved ? "common.remove" : "common.save", saved ? `Remove ${name} from Favourites` : `Save ${name} to Favourites`, { name }))}" title="${escapeCatalogHtml(catalogT(saved ? "common.savedTitle" : "common.saveTitle", saved ? "Saved — click to remove" : "Save to Favourites"))}">${window.CuacCatalogList.saveHeartIcon()}</button>
@@ -366,12 +366,12 @@ const state = {
             </div>
             <div class="card-body">
               <h2><a href="${detailHref}">${escapeCatalogHtml(name)}</a></h2>
-              <div class="location">${escapeCatalogHtml(schoolCity(item))}, ${escapeCatalogHtml(schoolProvince(item))}</div>
+              <div class="location">${escapeCatalogHtml(catalogUi(schoolCity(item)))}, ${escapeCatalogHtml(schoolProvince(item))}</div>
               <div class="signals">${signals.map((signal) => `<span class="signal">${escapeCatalogHtml(catalogUi(signal))}</span>`).join("")}</div>
-              <p class="note">${escapeCatalogHtml(schoolNote(item))}</p>
+              <p class="note">${escapeCatalogHtml(catalogUi(schoolNote(item)))}</p>
               <div class="facts">
                 <div class="mini-fact"><strong>${schoolProgramCount(item)}</strong><span>${escapeCatalogHtml(catalogUi("programs"))}</span></div>
-                <div class="mini-fact"><strong>${escapeCatalogHtml(schoolTuition(item))}</strong><span>${escapeCatalogHtml(catalogUi("tuition"))}</span></div>
+                <div class="mini-fact"><strong>${escapeCatalogHtml(catalogUi(schoolTuition(item)))}</strong><span>${escapeCatalogHtml(catalogUi("tuition"))}</span></div>
                 <div class="mini-fact"><strong>${schoolEnglishRouteCount(item)}</strong><span>${escapeCatalogHtml(catalogUi("routes"))}</span></div>
               </div>
             </div>
@@ -548,7 +548,7 @@ const state = {
           return true;
         }
         if (action === "open-choice-modal") {
-          window.location.href = "application.html#add-choice";
+          window.location.href = window.CUACCatalogI18n.localizeHref("application.html#add-choice");
           return true;
         }
         return false;

@@ -244,7 +244,7 @@ export class PostgresAuthSessionRepository implements AuthSessionRepository, Sch
       if (result?.changed) {
         await tx.query(`insert into audit_logs (request_id,actor_user_id,actor_type,active_role,action,
           resource_type,resource_id,allowed,data_classes,redaction_applied,metadata_json)
-          values ($1,$2,'user','student','auth.account_locale.updated','user',$2,true,
+          values ($1,$2::uuid,'user','student','auth.account_locale.updated','user',$2::text,true,
           '["account"]'::jsonb,true,$3::jsonb)`,
         [input.requestId, input.userId, JSON.stringify({ locale: input.locale })]);
       }

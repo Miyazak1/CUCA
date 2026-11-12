@@ -4,6 +4,7 @@ import { badRequest, forbidden } from "../shared/errors.ts";
 import type { RequestContext } from "../shared/request-context.ts";
 import { inputRecord, inputText, inputUuid } from "../shared/input.ts";
 import { authInput, authOptionalText, authToken } from "./input.ts";
+import { SUPPORTED_UI_LOCALES } from "../i18n/locales.ts";
 
 export type SignInContinuationRole = "student" | "school_staff" | "cuac_ops" | "cuac_admin";
 
@@ -94,7 +95,7 @@ const registeredNavigations = new Map<string, { requiredRole: SignInContinuation
   }],
   ["navigation.open_student_workspace", {
     requiredRole: "student",
-    routes: new Set(["/onboarding-api.html", "/hub-api.html", "/favourites-api.html", "/application.html", "/billing-api.html", "/notifications.html", "/preferences-api.html"]),
+    routes: new Set(["/onboarding-api.html", "/hub-api.html", "/favourites-api.html", "/application.html", "/billing-api.html", "/notifications.html", "/preferences-api.html", ...["overview", "choices", "info", "fee", "payment", "send", "add-choice"].map(section => `/application.html#${section}`)]),
   }],
   ["navigation.open_school_workspace", {
     requiredRole: "school_staff",
@@ -291,7 +292,8 @@ function normalizeCreateInput(input: CreateSignInContinuationInput) {
 function requireRegisteredNavigation(route: string, action: string, role: SignInContinuationRole | null) {
   // This is a navigation contract, not a permission grant or an application write.
   const registration = registeredNavigations.get(action);
-  if (!registration || role !== registration.requiredRole || !registration.routes.has(route)) {
+  const target = new URL(route, "https://continuation.invalid");
+  if (!registration || role !== registration.requiredRole || !registration.routes.has(target.pathname + target.hash)) {
     throw badRequest("Sign-in continuation navigation is not registered.");
   }
 }
@@ -326,8 +328,16 @@ function normalizeTargetRoute(value: unknown): string {
   if (parsed.origin !== base || parsed.pathname.startsWith("//")) {
     throw badRequest("Sign-in continuation target route must be an internal path.");
   }
-  if (parsed.search || (parsed.hash && !/^#[a-z][a-z0-9_-]{0,79}$/i.test(parsed.hash))) {
+  if (parsed.hash && !/^#[a-z][a-z0-9_-]{0,79}$/i.test(parsed.hash)) {
     throw badRequest("Sign-in continuation route cannot carry query data or an arbitrary fragment.");
+  }
+  const locatorKeys = parsed.pathname === "/application.html" ? ["applicationSet", "invoiceId", "programId", "intakeId"] : parsed.pathname === "/billing-api.html" ? ["invoice"] : [];
+  for (const [key, value] of parsed.searchParams) {
+    if (parsed.searchParams.getAll(key).length !== 1) throw badRequest("Sign-in continuation query parameters cannot repeat.");
+    if (key === "lang" && SUPPORTED_UI_LOCALES.some(locale => locale === value)) continue;
+    if (parsed.pathname === "/application.html" && key === "checkout" && ["success", "cancel"].includes(value)) continue;
+    if (locatorKeys.includes(key)) { inputUuid(value); continue; }
+    throw badRequest("Sign-in continuation query parameter is not registered.");
   }
   return parsed.pathname + parsed.search + parsed.hash;
 }

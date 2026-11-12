@@ -172,11 +172,13 @@ async function requestJson(path, options = {}) {
 
 function validateConsumedContinuation(value, role) {
   const targetRoute = safeLocalUrl(value?.targetRoute);
+  const target = targetRoute ? new URL(targetRoute, window.location.origin) : null;
+  const registeredRoute = target ? target.pathname + target.hash : null;
   const actionKey = value?.actionKey;
   const requiredRole = value?.requiredRole;
   const normalizedRole = normalizeAuthRole(role);
   const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-  const opsRouteAllowed = /^\/ops-admin-api\.html(?:#(?:overview|routing|billing|quality|readiness|release-plans|catalog|corrections|guides|insights|support|privacy|deletions))?$/.test(targetRoute || "");
+  const opsRouteAllowed = /^\/ops-admin-api\.html(?:#(?:overview|routing|billing|quality|readiness|release-plans|catalog|corrections|guides|insights|support|privacy|deletions))?$/.test(registeredRoute || "");
   const roleAllowed = requiredRole === "student"
     ? normalizedRole === "student"
     : requiredRole === "school_staff"
@@ -187,15 +189,17 @@ function validateConsumedContinuation(value, role) {
           ? String(role || "").toLowerCase() === "cuac_admin"
           : false;
   const routeAllowed = (
-    (actionKey === "application.add_choice" && ["/application.html", "/application.html#add-choice"].includes(targetRoute))
-    || (actionKey === "catalog.save_program" && targetRoute === "/programs.html" && uuidPattern.test(value?.payloadPreview?.programId || ""))
-    || (actionKey === "catalog.save_school" && targetRoute === "/universities.html" && uuidPattern.test(value?.payloadPreview?.schoolId || ""))
-    || (actionKey === "catalog.save_scholarship" && targetRoute === "/scholarships.html" && uuidPattern.test(value?.payloadPreview?.scholarshipId || ""))
-    || (actionKey === "navigation.open_student_workspace" && ["/onboarding-api.html", "/hub-api.html", "/favourites-api.html", "/application.html", "/billing-api.html", "/notifications.html", "/preferences-api.html"].includes(targetRoute))
-    || (actionKey === "navigation.open_school_workspace" && ["/school-portal.html", "/school-settings-api.html"].includes(targetRoute))
+    (actionKey === "application.add_choice" && ["/application.html", "/application.html#add-choice"].includes(registeredRoute))
+    || (actionKey === "catalog.save_program" && registeredRoute === "/programs.html" && uuidPattern.test(value?.payloadPreview?.programId || ""))
+    || (actionKey === "catalog.save_school" && registeredRoute === "/universities.html" && uuidPattern.test(value?.payloadPreview?.schoolId || ""))
+    || (actionKey === "catalog.save_scholarship" && registeredRoute === "/scholarships.html" && uuidPattern.test(value?.payloadPreview?.scholarshipId || ""))
+    || (actionKey === "navigation.open_student_workspace" && (["/onboarding-api.html", "/hub-api.html", "/favourites-api.html", "/application.html", "/billing-api.html", "/notifications.html", "/preferences-api.html"].includes(registeredRoute) || /^\/application\.html#(?:overview|choices|info|fee|payment|send|add-choice)$/.test(registeredRoute || "")))
+    || (actionKey === "navigation.open_school_workspace" && ["/school-portal.html", "/school-settings-api.html"].includes(registeredRoute))
     || (actionKey === "navigation.open_ops_workspace" && opsRouteAllowed)
   );
-  return roleAllowed && routeAllowed ? { targetRoute, actionKey, payloadPreview: value.payloadPreview || {} } : null;
+  const locatorKeys = target?.pathname === "/application.html" ? ["applicationSet", "invoiceId", "programId", "intakeId"] : target?.pathname === "/billing-api.html" ? ["invoice"] : [];
+  const queryAllowed = target && [...target.searchParams].every(([key, value]) => target.searchParams.getAll(key).length === 1 && (key === "lang" ? ["en", "vi", "th", "id", "ms", "ar", "zh-CN"].includes(value) : target.pathname === "/application.html" && key === "checkout" ? ["success", "cancel"].includes(value) : locatorKeys.includes(key) && uuidPattern.test(value)));
+  return roleAllowed && routeAllowed && queryAllowed ? { targetRoute, actionKey, payloadPreview: value.payloadPreview || {} } : null;
 }
 
 async function consumePendingContinuation(role) {
@@ -218,7 +222,7 @@ async function completeConsumedContinuation(continuation) {
     "catalog.save_scholarship": ["scholarship", "scholarshipId"],
   };
   const saveAction = saveActions[continuation.actionKey];
-  if (!saveAction) return continuation.targetRoute;
+  if (!saveAction) return authI18n?.href(continuation.targetRoute) || continuation.targetRoute;
   const [entityType, referenceKey] = saveAction;
   const entityId = continuation.payloadPreview[referenceKey];
   const existing = await requestJson("/api/v1/student/saved-items");
@@ -229,7 +233,7 @@ async function completeConsumedContinuation(continuation) {
       body: { entityType, entityId, notes: null },
     });
   }
-  return continuation.targetRoute;
+  return authI18n?.href(continuation.targetRoute) || continuation.targetRoute;
 }
 
 function setButtonBusy(button, busy, busyLabel) {
@@ -522,7 +526,8 @@ async function loadCurrentActor() {
     }
     const role = normalizeAuthRole(actor.activeRole);
     setRole(role);
-    const destination = await consumePendingContinuation(actor.activeRole) || destinationFor(role);
+    const continuation = await consumePendingContinuation(actor.activeRole);
+    const destination = continuation ? await completeConsumedContinuation(continuation) : destinationFor(role);
     if (pendingContinuation === null && authParams.get("continue") === "1") {
       window.location.assign(destination);
       return;

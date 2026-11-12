@@ -5,6 +5,12 @@ import { expandSiteSearchQuery, normalizeSiteSearchQuery, SITE_SEARCH_TYPES } fr
 
 const fixtureUrl = new URL("../../fixtures/site-search-relevance.json", import.meta.url);
 
+test("Vietnamese alias folding preserves unmatched names and accepts decomposed accents", () => {
+  assert.equal(expandSiteSearchQuery("HỌC BỔNG THẠC SĨ".normalize("NFD")), "scholarship master");
+  assert.equal(expandSiteSearchQuery("ĐẠI LIÊN"), expandSiteSearchQuery("dai lien"));
+  assert.equal(expandSiteSearchQuery("Université de Montréal"), "université de montréal");
+});
+
 test("reviewed site-search relevance cases retain their intended canonical terms", async () => {
   const fixture = JSON.parse(await readFile(fixtureUrl, "utf8"));
   assert.equal(fixture.version, 1);
