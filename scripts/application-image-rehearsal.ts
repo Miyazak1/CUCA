@@ -84,7 +84,9 @@ try {
   let ready = false;
   for (let attempt = 0; attempt < 60; attempt += 1) {
     try {
-      await docker(["exec", database, "pg_isready", "-U", "cuac_app", "-d", databaseName]);
+      // The image's init server accepts Unix sockets before the final TCP server
+      // starts. Probe TCP so migrations cannot race that temporary server's exit.
+      await docker(["exec", database, "pg_isready", "-h", "127.0.0.1", "-U", "cuac_app", "-d", databaseName]);
       ready = true;
       break;
     } catch { await delay(250); }
