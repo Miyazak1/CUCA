@@ -773,7 +773,7 @@
     if (authState === "signed-out") {
       const localized = ["school", "ops"].includes(document.body.dataset.agentMode || "");
       return `
-        <button class="sign-in-pill" type="button" data-cuac-sign-in-trigger>
+        <button class="sign-in-pill" type="button" data-cuac-sign-in-trigger aria-label="${localized ? "登录" : escapeHTML(shellText("signIn", "Sign in"))}">
           ${icons.account}
           <span>${localized ? "登录" : escapeHTML(shellText("signIn", "Sign in"))}</span>
         </button>

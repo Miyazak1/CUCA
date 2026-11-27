@@ -2,6 +2,7 @@ import { sql } from "drizzle-orm";
 import {
   boolean,
   check,
+  customType,
   date,
   foreignKey,
   index,
@@ -3928,3 +3929,18 @@ export const notificationDeliveries = pgTable("notification_deliveries", {
       and ${table.outcome} in ('unknown','lease_expired') and ${table.providerMessageIdHash} is null
     )`),
 }));
+const logoBytes = customType<{ data: Buffer }>({ dataType() { return "bytea"; } });
+export const schoolLogoVersions = pgTable("school_logo_versions", {
+  schoolId: uuid("school_id").notNull().references(() => schools.id, { onDelete: "restrict" }),
+  version: integer("version").notNull(),
+  bytes: logoBytes("bytes"), sha256: text("sha256"), width: integer("width"), height: integer("height"),
+  sourceUrl: text("source_url"), sourceNote: text("source_note").notNull().default(""),
+  actorUserId: uuid("actor_user_id").references(() => users.id, { onDelete: "set null" }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+}, t => [primaryKey({ columns: [t.schoolId,t.version] }),
+  check("school_logo_version_check",sql`${t.version} between 1 and 2147483647`),
+  check("school_logo_payload_check",sql`(${t.bytes} is null and ${t.sha256} is null and ${t.width} is null and ${t.height} is null and ${t.sourceUrl} is null) or
+    (${t.bytes} is not null and ${t.sha256} is not null and ${t.width} is not null and ${t.height} is not null and ${t.sourceUrl} is not null and octet_length(${t.bytes}) between 57 and 1048576 and ${t.sha256} ~ '^[a-f0-9]{64}$'
+     and ${t.width} between 16 and 2048 and ${t.height} between 16 and 2048 and ${t.sourceUrl} like 'https://%')`),
+  check("school_logo_note_check",sql`length(${t.sourceNote}) <= 1000`),
+]);

@@ -1,3 +1,4 @@
+import type { SchoolLogoDto } from "./school-logo.ts";
 import type { StudyLevelSlug } from "./study-level.ts";
 
 export type SourceStatus = "verified" | "unverified" | "stale" | "disputed" | "invalid" | "draft" | "unknown";
@@ -28,6 +29,7 @@ export type PublicSchoolUpcomingDeadlineDto = {
 };
 
 export type PublicProgramDto = {
+  schoolLogo?: SchoolLogoDto | null;
   id: string;
   schoolId: string;
   cityId: string | null;
@@ -84,6 +86,7 @@ export type PublicProgramDto = {
 
 export type PublicProgramDetailDto = PublicProgramDto & {
   school: {
+    logo?: SchoolLogoDto | null;
     id: string;
     slug: string;
     nameZh: string | null;
@@ -97,6 +100,7 @@ export type PublicProgramDetailDto = PublicProgramDto & {
 };
 
 export type PublicSchoolDto = {
+  logo?: SchoolLogoDto | null;
   id: string;
   slug: string;
   cityId: string | null;
@@ -171,6 +175,7 @@ export type PublicScholarshipActionLinkDto = {
 };
 
 export type PublicScholarshipDto = {
+  schoolLogo?: SchoolLogoDto | null;
   id: string;
   slug: string;
   title: string;
@@ -224,6 +229,7 @@ export type PublicScholarshipDetailDto = PublicScholarshipDto & {
   sourceFieldLineage: SourceFieldLineage;
   updatedAt: Date;
   school: {
+    logo?: SchoolLogoDto | null;
     id: string;
     slug: string;
     nameZh: string | null;

@@ -1,0 +1,3415 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "logo-home-anhui-agricultural-university",
+      "label": "Anhui Agricultural University official identity homepage",
+      "url": "https://www.ahau.edu.cn/",
+      "allowedHosts": [
+        "www.ahau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "anhui-agricultural-university"
+    },
+    {
+      "id": "logo-home-anhui-university",
+      "label": "Anhui University official identity homepage",
+      "url": "https://sie.ahu.edu.cn",
+      "allowedHosts": [
+        "sie.ahu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "anhui-university"
+    },
+    {
+      "id": "logo-home-beihang-university",
+      "label": "Beihang University official identity homepage",
+      "url": "https://is.buaa.edu.cn/",
+      "allowedHosts": [
+        "is.buaa.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beihang-university"
+    },
+    {
+      "id": "logo-home-beijing-foreign-studies-university",
+      "label": "Beijing Foreign Studies University official identity homepage",
+      "url": "https://www.bfsu.edu.cn/",
+      "allowedHosts": [
+        "www.bfsu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-foreign-studies-university"
+    },
+    {
+      "id": "logo-home-beijing-forestry-university",
+      "label": "Beijing Forestry University official identity homepage",
+      "url": "https://www.bjfu.edu.cn/",
+      "allowedHosts": [
+        "www.bjfu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-forestry-university"
+    },
+    {
+      "id": "logo-home-beijing-institute-of-technology",
+      "label": "Beijing Institute of Technology official identity homepage",
+      "url": "https://isc.bit.edu.cn/",
+      "allowedHosts": [
+        "isc.bit.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-institute-of-technology"
+    },
+    {
+      "id": "logo-home-beijing-language-and-culture-university",
+      "label": "Beijing Language and Culture University official identity homepage",
+      "url": "https://www.blcu.edu.cn",
+      "allowedHosts": [
+        "www.blcu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-language-and-culture-university"
+    },
+    {
+      "id": "logo-home-beijing-polytechnic-university",
+      "label": "Beijing Polytechnic University official identity homepage",
+      "url": "https://www.bpu.edu.cn/wwwz/",
+      "allowedHosts": [
+        "www.bpu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-polytechnic-university"
+    },
+    {
+      "id": "logo-home-beijing-technology-and-business-university",
+      "label": "Beijing Technology and Business University official identity homepage",
+      "url": "https://www.btbu.edu.cn/",
+      "allowedHosts": [
+        "www.btbu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-technology-and-business-university"
+    },
+    {
+      "id": "logo-home-beijing-university-of-chemical-technology",
+      "label": "Beijing University of Chemical Technology official identity homepage",
+      "url": "https://www.buct.edu.cn/",
+      "allowedHosts": [
+        "www.buct.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-university-of-chemical-technology"
+    },
+    {
+      "id": "logo-home-beijing-university-of-posts-and-telecommunications",
+      "label": "Beijing University of Posts and Telecommunications official identity homepage",
+      "url": "https://www.bupt.edu.cn/",
+      "allowedHosts": [
+        "www.bupt.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications"
+    },
+    {
+      "id": "logo-home-central-china-normal-university",
+      "label": "Central China Normal University official identity homepage",
+      "url": "https://dge.ccnu.edu.cn",
+      "allowedHosts": [
+        "dge.ccnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-china-normal-university"
+    },
+    {
+      "id": "logo-home-central-south-university",
+      "label": "Central South University official identity homepage",
+      "url": "https://www.csu.edu.cn/",
+      "allowedHosts": [
+        "www.csu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-south-university"
+    },
+    {
+      "id": "logo-home-central-university-of-finance-and-economics",
+      "label": "Central University of Finance and Economics official identity homepage",
+      "url": "https://www.cufe.edu.cn/",
+      "allowedHosts": [
+        "www.cufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-university-of-finance-and-economics"
+    },
+    {
+      "id": "logo-home-chang-an-university",
+      "label": "Chang'an University official identity homepage",
+      "url": "https://www.chd.edu.cn/",
+      "allowedHosts": [
+        "www.chd.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "chang-an-university"
+    },
+    {
+      "id": "logo-home-changchun-university-of-science-and-technology",
+      "label": "Changchun University of Science and Technology official identity homepage",
+      "url": "https://sie.cust.edu.cn/",
+      "allowedHosts": [
+        "sie.cust.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "changchun-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-home-china-academy-of-art",
+      "label": "China Academy of Art official identity homepage",
+      "url": "https://admission.caa.edu.cn/",
+      "allowedHosts": [
+        "admission.caa.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "china-academy-of-art"
+    },
+    {
+      "id": "logo-home-china-agricultural-university",
+      "label": "China Agricultural University official identity homepage",
+      "url": "https://www.cau.edu.cn/",
+      "allowedHosts": [
+        "www.cau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "china-agricultural-university"
+    },
+    {
+      "id": "logo-home-chongqing-normal-university",
+      "label": "Chongqing Normal University official identity homepage",
+      "url": "https://www.cqnu.edu.cn/",
+      "allowedHosts": [
+        "www.cqnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "chongqing-normal-university"
+    },
+    {
+      "id": "logo-home-dalian-university-of-technology",
+      "label": "Dalian University of Technology official identity homepage",
+      "url": "https://sie.dlut.edu.cn",
+      "allowedHosts": [
+        "sie.dlut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "dalian-university-of-technology"
+    },
+    {
+      "id": "logo-home-donghua-university",
+      "label": "Donghua University official identity homepage",
+      "url": "https://www.dhu.edu.cn/",
+      "allowedHosts": [
+        "www.dhu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "donghua-university"
+    },
+    {
+      "id": "logo-home-east-china-jiaotong-university",
+      "label": "East China Jiaotong University official identity homepage",
+      "url": "https://www.ecjtu.edu.cn/",
+      "allowedHosts": [
+        "www.ecjtu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "east-china-jiaotong-university"
+    },
+    {
+      "id": "logo-home-east-china-normal-university",
+      "label": "East China Normal University official identity homepage",
+      "url": "https://www.ecnu.edu.cn/",
+      "allowedHosts": [
+        "www.ecnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "east-china-normal-university"
+    },
+    {
+      "id": "logo-home-east-china-university-of-political-science-and-law",
+      "label": "East China University of Political Science and Law official identity homepage",
+      "url": "https://www.ecupl.edu.cn/",
+      "allowedHosts": [
+        "www.ecupl.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "east-china-university-of-political-science-and-law"
+    },
+    {
+      "id": "logo-home-east-china-university-of-science-and-technology",
+      "label": "East China University of Science and Technology official identity homepage",
+      "url": "https://www.ecust.edu.cn/",
+      "allowedHosts": [
+        "www.ecust.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "east-china-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-home-fudan-university",
+      "label": "Fudan University official identity homepage",
+      "url": "https://www.fudan.edu.cn/",
+      "allowedHosts": [
+        "www.fudan.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "fudan-university"
+    },
+    {
+      "id": "logo-home-fuzhou-university",
+      "label": "Fuzhou University official identity homepage",
+      "url": "https://www.fzu.edu.cn/",
+      "allowedHosts": [
+        "www.fzu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "fuzhou-university"
+    },
+    {
+      "id": "logo-home-guangdong-university-of-foreign-studies",
+      "label": "Guangdong University of Foreign Studies official identity homepage",
+      "url": "https://www.gdufs.edu.cn/",
+      "allowedHosts": [
+        "www.gdufs.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "guangdong-university-of-foreign-studies"
+    },
+    {
+      "id": "logo-home-guangxi-medical-university",
+      "label": "Guangxi Medical University official identity homepage",
+      "url": "https://gjy.gxmu.edu.cn",
+      "allowedHosts": [
+        "gjy.gxmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "guangxi-medical-university"
+    },
+    {
+      "id": "logo-home-guizhou-medical-university",
+      "label": "Guizhou Medical University official identity homepage",
+      "url": "https://soe.gmc.edu.cn",
+      "allowedHosts": [
+        "soe.gmc.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "guizhou-medical-university"
+    },
+    {
+      "id": "logo-home-hangzhou-dianzi-university",
+      "label": "Hangzhou Dianzi University official identity homepage",
+      "url": "https://www.hdu.edu.cn/",
+      "allowedHosts": [
+        "www.hdu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "hangzhou-dianzi-university"
+    },
+    {
+      "id": "logo-home-harbin-engineering-university",
+      "label": "Harbin Engineering University official identity homepage",
+      "url": "https://www.hrbeu.edu.cn/",
+      "allowedHosts": [
+        "www.hrbeu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "harbin-engineering-university"
+    },
+    {
+      "id": "logo-home-harbin-institute-of-technology",
+      "label": "Harbin Institute of Technology official identity homepage",
+      "url": "https://www.hit.edu.cn/",
+      "allowedHosts": [
+        "www.hit.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "harbin-institute-of-technology"
+    },
+    {
+      "id": "logo-home-harbin-institute-of-technology-shenzhen",
+      "label": "Harbin Institute of Technology, Shenzhen official identity homepage",
+      "url": "https://www.hitsz.edu.cn/",
+      "allowedHosts": [
+        "www.hitsz.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "harbin-institute-of-technology-shenzhen"
+    },
+    {
+      "id": "logo-home-harbin-university-of-science-and-technology",
+      "label": "Harbin University of Science and Technology official identity homepage",
+      "url": "https://www.hrbust.edu.cn/",
+      "allowedHosts": [
+        "www.hrbust.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "harbin-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-home-hefei-normal-university",
+      "label": "Hefei Normal University official identity homepage",
+      "url": "https://www.hfnu.edu.cn/",
+      "allowedHosts": [
+        "www.hfnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "hefei-normal-university"
+    },
+    {
+      "id": "logo-home-huazhong-university-of-science-and-technology",
+      "label": "Huazhong University of Science and Technology official identity homepage",
+      "url": "https://www.hust.edu.cn/",
+      "allowedHosts": [
+        "www.hust.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "huazhong-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-home-hunan-university-of-technology-and-business",
+      "label": "Hunan University of Technology and Business official identity homepage",
+      "url": "https://ev.hutb.edu.cn/",
+      "allowedHosts": [
+        "ev.hutb.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "hunan-university-of-technology-and-business"
+    },
+    {
+      "id": "logo-home-jiangsu-university-of-science-and-technology",
+      "label": "Jiangsu University of Science and Technology official identity homepage",
+      "url": "https://www.just.edu.cn/",
+      "allowedHosts": [
+        "www.just.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "jiangsu-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-home-jilin-university",
+      "label": "Jilin University official identity homepage",
+      "url": "https://www.jlu.edu.cn/",
+      "allowedHosts": [
+        "www.jlu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "jilin-university"
+    },
+    {
+      "id": "logo-home-jinan-university",
+      "label": "Jinan University official identity homepage",
+      "url": "https://www.jnu.edu.cn/",
+      "allowedHosts": [
+        "www.jnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "jinan-university"
+    },
+    {
+      "id": "logo-home-kunming-medical-university",
+      "label": "Kunming Medical University official identity homepage",
+      "url": "https://www.kmmu.edu.cn/",
+      "allowedHosts": [
+        "www.kmmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "kunming-medical-university"
+    },
+    {
+      "id": "logo-home-kunming-university",
+      "label": "Kunming University official identity homepage",
+      "url": "https://www.kmu.edu.cn/",
+      "allowedHosts": [
+        "www.kmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "kunming-university"
+    },
+    {
+      "id": "logo-home-liaoning-university-of-traditional-chinese-medicine",
+      "label": "Liaoning University of Traditional Chinese Medicine official identity homepage",
+      "url": "https://www.lnutcm.edu.cn/",
+      "allowedHosts": [
+        "www.lnutcm.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "liaoning-university-of-traditional-chinese-medicine"
+    },
+    {
+      "id": "logo-home-luzhou-vocational-and-technical-college",
+      "label": "Luzhou Vocational and Technical College official identity homepage",
+      "url": "https://www.lzy.edu.cn/",
+      "allowedHosts": [
+        "www.lzy.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "luzhou-vocational-and-technical-college"
+    },
+    {
+      "id": "logo-home-nanjing-university",
+      "label": "Nanjing University official identity homepage",
+      "url": "https://www.nju.edu.cn/",
+      "allowedHosts": [
+        "www.nju.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nanjing-university"
+    },
+    {
+      "id": "logo-home-nanjing-university-of-aeronautics-and-astronautics",
+      "label": "Nanjing University of Aeronautics and Astronautics official identity homepage",
+      "url": "https://www.nuaa.edu.cn/",
+      "allowedHosts": [
+        "www.nuaa.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics"
+    },
+    {
+      "id": "logo-home-nankai-university",
+      "label": "Nankai University official identity homepage",
+      "url": "https://www.nankai.edu.cn/",
+      "allowedHosts": [
+        "www.nankai.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nankai-university"
+    },
+    {
+      "id": "logo-home-northwestern-polytechnical-university",
+      "label": "Northwestern Polytechnical University official identity homepage",
+      "url": "https://www.nwpu.edu.cn/",
+      "allowedHosts": [
+        "www.nwpu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "northwestern-polytechnical-university"
+    },
+    {
+      "id": "logo-home-ocean-university-of-china",
+      "label": "Ocean University of China official identity homepage",
+      "url": "https://www.ouc.edu.cn/",
+      "allowedHosts": [
+        "www.ouc.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "ocean-university-of-china"
+    },
+    {
+      "id": "logo-home-peking-university",
+      "label": "Peking University official identity homepage",
+      "url": "https://www.pku.edu.cn/",
+      "allowedHosts": [
+        "www.pku.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "peking-university"
+    },
+    {
+      "id": "logo-home-peking-university-health-science-center",
+      "label": "Peking University Health Science Center official identity homepage",
+      "url": "https://www.bjmu.edu.cn/",
+      "allowedHosts": [
+        "www.bjmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "peking-university-health-science-center"
+    },
+    {
+      "id": "logo-home-qingdao-university",
+      "label": "Qingdao University official identity homepage",
+      "url": "https://www.qdu.edu.cn/",
+      "allowedHosts": [
+        "www.qdu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "qingdao-university"
+    },
+    {
+      "id": "logo-home-shandong-normal-university",
+      "label": "Shandong Normal University official identity homepage",
+      "url": "https://www.sdnu.edu.cn/",
+      "allowedHosts": [
+        "www.sdnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shandong-normal-university"
+    },
+    {
+      "id": "logo-home-shandong-university",
+      "label": "Shandong University official identity homepage",
+      "url": "https://www.sdu.edu.cn/",
+      "allowedHosts": [
+        "www.sdu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shandong-university"
+    },
+    {
+      "id": "logo-home-shandong-university-of-finance-and-economics",
+      "label": "Shandong University of Finance and Economics official identity homepage",
+      "url": "https://www.sdufe.edu.cn/",
+      "allowedHosts": [
+        "www.sdufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shandong-university-of-finance-and-economics"
+    },
+    {
+      "id": "logo-home-shanghai-international-studies-university",
+      "label": "Shanghai International Studies University official identity homepage",
+      "url": "https://www.shisu.edu.cn/",
+      "allowedHosts": [
+        "www.shisu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-international-studies-university"
+    },
+    {
+      "id": "logo-home-shanghai-jiao-tong-university",
+      "label": "Shanghai Jiao Tong University official identity homepage",
+      "url": "https://www.sjtu.edu.cn/",
+      "allowedHosts": [
+        "www.sjtu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-jiao-tong-university"
+    },
+    {
+      "id": "logo-home-shanghai-jiao-tong-university-school-of-medicine",
+      "label": "Shanghai Jiao Tong University School of Medicine official identity homepage",
+      "url": "https://www.shsmu.edu.cn/",
+      "allowedHosts": [
+        "www.shsmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-jiao-tong-university-school-of-medicine"
+    },
+    {
+      "id": "logo-home-shanghai-university",
+      "label": "Shanghai University official identity homepage",
+      "url": "https://www.shu.edu.cn/",
+      "allowedHosts": [
+        "www.shu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-university"
+    },
+    {
+      "id": "logo-home-shanghai-university-of-electric-power",
+      "label": "Shanghai University of Electric Power official identity homepage",
+      "url": "https://fao.shiep.edu.cn/",
+      "allowedHosts": [
+        "fao.shiep.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-university-of-electric-power"
+    },
+    {
+      "id": "logo-home-shanghai-university-of-political-science-and-law",
+      "label": "Shanghai University of Political Science and Law official identity homepage",
+      "url": "https://www.shupl.edu.cn/",
+      "allowedHosts": [
+        "www.shupl.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-university-of-political-science-and-law"
+    },
+    {
+      "id": "logo-home-shenzhen-university",
+      "label": "Shenzhen University official identity homepage",
+      "url": "https://en.szu.edu.cn/",
+      "allowedHosts": [
+        "en.szu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shenzhen-university"
+    },
+    {
+      "id": "logo-home-sichuan-international-studies-university",
+      "label": "Sichuan International Studies University official identity homepage",
+      "url": "https://www.sisu.edu.cn/",
+      "allowedHosts": [
+        "www.sisu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "sichuan-international-studies-university"
+    },
+    {
+      "id": "logo-home-sichuan-university",
+      "label": "Sichuan University official identity homepage",
+      "url": "https://www.scu.edu.cn/",
+      "allowedHosts": [
+        "www.scu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "sichuan-university"
+    },
+    {
+      "id": "logo-home-south-china-normal-university",
+      "label": "South China Normal University official identity homepage",
+      "url": "https://english.scnu.edu.cn/",
+      "allowedHosts": [
+        "english.scnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "south-china-normal-university"
+    },
+    {
+      "id": "logo-home-south-china-university-of-technology",
+      "label": "South China University of Technology official identity homepage",
+      "url": "https://www.scut.edu.cn/",
+      "allowedHosts": [
+        "www.scut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "south-china-university-of-technology"
+    },
+    {
+      "id": "logo-home-southeast-university",
+      "label": "Southeast University official identity homepage",
+      "url": "https://www.seu.edu.cn/english/",
+      "allowedHosts": [
+        "www.seu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "southeast-university"
+    },
+    {
+      "id": "logo-home-southern-university-of-science-and-technology",
+      "label": "Southern University of Science and Technology official identity homepage",
+      "url": "https://www.sustech.edu.cn/en/",
+      "allowedHosts": [
+        "www.sustech.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "southern-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-home-southwestern-university-of-finance-and-economics-tianfu-college",
+      "label": "Southwestern University of Finance and Economics Tianfu College official identity homepage",
+      "url": "https://www.tfswufe.edu.cn/",
+      "allowedHosts": [
+        "www.tfswufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "southwestern-university-of-finance-and-economics-tianfu-college"
+    },
+    {
+      "id": "logo-home-sun-yat-sen-university",
+      "label": "Sun Yat-sen University official identity homepage",
+      "url": "https://www.sysu.edu.cn/",
+      "allowedHosts": [
+        "www.sysu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "sun-yat-sen-university"
+    },
+    {
+      "id": "logo-home-tianjin-foreign-studies-university",
+      "label": "Tianjin Foreign Studies University official identity homepage",
+      "url": "https://www.tjfsu.edu.cn/",
+      "allowedHosts": [
+        "www.tjfsu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-foreign-studies-university"
+    },
+    {
+      "id": "logo-home-tianjin-normal-university",
+      "label": "Tianjin Normal University official identity homepage",
+      "url": "https://gjjl.tjnu.edu.cn/",
+      "allowedHosts": [
+        "gjjl.tjnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-normal-university"
+    },
+    {
+      "id": "logo-home-tianjin-university",
+      "label": "Tianjin University official identity homepage",
+      "url": "https://www.tju.edu.cn/english/index.htm",
+      "allowedHosts": [
+        "www.tju.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-university"
+    },
+    {
+      "id": "logo-home-tianjin-university-of-finance-and-economics",
+      "label": "Tianjin University of Finance and Economics official identity homepage",
+      "url": "https://www.tjufe.edu.cn/",
+      "allowedHosts": [
+        "www.tjufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-university-of-finance-and-economics"
+    },
+    {
+      "id": "logo-home-tianjin-university-of-technology",
+      "label": "Tianjin University of Technology official identity homepage",
+      "url": "https://www.tjut.edu.cn/",
+      "allowedHosts": [
+        "www.tjut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-university-of-technology"
+    },
+    {
+      "id": "logo-home-tongji-university",
+      "label": "Tongji University official identity homepage",
+      "url": "https://www.tongji.edu.cn/",
+      "allowedHosts": [
+        "www.tongji.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tongji-university"
+    },
+    {
+      "id": "logo-home-tsinghua-university",
+      "label": "Tsinghua University official identity homepage",
+      "url": "https://www.tsinghua.edu.cn/en/",
+      "allowedHosts": [
+        "www.tsinghua.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tsinghua-university"
+    },
+    {
+      "id": "logo-home-university-of-chinese-academy-of-sciences",
+      "label": "University of Chinese Academy of Sciences official identity homepage",
+      "url": "https://english.ucas.ac.cn/",
+      "allowedHosts": [
+        "english.ucas.ac.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-chinese-academy-of-sciences"
+    },
+    {
+      "id": "logo-home-university-of-electronic-science-and-technology-of-china",
+      "label": "University of Electronic Science and Technology of China official identity homepage",
+      "url": "https://en.uestc.edu.cn/",
+      "allowedHosts": [
+        "en.uestc.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-electronic-science-and-technology-of-china"
+    },
+    {
+      "id": "logo-home-university-of-international-business-and-economics",
+      "label": "University of International Business and Economics official identity homepage",
+      "url": "https://www.uibe.edu.cn/",
+      "allowedHosts": [
+        "www.uibe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-international-business-and-economics"
+    },
+    {
+      "id": "logo-home-university-of-sanya",
+      "label": "University of Sanya official identity homepage",
+      "url": "https://www.sanyau.edu.cn/",
+      "allowedHosts": [
+        "www.sanyau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-sanya"
+    },
+    {
+      "id": "logo-home-university-of-science-and-technology-beijing",
+      "label": "University of Science and Technology Beijing official identity homepage",
+      "url": "https://www.ustb.edu.cn/",
+      "allowedHosts": [
+        "www.ustb.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-science-and-technology-beijing"
+    },
+    {
+      "id": "logo-home-university-of-science-and-technology-of-china",
+      "label": "University of Science and Technology of China official identity homepage",
+      "url": "https://www.ustc.edu.cn/",
+      "allowedHosts": [
+        "www.ustc.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-science-and-technology-of-china"
+    },
+    {
+      "id": "logo-home-wenzhou-university",
+      "label": "Wenzhou University official identity homepage",
+      "url": "https://www.wzu.edu.cn/en/",
+      "allowedHosts": [
+        "www.wzu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "wenzhou-university"
+    },
+    {
+      "id": "logo-home-westlake-university",
+      "label": "Westlake University official identity homepage",
+      "url": "https://en.westlake.edu.cn/",
+      "allowedHosts": [
+        "en.westlake.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "westlake-university"
+    },
+    {
+      "id": "logo-home-wuchang-university-of-technology",
+      "label": "Wuchang University of Technology official identity homepage",
+      "url": "https://en.wut.edu.cn/",
+      "allowedHosts": [
+        "en.wut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "wuchang-university-of-technology"
+    },
+    {
+      "id": "logo-home-wuhan-university",
+      "label": "Wuhan University official identity homepage",
+      "url": "https://www.whu.edu.cn/",
+      "allowedHosts": [
+        "www.whu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "wuhan-university"
+    },
+    {
+      "id": "logo-home-xi-an-jiaotong-university",
+      "label": "Xi'an Jiaotong University official identity homepage",
+      "url": "https://en.xjtu.edu.cn",
+      "allowedHosts": [
+        "en.xjtu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xi-an-jiaotong-university"
+    },
+    {
+      "id": "logo-home-xiamen-university",
+      "label": "Xiamen University official identity homepage",
+      "url": "https://www.xmu.edu.cn/",
+      "allowedHosts": [
+        "www.xmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xiamen-university"
+    },
+    {
+      "id": "logo-home-xiangtan-university",
+      "label": "Xiangtan University official identity homepage",
+      "url": "https://www.xtu.edu.cn/",
+      "allowedHosts": [
+        "www.xtu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xiangtan-university"
+    },
+    {
+      "id": "logo-home-xinjiang-agricultural-university",
+      "label": "Xinjiang Agricultural University official identity homepage",
+      "url": "https://cie.xjau.edu.cn/1279/list.htm",
+      "allowedHosts": [
+        "cie.xjau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xinjiang-agricultural-university"
+    },
+    {
+      "id": "logo-home-xuzhou-medical-university",
+      "label": "Xuzhou Medical University official identity homepage",
+      "url": "https://gjjyen.xzhmu.edu.cn/",
+      "allowedHosts": [
+        "gjjyen.xzhmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xuzhou-medical-university"
+    },
+    {
+      "id": "logo-home-yanshan-university",
+      "label": "Yanshan University official identity homepage",
+      "url": "https://ies.ysu.edu.cn",
+      "allowedHosts": [
+        "ies.ysu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "yanshan-university"
+    },
+    {
+      "id": "logo-home-yunnan-university-of-finance-and-economics",
+      "label": "Yunnan University of Finance and Economics official identity homepage",
+      "url": "https://www.ynufe.edu.cn",
+      "allowedHosts": [
+        "www.ynufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "yunnan-university-of-finance-and-economics"
+    },
+    {
+      "id": "logo-home-zhejiang-gongshang-university",
+      "label": "Zhejiang Gongshang University official identity homepage",
+      "url": "https://sie.zjgsu.edu.cn/",
+      "allowedHosts": [
+        "sie.zjgsu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "zhejiang-gongshang-university"
+    },
+    {
+      "id": "logo-home-zhejiang-university",
+      "label": "Zhejiang University official identity homepage",
+      "url": "https://www.zju.edu.cn/english/",
+      "allowedHosts": [
+        "www.zju.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "zhejiang-university"
+    },
+    {
+      "id": "logo-home-zhejiang-university-of-technology",
+      "label": "Zhejiang University of Technology official identity homepage",
+      "url": "https://www.gjxy.zjut.edu.cn/",
+      "allowedHosts": [
+        "www.gjxy.zjut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "zhejiang-university-of-technology"
+    },
+    {
+      "id": "logo-asset-anhui-agricultural-university-1",
+      "label": "anhui-agricultural-university official logo candidate 1",
+      "url": "https://www.ahau.edu.cn/static/img/logo123.png",
+      "allowedHosts": [
+        "www.ahau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "anhui-agricultural-university"
+    },
+    {
+      "id": "logo-asset-anhui-agricultural-university-2",
+      "label": "anhui-agricultural-university official logo candidate 2",
+      "url": "https://www.ahau.edu.cn/static/img/logo2copy.png",
+      "allowedHosts": [
+        "www.ahau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "anhui-agricultural-university"
+    },
+    {
+      "id": "logo-asset-anhui-agricultural-university-3",
+      "label": "anhui-agricultural-university official logo candidate 3",
+      "url": "https://www.ahau.edu.cn/static/img/index/bbg.png",
+      "allowedHosts": [
+        "www.ahau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "anhui-agricultural-university"
+    },
+    {
+      "id": "logo-asset-beijing-foreign-studies-university-1",
+      "label": "beijing-foreign-studies-university official logo candidate 1",
+      "url": "https://www.bfsu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.bfsu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-foreign-studies-university"
+    },
+    {
+      "id": "logo-asset-beihang-university-1",
+      "label": "beihang-university official logo candidate 1",
+      "url": "https://is.buaa.edu.cn/images/logobh20230914.png",
+      "allowedHosts": [
+        "is.buaa.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beihang-university"
+    },
+    {
+      "id": "logo-asset-beihang-university-2",
+      "label": "beihang-university official logo candidate 2",
+      "url": "https://is.buaa.edu.cn/images/f-logo20230914.png",
+      "allowedHosts": [
+        "is.buaa.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beihang-university"
+    },
+    {
+      "id": "logo-asset-beijing-forestry-university-1",
+      "label": "beijing-forestry-university official logo candidate 1",
+      "url": "https://www.bjfu.edu.cn/images/logo.svg",
+      "allowedHosts": [
+        "www.bjfu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-forestry-university"
+    },
+    {
+      "id": "logo-asset-beijing-language-and-culture-university-1",
+      "label": "beijing-language-and-culture-university official logo candidate 1",
+      "url": "https://www.blcu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.blcu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-language-and-culture-university"
+    },
+    {
+      "id": "logo-asset-beijing-language-and-culture-university-2",
+      "label": "beijing-language-and-culture-university official logo candidate 2",
+      "url": "https://www.blcu.edu.cn/images/logoft.png",
+      "allowedHosts": [
+        "www.blcu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-language-and-culture-university"
+    },
+    {
+      "id": "logo-asset-beijing-technology-and-business-university-1",
+      "label": "beijing-technology-and-business-university official logo candidate 1",
+      "url": "https://www.btbu.edu.cn/images2024/logo.png",
+      "allowedHosts": [
+        "www.btbu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-technology-and-business-university"
+    },
+    {
+      "id": "logo-asset-beijing-technology-and-business-university-2",
+      "label": "beijing-technology-and-business-university official logo candidate 2",
+      "url": "https://www.btbu.edu.cn/images2024/logo.svg",
+      "allowedHosts": [
+        "www.btbu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-technology-and-business-university"
+    },
+    {
+      "id": "logo-asset-beijing-technology-and-business-university-3",
+      "label": "beijing-technology-and-business-university official logo candidate 3",
+      "url": "https://www.btbu.edu.cn/images2024/footer_sydw.png",
+      "allowedHosts": [
+        "www.btbu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-technology-and-business-university"
+    },
+    {
+      "id": "logo-asset-beijing-polytechnic-university-1",
+      "label": "beijing-polytechnic-university official logo candidate 1",
+      "url": "https://www.bpu.edu.cn/wwwz/images/logo.png",
+      "allowedHosts": [
+        "www.bpu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-polytechnic-university"
+    },
+    {
+      "id": "logo-asset-beijing-polytechnic-university-2",
+      "label": "beijing-polytechnic-university official logo candidate 2",
+      "url": "https://www.bpu.edu.cn/wwwz/images/f_logo.png",
+      "allowedHosts": [
+        "www.bpu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-polytechnic-university"
+    },
+    {
+      "id": "logo-asset-beijing-university-of-chemical-technology-1",
+      "label": "beijing-university-of-chemical-technology official logo candidate 1",
+      "url": "https://www.buct.edu.cn/_upload/tpl/01/f4/500/template500/images/logo1.svg",
+      "allowedHosts": [
+        "www.buct.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-university-of-chemical-technology"
+    },
+    {
+      "id": "logo-asset-beijing-university-of-chemical-technology-2",
+      "label": "beijing-university-of-chemical-technology official logo candidate 2",
+      "url": "https://www.buct.edu.cn/_upload/tpl/01/f4/500/template500/images/logo.svg",
+      "allowedHosts": [
+        "www.buct.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-university-of-chemical-technology"
+    },
+    {
+      "id": "logo-asset-beijing-university-of-chemical-technology-3",
+      "label": "beijing-university-of-chemical-technology official logo candidate 3",
+      "url": "https://www.buct.edu.cn/_upload/tpl/01/f4/500/template500/images/footer_logo.svg",
+      "allowedHosts": [
+        "www.buct.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-university-of-chemical-technology"
+    },
+    {
+      "id": "logo-asset-central-china-normal-university-1",
+      "label": "central-china-normal-university official logo candidate 1",
+      "url": "https://dge.ccnu.edu.cn/images/iLogo.png",
+      "allowedHosts": [
+        "dge.ccnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-china-normal-university"
+    },
+    {
+      "id": "logo-asset-central-china-normal-university-2",
+      "label": "central-china-normal-university official logo candidate 2",
+      "url": "https://dge.ccnu.edu.cn/dfiles/27359/ccnu_gnhzb/images/logo1.png",
+      "allowedHosts": [
+        "dge.ccnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-china-normal-university"
+    },
+    {
+      "id": "logo-asset-central-china-normal-university-3",
+      "label": "central-china-normal-university official logo candidate 3",
+      "url": "https://dge.ccnu.edu.cn/dfiles/27359/ccnu_gnhzb/images/logo2.png",
+      "allowedHosts": [
+        "dge.ccnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-china-normal-university"
+    },
+    {
+      "id": "logo-asset-central-south-university-1",
+      "label": "central-south-university official logo candidate 1",
+      "url": "https://www.csu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.csu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-south-university"
+    },
+    {
+      "id": "logo-asset-central-south-university-2",
+      "label": "central-south-university official logo candidate 2",
+      "url": "https://www.csu.edu.cn/images/logo2.png",
+      "allowedHosts": [
+        "www.csu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-south-university"
+    },
+    {
+      "id": "logo-asset-central-south-university-3",
+      "label": "central-south-university official logo candidate 3",
+      "url": "https://www.csu.edu.cn/images/logo-1.png",
+      "allowedHosts": [
+        "www.csu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-south-university"
+    },
+    {
+      "id": "logo-asset-chang-an-university-1",
+      "label": "chang-an-university official logo candidate 1",
+      "url": "https://www.chd.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.chd.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "chang-an-university"
+    },
+    {
+      "id": "logo-asset-chang-an-university-2",
+      "label": "chang-an-university official logo candidate 2",
+      "url": "https://www.chd.edu.cn/images/f_logo.png",
+      "allowedHosts": [
+        "www.chd.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "chang-an-university"
+    },
+    {
+      "id": "logo-asset-central-university-of-finance-and-economics-1",
+      "label": "central-university-of-finance-and-economics official logo candidate 1",
+      "url": "https://www.cufe.edu.cn/images/logo2.png",
+      "allowedHosts": [
+        "www.cufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-university-of-finance-and-economics"
+    },
+    {
+      "id": "logo-asset-central-university-of-finance-and-economics-2",
+      "label": "central-university-of-finance-and-economics official logo candidate 2",
+      "url": "https://www.cufe.edu.cn/images/ksdhlogo.png",
+      "allowedHosts": [
+        "www.cufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-university-of-finance-and-economics"
+    },
+    {
+      "id": "logo-asset-central-university-of-finance-and-economics-3",
+      "label": "central-university-of-finance-and-economics official logo candidate 3",
+      "url": "https://www.cufe.edu.cn/images/icons/footlogo.png",
+      "allowedHosts": [
+        "www.cufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "central-university-of-finance-and-economics"
+    },
+    {
+      "id": "logo-asset-chongqing-normal-university-1",
+      "label": "chongqing-normal-university official logo candidate 1",
+      "url": "https://www.cqnu.edu.cn/2023xsy8/images/logo2.png",
+      "allowedHosts": [
+        "www.cqnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "chongqing-normal-university"
+    },
+    {
+      "id": "logo-asset-chongqing-normal-university-2",
+      "label": "chongqing-normal-university official logo candidate 2",
+      "url": "https://www.cqnu.edu.cn/2023xsy8/images/logo11.png",
+      "allowedHosts": [
+        "www.cqnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "chongqing-normal-university"
+    },
+    {
+      "id": "logo-asset-chongqing-normal-university-3",
+      "label": "chongqing-normal-university official logo candidate 3",
+      "url": "https://www.cqnu.edu.cn/2023xsy8/images/f_logo.png",
+      "allowedHosts": [
+        "www.cqnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "chongqing-normal-university"
+    },
+    {
+      "id": "logo-asset-china-academy-of-art-1",
+      "label": "china-academy-of-art official logo candidate 1",
+      "url": "https://admission.caa.edu.cn/dfiles/6837/site/templates/maincn/images/logo1.png",
+      "allowedHosts": [
+        "admission.caa.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "china-academy-of-art"
+    },
+    {
+      "id": "logo-asset-china-agricultural-university-1",
+      "label": "china-agricultural-university official logo candidate 1",
+      "url": "https://www.cau.edu.cn/static2022/images/logo.png",
+      "allowedHosts": [
+        "www.cau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "china-agricultural-university"
+    },
+    {
+      "id": "logo-asset-china-agricultural-university-2",
+      "label": "china-agricultural-university official logo candidate 2",
+      "url": "https://www.cau.edu.cn/static2022/images/logo2.svg",
+      "allowedHosts": [
+        "www.cau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "china-agricultural-university"
+    },
+    {
+      "id": "logo-asset-china-agricultural-university-3",
+      "label": "china-agricultural-university official logo candidate 3",
+      "url": "https://www.cau.edu.cn/static2022/images/logo2.png",
+      "allowedHosts": [
+        "www.cau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "china-agricultural-university"
+    },
+    {
+      "id": "logo-asset-donghua-university-1",
+      "label": "donghua-university official logo candidate 1",
+      "url": "https://www.dhu.edu.cn/_upload/tpl/0b/3f/2879/template2879/image/logo.png",
+      "allowedHosts": [
+        "www.dhu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "donghua-university"
+    },
+    {
+      "id": "logo-asset-donghua-university-2",
+      "label": "donghua-university official logo candidate 2",
+      "url": "https://www.dhu.edu.cn/_upload/tpl/0b/3f/2879/template2879/image/login_mini.png",
+      "allowedHosts": [
+        "www.dhu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "donghua-university"
+    },
+    {
+      "id": "logo-asset-dalian-university-of-technology-1",
+      "label": "dalian-university-of-technology official logo candidate 1",
+      "url": "https://sie.dlut.edu.cn/English/images/logo.png",
+      "allowedHosts": [
+        "sie.dlut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "dalian-university-of-technology"
+    },
+    {
+      "id": "logo-asset-dalian-university-of-technology-2",
+      "label": "dalian-university-of-technology official logo candidate 2",
+      "url": "https://sie.dlut.edu.cn/English/images/s_logo.png",
+      "allowedHosts": [
+        "sie.dlut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "dalian-university-of-technology"
+    },
+    {
+      "id": "logo-asset-east-china-normal-university-1",
+      "label": "east-china-normal-university official logo candidate 1",
+      "url": "https://www.ecnu.edu.cn/images/logo.svg",
+      "allowedHosts": [
+        "www.ecnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "east-china-normal-university"
+    },
+    {
+      "id": "logo-asset-east-china-normal-university-2",
+      "label": "east-china-normal-university official logo candidate 2",
+      "url": "https://www.ecnu.edu.cn/images/21/03/19/1r916g9urn/logo-bottom.svg",
+      "allowedHosts": [
+        "www.ecnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "east-china-normal-university"
+    },
+    {
+      "id": "logo-asset-east-china-university-of-science-and-technology-1",
+      "label": "east-china-university-of-science-and-technology official logo candidate 1",
+      "url": "https://www.ecust.edu.cn/_upload/tpl/00/2c/44/template44/images/logo.png",
+      "allowedHosts": [
+        "www.ecust.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "east-china-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-asset-east-china-university-of-science-and-technology-2",
+      "label": "east-china-university-of-science-and-technology official logo candidate 2",
+      "url": "https://www.ecust.edu.cn/_upload/tpl/00/2c/44/template44/images/foot_logo.png",
+      "allowedHosts": [
+        "www.ecust.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "east-china-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-asset-east-china-university-of-political-science-and-law-1",
+      "label": "east-china-university-of-political-science-and-law official logo candidate 1",
+      "url": "https://www.ecupl.edu.cn/_upload/tpl/02/16/534/template534/images/logo.svg",
+      "allowedHosts": [
+        "www.ecupl.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "east-china-university-of-political-science-and-law"
+    },
+    {
+      "id": "logo-asset-east-china-university-of-political-science-and-law-2",
+      "label": "east-china-university-of-political-science-and-law official logo candidate 2",
+      "url": "https://www.ecupl.edu.cn/_upload/tpl/02/16/534/template534/images/logo.png",
+      "allowedHosts": [
+        "www.ecupl.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "east-china-university-of-political-science-and-law"
+    },
+    {
+      "id": "logo-asset-fudan-university-1",
+      "label": "fudan-university official logo candidate 1",
+      "url": "https://www.fudan.edu.cn/_upload/site/00/02/2/logo.png",
+      "allowedHosts": [
+        "www.fudan.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "fudan-university"
+    },
+    {
+      "id": "logo-asset-guangdong-university-of-foreign-studies-1",
+      "label": "guangdong-university-of-foreign-studies official logo candidate 1",
+      "url": "https://www.gdufs.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.gdufs.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "guangdong-university-of-foreign-studies"
+    },
+    {
+      "id": "logo-asset-guangdong-university-of-foreign-studies-2",
+      "label": "guangdong-university-of-foreign-studies official logo candidate 2",
+      "url": "https://www.gdufs.edu.cn/images/logo1.png",
+      "allowedHosts": [
+        "www.gdufs.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "guangdong-university-of-foreign-studies"
+    },
+    {
+      "id": "logo-asset-guangdong-university-of-foreign-studies-3",
+      "label": "guangdong-university-of-foreign-studies official logo candidate 3",
+      "url": "https://www.gdufs.edu.cn/images/footer_logo.png",
+      "allowedHosts": [
+        "www.gdufs.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "guangdong-university-of-foreign-studies"
+    },
+    {
+      "id": "logo-asset-fuzhou-university-1",
+      "label": "fuzhou-university official logo candidate 1",
+      "url": "https://www.fzu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.fzu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "fuzhou-university"
+    },
+    {
+      "id": "logo-asset-fuzhou-university-2",
+      "label": "fuzhou-university official logo candidate 2",
+      "url": "https://www.fzu.edu.cn/images/footer_logo.png",
+      "allowedHosts": [
+        "www.fzu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "fuzhou-university"
+    },
+    {
+      "id": "logo-asset-east-china-jiaotong-university-1",
+      "label": "east-china-jiaotong-university official logo candidate 1",
+      "url": "https://www.ecjtu.edu.cn/images/logo20210811.png",
+      "allowedHosts": [
+        "www.ecjtu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "east-china-jiaotong-university"
+    },
+    {
+      "id": "logo-asset-hangzhou-dianzi-university-1",
+      "label": "hangzhou-dianzi-university official logo candidate 1",
+      "url": "https://www.hdu.edu.cn/_upload/tpl/02/12/530/template530/images/logo_main.svg",
+      "allowedHosts": [
+        "www.hdu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "hangzhou-dianzi-university"
+    },
+    {
+      "id": "logo-asset-hangzhou-dianzi-university-2",
+      "label": "hangzhou-dianzi-university official logo candidate 2",
+      "url": "https://www.hdu.edu.cn/_upload/tpl/02/12/530/template530/images/logo.svg",
+      "allowedHosts": [
+        "www.hdu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "hangzhou-dianzi-university"
+    },
+    {
+      "id": "logo-asset-harbin-institute-of-technology-shenzhen-1",
+      "label": "harbin-institute-of-technology-shenzhen official logo candidate 1",
+      "url": "https://www.hitsz.edu.cn/_upload/tpl/00/0d/13/template13/images/logo_mobile.png",
+      "allowedHosts": [
+        "www.hitsz.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "harbin-institute-of-technology-shenzhen"
+    },
+    {
+      "id": "logo-asset-harbin-institute-of-technology-shenzhen-2",
+      "label": "harbin-institute-of-technology-shenzhen official logo candidate 2",
+      "url": "https://www.hitsz.edu.cn/_upload/tpl/00/0d/13/template13/images/logo.png",
+      "allowedHosts": [
+        "www.hitsz.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "harbin-institute-of-technology-shenzhen"
+    },
+    {
+      "id": "logo-asset-harbin-institute-of-technology-shenzhen-3",
+      "label": "harbin-institute-of-technology-shenzhen official logo candidate 3",
+      "url": "https://www.hitsz.edu.cn/_upload/tpl/00/0d/13/template13/images/logo_down.png",
+      "allowedHosts": [
+        "www.hitsz.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "harbin-institute-of-technology-shenzhen"
+    },
+    {
+      "id": "logo-asset-harbin-engineering-university-1",
+      "label": "harbin-engineering-university official logo candidate 1",
+      "url": "https://www.hrbeu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.hrbeu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "harbin-engineering-university"
+    },
+    {
+      "id": "logo-asset-harbin-university-of-science-and-technology-1",
+      "label": "harbin-university-of-science-and-technology official logo candidate 1",
+      "url": "https://www.hrbust.edu.cn/images/logo-top.png",
+      "allowedHosts": [
+        "www.hrbust.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "harbin-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-asset-harbin-university-of-science-and-technology-2",
+      "label": "harbin-university-of-science-and-technology official logo candidate 2",
+      "url": "https://www.hrbust.edu.cn/images/footer_logo.png",
+      "allowedHosts": [
+        "www.hrbust.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "harbin-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-asset-harbin-institute-of-technology-1",
+      "label": "harbin-institute-of-technology official logo candidate 1",
+      "url": "https://www.hit.edu.cn/_upload/site/00/ee/238/logo.png",
+      "allowedHosts": [
+        "www.hit.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "harbin-institute-of-technology"
+    },
+    {
+      "id": "logo-asset-huazhong-university-of-science-and-technology-1",
+      "label": "huazhong-university-of-science-and-technology official logo candidate 1",
+      "url": "https://www.hust.edu.cn/images/logo20240628.png",
+      "allowedHosts": [
+        "www.hust.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "huazhong-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-asset-hefei-normal-university-1",
+      "label": "hefei-normal-university official logo candidate 1",
+      "url": "https://www.hfnu.edu.cn/images/logo-w.png",
+      "allowedHosts": [
+        "www.hfnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "hefei-normal-university"
+    },
+    {
+      "id": "logo-asset-hefei-normal-university-2",
+      "label": "hefei-normal-university official logo candidate 2",
+      "url": "https://www.hfnu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.hfnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "hefei-normal-university"
+    },
+    {
+      "id": "logo-asset-hefei-normal-university-3",
+      "label": "hefei-normal-university official logo candidate 3",
+      "url": "https://www.hfnu.edu.cn/images/z-ban-logo.png",
+      "allowedHosts": [
+        "www.hfnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "hefei-normal-university"
+    },
+    {
+      "id": "logo-asset-hunan-university-of-technology-and-business-1",
+      "label": "hunan-university-of-technology-and-business official logo candidate 1",
+      "url": "https://ev.hutb.edu.cn/upload/ywz/site/logo/image/3348a6a94dbc4f71ab4bfdf1414b9710.png",
+      "allowedHosts": [
+        "ev.hutb.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "hunan-university-of-technology-and-business"
+    },
+    {
+      "id": "logo-asset-hunan-university-of-technology-and-business-2",
+      "label": "hunan-university-of-technology-and-business official logo candidate 2",
+      "url": "https://ev.hutb.edu.cn/content/ywz/images/xiaoxun.png",
+      "allowedHosts": [
+        "ev.hutb.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "hunan-university-of-technology-and-business"
+    },
+    {
+      "id": "logo-asset-jiangsu-university-of-science-and-technology-1",
+      "label": "jiangsu-university-of-science-and-technology official logo candidate 1",
+      "url": "https://www.just.edu.cn/_upload/tpl/03/4d/845/template845/images/logo.png",
+      "allowedHosts": [
+        "www.just.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "jiangsu-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-asset-jiangsu-university-of-science-and-technology-2",
+      "label": "jiangsu-university-of-science-and-technology official logo candidate 2",
+      "url": "https://www.just.edu.cn/_upload/tpl/03/4d/845/template845/images/logo.svg",
+      "allowedHosts": [
+        "www.just.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "jiangsu-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-asset-jilin-university-1",
+      "label": "jilin-university official logo candidate 1",
+      "url": "https://www.jlu.edu.cn/images/logo.jpg",
+      "allowedHosts": [
+        "www.jlu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "jilin-university"
+    },
+    {
+      "id": "logo-asset-jilin-university-2",
+      "label": "jilin-university official logo candidate 2",
+      "url": "https://www.jlu.edu.cn/images/foot_logo.jpg",
+      "allowedHosts": [
+        "www.jlu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "jilin-university"
+    },
+    {
+      "id": "logo-asset-jinan-university-1",
+      "label": "jinan-university official logo candidate 1",
+      "url": "https://www.jnu.edu.cn/_upload/tpl/00/f5/245/template245/images/home/logo2.png",
+      "allowedHosts": [
+        "www.jnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "jinan-university"
+    },
+    {
+      "id": "logo-asset-jinan-university-2",
+      "label": "jinan-university official logo candidate 2",
+      "url": "https://www.jnu.edu.cn/_upload/tpl/00/f5/245/template245/images/home/logo2.svg",
+      "allowedHosts": [
+        "www.jnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "jinan-university"
+    },
+    {
+      "id": "logo-asset-jinan-university-3",
+      "label": "jinan-university official logo candidate 3",
+      "url": "https://www.jnu.edu.cn/_upload/tpl/00/f5/245/template245/images/home/logo.png",
+      "allowedHosts": [
+        "www.jnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "jinan-university"
+    },
+    {
+      "id": "logo-asset-luzhou-vocational-and-technical-college-1",
+      "label": "luzhou-vocational-and-technical-college official logo candidate 1",
+      "url": "https://www.lzy.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.lzy.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "luzhou-vocational-and-technical-college"
+    },
+    {
+      "id": "logo-asset-luzhou-vocational-and-technical-college-2",
+      "label": "luzhou-vocational-and-technical-college official logo candidate 2",
+      "url": "https://www.lzy.edu.cn/images/logo-b.png",
+      "allowedHosts": [
+        "www.lzy.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "luzhou-vocational-and-technical-college"
+    },
+    {
+      "id": "logo-asset-liaoning-university-of-traditional-chinese-medicine-1",
+      "label": "liaoning-university-of-traditional-chinese-medicine official logo candidate 1",
+      "url": "https://www.lnutcm.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.lnutcm.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "liaoning-university-of-traditional-chinese-medicine"
+    },
+    {
+      "id": "logo-asset-nanjing-university-1",
+      "label": "nanjing-university official logo candidate 1",
+      "url": "https://www.nju.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.nju.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nanjing-university"
+    },
+    {
+      "id": "logo-asset-nanjing-university-2",
+      "label": "nanjing-university official logo candidate 2",
+      "url": "https://www.nju.edu.cn/images/container08_logo.png",
+      "allowedHosts": [
+        "www.nju.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nanjing-university"
+    },
+    {
+      "id": "logo-asset-nanjing-university-3",
+      "label": "nanjing-university official logo candidate 3",
+      "url": "https://www.nju.edu.cn/images/footer_logo.svg",
+      "allowedHosts": [
+        "www.nju.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nanjing-university"
+    },
+    {
+      "id": "logo-asset-nanjing-university-of-aeronautics-and-astronautics-1",
+      "label": "nanjing-university-of-aeronautics-and-astronautics official logo candidate 1",
+      "url": "https://www.nuaa.edu.cn/_upload/tpl/05/f7/1527/template1527/images/logo_b.png",
+      "allowedHosts": [
+        "www.nuaa.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics"
+    },
+    {
+      "id": "logo-asset-nanjing-university-of-aeronautics-and-astronautics-2",
+      "label": "nanjing-university-of-aeronautics-and-astronautics official logo candidate 2",
+      "url": "https://www.nuaa.edu.cn/_upload/tpl/05/f7/1527/template1527/images/logo.png",
+      "allowedHosts": [
+        "www.nuaa.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics"
+    },
+    {
+      "id": "logo-asset-nanjing-university-of-aeronautics-and-astronautics-3",
+      "label": "nanjing-university-of-aeronautics-and-astronautics official logo candidate 3",
+      "url": "https://www.nuaa.edu.cn/_upload/tpl/05/f7/1527/template1527/images/ipv6.png",
+      "allowedHosts": [
+        "www.nuaa.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nanjing-university-of-aeronautics-and-astronautics"
+    },
+    {
+      "id": "logo-asset-northwestern-polytechnical-university-1",
+      "label": "northwestern-polytechnical-university official logo candidate 1",
+      "url": "https://www.nwpu.edu.cn/images/logo2.png",
+      "allowedHosts": [
+        "www.nwpu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "northwestern-polytechnical-university"
+    },
+    {
+      "id": "logo-asset-northwestern-polytechnical-university-2",
+      "label": "northwestern-polytechnical-university official logo candidate 2",
+      "url": "https://www.nwpu.edu.cn/images/logo_xl.png",
+      "allowedHosts": [
+        "www.nwpu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "northwestern-polytechnical-university"
+    },
+    {
+      "id": "logo-asset-northwestern-polytechnical-university-3",
+      "label": "northwestern-polytechnical-university official logo candidate 3",
+      "url": "https://www.nwpu.edu.cn/images/qqrmtjz-logo.png",
+      "allowedHosts": [
+        "www.nwpu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "northwestern-polytechnical-university"
+    },
+    {
+      "id": "logo-asset-nankai-university-1",
+      "label": "nankai-university official logo candidate 1",
+      "url": "https://www.nankai.edu.cn/_upload/tpl/02/58/600/template600/images/logo.png",
+      "allowedHosts": [
+        "www.nankai.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nankai-university"
+    },
+    {
+      "id": "logo-asset-nankai-university-2",
+      "label": "nankai-university official logo candidate 2",
+      "url": "https://www.nankai.edu.cn/_upload/tpl/02/58/600/template600/images/logo1.png",
+      "allowedHosts": [
+        "www.nankai.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nankai-university"
+    },
+    {
+      "id": "logo-asset-nankai-university-3",
+      "label": "nankai-university official logo candidate 3",
+      "url": "https://www.nankai.edu.cn/_upload/tpl/02/58/600/template600/images/menu-icon-arrow-white.png",
+      "allowedHosts": [
+        "www.nankai.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "nankai-university"
+    },
+    {
+      "id": "logo-asset-ocean-university-of-china-1",
+      "label": "ocean-university-of-china official logo candidate 1",
+      "url": "https://www.ouc.edu.cn/_upload/tpl/0c/00/3072/template3072/images/logo.svg",
+      "allowedHosts": [
+        "www.ouc.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "ocean-university-of-china"
+    },
+    {
+      "id": "logo-asset-peking-university-1",
+      "label": "peking-university official logo candidate 1",
+      "url": "https://www.pku.edu.cn/pku_logo_red.png",
+      "allowedHosts": [
+        "www.pku.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "peking-university"
+    },
+    {
+      "id": "logo-asset-peking-university-2",
+      "label": "peking-university official logo candidate 2",
+      "url": "https://www.pku.edu.cn/Uploads/Picture/2019/12/26/s5e04147ee4a83.png",
+      "allowedHosts": [
+        "www.pku.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "peking-university"
+    },
+    {
+      "id": "logo-asset-peking-university-3",
+      "label": "peking-university official logo candidate 3",
+      "url": "https://www.pku.edu.cn/Uploads/Picture/2019/12/08/s5decd8b95f388.png",
+      "allowedHosts": [
+        "www.pku.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "peking-university"
+    },
+    {
+      "id": "logo-asset-qingdao-university-1",
+      "label": "qingdao-university official logo candidate 1",
+      "url": "https://www.qdu.edu.cn/images/logo3.png",
+      "allowedHosts": [
+        "www.qdu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "qingdao-university"
+    },
+    {
+      "id": "logo-asset-qingdao-university-2",
+      "label": "qingdao-university official logo candidate 2",
+      "url": "https://www.qdu.edu.cn/images/logo-foot.png",
+      "allowedHosts": [
+        "www.qdu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "qingdao-university"
+    },
+    {
+      "id": "logo-asset-qingdao-university-3",
+      "label": "qingdao-university official logo candidate 3",
+      "url": "https://www.qdu.edu.cn/images/logo.ico",
+      "allowedHosts": [
+        "www.qdu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "qingdao-university"
+    },
+    {
+      "id": "logo-asset-shandong-normal-university-1",
+      "label": "shandong-normal-university official logo candidate 1",
+      "url": "https://www.sdnu.edu.cn/images/logosmall2.png",
+      "allowedHosts": [
+        "www.sdnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shandong-normal-university"
+    },
+    {
+      "id": "logo-asset-shandong-normal-university-2",
+      "label": "shandong-normal-university official logo candidate 2",
+      "url": "https://www.sdnu.edu.cn/img/logo.svg",
+      "allowedHosts": [
+        "www.sdnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shandong-normal-university"
+    },
+    {
+      "id": "logo-asset-shandong-normal-university-3",
+      "label": "shandong-normal-university official logo candidate 3",
+      "url": "https://www.sdnu.edu.cn/img/logo_w.svg",
+      "allowedHosts": [
+        "www.sdnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shandong-normal-university"
+    },
+    {
+      "id": "logo-asset-shandong-university-1",
+      "label": "shandong-university official logo candidate 1",
+      "url": "https://www.sdu.edu.cn/images/logo.svg",
+      "allowedHosts": [
+        "www.sdu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shandong-university"
+    },
+    {
+      "id": "logo-asset-kunming-university-1",
+      "label": "kunming-university official logo candidate 1",
+      "url": "https://www.kmu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.kmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "kunming-university"
+    },
+    {
+      "id": "logo-asset-kunming-university-2",
+      "label": "kunming-university official logo candidate 2",
+      "url": "https://www.kmu.edu.cn/images/f-logo.png",
+      "allowedHosts": [
+        "www.kmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "kunming-university"
+    },
+    {
+      "id": "logo-asset-shandong-university-of-finance-and-economics-1",
+      "label": "shandong-university-of-finance-and-economics official logo candidate 1",
+      "url": "https://www.sdufe.edu.cn/dfiles/12798/images/main_03-8.png",
+      "allowedHosts": [
+        "www.sdufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shandong-university-of-finance-and-economics"
+    },
+    {
+      "id": "logo-asset-shandong-university-of-finance-and-economics-2",
+      "label": "shandong-university-of-finance-and-economics official logo candidate 2",
+      "url": "https://www.sdufe.edu.cn/images/xiaoshun.png",
+      "allowedHosts": [
+        "www.sdufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shandong-university-of-finance-and-economics"
+    },
+    {
+      "id": "logo-asset-shanghai-international-studies-university-1",
+      "label": "shanghai-international-studies-university official logo candidate 1",
+      "url": "https://www.shisu.edu.cn/assets/images/logo.png",
+      "allowedHosts": [
+        "www.shisu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-international-studies-university"
+    },
+    {
+      "id": "logo-asset-shanghai-jiao-tong-university-school-of-medicine-1",
+      "label": "shanghai-jiao-tong-university-school-of-medicine official logo candidate 1",
+      "url": "https://www.shsmu.edu.cn/dfiles/logohs.png",
+      "allowedHosts": [
+        "www.shsmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-jiao-tong-university-school-of-medicine"
+    },
+    {
+      "id": "logo-asset-shanghai-jiao-tong-university-school-of-medicine-2",
+      "label": "shanghai-jiao-tong-university-school-of-medicine official logo candidate 2",
+      "url": "https://www.shsmu.edu.cn/images/wzalogo.png",
+      "allowedHosts": [
+        "www.shsmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-jiao-tong-university-school-of-medicine"
+    },
+    {
+      "id": "logo-asset-shanghai-university-1",
+      "label": "shanghai-university official logo candidate 1",
+      "url": "https://www.shu.edu.cn/images/logo.svg",
+      "allowedHosts": [
+        "www.shu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-university"
+    },
+    {
+      "id": "logo-asset-shanghai-university-2",
+      "label": "shanghai-university official logo candidate 2",
+      "url": "https://www.shu.edu.cn/images/logobox.png",
+      "allowedHosts": [
+        "www.shu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-university"
+    },
+    {
+      "id": "logo-asset-shanghai-university-3",
+      "label": "shanghai-university official logo candidate 3",
+      "url": "https://www.shu.edu.cn/images/logoft.svg",
+      "allowedHosts": [
+        "www.shu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-university"
+    },
+    {
+      "id": "logo-asset-shanghai-university-of-political-science-and-law-1",
+      "label": "shanghai-university-of-political-science-and-law official logo candidate 1",
+      "url": "https://www.shupl.edu.cn/_upload/tpl/01/03/259/template259/images/logo2.png",
+      "allowedHosts": [
+        "www.shupl.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-university-of-political-science-and-law"
+    },
+    {
+      "id": "logo-asset-sichuan-university-1",
+      "label": "sichuan-university official logo candidate 1",
+      "url": "https://www.scu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.scu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "sichuan-university"
+    },
+    {
+      "id": "logo-asset-sichuan-university-2",
+      "label": "sichuan-university official logo candidate 2",
+      "url": "https://www.scu.edu.cn/images/f-logo.png",
+      "allowedHosts": [
+        "www.scu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "sichuan-university"
+    },
+    {
+      "id": "logo-asset-shenzhen-university-1",
+      "label": "shenzhen-university official logo candidate 1",
+      "url": "https://en.szu.edu.cn/images/blacklogo.png",
+      "allowedHosts": [
+        "en.szu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shenzhen-university"
+    },
+    {
+      "id": "logo-asset-shenzhen-university-2",
+      "label": "shenzhen-university official logo candidate 2",
+      "url": "https://en.szu.edu.cn/images/whitelogo.png",
+      "allowedHosts": [
+        "en.szu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shenzhen-university"
+    },
+    {
+      "id": "logo-asset-kunming-medical-university-1",
+      "label": "kunming-medical-university official logo candidate 1",
+      "url": "https://www.kmmu.edu.cn/temple/image/logo_sprite.png",
+      "allowedHosts": [
+        "www.kmmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "kunming-medical-university"
+    },
+    {
+      "id": "logo-asset-kunming-medical-university-2",
+      "label": "kunming-medical-university official logo candidate 2",
+      "url": "https://www.kmmu.edu.cn/temple/image/logo_copy.png",
+      "allowedHosts": [
+        "www.kmmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "kunming-medical-university"
+    },
+    {
+      "id": "logo-asset-kunming-medical-university-3",
+      "label": "kunming-medical-university official logo candidate 3",
+      "url": "https://www.kmmu.edu.cn/temple/image/wa.png",
+      "allowedHosts": [
+        "www.kmmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "kunming-medical-university"
+    },
+    {
+      "id": "logo-asset-sichuan-international-studies-university-1",
+      "label": "sichuan-international-studies-university official logo candidate 1",
+      "url": "https://www.sisu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.sisu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "sichuan-international-studies-university"
+    },
+    {
+      "id": "logo-asset-sichuan-international-studies-university-2",
+      "label": "sichuan-international-studies-university official logo candidate 2",
+      "url": "https://www.sisu.edu.cn/images/tt_logo.png",
+      "allowedHosts": [
+        "www.sisu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "sichuan-international-studies-university"
+    },
+    {
+      "id": "logo-asset-sichuan-international-studies-university-3",
+      "label": "sichuan-international-studies-university official logo candidate 3",
+      "url": "https://www.sisu.edu.cn/images/fot-logo.png",
+      "allowedHosts": [
+        "www.sisu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "sichuan-international-studies-university"
+    },
+    {
+      "id": "logo-asset-southeast-university-1",
+      "label": "southeast-university official logo candidate 1",
+      "url": "https://www.seu.edu.cn/_upload/tpl/0c/ea/3306/template3306/images/logo.svg",
+      "allowedHosts": [
+        "www.seu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "southeast-university"
+    },
+    {
+      "id": "logo-asset-southeast-university-2",
+      "label": "southeast-university official logo candidate 2",
+      "url": "https://www.seu.edu.cn/_upload/tpl/0c/ea/3306/template3306/images/logo_w.svg",
+      "allowedHosts": [
+        "www.seu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "southeast-university"
+    },
+    {
+      "id": "logo-asset-south-china-normal-university-1",
+      "label": "south-china-normal-university official logo candidate 1",
+      "url": "https://statics.scnu.edu.cn/statics/css/scnuportal/contentlogo.png",
+      "allowedHosts": [
+        "statics.scnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "south-china-normal-university"
+    },
+    {
+      "id": "logo-asset-south-china-normal-university-2",
+      "label": "south-china-normal-university official logo candidate 2",
+      "url": "https://statics.scnu.edu.cn/statics/images/scnuportal/2022/1024/20221024093255583.png",
+      "allowedHosts": [
+        "statics.scnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "south-china-normal-university"
+    },
+    {
+      "id": "logo-asset-southwestern-university-of-finance-and-economics-tianfu-college-1",
+      "label": "southwestern-university-of-finance-and-economics-tianfu-college official logo candidate 1",
+      "url": "https://www.tfswufe.edu.cn/images/logo-white.png",
+      "allowedHosts": [
+        "www.tfswufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "southwestern-university-of-finance-and-economics-tianfu-college"
+    },
+    {
+      "id": "logo-asset-southern-university-of-science-and-technology-1",
+      "label": "southern-university-of-science-and-technology official logo candidate 1",
+      "url": "https://www.sustech.edu.cn/static/images/sustech-logo-en.png",
+      "allowedHosts": [
+        "www.sustech.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "southern-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-asset-southern-university-of-science-and-technology-2",
+      "label": "southern-university-of-science-and-technology official logo candidate 2",
+      "url": "https://www.sustech.edu.cn/wp-content/themes/twentyseventeen/imgs/logo1.png",
+      "allowedHosts": [
+        "www.sustech.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "southern-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-asset-southern-university-of-science-and-technology-3",
+      "label": "southern-university-of-science-and-technology official logo candidate 3",
+      "url": "https://www.sustech.edu.cn/static/imgs/ft_logo1.png",
+      "allowedHosts": [
+        "www.sustech.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "southern-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-asset-sun-yat-sen-university-1",
+      "label": "sun-yat-sen-university official logo candidate 1",
+      "url": "https://www.sysu.edu.cn/images/zhuzhanLOGO.png",
+      "allowedHosts": [
+        "www.sysu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "sun-yat-sen-university"
+    },
+    {
+      "id": "logo-asset-sun-yat-sen-university-2",
+      "label": "sun-yat-sen-university official logo candidate 2",
+      "url": "https://www.sysu.edu.cn/images/logo1.png",
+      "allowedHosts": [
+        "www.sysu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "sun-yat-sen-university"
+    },
+    {
+      "id": "logo-asset-sun-yat-sen-university-3",
+      "label": "sun-yat-sen-university official logo candidate 3",
+      "url": "https://www.sysu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.sysu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "sun-yat-sen-university"
+    },
+    {
+      "id": "logo-asset-tianjin-normal-university-1",
+      "label": "tianjin-normal-university official logo candidate 1",
+      "url": "https://gjjl.tjnu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "gjjl.tjnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-normal-university"
+    },
+    {
+      "id": "logo-asset-tianjin-normal-university-2",
+      "label": "tianjin-normal-university official logo candidate 2",
+      "url": "https://gjjl.tjnu.edu.cn/images/logo_w.png",
+      "allowedHosts": [
+        "gjjl.tjnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-normal-university"
+    },
+    {
+      "id": "logo-asset-tianjin-foreign-studies-university-1",
+      "label": "tianjin-foreign-studies-university official logo candidate 1",
+      "url": "https://www.tjfsu.edu.cn/_upload/tpl/00/07/7/template7/images/logo.svg",
+      "allowedHosts": [
+        "www.tjfsu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-foreign-studies-university"
+    },
+    {
+      "id": "logo-asset-tianjin-university-of-finance-and-economics-1",
+      "label": "tianjin-university-of-finance-and-economics official logo candidate 1",
+      "url": "https://www.tjufe.edu.cn/template_files/1/images/logo.png",
+      "allowedHosts": [
+        "www.tjufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-university-of-finance-and-economics"
+    },
+    {
+      "id": "logo-asset-tsinghua-university-1",
+      "label": "tsinghua-university official logo candidate 1",
+      "url": "https://www.tsinghua.edu.cn/en/image/logo159.png",
+      "allowedHosts": [
+        "www.tsinghua.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tsinghua-university"
+    },
+    {
+      "id": "logo-asset-tianjin-university-of-technology-1",
+      "label": "tianjin-university-of-technology official logo candidate 1",
+      "url": "https://www.tjut.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.tjut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-university-of-technology"
+    },
+    {
+      "id": "logo-asset-tianjin-university-of-technology-2",
+      "label": "tianjin-university-of-technology official logo candidate 2",
+      "url": "https://www.tjut.edu.cn/images/plogo.png",
+      "allowedHosts": [
+        "www.tjut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-university-of-technology"
+    },
+    {
+      "id": "logo-asset-tianjin-university-of-technology-3",
+      "label": "tianjin-university-of-technology official logo candidate 3",
+      "url": "https://www.tjut.edu.cn/images/xiaoxun.png",
+      "allowedHosts": [
+        "www.tjut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-university-of-technology"
+    },
+    {
+      "id": "logo-asset-university-of-electronic-science-and-technology-of-china-1",
+      "label": "university-of-electronic-science-and-technology-of-china official logo candidate 1",
+      "url": "https://en.uestc.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "en.uestc.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-electronic-science-and-technology-of-china"
+    },
+    {
+      "id": "logo-asset-tongji-university-1",
+      "label": "tongji-university official logo candidate 1",
+      "url": "https://www.tongji.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.tongji.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tongji-university"
+    },
+    {
+      "id": "logo-asset-tongji-university-2",
+      "label": "tongji-university official logo candidate 2",
+      "url": "https://www.tongji.edu.cn/images/smalllogo.png",
+      "allowedHosts": [
+        "www.tongji.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tongji-university"
+    },
+    {
+      "id": "logo-asset-tongji-university-3",
+      "label": "tongji-university official logo candidate 3",
+      "url": "https://www.tongji.edu.cn/images/18/05/03/1d0wfqyjja/footlogo.png",
+      "allowedHosts": [
+        "www.tongji.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tongji-university"
+    },
+    {
+      "id": "logo-asset-university-of-international-business-and-economics-1",
+      "label": "university-of-international-business-and-economics official logo candidate 1",
+      "url": "https://www.uibe.edu.cn/2025/images/logo.png",
+      "allowedHosts": [
+        "www.uibe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-international-business-and-economics"
+    },
+    {
+      "id": "logo-asset-university-of-international-business-and-economics-2",
+      "label": "university-of-international-business-and-economics official logo candidate 2",
+      "url": "https://www.uibe.edu.cn/2025/images/logo.png?260902",
+      "allowedHosts": [
+        "www.uibe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-international-business-and-economics"
+    },
+    {
+      "id": "logo-asset-university-of-international-business-and-economics-3",
+      "label": "university-of-international-business-and-economics official logo candidate 3",
+      "url": "https://www.uibe.edu.cn/2025/images/footer_logo.png",
+      "allowedHosts": [
+        "www.uibe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-international-business-and-economics"
+    },
+    {
+      "id": "logo-asset-university-of-science-and-technology-beijing-1",
+      "label": "university-of-science-and-technology-beijing official logo candidate 1",
+      "url": "https://www.ustb.edu.cn/images/logo_white.png",
+      "allowedHosts": [
+        "www.ustb.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-science-and-technology-beijing"
+    },
+    {
+      "id": "logo-asset-university-of-science-and-technology-beijing-2",
+      "label": "university-of-science-and-technology-beijing official logo candidate 2",
+      "url": "https://www.ustb.edu.cn/images/u_logo1.png?240103",
+      "allowedHosts": [
+        "www.ustb.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-science-and-technology-beijing"
+    },
+    {
+      "id": "logo-asset-university-of-science-and-technology-beijing-3",
+      "label": "university-of-science-and-technology-beijing official logo candidate 3",
+      "url": "https://www.ustb.edu.cn/images/u_logo2.png?240103",
+      "allowedHosts": [
+        "www.ustb.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-science-and-technology-beijing"
+    },
+    {
+      "id": "logo-asset-university-of-sanya-1",
+      "label": "university-of-sanya official logo candidate 1",
+      "url": "https://www.sanyau.edu.cn/_upload/tpl/00/18/24/template24/images/logo.svg",
+      "allowedHosts": [
+        "www.sanyau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-sanya"
+    },
+    {
+      "id": "logo-asset-university-of-sanya-2",
+      "label": "university-of-sanya official logo candidate 2",
+      "url": "https://www.sanyau.edu.cn/_upload/tpl/00/18/24/template24/images/tago.svg",
+      "allowedHosts": [
+        "www.sanyau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-sanya"
+    },
+    {
+      "id": "logo-asset-wuhan-university-1",
+      "label": "wuhan-university official logo candidate 1",
+      "url": "https://www.whu.edu.cn/new2024/js/logo.png",
+      "allowedHosts": [
+        "www.whu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "wuhan-university"
+    },
+    {
+      "id": "logo-asset-wuhan-university-2",
+      "label": "wuhan-university official logo candidate 2",
+      "url": "https://www.whu.edu.cn/new2024/js/f_logo.png",
+      "allowedHosts": [
+        "www.whu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "wuhan-university"
+    },
+    {
+      "id": "logo-asset-xiamen-university-1",
+      "label": "xiamen-university official logo candidate 1",
+      "url": "https://www.xmu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.xmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xiamen-university"
+    },
+    {
+      "id": "logo-asset-xiamen-university-2",
+      "label": "xiamen-university official logo candidate 2",
+      "url": "https://www.xmu.edu.cn/images/logo2.png",
+      "allowedHosts": [
+        "www.xmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xiamen-university"
+    },
+    {
+      "id": "logo-asset-xuzhou-medical-university-1",
+      "label": "xuzhou-medical-university official logo candidate 1",
+      "url": "https://gjjyen.xzhmu.edu.cn/img/h-logo.png",
+      "allowedHosts": [
+        "gjjyen.xzhmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xuzhou-medical-university"
+    },
+    {
+      "id": "logo-asset-xuzhou-medical-university-2",
+      "label": "xuzhou-medical-university official logo candidate 2",
+      "url": "https://gjjyen.xzhmu.edu.cn/img/f-logo.png",
+      "allowedHosts": [
+        "gjjyen.xzhmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xuzhou-medical-university"
+    },
+    {
+      "id": "logo-asset-xinjiang-agricultural-university-1",
+      "label": "xinjiang-agricultural-university official logo candidate 1",
+      "url": "https://cie.xjau.edu.cn/_upload/tpl/02/80/640/template640/logoT.png",
+      "allowedHosts": [
+        "cie.xjau.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xinjiang-agricultural-university"
+    },
+    {
+      "id": "logo-asset-yanshan-university-1",
+      "label": "yanshan-university official logo candidate 1",
+      "url": "https://ies.ysu.edu.cn/images/logo-ies2024.png",
+      "allowedHosts": [
+        "ies.ysu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "yanshan-university"
+    },
+    {
+      "id": "logo-asset-yanshan-university-2",
+      "label": "yanshan-university official logo candidate 2",
+      "url": "https://ies.ysu.edu.cn/images/footer-logo.png",
+      "allowedHosts": [
+        "ies.ysu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "yanshan-university"
+    },
+    {
+      "id": "logo-asset-yunnan-university-of-finance-and-economics-1",
+      "label": "yunnan-university-of-finance-and-economics official logo candidate 1",
+      "url": "https://www.ynufe.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.ynufe.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "yunnan-university-of-finance-and-economics"
+    },
+    {
+      "id": "logo-asset-xiangtan-university-1",
+      "label": "xiangtan-university official logo candidate 1",
+      "url": "https://www.xtu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.xtu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xiangtan-university"
+    },
+    {
+      "id": "logo-asset-xiangtan-university-2",
+      "label": "xiangtan-university official logo candidate 2",
+      "url": "https://www.xtu.edu.cn/images/ycfd_logo.png",
+      "allowedHosts": [
+        "www.xtu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xiangtan-university"
+    },
+    {
+      "id": "logo-asset-xiangtan-university-3",
+      "label": "xiangtan-university official logo candidate 3",
+      "url": "https://www.xtu.edu.cn/images/ycjt2.png",
+      "allowedHosts": [
+        "www.xtu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xiangtan-university"
+    },
+    {
+      "id": "logo-asset-zhejiang-gongshang-university-1",
+      "label": "zhejiang-gongshang-university official logo candidate 1",
+      "url": "https://sie.zjgsu.edu.cn/_upload/tpl/00/85/133/template133/img/LOGO.png",
+      "allowedHosts": [
+        "sie.zjgsu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "zhejiang-gongshang-university"
+    },
+    {
+      "id": "logo-asset-zhejiang-university-of-technology-1",
+      "label": "zhejiang-university-of-technology official logo candidate 1",
+      "url": "https://www.gjxy.zjut.edu.cn/themes/default/images/logo.png",
+      "allowedHosts": [
+        "www.gjxy.zjut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "zhejiang-university-of-technology"
+    },
+    {
+      "id": "logo-asset-zhejiang-university-of-technology-2",
+      "label": "zhejiang-university-of-technology official logo candidate 2",
+      "url": "https://www.gjxy.zjut.edu.cn/themes/default/images/logo_big.png",
+      "allowedHosts": [
+        "www.gjxy.zjut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "zhejiang-university-of-technology"
+    },
+    {
+      "id": "logo-asset-zhejiang-university-of-technology-3",
+      "label": "zhejiang-university-of-technology official logo candidate 3",
+      "url": "https://www.gjxy.zjut.edu.cn/themes/default/images/logo-1.png",
+      "allowedHosts": [
+        "www.gjxy.zjut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "zhejiang-university-of-technology"
+    },
+    {
+      "id": "logo-extra-anhui-university",
+      "label": "anhui-university official identity supplemental page",
+      "url": "https://www.ahu.edu.cn/",
+      "allowedHosts": [
+        "www.ahu.edu.cn"
+      ],
+      "schoolSlug": "anhui-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-beihang-university",
+      "label": "beihang-university official identity supplemental page",
+      "url": "https://www.buaa.edu.cn/",
+      "allowedHosts": [
+        "www.buaa.edu.cn"
+      ],
+      "schoolSlug": "beihang-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-beijing-foreign-studies-university",
+      "label": "beijing-foreign-studies-university official identity supplemental page",
+      "url": "https://www.bfsu.edu.cn/xxgk/xxbs.htm",
+      "allowedHosts": [
+        "www.bfsu.edu.cn"
+      ],
+      "schoolSlug": "beijing-foreign-studies-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-beijing-normal-university",
+      "label": "beijing-normal-university official identity supplemental page",
+      "url": "https://www.bnu.edu.cn/",
+      "allowedHosts": [
+        "www.bnu.edu.cn"
+      ],
+      "schoolSlug": "beijing-normal-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-beijing-sport-university",
+      "label": "beijing-sport-university official identity supplemental page",
+      "url": "https://www.bsu.edu.cn/",
+      "allowedHosts": [
+        "www.bsu.edu.cn"
+      ],
+      "schoolSlug": "beijing-sport-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-beijing-institute-of-technology",
+      "label": "beijing-institute-of-technology official identity supplemental page",
+      "url": "https://www.bit.edu.cn/",
+      "allowedHosts": [
+        "www.bit.edu.cn"
+      ],
+      "schoolSlug": "beijing-institute-of-technology",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-beijing-university-of-posts-and-telecommunications",
+      "label": "beijing-university-of-posts-and-telecommunications official identity supplemental page",
+      "url": "https://vi.bupt.edu.cn/",
+      "allowedHosts": [
+        "vi.bupt.edu.cn"
+      ],
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-changchun-university-of-science-and-technology",
+      "label": "changchun-university-of-science-and-technology official identity supplemental page",
+      "url": "https://www.cust.edu.cn/",
+      "allowedHosts": [
+        "www.cust.edu.cn"
+      ],
+      "schoolSlug": "changchun-university-of-science-and-technology",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-guangxi-medical-university",
+      "label": "guangxi-medical-university official identity supplemental page",
+      "url": "https://www.gxmu.edu.cn/",
+      "allowedHosts": [
+        "www.gxmu.edu.cn"
+      ],
+      "schoolSlug": "guangxi-medical-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-guizhou-medical-university",
+      "label": "guizhou-medical-university official identity supplemental page",
+      "url": "https://www.gmc.edu.cn/",
+      "allowedHosts": [
+        "www.gmc.edu.cn"
+      ],
+      "schoolSlug": "guizhou-medical-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-peking-university-health-science-center",
+      "label": "peking-university-health-science-center official identity supplemental page",
+      "url": "https://www.bjmu.edu.cn/",
+      "allowedHosts": [
+        "www.bjmu.edu.cn"
+      ],
+      "schoolSlug": "peking-university-health-science-center",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-shanghai-jiao-tong-university",
+      "label": "shanghai-jiao-tong-university official identity supplemental page",
+      "url": "https://en.sjtu.edu.cn/",
+      "allowedHosts": [
+        "en.sjtu.edu.cn"
+      ],
+      "schoolSlug": "shanghai-jiao-tong-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-shanghai-university-of-electric-power",
+      "label": "shanghai-university-of-electric-power official identity supplemental page",
+      "url": "https://www.shiep.edu.cn/",
+      "allowedHosts": [
+        "www.shiep.edu.cn"
+      ],
+      "schoolSlug": "shanghai-university-of-electric-power",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-south-china-university-of-technology",
+      "label": "south-china-university-of-technology official identity supplemental page",
+      "url": "https://www.scut.edu.cn/new/",
+      "allowedHosts": [
+        "www.scut.edu.cn"
+      ],
+      "schoolSlug": "south-china-university-of-technology",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-southern-university-of-science-and-technology",
+      "label": "southern-university-of-science-and-technology official identity supplemental page",
+      "url": "https://www.sustech.edu.cn/zh/",
+      "allowedHosts": [
+        "www.sustech.edu.cn"
+      ],
+      "schoolSlug": "southern-university-of-science-and-technology",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-tianjin-university",
+      "label": "tianjin-university official identity supplemental page",
+      "url": "https://www.tju.edu.cn/",
+      "allowedHosts": [
+        "www.tju.edu.cn"
+      ],
+      "schoolSlug": "tianjin-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-university-of-science-and-technology-of-china",
+      "label": "university-of-science-and-technology-of-china official identity supplemental page",
+      "url": "https://www.ustc.edu.cn/",
+      "allowedHosts": [
+        "www.ustc.edu.cn"
+      ],
+      "schoolSlug": "university-of-science-and-technology-of-china",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-university-of-chinese-academy-of-sciences",
+      "label": "university-of-chinese-academy-of-sciences official identity supplemental page",
+      "url": "https://www.ucas.ac.cn/",
+      "allowedHosts": [
+        "www.ucas.ac.cn"
+      ],
+      "schoolSlug": "university-of-chinese-academy-of-sciences",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-wenzhou-university",
+      "label": "wenzhou-university official identity supplemental page",
+      "url": "https://www.wzu.edu.cn/",
+      "allowedHosts": [
+        "www.wzu.edu.cn"
+      ],
+      "schoolSlug": "wenzhou-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-westlake-university",
+      "label": "westlake-university official identity supplemental page",
+      "url": "https://www.westlake.edu.cn/",
+      "allowedHosts": [
+        "www.westlake.edu.cn"
+      ],
+      "schoolSlug": "westlake-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-wuchang-university-of-technology",
+      "label": "wuchang-university-of-technology official identity supplemental page",
+      "url": "https://www.wut.edu.cn/",
+      "allowedHosts": [
+        "www.wut.edu.cn"
+      ],
+      "schoolSlug": "wuchang-university-of-technology",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-xi-an-jiaotong-university",
+      "label": "xi-an-jiaotong-university official identity supplemental page",
+      "url": "https://www.xjtu.edu.cn/",
+      "allowedHosts": [
+        "www.xjtu.edu.cn"
+      ],
+      "schoolSlug": "xi-an-jiaotong-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-zhejiang-university",
+      "label": "zhejiang-university official identity supplemental page",
+      "url": "https://www.zju.edu.cn/",
+      "allowedHosts": [
+        "www.zju.edu.cn"
+      ],
+      "schoolSlug": "zhejiang-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-zhejiang-university-of-technology",
+      "label": "zhejiang-university-of-technology official identity supplemental page",
+      "url": "https://www.zjut.edu.cn/",
+      "allowedHosts": [
+        "www.zjut.edu.cn"
+      ],
+      "schoolSlug": "zhejiang-university-of-technology",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-fudan-university",
+      "label": "fudan-university official identity supplemental page",
+      "url": "https://www.fudan.edu.cn/xxbs/list.htm",
+      "allowedHosts": [
+        "www.fudan.edu.cn"
+      ],
+      "schoolSlug": "fudan-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-nanjing-university",
+      "label": "nanjing-university official identity supplemental page",
+      "url": "https://www.nju.edu.cn/xxgk/xxbs.htm",
+      "allowedHosts": [
+        "www.nju.edu.cn"
+      ],
+      "schoolSlug": "nanjing-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-sichuan-university",
+      "label": "sichuan-university official identity supplemental page",
+      "url": "https://www.scu.edu.cn/xxgk/xxbs.htm",
+      "allowedHosts": [
+        "www.scu.edu.cn"
+      ],
+      "schoolSlug": "sichuan-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-extra-wuhan-university",
+      "label": "wuhan-university official identity supplemental page",
+      "url": "https://www.whu.edu.cn/xxgk/xxbs.htm",
+      "allowedHosts": [
+        "www.whu.edu.cn"
+      ],
+      "schoolSlug": "wuhan-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-supp-asset-beihang-university-1",
+      "label": "beihang-university official supplemental logo asset",
+      "url": "https://www.buaa.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.buaa.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beihang-university"
+    },
+    {
+      "id": "logo-supp-asset-anhui-university-2",
+      "label": "anhui-university official supplemental logo asset",
+      "url": "https://www.ahu.edu.cn/_upload/tpl/07/cc/1996/template1996/images/logonew.png",
+      "allowedHosts": [
+        "www.ahu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "anhui-university"
+    },
+    {
+      "id": "logo-supp-asset-beijing-normal-university-3",
+      "label": "beijing-normal-university official supplemental logo asset",
+      "url": "https://www.bnu.edu.cn/images/logo1.png",
+      "allowedHosts": [
+        "www.bnu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-normal-university"
+    },
+    {
+      "id": "logo-supp-asset-beijing-institute-of-technology-4",
+      "label": "beijing-institute-of-technology official supplemental logo asset",
+      "url": "https://www.bit.edu.cn/images/gb20190805/logo_01.svg",
+      "allowedHosts": [
+        "www.bit.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-institute-of-technology"
+    },
+    {
+      "id": "logo-supp-asset-beijing-institute-of-technology-5",
+      "label": "beijing-institute-of-technology official supplemental logo asset",
+      "url": "https://www.bit.edu.cn/images/gb20190805/logo_02.svg",
+      "allowedHosts": [
+        "www.bit.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-institute-of-technology"
+    },
+    {
+      "id": "logo-supp-asset-beijing-university-of-posts-and-telecommunications-6",
+      "label": "beijing-university-of-posts-and-telecommunications official supplemental logo asset",
+      "url": "https://vi.bupt.edu.cn/images/logo1.png",
+      "allowedHosts": [
+        "vi.bupt.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-university-of-posts-and-telecommunications"
+    },
+    {
+      "id": "logo-supp-asset-changchun-university-of-science-and-technology-7",
+      "label": "changchun-university-of-science-and-technology official supplemental logo asset",
+      "url": "https://www.cust.edu.cn/static2026/images/logo.png",
+      "allowedHosts": [
+        "www.cust.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "changchun-university-of-science-and-technology"
+    },
+    {
+      "id": "logo-supp-asset-guangxi-medical-university-8",
+      "label": "guangxi-medical-university official supplemental logo asset",
+      "url": "https://www.gxmu.edu.cn/images/gxmu_logo.png",
+      "allowedHosts": [
+        "www.gxmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "guangxi-medical-university"
+    },
+    {
+      "id": "logo-supp-asset-guangxi-medical-university-9",
+      "label": "guangxi-medical-university official supplemental logo asset",
+      "url": "https://www.gxmu.edu.cn/images/logo2.png",
+      "allowedHosts": [
+        "www.gxmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "guangxi-medical-university"
+    },
+    {
+      "id": "logo-supp-asset-peking-university-health-science-center-10",
+      "label": "peking-university-health-science-center official supplemental logo asset",
+      "url": "https://www.bjmu.edu.cn/images/logo.svg",
+      "allowedHosts": [
+        "www.bjmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "peking-university-health-science-center"
+    },
+    {
+      "id": "logo-supp-asset-peking-university-health-science-center-11",
+      "label": "peking-university-health-science-center official supplemental logo asset",
+      "url": "https://www.bjmu.edu.cn/images/mobile-logo.svg",
+      "allowedHosts": [
+        "www.bjmu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "peking-university-health-science-center"
+    },
+    {
+      "id": "logo-supp-asset-shanghai-jiao-tong-university-12",
+      "label": "shanghai-jiao-tong-university official supplemental logo asset",
+      "url": "https://global.sjtu.edu.cn/en/assets/images/logo_white_130.png",
+      "allowedHosts": [
+        "global.sjtu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-jiao-tong-university"
+    },
+    {
+      "id": "logo-supp-asset-south-china-university-of-technology-13",
+      "label": "south-china-university-of-technology official supplemental logo asset",
+      "url": "https://www.scut.edu.cn/_upload/site/01/3b/315/logo.png",
+      "allowedHosts": [
+        "www.scut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "south-china-university-of-technology"
+    },
+    {
+      "id": "logo-supp-asset-university-of-science-and-technology-of-china-14",
+      "label": "university-of-science-and-technology-of-china official supplemental logo asset",
+      "url": "https://www.ustc.edu.cn/news/images/logo.svg",
+      "allowedHosts": [
+        "www.ustc.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-science-and-technology-of-china"
+    },
+    {
+      "id": "logo-supp-asset-tianjin-university-15",
+      "label": "tianjin-university official supplemental logo asset",
+      "url": "https://www.tju.edu.cn/images/tjulogo.png",
+      "allowedHosts": [
+        "www.tju.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "tianjin-university"
+    },
+    {
+      "id": "logo-supp-asset-university-of-chinese-academy-of-sciences-16",
+      "label": "university-of-chinese-academy-of-sciences official supplemental logo asset",
+      "url": "https://www.ucas.ac.cn/images/logo.png",
+      "allowedHosts": [
+        "www.ucas.ac.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-chinese-academy-of-sciences"
+    },
+    {
+      "id": "logo-supp-asset-university-of-chinese-academy-of-sciences-17",
+      "label": "university-of-chinese-academy-of-sciences official supplemental logo asset",
+      "url": "https://www.ucas.ac.cn/images/logo_01.png",
+      "allowedHosts": [
+        "www.ucas.ac.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "university-of-chinese-academy-of-sciences"
+    },
+    {
+      "id": "logo-supp-asset-beijing-sport-university-18",
+      "label": "beijing-sport-university official supplemental logo asset",
+      "url": "https://www.bsu.edu.cn/images/logo.png",
+      "allowedHosts": [
+        "www.bsu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "beijing-sport-university"
+    },
+    {
+      "id": "logo-supp-asset-wuchang-university-of-technology-19",
+      "label": "wuchang-university-of-technology official supplemental logo asset",
+      "url": "https://www.wut.edu.cn/img/logo.png",
+      "allowedHosts": [
+        "www.wut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "wuchang-university-of-technology"
+    },
+    {
+      "id": "logo-supp-asset-wuchang-university-of-technology-20",
+      "label": "wuchang-university-of-technology official supplemental logo asset",
+      "url": "https://www.wut.edu.cn/images/dlogo.png",
+      "allowedHosts": [
+        "www.wut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "wuchang-university-of-technology"
+    },
+    {
+      "id": "logo-supp-asset-xi-an-jiaotong-university-21",
+      "label": "xi-an-jiaotong-university official supplemental logo asset",
+      "url": "https://www.xjtu.edu.cn/img/logo_pic99.png",
+      "allowedHosts": [
+        "www.xjtu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "xi-an-jiaotong-university"
+    },
+    {
+      "id": "logo-supp-asset-zhejiang-university-of-technology-22",
+      "label": "zhejiang-university-of-technology official supplemental logo asset",
+      "url": "https://www.zjut.edu.cn/_upload/site/00/04/4/logo.png",
+      "allowedHosts": [
+        "www.zjut.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "zhejiang-university-of-technology"
+    },
+    {
+      "id": "logo-supp-asset-wenzhou-university-23",
+      "label": "wenzhou-university official supplemental logo asset",
+      "url": "https://www.wzu.edu.cn/dfiles/9987/template/default/newzhuzhan/wenda/images/logo.png",
+      "allowedHosts": [
+        "www.wzu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "wenzhou-university"
+    },
+    {
+      "id": "logo-supp-asset-westlake-university-24",
+      "label": "westlake-university official supplemental logo asset",
+      "url": "https://en.westlake.edu.cn/images/header_icon_color.png",
+      "allowedHosts": [
+        "en.westlake.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "westlake-university"
+    },
+    {
+      "id": "logo-supp-asset-shanghai-jiao-tong-university-25",
+      "label": "shanghai-jiao-tong-university official supplemental logo asset",
+      "url": "https://www.sjtu.edu.cn/resource/assets/css/style409.css",
+      "allowedHosts": [
+        "www.sjtu.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-jiao-tong-university"
+    },
+    {
+      "id": "logo-supp-asset-zhejiang-university-26",
+      "label": "zhejiang-university official supplemental logo asset",
+      "url": "https://www.zju.edu.cn/_upload/tpl/0b/bf/3007/template3007/static/css/main.8de0174d.css",
+      "allowedHosts": [
+        "www.zju.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "zhejiang-university"
+    },
+    {
+      "id": "logo-supp-asset-shanghai-university-of-electric-power-27",
+      "label": "shanghai-university-of-electric-power official supplemental logo asset",
+      "url": "https://www.shiep.edu.cn/_upload/tpl/00/e0/224/template224/css/style.css",
+      "allowedHosts": [
+        "www.shiep.edu.cn"
+      ],
+      "sourceRole": "authority-list",
+      "schoolSlug": "shanghai-university-of-electric-power"
+    },
+    {
+      "id": "logo-final-page-zju",
+      "label": "zhejiang-university official identity evidence",
+      "url": "https://www.zju.edu.cn/514/listm.htm",
+      "allowedHosts": [
+        "www.zju.edu.cn"
+      ],
+      "schoolSlug": "zhejiang-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-page-gmc",
+      "label": "guizhou-medical-university official identity evidence",
+      "url": "https://www.gmc.edu.cn/",
+      "allowedHosts": [
+        "www.gmc.edu.cn"
+      ],
+      "schoolSlug": "guizhou-medical-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-asset-shiep",
+      "label": "shanghai-university-of-electric-power official identity evidence",
+      "url": "https://www.shiep.edu.cn/_upload/tpl/00/e0/224/template224/images/logo.png",
+      "allowedHosts": [
+        "www.shiep.edu.cn"
+      ],
+      "schoolSlug": "shanghai-university-of-electric-power",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-asset-sjtu",
+      "label": "shanghai-jiao-tong-university official identity evidence",
+      "url": "https://www.sjtu.edu.cn/resource/assets/img/svg/Min-logo-pic.svg",
+      "allowedHosts": [
+        "www.sjtu.edu.cn"
+      ],
+      "schoolSlug": "shanghai-jiao-tong-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-asset-zju",
+      "label": "zhejiang-university official identity evidence",
+      "url": "https://www.zju.edu.cn/_upload/article/images/c3/98/1fb1d281492eb477a098ef7a2901/6d8d432f-56ac-47eb-b22d-a23b103aed01.png",
+      "allowedHosts": [
+        "www.zju.edu.cn"
+      ],
+      "schoolSlug": "zhejiang-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-page-gmc-jwc",
+      "label": "guizhou-medical-university official identity evidence",
+      "url": "https://jwc.gmc.edu.cn/",
+      "allowedHosts": [
+        "jwc.gmc.edu.cn"
+      ],
+      "schoolSlug": "guizhou-medical-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-page-gmc-index",
+      "label": "guizhou-medical-university official identity evidence",
+      "url": "https://www.gmc.edu.cn/index.htm",
+      "allowedHosts": [
+        "www.gmc.edu.cn"
+      ],
+      "schoolSlug": "guizhou-medical-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-page-gmc-identity",
+      "label": "guizhou-medical-university official identity evidence",
+      "url": "https://www.gmc.edu.cn/xywh/xxbs.htm",
+      "allowedHosts": [
+        "www.gmc.edu.cn"
+      ],
+      "schoolSlug": "guizhou-medical-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-asset-gmc",
+      "label": "guizhou-medical-university official identity evidence",
+      "url": "https://www.gmc.edu.cn/__local/0/0D/6C/A7FB45BE37E59583D365353A007_044A37B8_B197.png",
+      "allowedHosts": [
+        "www.gmc.edu.cn"
+      ],
+      "schoolSlug": "guizhou-medical-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-page-caa",
+      "label": "china-academy-of-art official identity evidence",
+      "url": "https://www.caa.edu.cn/",
+      "allowedHosts": [
+        "www.caa.edu.cn"
+      ],
+      "schoolSlug": "china-academy-of-art",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-asset-caa-retry",
+      "label": "china-academy-of-art official identity evidence",
+      "url": "https://admission.caa.edu.cn/dfiles/6837/site/templates/maincn/images/logo1.png",
+      "allowedHosts": [
+        "admission.caa.edu.cn"
+      ],
+      "schoolSlug": "china-academy-of-art",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-asset-caa-home",
+      "label": "china-academy-of-art official identity evidence",
+      "url": "https://www.caa.edu.cn/dfiles/9597/images/home_logo.png",
+      "allowedHosts": [
+        "www.caa.edu.cn"
+      ],
+      "schoolSlug": "china-academy-of-art",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-final-page-caa-en",
+      "label": "china-academy-of-art official identity evidence",
+      "url": "https://en.caa.edu.cn/",
+      "allowedHosts": [
+        "en.caa.edu.cn"
+      ],
+      "schoolSlug": "china-academy-of-art",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-quality-page-bnu",
+      "label": "beijing-normal-university official identity evidence",
+      "url": "https://english.bnu.edu.cn/",
+      "allowedHosts": [
+        "english.bnu.edu.cn"
+      ],
+      "schoolSlug": "beijing-normal-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-quality-page-thu",
+      "label": "tsinghua-university official identity evidence",
+      "url": "https://vi.tsinghua.edu.cn/gk/xxbz/xh.htm",
+      "allowedHosts": [
+        "vi.tsinghua.edu.cn"
+      ],
+      "schoolSlug": "tsinghua-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-quality-page-nju",
+      "label": "nanjing-university official identity evidence",
+      "url": "https://xiaoban.nju.edu.cn/c7/7b/c684a509819/page.psp",
+      "allowedHosts": [
+        "xiaoban.nju.edu.cn"
+      ],
+      "schoolSlug": "nanjing-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-quality-asset-bnu",
+      "label": "beijing-normal-university official identity evidence",
+      "url": "https://english.bnu.edu.cn/images/logo_01.png",
+      "allowedHosts": [
+        "english.bnu.edu.cn"
+      ],
+      "schoolSlug": "beijing-normal-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-quality-asset-thu-1",
+      "label": "tsinghua-university official identity evidence",
+      "url": "https://vi.tsinghua.edu.cn/__local/8/1C/21/2F02A66E31BF084FE340463BB47_B9A95F73_185BC.jpg",
+      "allowedHosts": [
+        "vi.tsinghua.edu.cn"
+      ],
+      "schoolSlug": "tsinghua-university",
+      "sourceRole": "authority-list"
+    },
+    {
+      "id": "logo-quality-asset-thu-2",
+      "label": "tsinghua-university official identity evidence",
+      "url": "https://vi.tsinghua.edu.cn/__local/A/20/F1/A6C431132343699289A0DD5CAC9_8FE9F656_15CD2.jpg",
+      "allowedHosts": [
+        "vi.tsinghua.edu.cn"
+      ],
+      "schoolSlug": "tsinghua-university",
+      "sourceRole": "authority-list"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import type { SchoolLogoDescriptor } from "./school-logo-import.ts";
 import { createHash } from "node:crypto";
 
 export type CatalogSeedEntityStatus = "active" | "draft" | "archived";
@@ -6,7 +7,7 @@ export const CATALOG_SEED_ALLOWED_FIELDS = Object.freeze({
   bundle: ["version", "generatedAt", "handoff", "cities", "schools", "programs", "programIntakes", "scholarships"],
   handoff: ["sourceSystem", "cleanedExportName", "cleanedExportSha256", "sourceSchemaSha256", "reviewReference", "prohibitedDataReviewReference", "approvalRecordedAt", "sourceReadOnly", "prohibitedDataConfirmedExcluded"],
   cities: ["slug", "nameEn", "nameZh", "region", "province", "monthlyCost", "monthlyCostRmb", "costLevel", "density", "tags", "content", "nearby", "sortOrder", "version", "status", "verificationStatus", "lastVerifiedAt", "nextReviewDueAt", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "sourceFieldLineage"],
-  schools: ["slug", "nameEn", "nameZh", "citySlug", "schoolType", "region", "applicationLevel", "languageOfInstruction", "languageRequirement", "hskRequirement", "englishRequirement", "deadlineSummary", "tuitionSummary", "applicationFee", "websiteUrl", "admissionsUrl", "cscaRequired", "cscaRequirement", "cscaSubjects", "subjectTags", "languageTags", "tuitionBandLabel", "campusHighlights", "contactNotes", "status", "verificationStatus", "lastVerifiedAt", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "sourceFieldLineage"],
+  schools: ["logo", "slug", "nameEn", "nameZh", "citySlug", "schoolType", "region", "applicationLevel", "languageOfInstruction", "languageRequirement", "hskRequirement", "englishRequirement", "deadlineSummary", "tuitionSummary", "applicationFee", "websiteUrl", "admissionsUrl", "cscaRequired", "cscaRequirement", "cscaSubjects", "subjectTags", "languageTags", "tuitionBandLabel", "campusHighlights", "contactNotes", "status", "verificationStatus", "lastVerifiedAt", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "sourceFieldLineage"],
   programs: ["slug", "schoolSlug", "citySlug", "nameEn", "nameZh", "degreeLevel", "durationYears", "durationMonths", "fieldCategory", "subjectArea", "teachingLanguage", "cscaSubjects", "cscaRequirement", "hskRequirement", "englishRequirement", "tuitionAmount", "tuitionCurrency", "tuitionPeriod", "tuitionText", "scholarshipText", "applicationUrl", "applicationNote", "hasScholarship", "badgeText", "displayTuition", "displaySubjects", "displayGroup", "displayGroupLabel", "status", "verificationStatus", "lastVerifiedAt", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "sourceFieldLineage"],
   programIntakes: ["programSlug", "intakeTerm", "intakeYear", "openDate", "deadlineDate", "deadlineLabel", "applicationRound", "status", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "sourceFieldLineage"],
   scholarships: ["slug", "title", "nameZh", "schoolSlug", "programSlug", "type", "typeLabel", "providerName", "providerNameEn", "providerLocation", "fundingLevel", "coverage", "applicableDegree", "applicableProgram", "amountText", "requirementText", "bodySections", "benefitItems", "eligibilityItems", "applicationMaterials", "applicationSteps", "actionLinks", "deadlineDate", "deadlineLabel", "applicationRound", "targetCountries", "targetRegions", "benefits", "tags", "summary", "sortOrder", "status", "verificationStatus", "lastVerifiedAt", "sourceUrl", "sourceLabel", "sourceSha256", "capturedAt", "sourceFieldLineage"],
@@ -51,6 +52,7 @@ export type CatalogSeedCity = CatalogSeedSource & {
 };
 
 export type CatalogSeedSchool = CatalogSeedSource & {
+  logo?: SchoolLogoDescriptor;
   slug: string;
   nameEn: string;
   nameZh?: string;
@@ -273,6 +275,15 @@ export function validateCatalogSeedBundle(bundle: unknown): CatalogSeedValidatio
   validateEntities("scholarships", scholarships, ["slug", "title", "sourceUrl", "sourceLabel"], CATALOG_SEED_ALLOWED_FIELDS.scholarships, errors);
   validateRichCityFields(cities, errors, value.version === 2);
   validateRichCatalogFields(schools, programs, programIntakes, scholarships, errors);
+  for (const school of schools) {
+    if (school.logo === undefined) continue;
+    const logo = school.logo as unknown as Record<string,unknown>;
+    if (!logo || typeof logo !== 'object' || Array.isArray(logo) || Object.keys(logo).some(key=>!['file','sourceUrl','sourceNote'].includes(key))
+      || typeof logo.file !== 'string' || !/^[A-Za-z0-9_./-]+\.png$/.test(logo.file) || logo.file.startsWith('/') || logo.file.split('/').includes('..')
+      || typeof logo.sourceUrl !== 'string' || logo.sourceUrl.length > 2048 || !/^https:\/\//.test(logo.sourceUrl)
+      || (logo.sourceNote !== undefined && (typeof logo.sourceNote !== 'string' || logo.sourceNote.length > 1000))) errors.push('School logo descriptor is invalid.');
+  }
+
   validateReferences({
     cities: cities.filter((item) => asRecord(item)),
     schools: schools.filter((item) => asRecord(item)),

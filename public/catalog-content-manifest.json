@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "sourceHash": "4f9cb6f07c43a4a6632f5171f40c10f9195f4549c3946c6fa59b353025c484d2",
-  "sourceCount": 19007,
+  "sourceHash": "c1737a0263ff4b5994f42388ce56571d20b37af4b39addf95064ac4450feaaba",
+  "sourceCount": 19203,
   "locales": {
     "vi": {
       "ready": true,
-      "sourceCount": 19007,
-      "sha256": "224ac80524c523566222b16661ee768a9a369dcd16cb8e9b712f6d223f82970a",
+      "sourceCount": 19203,
+      "sha256": "aada3cfe2a46dd27d2440d964eba810162b82df605e681c3d74ecac44179bed6",
       "validation": "Required source numbers, exam labels and URLs retained; no unchanged long prose",
       "referenceTranslation": true
     }

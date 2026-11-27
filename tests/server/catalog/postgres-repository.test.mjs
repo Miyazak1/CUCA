@@ -87,7 +87,7 @@ test("PostgresCatalogRepository uses fixed public SQL for program lists", async 
   assert.match(calls[0].statement, /pi\.open_date is null or pi\.open_date <= clock_timestamp\(\)/);
   assert.match(calls[0].statement, /when upcoming_intake\.id is not null then 'upcoming'/);
   assert.equal(detail.slug, "cs");
-  assert.deepEqual(detail.school, { id: "school_1", slug: "zju", nameZh: "浙江大学", nameEn: "Zhejiang University" });
+  assert.deepEqual(detail.school, { id: "school_1", slug: "zju", nameZh: "浙江大学", nameEn: "Zhejiang University", logo: null });
   assert.deepEqual(detail.city, { slug: "hangzhou", nameZh: "杭州", nameEn: "Hangzhou" });
   assert.deepEqual(calls[1].params, ["11111111-1111-4111-8111-111111111111"]);
   assert.match(calls[1].statement, /join schools s on s\.id = p\.school_id and s\.status = 'active'/);

@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "schools": [
+    {
+      "slug": "tsinghua-university",
+      "logo": {
+        "file": "public/catalog-design-assets/thu.png",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tsinghua_University_Logo.svg",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Tsinghua_University. Official-source verification remains pending; do not label as officially verified."
+      }
+    },
+    {
+      "slug": "peking-university",
+      "logo": {
+        "file": "public/catalog-design-assets/pku.png",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peking_University_seal.svg",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Peking_University. Official-source verification remains pending; do not label as officially verified."
+      }
+    },
+    {
+      "slug": "shanghai-jiao-tong-university",
+      "logo": {
+        "file": "public/catalog-design-assets/sjtu.png",
+        "sourceUrl": "https://en.wikipedia.org/wiki/File:Sjtu-logo-standard-red.png",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Shanghai_Jiao_Tong_University. Official-source verification remains pending; do not label as officially verified."
+      }
+    },
+    {
+      "slug": "zhejiang-university",
+      "logo": {
+        "file": "public/catalog-design-assets/zju.png",
+        "sourceUrl": "https://en.wikipedia.org/wiki/File:Zhejiang_University_Logo.svg",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Zhejiang_University. Official-source verification remains pending; do not label as officially verified."
+      }
+    },
+    {
+      "slug": "fudan-university",
+      "logo": {
+        "file": "public/catalog-design-assets/fdu.png",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fudan_University_Logo.svg",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Fudan_University. Official-source verification remains pending; do not label as officially verified."
+      }
+    },
+    {
+      "slug": "nanjing-university",
+      "logo": {
+        "file": "public/catalog-design-assets/nju.png",
+        "sourceUrl": "https://en.wikipedia.org/wiki/File:Nanjing_University_Logo.svg",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Nanjing_University. Official-source verification remains pending; do not label as officially verified."
+      }
+    },
+    {
+      "slug": "wuhan-university",
+      "logo": {
+        "file": "public/catalog-design-assets/whu.png",
+        "sourceUrl": "https://en.wikipedia.org/wiki/File:Wuhan_University_Logo.png",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Wuhan_University. Official-source verification remains pending; do not label as officially verified."
+      }
+    },
+    {
+      "slug": "sun-yat-sen-university",
+      "logo": {
+        "file": "public/catalog-design-assets/sysu.png",
+        "sourceUrl": "https://en.wikipedia.org/wiki/File:Sun_Yat-sen_University_Logo.png",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Sun_Yat-sen_University. Official-source verification remains pending; do not label as officially verified."
+      }
+    },
+    {
+      "slug": "sichuan-university",
+      "logo": {
+        "file": "public/catalog-design-assets/scu.png",
+        "sourceUrl": "https://en.wikipedia.org/wiki/File:Sichuan_University_logo_%28seal%29.svg",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Sichuan_University. Official-source verification remains pending; do not label as officially verified."
+      }
+    },
+    {
+      "slug": "xiamen-university",
+      "logo": {
+        "file": "public/catalog-design-assets/xmu.png",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Xiamen_University_logo.svg",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Xiamen_University. Official-source verification remains pending; do not label as officially verified."
+      }
+    },
+    {
+      "slug": "beijing-university-of-posts-and-telecommunications",
+      "logo": {
+        "file": "public/catalog-design-assets/bupt.png",
+        "sourceUrl": "https://en.wikipedia.org/wiki/File:BUPT_LOGO.png",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Beijing_University_of_Posts_and_Telecommunications. Official-source verification remains pending; do not label as officially verified."
+      }
+    },
+    {
+      "slug": "westlake-university",
+      "logo": {
+        "file": "public/catalog-design-assets/westlake.png",
+        "sourceUrl": "https://en.wikipedia.org/wiki/File:Westlake_University.png",
+        "sourceNote": "Existing preview asset migrated to school-managed storage. Source: https://en.wikipedia.org/wiki/Westlake_University. Official-source verification remains pending; do not label as officially verified."
+      }
+    }
+  ]
+}

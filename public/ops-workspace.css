@@ -896,3 +896,7 @@ a:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
 }
+
+.ops-school-logo-preview{display:block;width:96px;height:96px;object-fit:contain;background:white;border:1px solid #d5e0db;border-radius:8px}.ops-school-logo-panel{margin-block:16px}.ops-school-logo-panel figure{margin:12px 0}.ops-school-logo-panel figcaption{font-size:12px;margin-block:8px}.ops-school-logo-panel p{overflow-wrap:anywhere}
+
+.ops-school-logo-panel .ops-city-form textarea{min-height:96px}.ops-school-logo-panel input[type=file]{min-width:0;max-width:100%}

@@ -99,10 +99,13 @@ const citySourceRoles = new Set<OfficialCatalogSourceRole>([
 ]);
 const allowedContentTypes = new Set([
   "text/html",
+  "text/css",
   "application/pdf",
   "image/jpeg",
   "image/png",
   "image/webp",
+  "image/svg+xml",
+  "image/gif",
   "application/vnd.ms-excel",
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
   "application/msword",
@@ -200,7 +203,7 @@ export async function fetchOfficialCatalogSource(
         redirect: "manual",
         signal: controller.signal,
         headers: {
-          accept: "text/html,application/pdf,image/jpeg,image/png,image/webp,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;q=0.9",
+          accept: "text/html,application/pdf,image/jpeg,image/png,image/webp,image/svg+xml,image/gif,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;q=0.9",
           "user-agent": "CUAC-Official-Catalog-Collector/0.1 (evidence-only; no recursive crawling)",
         },
       });

@@ -1,6 +1,5 @@
 const universities = [];
 
-const universityArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 const escapeCatalogHtml = window.CuacCatalogList.escapeHtml;
 const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallback, values) || fallback;
 const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
@@ -17,7 +16,7 @@ const state = {
         criteria: {},
         saved: new Set(),
         sort: "relevance",
-        view: "grid",
+        view: "list",
         page: 1,
         perPage: 8,
       };
@@ -39,7 +38,7 @@ const state = {
       }
 
       function schoolCity(item = {}) {
-        return item.cityZh || item.city || "City not published";
+        return item.city || item.cityZh || "City not published";
       }
 
       function schoolCitySlug(item = {}) {
@@ -203,10 +202,6 @@ const state = {
           .join(" · ") || item.sourceLabel || "No admissions summary published.";
       }
 
-      function schoolImage(item = {}) {
-        return window.CuacCatalogList.cover("school", item);
-      }
-
       function schoolDetailHref(item = {}) {
         return window.CUACCatalogI18n.localizeHref(`university-detail.html?university=${encodeURIComponent(item.id)}`);
       }
@@ -350,33 +345,12 @@ const state = {
       }
 
       function card(item, index = 0) {
-        const name = schoolName(item);
-        const entityId = schoolEntityId(item);
-        const saved = state.saved.has(entityId);
-        const imageBadge = schoolEnglishRouteCount(item) ? `${schoolEnglishRouteCount(item)} ${catalogUi("English routes")}` : `${schoolProgramCount(item)} ${catalogUi("programs")}`;
-        const signals = [schoolApplicationReadiness(item), ...schoolTags(item).filter((tag) => tag !== "Verified").slice(0, 3)];
-        const detailHref = schoolDetailHref(item);
-        return `
-          <article class="university-card result-enter" data-enter-index="${index}" data-name="${escapeCatalogHtml(name)}" role="link" tabindex="0" data-university-card data-detail-href="${detailHref}" aria-label="${escapeCatalogHtml(window.CUACI18n.format("a11y.universityCard", { name: name }))}">
-            <div class="card-image">
-              <span class="badge">${escapeCatalogHtml(imageBadge)}</span>
-              <button class="save catalog-save-control ${saved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved}" aria-label="${escapeCatalogHtml(catalogT(saved ? "common.remove" : "common.save", saved ? `Remove ${name} from Favourites` : `Save ${name} to Favourites`, { name }))}" title="${escapeCatalogHtml(catalogT(saved ? "common.savedTitle" : "common.saveTitle", saved ? "Saved — click to remove" : "Save to Favourites"))}">${window.CuacCatalogList.saveHeartIcon()}</button>
-              <img data-catalog-cover alt="${escapeCatalogHtml(name)} cover" src="${schoolImage(item)}" />
-              <span class="university-card-open" aria-hidden="true">${universityArrowRight}</span>
-            </div>
-            <div class="card-body">
-              <h2><a href="${detailHref}">${escapeCatalogHtml(name)}</a></h2>
-              <div class="location">${escapeCatalogHtml(catalogUi(schoolCity(item)))}, ${escapeCatalogHtml(schoolProvince(item))}</div>
-              <div class="signals">${signals.map((signal) => `<span class="signal">${escapeCatalogHtml(catalogUi(signal))}</span>`).join("")}</div>
-              <p class="note">${escapeCatalogHtml(catalogUi(schoolNote(item)))}</p>
-              <div class="facts">
-                <div class="mini-fact"><strong>${schoolProgramCount(item)}</strong><span>${escapeCatalogHtml(catalogUi("programs"))}</span></div>
-                <div class="mini-fact"><strong>${escapeCatalogHtml(catalogUi(schoolTuition(item)))}</strong><span>${escapeCatalogHtml(catalogUi("tuition"))}</span></div>
-                <div class="mini-fact"><strong>${schoolEnglishRouteCount(item)}</strong><span>${escapeCatalogHtml(catalogUi("routes"))}</span></div>
-              </div>
-            </div>
-          </article>
-        `;
+        const name = schoolName(item), entityId = schoolEntityId(item), saved = state.saved.has(entityId);
+        const D = window.CUACCatalogDesign, detailHref = schoolDetailHref(item);
+        const levels = Object.entries(item.studyLevelCounts || {}).filter(([,count]) => Number(count)>0).map(([level])=>catalogUi(window.CuacStudyLevels.label(level))).join(' · ') || catalogUi(item.applicationLevel || '');
+        const next = D.deadlines('school', item).rows.find(row=>row.date.instant>=Date.now());
+        const type = item.schoolType && ['public','private'].includes(item.schoolType.toLowerCase()) ? D.t(item.schoolType.toLowerCase()) : catalogUi(item.schoolType || '');
+        return '<article class="university-card cd-card result-enter" data-enter-index="'+index+'" data-name="'+escapeCatalogHtml(name)+'" role="link" tabindex="0" data-university-card data-design-key="school:'+escapeCatalogHtml(entityId)+'" data-detail-href="'+detailHref+'" aria-label="'+escapeCatalogHtml(window.CUACI18n.format('a11y.universityCard',{name}))+'">'+D.render({kind:'school',id:entityId,title:name,logoName:item.nameEn,logo:item.logo,parent:item.nameZh,location:schoolCity(item),href:detailHref,record:item,saved,saveClass:'save catalog-save-control',saveLabel:catalogT(saved?'common.remove':'common.save',saved?'Remove '+name+' from Favourites':'Save '+name+' to Favourites',{name}),tags:[{kind:'type',value:type},{kind:'level',value:levels},{kind:'intake',value:next?D.intakeLabel(next.intakeTerm,next.intakeYear):''}],description:schoolNote(item),facts:[['programs',item.programCount],['english',item.englishProgramCount],['scholarships',item.scholarshipCount]]})+'</article>';
       }
 
       function renderActiveFilters() {
@@ -446,6 +420,7 @@ const state = {
           : "Showing Chinese universities with international admissions routes.");
         resultsGrid.className = `university-grid ${state.view === "list" ? "list" : ""}`;
         resultsGrid.innerHTML = shown.map(card).join("");
+        window.CUACCatalogDesign.refresh();
         if (!results.length) {
           const filtered = Boolean(state.query || state.filters.size || Object.keys(state.criteria || {}).length);
           window.CuacCatalogList.listState(resultsGrid, "empty", {
@@ -659,14 +634,14 @@ const state = {
           return;
         }
         const universityCard = event.target.closest("[data-university-card]");
-        if (universityCard && !event.target.closest("a, button, input, select, textarea")) {
+        if (universityCard && !event.target.closest("a, button, input, select, textarea, details")) {
           window.location.href = universityCard.dataset.detailHref;
         }
       });
 
       resultsGrid.addEventListener("keydown", (event) => {
         const universityCard = event.target.closest("[data-university-card]");
-        if (!universityCard || !["Enter", " "].includes(event.key)) return;
+        if (!universityCard || event.target.closest("a, button, input, select, textarea, details") || !["Enter", " "].includes(event.key)) return;
         event.preventDefault();
         window.location.href = universityCard.dataset.detailHref;
       });

@@ -10,6 +10,7 @@
   const foldedDictionary = new Map();
   const candidates = new Map();
   const missing = new Set();
+  const waitingRecords = new Set();
   const phraseCache = new Map();
   let orderedCandidates = [];
   let candidatesChanged = false;
@@ -64,6 +65,9 @@
   };
   let state = enabled ? "loading" : "original";
   let queued = false;
+  let loadingRequest;
+  const loadingMessages={vi:"Đang tải bản dịch…",th:"กำลังโหลดคำแปล…",id:"Memuat terjemahan…",ms:"Memuatkan terjemahan…",ar:"جارٍ تحميل الترجمة…"};
+  const retryMessages={vi:"Thử tải lại bản dịch",th:"ลองโหลดคำแปลอีกครั้ง",id:"Muat ulang terjemahan",ms:"Cuba muat semula terjemahan",ar:"إعادة تحميل الترجمة"};
   const pendingMessages={vi:"Bản dịch ngôn ngữ này đang được chuẩn bị. Hiện hiển thị nội dung gốc tiếng Anh.",th:"คำแปลภาษานี้กำลังจัดเตรียม ขณะนี้แสดงต้นฉบับภาษาอังกฤษ",id:"Terjemahan bahasa ini sedang disiapkan. Konten asli bahasa Inggris ditampilkan.",ms:"Terjemahan bahasa ini sedang disediakan. Kandungan asal bahasa Inggeris dipaparkan.",ar:"يجري إعداد ترجمة هذه اللغة. يُعرض حاليًا المحتوى الأصلي بالإنجليزية."};
 
   function text(value) {
@@ -80,7 +84,9 @@
     // filter values, URLs, or the underlying record used by application logic.
     if(candidatesChanged){orderedCandidates=[...candidates].sort((a,b)=>b[0].length-a[0].length).map(([source,translated])=>({source,translated,pattern:new RegExp(`(^|[^\\p{L}\\p{N}])${source.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}(?=$|[^\\p{L}\\p{N}])`,"gu")}));candidatesChanged=false;}
     for (const {source, translated, pattern} of orderedCandidates) {
-      if (source.length < 3 || source === translated || !result.includes(source)) continue;
+      // Two-character official subject labels also appear inside composed
+      // summaries. Keep arbitrary short fragments out of replacement rules.
+      if ((source.length < 3 && !labels.has(source.toLowerCase())) || source === translated || !result.includes(source)) continue;
       result = result.replace(pattern,(_match,prefix)=>prefix+translated);
     }
     if(phraseCache.size>5000)phraseCache.clear();phraseCache.set(value,result);
@@ -112,7 +118,8 @@
     if (translated) {if(!candidates.has(source)){candidates.set(source, translated);candidatesChanged=true;phraseCache.clear();}} else missing.add(source);
   }
   function track(records) {
-    if (!enabled || state !== "ready") return;
+    if (!enabled) return;
+    if (state !== "ready") { if(state !== "pending") waitingRecords.add(records); return; }
     (Array.isArray(records) ? records : [records]).forEach(record => {
       if (!record || typeof record !== "object") return;
       for (const [key,value] of Object.entries(record)) {
@@ -129,6 +136,9 @@
     let note = host.querySelector("[data-catalog-translation-notice]");
     if (!note) {
       note = host.querySelector(".catalog-language-note,.search-language-note") || document.createElement("p");
+      // The body loader now owns this notice. Later control-label rendering
+      // must not replace its children (including the original-language link).
+      note.removeAttribute("data-catalog-copy");
       note.replaceChildren();note.classList.add("catalog-translation-notice");
       note.dataset.catalogTranslationNotice = "true"; note.dataset.catalogOriginal = "true";
       const copy = document.createElement("span"), link = document.createElement("a");
@@ -136,12 +146,20 @@
       link.href = url.pathname + url.search + url.hash; link.hreflang = "en"; link.textContent = messages[locale][1];
       note.append(copy, document.createTextNode(" "), link);if(!note.parentElement)host.prepend(note);
     }
-    const copy = state === "pending" ? pendingMessages[locale] : state === "unavailable" ? messages[locale][2] : missing.size ? messages[locale][3] : messages[locale][0];
+    let retry = note.querySelector("[data-catalog-translation-retry]");
+    if (!retry) {
+      retry = document.createElement("button"); retry.type = "button";
+      retry.dataset.catalogTranslationRetry = "true"; retry.textContent = retryMessages[locale];
+      retry.addEventListener("click", loadTranslations); note.append(retry);
+    }
+    retry.hidden = state !== "unavailable";
+    retry.disabled = state === "loading";
+    const copy = state === "loading" ? loadingMessages[locale] : state === "pending" ? pendingMessages[locale] : state === "unavailable" ? messages[locale][2] : missing.size ? messages[locale][3] : messages[locale][0];
     if(note.firstChild.textContent!==copy)note.firstChild.textContent=copy;
     note.dataset.translationState = state;
   }
   function apply(root = document.querySelector("main")) {
-    if (!root || state === "loading") return;
+    if (!root) return;
     if (state !== "loading") {
       const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
       const nodes = []; while(walker.nextNode()) nodes.push(walker.currentNode);
@@ -167,23 +185,44 @@
     document.body.dataset.catalogContentState = state;
   }
   function schedule() { if(queued)return;queued=true;queueMicrotask(()=>{queued=false;apply();}); }
-  const ready = enabled ? (async()=>{
-    const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),8000);
+  async function readTranslations() {
+    const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),15000);
     try {
       const coverageResponse=await fetch(`/catalog-content-manifest.json?v=${encodeURIComponent(manifestVersion)}`,{signal:controller.signal,cache:"no-cache"});
-      if(!coverageResponse.ok)throw new Error("Translation coverage unavailable");
+      if(!coverageResponse.ok)throw Object.assign(new Error("Translation coverage unavailable"),{status:coverageResponse.status});
       const coverage=await coverageResponse.json();
-      if(coverage.locales?.[locale]?.ready!==true){state="pending";apply();return state;}
+      if(coverage.locales?.[locale]?.ready!==true)return "pending";
       const response=await fetch(`/catalog-content-${locale}.json?v=${coverage.locales[locale].sha256.slice(0,16)}`,{signal:controller.signal});
-      if(!response.ok)throw new Error("Translation asset unavailable");
+      if(!response.ok)throw Object.assign(new Error("Translation asset unavailable"),{status:response.status});
       const entries=await response.json();
+      if(!entries || typeof entries!=="object" || Array.isArray(entries))throw new Error("Invalid translation asset");
       for(const [source,translated] of Object.entries(entries))if(typeof translated==="string"&&translated){dictionary.set(source,translated);if(!foldedDictionary.has(source.toLowerCase()))foldedDictionary.set(source.toLowerCase(),translated);}
       for(const [source,corrected]of sourceCorrections)candidates.set(source,text(corrected));candidatesChanged=true;
       if(!dictionary.size)throw new Error("Empty translation asset");
-      state="ready";
-    } catch { state="unavailable"; } finally {clearTimeout(timeout);}
-    apply(); return state;
-  })() : Promise.resolve("original");
+      return "ready";
+    } finally {clearTimeout(timeout);}
+  }
+  function loadTranslations() {
+    if(loadingRequest)return loadingRequest;
+    state="loading"; apply();
+    // Cold starts and transient network/5xx failures must not permanently strand
+    // the page in English. Keep retries bounded, with a fresh timeout each time.
+    loadingRequest=(async()=>{
+      for(let attempt=0;attempt<3;attempt++){
+        try {state=await readTranslations();break;}
+        catch(error){
+          if(attempt===2 || (error.status>=400 && error.status<500 && error.status!==408 && error.status!==429)){state="unavailable";break;}
+          await new Promise(resolve=>setTimeout(resolve,500*(attempt+1)));
+        }
+      }
+      phraseCache.clear();
+      if(state==="ready")for(const records of waitingRecords)track(records);
+      if(state!=="unavailable")waitingRecords.clear();
+      apply(); return state;
+    })().finally(()=>{loadingRequest=undefined;});
+    return loadingRequest;
+  }
+  const ready = enabled ? loadTranslations() : Promise.resolve("original");
   global.CUACCatalogContent=Object.freeze({locale,ready,text,phrase,track,apply,sourceText:value=>sourceCorrections.get(normalize(value))||String(value??""),get state(){return state;},get missing(){return [...missing];}});
   new MutationObserver(schedule).observe(document.body,{childList:true,subtree:true});
 }(window));

@@ -561,6 +561,27 @@
       "when": 1791773109012,
       "tag": "0079_insights_cms",
       "breakpoints": true
+    },
+    {
+      "idx": 80,
+      "version": "7",
+      "when": 1795183459619,
+      "tag": "0080_school_logos",
+      "breakpoints": true
+    },
+    {
+      "idx": 81,
+      "version": "7",
+      "when": 1795187098039,
+      "tag": "0081_school_logo_initial_assets",
+      "breakpoints": true
+    },
+    {
+      "idx": 82,
+      "version": "7",
+      "when": 1795219200000,
+      "tag": "0082_school_logo_official_assets",
+      "breakpoints": true
     }
   ]
 }

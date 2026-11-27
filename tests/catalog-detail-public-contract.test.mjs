@@ -58,6 +58,50 @@ function memberKeys(sourceText, variable) {
     .map((match) => match[1]));
 }
 
+test("structured detail items retain DTO values and explanatory bodies without duplicates or source mutation", async () => {
+  const script = await source("public/catalog-detail.js");
+  const normalize = vm.runInNewContext(`${functionBody(script, "structuredItems", "titleCase")}\nstructuredItems`, {
+    cleanText: value => typeof value === "string" ? value.trim() : "",
+  });
+  const items = [
+    { label: "Master", value: "Bachelor's degree holder under age 35", body: null },
+    { label: "Language", value: "HSK Level 4", body: "HSK Level 5 score 180", included: false },
+    { value: "Passport" },
+    { label: "Proof", value: "Proof", body: "Proof" },
+    { label: "Upload", value: "PDF", note: "PDF" },
+    null,
+  ];
+  const before = JSON.stringify(items);
+  assert.deepEqual(JSON.parse(JSON.stringify(normalize(items))), [
+    { label: "Master", body: "Bachelor's degree holder under age 35", included: null },
+    { label: "Language", body: "HSK Level 4 HSK Level 5 score 180", included: false },
+    { label: "Passport", body: "", included: null },
+    { label: "Proof", body: "", included: null },
+    { label: "Upload", body: "PDF", included: null },
+  ]);
+  assert.equal(JSON.stringify(items), before);
+});
+
+test("detail lists render degree labels and full conditions safely in every supported locale", async () => {
+  const script = await source("public/catalog-detail.js");
+  const labels = { en: "Master", vi: "Thạc sĩ", th: "ปริญญาโท", id: "Magister", ms: "Sarjana", ar: "ماجستير" };
+  for (const [locale, label] of Object.entries(labels)) {
+    const render = vm.runInNewContext(`${functionBody(script, "structuredItems", "titleCase")}\n${functionBody(script, "renderTextList", "renderScholarship")}\nrenderTextList`, {
+      cleanText: value => typeof value === "string" ? value.trim() : "",
+      detailUi: value => value === "Master" ? label : value,
+      escapeHtml: value => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;"),
+      renderEmpty: value => value,
+    });
+    const html = render([{ label: "Master", value: "Bachelor's degree holder under age 35", body: '<img src=x onerror="bad()">', included: false }], "Empty", true);
+    assert.ok(html.includes(`<strong>${label}</strong>`), locale);
+    assert.ok(html.includes("Bachelor's degree holder under age 35"), locale);
+    assert.ok(html.includes("&lt;img"), locale);
+    assert.ok(html.includes("catalog-item-excluded"), locale);
+    assert.doesNotMatch(html, /<img/);
+    assert.equal(render([], "Empty"), "Empty");
+  }
+});
+
 function assertAllowedMembers(sourceText, variable, allowed, label) {
   const unexpected = [...memberKeys(sourceText, variable)].filter((field) => !allowed.has(field));
   assert.deepEqual(unexpected, [], `${label} uses fields outside its published DTO`);
@@ -180,4 +224,19 @@ test("core catalog detail pages preserve the selected public locale", async () =
     assert.equal(context.window.CUACCatalogDetailI18n.href("programs.html"), `/programs.html?lang=${locale}`);
     assert.notEqual(context.window.CUACCatalogDetailI18n.ui("Record unavailable"), "Record unavailable");
   }
+});
+
+test('academic detail values use body context while UI materials heading stays separate',async()=>{
+ const script=await source('public/catalog-detail.js');
+ const display=vm.runInNewContext(functionBody(script,'displayValue','hasDisplayValue')+'\ndisplayValue',{window:{CUACCatalogContent:{text:s=>s==='Materials'?'Vật liệu':s}},cleanText:s=>String(s??'').trim(),detailUi:s=>s==='Materials'?'Hồ sơ':s});
+ assert.equal(display('Materials'),'Vật liệu');assert.equal(display(true),'Yes');assert.equal(display(null),'Not provided');
+});
+
+test('UI distinguishes unpublished CSCA requirements from no requirement in Thai and Indonesian',async()=>{
+ const script=await source('public/catalog-detail-i18n.js');
+ for(const [locale,marker] of [['th','เผยแพร่'],['id','dipublikasikan']]){
+  const window={CUACI18n:{locale,register(){},t:(_key,fallback)=>fallback}},document={title:'UCAC',body:{dataset:{}},querySelectorAll:()=>[]};
+  vm.runInNewContext(script,{window,document,MutationObserver:class{observe(){}}});
+  assert.ok(window.CUACCatalogDetailI18n.ui('No CSCA requirement is published for this graduate route.').includes(marker));
+ }
 });

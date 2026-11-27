@@ -742,3 +742,7 @@ body[data-catalog-detail-page] .cuac-agent-rail { display: none !important; }
   .catalog-loading-line::after { animation: none; }
   .catalog-action:hover { transform: none; }
 }
+
+.catalog-record-code .catalog-school-logo{display:block;width:100%;height:100%;object-fit:contain;background:white}.catalog-record-code [hidden]{display:none}
+.catalog-record-code:has(.catalog-school-logo){height:auto;aspect-ratio:1;padding:0;background:transparent;align-content:center;align-self:center}
+#admissions-schedule{scroll-margin-block-start:24px}

@@ -99,7 +99,7 @@ test("program mapper returns only public program DTO fields", () => {
   assert.equal(detail.slug, "cs-bsc");
   assert.equal(detail.durationYears, 4);
   assert.equal(detail.englishRequirement, "IELTS 6.0");
-  assert.deepEqual(detail.school, { id: "school_1", slug: "zju", nameZh: "浙江大学", nameEn: "Zhejiang University" });
+  assert.deepEqual(detail.school, { id: "school_1", slug: "zju", nameZh: "浙江大学", nameEn: "Zhejiang University", logo: null });
   assert.deepEqual(detail.city, { slug: "hangzhou", nameZh: "杭州", nameEn: "Hangzhou" });
   assert.equal("qualityScore" in detail, false);
   assert.equal("sourceNote" in detail, false);
@@ -313,7 +313,7 @@ test("scholarship and city mappers return public DTO shapes", () => {
   ]);
   assert.equal("sourceFieldLineage" in city, false);
   assert.equal(scholarshipDetail.nameZh, "中国政府奖学金");
-  assert.deepEqual(scholarshipDetail.school, { id: "school_1", slug: "zju", nameZh: "浙江大学", nameEn: "Zhejiang University" });
+  assert.deepEqual(scholarshipDetail.school, { id: "school_1", slug: "zju", nameZh: "浙江大学", nameEn: "Zhejiang University", logo: null });
   assert.equal("contactInfo" in scholarshipDetail, false);
   assert.equal(cityDetail.id, "city_1");
   assert.equal(cityDetail.sourceStatus, "verified");

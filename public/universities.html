@@ -8,18 +8,17 @@
     <title>UCAC | Universities</title>
     <meta name="description" content="Compare published Chinese university records, locations, program routes, scholarships, deadlines, and official admissions sources." />
     <link rel="canonical" href="https://ucac.cn/universities.html" />
-    <link rel="stylesheet" href="shared-shell.css?v=aad00e2c64f99879" />
+    <link rel="stylesheet" href="shared-shell.css?v=f78a968344382670" />
     <link rel="stylesheet" href="catalog-list-api.css?v=3b5d110a7f72d351" />
     <link rel="stylesheet" href="universities.css?v=34bc27a533128f83" />
     <link rel="stylesheet" href="catalog-search.css?v=70fd15293bb1daa8" />
-  </head>
+  <link rel="stylesheet" href="catalog-design.css?v=515e46d13a82268c" /></head>
   <body data-agent-mode="off" data-catalog-list-page="universities" data-i18n-locales="en,vi,th,id,ms,ar">
     <div class="page">
       <div data-cuac-header data-active="universities" data-note="China admissions:" data-note-detail="compare current published universities"></div>
 
       <main>
-        <div class="shell">
-          <section class="page-title reveal" aria-label="University search header">
+        <div class="shell catalog-design-content"><section class="page-title reveal" aria-label="University search header">
             <div>
               <div class="eyebrow" data-catalog-copy="universities.kicker">Universities & colleges</div>
               <h1 data-catalog-copy="universities.title">Find Chinese universities that fit</h1>
@@ -32,15 +31,7 @@
               <div class="fact"><strong id="summaryEnglishRoutes">-</strong><span data-catalog-copy="universities.summaryEnglish">English routes</span></div>
               <div class="fact"><strong id="summaryScholarships">-</strong><span data-catalog-copy="universities.summaryScholarships">scholarship options</span></div>
             </div>
-          </section>
-
-          <section class="search-panel catalog-search reveal" aria-label="University search">
-            <div class="search-row catalog-search__query">
-              <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
-              <input id="searchInput" aria-label="Search universities, cities, or subjects" value="" placeholder="Search universities or cities" />
-              <button class="primary" id="searchButton" type="button" data-catalog-copy="common.search">Search</button>
-            </div>
-            <div class="catalog-search__filters">
+          </section><nav class="cd-tabs" data-design-tabs aria-label="Catalog"></nav><div class="cd-workspace"><aside class="cd-left"><details class="cd-filter-panel" open><summary data-catalog-copy="common.allFilters">All filters</summary><div class="catalog-search__filters">
               <div class="catalog-filter-chips" role="group" aria-label="University filters">
                 <button class="catalog-filter-chip" type="button" data-filter="Application ready" aria-pressed="false" data-catalog-ui>Application ready</button>
                 <button class="catalog-filter-chip" type="button" data-filter="English routes" aria-pressed="false" data-catalog-ui>English routes</button>
@@ -53,10 +44,14 @@
                   <select class="select" id="schoolStudyLevelFilter" data-criteria-field="degreeLevel" aria-label="Filter universities by study level"></select>
                 </label>
               </div>
+            </div></details></aside><div class="cd-main-column"><section class="search-panel catalog-search reveal" aria-label="University search">
+            <div class="search-row catalog-search__query">
+              <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+              <input id="searchInput" aria-label="Search universities, cities, or subjects" value="" placeholder="Search universities or cities" />
+              <button class="primary" id="searchButton" type="button" data-catalog-copy="common.search">Search</button>
             </div>
-          </section>
 
-          <section class="toolbar catalog-results-toolbar reveal" aria-label="Result controls">
+          </section><section class="toolbar catalog-results-toolbar reveal" aria-label="Result controls">
             <div class="result-copy">
               <strong id="resultCount" data-catalog-copy="universities.loading">Loading universities</strong>
               <span id="resultContext" data-catalog-copy="common.reading">Reading the current published catalog.</span>
@@ -74,15 +69,10 @@
                 <button type="button" data-view="list" aria-pressed="false" data-catalog-copy="common.list">List</button>
               </div>
             </div>
-          </section>
-
-          <div class="active-filters reveal" id="activeFilters" aria-live="polite"></div>
-
-          <section class="results reveal" aria-label="University results">
+          </section><div class="active-filters reveal" id="activeFilters" aria-live="polite"></div><section class="results reveal" aria-label="University results">
             <div class="university-grid" id="resultsGrid"></div>
             <nav class="pagination" id="pagination" aria-label="University results pages"></nav>
-          </section>
-        </div>
+          </section></div><aside class="cd-right" data-design-rail></aside></div></div>
 
         <div class="results-divider" aria-hidden="true"></div>
 
@@ -91,12 +81,13 @@
     </div>
 
     <script src="i18n-runtime.js?v=defc94156369c39d"></script>
-    <script src="catalog-content-i18n.js?v=653099e4674e7624"></script>
+    <script src="catalog-content-i18n.js?v=3402fa7fef342d53"></script>
     <script src="catalog-list-i18n.js?v=86b66efa857e95fe"></script>
-    <script src="shared-shell.js?v=f8f3db05f08503c7"></script>
+    <script src="shared-shell.js?v=2146683a43f765fc"></script>
     <script src="catalog-list-api.js?v=d1d098b491316a7c"></script>
     <script src="study-levels.js?v=fe1f46f627805eba"></script>
-    <script src="universities.js?v=0c756288eb3dbeca"></script>
+    <script src="catalog-design.js?v=1de154aed1a06408"></script>
+    <script src="universities.js?v=903c10c11ebbbbc3"></script>
 </body>
 </html>
 

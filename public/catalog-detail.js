@@ -133,7 +133,12 @@ function structuredItems(value) {
     if (scalar) return { label: scalar, body: "", included: null };
     if (!item || typeof item !== "object" || Array.isArray(item)) return null;
     const label = cleanText(item.label || item.title || item.name || item.value);
-    const body = cleanText(item.body || item.note || item.text || item.description);
+    // Public eligibility/material/step items may carry both a short value and
+    // explanatory body. Do not discard the condition when a label is present.
+    const body = [...new Set([
+      cleanText(item.value),
+      cleanText(item.body || item.note || item.text || item.description),
+    ].filter((text) => text && text !== label))].join(" ");
     const included = typeof item.included === "boolean" ? item.included : null;
     if (!label && !body) return null;
     return { label: label || body, body: label ? body : "", included };
@@ -179,6 +184,8 @@ function formatDuration(record, fallback = detailUi("Not provided")) {
 function displayValue(value, fallback = detailUi("Not provided")) {
   if (typeof value === "boolean") return detailUi(value ? "Yes" : "No");
   const text = cleanText(value);
+  // Keep academic values separate from the application-documents heading.
+  if (text === "Materials") return window.CUACCatalogContent?.text(text) || text;
   return detailUi(text || fallback);
 }
 
@@ -204,9 +211,9 @@ function renderEmpty(message) {
   return `<p class="catalog-empty-inline">${escapeHtml(detailUi(message))}</p>`;
 }
 
-function renderSection(kicker, title, content, description = "") {
+function renderSection(kicker, title, content, description = "", id = "") {
   if (!content) return "";
-  return `<section class="catalog-section">
+  return `<section class="catalog-section"${id ? ` id="${escapeHtml(id)}" tabindex="-1"` : ""}>
     <header class="catalog-section-head">
       <span class="catalog-section-kicker">${escapeHtml(detailUi(kicker))}</span>
       <h2>${escapeHtml(detailUi(title))}</h2>
@@ -230,8 +237,10 @@ function renderHero(record, options) {
   const context = (options.context || []).filter(Boolean);
   const title = window.CUACCatalogContent?.sourceText(cleanText(options.title)) || cleanText(options.title) || detailUi("Published catalog record");
   const displayTitle = window.CUACCatalogContent?.text(title) || title;
+  const schoolLogo = detailType === "school" ? record.logo : record.school?.logo;
+  const logoUrl = /^\/api\/v1\/catalog\/schools\/[a-f0-9-]{36}\/logo\?v=\d+$/.test(schoolLogo?.url || "") ? schoolLogo.url : "";
   return `<section class="catalog-record-hero">
-    <div class="catalog-record-code" aria-hidden="true"><span>${escapeHtml(config.code)}</span><small>UCAC</small></div>
+    <div class="catalog-record-code" aria-hidden="true">${logoUrl ? `<img class="catalog-school-logo" src="${escapeHtml(logoUrl)}" alt="" data-school-logo>` : ""}<span${logoUrl ? " hidden" : ""}>${escapeHtml(config.code)}</span><small${logoUrl ? " hidden" : ""}>UCAC</small></div>
     <div class="catalog-record-title">
       <span class="catalog-record-type"><img src="${escapeHtml(config.icon)}" alt="" />${escapeHtml(config.typeLabel)}</span>
       <h1 lang="${escapeHtml(detailLocale)}" class="${displayTitle.length > 46 ? "long-title" : ""}">${detailType === "program" ? escapeHtml(displayTitle).replace(/\(/g, "<wbr>(").replace(/\//g, "/<wbr>") : escapeHtml(displayTitle)}</h1>
@@ -244,10 +253,10 @@ function renderHero(record, options) {
   </section>`;
 }
 
-function renderStrip(items) {
+function renderStrip(items, id = "") {
   const values = items.filter((item) => item && cleanText(item[0]) && hasDisplayValue(item[1])).slice(0, 4);
   if (!values.length) return "";
-  return `<section class="catalog-record-strip" data-summary-count="${values.length}" aria-label="${escapeHtml(detailUi("Record summary"))}">${values.map(([label, value]) => `
+  return `<section class="catalog-record-strip"${id ? ` id="${escapeHtml(id)}" tabindex="-1"` : ""} data-summary-count="${values.length}" aria-label="${escapeHtml(detailUi("Record summary"))}">${values.map(([label, value]) => `
     <article><span>${escapeHtml(detailUi(label))}</span><strong>${escapeHtml(displayValue(value))}</strong></article>
   `).join("")}</section>`;
 }
@@ -257,7 +266,7 @@ function renderActions(actions) {
   if (!visible.length) return "";
   return `<div class="catalog-action-list">${visible.map((action, index) => `
     <a class="catalog-action ${index === 0 ? "primary" : ""}" href="${escapeHtml(detailHref(action.href))}" ${action.external ? 'target="_blank" rel="noopener noreferrer"' : ""}>
-      <span>${escapeHtml(detailUi(action.label))}</span><span aria-hidden="true">&rarr;</span>
+      <span${action.originalLabel ? ' data-catalog-original' : ""}>${escapeHtml(action.originalLabel ? action.label : detailUi(action.label))}</span><span aria-hidden="true">&rarr;</span>
     </a>
   `).join("")}</div>`;
 }
@@ -347,12 +356,13 @@ function renderProgram(record, extras) {
       ["Scholarship note", record.scholarshipText],
       ["Catalog group", record.displayGroupLabel || record.displayGroup],
     ])),
-    renderSection("Intakes", "Open application windows", renderIntakes(intakes), "Only open, non-expired intakes from the public catalog are shown."),
+    renderSection("Intakes", "Open application windows", renderIntakes(intakes), "Only open, non-expired intakes from the public catalog are shown.", "admissions-schedule"),
     firstIntake ? renderSection("Requirements", `${detailUi(titleCase(firstIntake.intakeTerm))} ${firstIntake.intakeYear} · ${detailUi("Requirements")}`, renderRequirements(extras.requirements), "Requirement documents are information-only and retain their review and evidence controls.") : "",
     renderSection("Admission route", "Language and assessment conditions", admissionContent, "These summary fields do not replace the intake-specific approved requirement document."),
   ].join("");
   const applicationHref = safeUrl(record.applicationUrl);
-  const choiceHref = firstIntake ? `application.html?programId=${encodeURIComponent(record.id)}&intakeId=${encodeURIComponent(firstIntake.id)}#add-choice` : "application.html#add-choice";
+  const schoolFilter = school?.slug || school?.id;
+  const choiceHref = firstIntake ? `application.html?programId=${encodeURIComponent(record.id)}&intakeId=${encodeURIComponent(firstIntake.id)}#add-choice` : `programs.html?applicationReady=true${schoolFilter ? `&university=${encodeURIComponent(schoolFilter)}` : ""}`;
   return `${renderHero(record, { title: record.nameEn, localName: record.nameZh, context })}
     ${renderStrip([
       ["Next intake", firstIntake ? `${detailUi(titleCase(firstIntake.intakeTerm))} ${firstIntake.intakeYear}` : "None published"],
@@ -361,7 +371,7 @@ function renderProgram(record, extras) {
       ["Language", titleCase(record.teachingLanguage) || "Not provided"],
     ])}
     ${renderLayout(main, renderAside(record, "Continue with this program", [
-      { label: "Add to application", href: choiceHref },
+      { label: firstIntake ? "Add to application" : "Browse open programs", href: choiceHref },
       { label: "Official application", href: applicationHref, external: true },
       { label: "View university", href: school ? `university-detail.html?university=${encodeURIComponent(school.id)}` : null },
     ], "Choose an exact intake before relying on deadlines or requirements. UCAC does not infer eligibility from profile data on this page."))}`;
@@ -412,9 +422,7 @@ function renderSchool(record) {
       ["Scholarships", record.scholarshipCount],
       ["Deadline summary", record.deadlineSummary],
     ])),
-    Array.isArray(record.upcomingDeadlines) && record.upcomingDeadlines.length
-      ? renderSection("Upcoming", "Published intake deadlines", renderDeadlineItems(record.upcomingDeadlines))
-      : "",
+    renderSection("Upcoming", "Published intake deadlines", renderDeadlineItems(record.upcomingDeadlines), "", "admissions-schedule"),
   ].join("");
   const regionalLocation = locationParts.filter(part => part.toLowerCase() !== cleanText(record.city || record.cityZh).toLowerCase()).map(part => detailUi(part)).join(", ");
   return `${renderHero(record, { title: record.nameEn, localName: record.nameZh, context: [cityLink, escapeHtml(detailUi(titleCase(record.schoolType))), escapeHtml(regionalLocation)] })}
@@ -448,7 +456,7 @@ function renderBlocks(blocks) {
   if (!blocks.length) return renderEmpty("No additional published description is available.");
   return `<div class="catalog-content-blocks">${blocks.map((block) => `
     <article class="catalog-content-block">
-      <h3>${escapeHtml(block.title)}</h3>
+      <h3>${escapeHtml(detailUi(block.title))}</h3>
       ${block.body ? `<p>${escapeHtml(block.body)}</p>` : ""}
       ${block.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}
       ${renderChips(block.items)}
@@ -465,7 +473,7 @@ function renderTextList(items, emptyMessage, ordered = false) {
       <span class="catalog-item-label ${ordered ? "" : "catalog-item-bullet"}" aria-hidden="${ordered ? "false" : "true"}">${ordered ? String(index + 1).padStart(2, "0") : ""}</span>
       <div class="catalog-item-copy">
         ${item.included !== null ? `<span class="catalog-item-state">${escapeHtml(detailUi(item.included ? "Included" : "Not included"))}</span>` : ""}
-        <strong>${escapeHtml(item.label)}</strong>
+        <strong>${escapeHtml(detailUi(item.label))}</strong>
         ${item.body ? `<p>${escapeHtml(item.body)}</p>` : ""}
       </div>
     </li>
@@ -480,6 +488,7 @@ function renderScholarship(record) {
     label: cleanText(item && (item.label || item.title || item.name)) || "Official scholarship action",
     href: item && (item.url || item.href),
     external: true,
+    originalLabel: true,
   })) : [];
   const benefitItems = Array.isArray(record.benefitItems) && record.benefitItems.length ? record.benefitItems : record.benefits;
   const detailBlocks = normalizedBlocks(record.bodySections);
@@ -516,10 +525,10 @@ function renderScholarship(record) {
       ["Amount", record.amountText || "Not provided"],
       ["Deadline", formatDate(record.deadlineDate, record.deadlineLabel || "Not provided")],
       ["Provider", provider || "Not provided"],
-    ])}
+    ], "admissions-schedule")}
     ${renderLayout(main, renderAside(record, "Use this funding route", [
       ...actions,
-      { label: "Find matching programs", href: record.program ? `program-detail.html?program=${encodeURIComponent(record.program.id)}` : "programs.html" },
+      { label: "Find matching programs", href: record.program ? `program-detail.html?program=${encodeURIComponent(record.program.id)}` : record.school ? `programs.html?university=${encodeURIComponent(record.school.slug || record.school.id)}` : "programs.html" },
       { label: "View related university", href: record.school ? `university-detail.html?university=${encodeURIComponent(record.school.id)}` : null },
     ], "UCAC shows the award as published. Funding is never treated as guaranteed, and contact data is not exposed through this public page."))}`;
 }
@@ -718,9 +727,17 @@ async function loadDetail() {
       const count = Number(strip.dataset.summaryCount);
       if (Number.isInteger(count) && count > 0 && count <= 12) strip.style.setProperty("--summary-count", String(count));
     });
+    // Detail data arrives after the browser's initial fragment lookup.
+    if (location.hash === "#admissions-schedule") {
+      const schedule = detailRoot.querySelector("#admissions-schedule");
+      schedule?.scrollIntoView({ block: "start", behavior: "instant" });
+      schedule?.focus({ preventScroll: true });
+    }
   } catch (error) {
     renderError(error);
   }
 }
 
 if (detailRoot && config) loadDetail();
+
+document.addEventListener('error',event=>{if(!event.target.matches?.('[data-school-logo]'))return;const root=event.target.parentElement;event.target.remove();root.querySelectorAll('[hidden]').forEach(node=>node.hidden=false);},true);

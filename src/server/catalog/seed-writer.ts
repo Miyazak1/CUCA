@@ -1,3 +1,5 @@
+import { prepareSeedSchoolLogos } from "./school-logo-import.ts";
+import { writeSchoolLogo } from "./school-logo.ts";
 import type { SqlCatalogClient } from "./postgres-repository.ts";
 import {
   createCatalogSeedImportPlan,
@@ -7,6 +9,7 @@ import {
 } from "./seed-contract.ts";
 
 export type CatalogSeedWriteResult = {
+  logos?: { supplied: number; written: number; keptExisting: number; missingSchoolSlugs: string[] };
   ok: boolean;
   errors: string[];
   summary: {
@@ -25,6 +28,7 @@ export type CatalogSeedWriteResult = {
 };
 
 export type CatalogSeedWriteOptions = {
+  logoRoot?: string;
   preserveExistingCitySlugs?: readonly string[];
   preserveExistingSchoolSlugs?: readonly string[];
 };
@@ -52,6 +56,8 @@ export class CatalogSeedWriter {
     }
 
     const seedBundle = bundle as CatalogSeedBundle;
+    const schoolLogos = await prepareSeedSchoolLogos(seedBundle.schools ?? [], options.logoRoot ?? process.cwd());
+    const logos = { supplied: schoolLogos.size, written: 0, keptExisting: 0, missingSchoolSlugs: [] as string[] };
     const preservedCities = new Set(options.preserveExistingCitySlugs ?? []);
     const preservedSchools = new Set(options.preserveExistingSchoolSlugs ?? []);
     const bundleCitySlugs = new Set((seedBundle.cities ?? []).map((city) => city.slug));
@@ -73,6 +79,9 @@ export class CatalogSeedWriter {
       const preserve = preservedSchools.has(school.slug);
       const id = preserve ? await this.requireExistingSchool(school.slug) : await this.upsertSchool(school);
       if (!preserve) await this.writeSourceEvidence("school", id, school);
+      const logo = schoolLogos.get(school.slug);
+      if (logo) { const result = await writeSchoolLogo(this.client, id, 0, logo, null, true); if (result.skipped) logos.keptExisting++; else logos.written++; }
+      else logos.missingSchoolSlugs.push(school.slug);
       written.push({ entityType: "school", slug: school.slug, id });
       if (!preserve) evidence += 1;
     }
@@ -101,6 +110,7 @@ export class CatalogSeedWriter {
 
     return {
       ok: true,
+      logos,
       errors: [],
       summary: {
         ...plan.summary,

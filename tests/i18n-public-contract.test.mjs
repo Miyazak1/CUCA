@@ -6,6 +6,21 @@ import vm from "node:vm";
 const root = new URL("../", import.meta.url);
 const source = path => readFile(new URL(path, root), "utf8");
 
+test("scholarship section headings translate in all locales including title-case API variants", async () => {
+  const script = await source("public/catalog-detail-i18n.js");
+  const values = { en: ["Scholarship overview", "Important application notes"], vi: ["Tổng quan học bổng", "Lưu ý quan trọng khi đăng ký"], th: ["ภาพรวมทุนการศึกษา", "หมายเหตุสำคัญในการสมัคร"], id: ["Gambaran umum beasiswa", "Catatan penting pendaftaran"], ms: ["Gambaran keseluruhan biasiswa", "Nota penting permohonan"], ar: ["نظرة عامة على المنحة", "ملاحظات مهمة بشأن التقديم"] };
+  for (const [locale, expected] of Object.entries(values)) {
+    const window = { CUACI18n: { locale } };
+    vm.runInNewContext(script, { window, document: { title: "UCAC", body: {}, querySelectorAll: () => [] }, MutationObserver: class { observe() {} } });
+    const ui = window.CUACCatalogDetailI18n.ui;
+    assert.equal(ui("Scholarship overview"), expected[0]);
+    assert.equal(ui("Scholarship Overview"), expected[0]);
+    assert.equal(ui("Important application notes"), expected[1]);
+    assert.equal(ui("Important Application Notes"), expected[1]);
+    assert.equal(ui("Official unknown title"), "Official unknown title");
+  }
+});
+
 test("Vietnamese catalog UI translates controls without changing official names or enum values", async () => {
   const script = await source("public/catalog-list-i18n.js");
   const window = { CUACI18n: { locale: "vi", register() {}, t: (_key, fallback) => fallback } };
@@ -205,7 +220,7 @@ test("all homepage text and accessible descriptions are covered in five translat
 
 test("feedback catalog controls and detail explanations cover all five launch languages", async () => {
   const [list, detail] = await Promise.all([source("public/catalog-list-i18n.js"), source("public/catalog-detail-i18n.js")]);
-  const supplemental = vm.runInNewContext(`(${list.match(/const viUi = (\{[\s\S]*?\n  \});/)[1]})`);
+  const supplemental = vm.runInNewContext(`(${list.match(/const viUi = (\{[\s\S]*?\n {2}\});/)[1]})`);
   const unchangedTerms = new Set(["CSCA", "PROGRAM", "program"]);
   for (const locale of ["vi", "th", "id", "ms", "ar"]) {
     const window = { CUACI18n: { locale, register() {}, t: (_key, fallback) => fallback } };

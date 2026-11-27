@@ -22,6 +22,8 @@
     ["No public source link provided", "Không có liên kết nguồn công khai", "ไม่มีลิงก์แหล่งข้อมูลสาธารณะ", "Tautan sumber publik tidak tersedia", "Pautan sumber awam tidak diberikan", "لا يوجد رابط مصدر عام"],
     ["Published catalog record", "Bản ghi danh mục đã công bố", "ระเบียนแค็ตตาล็อกที่เผยแพร่", "Catatan katalog terbit", "Rekod katalog diterbitkan", "سجل دليل منشور"],
     ["Record summary", "Tóm tắt hồ sơ", "สรุประเบียน", "Ringkasan catatan", "Ringkasan rekod", "ملخص السجل"],
+    ["Scholarship overview", "Tổng quan học bổng", "ภาพรวมทุนการศึกษา", "Gambaran umum beasiswa", "Gambaran keseluruhan biasiswa", "نظرة عامة على المنحة"],
+    ["Important application notes", "Lưu ý quan trọng khi đăng ký", "หมายเหตุสำคัญในการสมัคร", "Catatan penting pendaftaran", "Nota penting permohonan", "ملاحظات مهمة بشأن التقديم"],
     ["Before you decide", "Trước khi quyết định", "ก่อนตัดสินใจ", "Sebelum Anda memutuskan", "Sebelum anda membuat keputusan", "قبل أن تقرر"],
     ["Record update", "Cập nhật hồ sơ", "การอัปเดตระเบียน", "Pembaruan catatan", "Kemas kini rekod", "تحديث السجل"],
     ["Version", "Phiên bản", "เวอร์ชัน", "Versi", "Versi", "الإصدار"],
@@ -50,6 +52,7 @@
     ["Language", "Ngôn ngữ", "ภาษา", "Bahasa", "Bahasa", "اللغة"],
     ["Continue with this program", "Tiếp tục với chương trình này", "ดำเนินการกับหลักสูตรนี้", "Lanjutkan dengan program ini", "Teruskan dengan program ini", "المتابعة مع هذا البرنامج"],
     ["Add to application", "Thêm vào hồ sơ", "เพิ่มในใบสมัคร", "Tambahkan ke pendaftaran", "Tambah pada permohonan", "إضافة إلى الطلب"],
+    ["Browse open programs", "Xem chương trình đang nhận hồ sơ", "ดูหลักสูตรที่เปิดรับสมัคร", "Lihat program yang dibuka", "Lihat program yang dibuka", "تصفح البرامج المفتوحة للتقديم"],
     ["Official application", "Trang nộp hồ sơ chính thức", "การสมัครอย่างเป็นทางการ", "Pendaftaran resmi", "Permohonan rasmi", "التقديم الرسمي"],
     ["View university", "Xem trường đại học", "ดูมหาวิทยาลัย", "Lihat universitas", "Lihat universiti", "عرض الجامعة"],
     ["University profile", "Hồ sơ trường đại học", "ข้อมูลมหาวิทยาลัย", "Profil universitas", "Profil universiti", "ملف الجامعة"],
@@ -173,7 +176,7 @@
     ["Only open, non-expired intakes from the public catalog are shown.","Chỉ hiển thị các kỳ tuyển sinh đang mở và chưa hết hạn trong danh mục công khai.","แสดงเฉพาะรอบรับเข้าที่เปิดและยังไม่หมดอายุในแค็ตตาล็อกสาธารณะ","Hanya periode terbuka dan belum kedaluwarsa dari katalog publik yang ditampilkan.","Hanya sesi dibuka dan belum luput daripada katalog awam dipaparkan.","تُعرض فقط دورات القبول المفتوحة وغير المنتهية من الدليل العام."],
     ["No currently open intake is published for this program.","Chưa công bố kỳ tuyển sinh đang mở cho chương trình này.","ยังไม่มีรอบรับเข้าที่เปิดสำหรับหลักสูตรนี้","Belum ada periode penerimaan terbuka untuk program ini.","Tiada sesi kemasukan dibuka diterbitkan bagi program ini.","لم تُنشر دورة قبول مفتوحة حاليًا لهذا البرنامج."],
     ["These summary fields do not replace the intake-specific approved requirement document.","Các thông tin tóm tắt này không thay thế tài liệu yêu cầu đã được phê duyệt cho từng kỳ tuyển sinh.","ข้อมูลสรุปนี้ไม่แทนเอกสารข้อกำหนดที่อนุมัติสำหรับรอบรับเข้าเฉพาะ","Ringkasan ini tidak menggantikan dokumen persyaratan resmi untuk periode tertentu.","Ringkasan ini tidak menggantikan dokumen syarat diluluskan bagi sesi tertentu.","لا تحل حقول الملخص هذه محل وثيقة المتطلبات المعتمدة الخاصة بدورة القبول."],
-    ["No CSCA requirement is published for this graduate route.","Chưa công bố yêu cầu CSCA cho lộ trình sau đại học này.","ยังไม่มีข้อกำหนด CSCA สำหรับเส้นทางบัณฑิตศึกษานี้","Belum ada persyaratan CSCA untuk jalur pascasarjana ini.","Tiada syarat CSCA diterbitkan bagi laluan pascasiswazah ini.","لم تُنشر متطلبات CSCA لهذا المسار للدراسات العليا."],
+    ["No CSCA requirement is published for this graduate route.","Chưa công bố yêu cầu CSCA cho lộ trình sau đại học này.","ยังไม่มีการเผยแพร่ข้อกำหนด CSCA สำหรับเส้นทางบัณฑิตศึกษานี้","Tidak ada persyaratan CSCA yang dipublikasikan untuk jalur pascasarjana ini.","Tiada syarat CSCA diterbitkan bagi laluan pascasiswazah ini.","لم تُنشر متطلبات CSCA لهذا المسار للدراسات العليا."],
     ["UCAC | Program details","UCAC | Chi tiết chương trình","UCAC | รายละเอียดหลักสูตร","UCAC | Detail program","UCAC | Butiran program","UCAC | تفاصيل البرنامج"],
     ["year","năm","ปี","tahun","tahun","سنة"], ["semester","học kỳ","ภาคเรียน","semester","semester","فصل دراسي"], ["month","tháng","เดือน","bulan","bulan","شهر"], ["program","chương trình","หลักสูตร","program","program","برنامج"],
   );
@@ -236,7 +239,8 @@
   const i18n = window.CUACI18n;
   const localeIndex = { vi: 1, th: 2, id: 3, ms: 4, ar: 5 }[i18n?.locale] || 0;
   const dictionary = new Map(rows.map((row) => [row[0], row[localeIndex] || row[0]]));
-  const ui = (english) => dictionary.get(String(english)) || window.CUACCatalogContent?.text(english) || String(english);
+  const foldedDictionary = new Map([...dictionary].map(([key, value]) => [key.toLowerCase(), value]));
+  const ui = (english) => dictionary.get(String(english)) || foldedDictionary.get(String(english).toLowerCase()) || window.CUACCatalogContent?.text(english) || String(english);
   document.title = ui(document.title);
   function href(rawHref) {
     if (i18n?.href) return i18n.href(rawHref);

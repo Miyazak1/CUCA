@@ -1,5 +1,3 @@
-const iconCompare = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 7h14"/><path d="m6 7-3 7"/><path d="m8 7 3 7"/><path d="m16 7-3 7"/><path d="m18 7 3 7"/><path d="M3 14h8"/><path d="M13 14h8"/><path d="M7 21h10"/></svg>';
-const iconArrowRight = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 const catalogT = (key, fallback, values) => window.CUACCatalogI18n?.t(key, fallback, values) || fallback;
 const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
 
@@ -281,10 +279,6 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
         return catalogUi(programSourceStatus(program) === "verified" ? "Ready to compare" : "Review before applying");
       }
 
-      function programReadinessType(program = {}) {
-        return program.readinessType || (programSourceStatus(program) === "verified" ? "good" : "warn");
-      }
-
       function deadlineBadge(program) {
         const deadline = programDeadline(program);
         const status = programDeadlineStatus(program);
@@ -468,49 +462,14 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       }
 
       function renderRow(program, index = 0) {
-        const [badgeClassName, badgeLabel] = deadlineBadge(program);
-        const id = programId(program);
-        const name = programName(program);
-        const university = programUniversity(program);
-        const isSaved = state.saved.has(id);
-        const isCompared = state.compared.has(id);
-        const rawProgramHref = `program-detail.html?program=${encodeURIComponent(id)}`;
-        const programHref = window.CUACCatalogI18n?.localizeHref(rawProgramHref) || rawProgramHref;
-        const universityHref = `university-detail.html?university=${encodeURIComponent(program.schoolId)}`;
-        const scholarship = programScholarship(program);
-        return `
-          <article class="program-row result-enter" data-enter-index="${index}" role="link" tabindex="0" data-program-id="${escapeCatalogHtml(id)}" data-program-card data-detail-href="${programHref}" aria-label="${escapeCatalogHtml(window.CUACI18n.format("a11y.programCard", { name: name }))}">
-            <div class="program-art">
-              <a href="${programHref}" aria-label="Open ${escapeCatalogHtml(name)}">
-                <img data-catalog-cover alt="${escapeCatalogHtml(name)} cover" src="${programImage(program)}" />
-              </a>
-              <div class="row-top">
-                <button class="save-button catalog-save-control ${isSaved ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(id)}" aria-pressed="${isSaved}" aria-label="${escapeCatalogHtml(catalogT(isSaved ? "common.remove" : "common.save", isSaved ? `Remove ${name} from Favourites` : `Save ${name} to Favourites`, { name }))}" title="${escapeCatalogHtml(catalogT(isSaved ? "common.savedTitle" : "common.saveTitle", isSaved ? "Saved — click to remove" : "Save to Favourites"))}">${window.CuacCatalogList.saveHeartIcon()}</button>
-              </div>
-              <span class="program-card-open" aria-hidden="true">${iconArrowRight}</span>
-            </div>
-            <div class="program-main">
-              <span class="badge program-status ${badgeClassName}">${escapeCatalogHtml(badgeLabel)}</span>
-              <h2><a href="${programHref}" title="${escapeCatalogHtml(name)}" lang="en">${escapeCatalogHtml(name).replace(/\(/g, "<wbr>(").replace(/\//g, "/<wbr>")}</a></h2>
-              <div class="meta"><a href="${universityHref}">${escapeCatalogHtml(university)}</a> · ${escapeCatalogHtml(labelDegree(programDegreeValue(program)))} · ${escapeCatalogHtml(programLanguageLabel(program) || "Language not published")}</div>
-              <div class="facts">
-                <div class="fact"><strong>${escapeCatalogHtml(programIntake(program))}</strong><span>${escapeCatalogHtml(catalogUi("application round"))}</span></div>
-                <div class="fact"><strong>${escapeCatalogHtml(formatMoney(programTuitionAmount(program)))}</strong><span>${escapeCatalogHtml(catalogUi("tuition"))}</span></div>
-              </div>
-              <div class="signals">
-                <span class="signal ${scholarship ? "good" : ""}">${escapeCatalogHtml(catalogUi(scholarship ? "Scholarship signal" : "No award listed"))}</span>
-                <span class="signal ${programSourceStatus(program) === "verified" ? "good" : "warn"}">${escapeCatalogHtml(catalogUi(programSourceStatus(program) === "verified" ? "Verified" : "Unverified"))}</span>
-                <span class="signal ${programReadinessType(program)}">${escapeCatalogHtml(programReadiness(program))}</span>
-              </div>
-              ${renderRequirementCards(program)}
-              <p class="fit-line">${escapeCatalogHtml(catalogUi(programFit(program)))}</p>
-            </div>
-            <div class="row-actions">
-              <button class="program-card-action program-action-secondary compare-action ${isCompared ? "is-compared" : ""}" type="button" data-compare="${escapeCatalogHtml(id)}" aria-pressed="${isCompared ? "true" : "false"}" aria-label="${escapeCatalogHtml(catalogUi(isCompared ? "Remove from compare" : "Add to compare"))}: ${escapeCatalogHtml(name)}" title="${escapeCatalogHtml(catalogUi(isCompared ? "Compared" : "Compare"))}">${iconCompare}</button>
-            </div>
-          </article>
-        `;
-      }
+ const D=window.CUACCatalogDesign,id=programId(program),name=programName(program),isSaved=state.saved.has(id);
+ const rawProgramHref=`program-detail.html?program=${encodeURIComponent(id)}`,programHref=window.CUACCatalogI18n.localizeHref(rawProgramHref);
+ const universityHref=`university-detail.html?university=${encodeURIComponent(program.schoolId)}`;
+ const amount=program.tuitionAmount == null ? null : Number(program.tuitionAmount);
+ const tuition=program.displayTuition || program.tuitionText || (amount !== null && Number.isFinite(amount) ? (program.tuitionCurrency || 'RMB')+' '+amount.toLocaleString(window.CUACCatalogI18n?.locale || 'en')+(program.tuitionPeriod ? ' / '+catalogUi(program.tuitionPeriod) : '') : null);
+ const duration=program.durationYears ? D.t('years',{n:program.durationYears}) : program.durationMonths ? D.t('months',{n:program.durationMonths}) : program.duration || null;
+ return '<article class="program-row cd-card result-enter" data-enter-index="'+index+'" role="link" tabindex="0" data-program-id="'+escapeCatalogHtml(id)+'" data-program-card data-design-key="program:'+escapeCatalogHtml(id)+'" data-detail-href="'+programHref+'" aria-label="'+escapeCatalogHtml(window.CUACI18n.format('a11y.programCard',{name}))+'">'+D.render({kind:'program',id,title:name,parent:programUniversity(program),parentHref:universityHref,logoName:programUniversity(program),logo:program.schoolLogo,location:program.city || program.cityZh || '',href:programHref,record:program,saved:isSaved,saveClass:'save-button catalog-save-control',saveLabel:catalogT(isSaved ? "common.remove" : "common.save",isSaved ? 'Remove '+name+' from Favourites' : 'Save '+name+' to Favourites',{name}),compared:state.compared.has(id),onCompare:selected=>{if(selected)state.compared.add(id);else state.compared.delete(id);render();},tags:[{kind:'type',value:programReadiness(program)},{kind:'level',value:labelDegree(programDegreeValue(program))},{kind:'intake',value:program.applicationRound || ''}],description:programFit(program),facts:[['degree',labelDegree(programDegreeValue(program))],['language',programLanguageLabel(program)],['tuition',tuition],['duration',duration]],requirementsHtml:'<details class="cd-requirements"><summary>'+D.t('requirements')+'</summary>'+renderRequirementCards(program)+'</details>'})+'</article>';
+ }
 
       function renderPagination(total) {
         const totalPages = Math.max(1, Math.ceil(total / state.pageSize));
@@ -560,6 +519,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
             : "Published programs with deadline, tuition, language, and source status.");
         programList.className = `program-list ${state.view === "compact" ? "compact" : ""}`;
         programList.innerHTML = visible.map(renderRow).join("");
+        window.CUACCatalogDesign.refresh();
         if (catalogLoadingComplete && programTotal === 0) {
           const filtered = activeFilterEntries().length > 0;
           window.CuacCatalogList.listState(programList, "empty", {
@@ -574,6 +534,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       }
 
       function renderShortlist() {
+        window.CUACCatalogDesign.syncComparison("program",state.compared);
         const allKnownPrograms = [...knownPrograms.values()];
         const saved = allKnownPrograms.filter((program) => state.saved.has(programId(program)));
         const compared = allKnownPrograms.filter((program) => state.compared.has(programId(program)));
@@ -868,7 +829,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
         }
 
         const programCard = event.target.closest("[data-program-card]");
-        if (programCard && !event.target.closest("a, button, input, select, textarea")) {
+        if (programCard && !event.target.closest("a, button, input, select, textarea, details")) {
           window.location.href = programCard.dataset.detailHref;
           return;
         }
@@ -941,6 +902,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       });
 
       function setDrawer(open) {
+        const wasOpen=drawer.getAttribute("aria-hidden")==="false";
         drawer.classList.toggle("open", open);
         drawerBackdrop.classList.toggle("open", open);
         drawer.setAttribute("aria-hidden", String(!open));
@@ -949,6 +911,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
         } else {
           drawer.setAttribute("inert", "");
         }
+        window.CUACCatalogDesign.updateDrawer(drawer,open,wasOpen);
       }
 
       document.querySelector("#openFilters").addEventListener("click", () => setDrawer(true));
@@ -957,7 +920,7 @@ const catalogUi = (value) => window.CUACCatalogI18n?.ui(value) || value;
       drawerBackdrop.addEventListener("click", () => setDrawer(false));
       document.addEventListener("keydown", (event) => {
         const programCard = event.target.closest("[data-program-card]");
-        if (programCard && !event.target.closest("a, button, input, select, textarea") && ["Enter", " "].includes(event.key)) {
+        if (programCard && !event.target.closest("a, button, input, select, textarea, details") && ["Enter", " "].includes(event.key)) {
           event.preventDefault();
           window.location.href = programCard.dataset.detailHref;
           return;

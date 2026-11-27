@@ -1,3 +1,4 @@
+import { publicSchoolLogoSql } from "./school-logo.ts";
 import type {
   CatalogListOptions,
   PublicCityDetailDto,
@@ -447,6 +448,7 @@ select
   s.slug as "schoolSlug",
   s.name_zh as "schoolNameZh",
   s.name_en as "schoolNameEn",
+  ${publicSchoolLogoSql()} as "schoolLogo",
   c.slug as "citySlug",
   c.name_zh as "cityNameZh",
   c.name_en as "cityNameEn",
@@ -472,6 +474,7 @@ select
   s.slug,
   s.name_zh as "nameZh",
   s.name_en as "nameEn",
+  ${publicSchoolLogoSql()} as "schoolLogo",
   s.school_type as "schoolType",
   s.region,
   s.city_id as "cityId",
@@ -600,6 +603,7 @@ select
   s.slug as "schoolSlug",
   s.name_zh as "schoolNameZh",
   s.name_en as "schoolNameEn",
+  ${publicSchoolLogoSql()} as "schoolLogo",
   p.slug as "programSlug",
   p.name_zh as "programNameZh",
   p.name_en as "programNameEn"

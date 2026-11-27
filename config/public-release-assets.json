@@ -24,6 +24,8 @@
     "catalog-content-i18n.js",
     "catalog-content-manifest.json",
     "catalog-content-vi.json",
+    "catalog-design.css",
+    "catalog-design.js",
     "catalog-detail-i18n.js",
     "catalog-detail.css",
     "catalog-detail.js",

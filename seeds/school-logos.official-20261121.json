@@ -1,0 +1,805 @@
+{
+  "version": 1,
+  "schools": [
+    {
+      "slug": "anhui-agricultural-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/anhui-agricultural-university.png",
+        "sourceUrl": "https://www.ahau.edu.cn/static/img/logo123.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 6ac7e78ba2a3e55c67073db25803c20c24374a912e86ad111d406a50ebc6661b"
+      }
+    },
+    {
+      "slug": "beijing-foreign-studies-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/beijing-foreign-studies-university.png",
+        "sourceUrl": "https://www.bfsu.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 05046021a26047d36a1dde79b13622c66f9c8587410755f138d158ccf103e662"
+      }
+    },
+    {
+      "slug": "beijing-forestry-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/beijing-forestry-university.png",
+        "sourceUrl": "https://www.bjfu.edu.cn/images/logo.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: dc1cdb829a1ccbe5010bafbb4bc5dc4106c871537913a87eeece83e340906886"
+      }
+    },
+    {
+      "slug": "beijing-language-and-culture-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/beijing-language-and-culture-university.png",
+        "sourceUrl": "https://www.blcu.edu.cn/images/logoft.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 1ee078445eac22fa863772a3386c4706b32ffc07e2abb20fc36d40ab27d74d06"
+      }
+    },
+    {
+      "slug": "beijing-polytechnic-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/beijing-polytechnic-university.png",
+        "sourceUrl": "https://www.bpu.edu.cn/wwwz/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 253c9fb2e0c765a5732817d05ad0322ed79c9f33f93c4a181df087398b0ff749"
+      }
+    },
+    {
+      "slug": "beijing-technology-and-business-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/beijing-technology-and-business-university.png",
+        "sourceUrl": "https://www.btbu.edu.cn/images2024/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 950c4dfbcc5c951d1962f000a754f4c41ce78558b82a8ddae467ebb2c43be36d"
+      }
+    },
+    {
+      "slug": "beijing-university-of-chemical-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/beijing-university-of-chemical-technology.png",
+        "sourceUrl": "https://www.buct.edu.cn/_upload/tpl/01/f4/500/template500/images/logo1.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Original emblem; white artwork retained on dark green background. Original SHA-256: ed93ffff8df02909a84c06a051ca85cd3b089215a9efa63bd9efe678c1f3362c"
+      }
+    },
+    {
+      "slug": "central-china-normal-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/central-china-normal-university.png",
+        "sourceUrl": "https://dge.ccnu.edu.cn/dfiles/27359/ccnu_gnhzb/images/logo2.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 231e769a58008ba5368cdfe19527952dacafa382c5af45179c5308d5bb52aa3c"
+      }
+    },
+    {
+      "slug": "central-south-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/central-south-university.png",
+        "sourceUrl": "https://www.csu.edu.cn/images/logo2.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 023d2de57f58d9db8f025895e04c2e99a5b9cf6b19555eeb53482a8e9c620482"
+      }
+    },
+    {
+      "slug": "central-university-of-finance-and-economics",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/central-university-of-finance-and-economics.png",
+        "sourceUrl": "https://www.cufe.edu.cn/images/ksdhlogo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 2efe443bbc89af8fe0bcba6b1020d0f039c9acd86a33a89a69a761bbfa720891"
+      }
+    },
+    {
+      "slug": "chang-an-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/chang-an-university.png",
+        "sourceUrl": "https://www.chd.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 8c2ce0dfab72ae583ea7710763583b7625a03bec4a5a46a603ccb7a7181990bb"
+      }
+    },
+    {
+      "slug": "china-agricultural-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/china-agricultural-university.png",
+        "sourceUrl": "https://www.cau.edu.cn/static2022/images/logo2.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 1ce2ae18da74a56d50bd5476ffc8d7aa95f9f4e96e8c2917df4cc92c3b33c406"
+      }
+    },
+    {
+      "slug": "chongqing-normal-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/chongqing-normal-university.png",
+        "sourceUrl": "https://www.cqnu.edu.cn/2023xsy8/images/logo2.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: bfcdc59a346a5f1225735af96ee3084980f7592a8d53c6a5018dd99936a18854"
+      }
+    },
+    {
+      "slug": "dalian-university-of-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/dalian-university-of-technology.png",
+        "sourceUrl": "https://sie.dlut.edu.cn/English/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 8d86b1d8e54c858ec522c844d385a6331b581ac012f3c5a719e281aac01fe2d0"
+      }
+    },
+    {
+      "slug": "donghua-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/donghua-university.png",
+        "sourceUrl": "https://www.dhu.edu.cn/_upload/tpl/0b/3f/2879/template2879/image/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 4b69ea12c94bfa89854fc543654a73e94bbd21a0759d1e1c72c55a4cdedd00d9"
+      }
+    },
+    {
+      "slug": "east-china-jiaotong-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/east-china-jiaotong-university.png",
+        "sourceUrl": "https://www.ecjtu.edu.cn/images/logo20210811.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: ce2f9ce5001f383a0b9a65a29b1923c296f5488349fef7690f9f74149184cf72"
+      }
+    },
+    {
+      "slug": "east-china-normal-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/east-china-normal-university.png",
+        "sourceUrl": "https://www.ecnu.edu.cn/images/21/03/19/1r916g9urn/logo-bottom.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 634deddfc31a0746bb5187c3411611625d5aee5d57c4561a126750b953a0e17d"
+      }
+    },
+    {
+      "slug": "east-china-university-of-political-science-and-law",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/east-china-university-of-political-science-and-law.png",
+        "sourceUrl": "https://www.ecupl.edu.cn/_upload/tpl/02/16/534/template534/images/logo.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: b5d9154425e7cb1af58d1d6d5c54a73764b67dbe81cd46b244aef71a83102f6a"
+      }
+    },
+    {
+      "slug": "east-china-university-of-science-and-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/east-china-university-of-science-and-technology.png",
+        "sourceUrl": "https://www.ecust.edu.cn/_upload/tpl/00/2c/44/template44/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 12c104ce3be223653556acec5498865a37280648571ddd52f1138f07840c7503"
+      }
+    },
+    {
+      "slug": "fudan-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/fudan-university.png",
+        "sourceUrl": "https://www.fudan.edu.cn/_upload/site/00/02/2/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 6902c4ad7e173518b5d1a2b0f791587ff5a083992c5936bbee5989ab4b3fbc1f"
+      }
+    },
+    {
+      "slug": "fuzhou-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/fuzhou-university.png",
+        "sourceUrl": "https://www.fzu.edu.cn/images/footer_logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: f0216e00724b5662f59c21a7eb51d8627b0fe17630bf04c1386ab838fa7fb55a"
+      }
+    },
+    {
+      "slug": "guangdong-university-of-foreign-studies",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/guangdong-university-of-foreign-studies.png",
+        "sourceUrl": "https://www.gdufs.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: a391614a0dc291e899ba9e68b6806ec5b505de8b5c1267bcafa221ee34f28036"
+      }
+    },
+    {
+      "slug": "hangzhou-dianzi-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/hangzhou-dianzi-university.png",
+        "sourceUrl": "https://www.hdu.edu.cn/_upload/tpl/02/12/530/template530/images/logo_main.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 023b2536ce71233eb0fad92136927dc51b784705fd2fff82f889d4c971438924"
+      }
+    },
+    {
+      "slug": "harbin-engineering-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/harbin-engineering-university.png",
+        "sourceUrl": "https://www.hrbeu.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 820e87fcb0010d6c8996538c17d89ada2e6b31bd406f192d7c6d6f64fa8bf9ce"
+      }
+    },
+    {
+      "slug": "harbin-institute-of-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/harbin-institute-of-technology.png",
+        "sourceUrl": "https://www.hit.edu.cn/_upload/site/00/ee/238/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 4c770a1cde5e40588682c590a3d79ee1a32f1ebbd5efefc315243cfb028bcd13"
+      }
+    },
+    {
+      "slug": "harbin-institute-of-technology-shenzhen",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/harbin-institute-of-technology-shenzhen.png",
+        "sourceUrl": "https://www.hitsz.edu.cn/_upload/tpl/00/0d/13/template13/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 0e50d9b638801ed7eca30edfd72473a821fe3bc6fa71c2cd7f5d3701d2ed0271"
+      }
+    },
+    {
+      "slug": "harbin-university-of-science-and-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/harbin-university-of-science-and-technology.png",
+        "sourceUrl": "https://www.hrbust.edu.cn/images/logo-top.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: afc81db4366d9015c693fc73363d49313195e310c37380f5d59867ad3eaa1ce5"
+      }
+    },
+    {
+      "slug": "hefei-normal-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/hefei-normal-university.png",
+        "sourceUrl": "https://www.hfnu.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: c6eac722db5c2abb82f24bbab3a01d6a286cc86080c87cf350ee494d7c61d4e5"
+      }
+    },
+    {
+      "slug": "huazhong-university-of-science-and-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/huazhong-university-of-science-and-technology.png",
+        "sourceUrl": "https://www.hust.edu.cn/images/logo20240628.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: b818d74ac39eef4a0cd24720f148406736342718edbb7e9b35160611b0bb4e0f"
+      }
+    },
+    {
+      "slug": "hunan-university-of-technology-and-business",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/hunan-university-of-technology-and-business.png",
+        "sourceUrl": "https://ev.hutb.edu.cn/upload/ywz/site/logo/image/3348a6a94dbc4f71ab4bfdf1414b9710.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 4545fb269ad9ac766084cd50ee7826524d0660c1fb610087cb8196080f6564e0"
+      }
+    },
+    {
+      "slug": "jiangsu-university-of-science-and-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/jiangsu-university-of-science-and-technology.png",
+        "sourceUrl": "https://www.just.edu.cn/_upload/tpl/03/4d/845/template845/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 85210c259e7096edbe7422844ca03c8b762f49dc8bad6c8513b2cb43583295d3"
+      }
+    },
+    {
+      "slug": "jilin-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/jilin-university.png",
+        "sourceUrl": "https://www.jlu.edu.cn/images/logo.jpg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 6c239873e119937745cabfc4348a792deef9210f72822936d98abd35a199d087"
+      }
+    },
+    {
+      "slug": "jinan-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/jinan-university.png",
+        "sourceUrl": "https://www.jnu.edu.cn/_upload/tpl/00/f5/245/template245/images/home/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: c427ed296b1892db945ae2003b8b96645e064fbe3b4c8572cfbcf774bb0550f5"
+      }
+    },
+    {
+      "slug": "kunming-medical-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/kunming-medical-university.png",
+        "sourceUrl": "https://www.kmmu.edu.cn/temple/image/logo_copy.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 6cd620793873e5dae2d61638b6dce5ffa97f9f132a31e1166eac1fe7286ee316"
+      }
+    },
+    {
+      "slug": "kunming-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/kunming-university.png",
+        "sourceUrl": "https://www.kmu.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 4c84d77a668fd0e7456bd6a8aad45b8ad521574e56d5df336df07c53db1e764f"
+      }
+    },
+    {
+      "slug": "liaoning-university-of-traditional-chinese-medicine",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/liaoning-university-of-traditional-chinese-medicine.png",
+        "sourceUrl": "https://www.lnutcm.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 868214c71334bd072b5a34018928df558b98b34d0b4dc1e66d5c127bb340bca0"
+      }
+    },
+    {
+      "slug": "luzhou-vocational-and-technical-college",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/luzhou-vocational-and-technical-college.png",
+        "sourceUrl": "https://www.lzy.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 22eddeb98c13adabfe8931aadb5365c573bab991ec5763a06741547ddf4fec67"
+      }
+    },
+    {
+      "slug": "nanjing-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/nanjing-university.png",
+        "sourceUrl": "https://www.nju.edu.cn/images/footer_logo.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 9ab63be7c3bf697498a2ba422a5b52ba3d11123f2fa7a1e1c7b3f24e170fd684"
+      }
+    },
+    {
+      "slug": "nanjing-university-of-aeronautics-and-astronautics",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/nanjing-university-of-aeronautics-and-astronautics.png",
+        "sourceUrl": "https://www.nuaa.edu.cn/_upload/tpl/05/f7/1527/template1527/images/logo_b.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 24cabc3b7cc9a61e566555942f8378bb6d9f7c2c8c8731915167faab053ff848"
+      }
+    },
+    {
+      "slug": "nankai-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/nankai-university.png",
+        "sourceUrl": "https://www.nankai.edu.cn/_upload/tpl/02/58/600/template600/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: e1219a954b2372ccecde6c9788bb3c25ebb59ea99a4935b84fe8305dac1852af"
+      }
+    },
+    {
+      "slug": "northwestern-polytechnical-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/northwestern-polytechnical-university.png",
+        "sourceUrl": "https://www.nwpu.edu.cn/images/logo2.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: b8a1c9f0c926b9663d2b11c972e2facb17c312b2eb9ed4c596641a12175a8a8b"
+      }
+    },
+    {
+      "slug": "ocean-university-of-china",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/ocean-university-of-china.png",
+        "sourceUrl": "https://www.ouc.edu.cn/_upload/tpl/0c/00/3072/template3072/images/logo.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 0a408bc4af40499e7e0627f6c7242493af2e695b58044efb04514afe711a8c45"
+      }
+    },
+    {
+      "slug": "peking-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/peking-university.png",
+        "sourceUrl": "https://www.pku.edu.cn/pku_logo_red.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: b328ed3c9e579ec8c2031ad8a5b6c244994fba5d1e93cc98901d1fcc3c306bdb"
+      }
+    },
+    {
+      "slug": "qingdao-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/qingdao-university.png",
+        "sourceUrl": "https://www.qdu.edu.cn/images/logo3.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 6c7cd13dd9d812d795819dcdcdc6913d8f02f454b68243584bd1fce0974e17c1"
+      }
+    },
+    {
+      "slug": "shandong-normal-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/shandong-normal-university.png",
+        "sourceUrl": "https://www.sdnu.edu.cn/images/logosmall2.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 5e065397dda9a589b0bc4398547dfbfcb437ebbe2517283eac1f5a038be13b26"
+      }
+    },
+    {
+      "slug": "shandong-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/shandong-university.png",
+        "sourceUrl": "https://www.sdu.edu.cn/images/logo.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: a35165d4b64e70a438fda4794dcb3ee4fc7bd70ecec7aea5040e29d694c64faf"
+      }
+    },
+    {
+      "slug": "shandong-university-of-finance-and-economics",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/shandong-university-of-finance-and-economics.png",
+        "sourceUrl": "https://www.sdufe.edu.cn/dfiles/12798/images/main_03-8.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: bfb72b1a0a9da3a30e37aea0b21fc1dbfdc0d07706aca476a45fb9c5a994c941"
+      }
+    },
+    {
+      "slug": "shanghai-international-studies-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/shanghai-international-studies-university.png",
+        "sourceUrl": "https://www.shisu.edu.cn/assets/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 60aa8cc927d18303e450c9b1eecaaa32c5fe851c2d6dc5519814f740218593fd"
+      }
+    },
+    {
+      "slug": "shanghai-jiao-tong-university-school-of-medicine",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/shanghai-jiao-tong-university-school-of-medicine.png",
+        "sourceUrl": "https://www.shsmu.edu.cn/dfiles/logohs.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 55d545c5f8cfc7c73021a5ca324b3462f9e983130e1cf9d75830c941b8c72b64"
+      }
+    },
+    {
+      "slug": "shanghai-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/shanghai-university.png",
+        "sourceUrl": "https://www.shu.edu.cn/images/logoft.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 5ac50dff6c0c2cc8ead59525f2d595e444b889f8e38a9b933d4c0c4f22d837eb"
+      }
+    },
+    {
+      "slug": "shanghai-university-of-political-science-and-law",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/shanghai-university-of-political-science-and-law.png",
+        "sourceUrl": "https://www.shupl.edu.cn/_upload/tpl/01/03/259/template259/images/logo2.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 82aabe569fd8fa9f5d5700b51562c700fd02764831c9b4bc41dc55790166e904"
+      }
+    },
+    {
+      "slug": "shenzhen-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/shenzhen-university.png",
+        "sourceUrl": "https://en.szu.edu.cn/images/blacklogo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 6e82f48f6296de60ffe125db9c401d20432f1dca9fd10a4ee3942590fce8b8c2"
+      }
+    },
+    {
+      "slug": "sichuan-international-studies-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/sichuan-international-studies-university.png",
+        "sourceUrl": "https://www.sisu.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: a765f8c710ee0a7461b48c20cefd7289259ebb15ba3469aaad7b456c4450f516"
+      }
+    },
+    {
+      "slug": "sichuan-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/sichuan-university.png",
+        "sourceUrl": "https://www.scu.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 76b6a006cfad46f346fccf30436045801b6054f71575cfe288242a764ae6c6e9"
+      }
+    },
+    {
+      "slug": "south-china-normal-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/south-china-normal-university.png",
+        "sourceUrl": "https://statics.scnu.edu.cn/statics/css/scnuportal/contentlogo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 288870c8c7e9901f77cf43c85f9103789115a0fedbfb356c9e8fa283198e830e"
+      }
+    },
+    {
+      "slug": "southeast-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/southeast-university.png",
+        "sourceUrl": "https://www.seu.edu.cn/_upload/tpl/0c/ea/3306/template3306/images/logo.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 0b4c443d2ef8ac02c754052473e046ebe0694e1b9df791109af1149936585689"
+      }
+    },
+    {
+      "slug": "southern-university-of-science-and-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/southern-university-of-science-and-technology.png",
+        "sourceUrl": "https://www.sustech.edu.cn/static/images/sustech-logo-en.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 518adeb797cd4b06065f18a3e916bc5f8e0f0a45ad0c99b19dd0cd3e54fc1d80"
+      }
+    },
+    {
+      "slug": "southwestern-university-of-finance-and-economics-tianfu-college",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/southwestern-university-of-finance-and-economics-tianfu-college.png",
+        "sourceUrl": "https://www.tfswufe.edu.cn/images/logo-white.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: b3228994991475ca41c4d68e8442733da413b38a132f33c90f98d408f21cec58"
+      }
+    },
+    {
+      "slug": "sun-yat-sen-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/sun-yat-sen-university.png",
+        "sourceUrl": "https://www.sysu.edu.cn/images/logo1.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 6725f365b51eb3427b79365af1abf3d375c442b74ec75dc6b733b79d7d47bb12"
+      }
+    },
+    {
+      "slug": "tianjin-foreign-studies-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/tianjin-foreign-studies-university.png",
+        "sourceUrl": "https://www.tjfsu.edu.cn/_upload/tpl/00/07/7/template7/images/logo.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 417eb962c613e2238530de4dc423ee8681c34236ffa165c13e450aada347be60"
+      }
+    },
+    {
+      "slug": "tianjin-normal-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/tianjin-normal-university.png",
+        "sourceUrl": "https://gjjl.tjnu.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 68021876ee60648efa1039ad8afce6ae6cef5fd0b0e6583c329a3ee0858604d2"
+      }
+    },
+    {
+      "slug": "tianjin-university-of-finance-and-economics",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/tianjin-university-of-finance-and-economics.png",
+        "sourceUrl": "https://www.tjufe.edu.cn/template_files/1/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: a14dcf1da4afeaf2651822654a20148081c75d8020ad1aa86da62496a3b7f678"
+      }
+    },
+    {
+      "slug": "tianjin-university-of-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/tianjin-university-of-technology.png",
+        "sourceUrl": "https://www.tjut.edu.cn/images/plogo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: c6e4daf3a62485efa4ead7c976dd3693e88a8f962446fa52f22252cc5774f611"
+      }
+    },
+    {
+      "slug": "tongji-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/tongji-university.png",
+        "sourceUrl": "https://www.tongji.edu.cn/images/18/05/03/1d0wfqyjja/footlogo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: a3450052a8f93e7d8e0a9e51399c836d4edd00207db4abcea26a623948e6e82b"
+      }
+    },
+    {
+      "slug": "tsinghua-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/tsinghua-university.png",
+        "sourceUrl": "https://vi.tsinghua.edu.cn/__local/8/1C/21/2F02A66E31BF084FE340463BB47_B9A95F73_185BC.jpg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Original emblem; original artwork colors retained. Original SHA-256: 90132d030d8a70f9d21375c85d8a0c614d44a6201ab82200067b10aca38986a8"
+      }
+    },
+    {
+      "slug": "university-of-electronic-science-and-technology-of-china",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/university-of-electronic-science-and-technology-of-china.png",
+        "sourceUrl": "https://en.uestc.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: d8fe5cde0f424002730bd285fd97429f50927a46fb9a76cc55f460d3c46512b8"
+      }
+    },
+    {
+      "slug": "university-of-international-business-and-economics",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/university-of-international-business-and-economics.png",
+        "sourceUrl": "https://www.uibe.edu.cn/2025/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 2c30c6aff5e170d135ef41332ff937162f12f20e69d8762b243f6d08615745a2"
+      }
+    },
+    {
+      "slug": "university-of-sanya",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/university-of-sanya.png",
+        "sourceUrl": "https://www.sanyau.edu.cn/_upload/tpl/00/18/24/template24/images/tago.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Original emblem; original artwork colors retained. Original SHA-256: 95a9902d16bdaa6a2199ff76a8e60357f46bcc4c5e3139920226bb34757f246c"
+      }
+    },
+    {
+      "slug": "university-of-science-and-technology-beijing",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/university-of-science-and-technology-beijing.png",
+        "sourceUrl": "https://www.ustb.edu.cn/images/u_logo2.png?240103",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 24d5c1bf8d8fe5da16d643934da3e3d3a2505fda10fbedd81e0f3e6b4c4c874f"
+      }
+    },
+    {
+      "slug": "wuhan-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/wuhan-university.png",
+        "sourceUrl": "https://www.whu.edu.cn/new2024/js/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 32fc6fa119b63b22b488fb817dc6000c978729c38abcb7dc947f741aa07fecfa"
+      }
+    },
+    {
+      "slug": "xiamen-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/xiamen-university.png",
+        "sourceUrl": "https://www.xmu.edu.cn/images/logo2.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 42d4e2ef80c3e7ee70eef971b6986c9418fcf2682431f595647e634d88b5b7f5"
+      }
+    },
+    {
+      "slug": "xiangtan-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/xiangtan-university.png",
+        "sourceUrl": "https://www.xtu.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: d6af3be4bff469dec70fd4f08f0c01fa93e8d08b3f827b68e98d7694412d92f7"
+      }
+    },
+    {
+      "slug": "xinjiang-agricultural-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/xinjiang-agricultural-university.png",
+        "sourceUrl": "https://cie.xjau.edu.cn/_upload/tpl/02/80/640/template640/logoT.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 5f40839609b389d651141dee70e88c0f1c9fcad574c5f28ed9e1193b6a62e05d"
+      }
+    },
+    {
+      "slug": "xuzhou-medical-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/xuzhou-medical-university.png",
+        "sourceUrl": "https://gjjyen.xzhmu.edu.cn/img/h-logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 30d6146749a58ee18532f7f8a0134e10f6bac8b7f751c30bfa88121265f1c3ef"
+      }
+    },
+    {
+      "slug": "yanshan-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/yanshan-university.png",
+        "sourceUrl": "https://ies.ysu.edu.cn/images/logo-ies2024.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: ec371f31cb41a1f28b7b4ed782a00fe42cecb0637159b62925b2fa6db933e533"
+      }
+    },
+    {
+      "slug": "yunnan-university-of-finance-and-economics",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/yunnan-university-of-finance-and-economics.png",
+        "sourceUrl": "https://www.ynufe.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: e07c017b1333276cc7b75a13e18c7a0e1929a2780b0ecaf0ea30641c8c91dfc5"
+      }
+    },
+    {
+      "slug": "zhejiang-gongshang-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/zhejiang-gongshang-university.png",
+        "sourceUrl": "https://sie.zjgsu.edu.cn/_upload/tpl/00/85/133/template133/img/LOGO.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 5d7566feef7d51ea9c9a2fd9e1a7f68e4c038a797a7b45b82f8490c2a055691f"
+      }
+    },
+    {
+      "slug": "anhui-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/anhui-university.png",
+        "sourceUrl": "https://www.ahu.edu.cn/_upload/tpl/07/cc/1996/template1996/images/logonew.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 0ffd7804daf2dc89859e6cbdbfee22d22579d36bdefa486a71aaa20e3e6d52fe"
+      }
+    },
+    {
+      "slug": "beihang-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/beihang-university.png",
+        "sourceUrl": "https://www.buaa.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: f25d77b0c25b9e7f25ccfaa9a1fa22123fe38172e07d866b6d897a946db11b5e"
+      }
+    },
+    {
+      "slug": "beijing-institute-of-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/beijing-institute-of-technology.png",
+        "sourceUrl": "https://www.bit.edu.cn/images/gb20190805/logo_01.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Original emblem; original artwork colors retained. Original SHA-256: 6039e5ee856bd10f7fbd8f5a16cbcb4e016a606bb324fef6bb369d79e10c49b1"
+      }
+    },
+    {
+      "slug": "beijing-normal-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/beijing-normal-university.png",
+        "sourceUrl": "https://english.bnu.edu.cn/images/logo_01.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: a04bf05abaa787b8652cf91b7ed71f2bf64e7e18b4a60b78e8e9ea73a6f0dfac"
+      }
+    },
+    {
+      "slug": "beijing-sport-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/beijing-sport-university.png",
+        "sourceUrl": "https://www.bsu.edu.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 8c6e26338cd8cd0adb941760faf038fa257c4d1a5b092b082549ec1ad5156838"
+      }
+    },
+    {
+      "slug": "beijing-university-of-posts-and-telecommunications",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/beijing-university-of-posts-and-telecommunications.png",
+        "sourceUrl": "https://vi.bupt.edu.cn/images/logo1.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 7469ce8ffc621bf69b958ba531d6d2ee36c530e37626bd4f24e1e1a56b257b17"
+      }
+    },
+    {
+      "slug": "changchun-university-of-science-and-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/changchun-university-of-science-and-technology.png",
+        "sourceUrl": "https://www.cust.edu.cn/static2026/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 39f9ef10042ab86117f37ff86777a95b8a9dd1194b2282c71cccc9f75fc94538"
+      }
+    },
+    {
+      "slug": "guangxi-medical-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/guangxi-medical-university.png",
+        "sourceUrl": "https://www.gxmu.edu.cn/images/gxmu_logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: e5e3366c387b413e24bdc6fbff9e328ea4c825d579d68344d681c80422987861"
+      }
+    },
+    {
+      "slug": "peking-university-health-science-center",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/peking-university-health-science-center.png",
+        "sourceUrl": "https://www.bjmu.edu.cn/images/logo.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: dde59dc1d62189334ba0377a135b4659d2fa69b13ce3b6f985fb3a0e27fe712f"
+      }
+    },
+    {
+      "slug": "shanghai-jiao-tong-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/shanghai-jiao-tong-university.png",
+        "sourceUrl": "https://global.sjtu.edu.cn/en/assets/images/logo_white_130.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: b9af15404e3fdd39d79f6fd85329899d3717c2fcb21508b940175db45125c673"
+      }
+    },
+    {
+      "slug": "south-china-university-of-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/south-china-university-of-technology.png",
+        "sourceUrl": "https://www.scut.edu.cn/_upload/site/01/3b/315/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: ebbcd850c82b68e7c34d59081f14f6d074d8d7d3f87cb8be7e3737b9669bba17"
+      }
+    },
+    {
+      "slug": "tianjin-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/tianjin-university.png",
+        "sourceUrl": "https://www.tju.edu.cn/images/tjulogo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 66d6b280b6791bb6285c9acb91cb1a791cab5e4350972c6a93a61efc90e5e6e3"
+      }
+    },
+    {
+      "slug": "university-of-chinese-academy-of-sciences",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/university-of-chinese-academy-of-sciences.png",
+        "sourceUrl": "https://www.ucas.ac.cn/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: fa63aa5c3bee761ca0a4367647cb13218b88f211185d60cd93e1246022c978c9"
+      }
+    },
+    {
+      "slug": "university-of-science-and-technology-of-china",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/university-of-science-and-technology-of-china.png",
+        "sourceUrl": "https://www.ustc.edu.cn/news/images/logo.svg",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 39d2d180e96f33160d1684665699d67fa54494f9a37fd716225767a14effc726"
+      }
+    },
+    {
+      "slug": "wenzhou-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/wenzhou-university.png",
+        "sourceUrl": "https://www.wzu.edu.cn/dfiles/9987/template/default/newzhuzhan/wenda/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: f4842fbf8b06919fa2ac1f98916405372008052db0f9e4d710ecf7e563661c70"
+      }
+    },
+    {
+      "slug": "westlake-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/westlake-university.png",
+        "sourceUrl": "https://en.westlake.edu.cn/images/header_icon_color.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: b1f0794bc3b4fbc4c9c30d7ca2704aa5f779d26f819f8952293b8769a6da849c"
+      }
+    },
+    {
+      "slug": "wuchang-university-of-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/wuchang-university-of-technology.png",
+        "sourceUrl": "https://www.wut.edu.cn/img/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 8b6ebf92097b673ce5cc1941f94ac5ec6967a70ba252d36f8cc0fce8b74f988b"
+      }
+    },
+    {
+      "slug": "xi-an-jiaotong-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/xi-an-jiaotong-university.png",
+        "sourceUrl": "https://www.xjtu.edu.cn/img/logo_pic99.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: a6cfe2c43bf100c741aff20ad71df0f8415dac8193c362c7dff2282de04fd815"
+      }
+    },
+    {
+      "slug": "zhejiang-university-of-technology",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/zhejiang-university-of-technology.png",
+        "sourceUrl": "https://www.zjut.edu.cn/_upload/site/00/04/4/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 6bc97d56327d5a57706017f0423a325d1c0de1ceec20b6e650e71b2fafefdf4d"
+      }
+    },
+    {
+      "slug": "shanghai-university-of-electric-power",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/shanghai-university-of-electric-power.png",
+        "sourceUrl": "https://www.shiep.edu.cn/_upload/tpl/00/e0/224/template224/images/logo.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; white artwork retained on dark green background. Original SHA-256: 97d7a4dececc3b2b147ed5283b8ed650647ca60a69f9638b47eb5eaa99f3f1ea"
+      }
+    },
+    {
+      "slug": "zhejiang-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/zhejiang-university.png",
+        "sourceUrl": "https://www.zju.edu.cn/_upload/article/images/c3/98/1fb1d281492eb477a098ef7a2901/6d8d432f-56ac-47eb-b22d-a23b103aed01.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Original emblem; original artwork colors retained. Original SHA-256: dc914cc634bdcd9b871c84686817c12287c6bafd309f083a1054040aee806fca"
+      }
+    },
+    {
+      "slug": "guizhou-medical-university",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/guizhou-medical-university.png",
+        "sourceUrl": "https://www.gmc.edu.cn/__local/0/0D/6C/A7FB45BE37E59583D365353A007_044A37B8_B197.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 4ff3a8ef0f046d4bb31e9091ee0c61a8508de22bfa7b3d5feb4a4a6d0718bc4f"
+      }
+    },
+    {
+      "slug": "china-academy-of-art",
+      "logo": {
+        "file": "public/catalog-design-assets/schools/china-academy-of-art.png",
+        "sourceUrl": "https://admission.caa.edu.cn/dfiles/6837/site/templates/maincn/images/logo1.png",
+        "sourceNote": "Official university identity asset, visually reviewed 2026-11-21. Cropped complete emblem from official masthead; original artwork colors retained. Original SHA-256: 8a0ca37b4a63e62a444d241a552d35db2610f98cd3e9ca3b9112f298e3ceab8b"
+      }
+    }
+  ]
+}

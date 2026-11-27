@@ -1,3 +1,4 @@
+import type { SchoolLogoDto } from "./school-logo.ts";
 import type { InferSelectModel } from "drizzle-orm";
 import type { cities, programs, scholarships, schools } from "../db/schema.ts";
 import type {
@@ -38,6 +39,7 @@ export type CityProjectionRow = CityRow & {
 };
 
 export type ProgramProjectionRow = ProgramRow & {
+  schoolLogo?: SchoolLogoDto | null;
   schoolNameEn?: string | null;
   schoolNameZh?: string | null;
   schoolSlug?: string | null;
@@ -55,6 +57,7 @@ export type ProgramProjectionRow = ProgramRow & {
 };
 
 export type ScholarshipProjectionRow = ScholarshipRow & {
+  schoolLogo?: SchoolLogoDto | null;
   schoolSlug?: string | null;
   schoolNameEn?: string | null;
   schoolNameZh?: string | null;
@@ -69,6 +72,7 @@ export type ScholarshipProjectionRow = ScholarshipRow & {
 };
 
 export type SchoolProjectionRow = SchoolRow & {
+  schoolLogo?: SchoolLogoDto | null;
   programCount?: number | null;
   englishProgramCount?: number | null;
   studyLevelCounts?: unknown;
@@ -311,6 +315,7 @@ export function toPublicProgramDetailDto(row: ProgramProjectionRow): PublicProgr
       slug: row.schoolSlug,
       nameZh: row.schoolNameZh ?? null,
       nameEn: row.schoolNameEn,
+      logo: row.schoolLogo ?? null,
     },
     city: row.citySlug && row.cityNameEn ? {
       slug: row.citySlug,
@@ -369,6 +374,7 @@ export function toPublicProgramDto(row: ProgramProjectionRow): PublicProgramDto 
     sourceFieldLineage: asLineage(row.sourceFieldLineageJson),
     name: row.nameEn,
     university: row.schoolNameEn ?? null,
+    schoolLogo: row.schoolLogo ?? null,
     deadline: row.deadlineLabel ?? null,
     tuition: row.displayTuition ?? row.tuitionText,
     displayTuition: row.displayTuition,
@@ -379,6 +385,7 @@ export function toPublicProgramDto(row: ProgramProjectionRow): PublicProgramDto 
 
 export function toPublicSchoolDto(row: SchoolProjectionRow): PublicSchoolDto {
   return {
+    logo: row.schoolLogo ?? null,
     id: row.id,
     slug: row.slug,
     cityId: row.cityId,
@@ -451,6 +458,7 @@ export function toPublicScholarshipDto(row: ScholarshipProjectionRow): PublicSch
     ? (row.deadlineDate.getTime() > Date.now() ? "open" : "closed")
     : "unconfirmed";
   return {
+    schoolLogo: row.schoolLogo ?? null,
     id: row.id,
     slug: row.slug,
     title: row.title,
@@ -507,6 +515,7 @@ export function toPublicScholarshipDetailDto(row: ScholarshipProjectionRow): Pub
     sourceFieldLineage: asLineage(row.sourceFieldLineageJson),
     updatedAt: row.updatedAt,
     school: row.schoolId && row.schoolSlug && row.schoolNameEn ? {
+      logo: row.schoolLogo ?? null,
       id: row.schoolId,
       slug: row.schoolSlug,
       nameZh: row.schoolNameZh ?? null,

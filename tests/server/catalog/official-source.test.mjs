@@ -93,6 +93,25 @@ test("official source fetch accepts an octet-stream only when its bytes are a PD
   assert.equal(snapshot.metadata.contentType, "application/pdf");
 });
 
+test("official identity collection retains SVG, GIF and stylesheet evidence without executing it", async () => {
+  for (const [contentType, content] of [
+    ["image/svg+xml", '<svg xmlns="http://www.w3.org/2000/svg"><text>identity evidence</text></svg>'],
+    ["image/gif", "GIF89a"],
+    ["text/css", '.logo { background-image: url("logo.png"); }'],
+  ]) {
+    let calls = 0;
+    const snapshot = await fetchOfficialCatalogSource(validSource, {
+      fetchImpl: async () => {
+        calls += 1;
+        return new Response(content, { headers: { "content-type": contentType } });
+      },
+    });
+    assert.equal(calls, 1, "linked assets are not recursively requested");
+    assert.equal(snapshot.metadata.contentType, contentType);
+    assert.equal(new TextDecoder().decode(snapshot.content), content);
+  }
+});
+
 test("official source fetch accepts a DOCX MIME type and recognizes a DOCX octet-stream by ZIP entries", async () => {
   const declared = await fetchOfficialCatalogSource(validSource, {
     fetchImpl: async () => new Response(new Uint8Array([0x50, 0x4b, 0x03, 0x04]), {

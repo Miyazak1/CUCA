@@ -1544,6 +1544,40 @@ function schoolList(value) {
   return String(value || "").split(/[,，\n]/).map(item => item.trim()).filter(Boolean);
 }
 
+function renderSchoolLogoEditor(record, state) {
+ if(!record) return '<p class="ops-state compact">先保存学校资料，再上传校徽。批量新增可在学校数据中随附校徽文件。</p>';
+ const current=state?.logo,locked=record.status==='archived'||!hasStepUpAdminAuthority();
+ return '<section class="ops-city-editor ops-school-logo-panel"><h4>学校校徽</h4><p>按学校 ID 统一关联；学校、项目和详情页共用。PNG，16–2048 像素，每张不超过 1 MiB。</p>'+
+ (current?'<figure><img class="ops-school-logo-preview" src="'+escapeHtml(current.url)+'" alt="当前学校校徽"><figcaption>校徽版本 '+escapeHtml(current.version)+' · '+escapeHtml(formatDateTime(current.updatedAt))+'</figcaption></figure><p><a href="'+escapeHtml(current.sourceUrl)+'" target="_blank" rel="noopener noreferrer">校徽来源</a> · '+escapeHtml(current.sourceNote||'')+'</p>':'<p>尚未上传校徽，公开页面显示统一占位图标。</p>')+
+ '<form class="ops-city-form" data-school-logo-editor data-school-id="'+escapeHtml(record.id)+'" data-version="'+(state?.version||0)+'"><fieldset'+(locked?' disabled':'')+'><legend>上传或替换校徽</legend><div class="ops-city-fields"><label>PNG 文件<input type="file" name="logo" accept="image/png" required data-school-logo-file></label><label>来源 HTTPS 地址<input type="url" name="sourceUrl" required maxlength="2048" value="'+escapeHtml(current?.sourceUrl||'')+'"></label><label class="wide">来源与核验备注<textarea name="sourceNote" maxlength="1000">'+escapeHtml(current?.sourceNote||'')+'</textarea></label><div class="wide" data-school-logo-file-preview></div></div><button class="ops-button primary" type="submit">'+(current?'上传并替换':'上传校徽')+'</button> '+(current?'<button class="ops-button danger" type="button" data-school-logo-remove>移除校徽</button>':'')+'</fieldset></form>'+
+ (locked?'<p>校徽会直接影响公开展示，上传、替换和移除需要 UCAC 管理员二次验证；归档学校不能修改。</p>':'')+'</section>';
+}
+function updateSchoolLogoPanel(form, state) {
+ const schoolForm=document.querySelector('[data-school-editor]');
+ const dirty=schoolForm ? [...schoolForm.querySelectorAll('input,textarea,select')].some(control=>{
+   if(control.tagName==='SELECT')return control.value!==([...control.options].find(option=>option.defaultSelected)||control.options[0])?.value;
+   if(['checkbox','radio'].includes(control.type))return control.checked!==control.defaultChecked;
+   return control.value!==control.defaultValue;
+ }) : false;
+ const record={id:form.dataset.schoolId,status:schoolForm?.querySelector('fieldset')?.disabled?'archived':'active'};
+ form.closest('.ops-school-logo-panel').outerHTML=renderSchoolLogoEditor(record,state);
+ setDirtyState(dirty);
+}
+async function submitSchoolLogo(form, remove=false) {
+ if(opsState.busy) return;
+ const input=form.querySelector('[name=logo]'),file=input.files[0];
+ if(!remove&&(!file||file.type!=='image/png'||file.size>1048576)){showOpsProblem('请选择不超过 1 MiB 的 PNG 校徽。');return;}
+ opsState.busy=true;const controls=[...form.querySelectorAll('button')];controls.forEach(button=>button.disabled=true);
+ try {
+  const headers={'if-match':form.dataset.version};
+  if(!remove){headers['content-type']='image/png';headers['x-logo-source-url']=encodeURIComponent(form.querySelector('[name=sourceUrl]').value.trim());headers['x-logo-source-note']=encodeURIComponent(form.querySelector('[name=sourceNote]').value.trim());}
+  const updated=await requestJson('/api/v1/ops/catalog/schools/'+encodeURIComponent(form.dataset.schoolId)+'/logo',{method:remove?'DELETE':'PUT',headers,...(!remove?{body:file}:{})});
+  updateSchoolLogoPanel(form,updated);
+  showOpsToast(remove?'校徽已移除，公开页面将使用占位图标。':'校徽已保存，所有关联页面将读取新版本。');
+ }catch(error){if(error.status===409){try{const current=await requestJson('/api/v1/ops/catalog/schools/'+encodeURIComponent(form.dataset.schoolId)+'/logo');updateSchoolLogoPanel(form,current);}catch{/* Keep pending inputs if the current logo cannot be reloaded. */}}showOpsProblem(error.message||'校徽保存失败。');}
+ finally{opsState.busy=false;controls.forEach(button=>{if(document.contains(button))button.disabled=false;});}
+}
+
 function renderSchoolEditor(detail, cities) {
   const record = detail?.school || null;
   const school = record || { slug: "", nameZh: "", nameEn: "", schoolType: "", region: "", cityId: "", city: "",
@@ -1604,7 +1638,7 @@ function renderSchoolEditor(detail, cities) {
         <label>来源名称<input name="sourceLabel" required maxlength="200" value="${escapeHtml(school.sourceLabel || "")}"></label>${input("sourceNote", "来源备注", 1000)}
       </div></fieldset>
       ${record?.status === "archived" ? '<p class="ops-state compact">已归档记录不可编辑；先恢复为草稿。</p>' : '<button class="ops-button primary" type="submit">保存学校记录</button>'}
-    </form>${actions}
+    </form>${renderSchoolLogoEditor(record, detail?.logoState)}${actions}
     ${record ? `<details class="ops-city-revisions"><summary>修订记录（${revisions.length}）</summary>${revisions.length ? `<ol>${revisions.map(item => `<li><strong>版本 ${escapeHtml(item.entityVersion)}</strong> · ${escapeHtml({ created: "创建", updated: "编辑", published: "发布", archived: "归档", restored: "恢复" }[item.action] || item.action)}<span>${escapeHtml(formatDateTime(item.createdAt))}</span><small>${escapeHtml((item.changedFields || []).join("、") || "状态变更")}</small></li>`).join("")}</ol>` : '<p class="ops-state compact">当前还没有修订快照。</p>'}</details>` : ""}</section>`;
 }
 
@@ -1812,6 +1846,8 @@ async function loadCatalogManagement(loadSequence = opsState.loadSequence) {
     }
     const detail = opsState.selectedSchoolId && opsState.selectedSchoolId !== "__new__"
       ? await requestJson(`/api/v1/ops/catalog/schools/${encodeURIComponent(opsState.selectedSchoolId)}`) : null;
+    if (loadSequence !== opsState.loadSequence) return;
+    if (detail) detail.logoState = await requestJson(`/api/v1/ops/catalog/schools/${encodeURIComponent(detail.school.id)}/logo`);
     if (loadSequence !== opsState.loadSequence) return;
     renderSchoolCatalogManagement(data, detail, cities);
     return;
@@ -2339,11 +2375,12 @@ function bindOpsEvents() {
       if (event.target.matches?.("[data-insight-slug]")) slug.dataset.manual = "true";
       updateInsightPreview(editor);
     }
-    if (event.target.closest?.("[data-city-editor], [data-school-editor], [data-program-editor], [data-scholarship-editor], [data-guide-draft], [data-insight-draft]")) {
+    if (event.target.closest?.("[data-city-editor], [data-school-editor], [data-school-logo-editor], [data-program-editor], [data-scholarship-editor], [data-guide-draft], [data-insight-draft]")) {
       setDirtyState(true);
     }
   });
   document.addEventListener("click", event => {
+    const logoRemove=event.target.closest('[data-school-logo-remove]');if(logoRemove){event.preventDefault();void submitSchoolLogo(logoRemove.closest('form'),true);return;}
     const tab = event.target.closest("[data-ops-tab]");
     if (tab) void selectOpsView(tab.dataset.opsTab);
     const priorityView = event.target.closest("[data-ops-open-view]");
@@ -2430,6 +2467,7 @@ function bindOpsEvents() {
       event.preventDefault();
       void submitCityLifecycle(event.target);
     }
+    if (event.target.matches("[data-school-logo-editor]")) { event.preventDefault(); void submitSchoolLogo(event.target); }
     if (event.target.matches("[data-school-editor]")) {
       event.preventDefault();
       void submitSchoolEditor(event.target);
@@ -2519,7 +2557,7 @@ function bindOpsEvents() {
     if (event.target.matches("[data-scholarship-program-search]")) scheduleScholarshipProgramSearch(event.target);
   });
   document.addEventListener("change", event => {
-    if (event.target.closest?.("[data-city-editor], [data-school-editor], [data-program-editor], [data-scholarship-editor], [data-guide-draft], [data-insight-draft]")) {
+    if (event.target.closest?.("[data-city-editor], [data-school-editor], [data-school-logo-editor], [data-program-editor], [data-scholarship-editor], [data-guide-draft], [data-insight-draft]")) {
       setDirtyState(true);
     }
     if (event.target.matches("[data-release-select]")) {
@@ -2595,3 +2633,5 @@ async function startOpsWorkspace() {
 }
 
 void startOpsWorkspace();
+
+document.addEventListener('change',event=>{if(!event.target.matches('[data-school-logo-file]'))return;const file=event.target.files[0],root=event.target.form.querySelector('[data-school-logo-file-preview]');root.replaceChildren();if(!file||file.type!=='image/png'||file.size>1048576)return;const reader=new FileReader();reader.addEventListener('load',()=>{if(!document.contains(root))return;const image=document.createElement('img');image.className='ops-school-logo-preview';image.alt='待上传校徽预览';image.src=reader.result;root.append(image);},{once:true});reader.readAsDataURL(file);});

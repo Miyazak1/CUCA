@@ -15,6 +15,21 @@ async function source(file) {
   return readFile(new URL(file, publicRoot), "utf8");
 }
 
+test("scholarship coverage translates whole source prose before visual separators and preserves structured benefit priority", async () => {
+  const script = await source("scholarships.js");
+  const start = script.indexOf("function coverageValues("), end = script.indexOf("function scholarshipListText(", start);
+  const dictionary = JSON.parse(await source("catalog-content-vi.json"));
+  const format = runInNewContext(`${script.slice(start, end)}\nscholarshipCoverageText`, { catalogUi: text => dictionary[text] || text });
+  const text = "Class B: tuition, accommodation and medical insurance; Class C: tuition and medical insurance";
+  const record = { coverage: text }, before = JSON.stringify(record);
+  assert.equal(format(record), dictionary[text]);
+  assert.doesNotMatch(format(record), /Class B|medical insurance/);
+  assert.equal(JSON.stringify(record), before);
+  assert.equal(format({ coverage: text, benefitItems: [{ label: "Tuition" }, { label: "Accommodation" }] }), [dictionary.Tuition || "Tuition", dictionary.Accommodation || "Accommodation"].join(" · "));
+  assert.equal(format({ coverage: ["Tuition", "Accommodation"] }), [dictionary.Tuition || "Tuition", dictionary.Accommodation || "Accommodation"].join(" · "));
+  assert.equal(format({ coverage: "Unknown official condition, retain it" }), "Unknown official condition, retain it");
+});
+
 test("program badges distinguish unpublished intakes and deadlines from open routes", async () => {
   const script = await source("programs.js");
   const extract = (start, end) => script.slice(script.indexOf(`      function ${start}(`), script.indexOf(`      function ${end}(`));
@@ -102,11 +117,10 @@ test("catalog list detail routes use public record identities", async () => {
   assert.match(programs, /program-detail\.html\?program=\$\{encodeURIComponent\(id\)\}/);
   assert.match(programs, /university-detail\.html\?university=\$\{encodeURIComponent\(program\.schoolId\)\}/);
   assert.match(universities, /university-detail\.html\?university=\$\{encodeURIComponent\(item\.id\)\}/);
-  assert.match(universities, /CuacCatalogList\.cover\("school", item\)/);
+  assert.match(universities, /logoName:item.nameEn/);
   assert.match(programs, /CuacCatalogList\.cover\("program", program\)/);
-  assert.match(scholarships, /CuacCatalogList\.cover\("scholarship", \{/);
-  assert.match(scholarships, /data-catalog-cover alt="\$\{escapeCatalogHtml\(window\.CUACI18n\.format\("a11y\.cover", \{ name: title \}\)\)\}"/);
-  assert.match(programs, /\$\{renderRequirementCards\(program\)\}/);
+  assert.match(scholarships, /logoName:scholarshipProvider\(item\)/);
+  assert.match(programs, /renderRequirementCards\(program\)/);
   assert.match(universities, /item\.cscaSubjects/);
   assert.match(universities, /item\.hskRequirement \|\| item\.englishRequirement/);
   assert.match(scholarships, /return String\(item\.id \|\| scholarshipKey\(item\)\)/);
@@ -197,16 +211,16 @@ test("catalog save actions use authenticated student saved-item APIs", async () 
   assert.match(api, /method: "POST"/);
   assert.match(api, /method: "DELETE"/);
   assert.match(programs, /setSaved\("program", id, savedNow\)/);
-  assert.match(programs, /aria-pressed="\$\{isSaved\}"/);
+  assert.match(await source("catalog-design.js"), /aria-pressed="\$\{Boolean\(model.saved\)\}"/);
   assert.match(programs, /catalogT\(isSaved \? "common\.remove" : "common\.save"/);
   assert.match(api, /function saveHeartIcon\(\)/);
   assert.match(api, /saveHeartIcon, escapeHtml/);
   assert.match(programs, /save-button catalog-save-control/);
   assert.match(universities, /save catalog-save-control/);
   assert.match(scholarships, /save-button catalog-save-control/);
-  assert.match(programs, /CuacCatalogList\.saveHeartIcon\(\)/);
-  assert.match(universities, /CuacCatalogList\.saveHeartIcon\(\)/);
-  assert.match(scholarships, /CuacCatalogList\.saveHeartIcon\(\)/);
+  assert.match(await source("catalog-design.js"), /CuacCatalogList\.saveHeartIcon\(\)/);
+  assert.match(await source("catalog-design.js"), /CuacCatalogList\.saveHeartIcon\(\)/);
+  assert.match(await source("catalog-design.js"), /CuacCatalogList\.saveHeartIcon\(\)/);
   assert.match(universities, /setSaved\("school", key, savedNow\)/);
   assert.match(scholarships, /setSaved\("scholarship", key, savedNow\)/);
   assert.match(programs, /requireStudentSignedInReady[\s\S]*catalog\.save_program[\s\S]*programId: id/);

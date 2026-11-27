@@ -1,4 +1,4 @@
-﻿const scholarshipIcons = {
+const scholarshipIcons = {
   money: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H15a3.5 3.5 0 0 1 0 7H6"/></svg>',
   award: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1-10 0Z"/><path d="M5 6H3a4 4 0 0 0 4 4"/><path d="M19 6h2a4 4 0 0 1-4 4"/></svg>',
   landmark: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V9"/><path d="M19 21V9"/><path d="M3 9h18"/><path d="M12 3 3 9h18Z"/><path d="M9 21v-7h6v7"/></svg>',
@@ -262,6 +262,13 @@ function coverageValues(item) {
     .filter(Boolean);
 }
 
+function scholarshipCoverageText(item) {
+  // Translate published prose before splitting commas into visual separators.
+  // Keep structured benefit labels as separate items when the API provides them.
+  if (typeof item.coverage === "string" && !item.benefitItems?.length && !item.benefits?.length) return catalogUi(item.coverage);
+  return coverageValues(item).map(catalogUi).join(" · ");
+}
+
 function scholarshipListText(value, fallback = "Check details") {
   const items = Array.isArray(value) ? value : String(value || "").split(/[\n;]+/);
   const first = items
@@ -371,14 +378,6 @@ function cityScholarshipAliases(value) {
   return aliases[routeSlug] || [String(value).toLowerCase()];
 }
 
-function scholarshipImage(item = {}) {
-  return window.CuacCatalogList.cover("scholarship", {
-    ...item,
-    type: scholarshipType(item),
-    typeLabel: scholarshipTypeLabel(item),
-  });
-}
-
 function matchingProgramsHref(item = {}) {
   const params = new URLSearchParams({ scholarship: "true" });
   const type = scholarshipType(item);
@@ -402,31 +401,11 @@ function renderCards() {
     : "Filtered by your scholarship route preferences.");
   const grid = document.querySelector("#scholarshipGrid");
   grid.innerHTML = items.map((item) => {
-    const entityId = scholarshipEntityId(item);
-    const title = scholarshipTitle(item);
-    const type = scholarshipType(item);
-    const coverageItems = coverageValues(item);
-    const shownCoverage = coverageItems.slice(0, 3);
-    const hiddenCoverage = coverageItems.length - shownCoverage.length;
-    const detailHref = window.CUACCatalogI18n.localizeHref(`scholarship-detail.html?scholarship=${encodeURIComponent(scholarshipDetailKey(item))}`);
-    return `
-      <article class="scholarship-card" role="link" tabindex="0" data-scholarship-card data-detail-href="${detailHref}" aria-label="${escapeCatalogHtml(window.CUACI18n.format("a11y.scholarshipCard", { name: title }))}">
-        <div class="scholarship-media">
-          <img data-catalog-cover alt="${escapeCatalogHtml(window.CUACI18n.format("a11y.cover", { name: title }))}" src="${scholarshipImage(item)}" loading="lazy" />
-          <span class="badge type-badge ${type}">${escapeCatalogHtml(catalogUi(scholarshipTypeLabel(item)))}</span>
-          <button class="save-button catalog-save-control ${saved.has(entityId) ? "saved" : ""}" type="button" data-save="${escapeCatalogHtml(entityId)}" aria-pressed="${saved.has(entityId)}" aria-label="${escapeCatalogHtml(catalogT(saved.has(entityId) ? "common.remove" : "common.save", saved.has(entityId) ? `Remove ${title} from Favourites` : `Save ${title} to Favourites`, { name: title }))}" title="${escapeCatalogHtml(catalogT(saved.has(entityId) ? "common.savedTitle" : "common.saveTitle", saved.has(entityId) ? "Saved — click to remove" : "Save to Favourites"))}">${window.CuacCatalogList.saveHeartIcon()}</button>
-          <span class="scholarship-card-open" aria-hidden="true">${scholarshipIcons.arrowRight}</span>
-        </div>
-        <h3>${escapeCatalogHtml(title)}</h3>
-        <p class="school-line">${escapeCatalogHtml(scholarshipProvider(item))}</p>
-        <p class="summary">${escapeCatalogHtml(catalogUi(scholarshipSummary(item)))}</p>
-        <div class="coverage-chips">${shownCoverage.map((value) => `<span>${escapeCatalogHtml(catalogUi(value))}</span>`).join("")}${hiddenCoverage ? `<span>+${hiddenCoverage}</span>` : ""}</div>
-        <div class="facts"><span><b>${escapeCatalogHtml(catalogUi(scholarshipFundingLabel(item)))}</b>${escapeCatalogHtml(catalogUi("funding"))}</span><span><b>${escapeCatalogHtml(catalogUi(scholarshipDegree(item)))}</b>${escapeCatalogHtml(catalogUi("degree fit"))}</span><span><b>${escapeCatalogHtml(catalogUi(scholarshipDeadlineLabel(item)))}</b>${escapeCatalogHtml(catalogUi("deadline"))}</span></div>
-        <div class="scope-row" aria-label="Scholarship scope">${scholarshipScopeItems(item, filters.country).map((value) => `<span>${escapeCatalogHtml(catalogUi(value))}</span>`).join("")}</div>
-        ${renderScholarshipReadiness(item)}
-      </article>
-    `;
-  }).join("");
+ const D=window.CUACCatalogDesign,entityId=scholarshipEntityId(item),title=scholarshipTitle(item);
+ const detailHref=window.CUACCatalogI18n.localizeHref(`scholarship-detail.html?scholarship=${encodeURIComponent(scholarshipDetailKey(item))}`);
+ return '<article class="scholarship-card cd-card" role="link" tabindex="0" data-scholarship-card data-design-key="scholarship:'+escapeCatalogHtml(entityId)+'" data-detail-href="'+detailHref+'" aria-label="'+escapeCatalogHtml(window.CUACI18n.format('a11y.scholarshipCard',{name:title}))+'">'+D.render({kind:'scholarship',id:entityId,title,parent:scholarshipProvider(item),logoName:scholarshipProvider(item),logo:scholarshipType(item) === "university" ? item.schoolLogo : null,href:detailHref,record:item,saved:saved.has(entityId),saveClass:'save-button catalog-save-control',saveLabel:catalogT(saved.has(entityId) ? "common.remove" : "common.save",saved.has(entityId)?'Remove '+title+' from Favourites':'Save '+title+' to Favourites',{name:title}),tags:[{kind:'type',value:scholarshipTypeLabel(item)},{kind:'level',value:scholarshipDegree(item)},{kind:'intake',value:item.applicationRound||''}],description:scholarshipSummary(item),facts:[['funding',scholarshipFundingLabel(item)],['degree',scholarshipDegree(item)],['coverage',scholarshipCoverageText(item)]],requirementsHtml:'<details class="cd-requirements"><summary>'+D.t('requirements')+'</summary>'+renderScholarshipReadiness(item)+'</details>'})+'</article>';
+ }).join('');
+ window.CUACCatalogDesign.refresh();
   if (!items.length) {
     const filteredState = scholarships.length > 0;
     window.CuacCatalogList.listState(grid, "empty", {
@@ -493,7 +472,7 @@ function renderFocus() {
   document.querySelector("#focusSummary").textContent = scholarshipSummary(item);
   document.querySelector("#focusPrograms").href = matchingProgramsHref(item);
   const detailLink = document.querySelector("[data-scholarship-detail-link]");
-  if (detailLink) detailLink.href = `scholarship-detail.html?scholarship=${encodeURIComponent(scholarshipDetailKey(item))}`;
+  if (detailLink) detailLink.href = window.CUACCatalogI18n.localizeHref(`scholarship-detail.html?scholarship=${encodeURIComponent(scholarshipDetailKey(item))}`);
   document.querySelector("#focusFacts").innerHTML = [
     ["Coverage", coverageValues(item).join(", ")],
     ["Degree fit", scholarshipDegree(item)],
@@ -530,6 +509,7 @@ function renderFilters() {
     `).join("")}
     <div class="filter-group"><span>${escapeCatalogHtml(catalogUi("Coverage"))}</span><div class="check-list"><label><input type="checkbox" data-filter-key="coverage" /> ${escapeCatalogHtml(catalogUi("Includes living stipend"))}</label></div></div>
   `;
+  document.querySelector("#desktopScholarshipFilters").innerHTML=document.querySelector("#filterGroups").innerHTML;
   syncFilters();
 }
 
@@ -551,11 +531,13 @@ function applyScholarshipSearch() {
 function openDrawer(open) {
   const drawer = document.querySelector("#filterDrawer");
   const backdrop = document.querySelector("#drawerBackdrop");
+  const wasOpen=drawer.getAttribute("aria-hidden")==="false";
   drawer.classList.toggle("open", open);
   backdrop.classList.toggle("open", open);
   drawer.setAttribute("aria-hidden", open ? "false" : "true");
   if (open) drawer.removeAttribute("inert");
   else drawer.setAttribute("inert", "");
+  window.CUACCatalogDesign.updateDrawer(drawer,open,wasOpen);
 }
 
 function applyRouteFilter(value) {
@@ -707,7 +689,7 @@ document.addEventListener("click", async (event) => {
     return;
   }
   const scholarshipCard = event.target.closest("[data-scholarship-card]");
-  if (scholarshipCard && !event.target.closest("button, a, [data-save]")) {
+  if (scholarshipCard && !event.target.closest("button, a, [data-save], details")) {
     window.location.href = scholarshipCard.dataset.detailHref;
     return;
   }
@@ -751,7 +733,7 @@ document.addEventListener("click", async (event) => {
 
 document.addEventListener("keydown", (event) => {
   const scholarshipCard = event.target.closest("[data-scholarship-card]");
-  if (!scholarshipCard) return;
+  if (!scholarshipCard || event.target.closest("a, button, input, select, textarea, details")) return;
   if (event.key !== "Enter" && event.key !== " ") return;
   event.preventDefault();
   window.location.href = scholarshipCard.dataset.detailHref;
@@ -790,6 +772,7 @@ document.addEventListener("change", (event) => {
   if (!control) return;
   const key = control.dataset.filterKey;
   filters[key] = control.type === "checkbox" ? control.checked : control.value;
+  syncFilters();
   page = 1;
   renderCards();
 });

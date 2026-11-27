@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-21",
+  "scope": "Three catalog lists, three detail pages and directly linked entry points",
+  "functionalIssuesFixed": 3,
+  "hiddenDemoLinkCleanup": 1,
+  "automatedTests": {
+    "unique": 54,
+    "passed": 54,
+    "failed": 0
+  },
+  "routes": {
+    "finalAnchors": 355,
+    "uniqueInternal": 61,
+    "http200Html": 61,
+    "placeholderLinks": 0,
+    "httpIsNotFunctionalProof": true
+  },
+  "browser": {
+    "authenticatedSavedLists": 3,
+    "anonymousSaveContinuations": 3,
+    "desktopActionFamilies": 3,
+    "mobileActionFamilies": 3,
+    "mobileDialogFamilies": 3,
+    "scheduleDesktopClicks": 18,
+    "scheduleMobileClicks": 3,
+    "contextLinkLocaleChecks": 12,
+    "keyboardCards": 3,
+    "openApplicationPreselection": {
+      "href": "/application.html?programId=4c9c4679-0fc5-4708-a611-432c151b0436&intakeId=c2c3b93a-d524-40a7-bbe9-fa50c2e0a21f&lang=vi#add-choice",
+      "programAndIntakePreselected": true,
+      "submitted": false
+    },
+    "languageSwitch": {
+      "from": "ar",
+      "to": "vi",
+      "recordAndScheduleHashPreserved": true
+    },
+    "negativeRecord": {
+      "retryKeepsControlledError": true,
+      "backToPrograms": true
+    }
+  },
+  "publicShellProtection": {
+    "files": 7,
+    "unchanged": 7
+  },
+  "deployed": false,
+  "pushed": false,
+  "applicationSubmitted": false
+}

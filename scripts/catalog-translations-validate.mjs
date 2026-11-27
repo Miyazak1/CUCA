@@ -2,13 +2,14 @@ import fs from "node:fs/promises";
 import assert from "node:assert/strict";
 import {createHash} from "node:crypto";
 import {catalogFacts} from './lib/catalog-translation-validation.mjs';
+import {loadCatalogTranslationInventory,loadCatalogTranslationOverrides} from './lib/catalog-translation-inventory.mjs';
 const locale=process.argv.find(arg=>arg.startsWith("--locale="))?.split("=")[1]||"vi";
 assert.ok(["vi","th","id","ms","ar"].includes(locale));
 const normalize=s=>String(s).normalize("NFC").replace(/\s+/g," ").trim();
-const inventory=JSON.parse(await fs.readFile(".tmp/catalog-body-inventory.json","utf8"));
+const inventory=await loadCatalogTranslationInventory();
 const rows=inventory.filter(row=>!row.fields.every(field=>field.startsWith("ui.")));
 const candidate=JSON.parse(await fs.readFile(`.tmp/catalog-translations/${locale}.json`,"utf8"));
-const overrides=JSON.parse(await fs.readFile("src/content/catalog-translation-overrides.json","utf8"));
+const overrides=await loadCatalogTranslationOverrides();
 for(const row of overrides)candidate[normalize(row[0])]=row[["en","vi","th","id","ms","ar"].indexOf(locale)];
 const facts=catalogFacts;
 const missing=[],factFailures=[],untranslatedProse=[],chineseResiduals=[];let protectedFacts=0;
@@ -27,7 +28,7 @@ if(process.argv.includes("--publish-local")){
  const output=Object.fromEntries(Object.entries(candidate).sort(([a],[b])=>a.localeCompare(b)));
  await fs.writeFile(`public/catalog-content-${locale}.json`,JSON.stringify(output));
  let manifest={schemaVersion:1,sourceHash:createHash("sha256").update(JSON.stringify(rows.map(r=>normalize(r.text)).sort())).digest("hex"),sourceCount:rows.length,locales:{}};
- try{const old=JSON.parse(await fs.readFile("public/catalog-content-manifest.json","utf8"));if(old.sourceHash===manifest.sourceHash)manifest=old;}catch{}
+ try{const old=JSON.parse(await fs.readFile("public/catalog-content-manifest.json","utf8"));if(old.sourceHash===manifest.sourceHash)manifest=old;}catch{ /* No reusable manifest; create a new coverage snapshot. */ }
  manifest.locales[locale]={ready:true,sourceCount:rows.length,sha256:createHash("sha256").update(JSON.stringify(output)).digest("hex"),validation:"Required source numbers, exam labels and URLs retained; no unchanged long prose",referenceTranslation:true};
  await fs.writeFile("public/catalog-content-manifest.json",JSON.stringify(manifest,null,2));
  const file="config/public-release-assets.json",release=JSON.parse(await fs.readFile(file,"utf8"));release.files=[...new Set([...release.files,"catalog-content-i18n.js","catalog-content-manifest.json",`catalog-content-${locale}.json`])].sort((a,b)=>a.localeCompare(b));await fs.writeFile(file,JSON.stringify(release,null,2)+"\n");
